@@ -187,6 +187,7 @@ export default function ContactPage() {
             <form
               action="https://formspree.io/f/placeholder"
               method="POST"
+              data-success-redirect="/contact/success"
               className="flex flex-col gap-6"
             >
               <div>
