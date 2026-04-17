@@ -138,7 +138,7 @@ export default function Home() {
           <a href="#approach" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
             Approach
           </a>
-          <a href="#contact" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+          <a href="/contact" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
             Contact
           </a>
         </nav>
@@ -251,7 +251,7 @@ export default function Home() {
             Request a fixed quote.
           </div>
           <a
-            href="mailto:hello@loveleedaystudios.com"
+            href="/contact"
             className="inline-block no-underline text-[0.9rem] font-medium uppercase tracking-[0.05em] transition-colors hover:bg-[#333]"
             style={{
               backgroundColor: "#111111",
