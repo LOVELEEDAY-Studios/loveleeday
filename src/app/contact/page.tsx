@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { Playfair_Display, JetBrains_Mono } from "next/font/google";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Contact — LOVELEEDAY Studios",
+  description: "Tell us what you need. Fixed quote within 24 hours. No commitment, no cost.",
+};
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -100,6 +106,7 @@ export default function ContactPage() {
               Let&apos;s talk about
               <br />
               your project.
+
             </h1>
 
             <p className="text-[1.1rem] leading-[1.5] max-w-[50ch] mb-[3vw]" style={{ color: "#5A5A55" }}>
@@ -185,9 +192,8 @@ export default function ContactPage() {
           {/* Right — Form */}
           <div>
             <form
-              action="https://formspree.io/f/placeholder"
+              action="/api/contact"
               method="POST"
-              data-success-redirect="/contact/success"
               className="flex flex-col gap-6"
             >
               <div>

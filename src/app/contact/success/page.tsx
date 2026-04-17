@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { Playfair_Display, JetBrains_Mono } from "next/font/google";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Transmission Received — LOVELEEDAY Studios",
+  description: "Your project brief has been received. We'll respond within 12 hours.",
+};
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
