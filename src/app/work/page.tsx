@@ -84,15 +84,14 @@ function LogoMark() {
 export default function WorkPage() {
   return (
     <div
-      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]"
+      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE] px-4 py-[4vw] sm:px-[4vw]"
       style={{
         backgroundColor: "#F3F2EE",
         color: "#111111",
-        padding: "4vw",
       }}
     >
       {/* Header */}
-      <header className="w-full max-w-[1400px] flex flex-col items-center mb-[6vw]">
+      <header className="w-full max-w-[1400px] flex flex-col items-center mb-8 sm:mb-[6vw]">
         <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
           <LogoMark />
           <div
@@ -121,17 +120,17 @@ export default function WorkPage() {
             </span>
           </div>
         </a>
-        <nav className="flex gap-8 mt-6 text-[0.8rem] font-medium uppercase tracking-[0.05em]">
-          <a href="/#services" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+        <nav className="flex gap-6 mt-4 text-[0.8rem] font-medium uppercase tracking-[0.05em]">
+          <a href="/#services" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
             Services
           </a>
-          <a href="/#approach" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+          <a href="/#approach" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
             Approach
           </a>
-          <a href="/work" className="text-[#111] no-underline hover:opacity-60 transition-opacity" style={{ borderBottom: "1px solid #111", paddingBottom: "1px" }}>
+          <a href="/work" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1" style={{ borderBottom: "1px solid #111" }}>
             Work
           </a>
-          <a href="/contact" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+          <a href="/contact" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
             Contact
           </a>
         </nav>
@@ -332,7 +331,7 @@ export default function WorkPage() {
               lineHeight: 1.1,
             }}
           >
-            Ready to commence?
+            Ready to start?
             <br />
             Request a fixed quote.
           </div>
@@ -345,7 +344,7 @@ export default function WorkPage() {
               padding: "1rem 2rem",
             }}
           >
-            Initiate Project
+            Start a Project
           </a>
         </div>
       </main>

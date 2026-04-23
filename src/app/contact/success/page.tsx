@@ -70,15 +70,14 @@ export default function SuccessPage() {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]"
+      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE] px-4 py-[4vw] sm:px-[4vw]"
       style={{
         backgroundColor: "#F3F2EE",
         color: "#111111",
-        padding: "4vw",
       }}
     >
       {/* Header */}
-      <header className="w-full max-w-[1400px] flex flex-col items-center mb-[6vw]">
+      <header className="w-full max-w-[1400px] flex flex-col items-center mb-8 sm:mb-[6vw]">
         <Link href="/" className="flex flex-col items-center no-underline text-[#111]">
           <LogoMark />
           <div
@@ -129,7 +128,7 @@ export default function SuccessPage() {
         </section>
 
         {/* Receipt card */}
-        <div className="border border-[#D4D2C9] p-[2vw] mt-[2vw]">
+        <div className="border border-[#D4D2C9] p-5 sm:p-[2vw] mt-6 sm:mt-[2vw]">
           {/* Receipt header */}
           <div className="border-b border-[#D4D2C9] pb-6 mb-6 flex justify-between items-start">
             <div>
@@ -166,7 +165,7 @@ export default function SuccessPage() {
         </div>
 
         {/* Checklist */}
-        <section className="mt-[4vw]">
+        <section className="mt-8 sm:mt-[4vw]">
           <h2
             className="mb-6"
             style={{ ...monoStyle }}
@@ -192,7 +191,7 @@ export default function SuccessPage() {
 
         {/* Keep-warm — spam tip */}
         <div
-          className="mt-[4vw] p-5"
+          className="mt-8 sm:mt-[4vw] p-5"
           style={{ backgroundColor: "#EDEBE6", border: "1px solid #D4D2C9" }}
         >
           <span className="block mb-2" style={monoStyle}>Tip</span>
@@ -203,7 +202,7 @@ export default function SuccessPage() {
         </div>
 
         {/* Keep-warm — recent work links */}
-        <section className="mt-[4vw]">
+        <section className="mt-8 sm:mt-[4vw]">
           <h2
             className="mb-5"
             style={{ ...monoStyle }}
@@ -251,7 +250,7 @@ export default function SuccessPage() {
         <footer className="mt-[6vw] pt-[2vw] flex justify-center" style={{ borderTop: "1px solid #D4D2C9" }}>
           <Link
             href="/"
-            className="no-underline text-[#111] text-[0.85rem] font-medium uppercase tracking-[0.05em] flex items-center gap-2 hover:opacity-70 transition-opacity"
+            className="no-underline text-[#111] text-[0.85rem] font-medium uppercase tracking-[0.05em] inline-flex items-center gap-2 hover:opacity-70 transition-opacity py-[13px] px-1 min-h-[44px]"
           >
             &larr; Back to home
           </Link>
