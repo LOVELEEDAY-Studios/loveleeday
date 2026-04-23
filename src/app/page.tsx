@@ -92,15 +92,14 @@ function LogoMark() {
 export default function Home() {
   return (
     <div
-      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]"
+      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE] px-4 py-[4vw] sm:px-[4vw]"
       style={{
         backgroundColor: "#F3F2EE",
         color: "#111111",
-        padding: "4vw",
       }}
     >
       {/* Header */}
-      <header className="w-full max-w-[1400px] flex flex-col items-center mb-[6vw]">
+      <header className="w-full max-w-[1400px] flex flex-col items-center mb-8 sm:mb-[6vw]">
         <LogoMark />
         <div
           className="text-center leading-none"
@@ -127,17 +126,17 @@ export default function Home() {
             Studios&trade;
           </span>
         </div>
-        <nav className="flex gap-8 mt-6 text-[0.8rem] font-medium uppercase tracking-[0.05em]">
-          <a href="#services" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+        <nav className="flex gap-6 mt-4 text-[0.8rem] font-medium uppercase tracking-[0.05em]">
+          <a href="#services" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
             Services
           </a>
-          <a href="#approach" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+          <a href="#approach" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
             Approach
           </a>
-          <a href="/work" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+          <a href="/work" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
             Work
           </a>
-          <a href="/contact" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+          <a href="/contact" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
             Contact
           </a>
         </nav>
@@ -355,8 +354,8 @@ export default function Home() {
           <div className="mt-[2vw]">
             <a
               href="/work"
-              className="inline-block no-underline text-[0.8rem] font-medium uppercase tracking-[0.05em] transition-opacity hover:opacity-60"
-              style={{ color: "#111", borderBottom: "1px solid #111", paddingBottom: "2px" }}
+              className="inline-flex items-end no-underline text-[0.8rem] font-medium uppercase tracking-[0.05em] transition-opacity hover:opacity-60 py-[13px] pr-1 min-h-[44px]"
+              style={{ color: "#111", borderBottom: "1px solid #111" }}
             >
               View all case studies
             </a>

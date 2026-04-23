@@ -79,15 +79,14 @@ export default function ContactPage() {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]"
+      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE] px-4 py-[4vw] sm:px-[4vw]"
       style={{
         backgroundColor: "#F3F2EE",
         color: "#111111",
-        padding: "4vw",
       }}
     >
       {/* Header */}
-      <header className="w-full max-w-[1400px] flex flex-col items-center mb-[6vw]">
+      <header className="w-full max-w-[1400px] flex flex-col items-center mb-8 sm:mb-[6vw]">
         <Link href="/" className="flex flex-col items-center no-underline text-[#111]">
           <LogoMark />
           <div
@@ -115,17 +114,17 @@ export default function ContactPage() {
             </span>
           </div>
         </Link>
-        <nav className="flex gap-8 mt-6 text-[0.8rem] font-medium uppercase tracking-[0.05em]">
-          <Link href="/#services" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+        <nav className="flex gap-6 mt-4 text-[0.8rem] font-medium uppercase tracking-[0.05em]">
+          <Link href="/#services" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
             Services
           </Link>
-          <Link href="/#approach" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+          <Link href="/#approach" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
             Approach
           </Link>
-          <Link href="/work" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+          <Link href="/work" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
             Work
           </Link>
-          <Link href="/contact" className="text-[#111] no-underline border-b border-[#111] pb-0.5">
+          <Link href="/contact" className="text-[#111] no-underline py-[13px] px-1" style={{ borderBottom: "1px solid #111" }}>
             Contact
           </Link>
         </nav>
@@ -133,11 +132,11 @@ export default function ContactPage() {
 
       {/* Main */}
       <main className="w-full max-w-[1400px]">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-[4vw]">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8 md:gap-[4vw]">
           {/* Left — Info */}
           <div>
             <h1
-              className="mb-[2vw]"
+              className="mb-4 sm:mb-[2vw]"
               style={{
                 fontSize: "clamp(2rem, 4vw, 4rem)",
                 fontWeight: 400,
@@ -150,20 +149,21 @@ export default function ContactPage() {
               your project.
             </h1>
 
-            <p className="text-[1.1rem] leading-[1.5] max-w-[50ch] mb-[3vw]" style={{ color: "#5A5A55" }}>
+            <p className="text-[1.1rem] leading-[1.5] max-w-[50ch] mb-6 sm:mb-[3vw]" style={{ color: "#5A5A55" }}>
               Tell us what you need. We&apos;ll reply within 24 hours with a scope,
               price, and timeline. No commitment, no cost, no meetings unless you
               want one.
             </p>
 
-            <hr className="border-none mb-[2vw]" style={{ borderTop: "1px solid #D4D2C9" }} />
+            <hr className="border-none mb-6 sm:mb-[2vw]" style={{ borderTop: "1px solid #D4D2C9" }} />
 
             <div className="space-y-6">
               <div>
                 <span className="block mb-2" style={labelStyle}>Email</span>
                 <a
                   href="mailto:hello@loveleedaystudios.com"
-                  className="text-[1.1rem] text-[#111] no-underline border-b border-[#D4D2C9] pb-0.5 hover:border-[#111] transition-colors"
+                  className="inline-flex items-end text-[1.1rem] text-[#111] no-underline hover:border-[#111] transition-colors py-[11px]"
+                  style={{ borderBottom: "1px solid #D4D2C9" }}
                 >
                   hello@loveleedaystudios.com
                 </a>
