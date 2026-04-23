@@ -138,6 +138,9 @@ export default function Home() {
           <a href="#approach" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
             Approach
           </a>
+          <a href="/work" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+            Work
+          </a>
           <a href="/contact" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
             Contact
           </a>
@@ -230,6 +233,109 @@ export default function Home() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Recent Work */}
+        <div
+          id="work"
+          className="mt-[6vw] pt-[4vw]"
+          style={{ borderTop: "1px solid #D4D2C9" }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-[2vw] mb-[3vw] items-start">
+            <h2 className="text-2xl font-normal" style={{ letterSpacing: "-0.02em" }}>
+              Recent Work
+            </h2>
+            <p className="text-[1.1rem] leading-[1.4] max-w-[60ch]">
+              Production projects shipped for real businesses — SaaS platforms,
+              hospitality brands, financial tools, and internal systems.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[2vw] gap-y-[3vw]">
+            {[
+              {
+                index: "01",
+                title: "olldae",
+                category: "SaaS / Restaurant Technology",
+                summary:
+                  "Bar and restaurant operating system. Inventory, recipe costing, catering quoting, and Stripe billing — consolidated into one platform.",
+              },
+              {
+                index: "02",
+                title: "Dabney & Co.",
+                category: "Brand / Hospitality Website",
+                summary:
+                  "Full brand and site redesign for a craft cocktail bar. Custom typographic system, OpenTable reservation integration, nine responsive pages.",
+              },
+              {
+                index: "03",
+                title: "Kronos",
+                category: "Internal Product / Financial Tooling",
+                summary:
+                  "Multi-entity financial dashboard. Stripe Financial Connections, Xero sync, and role-scoped auth across 22 routes.",
+              },
+              {
+                index: "04",
+                title: "Duezy",
+                category: "SaaS / Invoice Automation",
+                summary:
+                  "Invoice processing SaaS with automated payment reminders and Stripe checkout embedded in outbound emails. Clients pay without creating an account.",
+              },
+            ].map((w) => (
+              <a
+                key={w.index}
+                href="/work"
+                style={{ textDecoration: "none", color: "inherit" }}
+                className="group flex flex-col gap-3 py-5"
+              >
+                <div
+                  className="flex justify-between items-baseline pb-3"
+                  style={{ borderBottom: "1px solid #D4D2C9" }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                      fontSize: "0.72rem",
+                      color: "#5A5A55",
+                      letterSpacing: "0.05em",
+                    }}
+                  >
+                    [{w.index}]
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                      fontSize: "0.7rem",
+                      color: "#5A5A55",
+                      letterSpacing: "0.04em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {w.category}
+                  </span>
+                </div>
+                <h3
+                  className="text-[1.15rem] font-medium group-hover:opacity-60 transition-opacity"
+                  style={{ letterSpacing: "-0.01em" }}
+                >
+                  {w.title}
+                </h3>
+                <p className="text-[0.9rem] leading-[1.5]" style={{ color: "#5A5A55" }}>
+                  {w.summary}
+                </p>
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-[2vw]">
+            <a
+              href="/work"
+              className="inline-block no-underline text-[0.8rem] font-medium uppercase tracking-[0.05em] transition-opacity hover:opacity-60"
+              style={{ color: "#111", borderBottom: "1px solid #111", paddingBottom: "2px" }}
+            >
+              View all case studies
+            </a>
+          </div>
         </div>
 
         {/* CTA */}
