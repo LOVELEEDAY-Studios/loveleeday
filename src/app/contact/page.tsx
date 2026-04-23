@@ -1,23 +1,24 @@
-import type { Metadata } from "next";
-import { Playfair_Display, JetBrains_Mono } from "next/font/google";
-import Link from "next/link";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Contact — LOVELEEDAY Studios",
-  description: "Tell us what you need. Fixed quote within 24 hours. No commitment, no cost.",
+import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+const labelStyle = {
+  fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
+  fontSize: "0.75rem",
+  textTransform: "uppercase" as const,
+  color: "#5A5A55",
+  letterSpacing: "0.05em",
 };
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-playfair",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-});
+const fieldStyle = {
+  borderBottom: "1px solid #D4D2C9",
+  borderTop: "none",
+  borderLeft: "none",
+  borderRight: "none",
+  color: "#111",
+};
 
 function LogoMark() {
   return (
@@ -36,14 +37,52 @@ function LogoMark() {
   );
 }
 
+type Status = 'idle' | 'submitting' | 'error';
+
 export default function ContactPage() {
+  const router = useRouter();
+  const [status, setStatus] = useState<Status>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus('submitting');
+    setErrorMessage('');
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem('name') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      project_type: (form.elements.namedItem('project_type') as HTMLSelectElement).value,
+      budget: (form.elements.namedItem('budget') as HTMLSelectElement).value,
+      details: (form.elements.namedItem('details') as HTMLTextAreaElement).value,
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        router.push('/contact/success');
+      } else {
+        setStatus('error');
+        setErrorMessage("Couldn't send right now. Email hello@loveleedaystudios.com directly.");
+      }
+    } catch {
+      setStatus('error');
+      setErrorMessage("Couldn't send right now. Email hello@loveleedaystudios.com directly.");
+    }
+  }
+
   return (
     <div
-      className={`${playfair.variable} ${jetbrains.variable} min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]`}
+      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]"
       style={{
         backgroundColor: "#F3F2EE",
         color: "#111111",
-        fontFamily: "'Inter', -apple-system, sans-serif",
         padding: "4vw",
       }}
     >
@@ -54,7 +93,7 @@ export default function ContactPage() {
           <div
             className="text-center leading-none"
             style={{
-              fontFamily: "'Playfair Display', var(--font-playfair), serif",
+              fontFamily: "var(--font-playfair), 'Playfair Display', serif",
               fontSize: "2rem",
               fontWeight: 600,
               letterSpacing: "-0.02em",
@@ -65,11 +104,11 @@ export default function ContactPage() {
             <span
               className="block mt-1.5"
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                 fontSize: "0.65rem",
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
-                fontWeight: 500,
+                fontWeight: 400,
               }}
             >
               Studios&trade;
@@ -82,6 +121,9 @@ export default function ContactPage() {
           </Link>
           <Link href="/#approach" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
             Approach
+          </Link>
+          <Link href="/work" className="text-[#111] no-underline hover:opacity-60 transition-opacity">
+            Work
           </Link>
           <Link href="/contact" className="text-[#111] no-underline border-b border-[#111] pb-0.5">
             Contact
@@ -106,7 +148,6 @@ export default function ContactPage() {
               Let&apos;s talk about
               <br />
               your project.
-
             </h1>
 
             <p className="text-[1.1rem] leading-[1.5] max-w-[50ch] mb-[3vw]" style={{ color: "#5A5A55" }}>
@@ -119,18 +160,7 @@ export default function ContactPage() {
 
             <div className="space-y-6">
               <div>
-                <span
-                  className="block mb-2"
-                  style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                    fontSize: "0.75rem",
-                    textTransform: "uppercase",
-                    color: "#5A5A55",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  Email
-                </span>
+                <span className="block mb-2" style={labelStyle}>Email</span>
                 <a
                   href="mailto:hello@loveleedaystudios.com"
                   className="text-[1.1rem] text-[#111] no-underline border-b border-[#D4D2C9] pb-0.5 hover:border-[#111] transition-colors"
@@ -140,50 +170,17 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <span
-                  className="block mb-2"
-                  style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                    fontSize: "0.75rem",
-                    textTransform: "uppercase",
-                    color: "#5A5A55",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  Response Time
-                </span>
+                <span className="block mb-2" style={labelStyle}>Response Time</span>
                 <p className="text-[1.1rem]">Within 24 hours, usually faster.</p>
               </div>
 
               <div>
-                <span
-                  className="block mb-2"
-                  style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                    fontSize: "0.75rem",
-                    textTransform: "uppercase",
-                    color: "#5A5A55",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  Location
-                </span>
+                <span className="block mb-2" style={labelStyle}>Location</span>
                 <p className="text-[1.1rem]">Remote — based in Michigan, USA.</p>
               </div>
 
               <div>
-                <span
-                  className="block mb-2"
-                  style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                    fontSize: "0.75rem",
-                    textTransform: "uppercase",
-                    color: "#5A5A55",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  Entity
-                </span>
+                <span className="block mb-2" style={labelStyle}>Entity</span>
                 <p className="text-[1.1rem]">LOVELEEDAY Studios LLC, Delaware.</p>
               </div>
             </div>
@@ -191,23 +188,9 @@ export default function ContactPage() {
 
           {/* Right — Form */}
           <div>
-            <form
-              action="/api/contact"
-              method="POST"
-              className="flex flex-col gap-6"
-            >
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
               <div>
-                <label
-                  htmlFor="name"
-                  className="block mb-2"
-                  style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                    fontSize: "0.75rem",
-                    textTransform: "uppercase",
-                    color: "#5A5A55",
-                    letterSpacing: "0.05em",
-                  }}
-                >
+                <label htmlFor="name" className="block mb-2" style={labelStyle}>
                   Name
                 </label>
                 <input
@@ -215,30 +198,14 @@ export default function ContactPage() {
                   id="name"
                   name="name"
                   required
-                  className="w-full bg-transparent text-[1rem] py-3 outline-none"
-                  style={{
-                    borderBottom: "1px solid #D4D2C9",
-                    borderTop: "none",
-                    borderLeft: "none",
-                    borderRight: "none",
-                    color: "#111",
-                  }}
+                  className="w-full bg-transparent text-[1rem] py-3 outline-none focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2"
+                  style={fieldStyle}
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2"
-                  style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                    fontSize: "0.75rem",
-                    textTransform: "uppercase",
-                    color: "#5A5A55",
-                    letterSpacing: "0.05em",
-                  }}
-                >
+                <label htmlFor="email" className="block mb-2" style={labelStyle}>
                   Email
                 </label>
                 <input
@@ -246,44 +213,23 @@ export default function ContactPage() {
                   id="email"
                   name="email"
                   required
-                  className="w-full bg-transparent text-[1rem] py-3 outline-none"
-                  style={{
-                    borderBottom: "1px solid #D4D2C9",
-                    borderTop: "none",
-                    borderLeft: "none",
-                    borderRight: "none",
-                    color: "#111",
-                  }}
+                  className="w-full bg-transparent text-[1rem] py-3 outline-none focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2"
+                  style={fieldStyle}
                   placeholder="you@company.com"
                 />
               </div>
 
               <div>
-                <label
-                  htmlFor="project-type"
-                  className="block mb-2"
-                  style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                    fontSize: "0.75rem",
-                    textTransform: "uppercase",
-                    color: "#5A5A55",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  Project Type
+                <label htmlFor="project-type" className="block mb-2" style={labelStyle}>
+                  Project Type <span style={{ color: "#C0392B" }} aria-hidden="true">*</span>
                 </label>
                 <select
                   id="project-type"
                   name="project_type"
-                  className="w-full bg-transparent text-[1rem] py-3 outline-none appearance-none cursor-pointer"
-                  style={{
-                    borderBottom: "1px solid #D4D2C9",
-                    borderTop: "none",
-                    borderLeft: "none",
-                    borderRight: "none",
-                    color: "#111",
-                    borderRadius: 0,
-                  }}
+                  required
+                  aria-required="true"
+                  className="w-full bg-transparent text-[1rem] py-3 outline-none appearance-none cursor-pointer focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2"
+                  style={{ ...fieldStyle, borderRadius: 0 }}
                 >
                   <option value="">Select a service</option>
                   <option value="landing-page">Landing Page ($500+)</option>
@@ -297,31 +243,16 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label
-                  htmlFor="budget"
-                  className="block mb-2"
-                  style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                    fontSize: "0.75rem",
-                    textTransform: "uppercase",
-                    color: "#5A5A55",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  Budget Range
+                <label htmlFor="budget" className="block mb-2" style={labelStyle}>
+                  Budget Range <span style={{ color: "#C0392B" }} aria-hidden="true">*</span>
                 </label>
                 <select
                   id="budget"
                   name="budget"
-                  className="w-full bg-transparent text-[1rem] py-3 outline-none appearance-none cursor-pointer"
-                  style={{
-                    borderBottom: "1px solid #D4D2C9",
-                    borderTop: "none",
-                    borderLeft: "none",
-                    borderRight: "none",
-                    color: "#111",
-                    borderRadius: 0,
-                  }}
+                  required
+                  aria-required="true"
+                  className="w-full bg-transparent text-[1rem] py-3 outline-none appearance-none cursor-pointer focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2"
+                  style={{ ...fieldStyle, borderRadius: 0 }}
                 >
                   <option value="">Select a range</option>
                   <option value="200-500">$200 – $500</option>
@@ -333,17 +264,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label
-                  htmlFor="details"
-                  className="block mb-2"
-                  style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                    fontSize: "0.75rem",
-                    textTransform: "uppercase",
-                    color: "#5A5A55",
-                    letterSpacing: "0.05em",
-                  }}
-                >
+                <label htmlFor="details" className="block mb-2" style={labelStyle}>
                   Project Details
                 </label>
                 <textarea
@@ -351,22 +272,31 @@ export default function ContactPage() {
                   name="details"
                   rows={5}
                   required
-                  className="w-full bg-transparent text-[1rem] py-3 outline-none resize-none"
-                  style={{
-                    borderBottom: "1px solid #D4D2C9",
-                    borderTop: "none",
-                    borderLeft: "none",
-                    borderRight: "none",
-                    color: "#111",
-                  }}
+                  className="w-full bg-transparent text-[1rem] py-3 outline-none resize-none focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2"
+                  style={fieldStyle}
                   placeholder="Describe what you need built. The more detail, the more accurate our quote."
                 />
               </div>
 
+              {status === 'error' && (
+                <div
+                  role="alert"
+                  className="text-[0.9rem] py-3 px-4"
+                  style={{
+                    backgroundColor: "#FFF0EE",
+                    border: "1px solid #C0392B",
+                    color: "#C0392B",
+                  }}
+                >
+                  {errorMessage}
+                </div>
+              )}
+
               <div className="mt-4">
                 <button
                   type="submit"
-                  className="inline-block text-[0.9rem] font-medium uppercase tracking-[0.05em] transition-colors hover:bg-[#333] cursor-pointer"
+                  disabled={status === 'submitting'}
+                  className="inline-block text-[0.9rem] font-medium uppercase tracking-[0.05em] transition-colors hover:bg-[#333] cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2 outline-none"
                   style={{
                     backgroundColor: "#111111",
                     color: "#F3F2EE",
@@ -374,7 +304,7 @@ export default function ContactPage() {
                     border: "none",
                   }}
                 >
-                  Send Project Brief
+                  {status === 'submitting' ? 'Sending…' : 'Send Project Brief'}
                 </button>
               </div>
             </form>

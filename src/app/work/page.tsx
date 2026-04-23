@@ -1,22 +1,12 @@
-import { Playfair_Display, JetBrains_Mono } from "next/font/google";
 import type { Metadata } from "next";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-playfair",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-});
 
 export const metadata: Metadata = {
   title: "Recent Work — LOVELEEDAY Studios",
   description:
     "A selection of production projects built by LOVELEEDAY Studios — SaaS platforms, branded websites, internal tools, and invoice automation.",
+  alternates: {
+    canonical: "https://loveleedaystudios.com/work",
+  },
 };
 
 const caseStudies = [
@@ -94,11 +84,10 @@ function LogoMark() {
 export default function WorkPage() {
   return (
     <div
-      className={`${playfair.variable} ${jetbrains.variable} min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]`}
+      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]"
       style={{
         backgroundColor: "#F3F2EE",
         color: "#111111",
-        fontFamily: "'Inter', -apple-system, sans-serif",
         padding: "4vw",
       }}
     >
@@ -109,7 +98,7 @@ export default function WorkPage() {
           <div
             className="text-center leading-none"
             style={{
-              fontFamily: "'Playfair Display', var(--font-playfair), serif",
+              fontFamily: "var(--font-playfair), 'Playfair Display', serif",
               fontSize: "2rem",
               fontWeight: 600,
               letterSpacing: "-0.02em",
@@ -120,11 +109,11 @@ export default function WorkPage() {
             <span
               className="block mt-1.5"
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                 fontSize: "0.65rem",
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
-                fontWeight: 500,
+                fontWeight: 400,
                 fontStyle: "normal",
               }}
             >
@@ -181,7 +170,7 @@ export default function WorkPage() {
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 mb-6">
                 <span
                   style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                    fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                     fontSize: "0.75rem",
                     color: "#5A5A55",
                     letterSpacing: "0.05em",
@@ -203,7 +192,7 @@ export default function WorkPage() {
                 <span
                   className="sm:ml-auto"
                   style={{
-                    fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                    fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                     fontSize: "0.72rem",
                     color: "#5A5A55",
                     letterSpacing: "0.04em",
@@ -222,7 +211,7 @@ export default function WorkPage() {
                   <div>
                     <span
                       style={{
-                        fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                        fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                         fontSize: "0.7rem",
                         textTransform: "uppercase",
                         letterSpacing: "0.06em",
@@ -238,7 +227,7 @@ export default function WorkPage() {
                   <div>
                     <span
                       style={{
-                        fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                        fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                         fontSize: "0.7rem",
                         textTransform: "uppercase",
                         letterSpacing: "0.06em",
@@ -254,7 +243,7 @@ export default function WorkPage() {
                         <span
                           key={t}
                           style={{
-                            fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                            fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                             fontSize: "0.7rem",
                             padding: "0.2rem 0.5rem",
                             border: "1px solid #D4D2C9",
@@ -273,7 +262,7 @@ export default function WorkPage() {
                   <div>
                     <span
                       style={{
-                        fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                        fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                         fontSize: "0.7rem",
                         textTransform: "uppercase",
                         letterSpacing: "0.06em",
@@ -291,7 +280,7 @@ export default function WorkPage() {
                   <div>
                     <span
                       style={{
-                        fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                        fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                         fontSize: "0.7rem",
                         textTransform: "uppercase",
                         letterSpacing: "0.06em",
@@ -309,7 +298,7 @@ export default function WorkPage() {
                   <div>
                     <span
                       style={{
-                        fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                        fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                         fontSize: "0.7rem",
                         textTransform: "uppercase",
                         letterSpacing: "0.06em",

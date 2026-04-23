@@ -1,24 +1,21 @@
-import { Playfair_Display, JetBrains_Mono } from "next/font/google";
+import type { Metadata } from "next";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-playfair",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-});
+export const metadata: Metadata = {
+  title: "LOVELEEDAY Studios — Fixed Price. Production Code. Done in Days.",
+  description:
+    "Boutique development studio specializing in landing pages, dashboards, Stripe integrations, SEO audits, and full-stack web applications. Fixed-price, fast delivery.",
+  alternates: {
+    canonical: "https://loveleedaystudios.com",
+  },
+};
 
 const guarantees = [
   {
     index: "01",
     label: "Velocity",
-    title: "3\u20137 Day delivery.",
+    title: "3–7 Day delivery.",
     description:
-      "We scope projects tightly and execute rapidly. No drawn-out agile sprints or endless planning phases, just meticulously shipped code.",
+      "We scope projects tightly and execute rapidly. No drawn-out planning phases, just shipped code.",
   },
   {
     index: "02",
@@ -30,9 +27,9 @@ const guarantees = [
   {
     index: "03",
     label: "Assurance",
-    title: "$0 Until you\u2019re happy.",
+    title: "$0 Until you’re happy.",
     description:
-      "We don\u2019t consider the engagement complete until the deliverable meets your exact specifications and quality standards.",
+      "We don’t consider the engagement complete until the deliverable meets your exact specifications and quality standards.",
   },
 ];
 
@@ -47,13 +44,13 @@ const services = [
     price: "$1,500+",
     title: "Full-Stack Apps",
     description:
-      "Complete dashboards, custom admin panels, and internal tools. Utilizing React, Node, and Postgres for production-ready scale.",
+      "Complete dashboards, custom admin panels, and internal tools. React, Node, and Postgres for production-ready scale.",
   },
   {
     price: "$800+",
     title: "Data Dashboards",
     description:
-      "Connect disparate data sources, visualize key performance indicators, and automate reporting flows via Supabase and external APIs.",
+      "Connect multiple data sources, visualize key metrics, and automate reporting flows via Supabase and external APIs.",
   },
   {
     price: "$400+",
@@ -65,7 +62,7 @@ const services = [
     price: "$300+",
     title: "SEO Audits",
     description:
-      "Deep technical SEO, Core Web Vitals optimization, schema markup, and content strategy. Actionable implementation, not theoretical PDFs.",
+      "Deep technical SEO, Core Web Vitals optimization, schema markup, and content strategy. Specific fixes, not theoretical PDFs.",
   },
   {
     price: "$200+",
@@ -95,11 +92,10 @@ function LogoMark() {
 export default function Home() {
   return (
     <div
-      className={`${playfair.variable} ${jetbrains.variable} min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]`}
+      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]"
       style={{
         backgroundColor: "#F3F2EE",
         color: "#111111",
-        fontFamily: "'Inter', -apple-system, sans-serif",
         padding: "4vw",
       }}
     >
@@ -109,7 +105,7 @@ export default function Home() {
         <div
           className="text-center leading-none"
           style={{
-            fontFamily: "'Playfair Display', var(--font-playfair), serif",
+            fontFamily: "var(--font-playfair), 'Playfair Display', serif",
             fontSize: "2rem",
             fontWeight: 600,
             letterSpacing: "-0.02em",
@@ -120,11 +116,11 @@ export default function Home() {
           <span
             className="block mt-1.5"
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
               fontSize: "0.65rem",
               textTransform: "uppercase",
               letterSpacing: "0.1em",
-              fontWeight: 500,
+              fontWeight: 400,
               fontStyle: "normal",
             }}
           >
@@ -151,8 +147,9 @@ export default function Home() {
       <main className="w-full max-w-[1400px]">
         {/* Hero statement */}
         <h1
-          className="mb-[4vw]"
+          className="mb-[2vw]"
           style={{
+            fontFamily: "var(--font-playfair), 'Playfair Display', serif",
             fontSize: "clamp(2rem, 4.5vw, 4.8rem)",
             fontWeight: 400,
             lineHeight: 1.05,
@@ -161,12 +158,40 @@ export default function Home() {
             textWrap: "balance" as never,
           }}
         >
-          Loveleeday Studios&trade; is a boutique development practice. We build
-          what you need, fast. From high-converting landing pages and data
-          dashboards to complex Stripe integrations and technical SEO audits. We
-          operate with a small team and zero overhead. No hourly billing. You get
-          a fixed quote, and we deliver production-ready code in days.
+          Fixed price. Production code. Done in days.
         </h1>
+
+        <p
+          className="mb-[4vw] text-[1.1rem] leading-[1.5] max-w-[64ch]"
+          style={{ color: "#5A5A55" }}
+        >
+          Loveleeday Studios is a boutique development practice. From high-converting
+          landing pages and data dashboards to complex Stripe integrations and full-stack
+          apps — we deliver production-ready code on a fixed quote, with no hourly billing
+          and no scope creep.
+        </p>
+
+        {/* Proof strip */}
+        <div
+          className="mb-[4vw] flex flex-wrap gap-x-[3vw] gap-y-2"
+          style={{
+            fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
+            fontSize: "0.78rem",
+            color: "#5A5A55",
+            textTransform: "uppercase",
+            letterSpacing: "0.05em",
+          }}
+        >
+          <span>11-day MVP (olldae)</span>
+          <span style={{ color: "#D4D2C9" }}>·</span>
+          <span>5-day auth build (Kronos)</span>
+          <span style={{ color: "#D4D2C9" }}>·</span>
+          <span>7-day billing flow (Duezy)</span>
+          <span style={{ color: "#D4D2C9" }}>·</span>
+          <span>4 production projects shipped</span>
+        </div>
+
+        {/* TODO: testimonial block goes here once first real client quote is collected */}
 
         <hr className="border-none border-t border-[#D4D2C9] my-[2vw] w-full" style={{ borderTop: "1px solid #D4D2C9" }} />
 
@@ -177,7 +202,7 @@ export default function Home() {
               <span
                 className="block mb-2"
                 style={{
-                  fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                  fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                   fontSize: "0.75rem",
                   textTransform: "uppercase",
                   color: "#5A5A55",
@@ -217,7 +242,7 @@ export default function Home() {
               <div
                 className="flex justify-between pb-2 mb-4"
                 style={{
-                  fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                  fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                   fontSize: "0.8rem",
                   borderBottom: "1px solid #D4D2C9",
                 }}
@@ -258,7 +283,7 @@ export default function Home() {
                 title: "olldae",
                 category: "SaaS / Restaurant Technology",
                 summary:
-                  "Bar and restaurant operating system. Inventory, recipe costing, catering quoting, and Stripe billing — consolidated into one platform.",
+                  "Bar and restaurant operating system. Inventory, recipe costing, catering quoting, and Stripe billing — consolidated into one platform. MVP shipped in 11 days.",
               },
               {
                 index: "02",
@@ -272,14 +297,14 @@ export default function Home() {
                 title: "Kronos",
                 category: "Internal Product / Financial Tooling",
                 summary:
-                  "Multi-entity financial dashboard. Stripe Financial Connections, Xero sync, and role-scoped auth across 22 routes.",
+                  "Multi-entity financial dashboard. Stripe Financial Connections, Xero sync, and role-scoped auth across 22 routes. Core auth built in 5 days.",
               },
               {
                 index: "04",
                 title: "Duezy",
                 category: "SaaS / Invoice Automation",
                 summary:
-                  "Invoice processing SaaS with automated payment reminders and Stripe checkout embedded in outbound emails. Clients pay without creating an account.",
+                  "Invoice processing SaaS with automated payment reminders and Stripe checkout embedded in outbound emails. Functional billing flow in 7 days.",
               },
             ].map((w) => (
               <a
@@ -294,7 +319,7 @@ export default function Home() {
                 >
                   <span
                     style={{
-                      fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                      fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                       fontSize: "0.72rem",
                       color: "#5A5A55",
                       letterSpacing: "0.05em",
@@ -304,7 +329,7 @@ export default function Home() {
                   </span>
                   <span
                     style={{
-                      fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
+                      fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                       fontSize: "0.7rem",
                       color: "#5A5A55",
                       letterSpacing: "0.04em",
@@ -352,7 +377,7 @@ export default function Home() {
               lineHeight: 1.1,
             }}
           >
-            Ready to commence?
+            Ready to start?
             <br />
             Request a fixed quote.
           </div>
@@ -365,7 +390,7 @@ export default function Home() {
               padding: "1rem 2rem",
             }}
           >
-            Initiate Project
+            Start a Project
           </a>
         </div>
       </main>
