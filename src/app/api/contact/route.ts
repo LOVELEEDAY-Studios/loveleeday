@@ -5,12 +5,24 @@ export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
-    const formData = await request.formData();
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const projectType = formData.get("project_type") as string;
-    const budget = formData.get("budget") as string;
-    const details = formData.get("details") as string;
+    let name: string, email: string, projectType: string, budget: string, details: string;
+
+    const contentType = request.headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+      const body = await request.json();
+      name = body.name as string;
+      email = body.email as string;
+      projectType = body.project_type as string;
+      budget = body.budget as string;
+      details = body.details as string;
+    } else {
+      const formData = await request.formData();
+      name = formData.get("name") as string;
+      email = formData.get("email") as string;
+      projectType = formData.get("project_type") as string;
+      budget = formData.get("budget") as string;
+      details = formData.get("details") as string;
+    }
 
     if (!name || !email || !details) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -57,12 +69,13 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: "LOVELEEDAY Studios <arthur@olldae.com>",
       to: email,
-      subject: "Transmission Received — LOVELEEDAY Studios",
+      subject: "Brief received — LOVELEEDAY Studios",
       html: `
         <div style="font-family: Inter, -apple-system, sans-serif; max-width: 600px; margin: 0 auto; background: #F3F2EE; padding: 2rem; color: #111;">
-          <h2 style="font-weight: 400; letter-spacing: -0.02em; margin-bottom: 0.5rem;">Transmission Received.</h2>
-          <p style="color: #5A5A55; font-size: 0.9rem; margin-bottom: 2rem;">We've received your project brief and will reply within 12 hours with a scope, price, and timeline.</p>
+          <h2 style="font-weight: 400; letter-spacing: -0.02em; margin-bottom: 0.5rem;">Brief received.</h2>
+          <p style="color: #5A5A55; font-size: 0.9rem; margin-bottom: 2rem;">We'll reply within 24 hours with a scope, price, and timeline.</p>
           <p style="font-size: 0.9rem; line-height: 1.6;">In the meantime, feel free to reply to this email with any additional details or questions.</p>
+          <p style="font-size: 0.85rem; color: #5A5A55; line-height: 1.5; margin-top: 1.5rem;">If you don't see our reply, check your spam folder — we send from <strong>daniel@loveleedaystudios.com</strong>.</p>
           <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #D4D2C9; font-size: 0.8rem; color: #5A5A55;">
             LOVELEEDAY Studios LLC &middot; Delaware
           </div>
@@ -70,8 +83,7 @@ export async function POST(request: Request) {
       `,
     });
 
-    // Redirect to success page
-    return NextResponse.redirect(new URL("/contact/success", request.url), 303);
+    return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("Contact form error:", error);
     return NextResponse.json({ error: "Failed to send" }, { status: 500 });

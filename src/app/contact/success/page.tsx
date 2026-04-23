@@ -1,23 +1,7 @@
-import type { Metadata } from "next";
-import { Playfair_Display, JetBrains_Mono } from "next/font/google";
+'use client';
+
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "Transmission Received — LOVELEEDAY Studios",
-  description: "Your project brief has been received. We'll respond within 12 hours.",
-};
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-playfair",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-});
+import { useEffect, useState } from "react";
 
 function LogoMark() {
   return (
@@ -54,7 +38,7 @@ function ChecklistItem({ active, title, description }: { active: boolean; title:
         {active && <CheckmarkIcon />}
       </div>
       <div>
-        <h4 className="text-[1.1rem] font-medium mb-1">{title}</h4>
+        <h3 className="text-[1.1rem] font-medium mb-1">{title}</h3>
         <p className="text-[0.9rem] leading-[1.4]" style={{ color: "#5A5A55" }}>
           {description}
         </p>
@@ -63,14 +47,33 @@ function ChecklistItem({ active, title, description }: { active: boolean; title:
   );
 }
 
+const monoStyle = {
+  fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
+  fontSize: "0.75rem",
+  textTransform: "uppercase" as const,
+  color: "#5A5A55",
+  letterSpacing: "0.05em",
+};
+
 export default function SuccessPage() {
+  const [submittedDate, setSubmittedDate] = useState('');
+
+  useEffect(() => {
+    setSubmittedDate(
+      new Date().toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }).toUpperCase()
+    );
+  }, []);
+
   return (
     <div
-      className={`${playfair.variable} ${jetbrains.variable} min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]`}
+      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE]"
       style={{
         backgroundColor: "#F3F2EE",
         color: "#111111",
-        fontFamily: "'Inter', -apple-system, sans-serif",
         padding: "4vw",
       }}
     >
@@ -81,7 +84,7 @@ export default function SuccessPage() {
           <div
             className="text-center leading-none"
             style={{
-              fontFamily: "'Playfair Display', var(--font-playfair), serif",
+              fontFamily: "var(--font-playfair), 'Playfair Display', serif",
               fontSize: "2rem",
               fontWeight: 600,
               letterSpacing: "-0.02em",
@@ -92,11 +95,11 @@ export default function SuccessPage() {
             <span
               className="block mt-1.5"
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
                 fontSize: "0.65rem",
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
-                fontWeight: 500,
+                fontWeight: 400,
               }}
             >
               Studios&trade;
@@ -118,18 +121,10 @@ export default function SuccessPage() {
               letterSpacing: "-0.035em",
             }}
           >
-            Transmission Received.
+            Brief received.
           </h1>
-          <p
-            style={{
-              fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-              fontSize: "0.85rem",
-              color: "#5A5A55",
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-            }}
-          >
-            Estimated Response Time: &lt; 12 Hours
+          <p style={{ ...monoStyle }}>
+            Replying within 24 hours, usually faster.
           </p>
         </section>
 
@@ -138,109 +133,118 @@ export default function SuccessPage() {
           {/* Receipt header */}
           <div className="border-b border-[#D4D2C9] pb-6 mb-6 flex justify-between items-start">
             <div>
-              <span
-                className="block mb-1"
-                style={{
-                  fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                  fontSize: "0.75rem",
-                  textTransform: "uppercase",
-                  color: "#5A5A55",
-                  letterSpacing: "0.05em",
-                }}
-              >
+              <span className="block mb-1" style={monoStyle}>
                 Submission Summary
-              </span>
-              <span
-                style={{
-                  fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                  fontSize: "0.75rem",
-                  color: "#5A5A55",
-                }}
-              >
-                REQ-{new Date().getFullYear()}-{String(Math.floor(Math.random() * 9000) + 1000)}
               </span>
             </div>
             <div className="text-right">
-              <span
-                style={{
-                  fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                  fontSize: "0.75rem",
-                  color: "#5A5A55",
-                }}
-              >
-                DATE: {new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }).toUpperCase()}
-              </span>
+              {submittedDate && (
+                <span style={{ ...monoStyle }}>
+                  DATE: {submittedDate}
+                </span>
+              )}
             </div>
           </div>
 
           {/* Receipt rows */}
           {[
-            { label: "Project Type", value: "Pending Classification" },
-            { label: "Priority", value: "Standard (3\u20137 Days)" },
-            { label: "Contact", value: "Your submitted email" },
+            { label: "Status", value: "Received" },
+            { label: "Response", value: "Within 24 hours" },
+            { label: "Quote", value: "Pending review" },
           ].map((row, i, arr) => (
             <div
               key={row.label}
               className="flex justify-between py-3"
               style={i < arr.length - 1 ? { borderBottom: "1px dashed #D4D2C9" } : {}}
             >
-              <span
-                style={{
-                  fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                  fontSize: "0.75rem",
-                  color: "#5A5A55",
-                  textTransform: "uppercase",
-                }}
-              >
+              <span style={{ ...monoStyle }}>
                 {row.label}
               </span>
               <span className="text-[0.95rem] font-medium text-right">{row.value}</span>
             </div>
           ))}
-          <div className="flex justify-between py-3">
-            <span
-              style={{
-                fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-                fontSize: "0.75rem",
-                color: "#5A5A55",
-                textTransform: "uppercase",
-              }}
-            >
-              Estimated Quote
-            </span>
-            <span className="text-[0.95rem] font-medium text-right">Pending Review</span>
-          </div>
         </div>
 
         {/* Checklist */}
         <section className="mt-[4vw]">
-          <span
-            className="block mb-6"
-            style={{
-              fontFamily: "'JetBrains Mono', var(--font-mono), monospace",
-              fontSize: "0.75rem",
-              textTransform: "uppercase",
-              color: "#5A5A55",
-              letterSpacing: "0.05em",
-            }}
+          <h2
+            className="mb-6"
+            style={{ ...monoStyle }}
           >
-            Next Steps Checklist
-          </span>
+            What happens next
+          </h2>
           <ChecklistItem
             active={true}
-            title="Intake confirmed"
-            description="Your project brief has been added to our queue and assigned to a lead engineer."
+            title="Brief received"
+            description="Your project brief is in our inbox and assigned for review."
           />
           <ChecklistItem
             active={false}
-            title="Feasibility analysis"
-            description="We will review your technical requirements to ensure we can meet the requested timeline."
+            title="Reviewing your brief"
+            description="We'll look at your requirements and confirm we can hit the timeline."
           />
           <ChecklistItem
             active={false}
-            title="Fixed quote delivery"
-            description='You will receive a final price and a "Commence" link to initiate the project immediately.'
+            title="Fixed quote delivered"
+            description="You'll get a final price and timeline. No commitment until you say go."
           />
+        </section>
+
+        {/* Keep-warm — spam tip */}
+        <div
+          className="mt-[4vw] p-5"
+          style={{ backgroundColor: "#EDEBE6", border: "1px solid #D4D2C9" }}
+        >
+          <span className="block mb-2" style={monoStyle}>Tip</span>
+          <p className="text-[0.9rem] leading-[1.5]" style={{ color: "#5A5A55" }}>
+            Check your spam folder if you don&apos;t hear from us — we reply from{" "}
+            <strong style={{ color: "#111" }}>daniel@loveleedaystudios.com</strong>.
+          </p>
+        </div>
+
+        {/* Keep-warm — recent work links */}
+        <section className="mt-[4vw]">
+          <h2
+            className="mb-5"
+            style={{ ...monoStyle }}
+          >
+            While you wait — recent work
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              {
+                title: "olldae",
+                desc: "Bar & restaurant OS. MVP in 11 days.",
+                href: "/work#01",
+              },
+              {
+                title: "Kronos",
+                desc: "Financial dashboard. Auth in 5 days.",
+                href: "/work#03",
+              },
+            ].map((p) => (
+              <Link
+                key={p.title}
+                href={p.href}
+                className="no-underline group"
+              >
+                <div
+                  className="p-5 transition-colors group-hover:border-[#111]"
+                  style={{ border: "1px solid #D4D2C9" }}
+                >
+                  <span
+                    className="block font-medium mb-1"
+                    style={{ letterSpacing: "-0.01em" }}
+                  >
+                    {p.title}
+                  </span>
+                  <span className="text-[0.85rem]" style={{ color: "#5A5A55" }}>
+                    {p.desc}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* Footer nav */}
@@ -249,7 +253,7 @@ export default function SuccessPage() {
             href="/"
             className="no-underline text-[#111] text-[0.85rem] font-medium uppercase tracking-[0.05em] flex items-center gap-2 hover:opacity-70 transition-opacity"
           >
-            &larr; Return to Studio Home
+            &larr; Back to home
           </Link>
         </footer>
       </main>
