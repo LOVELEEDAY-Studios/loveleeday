@@ -62,6 +62,19 @@ const caseStudies = [
     outcome:
       "Invoice-to-payment cycle reduced from multi-day manual follow-up to an automated collect-on-send flow. Outstanding invoice tracking consolidated into one view.",
   },
+  {
+    index: "05",
+    title: "Hospitality Ops Layer",
+    category: "Internal Systems / AI Automation",
+    tech: ["Node.js", "Supabase", "Resend", "Fly.io", "TypeScript"],
+    problem:
+      "A hospitality holding company was managing email across five accounts, calendar events across four integrations, and communications across a patchwork of tools — all consuming hours of manual overhead per week.",
+    built:
+      "A custom ops layer handling email triage across 800+ messages per week, calendar deduplication across four grant sources, real-time communications routing, and automated government-form filing. Built on a Node.js service running on Fly.io with Supabase for persistent state. Each module ships as a standalone daemon with its own health checks and error recovery.",
+    shipped: "Core pipeline in 3 weeks, extensions ongoing",
+    outcome:
+      "Inbox-to-action cycle reduced from manual review to automated routing with human-in-the-loop confirmation. Week-over-week overhead cut substantially across every communication channel.",
+  },
 ];
 
 function LogoMark() {
@@ -351,15 +364,24 @@ export default function WorkPage() {
 
       {/* Footer */}
       <footer
-        className="w-full max-w-[1400px] mt-[6vw] pt-[2vw] flex flex-col sm:flex-row justify-between items-center gap-4"
+        className="w-full max-w-[1400px] mt-[6vw] pt-[2vw] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
         style={{ borderTop: "1px solid #D4D2C9" }}
       >
-        <span className="text-xs" style={{ color: "#5A5A55" }}>
-          &copy; 2026 LOVELEEDAY Studios LLC. A Delaware company.
-        </span>
-        <span className="text-xs" style={{ color: "#5A5A55" }}>
+        <div className="flex flex-col gap-1">
+          <span className="text-xs" style={{ color: "#5A5A55" }}>
+            &copy; 2026 LOVELEEDAY Studios LLC. A Delaware company.
+          </span>
+          <span className="text-xs" style={{ color: "#9A9890" }}>
+            Based in Kalamazoo, MI &mdash; serving clients globally.
+          </span>
+        </div>
+        <a
+          href="mailto:hello@loveleedaystudios.com"
+          className="text-xs no-underline hover:opacity-60 transition-opacity"
+          style={{ color: "#5A5A55" }}
+        >
           hello@loveleedaystudios.com
-        </span>
+        </a>
       </footer>
     </div>
   );

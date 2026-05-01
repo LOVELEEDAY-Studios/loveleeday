@@ -150,9 +150,7 @@ export default function ContactPage() {
             </h1>
 
             <p className="text-[1.1rem] leading-[1.5] max-w-[50ch] mb-6 sm:mb-[3vw]" style={{ color: "#5A5A55" }}>
-              Tell us what you need. We&apos;ll reply within 24 hours with a scope,
-              price, and timeline. No commitment, no cost, no meetings unless you
-              want one.
+              Tell us what you need. We reply within 4 hours during business hours with a scope, price, and timeline. No commitment, no cost.
             </p>
 
             <hr className="border-none mb-6 sm:mb-[2vw]" style={{ borderTop: "1px solid #D4D2C9" }} />
@@ -171,12 +169,12 @@ export default function ContactPage() {
 
               <div>
                 <span className="block mb-2" style={labelStyle}>Response Time</span>
-                <p className="text-[1.1rem]">Within 24 hours, usually faster.</p>
+                <p className="text-[1.1rem]">Within 4 hours during business hours.</p>
               </div>
 
               <div>
                 <span className="block mb-2" style={labelStyle}>Location</span>
-                <p className="text-[1.1rem]">Remote — based in Michigan, USA.</p>
+                <p className="text-[1.1rem]">Kalamazoo, MI &mdash; serving clients globally.</p>
               </div>
 
               <div>

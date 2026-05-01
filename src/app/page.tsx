@@ -187,10 +187,64 @@ export default function Home() {
           <span style={{ color: "#D4D2C9" }}>·</span>
           <span>7-day billing flow (Duezy)</span>
           <span style={{ color: "#D4D2C9" }}>·</span>
-          <span>4 production projects shipped</span>
+          <span>5 production projects in market</span>
         </div>
 
-        {/* TODO: testimonial block goes here once first real client quote is collected */}
+        {/* Pull-quote / proof */}
+        <blockquote
+          className="mb-[3vw] py-5 px-0"
+          style={{ borderTop: "1px solid #D4D2C9", borderBottom: "1px solid #D4D2C9" }}
+        >
+          <p
+            style={{
+              fontSize: "clamp(1rem, 1.8vw, 1.25rem)",
+              fontWeight: 400,
+              lineHeight: 1.4,
+              letterSpacing: "-0.015em",
+              maxWidth: "72ch",
+              fontStyle: "italic",
+            }}
+          >
+            &ldquo;A full restaurant operating system — inventory, recipes, catering, billing — shipped in 11 days. In production, serving live venues.&rdquo;
+          </p>
+          <cite
+            className="block mt-3 not-italic"
+            style={{
+              fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
+              fontSize: "0.72rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.06em",
+              color: "#5A5A55",
+            }}
+          >
+            olldae — Restaurant OS, 2026
+          </cite>
+        </blockquote>
+
+        {/* Tech stack row */}
+        <div
+          className="mb-[3vw] flex flex-wrap items-center gap-x-[2.5vw] gap-y-3"
+          style={{
+            fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
+            fontSize: "0.72rem",
+            textTransform: "uppercase",
+            letterSpacing: "0.07em",
+            color: "#5A5A55",
+          }}
+        >
+          <span
+            className="block mr-2"
+            style={{ color: "#9A9890" }}
+          >
+            Built with
+          </span>
+          {["Next.js", "React", "Supabase", "Stripe", "Vercel", "TypeScript", "Tailwind CSS"].map((tool, i, arr) => (
+            <span key={tool} className="flex items-center gap-[2.5vw]">
+              <span style={{ color: "#111" }}>{tool}</span>
+              {i < arr.length - 1 && <span style={{ color: "#D4D2C9", marginLeft: "2.5vw" }}>·</span>}
+            </span>
+          ))}
+        </div>
 
         <hr className="border-none border-t border-[#D4D2C9] my-[2vw] w-full" style={{ borderTop: "1px solid #D4D2C9" }} />
 
@@ -275,7 +329,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[2vw] gap-y-[3vw]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[2vw] gap-y-[3vw]">
             {[
               {
                 index: "01",
@@ -304,6 +358,13 @@ export default function Home() {
                 category: "SaaS / Invoice Automation",
                 summary:
                   "Invoice processing SaaS with automated payment reminders and Stripe checkout embedded in outbound emails. Functional billing flow in 7 days.",
+              },
+              {
+                index: "05",
+                title: "Hospitality Ops Layer",
+                category: "Internal Systems / AI Automation",
+                summary:
+                  "Custom ops layer for a hospitality holding company. Email triage, calendar dedup across four grants, automated communications routing. In production.",
               },
             ].map((w) => (
               <a
@@ -368,17 +429,31 @@ export default function Home() {
           className="mt-[6vw] pt-[4vw] flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8"
           style={{ borderTop: "1px solid #D4D2C9" }}
         >
-          <div
-            style={{
-              fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
-              fontWeight: 400,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.1,
-            }}
-          >
-            Ready to start?
-            <br />
-            Request a fixed quote.
+          <div>
+            <div
+              style={{
+                fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
+                fontWeight: 400,
+                letterSpacing: "-0.02em",
+                lineHeight: 1.1,
+              }}
+            >
+              Ready to start?
+              <br />
+              Request a fixed quote.
+            </div>
+            <p
+              className="mt-3"
+              style={{
+                fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
+                fontSize: "0.72rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+                color: "#5A5A55",
+              }}
+            >
+              We reply within 4 hours during business hours.
+            </p>
           </div>
           <a
             href="/contact"
@@ -395,13 +470,22 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full max-w-[1400px] mt-[6vw] pt-[2vw] flex flex-col sm:flex-row justify-between items-center gap-4" style={{ borderTop: "1px solid #D4D2C9" }}>
-        <span className="text-xs" style={{ color: "#5A5A55" }}>
-          &copy; 2026 LOVELEEDAY Studios LLC. A Delaware company.
-        </span>
-        <span className="text-xs" style={{ color: "#5A5A55" }}>
+      <footer className="w-full max-w-[1400px] mt-[6vw] pt-[2vw] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4" style={{ borderTop: "1px solid #D4D2C9" }}>
+        <div className="flex flex-col gap-1">
+          <span className="text-xs" style={{ color: "#5A5A55" }}>
+            &copy; 2026 LOVELEEDAY Studios LLC. A Delaware company.
+          </span>
+          <span className="text-xs" style={{ color: "#9A9890" }}>
+            Based in Kalamazoo, MI &mdash; serving clients globally.
+          </span>
+        </div>
+        <a
+          href="mailto:hello@loveleedaystudios.com"
+          className="text-xs no-underline hover:opacity-60 transition-opacity"
+          style={{ color: "#5A5A55" }}
+        >
           hello@loveleedaystudios.com
-        </span>
+        </a>
       </footer>
     </div>
   );
