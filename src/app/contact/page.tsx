@@ -3,192 +3,139 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 
-const labelStyle = {
-  fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
-  fontSize: "0.75rem",
-  textTransform: "uppercase" as const,
-  color: "#5A5A55",
-  letterSpacing: "0.05em",
+const labelStyle: React.CSSProperties = {
+  fontFamily: "var(--font-mono-var), 'JetBrains Mono', monospace",
+  fontSize: "0.68rem",
+  textTransform: "uppercase",
+  color: "var(--pewter)",
+  letterSpacing: "0.08em",
+  display: "block",
+  marginBottom: "0.5rem",
 };
 
-const fieldStyle = {
-  borderBottom: "1px solid #D4D2C9",
+const fieldStyle: React.CSSProperties = {
+  borderBottom: "1px solid var(--bone)",
   borderTop: "none",
   borderLeft: "none",
   borderRight: "none",
-  color: "#111",
+  borderRadius: 0,
+  color: "var(--ink)",
+  backgroundColor: "transparent",
 };
 
-function LogoMark() {
-  return (
-    <svg
-      className="w-12 h-12 mb-3"
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect x="20" y="20" width="25" height="25" stroke="#111" strokeWidth="2" />
-      <rect x="55" y="20" width="25" height="25" fill="#111" />
-      <rect x="20" y="55" width="25" height="25" fill="#111" />
-      <path d="M55 55H80V80H55V55Z" stroke="#111" strokeWidth="2" />
-      <circle cx="67.5" cy="67.5" r="4" fill="#111" />
-    </svg>
-  );
-}
-
-type Status = 'idle' | 'submitting' | 'error';
+type Status = "idle" | "submitting" | "error";
 
 export default function ContactPage() {
   const router = useRouter();
-  const [status, setStatus] = useState<Status>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus('submitting');
-    setErrorMessage('');
+    setStatus("submitting");
+    setErrorMessage("");
 
     const form = e.currentTarget;
     const data = {
-      name: (form.elements.namedItem('name') as HTMLInputElement).value,
-      email: (form.elements.namedItem('email') as HTMLInputElement).value,
-      project_type: (form.elements.namedItem('project_type') as HTMLSelectElement).value,
-      budget: (form.elements.namedItem('budget') as HTMLSelectElement).value,
-      details: (form.elements.namedItem('details') as HTMLTextAreaElement).value,
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      project_type: (form.elements.namedItem("project_type") as HTMLSelectElement).value,
+      budget: (form.elements.namedItem("budget") as HTMLSelectElement).value,
+      details: (form.elements.namedItem("details") as HTMLTextAreaElement).value,
     };
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
         body: JSON.stringify(data),
       });
 
       if (res.ok) {
-        router.push('/contact/success');
+        router.push("/contact/success");
       } else {
-        setStatus('error');
+        setStatus("error");
         setErrorMessage("Couldn't send right now. Email hello@loveleedaystudios.com directly.");
       }
     } catch {
-      setStatus('error');
+      setStatus("error");
       setErrorMessage("Couldn't send right now. Email hello@loveleedaystudios.com directly.");
     }
   }
 
   return (
-    <div
-      className="min-h-screen flex flex-col items-center selection:bg-[#111] selection:text-[#F3F2EE] px-4 py-[4vw] sm:px-[4vw]"
-      style={{
-        backgroundColor: "#F3F2EE",
-        color: "#111111",
-      }}
-    >
-      {/* Header */}
-      <header className="w-full max-w-[1400px] flex flex-col items-center mb-8 sm:mb-[6vw]">
-        <Link href="/" className="flex flex-col items-center no-underline text-[#111]">
-          <LogoMark />
-          <div
-            className="text-center leading-none"
+    <div className="min-h-screen flex flex-col">
+      <Nav activeHref="/contact" />
+
+      <main className="flex-1 w-full max-w-[1280px] mx-auto px-6 md:px-10">
+        {/* Hero */}
+        <section className="pt-12 pb-16 md:pt-16 md:pb-20">
+          <h1
             style={{
-              fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-              fontSize: "2rem",
-              fontWeight: 600,
-              letterSpacing: "-0.02em",
+              fontFamily: "var(--font-display-var), 'DM Serif Display', serif",
+              fontSize: "clamp(2.5rem, 5vw, 5rem)",
+              fontWeight: 400,
+              lineHeight: 0.95,
+              letterSpacing: "-0.04em",
             }}
           >
-            LOVELEEDAY
+            Let&rsquo;s talk about
             <br />
-            <span
-              className="block mt-1.5"
-              style={{
-                fontFamily: "var(--font-mono), 'JetBrains Mono', monospace",
-                fontSize: "0.65rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                fontWeight: 400,
-              }}
-            >
-              Studios&trade;
-            </span>
-          </div>
-        </Link>
-        <nav className="flex gap-6 mt-4 text-[0.8rem] font-medium uppercase tracking-[0.05em]">
-          <Link href="/#services" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
-            Services
-          </Link>
-          <Link href="/#approach" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
-            Approach
-          </Link>
-          <Link href="/work" className="text-[#111] no-underline hover:opacity-60 transition-opacity py-[13px] px-1">
-            Work
-          </Link>
-          <Link href="/contact" className="text-[#111] no-underline py-[13px] px-1" style={{ borderBottom: "1px solid #111" }}>
-            Contact
-          </Link>
-        </nav>
-      </header>
+            your project.
+          </h1>
+          <p
+            className="mt-6 text-[1rem] leading-[1.6] max-w-[48ch]"
+            style={{ color: "var(--pewter)" }}
+          >
+            Tell us what you need. We reply within 4 hours during business hours with a scope,
+            price, and timeline. No commitment, no cost.
+          </p>
+        </section>
 
-      {/* Main */}
-      <main className="w-full max-w-[1400px]">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8 md:gap-[4vw]">
-          {/* Left — Info */}
+        <hr style={{ border: "none", borderTop: "1px solid var(--bone)" }} />
+
+        {/* Two-col grid */}
+        <div className="py-16 grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-16 items-start">
+          {/* Left — info */}
           <div>
-            <h1
-              className="mb-4 sm:mb-[2vw]"
-              style={{
-                fontSize: "clamp(2rem, 4vw, 4rem)",
-                fontWeight: 400,
-                lineHeight: 1.05,
-                letterSpacing: "-0.035em",
-              }}
-            >
-              Let&apos;s talk about
-              <br />
-              your project.
-            </h1>
-
-            <p className="text-[1.1rem] leading-[1.5] max-w-[50ch] mb-6 sm:mb-[3vw]" style={{ color: "#5A5A55" }}>
-              Tell us what you need. We reply within 4 hours during business hours with a scope, price, and timeline. No commitment, no cost.
-            </p>
-
-            <hr className="border-none mb-6 sm:mb-[2vw]" style={{ borderTop: "1px solid #D4D2C9" }} />
-
-            <div className="space-y-6">
+            <div className="flex flex-col gap-7">
               <div>
-                <span className="block mb-2" style={labelStyle}>Email</span>
+                <span style={labelStyle}>Email</span>
                 <a
                   href="mailto:hello@loveleedaystudios.com"
-                  className="inline-flex items-end text-[1.1rem] text-[#111] no-underline hover:border-[#111] transition-colors py-[11px]"
-                  style={{ borderBottom: "1px solid #D4D2C9" }}
+                  className="text-[1rem] no-underline hover:opacity-60 transition-opacity inline-block min-h-[44px] flex items-center"
+                  style={{
+                    color: "var(--ink)",
+                    borderBottom: "1px solid var(--bone)",
+                    paddingBottom: "8px",
+                  }}
                 >
                   hello@loveleedaystudios.com
                 </a>
               </div>
-
               <div>
-                <span className="block mb-2" style={labelStyle}>Response Time</span>
-                <p className="text-[1.1rem]">Within 4 hours during business hours.</p>
+                <span style={labelStyle}>Response time</span>
+                <p className="text-[1rem]">Within 4 hours during business hours.</p>
               </div>
-
               <div>
-                <span className="block mb-2" style={labelStyle}>Location</span>
-                <p className="text-[1.1rem]">Kalamazoo, MI &mdash; serving clients globally.</p>
+                <span style={labelStyle}>Location</span>
+                <p className="text-[1rem]">Kalamazoo, MI &mdash; serving clients globally.</p>
               </div>
-
               <div>
-                <span className="block mb-2" style={labelStyle}>Entity</span>
-                <p className="text-[1.1rem]">LOVELEEDAY Studios LLC, Delaware.</p>
+                <span style={labelStyle}>Entity</span>
+                <p className="text-[1rem]">LOVELEEDAY Studios LLC, Delaware.</p>
               </div>
             </div>
           </div>
 
-          {/* Right — Form */}
+          {/* Right — form */}
           <div>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-7" noValidate>
               <div>
-                <label htmlFor="name" className="block mb-2" style={labelStyle}>
+                <label htmlFor="name" style={labelStyle}>
                   Name
                 </label>
                 <input
@@ -196,14 +143,14 @@ export default function ContactPage() {
                   id="name"
                   name="name"
                   required
-                  className="w-full bg-transparent text-[1rem] py-3 outline-none focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2"
+                  className="w-full text-[1rem] py-3 outline-none"
                   style={fieldStyle}
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block mb-2" style={labelStyle}>
+                <label htmlFor="email" style={labelStyle}>
                   Email
                 </label>
                 <input
@@ -211,23 +158,23 @@ export default function ContactPage() {
                   id="email"
                   name="email"
                   required
-                  className="w-full bg-transparent text-[1rem] py-3 outline-none focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2"
+                  className="w-full text-[1rem] py-3 outline-none"
                   style={fieldStyle}
                   placeholder="you@company.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="project-type" className="block mb-2" style={labelStyle}>
-                  Project Type <span style={{ color: "#C0392B" }} aria-hidden="true">*</span>
+                <label htmlFor="project-type" style={labelStyle}>
+                  Project type <span style={{ color: "var(--ember)" }} aria-hidden="true">*</span>
                 </label>
                 <select
                   id="project-type"
                   name="project_type"
                   required
                   aria-required="true"
-                  className="w-full bg-transparent text-[1rem] py-3 outline-none appearance-none cursor-pointer focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2"
-                  style={{ ...fieldStyle, borderRadius: 0 }}
+                  className="w-full text-[1rem] py-3 outline-none appearance-none cursor-pointer"
+                  style={fieldStyle}
                 >
                   <option value="">Select a service</option>
                   <option value="landing-page">Landing Page ($500+)</option>
@@ -241,16 +188,16 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label htmlFor="budget" className="block mb-2" style={labelStyle}>
-                  Budget Range <span style={{ color: "#C0392B" }} aria-hidden="true">*</span>
+                <label htmlFor="budget" style={labelStyle}>
+                  Budget range <span style={{ color: "var(--ember)" }} aria-hidden="true">*</span>
                 </label>
                 <select
                   id="budget"
                   name="budget"
                   required
                   aria-required="true"
-                  className="w-full bg-transparent text-[1rem] py-3 outline-none appearance-none cursor-pointer focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2"
-                  style={{ ...fieldStyle, borderRadius: 0 }}
+                  className="w-full text-[1rem] py-3 outline-none appearance-none cursor-pointer"
+                  style={fieldStyle}
                 >
                   <option value="">Select a range</option>
                   <option value="200-500">$200 – $500</option>
@@ -262,47 +209,50 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label htmlFor="details" className="block mb-2" style={labelStyle}>
-                  Project Details
+                <label htmlFor="details" style={labelStyle}>
+                  Project details
                 </label>
                 <textarea
                   id="details"
                   name="details"
                   rows={5}
                   required
-                  className="w-full bg-transparent text-[1rem] py-3 outline-none resize-none focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2"
+                  className="w-full text-[1rem] py-3 outline-none resize-none"
                   style={fieldStyle}
                   placeholder="Describe what you need built. The more detail, the more accurate our quote."
                 />
               </div>
 
-              {status === 'error' && (
+              {status === "error" && (
                 <div
                   role="alert"
                   className="text-[0.9rem] py-3 px-4"
                   style={{
                     backgroundColor: "#FFF0EE",
-                    border: "1px solid #C0392B",
-                    color: "#C0392B",
+                    border: "1px solid var(--ember)",
+                    color: "var(--ember)",
                   }}
                 >
                   {errorMessage}
                 </div>
               )}
 
-              <div className="mt-4">
+              <div>
                 <button
                   type="submit"
-                  disabled={status === 'submitting'}
-                  className="inline-block text-[0.9rem] font-medium uppercase tracking-[0.05em] transition-colors hover:bg-[#333] cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2 outline-none"
+                  disabled={status === "submitting"}
+                  className="inline-flex items-center justify-center text-sm font-semibold uppercase tracking-[0.06em] transition-opacity hover:opacity-80 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
                   style={{
-                    backgroundColor: "#111111",
-                    color: "#F3F2EE",
-                    padding: "1rem 2rem",
+                    fontFamily: "var(--font-sans-var), 'Instrument Sans', sans-serif",
+                    backgroundColor: "var(--vermilion)",
+                    color: "var(--paper)",
+                    padding: "0.85rem 1.75rem",
                     border: "none",
+                    borderRadius: 0,
                   }}
+                  aria-label="Send project brief"
                 >
-                  {status === 'submitting' ? 'Sending…' : 'Send Project Brief'}
+                  {status === "submitting" ? "Sending…" : "Send Project Brief"}
                 </button>
               </div>
             </form>
@@ -310,18 +260,7 @@ export default function ContactPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer
-        className="w-full max-w-[1400px] mt-[6vw] pt-[2vw] flex flex-col sm:flex-row justify-between items-center gap-4"
-        style={{ borderTop: "1px solid #D4D2C9" }}
-      >
-        <span className="text-xs" style={{ color: "#5A5A55" }}>
-          &copy; 2026 LOVELEEDAY Studios LLC. A Delaware company.
-        </span>
-        <span className="text-xs" style={{ color: "#5A5A55" }}>
-          hello@loveleedaystudios.com
-        </span>
-      </footer>
+      <Footer />
     </div>
   );
 }
