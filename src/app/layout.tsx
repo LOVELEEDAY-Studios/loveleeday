@@ -51,11 +51,47 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "LOVELEEDAY Studios",
+    url: "https://loveleedaystudios.com",
+    logo: "https://loveleedaystudios.com/icon.svg",
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "hello@loveleedaystudios.com",
+      contactType: "Customer Service",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Kalamazoo",
+      addressRegion: "MI",
+      addressCountry: "US",
+    },
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "LOVELEEDAY Studios",
+    url: "https://loveleedaystudios.com",
+  };
+
   return (
     <html
       lang="en"
       className={`${dmSerif.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} h-full`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col antialiased">{children}</body>
     </html>
   );
