@@ -18,7 +18,7 @@ export function Footer() {
           className="text-xs"
           style={{
             fontFamily: "var(--font-sans-var), 'Instrument Sans', sans-serif",
-            color: "var(--bone)",
+            color: "var(--pewter)",
           }}
         >
           Based in Kalamazoo, MI &mdash; serving clients globally.
