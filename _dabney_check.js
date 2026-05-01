@@ -1,0 +1,23 @@
+const { chromium } = require('playwright');
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  const errors = [];
+  const consoleMsgs = [];
+  page.on('pageerror', e => errors.push('PAGEERROR: ' + e.message));
+  page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') consoleMsgs.push(m.type() + ': ' + m.text()); });
+  page.on('requestfailed', r => errors.push('REQFAIL: ' + r.url() + ' - ' + r.failure().errorText));
+  await page.goto('file:///tmp/dabney_site2.html', { waitUntil: 'networkidle', timeout: 15000 }).catch(e => errors.push('GOTO: ' + e.message));
+  await page.waitForTimeout(1500);
+  await page.screenshot({ path: '/tmp/dabney_top.png', fullPage: false });
+  await page.screenshot({ path: '/tmp/dabney_full.png', fullPage: true });
+  console.log('=== ERRORS ===');
+  errors.forEach(e => console.log(e));
+  console.log('=== CONSOLE ===');
+  consoleMsgs.forEach(m => console.log(m));
+  const bodyHeight = await page.evaluate(() => document.body.scrollHeight);
+  console.log('Body height:', bodyHeight);
+  const title = await page.title();
+  console.log('Title:', title);
+  await browser.close();
+})();
