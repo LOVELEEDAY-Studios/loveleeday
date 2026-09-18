@@ -1,0 +1,37 @@
+<!doctype html><meta charset=utf-8><title>2 Night</title>
+<link rel=stylesheet href=_base.css>
+<style>
+body{background:#0A0806;color:#F2EFEA}
+.stage{position:relative;height:760px;overflow:hidden;
+  background:linear-gradient(118deg,#1C1410 0%,#2A1C14 42%,#0C0908 100%)}
+.stage::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(48rem 34rem at 68% 34%,rgba(255,150,60,.22),transparent 62%)}
+.grain{position:absolute;inset:0;opacity:.5;
+  background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px)}
+.copy{position:absolute;left:calc(50% - 670px + 40px);top:118px;width:420px;z-index:3}
+.eyebrow{font:500 11px/1 ui-sans-serif;letter-spacing:.2em;color:#E8A05C;text-transform:uppercase}
+h1{font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:18px 0 0;font-weight:500}
+p{color:#C9BEB2;font-size:15px;line-height:1.65;margin:22px 0 0}
+.panel{position:absolute;z-index:4;background:rgba(16,13,11,.82);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 18px;
+  box-shadow:0 34px 80px -22px rgba(0,0,0,.95);font-size:13px}
+.k{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9C8E80}
+.v{font-size:26px;margin-top:5px;letter-spacing:-.02em}
+</style>
+<div class=stage>
+  <div class=grain></div>
+  <div class=copy>
+    <div class=eyebrow>Friday, 11:04 PM</div>
+    <h1>Built at the bar it runs.</h1>
+    <p>Every feature exists because a shift went badly without it. That is a different way to decide what to build.</p>
+  </div>
+  <div class=panel style="right:150px;top:150px;width:260px">
+    <div class=k>Covers tonight</div><div class="v tnum">68</div>
+    <div class=k style="margin-top:14px">Avg ticket</div><div class="v tnum">$41.20</div>
+  </div>
+  <div class=panel style="right:86px;top:372px;width:300px">
+    <div class=k>Pour cost — Sazerac</div>
+    <div class="v tnum" style="color:#FF7A3C">17.1%</div>
+    <div style="color:#9C8E80;margin-top:8px;font-size:12px">Rye 1.92 · Absinthe 0.31 · Demerara 0.07</div>
+  </div>
+</div>

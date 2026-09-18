@@ -1,0 +1,43 @@
+<!doctype html><meta charset=utf-8><title>4 Split</title>
+<link rel=stylesheet href=_base.css>
+<style>
+body{background:#08080A;color:#EDEDF0}
+.split{display:grid;grid-template-columns:1fr 1fr;height:740px;position:relative}
+.left{background:linear-gradient(150deg,#241812,#0D0A08);position:relative;overflow:hidden}
+.left::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(34rem 26rem at 40% 40%,rgba(255,140,60,.2),transparent 60%)}
+.right{background:#0C0C10;position:relative;overflow:hidden;border-left:1px solid #22222A}
+.label{position:absolute;top:30px;font:500 10px/1 ui-monospace,monospace;letter-spacing:.2em;text-transform:uppercase;z-index:3}
+.mid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9;text-align:center;width:620px}
+h1{font-size:62px;line-height:1.02;letter-spacing:-.035em;margin:0;font-weight:500;
+   text-shadow:0 8px 50px rgba(0,0,0,.95)}
+.mid p{color:#A9A9B6;font-size:15px;line-height:1.6;margin:20px auto 0;max-width:430px}
+.card{position:absolute;border-radius:10px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(14,12,11,.8);backdrop-filter:blur(10px);padding:13px 15px;font-size:12.5px}
+.code{position:absolute;left:34px;top:88px;right:34px;font:12.5px/1.85 ui-monospace,monospace;color:#6F7A8A}
+.code .b{color:#FF4713}.code .g{color:#3FCF8E}.code .w{color:#D7D7DE}
+</style>
+<div class=split>
+  <div class=left>
+    <div class=label style="left:34px;color:#E8A05C">The floor</div>
+    <div class=card style="left:44px;top:150px;width:220px">
+      <div style="font-size:10px;letter-spacing:.14em;color:#9C8E80;text-transform:uppercase">Table 12</div>
+      <div style="margin-top:6px">2 × Old Fashioned, 1 × Sazerac</div>
+      <div class=tnum style="margin-top:8px;color:#FF7A3C">38.00</div>
+    </div>
+  </div>
+  <div class=right>
+    <div class=label style="left:34px;color:#FF4713">The system</div>
+    <div class=code>
+      <div><span class=b>const</span> <span class=w>pourCost</span> = recipe.<span class=w>cost</span>() / price;</div>
+      <div><span class=b>if</span> (pourCost &gt; target) flag(<span class=g>'margin'</span>);</div>
+      <div style="opacity:.55">// ticket 17:42 → cost 2.30 → 17.1%</div>
+      <div style="margin-top:12px"><span class=g>✓</span> 1,836 reconciled</div>
+      <div><span class=g>✓</span> 0 mismatches</div>
+    </div>
+  </div>
+  <div class=mid>
+    <h1>One company.<br>Both sides of the pass.</h1>
+    <p>We are the operator and the vendor. The software ships because the shift depends on it.</p>
+  </div>
+</div>
