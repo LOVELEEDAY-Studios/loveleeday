@@ -1,0 +1,40 @@
+<!doctype html><meta charset=utf-8><title>1 Terminal</title>
+<link rel=stylesheet href=_base.css>
+<style>
+body{background:#07070A;color:#E8E8EC}
+.eyebrow{font:500 11px/1 ui-monospace,monospace;letter-spacing:.2em;color:#FF4713;text-transform:uppercase}
+h1{font-size:60px;line-height:1.02;letter-spacing:-.035em;margin:20px 0 0;font-weight:500;max-width:15ch}
+p.lede{color:#8E8E99;font-size:15px;line-height:1.65;max-width:400px;margin:22px 0 0}
+.term{background:#0C0C10;border:1px solid #1E1E26;border-radius:10px;overflow:hidden;
+  box-shadow:0 40px 90px -30px #000;font:13px/1.75 ui-monospace,SFMono-Regular,monospace}
+.term .bar{display:flex;gap:7px;padding:11px 14px;border-bottom:1px solid #1E1E26}
+.dot{width:10px;height:10px;border-radius:50%}
+.term .body{padding:16px 18px}
+.cmd{color:#E8E8EC}.cmd::before{content:"$ ";color:#FF4713}
+.ok{color:#3FCF8E}.no{color:#FF6B6B}.dim{color:#5A5A66}
+.row{display:flex;justify-content:space-between;gap:24px}
+</style>
+<div class=wrap style="padding-top:88px;padding-bottom:80px">
+  <div style="display:grid;grid-template-columns:420px 1fr;gap:72px;align-items:center">
+    <div style="border-left:1px solid #33333D;padding-left:28px">
+      <div class=eyebrow>Verification layer</div>
+      <h1>It tells you what it can't do.</h1>
+      <p class=lede>Every capability status is derived from a probe that could have failed. A human can downgrade a result. Nobody can promote one.</p>
+    </div>
+    <div class=term>
+      <div class=bar><i class=dot style="background:#FF5F57"></i><i class=dot style="background:#FEBC2E"></i><i class=dot style="background:#28C840"></i></div>
+      <div class=body>
+        <div class=cmd>arthur-capability</div>
+        <div class=dim style="margin:10px 0 6px">40 capabilities · probed 0s ago</div>
+        <div class=row><span>Email (Nylas)</span><span class=ok>LIVE / VERIFIED</span></div>
+        <div class=row><span>Stripe</span><span class=ok>LIVE / VERIFIED</span></div>
+        <div class=row><span>Document store (OCR)</span><span class=ok>LIVE / VERIFIED</span></div>
+        <div class=row><span>Cerebras swarm</span><span class=ok>LIVE / VERIFIED</span></div>
+        <div class=row><span class=dim>Bloomberg</span><span class=no>NOT CONNECTED</span></div>
+        <div class=row><span class=dim>Palantir Foundry</span><span class=no>NOT CONNECTED</span></div>
+        <div class=row><span class=dim>LoRA training</span><span class=no>DORMANT</span></div>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid #1E1E26" class=dim>18 live · 5 not connected · 1 dormant</div>
+      </div>
+    </div>
+  </div>
+</div>
