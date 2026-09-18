@@ -1,68 +1,86 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
+/* LOVELEEDAY Studios — product-studio system.
+   Register: dark ground, one accent, dense numeric UI. Reference points are
+   Linear (design system restraint), Stripe (off-edge bleed, narrow text column,
+   hairline rules) and Retool (overlapping panels on a dark section) — see
+   knowledge/design/saas-landing-craft-study-2026-08.md.
+
+   The accent is #FF4713, olldae's verified product colour, used deliberately so
+   the parent company and the product it owns read as one company. */
 
 @theme inline {
-  --color-ink: var(--ink);
-  --color-paper: var(--paper);
-  --color-parchment: var(--parchment);
-  --color-vermilion: var(--vermilion);
-  --color-pewter: var(--pewter);
-  --color-bone: var(--bone);
-  --color-moss: var(--moss);
-  --color-ember: var(--ember);
+  --color-ground: var(--ground);
+  --color-raised: var(--raised);
+  --color-sunk: var(--sunk);
+  --color-line: var(--line);
+  --color-line-bright: var(--line-bright);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-good: var(--good);
 
-  --font-display: var(--font-display-var);
   --font-sans: var(--font-sans-var);
   --font-mono: var(--font-mono-var);
 }
 
 :root {
-  --ink: #111111;
-  --paper: #F3F2EE;
-  --parchment: #EAE9E3;
-  --vermilion: #B03D2C;
-  --pewter: #5A5A55;
-  --bone: #D4D2C9;
-  --moss: #2D6A4F;
-  --ember: #C0392B;
+  --ground: #08080A;
+  --raised: #111114;
+  --sunk: #050506;
+  --line: #1F1F25;
+  --line-bright: #33333D;
+  --text: #EFEFF2;
+  --muted: #9A9AA6;
+  --dim: #63636E;
+  --accent: #FF4713;
+  --accent-dim: #C2340E;
+  --good: #3FCF8E;
+
+  /* The text column is 420px on purpose. Wide text columns read as documents;
+     this is the Stripe measure. */
+  --measure: 420px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
-  background-color: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-sans-var), 'Instrument Sans', sans-serif;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--font-sans-var), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+  margin: 0;
 }
 
-::selection {
-  background-color: var(--ink);
-  color: var(--paper);
-}
+::selection { background: var(--accent); color: #fff; }
 
+/* Focus ring — visible, never removed. */
 :focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
+  border-radius: 2px;
 }
 
-:focus:not(:focus-visible) {
-  outline: none;
+/* The hairline down the left of a text column. Cheap, and it instantly reads
+   considered. */
+.rule-left {
+  border-left: 1px solid var(--line-bright);
+  padding-left: 1.75rem;
 }
 
-/* WCAG AA placeholder contrast */
-::placeholder {
-  color: #6B6B66;
-  opacity: 1;
+/* Numeric/ID type. Tabular so columns of figures line up. */
+.tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
