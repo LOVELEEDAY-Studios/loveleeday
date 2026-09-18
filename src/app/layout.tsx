@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 import { DM_Serif_Display, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -92,7 +94,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <body className="min-h-full flex flex-col antialiased">
+        <Nav />
+        <div className="flex-1">{children}</div>
+        <Footer />
+      </body>
     </html>
   );
 }
