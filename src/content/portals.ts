@@ -48,6 +48,49 @@ export interface Portal {
 
 export const portals: Portal[] = [
   {
+    token: "jnt-2a727d076b273e9059",
+    client: "Janta Power",
+    clientDomain: "jantaus.com",
+    project: "Marketing site — direction study",
+    round: "Round 01",
+    deliveredOn: "2026-09-18",
+    expiresOn: "2026-12-17",
+    intro:
+      "This is an unsolicited direction study. We did not write a word of new copy or invent a single figure — every photograph, number and product line on the page is yours, taken from jantaus.com. The argument we are making is that the numbers you already publish are extraordinary and the page currently whispers them.",
+    next: [
+      "Open the page and scroll it the way a site owner with 400 acres would.",
+      "Leave notes anywhere on this page — they reach us by email immediately.",
+      "If the direction is right, we scope the build against your full site map.",
+    ],
+    deliverables: [
+      {
+        slug: "marketing-site",
+        title: "Janta Power — marketing site",
+        kind: "Full landing page · desktop and mobile",
+        rationale:
+          "Your best asset is buried in a slider widget: at 50 MW you save 222 acres, about 168 football fields, and still produce 30,617 MWh a year more. That is the whole company in one line, and today a visitor has to drag a control to find it. Here it is the largest thing on the page.",
+        look: [
+          "The land comparison. Your own two aerials, side by side at full bleed — traditional solar consuming the entire site next to towers on ground that stays open. The argument makes itself before anyone reads a number.",
+          "The hero. Your headline, your photograph, and nothing covering it — no consent modal over the value proposition.",
+          "The colour. #EFA21E is sampled from the amber in your own tower dashboard, not chosen by us.",
+          "All six verticals are on the page at once as a dense row. Nothing scrolls out of view.",
+          "Mobile. Resize the frame to phone width; the comparison stacks rather than shrinking.",
+          "Scroll slowly through the land comparison. It is the page's one piece of motion and scroll is its timeline — the traditional array gives way to towers while the acreage counts 333 down to 111.",
+        ],
+        href: "/portal/janta/index.html",
+        card: "/portal/janta/card.jpg",
+        preview: "/portal/janta/preview.jpg",
+        caveats: [
+          "Every figure is yours, quoted from jantaus.com on 2026-09-18: 50% more energy, 3x power per unit area, up to 34% capacity factor, and the 50 MW comparison of 333 acres / 87,476 MWh against 111 acres / 118,093 MWh. We have not independently verified any of them.",
+          "One correction you may want regardless of this study: the partner logo your site serves at /marketing/partners/pv-magazine-white.png, with alt text \"PV Magazine\", is actually the Third Derivative logo. A screen reader announces one organization while sighted visitors see another. We have labelled it correctly here.",
+          "Munich Airport and Aena appear as text rather than logos because your site does not serve logo files for them.",
+          "Photography, renders and partner logos are yours, used here only to show the layout. Nothing on this page is hosted for you or live.",
+          "The motion is one 3 KB inline script and no animation library, animating only transform, opacity and clip-path so it stays off the main thread. It is disabled entirely under prefers-reduced-motion, which shows the comparison as a static split instead.",
+        ],
+      },
+    ],
+  },
+  {
     token: "mcr-2d78a1f2ecb70e52e3",
     client: "Micruity",
     clientDomain: "micruity.com",
