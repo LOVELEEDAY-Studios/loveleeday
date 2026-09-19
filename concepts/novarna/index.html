@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novarna — RNA drug discovery, without the guessing</title>
+<meta name="description" content="A generative AI design system paired with an in-house wet lab in a continuous feedback loop. At the University of Michigan DiFeo Lab, Novarna-designed candidates outperformed a commercially available treatment for the same target.">
+<meta property="og:title" content="Novarna — RNA drug discovery, without the guessing">
+<meta property="og:description" content="Designed by NovaEngine. Validated in someone else's lab. Outperformed what is already on the market.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://novarna.ai/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ---------------------------------------------------------------------------
+   Novarna — direction study by LOVELEEDAY Studios.
+
+   Their existing site is good: Fraunces over Work Sans, #E1272B, and a loop
+   diagram that genuinely earns its place. A redesign study reuses the client's
+   design system rather than imposing one, so the typefaces and the accent are
+   theirs, sampled from circnova.com.
+
+   What changes is what the header SAYS. Theirs is a twelve-word category
+   description — "The AI Design Engine for the Next Generation of RNA
+   Therapeutics." Their best line is buried as a section heading halfway down
+   ("RNA drug discovery is still largely a guessing game") and their best proof
+   is a paragraph near the bottom: the University of Michigan DiFeo Lab tested
+   their candidates in their own facility and the designs outperformed a
+   commercially available treatment for the same target. Almost nobody in
+   AI-for-biology has third-party validation. It belongs above the fold.
+--------------------------------------------------------------------------- */
+:root{
+  --bone:#FAF7F3; --paper:#FFFFFF; --ink:#141210; --mid:#55504A; --soft:#8A837B;
+  --line:#E7E0D7; --line-2:#D6CCBF;
+  --red:#E1272B; --red-d:#B71D21; --red-wash:#FCEFEF;
+  --ink-deep:#17140F;
+  --measure:430px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bone);color:var(--ink);
+  font-family:"Work Sans",ui-sans-serif,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:400;letter-spacing:-.015em}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--red)}
+.tnum{font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:6px;
+  font-size:15px;font-weight:600;text-decoration:none;border:0}
+.btn-r{background:var(--red);color:#fff}
+.btn-r:hover{background:var(--red-d)}
+.btn-o{border:1px solid var(--line-2);color:var(--ink);background:var(--paper)}
+.btn-o:hover{border-color:var(--ink)}
+
+/* rebrand bar — theirs, kept, because it is doing real work */
+.rebrand{background:var(--ink-deep);color:#fff}
+.rebrand-in{max-width:1240px;margin:0 auto;padding:10px 28px;display:flex;align-items:center;
+  gap:12px;flex-wrap:wrap;font-size:13.5px}
+.rebrand .tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;background:var(--red);color:#fff;padding:4px 9px;border-radius:999px}
+.rebrand a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+header.nav{position:sticky;top:0;z-index:40;background:rgba(250,247,243,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.navin{display:flex;align-items:center;justify-content:space-between;
+  max-width:1240px;margin:0 auto;padding:13px 28px}
+.brand{display:flex;align-items:baseline;gap:9px;text-decoration:none}
+.brand b{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:21px;letter-spacing:-.02em}
+.brand span{font-size:11px;color:var(--soft);letter-spacing:.02em}
+.navlinks{display:flex;gap:24px;align-items:center}
+.navlinks a{font-size:14.5px;color:var(--mid);text-decoration:none}
+.navlinks a.btn-r{color:#fff}   /* out-specifies the nav link colour */
+.navlinks a:hover{color:var(--ink)}
+
+/* 1 · HEADER — their loop, rebuilt as the hero object.
+
+   The first attempt put a card of two bars where their loop diagram had been.
+   That threw away the best idea on their site. The loop IS the argument — a
+   design system and a wet lab feeding each other — so it belongs in the hero,
+   turning, with the proof sitting on it rather than beside it.
+
+   The whole thing is one 12s CSS timeline. Under prefers-reduced-motion it
+   holds still at the TEST node with every label visible. */
+.hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.hero-in{max-width:1240px;margin:0 auto;padding:68px 28px 72px;
+  display:grid;gap:52px;grid-template-columns:minmax(0,var(--measure)) minmax(0,1fr);
+  align-items:center}
+.hero h1{font-size:clamp(2.1rem,3.9vw,3.15rem);line-height:1.06}
+.hero h1 .said{display:block}
+.hero h1 .ours{display:block;font-style:italic;color:var(--red)}
+.hero p.lede{margin:22px 0 0;font-size:16.5px;line-height:1.65;color:var(--mid)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-proof{margin-top:26px;padding-top:20px;border-top:1px solid var(--line-2);
+  display:flex;gap:12px;align-items:flex-start;max-width:var(--measure)}
+.hero-proof .mark{flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:var(--red);
+  color:#fff;display:grid;place-items:center;font-size:11px;margin-top:2px}
+.hero-proof p{margin:0;font-size:14px;line-height:1.6;color:var(--mid)}
+.hero-proof b{color:var(--ink);font-weight:600}
+
+/* the loop */
+.loopwrap{position:relative;display:grid;place-items:center;min-height:470px}
+.ring{width:min(470px,86%);aspect-ratio:1;position:relative}
+.ring svg{width:100%;height:100%;overflow:visible}
+.orbit{fill:none;stroke:var(--line-2);stroke-width:1}
+.orbit-dash{fill:none;stroke:var(--line-2);stroke-width:1;stroke-dasharray:2 7;opacity:.8}
+.arc{fill:none;stroke:var(--red);stroke-width:2;stroke-linecap:round;
+  stroke-dasharray:96 584;animation:travel 12s linear infinite}
+@keyframes travel{to{stroke-dashoffset:-680}}
+.hub{fill:var(--paper);stroke:var(--line-2);stroke-width:1}
+.node-dot{fill:var(--paper);stroke:var(--line-2);stroke-width:2}
+.node-dot.on{animation:lightup 12s linear infinite}
+@keyframes lightup{0%,18%{stroke:var(--line-2);fill:var(--paper)}
+  4%,10%{stroke:var(--red);fill:var(--red)}
+  25%,100%{stroke:var(--line-2);fill:var(--paper)}}
+.n2{animation-delay:-9s}.n3{animation-delay:-6s}.n4{animation-delay:-3s}
+.ring-label{position:absolute;font-family:"JetBrains Mono",monospace;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.rl-design{top:-10px;left:50%;transform:translateX(-50%)}
+.rl-build{right:-14px;top:50%;transform:translateY(-50%)}
+.rl-test{bottom:-10px;left:50%;transform:translateX(-50%)}
+.rl-learn{left:-18px;top:50%;transform:translateY(-50%)}
+.hub-in{position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+  pointer-events:none}
+.hub-in .t{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--soft)}
+.hub-in .v{font-family:"Fraunces",Georgia,serif;font-size:27px;font-style:italic;
+  letter-spacing:-.02em;margin-top:2px}
+/* the two systems tag onto the ring, overlapping it */
+.tagbox{position:absolute;z-index:3;border-radius:8px;padding:11px 15px;font-size:14px;
+  box-shadow:0 14px 34px -18px rgba(20,18,16,.4);background:var(--paper);
+  border:1px solid var(--line-2)}
+.tagbox .k{display:block;font-family:"JetBrains Mono",monospace;font-size:9.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-bottom:3px}
+.tagbox b{font-weight:600}
+.tag-engine{left:-6%;top:24%;background:var(--ink-deep);color:#fff;border-color:var(--ink-deep)}
+.tag-engine .k{color:#F08A8C}
+.tag-lab{right:-8%;bottom:24%;border-color:var(--red)}
+.tag-lab .k{color:var(--red)}
+
+@media (prefers-reduced-motion:reduce){
+  .arc{animation:none;stroke-dasharray:none;opacity:.55}
+  .node-dot.on{animation:none;stroke:var(--red);fill:var(--red)}
+}
+
+/* 2 · PROOF STRIP */
+.strip{border-bottom:1px solid var(--line);background:var(--paper)}
+.strip-in{max-width:1240px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr)}
+.st{padding:34px 0 32px}
+.st + .st{border-left:1px solid var(--line);padding-left:32px}
+.st .k{font-family:"Fraunces",Georgia,serif;font-size:clamp(2rem,3.6vw,2.7rem);line-height:1;
+  letter-spacing:-.03em;color:var(--red)}
+.st .l{margin-top:10px;font-size:14.5px;font-weight:500}
+.st .s{margin-top:4px;font-size:13px;line-height:1.5;color:var(--soft)}
+
+/* 3 · THE LOOP — their idea, given the room it deserves */
+.loop{padding:92px 0;background:var(--bone)}
+.loop-in{max-width:1240px;margin:0 auto;padding:0 28px}
+.loop-head{max-width:52ch}
+.loop-head h2{font-size:clamp(1.9rem,3.5vw,2.7rem);line-height:1.12}
+.loop-head p{margin:18px 0 0;font-size:16.5px;line-height:1.7;color:var(--mid)}
+.loop-grid{margin-top:48px;display:grid;gap:22px;grid-template-columns:repeat(4,1fr)}
+.node{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:22px 20px;
+  position:relative}
+.node .n{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--red)}
+.node h3{margin:12px 0 0;font-size:19px;letter-spacing:-.015em}
+.node p{margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--mid)}
+.node::after{content:"→";position:absolute;right:-16px;top:50%;transform:translateY(-50%);
+  color:var(--line-2);font-size:15px}
+.node:last-child::after{content:"↺";right:-17px;color:var(--red)}
+.loop-close{margin-top:26px;padding:18px 22px;border:1px dashed var(--line-2);border-radius:10px;
+  background:var(--red-wash);font-size:15px;line-height:1.6;color:var(--ink);max-width:70ch}
+
+/* 4 · TWO SYSTEMS */
+.two{padding:0 0 92px;background:var(--bone)}
+.two-in{max-width:1240px;margin:0 auto;padding:0 28px;display:grid;gap:22px;grid-template-columns:1fr 1fr}
+.sys{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:30px 28px}
+.sys .badge{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--soft)}
+.sys h3{margin:12px 0 0;font-size:24px;letter-spacing:-.02em}
+.sys > p{margin:12px 0 0;font-size:15px;line-height:1.7;color:var(--mid)}
+.sys ul{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+.sys li{display:flex;gap:11px;font-size:14px;line-height:1.55;color:var(--mid);
+  border-top:1px solid var(--line);padding-top:9px}
+.sys li:first-child{border-top:0;padding-top:0}
+.sys li b{color:var(--red);font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;
+  flex:0 0 auto;padding-top:2px}
+
+/* 5 · ENGAGE */
+.eng{background:var(--ink-deep);color:#fff;padding:88px 0}
+.eng-in{max-width:1240px;margin:0 auto;padding:0 28px}
+.eng-head{max-width:50ch}
+.eng-head h2{font-size:clamp(1.9rem,3.5vw,2.7rem);line-height:1.12;color:#fff}
+.eng-head p{margin:16px 0 0;font-size:16.5px;line-height:1.7;color:rgba(255,255,255,.72)}
+.eng-grid{margin-top:44px;display:grid;gap:1px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.14);border-radius:10px;overflow:hidden}
+.tier{background:var(--ink-deep);padding:28px 26px}
+.tier h3{font-size:21px;color:#fff;letter-spacing:-.015em}
+.tier p{margin:11px 0 0;font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.7)}
+@media (min-width:860px){.eng-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* 6 · CLOSE */
+.close{background:var(--paper);border-top:1px solid var(--line);padding:78px 0}
+.close-in{max-width:1240px;margin:0 auto;padding:0 28px;display:grid;gap:44px;
+  grid-template-columns:minmax(0,1fr) minmax(0,.8fr);align-items:center}
+.close h2{font-size:clamp(1.9rem,3.5vw,2.6rem);line-height:1.1;max-width:17ch}
+.close p{margin:18px 0 0;max-width:var(--measure);font-size:16.5px;line-height:1.65;color:var(--mid)}
+footer{background:var(--bone);border-top:1px solid var(--line)}
+.foot{max-width:1240px;margin:0 auto;padding:34px 28px;display:flex;flex-wrap:wrap;gap:14px;
+  justify-content:space-between;font-size:13.5px;color:var(--soft)}
+
+@media (max-width:940px){
+  .hero-in,.close-in,.two-in{grid-template-columns:1fr}
+  .hero-in{padding-bottom:56px}
+  .loop-grid{grid-template-columns:1fr 1fr}
+  .node::after{display:none}
+  .strip-in{grid-template-columns:1fr}
+  .st + .st{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+  .navlinks{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="rebrand">
+  <div class="rebrand-in">
+    <span class="tag">Name change</span>
+    <span>CircNova is now Novarna — same team, same science, sharper focus.</span>
+    <a href="/narrative">Read the update →</a>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="navin">
+    <a class="brand" href="/"><b>Novarna</b><span>Complex medicine, simple by design.</span></a>
+    <nav class="navlinks">
+      <a href="#loop">The loop</a>
+      <a href="#systems">NovaEngine &amp; NovaLab</a>
+      <a href="#work">Work with us</a>
+      <a class="btn btn-r" href="/connect" style="min-height:38px;padding:0 15px;font-size:14px">Connect with us →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 1 · HEADER -->
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <span class="eyebrow">The Novarna platform</span>
+      <h1>
+        <span class="said">RNA discovery is still a guessing game.</span>
+        <span class="ours">We closed the loop.</span>
+      </h1>
+      <p class="lede">A generative AI design system paired with an in-house wet lab in a
+        continuous feedback loop — producing novel RNA candidates faster, cheaper and with
+        greater precision than any existing approach.</p>
+      <div class="hero-cta">
+        <a class="btn btn-r" href="/connect">Connect with us <span aria-hidden="true">→</span></a>
+        <a class="btn btn-o" href="#loop">Explore the platform</a>
+      </div>
+      <div class="hero-proof">
+        <span class="mark" aria-hidden="true">✓</span>
+        <p>At the <b>University of Michigan DiFeo Lab</b>, tested in their facility rather
+          than ours, Novarna-designed candidates <b>outperformed a commercially available
+          treatment</b> for the same ovarian cancer target.</p>
+      </div>
+    </div>
+
+    <div class="loopwrap">
+      <div class="ring" role="img"
+           aria-label="The Novarna loop: NovaEngine designs candidates, NovaLab builds and tests them, and the resulting proprietary data is learned by the engine — a continuous cycle of design, build, test and learn.">
+        <svg viewBox="0 0 240 240" aria-hidden="true">
+          <circle class="orbit-dash" cx="120" cy="120" r="108"/>
+          <circle class="orbit" cx="120" cy="120" r="92"/>
+          <circle class="arc" cx="120" cy="120" r="92"/>
+          <circle class="hub" cx="120" cy="120" r="46"/>
+          <circle class="node-dot on n1" cx="120" cy="28"  r="7"/>
+          <circle class="node-dot on n2" cx="212" cy="120" r="7"/>
+          <circle class="node-dot on n3" cx="120" cy="212" r="7"/>
+          <circle class="node-dot on n4" cx="28"  cy="120" r="7"/>
+        </svg>
+        <span class="ring-label rl-design">Design</span>
+        <span class="ring-label rl-build">Build</span>
+        <span class="ring-label rl-test">Test</span>
+        <span class="ring-label rl-learn">Learn</span>
+        <div class="hub-in"><div><span class="t">The loop</span>
+          <div class="v">gets smarter</div></div></div>
+        <div class="tagbox tag-engine"><span class="k">AI design system</span><b>NovaEngine</b></div>
+        <div class="tagbox tag-lab"><span class="k">Wet lab validation</span><b>NovaLab</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · PROOF STRIP -->
+<section class="strip">
+  <div class="strip-in">
+    <div class="st"><div class="k">Higher</div><div class="l">Success rate</div>
+      <div class="s">More programs yield viable candidates than conventional RNA discovery.</div></div>
+    <div class="st"><div class="k tnum">7×</div><div class="l">Faster development cycles</div>
+      <div class="s">From target to ranked candidates.</div></div>
+    <div class="st"><div class="k tnum">100%</div><div class="l">Proprietary training data</div>
+      <div class="s">No external dataset can replicate it.</div></div>
+  </div>
+</section>
+
+<!-- 3 · THE LOOP -->
+<section class="loop" id="loop">
+  <div class="loop-in">
+    <div class="loop-head">
+      <span class="eyebrow">The loop</span>
+      <h2>The tools that exist today predict. Ours design — then check the answer.</h2>
+      <p>Traditional RNA development relies on iterative screening, trial-and-error synthesis
+        and expensive wet lab cycles that can take years to yield a viable candidate. Novarna
+        closes the cycle, and every turn of it makes the next one better.</p>
+    </div>
+    <div class="loop-grid">
+      <article class="node"><div class="n">01 — Design</div><h3>NovaEngine generates</h3>
+        <p>Entirely novel RNA sequences optimised for a target from the ground up, not
+           screened from a library.</p></article>
+      <article class="node"><div class="n">02 — Build</div><h3>NovaLab synthesises</h3>
+        <p>Mapping and synthesis of the AI-generated candidates in-house.</p></article>
+      <article class="node"><div class="n">03 — Test</div><h3>Functional validation</h3>
+        <p>Cellular assays, in vitro experimentation, pooled screening and structural
+           characterisation.</p></article>
+      <article class="node"><div class="n">04 — Learn</div><h3>The data returns</h3>
+        <p>Every experiment becomes training signal. The platform gets better every time
+           it works.</p></article>
+    </div>
+    <p class="loop-close"><strong>This is the moat.</strong> The proprietary experimental data
+      NovaLab generates trains NovaEngine on real biological feedback — which is why no
+      external dataset can replicate it, and why the gap widens with every cycle.</p>
+  </div>
+</section>
+
+<!-- 4 · TWO SYSTEMS -->
+<section class="two" id="systems">
+  <div class="two-in">
+    <article class="sys">
+      <span class="badge">AI design system</span>
+      <h3>NovaEngine</h3>
+      <p>Fourth-generation AI, purpose-built for RNA. Designed to generate, built to predict,
+        trained to improve.</p>
+      <ul>
+        <li><b>01</b> 3D RNA tertiary structure prediction</li>
+        <li><b>02</b> RNA:target interaction modelling</li>
+        <li><b>03</b> Novel sequence generation (NovaGen)</li>
+        <li><b>04</b> Folding and docking prediction (DeepFoldRNA, NovaFold_2D)</li>
+        <li><b>05</b> Feature enrichment (NovaFM)</li>
+      </ul>
+    </article>
+    <article class="sys">
+      <span class="badge">Wet lab validation</span>
+      <h3>NovaLab</h3>
+      <p>Validation that closes the loop and builds the moat. In-house, so the feedback is
+        proprietary from the first cycle.</p>
+      <ul>
+        <li><b>01</b> Mapping and synthesis of AI-generated candidates</li>
+        <li><b>02</b> Functional validation in cellular assays</li>
+        <li><b>03</b> In vitro experimentation</li>
+        <li><b>04</b> Pooled screening and structural characterisation</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- 5 · ENGAGE -->
+<section class="eng" id="work">
+  <div class="eng-in">
+    <div class="eng-head">
+      <span class="eyebrow" style="color:#F08A8C">How we work with you</span>
+      <h2>Design-as-a-Service. On your target, on your timeline.</h2>
+      <p>Three ways in, from a single proof-of-concept through to multi-year co-development.</p>
+    </div>
+    <div class="eng-grid">
+      <div class="tier"><h3>Rapid Discovery</h3>
+        <p>Focused pilot against a specific target. Ideal for proof-of-concept and platform
+           validation.</p></div>
+      <div class="tier"><h3>Optimized Lead</h3>
+        <p>Extended design and validation cycles delivering optimised, preclinical-ready
+           candidates.</p></div>
+      <div class="tier"><h3>Discovery Partnership</h3>
+        <p>Multi-year co-development with milestone and royalty structures aligned from
+           discovery through commercialisation.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · CLOSE -->
+<section class="close">
+  <div class="close-in">
+    <div>
+      <span class="eyebrow">Get started</span>
+      <h2>Have a target? We'll design for it.</h2>
+      <p>Bring the target and we will come back with ranked candidates. The first cycle is
+        where you find out whether the loop is real.</p>
+    </div>
+    <div class="hero-cta" style="margin-top:0">
+      <a class="btn btn-r" href="/connect">Talk to our science team <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <span>&copy; 2026 Novarna, Inc. · formerly CircNova</span>
+    <span>Direction study by LOVELEEDAY Studios · not affiliated with Novarna</span>
+  </div>
+</footer>
+
+</body>
+</html>
