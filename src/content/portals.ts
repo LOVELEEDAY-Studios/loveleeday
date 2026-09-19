@@ -85,7 +85,7 @@ export const portals: Portal[] = [
     deliveredOn: "2026-09-18",
     expiresOn: "2026-12-17",
     intro:
-      "This is an unsolicited direction study. Your product is a character — the site says \"Meet Rosie\" and describes her as a technician who does the work rather than talks about it — and she has never been drawn. So we drew her, doing the six jobs your own demo chips already name, and built the page around her.",
+      "This is an unsolicited direction study. Your strongest asset is the product doing the work, and today the site describes it instead of showing it. So the hero is a real conversation resolving a real fault, with the live diagnostic Fyxit runs mid-thread — the thing that makes your claim \"does the work, not just the talking\" self-evident rather than asserted.",
     next: [
       "Open the page and scroll it the way a district IT director would.",
       "Leave notes anywhere on this page — they reach us by email immediately.",
@@ -97,10 +97,10 @@ export const portals: Portal[] = [
         title: "Fyxit AI — marketing site",
         kind: "Full landing page · illustrated character system",
         rationale:
-          "You named your product after a person and then showed nobody. The six problems on your live demo — slow Wi-Fi, a laggy computer, a jammed printer, an app that will not load, a cracked screen, a phishing email — are the most concrete thing on your site, and they are currently buttons. Here they are the spine of the page, with one consistent Rosie doing each of them.",
+          "The six problems on your live demo are the most concrete thing on your site and they are currently buttons. The page now opens on one of them being solved: a teacher reports Wi-Fi dropping in room 214, Fyxit reads the access point, finds channel overlap with AP-212, moves it and closes the issue in 2m 40s with no ticket opened. That is your product argument, rendered rather than claimed.",
         look: [
-          "Rosie herself. One character across six frames — same face, same shirt, same badge — which is what makes a character system rather than six stock illustrations.",
-          "The six jobs. Your own demo chips, promoted from buttons to the page's structure.",
+          "The hero conversation. Real interface, not a screenshot and not an illustration — it bleeds off the right edge so it reads as \"this continues\" rather than \"here is a picture of it\".",
+          "The Monday-morning queue. Seven real tickets with their outcomes, five closing themselves and two escalating — your 60% figure shown as a list rather than stated as a stat.",
           "The trust rail names the districts you already list: Oakland Unified, Achievement First, La'Salle, Venus ISD, MSD Steuben County, Splendora ISD.",
           "The numbers band. 60% handled automatically, one line to deploy, zero workflow changes — all yours.",
           "Typography is Bricolage Grotesque over Figtree, deliberately different from the other studies in this portfolio so they do not read as one template.",
@@ -110,7 +110,7 @@ export const portals: Portal[] = [
         preview: "/portal/fyxit/preview.jpg",
         caveats: [
           "Every figure and product claim is yours, quoted from hubbleiq.com on 2026-09-18: 60% of routine issues handled automatically, one line of code to deploy, no workflow changes, and the Incident IQ, Zendesk, Freshdesk, SMTP and Chrome integrations.",
-          "Rosie is AI-generated for this study and is not a licensed character. A real build would commission her properly from an illustrator so you own her outright — which matters, because a character you cannot legally defend is not a brand asset.",
+          "The conversation, the diagnostic readings and the queue are illustrative — plausible values built to show the layout, not data from your system. A real build wires them to live telemetry or replaces them with a recorded session.",
           "District names are reproduced from your own Trusted By rail. We have not contacted any of them.",
           "The escalation figure on the page infers that what is not automated is escalated. Your site states the 60% but not the remainder, so treat that line as ours until you confirm it.",
         ],
