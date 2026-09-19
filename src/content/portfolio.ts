@@ -7,6 +7,8 @@
  * Keeping them separate stops the client-facing copy drifting into pitch copy.
  */
 
+import { TOKENS } from "./tokens";
+
 export interface Case {
   slug: string;
   company: string;
@@ -40,7 +42,7 @@ export interface Portfolio {
 }
 
 export const portfolio: Portfolio = {
-  token: "cc-c7bbb42759efd22895",
+  token: TOKENS.collab,
   fund: "Collab Capital",
   fundDomain: "collab.capital",
   preparedFor: "Collab Capital",
@@ -78,7 +80,7 @@ export const portfolio: Portfolio = {
       slug: "janta",
       company: "Janta Power",
       domain: "jantaus.com",
-      portalToken: "jnt-2a727d076b273e9059",
+      portalToken: TOKENS.janta,
       sector: "3D solar towers · Dallas, TX",
       before: "/portal/collab/janta-before.jpg",
       after: "/portal/collab/janta-after.jpg",
@@ -96,7 +98,7 @@ export const portfolio: Portfolio = {
       slug: "fyxit",
       company: "Fyxit AI",
       domain: "hubbleiq.com",
-      portalToken: "fyx-d50eadd57473b505ca",
+      portalToken: TOKENS.fyxit,
       sector: "AI tech support for school districts · San Francisco, CA",
       before: "/portal/collab/fyxit-before.jpg",
       after: "/portal/collab/fyxit-after.jpg",
@@ -114,7 +116,7 @@ export const portfolio: Portfolio = {
       slug: "micruity",
       company: "Micruity",
       domain: "micruity.com",
-      portalToken: "mcr-2d78a1f2ecb70e52e3",
+      portalToken: TOKENS.micruity,
       sector: "Retirement income infrastructure · Sacramento, CA",
       before: "/portal/collab/micruity-before.jpg",
       after: "/portal/collab/micruity-after.jpg",
