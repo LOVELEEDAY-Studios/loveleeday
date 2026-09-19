@@ -18,7 +18,7 @@
    Fyxit AI — direction study by LOVELEEDAY Studios. Second direction.
 
    The first direction built this page around an illustrated mascot. That was
-   wrong: flat two-tone character illustration is the most recognisable visual
+   wrong: flat two-tone character illustration is the most recognizable visual
    shorthand for a generated startup site, and a product whose whole claim is
    "does the work, not just the talking" should not be represented by a drawing
    of someone standing still.
@@ -73,7 +73,7 @@ header.nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);
 .mark{color:var(--violet);flex:0 0 auto}
 .navlinks{display:flex;gap:22px;align-items:center}
 .navlinks a{font-size:14px;color:var(--mid);text-decoration:none}
-.navlinks a.btn-v{color:#fff}   /* out-specifies the nav link colour */
+.navlinks a.btn-v{color:#fff}   /* out-specifies the nav link color */
 .navlinks a:hover{color:var(--ink)}
 
 /* 1 · HERO — a live demo, not a screenshot of one.
@@ -311,6 +311,8 @@ footer{background:#fff;border-top:1px solid var(--line)}
   .qrow .w{display:none}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.diag h4 .illus{font-style:normal;font-weight:500;font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.62;margin-left:8px;font-family:'JetBrains Mono',monospace}
 </style>
 </head>
 <body>
@@ -352,24 +354,24 @@ footer{background:#fff;border-top:1px solid var(--line)}
       <div class="chat">
         <div class="chat-bar">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="who">Wildcat High School · Tech Support</span>
+          <span class="who">Rosie · Wildcat High School Tech Support</span>
           <span class="st"><i></i> Live</span>
         </div>
 
         <!-- The transcript below is the demo. It plays on a loop; under
              prefers-reduced-motion it renders as a complete static transcript. -->
         <div class="thread" role="log" aria-live="off"
-             aria-label="Demo conversation: a teacher reports Wi-Fi dropping in room 214. Fyxit runs a live diagnostic on access point AP-214, finds channel overlap with AP-212, moves it to channel 11 and resets it. Resolved in 2 minutes 40 seconds with no ticket opened.">
+             aria-label="Demo conversation: a teacher reports Wi-Fi dropping in room 214. Rosie, the Fyxit AI technician, runs a live diagnostic on access point AP-214, finds channel overlap with AP-212, moves it to channel 11 and resets it. Resolved in 2 minutes 40 seconds with no ticket opened.">
           <div class="msg them play d-m1">Wi-Fi keeps dropping in room 214. Half the class can't load anything.
             <span class="meta">Ms. Alvarez · 9:14 AM</span></div>
 
           <div class="typing gone d-t1" aria-hidden="true"><i></i><i></i><i></i></div>
 
           <div class="msg us play d-r1">Checking the access point in 214 now — give me twenty seconds.
-            <span class="meta">Fyxit · 9:14 AM</span></div>
+            <span class="meta">Rosie · 9:14 AM</span></div>
 
           <div class="diag play d-diag">
-            <h4>AP-214 · live diagnostic</h4>
+            <h4>AP-214 · live diagnostic <em class="illus">illustrative values</em></h4>
             <div class="diag-rows">
               <div class="dr"><span class="k">Signal</span>
                 <span class="bar warn"><i class="fill f-1" style="--w:61%"></i></span><span class="v">61%</span></div>
@@ -385,7 +387,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
           <div class="typing gone d-t2" aria-hidden="true"><i></i><i></i><i></i></div>
 
           <div class="msg us play d-r2">Channel overlap with AP-212. I've moved 214 to channel 11 and
-            reset it. Try again now.<span class="meta">Fyxit · 9:16 AM</span></div>
+            reset it. Try again now.<span class="meta">Rosie · 9:16 AM</span></div>
 
           <div class="msg them play d-m2">That did it. Thank you.<span class="meta">Ms. Alvarez · 9:17 AM</span></div>
 
@@ -548,7 +550,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
 
 <footer>
   <div class="foot">
-    <span>&copy; 2026 HubbleIQ, Inc. · Fyxit AI</span>
+    <span>&copy; 2026 Fyxit AI · A HubbleIQ company</span>
     <span>Direction study by LOVELEEDAY Studios · not affiliated with HubbleIQ</span>
   </div>
 </footer>

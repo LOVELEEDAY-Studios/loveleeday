@@ -119,15 +119,15 @@ export const portals: Portal[] = [
           accessibility: 94,
           crux: false,
           queries: [
-            { query: "AI RNA therapeutics design platform", position: null, scanned: 9,
+            { query: "AI RNA therapeutics design platform", position: 9, scanned: 9,
               winners: ["sciencedirect.com", "bocsci.com", "journals.asm.org"] },
           ],
           verdict:
-            "Lighthouse scores your SEO 100/100, so the markup is not the problem. You do not appear in the top 9 for the phrase describing your platform — the results are journals and catalogue sites, not companies. A category with no commercial competition in it is winnable cheaply, and also one nobody is searching yet. Your traffic will come from the target, not the technology name.",
+            "Lighthouse scores your SEO 100/100, so the markup is not the problem. You sit ninth — last of the nine results we can see — for the phrase describing your platform, and the eight above you are journals and catalog sites, not companies. There is no commercial competitor to displace, only reference material. That is a category winnable cheaply, and also one nobody is searching yet. Your traffic will come from the target, not the technology name.",
           notes: [
             "Lighthouse mobile, run 2026-09-18. Flagged: multiple page redirects, unused JavaScript.",
-            "Position from a live Google SERP via SerpApi, 9 organic results visible.",
-            "Measured against circnova.com. Anything served from novarna.ai is unmeasured here.",
+            "Position from a live Google SERP via SerpApi, re-measured 2026-09-19. 9 organic results visible.",
+            "Measured against circnova.com and novarna.ai together, since your assets already serve from the second.",
           ],
         },
       },
@@ -177,14 +177,14 @@ export const portals: Portal[] = [
           accessibility: 91,
           crux: false,
           queries: [
-            { query: "nanofiber material for manufacturers", position: null, scanned: 10,
+            { query: "nanofiber material for manufacturers", position: null, scanned: 9,
               winners: ["matregenix.com", "mono.ipros.com", "sciencedirect.com"] },
           ],
           verdict:
-            "Your markup scores 92 and is not the problem. Performance at 63 is, and the 5,009 KB page is why. You do not appear in the top 10 for the phrase describing what you sell — matregenix.com does. Page weight and search are the same problem here: a page that heavy is slow to crawl and slow to load for the buyer who does find it.",
+            "Your markup scores 92 and is not the problem. Performance at 63 is, and the 5,009 KB page is why. You do not appear in the top 9 for the phrase describing what you sell — matregenix.com does. Page weight and search are the same problem here: a page that heavy is slow to crawl and slow to load for the buyer who does find it.",
           notes: [
             "Lighthouse mobile, run 2026-09-18. Browser errors were logged to the console.",
-            "Position from a live Google SERP via SerpApi, 10 organic results visible.",
+            "Position from a live Google SERP via SerpApi, re-measured 2026-09-19. 9 organic results visible, so 'not found' means not in the top 9.",
           ],
         },
       },
@@ -211,11 +211,11 @@ export const portals: Portal[] = [
         title: "LoanWell — marketing site",
         kind: "Full landing page · desktop and mobile",
         rationale:
-          "Affordable capital reaches nobody if the lender looking for the tool to deploy it cannot find you. Measured on 2026-09-18, you do not appear in the top 9 results for \"loan origination software for CDFI\". This rebuild leads with deployment rather than features, and closes on the line Collab Capital publishes from your own CEO.",
+          "Affordable capital reaches nobody if the lender looking for the tool to deploy it cannot find you. Re-measured on 2026-09-19, you do not appear in any of the 9 Google results we can see for \"loan origination software for CDFI\". This rebuild leads with deployment rather than features, and closes on the line Collab Capital publishes from your own CEO.",
         look: [
           "The page argues about deploying capital, not about workflow features.",
-          "Your own product screenshots — the servicing calculator and the underwriting workbook — bleeding off the right edge rather than centred in a card.",
-          "The six partner organisations you already name, treated as the proof they are.",
+          "Your own product screenshots — the servicing calculator and the two-sided task list — bleeding off the right edge rather than centered in a card.",
+          "The six partner organizations you already name, treated as the proof they are.",
           "Spectral over Libre Franklin, chosen so this page shares no typeface with any other study in this portfolio.",
         ],
         href: "/portal/loanwell/index.html",
@@ -224,7 +224,7 @@ export const portals: Portal[] = [
         caveats: [
           "Every figure and line of product copy is yours, pulled from loanwell.com on 2026-09-19, including the SOC-2 Type 2 paragraph verbatim.",
           "The CEO quote is reproduced from Collab Capital's own portfolio page, not from an interview with us.",
-          "One correction regardless of this study: the product screenshot served on your site contained a rendering seam, with amortisation rows 11 to 14 duplicated over row 17. We cropped above it here.",
+          "Two corrections regardless of this study. The servicing screenshot on your site contains a rendering seam, with amortization rows 11 to 14 duplicated over row 17. And every logged-in screenshot on loanwell.com shows a real work address in the header bar — bernard@loanwell.com and bernard+tc@loanwell.com are legible at full size on six of the seven. We cropped both out here; your own site still serves them.",
         ],
         seo: {
           measuredOn: "2026-09-18",
@@ -240,7 +240,7 @@ export const portals: Portal[] = [
             "Your markup scores 92 and is not the problem. You are absent from the top 9 for the single phrase a CDFI would type when looking for exactly what you build, and three general-purpose lending platforms rank instead. None of them serves mission-driven lenders specifically — which is your whole differentiator, and the reason the gap is winnable.",
           notes: [
             "Lighthouse mobile, run 2026-09-18. Flagged: JavaScript execution time.",
-            "Position from a live Google SERP via SerpApi, 9 organic results visible, so 'not found' means not in the top 9.",
+            "Position from a live Google SERP via SerpApi, re-measured 2026-09-19. 9 organic results visible, so 'not found' means not in the top 9 — and nothing about Bing, where you do appear.",
           ],
         },
       },
@@ -327,20 +327,20 @@ export const portals: Portal[] = [
         title: "Janta Power — marketing site",
         kind: "Full landing page · desktop and mobile",
         rationale:
-          "Your best asset is buried in a slider widget: at 50 MW you save 222 acres, about 168 football fields, and still produce 30,617 MWh a year more. That is the whole company in one line, and today a visitor has to drag a control to find it. Here it is the largest thing on the page.",
+          "Your best asset is a footnote. Your own worked example — 500 kW in Dallas — is 3.3 acres of fixed-tilt panels making 876,000 kWh a year against one acre of towers making 1,182,600. Multiplied out at that ratio, a 50 MW build saves 230 acres, about 174 football fields, and still produces 30,660 MWh a year more. That is the whole company in one line, and here it is the largest thing on the page.",
         look: [
           "The land comparison. Your own two aerials, side by side at full bleed — traditional solar consuming the entire site next to towers on ground that stays open. The argument makes itself before anyone reads a number.",
           "The hero. Your headline, your photograph, and nothing covering it — no consent modal over the value proposition.",
-          "The colour. #EFA21E is sampled from the amber in your own tower dashboard, not chosen by us.",
+          "The color. #EFA21E is sampled from the amber in your own tower dashboard, not chosen by us.",
           "All six verticals are on the page at once as a dense row. Nothing scrolls out of view.",
           "Mobile. Resize the frame to phone width; the comparison stacks rather than shrinking.",
-          "Scroll slowly through the land comparison. It is the page's one piece of motion and scroll is its timeline — the traditional array gives way to towers while the acreage counts 333 down to 111.",
+          "Scroll slowly through the land comparison. It is the page's one piece of motion and scroll is its timeline — the traditional array gives way to towers while the acreage counts 330 down to 100.",
         ],
         href: "/portal/janta/index.html",
         card: "/portal/janta/card.jpg",
         preview: "/portal/janta/preview.jpg",
         caveats: [
-          "Every figure is yours, quoted from jantaus.com on 2026-09-18: 50% more energy, 3x power per unit area, up to 34% capacity factor, and the 50 MW comparison of 333 acres / 87,476 MWh against 111 acres / 118,093 MWh. We have not independently verified any of them.",
+          "Every input is yours, read from jantaus.com on 2026-09-18: 50% more energy, 3x power per unit area, up to 34% capacity factor, and the 500 kW Dallas comparison of 3.3 acres / 876,000 kWh against 1 acre / 1,182,600 kWh — the 35% more yield you publish. The 50 MW figures on the page are that comparison multiplied by 100 at your own ratio; the page says so in the same breath. We have not independently verified any of your underlying claims.",
           "One correction you may want regardless of this study: the partner logo your site serves at /marketing/partners/pv-magazine-white.png, with alt text \"PV Magazine\", is actually the Third Derivative logo. A screen reader announces one organization while sighted visitors see another. We have labelled it correctly here.",
           "Munich Airport and Aena appear as text rather than logos because your site does not serve logo files for them.",
           "Photography, renders and partner logos are yours, used here only to show the layout. Nothing on this page is hosted for you or live.",
@@ -355,14 +355,14 @@ export const portals: Portal[] = [
           queries: [
             { query: "vertical solar towers for commercial sites", position: null, scanned: 8,
               winners: ["reddit.com", "archanatura.com", "lumiton.solar"] },
-            { query: "solar towers more energy less land", position: null, scanned: 8,
-              winners: ["reddit.com", "facebook.com", "seia.org"] },
+            { query: "solar towers more energy less land", position: null, scanned: 9,
+              winners: ["sciencedirect.com", "youtube.com", "youtube.com"] },
           ],
           verdict:
-            "Your markup is not the problem — Google's own Lighthouse audit scores your SEO 100/100 and your accessibility 100/100, which is better than most of the portfolio. The problem is that you do not appear at all for the two queries that describe what you sell, and a Reddit thread ranks first for both. You are being out-ranked on your own category by a forum post.",
+            "Your markup is not the problem — Google's own Lighthouse audit scores your SEO 100/100 and your accessibility 100/100, which is better than most of the portfolio. The problem is that you do not appear at all for either query that describes what you sell. A Reddit thread asking whether solar towers are even a real thing ranks first for one; a journal index and two YouTube videos take the other. You are being out-ranked on your own category by a forum post and a playlist.",
           notes: [
             "Lighthouse mobile, run 2026-09-18. Performance 62 is the weak number: legacy JavaScript, unused JavaScript and CSS, render-blocking requests and console errors are all flagged.",
-            "Positions come from a live Google SERP via SerpApi. We could see 8 organic results per query, so 'not found' means not in the top 8 — we cannot claim anything about position 9 or beyond.",
+            "Positions come from a live Google SERP via SerpApi, re-measured 2026-09-19. We could see 8 and 9 organic results, so 'not found' means not in the top 8 — we cannot claim anything beyond that.",
             "A category this new has almost no competing pages, which cuts both ways: ranking is winnable cheaply, and nobody is searching the term yet. The traffic will come from the problem your buyers already search for — land constraints, megawatts per acre — not from the technology name.",
           ],
         },
@@ -413,12 +413,12 @@ export const portals: Portal[] = [
           crux: false,
           queries: [
             { query: "retirement income infrastructure recordkeeper insurer", position: 1, scanned: 9, winners: [] },
-            { query: "plan participant portability annuity", position: 6, scanned: 9, winners: [] },
+            { query: "plan participant portability annuity", position: 5, scanned: 9, winners: [] },
           ],
           verdict:
-            "You rank first for the phrase that describes your category and sixth for one of your products, so search is working better for you than for most of this portfolio. Lighthouse scores your SEO 100/100. The gap is accessibility at 88 and performance at 67 — and a colour-contrast failure that affects real readers, not just a score.",
+            "You rank first for the phrase that describes your category — and ninth as well, with two results on the same page — and fifth for one of your products, so search is working better for you than for most of this portfolio. Lighthouse scores your SEO 100/100. The gap is accessibility at 88 and performance at 67, and a color-contrast failure that affects real readers rather than just a score.",
           notes: [
-            "Lighthouse mobile, run 2026-09-18. Flagged: insufficient contrast between background and foreground colours, links without discernible names, heading elements not in sequential order, render-blocking requests and legacy JavaScript.",
+            "Lighthouse mobile, run 2026-09-18. Flagged: insufficient contrast between background and foreground colors, links without discernible names, heading elements not in sequential order, render-blocking requests and legacy JavaScript.",
             "Ten <h1> elements on the homepage. One page should have one. It is not why you rank where you do, but it is the kind of thing that makes a page harder for assistive technology and for crawlers to read.",
             "Positions from a live Google SERP via SerpApi, 9 organic results visible per query.",
           ],
