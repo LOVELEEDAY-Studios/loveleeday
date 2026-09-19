@@ -1,0 +1,107 @@
+<!doctype html><meta charset=utf-8><title>Micruity — concept</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#070B14;color:#E9EDF5;
+  font-family:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1320px;margin:0 auto;padding:0 44px}
+.tnum{font-variant-numeric:tabular-nums}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid #16202F}
+.logo{font-weight:600;letter-spacing:-.01em;font-size:15px}
+.logo i{color:#3E7BFA;font-style:normal}
+nav a{color:#8A96AB;text-decoration:none;font-size:14px;margin-left:30px}
+.hero{display:grid;grid-template-columns:430px 1fr;gap:72px;padding:64px 0 44px;align-items:center}
+.eyebrow{font:500 11px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:#3E7BFA}
+h1{font-size:55px;line-height:1.03;letter-spacing:-.035em;margin:20px 0 0;font-weight:500}
+.lede{color:#8A96AB;font-size:15.5px;line-height:1.65;margin:22px 0 0}
+.cta{display:inline-block;margin-top:28px;background:#3E7BFA;color:#fff;text-decoration:none;
+  padding:11px 20px;border-radius:7px;font-size:14px;font-weight:500}
+.cta2{margin-left:10px;background:transparent;border:1px solid #24324A;color:#E9EDF5}
+
+/* the product, finally visible: data moving between institutions */
+.flow{position:relative;background:#0B1322;border:1px solid #16202F;border-radius:14px;padding:26px;
+  box-shadow:0 40px 90px -34px #000}
+.flowhead{display:flex;justify-content:space-between;font:11px/1 ui-monospace,monospace;
+  letter-spacing:.14em;text-transform:uppercase;color:#5C6B85;margin-bottom:22px}
+.lanes{display:grid;grid-template-columns:1fr 92px 1fr;gap:0;align-items:center}
+.node{border:1px solid #1D2A3D;background:#0E1828;border-radius:9px;padding:13px 15px}
+.node .t{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#5C6B85}
+.node .n{font-size:14px;margin-top:5px}
+.node+.node{margin-top:10px}
+.mid{text-align:center}
+.chip{display:inline-block;border:1px solid #3E7BFA;color:#9CC0FF;border-radius:999px;
+  font:11px/1 ui-monospace,monospace;padding:8px 12px;background:#0C1A33}
+.arrow{height:1px;background:linear-gradient(90deg,#1D2A3D,#3E7BFA,#1D2A3D);margin:16px 0;position:relative}
+.arrow::after{content:"";position:absolute;right:0;top:-3px;border-left:6px solid #3E7BFA;
+  border-top:3.5px solid transparent;border-bottom:3.5px solid transparent}
+.ledgerbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #16202F;
+  border-bottom:1px solid #16202F;margin-top:14px}
+.ledgerbar div{padding:18px 0}
+.ledgerbar .k{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#5C6B85}
+.ledgerbar .v{font-size:22px;margin-top:6px;letter-spacing:-.02em}
+
+/* trust, stated as evidence rather than as a badge */
+.trust{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid #16202F;margin-top:30px}
+.trust>div{padding:30px 34px 30px 0;border-right:1px solid #16202F}
+.trust>div:last-child{border-right:none}
+.trust .h{font-size:15px;font-weight:500}
+.trust .p{color:#8A96AB;font-size:13.5px;line-height:1.6;margin-top:8px}
+.trust .probe{font:11px/1.5 ui-monospace,monospace;color:#4E5E78;margin-top:12px;padding-top:10px;border-top:1px dashed #1A2536}
+.trust .probe b{color:#3E7BFA;font-weight:400}
+code{font:12.5px/1.9 ui-monospace,SFMono-Regular,monospace;color:#7E8DA6}
+.kw{color:#3E7BFA}.str{color:#5FD3A0}
+</style>
+<div class=wrap>
+  <nav>
+    <div class=logo>MICR<i>U</i>ITY</div>
+    <div><a href=#>Solutions</a><a href=#>Developers</a><a href=#>Security</a><a href=#>Company</a></div>
+  </nav>
+
+  <div class=hero>
+    <div>
+      <div class=eyebrow>Retirement income infrastructure</div>
+      <h1>The wire between recordkeepers and insurers.</h1>
+      <p class=lede>Lifetime income products fail on data, not on design. Micruity moves elections, allocations and payouts between institutions on one audited connection.</p>
+      <a class=cta href=#>Read the API docs</a><a class="cta cta2" href=#>Talk to us</a>
+    </div>
+
+    <div class=flow>
+      <div class=flowhead><span>MARS · Advanced Routing System</span><span class=tnum>live</span></div>
+      <div class=lanes>
+        <div>
+          <div class=node><div class=t>Recordkeeper</div><div class=n>Participant elections</div></div>
+          <div class=node><div class=t>Recordkeeper</div><div class=n>Plan portability</div></div>
+        </div>
+        <div class=mid><div class=chip>MARS</div></div>
+        <div>
+          <div class=node><div class=t>Life insurer</div><div class=n>Allocated / unallocated</div></div>
+          <div class=node><div class=t>Life insurer</div><div class=n>Payout aggregation</div></div>
+        </div>
+      </div>
+      <div class=arrow></div>
+      <div class=ledgerbar>
+        <div><div class=k>Connections</div><div class="v tnum">1</div></div>
+        <div><div class=k>Round trip</div><div class="v tnum">&lt;400ms</div></div>
+        <div><div class=k>Schema</div><div class=v>Versioned</div></div>
+        <div><div class=k>Audit trail</div><div class=v>Per field</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class=trust>
+    <div>
+      <div class=h>SOC 2 Type II</div>
+      <div class=p>Independently attested, continuously monitored with Drata.</div>
+      <div class=probe><b>report</b> dated 2026-03 · available under NDA</div>
+    </div>
+    <div>
+      <div class=h>Transport hardening</div>
+      <div class=p>HSTS, CSP, frame and MIME protections enforced on every response.</div>
+      <div class=probe><b>verify</b> curl -I micruity.com | grep -i strict</div>
+    </div>
+    <div>
+      <div class=h>Developer surface</div>
+      <div class=p>Typed REST, idempotent writes, sandbox keys in one click.</div>
+      <div class=probe><b>POST</b> /v1/elections · 201 Created</div>
+    </div>
+  </div>
+</div>

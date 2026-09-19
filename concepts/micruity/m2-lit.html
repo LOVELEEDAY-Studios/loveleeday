@@ -1,0 +1,98 @@
+<!doctype html><meta charset=utf-8><title>Micruity — v2</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:#05070C;color:#EEF2F8;
+  font-family:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.stage{position:relative;min-height:880px;overflow:hidden;isolation:isolate}
+
+/* ── light. one source, upper right, warm-to-cool falloff ─────────── */
+.stage::before{content:"";position:absolute;inset:-20%;z-index:0;
+  background:
+    radial-gradient(52rem 40rem at 74% 8%,  rgba(88,140,255,.30), transparent 58%),
+    radial-gradient(36rem 30rem at 88% 30%, rgba(160,110,255,.16), transparent 62%),
+    radial-gradient(60rem 46rem at 20% 92%, rgba(20,40,90,.55),   transparent 65%);
+  filter:blur(6px)}
+/* vignette */
+.stage::after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 40%,transparent 42%,rgba(3,5,10,.86) 100%)}
+.grain{position:absolute;inset:0;z-index:7;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>")}
+
+nav{position:relative;z-index:8;display:flex;align-items:center;justify-content:space-between;
+  max-width:1320px;margin:0 auto;padding:26px 44px}
+.logo{font-weight:600;font-size:15px;letter-spacing:-.01em}
+.logo i{color:#5B8CFF;font-style:normal}
+nav a{color:#93A0B8;text-decoration:none;font-size:13.5px;margin-left:30px}
+
+/* ── the object: the routing fabric, in perspective ───────────────── */
+.object{position:absolute;z-index:2;right:-70px;top:120px;width:1010px;height:560px;
+  perspective:2200px;perspective-origin:38% 44%}
+.deck{position:relative;width:100%;height:100%;
+  transform:rotateX(7deg) rotateY(-13deg) rotateZ(1.5deg);transform-style:preserve-3d}
+.plane{position:absolute;border-radius:16px;border:1px solid rgba(140,175,255,.20);
+  background:linear-gradient(152deg,rgba(28,41,70,.97),rgba(13,20,38,.95));
+  backdrop-filter:blur(12px);
+  box-shadow:0 60px 120px -40px rgba(0,0,0,.95),
+             0 0 0 1px rgba(255,255,255,.03) inset,
+             0 1px 0 rgba(180,205,255,.14) inset}
+.p1{inset:0;transform:translateZ(0)}
+.p2{right:210px;top:-46px;width:320px;height:148px;transform:translateZ(96px)}
+.p3{right:150px;bottom:-40px;width:320px;height:148px;transform:translateZ(150px)}
+.ph{display:flex;justify-content:space-between;padding:16px 20px;
+  font:10.5px/1 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:#7E8CA8;
+  border-bottom:1px solid rgba(140,175,255,.13)}
+.row{display:flex;justify-content:space-between;padding:11px 20px;font-size:13px;color:#DCE5F4;
+  border-bottom:1px solid rgba(140,175,255,.07)}
+.row span:last-child{color:#7E8CA8;font-variant-numeric:tabular-nums}
+.big{padding:18px 20px}
+.big .k{font:10.5px/1 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:#7E8CA8}
+.big .v{font-size:34px;letter-spacing:-.03em;margin-top:9px;font-variant-numeric:tabular-nums}
+.accent{color:#6E9BFF}
+/* rim light along the leading edge of each plane */
+.plane::after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;
+  background:linear-gradient(118deg,rgba(120,165,255,.20),transparent 34%)}
+
+/* ── type sits OVER the composition, low-left ─────────────────────── */
+.copy{position:absolute;z-index:8;left:calc(50% - 660px + 44px);bottom:120px;width:560px}
+.eyebrow{font:500 11px/1 ui-monospace,monospace;letter-spacing:.2em;text-transform:uppercase;color:#6E9BFF}
+h1{font-size:68px;line-height:.98;letter-spacing:-.042em;margin:20px 0 0;font-weight:500;
+  text-shadow:0 10px 60px rgba(0,0,0,.9)}
+.lede{color:#A7B4CC;font-size:16px;line-height:1.6;margin:24px 0 0;max-width:470px}
+.btns{margin-top:32px;display:flex;gap:11px}
+.b{padding:12px 22px;border-radius:9px;font-size:14px;font-weight:500;text-decoration:none}
+.b1{background:#2F6BFF;color:#fff;box-shadow:0 14px 40px -12px rgba(47,107,255,.75)}
+.b2{border:1px solid rgba(160,185,235,.26);color:#EEF2F8;backdrop-filter:blur(8px)}
+</style>
+<div class=stage>
+  <div class=grain></div>
+  <nav>
+    <div class=logo>MICR<i>U</i>ITY</div>
+    <div><a href=#>Solutions</a><a href=#>Developers</a><a href=#>Security</a><a href=#>Company</a></div>
+  </nav>
+
+  <div class=object><div class=deck>
+    <div class="plane p1">
+      <div class=ph><span>MARS · advanced routing system</span><span>live</span></div>
+      <div class=row><span>Participant elections</span><span>routed</span></div>
+      <div class=row><span>Allocated / unallocated</span><span>routed</span></div>
+      <div class=row><span>Plan portability</span><span>routed</span></div>
+      <div class=row><span>Payout aggregation</span><span>routed</span></div>
+      <div class=row><span>Termination elections</span><span>routed</span></div>
+    </div>
+    <div class="plane p2">
+      <div class=big><div class=k>Round trip</div><div class=v>382<span style="font-size:19px;color:#7E8CA8">ms</span></div></div>
+      <div class=row style="border-bottom:none"><span>p99 across 41 counterparties</span><span>—</span></div>
+    </div>
+    <div class="plane p3">
+      <div class=big><div class=k>Audit trail</div><div class="v accent">per field</div></div>
+      <div class=row style="border-bottom:none"><span>every value carries its origin</span><span>SOC 2</span></div>
+    </div>
+  </div></div>
+
+  <div class=copy>
+    <div class=eyebrow>Retirement income infrastructure</div>
+    <h1>The wire between<br>recordkeepers<br>and insurers.</h1>
+    <p class=lede>Lifetime income fails on data, not on design. One audited connection moves elections, allocations and payouts between institutions.</p>
+    <div class=btns><a class="b b1" href=#>Read the API docs</a><a class="b b2" href=#>Talk to us</a></div>
+  </div>
+</div>
