@@ -1,0 +1,230 @@
+<!doctype html><meta charset=utf-8><title>Micruity — light</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --paper:#FCFCFA; --panel:#F3F4F1; --tint:#E8EEFB;
+  --ink:#14171C; --mid:#5B6472; --soft:#8B95A3;
+  --line:#E4E5E1; --blue:#1B44C8; --blue-d:#12309A;
+}
+html,body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Instrument Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.tnum{font-variant-numeric:tabular-nums}
+img{display:block;max-width:100%}
+
+.badgebar{background:var(--ink);color:#EDEFF2;text-align:center;padding:9px;font-size:13px}
+.badgebar b{color:#fff}.badgebar a{color:#9DB4FF;text-decoration:none}
+
+nav{display:flex;align-items:center;justify-content:space-between;
+  max-width:1240px;margin:0 auto;padding:22px 40px}
+.logo{font-weight:600;font-size:16px;letter-spacing:-.01em}.logo i{color:var(--blue);font-style:normal}
+nav a{color:var(--mid);text-decoration:none;font-size:14px;margin-left:28px}
+.navcta{background:var(--ink);color:#fff !important;padding:9px 16px;border-radius:8px;font-size:13.5px}
+
+/* ── HERO ─────────────────────────────────────────────────────────── */
+.hero{max-width:1240px;margin:0 auto;padding:44px 40px 0}
+.eyebrow{font:500 11px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
+h1{font-size:60px;line-height:1.04;letter-spacing:-.038em;margin:18px 0 0;font-weight:500;max-width:15ch}
+.lede{color:var(--mid);font-size:17px;line-height:1.6;margin:22px 0 0;max-width:470px}
+.btns{margin-top:28px;display:flex;gap:10px}
+.b{padding:12px 22px;border-radius:9px;font-size:14.5px;font-weight:500;text-decoration:none}
+.b1{background:var(--blue);color:#fff}
+.b2{border:1px solid var(--line);color:var(--ink)}
+.heroimgs{display:grid;grid-template-columns:300px 1fr;gap:18px;margin-top:52px;align-items:stretch}
+.tintpanel{background:var(--tint);border-radius:18px;padding:26px;display:flex;flex-direction:column;justify-content:flex-end}
+.tintpanel .k{font:500 10.5px/1 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.tintpanel .v{font-size:46px;letter-spacing:-.04em;margin-top:10px;line-height:1}
+.tintpanel .d{color:var(--mid);font-size:13.5px;line-height:1.55;margin-top:10px}
+.shot{border-radius:18px;overflow:hidden;position:relative;min-height:390px}
+.shot img{width:100%;height:100%;object-fit:cover}
+
+.sec{padding:96px 0}
+.sec.panel{background:var(--panel)}
+.eyebrow2{font:500 11px/1 ui-monospace,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+h2{font-size:38px;line-height:1.1;letter-spacing:-.032em;margin:0;font-weight:500}
+.body{color:var(--mid);font-size:16.5px;line-height:1.65;margin:22px 0 0;max-width:480px}
+
+.sols{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:42px;border-top:1px solid var(--line)}
+.sol{padding:28px 40px 30px 0;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.sol:nth-child(2n){border-right:none;padding-left:40px}
+.sol .n{font:500 10.5px/1 ui-monospace,monospace;color:var(--soft);letter-spacing:.16em}
+.sol .t{font-size:20px;margin-top:10px;letter-spacing:-.02em}
+.sol .d{color:var(--mid);font-size:14.5px;line-height:1.6;margin-top:8px}
+.sol .go{display:inline-block;margin-top:13px;color:var(--blue);text-decoration:none;font-size:13.5px}
+
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.c3{border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.c3 img{aspect-ratio:3/2;object-fit:cover;width:100%}
+.c3 p{padding:18px 20px 22px;margin:0;font-size:14.5px;line-height:1.55;color:var(--mid)}
+
+.trust3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border-top:1px solid var(--line)}
+.trust3>div{padding:26px 34px 26px 0;border-right:1px solid var(--line)}
+.trust3>div:last-child{border-right:none}
+.th{font-size:16px;font-weight:500}
+.trust3 p{color:var(--mid);font-size:14px;line-height:1.6;margin:8px 0 0}
+.probe{font:11.5px/1.5 ui-monospace,monospace;color:var(--soft);margin-top:13px;padding-top:11px;border-top:1px dashed var(--line)}
+.probe b{color:var(--blue);font-weight:400}
+
+
+/* Trust bar — sits directly under the hero, where these actually work.
+   92% down the page (where they were) is a footnote, not a trust signal. */
+.trustbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:#fff;margin-top:64px}
+.trustbar .inner{max-width:1240px;margin:0 auto;padding:26px 40px;
+  display:flex;align-items:center;gap:40px;flex-wrap:wrap}
+.tb-label{font:500 10.5px/1.5 ui-monospace,monospace;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--soft);max-width:110px}
+.marks{display:flex;align-items:center;gap:34px;flex-wrap:wrap;flex:1}
+.mark{display:flex;align-items:center;gap:12px}
+.seal{width:52px;height:52px;flex:none;border-radius:50%;border:1.5px solid var(--blue);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:var(--blue);line-height:1}
+.seal .big{font-size:15px;font-weight:600;letter-spacing:-.02em}
+.seal .sm{font-size:7px;letter-spacing:.1em;margin-top:2px}
+.shield{width:46px;height:52px;flex:none;
+  background:var(--blue);color:#fff;
+  clip-path:polygon(50% 0,100% 16%,100% 62%,50% 100%,0 62%,0 16%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.shield .big{font-size:14px;font-weight:600}
+.shield .sm{font-size:7px;letter-spacing:.08em;margin-top:3px}
+.mark .txt .t1{font-size:14px;font-weight:500;letter-spacing:-.01em}
+.mark .txt .t2{font-size:12.5px;color:var(--mid);margin-top:3px}
+.tb-note{font-size:11.5px;color:var(--soft);line-height:1.5;max-width:190px}
+.bens{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:38px;border-top:1px solid var(--line)}
+.bens>div{padding:24px 34px 24px 0;border-right:1px solid var(--line)}
+.bens>div:last-child{border-right:none}
+.bt{font-size:16px;font-weight:500;letter-spacing:-.01em}
+.bens p{color:var(--mid);font-size:14px;line-height:1.6;margin:8px 0 0}
+.steps{list-style:none;padding:0;margin:38px 0 0;counter-reset:s}
+.steps li{display:flex;gap:26px;padding:24px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.sn{font:500 12px/1 ui-monospace,monospace;color:var(--blue);letter-spacing:.14em;padding-top:5px;flex:none;width:34px}
+.st{font-size:19px;letter-spacing:-.02em}
+.steps p{color:var(--mid);font-size:14.5px;line-height:1.6;margin:7px 0 0;max-width:620px}
+.badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.badge{border:1px solid var(--line);background:#fff;border-radius:9px;padding:11px 16px;font-size:13px;color:var(--mid)}
+.badge b{color:var(--ink);font-weight:500}
+.note{color:var(--soft);font-size:13px;line-height:1.65;margin:20px 0 0;max-width:660px;
+  border-left:2px solid var(--line);padding-left:15px}
+.note b{color:var(--mid);font-weight:500}
+.close{text-align:center;padding:100px 0}
+.closeh{font-size:44px;letter-spacing:-.035em;margin:0 auto 30px;max-width:18ch;line-height:1.08}
+footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--soft)}
+.fnav a{color:var(--mid);text-decoration:none;font-size:13.5px;margin-left:24px}
+</style>
+
+<div class=badgebar>Micruity named to the <b>2024 CB Insights Fintech 100</b> <a href=#>→</a></div>
+<nav><div class=logo>MICR<i>U</i>ITY</div>
+  <div><a href=#>Solutions</a><a href=#>Developers</a><a href=#>Security</a><a href=#>Company</a>
+  <a class=navcta href=#>Get started</a></div></nav>
+
+<div class=hero>
+  <div class=eyebrow>Retirement income infrastructure</div>
+  <h1>Someone's retirement moves through here.</h1>
+  <p class=lede>Every election, allocation and payout we route belongs to a person counting on it
+    arriving. One audited connection between recordkeepers and insurers.</p>
+  <div class=btns><a class="b b1" href=#>See the solutions</a><a class="b b2" href=#>Read the API docs</a></div>
+  <div class=heroimgs>
+    <div class=tintpanel>
+      <div class=k>p99 round trip</div>
+      <div class="v tnum">382<span style="font-size:20px;color:var(--mid)">ms</span></div>
+      <div class=d>Across every counterparty on the network, same day settlement.</div>
+    </div>
+    <div class=shot><img src="r_a.jpg" alt="A plan participant at home"></div>
+  </div>
+</div>
+
+<div class=trustbar><div class=inner>
+  <div class=tb-label>Recognised&nbsp;&amp;<br>audited</div>
+  <div class=marks>
+    <div class=mark>
+      <div class=seal><span class=big>100</span><span class=sm>FINTECH</span></div>
+      <div class=txt><div class=t1>CB Insights Fintech 100</div><div class=t2>2024 cohort</div></div>
+    </div>
+    <div class=mark>
+      <div class=shield><span class=big>SOC</span><span class=sm>TYPE II</span></div>
+      <div class=txt><div class=t1>SOC 2 Type II</div><div class=t2>Independently attested</div></div>
+    </div>
+    <div class=mark>
+      <div class=seal style="border-color:var(--ink);color:var(--ink)"><span class=big>D</span><span class=sm>MONITOR</span></div>
+      <div class=txt><div class=t1>Drata</div><div class=t2>Continuous monitoring</div></div>
+    </div>
+  </div>
+  <div class=tb-note><b style="color:var(--mid)">Placeholder marks.</b> Replace with the official
+    CB Insights, AICPA SOC and Drata lockups.</div>
+</div></div>
+
+<section class="sec panel" style="margin-top:0"><div class=wrap>
+  <div class=eyebrow2>Overview · Solutions</div>
+  <h2 style="max-width:20ch">Four products, one connection.</h2>
+  <div class=sols>
+    <div class=sol><div class=n>01</div><div class=t>MARS</div>
+      <div class=d>Our advanced routing system. Resolves the counterparty, versions the schema and carries lineage on every field.</div>
+      <a class=go href=#>How it works →</a></div>
+    <div class=sol><div class=n>02</div><div class=t>Plan Participant Portability</div>
+      <div class=d>Elections and balances follow the participant between plans without a re-keying step.</div>
+      <a class=go href=#>How it works →</a></div>
+    <div class=sol><div class=n>03</div><div class=t>Multi-Insurer TDF</div>
+      <div class=d>Asset managers get hands-free connectivity to insurers across a multi-insurer target date fund.</div>
+      <a class=go href=#>How it works →</a></div>
+    <div class=sol><div class=n>04</div><div class=t>Recordkeeper</div>
+      <div class=d>Manage multiple data flows through a single connection instead of one integration per insurer.</div>
+      <a class=go href=#>How it works →</a></div>
+  </div>
+  <p class=note>Section titles and descriptions follow Micruity's own published Solutions taxonomy.</p>
+</div></section>
+
+<section class=sec><div class=wrap>
+  <div class=eyebrow2>Benefits</div>
+  <h2 style="max-width:22ch">The product is data. The point is people.</h2>
+  <div class=bens>
+    <div><div class=bt>One integration, not one per insurer</div><p>Recordkeepers connect once. New counterparties arrive without a new build.</p></div>
+    <div><div class=bt>Elections settle the same day</div><p>No re-keying, no faxed forms, no eleven-day reconciliation window.</p></div>
+    <div><div class=bt>Every value carries its origin</div><p>Field-level lineage means an auditor can trace any number back to the system that produced it.</p></div>
+  </div>
+  <div class=strip>
+    <div class=c3><img src="x_man.jpg" alt=""><p>He retires in four months. The allocation has to be right the first time.</p></div>
+    <div class=c3><img src="x_office.jpg" alt=""><p>Two institutions, one schema. Nobody re-keys a participant's election by hand.</p></div>
+    <div class=c3><img src="x_couple.jpg" alt=""><p>Three insurers, one payout. He sees a single number.</p></div>
+  </div>
+  <p class=note><b>Illustrative photography, not customers.</b> Generated image-to-image from licensed photographic sources, captioned as situations and never as named people. No quote is attributed to anyone. Replace with a real shoot before launch.</p>
+</div></section>
+
+
+<section class=sec><div class=wrap>
+  <div class=eyebrow2>How it works</div>
+  <h2 style="max-width:20ch">Four steps, one connection.</h2>
+  <ol class=steps>
+    <li><span class=sn>01</span><div><div class=st>Connect once</div><p>One authenticated connection per institution. Sandbox keys are issued on signup.</p></div></li>
+    <li><span class=sn>02</span><div><div class=st>MARS resolves the counterparty</div><p>Routing, schema version and message type are determined from the payload, not from configuration you maintain.</p></div></li>
+    <li><span class=sn>03</span><div><div class=st>The message settles</div><p>Elections, allocations and payouts move between recordkeeper and insurer with idempotent writes.</p></div></li>
+    <li><span class=sn>04</span><div><div class=st>Lineage is retained</div><p>Every field keeps the system and timestamp it came from, for the life of the record.</p></div></li>
+  </ol>
+</div></section>
+
+<section class="sec panel"><div class=wrap>
+  <div class=eyebrow2>Security</div>
+  <div class=trust3>
+    <div><div class=th>SOC 2 Type II</div><p>Independently attested, continuously monitored.</p>
+      <div class=probe><b>report</b> current period, under NDA</div></div>
+    <div><div class=th>Transport hardening</div><p>HSTS, CSP, frame and MIME protections on every response.</p>
+      <div class=probe><b>run</b> curl -I micruity.com | grep -i strict</div></div>
+    <div><div class=th>Field lineage</div><p>Every value carries the system and timestamp it came from.</p>
+      <div class=probe><b>see</b> lineage object on any 201</div></div>
+  </div>
+  <div class=badges>
+    <div class=badge><b>2024 CB Insights</b> Fintech 100</div>
+    <div class=badge><b>SOC 2</b> Type II</div>
+    <div class=badge><b>Drata</b> continuous monitoring</div>
+  </div>
+</div></section>
+
+<section class=close><div class=wrap>
+  <div class=eyebrow2 style="text-align:center">Get started</div>
+  <h2 class=closeh>Talk to the team that moves the data.</h2>
+  <div class=btns style="justify-content:center"><a class="b b1" href=#>Read the API docs</a><a class="b b2" href=#>Request a sandbox key</a></div>
+</div></section>
+
+<footer><div class=wrap style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px">
+  <div class=logo>MICR<i>U</i>ITY</div>
+  <div class=fnav><a href=#>MARS</a><a href=#>Portability</a><a href=#>Multi-Insurer TDF</a><a href=#>Recordkeeper</a><a href=#>Careers</a></div>
+</div></footer>

@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Concept image-generation intermediates. 60MB of rejected rounds and source
+# frames that no build reads — the shipped assets live in public/portal.
+concepts/micruity/*.png
+concepts/micruity/*.jpg
+concepts/micruity/img/
+!concepts/micruity/v3-light.png
