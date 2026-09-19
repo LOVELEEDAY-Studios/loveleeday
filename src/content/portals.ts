@@ -13,6 +13,8 @@
  * drop the assets in public/portal/<dir>/, and append an object below.
  */
 
+import { TOKENS } from "./tokens";
+
 export interface Deliverable {
   slug: string;
   title: string;
@@ -75,7 +77,7 @@ export interface Portal {
 
 export const portals: Portal[] = [
   {
-    token: "fyx-d50eadd57473b505ca",
+    token: TOKENS.fyxit,
     client: "Fyxit AI",
     clientDomain: "hubbleiq.com",
     project: "Marketing site — direction study",
@@ -134,7 +136,7 @@ export const portals: Portal[] = [
     ],
   },
   {
-    token: "jnt-2a727d076b273e9059",
+    token: TOKENS.janta,
     client: "Janta Power",
     clientDomain: "jantaus.com",
     project: "Marketing site — direction study",
@@ -197,7 +199,7 @@ export const portals: Portal[] = [
     ],
   },
   {
-    token: "mcr-2d78a1f2ecb70e52e3",
+    token: TOKENS.micruity,
     client: "Micruity",
     clientDomain: "micruity.com",
     project: "Marketing site — direction study",
