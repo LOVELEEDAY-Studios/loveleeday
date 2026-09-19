@@ -77,6 +77,60 @@ export const portfolio: Portfolio = {
 
   cases: [
     {
+      slug: "novarna",
+      company: "Novarna",
+      domain: "circnova.com",
+      portalToken: TOKENS.novarna,
+      sector: "AI-designed RNA therapeutics · Detroit, MI",
+      before: "/portal/collab/novarna-before.jpg",
+      after: "/portal/collab/novarna-after.jpg",
+      thesis:
+        "Their site is already good, so we kept their design system and changed what the header says. Their best line is buried as a section heading halfway down, and their best proof — the University of Michigan DiFeo Lab testing their candidates in its own facility, where the designs outperformed a commercially available treatment — is a paragraph near the bottom.",
+      findings: [
+        "Third-party validation is the rarest thing in AI-for-biology and it was below the fold. It now sits directly under the headline.",
+        "Their loop diagram is the best idea on their site. In the rebuild it is the hero object and it turns, rather than being replaced by a card.",
+        "Their assets already serve from novarna.ai while the domain still resolves as circnova.com — two names splitting whatever authority the domain has earned. Collab Capital still lists them as CircNova.",
+      ],
+      search:
+        "Not in the top 9 for the phrase describing their platform. The results are journals and catalogue sites, not companies — a category with no commercial competition in it yet.",
+    },
+    {
+      slug: "soarce",
+      company: "Soarce",
+      domain: "soarceusa.com",
+      portalToken: TOKENS.soarce,
+      sector: "Industrial nanofiber materials · Orlando, FL",
+      before: "/portal/collab/soarce-before.jpg",
+      after: "/portal/collab/soarce-after.jpg",
+      thesis:
+        "Their homepage is 5,009 KB — thirty-four times the portfolio median and the heaviest of all thirty-eight sites we measured. A materials company whose entire pitch is stronger, lighter, cheaper should not be shipping the heaviest page in its investor's portfolio.",
+      findings: [
+        "The rebuild is 416 KB and makes the same claims. A ninety-two percent reduction.",
+        "Their own figures carry the page — 8x stronger than steel, 22 GPa tensile strength, 200x water retention — rather than being buried under the weight.",
+        "Page weight and search are the same problem here: a page that heavy is slow to crawl and slow to load for the buyer who does find it.",
+      ],
+      search:
+        "Not in the top 10 for the phrase describing what they sell. matregenix.com ranks first.",
+    },
+    {
+      slug: "loanwell",
+      company: "LoanWell",
+      domain: "loanwell.com",
+      portalToken: TOKENS.loanwell,
+      sector: "Lending technology for CDFIs · Durham, NC",
+      before: "/portal/collab/loanwell-before.jpg",
+      after: "/portal/collab/loanwell-after.jpg",
+      thesis:
+        "Affordable capital reaches nobody if the lender looking for the tool to deploy it cannot find you. Their product copy and mission are strong; the page argues about software features rather than about deploying capital.",
+      findings: [
+        "Absent from the top 9 for the single phrase a CDFI would type when looking for exactly what they build, while three general-purpose lending platforms rank instead — none of which serves mission-driven lenders specifically.",
+        "The rebuild closes on the line you publish from their own CEO on your portfolio page.",
+        "One correction regardless of the study: the product screenshot served on their site contains a rendering seam, with amortisation rows 11 to 14 duplicated over row 17.",
+      ],
+      search:
+        "Not in the top 9 for “loan origination software for CDFI”. nortridge.com, themortgageoffice.com and builderspatch.com rank instead.",
+    },
+    {
       slug: "janta",
       company: "Janta Power",
       domain: "jantaus.com",

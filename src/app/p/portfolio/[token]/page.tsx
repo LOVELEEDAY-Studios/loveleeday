@@ -30,7 +30,7 @@ export default async function PortfolioPage({
           <span className="text-[var(--dim)]"> · prepared for {p.preparedFor}</span>
         </p>
         <h1 className="mt-5 text-[clamp(2.5rem,6.5vw,4.75rem)] font-medium leading-[0.98] tracking-[-0.035em]">
-          Three of your companies,
+          {p.cases.length} of your companies,
           <br />
           rebuilt.
         </h1>
