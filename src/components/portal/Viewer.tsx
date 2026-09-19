@@ -1,30 +1,46 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
+/* Desktop is a FIXED 1440 rather than "100% of whatever the container is".
+   That is the whole point of this component: a page with a 940px breakpoint
+   rendered in a 1100px iframe silently drops to its tablet layout, so the
+   client reviews a design nobody designed. We render at a true desktop width
+   and scale the frame down to fit — the layout stays the desktop layout. */
 const WIDTHS = [
-  { id: "desktop", label: "Desktop", px: 0 },
+  { id: "desktop", label: "Desktop", px: 1440 },
   { id: "tablet", label: "Tablet", px: 834 },
   { id: "phone", label: "Phone", px: 390 },
 ] as const;
 
 type WidthId = (typeof WIDTHS)[number]["id"];
 
-/* The page is shown in a real browser frame at a real device width rather than
-   as a flat image, because half the notes a client has are about how the thing
-   behaves on their phone — and they will not resize a window to find out. */
 export function Viewer({ src, title }: { src: string; title: string }) {
   const [width, setWidth] = useState<WidthId>("desktop");
+  const [scale, setScale] = useState(1);
+  const shell = useRef<HTMLDivElement>(null);
   const active = WIDTHS.find((w) => w.id === width)!;
 
+  /* Scale only ever shrinks. Blowing a 390px phone layout up to fill a desktop
+     container would misrepresent it just as badly as squashing the desktop one. */
+  useEffect(() => {
+    const el = shell.current;
+    if (!el) return;
+    const fit = () => {
+      const avail = el.clientWidth;
+      setScale(avail > 0 ? Math.min(1, avail / active.px) : 1);
+    };
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [active.px]);
+
+  const frameH = 900; // the viewport height we render the page into
   return (
     <div>
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--line)] px-4 py-3">
-        <div
-          className="flex items-center gap-1"
-          role="group"
-          aria-label="Preview width"
-        >
+        <div className="flex items-center gap-1" role="group" aria-label="Preview width">
           {WIDTHS.map((w) => (
             <button
               key={w.id}
@@ -43,8 +59,8 @@ export function Viewer({ src, title }: { src: string; title: string }) {
         </div>
 
         <div className="flex items-center gap-4">
-          <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--dim)] tnum">
-            {active.px ? `${active.px}px` : "Fluid"}
+          <span className="tnum font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--dim)]">
+            {active.px}px{scale < 0.995 ? ` · ${Math.round(scale * 100)}%` : ""}
           </span>
           <a
             href={src}
@@ -52,20 +68,32 @@ export function Viewer({ src, title }: { src: string; title: string }) {
             rel="noreferrer"
             className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--accent)]"
           >
-            Full screen ↗
+            Open full size ↗
           </a>
         </div>
       </div>
 
-      <div className="flex justify-center overflow-auto bg-[var(--sunk)] p-0 sm:p-6">
-        <iframe
-          key={width}
-          src={src}
-          title={title}
-          loading="lazy"
-          className="h-[calc(100vh-13rem)] min-h-[520px] w-full border-0 bg-white"
-          style={active.px ? { width: active.px, maxWidth: "100%", flex: "0 0 auto" } : undefined}
-        />
+      <div ref={shell} className="overflow-hidden bg-[var(--sunk)] p-0 sm:p-6">
+        {/* The outer box reserves the SCALED height, so the layout below does
+            not sit under a frame that is visually 900px but 1300px in flow. */}
+        <div
+          className="mx-auto overflow-hidden"
+          style={{ width: active.px * scale, height: frameH * scale }}
+        >
+          <iframe
+            key={width}
+            src={src}
+            title={title}
+            loading="lazy"
+            className="border-0 bg-white"
+            style={{
+              width: active.px,
+              height: frameH,
+              transform: `scale(${scale})`,
+              transformOrigin: "top left",
+            }}
+          />
+        </div>
       </div>
     </div>
   );

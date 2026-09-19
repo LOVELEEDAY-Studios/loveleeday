@@ -54,7 +54,7 @@ export const portfolio: Portfolio = {
     {
       title: "Two portfolio companies have rebranded and the portfolio page still lists the old names",
       detail:
-        "CircNova now trades as Novarna — circnova.com serves a page titled “Novarna — The AI Design Engine for RNA Medicines” and carries a banner reading “CircNova is now Novarna.” Hubble IQ now trades as Fyxit AI and leads with a product called Rosie. Both appear under their former names on collab.capital/portfolio.",
+        "CircNova now trades as Novarna — circnova.com serves a page titled “Novarna — The AI Design Engine for RNA Medicines” and carries a banner reading “CircNova is now Novarna.” Hubble IQ now trades as Fyxit AI, with an assistant branded Rosie. Both appear under their former names on collab.capital/portfolio.",
     },
     {
       title: "The portfolio page links to none of its 40 companies",
@@ -103,10 +103,10 @@ export const portfolio: Portfolio = {
       before: "/portal/collab/fyxit-before.jpg",
       after: "/portal/collab/fyxit-after.jpg",
       thesis:
-        "Their product is a character. The site says “Meet Rosie” and describes her as a technician who does the work rather than talks about it — and she has never been drawn. So we drew her, doing the six jobs their own demo buttons already name.",
+        "Their whole claim is “does the work, not just the talking”, and the site talks. The rebuild opens on the product working: a teacher reports Wi-Fi dropping in room 214, Fyxit reads the access point, finds channel overlap, moves it and closes the issue in 2m 40s without a ticket ever being opened.",
       findings: [
         "The six problems on their live demo — slow Wi-Fi, a laggy computer, a jammed printer, an app that will not load, a cracked screen, a phishing email — are the most concrete thing on the site and are currently buttons. In the rebuild they are the page's spine.",
-        "One consistent illustrated character across six frames, which is what separates a character system from six stock illustrations.",
+        "The six problems their live demo already names are currently buttons. In the rebuild they are the page's spine, and the 60% figure is shown as a Monday-morning queue with outcomes rather than asserted as a stat.",
         "The domain still resolves as hubbleiq.com while the product is branded Fyxit AI. Two names split whatever authority the domain has earned.",
       ],
       search:
@@ -137,6 +137,6 @@ export const portfolio: Portfolio = {
     "Lighthouse scores are Google PageSpeed Insights, mobile strategy, run 2026-09-18. Four companies failed to return a result and are excluded rather than scored zero.",
     "Search positions come from live Google SERPs via SerpApi. We could see 8 to 10 organic results per query, so “not in the top 8” is the strongest claim available — it says nothing about position 9 or beyond.",
     "Every figure on the three rebuilt pages belongs to the company it describes and is quoted from their own site. We have not independently verified any of their claims.",
-    "Photography on the Micruity study and the Rosie character on the Fyxit study are AI-generated for this exercise and are not licensed assets. A real build commissions both.",
+    "Photography on the Micruity study is AI-generated for this exercise and is not a licensed asset; a real build commissions it. The Fyxit conversation and queue are illustrative values built to show the layout, not data from their system.",
   ],
 };
