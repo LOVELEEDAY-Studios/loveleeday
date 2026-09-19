@@ -111,6 +111,7 @@ export const portals: Portal[] = [
         caveats: [
           "Every figure and product claim is yours, quoted from hubbleiq.com on 2026-09-18: 60% of routine issues handled automatically, one line of code to deploy, no workflow changes, and the Incident IQ, Zendesk, Freshdesk, SMTP and Chrome integrations.",
           "The conversation, the diagnostic readings and the queue are illustrative — plausible values built to show the layout, not data from your system. A real build wires them to live telemetry or replaces them with a recorded session.",
+          "Photography is real licensed stock from Pexels — Thirdman, Christina Morillo and Greece-China News — not generated. We used real photography deliberately here: the subject is schools, and generated imagery of children has no place on a page a district will read.",
           "District names are reproduced from your own Trusted By rail. We have not contacted any of them.",
           "The escalation figure on the page infers that what is not automated is escalated. Your site states the 60% but not the remainder, so treat that line as ours until you confirm it.",
         ],
