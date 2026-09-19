@@ -37,6 +37,22 @@ export default function Home() {
   );
   return (
     <>
+      {/* The delivered CSS asks for font-weight 750 and letter-spacing -0.065em
+          at 98px, which is a variable grotesque's job. It shipped with
+          font-family:Arial as the only stack, so every headline on the studio's
+          own site was rendering in Arial at a snapped 700. Inter is the face the
+          build was drawn for; loading it is the difference between the design
+          and an approximation of it. */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      />
       <link rel="stylesheet" href="/studio/style.css" />
       <div dangerouslySetInnerHTML={{ __html: html }} />
       <Script src="/studio/app.js" strategy="afterInteractive" />

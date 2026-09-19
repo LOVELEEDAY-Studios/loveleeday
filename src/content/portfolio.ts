@@ -46,7 +46,7 @@ export const portfolio: Portfolio = {
   fund: "Collab Capital",
   fundDomain: "collab.capital",
   preparedFor: "Collab Capital",
-  deliveredOn: "2026-09-18",
+  deliveredOn: "2026-09-19",
   intro:
     "Your next advantage may begin with a question no one has asked. We asked one about your portfolio — what do all 38 of these sites actually look like to the buyer trying to find them — then answered it in working HTML rather than in a deck. Nothing here was commissioned and nothing is a proposal. Every figure belongs to the company it describes, and every measurement names its source.",
 
@@ -92,7 +92,7 @@ export const portfolio: Portfolio = {
         "Their assets already serve from novarna.ai while the domain still resolves as circnova.com — two names splitting whatever authority the domain has earned. Collab Capital still lists them as CircNova.",
       ],
       search:
-        "Not in the top 9 for the phrase describing their platform. The results are journals and catalogue sites, not companies — a category with no commercial competition in it yet.",
+        "Ninth of nine for the phrase describing their platform. The eight above them are journals and catalog sites, not companies — a category with no commercial competition in it yet.",
     },
     {
       slug: "soarce",
@@ -110,7 +110,7 @@ export const portfolio: Portfolio = {
         "Page weight and search are the same problem here: a page that heavy is slow to crawl and slow to load for the buyer who does find it.",
       ],
       search:
-        "Not in the top 10 for the phrase describing what they sell. matregenix.com ranks first.",
+        "Not in the top 9 for the phrase describing what they sell. matregenix.com ranks first.",
     },
     {
       slug: "loanwell",
@@ -125,7 +125,7 @@ export const portfolio: Portfolio = {
       findings: [
         "Absent from the top 9 for the single phrase a CDFI would type when looking for exactly what they build, while three general-purpose lending platforms rank instead — none of which serves mission-driven lenders specifically.",
         "The rebuild closes on the line you publish from their own CEO on your portfolio page.",
-        "One correction regardless of the study: the product screenshot served on their site contains a rendering seam, with amortisation rows 11 to 14 duplicated over row 17.",
+        "Two corrections regardless of the study: their servicing screenshot contains a rendering seam with amortization rows 11 to 14 duplicated over row 17, and six of the seven product screenshots on loanwell.com show a real work address in the header bar, legible at full size.",
       ],
       search:
         "Not in the top 9 for “loan origination software for CDFI”. nortridge.com, themortgageoffice.com and builderspatch.com rank instead.",
@@ -139,14 +139,14 @@ export const portfolio: Portfolio = {
       before: "/portal/collab/janta-before.jpg",
       after: "/portal/collab/janta-after.jpg",
       thesis:
-        "Their best number is buried in a slider widget. At 50 MW Janta saves 222 acres — about 168 football fields — and still produces 30,617 MWh a year more. That is the whole company in one line, and today you have to drag a control to find it.",
+        "Their best number is buried three screens down in a small comparison card. Their own worked example — 500 kW in Dallas — is 3.3 acres of fixed-tilt panels making 876,000 kWh a year against one acre of towers making 1,182,600. Multiply that out at their ratio and a 50 MW build saves 230 acres, about 174 football fields, while producing 30,660 MWh a year more. That is the whole company in one line, and today it is a footnote.",
       findings: [
-        "The rebuild makes the land argument the page's single bold move: their own two aerial photographs, scroll-scrubbed, traditional array giving way to towers while the acreage counts 333 down to 111.",
+        "The rebuild makes the land argument the page's single bold move: their own two aerial photographs, scroll-scrubbed, traditional array giving way to towers while the acreage counts 330 down to 100. The page says plainly that the 50 MW figures are their 500 kW comparison multiplied out, so the arithmetic is ours and the inputs are theirs.",
         "A consent modal covers 23% of their first screen, including part of the value proposition. Invisible to every crawler metric; obvious the moment you load the page.",
-        "The partner logo served at /marketing/partners/pv-magazine-white.png, with alt text “PV Magazine”, is actually the Third Derivative logo. A screen reader announces one organization while sighted visitors see another.",
+        "The partner logo served at /marketing/partners/pv-magazine-white.png, with alt text “PV Magazine”, is pixel-for-pixel the Third Derivative logo. A screen reader announces one organization while sighted visitors see another — and Third Derivative is an accelerator whose portfolio they are in, which their own footer lists correctly under “In the Press”.",
       ],
       search:
-        "Not in the top 8 for either query describing what they sell. reddit.com ranks first for both.",
+        "Not in the top 8 for either query describing what they sell. A Reddit thread asking whether solar towers are even a real thing ranks first for one; a journal index takes the other.",
     },
     {
       slug: "fyxit",
@@ -182,15 +182,15 @@ export const portfolio: Portfolio = {
         "Of the three, this is the site search is already working for. The rebuild is an argument about clarity, not about traffic.",
       ],
       search:
-        "Ranks #1 for “retirement income infrastructure recordkeeper insurer” and #6 for “plan participant portability annuity”.",
+        "Ranks #1 — and #9 as well, two results on one page — for “retirement income infrastructure recordkeeper insurer”, and #5 for “plan participant portability annuity”.",
     },
   ],
 
   method: [
     "Company list taken from collab.capital's own per-company detail pages, not guessed. An earlier pass using guessed domains resolved five companies to unrelated businesses, and collabcapital.com is a parked domain that is not the fund.",
     "Lighthouse scores are Google PageSpeed Insights, mobile strategy, run 2026-09-18. Four companies failed to return a result and are excluded rather than scored zero.",
-    "Search positions come from live Google SERPs via SerpApi. We could see 8 to 10 organic results per query, so “not in the top 8” is the strongest claim available — it says nothing about position 9 or beyond.",
-    "Every figure on the three rebuilt pages belongs to the company it describes and is quoted from their own site. We have not independently verified any of their claims.",
+    "Search positions come from live Google SERPs via SerpApi, re-measured on 2026-09-19 rather than quoted from the first pass. We could see 8 to 9 organic results per query, so “not in the top 8” is the strongest claim available — it says nothing about position 9 or beyond, and nothing about Bing or any other engine.",
+    "Every figure on the six rebuilt pages belongs to the company it describes and is read from their own site. Where we have done arithmetic on their numbers — the Janta land comparison is their published 500 kW example multiplied out to 50 MW — the page says so on the page itself. We have not independently verified any of their underlying claims.",
     "Photography across these studies is real licensed stock from Pexels, credited in each page. An earlier version of the Micruity study used AI-generated people and it was replaced. The Fyxit conversation and queue are illustrative values built to show the layout, not data from their system.",
   ],
 };

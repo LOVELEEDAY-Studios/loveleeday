@@ -382,14 +382,14 @@ footer a:hover{color:var(--bone)}
 <!-- 2 · TRUST RAIL -->
 <section class="trust">
   <div class="trust-in">
-    <span class="trust-lbl">Working with</span>
+    <span class="trust-lbl">Partners and press</span>
     <div class="trust-logos">
       <img src="logo-dfw-airport.png" alt="DFW Airport">
+      <img src="logo-munich-airport.png" alt="Munich Airport">
+      <img src="logo-aena.png" alt="Aena">
       <img src="logo-greentown-labs.png" alt="Greentown Labs">
       <img src="logo-c3.png" alt="C3" style="height:34px;max-width:40px">
-      <img src="logo-third-derivative.png" alt="Third Derivative">
       <img src="logo-dallas-innovates.png" alt="Dallas Innovates">
-      <span class="trust-txt">Munich Airport &nbsp;·&nbsp; Aena</span>
     </div>
   </div>
 </section>
@@ -398,10 +398,13 @@ footer a:hover{color:var(--bone)}
 <section class="land" id="technology">
   <div class="land-head enter">
     <span class="eyebrow">Same power, less land</span>
-    <h2 class="serif">The same 50&nbsp;MW.<br>222 fewer acres.</h2>
+    <h2 class="serif">The same 50&nbsp;MW.<br>230 fewer acres.</h2>
     <p>Traditional solar sprawls sideways. Janta scales vertically, so the same
        site carries more generation and the ground underneath it stays in use.
-       Both figures below are for a 50&nbsp;MW build.</p>
+       Janta publishes one worked comparison, a 500&nbsp;kW site in Dallas: 3.3&nbsp;acres
+       of fixed-tilt panels making 876,000&nbsp;kWh a year, against one acre of towers
+       making 1,182,600. The figures below are that comparison multiplied out to a
+       50&nbsp;MW build at Janta&rsquo;s own ratio &mdash; our arithmetic, their numbers.</p>
   </div>
 
   <!-- scroll drives the wipe: traditional array underneath, Janta revealed over it -->
@@ -419,19 +422,19 @@ footer a:hover{color:var(--bone)}
         <div class="scrub-ui">
           <div class="su-side su-old">
             <span class="su-tag">Traditional array</span>
-            <span class="su-n" id="nOld">333</span>
-            <span class="su-u">acres · 87,476 MWh / yr</span>
+            <span class="su-n" id="nOld">330</span>
+            <span class="su-u">acres · 87,600 MWh / yr</span>
           </div>
           <div class="su-side su-new">
             <span class="su-tag">Janta towers</span>
-            <span class="su-n" id="nNew">111</span>
-            <span class="su-u">acres · 118,093 MWh / yr</span>
+            <span class="su-n" id="nNew">100</span>
+            <span class="su-u">acres · 118,260 MWh / yr</span>
           </div>
         </div>
 
         <div class="scrub-punch" id="punch">
-          <div class="k serif"><span id="saved">222</span> acres saved —<br><em>about 168 football fields.</em></div>
-          <div class="s">And 30,617 MWh a year more energy off the smaller footprint.</div>
+          <div class="k serif"><span id="saved">230</span> acres saved —<br><em>about 174 football fields.</em></div>
+          <div class="s">And 30,660 MWh a year more energy off the smaller footprint — the 35% they publish.</div>
         </div>
       </div>
       <div class="scrub-hint" id="hint" aria-hidden="true">Scroll</div>
@@ -639,8 +642,8 @@ footer a:hover{color:var(--bone)}
     scrub.style.setProperty("--p", p.toFixed(4));
     scrub.style.setProperty("--q", q.toFixed(4));
     /* the figures are the argument, so they scrub with the wipe */
-    nNew.textContent = Math.round(333 - 222 * p);
-    saved.textContent = Math.round(222 * p);
+    nNew.textContent = Math.round(330 - 230 * p);
+    saved.textContent = Math.round(230 * p);
   }
 
   function onScroll() {

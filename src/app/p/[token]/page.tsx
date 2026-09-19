@@ -120,7 +120,7 @@ export default async function PortalPage({
                       Open and review
                     </Link>
                     <a
-                      href={d.href}
+                      href={`${d.href}?k=${portal.token}`}
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex min-h-[44px] items-center border border-[var(--line-bright)] px-5 text-[14px] text-[var(--muted)] transition-colors hover:border-[var(--text)] hover:text-[var(--text)]"

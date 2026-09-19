@@ -62,7 +62,7 @@ export default async function DeliverablePage({
 
       {/* The work itself, full bleed and live. */}
       <div className="border-y border-[var(--line)]">
-        <Viewer src={deliverable.href} title={deliverable.title} />
+        <Viewer src={`${deliverable.href}?k=${portal.token}`} title={deliverable.title} />
       </div>
 
       <div className="mx-auto grid max-w-[1340px] gap-x-16 gap-y-12 px-6 py-16 lg:grid-cols-[minmax(0,var(--measure))_minmax(0,1fr)]">
