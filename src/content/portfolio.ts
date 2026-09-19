@@ -191,6 +191,6 @@ export const portfolio: Portfolio = {
     "Lighthouse scores are Google PageSpeed Insights, mobile strategy, run 2026-09-18. Four companies failed to return a result and are excluded rather than scored zero.",
     "Search positions come from live Google SERPs via SerpApi. We could see 8 to 10 organic results per query, so “not in the top 8” is the strongest claim available — it says nothing about position 9 or beyond.",
     "Every figure on the three rebuilt pages belongs to the company it describes and is quoted from their own site. We have not independently verified any of their claims.",
-    "Photography on the Micruity study is AI-generated for this exercise and is not a licensed asset; a real build commissions it. The Fyxit conversation and queue are illustrative values built to show the layout, not data from their system.",
+    "Photography across these studies is real licensed stock from Pexels, credited in each page. An earlier version of the Micruity study used AI-generated people and it was replaced. The Fyxit conversation and queue are illustrative values built to show the layout, not data from their system.",
   ],
 };
