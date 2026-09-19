@@ -76,51 +76,124 @@ header.nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);
 .navlinks a.btn-v{color:#fff}   /* out-specifies the nav link colour */
 .navlinks a:hover{color:var(--ink)}
 
-/* 1 · HERO — the product IS the hero object */
-.hero{background:#fff;border-bottom:1px solid var(--line);overflow:hidden}
-.hero-in{max-width:1240px;margin:0 auto;padding:56px 28px 58px;
-  display:grid;gap:40px;grid-template-columns:minmax(0,420px) minmax(0,1fr);
-  align-items:center}
+/* 1 · HERO — a live demo, not a screenshot of one.
+
+   The whole sequence runs on ONE 18s CSS timeline. Every element gets the same
+   animation-duration and picks its moment with percentage keyframes, so the
+   conversation stays in step without a line of JavaScript orchestrating it.
+   Under prefers-reduced-motion the entire timeline is disabled and every
+   element is shown in its finished state — a static transcript, which is the
+   correct fallback for a conversation.
+
+   The glow behind the panel is the one piece of decoration on the page. It is
+   here because Intercom's Fin and incident.io's Assistant both do it, and a
+   flat card under a flat background made the product look inert. */
+.hero{position:relative;background:#fff;border-bottom:1px solid var(--line);overflow:hidden}
+.aurora{position:absolute;inset:-10% -5% auto -5%;height:760px;pointer-events:none;
+  background:
+    radial-gradient(520px 300px at 68% 18%, rgba(107,66,255,.30), transparent 62%),
+    radial-gradient(420px 260px at 88% 42%, rgba(56,132,255,.22), transparent 64%),
+    radial-gradient(380px 240px at 52% 52%, rgba(245,166,35,.16), transparent 66%);
+  filter:blur(28px);opacity:.85}
+.hero-in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:56px 28px 58px;
+  display:grid;gap:40px;grid-template-columns:minmax(0,420px) minmax(0,1fr);align-items:center}
 .hero h1{font-size:clamp(2rem,3.7vw,2.9rem);line-height:1.12}
 .hero h1 em{font-style:normal;color:var(--violet)}
 .hero p.lede{margin:16px 0 0;font-size:16.5px;line-height:1.6;color:var(--mid);max-width:42ch}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;align-items:center}
 .hero-note{margin-top:18px;font-size:13.5px;color:var(--mid)}
 
-/* the conversation — real interface, bleeding off the right edge */
 .stage{position:relative}
-.chat{width:118%;max-width:none;background:#fff;border:1px solid var(--line-2);
-  border-radius:10px;box-shadow:0 24px 60px -24px rgba(22,22,31,.28);overflow:hidden}
+.chat{position:relative;width:114%;max-width:none;background:#fff;border:1px solid var(--line-2);
+  border-radius:14px;box-shadow:0 30px 70px -28px rgba(22,22,31,.34),0 2px 8px rgba(22,22,31,.05);
+  overflow:hidden}
 .chat-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;
   border-bottom:1px solid var(--line);background:#FBFAFF}
 .chat-bar .dot{width:9px;height:9px;border-radius:50%;background:var(--line-2)}
 .chat-bar .who{margin-left:6px;font-size:13px;font-weight:600}
 .chat-bar .st{margin-left:auto;display:flex;align-items:center;gap:6px;
   font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--good)}
-.chat-bar .st i{width:7px;height:7px;border-radius:50%;background:var(--good);display:block}
-.thread{padding:14px 16px 12px;display:grid;gap:9px}
+.chat-bar .st i{width:7px;height:7px;border-radius:50%;background:var(--good);display:block;
+  animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+.thread{padding:14px 16px 12px;display:flex;flex-direction:column;gap:9px;min-height:330px}
 .msg{max-width:74%;padding:9px 12px;border-radius:12px;font-size:14px;line-height:1.45}
-.msg.them{background:var(--tint);color:var(--ink);border-bottom-left-radius:5px}
-.msg.us{background:var(--violet);color:#fff;justify-self:end;border-bottom-right-radius:5px}
+.msg.them{background:var(--tint);color:var(--ink);border-bottom-left-radius:5px;align-self:flex-start}
+.msg.us{background:var(--violet);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
 .msg .meta{display:block;margin-top:4px;font-family:"JetBrains Mono",monospace;font-size:10.5px;
   opacity:.72;letter-spacing:.06em}
-/* the diagnostic panel Fyxit runs mid-conversation */
-.diag{border:1px solid var(--line-2);border-radius:8px;padding:12px 14px;background:#FCFCFD}
+
+/* typing indicator — the thing that makes it read as live */
+.typing{align-self:flex-start;display:flex;gap:4px;padding:11px 13px;background:var(--tint);
+  border-radius:12px;border-bottom-left-radius:5px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--violet);opacity:.45;
+  animation:bounce 1.15s ease-in-out infinite}
+.typing i:nth-child(2){animation-delay:.16s}
+.typing i:nth-child(3){animation-delay:.32s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-4px);opacity:1}}
+
+.diag{border:1px solid var(--line-2);border-radius:8px;padding:12px 14px;background:#FCFCFD;
+  align-self:stretch}
 .diag h4{margin:0;font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--soft);font-weight:400}
 .diag-rows{margin-top:7px;display:grid;gap:5px}
 .dr{display:flex;align-items:center;gap:10px;font-size:12.5px}
 .dr .k{color:var(--mid);min-width:104px}
 .dr .bar{flex:1;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
-.dr .bar i{display:block;height:100%;border-radius:3px;background:var(--violet)}
+.dr .bar i{display:block;height:100%;border-radius:3px;background:var(--violet);width:0}
 .dr .bar.warn i{background:var(--warn)}
 .dr .v{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink);min-width:58px;text-align:right}
 .resolved{display:flex;align-items:center;gap:9px;padding:8px 12px;border-radius:10px;
-  background:rgba(18,161,80,.09);color:var(--good);font-size:14px;font-weight:600}
+  background:rgba(18,161,80,.09);color:var(--good);font-size:14px;font-weight:600;align-self:stretch}
+
 .chat-foot{border-top:1px solid var(--line);padding:9px 14px;display:flex;gap:6px;
-  flex-wrap:wrap;background:#FBFAFF}
+  flex-wrap:wrap;background:#FBFAFF;align-items:center}
 .chip{border:1px solid var(--line-2);border-radius:999px;padding:5px 10px;font-size:12px;
-  color:var(--mid);background:#fff}
+  color:var(--mid);background:#fff;transition:background .3s,color .3s,border-color .3s}
+.chip.picked{background:var(--violet);border-color:var(--violet);color:#fff}
+
+/* ---- the 18s timeline ----
+   animation-delay cannot stagger a looping animation: it applies once, before
+   the first iteration, so every element would fall back into sync on loop two.
+   Each slot therefore gets its OWN keyframes on a shared 18s duration, and its
+   moment is expressed as a percentage. Deterministic, and it never drifts. */
+.play{opacity:0;animation-duration:18s;animation-timing-function:ease;
+  animation-iteration-count:infinite;animation-fill-mode:both}
+.d-chip{animation-name:k-d-chip}
+@keyframes k-d-chip{0%,2.22%{opacity:0;transform:translateY(7px)}4.72%,94%{opacity:1;transform:none}97%,100%{opacity:0;transform:translateY(-3px)}}
+.d-m1{animation-name:k-d-m1}
+@keyframes k-d-m1{0%,5.0%{opacity:0;transform:translateY(7px)}7.5%,94%{opacity:1;transform:none}97%,100%{opacity:0;transform:translateY(-3px)}}
+.d-r1{animation-name:k-d-r1}
+@keyframes k-d-r1{0%,17.78%{opacity:0;transform:translateY(7px)}20.28%,94%{opacity:1;transform:none}97%,100%{opacity:0;transform:translateY(-3px)}}
+.d-diag{animation-name:k-d-diag}
+@keyframes k-d-diag{0%,24.44%{opacity:0;transform:translateY(7px)}26.94%,94%{opacity:1;transform:none}97%,100%{opacity:0;transform:translateY(-3px)}}
+.d-r2{animation-name:k-d-r2}
+@keyframes k-d-r2{0%,40.0%{opacity:0;transform:translateY(7px)}42.5%,94%{opacity:1;transform:none}97%,100%{opacity:0;transform:translateY(-3px)}}
+.d-m2{animation-name:k-d-m2}
+@keyframes k-d-m2{0%,47.78%{opacity:0;transform:translateY(7px)}50.28%,94%{opacity:1;transform:none}97%,100%{opacity:0;transform:translateY(-3px)}}
+.d-done{animation-name:k-d-done}
+@keyframes k-d-done{0%,52.22%{opacity:0;transform:translateY(7px)}54.72%,94%{opacity:1;transform:none}97%,100%{opacity:0;transform:translateY(-3px)}}
+.gone{opacity:0;animation-duration:18s;animation-timing-function:ease;animation-iteration-count:infinite;animation-fill-mode:both;overflow:hidden}
+.d-t1{animation-name:k-d-t1}
+@keyframes k-d-t1{0%,10.0%{opacity:0;max-height:0;margin-bottom:-9px}11.67%,17.22%{opacity:1;max-height:38px;margin-bottom:0}18.89%,100%{opacity:0;max-height:0;margin-bottom:-9px}}
+.d-t2{animation-name:k-d-t2}
+@keyframes k-d-t2{0%,32.22%{opacity:0;max-height:0;margin-bottom:-9px}33.89%,39.44%{opacity:1;max-height:38px;margin-bottom:0}41.11%,100%{opacity:0;max-height:0;margin-bottom:-9px}}
+.bar i.fill{width:0;animation-duration:18s;animation-timing-function:cubic-bezier(.22,1,.36,1);animation-iteration-count:infinite;animation-fill-mode:both}
+.f-1{animation-name:k-f-1}
+@keyframes k-f-1{0%,26.11%{width:0}30.56%,94%{width:var(--w)}100%{width:0}}
+.f-2{animation-name:k-f-2}
+@keyframes k-f-2{0%,26.94%{width:0}31.39%,94%{width:var(--w)}100%{width:0}}
+.f-3{animation-name:k-f-3}
+@keyframes k-f-3{0%,27.78%{width:0}32.22%,94%{width:var(--w)}100%{width:0}}
+.f-4{animation-name:k-f-4}
+@keyframes k-f-4{0%,28.61%{width:0}33.06%,94%{width:var(--w)}100%{width:0}}
+@media (prefers-reduced-motion:reduce){
+  .play,.gone,.bar i.fill,.chat-bar .st i,.typing i{animation:none!important}
+  .play{opacity:1;transform:none}
+  .gone{display:none}                       /* a transcript has no typing dots */
+  .bar i.fill{width:var(--w)}
+}
 
 /* 2 · TRUST */
 .trust{border-bottom:1px solid var(--line);background:#fff}
@@ -226,6 +299,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
 
 <!-- 1 · HERO -->
 <section class="hero">
+  <div class="aurora" aria-hidden="true"></div>
   <div class="hero-in">
     <div>
       <span class="eyebrow">AI tech support for school districts</span>
@@ -240,45 +314,56 @@ footer{background:#fff;border-top:1px solid var(--line)}
     </div>
 
     <div class="stage">
-      <div class="chat" role="img" aria-label="A Fyxit conversation: a teacher reports slow Wi-Fi in room 214, Fyxit runs a diagnostic showing the access point at 61% signal and 34 clients, resets it, and the issue is resolved in 2 minutes 40 seconds without a ticket being opened.">
+      <div class="chat">
         <div class="chat-bar">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
           <span class="who">Wildcat High School · Tech Support</span>
-          <span class="st"><i></i> Resolving</span>
+          <span class="st"><i></i> Live</span>
         </div>
-        <div class="thread">
-          <div class="msg them">Wi-Fi keeps dropping in room 214. Half the class can't load anything.
+
+        <!-- The transcript below is the demo. It plays on a loop; under
+             prefers-reduced-motion it renders as a complete static transcript. -->
+        <div class="thread" role="log" aria-live="off"
+             aria-label="Demo conversation: a teacher reports Wi-Fi dropping in room 214. Fyxit runs a live diagnostic on access point AP-214, finds channel overlap with AP-212, moves it to channel 11 and resets it. Resolved in 2 minutes 40 seconds with no ticket opened.">
+          <div class="msg them play d-m1">Wi-Fi keeps dropping in room 214. Half the class can't load anything.
             <span class="meta">Ms. Alvarez · 9:14 AM</span></div>
-          <div class="msg us">Checking the access point in 214 now — give me twenty seconds.
+
+          <div class="typing gone d-t1" aria-hidden="true"><i></i><i></i><i></i></div>
+
+          <div class="msg us play d-r1">Checking the access point in 214 now — give me twenty seconds.
             <span class="meta">Fyxit · 9:14 AM</span></div>
 
-          <div class="diag">
+          <div class="diag play d-diag">
             <h4>AP-214 · live diagnostic</h4>
             <div class="diag-rows">
               <div class="dr"><span class="k">Signal</span>
-                <span class="bar warn"><i style="width:61%"></i></span><span class="v">61%</span></div>
+                <span class="bar warn"><i class="fill f-1" style="--w:61%"></i></span><span class="v">61%</span></div>
               <div class="dr"><span class="k">Clients</span>
-                <span class="bar warn"><i style="width:87%"></i></span><span class="v">34 / 40</span></div>
+                <span class="bar warn"><i class="fill f-2" style="--w:87%"></i></span><span class="v">34 / 40</span></div>
               <div class="dr"><span class="k">Uptime</span>
-                <span class="bar"><i style="width:96%"></i></span><span class="v">31d</span></div>
+                <span class="bar"><i class="fill f-3" style="--w:96%"></i></span><span class="v">31d</span></div>
               <div class="dr"><span class="k">Channel</span>
-                <span class="bar warn"><i style="width:42%"></i></span><span class="v">overlap</span></div>
+                <span class="bar warn"><i class="fill f-4" style="--w:42%"></i></span><span class="v">overlap</span></div>
             </div>
           </div>
 
-          <div class="msg us">Channel overlap with AP-212. I've moved 214 to channel 11 and
-            reset it. Try again now.<span class="meta">Fyxit · 9:16 AM</span></div>
-          <div class="msg them">That did it. Thank you.<span class="meta">Ms. Alvarez · 9:17 AM</span></div>
+          <div class="typing gone d-t2" aria-hidden="true"><i></i><i></i><i></i></div>
 
-          <div class="resolved">
+          <div class="msg us play d-r2">Channel overlap with AP-212. I've moved 214 to channel 11 and
+            reset it. Try again now.<span class="meta">Fyxit · 9:16 AM</span></div>
+
+          <div class="msg them play d-m2">That did it. Thank you.<span class="meta">Ms. Alvarez · 9:17 AM</span></div>
+
+          <div class="resolved play d-done">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M13 4.5 6.2 11.5 3 8.3" stroke="currentColor" stroke-width="2.2"
                     stroke-linecap="round" stroke-linejoin="round"/></svg>
             Resolved in 2m 40s · no ticket opened
           </div>
         </div>
+
         <div class="chat-foot">
-          <span class="chip">Wi-Fi is slow</span>
+          <span class="chip picked play d-chip">Wi-Fi is slow</span>
           <span class="chip">Computer is laggy</span>
           <span class="chip">Can't print</span>
           <span class="chip">An app won't load</span>
