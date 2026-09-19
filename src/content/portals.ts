@@ -44,10 +44,11 @@ export interface SeoQuery {
 
 export interface Seo {
   measuredOn: string;
-  /** Google Lighthouse, mobile, 0-100. */
-  performance: number;
-  seoScore: number;
-  accessibility: number;
+  /** Google Lighthouse, mobile, 0-100. null when the run did not complete —
+      unmeasured is not the same as a score of zero and must never render as one. */
+  performance: number | null;
+  seoScore: number | null;
+  accessibility: number | null;
   /** Does the domain appear in Chrome UX Report field data at all? */
   crux: boolean;
   queries: SeoQuery[];
@@ -73,6 +74,65 @@ export interface Portal {
 }
 
 export const portals: Portal[] = [
+  {
+    token: "fyx-d50eadd57473b505ca",
+    client: "Fyxit AI",
+    clientDomain: "hubbleiq.com",
+    project: "Marketing site — direction study",
+    round: "Round 01",
+    deliveredOn: "2026-09-18",
+    expiresOn: "2026-12-17",
+    intro:
+      "This is an unsolicited direction study. Your product is a character — the site says \"Meet Rosie\" and describes her as a technician who does the work rather than talks about it — and she has never been drawn. So we drew her, doing the six jobs your own demo chips already name, and built the page around her.",
+    next: [
+      "Open the page and scroll it the way a district IT director would.",
+      "Leave notes anywhere on this page — they reach us by email immediately.",
+      "If the direction is right, we scope the build and commission the full character set.",
+    ],
+    deliverables: [
+      {
+        slug: "marketing-site",
+        title: "Fyxit AI — marketing site",
+        kind: "Full landing page · illustrated character system",
+        rationale:
+          "You named your product after a person and then showed nobody. The six problems on your live demo — slow Wi-Fi, a laggy computer, a jammed printer, an app that will not load, a cracked screen, a phishing email — are the most concrete thing on your site, and they are currently buttons. Here they are the spine of the page, with one consistent Rosie doing each of them.",
+        look: [
+          "Rosie herself. One character across six frames — same face, same shirt, same badge — which is what makes a character system rather than six stock illustrations.",
+          "The six jobs. Your own demo chips, promoted from buttons to the page's structure.",
+          "The trust rail names the districts you already list: Oakland Unified, Achievement First, La'Salle, Venus ISD, MSD Steuben County, Splendora ISD.",
+          "The numbers band. 60% handled automatically, one line to deploy, zero workflow changes — all yours.",
+          "Typography is Bricolage Grotesque over Figtree, deliberately different from the other studies in this portfolio so they do not read as one template.",
+        ],
+        href: "/portal/fyxit/index.html",
+        card: "/portal/fyxit/card.jpg",
+        preview: "/portal/fyxit/preview.jpg",
+        caveats: [
+          "Every figure and product claim is yours, quoted from hubbleiq.com on 2026-09-18: 60% of routine issues handled automatically, one line of code to deploy, no workflow changes, and the Incident IQ, Zendesk, Freshdesk, SMTP and Chrome integrations.",
+          "Rosie is AI-generated for this study and is not a licensed character. A real build would commission her properly from an illustrator so you own her outright — which matters, because a character you cannot legally defend is not a brand asset.",
+          "District names are reproduced from your own Trusted By rail. We have not contacted any of them.",
+          "The escalation figure on the page infers that what is not automated is escalated. Your site states the 60% but not the remainder, so treat that line as ours until you confirm it.",
+        ],
+        seo: {
+          measuredOn: "2026-09-18",
+          performance: null,
+          seoScore: null,
+          accessibility: null,
+          crux: false,
+          queries: [
+            { query: "AI IT helpdesk for school districts", position: null, scanned: 9,
+              winners: ["incidentiq.com", "aesa.us", "magicschool.ai"] },
+          ],
+          verdict:
+            "You do not appear in the top 9 for the phrase that describes exactly what you sell. The site that ranks first is incidentiq.com — which you list on your own homepage as an integration partner. Your partner is winning your category search while you are absent from it, and a district director looking for what you do will find them instead.",
+          notes: [
+            "Position from a live Google SERP via SerpApi on 2026-09-18. We could see 9 organic results, so 'not found' means not in the top 9 — we cannot claim anything about position 10 or beyond.",
+            "PageSpeed Insights could not complete a run against hubbleiq.com, so the three Lighthouse scores are unmeasured rather than zero. We will not print a number we did not get.",
+            "The domain still resolves as hubbleiq.com while the product is branded Fyxit AI. Two names split whatever authority the domain has earned, and Collab Capital's own portfolio page still lists you as Hubble IQ.",
+          ],
+        },
+      },
+    ],
+  },
   {
     token: "jnt-2a727d076b273e9059",
     client: "Janta Power",
