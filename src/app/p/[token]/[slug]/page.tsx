@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPortal, formatDate, portals } from "@/content/portals";
+import { getPortal, formatDate, portals, type Seo } from "@/content/portals";
 import { Viewer } from "@/components/portal/Viewer";
 import { NoteForm } from "@/components/portal/NoteForm";
 
@@ -108,16 +108,99 @@ export default async function DeliverablePage({
           )}
         </div>
 
-        <NoteForm
-          token={portal.token}
-          client={portal.client}
-          defaultSlug={deliverable.slug}
-          deliverables={portal.deliverables.map((d) => ({
-            slug: d.slug,
-            title: d.title,
-          }))}
-        />
+        <div>
+          {deliverable.seo && <SeoPanel seo={deliverable.seo} domain={portal.clientDomain} />}
+          <NoteForm
+            token={portal.token}
+            client={portal.client}
+            defaultSlug={deliverable.slug}
+            deliverables={portal.deliverables.map((d) => ({
+              slug: d.slug,
+              title: d.title,
+            }))}
+          />
+        </div>
       </div>
     </>
+  );
+}
+
+/* Search visibility. Every number carries its source and its bound — a position
+   we could not see is reported as "not in the top N we could read", never as
+   "not ranking", because the two are different claims. */
+function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
+  const score = (n: number) =>
+    n >= 90 ? "var(--good)" : n >= 50 ? "var(--accent)" : "var(--accent)";
+  return (
+    <section className="mb-12 border border-[var(--line-bright)] p-8">
+      <div className="flex flex-wrap items-baseline justify-between gap-3">
+        <h2 className="text-[22px] font-medium tracking-[-0.01em]">Search visibility</h2>
+        <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--dim)]">
+          Measured {formatDate(seo.measuredOn)}
+        </span>
+      </div>
+
+      <div className="mt-7 grid grid-cols-3 gap-px bg-[var(--line)]">
+        {([
+          ["Performance", seo.performance],
+          ["SEO", seo.seoScore],
+          ["Accessibility", seo.accessibility],
+        ] as const).map(([label, n]) => (
+          <div key={label} className="bg-[var(--ground)] px-4 py-5">
+            <div className="tnum text-[34px] leading-none" style={{ color: score(n) }}>
+              {n}
+            </div>
+            <div className="mt-2 text-[13px] text-[var(--muted)]">{label}</div>
+            <div className="mt-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--dim)]">
+              Lighthouse, mobile
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-7 text-[15px] leading-[1.7] text-[var(--muted)]">{seo.verdict}</p>
+
+      <h3 className="mt-9 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
+        Where {domain ?? "the site"} ranks on Google today
+      </h3>
+      <ul className="mt-4 space-y-4">
+        {seo.queries.map((q) => (
+          <li key={q.query} className="border-t border-[var(--line)] pt-4">
+            <div className="flex items-baseline justify-between gap-4">
+              <span className="text-[14px] text-[var(--text)]">&ldquo;{q.query}&rdquo;</span>
+              <span
+                className="tnum shrink-0 font-[family-name:var(--font-mono)] text-[13px]"
+                style={{ color: q.position ? "var(--good)" : "var(--accent)" }}
+              >
+                {q.position ? `#${q.position}` : `not in top ${q.scanned}`}
+              </span>
+            </div>
+            {q.winners.length > 0 && (
+              <div className="mt-2 text-[13px] text-[var(--dim)]">
+                Ranking instead: {q.winners.join(" · ")}
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <h3 className="mt-9 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
+        How this was measured
+      </h3>
+      <ul className="mt-4 space-y-2.5">
+        {seo.notes.map((n) => (
+          <li key={n} className="text-[13px] leading-[1.6] text-[var(--muted)]">
+            {n}
+          </li>
+        ))}
+      </ul>
+      {!seo.crux && (
+        <p className="mt-6 border-t border-[var(--line)] pt-5 text-[13px] leading-[1.6] text-[var(--muted)]">
+          Google holds no Chrome UX Report field data for this domain, which means
+          too few real visitors for it to report on. That is a traffic finding
+          rather than a ranking one.
+        </p>
+      )}
+    </section>
   );
 }

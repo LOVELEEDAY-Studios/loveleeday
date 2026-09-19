@@ -28,6 +28,32 @@ export interface Deliverable {
   preview: string;
   /** Notes we owe them — open questions, placeholders, known gaps. */
   caveats?: string[];
+  /** Measured search visibility. Every figure here comes from a named source. */
+  seo?: Seo;
+}
+
+export interface SeoQuery {
+  query: string;
+  /** Organic position, or null when absent from the results we could see. */
+  position: number | null;
+  /** How many organic results we actually scanned — bounds the claim. */
+  scanned: number;
+  /** Who is winning it instead. */
+  winners: string[];
+}
+
+export interface Seo {
+  measuredOn: string;
+  /** Google Lighthouse, mobile, 0-100. */
+  performance: number;
+  seoScore: number;
+  accessibility: number;
+  /** Does the domain appear in Chrome UX Report field data at all? */
+  crux: boolean;
+  queries: SeoQuery[];
+  /** The diagnosis, in plain language. */
+  verdict: string;
+  notes: string[];
 }
 
 export interface Portal {
@@ -87,6 +113,26 @@ export const portals: Portal[] = [
           "Photography, renders and partner logos are yours, used here only to show the layout. Nothing on this page is hosted for you or live.",
           "The motion is one 3 KB inline script and no animation library, animating only transform, opacity and clip-path so it stays off the main thread. It is disabled entirely under prefers-reduced-motion, which shows the comparison as a static split instead.",
         ],
+        seo: {
+          measuredOn: "2026-09-18",
+          performance: 62,
+          seoScore: 100,
+          accessibility: 100,
+          crux: false,
+          queries: [
+            { query: "vertical solar towers for commercial sites", position: null, scanned: 8,
+              winners: ["reddit.com", "archanatura.com", "lumiton.solar"] },
+            { query: "solar towers more energy less land", position: null, scanned: 8,
+              winners: ["reddit.com", "facebook.com", "seia.org"] },
+          ],
+          verdict:
+            "Your markup is not the problem — Google's own Lighthouse audit scores your SEO 100/100 and your accessibility 100/100, which is better than most of the portfolio. The problem is that you do not appear at all for the two queries that describe what you sell, and a Reddit thread ranks first for both. You are being out-ranked on your own category by a forum post.",
+          notes: [
+            "Lighthouse mobile, run 2026-09-18. Performance 62 is the weak number: legacy JavaScript, unused JavaScript and CSS, render-blocking requests and console errors are all flagged.",
+            "Positions come from a live Google SERP via SerpApi. We could see 8 organic results per query, so 'not found' means not in the top 8 — we cannot claim anything about position 9 or beyond.",
+            "A category this new has almost no competing pages, which cuts both ways: ranking is winnable cheaply, and nobody is searching the term yet. The traffic will come from the problem your buyers already search for — land constraints, megawatts per acre — not from the technology name.",
+          ],
+        },
       },
     ],
   },
@@ -126,6 +172,24 @@ export const portals: Portal[] = [
           "Photography is generated, licensed for this study only. A build would use a commissioned or stock-licensed set.",
           "Logos in the trust bar are indicative placement, not claimed relationships.",
         ],
+        seo: {
+          measuredOn: "2026-09-18",
+          performance: 67,
+          seoScore: 100,
+          accessibility: 88,
+          crux: false,
+          queries: [
+            { query: "retirement income infrastructure recordkeeper insurer", position: 1, scanned: 9, winners: [] },
+            { query: "plan participant portability annuity", position: 6, scanned: 9, winners: [] },
+          ],
+          verdict:
+            "You rank first for the phrase that describes your category and sixth for one of your products, so search is working better for you than for most of this portfolio. Lighthouse scores your SEO 100/100. The gap is accessibility at 88 and performance at 67 — and a colour-contrast failure that affects real readers, not just a score.",
+          notes: [
+            "Lighthouse mobile, run 2026-09-18. Flagged: insufficient contrast between background and foreground colours, links without discernible names, heading elements not in sequential order, render-blocking requests and legacy JavaScript.",
+            "Ten <h1> elements on the homepage. One page should have one. It is not why you rank where you do, but it is the kind of thing that makes a page harder for assistive technology and for crawlers to read.",
+            "Positions from a live Google SERP via SerpApi, 9 organic results visible per query.",
+          ],
+        },
       },
     ],
   },
