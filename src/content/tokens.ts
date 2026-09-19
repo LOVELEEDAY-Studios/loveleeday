@@ -28,5 +28,8 @@ export const TOKENS = {
   micruity: tok("PORTAL_TOKEN_MICRUITY"),
   janta: tok("PORTAL_TOKEN_JANTA"),
   fyxit: tok("PORTAL_TOKEN_FYXIT"),
+  novarna: tok("PORTAL_TOKEN_NOVARNA"),
+  soarce: tok("PORTAL_TOKEN_SOARCE"),
+  loanwell: tok("PORTAL_TOKEN_LOANWELL"),
   collab: tok("PORTFOLIO_TOKEN_COLLAB"),
 } as const;

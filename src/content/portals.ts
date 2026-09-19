@@ -77,6 +77,176 @@ export interface Portal {
 
 export const portals: Portal[] = [
   {
+    token: TOKENS.novarna,
+    client: "Novarna",
+    clientDomain: "circnova.com",
+    project: "Marketing site — direction study",
+    round: "Round 01",
+    deliveredOn: "2026-09-19",
+    expiresOn: "2026-12-18",
+    intro:
+      "This is an unsolicited direction study. Your site is already good — Fraunces over Work Sans with your crimson, and a loop diagram that earns its place — so we kept your design system rather than imposing ours. What changed is what the header says, and where your best proof sits.",
+    next: [
+      "Open the page and scroll it the way your buyer would.",
+      "Leave notes anywhere on this page — they reach us by email immediately.",
+      "If the direction is right, we scope the build against your full site map.",
+    ],
+    deliverables: [
+      {
+        slug: "marketing-site",
+        title: "Novarna — marketing site",
+        kind: "Full landing page · desktop and mobile",
+        rationale:
+          "Your headline is a twelve-word category description. Your best line is buried as a section heading halfway down: \"RNA drug discovery is still largely a guessing game.\" And your strongest proof — the University of Michigan DiFeo Lab testing your candidates in their own facility, where the designs outperformed a commercially available treatment — is a paragraph near the bottom. Third-party validation is the rarest thing in AI-for-biology. It belongs above the fold.",
+        look: [
+          "The header is your own line, answered: the guessing game, and the loop that closed it.",
+          "The Michigan result sits directly under the headline rather than in a case study near the bottom.",
+          "Your loop diagram is the hero object and it turns — a 12s arc travels the ring and each node lights as it passes, with NovaEngine and NovaLab tagged onto the circle.",
+          "Your typefaces and your crimson, unchanged. A redesign study should not make you look like the studio that made it.",
+        ],
+        href: "/portal/novarna/index.html",
+        card: "/portal/novarna/card.jpg",
+        preview: "/portal/novarna/preview.jpg",
+        caveats: [
+          "Every figure is yours, quoted from circnova.com on 2026-09-19: 7x faster development cycles, 100% proprietary training data, and the DiFeo Lab result.",
+          "We did not draw a comparison chart of the Michigan result. The magnitude of the outperformance is not disclosed anywhere, and two bars would imply one.",
+          "Your assets already serve from novarna.ai while the domain still resolves as circnova.com. Two names split whatever authority the domain has earned, and Collab Capital's portfolio page still lists you as CircNova.",
+        ],
+        seo: {
+          measuredOn: "2026-09-18",
+          performance: 68,
+          seoScore: 100,
+          accessibility: 94,
+          crux: false,
+          queries: [
+            { query: "AI RNA therapeutics design platform", position: null, scanned: 9,
+              winners: ["sciencedirect.com", "bocsci.com", "journals.asm.org"] },
+          ],
+          verdict:
+            "Lighthouse scores your SEO 100/100, so the markup is not the problem. You do not appear in the top 9 for the phrase describing your platform — the results are journals and catalogue sites, not companies. A category with no commercial competition in it is winnable cheaply, and also one nobody is searching yet. Your traffic will come from the target, not the technology name.",
+          notes: [
+            "Lighthouse mobile, run 2026-09-18. Flagged: multiple page redirects, unused JavaScript.",
+            "Position from a live Google SERP via SerpApi, 9 organic results visible.",
+            "Measured against circnova.com. Anything served from novarna.ai is unmeasured here.",
+          ],
+        },
+      },
+    ],
+  },
+  {
+    token: TOKENS.soarce,
+    client: "Soarce",
+    clientDomain: "soarceusa.com",
+    project: "Marketing site — direction study",
+    round: "Round 01",
+    deliveredOn: "2026-09-19",
+    expiresOn: "2026-12-18",
+    intro:
+      "This is an unsolicited direction study. Your material is genuinely remarkable and your site is the heaviest of the thirty-eight we audited across this portfolio. That gap is the whole argument.",
+    next: [
+      "Open the page and scroll it the way your buyer would.",
+      "Leave notes anywhere on this page — they reach us by email immediately.",
+      "If the direction is right, we scope the build against your full site map.",
+    ],
+    deliverables: [
+      {
+        slug: "marketing-site",
+        title: "Soarce — marketing site",
+        kind: "Full landing page · desktop and mobile",
+        rationale:
+          "Your homepage is 5,009 KB — thirty-four times the portfolio median of 146 KB, and the heaviest of all thirty-eight companies we measured. A materials company whose pitch is stronger, lighter, cheaper should not ship the heaviest page in its investor's portfolio. This rebuild is 416 KB and says the same things.",
+        look: [
+          "The hero is the material itself, full bleed, rather than a card describing it.",
+          "Your own figures carry the page: 8x stronger than steel, 22 GPa tensile strength, 200x water retention.",
+          "Weight. 416 KB against 5,009 KB — same claims, a ninety-two percent reduction.",
+          "Space Grotesk over Epilogue, chosen so this page shares no typeface with any other study in this portfolio.",
+        ],
+        href: "/portal/soarce/index.html",
+        card: "/portal/soarce/card.jpg",
+        preview: "/portal/soarce/preview.jpg",
+        caveats: [
+          "Every claim and figure is yours, scraped from soarceusa.com on 2026-09-19, including the CAGE code and UEI.",
+          "The circular fiber diagram is an illustrative rendering and is labelled as such on the page. It is not a captured micrograph.",
+          "Your FAQ answers render inside a collapsed accordion we could not extract, so the page shows your questions and points to your site rather than inventing answers.",
+          "Photography is licensed stock, credited on the page.",
+        ],
+        seo: {
+          measuredOn: "2026-09-18",
+          performance: 63,
+          seoScore: 92,
+          accessibility: 91,
+          crux: false,
+          queries: [
+            { query: "nanofiber material for manufacturers", position: null, scanned: 10,
+              winners: ["matregenix.com", "mono.ipros.com", "sciencedirect.com"] },
+          ],
+          verdict:
+            "Your markup scores 92 and is not the problem. Performance at 63 is, and the 5,009 KB page is why. You do not appear in the top 10 for the phrase describing what you sell — matregenix.com does. Page weight and search are the same problem here: a page that heavy is slow to crawl and slow to load for the buyer who does find it.",
+          notes: [
+            "Lighthouse mobile, run 2026-09-18. Browser errors were logged to the console.",
+            "Position from a live Google SERP via SerpApi, 10 organic results visible.",
+          ],
+        },
+      },
+    ],
+  },
+  {
+    token: TOKENS.loanwell,
+    client: "LoanWell",
+    clientDomain: "loanwell.com",
+    project: "Marketing site — direction study",
+    round: "Round 01",
+    deliveredOn: "2026-09-19",
+    expiresOn: "2026-12-18",
+    intro:
+      "This is an unsolicited direction study. Your product copy and your mission are genuinely strong. The problem is that the lenders who most need you are not finding you, and the page argues about software rather than about capital.",
+    next: [
+      "Open the page and scroll it the way your buyer would.",
+      "Leave notes anywhere on this page — they reach us by email immediately.",
+      "If the direction is right, we scope the build against your full site map.",
+    ],
+    deliverables: [
+      {
+        slug: "marketing-site",
+        title: "LoanWell — marketing site",
+        kind: "Full landing page · desktop and mobile",
+        rationale:
+          "Affordable capital reaches nobody if the lender looking for the tool to deploy it cannot find you. Measured on 2026-09-18, you do not appear in the top 9 results for \"loan origination software for CDFI\". This rebuild leads with deployment rather than features, and closes on the line Collab Capital publishes from your own CEO.",
+        look: [
+          "The page argues about deploying capital, not about workflow features.",
+          "Your own product screenshots — the servicing calculator and the underwriting workbook — bleeding off the right edge rather than centred in a card.",
+          "The six partner organisations you already name, treated as the proof they are.",
+          "Spectral over Libre Franklin, chosen so this page shares no typeface with any other study in this portfolio.",
+        ],
+        href: "/portal/loanwell/index.html",
+        card: "/portal/loanwell/card.jpg",
+        preview: "/portal/loanwell/preview.jpg",
+        caveats: [
+          "Every figure and line of product copy is yours, pulled from loanwell.com on 2026-09-19, including the SOC-2 Type 2 paragraph verbatim.",
+          "The CEO quote is reproduced from Collab Capital's own portfolio page, not from an interview with us.",
+          "One correction regardless of this study: the product screenshot served on your site contained a rendering seam, with amortisation rows 11 to 14 duplicated over row 17. We cropped above it here.",
+        ],
+        seo: {
+          measuredOn: "2026-09-18",
+          performance: 61,
+          seoScore: 92,
+          accessibility: 85,
+          crux: false,
+          queries: [
+            { query: "loan origination software for CDFI", position: null, scanned: 9,
+              winners: ["nortridge.com", "themortgageoffice.com", "builderspatch.com"] },
+          ],
+          verdict:
+            "Your markup scores 92 and is not the problem. You are absent from the top 9 for the single phrase a CDFI would type when looking for exactly what you build, and three general-purpose lending platforms rank instead. None of them serves mission-driven lenders specifically — which is your whole differentiator, and the reason the gap is winnable.",
+          notes: [
+            "Lighthouse mobile, run 2026-09-18. Flagged: JavaScript execution time.",
+            "Position from a live Google SERP via SerpApi, 9 organic results visible, so 'not found' means not in the top 9.",
+          ],
+        },
+      },
+    ],
+  },
+  {
     token: TOKENS.fyxit,
     client: "Fyxit AI",
     clientDomain: "hubbleiq.com",
