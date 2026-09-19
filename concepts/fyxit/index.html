@@ -256,21 +256,22 @@ header.nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);
 .row p{margin:5px 0 0;font-size:14.5px;line-height:1.6;color:var(--mid)}
 
 
-/* 5b · WHO IT IS FOR — photography, because the page was all interface and
+/* 5b · WHO IT IS FOR (class prefix: .people — `.who` collided with the
+   chat header's label span and inflated it to 182px) — photography, because the page was all interface and
    type and the product exists in a building full of people. Real licensed
    stock (Pexels), not generated: the subject is schools, and generated
    imagery of children is not something to put on a client deliverable. */
-.who{padding:72px 0;border-top:1px solid var(--line);background:#fff}
-.who-in{max-width:1240px;margin:0 auto;padding:0 28px}
-.who-head{max-width:46ch}
-.who-head h2{font-size:clamp(1.6rem,2.9vw,2.15rem);line-height:1.15}
-.who-head p{margin:16px 0 0;font-size:16px;line-height:1.7;color:var(--mid)}
-.who-grid{margin-top:40px;display:grid;gap:26px;grid-template-columns:1fr 1fr}
-.who-card figure{margin:0;border-radius:10px;overflow:hidden;background:var(--tint)}
-.who-card img{width:100%;aspect-ratio:3/2;object-fit:cover}
-.who-card h3{margin:18px 0 0;font-size:17px;font-weight:600}
-.who-card p{margin:8px 0 0;font-size:15px;line-height:1.65;color:var(--mid);max-width:44ch}
-.who-card .tagline{display:inline-block;margin-top:12px;font-family:"JetBrains Mono",monospace;
+.people{padding:72px 0;border-top:1px solid var(--line);background:#fff}
+.people-in{max-width:1240px;margin:0 auto;padding:0 28px}
+.people-head{max-width:46ch}
+.people-head h2{font-size:clamp(1.6rem,2.9vw,2.15rem);line-height:1.15}
+.people-head p{margin:16px 0 0;font-size:16px;line-height:1.7;color:var(--mid)}
+.people-grid{margin-top:40px;display:grid;gap:26px;grid-template-columns:1fr 1fr}
+.people-card figure{margin:0;border-radius:10px;overflow:hidden;background:var(--tint)}
+.people-card img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.people-card h3{margin:18px 0 0;font-size:17px;font-weight:600}
+.people-card p{margin:8px 0 0;font-size:15px;line-height:1.65;color:var(--mid);max-width:44ch}
+.people-card .tagline{display:inline-block;margin-top:12px;font-family:"JetBrains Mono",monospace;
   font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
 
 /* 6 · CLOSE — full-bleed photograph instead of a flat wash */
@@ -290,7 +291,7 @@ header.nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);
   color:rgba(255,255,255,.55)}
 
 @media (max-width:940px){
-  .who-grid{grid-template-columns:1fr}
+  .people-grid{grid-template-columns:1fr}
   .close-bg::after{background:linear-gradient(180deg,rgba(24,26,38,.9),rgba(24,26,38,.82))}
 }
 
@@ -498,16 +499,16 @@ footer{background:#fff;border-top:1px solid var(--line)}
 
 
 <!-- 5b · WHO IT IS FOR -->
-<section class="who">
-  <div class="who-in">
-    <div class="who-head">
+<section class="people">
+  <div class="people-in">
+    <div class="people-head">
       <span class="eyebrow">Who this is for</span>
       <h2>Two people, and the afternoon between them.</h2>
       <p>Every routine ticket is a teacher losing a lesson and a technician losing a drive
          across the district. Fyxit is the thing that stands between them.</p>
     </div>
-    <div class="who-grid">
-      <article class="who-card">
+    <div class="people-grid">
+      <article class="people-card">
         <figure><img src="photo-teacher.jpg" width="1400" height="933" loading="lazy"
           alt="A teacher leaning over to help a student at a classroom computer"></figure>
         <span class="tagline">The teacher</span>
@@ -515,7 +516,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <p>Asking Fyxit takes fifteen seconds and happens in the room. No portal, no ticket
            number, no waiting until sixth period.</p>
       </article>
-      <article class="who-card">
+      <article class="people-card">
         <figure><img src="photo-itlead.jpg" width="1400" height="933" loading="lazy"
           alt="A district IT lead working on a laptop beside a server rack"></figure>
         <span class="tagline">The district IT lead</span>
