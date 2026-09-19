@@ -27,17 +27,27 @@
 }
 
 :root {
-  --ground: #08080A;
-  --raised: #111114;
-  --sunk: #050506;
-  --line: #1F1F25;
-  --line-bright: #33333D;
-  --text: #EFEFF2;
-  --muted: #9A9AA6;
-  --dim: #63636E;
-  --accent: #FF4713;
-  --accent-dim: #C2340E;
-  --good: #3FCF8E;
+  /* LOVELEEDAY Studios — restored landing-page direction, 2026-09-19.
+     Swiss-editorial: white ground, near-black type, hairline rules, mono
+     eyebrows, one violet accent. #6441DA is sampled from the accent mark in
+     the delivered build, not chosen. This replaces the dark product-studio
+     palette; the client study pages keep their own brands, because a studio
+     that makes every client look like itself is a template. */
+  --ground: #FFFFFF;
+  --raised: #FAFAFA;
+  --sunk: #F4F3F7;
+  --line: #E4E2EA;
+  --line-bright: #161616;
+  --text: #161616;
+  --muted: #4A4754;
+  --dim: #6E6B7A;
+  --accent: #6441DA;
+  --accent-dim: #4E31B4;
+  --good: #0F7B4F;
+
+  /* wash tints from the delivered palette, for panels that need lift */
+  --wash-1: #F3EFFC;
+  --wash-2: #E9E2F5;
 
   /* The text column is 420px on purpose. Wide text columns read as documents;
      this is the Stripe measure. */

@@ -23,7 +23,7 @@ export default function PortalLayout({
           >
             <LogoMark size={26} />
             <span className="text-[13px] font-medium tracking-[-0.01em]">
-              LOVELEEDAY<span className="text-[var(--dim)]"> Studios</span>
+              loveleeday<span className="text-[var(--dim)]"> studios</span><span className="text-[var(--accent)]">.</span>
             </span>
           </Link>
           <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
