@@ -48,7 +48,7 @@ export const portfolio: Portfolio = {
   preparedFor: "Collab Capital",
   deliveredOn: "2026-09-18",
   intro:
-    "We audited all 38 live sites across your portfolio, then rebuilt three of them. Nothing here was commissioned and nothing is a proposal — it is an argument made in working HTML rather than in a deck. Every figure on every page belongs to the company it describes, and every measurement below names its source.",
+    "Your next advantage may begin with a question no one has asked. We asked one about your portfolio — what do all 38 of these sites actually look like to the buyer trying to find them — then answered it in working HTML rather than in a deck. Nothing here was commissioned and nothing is a proposal. Every figure belongs to the company it describes, and every measurement names its source.",
 
   fundFindings: [
     {
