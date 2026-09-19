@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { getPortal } from "@/content/portals";
+import { portfolio } from "@/content/portfolio";
 
 export const dynamic = "force-dynamic";
 
@@ -15,11 +16,21 @@ export async function POST(request: Request) {
     const token = String(body.token ?? "");
 
     // The token is re-checked here rather than trusted from the client, so this
-    // endpoint cannot be used to send mail from an arbitrary payload.
-    const portal = getPortal(token);
-    if (!portal) {
+    // endpoint cannot be used to send mail from an arbitrary payload. The
+    // fund-level portfolio page carries its own token and is accepted the same
+    // way — it is a different object but the same trust boundary.
+    const found = getPortal(token);
+    const isPortfolio = token === portfolio.token;
+    if (!found && !isPortfolio) {
       return NextResponse.json({ error: "Unknown review link" }, { status: 404 });
     }
+    const portal = found ?? {
+      token: portfolio.token,
+      client: portfolio.fund,
+      project: "Portfolio study",
+      round: "Round 01",
+      deliverables: portfolio.cases.map((c) => ({ slug: c.slug, title: c.company })),
+    };
 
     const name = String(body.name ?? "").trim().slice(0, 120);
     const email = String(body.email ?? "").trim().slice(0, 200);
