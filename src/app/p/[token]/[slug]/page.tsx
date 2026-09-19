@@ -129,7 +129,8 @@ export default async function DeliverablePage({
    we could not see is reported as "not in the top N we could read", never as
    "not ranking", because the two are different claims. */
 function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
-  const score = (n: number) =>
+  const score = (n: number | null) =>
+    n === null ? "var(--dim)" :
     n >= 90 ? "var(--good)" : n >= 50 ? "var(--accent)" : "var(--accent)";
   return (
     <section className="mb-12 border border-[var(--line-bright)] p-8">
@@ -147,12 +148,15 @@ function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
           ["Accessibility", seo.accessibility],
         ] as const).map(([label, n]) => (
           <div key={label} className="bg-[var(--ground)] px-4 py-5">
-            <div className="tnum text-[34px] leading-none" style={{ color: score(n) }}>
-              {n}
+            <div
+              className="tnum text-[34px] leading-none"
+              style={{ color: n === null ? "var(--dim)" : score(n) }}
+            >
+              {n === null ? "—" : n}
             </div>
             <div className="mt-2 text-[13px] text-[var(--muted)]">{label}</div>
             <div className="mt-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--dim)]">
-              Lighthouse, mobile
+              {n === null ? "Not measured" : "Lighthouse, mobile"}
             </div>
           </div>
         ))}
