@@ -560,34 +560,77 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
       return [v[0] / m, v[1] / m, v[2] / m];
     })();
 
-    /* One sphere, rasterised once at high resolution and blitted per atom.
-       Building ~30 radial gradients every frame is what makes this kind of thing
-       drop frames on an 8 GB machine; building two and scaling them does not. */
-    function sprite(rgb) {
-      var S = 128, c = document.createElement('canvas'), g;
+    /* ---- sphere impostor, shaded per pixel -------------------------------
+       The previous version faked a sphere with a hand-placed radial gradient.
+       A real impostor reconstructs the surface normal at every pixel -- for a
+       screen-aligned sphere, N = (dx, dy, sqrt(1 - dx^2 - dy^2)) -- and lights
+       that. Everything below follows from having a true normal:
+
+         · Lambert diffuse            N.L
+         · Blinn-Phong specular       (N.H)^s, H = normalize(L + V), V = (0,0,1)
+         · Fresnel rim                (1 - N.V)^5, which is what stops a sphere
+                                      reading as a flat disc at its edge
+         · hemispheric ambient        sky above, bounce below, mixed on N.y
+         · ambient occlusion          passed in per atom from how buried it is
+         · edge cueing                a darkened silhouette so overlapping atoms
+                                      stay separable, per Tarini et al. 2006
+
+       And it is computed in LINEAR space, then converted back to sRGB on the
+       way out. Doing the multiply in sRGB -- which the last version did -- puts
+       the terminator in the wrong place and is why the shading looked plastic.
+       paroj.github.io/gltut Ch.13 (impostors) · learnopengl.com Advanced-Lighting
+    -------------------------------------------------------------------------- */
+    function srgbToLin(c) { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }
+    function linToSrgb(c) { c = c <= 0.0031308 ? c * 12.92 : 1.055 * Math.pow(c, 1 / 2.4) - 0.055;
+                            return Math.max(0, Math.min(255, Math.round(c * 255))); }
+
+    function sprite(rgb, ao) {
+      var S = 144, c = document.createElement('canvas');
       c.width = c.height = S;
-      var x = c.getContext('2d'), cx = S / 2, cy = S / 2, r = S / 2 - 1;
-      /* offset the highlight along the light direction, in screen space */
-      var hx = cx + LIGHT[0] * r * 0.52, hy = cy + LIGHT[1] * r * 0.52;
-      g = x.createRadialGradient(hx, hy, r * 0.06, cx, cy, r);
-      var lift = function (t) {
-        return 'rgb(' + rgb.map(function (ch) {
-          return Math.round(Math.min(255, ch + (255 - ch) * t));
-        }).join(',') + ')';
-      };
-      var sink = function (t) {
-        return 'rgb(' + rgb.map(function (ch) { return Math.round(ch * (1 - t)); }).join(',') + ')';
-      };
-      g.addColorStop(0.00, lift(0.72));          // specular
-      g.addColorStop(0.16, lift(0.30));
-      g.addColorStop(0.55, 'rgb(' + rgb.join(',') + ')');
-      g.addColorStop(0.88, sink(0.42));          // terminator
-      g.addColorStop(1.00, sink(0.20));          // rim bounce
-      x.fillStyle = g;
-      x.beginPath(); x.arc(cx, cy, r, 0, 6.2832); x.fill();
+      var x = c.getContext('2d'), img = x.createImageData(S, S), d = img.data;
+      var base = rgb.map(srgbToLin);
+      var L = LIGHT, Vz = 1;
+      /* half-vector for a screen-aligned view direction (0,0,1) */
+      var hx = L[0], hy = L[1], hz = L[2] + Vz;
+      var hm = Math.hypot(hx, hy, hz); hx /= hm; hy /= hm; hz /= hm;
+      var SKY = [0.55, 0.54, 0.52], GND = [0.16, 0.15, 0.14];   // hemispheric env
+      var r = S / 2 - 1, cxp = S / 2;
+
+      for (var py = 0; py < S; py++) {
+        for (var px = 0; px < S; px++) {
+          var dx = (px - cxp + 0.5) / r, dy = (py - cxp + 0.5) / r;
+          var r2 = dx * dx + dy * dy, i4 = (py * S + px) * 4;
+          if (r2 > 1) { d[i4 + 3] = 0; continue; }
+          var nz = Math.sqrt(1 - r2);                 // the impostor normal
+          var ndl = Math.max(0, dx * L[0] + dy * L[1] + nz * L[2]);
+          var ndh = Math.max(0, dx * hx + dy * hy + nz * hz);
+          var spec = Math.pow(ndh, 42) * 0.55;
+          var fres = Math.pow(1 - nz, 5) * 0.34;      // rim
+          var up   = 0.5 + 0.5 * (-dy);               // N.y, screen y is down
+          for (var ch = 0; ch < 3; ch++) {
+            var amb = (GND[ch] + (SKY[ch] - GND[ch]) * up) * ao;
+            var v = base[ch] * (amb + ndl * 1.25) + spec + fres * 0.5;
+            d[i4 + ch] = linToSrgb(v);
+          }
+          /* edge cue: a thin darkened silhouette keeps overlapping atoms apart */
+          var edge = r2 > 0.88 ? (r2 - 0.88) / 0.12 : 0;
+          if (edge) for (var ch2 = 0; ch2 < 3; ch2++) d[i4 + ch2] *= (1 - 0.5 * edge);
+          /* antialias the silhouette rather than letting canvas scale a hard disc */
+          d[i4 + 3] = Math.round(255 * Math.min(1, (1 - r2) * r * 0.5 + 0.5));
+        }
+      }
+      x.putImageData(img, 0, 0);
       return c;
     }
-    var SP_INK = sprite([38, 34, 31]), SP_RED = sprite([201, 34, 38]);
+    /* Four occlusion levels per colour. Atoms buried between the two strands
+       receive less sky than atoms on the outside of the duplex, which is the
+       cue that makes a helix read as having an inside at all. */
+    var SPRITES = { ink: [], red: [] };
+    for (var aoi = 0; aoi < 4; aoi++) {
+      var aov = 0.34 + aoi * 0.22;
+      SPRITES.ink.push(sprite([116, 106, 98], aov));
+      SPRITES.red.push(sprite([214, 58, 60], aov));
+    }
 
     var W = 0, H = 0, ox = 0, oy = 0, R = 0, rise = 0, CAM = 0;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -604,12 +647,38 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
       R    = Math.min(R, W * 0.19);
       ox   = W * 0.74; oy = H / 2;
       CAM  = R * 9.5;                                 // gentle perspective
+      computeAO();
       if (!scat.length) for (var i = 0; i < BP * 2; i++)
         scat.push({ x: (Math.random() - 0.5) * 2.6, y: (Math.random() - 0.5) * 2.4,
                     z: (Math.random() - 0.5) * 2.2, d: Math.random() * 0.38 });
     }
 
     function ease(t) { return t < 0 ? 0 : t > 1 ? 1 : 1 - Math.pow(1 - t, 3); }
+
+    /* Ambient occlusion, computed once from the resolved geometry rather than
+       screen space. SSAO is the standard for this (Tarini et al., IEEE TVCG
+       2006) but it needs a depth buffer; with only 30 atoms the honest version
+       is cheaper -- measure how crowded each atom's neighbourhood actually is.
+       Atoms facing into the duplex have neighbours on more sides and so receive
+       less of the sky term. */
+    var AO = null;
+    function computeAO() {
+      var pts = [], i;
+      for (i = 0; i < BP; i++) {
+        var th = i * TWIST, y = (i - (BP - 1) / 2) * rise;
+        pts.push([R * Math.cos(th), y, R * Math.sin(th)]);
+        pts.push([R * Math.cos(th + DELTA), y, R * Math.sin(th + DELTA)]);
+      }
+      AO = pts.map(function (a, ai) {
+        var occ = 0;
+        pts.forEach(function (b, bi) {
+          if (ai === bi) return;
+          var dd = Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+          if (dd < rise * 3.1) occ += 1 - dd / (rise * 3.1);
+        });
+        return Math.max(0, Math.min(3, Math.round(3 - occ * 1.15)));  // 0 buried .. 3 exposed
+      });
+    }
     function fog(rgb, depth) {                        // depth 0 far .. 1 near
       var t = Math.pow(1 - depth, 1.6) * 0.42;
       return 'rgb(' + rgb.map(function (ch, i) {
@@ -663,8 +732,8 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
                    z: B.z + (s2.z * R * 3 - B.z) * (1 - k2) };
         var pa = proj(a3.x, a3.y, a3.z), pb = proj(b3.x, b3.y, b3.z);
 
-        items.push({ t: 'atom', z: a3.z, p: pa, hot: hot, k: k1, ch: SEQ[i % SEQ.length] });
-        items.push({ t: 'atom', z: b3.z, p: pb, hot: hot, k: k2, ch: PAIR[SEQ[i % SEQ.length]] });
+        items.push({ t: 'atom', z: a3.z, p: pa, hot: hot, k: k1, ao: AO[i * 2],     ch: SEQ[i % SEQ.length] });
+        items.push({ t: 'atom', z: b3.z, p: pb, hot: hot, k: k2, ao: AO[i * 2 + 1], ch: PAIR[SEQ[i % SEQ.length]] });
         if (Math.min(k1, k2) > 0.55)
           items.push({ t: 'pair', z: (a3.z + b3.z) / 2, a: pa, b: pb, hot: hot,
                        k: (Math.min(k1, k2) - 0.55) / 0.45 });
@@ -690,21 +759,21 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
         depth = depth < 0 ? 0 : depth > 1 ? 1 : depth;
         if (it.t === 'bb') {
           if (it.k < 0.9) continue;
-          tube(it.a, it.b, Math.max(1.3, 3.5 * it.a.s), [54, 48, 44],
+          tube(it.a, it.b, Math.max(1.3, 3.5 * it.a.s), [98, 90, 83],
                ((it.k - 0.9) / 0.1) * (0.5 + 0.5 * depth));
         } else if (it.t === 'pair') {
           tube(it.a, it.b, Math.max(0.7, 1.7 * it.a.s),
-               it.hot ? [201, 34, 38] : [96, 88, 82],
+               it.hot ? [206, 52, 55] : [132, 122, 114],
                it.k * (0.34 + 0.5 * depth));
         } else {
           var rad = Math.max(3.6, 9.6 * it.p.s);
-          var sp  = it.hot ? SP_RED : SP_INK;
+          var sp  = (it.hot ? SPRITES.red : SPRITES.ink)[it.ao];
           ctx.globalAlpha = (0.6 + 0.4 * depth) * (0.25 + 0.75 * it.k);
           ctx.drawImage(sp, it.p.x - rad, it.p.y - rad, rad * 2, rad * 2);
           /* base letter rides the near-side atoms only, where it is legible */
           if (depth > 0.5 && it.k > 0.9) {
             ctx.globalAlpha = (depth - 0.5) / 0.5 * 0.9;
-            ctx.fillStyle = fog([250, 247, 243], 1);
+            ctx.fillStyle = 'rgba(250,247,243,.95)';
             ctx.font = '500 ' + (8.6 * it.p.s).toFixed(1) + 'px "IBM Plex Mono", ui-monospace, monospace';
             ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
             ctx.fillText(it.ch, it.p.x, it.p.y);
