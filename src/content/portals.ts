@@ -14,6 +14,7 @@
  */
 
 import { TOKENS } from "./tokens";
+import { v } from "./assetVersion";
 
 export interface Deliverable {
   slug: string;
@@ -107,8 +108,8 @@ export const portals: Portal[] = [
           "Every moving thing on the page stops under prefers-reduced-motion — the molecule paints its resolved state once, the counters print their final values, the assay shows every row.",
         ],
         href: "/portal/novarna/index.html",
-        card: "/portal/novarna/card.jpg",
-        preview: "/portal/novarna/preview.jpg",
+        card: v("/portal/novarna/card.jpg"),
+        preview: v("/portal/novarna/preview.jpg"),
         caveats: [
           "Every figure is yours, quoted from circnova.com on 2026-09-19: 7x faster development cycles, 100% proprietary training data, and the DiFeo Lab result.",
           "We did not draw a comparison chart of the Michigan result. The magnitude of the outperformance is not disclosed anywhere, and two bars would imply one.",
@@ -166,8 +167,8 @@ export const portals: Portal[] = [
           "Space Grotesk over Epilogue, chosen so this page shares no typeface with any other study in this portfolio.",
         ],
         href: "/portal/soarce/index.html",
-        card: "/portal/soarce/card.jpg",
-        preview: "/portal/soarce/preview.jpg",
+        card: v("/portal/soarce/card.jpg"),
+        preview: v("/portal/soarce/preview.jpg"),
         caveats: [
           "Every claim and figure is yours, scraped from soarceusa.com on 2026-09-19, including the CAGE code and UEI.",
           "The circular fiber diagram is an illustrative rendering and is labelled as such on the page. It is not a captured micrograph.",
@@ -223,8 +224,8 @@ export const portals: Portal[] = [
           "Spectral over Libre Franklin, chosen so this page shares no typeface with any other study in this portfolio.",
         ],
         href: "/portal/loanwell/index.html",
-        card: "/portal/loanwell/card.jpg",
-        preview: "/portal/loanwell/preview.jpg",
+        card: v("/portal/loanwell/card.jpg"),
+        preview: v("/portal/loanwell/preview.jpg"),
         caveats: [
           "Every figure and line of product copy is yours, pulled from loanwell.com on 2026-09-19, including the SOC-2 Type 2 paragraph verbatim.",
           "The CEO quote is reproduced from Collab Capital's own portfolio page, not from an interview with us.",
@@ -280,8 +281,8 @@ export const portals: Portal[] = [
           "Typography is Bricolage Grotesque over Figtree, deliberately different from the other studies in this portfolio so they do not read as one template.",
         ],
         href: "/portal/fyxit/index.html",
-        card: "/portal/fyxit/card.jpg",
-        preview: "/portal/fyxit/preview.jpg",
+        card: v("/portal/fyxit/card.jpg"),
+        preview: v("/portal/fyxit/preview.jpg"),
         caveats: [
           "Every figure and product claim is yours, quoted from hubbleiq.com on 2026-09-18: 60% of routine issues handled automatically, one line of code to deploy, no workflow changes, and the Incident IQ, Zendesk, Freshdesk, SMTP and Chrome integrations.",
           "The conversation, the diagnostic readings and the queue are illustrative — plausible values built to show the layout, not data from your system. A real build wires them to live telemetry or replaces them with a recorded session.",
@@ -341,8 +342,8 @@ export const portals: Portal[] = [
           "Scroll slowly through the land comparison. It is the page's one piece of motion and scroll is its timeline — the traditional array gives way to towers while the acreage counts 330 down to 100.",
         ],
         href: "/portal/janta/index.html",
-        card: "/portal/janta/card.jpg",
-        preview: "/portal/janta/preview.jpg",
+        card: v("/portal/janta/card.jpg"),
+        preview: v("/portal/janta/preview.jpg"),
         caveats: [
           "Every input is yours, read from jantaus.com on 2026-09-18: 50% more energy, 3x power per unit area, up to 34% capacity factor, and the 500 kW Dallas comparison of 3.3 acres / 876,000 kWh against 1 acre / 1,182,600 kWh — the 35% more yield you publish. The 50 MW figures on the page are that comparison multiplied by 100 at your own ratio; the page says so in the same breath. We have not independently verified any of your underlying claims.",
           "One correction you may want regardless of this study: the partner logo your site serves at /marketing/partners/pv-magazine-white.png, with alt text \"PV Magazine\", is actually the Third Derivative logo. A screen reader announces one organization while sighted visitors see another. We have labelled it correctly here.",
@@ -402,8 +403,8 @@ export const portals: Portal[] = [
           "Mobile. Resize the frame to phone width; the whole page was built narrow-first.",
         ],
         href: "/portal/micruity/index.html",
-        card: "/portal/micruity/card.jpg",
-        preview: "/portal/micruity/preview.jpg",
+        card: v("/portal/micruity/card.jpg"),
+        preview: v("/portal/micruity/preview.jpg"),
         caveats: [
           "Every figure on the page is a placeholder. Latency, counterparty count, settlement window and onboarding time are ours, not yours, and would be replaced with your real numbers or removed.",
           "Photography is real licensed stock from Pexels — Askar Abayev, Baraa Obied, Yan Krukau and Mikhail Nilov — credited in the page source. An earlier version of this study used AI-generated people; it was replaced, because a page about someone's retirement should not be illustrated with someone who does not exist.",
