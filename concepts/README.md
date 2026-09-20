@@ -15,3 +15,15 @@ page is looking at.
 
 Concepts 2 and 4 are BLOCKED on real Dabney photography. The gradients standing in for
 photographs are placeholders and should not be judged as the design.
+
+## concepts/<slug>/index.html is a symlink
+
+The shipped study for each client lives at `public/portal/<slug>/index.html` —
+that is the file the site serves and the file `scripts/capture-studies.py`
+renders. The copy that used to sit here was a second original, and on
+2026-09-20 the two drifted: the portfolio advertised a Novarna design that had
+already been replaced, and the only thing that caught it was Daniel opening the
+page. They are now the same file. Edit either path.
+
+Everything else in these folders is working material — sketches, sources,
+rejected directions — and is deliberately not shipped.

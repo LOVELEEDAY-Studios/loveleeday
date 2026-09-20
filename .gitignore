@@ -46,3 +46,4 @@ concepts/micruity/*.png
 concepts/micruity/*.jpg
 concepts/micruity/img/
 !concepts/micruity/v3-light.png
+__pycache__/
