@@ -85,7 +85,7 @@ export const portals: Portal[] = [
     deliveredOn: "2026-09-19",
     expiresOn: "2026-12-18",
     intro:
-      "This is an unsolicited direction study. Your site is already good — Fraunces over Work Sans with your crimson, and a loop diagram that earns its place — so we kept your design system rather than imposing ours. What changed is what the header says, and where your best proof sits.",
+      "This is an unsolicited direction study. We kept Fraunces and your crimson and changed the rest — the reasoning is on the page and in the notes below — so we kept your design system rather than imposing ours. What changed is what the header says, and where your best proof sits.",
     next: [
       "Open the page and scroll it the way your buyer would.",
       "Leave notes anywhere on this page — they reach us by email immediately.",
@@ -100,9 +100,11 @@ export const portals: Portal[] = [
           "Your headline is a twelve-word category description. Your best line is buried as a section heading halfway down: \"RNA drug discovery is still largely a guessing game.\" And your strongest proof — the University of Michigan DiFeo Lab testing your candidates in their own facility, where the designs outperformed a commercially available treatment — is a paragraph near the bottom. Third-party validation is the rarest thing in AI-for-biology. It belongs above the fold.",
         look: [
           "The header is your own line, answered: the guessing game, and the loop that closed it.",
-          "The Michigan result sits directly under the headline rather than in a case study near the bottom.",
-          "Your loop diagram is the hero object and it turns — a 12s arc travels the ring and each node lights as it passes, with NovaEngine and NovaLab tagged onto the circle.",
-          "Your typefaces and your crimson, unchanged. A redesign study should not make you look like the studio that made it.",
+          "The hero object is the molecule, not a diagram of a process — an A-form RNA duplex built to real geometry and rendered in the browser: 32.7° of twist per base pair, 2.8 Å rise, and the narrow major groove that tells RNA apart from DNA. It is lit, depth-sorted and turning, and the four bases NovaEngine designed arrive last and in red. No 3D library, and the whole page is 48 KB.",
+          "The Michigan result has its own section and reads as a result — four rows that print one at a time — rather than sitting in a paragraph near the bottom.",
+          "Your loop is four numbered rows on rules, and a red line draws down them under your own scroll rather than on a timer you are not driving.",
+          "Your crimson is untouched and Fraunces still sets every heading. We did change the other two faces, and you should push back if you disagree: Work Sans and JetBrains Mono came from different families, so your body copy and your labels were assembled rather than designed together. IBM Plex Sans and IBM Plex Mono are one superfamily drawn for technical and scientific work, and they share skeletons, so the instrument-grade labels and the running text finally agree.",
+          "Every moving thing on the page stops under prefers-reduced-motion — the molecule paints its resolved state once, the counters print their final values, the assay shows every row.",
         ],
         href: "/portal/novarna/index.html",
         card: "/portal/novarna/card.jpg",
@@ -110,6 +112,8 @@ export const portals: Portal[] = [
         caveats: [
           "Every figure is yours, quoted from circnova.com on 2026-09-19: 7x faster development cycles, 100% proprietary training data, and the DiFeo Lab result.",
           "We did not draw a comparison chart of the Michigan result. The magnitude of the outperformance is not disclosed anywhere, and two bars would imply one.",
+          "The molecule is a correct A-form duplex but it is not YOUR molecule — the sequence shown is illustrative, and the region marked in red stands for a designed region rather than depicting one of your candidates.",
+          "Photography is licensed stock, credited at the foot of the page. It shows laboratory work in general, not Novarna's staff or facilities.",
           "Your assets already serve from novarna.ai while the domain still resolves as circnova.com. Two names split whatever authority the domain has earned, and Collab Capital's portfolio page still lists you as CircNova.",
         ],
         seo: {
