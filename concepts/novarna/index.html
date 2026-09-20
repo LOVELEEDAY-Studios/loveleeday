@@ -622,15 +622,40 @@ h1,h2,h3{margin:0;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-s
       x.putImageData(img, 0, 0);
       return c;
     }
-    /* Four occlusion levels per colour. Atoms buried between the two strands
-       receive less sky than atoms on the outside of the duplex, which is the
-       cue that makes a helix read as having an inside at all. */
-    var SPRITES = { ink: [], red: [] };
-    for (var aoi = 0; aoi < 4; aoi++) {
-      var aov = 0.34 + aoi * 0.22;
-      SPRITES.ink.push(sprite([116, 106, 98], aov));
-      SPRITES.red.push(sprite([214, 58, 60], aov));
+    /* Atoms are typed, not uniform. Molecular renderers colour by element (CPK:
+       carbon grey, nitrogen blue, oxygen red, phosphorus orange) and that single
+       convention is most of why a real render reads as chemistry rather than as
+       beads. These are CPK hues pulled well down in saturation so they sit on
+       cream instead of fighting it, with the designed region in Novarna's own
+       crimson. */
+    var ELEM = {
+      P: [168, 122, 62],    // phosphate — phosphorus orange, muted
+      C: [122, 114, 106],   // sugar — carbon grey
+      N: [96, 108, 132],    // base — nitrogen blue, muted
+      X: [206, 46, 48]      // the designed region
+    };
+
+    /* Depth of field. A real lens cannot hold the near and far turns of a helix
+       in focus at once, and that defocus is a stronger depth cue than fog is.
+       Three blur levels, pre-rendered, chosen per atom by |z|. */
+    function blurred(src, px) {
+      if (!px) return src;
+      var c = document.createElement('canvas');
+      c.width = src.width; c.height = src.height;
+      var x = c.getContext('2d');
+      x.filter = 'blur(' + px + 'px)';
+      x.drawImage(src, 0, 0);
+      return c;
     }
+    /* [element][ao 0..3][dof 0..2] */
+    var SPRITES = {};
+    Object.keys(ELEM).forEach(function (k) {
+      SPRITES[k] = [];
+      for (var aoi = 0; aoi < 4; aoi++) {
+        var base = sprite(ELEM[k], 0.34 + aoi * 0.22);
+        SPRITES[k].push([base, blurred(base, 2.2), blurred(base, 4.6)]);
+      }
+    });
 
     var W = 0, H = 0, ox = 0, oy = 0, R = 0, rise = 0, CAM = 0;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -661,22 +686,36 @@ h1,h2,h3{margin:0;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-s
        is cheaper -- measure how crowded each atom's neighbourhood actually is.
        Atoms facing into the duplex have neighbours on more sides and so receive
        less of the sky term. */
+    /* A nucleotide is three things, not one: a phosphate on the backbone, the
+       sugar it hangs off, and the base pointing in toward its partner. Drawing
+       one bead per nucleotide is exactly why the last version read as beads on a
+       wire. RADII are relative van der Waals-ish weights, not literal values --
+       phosphorus is the largest, the base nitrogen the smallest. */
+    var RADII = { P: 1.0, C: 0.78, N: 0.66 };
+    function nucleotide(th, y, inward) {
+      /* r as a fraction of the helix radius: phosphate outermost, base innermost */
+      function at(fr, kind) {
+        return { x: R * fr * Math.cos(th), y: y, z: R * fr * Math.sin(th), kind: kind };
+      }
+      return [at(1.0, 'P'), at(0.74, 'C'), at(0.40, 'N')];
+    }
+
     var AO = null;
     function computeAO() {
-      var pts = [], i;
+      var pts = [], i, j;
       for (i = 0; i < BP; i++) {
         var th = i * TWIST, y = (i - (BP - 1) / 2) * rise;
-        pts.push([R * Math.cos(th), y, R * Math.sin(th)]);
-        pts.push([R * Math.cos(th + DELTA), y, R * Math.sin(th + DELTA)]);
+        nucleotide(th, y).forEach(function (a) { pts.push(a); });
+        nucleotide(th + DELTA, y).forEach(function (a) { pts.push(a); });
       }
       AO = pts.map(function (a, ai) {
         var occ = 0;
         pts.forEach(function (b, bi) {
           if (ai === bi) return;
-          var dd = Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
-          if (dd < rise * 3.1) occ += 1 - dd / (rise * 3.1);
+          var dd = Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
+          if (dd < rise * 2.6) occ += 1 - dd / (rise * 2.6);
         });
-        return Math.max(0, Math.min(3, Math.round(3 - occ * 1.15)));  // 0 buried .. 3 exposed
+        return Math.max(0, Math.min(3, Math.round(3 - occ * 0.62)));
       });
     }
     function fog(rgb, depth) {                        // depth 0 far .. 1 near
@@ -711,7 +750,26 @@ h1,h2,h3{margin:0;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-s
 
     function paint(p, spin) {
       ctx.clearRect(0, 0, W, H);
-      var items = [], i, q;
+      var items = [], i, q, si = 0;
+
+      function emitChain(th, y, k, scat, hot, idx) {
+        var atoms = nucleotide(th, y), prev = null, out = [];
+        atoms.forEach(function (a, ai) {
+          /* scatter -> resolve, in 3D */
+          var sx = a.x + (scat.x * R * 3 - a.x) * (1 - k);
+          var sy = a.y + (scat.y * H * 0.5 - a.y) * (1 - k);
+          var sz = a.z + (scat.z * R * 3 - a.z) * (1 - k);
+          var pr = proj(sx, sy, sz);
+          var kind = hot && a.kind === 'N' ? 'X' : a.kind;
+          items.push({ t: 'atom', z: sz, p: pr, kind: kind, k: k,
+                       ao: AO[idx * 3 + ai], rad: RADII[a.kind] });
+          if (prev) items.push({ t: 'bond', z: (sz + prev.z) / 2, a: prev.p, b: pr, k: k,
+                                 rgb: ELEM[a.kind] });
+          prev = { p: pr, z: sz };
+          out.push({ p: pr, z: sz });
+        });
+        return out;   // [P, C, N]
+      }
 
       for (i = 0; i < BP; i++) {
         var hot = i >= HOT_A && i <= HOT_B;
@@ -721,29 +779,21 @@ h1,h2,h3{margin:0;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-s
         var d1 = s1.d + (hot ? 0.3 : 0), d2 = s2.d + (hot ? 0.3 : 0);
         var k1 = ease((p - d1) / (1 - d1)), k2 = ease((p - d2) / (1 - d2));
 
-        /* resolve from a scattered cloud into the duplex, in 3D */
-        var A = { x: R * Math.cos(th),         y: y, z: R * Math.sin(th) };
-        var B = { x: R * Math.cos(th + DELTA), y: y, z: R * Math.sin(th + DELTA) };
-        var a3 = { x: A.x + (s1.x * R * 3 - A.x) * (1 - k1),
-                   y: A.y + (s1.y * H * 0.5 - A.y) * (1 - k1),
-                   z: A.z + (s1.z * R * 3 - A.z) * (1 - k1) };
-        var b3 = { x: B.x + (s2.x * R * 3 - B.x) * (1 - k2),
-                   y: B.y + (s2.y * H * 0.5 - B.y) * (1 - k2),
-                   z: B.z + (s2.z * R * 3 - B.z) * (1 - k2) };
-        var pa = proj(a3.x, a3.y, a3.z), pb = proj(b3.x, b3.y, b3.z);
+        var A = emitChain(th, y, k1, s1, hot, i * 2);
+        var B = emitChain(th + DELTA, y, k2, s2, hot, i * 2 + 1);
 
-        items.push({ t: 'atom', z: a3.z, p: pa, hot: hot, k: k1, ao: AO[i * 2],     ch: SEQ[i % SEQ.length] });
-        items.push({ t: 'atom', z: b3.z, p: pb, hot: hot, k: k2, ao: AO[i * 2 + 1], ch: PAIR[SEQ[i % SEQ.length]] });
+        /* the base pair: N to N across the axis, the hydrogen bonds */
         if (Math.min(k1, k2) > 0.55)
-          items.push({ t: 'pair', z: (a3.z + b3.z) / 2, a: pa, b: pb, hot: hot,
+          items.push({ t: 'pair', z: (A[2].z + B[2].z) / 2, a: A[2].p, b: B[2].p, hot: hot,
                        k: (Math.min(k1, k2) - 0.55) / 0.45 });
 
+        /* phosphodiester backbone: P to P up the strand */
         if (i > 0) for (q = 0; q < SUB; q++) {
           var u0 = i - 1 + q / SUB, u1 = i - 1 + (q + 1) / SUB;
           var t0 = u0 * TWIST + spin, t1 = u1 * TWIST + spin;
           var y0 = (u0 - (BP - 1) / 2) * rise, y1 = (u1 - (BP - 1) / 2) * rise;
-          [[0, k1], [DELTA, k2]].forEach(function (pairDef) {
-            var off = pairDef[0], kk = pairDef[1];
+          [[0, k1], [DELTA, k2]].forEach(function (pd) {
+            var off = pd[0], kk = pd[1];
             var z0 = R * Math.sin(t0 + off), z1 = R * Math.sin(t1 + off);
             items.push({ t: 'bb', z: (z0 + z1) / 2, k: kk,
               a: proj(R * Math.cos(t0 + off), y0, z0),
@@ -752,32 +802,43 @@ h1,h2,h3{margin:0;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-s
         }
       }
 
-      items.sort(function (m, n) { return m.z - n.z; });   // painter's algorithm
+      /* Cast shadow, approximated. A true shadow map needs a second render from
+         the light; with a few hundred atoms the cheap equivalent is to ask, for
+         each atom, how much geometry sits between it and the key light. Atoms
+         behind the duplex get darker AO, which is what a shadow looks like from
+         the camera's side. */
+      var atoms = items.filter(function (it) { return it.t === 'atom'; });
+      atoms.forEach(function (it) {
+        var lit = it.z * LIGHT[2];
+        var shade = lit < 0 ? Math.min(1, -lit / R) : 0;
+        it.ao = Math.max(0, Math.min(3, Math.round(it.ao - shade * 1.6)));
+      });
+
+      items.sort(function (m, nn) { return m.z - nn.z; });
 
       for (i = 0; i < items.length; i++) {
         var it = items[i], depth = (it.z / R + 1) / 2;
         depth = depth < 0 ? 0 : depth > 1 ? 1 : depth;
         if (it.t === 'bb') {
           if (it.k < 0.9) continue;
-          tube(it.a, it.b, Math.max(1.3, 3.5 * it.a.s), [98, 90, 83],
+          tube(it.a, it.b, Math.max(1.2, 3.2 * it.a.s), [112, 104, 96],
                ((it.k - 0.9) / 0.1) * (0.5 + 0.5 * depth));
+        } else if (it.t === 'bond') {
+          if (it.k < 0.82) continue;
+          tube(it.a, it.b, Math.max(0.9, 2.3 * it.a.s), it.rgb,
+               ((it.k - 0.82) / 0.18) * (0.45 + 0.55 * depth));
         } else if (it.t === 'pair') {
-          tube(it.a, it.b, Math.max(0.7, 1.7 * it.a.s),
-               it.hot ? [206, 52, 55] : [132, 122, 114],
-               it.k * (0.34 + 0.5 * depth));
+          tube(it.a, it.b, Math.max(0.7, 1.6 * it.a.s),
+               it.hot ? [206, 52, 55] : [138, 128, 120],
+               it.k * (0.3 + 0.5 * depth));
         } else {
-          var rad = Math.max(3.6, 9.6 * it.p.s);
-          var sp  = (it.hot ? SPRITES.red : SPRITES.ink)[it.ao];
-          ctx.globalAlpha = (0.6 + 0.4 * depth) * (0.25 + 0.75 * it.k);
+          /* depth of field: defocus grows with distance from the focal plane */
+          var dof = Math.abs(it.z) / R;
+          var lvl = dof > 0.74 ? 2 : dof > 0.42 ? 1 : 0;
+          var rad = Math.max(2.2, 8.4 * it.p.s * it.rad);
+          var sp  = SPRITES[it.kind][it.ao][lvl];
+          ctx.globalAlpha = (0.62 + 0.38 * depth) * (0.25 + 0.75 * it.k);
           ctx.drawImage(sp, it.p.x - rad, it.p.y - rad, rad * 2, rad * 2);
-          /* base letter rides the near-side atoms only, where it is legible */
-          if (depth > 0.5 && it.k > 0.9) {
-            ctx.globalAlpha = (depth - 0.5) / 0.5 * 0.9;
-            ctx.fillStyle = 'rgba(250,247,243,.95)';
-            ctx.font = '500 ' + (8.6 * it.p.s).toFixed(1) + 'px "DM Mono", ui-monospace, monospace';
-            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-            ctx.fillText(it.ch, it.p.x, it.p.y);
-          }
         }
       }
       ctx.globalAlpha = 1;
