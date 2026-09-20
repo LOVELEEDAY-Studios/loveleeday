@@ -8,6 +8,7 @@
  */
 
 import { TOKENS } from "./tokens";
+import { v } from "./assetVersion";
 
 export interface Case {
   slug: string;
@@ -82,8 +83,8 @@ export const portfolio: Portfolio = {
       domain: "circnova.com",
       portalToken: TOKENS.novarna,
       sector: "AI-designed RNA therapeutics · Detroit, MI",
-      before: "/portal/collab/novarna-before.jpg",
-      after: "/portal/collab/novarna-after.jpg",
+      before: v("/portal/collab/novarna-before.jpg"),
+      after: v("/portal/collab/novarna-after.jpg"),
       thesis:
         "Of the six, this is the only company whose product is an object rather than an interface — so the page is built around the molecule, rendered rather than illustrated. Their best proof, the University of Michigan DiFeo Lab testing their candidates in its own facility where the designs outperformed a commercially available treatment, was a paragraph near the bottom of their site. Almost nobody in AI-for-biology has third-party validation.",
       findings: [
@@ -100,8 +101,8 @@ export const portfolio: Portfolio = {
       domain: "soarceusa.com",
       portalToken: TOKENS.soarce,
       sector: "Industrial nanofiber materials · Orlando, FL",
-      before: "/portal/collab/soarce-before.jpg",
-      after: "/portal/collab/soarce-after.jpg",
+      before: v("/portal/collab/soarce-before.jpg"),
+      after: v("/portal/collab/soarce-after.jpg"),
       thesis:
         "Their homepage document alone is 5,009 KB — the heaviest of all thirty-eight sites we measured. Loading the whole page moves about 30 MB, most of it one Wix bundle fetched three separate times at 5.9 MB each. A materials company whose entire pitch is stronger, lighter, cheaper should not be shipping the heaviest page in its investor's portfolio.",
       findings: [
@@ -118,8 +119,8 @@ export const portfolio: Portfolio = {
       domain: "loanwell.com",
       portalToken: TOKENS.loanwell,
       sector: "Lending technology for CDFIs · Durham, NC",
-      before: "/portal/collab/loanwell-before.jpg",
-      after: "/portal/collab/loanwell-after.jpg",
+      before: v("/portal/collab/loanwell-before.jpg"),
+      after: v("/portal/collab/loanwell-after.jpg"),
       thesis:
         "Affordable capital reaches nobody if the lender looking for the tool to deploy it cannot find you. Their product copy and mission are strong; the page argues about software features rather than about deploying capital.",
       findings: [
@@ -136,8 +137,8 @@ export const portfolio: Portfolio = {
       domain: "jantaus.com",
       portalToken: TOKENS.janta,
       sector: "3D solar towers · Dallas, TX",
-      before: "/portal/collab/janta-before.jpg",
-      after: "/portal/collab/janta-after.jpg",
+      before: v("/portal/collab/janta-before.jpg"),
+      after: v("/portal/collab/janta-after.jpg"),
       thesis:
         "Their best number is buried three screens down in a small comparison card. Their own worked example — 500 kW in Dallas — is 3.3 acres of fixed-tilt panels making 876,000 kWh a year against one acre of towers making 1,182,600. Multiply that out at their ratio and a 50 MW build saves 230 acres, about 174 football fields, while producing 30,660 MWh a year more. That is the whole company in one line, and today it is a footnote.",
       findings: [
@@ -154,8 +155,8 @@ export const portfolio: Portfolio = {
       domain: "hubbleiq.com",
       portalToken: TOKENS.fyxit,
       sector: "AI tech support for school districts · San Francisco, CA",
-      before: "/portal/collab/fyxit-before.jpg",
-      after: "/portal/collab/fyxit-after.jpg",
+      before: v("/portal/collab/fyxit-before.jpg"),
+      after: v("/portal/collab/fyxit-after.jpg"),
       thesis:
         "Their whole claim is “does the work, not just the talking”, and the site talks. The rebuild opens on the product working: a teacher reports Wi-Fi dropping in room 214, Fyxit reads the access point, finds channel overlap, moves it and closes the issue in 2m 40s without a ticket ever being opened.",
       findings: [
@@ -172,8 +173,8 @@ export const portfolio: Portfolio = {
       domain: "micruity.com",
       portalToken: TOKENS.micruity,
       sector: "Retirement income infrastructure · Sacramento, CA",
-      before: "/portal/collab/micruity-before.jpg",
-      after: "/portal/collab/micruity-after.jpg",
+      before: v("/portal/collab/micruity-before.jpg"),
+      after: v("/portal/collab/micruity-after.jpg"),
       thesis:
         "A category-defining product explained in the visual language of a template. The rebuild keeps their structure and their four products, and changes only how much the page is willing to say about the person on the other end of an annuity.",
       findings: [
