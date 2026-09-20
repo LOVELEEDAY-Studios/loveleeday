@@ -15,25 +15,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ---------------------------------------------------------------------------
-   Novarna \u2014 direction study by LOVELEEDAY Studios. Fourth direction, and the
+   Novarna — direction study by LOVELEEDAY Studios. Fourth direction, and the
    first built from reference rather than from memory.
 
    Daniel rejected three versions of this page. He was right each time, and the
    reason was always the same: I was designing from their site and from my own
    notes instead of going and looking at what good work in this category does.
 
-   So this one starts from Mobbin. IntegratedBio \u2014 synthetic biology + chemistry
-   + AI, which is as close to Novarna as the reference library gets \u2014 runs a very
+   So this one starts from Mobbin. IntegratedBio — synthetic biology + chemistry
+   + AI, which is as close to Novarna as the reference library gets — runs a very
    specific system, and it is the system this page now uses:
 
-     \u00b7 two-tone headlines, where the completion of the sentence drops to a
+     · two-tone headlines, where the completion of the sentence drops to a
        muted tint of the ground rather than staying full contrast
-     \u00b7 abstract organic macro imagery, full bleed, statement laid over it \u2014
+     · abstract organic macro imagery, full bleed, statement laid over it —
        never stock photographs of scientists
-     \u00b7 tiny pill labels carrying a small solid square of the accent
-     \u00b7 a dark pill button paired with a separate small accent square
-     \u00b7 numbered rows on hairlines with a muted ordinal, never cards
-     \u00b7 the wordmark set enormous across the footer, over the imagery
+     · tiny pill labels carrying a small solid square of the accent
+     · a dark pill button paired with a separate small accent square
+     · numbered rows on hairlines with a muted ordinal, never cards
+     · the wordmark set enormous across the footer, over the imagery
 
    Photography is licensed Pexels macro, credited at the foot. Type, colour and
    every claim remain Novarna's, sampled from circnova.com.
@@ -58,7 +58,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 .tnum{font-variant-numeric:tabular-nums}
 :focus-visible{outline:2px solid var(--red);outline-offset:3px}
 
-/* the pill label with its solid square \u2014 IntegratedBio's tell */
+/* the pill label with its solid square — IntegratedBio's tell */
 .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;
   background:rgba(20,18,16,.05);font-family:"JetBrains Mono",ui-monospace,monospace;
   font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
@@ -98,7 +98,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 .navlinks a.on{background:rgba(20,18,16,.06);color:var(--ink)}
 .navlinks a.dark{background:var(--deep);color:#fff}
 
-/* 1 \u00b7 HERO \u2014 enormous two-tone type, copy demoted under a ruled shelf */
+/* 1 · HERO — enormous two-tone type, copy demoted under a ruled shelf */
 .hero{padding:clamp(54px,8vw,104px) 0 0}
 .hero h1{font-size:clamp(3rem,10.2vw,8.6rem);line-height:.92;letter-spacing:-.045em;max-width:15ch}
 .hero h1 .t2{color:var(--tint);display:block}
@@ -116,7 +116,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   font-family:"Fraunces",Georgia,serif;font-weight:300;max-width:24ch;letter-spacing:-.02em}
 .hero-media figcaption em{font-style:italic;color:rgba(255,255,255,.62)}
 
-/* 2 \u00b7 NUMBERS \u2014 no panel, no boxes, just the figures on the ground */
+/* 2 · NUMBERS — no panel, no boxes, just the figures on the ground */
 .nums{padding:clamp(72px,9vw,118px) 0 clamp(64px,8vw,96px)}
 .nums-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
 .n1{padding:0 clamp(16px,2.4vw,34px);border-left:1px solid var(--line-2)}
@@ -126,7 +126,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 .n1 .l{margin-top:14px;font-size:14.5px;font-weight:600}
 .n1 .s{margin-top:5px;font-size:13px;line-height:1.55;color:var(--soft);max-width:26ch}
 
-/* 3 \u00b7 NUMBERED ROWS \u2014 the accordion register, not cards */
+/* 3 · NUMBERED ROWS — the accordion register, not cards */
 .rows{padding:0 0 clamp(72px,9vw,110px)}
 .rows-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,40ch);gap:clamp(20px,5vw,64px);
   align-items:end;padding-bottom:clamp(26px,4vw,44px)}
@@ -149,7 +149,19 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 .moat p{margin:0;font-size:15.5px;line-height:1.72;color:var(--mid)}
 .moat b{color:var(--ink);font-weight:500}
 
-/* 4 \u00b7 VALIDATION \u2014 dark, the readout as a plain ruled table */
+/* 3b · THE LAB — photograph carrying a claim the copy alone cannot */
+.lab{padding:0 0 clamp(76px,9vw,112px)}
+.lab-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(26px,5vw,72px);align-items:center}
+.lab-shot{margin:0;border-radius:var(--r);overflow:hidden}
+.lab-shot img{width:100%;height:clamp(300px,34vw,440px);object-fit:cover}
+.lab-copy h2{font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.08;max-width:17ch}
+.lab-copy h2 .t2{color:var(--tint)}
+.lab-copy p{margin:18px 0 0;font-size:15.5px;line-height:1.72;color:var(--mid);max-width:46ch}
+.lab-copy .credit{margin-top:22px;font-size:12.5px;line-height:1.6;color:var(--soft);
+  padding-left:14px;border-left:1px solid var(--line-2)}
+
+/* 4 · VALIDATION — dark, the readout as a plain ruled table */
 .val{background:var(--deep);color:#fff;padding:clamp(76px,9vw,116px) 0;border-radius:var(--r);
   margin:0 clamp(20px,3.4vw,40px)}
 .val-in{max-width:1200px;margin:0 auto;padding:0 clamp(20px,3.4vw,44px)}
@@ -170,7 +182,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 .val .note{margin:clamp(26px,4vw,38px) 0 0;font-size:12.5px;line-height:1.65;
   color:rgba(255,255,255,.54);max-width:66ch}
 
-/* 5 \u00b7 STATEMENT \u2014 full-bleed macro, the second image, type over it */
+/* 5 · STATEMENT — full-bleed macro, the second image, type over it */
 .state{padding:clamp(72px,9vw,110px) clamp(20px,3.4vw,40px)}
 .state-in{position:relative;border-radius:var(--r);overflow:hidden;max-width:1280px;margin:0 auto}
 .state-in img{width:100%;height:clamp(300px,38vw,430px);object-fit:cover}
@@ -181,7 +193,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   font-size:clamp(1.3rem,2.9vw,2.4rem);line-height:1.2;max-width:26ch;letter-spacing:-.02em}
 .state-in blockquote em{font-style:italic;color:rgba(255,255,255,.6)}
 
-/* 6 \u00b7 ENGAGEMENT \u2014 ruled rows again, deliberately echoing section 3 */
+/* 6 · ENGAGEMENT — ruled rows again, deliberately echoing section 3 */
 .eng{padding:0 0 clamp(76px,9vw,112px)}
 .eng-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,38ch);gap:clamp(20px,5vw,64px);
   align-items:end;padding-bottom:clamp(24px,4vw,40px)}
@@ -196,7 +208,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 .tier h3{font-size:clamp(1.05rem,1.9vw,1.4rem);font-weight:400;letter-spacing:-.015em}
 .tier p{margin:0;font-size:14.5px;line-height:1.65;color:var(--mid)}
 
-/* 7 \u00b7 FOOT \u2014 the wordmark enormous across the imagery */
+/* 7 · FOOT — the wordmark enormous across the imagery */
 .foot{position:relative;margin:0 clamp(20px,3.4vw,40px) clamp(20px,3.4vw,40px);
   border-radius:var(--r);overflow:hidden;background:var(--deep)}
 .foot > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
@@ -225,6 +237,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   .moat{grid-template-columns:1fr}
   .tier{grid-template-columns:clamp(46px,9vw,70px) minmax(0,1fr);row-gap:6px}
   .tier p{grid-column:2}
+  .lab-in{grid-template-columns:1fr;gap:26px}
   .foot-top{grid-template-columns:1fr 1fr;row-gap:30px}
   .foot-top h2{grid-column:1/-1}
 }
@@ -255,7 +268,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   </nav>
 </div></header>
 
-<!-- 1 \u00b7 HERO -->
+<!-- 1 · HERO -->
 <section class="hero"><div class="wrap">
   <span class="pill">The Novarna platform</span>
   <h1 style="margin-top:22px">RNA discovery is a guessing game.<span class="t2">We closed the loop.</span></h1>
@@ -270,14 +283,15 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
       than any existing approach.</p>
   </div>
   <figure class="hero-media" style="margin-bottom:0">
-    <img src="field.jpg" width="1800" height="760" alt="" fetchpriority="high">
+    <img src="bench.jpg" width="1800" height="760" fetchpriority="high"
+         alt="Two researchers at a laboratory bench under a work lamp, examining a sample tray together.">
     <span class="over"></span>
     <span class="cap"><span class="pill on-dark">What we do</span></span>
     <figcaption>We design the molecule, then <em>our own lab tells us whether we were right.</em></figcaption>
   </figure>
 </div></section>
 
-<!-- 2 \u00b7 NUMBERS -->
+<!-- 2 · NUMBERS -->
 <section class="nums"><div class="wrap">
   <span class="pill">The Novarna advantage</span>
   <div class="nums-grid">
@@ -290,7 +304,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   </div>
 </div></section>
 
-<!-- 3 \u00b7 THE LOOP -->
+<!-- 3 · THE LOOP -->
 <section class="rows" id="platform"><div class="wrap">
   <div class="rows-head">
     <h2>The tools that exist today predict. <span class="t2">Ours design &mdash; then check the answer.</span></h2>
@@ -317,7 +331,28 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   </div>
 </div></section>
 
-<!-- 4 \u00b7 VALIDATION -->
+<!-- 3b · THE LAB — the in-house claim, shown -->
+<section class="lab"><div class="wrap">
+  <div class="lab-in">
+    <figure class="lab-shot">
+      <img src="lab.jpg" width="1240" height="930" loading="lazy"
+           alt="A researcher working at a fully stocked laboratory bench, reagent racks and instruments in use around her.">
+    </figure>
+    <div class="lab-copy">
+      <span class="pill">In-house</span>
+      <h2 style="margin-top:18px">Most platforms stop at the prediction. <span class="t2">Ours has a bench behind it.</span></h2>
+      <p>NovaLab is our own wet lab, not a vendor queue. Candidates NovaEngine designs are
+        synthesized, run in cells and characterized here — which is why the result comes back in
+        weeks and why the data is ours to train on.</p>
+      <p>That is the whole loop in one sentence: the lab is the reason the model keeps improving,
+        and the model is the reason the lab is worth running.</p>
+      <p class="credit">Photography is licensed stock. It shows laboratory work in general, not
+        Novarna&rsquo;s staff or facilities.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 4 · VALIDATION -->
 <section class="val" id="validation"><div class="val-in">
   <span class="pill on-dark">Case study</span>
   <div class="val-head" style="margin-top:20px">
@@ -344,7 +379,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
     simulation and not self-reported &mdash; which is what makes it rare in this category.</p>
 </div></section>
 
-<!-- 5 \u00b7 STATEMENT -->
+<!-- 5 · STATEMENT -->
 <section class="state"><div class="state-in">
   <img src="sweep.jpg" width="1800" height="620" alt="" loading="lazy">
   <span class="over"></span>
@@ -353,7 +388,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
     bench, on the first cycle.</blockquote>
 </div></section>
 
-<!-- 6 \u00b7 ENGAGEMENT -->
+<!-- 6 · ENGAGEMENT -->
 <section class="eng" id="work"><div class="wrap">
   <div class="eng-head">
     <h2>Design-as-a-Service. <span class="t2">On your target, on your timeline.</span></h2>
@@ -370,7 +405,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
       through commercialization.</p></div>
 </div></section>
 
-<!-- 7 \u00b7 FOOT -->
+<!-- 7 · FOOT -->
 <footer class="foot">
   <img src="field.jpg" alt="" loading="lazy">
   <span class="veil"></span>
@@ -392,7 +427,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   </div>
   <div class="foot-legal">
     <span>&copy; 2026 CircNova, Inc. d/b/a Novarna</span>
-    <span>Macro photography: Steve A Johnson &amp; Jakub Zerdzicki / Pexels</span>
+    <span>Photography: Artem Podrez, Polina Tankilevitch, Steve A Johnson, Jakub Zerdzicki / Pexels</span>
     <span>Direction study by LOVELEEDAY Studios &middot; not affiliated with Novarna</span>
   </div>
 </footer>
