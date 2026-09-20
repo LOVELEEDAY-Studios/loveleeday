@@ -172,6 +172,15 @@
     color:#04211B;margin-right:56px;
   }
   @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+  /* A 26-second infinite marquee that ignores prefers-reduced-motion is exactly
+     what that setting exists to stop, and it is a vestibular trigger, not a
+     taste preference. It also made this page impossible to capture
+     deterministically -- the frame checker saw 4.3% drift on a file nobody had
+     touched. Honouring the setting fixes the accessibility defect and the
+     checker at the same time. */
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none;padding-left:0}
+  }
 
   /* ---------- SECTION generic ---------- */
   section{position:relative}

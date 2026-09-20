@@ -428,6 +428,14 @@
     .personal__stack{ order:2; }
   }
   .personal h2{ font-size:clamp(34px,5vw,58px); }
+  /* The section is titled "We take lending personally" and had three abstract
+     cards where the person should be -- a card standing in for the subject. The
+     borrower is who the capital is FOR, so the borrower goes here. */
+  .personal__shot{ margin:0; }
+  .personal__shot img{ width:100%; height:clamp(280px,32vw,400px); object-fit:cover;
+    border-radius:4px; }
+  .personal__shot figcaption{ margin-top:14px; font-size:13px; line-height:1.55;
+    color:var(--slate); max-width:42ch; }
   .personal__stack{
     position:relative;
     height:340px;
@@ -848,20 +856,12 @@
         <h2>We take lending personally</h2>
         <p class="body-copy">Mission Driven Lenders (CDFIs, Credit Unions, Community Banks) support our communities with affordable, impact focused capital. However, community lending is often held back by outdated technology and manual processes. That's where we come in.</p>
       </div>
-      <div class="personal__stack reveal" aria-hidden="true">
-        <div class="tag-card tag-card--a">
-          <div class="tag-card__k">Mission-driven lender</div>
-          <div class="tag-card__v">CDFI</div>
-        </div>
-        <div class="tag-card tag-card--b">
-          <div class="tag-card__k">Mission-driven lender</div>
-          <div class="tag-card__v">Credit Union</div>
-        </div>
-        <div class="tag-card tag-card--c">
-          <div class="tag-card__k">Mission-driven lender</div>
-          <div class="tag-card__v">Community Bank</div>
-        </div>
-      </div>
+      <figure class="personal__shot reveal">
+        <img src="assets/borrower.jpg" width="1200" height="900" loading="lazy"
+             alt="Two owners standing together behind the counter of their own bar.">
+        <figcaption>CDFI &middot; Credit Union &middot; Community Bank &mdash; three kinds of lender,
+          one reason any of it matters.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -974,7 +974,7 @@
       </div>
       <div class="footer__bottom">
         <span>© LoanWell, Inc. All Rights Reserved</span>
-        <span class="footer__credit"><strong>Redesign concept by LOVELEEDAY Studios</strong> — unsolicited, not affiliated with LoanWell or Collab Capital. Copy and figures sourced from loanwell.com and Collab Capital's portfolio page.</span>
+        <span class="footer__credit">Photography: RDNE Stock project / Pexels &mdash; licensed stock, not LoanWell customers. <strong>Redesign concept by LOVELEEDAY Studios</strong> — unsolicited, not affiliated with LoanWell or Collab Capital. Copy and figures sourced from loanwell.com and Collab Capital's portfolio page.</span>
       </div>
     </div>
   </footer>
