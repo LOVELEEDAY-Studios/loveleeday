@@ -129,10 +129,10 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 /* Bounded to the headline band, not the whole hero. A fade alone still let it
    cross the lede -- the duplex has to END above the text column, not merely get
    quieter over it. */
-.field{position:absolute;inset:0 0 auto 0;width:100%;height:52%;pointer-events:none;
-  opacity:.8;mix-blend-mode:multiply;
-  -webkit-mask-image:linear-gradient(180deg,#000 0 72%,transparent 97%);
-  mask-image:linear-gradient(180deg,#000 0 72%,transparent 97%)}
+.field{position:absolute;inset:0 0 auto 0;width:100%;height:45%;pointer-events:none;
+  opacity:.92;
+  -webkit-mask-image:linear-gradient(180deg,#000 0 80%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0 80%,transparent 100%)}
 .hero{position:relative;isolation:isolate}
 .hero > .wrap{position:relative;z-index:1}
 
@@ -527,147 +527,207 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   'use strict';
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- 1. hero field: an A-form RNA duplex ------------------------- */
-  /* The first version of this drew a ladder -- two straight rails with straight
-     rungs. That is not what a nucleic acid looks like and Daniel said so. A
-     duplex is two backbones winding around a shared axis, which in projection
-     gives two offset sinusoids whose base pairs foreshorten toward each crossing
-     and whose near strand occludes the far one.
+  /* ---------- 1. hero: a shaded, perspective-projected A-form RNA duplex --- */
+  /* Version three of this object. First was a flat ladder, second was correct
+     geometry but flat line art. This one is rendered: perspective projection,
+     a single light, Lambert plus specular on every atom, shaded tubes for the
+     backbone and base pairs, and atmospheric depth fog.
 
-     The parameters below are A-form, not B-form, because this company makes RNA:
-     RNA duplexes are A-form -- ~11 bp/turn at 32.7 degrees of twist, 2.8 A rise,
-     ~23 A diameter, and a major groove that is NARROW and deep where B-DNA's is
-     wide. That last one is the visible difference, and it comes from the angular
-     offset between the two glycosidic bonds, not from anything cosmetic.
-     Sources: academic.oup.com/nar/article/27/4/949 (A'-form RNA crystal
-     structure) and en.wikipedia.org/wiki/A-DNA. */
+     Deliberately NOT three.js. That is ~600 KB over the wire, and this page sits
+     in a portfolio whose Soarce study criticises a 5,009 KB homepage -- shipping
+     a render engine to draw one molecule would be the same mistake with better
+     intentions. The maths here is a few dozen lines and the atom sprite is
+     rasterised once and blitted, so the cost is a couple of hundred drawImage
+     calls a frame rather than a WebGL context.
+
+     Geometry stays A-form, as before: 32.7 degrees of twist per base pair,
+     2.8 A rise, ~23 A diameter, 250 degree strand offset for the narrow major
+     groove. academic.oup.com/nar/article/27/4/949 · en.wikipedia.org/wiki/A-DNA
+  */
   var cv = document.getElementById('field');
   if (cv && cv.getContext) {
-    var ctx = cv.getContext('2d');
-    var TWIST = 32.7 * Math.PI / 180;     // radians per base pair, A-form
-    var DELTA = 250 * Math.PI / 180;      // strand offset -> narrow major groove
-    var BP    = 16;                        // base pairs drawn (1.45 turns)
-    var SUB   = 6;                         // backbone samples per bp -- see below
-    var HOT_A = 8, HOT_B = 11;             // the region NovaEngine designed
-    var SEQ   = 'GCAUGGCAUCGAUGCUAGCUAGGCAU';
+    var ctx   = cv.getContext('2d');
+    var TWIST = 32.7 * Math.PI / 180;
+    var DELTA = 250  * Math.PI / 180;
+    var BP    = 15;
+    var SUB   = 7;                       // backbone samples between base pairs
+    var HOT_A = 7, HOT_B = 10;
+    var SEQ   = 'GCAUGGCAUCGAUGC';
     var PAIR  = { G: 'C', C: 'G', A: 'U', U: 'A' };
+    var BG    = [250, 247, 243];          // --bone, for depth fog
+    var LIGHT = (function () {            // key light: upper left, toward viewer
+      var v = [-0.46, -0.62, 0.64], m = Math.hypot(v[0], v[1], v[2]);
+      return [v[0] / m, v[1] / m, v[2] / m];
+    })();
 
-    var W = 0, H = 0, cx = 0, R = 0, rise = 0, top = 0;
+    /* One sphere, rasterised once at high resolution and blitted per atom.
+       Building ~30 radial gradients every frame is what makes this kind of thing
+       drop frames on an 8 GB machine; building two and scaling them does not. */
+    function sprite(rgb) {
+      var S = 128, c = document.createElement('canvas'), g;
+      c.width = c.height = S;
+      var x = c.getContext('2d'), cx = S / 2, cy = S / 2, r = S / 2 - 1;
+      /* offset the highlight along the light direction, in screen space */
+      var hx = cx + LIGHT[0] * r * 0.52, hy = cy + LIGHT[1] * r * 0.52;
+      g = x.createRadialGradient(hx, hy, r * 0.06, cx, cy, r);
+      var lift = function (t) {
+        return 'rgb(' + rgb.map(function (ch) {
+          return Math.round(Math.min(255, ch + (255 - ch) * t));
+        }).join(',') + ')';
+      };
+      var sink = function (t) {
+        return 'rgb(' + rgb.map(function (ch) { return Math.round(ch * (1 - t)); }).join(',') + ')';
+      };
+      g.addColorStop(0.00, lift(0.72));          // specular
+      g.addColorStop(0.16, lift(0.30));
+      g.addColorStop(0.55, 'rgb(' + rgb.join(',') + ')');
+      g.addColorStop(0.88, sink(0.42));          // terminator
+      g.addColorStop(1.00, sink(0.20));          // rim bounce
+      x.fillStyle = g;
+      x.beginPath(); x.arc(cx, cy, r, 0, 6.2832); x.fill();
+      return c;
+    }
+    var SP_INK = sprite([38, 34, 31]), SP_RED = sprite([201, 34, 38]);
+
+    var W = 0, H = 0, ox = 0, oy = 0, R = 0, rise = 0, CAM = 0;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var scatter = [];
+    var scat = [];
 
     function layout() {
-      var r = cv.getBoundingClientRect();
-      W = r.width; H = r.height;
+      var b = cv.getBoundingClientRect();
+      W = b.width; H = b.height;
       cv.width = W * dpr; cv.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      /* Keep the true 23 A diameter : 2.8 A rise ratio. One turn is 11 bp, so a
-         full turn is 30.8 A tall against 23 A wide -- a helix slightly taller
-         than it is wide. Faking that ratio is what makes stock helices look like
-         springs. */
       var turns = BP * TWIST / (2 * Math.PI);
-      var wantH = H * 0.74;
-      rise = wantH / BP;
-      R = rise * BP / turns * (23 / 30.8) / 2;
-      R = Math.min(R, W * 0.17);
-      cx = W * 0.78;
-      top = (H - rise * BP) / 2;
-      if (!scatter.length) for (var i = 0; i < BP * 2; i++)
-        scatter.push({ x: Math.random(), y: Math.random(), d: Math.random() * 0.4 });
+      rise = (H * 0.70) / BP;
+      R    = rise * BP / turns * (23 / 30.8) / 2;   // hold the true 23:30.8 ratio
+      R    = Math.min(R, W * 0.19);
+      ox   = W * 0.74; oy = H / 2;
+      CAM  = R * 9.5;                                 // gentle perspective
+      if (!scat.length) for (var i = 0; i < BP * 2; i++)
+        scat.push({ x: (Math.random() - 0.5) * 2.6, y: (Math.random() - 0.5) * 2.4,
+                    z: (Math.random() - 0.5) * 2.2, d: Math.random() * 0.38 });
     }
 
     function ease(t) { return t < 0 ? 0 : t > 1 ? 1 : 1 - Math.pow(1 - t, 3); }
+    function fog(rgb, depth) {                        // depth 0 far .. 1 near
+      var t = Math.pow(1 - depth, 1.6) * 0.42;
+      return 'rgb(' + rgb.map(function (ch, i) {
+        return Math.round(ch + (BG[i] - ch) * t); }).join(',') + ')';
+    }
+
+    /* world -> screen, with perspective */
+    function proj(x, y, z) {
+      var s = CAM / (CAM - z);
+      return { x: ox + x * s, y: oy + y * s, s: s, z: z };
+    }
+
+    /* a lit tube between two projected points */
+    function tube(a, b, rad, rgb, alpha) {
+      var dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy) || 1;
+      var nx = -dy / L, ny = dx / L;                  // screen-space normal
+      var lit = (nx * LIGHT[0] + ny * LIGHT[1]);      // which side faces the key
+      var g = ctx.createLinearGradient(a.x + nx * rad, a.y + ny * rad,
+                                       a.x - nx * rad, a.y - ny * rad);
+      var hi = rgb.map(function (c) { return Math.round(Math.min(255, c + (255 - c) * 0.52)); });
+      var lo = rgb.map(function (c) { return Math.round(c * 0.48); });
+      if (lit < 0) { var t = hi; hi = lo; lo = t; }
+      g.addColorStop(0, 'rgb(' + hi.join(',') + ')');
+      g.addColorStop(0.5, 'rgb(' + rgb.join(',') + ')');
+      g.addColorStop(1, 'rgb(' + lo.join(',') + ')');
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = g; ctx.lineWidth = rad * 2; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    }
 
     function paint(p, spin) {
       ctx.clearRect(0, 0, W, H);
-      var items = [], i, th, y, k, s;
+      var items = [], i, q;
 
       for (i = 0; i < BP; i++) {
-        th = i * TWIST + spin;
-        y  = top + i * rise;
         var hot = i >= HOT_A && i <= HOT_B;
-        var a = { x: cx + R * Math.cos(th),          z: Math.sin(th) };
-        var b = { x: cx + R * Math.cos(th + DELTA),  z: Math.sin(th + DELTA) };
+        var y = (i - (BP - 1) / 2) * rise;
+        var th = i * TWIST + spin;
+        var s1 = scat[i * 2], s2 = scat[i * 2 + 1];
+        var d1 = s1.d + (hot ? 0.3 : 0), d2 = s2.d + (hot ? 0.3 : 0);
+        var k1 = ease((p - d1) / (1 - d1)), k2 = ease((p - d2) / (1 - d2));
 
-        /* scatter -> resolve, staggered so the designed region lands last */
-        s = scatter[i * 2]; var s2 = scatter[i * 2 + 1];
-        var d0 = s.d + (hot ? 0.34 : 0), d1 = s2.d + (hot ? 0.34 : 0);
-        k = ease((p - d0) / (1 - d0));
-        var k2 = ease((p - d1) / (1 - d1));
-        var ax = s.x * W + (a.x - s.x * W) * k,  ay = s.y * H + (y - s.y * H) * k;
-        var bx = s2.x * W + (b.x - s2.x * W) * k2, by = s2.y * H + (y - s2.y * H) * k2;
+        /* resolve from a scattered cloud into the duplex, in 3D */
+        var A = { x: R * Math.cos(th),         y: y, z: R * Math.sin(th) };
+        var B = { x: R * Math.cos(th + DELTA), y: y, z: R * Math.sin(th + DELTA) };
+        var a3 = { x: A.x + (s1.x * R * 3 - A.x) * (1 - k1),
+                   y: A.y + (s1.y * H * 0.5 - A.y) * (1 - k1),
+                   z: A.z + (s1.z * R * 3 - A.z) * (1 - k1) };
+        var b3 = { x: B.x + (s2.x * R * 3 - B.x) * (1 - k2),
+                   y: B.y + (s2.y * H * 0.5 - B.y) * (1 - k2),
+                   z: B.z + (s2.z * R * 3 - B.z) * (1 - k2) };
+        var pa = proj(a3.x, a3.y, a3.z), pb = proj(b3.x, b3.y, b3.z);
 
-        items.push({ z: a.z, kind: 'n', x: ax, y: ay, ch: SEQ[i % SEQ.length], hot: hot, k: k });
-        items.push({ z: b.z, kind: 'n', x: bx, y: by, ch: PAIR[SEQ[i % SEQ.length]], hot: hot, k: k2 });
-        if (Math.min(k, k2) > 0.6)
-          items.push({ z: (a.z + b.z) / 2, kind: 'r', x1: ax, y1: ay, x2: bx, y2: by,
-                       hot: hot, k: (Math.min(k, k2) - 0.6) / 0.4 });
-        /* Backbone. One segment per base pair drew a polygon, not a helix --
-           at 32.7 degrees of twist that is only 11 facets a turn and every one
-           of them is visible. The phosphodiester backbone is a smooth curve, so
-           sample it SUB times between each pair and depth-sort every piece
-           individually, which also lets the near half occlude the far half
-           mid-segment rather than mid-base-pair. */
-        if (i > 0) {
-          for (var q = 0; q < SUB; q++) {
-            var u0 = (i - 1 + q / SUB), u1 = (i - 1 + (q + 1) / SUB);
-            var t0 = u0 * TWIST + spin, t1 = u1 * TWIST + spin;
-            var yy0 = top + u0 * rise, yy1 = top + u1 * rise;
-            items.push({ kind: 'b', k: k, z: (Math.sin(t0) + Math.sin(t1)) / 2,
-              x1: cx + R * Math.cos(t0), y1: yy0, x2: cx + R * Math.cos(t1), y2: yy1 });
-            items.push({ kind: 'b', k: k2, z: (Math.sin(t0 + DELTA) + Math.sin(t1 + DELTA)) / 2,
-              x1: cx + R * Math.cos(t0 + DELTA), y1: yy0,
-              x2: cx + R * Math.cos(t1 + DELTA), y2: yy1 });
-          }
+        items.push({ t: 'atom', z: a3.z, p: pa, hot: hot, k: k1, ch: SEQ[i % SEQ.length] });
+        items.push({ t: 'atom', z: b3.z, p: pb, hot: hot, k: k2, ch: PAIR[SEQ[i % SEQ.length]] });
+        if (Math.min(k1, k2) > 0.55)
+          items.push({ t: 'pair', z: (a3.z + b3.z) / 2, a: pa, b: pb, hot: hot,
+                       k: (Math.min(k1, k2) - 0.55) / 0.45 });
+
+        if (i > 0) for (q = 0; q < SUB; q++) {
+          var u0 = i - 1 + q / SUB, u1 = i - 1 + (q + 1) / SUB;
+          var t0 = u0 * TWIST + spin, t1 = u1 * TWIST + spin;
+          var y0 = (u0 - (BP - 1) / 2) * rise, y1 = (u1 - (BP - 1) / 2) * rise;
+          [[0, k1], [DELTA, k2]].forEach(function (pairDef) {
+            var off = pairDef[0], kk = pairDef[1];
+            var z0 = R * Math.sin(t0 + off), z1 = R * Math.sin(t1 + off);
+            items.push({ t: 'bb', z: (z0 + z1) / 2, k: kk,
+              a: proj(R * Math.cos(t0 + off), y0, z0),
+              b: proj(R * Math.cos(t1 + off), y1, z1) });
+          });
         }
       }
 
-      /* painter's algorithm: far things first, so the near strand occludes */
-      items.sort(function (m, n) { return m.z - n.z; });
+      items.sort(function (m, n) { return m.z - n.z; });   // painter's algorithm
 
       for (i = 0; i < items.length; i++) {
-        var it = items[i];
-        var depth = (it.z + 1) / 2;                 // 0 far .. 1 near
-        if (it.kind === 'b') {
-          if (it.k < 0.92) continue;                 // backbone only once seated
-          ctx.globalAlpha = (0.2 + 0.62 * depth) * ((it.k - 0.92) / 0.08);
-          ctx.strokeStyle = '#141210';
-          ctx.lineWidth = 1.1 + 2.4 * depth;
-          ctx.lineCap = 'round';
-          ctx.beginPath(); ctx.moveTo(it.x1, it.y1); ctx.lineTo(it.x2, it.y2); ctx.stroke();
-        } else if (it.kind === 'r') {
-          ctx.globalAlpha = (0.14 + 0.4 * depth) * it.k;
-          ctx.strokeStyle = it.hot ? '#E1272B' : '#141210';
-          ctx.lineWidth = it.hot ? 1.5 : 1;
-          ctx.beginPath();
-          ctx.moveTo(it.x1 + (it.x2 > it.x1 ? 6 : -6), it.y1);
-          ctx.lineTo(it.x2 + (it.x2 > it.x1 ? -6 : 6), it.y2);
-          ctx.stroke();
+        var it = items[i], depth = (it.z / R + 1) / 2;
+        depth = depth < 0 ? 0 : depth > 1 ? 1 : depth;
+        if (it.t === 'bb') {
+          if (it.k < 0.9) continue;
+          tube(it.a, it.b, Math.max(1.3, 3.5 * it.a.s), [54, 48, 44],
+               ((it.k - 0.9) / 0.1) * (0.5 + 0.5 * depth));
+        } else if (it.t === 'pair') {
+          tube(it.a, it.b, Math.max(0.7, 1.7 * it.a.s),
+               it.hot ? [201, 34, 38] : [96, 88, 82],
+               it.k * (0.34 + 0.5 * depth));
         } else {
-          ctx.globalAlpha = (0.42 + 0.58 * depth) * (0.3 + 0.7 * it.k);
-          ctx.fillStyle = it.hot ? '#E1272B' : 'rgba(20,18,16,.8)';
-          ctx.font = '450 ' + (10 + 3.5 * depth).toFixed(1) + 'px "IBM Plex Mono", ui-monospace, monospace';
-          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          ctx.fillText(it.ch, it.x, it.y);
+          var rad = Math.max(3.6, 9.6 * it.p.s);
+          var sp  = it.hot ? SP_RED : SP_INK;
+          ctx.globalAlpha = (0.6 + 0.4 * depth) * (0.25 + 0.75 * it.k);
+          ctx.drawImage(sp, it.p.x - rad, it.p.y - rad, rad * 2, rad * 2);
+          /* base letter rides the near-side atoms only, where it is legible */
+          if (depth > 0.5 && it.k > 0.9) {
+            ctx.globalAlpha = (depth - 0.5) / 0.5 * 0.9;
+            ctx.fillStyle = fog([250, 247, 243], 1);
+            ctx.font = '500 ' + (8.6 * it.p.s).toFixed(1) + 'px "IBM Plex Mono", ui-monospace, monospace';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(it.ch, it.p.x, it.p.y);
+          }
         }
       }
       ctx.globalAlpha = 1;
     }
 
     layout();
-    new ResizeObserver(function () { layout(); if (REDUCED) paint(1, 0.6); }).observe(cv);
+    new ResizeObserver(function () { layout(); if (REDUCED) paint(1, 0.7); }).observe(cv);
 
-    if (REDUCED) paint(1, 0.6);
+    if (REDUCED) paint(1, 0.7);
     else {
-      var t0 = null, CYCLE = 11000, running = true;
+      var t0 = null, CYCLE = 12000, running = true;
       new IntersectionObserver(function (es) { running = es[0].isIntersecting; }).observe(cv);
       (function frame(ts) {
         requestAnimationFrame(frame);
         if (!running) { t0 = null; return; }
         if (t0 === null) t0 = ts;
         var el = ts - t0, u = (el % CYCLE) / CYCLE;
-        var p = u < 0.46 ? u / 0.46 : u < 0.88 ? 1 : 1 - (u - 0.88) / 0.12;
-        paint(p, el / 5200);          /* the duplex turns continuously */
+        var pr = u < 0.44 ? u / 0.44 : u < 0.9 ? 1 : 1 - (u - 0.9) / 0.1;
+        paint(pr, el / 5600);
       })(performance.now());
     }
   }
