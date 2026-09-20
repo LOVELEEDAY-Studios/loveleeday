@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://novarna.ai/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=IBM+Plex+Sans:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;450;500&display=swap" rel="stylesheet">
 <style>
 /* ---------------------------------------------------------------------------
    Novarna — direction study by LOVELEEDAY Studios. Fourth direction, and the
@@ -49,7 +49,7 @@
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--bone);color:var(--ink);overflow-x:hidden;
-  font-family:"Work Sans",ui-sans-serif,system-ui,sans-serif;
+  font-family:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
@@ -60,7 +60,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 
 /* the pill label with its solid square — IntegratedBio's tell */
 .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;
-  background:rgba(20,18,16,.05);font-family:"JetBrains Mono",ui-monospace,monospace;
+  background:rgba(20,18,16,.05);font-family:"IBM Plex Mono",ui-monospace,monospace;
   font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
 .pill::before{content:"";width:7px;height:7px;background:var(--red);border-radius:1px}
 .pill.on-dark{background:rgba(255,255,255,.12);color:rgba(255,255,255,.82)}
@@ -69,7 +69,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 .cta{display:inline-flex;align-items:stretch;gap:6px}
 .cta > a:first-child{display:inline-flex;align-items:center;padding:0 22px;min-height:46px;
   background:var(--deep);color:#fff;border-radius:999px;text-decoration:none;
-  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
 .cta > a:first-child:hover{background:#2A2420}
 .cta .sq{display:inline-grid;place-items:center;width:46px;min-height:46px;background:var(--red);
   color:#fff;border-radius:12px;text-decoration:none;font-size:15px}
@@ -83,7 +83,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 .bar{background:var(--deep);color:#fff;font-size:12.5px}
 .bar-in{max-width:1280px;margin:0 auto;padding:10px clamp(20px,3.4vw,40px);display:flex;gap:12px;
   align-items:center;flex-wrap:wrap}
-.bar .tag{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.14em;
+.bar .tag{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;
   text-transform:uppercase;background:var(--red);padding:4px 8px;border-radius:3px}
 .bar a{color:#fff}
 .nav{position:sticky;top:0;z-index:40;background:rgba(250,247,243,.88);
@@ -92,7 +92,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   display:flex;align-items:center;gap:24px}
 .brand{font-family:"Fraunces",Georgia,serif;font-size:21px;font-weight:400;letter-spacing:-.025em}
 .navlinks{margin-left:auto;display:flex;gap:10px;align-items:center;
-  font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
 .navlinks a{text-decoration:none;padding:8px 12px;border-radius:999px;color:var(--mid)}
 .navlinks a:hover{background:rgba(20,18,16,.05);color:var(--ink)}
 .navlinks a.on{background:rgba(20,18,16,.06);color:var(--ink)}
@@ -115,6 +115,62 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   bottom:clamp(20px,3vw,34px);color:#fff;font-size:clamp(1.15rem,2.4vw,1.95rem);line-height:1.22;
   font-family:"Fraunces",Georgia,serif;font-weight:300;max-width:24ch;letter-spacing:-.02em}
 .hero-media figcaption em{font-style:italic;color:rgba(255,255,255,.62)}
+
+/* ── MOTION ───────────────────────────────────────────────────
+   Every rule here has a prefers-reduced-motion twin at the end of the block.
+   The canvas sits BEHIND the headline at half opacity: the type stays the
+   loudest thing on the screen, and a field that competes with it is decoration
+   that ate the message. */
+.field{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
+  opacity:.5;mix-blend-mode:multiply}
+.hero{position:relative;isolation:isolate}
+.hero > .wrap{position:relative;z-index:1}
+
+[data-rise]{opacity:0;transform:translateY(14px);
+  transition:opacity .62s cubic-bezier(.22,.61,.36,1),transform .62s cubic-bezier(.22,.61,.36,1)}
+[data-rise].in{opacity:1;transform:none}
+
+/* The loop is four ruled rows, not a track, so the motion that fits is a line
+   drawing down the ordinal column as you read it — the cycle advancing under
+   your own scroll rather than on a timer you are not driving. */
+.rows > .wrap{position:relative}
+.scrub{position:absolute;left:clamp(20px,3.4vw,40px);top:0;width:2px;background:var(--red);
+  height:0;opacity:.9;pointer-events:none;transition:height .12s linear}
+.row .o{transition:color .45s ease}
+.row.lit .o{color:var(--red)}
+
+/* a base sequence streaming past, the way a genome browser shows one */
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--paper);padding:11px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.ticker span{display:inline-block;white-space:nowrap;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.42em;
+  color:var(--soft);animation:stream 42s linear infinite;will-change:transform}
+.ticker b{color:var(--red);font-weight:450}
+@keyframes stream{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* assay rows arrive one at a time, like a result printing */
+.as{transition:opacity .5s ease,transform .5s ease}
+.as.pend{opacity:0;transform:translateX(-8px)}
+.as.in{opacity:1;transform:none}
+
+.assay-h{display:flex;justify-content:space-between;gap:12px;padding:0 0 12px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;
+  letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.54)}
+.live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--red);margin-right:7px;vertical-align:middle;
+  animation:blip 2.4s ease-in-out infinite}
+@keyframes blip{0%,100%{opacity:1}50%{opacity:.25}}
+
+@media (prefers-reduced-motion:reduce){
+  [data-rise]{opacity:1;transform:none;transition:none}
+  .scrub{display:none}
+  .ticker span{animation:none}
+  .as.pend{opacity:1;transform:none}
+  .live-dot{animation:none}
+  .field{opacity:.42}
+}
 
 /* 2 · NUMBERS — no panel, no boxes, just the figures on the ground */
 .nums{padding:clamp(72px,9vw,118px) 0 clamp(64px,8vw,96px)}
@@ -144,7 +200,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 .row p{margin:0;font-size:14.5px;line-height:1.66;color:var(--mid)}
 .moat{margin-top:clamp(28px,4vw,44px);display:grid;
   grid-template-columns:clamp(58px,6vw,96px) minmax(0,58ch);gap:clamp(14px,3vw,42px)}
-.o-lab{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.16em;
+.o-lab{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--red-d);white-space:nowrap;padding-top:5px}
 .moat p{margin:0;font-size:15.5px;line-height:1.72;color:var(--mid)}
 .moat b{color:var(--ink);font-weight:500}
@@ -176,7 +232,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 .as{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:18px;align-items:baseline;
   padding:17px 0;border-top:1px solid rgba(255,255,255,.14);font-size:15px}
 .as:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
-.as .m{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:rgba(255,255,255,.38)}
+.as .m{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;color:rgba(255,255,255,.38)}
 .as .v{font-weight:600;white-space:nowrap;color:#fff}
 .as .v.win{color:#FF6B5A}
 .val .note{margin:clamp(26px,4vw,38px) 0 0;font-size:12.5px;line-height:1.65;
@@ -204,7 +260,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   gap:clamp(14px,3vw,42px);align-items:baseline;padding:clamp(20px,2.4vw,28px) 0;
   border-top:1px solid var(--line-2)}
 .tier:last-of-type{border-bottom:1px solid var(--line-2)}
-.tier .o{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--soft);letter-spacing:.14em}
+.tier .o{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;color:var(--soft);letter-spacing:.14em}
 .tier h3{font-size:clamp(1.05rem,1.9vw,1.4rem);font-weight:400;letter-spacing:-.015em}
 .tier p{margin:0;font-size:14.5px;line-height:1.65;color:var(--mid)}
 
@@ -218,7 +274,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   align-items:start}
 .foot-top h2{font-size:clamp(1.35rem,2.7vw,2.1rem);line-height:1.16;color:#fff;max-width:22ch}
 .foot-nav{display:grid;gap:9px;font-size:13.5px}
-.foot-nav .h{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.17em;
+.foot-nav .h{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.17em;
   text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:5px}
 .foot-nav a{color:rgba(255,255,255,.88);text-decoration:none}
 .foot-nav a:hover{text-decoration:underline}
@@ -226,7 +282,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   font-size:clamp(3.4rem,15.6vw,13rem);line-height:.82;letter-spacing:-.055em;color:#fff;
   display:block;user-select:none}
 .foot-legal{position:relative;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
-  padding:22px clamp(20px,3.4vw,44px) 26px;font-family:"JetBrains Mono",monospace;font-size:10px;
+  padding:22px clamp(20px,3.4vw,44px) 26px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;
   letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.55)}
 
 @media (max-width:980px){
@@ -269,10 +325,12 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 </div></header>
 
 <!-- 1 · HERO -->
-<section class="hero"><div class="wrap">
-  <span class="pill">The Novarna platform</span>
-  <h1 style="margin-top:22px">RNA discovery is a guessing game.<span class="t2">We closed the loop.</span></h1>
-  <div class="shelf">
+<section class="hero">
+  <canvas class="field" id="field" aria-hidden="true"></canvas>
+  <div class="wrap">
+  <span class="pill" data-rise>The Novarna platform</span>
+  <h1 style="margin-top:22px" data-rise>RNA discovery is a guessing game.<span class="t2">We closed the loop.</span></h1>
+  <div class="shelf" data-rise>
     <div class="cta">
       <a href="/connect">Connect with us</a>
       <a class="sq" href="/connect" aria-label="Connect with us">&rarr;</a>
@@ -282,7 +340,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
       feedback loop &mdash; producing novel RNA candidates faster, cheaper and with greater precision
       than any existing approach.</p>
   </div>
-  <figure class="hero-media" style="margin-bottom:0">
+  <figure class="hero-media" style="margin-bottom:0" data-rise>
     <img src="bench.jpg" width="1800" height="760" fetchpriority="high"
          alt="Two researchers at a laboratory bench under a work lamp, examining a sample tray together.">
     <span class="over"></span>
@@ -295,33 +353,33 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 <section class="nums"><div class="wrap">
   <span class="pill">The Novarna advantage</span>
   <div class="nums-grid">
-    <div class="n1"><div class="k">Higher</div><div class="l">Success rate</div>
+    <div class="n1" data-rise><div class="k">Higher</div><div class="l">Success rate</div>
       <div class="s">More programs yield viable candidates than conventional RNA discovery.</div></div>
-    <div class="n1"><div class="k tnum">7&times;</div><div class="l">Faster development cycles</div>
+    <div class="n1" data-rise><div class="k tnum" data-count="7" data-suffix="&times;">7&times;</div><div class="l">Faster development cycles</div>
       <div class="s">From target to ranked candidates.</div></div>
-    <div class="n1"><div class="k tnum">100%</div><div class="l">Proprietary training data</div>
+    <div class="n1" data-rise><div class="k tnum" data-count="100" data-suffix="%">100%</div><div class="l">Proprietary training data</div>
       <div class="s">No external dataset can replicate it.</div></div>
   </div>
 </div></section>
 
 <!-- 3 · THE LOOP -->
-<section class="rows" id="platform"><div class="wrap">
+<section class="rows" id="platform"><div class="wrap"><span class="scrub" aria-hidden="true"></span>
   <div class="rows-head">
     <h2>The tools that exist today predict. <span class="t2">Ours design &mdash; then check the answer.</span></h2>
     <p>Traditional RNA development relies on iterative screening, trial-and-error synthesis and
       expensive wet lab cycles that can take years to yield a viable candidate.</p>
   </div>
-  <div class="row"><span class="o tnum">01</span><h3>NovaEngine generates</h3>
+  <div class="row" data-rise><span class="o tnum">01</span><h3>NovaEngine generates</h3>
     <p>Entirely novel RNA sequences optimized for a target from the ground up, not screened from a
       library. 3D tertiary structure prediction, RNA:target interaction modeling, novel sequence
       generation.</p></div>
-  <div class="row"><span class="o tnum">02</span><h3>NovaLab synthesizes</h3>
+  <div class="row" data-rise><span class="o tnum">02</span><h3>NovaLab synthesizes</h3>
     <p>Mapping and synthesis of the AI-generated candidates in-house, on our own bench rather than
       a vendor&rsquo;s queue.</p></div>
-  <div class="row"><span class="o tnum">03</span><h3>Functional validation</h3>
+  <div class="row" data-rise><span class="o tnum">03</span><h3>Functional validation</h3>
     <p>Cellular assays, in vitro experimentation, pooled screening and structural
       characterization.</p></div>
-  <div class="row"><span class="o tnum">04</span><h3>The data returns</h3>
+  <div class="row" data-rise><span class="o tnum">04</span><h3>The data returns</h3>
     <p>Every experiment becomes training signal. The platform gets better every time it works.</p></div>
   <div class="moat">
     <span class="o-lab">The moat</span>
@@ -334,11 +392,11 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
 <!-- 3b · THE LAB — the in-house claim, shown -->
 <section class="lab"><div class="wrap">
   <div class="lab-in">
-    <figure class="lab-shot">
+    <figure class="lab-shot" data-rise>
       <img src="lab.jpg" width="1240" height="930" loading="lazy"
            alt="A researcher working at a fully stocked laboratory bench, reagent racks and instruments in use around her.">
     </figure>
-    <div class="lab-copy">
+    <div class="lab-copy" data-rise>
       <span class="pill">In-house</span>
       <h2 style="margin-top:18px">Most platforms stop at the prediction. <span class="t2">Ours has a bench behind it.</span></h2>
       <p>NovaLab is our own wet lab, not a vendor queue. Candidates NovaEngine designs are
@@ -351,6 +409,9 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
     </div>
   </div>
 </div></section>
+
+<!-- 3c · SEQUENCE TICKER -->
+<div class="ticker" aria-hidden="true"><span id="tick"></span></div>
 
 <!-- 4 · VALIDATION -->
 <section class="val" id="validation"><div class="val-in">
@@ -366,6 +427,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
     </div>
   </div>
   <div class="assay">
+    <div class="assay-h"><span><span class="live-dot"></span>DiFeo Lab &middot; ovarian cancer target</span><span>Wet lab</span></div>
     <div class="as"><span class="m">01</span><span>Against commercially available treatment</span>
       <span class="v win">Outperformed</span></div>
     <div class="as"><span class="m">02</span><span>Novel molecule types produced</span>
@@ -394,13 +456,13 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
     <h2>Design-as-a-Service. <span class="t2">On your target, on your timeline.</span></h2>
     <p>Three ways in, from a single proof-of-concept through to multi-year co-development.</p>
   </div>
-  <div class="tier"><span class="o">01</span><h3>Rapid Discovery</h3>
+  <div class="tier" data-rise><span class="o">01</span><h3>Rapid Discovery</h3>
     <p>Focused pilot against a specific target. Ideal for proof-of-concept and platform
       validation.</p></div>
-  <div class="tier"><span class="o">02</span><h3>Optimized Lead</h3>
+  <div class="tier" data-rise><span class="o">02</span><h3>Optimized Lead</h3>
     <p>Extended design and validation cycles delivering optimized, preclinical-ready
       candidates.</p></div>
-  <div class="tier"><span class="o">03</span><h3>Discovery Partnership</h3>
+  <div class="tier" data-rise><span class="o">03</span><h3>Discovery Partnership</h3>
     <p>Multi-year co-development with milestone and royalty structures aligned from discovery
       through commercialization.</p></div>
 </div></section>
@@ -431,5 +493,203 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
     <span>Direction study by LOVELEEDAY Studios &middot; not affiliated with Novarna</span>
   </div>
 </footer>
+<script>
+/* ===========================================================================
+   Novarna motion system.
+
+   Reference, looked at rather than recalled: Wild's particle field resolving
+   from scattered noise into an ordered waveform; Vercel's live charts annotated
+   with inline monospace query fragments; Spade's terminal readout typing itself
+   out. Those three are the register this page borrows -- technical motion that
+   is showing you a process, not decorating a box.
+
+   The argument the hero animates is the company's own: a guessing game is
+   disorder, a designed molecule is order. So the field starts as scattered
+   bases and resolves into a helix, over and over, and the four bases NovaEngine
+   designed arrive last and in red.
+
+   Everything here is gated on prefers-reduced-motion. Under that setting the
+   canvas paints its resolved end state once and never animates, counters print
+   their final value, and the readout shows every row. Nobody gets a page that
+   only makes sense if it moved.
+   =========================================================================== */
+(function () {
+  'use strict';
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 1. hero field: noise -> designed sequence ------------------- */
+  var cv = document.getElementById('field');
+  if (cv && cv.getContext) {
+    var ctx = cv.getContext('2d');
+    var BASES = 'GCAUGGCAUCGAUGCUAGCUAGGCAUCGAUCG'.split('');
+    var PAIR = { G: 'C', C: 'G', A: 'U', U: 'A' };
+    var ROWS = 16, HOT_FROM = 9, HOT_TO = 12;   // the designed region
+    var dots = [], W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function layout() {
+      var r = cv.getBoundingClientRect();
+      W = r.width; H = r.height;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var cx = W * 0.5, top = H * 0.16, span = H * 0.68, rung = Math.min(W * 0.22, 132);
+      dots = [];
+      for (var i = 0; i < ROWS; i++) {
+        var t = i / (ROWS - 1), y = top + span * t;
+        var lean = Math.sin(t * Math.PI * 1.15) * (rung * 0.16);
+        var half = rung * (0.55 + 0.45 * Math.sin(t * Math.PI));   // helix pinch
+        var hot = i >= HOT_FROM && i <= HOT_TO;
+        for (var sdx = 0; sdx < 2; sdx++) {
+          var sign = sdx ? 1 : -1;
+          dots.push({
+            tx: cx + lean + sign * half, ty: y,
+            x: Math.random() * W, y: Math.random() * H,
+            ch: sdx ? PAIR[BASES[i % BASES.length]] : BASES[i % BASES.length],
+            hot: hot, row: i, side: sdx,
+            delay: (i / ROWS) * 0.42 + (hot ? 0.34 : 0) + Math.random() * 0.06
+          });
+        }
+      }
+    }
+
+    function ease(t) { return t < 0 ? 0 : t > 1 ? 1 : 1 - Math.pow(1 - t, 3); }
+
+    function paint(p) {                   // p: 0 = scattered, 1 = resolved
+      ctx.clearRect(0, 0, W, H);
+      var rows = {};
+      for (var i = 0; i < dots.length; i++) {
+        var d = dots[i];
+        var k = ease((p - d.delay) / (1 - d.delay));
+        var x = d.x + (d.tx - d.x) * k, y = d.y + (d.ty - d.y) * k;
+        (rows[d.row] = rows[d.row] || [])[d.side] = { x: x, y: y, k: k };
+        ctx.globalAlpha = 0.25 + 0.75 * k;
+        ctx.fillStyle = d.hot ? '#E1272B' : 'rgba(20,18,16,.62)';
+        ctx.font = '450 11px "IBM Plex Mono", ui-monospace, monospace';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(d.ch, x, y);
+      }
+      /* rungs only once both ends of a pair have essentially arrived */
+      for (var r in rows) {
+        var pr = rows[r]; if (!pr[0] || !pr[1]) continue;
+        var k = Math.min(pr[0].k, pr[1].k); if (k < 0.72) continue;
+        var a = (k - 0.72) / 0.28, d0 = dots[r * 2];
+        ctx.globalAlpha = a * 0.9;
+        ctx.strokeStyle = d0.hot ? '#E1272B' : 'rgba(20,18,16,.22)';
+        ctx.lineWidth = d0.hot ? 1.5 : 1;
+        ctx.beginPath();
+        ctx.moveTo(pr[0].x + 7, pr[0].y); ctx.lineTo(pr[1].x - 7, pr[1].y);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    layout();
+    var ro = new ResizeObserver(function () { layout(); if (REDUCED) paint(1); });
+    ro.observe(cv);
+
+    if (REDUCED) { paint(1); }
+    else {
+      var t0 = null, CYCLE = 9200, running = true;
+      new IntersectionObserver(function (es) { running = es[0].isIntersecting; })
+        .observe(cv);
+      (function frame(ts) {
+        requestAnimationFrame(frame);
+        if (!running) { t0 = null; return; }
+        if (t0 === null) t0 = ts;
+        var u = ((ts - t0) % CYCLE) / CYCLE;
+        /* 0-.52 resolve · .52-.86 hold · .86-1 dissolve back to noise */
+        var p = u < 0.52 ? u / 0.52 : u < 0.86 ? 1 : 1 - (u - 0.86) / 0.14;
+        paint(p);
+      })(performance.now());
+    }
+  }
+
+  /* ---------- 2. scroll reveals ------------------------------------------ */
+  var reveals = [].slice.call(document.querySelectorAll('[data-rise]'));
+  if (REDUCED) reveals.forEach(function (e) { e.classList.add('in'); });
+  else {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var sibs = [].slice.call(e.target.parentNode.querySelectorAll('[data-rise]'));
+        e.target.style.transitionDelay = Math.min(sibs.indexOf(e.target), 5) * 70 + 'ms';
+        e.target.classList.add('in'); io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (e) { io.observe(e); });
+  }
+
+  /* ---------- 3. figures that count ------------------------------------- */
+  [].slice.call(document.querySelectorAll('[data-count]')).forEach(function (el) {
+    var end = parseFloat(el.dataset.count), suf = el.dataset.suffix || '';
+    if (REDUCED) { el.textContent = end + suf; return; }
+    el.textContent = '0' + suf;
+    new IntersectionObserver(function (es, obs) {
+      if (!es[0].isIntersecting) return;
+      obs.disconnect();
+      var s = null, DUR = 1500;
+      (function step(ts) {
+        if (s === null) s = ts;
+        var k = Math.min(1, (ts - s) / DUR), e = 1 - Math.pow(1 - k, 4);
+        el.textContent = Math.round(end * e) + suf;
+        if (k < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }, { threshold: 0.6 }).observe(el);
+  });
+
+  /* ---------- 4. assay readout, row by row ------------------------------- */
+  var assay = document.querySelector('.assay');
+  if (assay) {
+    var rowsEl = [].slice.call(assay.querySelectorAll('.as'));
+    if (REDUCED) rowsEl.forEach(function (r) { r.classList.add('in'); });
+    else {
+      rowsEl.forEach(function (r) { r.classList.add('pend'); });
+      new IntersectionObserver(function (es, obs) {
+        if (!es[0].isIntersecting) return;
+        obs.disconnect();
+        rowsEl.forEach(function (r, i) {
+          setTimeout(function () { r.classList.remove('pend'); r.classList.add('in'); }, i * 420);
+        });
+      }, { threshold: 0.35 }).observe(assay);
+    }
+  }
+
+  /* ---------- 5. the loop, advanced by your own scroll -------------------- */
+  /* An earlier version animated a dot along a .track element. That class did not
+     exist on this page -- it was left over from a previous direction -- so the
+     rule decorated nothing and said nothing about it. Same shape as a guard that
+     cannot fire. This version is bound to elements the page actually has. */
+  var rowsSec = document.querySelector('.rows > .wrap'),
+      scrub   = document.querySelector('.scrub'),
+      rowEls  = [].slice.call(document.querySelectorAll('.row'));
+  if (rowsSec && scrub && rowEls.length && !REDUCED) {
+    var tick = false;
+    var onScroll = function () {
+      if (tick) return; tick = true;
+      requestAnimationFrame(function () {
+        tick = false;
+        var r = rowsSec.getBoundingClientRect(), vh = innerHeight;
+        var p = (vh * 0.62 - r.top) / r.height;
+        scrub.style.height = Math.max(0, Math.min(1, p)) * r.height + 'px';
+        rowEls.forEach(function (el) {
+          el.classList.toggle('lit', el.getBoundingClientRect().top < vh * 0.62);
+        });
+      });
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---------- 6. the sequence ticker -------------------------------------- */
+  var tickEl = document.getElementById('tick');
+  if (tickEl) {
+    /* The designed region is marked in red, the same four bases the hero field
+       resolves last. Doubled so the -50% translate loops seamlessly. */
+    var seq = 'GCAUGGCAUCGAUGCUAGCUAGGCAUCGAUCGUAGCAUGCUAGCAUCGGAUCGAUCGUAGCUA';
+    var unit = seq.slice(0, 22) + '<b>' + seq.slice(22, 26) + '</b>' + seq.slice(26);
+    tickEl.innerHTML = (unit + ' &nbsp; ').repeat(8);
+  }
+})();
+</script>
 </body>
 </html>
