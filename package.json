@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "capture": "python3 -W ignore scripts/capture-studies.py",
+    "capture:check": "python3 -W ignore scripts/capture-studies.py --check"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
