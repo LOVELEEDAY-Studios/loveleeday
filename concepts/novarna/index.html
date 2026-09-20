@@ -121,8 +121,18 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
    The canvas sits BEHIND the headline at half opacity: the type stays the
    loudest thing on the screen, and a field that competes with it is decoration
    that ate the message. */
-.field{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
-  opacity:.5;mix-blend-mode:multiply}
+/* Masked on both axes. Unmasked it ran straight through the lede paragraph,
+   which is the exact failure the comment above warns about -- a field that
+   competes with the message. It now fades out before the text column on the
+   left and before the shelf on the bottom, so it is scenery the type sits in
+   front of rather than a thing the reader has to look past. */
+/* Bounded to the headline band, not the whole hero. A fade alone still let it
+   cross the lede -- the duplex has to END above the text column, not merely get
+   quieter over it. */
+.field{position:absolute;inset:0 0 auto 0;width:100%;height:52%;pointer-events:none;
+  opacity:.8;mix-blend-mode:multiply;
+  -webkit-mask-image:linear-gradient(180deg,#000 0 72%,transparent 97%);
+  mask-image:linear-gradient(180deg,#000 0 72%,transparent 97%)}
 .hero{position:relative;isolation:isolate}
 .hero > .wrap{position:relative;z-index:1}
 
@@ -169,7 +179,7 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   .ticker span{animation:none}
   .as.pend{opacity:1;transform:none}
   .live-dot{animation:none}
-  .field{opacity:.42}
+  .field{opacity:.6}
 }
 
 /* 2 · NUMBERS — no panel, no boxes, just the figures on the ground */
@@ -517,88 +527,147 @@ h1,h2,h3{margin:0;font-family:"Fraunces",Georgia,serif;font-weight:300;letter-sp
   'use strict';
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- 1. hero field: noise -> designed sequence ------------------- */
+  /* ---------- 1. hero field: an A-form RNA duplex ------------------------- */
+  /* The first version of this drew a ladder -- two straight rails with straight
+     rungs. That is not what a nucleic acid looks like and Daniel said so. A
+     duplex is two backbones winding around a shared axis, which in projection
+     gives two offset sinusoids whose base pairs foreshorten toward each crossing
+     and whose near strand occludes the far one.
+
+     The parameters below are A-form, not B-form, because this company makes RNA:
+     RNA duplexes are A-form -- ~11 bp/turn at 32.7 degrees of twist, 2.8 A rise,
+     ~23 A diameter, and a major groove that is NARROW and deep where B-DNA's is
+     wide. That last one is the visible difference, and it comes from the angular
+     offset between the two glycosidic bonds, not from anything cosmetic.
+     Sources: academic.oup.com/nar/article/27/4/949 (A'-form RNA crystal
+     structure) and en.wikipedia.org/wiki/A-DNA. */
   var cv = document.getElementById('field');
   if (cv && cv.getContext) {
     var ctx = cv.getContext('2d');
-    var BASES = 'GCAUGGCAUCGAUGCUAGCUAGGCAUCGAUCG'.split('');
-    var PAIR = { G: 'C', C: 'G', A: 'U', U: 'A' };
-    var ROWS = 16, HOT_FROM = 9, HOT_TO = 12;   // the designed region
-    var dots = [], W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var TWIST = 32.7 * Math.PI / 180;     // radians per base pair, A-form
+    var DELTA = 250 * Math.PI / 180;      // strand offset -> narrow major groove
+    var BP    = 16;                        // base pairs drawn (1.45 turns)
+    var SUB   = 6;                         // backbone samples per bp -- see below
+    var HOT_A = 8, HOT_B = 11;             // the region NovaEngine designed
+    var SEQ   = 'GCAUGGCAUCGAUGCUAGCUAGGCAU';
+    var PAIR  = { G: 'C', C: 'G', A: 'U', U: 'A' };
+
+    var W = 0, H = 0, cx = 0, R = 0, rise = 0, top = 0;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var scatter = [];
 
     function layout() {
       var r = cv.getBoundingClientRect();
       W = r.width; H = r.height;
       cv.width = W * dpr; cv.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var cx = W * 0.5, top = H * 0.16, span = H * 0.68, rung = Math.min(W * 0.22, 132);
-      dots = [];
-      for (var i = 0; i < ROWS; i++) {
-        var t = i / (ROWS - 1), y = top + span * t;
-        var lean = Math.sin(t * Math.PI * 1.15) * (rung * 0.16);
-        var half = rung * (0.55 + 0.45 * Math.sin(t * Math.PI));   // helix pinch
-        var hot = i >= HOT_FROM && i <= HOT_TO;
-        for (var sdx = 0; sdx < 2; sdx++) {
-          var sign = sdx ? 1 : -1;
-          dots.push({
-            tx: cx + lean + sign * half, ty: y,
-            x: Math.random() * W, y: Math.random() * H,
-            ch: sdx ? PAIR[BASES[i % BASES.length]] : BASES[i % BASES.length],
-            hot: hot, row: i, side: sdx,
-            delay: (i / ROWS) * 0.42 + (hot ? 0.34 : 0) + Math.random() * 0.06
-          });
-        }
-      }
+      /* Keep the true 23 A diameter : 2.8 A rise ratio. One turn is 11 bp, so a
+         full turn is 30.8 A tall against 23 A wide -- a helix slightly taller
+         than it is wide. Faking that ratio is what makes stock helices look like
+         springs. */
+      var turns = BP * TWIST / (2 * Math.PI);
+      var wantH = H * 0.74;
+      rise = wantH / BP;
+      R = rise * BP / turns * (23 / 30.8) / 2;
+      R = Math.min(R, W * 0.17);
+      cx = W * 0.78;
+      top = (H - rise * BP) / 2;
+      if (!scatter.length) for (var i = 0; i < BP * 2; i++)
+        scatter.push({ x: Math.random(), y: Math.random(), d: Math.random() * 0.4 });
     }
 
     function ease(t) { return t < 0 ? 0 : t > 1 ? 1 : 1 - Math.pow(1 - t, 3); }
 
-    function paint(p) {                   // p: 0 = scattered, 1 = resolved
+    function paint(p, spin) {
       ctx.clearRect(0, 0, W, H);
-      var rows = {};
-      for (var i = 0; i < dots.length; i++) {
-        var d = dots[i];
-        var k = ease((p - d.delay) / (1 - d.delay));
-        var x = d.x + (d.tx - d.x) * k, y = d.y + (d.ty - d.y) * k;
-        (rows[d.row] = rows[d.row] || [])[d.side] = { x: x, y: y, k: k };
-        ctx.globalAlpha = 0.25 + 0.75 * k;
-        ctx.fillStyle = d.hot ? '#E1272B' : 'rgba(20,18,16,.62)';
-        ctx.font = '450 11px "IBM Plex Mono", ui-monospace, monospace';
-        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillText(d.ch, x, y);
+      var items = [], i, th, y, k, s;
+
+      for (i = 0; i < BP; i++) {
+        th = i * TWIST + spin;
+        y  = top + i * rise;
+        var hot = i >= HOT_A && i <= HOT_B;
+        var a = { x: cx + R * Math.cos(th),          z: Math.sin(th) };
+        var b = { x: cx + R * Math.cos(th + DELTA),  z: Math.sin(th + DELTA) };
+
+        /* scatter -> resolve, staggered so the designed region lands last */
+        s = scatter[i * 2]; var s2 = scatter[i * 2 + 1];
+        var d0 = s.d + (hot ? 0.34 : 0), d1 = s2.d + (hot ? 0.34 : 0);
+        k = ease((p - d0) / (1 - d0));
+        var k2 = ease((p - d1) / (1 - d1));
+        var ax = s.x * W + (a.x - s.x * W) * k,  ay = s.y * H + (y - s.y * H) * k;
+        var bx = s2.x * W + (b.x - s2.x * W) * k2, by = s2.y * H + (y - s2.y * H) * k2;
+
+        items.push({ z: a.z, kind: 'n', x: ax, y: ay, ch: SEQ[i % SEQ.length], hot: hot, k: k });
+        items.push({ z: b.z, kind: 'n', x: bx, y: by, ch: PAIR[SEQ[i % SEQ.length]], hot: hot, k: k2 });
+        if (Math.min(k, k2) > 0.6)
+          items.push({ z: (a.z + b.z) / 2, kind: 'r', x1: ax, y1: ay, x2: bx, y2: by,
+                       hot: hot, k: (Math.min(k, k2) - 0.6) / 0.4 });
+        /* Backbone. One segment per base pair drew a polygon, not a helix --
+           at 32.7 degrees of twist that is only 11 facets a turn and every one
+           of them is visible. The phosphodiester backbone is a smooth curve, so
+           sample it SUB times between each pair and depth-sort every piece
+           individually, which also lets the near half occlude the far half
+           mid-segment rather than mid-base-pair. */
+        if (i > 0) {
+          for (var q = 0; q < SUB; q++) {
+            var u0 = (i - 1 + q / SUB), u1 = (i - 1 + (q + 1) / SUB);
+            var t0 = u0 * TWIST + spin, t1 = u1 * TWIST + spin;
+            var yy0 = top + u0 * rise, yy1 = top + u1 * rise;
+            items.push({ kind: 'b', k: k, z: (Math.sin(t0) + Math.sin(t1)) / 2,
+              x1: cx + R * Math.cos(t0), y1: yy0, x2: cx + R * Math.cos(t1), y2: yy1 });
+            items.push({ kind: 'b', k: k2, z: (Math.sin(t0 + DELTA) + Math.sin(t1 + DELTA)) / 2,
+              x1: cx + R * Math.cos(t0 + DELTA), y1: yy0,
+              x2: cx + R * Math.cos(t1 + DELTA), y2: yy1 });
+          }
+        }
       }
-      /* rungs only once both ends of a pair have essentially arrived */
-      for (var r in rows) {
-        var pr = rows[r]; if (!pr[0] || !pr[1]) continue;
-        var k = Math.min(pr[0].k, pr[1].k); if (k < 0.72) continue;
-        var a = (k - 0.72) / 0.28, d0 = dots[r * 2];
-        ctx.globalAlpha = a * 0.9;
-        ctx.strokeStyle = d0.hot ? '#E1272B' : 'rgba(20,18,16,.22)';
-        ctx.lineWidth = d0.hot ? 1.5 : 1;
-        ctx.beginPath();
-        ctx.moveTo(pr[0].x + 7, pr[0].y); ctx.lineTo(pr[1].x - 7, pr[1].y);
-        ctx.stroke();
+
+      /* painter's algorithm: far things first, so the near strand occludes */
+      items.sort(function (m, n) { return m.z - n.z; });
+
+      for (i = 0; i < items.length; i++) {
+        var it = items[i];
+        var depth = (it.z + 1) / 2;                 // 0 far .. 1 near
+        if (it.kind === 'b') {
+          if (it.k < 0.92) continue;                 // backbone only once seated
+          ctx.globalAlpha = (0.2 + 0.62 * depth) * ((it.k - 0.92) / 0.08);
+          ctx.strokeStyle = '#141210';
+          ctx.lineWidth = 1.1 + 2.4 * depth;
+          ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(it.x1, it.y1); ctx.lineTo(it.x2, it.y2); ctx.stroke();
+        } else if (it.kind === 'r') {
+          ctx.globalAlpha = (0.14 + 0.4 * depth) * it.k;
+          ctx.strokeStyle = it.hot ? '#E1272B' : '#141210';
+          ctx.lineWidth = it.hot ? 1.5 : 1;
+          ctx.beginPath();
+          ctx.moveTo(it.x1 + (it.x2 > it.x1 ? 6 : -6), it.y1);
+          ctx.lineTo(it.x2 + (it.x2 > it.x1 ? -6 : 6), it.y2);
+          ctx.stroke();
+        } else {
+          ctx.globalAlpha = (0.42 + 0.58 * depth) * (0.3 + 0.7 * it.k);
+          ctx.fillStyle = it.hot ? '#E1272B' : 'rgba(20,18,16,.8)';
+          ctx.font = '450 ' + (10 + 3.5 * depth).toFixed(1) + 'px "IBM Plex Mono", ui-monospace, monospace';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(it.ch, it.x, it.y);
+        }
       }
       ctx.globalAlpha = 1;
     }
 
     layout();
-    var ro = new ResizeObserver(function () { layout(); if (REDUCED) paint(1); });
-    ro.observe(cv);
+    new ResizeObserver(function () { layout(); if (REDUCED) paint(1, 0.6); }).observe(cv);
 
-    if (REDUCED) { paint(1); }
+    if (REDUCED) paint(1, 0.6);
     else {
-      var t0 = null, CYCLE = 9200, running = true;
-      new IntersectionObserver(function (es) { running = es[0].isIntersecting; })
-        .observe(cv);
+      var t0 = null, CYCLE = 11000, running = true;
+      new IntersectionObserver(function (es) { running = es[0].isIntersecting; }).observe(cv);
       (function frame(ts) {
         requestAnimationFrame(frame);
         if (!running) { t0 = null; return; }
         if (t0 === null) t0 = ts;
-        var u = ((ts - t0) % CYCLE) / CYCLE;
-        /* 0-.52 resolve · .52-.86 hold · .86-1 dissolve back to noise */
-        var p = u < 0.52 ? u / 0.52 : u < 0.86 ? 1 : 1 - (u - 0.86) / 0.14;
-        paint(p);
+        var el = ts - t0, u = (el % CYCLE) / CYCLE;
+        var p = u < 0.46 ? u / 0.46 : u < 0.88 ? 1 : 1 - (u - 0.88) / 0.12;
+        paint(p, el / 5200);          /* the duplex turns continuously */
       })(performance.now());
     }
   }
