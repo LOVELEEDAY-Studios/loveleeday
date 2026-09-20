@@ -148,14 +148,20 @@ header.nav{position:sticky;top:0;z-index:40;background:rgba(250,247,243,.92);
 }
 
 /* 2 · PROOF STRIP */
-.strip{border-bottom:1px solid var(--line);background:var(--paper)}
-.strip-in{max-width:1240px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr)}
-.st{padding:34px 0 32px}
-.st + .st{border-left:1px solid var(--line);padding-left:32px}
-.st .k{font-family:"Fraunces",Georgia,serif;font-size:clamp(2rem,3.6vw,2.7rem);line-height:1;
-  letter-spacing:-.03em;color:var(--red)}
-.st .l{margin-top:10px;font-size:14.5px;font-weight:500}
-.st .s{margin-top:4px;font-size:13px;line-height:1.5;color:var(--soft)}
+/* Their three numbers are the loudest thing on circnova.com — 144px reversed
+   out of full-bleed red. An earlier version of this study put them in a hairline
+   white row at 43px, which is how a page with no photography ends up with
+   nothing to look at. They are the display moment; they are sized like it. */
+.strip{background:var(--red);color:#fff}
+.strip-in{max-width:1240px;margin:0 auto;padding:78px 28px 84px;
+  display:grid;gap:40px;grid-template-columns:repeat(3,1fr)}
+.strip-lede{max-width:1240px;margin:0 auto;padding:74px 28px 0}
+.strip-lede h2{font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.08;color:#fff;max-width:20ch}
+.strip-lede h2 em{font-style:italic;color:rgba(255,255,255,.62)}
+.st .k{font-family:"Fraunces",Georgia,serif;font-size:clamp(3.6rem,9vw,8.25rem);line-height:1;
+  letter-spacing:-.045em;color:#fff}
+.st .l{margin-top:20px;font-size:15px;font-weight:600;color:#fff}
+.st .s{margin-top:6px;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.72);max-width:26ch}
 
 /* 3 · THE LOOP — their idea, given the room it deserves */
 .loop{padding:92px 0;background:var(--bone)}
@@ -163,21 +169,40 @@ header.nav{position:sticky;top:0;z-index:40;background:rgba(250,247,243,.92);
 .loop-head{max-width:52ch}
 .loop-head h2{font-size:clamp(1.9rem,3.5vw,2.7rem);line-height:1.12}
 .loop-head p{margin:18px 0 0;font-size:16.5px;line-height:1.7;color:var(--mid)}
-.loop-grid{margin-top:48px;display:grid;gap:22px;grid-template-columns:repeat(4,1fr)}
-.node{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:22px 20px;
-  position:relative}
-.node .n{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--red)}
-.node h3{margin:12px 0 0;font-size:19px;letter-spacing:-.015em}
-.node p{margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--mid)}
-.node::after{content:"→";position:absolute;right:-16px;top:50%;transform:translateY(-50%);
-  color:var(--line-2);font-size:15px}
-.node:last-child::after{content:"↺";right:-17px;color:var(--red)}
+/* Four steps do not need four boxes. A rule, a big ordinal and the line —
+   the sequence reads as a sequence instead of as a card grid. */
+.loop-grid{margin-top:54px;display:grid;gap:0}
+.node{display:grid;grid-template-columns:clamp(88px,9vw,132px) minmax(0,26ch) minmax(0,1fr);
+  gap:clamp(20px,4vw,56px);align-items:baseline;
+  padding:30px 0;border-top:1px solid var(--line-2)}
+.node:last-child{border-bottom:1px solid var(--line-2)}
+.node .n{font-family:"Fraunces",Georgia,serif;font-size:clamp(2.6rem,5vw,4rem);line-height:.9;
+  letter-spacing:-.04em;color:var(--line-2);font-variant-numeric:tabular-nums}
+.node:last-child .n{color:var(--red)}
+.node h3{font-size:clamp(1.15rem,2vw,1.5rem);letter-spacing:-.02em}
+.node p{margin:0;font-size:15px;line-height:1.65;color:var(--mid)}
 .loop-close{margin-top:26px;padding:18px 22px;border:1px dashed var(--line-2);border-radius:10px;
   background:var(--red-wash);font-size:15px;line-height:1.6;color:var(--ink);max-width:70ch}
 
 /* 4 · TWO SYSTEMS */
-.two{padding:0 0 92px;background:var(--bone)}
+/* Third-party validation is the rarest thing in AI-for-biology. On their own
+   site it has a section; in the first version of this study it was a footnote
+   under the hero, which is the opposite of the argument this page makes. */
+.proof{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:clamp(72px,9vw,104px) 0}
+.proof-in{max-width:1240px;margin:0 auto;padding:0 28px;
+  display:grid;gap:clamp(28px,5vw,64px);grid-template-columns:minmax(0,.95fr) minmax(0,1fr);
+  align-items:start}
+.proof h2{font-size:clamp(2.1rem,4.6vw,3.5rem);line-height:1.06;letter-spacing:-.025em}
+.proof h2 em{font-style:italic;color:var(--red)}
+.proof-body p{margin:0 0 16px;font-size:16.5px;line-height:1.7;color:var(--mid)}
+.proof-body p:last-child{margin-bottom:0}
+.proof-tags{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
+.proof-tags span{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;
+  padding:7px 12px;border:1px solid var(--red);border-radius:999px;color:var(--red)}
+.proof-note{margin-top:34px;padding-left:16px;border-left:2px solid var(--line-2);
+  font-size:13.5px;line-height:1.6;color:var(--soft)}
+.two{padding:clamp(72px,9vw,92px) 0 92px;background:var(--bone)}
 .two-in{max-width:1240px;margin:0 auto;padding:0 28px;display:grid;gap:22px;grid-template-columns:1fr 1fr}
 .sys{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:30px 28px}
 .sys .badge{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;
@@ -219,7 +244,10 @@ footer{background:var(--bone);border-top:1px solid var(--line)}
   .hero-in{padding-bottom:56px}
   .loop-grid{grid-template-columns:1fr 1fr}
   .node::after{display:none}
-  .strip-in{grid-template-columns:1fr}
+  .strip-in{grid-template-columns:1fr;gap:34px}
+  .node{grid-template-columns:1fr;gap:8px}
+  .node .n{font-size:2.2rem}
+  .proof-in{grid-template-columns:1fr}
   .st + .st{border-left:0;padding-left:0;border-top:1px solid var(--line)}
   .navlinks{display:none}
 }
@@ -266,9 +294,8 @@ footer{background:var(--bone);border-top:1px solid var(--line)}
       </div>
       <div class="hero-proof">
         <span class="mark" aria-hidden="true">✓</span>
-        <p>At the <b>University of Michigan DiFeo Lab</b>, tested in their facility rather
-          than ours, Novarna-designed candidates <b>outperformed a commercially available
-          treatment</b> for the same ovarian cancer target.</p>
+        <p>Validated at the <b>University of Michigan DiFeo Lab</b> — in their facility,
+          not ours. <a href="#validation" style="color:var(--red);font-weight:600">See the result ↓</a></p>
       </div>
     </div>
 
@@ -300,6 +327,9 @@ footer{background:var(--bone);border-top:1px solid var(--line)}
 
 <!-- 2 · PROOF STRIP -->
 <section class="strip">
+  <div class="strip-lede">
+    <h2>The better we get,<br><em>the faster you move.</em></h2>
+  </div>
   <div class="strip-in">
     <div class="st"><div class="k">Higher</div><div class="l">Success rate</div>
       <div class="s">More programs yield viable candidates than conventional RNA discovery.</div></div>
@@ -324,11 +354,11 @@ footer{background:var(--bone);border-top:1px solid var(--line)}
       <article class="node"><div class="n">01 — Design</div><h3>NovaEngine generates</h3>
         <p>Entirely novel RNA sequences optimized for a target from the ground up, not
            screened from a library.</p></article>
-      <article class="node"><div class="n">02 — Build</div><h3>NovaLab synthesises</h3>
+      <article class="node"><div class="n">02 — Build</div><h3>NovaLab synthesizes</h3>
         <p>Mapping and synthesis of the AI-generated candidates in-house.</p></article>
       <article class="node"><div class="n">03 — Test</div><h3>Functional validation</h3>
         <p>Cellular assays, in vitro experimentation, pooled screening and structural
-           characterisation.</p></article>
+           characterization.</p></article>
       <article class="node"><div class="n">04 — Learn</div><h3>The data returns</h3>
         <p>Every experiment becomes training signal. The platform gets better every time
            it works.</p></article>
@@ -339,7 +369,31 @@ footer{background:var(--bone);border-top:1px solid var(--line)}
   </div>
 </section>
 
-<!-- 4 · TWO SYSTEMS -->
+<!-- 4 · THIRD-PARTY VALIDATION -->
+<section class="proof" id="validation">
+  <div class="proof-in">
+    <div>
+      <span class="eyebrow">Case study</span>
+      <h2 style="margin-top:14px">University of Michigan <em>— DiFeo Lab</em></h2>
+      <div class="proof-tags">
+        <span>Outperformed commercial treatment</span>
+        <span>Patent-eligible compositions</span>
+        <span>Multifunction RNA design</span>
+      </div>
+    </div>
+    <div class="proof-body">
+      <p>Novarna partnered with the DiFeo Lab to design RNA candidates against a live ovarian
+        cancer target. The lab tested them <b>in its own facility</b>, not ours.</p>
+      <p>The designs outperformed a commercially available treatment for the same target, and
+        produced new molecule types with patent potential.</p>
+      <p class="proof-note">Wet lab results, confirmed by the DiFeo Lab at the University of
+        Michigan. Not a simulation, and not self-reported — which is what makes it rare in
+        this category.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · TWO SYSTEMS -->
 <section class="two" id="systems">
   <div class="two-in">
     <article class="sys">
@@ -364,7 +418,7 @@ footer{background:var(--bone);border-top:1px solid var(--line)}
         <li><b>01</b> Mapping and synthesis of AI-generated candidates</li>
         <li><b>02</b> Functional validation in cellular assays</li>
         <li><b>03</b> In vitro experimentation</li>
-        <li><b>04</b> Pooled screening and structural characterisation</li>
+        <li><b>04</b> Pooled screening and structural characterization</li>
       </ul>
     </article>
   </div>
