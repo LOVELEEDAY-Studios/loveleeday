@@ -42,6 +42,39 @@ img{display:block;max-width:100%}
 .stage.deepbg{background:#16243A;color:#F6F3EC}
 .stage.deepbg .sub{color:#A9B3C4}
 .stage.deepbg .eyebrow{color:#A9B3C4}
+/* gradient grounds. A gradient is a stage ground, never a fill behind small text. */
+.stage.g-dawn{background:radial-gradient(1100px 620px at 18% 8%, #FCEFE2 0%, rgba(252,239,226,0) 62%),radial-gradient(900px 560px at 88% 22%, #E7F2F0 0%, rgba(231,242,240,0) 60%),radial-gradient(760px 520px at 62% 96%, #F7E4D6 0%, rgba(247,228,214,0) 64%),#FBF8F2}
+.stage.g-tide{background:radial-gradient(900px 540px at 82% 12%, #DFF0EE 0%, rgba(223,240,238,0) 62%),radial-gradient(820px 520px at 10% 88%, #EAF1F6 0%, rgba(234,241,246,0) 60%),#F7F6F1}
+.stage.g-deep,.stage.g-ember{color:#F6F3EC}
+.stage.g-deep{background:radial-gradient(1000px 620px at 78% 10%, #1B4B55 0%, rgba(27,75,85,0) 62%),radial-gradient(880px 560px at 12% 86%, #23324C 0%, rgba(35,50,76,0) 62%),#16243A}
+.stage.g-ember{background:radial-gradient(980px 600px at 22% 14%, #C0603A 0%, rgba(192,96,58,0) 58%),radial-gradient(900px 560px at 86% 84%, #10505C 0%, rgba(16,80,92,0) 60%),#16243A}
+.stage.g-deep .sub,.stage.g-ember .sub{color:#A9B3C4}
+.stage.g-deep .eyebrow,.stage.g-ember .eyebrow{color:#A9B3C4}
+.hero.g-dawn{background:radial-gradient(1100px 620px at 18% 8%, #FCEFE2 0%, rgba(252,239,226,0) 62%),radial-gradient(900px 560px at 88% 22%, #E7F2F0 0%, rgba(231,242,240,0) 60%),radial-gradient(760px 520px at 62% 96%, #F7E4D6 0%, rgba(247,228,214,0) 64%),#FBF8F2}
+/* A gradient's LIGHTEST stop is what text has to survive, not its average.
+   Measured: teal #0E7877 came to 4.29 on dawn's lightest bloom and 4.49 on
+   tide's, both under the 4.5 this project sets. Links on a gradient ground get
+   their own darker role rather than the gradients being flattened. */
+.hero.g-dawn .acts a,.stage.g-dawn a,.stage.g-tide a{color:#0D706F}
+/* And where text sits on a DARK gradient, a soft scrim sits behind the text
+   block only. Solved numerically: at 0.58 even the full copper bloom carries
+   the heading at 9.5:1, the sub at 5.0 and the ghost link at 6.5 -- so the
+   bloom stays vivid at the edges instead of being darkened to #6C3620, which
+   is what it would have taken to make bare text safe on it. */
+.close.g-ember .w,.stage.g-deep .w{position:relative}
+.close.g-ember .w::before,.stage.g-deep .w::before{content:"";position:absolute;
+  inset:-14% -18%;z-index:-1;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(11,18,31,.58),rgba(11,18,31,0) 100%)}
+/* a colour band of the studio's own work -- the photography already carries
+   more colour than any bought gradient does */
+.band{display:grid;gap:2px;background:#E6E0D6}
+@media(min-width:760px){.band{grid-template-columns:repeat(4,1fr)}}
+.band figure{margin:0;position:relative;overflow:hidden;background:#F2EDE3}
+.band img{width:100%;height:clamp(190px,17vw,250px);object-fit:cover;display:block}
+.band figure::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(transparent 46%,rgba(12,18,30,.76))}
+.band figcaption{position:absolute;left:14px;bottom:12px;z-index:2;color:#fff;
+  font:500 10.5px/1.35 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase}
 .stage h2{margin:16px 0 0}
 /* .obj is NOT scoped to .stage: the hero's object sits outside a stage, so a
    descendant selector gave it no dimensions at all and the canvas collapsed to
@@ -140,6 +173,11 @@ img{display:block;max-width:100%}
 
 /* ── close + footer ─────────────────────────────────────────────────────── */
 .close{padding:clamp(66px,9vw,128px) 0;text-align:center;background:#F2EDE3}
+.close.g-ember{background:radial-gradient(980px 600px at 22% 14%, #C0603A 0%, rgba(192,96,58,0) 58%),radial-gradient(900px 560px at 86% 84%, #10505C 0%, rgba(16,80,92,0) 60%),#16243A;color:#F6F3EC}
+.close.g-ember .sub{color:#A9B3C4}
+.close.g-ember .eyebrow{color:#A9B3C4}
+.close.g-ember .btn{background:#F6F3EC;color:#16243A}
+.close.g-ember .btn.ghost{background:transparent;color:#8FD9D6}
 .close h2{font-size:clamp(2.2rem,5.4vw,4rem);margin:16px 0 0}
 .btn{display:inline-block;background:#16243A;color:#FBF8F2;border-radius:980px;
   padding:13px 28px;font:600 15px/1 'Manrope',sans-serif;margin-top:26px}
@@ -177,7 +215,7 @@ img{display:block;max-width:100%}
   <p class=sub>And no wider. A connector that is configured is not a connector that is live.</p>
   <div style="max-width:760px;margin:26px auto 0"><div class=strip><i style="background:#0F7B4F"></i><b>Stripe &middot; payments</b><em>Financial Connections, balance and customers</em><time>checked 2026-09-21</time></div><div class=strip><i style="background:#0F7B4F"></i><b>Xero &middot; ledger</b><em>Invoices, contacts, account codes</em><time>checked 2026-09-21</time></div><div class=strip><i style="background:#0F7B4F"></i><b>Nylas &middot; mail</b><em>Three grants, one stale since 2026-05-28</em><time>checked 2026-09-21</time></div><div class=strip><i style="background:#616D7C"></i><b>ERP &middot; system of record</b><em>Adapter present, no tenant connected</em><time>checked 2026-09-21</time></div><div class=strip><i style="background:#616D7C"></i><b>Toast &middot; POS</b><em>Implemented, not connected</em><time>checked 2026-09-21</time></div></div>
 </div></section>
-<section class=close><div class=w><p class=eyebrow>Engagements</p><h2 class=display>Bring us the question.</h2><p class=sub>Scoped engagements open this quarter. The problem comes first; Arthur is how we get to a defensible answer, not the thing we are selling you.</p><div><a class=btn href="contact.html">Start a project</a><a class="btn ghost" href="work.html">See what we have shipped &rsaquo;</a></div></div></section>
+<section class="close"><div class=w><p class=eyebrow>Engagements</p><h2 class=display>Bring us the question.</h2><p class=sub>Scoped engagements open this quarter. The problem comes first; Arthur is how we get to a defensible answer, not the thing we are selling you.</p><div><a class=btn href="contact.html">Start a project</a><a class="btn ghost" href="work.html">See what we have shipped &rsaquo;</a></div></div></section>
 <footer class=foot><div class=wide>
   <div class=fcols>
     <div><b>Platform</b><a href="arthur.html">Persistent memory</a><a href="arthur.html">Identity resolution</a><a href="arthur.html">Bitemporal record</a><a href="arthur.html">Lineage on every value</a><a href="arthur.html">Verified execution</a></div>

@@ -50,7 +50,13 @@ function mount(cv, draw, fps){
   function fit(){var b=cv.getBoundingClientRect(); if(!b.width) return;
     W=b.width;H=b.height;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
     ctx.setTransform(dpr,0,0,dpr,0,0);
-    if(REDUCED) draw(ctx,W,H,18,true);}
+    /* ALWAYS paint a still frame here, not only under reduced motion.
+       The animation loop is gated on an IntersectionObserver, so until a canvas
+       has been scrolled into view it was sized and never drawn -- blank. That is
+       invisible while you scroll a page slowly and total in a full-page
+       screenshot, where every object below the fold came out empty. The still
+       frame is the floor; the observer upgrades it to motion. */
+    draw(ctx,W,H,18,true);}
   new ResizeObserver(fit).observe(cv);
   new IntersectionObserver(function(e){run=e[0].isIntersecting;
     if(run&&!started&&!REDUCED){started=true;frame(performance.now());}},{rootMargin:'160px'}).observe(cv);
@@ -74,8 +80,17 @@ function mount(cv, draw, fps){
    s10 (Prism) is the one exception and keeps pure white on purpose: it is
    subtractive, modelled as a spectrum cast on a WHITE surface, so tinting the
    ground shifts every wavelength in it. */
-var GROUND = '#FBF8F2';
-function clear(x,W,H,bg){ x.fillStyle=(bg==='#FFFFFF_KEEP'?'#FFFFFF':GROUND); x.fillRect(0,0,W,H); }
+var GROUND = 'transparent';
+function clear(x,W,H,bg){
+  /* TRANSPARENT IS THE DEFAULT, and it has to be: the page now uses four
+     grounds (cream, sunk, two mesh gradients), and a canvas that paints its own
+     opaque ground matches exactly one of them. It showed up as a pale rectangle
+     behind the hero object the moment a gradient went in underneath it.
+     Clearing to transparent lets whatever the page is do the job. */
+  if (bg === '#FFFFFF_KEEP') { x.fillStyle = '#FFFFFF'; x.fillRect(0,0,W,H); return; }
+  if (GROUND === 'transparent') { x.clearRect(0,0,W,H); return; }
+  x.fillStyle = GROUND; x.fillRect(0,0,W,H);
+}
 
 /* ══ 01 · RESOLUTION BUNDLE ═══════════════════════════════════════════════
    Edge bundling. Many records on the left collapse onto few objects on the
