@@ -508,11 +508,17 @@ PRICING_STATS = [
 ]
 
 
+# The footer columns come from the live site's Footer.tsx, which still points at
+# the exhibit that has been removed from these pages. Relabel it here so the
+# navigation does not promise a section that no longer exists.
+FOOTER_RELABEL = {"Companies we operate": "Catalogue pricing"}
+
+
 def footer():
     cols = "".join(
         f'<div><span class=lab>{c["title"]}</span>' +
-        "".join(f'<a href="#">{t}</a>' for t, _ in c["links"]) + '</div>'
-        for c in CH["footer"])
+        "".join(f'<a href="#">{FOOTER_RELABEL.get(t, t)}</a>' for t, _ in c["links"])
+        + '</div>' for c in CH["footer"])
     return (f'<footer><div class=w><div class=fg>'
             f'<div><div class=bd>LOVELEEDAY</div>'
             f'<p style="margin-top:10px;max-width:32ch">{CH["tagline"]}</p></div>{cols}</div>'
