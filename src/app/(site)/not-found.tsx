@@ -1,58 +1,47 @@
 import Link from "next/link";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
 
+/* 404. Previously styled against var(--font-display-var) and var(--pewter),
+   neither of which existed, so it rendered in the body face and an inherited
+   grey. A 404 is a page people reach by accident and judge you on anyway. */
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Nav />
-      <main className="flex-1 w-full max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col justify-center py-20">
-        <span
-          style={{
-            fontFamily: "var(--font-mono-var), 'JetBrains Mono', monospace",
-            fontSize: "0.7rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            color: "var(--pewter)",
-            display: "block",
-            marginBottom: "1.5rem",
-          }}
-        >
-          404
-        </span>
-        <h1
-          style={{
-            fontFamily: "var(--font-display-var), 'DM Serif Display', serif",
-            fontSize: "clamp(2rem, 4vw, 4rem)",
-            fontWeight: 400,
-            letterSpacing: "-0.04em",
-            lineHeight: 1.0,
-            marginBottom: "2rem",
-          }}
-        >
-          Nothing here.
-        </h1>
-        <p
-          className="text-[1rem] mb-10"
-          style={{ color: "var(--pewter)" }}
-        >
-          The page you&rsquo;re looking for doesn&rsquo;t exist.
+    <section className="bg-[var(--ink)] py-[clamp(88px,12vw,180px)] text-[var(--on-dark)]">
+      <div className="shell">
+        <p className="eyebrow flex items-center gap-2.5 text-[var(--on-dark-dim)]">
+          <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--signal)" }} />
+          404 — not found
         </p>
-        <Link
-          href="/"
-          className="inline-flex items-center text-sm font-semibold uppercase tracking-[0.06em] no-underline transition-opacity hover:opacity-60 min-h-[44px]"
-          style={{
-            fontFamily: "var(--font-sans-var), 'Instrument Sans', sans-serif",
-            color: "var(--ink)",
-            borderBottom: "1px solid var(--ink)",
-            paddingBottom: "2px",
-            alignSelf: "flex-start",
-          }}
-        >
-          &larr; Back to home
-        </Link>
-      </main>
-      <Footer />
-    </div>
+        <h1 className="display display-lg mt-7">
+          That page
+          <br />
+          <span style={{ color: "var(--on-dark-mu)" }}>does not exist.</span>
+        </h1>
+        <p className="mt-7 max-w-[46ch] text-[1.02rem] leading-[1.6] text-[var(--on-dark-mu)]">
+          The link may be out of date, or the page may have moved. If you were sent a private review
+          link, open the original URL — portal links are unguessable and cannot be reached from
+          here.
+        </p>
+
+        <nav className="mt-12 border-t border-[var(--ink-3)]" aria-label="Where to go instead">
+          {[
+            ["Arthur", "/arthur", "The intelligence system"],
+            ["Work", "/work", "Shipped products and rebuilds"],
+            ["Company", "/about", "How we build, and who for"],
+            ["Start a project", "/contact", "Describe the problem, get a fixed quote"],
+          ].map(([label, href, note]) => (
+            <Link
+              key={href}
+              href={href}
+              className="group flex items-baseline justify-between gap-6 border-b border-[var(--ink-3)] py-5"
+            >
+              <span className="text-[1.15rem] font-semibold tracking-[-0.02em] transition-colors group-hover:text-[var(--signal)]">
+                {label}
+              </span>
+              <span className="text-right text-[13px] text-[var(--on-dark-dim)]">{note}</span>
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </section>
   );
 }

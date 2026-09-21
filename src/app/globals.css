@@ -1,25 +1,63 @@
 @import "tailwindcss";
 
-/* LOVELEEDAY Studios — product-studio system.
-   Register: dark ground, one accent, dense numeric UI. Reference points are
-   Linear (design system restraint), Stripe (off-edge bleed, narrow text column,
-   hairline rules) and Retool (overlapping panels on a dark section) — see
-   knowledge/design/saas-landing-craft-study-2026-08.md.
+/* LOVELEEDAY Studios — "Instrument", 2026-09-21.
+   ============================================================================
 
-   The accent is #FF4713, olldae's verified product colour, used deliberately so
-   the parent company and the product it owns read as one company. */
+   Brief: make the studio's own site read like a company that has already gone
+   public. The previous system was Swiss-editorial — white ground, serif
+   display, lavender wash panels, stock photographs of people at laptops. It was
+   competent and it read as an agency showing its process.
+
+   So this direction was built from reference rather than from memory, the same
+   way the Novarna study was. Captured and studied on 2026-09-21: palantir.com,
+   databricks.com, snowflake.com, stripe.com, apple.com, anthropic.com. Four
+   things every one of them does that this site did not:
+
+     1. ONE global nav, dense, company mark hard left, and a filled
+        high-contrast CTA as the last element. Not three plain text links.
+     2. DARK IS A STAGE, not a theme. Apple alternates black product stages with
+        light grey; Databricks turns black for its proof wall. The dark section
+        is where the product is, and the light sections are where the argument
+        is.
+     3. THE HERO OBJECT IS THE PRODUCT, rendered and cropped by the viewport --
+        Databricks' console off the right edge, Apple's device, Snowflake's
+        terminal. Not one of the six uses stock photography of people.
+     4. PROOF SITS DIRECTLY UNDER THE HERO. For them that is a wall of customer
+        logos. This studio does not have Fortune 500 logos and will not draw
+        fake ones, so the equivalent here is a band of figures that each name
+        their own source -- which is this site's existing discipline anyway.
+
+   PALETTE. The lavender is gone; pale purple panels are the most reliable tell
+   of a 2021 SaaS template. What replaces it is near-black, off-white, and a
+   single saturated signal. The signal is #FF4713 -- olldae's verified product
+   colour, the product this studio owns. Sampled, not invented, which is the
+   same rule the client studies are held to.
+
+   ONE accent, rationed. Where a second colour appears it is inside a rendered
+   object -- the graph edges in the hero -- where it is data, not brand, exactly
+   as the CPK element colours are on the Novarna study.
+
+   TYPE. Off Inter. Inter is the single most-used face in generated design and
+   the studio had already moved two client studies off it while its own site
+   stayed. Archivo is a variable grotesque drawn for headline performance: it
+   holds at 110px with tight negative tracking and stays legible at 12px in a
+   table. JetBrains Mono carries eyebrows, identifiers and figures.
+   ============================================================================ */
 
 @theme inline {
-  --color-ground: var(--ground);
-  --color-raised: var(--raised);
-  --color-sunk: var(--sunk);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
   --color-line: var(--line);
-  --color-line-bright: var(--line-bright);
+  --color-line-2: var(--line-2);
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-dim: var(--dim);
-  --color-accent: var(--accent);
-  --color-accent-dim: var(--accent-dim);
+  --color-signal: var(--signal);
+  --color-signal-d: var(--signal-d);
   --color-good: var(--good);
 
   --font-sans: var(--font-sans-var);
@@ -27,67 +65,158 @@
 }
 
 :root {
-  /* LOVELEEDAY Studios — restored landing-page direction, 2026-09-19.
-     Swiss-editorial: white ground, near-black type, hairline rules, mono
-     eyebrows, one violet accent. #6441DA is sampled from the accent mark in
-     the delivered build, not chosen. This replaces the dark product-studio
-     palette; the client study pages keep their own brands, because a studio
-     that makes every client look like itself is a template. */
-  --ground: #FFFFFF;
-  --raised: #FAFAFA;
-  --sunk: #F4F3F7;
-  --line: #E4E2EA;
-  --line-bright: #161616;
-  --text: #161616;
-  --muted: #4A4754;
-  --dim: #6E6B7A;
-  --accent: #6441DA;
-  --accent-dim: #4E31B4;
-  --good: #0F7B4F;
+  /* Stages */
+  --ink: #08090B;          /* the dark stage */
+  --ink-2: #101319;        /* raised on dark */
+  --ink-3: #1B1F27;        /* hairline on dark */
+  --ink-4: #2A2F39;        /* bright hairline on dark */
+  --paper: #FFFFFF;
+  --paper-2: #F6F6F3;      /* the light stage */
+  --paper-3: #EBEBE6;      /* sunk */
 
-  /* wash tints from the delivered palette, for panels that need lift */
-  --wash-1: #F3EFFC;
-  --wash-2: #E9E2F5;
+  /* Rules */
+  --line: #E3E3DE;
+  --line-2: #CFCFC8;
 
-  /* The text column is 420px on purpose. Wide text columns read as documents;
-     this is the Stripe measure. */
-  --measure: 420px;
+  /* Type on light. --dim carries eyebrows and source notes at 11-13px, so it
+     has to clear 4.5:1 on BOTH light stages, not just on white. */
+  --text: #0A0B0D;
+  --muted: #494E56;
+  --dim: #6A6F7B;
+
+  /* Type on dark */
+  --on-dark: #F5F5F2;
+  --on-dark-mu: #A0A6AE;
+  --on-dark-dim: #7B818A;
+
+  /* The one accent. olldae's verified product colour.
+
+     Three steps, and the split is a contrast requirement rather than a taste.
+     #FF4713 carries 3.41:1 against white, which is fine behind a 90px headline
+     and fails for a 14px button label -- so the brand orange marks and rules,
+     and the button sits one step down at 4.78:1. Measured, not eyeballed. */
+  --signal: #FF4713;
+  --signal-d: #D6360A;
+  --signal-dd: #B02B06;
+  --signal-wash: #FFF1EC;
+  --good: #17B26A;
+
+  /* Data colours. These live INSIDE rendered objects only -- they are the
+     object's own information, never the brand's. */
+  --data-a: #5B8DEF;
+  --data-b: #3FB6A8;
+  --data-c: #C9A227;
+
+  /* ---- compatibility aliases -------------------------------------------
+     The client portals under /p, and two of the smaller site pages, are styled
+     against the token names of TWO earlier systems -- a dark product-studio
+     palette (--ground/--raised/--sunk/--line-bright/--accent) and a Swiss one
+     (--bone/--pewter). Neither set survived into globals.css, so those files
+     have been asking for colours that do not exist and getting whatever they
+     inherited. That is why a portal's hairlines and its accent dot were not the
+     colours anyone chose.
+
+     These are the old names pointed at the current system. Aliasing rather than
+     rewriting is deliberate: the portals are live client deliverables and a
+     token map is a change I can verify by looking, where re-typing six pages is
+     not. They should be retired as each of those pages is next touched. */
+  --accent: var(--signal);
+  --accent-dim: var(--signal-d);
+  --ground: var(--paper);
+  --raised: var(--paper-2);
+  --sunk: var(--paper-3);
+  --line-bright: var(--text);
+  --bone: var(--line);
+  --pewter: var(--dim);
+  --vermilion: var(--signal);
+  --ember: var(--signal);
+  --radius-md: 4px;
+  --font-display-var: var(--font-sans-var);
+
+  /* Stripe's measure. Wide text columns read as documents. */
+  --measure: 34rem;
+  --shell: 1320px;
+  --gutter: clamp(20px, 4vw, 56px);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  /* The dark hero runs to the top of the viewport, so overscroll at the top
+     should be dark too rather than flashing white. */
+  background: var(--ink);
+}
 
 body {
-  background: var(--ground);
+  background: var(--paper);
   color: var(--text);
   font-family: var(--font-sans-var), ui-sans-serif, system-ui, sans-serif;
+  font-synthesis-weight: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
 }
 
-::selection { background: var(--accent); color: #fff; }
+::selection { background: var(--signal); color: #fff; }
 
-/* Focus ring — visible, never removed. */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--signal);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* The hairline down the left of a text column. Cheap, and it instantly reads
-   considered. */
-.rule-left {
-  border-left: 1px solid var(--line-bright);
-  padding-left: 1.75rem;
+/* ---------------------------------------------------------------- utilities */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
-/* Numeric/ID type. Tabular so columns of figures line up. */
-.tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+/* Eyebrow. Mono, uppercase, tracked out, and always paired with a rule or a
+   small solid square so it reads as a label rather than as small text. */
+.eyebrow {
+  font-family: var(--font-mono-var), ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Display type. The tracking has to go NEGATIVE as the size goes up or a
+   grotesque falls apart at headline sizes -- this is the whole reason for
+   leaving a static face. */
+.display {
+  font-weight: 620;
+  letter-spacing: -0.038em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+.display-xl { font-size: clamp(2.8rem, 6.2vw, 5.4rem); }
+.display-lg { font-size: clamp(2.15rem, 4.4vw, 3.6rem); }
+.display-md { font-size: clamp(1.75rem, 3.2vw, 2.7rem); letter-spacing: -0.03em; line-height: 1.02; }
+
+/* Figures line up in columns or they are not figures. */
+.tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1, "ss01" 1; }
+
+/* A hairline down the left of a column. Cheap, and instantly reads considered. */
+.rule-left { border-left: 1px solid var(--line-2); padding-left: 1.6rem; }
+
+/* Entrance. One transform, one opacity, both on the compositor. The reduced
+   motion branch shows the FINAL state, never the first frame. */
+[data-rise] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
+}
+[data-rise].is-in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  [data-rise] { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
