@@ -112,6 +112,64 @@ nav.bar[data-sheet="1"] .sheet{display:block}
 .sg{padding:14px 0;border-bottom:1px solid var(--edge)}
 .sg .lab{margin-bottom:8px}
 
+/* ---------- Solstice sky hero ---------- */
+.sky{position:relative;min-height:clamp(560px,66vw,760px);display:flex;
+  flex-direction:column;justify-content:center;overflow:hidden;
+  background:
+    radial-gradient(120% 80% at 18% 8%, #FFD36B 0%, rgba(255,211,107,0) 55%),
+    radial-gradient(110% 90% at 82% 18%, #FF8A2B 0%, rgba(255,138,43,0) 60%),
+    radial-gradient(130% 100% at 50% 100%, #B2210E 0%, rgba(178,33,14,0) 62%),
+    linear-gradient(170deg,#FFB13B 0%,#F0651C 44%,#8E1B0E 100%)}
+.ridge{position:absolute;left:0;right:0;bottom:0;height:62%;opacity:.5;
+  pointer-events:none}
+.ridge svg{width:100%;height:100%;display:block}
+/* The sub measured 4.25:1 over the mid-gradient. Lightening the type only buys
+   a tenth; a soft scrim behind the text block buys the whole margin and keeps
+   the gradient intact either side of it. */
+.skyin{position:relative;z-index:4;padding-top:clamp(70px,9vw,120px)}
+.skyin::before{content:"";position:absolute;inset:-60% -45%;z-index:-1;
+  /* The first version was inset only a few percent, so the radial was clipped
+     by its own box and the scrim read as a rectangle sitting on the sky. It has
+     to reach zero well inside the edge, which means a much larger box and
+     tighter stops. */
+  background:radial-gradient(38% 30% at 34% 50%,rgba(93,20,8,.40) 0%,
+    rgba(93,20,8,.20) 45%,rgba(93,20,8,0) 68%);pointer-events:none}
+.sky h1{max-width:18ch;color:#FFF8EE;font-weight:300;
+  font-size:clamp(2.5rem,6.4vw,5rem);letter-spacing:-.04em;line-height:1.02;
+  text-wrap:balance}
+.sky h1 em{font-style:italic;font-family:Georgia,'Times New Roman',serif;
+  font-weight:400;letter-spacing:-.02em}
+.skysub{margin-top:22px;max-width:48ch;color:#FFEEDC;
+  font-size:clamp(15.5px,1.6vw,18.5px);line-height:1.6}
+.acts{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px}
+.acts a{font:500 15px/1 var(--sans);color:#FFF8EE;
+  border-bottom:1px solid rgba(255,248,238,.45);padding-bottom:6px}
+.acts a:hover{border-bottom-color:#FFF8EE}
+
+/* The bar, sitting on the sky. The original concept set this cream, and
+   measured on the rendered pixels that is 1.37:1 against the bright top of the
+   gradient -- the navigation was decorative, not readable. Adopting the look
+   should not mean adopting that. Dark ink on the light end of the sky keeps the
+   transparent treatment and makes the links legible; the ticker above turns
+   translucent so the hero still runs edge to edge. */
+nav.bar.over{position:absolute;top:30px;left:0;right:0;background:transparent;
+  border-bottom:0;backdrop-filter:none;z-index:40}
+nav.bar.over .bd{color:#51120A}
+nav.bar.over .tab{color:#6A1C0C}
+nav.bar.over .tab:hover,nav.bar.over .tab[aria-expanded="true"]{background:rgba(74,10,6,.11);color:#3D0D05}
+nav.bar.over .btn{border-color:rgba(74,10,6,.42);color:#51120A}
+nav.bar.over .btn.solid{background:#3D0D05;border-color:#3D0D05;color:#FFF3E4}
+nav.bar.over .burger{border-color:rgba(74,10,6,.42);color:#51120A}
+
+/* The ticker rides the sky rather than cutting a dark band above it. A
+   translucent dark band measured 1.41:1 -- too weak against the lightest part
+   of the gradient. Dark ink, same as the nav, on no band at all. */
+.tick.onsky{background:transparent;border-bottom:1px solid rgba(74,10,6,.18);
+  position:absolute;top:0;left:0;right:0;z-index:41;backdrop-filter:none}
+.tick.onsky .tk{color:#6A1C0C}
+.tick.onsky .tk b{color:#3D0D05}
+.tick.onsky .tk i{color:#7A2A10}
+
 /* ---------- cycling photo hero ---------- */
 .stage{position:absolute;inset:0;overflow:hidden;background:#000}
 /* The library was three different shoots pretending to be one family. The
