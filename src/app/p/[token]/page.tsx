@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPortal, isExpired, formatDate, portals } from "@/content/portals";
 import { NoteForm } from "@/components/portal/NoteForm";
+import { BeforeAfter } from "@/components/portal/BeforeAfter";
+import { portfolio } from "@/content/portfolio";
 
 export const dynamicParams = false;
 
@@ -72,6 +74,11 @@ export default async function PortalPage({
           the screenshot always bleeds past the text column. */}
       <section className="border-t border-[var(--line)]">
         {portal.deliverables.map((d, i) => {
+          // Match on the client, not the deliverable: a portal may carry several
+          // pages while the comparison is of the site as a whole.
+          const cmp = portfolio.cases.find(
+            (c) => c.company.toLowerCase() === portal.client.toLowerCase(),
+          );
           const flip = i % 2 === 1;
           return (
             <article
@@ -148,11 +155,34 @@ export default async function PortalPage({
                   )}
                 </div>
 
+                {/* Before and after.
+                    The captures already existed and only the fund's page used
+                    them, so the client -- the person whose site it IS -- was
+                    shown the rebuild with nothing to read it against. The pair
+                    is looked up from the portfolio data rather than copied into
+                    the portal, so the two pages cannot drift apart and show a
+                    client one comparison while the fund sees another. */}
+                <div className={flip ? "lg:order-1" : ""}>
+                  {cmp && (
+                    <div className="mb-8">
+                      <p className="mb-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
+                        Today, and the direction — drag to compare
+                      </p>
+                      <BeforeAfter
+                        before={cmp.before}
+                        after={cmp.after}
+                        label={portal.client}
+                        beforeCaption={portal.clientDomain ?? "Today"}
+                        afterCaption="Our direction"
+                      />
+                    </div>
+                  )}
+
                 {/* The screenshot is the object on the page, not a card around
                     one: no padding, no radius, hairline only. */}
                 <Link
                   href={`/p/${portal.token}/${d.slug}`}
-                  className={`group block lg:sticky lg:top-10 ${flip ? "lg:order-1" : ""}`}
+                  className="group block"
                 >
                   <div className="overflow-hidden border border-[var(--line-bright)] bg-[var(--raised)] transition-colors group-hover:border-[var(--accent)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -170,6 +200,7 @@ export default async function PortalPage({
                     <span aria-hidden="true">Open and review →</span>
                   </span>
                 </Link>
+                </div>
               </div>
             </article>
           );
