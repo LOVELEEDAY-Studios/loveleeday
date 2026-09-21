@@ -74,13 +74,23 @@ OBJECT = {
 FONTS = ("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600"
          "&display=swap")
 
+# "REFUSED WRITES 0" was the weakest number on the page. Zero reads as "the
+# constraint never fires", when the point is that it has teeth -- and a refusal
+# COUNT would be better still, except the store does not keep one: setProp
+# throws on a missing source and nothing records it. Publishing a refusal count
+# would mean inventing a figure on a page whose whole argument is that figures
+# name their source.
+#
+# So the metric is the one that IS measured and says the same thing: every
+# observation in the store carries a source, 538 of 538.
 TICK = [("OBJECTS", "41"), ("OBSERVATIONS", "538"), ("SOURCES", "4"),
-        ("LINEAGE COVER", "100%"), ("UNVERIFIED", "0"), ("REFUSED WRITES", "0"),
-        ("LAST WRITE", "2026-09-21"), ("SITES MEASURED", "38"), ("REBUILDS", "6")]
+        ("WITH A SOURCE", "538/538"), ("UNVERIFIED", "0"),
+        ("LAST WRITE", "2026-09-21"), ("OLDEST OBSERVATION", "2026-09-13"),
+        ("SITES MEASURED", "38"), ("REBUILDS", "6")]
 
 GRID = [("OBJ", "41", "objects resolved"), ("OBS", "538", "observations"),
-        ("SRC", "4", "live sources"), ("LIN", "100%", "lineage cover"),
-        ("UNV", "0", "unverified"), ("RFW", "0", "refused writes"),
+        ("SRC", "4", "live sources"), ("LIN", "538/538", "carry a source"),
+        ("UNV", "0", "unverified values"), ("RUL", "refused", "writes with no source"),
         ("MSD", "38", "sites measured"), ("RBD", "6", "rebuilds")]
 
 CSS = """
@@ -338,6 +348,11 @@ def f4():
     d = "".join(f'<div class=d><b>{v}</b><span>{l}</span></div>' for _, v, l in GRID[:4])
     return f"""<div class=f4>{bar()}
   <div class="w say"><h1>Nothing here is unaccounted for.</h1></div>
+  <div class=w style="padding-bottom:clamp(26px,3vw,44px)">
+    <p class=sub style="max-width:58ch">A write without a source system and a source
+    reference is refused at the path &mdash; not flagged, not defaulted, refused. That
+    is why the number beside every claim on this page can name where it came from.</p>
+  </div>
   <div class=drop>{d}</div>
 </div>"""
 
