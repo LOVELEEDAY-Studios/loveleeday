@@ -282,6 +282,7 @@
     var reduced = global.matchMedia &&
                   global.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var order = G.pts.map(function (_, i) { return i; });
+    var projTop = 0, projBottom = 0;
     var rot = [], proj = [];
 
     function fit() {
@@ -367,6 +368,16 @@
         proj[i] = [cx + x * scale * d, cy + y * scale * d, d];
       }
       order.sort(function (a, b) { return rot[b] - rot[a]; });
+      /* Remember where the shape actually ENDED on screen. Placing the labels
+         at a fixed fraction of the canvas guessed wrong twice -- first they
+         landed on the answer, then on the brain -- because the projected height
+         depends on which axis binds at that width. Measure it instead. */
+      var lo = 1e9, hi = -1e9;
+      for (var q = 0; q < proj.length; q++) {
+        if (proj[q][1] < lo) lo = proj[q][1];
+        if (proj[q][1] > hi) hi = proj[q][1];
+      }
+      projTop = lo; projBottom = hi;
     }
 
     function draw(now) {
@@ -479,7 +490,10 @@
         if (al <= 0) continue;
         var left = Q.side < 0;
         var lx, ly;
-        if (narrow) { lx = 10; ly = H - 86 + s * 17; ctx.textAlign = 'left'; }
+        /* The question block and the answer block were both anchored to the
+           BOTTOM of the canvas, so on a phone the last question landed on top
+           of "ANSWER". Each now owns its own band. */
+        if (narrow) { lx = 10; ly = projBottom + 20 + s * 18; ctx.textAlign = 'left'; }
         else {
           lx = left ? 14 : W - 14;
           ly = H * 0.26 + Q.slot * 34;          /* 26 -> 34: room to read */

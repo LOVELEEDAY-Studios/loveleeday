@@ -60,10 +60,16 @@ SCRIM = ("linear-gradient(96deg,rgba(28,9,4,.90) 0%,rgba(28,9,4,.62) 46%,"
          "rgba(28,9,4,.14) 100%)")
 
 MENUS = {
-    "Platform": [("Arthur", "The intelligence system", "arthur.html"),
-                 ("The ontology", "How records become objects", "arthur.html#ontology"),
-                 ("Lineage", "Every value carries its source", "arthur.html#lineage"),
-                 ("Verified execution", "Work closes on observed proof", "arthur.html#proof")],
+    # The caption under this menu said "Five components" while four items
+    # rendered -- a counting error in the navigation of a site whose thesis is
+    # "measured, not asserted". The menu now lists the five components the
+    # Arthur page actually documents, so the caption is true and the header
+    # and the page agree.
+    "Platform": [("Persistent memory", "Context that outlasts a conversation", "arthur.html#architecture"),
+                 ("Identity resolution", "Four names, one company", "arthur.html#architecture"),
+                 ("Bitemporal record", "What was true, and what we knew", "arthur.html#architecture"),
+                 ("Lineage", "A number with no trail is not reportable", "arthur.html#architecture"),
+                 ("Verified execution", "Work closes on observed proof", "arthur.html#architecture")],
     "Work": [("Client rebuilds", "Six, uncommissioned", "work.html#studies"),
              ("Catalogue pricing", "Priced below cost, found and corrected", "work.html#pricing"),
              ("How we measure", "Weight, Lighthouse, live position", "about.html#measure")],
@@ -240,7 +246,8 @@ nav.bar[data-open="Company"] .panel[data-p="Company"]{display:block}
 @media(min-width:960px){.burger{display:none}}
 .burger span{display:block;width:15px;height:1.5px;background:currentColor}
 .sheet{display:none;position:absolute;left:0;right:0;top:100%;background:#1B0D06;
-  border-top:1px solid rgba(255,255,255,.14);max-height:74vh;overflow-y:auto;z-index:41}
+  border-top:1px solid rgba(255,255,255,.14);max-height:calc(100dvh - 64px);overflow-y:auto;z-index:41;
+  overscroll-behavior:contain}
 nav.bar[data-sheet="1"] .sheet{display:block}
 .sg{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12)}
 .sg .lab{color:#E8A24A;margin-bottom:6px}
@@ -305,7 +312,7 @@ CSS += """
 .card .cb{padding:16px 17px 20px}
 .card p{margin-top:9px;font-size:14px;line-height:1.55;color:var(--mu)}
 
-.brainbox{position:relative;width:100%;height:clamp(380px,50vw,620px)}
+.brainbox{position:relative;width:100%;height:clamp(460px,50vw,620px)}
 .brainbox canvas{width:100%;height:100%;display:block}
 .legend{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;
   padding:16px 0 2px;justify-content:center}
@@ -450,13 +457,14 @@ def nav():
                 for t, d, h in rows) + '</div>' for k, rows in MENUS.items())
     return (f'<nav class=bar data-open=""><div class=w>'
             f'<a class=bd href="home.html">LOVELEEDAY</a><div class=tabs>{tabs}</div>'
-            f'<div class=rt><a class=btn href="contact.html">Contact sales</a>'
+            f'<div class=rt>'
             f'<a class="btn solid" href="contact.html">Start a project</a></div>'
             f'<button class=burger aria-label=Menu aria-expanded=false>'
             f'<span></span><span></span></button></div>'
             f'{panels}<div class=sheet><div class=w>{sheet}'
-            f'<div class=sacts><a class="btn solid" href="contact.html">Start a project</a>'
-            f'<a class=btn href="contact.html">Contact sales</a></div></div></div></nav>')
+            f'<div class=sacts>'
+            f'<a class="btn solid" href="contact.html">Start a project</a>'
+            f'</div></div></div></nav>')
 
 
 def hero(which, h1, paras, acts=None):
@@ -503,12 +511,19 @@ def spec(rows):
         f'<div><p>{d}</p></div></div>' for n, t, d in rows) + '</div>'
 
 
-def work_cards(n=6):
+def work_cards(n=6, teaser=False):
+    """On Home these are a teaser, so the card carries the sector and a single
+       clause rather than the whole thesis Work prints in full."""
+    def body(s):
+        if not teaser:
+            return f'<p>{s["thesis"]}</p>'
+        first = s["thesis"].split(". ")[0]
+        return f'<p>{first}.</p>'
     return '<div class=grid>' + "".join(
         f'<a class=card href="work.html#studies"><div class=sh>'
         f'<img src="../../../public{s["frame"]}" alt="" loading=lazy></div>'
         f'<div class=cb><span class=lab>{s["id"]} &middot; {s["sector"]}</span>'
-        f'<p>{s["thesis"]}</p></div></a>' for s in STUDIES[:n]) + '</div>'
+        f'{body(s)}</div></a>' for s in STUDIES[:n]) + '</div>'
 
 
 def brain():
@@ -566,11 +581,14 @@ def close(head, sub, second=None, eyebrow="Start"):
 
 
 def footer():
-    relabel = {"Companies we operate": "Catalogue pricing"}
+    """The footer was read from the live site's Footer.tsx and listed a
+       different, non-overlapping set of children under the same top-level
+       labels as the header dropdown -- two sitemaps contradicting each other on
+       every page. It mirrors the header now; there is one structure."""
     cols = "".join(
-        f'<div><span class=lab>{c["title"]}</span>' +
-        "".join(f'<a href="#">{relabel.get(t, t)}</a>' for t, _ in c["links"]) + '</div>'
-        for c in CH["footer"])
+        f'<div><span class=lab>{k}</span>' +
+        "".join(f'<a href="{h}">{t}</a>' for t, _, h in rows) + '</div>'
+        for k, rows in MENUS.items())
     return (f'<footer><div class=w><div class=fg>'
             f'<div><div class=bd style="color:var(--on-deep)">LOVELEEDAY</div>'
             f'<p style="margin-top:12px;max-width:32ch">{CH["tagline"]}</p></div>{cols}</div>'
@@ -594,6 +612,14 @@ def shell(title, body, desc=""):
 
 
 def home():
+    """Both reviewers found the same thing independently: Home carried the FULL
+       pricing case study, the FULL six-card rebuild grid and the FULL terminal
+       evidence, verbatim, so Work and Arthur were reruns with a new hero. The
+       five-page structure was not giving five reasons to keep browsing.
+
+       Home teases now and the interior pages hold the detail: one stat, the
+       headline, and a link. A visitor should never arrive somewhere and find
+       they have already read it."""
     g = LIVE["guarantees"]
     body = hero("server",
                 'Intelligence <span class=ser>you can trace.</span>',
@@ -622,32 +648,20 @@ def home():
   <h2>We were hired to move <span class=ser>the price lists.</span></h2>
   {asked_found()}
   <p class=lede>The engagement was a migration. The finding was that the floor had
-  drifted under the cost on hundreds of items. Quantified line by line and written
-  back as files the system would accept, inside a working day.</p>
-  {panels(PRICING_STATS)}
-  {pricing_rows()}
+  drifted under the cost on hundreds of items &mdash; quantified line by line and
+  written back as files the system would accept, inside a working day.</p>
+  <p style="margin-top:28px"><a class="btn line" href="work.html#pricing">Read what
+  was found &rarr;</a></p>
 </div></section>
 
 <section class="sec wash" id=studies><div class=w>
   <span class=lab>The question nobody asked</span>
   <h2>Thirty-eight measured. <span class=ser>Six rebuilt.</span></h2>
-  <p class=lede>Nobody commissioned this either. The argument was easier to make in
+  <p class=lede>Nobody commissioned those either. The argument was easier to make in
   working HTML than in a deck.</p>
-  {work_cards()}
-  <p class=note>The companies are not named here. Each rebuild carries measured
-  criticism of the site it replaces, and that belongs in a private review addressed
-  to the company rather than on a marketing page.</p>
-</div></section>
-
-<section class="sec dark"><div class=w>
-  <span class=lab>The actual output</span>
-  <h2>Every value, <span class=ser>with its receipt.</span></h2>
-  <p class=lede>The page above makes four claims. This is the system making good on
-  them &mdash; one object, its properties, and the full provenance of a single value,
-  printed by the tool that stores it.</p>
-  {console()}
-  <p class=note>Run against the live store on 2026-09-21. Not a mockup of an
-  interface: this is what the command prints.</p>
+  {work_cards(3, teaser=True)}
+  <p style="margin-top:26px"><a class="btn line" href="work.html#studies">See all six
+  rebuilds &rarr;</a></p>
 </div></section>
 
 <section class="sec wash"><div class=w>
@@ -655,7 +669,9 @@ def home():
   <h2>Five properties. <span class=ser>Enforced,</span> not promised.</h2>
   <p class=lede>Each of these lives in the write path rather than in a deck. That is
   the difference between a system you can report from and a system you have to check.</p>
-  {spec([(r[0], r[1], r[2]) for r in g])}
+  {spec([(r[0], r[1], r[2]) for r in g[:3]])}
+  <p style="margin-top:26px"><a class="btn line" href="arthur.html#architecture">All five,
+  and the output that proves them &rarr;</a></p>
 </div></section>
 """ + close('See the question. <span class=ser>Build the answer.</span>',
             "Tell us what is slowing you down. We reply the same week, with a plan or "
@@ -826,7 +842,12 @@ def about():
 <section class="sec wash" id=measure><div class=w>
   <span class=lab>How we measure</span>
   <h2>The numbers, <span class=ser>and where they come from.</span></h2>
-  {panels(STATS)}
+  <p class=lede>Page weight, Lighthouse on mobile, live organic search position and
+  accessibility, measured per site on a stated date rather than asserted in a deck.
+  Where a figure has not been measured, the page says so instead of rounding a guess
+  into a claim &mdash; and that rule applies to our own site first.</p>
+  <p style="margin-top:26px"><a class="btn line" href="home.html">See the current
+  figures &rarr;</a></p>
 </div></section>
 """ + close('Tell us what is <span class=ser>slowing you down.</span>',
             "We reply the same week.") + footer()
@@ -851,7 +872,7 @@ def contact():
               "You see it deployed as it is built, not at the end.")]
     nxt = "".join(f'<div class=row><span class=c>0{i+1}</span><b>{t}</b><p>{d}</p>'
                   f'<span class=n></span></div>' for i, (t, d) in enumerate(steps))
-    body = hero("server", 'Bring us <span class=ser>the question.</span>',
+    body = hero("lab", 'Bring us <span class=ser>the question.</span>',
                 ["Describe the problem in your own words. You will get a reply from a "
                  "person, not a sequence, and a fixed quote with a scope attached rather "
                  "than a discovery call."])
