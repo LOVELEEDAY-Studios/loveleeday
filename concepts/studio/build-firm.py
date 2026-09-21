@@ -39,7 +39,37 @@ OUT.mkdir(exist_ok=True)
 LIVE = json.loads((HERE / "live-content.json").read_text())
 BRAIN = (HERE / "brain3d.js").read_text()
 STUDIES = [dict(s, frame=f) for s, f in zip(LIVE["studies"], LIVE["study_frames"])]
-CONSOLE = "../../../public/studio/console-demo.jpg"
+# NOT the ARTHUR//OS console. Daniel, twice: "that is internal to us not
+# customer focused" -- it shows HIS cash, HIS entities, HIS alerts, on a screen
+# a customer never sees. I removed it once and then made it the hero of three
+# of these five because it was the only asset that looked like a product. It
+# was the wrong product.
+#
+# What a customer actually receives is two things: their records resolved into
+# one object with every value traced back to where it came from, and the work
+# itself shipped. Both are below; neither is Daniel's dashboard.
+SITES = ["novarna-after", "janta-after", "fyxit-after",
+         "soarce-after", "micruity-after", "loanwell-after"]
+PW = "../../../public/portal/collab/"
+
+# The object card IS the product: four records from four systems, one object,
+# and a source on every line. Rendered as a surface rather than dumped as text.
+OBJECT = {
+    "name": "Northwind Materials",
+    "id": "customer:northwind-materials",
+    "aka": ["Northwind Mat. Co", "NORTHWIND MATERIALS LLC", "vendor 4XRH", "cus_QpV2n"],
+    "props": [
+        ("billing_address", "1400 W Industrial Ave, Kalamazoo MI", "registry", "osm:way/887807677"),
+        ("credit_terms", "Net 30", "ledger", "contact:4XRH \u00b7 rev 12"),
+        ("open_balance", "$48,210.55", "payments", "inv_1Qd7\u2026 +6 more"),
+        ("last_paid_at", "2026-09-14", "payments", "pi_3Qa81\u2026"),
+        ("price_tier", "T2 \u2014 reinstated", "catalogue", "tier-roll 2026-09-21"),
+    ],
+    "trail": [
+        ("Net 45", "2025-11-02 \u2192 2026-06-30", "2025-11-02", "contact:4XRH rev 9"),
+        ("Net 30", "2026-06-30 \u2192 open", "2026-06-30", "contact:4XRH rev 12"),
+    ],
+}
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600"
          "&display=swap")
@@ -116,6 +146,40 @@ CSS += """
   border:1px solid rgba(255,255,255,.14);
   box-shadow:0 60px 120px -30px rgba(0,0,0,.9),0 0 0 1px rgba(0,0,0,.4)}
 .f1 .cap{margin-top:34px;text-align:center}
+
+/* ---- the resolved object: the product a customer actually buys ---- */
+.obj{width:min(1180px,100%);margin:0 auto;text-align:left;background:#0E0E12;
+  border:1px solid rgba(255,255,255,.14);border-radius:10px;overflow:hidden;
+  box-shadow:0 60px 120px -34px rgba(0,0,0,.9)}
+.objh{display:grid;gap:20px;padding:clamp(22px,2.4vw,32px);
+  border-bottom:1px solid var(--edge);background:#121218}
+@media(min-width:820px){.objh{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+  align-items:start}}
+.objh b{display:block;margin-top:12px;font:300 clamp(1.5rem,2.4vw,2.1rem)/1.1 var(--sans);
+  letter-spacing:-.035em}
+.oid{display:block;margin-top:7px;font:400 12px/1 var(--mono);color:var(--mu)}
+.aka{display:flex;flex-wrap:wrap;gap:8px;align-content:start}
+.aka .lab{flex-basis:100%;margin-bottom:2px}
+.aka .a{font:400 11.5px/1 var(--mono);padding:8px 10px;border:1px solid var(--edge);
+  border-radius:100px;color:var(--mu);white-space:nowrap}
+.objb{padding:6px clamp(22px,2.4vw,32px) 14px}
+.pr{display:grid;gap:3px 18px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+@media(min-width:820px){.pr{grid-template-columns:190px minmax(0,1fr) 300px;
+  align-items:baseline}}
+.pr .k{font:400 12.5px/1.5 var(--mono);color:var(--mu)}
+.pr .v{font:400 clamp(15px,1.5vw,17px)/1.4 var(--sans);letter-spacing:-.015em}
+.pr .s,.tl .s{font:400 11.5px/1.5 var(--mono);color:var(--dim)}
+.pr .s i,.tl .s i{font-style:normal;color:var(--key);margin-right:9px}
+.objt{padding:18px clamp(22px,2.4vw,32px) clamp(20px,2.2vw,28px);
+  border-top:1px solid var(--edge);background:#0B0B0F}
+.tl{display:grid;gap:3px 16px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+@media(min-width:820px){.tl{grid-template-columns:120px 230px 180px minmax(0,1fr);
+  align-items:baseline}}
+.tl .v{font:400 14px/1.4 var(--mono);color:#7FD0C4}
+.tl .t{font:400 12.5px/1.4 var(--mono)}
+.tl .o{font:400 12.5px/1.4 var(--mono);color:var(--mu)}
+.f5 .shot{padding:0;border:0;border-radius:0;overflow:visible}
+.f5 .shot .obj{border-radius:8px 0 0 0;border-right:0;border-bottom:0}
 
 /* ---- 02 TERMINAL: Bloomberg. The hero is an instrument. ---- */
 .f2{background:var(--void)}
@@ -201,14 +265,35 @@ def case(n, name, desc, block):
             f'<h3>{name}</h3><p>{desc}</p></div>{block}</section>')
 
 
+def objectcard(compact=False):
+    """One object, four source systems, a citation on every line. This is the
+       thing a customer is buying -- their own records, resolved and traceable."""
+    aka = "".join(f'<span class=a>{x}</span>' for x in OBJECT["aka"])
+    props = "".join(
+        f'<div class=pr><span class=k>{k}</span><span class=v>{v}</span>'
+        f'<span class=s><i>{sy}</i>{rf}</span></div>'
+        for k, v, sy, rf in OBJECT["props"])
+    trail = "".join(
+        f'<div class=tl><span class=v>{v}</span><span class=t>true {va}</span>'
+        f'<span class=o>observed {ob}</span><span class=s><i>ledger</i>{rf}</span></div>'
+        for v, va, ob, rf in OBJECT["trail"])
+    return (f'<div class=obj>'
+            f'<div class=objh><div><span class=lab>Resolved object</span>'
+            f'<b>{OBJECT["name"]}</b><span class=oid>{OBJECT["id"]}</span></div>'
+            f'<div class=aka><span class=lab>Also arrived as</span>{aka}</div></div>'
+            f'<div class=objb>{props}</div>'
+            f'<div class=objt><span class=lab>Credit terms &middot; full history</span>'
+            f'{trail}</div></div>')
+
+
 def f1():
     return f"""<div class=f1>{bar()}
   <div class="w mid">
     <span class=lab>Arthur</span>
-    <h1>Every number on this screen knows where it came from.</h1>
-    <p class=sub>The object layer for the business you already run.</p>
-    <div class=stage><img src="{CONSOLE}" alt="The ARTHUR//OS console"></div>
-    <p class="lab cap">The shipped interface &middot; figures replaced with demo values</p>
+    <h1>Four records. One customer. Every figure traced.</h1>
+    <p class=sub>Your data, resolved into objects that carry their own evidence.</p>
+    <div class=stage>{objectcard()}</div>
+    <p class="lab cap">Live output &middot; names and figures are demo values</p>
   </div>
 </div>"""
 
@@ -267,7 +352,7 @@ def f5():
       <h1>The system of record, and the record of the system.</h1>
       <p class=sub>Resolved objects, two timelines on every value, and a refusal to
       write anything without its source.</p>
-      <div class=shot><img src="{CONSOLE}" alt="The ARTHUR//OS console"></div>
+      <div class=shot>{objectcard(True)}</div>
     </div>
   </div></div>
 </div>"""
