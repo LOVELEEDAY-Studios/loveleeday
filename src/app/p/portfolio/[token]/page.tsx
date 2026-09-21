@@ -34,14 +34,14 @@ export default async function PortfolioPage({
           <br />
           rebuilt.
         </h1>
-        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] text-[var(--muted)]">
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] text-[var(--mid)]">
           <span>{p.fund}</span>
           <span className="hidden h-3 w-px bg-[var(--line-bright)] sm:block" aria-hidden="true" />
           <span className="tnum">Delivered {formatDate(p.deliveredOn)}</span>
           <span className="hidden h-3 w-px bg-[var(--line-bright)] sm:block" aria-hidden="true" />
           <span className="tnum">38 sites audited</span>
         </div>
-        <p className="rule-left mt-10 max-w-[var(--measure)] text-[16px] leading-[1.7] text-[var(--muted)]">
+        <p className="rule-left mt-10 max-w-[var(--measure)] text-[16px] leading-[1.7] text-[var(--mid)]">
           {p.intro}
         </p>
       </section>
@@ -54,7 +54,7 @@ export default async function PortfolioPage({
               <div className="tnum text-[clamp(2.2rem,4vw,3.2rem)] leading-none text-[var(--accent)]">
                 {s.k}
               </div>
-              <div className="mt-3 text-[14px] text-[var(--text)]">{s.label}</div>
+              <div className="mt-3 text-[14px] text-[var(--ink)]">{s.label}</div>
               <div className="mt-1.5 text-[12.5px] leading-[1.5] text-[var(--dim)]">{s.sub}</div>
             </div>
           ))}
@@ -76,7 +76,7 @@ export default async function PortfolioPage({
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-4 text-[17px] font-medium leading-[1.3]">{f.title}</h3>
-              <p className="mt-3 text-[14px] leading-[1.65] text-[var(--muted)]">{f.detail}</p>
+              <p className="mt-3 text-[14px] leading-[1.65] text-[var(--mid)]">{f.detail}</p>
             </div>
           ))}
         </div>
@@ -116,12 +116,12 @@ export default async function PortfolioPage({
                   <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
                     Why we rebuilt it
                   </h3>
-                  <p className="mt-4 text-[15px] leading-[1.7] text-[var(--muted)]">{c.thesis}</p>
+                  <p className="mt-4 text-[15px] leading-[1.7] text-[var(--mid)]">{c.thesis}</p>
                   <div className="mt-7 border-t border-[var(--line)] pt-5">
                     <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
                       Search today
                     </h3>
-                    <p className="mt-3 text-[14px] leading-[1.65] text-[var(--muted)]">{c.search}</p>
+                    <p className="mt-3 text-[14px] leading-[1.65] text-[var(--mid)]">{c.search}</p>
                   </div>
                 </div>
                 <div>
@@ -130,7 +130,7 @@ export default async function PortfolioPage({
                   </h3>
                   <ul className="mt-4 space-y-4">
                     {c.findings.map((f) => (
-                      <li key={f} className="flex gap-3 text-[14.5px] leading-[1.65] text-[var(--muted)]">
+                      <li key={f} className="flex gap-3 text-[14.5px] leading-[1.65] text-[var(--mid)]">
                         <span className="mt-[10px] h-px w-3 shrink-0 bg-[var(--accent)]" aria-hidden="true" />
                         <span>{f}</span>
                       </li>
@@ -152,7 +152,7 @@ export default async function PortfolioPage({
             </h2>
             <ul className="mt-8 space-y-4">
               {p.method.map((m) => (
-                <li key={m} className="text-[14px] leading-[1.7] text-[var(--muted)]">
+                <li key={m} className="text-[14px] leading-[1.7] text-[var(--mid)]">
                   {m}
                 </li>
               ))}

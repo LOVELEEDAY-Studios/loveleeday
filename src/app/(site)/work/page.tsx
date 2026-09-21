@@ -36,7 +36,7 @@ export default function WorkPage() {
         <div className="shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <div>
             <p className="eyebrow flex items-center gap-2.5 text-[var(--dim)]">
-              <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--signal)" }} />
+              <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--teal)" }} />
               Selected work
             </p>
             <h1 className="display display-lg mt-7">
@@ -45,7 +45,7 @@ export default function WorkPage() {
               <span style={{ color: "var(--dim)" }}>proposed.</span>
             </h1>
           </div>
-          <p className="max-w-[var(--measure)] self-end text-[1.05rem] leading-[1.6] text-[var(--muted)]">
+          <p className="max-w-[var(--measure)] self-end text-[1.05rem] leading-[1.6] text-[var(--mid)]">
             Two different things, kept separate on purpose. First, work for companies that are not
             ours — six sites we rebuilt without being asked, because the argument was easier to make
             in working HTML than in a deck. Then the five software companies LOVELEEDAY owns and
@@ -55,21 +55,21 @@ export default function WorkPage() {
       </section>
 
       {/* ── the rebuilds ─────────────────────────────────────────────── */}
-      <section id="studies" className="bg-[var(--ink)] py-[clamp(64px,8vw,116px)] text-[var(--on-dark)]">
+      <section id="studies" className="bg-[var(--deep)] py-[clamp(64px,8vw,116px)] text-[var(--on-deep)]">
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div data-rise>
-              <p className="eyebrow flex items-center gap-2.5 text-[var(--on-dark-dim)]">
-                <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--signal)" }} />
+              <p className="eyebrow flex items-center gap-2.5 text-[var(--on-deep-dim)]">
+                <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--teal)" }} />
                 Uncommissioned
               </p>
               <h2 className="display display-lg mt-6">
                 Thirty-eight sites.
                 <br />
-                <span style={{ color: "var(--on-dark-mu)" }}>Six rebuilds.</span>
+                <span style={{ color: "var(--on-deep-mu)" }}>Six rebuilds.</span>
               </h2>
             </div>
-            <p className="max-w-[var(--measure)] self-end text-[1.02rem] leading-[1.6] text-[var(--on-dark-mu)]" data-rise>
+            <p className="max-w-[var(--measure)] self-end text-[1.02rem] leading-[1.6] text-[var(--on-deep-mu)]" data-rise>
               One venture portfolio, measured end to end on page weight, Lighthouse, live search
               position and accessibility. Six of the companies were then rebuilt as running pages.
               None of it was commissioned, and every measurement names its source.
@@ -80,10 +80,10 @@ export default function WorkPage() {
             {studies.map((s) => (
               <figure
                 key={s.id}
-                className="group overflow-hidden rounded-[5px] border border-[var(--ink-3)] bg-[var(--ink-2)]"
+                className="group overflow-hidden rounded-[5px] border border-[var(--deep-line)] bg-[var(--deep-2)]"
                 data-rise
               >
-                <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--ink-3)]">
+                <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--deep-line)]">
                   <Image
                     src={s.frame}
                     alt={"Rebuilt " + s.sector.toLowerCase() + " site, top of page"}
@@ -94,10 +94,10 @@ export default function WorkPage() {
                 </div>
                 <figcaption className="p-5">
                   <div className="flex items-baseline justify-between gap-3">
-                    <span className="eyebrow text-[var(--on-dark-dim)]">{s.id}</span>
-                    <span className="eyebrow text-[var(--on-dark-mu)]">{s.sector}</span>
+                    <span className="eyebrow text-[var(--on-deep-dim)]">{s.id}</span>
+                    <span className="eyebrow text-[var(--on-deep-mu)]">{s.sector}</span>
                   </div>
-                  <p className="mt-3.5 text-[14px] leading-[1.55] text-[var(--on-dark-mu)]">
+                  <p className="mt-3.5 text-[14px] leading-[1.55] text-[var(--on-deep-mu)]">
                     {s.thesis}
                   </p>
                 </figcaption>
@@ -105,7 +105,7 @@ export default function WorkPage() {
             ))}
           </div>
 
-          <p className="mt-8 max-w-[76ch] text-[13px] leading-[1.55] text-[var(--on-dark-dim)]">
+          <p className="mt-8 max-w-[76ch] text-[13px] leading-[1.55] text-[var(--on-deep-dim)]">
             The companies are not named here. Each rebuild carries measured criticism of the site it
             replaces, and that belongs in a private review addressed to the company rather than on a
             marketing page. Full packages are available on request.
@@ -117,7 +117,7 @@ export default function WorkPage() {
       <section className="bg-[var(--paper)] py-[clamp(56px,7vw,96px)]">
         <div className="shell">
           <h2 className="text-[1.4rem] font-semibold tracking-[-0.026em]">Companies we own and operate</h2>
-          <p className="mt-3 max-w-[64ch] text-[14.5px] leading-[1.6] text-[var(--muted)]">
+          <p className="mt-3 max-w-[64ch] text-[14.5px] leading-[1.6] text-[var(--mid)]">
             These are LOVELEEDAY-owned businesses, built in-house and running in production. They
             are listed as evidence that the studio ships, not as client engagements — we were our
             own customer on every one of them.
@@ -135,12 +135,12 @@ export default function WorkPage() {
                     <h3 className="text-[1.6rem] font-semibold tracking-[-0.03em]">{p.title}</h3>
                   </div>
                   <p className="eyebrow mt-3.5 text-[var(--dim)]">{p.category}</p>
-                  <p className="mt-4 text-[13.5px] text-[var(--muted)]">{p.shipped}</p>
+                  <p className="mt-4 text-[13.5px] text-[var(--mid)]">{p.shipped}</p>
                   <ul className="mt-4 flex flex-wrap gap-1.5">
                     {p.tech.map((t) => (
                       <li
                         key={t}
-                        className="rounded-[2px] border border-[var(--line-2)] px-2 py-1 text-[11px] text-[var(--muted)]"
+                        className="rounded-[2px] border border-[var(--line-2)] px-2 py-1 text-[11px] text-[var(--mid)]"
                       >
                         {t}
                       </li>
@@ -151,19 +151,19 @@ export default function WorkPage() {
                 <div className="max-w-[64ch] space-y-4">
                   <div>
                     <p className="eyebrow text-[var(--dim)]">The problem</p>
-                    <p className="mt-2.5 text-[15px] leading-[1.62] text-[var(--muted)]">{p.problem}</p>
+                    <p className="mt-2.5 text-[15px] leading-[1.62] text-[var(--mid)]">{p.problem}</p>
                   </div>
                   <div>
                     <p className="eyebrow text-[var(--dim)]">What we built</p>
-                    <p className="mt-2.5 text-[15px] leading-[1.62] text-[var(--muted)]">{p.built}</p>
+                    <p className="mt-2.5 text-[15px] leading-[1.62] text-[var(--mid)]">{p.built}</p>
                   </div>
-                  <p className="border-l-2 border-[var(--signal)] pl-4 text-[15px] leading-[1.62] text-[var(--text)]">
+                  <p className="border-l-2 border-[var(--teal)] pl-4 text-[15px] leading-[1.62] text-[var(--ink)]">
                     {p.outcome}
                   </p>
                   <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1">
                     <Link
                       href={"/work/" + p.slug}
-                      className="text-[13.5px] font-semibold underline decoration-[var(--line-2)] underline-offset-4 transition-colors hover:decoration-[var(--signal)]"
+                      className="text-[13.5px] font-semibold underline decoration-[var(--line-2)] underline-offset-4 transition-colors hover:decoration-[var(--teal)]"
                     >
                       Read the build &rarr;
                     </Link>
@@ -172,7 +172,7 @@ export default function WorkPage() {
                         href={p.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[13.5px] font-semibold text-[var(--muted)] underline decoration-[var(--line-2)] underline-offset-4 transition-colors hover:text-[var(--text)]"
+                        className="text-[13.5px] font-semibold text-[var(--mid)] underline decoration-[var(--line-2)] underline-offset-4 transition-colors hover:text-[var(--ink)]"
                       >
                         Visit the live site ↗
                       </a>
@@ -186,7 +186,7 @@ export default function WorkPage() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────────── */}
-      <section className="bg-[var(--paper-2)] py-[clamp(72px,9vw,128px)]">
+      <section className="bg-[var(--ground)] py-[clamp(72px,9vw,128px)]">
         <div className="shell">
           <h2 className="display text-[clamp(2.2rem,5.4vw,4rem)]" data-rise>
             Ready to start?
@@ -195,7 +195,7 @@ export default function WorkPage() {
           </h2>
           <Link
             href="/contact"
-            className="mt-9 inline-flex h-12 items-center rounded-[3px] bg-[var(--text)] px-6 text-[14.5px] font-semibold text-[var(--paper)] transition-opacity hover:opacity-90"
+            className="mt-9 inline-flex h-12 items-center rounded-[3px] bg-[var(--ink)] px-6 text-[14.5px] font-semibold text-[var(--paper)] transition-opacity hover:opacity-90"
             data-rise
           >
             Start a project

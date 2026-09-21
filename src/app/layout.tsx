@@ -1,25 +1,31 @@
 import type { Metadata } from "next";
-import { Archivo, JetBrains_Mono } from "next/font/google";
+import { Manrope, Mulish, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-/* Archivo replaces Instrument Sans and DM Serif Display together.
+/* System A's type, from typography-mastery.md §"50+ Proven Font Pairings",
+   category "SaaS & Modern Tech": a geometric heading over a humanist body.
 
-   The serif display was the agency tell -- an editorial face saying "studio",
-   where the brief is "company". And the sans had no variable axis loaded, so
-   every headline snapped to the nearest static weight and lost the optical
-   tightening a grotesque needs above about 40px.
+   Manrope carries display and UI. Mulish carries running text -- a humanist
+   face has open apertures and a taller x-height, which is what keeps a 15px
+   paragraph readable where a geometric one goes tight and even. IBM Plex Mono
+   carries eyebrows, identifiers and every figure.
 
-   Archivo is variable across 100-900 and was drawn for headline performance. It
-   is the one decision the whole system rests on: it has to hold at 110px in the
-   hero and stay legible at 11px in a table of figures. */
-const archivo = Archivo({
+   Archivo, which the previous direction used for everything, is gone: a single
+   neo-grotesque was the right answer for the Swiss system and the wrong one
+   here, where the whole point is that heading and body are different voices. */
+const manrope = Manrope({
   subsets: ["latin"],
-  axes: ["wdth"],
   variable: "--font-sans-var",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const mulish = Mulish({
+  subsets: ["latin"],
+  variable: "--font-text-var",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-mono-var",
@@ -87,7 +93,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${archivo.variable} ${jetbrainsMono.variable} h-full`}
+      className={`${manrope.variable} ${mulish.variable} ${plexMono.variable} h-full`}
     >
       <head>
         <script

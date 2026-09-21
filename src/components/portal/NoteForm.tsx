@@ -45,14 +45,14 @@ export function NoteForm({ token, client, deliverables, defaultSlug, compact }: 
         <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--good)]">
           Note sent
         </p>
-        <p className="mt-4 max-w-[var(--measure)] text-[15px] leading-[1.7] text-[var(--muted)]">
+        <p className="mt-4 max-w-[var(--measure)] text-[15px] leading-[1.7] text-[var(--mid)]">
           It is in our inbox now. You will hear back within one business day, and
           you can leave another below.
         </p>
         <button
           type="button"
           onClick={() => setState("idle")}
-          className="mt-6 min-h-[44px] border border-[var(--line-bright)] px-5 text-[14px] text-[var(--muted)] transition-colors hover:border-[var(--text)] hover:text-[var(--text)]"
+          className="mt-6 min-h-[44px] border border-[var(--line-bright)] px-5 text-[14px] text-[var(--mid)] transition-colors hover:border-[var(--ink)] hover:text-[var(--ink)]"
         >
           Leave another note
         </button>
@@ -61,7 +61,7 @@ export function NoteForm({ token, client, deliverables, defaultSlug, compact }: 
   }
 
   const field =
-    "mt-2 block w-full border border-[var(--line-bright)] bg-[var(--ground)] px-3.5 py-3 text-[15px] text-[var(--text)] placeholder:text-[var(--dim)] focus:border-[var(--accent)] focus:outline-none";
+    "mt-2 block w-full border border-[var(--line-bright)] bg-[var(--ground)] px-3.5 py-3 text-[15px] text-[var(--ink)] placeholder:text-[var(--dim)] focus:border-[var(--accent)] focus:outline-none";
   const label =
     "font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]";
 
@@ -76,7 +76,7 @@ export function NoteForm({ token, client, deliverables, defaultSlug, compact }: 
       >
         Leave a note
       </h2>
-      <p className="mt-3 max-w-[var(--measure)] text-[14px] leading-[1.6] text-[var(--muted)]">
+      <p className="mt-3 max-w-[var(--measure)] text-[14px] leading-[1.6] text-[var(--mid)]">
         Anything at all — a section that does not work, a number that is wrong, a
         direction you want pushed harder. It reaches us immediately.
       </p>

@@ -18,7 +18,7 @@ export default function PortalLayout({
         <div className="mx-auto flex max-w-[1340px] items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="flex items-center gap-2.5 text-[var(--text)]"
+            className="flex items-center gap-2.5 text-[var(--ink)]"
             aria-label="LOVELEEDAY Studios — home"
           >
             <LogoMark size={26} />
@@ -35,9 +35,9 @@ export default function PortalLayout({
       <main className="flex-1">{children}</main>
 
       <footer className="border-t border-[var(--line)]">
-        <div className="mx-auto flex max-w-[1340px] flex-col gap-2 px-6 py-6 text-[12px] text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-[1340px] flex-col gap-2 px-6 py-6 text-[12px] text-[var(--mid)] sm:flex-row sm:items-center sm:justify-between">
           <span>LOVELEEDAY Studios LLC</span>
-          <a href="mailto:daniel@loveleedaystudios.com" className="hover:text-[var(--text)]">
+          <a href="mailto:daniel@loveleedaystudios.com" className="hover:text-[var(--ink)]">
             daniel@loveleedaystudios.com
           </a>
         </div>

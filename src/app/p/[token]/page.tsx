@@ -45,7 +45,7 @@ export default async function PortalPage({
           {portal.client}
         </h1>
 
-        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] text-[var(--muted)]">
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] text-[var(--mid)]">
           <span>{portal.project}</span>
           <span className="hidden h-3 w-px bg-[var(--line-bright)] sm:block" aria-hidden="true" />
           <span className="tnum">Delivered {formatDate(portal.deliveredOn)}</span>
@@ -56,7 +56,7 @@ export default async function PortalPage({
           </span>
         </div>
 
-        <p className="mt-10 max-w-[var(--measure)] text-[16px] leading-[1.7] text-[var(--muted)] rule-left">
+        <p className="mt-10 max-w-[var(--measure)] text-[16px] leading-[1.7] text-[var(--mid)] rule-left">
           {portal.intro}
         </p>
 
@@ -90,7 +90,7 @@ export default async function PortalPage({
                     {d.kind}
                   </p>
 
-                  <p className="mt-6 text-[15px] leading-[1.7] text-[var(--muted)]">
+                  <p className="mt-6 text-[15px] leading-[1.7] text-[var(--mid)]">
                     {d.rationale}
                   </p>
 
@@ -101,7 +101,7 @@ export default async function PortalPage({
                     {d.look.map((l) => (
                       <li
                         key={l}
-                        className="flex gap-3 text-[14px] leading-[1.6] text-[var(--muted)]"
+                        className="flex gap-3 text-[14px] leading-[1.6] text-[var(--mid)]"
                       >
                         <span
                           className="mt-[9px] h-px w-3 shrink-0 bg-[var(--accent)]"
@@ -123,7 +123,7 @@ export default async function PortalPage({
                       href={`${d.href}?k=${portal.token}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex min-h-[44px] items-center border border-[var(--line-bright)] px-5 text-[14px] text-[var(--muted)] transition-colors hover:border-[var(--text)] hover:text-[var(--text)]"
+                      className="inline-flex min-h-[44px] items-center border border-[var(--line-bright)] px-5 text-[14px] text-[var(--mid)] transition-colors hover:border-[var(--ink)] hover:text-[var(--ink)]"
                     >
                       Full screen ↗
                     </a>
@@ -138,7 +138,7 @@ export default async function PortalPage({
                         {d.caveats.map((c) => (
                           <li
                             key={c}
-                            className="text-[13px] leading-[1.6] text-[var(--muted)]"
+                            className="text-[13px] leading-[1.6] text-[var(--mid)]"
                           >
                             {c}
                           </li>
@@ -190,7 +190,7 @@ export default async function PortalPage({
                   <span className="font-[family-name:var(--font-mono)] text-[11px] leading-[1.7] text-[var(--accent)] tnum">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="max-w-[var(--measure)] text-[15px] leading-[1.7] text-[var(--muted)]">
+                  <span className="max-w-[var(--measure)] text-[15px] leading-[1.7] text-[var(--mid)]">
                     {n}
                   </span>
                 </li>

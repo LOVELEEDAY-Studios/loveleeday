@@ -6,7 +6,7 @@ export default function ContactSuccess() {
       <section className="border-b border-[var(--line)] bg-[var(--paper)] pt-[clamp(64px,8vw,116px)] pb-[clamp(48px,6vw,88px)]">
         <div className="shell">
           <p className="eyebrow flex items-center gap-2.5 text-[var(--dim)]">
-            <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--signal)" }} />
+            <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--teal)" }} />
             Brief received
           </p>
           <h1 className="display display-lg mt-7">
@@ -14,7 +14,7 @@ export default function ContactSuccess() {
             <br />
             <span style={{ color: "var(--dim)" }}>You&rsquo;ll hear back today.</span>
           </h1>
-          <p className="mt-7 max-w-[52ch] text-[1.05rem] leading-[1.6] text-[var(--muted)]">
+          <p className="mt-7 max-w-[52ch] text-[1.05rem] leading-[1.6] text-[var(--mid)]">
             A copy is on its way to your inbox. Daniel reads these himself, so the reply will be a
             person asking about your problem rather than a sequence asking for a call.
           </p>
@@ -31,10 +31,10 @@ export default function ContactSuccess() {
                 ["What we've shipped", "/work", "Five products in production and six uncommissioned rebuilds."],
               ].map(([label, href, note]) => (
                 <Link key={href} href={href} className="group block border-b border-[var(--line)] py-5">
-                  <span className="text-[1.15rem] font-semibold tracking-[-0.02em] transition-colors group-hover:text-[var(--signal)]">
+                  <span className="text-[1.15rem] font-semibold tracking-[-0.02em] transition-colors group-hover:text-[var(--teal)]">
                     {label} &rarr;
                   </span>
-                  <span className="mt-1.5 block max-w-[46ch] text-[13.5px] text-[var(--muted)]">{note}</span>
+                  <span className="mt-1.5 block max-w-[46ch] text-[13.5px] text-[var(--mid)]">{note}</span>
                 </Link>
               ))}
             </div>
@@ -43,11 +43,11 @@ export default function ContactSuccess() {
             <h2 className="eyebrow text-[var(--dim)]">Something urgent?</h2>
             <a
               href="mailto:hello@loveleedaystudios.com"
-              className="mt-5 block text-[1.15rem] font-semibold underline decoration-[var(--line-2)] underline-offset-4 hover:decoration-[var(--signal)]"
+              className="mt-5 block text-[1.15rem] font-semibold underline decoration-[var(--line-2)] underline-offset-4 hover:decoration-[var(--teal)]"
             >
               hello@loveleedaystudios.com
             </a>
-            <p className="mt-4 max-w-[40ch] text-[13.5px] leading-[1.6] text-[var(--muted)]">
+            <p className="mt-4 max-w-[40ch] text-[13.5px] leading-[1.6] text-[var(--mid)]">
               Reply to the confirmation email and it lands in the same thread.
             </p>
           </div>

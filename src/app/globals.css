@@ -1,6 +1,22 @@
 @import "tailwindcss";
 
-/* LOVELEEDAY Studios — "Instrument", 2026-09-21.
+/* LOVELEEDAY Studios — "Ontology / Cream & Navy", 2026-09-21.
+
+   DIRECTION CHOSEN. Layout 02 (Ontology, the Palantir Foundry register) with
+   colour System A (Cream & Navy). Both studies are in concepts/studio/ and the
+   four palettes carry their measured contrast on the page.
+
+   Why this pair. Ontology because a huge labelled schematic is the strongest
+   available claim that there is an architecture underneath, and because it is
+   the register Daniel keeps pointing at. Cream & Navy because it is what the
+   banked knowledge already recommends for this company, because Daniel's
+   objection to the previous round was that "dark colors feel weird", and
+   because warm cream is what stops an Ontology layout reading as a Palantir
+   clone -- which was that direction's one stated risk.
+
+   PREVIOUS DIRECTION, kept for the record: "Instrument", near-black ground with
+   an orange signal. Rejected -- it read as a dev-tools startup, not big tech,
+   and the dark ground was my assumption rather than the references'.
    ============================================================================
 
    Brief: make the studio's own site read like a company that has already gone
@@ -45,98 +61,91 @@
    ============================================================================ */
 
 @theme inline {
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
-  --color-ink-3: var(--ink-3);
+  --color-ground: var(--ground);
   --color-paper: var(--paper);
-  --color-paper-2: var(--paper-2);
-  --color-paper-3: var(--paper-3);
+  --color-sunk: var(--sunk);
+  --color-deep: var(--deep);
   --color-line: var(--line);
   --color-line-2: var(--line-2);
-  --color-text: var(--text);
-  --color-muted: var(--muted);
+  --color-ink: var(--ink);
+  --color-mid: var(--mid);
   --color-dim: var(--dim);
-  --color-signal: var(--signal);
-  --color-signal-d: var(--signal-d);
+  --color-teal: var(--teal);
+  --color-copper: var(--copper);
   --color-good: var(--good);
 
   --font-sans: var(--font-sans-var);
+  --font-text: var(--font-text-var);
   --font-mono: var(--font-mono-var);
 }
 
+
 :root {
-  /* Stages */
-  --ink: #08090B;          /* the dark stage */
-  --ink-2: #101319;        /* raised on dark */
-  --ink-3: #1B1F27;        /* hairline on dark */
-  --ink-4: #2A2F39;        /* bright hairline on dark */
-  --paper: #FFFFFF;
-  --paper-2: #F6F6F3;      /* the light stage */
-  --paper-3: #EBEBE6;      /* sunk */
+  /* ── SYSTEM A · CREAM & NAVY ───────────────────────────────────────────
+     From color-palette-mastery.md §"LOVELEEDAY Studios (Recommended System)":
+     navy for B2B credibility, a teal secondary for tech-forward energy, a warm
+     metallic accent to bridge corporate and creative, all on cream.
+
+     Two values are darker than that file recommends and the reason is measured,
+     not aesthetic: at #00c4c4 the teal carries 1.9:1 on cream and at #d4866a the
+     rose gold carries 2.4:1, and both were being asked to hold small text. They
+     are pulled down until they clear 4.5:1 on BOTH grounds. §"Mistake 2" keeps
+     the grounds at low chroma; §"Mistake 3" is why no ink here is #000. */
+
+  /* Stages — all light. Dark is a stage this site cuts to exactly once. */
+  --ground: #FBF8F2;       /* cream, 60% of the page */
+  --paper: #FFFFFF;        /* panels, cards, the schematic field */
+  --sunk: #F2EDE3;         /* the one recessed tone */
+  --deep: #16243A;         /* the single dark stage, used once at the close */
 
   /* Rules */
-  --line: #E3E3DE;
-  --line-2: #CFCFC8;
+  --line: #E6E0D6;
+  --line-2: #D3CABA;
+  --line-3: #16243A;       /* the hard rule, above a section that matters */
 
-  /* Type on light. --dim carries eyebrows and source notes at 11-13px, so it
-     has to clear 4.5:1 on BOTH light stages, not just on white. */
-  --text: #0A0B0D;
-  --muted: #494E56;
-  --dim: #6A6F7B;
+  /* Type on light */
+  --ink: #16243A;          /* navy, doing the work #000 would do badly */
+  --mid: #45536A;
+  --dim: #667383;          /* 4.56 on cream, 4.83 on paper — measured */
 
-  /* Type on dark */
-  --on-dark: #F5F5F2;
-  --on-dark-mu: #A0A6AE;
-  --on-dark-dim: #7B818A;
+  /* Type on the one dark stage */
+  --on-deep: #F6F3EC;
+  --on-deep-mu: #A9B3C4;
+  --on-deep-dim: #808CA0;   /* 4.57 on --deep, measured */
+  --deep-2: #1D2E47;       /* raised, on the deep stage */
+  --deep-line: #2A3B55;    /* hairline, on the deep stage */
+  --deep-line-2: #3B4D6B;  /* brighter hairline, on the deep stage */
 
-  /* The one accent. olldae's verified product colour.
+  /* Accents. Teal is the action colour; copper is support and data. */
+  --teal: #0E7C7B;
+  --teal-d: #0A6261;
+  --teal-wash: #E8F2F1;
+  --copper: #A36141;
+  --copper-wash: #F6EDE7;
+  --good: #0F7B4F;
 
-     Three steps, and the split is a contrast requirement rather than a taste.
-     #FF4713 carries 3.41:1 against white, which is fine behind a 90px headline
-     and fails for a 14px button label -- so the brand orange marks and rules,
-     and the button sits one step down at 4.78:1. Measured, not eyeballed. */
-  --signal: #FF4713;
-  --signal-d: #D6360A;
-  --signal-dd: #B02B06;
-  --signal-wash: #FFF1EC;
-  --good: #17B26A;
+  /* Data colours, inside rendered objects only — never brand. */
+  --d-a: #2F6E8F;
+  --d-b: #0E7C7B;
+  --d-c: #A36141;
+  --d-d: #6E7A63;
 
-  /* Data colours. These live INSIDE rendered objects only -- they are the
-     object's own information, never the brand's. */
-  --data-a: #5B8DEF;
-  --data-b: #3FB6A8;
-  --data-c: #C9A227;
-
-  /* ---- compatibility aliases -------------------------------------------
-     The client portals under /p, and two of the smaller site pages, are styled
-     against the token names of TWO earlier systems -- a dark product-studio
-     palette (--ground/--raised/--sunk/--line-bright/--accent) and a Swiss one
-     (--bone/--pewter). Neither set survived into globals.css, so those files
-     have been asking for colours that do not exist and getting whatever they
-     inherited. That is why a portal's hairlines and its accent dot were not the
-     colours anyone chose.
-
-     These are the old names pointed at the current system. Aliasing rather than
-     rewriting is deliberate: the portals are live client deliverables and a
-     token map is a change I can verify by looking, where re-typing six pages is
-     not. They should be retired as each of those pages is next touched. */
-  --accent: var(--signal);
-  --accent-dim: var(--signal-d);
-  --ground: var(--paper);
-  --raised: var(--paper-2);
-  --sunk: var(--paper-3);
-  --line-bright: var(--text);
+  /* ---- compatibility aliases ----------------------------------------------
+     The client portals under /p are styled against the token names of two
+     earlier systems. They are live client deliverables, so the names are
+     pointed at the current palette rather than six files being re-typed. */
+  --accent: var(--teal);
+  --accent-dim: var(--teal-d);
+  --raised: var(--paper);
+  --line-bright: var(--ink);
   --bone: var(--line);
   --pewter: var(--dim);
-  --vermilion: var(--signal);
-  --ember: var(--signal);
   --radius-md: 4px;
   --font-display-var: var(--font-sans-var);
 
-  /* Stripe's measure. Wide text columns read as documents. */
   --measure: 34rem;
-  --shell: 1320px;
-  --gutter: clamp(20px, 4vw, 56px);
+  --shell: 1340px;
+  --gutter: clamp(20px, 3.6vw, 48px);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -146,23 +155,25 @@ html {
   -webkit-text-size-adjust: 100%;
   /* The dark hero runs to the top of the viewport, so overscroll at the top
      should be dark too rather than flashing white. */
-  background: var(--ink);
+  background: var(--ground);
 }
 
 body {
-  background: var(--paper);
-  color: var(--text);
-  font-family: var(--font-sans-var), ui-sans-serif, system-ui, sans-serif;
+  background: var(--ground);
+  color: var(--ink);
+  /* Mulish sets the running text; Manrope is reserved for display and UI. A
+     humanist body under a geometric head is the pairing this was drawn for. */
+  font-family: var(--font-text-var), ui-sans-serif, system-ui, sans-serif;
   font-synthesis-weight: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
 }
 
-::selection { background: var(--signal); color: #fff; }
+::selection { background: var(--teal); color: #fff; }
 
 :focus-visible {
-  outline: 2px solid var(--signal);
+  outline: 2px solid var(--teal);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -190,7 +201,8 @@ body {
    grotesque falls apart at headline sizes -- this is the whole reason for
    leaving a static face. */
 .display {
-  font-weight: 620;
+  font-family: var(--font-sans-var), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
   letter-spacing: -0.038em;
   line-height: 0.96;
   text-wrap: balance;

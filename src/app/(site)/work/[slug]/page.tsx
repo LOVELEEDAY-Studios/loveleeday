@@ -43,7 +43,7 @@ export default async function ProjectPage({
         <div className="shell">
           <Link
             href="/work"
-            className="eyebrow inline-block text-[var(--dim)] transition-colors hover:text-[var(--text)]"
+            className="eyebrow inline-block text-[var(--dim)] transition-colors hover:text-[var(--ink)]"
           >
             &larr; All work
           </Link>
@@ -54,12 +54,12 @@ export default async function ProjectPage({
               <h1 className="display display-lg mt-5">{p.title}</h1>
             </div>
             <div className="max-w-[var(--measure)] self-end">
-              <p className="text-[1.05rem] leading-[1.6] text-[var(--muted)]">{p.shipped}</p>
+              <p className="text-[1.05rem] leading-[1.6] text-[var(--mid)]">{p.shipped}</p>
               <ul className="mt-5 flex flex-wrap gap-1.5">
                 {p.tech.map((t) => (
                   <li
                     key={t}
-                    className="rounded-[2px] border border-[var(--line-2)] px-2.5 py-1 text-[11.5px] text-[var(--muted)]"
+                    className="rounded-[2px] border border-[var(--line-2)] px-2.5 py-1 text-[11.5px] text-[var(--mid)]"
                   >
                     {t}
                   </li>
@@ -70,7 +70,7 @@ export default async function ProjectPage({
                   href={p.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex h-11 items-center rounded-[3px] bg-[var(--text)] px-5 text-[14px] font-semibold text-[var(--paper)] transition-opacity hover:opacity-90"
+                  className="mt-6 inline-flex h-11 items-center rounded-[3px] bg-[var(--ink)] px-5 text-[14px] font-semibold text-[var(--paper)] transition-opacity hover:opacity-90"
                 >
                   Visit the live site ↗
                 </a>
@@ -92,7 +92,7 @@ export default async function ProjectPage({
               data-rise
             >
               <h2 className="eyebrow pt-1.5 text-[var(--dim)]">{h}</h2>
-              <p className="max-w-[66ch] text-[1.02rem] leading-[1.65] text-[var(--muted)]">{body}</p>
+              <p className="max-w-[66ch] text-[1.02rem] leading-[1.65] text-[var(--mid)]">{body}</p>
             </div>
           ))}
           <div
@@ -100,26 +100,26 @@ export default async function ProjectPage({
             data-rise
           >
             <h2 className="eyebrow pt-1.5 text-[var(--dim)]">Outcome</h2>
-            <p className="max-w-[66ch] border-l-2 border-[var(--signal)] pl-5 text-[1.02rem] leading-[1.65] text-[var(--text)]">
+            <p className="max-w-[66ch] border-l-2 border-[var(--teal)] pl-5 text-[1.02rem] leading-[1.65] text-[var(--ink)]">
               {p.outcome}
             </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-[var(--paper-2)] py-[clamp(56px,7vw,100px)]">
+      <section className="bg-[var(--ground)] py-[clamp(56px,7vw,100px)]">
         <div className="shell flex flex-wrap items-end justify-between gap-8">
           <div>
             <p className="eyebrow text-[var(--dim)]">Next project</p>
             <Link href={"/work/" + next.slug} className="group mt-4 block">
-              <h2 className="display text-[clamp(2rem,4.6vw,3.2rem)] transition-colors group-hover:text-[var(--signal)]">
+              <h2 className="display text-[clamp(2rem,4.6vw,3.2rem)] transition-colors group-hover:text-[var(--teal)]">
                 {next.title} &rarr;
               </h2>
             </Link>
           </div>
           <Link
             href="/contact"
-            className="inline-flex h-12 items-center rounded-[3px] bg-[var(--text)] px-6 text-[14.5px] font-semibold text-[var(--paper)] transition-opacity hover:opacity-90"
+            className="inline-flex h-12 items-center rounded-[3px] bg-[var(--ink)] px-6 text-[14.5px] font-semibold text-[var(--paper)] transition-opacity hover:opacity-90"
           >
             Start a project
           </Link>
