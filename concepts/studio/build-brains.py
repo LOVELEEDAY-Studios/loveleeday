@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Five treatments of the 3D brain, for approval.
+"""Six treatments of the 3D brain, for approval.
 
     python3 concepts/studio/build-brains.py -> concepts/brains.html
 
@@ -7,7 +7,7 @@ Daniel: "redesign the brain, it is off centered and looks weird and it is not
 doing what i asked you to do, which was i wanted a 3d brain that could spin and
 sparked with questions and answered model. then generate 5 concepts."
 
-All five are the same volume, the same rotation and the same four-beat model
+All six are the same volume, the same rotation and the same four-beat model
 (ASK -> SPARK -> QUESTION -> ANSWER). What differs is the material: whether the
 structure is carried by edges or by nodes, how far the fog reaches, how much
 the sparks bloom, and the key colour. That is the decision being asked for --
@@ -33,6 +33,12 @@ TREATMENTS = [
     ("lattice", "Lattice",
      "High edge contrast, small hard nodes, almost no bloom, shallow fog. An "
      "engineered object under even light. The Palantir end of the range."),
+    ("profile", "Profile",
+     "The one that stays a brain. Instead of turning through a full circle it "
+     "rocks 35 degrees either side of the side view, so the anatomical outline "
+     "\u2014 frontal lobe, occipital, cerebellum, stem \u2014 never leaves the frame. "
+     "A full rotation is more impressive for two seconds and less legible for "
+     "the other six."),
     ("signal", "Signal",
      "Almost everything held back. The resting brain is barely present; only the "
      "path the question actually travels is lit. The most restrained and the "
@@ -78,7 +84,7 @@ def page():
   <p class=desc>{desc}</p>
   <div class=stage><canvas data-style="{slug}"></canvas></div>
   <div class=meta><span>460 nodes · 3 nearest neighbours</span>
-    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>rotation 0.17 rad/s \u00b7 Profile rocks \u00b135\u00b0</span><span>depth-sorted every frame</span>
     <span>ask → spark → question → answer, 8.4s</span></div>
 </div></section>"""
     return f"""<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
@@ -93,9 +99,9 @@ def page():
 </head><body>
 <header class=intro><div class=w>
   <span class=lab>Arthur &middot; cognition</span>
-  <h1>Five ways to render one brain.</h1>
+  <h1>Six ways to render one brain.</h1>
   <p>A volume of 460 nodes in three dimensions, turning on its vertical axis,
-  depth-sorted every frame so the near hemisphere occludes the far one. All five
+  depth-sorted every frame so the near hemisphere occludes the far one. All six
   run the same four beats &mdash; a question lands on the frontal lobe, the signal
   propagates breadth-first along real edges with sparks riding them, the
   sub-questions it must answer first surface at the nodes they fired from, and

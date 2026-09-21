@@ -178,6 +178,9 @@
                 hot: '#FF7A1F', nodeSize: 1.7, edgeWidth: 0.9, glow: 0.5, fog: 0.75 },
     lattice:  { node: '#B9C4CC', edge: 'rgba(185,196,204,.42)', spark: '#FFFFFF',
                 hot: '#FF9E3D', nodeSize: 1.0, edgeWidth: 1.15, glow: 0.25, fog: 0.4 },
+    profile:  { node: '#A9BCC6', edge: 'rgba(169,188,198,.30)', spark: '#5FD3C4',
+                hot: '#FF9E3D', nodeSize: 1.25, edgeWidth: 1.05, glow: 0.5, fog: 0.5,
+                oscillate: true },
     signal:   { node: 'rgba(150,170,185,.40)', edge: 'rgba(150,170,185,.08)',
                 spark: '#7BFFE4', hot: '#FF9E3D', nodeSize: 1.3, edgeWidth: 1,
                 glow: 0.7, fog: 0.85 }
@@ -260,7 +263,14 @@
       ctx.save();
       ctx.scale(dpr, dpr);
 
-      project(el * (reduced ? 0 : 0.17) + 0.35);
+      /* A full 360 turn necessarily destroys the profile for half of it, and
+         the profile is the only angle at which a brain is unmistakable. The
+         oscillating treatment rocks +/-35 degrees either side of the side view
+         instead, so the outline never leaves and the volume still moves. */
+      var ang = S.oscillate
+        ? -0.06 + (reduced ? 0 : Math.sin(el * 0.34) * 0.61)
+        : el * (reduced ? 0 : 0.17) + 0.35;
+      project(ang);
       var front = (tt - 0.6) * 8.2;
 
       /* edges, back to front */
