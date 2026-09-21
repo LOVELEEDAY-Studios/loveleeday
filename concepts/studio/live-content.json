@@ -126,5 +126,92 @@
   "$25k \u2013 $50k",
   "$50k+",
   "Not sure yet"
- ]
+ ],
+ "chrome": {
+  "nav": [
+   [
+    "Work",
+    "/work"
+   ],
+   [
+    "Company",
+    "/about"
+   ],
+   [
+    "Arthur Platform",
+    "/arthur"
+   ],
+   [
+    "About the Ontology",
+    "/arthur#ontology"
+   ],
+   [
+    "Capabilities",
+    "/arthur#architecture"
+   ],
+   [
+    "Client rebuilds",
+    "/work#studies"
+   ],
+   [
+    "Start building",
+    "/contact"
+   ]
+  ],
+  "footer": [
+   {
+    "title": "Platform",
+    "links": [
+     [
+      "Arthur",
+      "/arthur"
+     ],
+     [
+      "Architecture",
+      "/arthur#architecture"
+     ],
+     [
+      "How we scope",
+      "/about#method"
+     ]
+    ]
+   },
+   {
+    "title": "Work",
+    "links": [
+     [
+      "Client rebuilds",
+      "/work#studies"
+     ],
+     [
+      "Companies we operate",
+      "/work"
+     ],
+     [
+      "How we measure",
+      "/about#method"
+     ]
+    ]
+   },
+   {
+    "title": "Company",
+    "links": [
+     [
+      "About",
+      "/about"
+     ],
+     [
+      "Start a project",
+      "/contact"
+     ],
+     [
+      "hello@loveleedaystudios.com",
+      "mailto:hello@loveleedaystudios.com"
+     ]
+    ]
+   }
+  ],
+  "tagline": "Intelligence architecture and the production software that runs on top of it.",
+  "city": "Kalamazoo, Michigan"
+ }
 }

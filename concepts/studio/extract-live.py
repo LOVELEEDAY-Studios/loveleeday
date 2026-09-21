@@ -101,6 +101,39 @@ def strings(block):
     return [s.replace('\\"', '"') for s in re.findall(r'"((?:[^"\\]|\\.)*)"', block)]
 
 
+def chrome():
+    """Nav and footer come out of the components, not out of my memory of them.
+       The first build of these mockups invented a five-column footer; the real
+       one is three columns with specific anchors that other pages rely on."""
+    root = ROOT / "src" / "components"
+    nav = (root / "Nav.tsx").read_text()
+    foot = (root / "Footer.tsx").read_text()
+    items = re.findall(r'label:\s*"([^"]+)",\s*href:\s*"([^"]+)"', nav)
+    m = re.search(r"const COLUMNS[^=]*=\s*\[", foot)
+    blk, d, buf = "", 0, []
+    if m:
+        for ch in foot[m.end() - 1:]:
+            buf.append(ch)
+            if ch == "[":
+                d += 1
+            elif ch == "]":
+                d -= 1
+                if d == 0:
+                    break
+        blk = "".join(buf)
+    cols, cur = [], None
+    for tok in re.finditer(r'title:\s*"([^"]+)"|label:\s*"([^"]+)",\s*href:\s*"([^"]+)"', blk):
+        if tok.group(1):
+            cur = {"title": tok.group(1), "links": []}
+            cols.append(cur)
+        elif cur is not None:
+            cur["links"].append([tok.group(2), tok.group(3)])
+    tag = re.search(r'>\s*(Intelligence architecture[^<]+)<', foot)
+    return {"nav": [list(i) for i in items], "footer": cols,
+            "tagline": tag.group(1).strip() if tag else "",
+            "city": "Kalamazoo, Michigan"}
+
+
 def main():
     home, arthur = read("page.tsx"), read("arthur/page.tsx")
     about, contact = read("about/page.tsx"), read("contact/page.tsx")
@@ -121,11 +154,13 @@ def main():
         "principles": objects(array_block(about, "PRINCIPLES"), ["n", "t", "d"]),
         "project_types": strings(array_block(contact, "PROJECT_TYPES") or "[]"),
         "budgets": strings(array_block(contact, "BUDGETS") or "[]"),
+        "chrome": chrome(),
     }
     out = Path(__file__).parent / "live-content.json"
     out.write_text(json.dumps(data, indent=1))
     for k, v in data.items():
-        print(f"  {k:14} {len(v)} items")
+        n = len(v) if not isinstance(v, dict) else len(v.get("nav", [])) + len(v.get("footer", []))
+        print(f"  {k:14} {n} items")
     print("wrote", out.relative_to(ROOT))
 
 
