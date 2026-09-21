@@ -143,6 +143,14 @@ nav.bar[data-sheet="1"] .sheet{display:block}
 .pnl span{display:block;margin-top:8px;font:400 11px/1.5 var(--mono);
   letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
 .pnl p{margin-top:9px;font-size:13px;line-height:1.55;color:var(--mu)}
+/* asked / found */
+.af{display:grid;gap:1px;background:var(--edge);border:1px solid var(--edge);
+  margin-top:26px}
+@media(min-width:760px){.af{grid-template-columns:1fr 1.35fr}}
+.afr{background:var(--panel);padding:20px 22px}
+.afr p{margin-top:10px;font:400 clamp(15px,1.5vw,18.5px)/1.45 var(--sans);
+  letter-spacing:-.015em;color:var(--fg)}
+.afr:last-child p{color:var(--key)}
 .rows{border-top:1px solid var(--edge);margin-top:24px}
 .row{display:grid;gap:4px 20px;padding:15px 0;border-bottom:1px solid var(--edge);
   align-items:baseline}
