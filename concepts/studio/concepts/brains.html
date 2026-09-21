@@ -213,6 +213,9 @@ footer{border-top:1px solid rgba(255,255,255,.13);padding:34px 0 60px;
                 hot: '#FF7A1F', nodeSize: 1.7, edgeWidth: 0.9, glow: 0.5, fog: 0.75 },
     lattice:  { node: '#B9C4CC', edge: 'rgba(185,196,204,.42)', spark: '#FFFFFF',
                 hot: '#FF9E3D', nodeSize: 1.0, edgeWidth: 1.15, glow: 0.25, fog: 0.4 },
+    profile:  { node: '#A9BCC6', edge: 'rgba(169,188,198,.30)', spark: '#5FD3C4',
+                hot: '#FF9E3D', nodeSize: 1.25, edgeWidth: 1.05, glow: 0.5, fog: 0.5,
+                oscillate: true },
     signal:   { node: 'rgba(150,170,185,.40)', edge: 'rgba(150,170,185,.08)',
                 spark: '#7BFFE4', hot: '#FF9E3D', nodeSize: 1.3, edgeWidth: 1,
                 glow: 0.7, fog: 0.85 }
@@ -295,7 +298,14 @@ footer{border-top:1px solid rgba(255,255,255,.13);padding:34px 0 60px;
       ctx.save();
       ctx.scale(dpr, dpr);
 
-      project(el * (reduced ? 0 : 0.17) + 0.35);
+      /* A full 360 turn necessarily destroys the profile for half of it, and
+         the profile is the only angle at which a brain is unmistakable. The
+         oscillating treatment rocks +/-35 degrees either side of the side view
+         instead, so the outline never leaves and the volume still moves. */
+      var ang = S.oscillate
+        ? -0.06 + (reduced ? 0 : Math.sin(el * 0.34) * 0.61)
+        : el * (reduced ? 0 : 0.17) + 0.35;
+      project(ang);
       var front = (tt - 0.6) * 8.2;
 
       /* edges, back to front */
@@ -453,9 +463,9 @@ footer{border-top:1px solid rgba(255,255,255,.13);padding:34px 0 60px;
 </head><body>
 <header class=intro><div class=w>
   <span class=lab>Arthur &middot; cognition</span>
-  <h1>Five ways to render one brain.</h1>
+  <h1>Six ways to render one brain.</h1>
   <p>A volume of 460 nodes in three dimensions, turning on its vertical axis,
-  depth-sorted every frame so the near hemisphere occludes the far one. All five
+  depth-sorted every frame so the near hemisphere occludes the far one. All six
   run the same four beats &mdash; a question lands on the frontal lobe, the signal
   propagates breadth-first along real edges with sparks riding them, the
   sub-questions it must answer first surface at the nodes they fired from, and
@@ -467,7 +477,7 @@ footer{border-top:1px solid rgba(255,255,255,.13);padding:34px 0 60px;
   <p class=desc>Structure carried by the edges. Fine lines, a cool cast, low bloom. The brain reads as wiring — closest to a schematic, furthest from an organism.</p>
   <div class=stage><canvas data-style="filament"></canvas></div>
   <div class=meta><span>460 nodes · 3 nearest neighbours</span>
-    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>rotation 0.17 rad/s · Profile rocks ±35°</span><span>depth-sorted every frame</span>
     <span>ask → spark → question → answer, 8.4s</span></div>
 </div></section>
 <section class="item synapse"><div class=w>
@@ -475,7 +485,7 @@ footer{border-top:1px solid rgba(255,255,255,.13);padding:34px 0 60px;
   <p class=desc>Structure carried by the nodes. Edges nearly vanish, points are bright and large, sparks bloom hard. The most biological of the five.</p>
   <div class=stage><canvas data-style="synapse"></canvas></div>
   <div class=meta><span>460 nodes · 3 nearest neighbours</span>
-    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>rotation 0.17 rad/s · Profile rocks ±35°</span><span>depth-sorted every frame</span>
     <span>ask → spark → question → answer, 8.4s</span></div>
 </div></section>
 <section class="item core"><div class=w>
@@ -483,7 +493,7 @@ footer{border-top:1px solid rgba(255,255,255,.13);padding:34px 0 60px;
   <p class=desc>Warm, dense, heavy fog. The far hemisphere sinks into the ground and the near one holds the light. Amber rather than teal, so it sits inside the Bloomberg palette rather than beside it.</p>
   <div class=stage><canvas data-style="core"></canvas></div>
   <div class=meta><span>460 nodes · 3 nearest neighbours</span>
-    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>rotation 0.17 rad/s · Profile rocks ±35°</span><span>depth-sorted every frame</span>
     <span>ask → spark → question → answer, 8.4s</span></div>
 </div></section>
 <section class="item lattice"><div class=w>
@@ -491,15 +501,23 @@ footer{border-top:1px solid rgba(255,255,255,.13);padding:34px 0 60px;
   <p class=desc>High edge contrast, small hard nodes, almost no bloom, shallow fog. An engineered object under even light. The Palantir end of the range.</p>
   <div class=stage><canvas data-style="lattice"></canvas></div>
   <div class=meta><span>460 nodes · 3 nearest neighbours</span>
-    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>rotation 0.17 rad/s · Profile rocks ±35°</span><span>depth-sorted every frame</span>
+    <span>ask → spark → question → answer, 8.4s</span></div>
+</div></section>
+<section class="item profile"><div class=w>
+  <div class=head><span class=n>05</span><h2>Profile</h2></div>
+  <p class=desc>The one that stays a brain. Instead of turning through a full circle it rocks 35 degrees either side of the side view, so the anatomical outline — frontal lobe, occipital, cerebellum, stem — never leaves the frame. A full rotation is more impressive for two seconds and less legible for the other six.</p>
+  <div class=stage><canvas data-style="profile"></canvas></div>
+  <div class=meta><span>460 nodes · 3 nearest neighbours</span>
+    <span>rotation 0.17 rad/s · Profile rocks ±35°</span><span>depth-sorted every frame</span>
     <span>ask → spark → question → answer, 8.4s</span></div>
 </div></section>
 <section class="item signal"><div class=w>
-  <div class=head><span class=n>05</span><h2>Signal</h2></div>
+  <div class=head><span class=n>06</span><h2>Signal</h2></div>
   <p class=desc>Almost everything held back. The resting brain is barely present; only the path the question actually travels is lit. The most restrained and the most dramatic when it fires.</p>
   <div class=stage><canvas data-style="signal"></canvas></div>
   <div class=meta><span>460 nodes · 3 nearest neighbours</span>
-    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>rotation 0.17 rad/s · Profile rocks ±35°</span><span>depth-sorted every frame</span>
     <span>ask → spark → question → answer, 8.4s</span></div>
 </div></section>
 <footer><div class=w>Seven ellipsoids summed as a metaball field, sampled by
