@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 4 — Terminal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================================
+   CONCEPT 4 — "TERMINAL".  What the page is looking at: THE DATA.
+
+   Register: a Bloomberg terminal, not a marketing site. The bet is the opposite
+   of Apple's -- instead of one object in enormous space, the whole page is the
+   product surface, dense and monospaced, and the marketing copy has to earn its
+   place inside a working instrument.
+
+   Why it belongs on the shortlist: this is the only one of the four that could
+   not be anyone else's site. Concepts 1-3 are registers borrowed from companies
+   that already own them; a buyer who sees this one cannot mistake it for
+   Palantir or NVIDIA, and the density IS the claim -- a company that shows you
+   a live instrument on its homepage is telling you the instrument exists.
+
+   The risk, stated plainly: it is the least conventional and the hardest to
+   sell to a non-technical buyer. It reads as an engineer's site.
+   ========================================================================== */
+:root{
+  --bg:#080A0C; --p1:#0E1216; --p2:#141A20; --ln:#1E262E; --ln2:#2C3740;
+  --tx:#E4EAEF; --mu:#8D9AA5; --dim:#5C6873;
+  --up:#2EE07A; --dn:#FF4D4D; --amb:#FFB020; --sig:#FF4713; --cy:#4DD0E1;
+  --shell:1460px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;
+  -webkit-font-smoothing:antialiased}
+.sans{font-family:'Inter Tight',system-ui,sans-serif}
+.w{max-width:var(--shell);margin:0 auto;padding:0 clamp(12px,1.8vw,26px)}
+a{color:inherit;text-decoration:none}
+
+/* ── ticker ──────────────────────────────────────────────────────────────── */
+.tick{background:#000;border-bottom:1px solid var(--ln);height:30px;overflow:hidden;position:relative}
+.tick-in{display:flex;gap:34px;align-items:center;height:30px;white-space:nowrap;
+  animation:slide 46s linear infinite;font-size:11.5px;padding-left:16px}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tick b{color:var(--mu);font-weight:500}
+.tick .u{color:var(--up)} .tick .d{color:var(--dn)} .tick .a{color:var(--amb)}
+@media(prefers-reduced-motion:reduce){.tick-in{animation:none}}
+
+/* ── header ──────────────────────────────────────────────────────────────── */
+.hd{border-bottom:1px solid var(--ln);background:var(--p1);position:sticky;top:0;z-index:60}
+.hd .w{display:flex;align-items:center;gap:clamp(10px,1.6vw,22px);height:48px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;letter-spacing:.06em}
+.hd nav{display:flex;gap:clamp(8px,1.4vw,18px);align-items:center;overflow-x:auto;scrollbar-width:none}
+.hd nav::-webkit-scrollbar{display:none}
+.hd nav a{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--mu);
+  padding:4px 7px;border:1px solid transparent;white-space:nowrap}
+.hd nav a.on{color:var(--bg);background:var(--sig);border-color:var(--sig);font-weight:700}
+.hd nav a:hover:not(.on){color:var(--tx);border-color:var(--ln2)}
+.hd .right{margin-left:auto;display:flex;gap:9px;align-items:center;font-size:11px;color:var(--dim)}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--up);display:inline-block}
+
+/* ── masthead: the one place the sans face is allowed to be big ─────────── */
+.mast{border-bottom:1px solid var(--ln);background:
+  radial-gradient(900px 340px at 18% 0%, rgba(255,71,19,.10), transparent 60%), var(--bg)}
+.mast .w{padding:clamp(34px,5vw,74px) clamp(12px,1.8vw,26px) clamp(26px,3.4vw,44px)}
+.kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--sig)}
+h1{margin:14px 0 0;font-family:'Inter Tight',sans-serif;font-weight:800;
+  font-size:clamp(2.2rem,5.6vw,4.6rem);line-height:.98;letter-spacing:-.04em;max-width:19ch}
+h1 em{font-style:normal;color:var(--mu)}
+.mast p{margin:18px 0 0;max-width:62ch;font-size:13px;line-height:1.72;color:var(--mu)}
+.mast .acts{margin-top:24px;display:flex;gap:9px;flex-wrap:wrap}
+.b{display:inline-flex;align-items:center;height:34px;padding:0 15px;font-size:11.5px;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:700;border:1px solid var(--ln2);color:var(--tx)}
+.b.s{background:var(--sig);border-color:var(--sig);color:#fff}
+
+/* ── the instrument ──────────────────────────────────────────────────────── */
+.inst{border-bottom:1px solid var(--ln)}
+.inst .w{padding:0 clamp(12px,1.8vw,26px)}
+.panes{display:grid;gap:1px;background:var(--ln);border:1px solid var(--ln);
+  grid-template-columns:1fr;margin:clamp(18px,2.4vw,30px) 0}
+@media(min-width:900px){.panes{grid-template-columns:1.15fr 1fr .85fr}}
+.pane{background:var(--p1);min-height:250px;display:flex;flex-direction:column}
+.pane .bar{display:flex;align-items:center;gap:8px;height:28px;padding:0 10px;
+  border-bottom:1px solid var(--ln);background:var(--p2);font-size:10.5px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--mu)}
+.pane .bar .id{margin-left:auto;color:var(--dim)}
+.pane .body{padding:10px;flex:1;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:11.5px}
+td,th{padding:4.5px 5px;text-align:left;border-bottom:1px solid rgba(30,38,46,.7)}
+th{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:500}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.up{color:var(--up)} .dn{color:var(--dn)} .am{color:var(--amb)} .cy{color:var(--cy)}
+.pane canvas{display:block;width:100%;height:100%;min-height:190px}
+.feed{font-size:11px;line-height:1.75;color:var(--mu)}
+/* Identifiers are the whole point of this pane and they were breaking across
+   two lines mid-string -- "FINTECH EQUIPMENT / SVCS" reads as a rendering bug,
+   not as data. One line each, clipped at the pane edge like a real terminal. */
+.feed div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feed span{color:var(--dim)}
+.feed b{color:var(--tx);font-weight:500}
+
+/* ── rows of claim + evidence ────────────────────────────────────────────── */
+.sect{border-bottom:1px solid var(--ln);padding:clamp(34px,4.4vw,64px) 0}
+.sect h2{margin:0;font-family:'Inter Tight',sans-serif;font-size:clamp(1.4rem,2.6vw,2.1rem);
+  font-weight:700;letter-spacing:-.028em}
+.claims{margin-top:24px;border-top:1px solid var(--ln2)}
+.claim{display:grid;gap:8px 22px;padding:16px 0;border-bottom:1px solid var(--ln);
+  grid-template-columns:1fr}
+@media(min-width:880px){.claim{grid-template-columns:58px 1fr 300px}}
+.claim .i{color:var(--dim);font-size:11px}
+.claim .t{font-family:'Inter Tight',sans-serif;font-size:15.5px;font-weight:600;letter-spacing:-.012em}
+.claim .t small{display:block;margin-top:5px;font-family:'JetBrains Mono',monospace;
+  font-size:11.5px;font-weight:400;color:var(--mu);line-height:1.65;letter-spacing:0}
+.claim .ev{font-size:10.5px;color:var(--dim);line-height:1.6;border-left:2px solid var(--sig);padding-left:11px}
+.claim .ev b{display:block;color:var(--up);font-weight:500;margin-bottom:3px}
+
+.foot{padding:22px 0;font-size:10.5px;color:var(--dim);line-height:1.7}
+.note{background:#111;color:#8b8b90;font-size:11.5px;padding:10px 0;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="note">CONCEPT 4 of 4 — “TERMINAL” · the page looks at THE DATA · Bloomberg register</div>
+
+<div class="tick"><div class="tick-in" id="tick"></div></div>
+
+<header class="hd"><div class="w">
+  <span class="brand">
+    <svg width="15" height="15" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <rect x="18" y="18" width="27" height="27" stroke="#E4EAEF" stroke-width="8"/>
+      <rect x="55" y="18" width="27" height="27" fill="#E4EAEF"/>
+      <rect x="18" y="55" width="27" height="27" fill="#E4EAEF"/>
+      <path d="M55 55H82V82H55V55Z" stroke="#E4EAEF" stroke-width="8"/>
+      <circle cx="68.5" cy="68.5" r="9" fill="#FF4713"/>
+    </svg>
+    LOVELEEDAY
+  </span>
+  <nav>
+    <a class="on" href="#">Arthur</a><a href="#">Ontology</a><a href="#">Work</a>
+    <a href="#">Method</a><a href="#">Company</a><a href="#">Portal</a>
+  </nav>
+  <span class="right"><span class="dot"></span> ALL SYSTEMS LIVE &nbsp;·&nbsp; <span id="clock">--:--:--</span> ET</span>
+</div></header>
+
+<section class="mast"><div class="w">
+  <p class="kicker">Arthur · intelligence architecture</p>
+  <h1>Every figure on this page<br><em>names its own source.</em></h1>
+  <p>Arthur resolves records scattered across payments, ledgers and documents into single objects,
+     carries the date each value was true and the date it was learned, and refuses to write a
+     number without the system and reference it came from. Everything below is the instrument
+     itself, not a picture of one.</p>
+  <div class="acts">
+    <a class="b s" href="#">Start a project</a>
+    <a class="b" href="#">Read the architecture</a>
+  </div>
+</div></section>
+
+<section class="inst"><div class="w">
+  <div class="panes">
+
+    <div class="pane">
+      <div class="bar">Resolved objects <span class="id">ONT/01</span></div>
+      <div class="body">
+        <table>
+          <tr><th>Object</th><th>Aliases</th><th>Sources</th><th class="n">Confidence</th></tr>
+          <tr><td>FINTECH EQUIPMENT SVCS</td><td class="cy">4</td><td>3</td><td class="n up">0.99</td></tr>
+          <tr><td>NORTHWAY MANUFACTURING</td><td class="cy">3</td><td>3</td><td class="n up">0.98</td></tr>
+          <tr><td>DABNEY &amp; CO.</td><td class="cy">3</td><td>3</td><td class="n up">1.00</td></tr>
+          <tr><td>KALSEC INC.</td><td class="cy">3</td><td>2</td><td class="n am">0.91</td></tr>
+          <tr><td>GORDON FOOD SERVICE</td><td class="cy">3</td><td>3</td><td class="n up">0.97</td></tr>
+          <tr><td>ESSEX BROWNELL</td><td class="cy">2</td><td>2</td><td class="n am">0.88</td></tr>
+          <tr><td>COLLAB CAPITAL</td><td class="cy">2</td><td>1</td><td class="n dn">0.74</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="pane">
+      <div class="bar">Resolution pass <span class="id">ONT/02</span></div>
+      <div class="body"><canvas id="graph"></canvas></div>
+    </div>
+
+    <div class="pane">
+      <div class="bar">Lineage feed <span class="id">LIN/00</span></div>
+      <div class="body feed" id="feed"></div>
+    </div>
+
+  </div>
+</div></section>
+
+<section class="sect"><div class="w">
+  <h2 class="sans">Claims, and what each one is standing on</h2>
+  <div class="claims">
+    <div class="claim"><span class="i">C-01</span>
+      <div class="t">Five products in production<small>olldae, Kronos, Duezy, the hospitality ops layer and Dabney &amp; Co. All live, all reachable.</small></div>
+      <div class="ev"><b>VERIFIED</b>Each returns 200 on its production URL. Two are publicly linkable; three are behind customer auth.</div></div>
+    <div class="claim"><span class="i">C-02</span>
+      <div class="t">Thirty-eight sites measured in one audit<small>Page weight, Lighthouse mobile, live organic position and accessibility, per site.</small></div>
+      <div class="ev"><b>MEASURED 2026-09-19</b>Method and per-site figures published in the review package. Unmeasured fields say so rather than showing zero.</div></div>
+    <div class="claim"><span class="i">C-03</span>
+      <div class="t">Six of them rebuilt in working HTML<small>Running pages, not slides — each one deployable and each one carrying its own critique.</small></div>
+      <div class="ev"><b>VERIFIED</b>Six documents behind per-client tokens. Frames on this site are rendered from the live pages by a producer script.</div></div>
+    <div class="claim"><span class="i">C-04</span>
+      <div class="t">Eleven days to a production MVP<small>olldae, from an empty repository to a deployed v1 taking real payments.</small></div>
+      <div class="ev"><b>SINGLE INSTANCE</b>One project, not an average. Stated as a data point rather than as a delivery promise.</div></div>
+    <div class="claim"><span class="i">C-05</span>
+      <div class="t">Arthur does not improve itself unattended<small>Evaluation and training-governance components support human promotion decisions.</small></div>
+      <div class="ev"><b>STATED LIMIT</b>No claim of unrestricted self-improvement. The live learning loop is text, not weights.</div></div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="w">
+  Concept mockup — LOVELEEDAY Studios · not a live page. Object names and figures shown in the
+  instrument are illustrative; on a production build every cell would carry its lineage.
+</div></footer>
+
+<script>
+(function(){
+'use strict';
+var R=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- ticker: the numbers a studio actually has, not fake market data ------ */
+var ITEMS=[['PROD','5','u','live'],['REBUILDS','6','u','shipped'],['AUDITED','38','a','sites'],
+  ['MVP','11d','u','olldae'],['OBJECTS','7','a','types'],['SOURCES','3','u','connected'],
+  ['LINEAGE','100%','u','enforced'],['UNVERIFIED','0','u','claims'],['PORTALS','6','a','issued'],
+  ['ENGAGEMENTS','Q4','a','open']];
+var tick=document.getElementById('tick');
+function fill(){ ITEMS.forEach(function(i){
+  var s=document.createElement('span');
+  s.innerHTML='<b>'+i[0]+'</b> <span class="'+i[2]+'">'+i[1]+'</span> <b>'+i[3]+'</b>';
+  tick.appendChild(s); }); }
+fill(); fill();   // doubled so the -50% slide loops seamlessly
+
+/* ---- clock ---------------------------------------------------------------- */
+var cl=document.getElementById('clock');
+(function t(){ var d=new Date();
+  cl.textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+':'+String(d.getSeconds()).padStart(2,'0');
+  setTimeout(t,1000); })();
+
+/* ---- lineage feed: one line arrives at a time and the old ones stay -------- */
+var LINES=[
+  ['erp:vendor/4412','net_terms','45','2026-09-18'],
+  ['stripe:bal_tx','spend_ytd','$412,880','2026-09-20'],
+  ['doc:inv_8841.pdf','contact','ap@fintecheq.com','2026-08-02'],
+  ['xero:contact/31a','tax_id','38-•••••••','2026-07-14'],
+  ['toast:loc_4471','covers_wk','1,284','2026-09-21'],
+  ['gfs:acct/88-201','last_order','2026-09-19','2026-09-19'],
+  ['erp:vendor/2265','risk_tier','B','2026-09-21'],
+  ['stripe:cus_QX8f2','alias_of','FINTECH EQUIPMENT SVCS','2026-09-18']
+];
+var feed=document.getElementById('feed'), fi=0;
+function push(){
+  var l=LINES[fi%LINES.length]; fi++;
+  var d=document.createElement('div');
+  d.innerHTML='<span>'+l[3]+'</span> '+l[0]+' <span>→</span> <b>'+l[1]+'</b> = '+l[2];
+  d.style.opacity='0'; d.style.transition='opacity .45s';
+  feed.insertBefore(d, feed.firstChild);
+  requestAnimationFrame(function(){ d.style.opacity='1'; });
+  while(feed.children.length>11) feed.removeChild(feed.lastChild);
+}
+for(var i=0;i<9;i++) push();
+if(!R) setInterval(push, 2400);
+
+/* ---- the resolution graph, sized for a narrow pane ------------------------ */
+(function(){
+  var cv=document.getElementById('graph'); if(!cv) return;
+  var x=cv.getContext('2d'), dpr=Math.min(devicePixelRatio||1,2), W=0,H=0,t0=null,run=true;
+  var SRC=[['stripe:cus_QX8f2',0,0],['erp:vendor/4412',1,0],['“FES, Inc.”',2,0],
+           ['stripe:cus_7HbNw',0,1],['erp:vendor/0918',1,1],
+           ['xero:contact/31a',1,2],['toast:loc_4471',0,2],
+           ['erp:vendor/2265',1,3],['“Kalsec”',2,3],
+           ['gfs:acct/88-201',0,4],['“GFS”',2,4]];
+  var ENT=['FES','NORTHWAY','DABNEY','KALSEC','GFS'];
+  var COL=['#4DD0E1','#2EE07A','#FFB020'];
+  function fit(){var b=cv.getBoundingClientRect();W=b.width;H=b.height;
+    cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);x.setTransform(dpr,0,0,dpr,0,0);if(R)draw(9);}
+  new ResizeObserver(fit).observe(cv); fit();
+  function draw(t){
+    x.clearRect(0,0,W,H); if(W<40) return;
+    x.font='9.5px "JetBrains Mono", monospace'; x.textBaseline='middle';
+    var eW=Math.max.apply(null,ENT.map(function(e){return x.measureText(e).width;}));
+    var sW=Math.max.apply(null,SRC.map(function(s){return x.measureText(s[0]).width;}));
+    var pad=6, x0=pad+sW+9, x1=W-pad-eW-11;
+    var sy=SRC.map(function(_,i){ return pad+8+i*((H-pad*2-16)/(SRC.length-1)); });
+    var ey=ENT.map(function(_,e){ var r=SRC.map(function(s,i){return s[2]===e?sy[i]:null;})
+      .filter(function(v){return v!==null;}); return r.reduce(function(a,b){return a+b;},0)/r.length; });
+    var act=Math.floor(t/2.4)%ENT.length;
+    SRC.forEach(function(s,i){
+      var on=s[2]===act;
+      x.strokeStyle=COL[s[1]]; x.fillStyle=COL[s[1]];
+      x.globalAlpha=on?0.95:0.30; x.lineWidth=on?1.2:0.8;
+      x.beginPath(); x.moveTo(x0,sy[i]);
+      var span=x1-x0;
+      x.bezierCurveTo(x0+span*0.55,sy[i],x1-span*0.25,ey[s[2]],x1,ey[s[2]]); x.stroke();
+      x.beginPath(); x.arc(x1,ey[s[2]],on?1.9:1.3,0,7); x.fill();
+      x.globalAlpha=1;
+      x.fillStyle=on?'#E4EAEF':'#5C6873'; x.textAlign='right'; x.fillText(s[0],x0-7,sy[i]);
+      x.fillStyle=COL[s[1]]; x.globalAlpha=on?1:0.5;
+      x.fillRect(pad-2,sy[i]-1.8,3.6,3.6); x.globalAlpha=1;
+    });
+    ENT.forEach(function(e,i){
+      var on=i===act;
+      x.fillStyle=on?'#FF4713':'#8D9AA5'; x.textAlign='left';
+      x.font=(on?'700 ':'400 ')+'9.5px "JetBrains Mono", monospace';
+      x.fillText(e,x1+8,ey[i]);
+    });
+  }
+  if(R) return;
+  new IntersectionObserver(function(e){run=e[0].isIntersecting;}).observe(cv);
+  (function f(ts){requestAnimationFrame(f);if(!run){t0=null;return;}
+    if(t0===null)t0=ts;draw((ts-t0)/1000);})(performance.now());
+})();
+})();
+</script>
+</body>
+</html>
