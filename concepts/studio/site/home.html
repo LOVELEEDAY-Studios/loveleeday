@@ -192,6 +192,43 @@ img{display:block;max-width:100%}
 .flegal{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
   font-size:12px;color:#616D7C}
 .fnote{margin:16px 0 0;font:400 11.5px/1.6 'IBM Plex Mono',monospace;color:#616D7C}
+/* components the live pages use that the mockups were missing */
+.faq{max-width:820px;margin:26px auto 0;text-align:left;border-top:1px solid #16243A}
+.faq details{border-bottom:1px solid #E6E0D6}
+.faq summary{cursor:pointer;list-style:none;padding:17px 0;
+  font:700 16px/1.35 'Manrope',sans-serif;letter-spacing:-.02em;display:flex;
+  justify-content:space-between;gap:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:#0E7877;font-weight:500}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0 0 20px;color:#45536A;font-size:14.5px;line-height:1.65;max-width:72ch}
+.apps{max-width:900px;margin:26px auto 0;text-align:left}
+.app{background:#FFFFFF;border:1px solid #E6E0D6;padding:28px 30px 30px}
+.app .k{font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;
+  text-transform:uppercase;color:#9B5C3E}
+.app .q{margin:14px 0 0;font:700 clamp(1.15rem,2.2vw,1.55rem)/1.3 'Manrope',sans-serif;
+  letter-spacing:-.025em}
+.app .b{margin:12px 0 0;color:#45536A;font-size:15px}
+.app ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+@media(min-width:680px){.app ul{grid-template-columns:1fr 1fr}}
+.app li{font-size:13.5px;color:#45536A;padding-left:18px;position:relative}
+.app li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;
+  background:#0E7877}
+.fld{display:grid;gap:7px}
+.fld input,.fld select,.fld textarea{border:1px solid #D3CABA;background:#FFFFFF;
+  padding:12px 13px;font:400 15px/1.5 'Mulish',sans-serif;color:#16243A;border-radius:0;
+  -webkit-appearance:none;appearance:none}
+.fld select{background-image:linear-gradient(45deg,transparent 50%,#616D7C 50%),
+  linear-gradient(135deg,#616D7C 50%,transparent 50%);
+  background-position:calc(100% - 20px) 19px,calc(100% - 15px) 19px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.next{max-width:820px;margin:26px auto 0;text-align:left;
+  border-top:1px solid #16243A}
+.next .r{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:16px 0;
+  border-bottom:1px solid #E6E0D6}
+.next .i{font:500 11.5px/1.6 'IBM Plex Mono',monospace;color:#0E7877}
+.next b{font:700 15px/1.3 'Manrope',sans-serif;letter-spacing:-.02em;display:block}
+.next p{margin:5px 0 0;font-size:14px;color:#45536A;line-height:1.55}
 .ribbon{position:sticky;top:0;z-index:99;background:#16243A;color:#F6F3EC;
   font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;
   padding:9px 18px}
@@ -220,6 +257,11 @@ img{display:block;max-width:100%}
 </div>
 <section class="stage sunkbg"><div class=w><p class=eyebrow>Identity resolution</p><h2 class=display>Four names.<br>One company.</h2><p class=sub>A payments customer, a vendor id and a line in a PDF. Three records, one object.</p></div><div class=obj><canvas data-motion="bundle"></canvas></div></section>
 <section class="stage g-tide"><div class=w><p class=eyebrow>Lineage</p><h2 class=display>Every figure,<br>back to its source.</h2><p class=sub>A number without a trail is not reportable. That rule is in the write path, not in a promise.</p></div><div class=obj><canvas data-motion="series"></canvas></div><div class=w><div class=lin><div class="r"><div class=p>net_terms</div><div class=v>45 days</div><div class=s>erp:vendor/4412</div><div class=o>2026-09-18</div></div><div class="r"><div class=p>spend_ytd</div><div class=v>$412,880</div><div class=s>stripe:bal_tx</div><div class=o>2026-09-20</div></div><div class="r"><div class=p>contact</div><div class=v>ap@fintecheq.com</div><div class=s>doc:invoice_8841.pdf</div><div class=o>2026-08-02</div></div><div class="r unsourced"><div class=p>risk_tier</div><div class=v>B</div><div class=s>no source recorded</div><div class=o>2026-09-21</div></div></div></div></section>
+<section class="stage paperbg"><div class=wide>
+  <p class=eyebrow>The guarantees</p>
+  <h2 class=display style="font-size:clamp(1.9rem,3.8vw,2.9rem)">Five properties.<br>Enforced, not promised.</h2>
+  <div class=spec><div class=r><div class=i>01</div><div><b>Identity resolution</b></div><div><p>A payments customer, a vendor id in the ledger and a string in an email signature are three records and one company. Questions are asked about the object, never about whichever string a source happened to use.</p></div></div><div class=r><div class=i>02</div><div><b>Bitemporality</b></div><div><p>Every property knows when it was valid in the world and when it was observed. Judging an August decision with September knowledge is look-ahead bias, and the two timelines are kept apart so it cannot happen quietly.</p></div></div><div class=r><div class=i>03</div><div><b>Lineage</b></div><div><p>Writing a value requires its source system and source reference. The trail prints for any figure. A number with no trail is not reportable — mechanically, not as a matter of care.</p></div></div><div class=r><div class=i>04</div><div><b>Bounded autonomy</b></div><div><p>Actions are classified by blast radius. Only the reversible class runs unattended; anything touching money, outbound communication or a legal document waits for a person.</p></div></div><div class=r><div class=i>05</div><div><b>Observed completion</b></div><div><p>Work closes on a value read back out of the system that was supposed to change. An HTTP 200 is not evidence that anything happened.</p></div></div></div>
+</div></section>
 <section class="stage sunkbg"><div class=w><p class=eyebrow>Verified execution</p><h2 class=display>Built to prove it ran.</h2><p class=sub>An HTTP 200 is not evidence that the thing you asked for happened. Work closes on a value read back out of the system that was supposed to change.</p></div><div class=obj><canvas data-motion="flow"></canvas></div></section>
 <section class="stage g-deep"><div class=w><p class=eyebrow>Bitemporality</p><h2 class=display>What was true,<br>and what we knew.</h2><p class=sub>Two timelines on every value, which is what makes it possible to ask what was known on a given day rather than only what we know now.</p></div><div class=obj><canvas data-motion="orbit"></canvas></div></section>
 
@@ -227,6 +269,7 @@ img{display:block;max-width:100%}
      changes register before the copy does: a visitor feels the shift from how
      the system works to who we do this for before reading a word. -->
 <section class="stage photo"><img class=bleed src="../../janta/roi-hero.jpg" alt=""><div class=scrim></div><div class=w><p class=eyebrow>In production</p><h2 class=display>Built. Shipped. Running.</h2><div class=metrics><div class=m><b>6</b><span>Sites rebuilt in working HTML</span></div><div class=m><b>38</b><span>Sites measured in that audit</span></div><div class=m><b>5</b><span>Architectural components in Arthur</span></div><div class=m><b>2</b><span>Timelines carried on every value</span></div></div></div></section>
+<section class="stage g-deep"><div class=w><p class=eyebrow>The standard</p><h2 class=display>Confidence comes<br>from the evidence.</h2><p class=sub>Not from the adjectives. Every figure on this site names the system it came from, and the ones that cannot are marked rather than dropped.</p></div></section>
 
 <section class="stage paperbg"><div class=wide>
   <p class=eyebrow>Selected work</p>

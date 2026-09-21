@@ -1,0 +1,130 @@
+{
+ "guarantees": [
+  [
+   "01",
+   "Identity resolution",
+   "A payments customer, a vendor id in the ledger and a string in an email signature are three records and one company. Questions are asked about the object, never about whichever string a source happened to use."
+  ],
+  [
+   "02",
+   "Bitemporality",
+   "Every property knows when it was valid in the world and when it was observed. Judging an August decision with September knowledge is look-ahead bias, and the two timelines are kept apart so it cannot happen quietly."
+  ],
+  [
+   "03",
+   "Lineage",
+   "Writing a value requires its source system and source reference. The trail prints for any figure. A number with no trail is not reportable \u2014 mechanically, not as a matter of care."
+  ],
+  [
+   "04",
+   "Bounded autonomy",
+   "Actions are classified by blast radius. Only the reversible class runs unattended; anything touching money, outbound communication or a legal document waits for a person."
+  ],
+  [
+   "05",
+   "Observed completion",
+   "Work closes on a value read back out of the system that was supposed to change. An HTTP 200 is not evidence that anything happened."
+  ]
+ ],
+ "components": [
+  {
+   "title": "Persistent memory",
+   "body": "Journals, events and objects are stored and indexed. Retrieval makes what was stored available to the execution paths that use it, so a project carries its own history rather than being re-briefed each time."
+  },
+  {
+   "title": "Identity resolution",
+   "body": "A payments customer, a vendor id in the ledger, a string in an email signature and a line in a PDF are four records and one object. Resolution collapses them, so a question is asked about the object rather than about whichever string a source happened to use."
+  },
+  {
+   "title": "Bitemporal record",
+   "body": "Each property carries when it was valid in the world and when it was observed. You can ask what was true on a date, or what was known on a date \u2014 two different questions that most systems collapse into one."
+  },
+  {
+   "title": "Lineage on every value",
+   "body": "Writing a property requires the source system and the source reference. The trail can be printed for any value, back to the record it came from."
+  },
+  {
+   "title": "Tools, routing and verification",
+   "body": "Models route to the work, tools execute against real systems, and results are checked against an observed proof string before anything is reported as done."
+  }
+ ],
+ "applications": [
+  {
+   "tag": "Software & operations",
+   "question": "\u201cWhy does this process still depend on five spreadsheets and a manual handoff?\u201d",
+   "body": "Examine the workflow, identify the decisions and dependencies, and turn the right part of the process into software."
+  }
+ ],
+ "app_produces": [
+  [
+   "Workflow and requirements map",
+   "Internal tool or customer-facing application",
+   "Automation and integration plan",
+   "Tested changes and rollout documentation"
+  ]
+ ],
+ "faq": [
+  {
+   "q": "Is Arthur a model, an agent, or a software platform?",
+   "a": "Arthur is an intelligence software architecture. Its components surround model reasoning with persistent memory, task scheduling, tools, routing, and evaluation. Models are part of the system; the configuration determines which capabilities a workflow can use."
+  },
+  {
+   "q": "Can Arthur work with our existing systems?",
+   "a": "We assess your data, APIs, permissions, and requirements before committing to an integration. An adapter in the architecture does not mean a live connection to your systems already exists."
+  },
+  {
+   "q": "What can we ask LOVELEEDAY Studios to build?",
+   "a": "Custom applications, workflow tools, research and decision support, digital experiences, and connected creative deliverables. We agree on a specific scope and acceptance criteria around the business problem."
+  },
+  {
+   "q": "Does Arthur improve itself automatically?",
+   "a": "Arthur includes evaluation and training-governance components. These support candidate assessment and human promotion decisions. We do not claim unrestricted self-improvement or automatic quality gains."
+  },
+  {
+   "q": "Is the demonstration video actual execution footage?",
+   "a": "No. It is a simulated product walkthrough using fictional companies. An engagement needs its own real evidence, timing, costs, and acceptance checks."
+  }
+ ],
+ "principles": [
+  {
+   "n": "01",
+   "t": "Scope tightly, quote honestly",
+   "d": "We would rather push back on scope before an engagement starts than ask for more money mid-build. The number we quote is the number you pay."
+  },
+  {
+   "n": "02",
+   "t": "Ship, then iterate",
+   "d": "A working system in front of real users answers questions a specification cannot. First deploy early, then change it with evidence in hand."
+  },
+  {
+   "n": "03",
+   "t": "Own the stack you run",
+   "d": "We build on infrastructure you can keep \u2014 TypeScript, Postgres, standard platforms. No proprietary runtime that makes us hard to leave."
+  },
+  {
+   "n": "04",
+   "t": "Say what is unmeasured",
+   "d": "Where a figure has not been measured, the page says so rather than rounding a guess into a claim. That rule applies to our own site first."
+  },
+  {
+   "n": "05",
+   "t": "Nothing closes without proof",
+   "d": "Work is reported complete on a value read back out of the system that was supposed to change \u2014 not on a deploy that returned a 200."
+  }
+ ],
+ "project_types": [
+  "Internal tool or workflow system",
+  "Customer-facing application",
+  "Data / financial integration",
+  "Website or brand rebuild",
+  "Arthur engagement",
+  "Something else"
+ ],
+ "budgets": [
+  "Under $10k",
+  "$10k \u2013 $25k",
+  "$25k \u2013 $50k",
+  "$50k+",
+  "Not sure yet"
+ ]
+}

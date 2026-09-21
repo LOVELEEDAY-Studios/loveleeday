@@ -192,6 +192,43 @@ img{display:block;max-width:100%}
 .flegal{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
   font-size:12px;color:#616D7C}
 .fnote{margin:16px 0 0;font:400 11.5px/1.6 'IBM Plex Mono',monospace;color:#616D7C}
+/* components the live pages use that the mockups were missing */
+.faq{max-width:820px;margin:26px auto 0;text-align:left;border-top:1px solid #16243A}
+.faq details{border-bottom:1px solid #E6E0D6}
+.faq summary{cursor:pointer;list-style:none;padding:17px 0;
+  font:700 16px/1.35 'Manrope',sans-serif;letter-spacing:-.02em;display:flex;
+  justify-content:space-between;gap:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:#0E7877;font-weight:500}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0 0 20px;color:#45536A;font-size:14.5px;line-height:1.65;max-width:72ch}
+.apps{max-width:900px;margin:26px auto 0;text-align:left}
+.app{background:#FFFFFF;border:1px solid #E6E0D6;padding:28px 30px 30px}
+.app .k{font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;
+  text-transform:uppercase;color:#9B5C3E}
+.app .q{margin:14px 0 0;font:700 clamp(1.15rem,2.2vw,1.55rem)/1.3 'Manrope',sans-serif;
+  letter-spacing:-.025em}
+.app .b{margin:12px 0 0;color:#45536A;font-size:15px}
+.app ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+@media(min-width:680px){.app ul{grid-template-columns:1fr 1fr}}
+.app li{font-size:13.5px;color:#45536A;padding-left:18px;position:relative}
+.app li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;
+  background:#0E7877}
+.fld{display:grid;gap:7px}
+.fld input,.fld select,.fld textarea{border:1px solid #D3CABA;background:#FFFFFF;
+  padding:12px 13px;font:400 15px/1.5 'Mulish',sans-serif;color:#16243A;border-radius:0;
+  -webkit-appearance:none;appearance:none}
+.fld select{background-image:linear-gradient(45deg,transparent 50%,#616D7C 50%),
+  linear-gradient(135deg,#616D7C 50%,transparent 50%);
+  background-position:calc(100% - 20px) 19px,calc(100% - 15px) 19px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.next{max-width:820px;margin:26px auto 0;text-align:left;
+  border-top:1px solid #16243A}
+.next .r{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:16px 0;
+  border-bottom:1px solid #E6E0D6}
+.next .i{font:500 11.5px/1.6 'IBM Plex Mono',monospace;color:#0E7877}
+.next b{font:700 15px/1.3 'Manrope',sans-serif;letter-spacing:-.02em;display:block}
+.next p{margin:5px 0 0;font-size:14px;color:#45536A;line-height:1.55}
 .ribbon{position:sticky;top:0;z-index:99;background:#16243A;color:#F6F3EC;
   font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;
   padding:9px 18px}
@@ -199,14 +236,28 @@ img{display:block;max-width:100%}
 <div class=ribbon>Mockup &middot; /arthur &middot; the deep technical page</div>
 <div class=announce><div class=wide><span>Arthur 4.0 &mdash; scoped engagements open for Q4</span><a href="arthur.html">Read the technical brief &rsaquo;</a></div></div><nav class=nav><div class=wide><a class=mk href="home.html">LOVELEEDAY</a><span class=lk><a href="arthur.html" class=on>Arthur</a><a href="work.html">Work</a><a href="about.html">Company</a><a href="contact.html">Contact</a></span><a class=cta href="contact.html">Start a project</a></div></nav>
 <header class=hero><div class=w>
-  <h1 class=display style="font-size:clamp(2.6rem,7vw,5.2rem)">The object layer.</h1>
+  <h1 class=display style="font-size:clamp(2.4rem,6.2vw,4.6rem)">Built to connect.<br>Designed to act.</h1>
   <p class=sub>Five components. Each one is a rule enforced in the write path, not a promise in a deck.</p>
 </div><div class=obj><canvas data-motion="lattice"></canvas></div></header>
 <section class=rail><div class=wide><div class=row><a class=tile href="arthur.html"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><path d="M31 12 49 22v20L31 52 13 42V22Z" fill="none" stroke="#16243A" stroke-width="2.2" stroke-linejoin="round"/><circle cx="31" cy="32" r="4" fill="#9B5C3E"/></svg><b>Persistent memory</b><span>Context that outlasts a conversation.</span></a><a class=tile href="arthur.html"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><circle cx="18" cy="20" r="5" fill="none" stroke="#16243A" stroke-width="2.1"/><circle cx="44" cy="20" r="5" fill="none" stroke="#16243A" stroke-width="2.1"/><circle cx="31" cy="46" r="5" fill="none" stroke="#16243A" stroke-width="2.1"/><path d="M22 23 27 42M40 23 35 42M23 20h16" stroke="#9B5C3E" stroke-width="2"/></svg><b>Identity resolution</b><span>Four names, one company.</span></a><a class=tile href="arthur.html"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><path d="M10 24h44M10 40h44" stroke="#16243A" stroke-width="2.1"/><circle cx="24" cy="24" r="3.6" fill="#9B5C3E"/><circle cx="40" cy="40" r="3.6" fill="#16243A"/></svg><b>Bitemporal record</b><span>What was true, and what we knew.</span></a><a class=tile href="arthur.html"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><path d="M14 48 26 30 38 38 50 16" fill="none" stroke="#16243A" stroke-width="2.2" stroke-linejoin="round"/><circle cx="50" cy="16" r="4" fill="#9B5C3E"/></svg><b>Lineage on every value</b><span>A number with no trail is not reportable.</span></a><a class=tile href="arthur.html"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><rect x="13" y="16" width="36" height="30" rx="3" fill="none" stroke="#16243A" stroke-width="2.1"/><path d="M22 32l6 6 12-14" fill="none" stroke="#9B5C3E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Verified execution</b><span>An HTTP 200 is not evidence.</span></a></div></div></section>
 <section class="stage ground"><div class=w>
   <p class=eyebrow>Architecture</p>
   <h2 class=display style="font-size:clamp(1.9rem,3.6vw,2.8rem)">What Arthur is made of.</h2>
-  <div class=spec><div class=r><div class=i>01</div><div><b>Persistent memory</b></div><div><p>Context that outlasts a conversation.</p></div></div><div class=r><div class=i>02</div><div><b>Identity resolution</b></div><div><p>Four names, one company.</p></div></div><div class=r><div class=i>03</div><div><b>Bitemporal record</b></div><div><p>What was true, and what we knew.</p></div></div><div class=r><div class=i>04</div><div><b>Lineage on every value</b></div><div><p>A number with no trail is not reportable.</p></div></div><div class=r><div class=i>05</div><div><b>Verified execution</b></div><div><p>An HTTP 200 is not evidence.</p></div></div></div>
+  <div class=spec><div class=r><div class=i>01</div><div><b>Persistent memory</b></div><div><p>Journals, events and objects are stored and indexed. Retrieval makes what was stored available to the execution paths that use it, so a project carries its own history rather than being re-briefed each time.</p></div></div><div class=r><div class=i>02</div><div><b>Identity resolution</b></div><div><p>A payments customer, a vendor id in the ledger, a string in an email signature and a line in a PDF are four records and one object. Resolution collapses them, so a question is asked about the object rather than about whichever string a source happened to use.</p></div></div><div class=r><div class=i>03</div><div><b>Bitemporal record</b></div><div><p>Each property carries when it was valid in the world and when it was observed. You can ask what was true on a date, or what was known on a date — two different questions that most systems collapse into one.</p></div></div><div class=r><div class=i>04</div><div><b>Lineage on every value</b></div><div><p>Writing a property requires the source system and the source reference. The trail can be printed for any value, back to the record it came from.</p></div></div><div class=r><div class=i>05</div><div><b>Tools, routing and verification</b></div><div><p>Models route to the work, tools execute against real systems, and results are checked against an observed proof string before anything is reported as done.</p></div></div></div>
+</div></section>
+
+<section class="stage sunkbg"><div class=w><p class=eyebrow>Demonstration</p><h2 class=display>Arthur, in motion.</h2><p class=sub>A simulated product walkthrough using fictional companies. An engagement needs its own real evidence, timing, costs and acceptance checks &mdash; this is not execution footage, and the page says so.</p></div><div class=obj><canvas data-motion="flow"></canvas></div></section>
+
+<section class="stage ground"><div class=wide>
+  <p class=eyebrow>Applications</p>
+  <h2 class=display style="font-size:clamp(1.8rem,3.6vw,2.7rem)">The applications are the point.</h2>
+  <div class=apps><div class=app><span class=k>Software & operations</span><p class=q>“Why does this process still depend on five spreadsheets and a manual handoff?”</p><p class=b>Examine the workflow, identify the decisions and dependencies, and turn the right part of the process into software.</p><ul><li>Workflow and requirements map</li><li>Internal tool or customer-facing application</li><li>Automation and integration plan</li><li>Tested changes and rollout documentation</li></ul></div></div>
+</div></section>
+
+<section class="stage paperbg"><div class=wide>
+  <p class=eyebrow>FAQ</p>
+  <h2 class=display style="font-size:clamp(1.8rem,3.6vw,2.7rem)">Good questions are welcome.</h2>
+  <div class=faq><details open><summary>Is Arthur a model, an agent, or a software platform?</summary><p>Arthur is an intelligence software architecture. Its components surround model reasoning with persistent memory, task scheduling, tools, routing, and evaluation. Models are part of the system; the configuration determines which capabilities a workflow can use.</p></details><details><summary>Can Arthur work with our existing systems?</summary><p>We assess your data, APIs, permissions, and requirements before committing to an integration. An adapter in the architecture does not mean a live connection to your systems already exists.</p></details><details><summary>What can we ask LOVELEEDAY Studios to build?</summary><p>Custom applications, workflow tools, research and decision support, digital experiences, and connected creative deliverables. We agree on a specific scope and acceptance criteria around the business problem.</p></details><details><summary>Does Arthur improve itself automatically?</summary><p>Arthur includes evaluation and training-governance components. These support candidate assessment and human promotion decisions. We do not claim unrestricted self-improvement or automatic quality gains.</p></details><details><summary>Is the demonstration video actual execution footage?</summary><p>No. It is a simulated product walkthrough using fictional companies. An engagement needs its own real evidence, timing, costs, and acceptance checks.</p></details></div>
 </div></section>
 <section class="stage sunkbg"><div class=w><p class=eyebrow>Bitemporality</p><h2 class=display>What was true,<br>and what we knew.</h2><p class=sub>Two timelines on every value, which is what makes it possible to ask what was known on a given day rather than what we know now.</p></div><div class=obj><canvas data-motion="orbit"></canvas></div></section>
 <section class="stage paperbg"><div class=wide>
