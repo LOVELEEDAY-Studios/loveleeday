@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Concept 11 &mdash; Volt</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700;800&family=Archivo:wght@100;200;300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Figtree:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel=stylesheet>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.ribbon{position:sticky;top:0;z-index:99;background:#101012;color:#E9E9EC;
+  font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.14em;
+  text-transform:uppercase;padding:9px 18px}
+
+:root{--bg:#08090B;--bg2:#0E1014;--line:#1D2026;--tx:#F2F4F3;--mu:#9AA0A6;
+  --acid:#C8FF4D;--acid2:#8FE000}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:400 16px/1.6 'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:1200px;margin:0 auto;padding:0 clamp(20px,3vw,40px)}
+.mono{font-family:'JetBrains Mono',monospace}
+.strip{background:var(--acid);color:#0A0C07;font:500 12px/1 'JetBrains Mono',monospace;
+  letter-spacing:.06em}
+.strip .w{height:36px;display:flex;align-items:center;justify-content:center;gap:12px}
+nav{position:sticky;top:29px;z-index:40;background:rgba(8,9,11,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;height:62px;gap:30px}
+nav .bd{display:flex;align-items:center;gap:9px;font:700 16px/1 'Space Grotesk';letter-spacing:-.03em}
+nav .bd i{width:18px;height:18px;border-radius:5px;background:var(--acid);display:block}
+nav .lk{display:flex;gap:24px;font:500 13.5px/1 'Space Grotesk';color:var(--mu)}
+nav .rt{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{border-radius:99px;padding:9px 17px;font:600 13px/1 'Space Grotesk'}
+.btn.a{background:var(--acid);color:#0A0C07}
+.btn.g{border:1px solid var(--line);color:var(--tx)}
+.hero{text-align:center;padding:clamp(56px,8vw,110px) 0 0;position:relative;overflow:hidden}
+.hero h1{font:700 clamp(2.6rem,6.4vw,5.1rem)/1.02 'Space Grotesk';letter-spacing:-.045em;
+  margin:0 auto;max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--acid)}
+.hero p{margin:22px auto 0;max-width:52ch;color:var(--mu);font-size:17px}
+.acts{margin-top:28px;display:flex;gap:11px;justify-content:center}
+.orb{margin:clamp(34px,5vw,64px) auto 0;width:min(520px,80vw);height:min(360px,56vw);
+  position:relative}
+.orb .core{position:absolute;inset:14% 18%;border-radius:22px;
+  background:radial-gradient(60% 55% at 50% 42%,#E8FF7A 0%,#9BE81E 34%,#2E6B0A 72%,#0B1A04 100%);
+  box-shadow:0 0 120px 24px rgba(155,232,30,.22),inset 0 -20px 60px rgba(0,0,0,.5)}
+.orb .glow{position:absolute;inset:-18%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(155,232,30,.20),transparent);filter:blur(12px)}
+.rail{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--bg2);margin-top:clamp(40px,5vw,70px)}
+.rail .w{display:flex;gap:clamp(18px,3vw,48px);align-items:center;height:76px;
+  overflow-x:auto;justify-content:space-between}
+.rail span{font:600 15px/1 'Space Grotesk';color:#6E757C;white-space:nowrap;letter-spacing:-.02em}
+section{padding:clamp(54px,7vw,100px) 0;border-bottom:1px solid var(--line)}
+.eyebrow{font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--acid)}
+h2{font:700 clamp(1.8rem,3.4vw,2.8rem)/1.06 'Space Grotesk';letter-spacing:-.04em;margin:14px 0 0}
+.grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px}
+@media(min-width:820px){.grid{grid-template-columns:repeat(3,1fr)}}
+.cell{background:var(--bg);padding:26px 24px 30px}
+.cell .n{font:500 11px/1 'JetBrains Mono',monospace;color:var(--acid)}
+.cell b{display:block;margin:12px 0 0;font:600 17px/1.25 'Space Grotesk';letter-spacing:-.025em}
+.cell p{margin:9px 0 0;font-size:14px;line-height:1.6;color:var(--mu)}
+.stat{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px}
+@media(min-width:760px){.stat{grid-template-columns:repeat(4,1fr)}}
+.stat div{background:var(--bg2);padding:28px 22px}
+.stat b{display:block;font:700 clamp(2rem,3.6vw,3rem)/1 'Space Grotesk';letter-spacing:-.04em;
+  color:var(--acid);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:9px;font:400 12.5px/1.45 'JetBrains Mono',monospace;color:var(--mu)}
+footer{padding:44px 0 66px;color:#6E757C;font:400 12px/1.7 'JetBrains Mono',monospace}
+
+</style></head><body>
+<div class=ribbon>Concept 11 of 15 &mdash; &ldquo;Volt&rdquo; &middot; near-black, one acid accent, a rendered object &middot; ref: Modal &middot; Fey &middot; Basedash</div>
+
+<div class=strip><div class=w><span>ARTHUR 4.0 &mdash; SCOPED ENGAGEMENTS OPEN FOR Q4</span></div></div>
+<nav><div class=w><span class=bd><i></i>LOVELEEDAY</span>
+  <span class=lk><a href="#">Platform</a><a href="#">Products</a><a href="#">Work</a>
+    <a href="#">Docs</a><a href="#">Company</a></span>
+  <span class=rt><a class="btn g" href="#">Sign in</a><a class="btn a" href="#">Start a project</a></span>
+</div></nav>
+<header class=hero><div class=w>
+  <h1>The <em>object layer</em> for the business you already run.</h1>
+  <p>Resolve every record into one object. Carry the date it was true and the date you learned it. Then let the work prove it ran.</p>
+  <div class=acts><a class="btn a" href="#">Start a project</a><a class="btn g" href="#">Read the brief</a></div>
+  <div class=orb><div class=glow></div><div class=core></div></div>
+</div></header>
+<div class=rail><div class=w><span>olldae</span><span>KRONOS</span><span>Duezy</span><span>Dabney &amp; Co.</span><span>Ops Layer</span><span>Arthur</span></div></div>
+<section><div class=w><p class=eyebrow>The guarantees</p>
+  <h2>Five properties. Enforced, not promised.</h2>
+  <div class=grid><div class=cell><div class=n>01</div><b>Identity resolution</b><p>A payments customer, a vendor id in the ledger and a string in an email signature are three records and one company. Questions are asked about the obj</p></div><div class=cell><div class=n>02</div><b>Bitemporality</b><p>Every property knows when it was valid in the world and when it was observed. Judging an August decision with September knowledge is look-ahead bias, </p></div><div class=cell><div class=n>03</div><b>Lineage</b><p>Writing a value requires its source system and source reference. The trail prints for any figure. A number with no trail is not reportable — mechanica</p></div><div class=cell><div class=n>04</div><b>Bounded autonomy</b><p>Actions are classified by blast radius. Only the reversible class runs unattended; anything touching money, outbound communication or a legal document</p></div><div class=cell><div class=n>05</div><b>Observed completion</b><p>Work closes on a value read back out of the system that was supposed to change. An HTTP 200 is not evidence that anything happened.</p></div></div>
+  <div class=stat><div><b>6</b><span>Sites rebuilt</span></div><div><b>38</b><span>Sites measured</span></div><div><b>5</b><span>Companies operated</span></div><div><b>11d</b><span>To first production</span></div></div>
+</div></section>
+<footer><div class=w>LOVELEEDAY STUDIOS &middot; KALAMAZOO, MICHIGAN</div></footer>
+</body></html>
