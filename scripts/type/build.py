@@ -18,7 +18,11 @@ import wordmark as W
 import emblem as E
 
 ROOT = Path(__file__).resolve().parents[2]
-BRAND = ROOT / "public" / "brand"
+# NOT public/brand. Daniel picked the circuit heart on 2026-09-21, so
+# public/brand holds exactly one identity and this direction keeps its own
+# folder as the record of the round. Two identities in the folder the site
+# serves from is how the wrong logo ships.
+BRAND = ROOT / "concepts" / "studio" / "assets-modular"
 
 FACE, WGHT = "Manrope", 800          # the face the site already ships
 N, CHANNEL, RADIUS = 7, 0.095, 0.14  # the emblem grid, chosen against a rendered proof
