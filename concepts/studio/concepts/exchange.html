@@ -5,8 +5,10 @@
 <link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel=stylesheet>
 <style>:root{--bg:#FFFFFF; --fg:#111114; --mu:#5A5A56; --edge:rgba(0,0,0,.15);
-  --panel:#F7F7F4; --navbg:rgba(255,255,255,.9); --navpanel:#FFFFFF; --hov:rgba(0,0,0,.05);
-  --key:#B4560F; --keyfg:#FFFFFF; --up:#127A46;
+  --panel:#F7F7F4; --navbg:rgba(255,255,255,.93); --tickbg:#F1F1EC;
+  --panelUp:#FFFFFF; --panelEdge:rgba(0,0,0,.13); --miHov:rgba(0,0,0,.045);
+  --tabfg:#3E3E3A; --hov:rgba(0,0,0,.05); --hovOn:rgba(0,0,0,.08);
+  --btnedge:rgba(0,0,0,.20); --key:#B4560F; --keyfg:#FFFFFF; --up:#127A46;
   --sans:'Inter Tight',system-ui,-apple-system,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,monospace}
 
@@ -29,51 +31,81 @@ p{margin:0}
 .lede{margin-top:16px;max-width:60ch;color:var(--mu);font-size:clamp(14.5px,1.35vw,17px)}
 
 /* ---------- ticker (Bloomberg) ---------- */
-.tick{border-bottom:1px solid var(--edge);background:var(--panel);overflow:hidden}
+/* The ticker shared a background plane with the nav, so two distinct regions
+   fused into one dense strip. Bloomberg always boxes a dense region. */
+.tick{border-bottom:1px solid var(--edge);background:var(--tickbg);overflow:hidden;height:30px}
 .tickrow{display:flex;gap:34px;padding:8px 0;white-space:nowrap;
   animation:sl 42s linear infinite;width:max-content}
 @keyframes sl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .tk{font:400 11.5px/1 var(--mono);letter-spacing:.06em;color:var(--mu)}
 .tk b{color:var(--fg);font-weight:400;margin-left:8px}
+.tick{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
 .tk i{font-style:normal;margin-left:6px;color:var(--up)}
-.tk i.f{color:var(--mu)}
 @media(prefers-reduced-motion:reduce){.tickrow{animation:none}}
 
-/* ---------- dropdown nav ---------- */
+/* ---------- navigation ----------
+   Rebuilt after review. The panel was full-bleed at #0D0D11 against a #08080A
+   page -- a five-value delta on 0-255, so nothing read as "a menu opened", it
+   read as "the page changed". Worse, its bottom edge landed inside the hero's
+   line-height and sliced the word "Intelligence" in half, which reads as a
+   broken site before it reads as anything else.
+
+   Now: an inset card with a real fill lift, a border doing the contrast work
+   the colour cannot, and a shadow. A contained card also structurally CANNOT
+   collide with the hero the way a full-bleed slab did. */
 nav.bar{position:sticky;top:0;z-index:70;background:var(--navbg);
   border-bottom:1px solid var(--edge);backdrop-filter:saturate(150%) blur(12px)}
-nav.bar > .w{display:flex;align-items:center;gap:clamp(12px,2.4vw,30px);height:58px}
-.bd{font:600 15px/1 var(--sans);letter-spacing:.01em;white-space:nowrap}
-.tabs{display:none;gap:4px}
+nav.bar > .w{display:flex;align-items:center;gap:clamp(10px,1.8vw,22px);height:64px}
+.bd{font:600 14px/1 var(--sans);letter-spacing:.055em;white-space:nowrap;
+  text-transform:uppercase}
+.tabs{display:none;gap:4px;margin-left:18px}
 @media(min-width:960px){.tabs{display:flex}}
-.tab{font:400 13.5px/1 var(--sans);color:var(--mu);background:none;border:0;
-  padding:9px 11px;cursor:pointer;display:flex;align-items:center;gap:5px;border-radius:2px}
-.tab i{font-style:normal;font-size:9px;opacity:.6}
-.tab:hover,.tab.on{color:var(--fg);background:var(--hov)}
-.rt{margin-left:auto;display:none;align-items:center;gap:8px}
+.tab{font:400 14px/1 var(--sans);color:var(--tabfg);background:none;border:0;
+  padding:9px 12px;cursor:pointer;display:flex;align-items:center;gap:6px;
+  border-radius:6px;transition:background .15s ease,color .15s ease}
+.tab i{font-style:normal;font-size:11px;line-height:1;opacity:.85;
+  transition:transform .15s ease}
+.tab:hover{background:var(--hov);color:var(--fg)}
+.tab[aria-expanded="true"]{background:var(--hovOn);color:var(--fg)}
+.tab[aria-expanded="true"] i{transform:rotate(180deg)}
+.rt{margin-left:auto;display:none;align-items:center;gap:12px}
 @media(min-width:960px){.rt{display:flex}}
-.btn{display:inline-block;font:400 13px/1 var(--sans);padding:10px 15px;
-  border:1px solid var(--edge);border-radius:2px;white-space:nowrap}
-.btn.solid{background:var(--key);border-color:var(--key);color:var(--keyfg)}
-.panel{display:none;position:absolute;left:0;right:0;top:100%;background:var(--navpanel);
-  border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);
-  box-shadow:0 30px 70px rgba(0,0,0,.36)}
+.btn{display:inline-block;font:500 14px/1 var(--sans);padding:10px 18px;
+  border:1px solid var(--btnedge);border-radius:6px;white-space:nowrap}
+.btn.solid{background:var(--key);border-color:var(--key);color:var(--keyfg);font-weight:600}
+
+.panel{display:none;position:absolute;left:clamp(14px,2.6vw,32px);
+  right:clamp(14px,2.6vw,32px);top:calc(100% + 8px);
+  max-width:1120px;margin:0 auto;background:var(--panelUp);
+  border:1px solid var(--panelEdge);border-radius:12px;
+  box-shadow:0 24px 48px -12px rgba(0,0,0,.62),0 0 0 1px rgba(0,0,0,.3);
+  overflow:hidden}
 nav.bar[data-open="Platform"] .panel[data-p="Platform"],
 nav.bar[data-open="Work"] .panel[data-p="Work"],
 nav.bar[data-open="Company"] .panel[data-p="Company"]{display:block}
-.pin{padding:22px 0 26px}
-.pgrid{display:grid;gap:2px 26px;margin-top:14px}
-@media(min-width:720px){.pgrid{grid-template-columns:repeat(4,1fr)}}
-.mi{display:block;padding:12px 0}
-.mi b{display:block;font:400 15.5px/1.3 var(--sans);letter-spacing:-.02em;color:var(--fg)}
-.mi span{display:block;margin-top:3px;font-size:13px;color:var(--mu)}
+.pin{padding:26px 26px 0}
+.pgrid{display:grid;gap:4px 18px;margin-top:16px}
+@media(min-width:760px){.pgrid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}}
+.mi{display:block;padding:12px;margin:-2px;border-radius:8px;
+  transition:background .15s ease}
+.mi:hover,.mi:focus-visible{background:var(--miHov)}
+.mi .ic{display:block;width:20px;height:20px;margin-bottom:11px;color:var(--key);
+  font:400 15px/20px var(--mono)}
+.mi b{display:block;font:600 15px/1.3 var(--sans);letter-spacing:-.01em;
+  color:var(--fg);transition:color .15s ease}
 .mi:hover b{color:var(--key)}
-.burger{display:flex;margin-left:auto;width:38px;height:38px;padding:0;cursor:pointer;
-  background:none;color:inherit;border:1px solid var(--edge);border-radius:2px;
+.mi span{display:block;margin-top:4px;font-size:13px;line-height:1.5;color:var(--mu)}
+.pfoot{margin-top:18px;padding:15px 26px;border-top:1px solid var(--panelEdge);
+  font:400 13px/1 var(--sans);color:var(--mu);display:flex;
+  justify-content:space-between;gap:14px;flex-wrap:wrap}
+.pfoot a{color:var(--key)}
+.burger{display:flex;margin-left:auto;width:40px;height:40px;padding:0;cursor:pointer;
+  background:none;color:inherit;border:1px solid var(--btnedge);border-radius:6px;
   flex-direction:column;align-items:center;justify-content:center;gap:5px}
 @media(min-width:960px){.burger{display:none}}
 .burger span{display:block;width:15px;height:1.5px;background:currentColor}
-.sheet{display:none;border-top:1px solid var(--edge);background:var(--navpanel);
+.sheet{display:none;border-top:1px solid var(--edge);background:var(--panelUp);
   max-height:76vh;overflow-y:auto}
 nav.bar[data-sheet="1"] .sheet{display:block}
 .sg{padding:14px 0;border-bottom:1px solid var(--edge)}
@@ -81,12 +113,11 @@ nav.bar[data-sheet="1"] .sheet{display:block}
 
 /* ---------- cycling photo hero ---------- */
 .stage{position:absolute;inset:0;overflow:hidden;background:#000}
+/* The library was three different shoots pretending to be one family. The
+   grade is what makes the survivor sit with the rest of the site: desaturated,
+   cooled, blacks held down, contrast kept. */
 .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:0;transition:opacity 1.5s ease;will-change:opacity,transform;
-  animation:kb 15s ease-in-out infinite alternate}
-.stage img.on{opacity:1}
-@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.13)}}
-@media(prefers-reduced-motion:reduce){.stage img{animation:none;transition:none}}
+  filter:saturate(.62) contrast(1.12) brightness(.9)}
 .grade{position:absolute;inset:0}
 
 /* ---------- brain ---------- */
@@ -519,10 +550,10 @@ footer{border-top:1px solid var(--edge);padding:44px 0 38px;color:var(--mu);font
 })(window);
 </script>
 </head><body>
-<div class=tick><div class=tickrow><span class=tk>OBJECTS<b>41</b><i class="">+3</i></span><span class=tk>OBSERVATIONS<b>538</b><i class="">+52</i></span><span class=tk>SOURCES<b>4</b><i class="f">0</i></span><span class=tk>LINEAGE COVER<b>100%</b><i class="f">0</i></span><span class=tk>SITES MEASURED<b>38</b><i class="f">0</i></span><span class=tk>REBUILDS<b>6</b><i class="">+1</i></span><span class=tk>UNVERIFIED<b>0</b><i class="f">0</i></span><span class=tk>OBJECTS<b>41</b><i class="">+3</i></span><span class=tk>OBSERVATIONS<b>538</b><i class="">+52</i></span><span class=tk>SOURCES<b>4</b><i class="f">0</i></span><span class=tk>LINEAGE COVER<b>100%</b><i class="f">0</i></span><span class=tk>SITES MEASURED<b>38</b><i class="f">0</i></span><span class=tk>REBUILDS<b>6</b><i class="">+1</i></span><span class=tk>UNVERIFIED<b>0</b><i class="f">0</i></span></div></div><nav class=bar data-open=""><div class=w><a class=bd href="#">LOVELEEDAY</a><div class=tabs><button class=tab data-menu="Platform" aria-expanded=false>Platform<i aria-hidden=true>&#9662;</i></button><button class=tab data-menu="Work" aria-expanded=false>Work<i aria-hidden=true>&#9662;</i></button><button class=tab data-menu="Company" aria-expanded=false>Company<i aria-hidden=true>&#9662;</i></button></div><div class=rt><a class=btn href="#">Contact</a><a class="btn solid" href="#">Start a project</a></div><button class=burger aria-label=Menu><span></span><span></span></button></div><div class=panel data-p="Platform"><div class="w pin"><span class=lab>Platform</span><div class=pgrid><a class=mi href="#"><b>Arthur</b><span>The intelligence system</span></a><a class=mi href="#"><b>The ontology</b><span>How records become objects</span></a><a class=mi href="#"><b>Lineage</b><span>Every value carries its source</span></a><a class=mi href="#"><b>Verified execution</b><span>Work closes on observed proof</span></a></div></div></div><div class=panel data-p="Work"><div class="w pin"><span class=lab>Work</span><div class=pgrid><a class=mi href="#"><b>Client rebuilds</b><span>Six, uncommissioned</span></a><a class=mi href="#"><b>Companies we operate</b><span>Five we own and run</span></a><a class=mi href="#"><b>How we measure</b><span>Weight, Lighthouse, position</span></a></div></div></div><div class=panel data-p="Company"><div class="w pin"><span class=lab>Company</span><div class=pgrid><a class=mi href="#"><b>About</b><span>Business judgment, built as software</span></a><a class=mi href="#"><b>How we scope</b><span>Fixed quote, written scope</span></a><a class=mi href="#"><b>Contact</b><span>A reply from a person</span></a></div></div></div><div class=sheet><div class=w><div class=sg><span class=lab>Platform</span><a class=mi href="#"><b>Arthur</b><span>The intelligence system</span></a><a class=mi href="#"><b>The ontology</b><span>How records become objects</span></a><a class=mi href="#"><b>Lineage</b><span>Every value carries its source</span></a><a class=mi href="#"><b>Verified execution</b><span>Work closes on observed proof</span></a></div><div class=sg><span class=lab>Work</span><a class=mi href="#"><b>Client rebuilds</b><span>Six, uncommissioned</span></a><a class=mi href="#"><b>Companies we operate</b><span>Five we own and run</span></a><a class=mi href="#"><b>How we measure</b><span>Weight, Lighthouse, position</span></a></div><div class=sg><span class=lab>Company</span><a class=mi href="#"><b>About</b><span>Business judgment, built as software</span></a><a class=mi href="#"><b>How we scope</b><span>Fixed quote, written scope</span></a><a class=mi href="#"><b>Contact</b><span>A reply from a person</span></a></div></div></div></nav>
+<div class=tick><div class=tickrow><span class=tk>OBJECTS<b>41</b><i>(+3)</i></span><span class=tk>OBSERVATIONS<b>538</b><i>(+52)</i></span><span class=tk>SOURCES<b>4</b></span><span class=tk>LINEAGE COVER<b>100%</b></span><span class=tk>SITES MEASURED<b>38</b></span><span class=tk>REBUILDS<b>6</b><i>(+1)</i></span><span class=tk>UNVERIFIED<b>0</b></span><span class=tk>OLDEST OBSERVATION<b>2026-09-13</b></span><span class=tk>LAST WRITE<b>2026-09-21</b></span><span class=tk>REFUSED WRITES<b>0</b></span><span class=tk>SOURCE SYSTEMS<b>weather.gov · stripe · sentinel-2 · nominatim</b></span><span class=tk>OBJECTS<b>41</b><i>(+3)</i></span><span class=tk>OBSERVATIONS<b>538</b><i>(+52)</i></span><span class=tk>SOURCES<b>4</b></span><span class=tk>LINEAGE COVER<b>100%</b></span><span class=tk>SITES MEASURED<b>38</b></span><span class=tk>REBUILDS<b>6</b><i>(+1)</i></span><span class=tk>UNVERIFIED<b>0</b></span><span class=tk>OLDEST OBSERVATION<b>2026-09-13</b></span><span class=tk>LAST WRITE<b>2026-09-21</b></span><span class=tk>REFUSED WRITES<b>0</b></span><span class=tk>SOURCE SYSTEMS<b>weather.gov · stripe · sentinel-2 · nominatim</b></span></div></div><nav class=bar data-open=""><div class=w><a class=bd href="#">LOVELEEDAY</a><div class=tabs><button class=tab data-menu="Platform" aria-expanded=false>Platform<i aria-hidden=true>&#9662;</i></button><button class=tab data-menu="Work" aria-expanded=false>Work<i aria-hidden=true>&#9662;</i></button><button class=tab data-menu="Company" aria-expanded=false>Company<i aria-hidden=true>&#9662;</i></button></div><div class=rt><a class=btn href="#">Contact</a><a class="btn solid" href="#">Start a project</a></div><button class=burger aria-label=Menu><span></span><span></span></button></div><div class=panel data-p="Platform"><div class=pin><span class=lab>Platform</span><div class=pgrid><a class=mi href="#"><span class=ic>◉</span><b>Arthur</b><span>The intelligence system</span></a><a class=mi href="#"><span class=ic>◧</span><b>The ontology</b><span>How records become objects</span></a><a class=mi href="#"><span class=ic>⥁</span><b>Lineage</b><span>Every value carries its source</span></a><a class=mi href="#"><span class=ic>✓</span><b>Verified execution</b><span>Work closes on observed proof</span></a></div></div><div class=pfoot><span>The whole architecture, in five components</span><a href="#">Read the technical brief &rarr;</a></div></div><div class=panel data-p="Work"><div class=pin><span class=lab>Work</span><div class=pgrid><a class=mi href="#"><span class=ic>◱</span><b>Client rebuilds</b><span>Six, uncommissioned</span></a><a class=mi href="#"><span class=ic>▣</span><b>Companies we operate</b><span>Five we own and run</span></a><a class=mi href="#"><span class=ic>≡</span><b>How we measure</b><span>Weight, Lighthouse, position</span></a></div></div><div class=pfoot><span>Thirty-eight sites measured, six rebuilt, five operated</span><a href="#">See all the work &rarr;</a></div></div><div class=panel data-p="Company"><div class=pin><span class=lab>Company</span><div class=pgrid><a class=mi href="#"><span class=ic>○</span><b>About</b><span>Business judgment, built as software</span></a><a class=mi href="#"><span class=ic>△</span><b>How we scope</b><span>Fixed quote, written scope</span></a><a class=mi href="#"><span class=ic>→</span><b>Contact</b><span>A reply from a person</span></a></div></div><div class=pfoot><span>Fixed quote, written scope, a reply from a person</span><a href="#">Start a project &rarr;</a></div></div><div class=sheet><div class=w><div class=sg><span class=lab>Platform</span><a class=mi href="#"><b>Arthur</b><span>The intelligence system</span></a><a class=mi href="#"><b>The ontology</b><span>How records become objects</span></a><a class=mi href="#"><b>Lineage</b><span>Every value carries its source</span></a><a class=mi href="#"><b>Verified execution</b><span>Work closes on observed proof</span></a></div><div class=sg><span class=lab>Work</span><a class=mi href="#"><b>Client rebuilds</b><span>Six, uncommissioned</span></a><a class=mi href="#"><b>Companies we operate</b><span>Five we own and run</span></a><a class=mi href="#"><b>How we measure</b><span>Weight, Lighthouse, position</span></a></div><div class=sg><span class=lab>Company</span><a class=mi href="#"><b>About</b><span>Business judgment, built as software</span></a><a class=mi href="#"><b>How we scope</b><span>Fixed quote, written scope</span></a><a class=mi href="#"><b>Contact</b><span>A reply from a person</span></a></div></div></div></nav>
 <header class=hero><div class="w hgrid">
   <div>
-    <span class=lab>LDAY &middot; INTELLIGENCE ARCHITECTURE</span>
+    <span class=lab>LOVELEEDAY STUDIOS</span>
     <h1 style="margin-top:16px">Intelligence<br>you can trace.</h1>
     <p class=lede>Every value carries the date it was true, the date you learned
     it, and the trail back to the system it came from.</p>
@@ -531,7 +562,7 @@ footer{border-top:1px solid var(--edge);padding:44px 0 38px;color:var(--mu);font
       <a class=btn href="#">Read the architecture</a></div>
   </div>
   <div>
-    <div class=shotbox><div class=stage><img src="../../../public/studio/solstice/desert-rust.jpg" alt="" loading="eager"><img src="../../../public/studio/solstice/ridge-haze.jpg" alt="" loading="eager"><img src="../../../public/studio/solstice/room-golden.jpg" alt="" loading="lazy"><img src="../../../public/studio/solstice/own-itlead.jpg" alt="" loading="lazy"><img src="../../../public/studio/solstice/bench-lamp.jpg" alt="" loading="lazy"><img src="../../../public/studio/solstice/own-bench.jpg" alt="" loading="lazy"><div class=grade style="background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.28))"></div></div></div>
+    <div class=shotbox><div class=stage><img src="../../../public/studio/solstice/own-itlead.jpg" alt="Two engineers in a server room reviewing a data trail on a tablet"><div class=grade style="background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.30))"></div></div></div>
     <p class=capline>Kalamazoo, Michigan &middot; the studio and the companies it runs</p>
   </div>
 </div></header>
@@ -539,13 +570,13 @@ footer{border-top:1px solid var(--edge);padding:44px 0 38px;color:var(--mu);font
 <section class=sec><div class=w>
   <span class=lab>The book</span>
   <h2>Measured, not asserted.</h2>
-  <div class=panels><div class=pnl><span class=code>OBJ</span><b>41</b><span>Objects resolved</span><p>Records collapsed onto single objects.</p></div><div class=pnl><span class=code>OBS</span><b>538</b><span>Observations</span><p>Each with source system and reference.</p></div><div class=pnl><span class=code>SRC</span><b>4</b><span>Live sources</span><p>As wide as what is connected, no wider.</p></div><div class=pnl><span class=code>UNV</span><b>0</b><span>Unverified</span><p>Refused at the write path.</p></div></div>
+  <div class=panels><div class=pnl><span class=code>OBJ</span><b>41</b><span>Objects resolved</span><p>Records from four systems collapsed onto single objects.</p></div><div class=pnl><span class=code>OBS</span><b>538</b><span>Property observations</span><p>Each carrying its source system and source reference.</p></div><div class=pnl><span class=code>SRC</span><b>4</b><span>Live source systems</span><p>Coverage is exactly as wide as what is connected.</p></div><div class=pnl><span class=code>UNV</span><b>0</b><span>Unverified values</span><p>A write without lineage is refused at the path.</p></div></div>
   <div class=rows><div class=row><span class=c>01</span><b>olldae</b><p>Venue operators reduced catering quote turnaround from a multi-day email chain to a same-session workflow. Inventory, recipes, and billing consolidated into a single platform.</p><span class=n>MVP in 11 days. Full v1 in 6 weeks.</span></div><div class=row><span class=c>02</span><b>Kronos</b><p>Cross-entity financial data pulled into a single authenticated dashboard, replacing weekly manual reconciliation across three separate vendor portals.</p><span class=n>Auth and core routing in 5 days. Full integration in 3 weeks.</span></div><div class=row><span class=c>03</span><b>Hospitality Ops Layer</b><p>Inbox-to-action cycle moved from manual review to automated routing with human-in-the-loop confirmation, across every communication channel.</p><span class=n>Core pipeline in 3 weeks.</span></div><div class=row><span class=c>04</span><b>Duezy</b><p>Invoice-to-payment moved from multi-day manual follow-up to an automated collect-on-send flow, with outstanding invoice tracking consolidated into a single view.</p><span class=n>Functional billing flow in 7 days.</span></div><div class=row><span class=c>05</span><b>Dabney & Co.</b><p>A web presence that matches the bar's physical aesthetic. Guests move from discovery to reservation without leaving the site.</p><span class=n>Design to production in 3 weeks.</span></div></div>
 </div></section>
 
 <section class=brainwrap><div class=w style="padding-top:clamp(40px,5vw,72px)">
   <span class=lab>Arthur &middot; cognition</span>
-  <h2 style="margin-top:14px">Ask it something. Watch what it asks back.</h2>
+  <h2 style="margin-top:14px">Ask it something.<br>Watch what it asks back.</h2>
   <p class=lede>Give it a question. It decomposes into the questions it has to answer first &mdash; which objects the words resolve to, what was known on the date, whether every input carries a source, and whether the action is reversible.</p>
 </div><div class=brainbox><canvas data-brain></canvas></div><script>Brain.mount(document.currentScript.previousElementSibling.querySelector("canvas"),{});</script></section>
 
@@ -558,17 +589,21 @@ footer{border-top:1px solid var(--edge);padding:44px 0 38px;color:var(--mu);font
 <script>
 (function(){
   var bar=document.querySelector('nav.bar'); if(!bar) return;
-  var timer=null;
-  function open(n){ clearTimeout(timer); bar.dataset.open=n||'';
+  var timer=null, openT=null;
+  function open(n){ clearTimeout(timer); clearTimeout(openT); bar.dataset.open=n||'';
     bar.querySelectorAll('.tab').forEach(function(t){
       t.classList.toggle('on', t.dataset.menu===n);
       t.setAttribute('aria-expanded', t.dataset.menu===n?'true':'false'); }); }
   bar.querySelectorAll('.tab').forEach(function(t){
-    t.addEventListener('mouseenter',function(){ open(t.dataset.menu); });
+    t.addEventListener('mouseenter',function(){
+      clearTimeout(timer);
+      if (bar.dataset.open) { open(t.dataset.menu); }   /* cross-fade, no reopen */
+      else { openT=setTimeout(function(){ open(t.dataset.menu); }, 120); } });
+    t.addEventListener('mouseleave',function(){ clearTimeout(openT); });
     t.addEventListener('focus',function(){ open(t.dataset.menu); });
     t.addEventListener('click',function(e){ e.preventDefault();
       open(bar.dataset.open===t.dataset.menu?'':t.dataset.menu); }); });
-  bar.addEventListener('mouseleave',function(){ timer=setTimeout(function(){open('');},150); });
+  bar.addEventListener('mouseleave',function(){ timer=setTimeout(function(){open('');},280); });
   bar.addEventListener('mouseenter',function(){ clearTimeout(timer); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') open(''); });
   var b=bar.querySelector('.burger');
