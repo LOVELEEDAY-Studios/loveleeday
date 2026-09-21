@@ -26,12 +26,23 @@
    thirty doors. Enterprise buyers who arrive from search land deep, and the
    surface area is what catches them.
    ========================================================================== */
+/* RELIT 2026-09-21. This concept was drawn dark, and dark was rejected the same
+   day ("i dont like the use of dark colors it feels werid"). Leaving it dark in
+   a set of ten he is choosing from would have wasted a fifth of the set on a
+   register already ruled out, and the header on index.html claimed every ground
+   was light, which would have been false.
+
+   The whole palette lived in :root, so this is a token swap and not a redraw --
+   the layout, the type and the structure are untouched. The accents did NOT map
+   one to one: an accent tuned to carry on near-black is too light to carry on
+   cream, so each was pulled down until it clears 4.5:1 on the new ground. The
+   dark original is in git history. */
 :root{
-  --bg:#05070C; --bg2:#0A0E16; --bg3:#111725; --line:#1C2333; --line2:#2B3448;
-  --tx:#EEF1F6; --mu:#9AA4B4; --dim:#6D7688;
-  --acc:#3D7BFF;        /* electric blue -- NOT NVIDIA's green, deliberately */
-  --acc2:#00E0B8;
-  --sig:#FF4713;
+  --bg:#FBF8F2; --bg2:#FFFFFF; --bg3:#F2EDE3; --line:#E6E0D6; --line2:#D3CABA;
+  --tx:#16243A; --mu:#45536A; --dim:#667383;
+  --acc:#1E4FB8;        /* electric blue -- NOT NVIDIA's green, deliberately */
+  --acc2:#0E7C7B;
+  --sig:#C0451F;
   --shell:1420px;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -44,10 +55,10 @@ a{color:inherit;text-decoration:none}
   text-transform:uppercase;color:var(--dim)}
 
 /* ── utility + mega nav ──────────────────────────────────────────────────── */
-.util{background:#000;font-size:11.5px;color:var(--mu)}
+.util{background:#16243A;font-size:11.5px;color:#A9B3C4}
 .util .w{display:flex;justify-content:space-between;align-items:center;height:30px;gap:16px}
 .util a{color:var(--acc2)}
-.nav{position:sticky;top:0;z-index:70;background:rgba(5,7,12,.93);backdrop-filter:blur(14px);
+.nav{position:sticky;top:0;z-index:70;background:rgba(251,248,242,.93);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line)}
 .nav .w{display:flex;align-items:center;gap:clamp(12px,2vw,26px);height:56px}
 .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;margin-right:6px}
@@ -59,7 +70,7 @@ a{color:inherit;text-decoration:none}
 .sheet{position:absolute;left:-20px;top:56px;background:var(--bg2);border:1px solid var(--line);
   border-top:2px solid var(--acc);padding:22px;display:grid;grid-template-columns:repeat(3,190px);
   gap:22px 30px;opacity:0;visibility:hidden;transform:translateY(-6px);
-  transition:all .18s ease;box-shadow:0 30px 70px -20px rgba(0,0,0,.9)}
+  transition:all .18s ease;box-shadow:0 30px 70px -20px rgba(22,36,58,.22)}
 .sheet h4{margin:0 0 9px;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;
   color:var(--dim);font-family:'IBM Plex Mono',monospace;font-weight:500}
 .sheet a{display:block;font-size:13px;color:var(--mu);padding:4px 0}
@@ -76,7 +87,7 @@ a{color:inherit;text-decoration:none}
   border-bottom:1px solid var(--line)}
 .hero canvas{position:absolute;inset:0;width:100%;height:100%}
 .hero .veil{position:absolute;inset:0;
-  background:linear-gradient(94deg,rgba(5,7,12,.95) 0 34%,rgba(5,7,12,.45) 62%,rgba(5,7,12,.2) 100%)}
+  background:linear-gradient(94deg,rgba(251,248,242,.94) 0 34%,rgba(251,248,242,.62) 62%,rgba(251,248,242,.22) 100%)}
 .hero .w{position:relative;padding-top:52px;padding-bottom:52px}
 .hero .tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);
   border-radius:2px;padding:5px 11px;font-size:11.5px;color:var(--acc2);
@@ -143,11 +154,11 @@ h1{margin:16px 0 0;font-size:clamp(2.2rem,5.2vw,4.3rem);line-height:1.02;font-we
 <nav class="nav"><div class="w">
   <span class="brand">
     <svg width="17" height="17" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-      <rect x="18" y="18" width="27" height="27" stroke="#EEF1F6" stroke-width="7"/>
-      <rect x="55" y="18" width="27" height="27" fill="#EEF1F6"/>
-      <rect x="18" y="55" width="27" height="27" fill="#EEF1F6"/>
-      <path d="M55 55H82V82H55V55Z" stroke="#EEF1F6" stroke-width="7"/>
-      <circle cx="68.5" cy="68.5" r="9" fill="#FF4713"/>
+      <rect x="18" y="18" width="27" height="27" stroke="#16243A" stroke-width="7"/>
+      <rect x="55" y="18" width="27" height="27" fill="#16243A"/>
+      <rect x="18" y="55" width="27" height="27" fill="#16243A"/>
+      <path d="M55 55H82V82H55V55Z" stroke="#16243A" stroke-width="7"/>
+      <circle cx="68.5" cy="68.5" r="9" fill="#C0451F"/>
     </svg>
     LOVELEEDAY
   </span>
@@ -240,7 +251,7 @@ var R=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function draw(t){
     x.clearRect(0,0,W,H);
     var g=x.createLinearGradient(W*0.25,H,W,0);
-    g.addColorStop(0,'#05070C'); g.addColorStop(0.45,'#0B1430'); g.addColorStop(0.8,'#14306B'); g.addColorStop(1,'#1E4FB8');
+    g.addColorStop(0,'#FBF8F2'); g.addColorStop(0.45,'#EDE7DC'); g.addColorStop(0.8,'#D6E0E8'); g.addColorStop(1,'#BFD2E2');
     x.fillStyle=g; x.fillRect(0,0,W,H);
     var SK=-0.62;                                  // the diagonal, in dy/dx
     for(var i=0;i<46;i++){
@@ -250,17 +261,17 @@ var R=matchMedia('(prefers-reduced-motion: reduce)').matches;
       var x0=p*W*1.5-W*0.25;
       var len=H*(0.25+seed*0.9), thick=0.6+seed*2.2;
       var alpha=0.035+seed*0.13;
-      x.strokeStyle='rgba('+(120+seed*80|0)+','+(180+seed*60|0)+',255,'+alpha+')';
+      x.strokeStyle='rgba(22,36,58,'+(alpha*0.85)+')';
       x.lineWidth=thick;
       x.beginPath(); x.moveTo(x0,H*1.1); x.lineTo(x0+len*0.9,H*1.1+len*SK); x.stroke();
     }
     /* one hard architectural edge, opaque, that the light sits behind */
     x.save(); x.beginPath();
     x.moveTo(W*0.46,H); x.lineTo(W*0.78,0); x.lineTo(W*0.735,0); x.lineTo(W*0.415,H);
-    x.closePath(); x.fillStyle='rgba(0,224,184,.5)'; x.fill(); x.restore();
+    x.closePath(); x.fillStyle='rgba(14,124,123,.42)'; x.fill(); x.restore();
     x.save(); x.beginPath();
     x.moveTo(W*0.52,H); x.lineTo(W*0.84,0); x.lineTo(W*0.832,0); x.lineTo(W*0.512,H);
-    x.closePath(); x.fillStyle='rgba(255,255,255,.35)'; x.fill(); x.restore();
+    x.closePath(); x.fillStyle='rgba(22,36,58,.16)'; x.fill(); x.restore();
     /* grain, so the gradient does not band on a wide monitor */
     x.globalAlpha=0.028;
     for(var n=0;n<1400;n++){ x.fillStyle=Math.random()>0.5?'#fff':'#000';
@@ -302,8 +313,8 @@ function art(cv,k){
     cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);x.setTransform(dpr,0,0,dpr,0,0);
     x.clearRect(0,0,W,H);
     var g=x.createLinearGradient(0,0,W,H);
-    var hues=[['#0C1A3A','#1E4FB8'],['#08201C','#00E0B8'],['#1A0E22','#7B4DFF'],['#231005','#FF4713'],
-              ['#0A1628','#3D7BFF'],['#101A10','#4FD16B'],['#1C1424','#B05CFF'],['#2A1208','#FF8A3D']][k%8];
+    var hues=[['#0C1A3A','#15367F'],['#08201C','#0E7C7B'],['#1A0E22','#7B4DFF'],['#231005','#C0451F'],
+              ['#0A1628','#1E4FB8'],['#101A10','#4FD16B'],['#1C1424','#6C3FB0'],['#2A1208','#9A6414']][k%8];
     g.addColorStop(0,hues[0]); g.addColorStop(1,hues[1]);
     x.fillStyle=g; x.fillRect(0,0,W,H);
     x.globalAlpha=0.30; x.strokeStyle='#fff'; x.lineWidth=1;

@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Concept 06 &mdash; Atlas</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Mulish:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel=stylesheet>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.note{position:sticky;top:0;z-index:99;background:#16243A;color:#F6F3EC;
+  font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.13em;
+  text-transform:uppercase;padding:9px 18px}
+
+:root{--paper:#FFFFFF;--wash:#F4F6F8;--ink:#101418;--mid:#3C454F;--dim:#6C7681;
+  --line:#E4E8EC;--live:#0E7C7B;--warn:#B8722C;--shell:1320px}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:400 15px/1.6 'Manrope',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:var(--shell);margin:0 auto;padding:0 clamp(20px,3.4vw,46px)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.eyebrow{font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--dim)}
+.status{background:var(--ink);color:#DDE3E9}
+.status .w{display:flex;align-items:center;gap:22px;height:36px;
+  font:400 11.5px/1 'IBM Plex Mono',monospace}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--live);display:inline-block;
+  margin-right:7px;box-shadow:0 0 0 3px rgba(14,124,123,.24)}
+nav{border-bottom:1px solid var(--line);position:sticky;top:29px;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(9px);z-index:9}
+nav .w{display:flex;align-items:center;justify-content:space-between;height:62px}
+nav .brand{font:800 16px/1 'Manrope',sans-serif;letter-spacing:-.03em}
+nav .links{display:flex;gap:26px;font:500 13px/1 'Manrope',sans-serif;color:var(--mid)}
+nav .btn{border:1px solid var(--ink);border-radius:5px;padding:8px 15px;
+  font:600 12.5px/1 'Manrope',sans-serif}
+.hero{padding:clamp(46px,6vw,80px) 0 0}
+.hero h1{font:800 clamp(2.3rem,5vw,3.9rem)/1.02 'Manrope',sans-serif;letter-spacing:-.04em;
+  margin:16px 0 0;max-width:16ch}
+.hero p{margin:22px 0 0;max-width:58ch;color:var(--mid);font-size:16.5px}
+.map{margin-top:clamp(32px,4vw,52px);border:1px solid var(--line);border-radius:10px;
+  background:linear-gradient(var(--wash),#fff);overflow:hidden}
+.map .bar{display:flex;justify-content:space-between;align-items:center;
+  padding:11px 18px;border-bottom:1px solid var(--line);background:#fff;
+  font:400 11px/1 'IBM Plex Mono',monospace;color:var(--dim)}
+.legend{display:flex;gap:18px}
+.legend i{font-style:normal}
+.grid4{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;margin-top:clamp(30px,4vw,48px)}
+@media(min-width:760px){.grid4{grid-template-columns:repeat(4,1fr)}}
+.grid4 .c{background:#fff;padding:24px 22px 26px}
+.grid4 .n{font:800 30px/1 'Manrope',sans-serif;letter-spacing:-.03em}
+.grid4 .t{margin-top:10px;font:600 13px/1.35 'Manrope',sans-serif}
+.grid4 .d{margin-top:7px;font-size:13px;color:var(--dim);line-height:1.5}
+section{padding:clamp(46px,6vw,78px) 0}
+h2{font:800 clamp(1.5rem,2.7vw,2.2rem)/1.08 'Manrope',sans-serif;letter-spacing:-.033em;margin:14px 0 0}
+.rows{margin-top:28px;border-top:1px solid var(--line)}
+.row{display:grid;gap:14px;padding:17px 0;border-bottom:1px solid var(--line);align-items:center}
+@media(min-width:800px){.row{grid-template-columns:34px 1.1fr 1.4fr auto}}
+.row .i{font:400 11.5px/1 'IBM Plex Mono',monospace;color:var(--dim)}
+.row .nm{font:700 15px/1.3 'Manrope',sans-serif;letter-spacing:-.015em}
+.row .ds{font-size:13.5px;color:var(--mid)}
+.pill{justify-self:start;font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.09em;
+  text-transform:uppercase;border:1px solid var(--live);color:var(--live);
+  border-radius:3px;padding:5px 9px}
+footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--dim);
+  font:400 12px/1.6 'IBM Plex Mono',monospace}
+
+</style></head><body>
+<div class=note>Concept 06 of 10 &mdash; &ldquo;Atlas&rdquo; &middot; the page looks at THE NETWORK &middot; cloudflare.com / datadoghq.com</div>
+
+<div class=status><div class=w><span><span class=dot></span>All systems operational</span>
+  <span>5 products</span><span>4 shared services</span><span>us-east &middot; iad</span>
+  <span style="margin-left:auto">Updated 14:02 ET</span></div></div>
+<nav><div class=w><span class=brand>LOVELEEDAY</span>
+  <span class=links><a href="#">Platform</a><a href="#">Products</a><a href="#">Work</a>
+  <a href="#">Practice</a><a href="#">Docs</a></span>
+  <a class=btn href="#">Start a project</a></div></nav>
+
+<div class=hero><div class=w>
+  <p class=eyebrow>The platform</p>
+  <h1>Five companies. One control plane.</h1>
+  <p>We build each product on the same spine, so a fix to billing is a fix to billing
+  everywhere. This is the actual topology, not an illustration of one.</p>
+  <div class=map>
+    <div class=bar><span>TOPOLOGY &middot; PRODUCTION</span>
+      <span class=legend><i>&#9632; owned</i><i>&#9633; third party</i>
+      <i style="color:#0E7C7B">&#9679; live edge</i></span></div>
+    <svg viewBox="0 40 1040 390" style="width:100%;height:auto;display:block">
+<path d="M150 96 L150 150 L520 150 L520 196" fill="none" stroke="#C9D2DA" stroke-width="1.4"/><path d="M330 96 L330 150 L520 150 L520 196" fill="none" stroke="#C9D2DA" stroke-width="1.4"/><path d="M510 96 L510 150 L520 150 L520 196" fill="none" stroke="#C9D2DA" stroke-width="1.4"/><path d="M690 96 L690 150 L520 150 L520 196" fill="none" stroke="#C9D2DA" stroke-width="1.4"/><path d="M870 96 L870 150 L520 150 L520 196" fill="none" stroke="#C9D2DA" stroke-width="1.4"/><path d="M520 244 L520 288 L240 288 L240 322" fill="none" stroke="#C9D2DA" stroke-width="1.4"/><path d="M520 244 L520 288 L430 288 L430 322" fill="none" stroke="#C9D2DA" stroke-width="1.4"/><path d="M520 244 L520 288 L620 288 L620 322" fill="none" stroke="#C9D2DA" stroke-width="1.4"/><path d="M520 244 L520 288 L800 288 L800 322" fill="none" stroke="#C9D2DA" stroke-width="1.4"/>
+<rect x="404" y="196" width="232" height="48" rx="6" fill="#101418"/>
+<text x="520" y="219" text-anchor="middle" font-family="Manrope" font-size="14"
+  font-weight="800" fill="#fff">Arthur</text>
+<text x="520" y="235" text-anchor="middle" font-family="IBM Plex Mono" font-size="10"
+  fill="#8C98A4" letter-spacing="1.4">SHARED CONTROL PLANE</text>
+<rect x="88" y="62" width="124" height="34" rx="5" fill="#fff" stroke="#101418" stroke-width="1.4"/><rect x="268" y="62" width="124" height="34" rx="5" fill="#fff" stroke="#101418" stroke-width="1.4"/><rect x="448" y="62" width="124" height="34" rx="5" fill="#fff" stroke="#101418" stroke-width="1.4"/><rect x="628" y="62" width="124" height="34" rx="5" fill="#fff" stroke="#101418" stroke-width="1.4"/><rect x="808" y="62" width="124" height="34" rx="5" fill="#fff" stroke="#101418" stroke-width="1.4"/><rect x="182" y="322" width="116" height="32" rx="5" fill="#F4F6F8" stroke="#C9D2DA" stroke-width="1.2"/><rect x="372" y="322" width="116" height="32" rx="5" fill="#F4F6F8" stroke="#C9D2DA" stroke-width="1.2"/><rect x="562" y="322" width="116" height="32" rx="5" fill="#F4F6F8" stroke="#C9D2DA" stroke-width="1.2"/><rect x="742" y="322" width="116" height="32" rx="5" fill="#F4F6F8" stroke="#C9D2DA" stroke-width="1.2"/><text x="150" y="84" text-anchor="middle" font-family="Manrope" font-size="13.5" font-weight="700" fill="#101418">olldae</text><text x="330" y="84" text-anchor="middle" font-family="Manrope" font-size="13.5" font-weight="700" fill="#101418">Kronos</text><text x="510" y="84" text-anchor="middle" font-family="Manrope" font-size="13.5" font-weight="700" fill="#101418">Ops Layer</text><text x="690" y="84" text-anchor="middle" font-family="Manrope" font-size="13.5" font-weight="700" fill="#101418">Duezy</text><text x="870" y="84" text-anchor="middle" font-family="Manrope" font-size="13.5" font-weight="700" fill="#101418">Dabney</text><text x="240" y="343" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" fill="#3C454F">Supabase</text><text x="430" y="343" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" fill="#3C454F">Stripe</text><text x="620" y="343" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" fill="#3C454F">Resend</text><text x="800" y="343" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" fill="#3C454F">Fly.io</text>
+<circle cx="520" cy="150" r="4" fill="#0E7C7B"/>
+<circle cx="520" cy="288" r="4" fill="#0E7C7B"/>
+<text x="24" y="150" font-family="IBM Plex Mono" font-size="10.5" fill="#6C7681"
+  letter-spacing="1.6">PRODUCTS</text>
+<text x="24" y="288" font-family="IBM Plex Mono" font-size="10.5" fill="#6C7681"
+  letter-spacing="1.6">SERVICES</text>
+</svg>
+  </div>
+  <div class=grid4><div class=c><div class=n>5</div><div class=t>Products on one plane</div><div class=d>Every company we operate runs on the same auth, billing and job layer.</div></div><div class=c><div class=n>4</div><div class=t>Shared services</div><div class=d>One Stripe account, one mail sender, one host. Four bills, not twenty.</div></div><div class=c><div class=n>11d</div><div class=t>Fastest to production</div><div class=d>olldae, first commit to the first paying venue.</div></div><div class=c><div class=n>0</div><div class=t>Bespoke snowflakes</div><div class=d>Nothing we run is a one-off we cannot redeploy tomorrow.</div></div></div>
+</div></div>
+
+<section><div class=w>
+  <p class=eyebrow>Operating companies</p>
+  <h2>What is running right now.</h2>
+  <div class=rows><div class=row><div class=i>01</div><div class=nm>olldae</div><div class=ds>SaaS / Restaurant technology</div><div class=pill>operating</div></div><div class=row><div class=i>02</div><div class=nm>Kronos</div><div class=ds>Financial tooling / Multi-entity</div><div class=pill>operating</div></div><div class=row><div class=i>03</div><div class=nm>Hospitality Ops Layer</div><div class=ds>Internal systems / Automation</div><div class=pill>operating</div></div><div class=row><div class=i>04</div><div class=nm>Duezy</div><div class=ds>SaaS / Invoice automation</div><div class=pill>operating</div></div><div class=row><div class=i>05</div><div class=nm>Dabney & Co.</div><div class=ds>Brand / Hospitality</div><div class=pill>operating</div></div></div>
+</div></section>
+
+<footer><div class=w>LOVELEEDAY STUDIOS &middot; KALAMAZOO, MICHIGAN &middot;
+  STATUS PAGE IS THE HOMEPAGE</div></footer>
+
+</body></html>
