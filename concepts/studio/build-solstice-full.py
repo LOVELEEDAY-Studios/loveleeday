@@ -129,30 +129,37 @@ MENUS = {
 }
 
 
-def nav(active="", over=False, open_menu="Platform"):
-    """The bar, plus the open menu rendered as a ROW IN NORMAL FLOW beneath it.
+def nav(active="", over=False, open_menu=None):
+    """A real dropdown: hover or focus a trigger, a glass panel opens under the
+       bar. Not a row pinned open, which is what the last version was.
 
-       The panel was absolutely positioned at first and measured 120px tall
-       while its own grid measured 187 -- the content was overflowing a box
-       whose height I did not control, so the second row of menu items landed
-       on the photograph with nothing behind them. An in-flow row cannot do
-       that: it is as tall as what is in it. A hover implementation would use
-       the absolute panel; a static mockup wants the row, because a menu nobody
-       can see is a menu nobody can judge."""
+       WHY THE PANELS ARE DIRECT CHILDREN OF <nav>. The first attempt nested
+       each panel inside its trigger, which is a flex item in a fixed-height
+       flex row -- the panel measured 120px while its own grid measured 187, so
+       its second row of items rendered on the photograph with nothing behind
+       them. Anchoring every panel to <nav> itself, full-bleed, takes the flex
+       row out of the equation: the panel's height is its content's height.
+
+       Glass rather than a solid fill, per Daniel's standing preference: low
+       opacity over a blur, with a specular highlight on the top edge so it
+       reads as a pane of something rather than a grey box."""
     tabs = "".join(
-        f'<span class="tab{" on" if label == open_menu else ""}">{label}'
-        f'<i aria-hidden="true">&#9662;</i></span>' for label in MENUS)
-    rows = MENUS.get(open_menu, [])
-    panel = "".join(
-        f'<a class=mi href="{h}"><b>{t}</b><span>{d}</span></a>' for t, d, h in rows)
-    mega = (f'<div class=mega><div class=w>'
-            f'<div class=mhead>{open_menu}</div>'
-            f'<div class=pgrid>{panel}</div>'
-            f'<div class=pfoot>{CH["tagline"]}</div></div></div>')
+        f'<button class="tab{" on" if label == open_menu else ""}" '
+        f'data-menu="{label}" aria-expanded="false">{label}'
+        f'<i aria-hidden="true">&#9662;</i></button>' for label in MENUS)
+    panels = ""
+    for label, rows in MENUS.items():
+        items = "".join(
+            f'<a class=mi href="{h}"><b>{t}</b><span>{d}</span></a>' for t, d, h in rows)
+        panels += (f'<div class=panel data-panel="{label}">'
+                   f'<div class=w><div class=mhead>{label}</div>'
+                   f'<div class=pgrid>{items}</div>'
+                   f'<div class=pfoot>{CH["tagline"]}</div></div></div>')
     return (f'<div class=announce><div class=w>'
             f'<span>Arthur 4.0 &mdash; scoped engagements open for Q4</span>'
             f'<a href="arthur.html">Read the technical brief &rsaquo;</a></div></div>'
-            f'<nav class="bar{" over" if over else ""}"><div class=w>'
+            f'<nav class="bar{" over" if over else ""}" data-open="">'
+            f'<div class=w>'
             f'<a class=bd href="home.html">LOVELEEDAY</a>'
             f'<div class=menus>{tabs}</div>'
             f'<div class=rt>'
@@ -162,7 +169,37 @@ def nav(active="", over=False, open_menu="Platform"):
             f'<input placeholder="Search" readonly></label>'
             f'<a class=btn href="contact.html">Contact sales</a>'
             f'<a class="btn solid" href="contact.html">Start a project</a></div>'
-            f'</div></nav>{mega}')
+            f'</div>{panels}</nav>')
+
+
+NAV_JS = """<script>
+(function(){
+  document.querySelectorAll('nav.bar').forEach(function(bar){
+    var timer=null;
+    function open(name){
+      clearTimeout(timer);
+      bar.dataset.open = name || '';
+      bar.querySelectorAll('.tab').forEach(function(t){
+        var on = t.dataset.menu === name;
+        t.classList.toggle('on', on);
+        t.setAttribute('aria-expanded', on ? 'true' : 'false');
+      });
+    }
+    function scheduleClose(){ timer = setTimeout(function(){ open(''); }, 160); }
+    bar.querySelectorAll('.tab').forEach(function(t){
+      t.addEventListener('mouseenter', function(){ open(t.dataset.menu); });
+      t.addEventListener('focus',      function(){ open(t.dataset.menu); });
+      t.addEventListener('click', function(e){
+        e.preventDefault();
+        open(bar.dataset.open === t.dataset.menu ? '' : t.dataset.menu);
+      });
+    });
+    bar.addEventListener('mouseleave', scheduleClose);
+    bar.addEventListener('mouseenter', function(){ clearTimeout(timer); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') open(''); });
+  });
+})();
+</script>"""
 
 
 CSS = """
@@ -184,23 +221,52 @@ img{display:block;max-width:100%}
 .announce .w{height:38px;display:flex;align-items:center;justify-content:center;gap:14px}
 .announce a{color:#F0A87A}
 .bar{background:var(--bone);border-bottom:1px solid var(--line);position:relative;z-index:30}
-.bar .w{display:flex;align-items:center;height:64px;gap:clamp(14px,2.4vw,34px)}
+.bar > .w{position:relative;z-index:2}
+/* DIRECT CHILD, not descendant. As ".bar .w" this also matched the .w inside
+   every dropdown panel, forcing the panel's content container into a 64px
+   flex row -- which is why the panel measured 114px while its own grid
+   measured 187 and the overflow landed on the photograph. */
+.bar > .w{display:flex;align-items:center;height:64px;gap:clamp(14px,2.4vw,34px)}
 .bd{font:600 18px/1 'Inter Tight';letter-spacing:-.035em;white-space:nowrap}
 .menus{display:flex;align-items:center;gap:clamp(8px,1.4vw,20px)}
 .tab{display:flex;align-items:center;gap:6px;font:500 14px/1 'Inter Tight';
-  color:var(--mu);padding:8px 2px;cursor:default;white-space:nowrap}
-.tab i{font-size:9px;opacity:.55;position:relative;top:-1px;font-style:normal}
-.tab.on{color:var(--ink)}
-.mega{background:var(--paper);border-bottom:1px solid var(--line);
-  box-shadow:0 26px 52px -46px rgba(36,17,9,.5);padding:26px 0 22px;position:relative;z-index:50}
+  color:var(--mu);padding:9px 2px;white-space:nowrap;background:none;border:0;
+  cursor:pointer;font-family:inherit}
+.tab i{font-size:9px;opacity:.55;position:relative;top:-1px;font-style:normal;
+  transition:transform .16s ease}
+.tab.on{color:var(--ink)} .tab.on i{transform:rotate(180deg);opacity:.9}
+/* GLASS, not a solid panel: low opacity over a blur, with a specular highlight
+   on the top edge so it reads as a pane rather than a grey box. */
+.panel{position:absolute;left:0;right:0;top:100%;z-index:60;
+  background:rgba(251,246,238,.86);
+  -webkit-backdrop-filter:blur(26px) saturate(150%);
+  backdrop-filter:blur(26px) saturate(150%);
+  border-top:1px solid rgba(255,255,255,.55);
+  border-bottom:1px solid rgba(36,17,9,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 34px 64px -44px rgba(36,17,9,.52);
+  padding:26px 0 22px;
+  opacity:0;visibility:hidden;transform:translateY(-6px);pointer-events:none;
+  transition:opacity .17s ease,transform .17s ease,visibility .17s}
+.bar[data-open="Platform"] .panel[data-panel="Platform"],
+.bar[data-open="Work"] .panel[data-panel="Work"],
+.bar[data-open="Company"] .panel[data-panel="Company"],
+.bar[data-open="Engagements"] .panel[data-panel="Engagements"]{
+  opacity:1;visibility:visible;transform:none;pointer-events:auto}
+/* --hot measured 3.40:1 on the glass over a photograph. The panel head gets a
+   darker rust of its own rather than the page accent; solved for 5.06:1
+   against the worst sampled glass background. */
 .mhead{font:500 11px/1 'Inter Tight';letter-spacing:.2em;text-transform:uppercase;
-  color:var(--hot);margin-bottom:18px}
+  color:#9A320C;margin-bottom:18px}
 .pgrid{display:grid;gap:10px 26px}
 @media(min-width:900px){.pgrid{grid-template-columns:repeat(3,1fr)}}
 .mi{display:block;padding:12px 14px;border-radius:10px}
-.mi:hover{background:var(--bone)}
+.mi:hover{background:rgba(255,255,255,.55)}
 .mi b{display:block;font:500 16px/1.25 'Inter Tight';letter-spacing:-.025em}
-.mi span{display:block;margin-top:4px;font-size:13.5px;color:var(--mu);line-height:1.5}
+/* The dropdown's description text measured 3.42:1 against the glass sitting
+   over the hero photograph -- the glass is translucent by design, so what is
+   behind it is part of the contrast calculation. The panel keeps its
+   transparency and the text gets its own darker role instead. */
+.mi span{display:block;margin-top:4px;font-size:13.5px;color:#4A3A2E;line-height:1.5}
 .pfoot{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);
   font:500 11px/1 'Inter Tight';letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
 .rt{margin-left:auto;display:flex;align-items:center;gap:10px}
@@ -213,7 +279,7 @@ img{display:block;max-width:100%}
 .btn.solid{background:var(--ink);color:var(--bone);border-color:var(--ink)}
 /* over a photograph the bar goes transparent and the panel stays opaque */
 .bar.over{background:transparent;border-bottom-color:transparent}
-.bar.over .bd,.bar.over .tab{color:rgba(255,244,226,.86)}
+.bar.over .bd,.bar.over .tab{color:rgba(255,244,226,.88)}
 .bar.over .tab.on{color:#FFF4E2}
 .bar.over .btn{border-color:rgba(255,244,226,.55);color:#FFF4E2}
 .bar.over .btn.solid{background:#FFF4E2;color:#7A1A0A;border-color:#FFF4E2}
@@ -391,6 +457,7 @@ def render(route):
 <style>{CSS}</style></head><body>
 <div class=ribbon>{ribbon}</div>
 {body}
+{NAV_JS}
 </body></html>"""
 
 
