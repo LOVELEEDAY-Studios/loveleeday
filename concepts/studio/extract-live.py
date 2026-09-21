@@ -134,13 +134,31 @@ def chrome():
             "city": "Kalamazoo, Michigan"}
 
 
+def content(p):
+    return (ROOT / "src" / "content" / p).read_text()
+
+
 def main():
     home, arthur = read("page.tsx"), read("arthur/page.tsx")
+    # /work has no arrays of its own -- it imports `operated` and `studies`
+    # from src/content/work.ts, which the file itself calls "one source of
+    # truth for what this company has built". The rebuild had a SECOND,
+    # hand-retyped copy of all five operated companies, already drifted from
+    # it in every field. Read the source of truth instead.
+    work = content("work.ts")
     about, contact = read("about/page.tsx"), read("contact/page.tsx")
 
     data = {
         "guarantees": tuples(array_block(home, "GUARANTEES"), 3),
-        "components": objects(array_block(arthur, "COMPONENTS"), ["title", "body", "note", "scene"]),
+        # The keys here were "note"/"scene" -- fields that do not exist on these
+        # rows. The scanner silently returned only title+body, so `lead` and
+        # `chain` never reached the mockup and the diff reported them missing.
+        # Ask for the keys the file actually has.
+        "components": objects(array_block(arthur, "COMPONENTS"),
+                              ["n", "title", "lead", "body", "why"]),
+        "component_chains": [strings(b) for b in
+                             re.findall(r"chain:\s*(\[[^\]]*\])",
+                                        array_block(arthur, "COMPONENTS") or "")],
         # APPLICATIONS rows carry a nested `produces` array, so the object
         # scanner has to be told the real keys; FAQ is a list of [q, a] pairs,
         # not objects. Guessing the shape returned 1 and 0 items respectively.
@@ -154,6 +172,19 @@ def main():
         "principles": objects(array_block(about, "PRINCIPLES"), ["n", "t", "d"]),
         "project_types": strings(array_block(contact, "PROJECT_TYPES") or "[]"),
         "budgets": strings(array_block(contact, "BUDGETS") or "[]"),
+        "operated": objects(array_block(work, "operated"),
+                            ["index", "slug", "title", "category", "shipped",
+                             "problem", "built", "outcome", "meta"]),
+        "operated_tech": [strings(b) for b in
+                          re.findall(r"tech:\s*(\[[^\]]*\])",
+                                     array_block(work, "operated") or "")],
+        "operated_link": [None if m.group(1) == "null" else m.group(1).strip('"')
+                          for m in re.finditer(r"link:\s*(null|\"[^\"]*\")",
+                                               array_block(work, "operated") or "")],
+        "studies": objects(array_block(work, "studies"), ["id", "sector", "thesis"]),
+        "study_frames": [m.group(1) for m in
+                         re.finditer(r'frame:\s*v\("([^"]+)"\)',
+                                     array_block(work, "studies") or "")],
         "chrome": chrome(),
     }
     out = Path(__file__).parent / "live-content.json"

@@ -35,6 +35,28 @@ OUT = HERE / "solstice-full"
 OUT.mkdir(exist_ok=True)
 DOM = json.loads((HERE / "live-dom.json").read_text())
 LIVE = json.loads((HERE / "live-content.json").read_text())
+DOM = json.loads((HERE / "live-dom.json").read_text())
+
+
+def L(route, prefix):
+    """The live page's own words, verbatim.
+
+    A mechanical diff of the running site against this rebuild reported 52
+    blocks missing. Almost none of them were missing: they were PARAPHRASES.
+    I had retyped sentences that already exist -- "a trail back to the system
+    it came from" came out as "the trail back to where it came from",
+    "implemented, not planned" was dropped, "coordinating work, selecting
+    models and acting through tools" became "closing work against evidence".
+    Each is a small edit and together they are a different site.
+
+    Daniel asked for this rebuild to align with the current site's components.
+    Copy is a component. So prose is looked up by prefix and pasted exactly,
+    and a prefix that stops matching one block raises instead of silently
+    reverting to whatever I remembered."""
+    hits = [b["text"] for b in DOM[route] if b["text"].startswith(prefix)]
+    if len(hits) != 1:
+        raise SystemExit(f"L({route!r}, {prefix!r}) matched {len(hits)} blocks, need 1")
+    return hits[0]
 CH = LIVE["chrome"]
 
 ROUTES = {"/": ("home.html", "g"), "/arthur": ("arthur.html", None),
@@ -206,7 +228,9 @@ CSS = """
 *,*::before,*::after{box-sizing:border-box}
 :root{--ink:#241109;--bone:#FBF6EE;--paper:#FFFFFF;--mu:#6B5A4E;--dim:#8B7868;
   --line:#E4D9C9;--hot:#C8410F;--deep:#2A0F07;--on-deep:#F6E9DB;--on-deep-mu:#C4A996;
-  --deep-line:#48210F}
+  --deep-line:#48210F;
+  --sans:'Inter Tight',system-ui,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace}
 body{margin:0;background:var(--bone);color:var(--ink);
   font:400 17px/1.62 'Inter Tight',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -294,18 +318,18 @@ img{display:block;max-width:100%}
 .herowrap .bar{position:relative;z-index:40}
 .herowrap .body{position:relative;z-index:5;padding:clamp(58px,8vw,118px) 0 clamp(56px,7vw,110px)}
 .herowrap h1{font:300 clamp(2.7rem,6.2vw,5rem)/1.04 'Inter Tight';letter-spacing:-.045em;
-  color:#FFF8EE;margin:0;max-width:17ch}
+  color:#FFF8EE;margin:0;max-width:17ch;text-wrap:balance}
 .herowrap .body p{margin:22px 0 0;max-width:52ch;color:#FBEFE1;font-size:18px}
 .herowrap .body p+p{margin-top:14px;font-size:16.5px;color:#F2DCC9}
 .head{padding:clamp(48px,6.5vw,90px) 0 clamp(22px,2.6vw,38px)}
-.head h1{font:300 clamp(2.3rem,5.2vw,4rem)/1.05 'Inter Tight';letter-spacing:-.045em;margin:0;max-width:19ch}
+.head h1{font:300 clamp(2.3rem,5.2vw,4rem)/1.05 'Inter Tight';letter-spacing:-.045em;margin:0;max-width:19ch;text-wrap:balance}
 .head p{margin:20px 0 0;max-width:62ch;color:var(--mu);font-size:17.5px}
 
 section{padding:clamp(48px,6vw,88px) 0;border-top:1px solid var(--line)}
 section.wash{background:var(--paper)}
 .eyebrow{font:500 11.5px/1.5 'Inter Tight';letter-spacing:.19em;text-transform:uppercase;
   color:var(--hot);display:block}
-h2{font:300 clamp(1.9rem,3.8vw,3rem)/1.08 'Inter Tight';letter-spacing:-.04em;margin:14px 0 0;max-width:21ch}
+h2{font:300 clamp(1.9rem,3.8vw,3rem)/1.08 'Inter Tight';letter-spacing:-.04em;margin:14px 0 0;max-width:21ch;text-wrap:balance}
 .lede{margin:18px 0 0;max-width:68ch;color:var(--mu);font-size:16.5px}
 .rows{margin-top:30px;border-top:1px solid var(--ink)}
 .row{display:grid;gap:16px;padding:19px 0;border-bottom:1px solid var(--line);align-items:baseline}
@@ -313,10 +337,137 @@ h2{font:300 clamp(1.9rem,3.8vw,3rem)/1.08 'Inter Tight';letter-spacing:-.04em;ma
 .row h3{margin:0;font:500 19px/1.25 'Inter Tight';letter-spacing:-.03em}
 .row p{margin:0;font-size:15.5px;color:var(--mu);line-height:1.62}
 .row p+p{margin-top:10px}
+/* spec() emitted .spec/.r/.n and the stylesheet only ever defined .rows/.row,
+   so every guarantee, component and principle rendered as unstyled stacked
+   divs on three pages -- the same shape as the .bar .w bug: a selector that
+   matches nothing is invisible in the source and obvious on screen. */
+.spec{margin-top:32px;border-top:1px solid var(--ink)}
+.spec .r{display:grid;gap:12px;padding:24px 0;border-bottom:1px solid var(--line)}
+@media(min-width:880px){.spec .r{grid-template-columns:52px minmax(0,258px) minmax(0,1fr);
+  gap:0 32px;align-items:start}}
+.spec .n{font:400 12px/1.5 ui-monospace,monospace;letter-spacing:.08em;color:var(--dim)}
+.spec b{display:block;font:500 19px/1.28 'Inter Tight';letter-spacing:-.03em}
+.spec p{margin:0;font-size:15.5px;color:var(--mu);line-height:1.62}
+.qwrap{max-width:64ch}
 .cap{display:block;margin-top:22px;font:500 11px/1.5 ui-monospace,monospace;letter-spacing:.13em;
   text-transform:uppercase;color:var(--dim)}
 .plain{margin:16px 0 0;max-width:72ch;color:var(--mu);font-size:15.5px;line-height:1.66}
 .src{margin:8px 0 0;font:400 12.5px/1.6 ui-monospace,monospace;color:var(--dim);max-width:76ch}
+/* additions for the approved composition */
+/* Only the `em` rule was ever written, so the band had no grid, no figure and
+   no label: it rendered as "6Sites rebuilt in working HTML" stacked in one
+   narrow column. */
+.metrics{display:grid;gap:clamp(22px,3vw,38px);margin-top:30px;padding-top:28px;
+  border-top:1px solid var(--ink);grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.metrics div b{display:block;font:300 clamp(2.3rem,4.2vw,3.2rem)/1 var(--sans);
+  letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.metrics div span{display:block;margin-top:12px;max-width:24ch;
+  font:500 14.5px/1.4 var(--sans);letter-spacing:-.01em}
+.metrics div em{display:block;margin-top:10px;font:400 12px/1.55 var(--mono);
+  color:var(--dim);font-style:normal;max-width:30ch}
+.fig{margin-top:clamp(26px,3.4vw,44px);max-width:1000px;border:1px solid var(--line);background:var(--paper)}
+/* 1201x330 is 3.6:1, and at that aspect s01's beziers flatten into the "flat
+   comb" its own notes warn about -- the vertical delta between a source and
+   its object is a tenth of the horizontal run, so nothing reads as routing.
+   A taller, narrower frame is what makes the bundle legible. */
+.figbody{height:clamp(260px,32vw,440px)}
+.figbody canvas{width:100%;height:100%;display:block}
+.figcap{padding:13px 18px;border-top:1px solid var(--line);
+  font:500 11px/1.5 ui-monospace,monospace;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--dim)}
+.caveat{margin-top:16px;max-width:64ch;font-size:15px;color:var(--dim)}
+section.dark{background:var(--deep);color:var(--on-deep);border-top:0}
+section.dark h2{color:var(--on-deep)}
+section.dark .lede{color:var(--on-deep-mu)}
+section.dark .eyebrow{color:#F0A87A}
+.clauses{display:grid;gap:22px;margin-top:34px;padding-top:28px;
+  border-top:1px solid var(--deep-line)}
+/* Four clauses in a three-column grid orphans the fourth on its own row. */
+@media(min-width:820px){.clauses{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1120px){.clauses{grid-template-columns:repeat(4,1fr);gap:26px}}
+.clauses b{display:block;font:500 18px/1.25 'Inter Tight';letter-spacing:-.03em}
+.clauses p{margin:9px 0 0;font-size:14.5px;line-height:1.6;color:var(--on-deep-mu)}
+.send{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hint{font:400 13.5px/1.4 var(--sans);color:var(--mu)}
+.idg{display:grid;gap:clamp(30px,5vw,68px);grid-template-columns:1fr}
+@media(min-width:900px){.idg{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);align-items:center}}
+.facts{margin-top:22px;border-top:1px solid rgba(255,255,255,.14)}
+.fr{display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+  padding:13px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.fr dt{font:500 11.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,255,255,.58)}
+.fr dd{font:400 14px/1 var(--mono);color:#fff;font-variant-numeric:tabular-nums}
+.pull{font-size:clamp(1.3rem,2.4vw,1.85rem);line-height:1.35;font-weight:500;
+  letter-spacing:-.024em;color:#fff}
+.qsub{margin-top:22px;max-width:58ch;font-size:15px;line-height:1.62;color:rgba(255,255,255,.7)}
+.btn.ghost{border-color:rgba(255,255,255,.3);color:#fff;background:transparent}
+.chain{display:flex;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+.chain span{font:500 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink);background:rgba(14,120,119,.07);border:1px solid rgba(14,120,119,.2);
+  border-radius:100px;padding:7px 12px;white-space:nowrap}
+.chain i{width:14px;height:1px;background:var(--line);flex:none}
+.olead{display:block;margin-top:7px;font-size:14.5px;color:var(--mu);line-height:1.5}
+.why{margin-top:12px !important;padding-top:12px;border-top:1px solid var(--line);
+  font-size:14.5px;color:var(--dim)}
+.why .eyebrow{display:inline;margin-right:8px;color:var(--dim)}
+.ops{margin-top:32px;display:grid;gap:18px}
+.op{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px}
+.ohead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  padding-bottom:18px;border-bottom:1px solid var(--line)}
+.oi{font:500 12px/1 'Inter Tight';color:var(--hot)}
+.ohead b{font:500 22px/1.15 'Inter Tight';letter-spacing:-.035em}
+.ocat{font-size:14px;color:var(--mu)}
+.oship{margin-left:auto;font:400 12.5px/1.5 ui-monospace,monospace;color:var(--dim)}
+.ogrid{display:grid;gap:22px;padding:22px 0 0}
+@media(min-width:820px){.ogrid{grid-template-columns:repeat(3,1fr)}}
+.ogrid p{margin:9px 0 0;font-size:14.5px;line-height:1.6;color:var(--mu)}
+.otech{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);
+  font:400 12.5px/1.5 ui-monospace,monospace;color:var(--dim)}
+.otech a{color:var(--hot)}
+.btn.solid{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.close{padding:clamp(58px,7.5vw,106px) 0;background:var(--paper);border-top:1px solid var(--line)}
+.close h2{max-width:none}
+.form{display:grid;gap:20px;max-width:720px;margin-top:30px}
+.pair{display:grid;gap:20px;grid-template-columns:1fr 1fr}
+.fld{display:grid;gap:7px}
+.fld input,.fld select,.fld textarea{border:1px solid var(--line);background:var(--paper);
+  padding:13px 14px;font:400 16px/1.5 'Inter Tight';color:var(--ink);border-radius:8px;
+  -webkit-appearance:none;appearance:none}
+.next{margin-top:30px;border-top:1px solid var(--ink)}
+.next .r{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:17px 0;
+  border-bottom:1px solid var(--line)}
+.next .i{font:500 12.5px/1.6 'Inter Tight';color:var(--hot)}
+.next b{display:block;font:500 17px/1.25 'Inter Tight';letter-spacing:-.025em}
+.next p{margin:5px 0 0;font-size:14.5px;color:var(--mu)}
+.note{max-width:70ch;margin:20px 0 0;color:var(--mu);font-size:15.5px}
+.wgrid{display:grid;gap:20px;margin-top:34px}
+@media(min-width:800px){.wgrid{grid-template-columns:1fr 1fr}}
+.wcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.wcard .shot{height:clamp(180px,16vw,226px);overflow:hidden;background:var(--line)}
+.wcard .shot img{width:100%;height:100%;object-fit:cover;object-position:top}
+.wcard .b{padding:20px 22px 24px}
+.wcard .k{font:500 11px/1 'Inter Tight';letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
+.wcard p{margin:11px 0 0;font-size:14.5px;line-height:1.6;color:var(--mu)}
+.app{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px;margin-top:30px}
+.app .k{font:500 11px/1 'Inter Tight';letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
+.app .q{margin:14px 0 0;font:400 clamp(1.3rem,2.4vw,1.8rem)/1.28 'Inter Tight';letter-spacing:-.03em}
+.app .bd{margin:12px 0 0;color:var(--mu)}
+.app ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+@media(min-width:680px){.app ul{grid-template-columns:1fr 1fr}}
+.app li{font-size:14.5px;color:var(--mu);padding-left:18px;position:relative}
+.app li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--hot)}
+.faq{margin-top:30px;border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font:500 19px/1.3 'Inter Tight';
+  letter-spacing:-.025em;display:flex;justify-content:space-between;gap:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--hot)}
+.faq details[open] summary::after{content:"\2013"}
+.faq p{margin:0 0 20px;color:var(--mu);font-size:15.5px;line-height:1.65;max-width:74ch}
+.logos{background:var(--bone);border-bottom:1px solid var(--line)}
+.logos .w{display:flex;align-items:center;justify-content:space-between;gap:26px;
+  height:100px;overflow-x:auto}
+.logos span{font:600 17px/1 'Inter Tight';color:#9C8B7C;white-space:nowrap;letter-spacing:-.02em}
 footer{background:var(--deep);color:var(--on-deep);padding:clamp(46px,6vw,78px) 0 42px;border:0}
 .fgrid{display:grid;gap:40px;padding-bottom:38px;border-bottom:1px solid var(--deep-line)}
 @media(min-width:800px){.fgrid{grid-template-columns:1.4fr repeat(3,1fr)}}
@@ -359,98 +510,124 @@ def footer():
             f'real shoot.</p></div></footer>')
 
 
-def render(route):
-    """Walk the ordered blocks and emit Solstice. Sections start at an eyebrow
-       or an h2; everything between is kept, in order, in its own role."""
-    blocks = dedupe([b for b in DOM[route] if b["section"] not in ("nav", "footer")])
-    hero_key = ROUTES[route][1]
 
-    # the hero: h1 plus the paragraphs immediately after it
-    h1, lead = "", []
-    i = 0
-    for n, b in enumerate(blocks):
-        if b["role"] == "h1":
-            h1 = clean(b["text"])
-            i = n + 1
-            while i < len(blocks) and blocks[i]["role"] == "p" and not lead[2:]:
-                lead.append(clean(blocks[i]["text"]))
-                i += 1
-            break
-    rest = blocks[i:]
 
-    if hero_key:
-        photo, grade, scrim, anchor = HEROES[hero_key]
-        ps = "".join(f"<p>{t}</p>" for t in lead)
-        # The bar sits OUTSIDE .sky. It used to be nested inside it, and .sky
-        # carries overflow:hidden and isolation:isolate -- so the open menu
-        # panel was clipped to 120px and its second row of items rendered on
-        # the photograph with no background behind them.
-        head = (f'<div class=herowrap>'
-                f'<div class=sky aria-hidden=true>'
-                f'<img class=shot style="object-position:{anchor}" '
-                f'src="../../../public/studio/solstice/{photo}" alt="">'
-                f'<div class=grade style="background:{grade}"></div>'
-                f'<div class=scrim style="background:{scrim}"></div></div>'
-                f'{nav(over=True)}'
-                f'<div class=body><div class=w><h1>{h1}</h1>{ps}</div></div></div>')
-    else:
-        ps = "".join(f"<p>{t}</p>" for t in lead)
-        head = nav() + f'<header class=head><div class=w><h1>{h1}</h1>{ps}</div></header>'
+# ===========================================================================
+# THE APPROVED COMPOSITION, with the missing content folded INTO it.
+#
+# Daniel: "did you redesign the homepage ... we asked you to work on things to
+# make better not to change the hero section."
+#
+# He is right and this is the correction. The previous build walked the live
+# DOM and rendered whatever it found, in order -- which reached zero missing
+# blocks and threw away the design to get there: the hero headline reverted to
+# the live site's raw "Arthur Ontology", the logo strip vanished, and four
+# designed sections collapsed into two generic ones.
+#
+# Completeness was never supposed to be the renderer. It is a CHECK. So the
+# approved Solstice composition is the page, and the blocks the diff found
+# missing are placed into it by hand, in the section each one belongs to.
+# ===========================================================================
 
-    # sections
-    out, cur, wash = [], [], False
+STUDIES = [dict(s, frame=f) for s, f in
+           zip(LIVE["studies"], LIVE["study_frames"])]
 
-    def flush():
-        nonlocal cur, wash
-        if not cur:
-            return
-        out.append(f'<section{" class=wash" if wash else ""}><div class=w>'
-                   + "".join(cur) + '</div></section>')
-        cur = []
-        wash = not wash
+FIGURES = [("6", "Sites rebuilt in working HTML",
+            "One venture portfolio, rebuilt as running pages rather than described in a deck. "
+            "Companies that are not ours."),
+           ("38", "Sites measured in that audit",
+            "Page weight, Lighthouse mobile, live organic search position and accessibility, "
+            "measured per site on 2026-09-19."),
+           ("5", "Architectural components in Arthur",
+            L("/", "Persistent memory, identity resolution")),
+           ("2", "Timelines carried on every value",
+            L("/", "When it was true in the world"))]
 
-    pending_h3 = None
-    for b in rest:
-        t = clean(b["text"])
-        if not t:
-            continue
-        r = b["role"]
-        if r == "eyebrow" and cur and any(x.startswith("<h2") for x in cur):
-            flush()
-        if r == "eyebrow":
-            cur.append(f'<span class=eyebrow>{t}</span>')
-        elif r in ("h2",):
-            cur.append(f'<h2>{t}</h2>')
-        elif r in ("h3", "h4"):
-            if pending_h3:
-                cur.append(f'<div class=row><h3>{pending_h3}</h3><div></div></div>')
-            pending_h3 = t
-        elif r == "caption":
-            cur.append(f'<span class=cap>{t}</span>')
-        elif r == "li":
-            cur.append(f'<p class=plain>{t}</p>')
-        else:
-            if pending_h3:
-                cur.append(f'<div class=row><h3>{pending_h3}</h3><div><p>{t}</p></div></div>')
-                pending_h3 = None
-            elif cur and cur[-1].startswith("<h2"):
-                cur.append(f'<p class=lede>{t}</p>')
-            elif cur and cur[-1].startswith("<div class=row"):
-                cur[-1] = cur[-1].replace("</div></div>", f"<p>{t}</p></div></div>")
-            else:
-                cur.append(f'<p class=plain>{t}</p>')
-    if pending_h3:
-        cur.append(f'<div class=row><h3>{pending_h3}</h3><div></div></div>')
-    flush()
+# Both tables below were hand-retyped copies of data the app already owns, and
+# both had drifted -- every one of the five operated companies differed from
+# src/content/work.ts in at least one field. They are derived now.
+OPERATED = [(o["index"], o["title"], o["category"], o["shipped"],
+             " &middot; ".join(tech), o["problem"], o["built"], o["outcome"])
+            for o, tech in zip(LIVE["operated"], LIVE["operated_tech"])]
 
-    body = head + "".join(out) + footer()
-    title = {"/": "LOVELEEDAY Studios", "/arthur": "Arthur", "/work": "Work",
-             "/about": "Company", "/contact": "Contact"}[route]
-    ribbon = (f"Solstice &middot; {route} &middot; every block from the live page, "
-              f"redesigned navigation")
+
+def spec(rows):
+    return ('<div class=spec>' + "".join(
+        f'<div class=r><div class=n>{n}</div><div><b>{t}</b></div><div><p>{d}</p></div></div>'
+        for n, t, d in rows) + '</div>')
+
+
+def metrics(items):
+    """Every figure names its source underneath it, which is the live site's own
+       rule and was dropped when the metric band was first rebuilt."""
+    return ('<div class=metrics>' + "".join(
+        f'<div><b>{k}</b><span>{l}</span><em>{s}</em></div>' for k, l, s in items) + '</div>')
+
+
+def logos():
+    return ('<div class=logos><div class=w>' + "".join(
+        f'<span>{n}</span>' for n in
+        ["olldae", "Kronos", "Duezy", "Dabney &amp; Co.", "Ops Layer", "Arthur"]) +
+        '</div></div>')
+
+
+def close(head_html, sub, second=None, eyebrow="Start"):
+    extra = (f'<a class=btn href="{second[1]}" style="margin-left:10px">{second[0]}</a>'
+             if second else '')
+    return (f'<section class=close><div class=w><span class=eyebrow>{eyebrow}</span>'
+            f'<h2>{head_html}</h2><p class=lede>{sub}</p>'
+            f'<p style="margin-top:26px"><a class="btn solid" href="contact.html">'
+            f'Start a project</a>{extra}</p></div></section>')
+
+
+def footer():
+    cols = ""
+    for col in CH["footer"]:
+        links = "".join(f'<li><a href="{href(h)}">{l}</a></li>' for l, h in col["links"])
+        cols += f'<div class=fcol><h3>{col["title"]}</h3><ul>{links}</ul></div>'
+    return (f'<footer><div class=w><div class=fgrid>'
+            f'<div class=fbrand><b>LOVELEEDAY<span> Studios</span></b>'
+            f'<p>{CH["tagline"]}</p><div class=city>{CH["city"]}</div></div>{cols}</div>'
+            f'<div class=fbase><span>&copy; 2026 LOVELEEDAY Studios LLC &mdash; a Delaware '
+            f'company.</span><span>{CH["city"]}</span></div>'
+            f'<p class=fnote>Figures on this site name their source. Where one is unmeasured '
+            f'it says so. Concept mockup: the two photographs carrying this brand are stock '
+            f'and are placeholders for a real shoot.</p></div></footer>')
+
+
+def hero(which, h1_html, paras):
+    photo, grade, scrim, anchor = HEROES[which]
+    ps = "".join(f"<p>{t}</p>" for t in paras)
+    return (f'<div class=herowrap>'
+            f'<div class=sky aria-hidden=true>'
+            f'<img class=shot style="object-position:{anchor}" '
+            f'src="../../../public/studio/solstice/{photo}" alt="">'
+            f'<div class=grade style="background:{grade}"></div>'
+            f'<div class=scrim style="background:{scrim}"></div></div>'
+            f'{nav(over=True)}'
+            f'<div class=body><div class=w><h1>{h1_html}</h1>{ps}</div></div></div>')
+
+
+# The pages emitted <canvas data-motion="..."> on every figure and never
+# shipped the library that paints them, so all four figures rendered as empty
+# boxes with a caption underneath. Daniel had already caught this once ("i
+# dont see the motion graphics you delevoepd that you ahd planened to run").
+# motion.js is inlined, and each canvas is mounted through LD.hero, which
+# throws on an unknown name rather than leaving a blank frame.
+MOTION_JS = "<script>" + (HERE / "motion.js").read_text() + """
+(function(){
+  var cvs = document.querySelectorAll('canvas[data-motion]');
+  for (var i = 0; i < cvs.length; i++) {
+    window.LD.hero(cvs[i], cvs[i].dataset.motion);
+  }
+})();
+</script>"""
+
+
+def shell(title, body, ribbon):
     return f"""<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>{title} &mdash; LOVELEEDAY Studios</title>
+<title>{title}</title>
 <link rel=preconnect href="https://fonts.googleapis.com">
 <link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
 <link href="{FONTS}" rel=stylesheet>
@@ -458,10 +635,353 @@ def render(route):
 <div class=ribbon>{ribbon}</div>
 {body}
 {NAV_JS}
+{MOTION_JS}
 </body></html>"""
 
 
+def home():
+    g = LIVE["guarantees"]
+    # Section prose, in the live site's own words (see L). Bound here rather
+    # than inline so the f-string below stays readable.
+    sub = L("/", "Records scattered across payments")
+    props = L("/", "Each of these lives in the write path")
+    ident = L("/", "Fourteen records arriving")
+    folio = L("/", "One venture portfolio, measured")
+    unnamed = L("/", "The companies are not named here")
+    dark = L("/", "This is the only dark section")
+    studies = "".join(
+        f'<a class=wcard href="work.html"><div class=shot>'
+        f'<img src="../../../public{s["frame"].split("?")[0]}" alt=""></div>'
+        f'<div class=b><span class=k>{s["id"]} &middot; {s["sector"]}</span>'
+        f'<p>{s["thesis"]}</p></div></a>' for s in STUDIES)
+    body = hero("g", 'Intelligence <span class=ser>you can trace.</span>',
+                [L("/", "The object layer for the business"), sub]) + logos() + f"""
+<section><div class=w>
+  <span class=eyebrow>Arthur &middot; powered by the ontology</span>
+  <h2>The schematic, <span class=ser>not a screenshot.</span></h2>
+  <p class=lede>Sources resolve to objects; workflows and analytics read the object rather
+  than the spreadsheet it arrived in.</p>
+  <div class=fig><div class=figbody><canvas data-motion="flow"></canvas></div>
+    <div class=figcap>Fig. 01 &mdash; sources resolve to objects; workflows and analytics
+    read the object &middot; schematic, not a screenshot</div></div>
+</div></section>
+
+<section class=wash><div class=w>
+  <span class=eyebrow>What the ontology guarantees</span>
+  <h2>Five properties. <span class=ser>Enforced,</span> not promised.</h2>
+  <p class=lede>{props}</p>
+  {spec([(r[0], r[1], r[2]) for r in g])}
+</div></section>
+
+<section><div class=w>
+  <span class=eyebrow>Identity resolution</span>
+  <h2>Four names. <span class=ser>One company.</span></h2>
+  <p class=lede>{ident}</p>
+  <div class=fig><div class=figbody><canvas data-motion="bundle"></canvas></div>
+    <div class=figcap>Fig. 02 &mdash; 14 records &middot; 4 source systems &middot;
+    5 resolved objects</div></div>
+</div></section>
+
+<section class=wash><div class=w>
+  <span class=eyebrow>In production</span>
+  <h2>Built. Shipped. <span class=ser>Running.</span></h2>
+  {metrics(FIGURES)}
+</div></section>
+
+<section id=studies><div class=w>
+  <span class=eyebrow>Uncommissioned</span>
+  <h2>Thirty-eight sites. <span class=ser>Six rebuilds.</span></h2>
+  <p class=lede>{folio}</p>
+  <div class=wgrid>{studies}</div>
+  <p class=note>{unnamed}</p>
+</div></section>
+
+<section class=dark><div class=w>
+  <span class=eyebrow>The standard</span>
+  <h2>Confidence comes <span class=ser>from the evidence.</span></h2>
+  <p class=lede>{dark}</p>
+  <div class=clauses>
+    <div><b>Claims tied to sources</b><p>Separate what the evidence shows from what still
+      needs testing.</p></div>
+    <div><b>Completion tied to the task</b><p>A generated answer and a working implementation
+      are different deliverables.</p></div>
+    <div><b>Authority stays explicit</b><p>Access, integrations and production changes follow
+      the agreed scope and human approval.</p></div>
+    <div><b>Economics worth measuring</b><p>Elapsed time, human effort, quality and cost per
+      completed task, in the actual engagement.</p></div>
+  </div>
+</div></section>
+""" + close('See the question. <span class=ser>Build the answer.</span>',
+            "Tell us what is slowing you down. We reply the same week, with a plan or with a "
+            "reason it is not a fit.", second=("Read the architecture", "arthur.html"),
+            eyebrow="Bring us the question") + footer()
+    return shell("LOVELEEDAY Studios &mdash; the object layer for the business you already run",
+                 body, "Solstice &middot; home &middot; approved composition, all content")
+
+
+def arthur():
+    comp = LIVE["components"]
+    intro = L("/arthur", "Arthur’s codebase brings together")
+    caveat = L("/arthur", "These are implemented architectural")
+    simcap = L("/arthur", "Fictional companies")
+    rows = ""
+    for i, c in enumerate(comp):
+        chain = LIVE.get("component_chains", [])
+        steps = chain[i] if i < len(chain) else []
+        trail = ("<div class=chain>" +
+                 "<i></i>".join(f"<span>{x}</span>" for x in steps) +
+                 "</div>") if steps else ""
+        rows += (f'<div class=r><div class=n>{c.get("n", "0%d" % (i+1))}</div>'
+                 f'<div><b>{c.get("title","")}</b>'
+                 f'<span class=olead>{c.get("lead","")}</span></div>'
+                 f'<div><p>{c.get("body","")}</p>'
+                 f'{trail}'
+                 f'<p class=why><span class=eyebrow>Why it matters</span> '
+                 f'{c.get("why","")}</p></div></div>')
+    apps = ""
+    for i, a in enumerate(LIVE["applications"]):
+        pr = LIVE["app_produces"][i] if i < len(LIVE["app_produces"]) else []
+        apps += (f'<div class=app><span class=k>{a.get("tag","")}</span>'
+                 f'<span class=eyebrow>The business question</span>'
+                 f'<p class=q>{a.get("question","")}</p><p class=bd>{a.get("body","")}</p>'
+                 f'<span class=eyebrow style="margin-top:20px">A scoped engagement can produce</span>'
+                 f'<ul>{"".join(f"<li>{x}</li>" for x in pr)}</ul></div>')
+    faq = "".join(
+        f'<details{" open" if i == 0 else ""}><summary>{q["q"]}</summary><p>{q["a"]}</p></details>'
+        for i, q in enumerate(LIVE["faq"]))
+    body = nav() + f"""
+<header class=head><div class=w>
+  <span class=eyebrow>Arthur &middot; intelligence architecture</span>
+  <h1>Built to connect. <span class=ser>Designed to act.</span></h1>
+  <p>{intro}</p>
+  <p class=caveat>{caveat}</p>
+</div></header>
+
+<section id=architecture><div class=w>
+  <span class=eyebrow>The architecture</span>
+  <h2>What Arthur is <span class=ser>made of.</span></h2>
+  <div class=spec>{rows}</div>
+  <div class=fig style="margin-top:34px"><div class=figbody><canvas data-motion="lattice"></canvas></div>
+    <div class=figcap>Fig. 03 &mdash; a 5&times;5&times;5 lattice, lit and depth-sorted in the
+    browser. No 3D library.</div></div>
+</div></section>
+
+<section class=wash id=ontology><div class=w>
+  <span class=eyebrow>Watch the work unfold</span>
+  <h2>Arthur, <span class=ser>in motion.</span></h2>
+  <p class=lede>Follow a portfolio review through parallel research, proposed changes, a
+  website preview, and a verification step.</p>
+  <div class=fig><div class=figbody><canvas data-motion="series"></canvas></div>
+    <span class=eyebrow>Simulated demonstration</span>
+    <div class=figcap>{simcap}</div></div>
+</div></section>
+
+<section><div class=w>
+  <span class=eyebrow>What this opens up</span>
+  <h2>The applications <span class=ser>are the point.</span></h2>
+  <p class=lede>Start with the business problem. Define the evidence, the deliverable, and
+  what success should look like.</p>
+  {apps}
+  <p class=note>Integrations require approved access, compatible APIs, and implementation.</p>
+</div></section>
+
+<section class=wash><div class=w>
+  <span class=eyebrow>FAQ</span>
+  <h2>Good questions <span class=ser>are welcome.</span></h2>
+  <div class=faq>{faq}</div>
+</div></section>
+""" + close('Bring us <span class=ser>the question.</span>',
+            "Scoped engagements open this quarter. The problem comes first; Arthur is how we "
+            "get to a defensible answer, not the thing we are selling you.",
+            second=("See what we’ve shipped →", "work.html")) + footer()
+    return shell("Arthur &mdash; LOVELEEDAY Studios", body,
+                 "Solstice &middot; /arthur &middot; components, why-it-matters, applications, FAQ")
+
+
+def work():
+    # Shared with /, and identical on both pages in the live site.
+    unnamed = L("/work", "The companies are not named here")
+    intro = L("/work", "Two different things")
+    folio = L("/work", "One venture portfolio, measured")
+    cards = "".join(
+        f'<div class=wcard><div class=shot>'
+        f'<img src="../../../public{s["frame"].split("?")[0]}" alt=""></div>'
+        f'<div class=b><span class=k>{s["id"]} &middot; {s["sector"]}</span>'
+        f'<p>{s["thesis"]}</p></div></div>' for s in STUDIES)
+    led = ""
+    for row, url in zip(OPERATED, LIVE["operated_link"]):
+        i, n, cat, shipped, tech, problem, built, outcome = row
+        visit = (f' &middot; <a href="{url}">Visit the live site &#8599;</a>'
+                 if url else '')
+        led += (f'<div class=op><div class=ohead><span class=oi>{i}</span>'
+                f'<b>{n}</b><span class=ocat>{cat}</span>'
+                f'<span class=oship>{shipped}</span></div>'
+                f'<div class=ogrid>'
+                f'<div><span class=eyebrow>The problem</span><p>{problem}</p></div>'
+                f'<div><span class=eyebrow>What we built</span><p>{built}</p></div>'
+                f'<div><span class=eyebrow>Outcome</span><p>{outcome}</p></div></div>'
+                f'<div class=otech>{tech}{visit}</div>'
+                f'</div>')
+    body = nav() + f"""
+<header class=head><div class=w>
+  <span class=eyebrow>Work</span>
+  <h1>Shipped, <span class=ser>not proposed.</span></h1>
+  <p>{intro}</p>
+</div></header>
+
+<section id=studies><div class=w>
+  <span class=eyebrow>Uncommissioned</span>
+  <h2>Thirty-eight sites. <span class=ser>Six rebuilds.</span></h2>
+  <p class=lede>{folio}</p>
+  <div class=wgrid>{cards}</div>
+  <p class=note>{unnamed}</p>
+</div></section>
+
+<section class=wash id=operated><div class=w>
+  <span class=eyebrow>Owned and operated</span>
+  <h2>Companies we own <span class=ser>and operate.</span></h2>
+  <p class=note>These are LOVELEEDAY-owned businesses, built in-house and running in
+  production. They are listed as evidence that the studio ships &mdash; not as client
+  engagements. We were our own customer on every one of them.</p>
+  <div class=ops>{led}</div>
+</div></section>
+""" + close('Ready to start? <span class=ser>Request a fixed quote.</span>',
+            "We reply the same week, with a plan or with a reason it is not a fit.") + footer()
+    return shell("Work &mdash; LOVELEEDAY Studios", body,
+                 "Solstice &middot; /work &middot; two registers, full case detail")
+
+
+def about():
+    pr = [(r.get("n", ""), r.get("t", ""), r.get("d", "")) for r in LIVE["principles"]]
+    # The live page opens "founded by Daniel J. May, MBA" and carries a Founder
+    # panel under his name. Daniel, 2026-09-21: "do not include my name as
+    # dabney may or anything in the landing pages." So the sentence is taken
+    # from the live copy with the founding clause removed, and the panel keeps
+    # the facts about the COMPANY -- entity, year, how much software it runs --
+    # and drops the person. The quote stays; it reads as the studio's position
+    # rather than a personal one, which is what it always argued anyway.
+    stack = L("/about", "Arthur is the software foundation")
+    quote = L("/about", "“A website request can reveal")
+    beyond = L("/about", "We look beyond the requested deliverable")
+    howwe = L("/about", "We do not do retainers")
+    facts = [("Founded", "2026"), ("Entity", "LOVELEEDAY Studios LLC, Delaware"),
+             ("Software we own and run", "5")]
+    rows = "".join(f'<div class=fr><dt>{k}</dt><dd>{v}</dd></div>' for k, v in facts)
+    body = hero("h", 'Business judgment. <span class=ser>Built as software.</span>',
+                ["LOVELEEDAY Studios is a software development company. Our perspective comes "
+                 "from pricing, operations and running businesses, not only from writing code.",
+                 stack]) + f"""
+<section class=dark><div class=w>
+  <div class=idg>
+    <div>
+      <span class=eyebrow>The company</span>
+      <dl class=facts>{rows}</dl>
+      <p style="margin-top:26px"><a class=btn ghost href="arthur.html">Read the architecture</a></p>
+    </div>
+    <div class=qwrap>
+      <p class=pull>{quote}</p>
+      <p class=qsub>{beyond}</p>
+    </div>
+  </div>
+</div></section>
+
+<section id=method><div class=w>
+  <span class=eyebrow>How we work</span>
+  <h2>Five rules <span class=ser>we do not bend.</span></h2>
+  <p class=lede>{howwe}</p>
+  {spec(pr)}
+  <p class=note>Every engagement also ships through a private, token-gated review page
+  &mdash; you watch the build, not just the invoice. No login and no index: the unguessable
+  URL is the credential, which is why it is named here and never linked.</p>
+</div></section>
+
+<section class=wash><div class=w>
+  <span class=eyebrow>How we measure</span>
+  <h2>The numbers, <span class=ser>and where they come from.</span></h2>
+  {metrics(FIGURES)}
+</div></section>
+""" + close('Tell us what is <span class=ser>slowing you down.</span>',
+            "We reply the same week.") + footer()
+    return shell("Company &mdash; LOVELEEDAY Studios", body,
+                 "Solstice &middot; /about &middot; hero H, company facts, five principles")
+
+
+def contact():
+    def fld(label, opts=None, area=False):
+        if opts:
+            ctl = '<select disabled>' + "".join(f'<option>{o}</option>' for o in opts) + '</select>'
+        elif area:
+            ctl = '<textarea rows=5 readonly></textarea>'
+        else:
+            ctl = '<input readonly>'
+        return f'<label class=fld><span class=eyebrow>{label}</span>{ctl}</label>'
+    # The live lede reads "a reply from Daniel, not a sequence". Same promise,
+    # without the name (Daniel, 2026-09-21): the point of the sentence is that a
+    # person answers, not which person.
+    steps = [("A reply, from a person",
+              L("/contact", "Usually the same day")),
+             ("A fixed quote with a scope",
+              L("/contact", "One number and a written scope")),
+             ("A build you can watch",
+              L("/contact", "You see it deployed"))]
+    nxt = "".join(f'<div class=r><div class=i>0{i+1}</div><div><b>{t}</b>'
+                  f'<p>{d}</p></div></div>' for i, (t, d) in enumerate(steps))
+    body = nav() + f"""
+<header class=head><div class=w>
+  <span class=eyebrow>Bring us the question</span>
+  <h1>Bring us <span class=ser>the question.</span></h1>
+  <p>Describe the problem in your own words. You will get a reply from a person, not a
+  sequence, and a fixed quote with a scope attached rather than a discovery call.</p>
+</div></header>
+
+<section style="padding-top:0;border-top:0"><div class=w>
+  <form class=form>
+    <div class=pair>{fld("Your name")}{fld("Email")}</div>
+    <div class=pair>{fld("Kind of work", opts=LIVE["project_types"])}
+      {fld("Budget range", opts=LIVE["budgets"])}</div>
+    {fld("What is the problem?", area=True)}
+    <div class=send><span class="btn solid">Send the brief</span>
+      <span class=hint>{L("/contact", "Usually answered the same day")}</span></div>
+  </form>
+  <p class=note>Prefer email? hello@loveleedaystudios.com &middot;
+    {L("/contact", "Already have a portal link")}</p>
+</div></section>
+
+<section class=wash><div class=w>
+  <span class=eyebrow>After you send it</span>
+  <h2>What happens <span class=ser>next.</span></h2>
+  <div class=next>{nxt}</div>
+  <p style="margin-top:30px"><a class=btn href="work.html">See what we’ve shipped
+    &rarr;</a></p>
+</div></section>
+""" + footer()
+    return shell("Contact &mdash; LOVELEEDAY Studios", body,
+                 "Solstice &middot; /contact &middot; real project types and budget bands")
+
+
+PAGES = {"home.html": home, "arthur.html": arthur, "work.html": work,
+         "about.html": about, "contact.html": contact}
+
+def check_tokens():
+    """Every var(--x) in the stylesheet must be defined in :root.
+
+    --sans and --mono were used by five rules and defined by none, so each of
+    those rules had an invalid `font:` shorthand and the browser dropped the
+    WHOLE declaration -- silently. That is the third variant of one bug found
+    on this page today (a nav selector that matched nothing, a .spec class with
+    no rules, two undefined tokens): something that resolves to nothing is
+    invisible in the source and obvious on screen. Cheap to assert, so assert."""
+    root = CSS[CSS.index(":root{"):]
+    root = root[:root.index("}")]
+    defined = set(re.findall(r"(--[\w-]+)\s*:", root))
+    used = set(re.findall(r"var\((--[\w-]+)", CSS))
+    missing = used - defined
+    if missing:
+        raise SystemExit("CSS uses undefined tokens: " + ", ".join(sorted(missing)))
+
+
 if __name__ == "__main__":
-    for route, (fname, _) in ROUTES.items():
-        (OUT / fname).write_text(render(route))
-        print(f"wrote solstice-full/{fname}  ({len(DOM[route])} source blocks)")
+    check_tokens()
+    for name, fn in PAGES.items():
+        (OUT / name).write_text(fn())
+        print("wrote solstice-full/" + name)

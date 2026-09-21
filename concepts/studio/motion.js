@@ -100,9 +100,18 @@ function s01(x,W,H,t,still){
   clear(x,W,H,'#FBF8F2');
   var N=14,M=5, pad=H*0.10;
   var sy=[],i; for(i=0;i<N;i++) sy.push(pad+i*((H-pad*2)/(N-1)));
-  var owner=[0,0,0,1,1,1,2,2,3,3,3,4,4,4];
-  var ey=[]; for(var e=0;e<M;e++){var r=[];for(i=0;i<N;i++)if(owner[i]===e)r.push(sy[i]);
-    ey.push(r.reduce(function(a,b){return a+b;},0)/r.length);}
+  /* Owners were contiguous blocks -- records 0,1,2 to object 0, 3,4,5 to
+     object 1 -- and each object was placed at the MEAN y of its own sources.
+     Between them those two choices guarantee every edge is near-horizontal
+     whatever the handles do, which is the "flat comb" this function's own
+     note warns about: it rendered as a bad chart rather than as routing.
+     It is also the wrong claim. The records that resolve to one object are
+     precisely the ones that arrived from DIFFERENT systems, so they are
+     scattered through the list, not adjacent in it. Interleaving the owners
+     and spreading the objects over the full height makes the edges cross,
+     which is what identity resolution actually looks like. */
+  var owner=[],ey=[],e; for(i=0;i<N;i++) owner.push(i%M);
+  for(e=0;e<M;e++) ey.push(pad+e*((H-pad*2)/(M-1)));
   var x0=W*0.16, x1=W*0.80, span=x1-x0;
   var act = still?4:Math.floor(t/2.6)%M;
   var COL=['#0E7C7B','#A36141','#45536A'];
