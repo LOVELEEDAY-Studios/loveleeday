@@ -62,6 +62,13 @@ COMPONENTS5 = [
 STUDIES = json.loads((Path("/private/tmp/claude-501/studies.json")).read_text()) \
     if Path("/private/tmp/claude-501/studies.json").exists() else []
 
+# The live site's own content, extracted by extract-live.py rather than retyped.
+# Every block below is already written and already shipped; the first version of
+# these mockups replaced them with paraphrases, which is how a re-dress turns
+# into a different site by accident.
+LIVE = json.loads((HERE / "live-content.json").read_text()) \
+    if (HERE / "live-content.json").exists() else {}
+
 NAV_ITEMS = [("Arthur", "arthur.html"), ("Work", "work.html"),
              ("Company", "about.html"), ("Contact", "contact.html")]
 
@@ -297,6 +304,43 @@ img{{display:block;max-width:100%}}
 .flegal{{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
   font-size:12px;color:{t['dim']}}}
 .fnote{{margin:16px 0 0;font:400 11.5px/1.6 'IBM Plex Mono',monospace;color:{t['dim']}}}
+/* components the live pages use that the mockups were missing */
+.faq{{max-width:820px;margin:26px auto 0;text-align:left;border-top:1px solid {t['line3']}}}
+.faq details{{border-bottom:1px solid {t['line']}}}
+.faq summary{{cursor:pointer;list-style:none;padding:17px 0;
+  font:700 16px/1.35 'Manrope',sans-serif;letter-spacing:-.02em;display:flex;
+  justify-content:space-between;gap:18px}}
+.faq summary::-webkit-details-marker{{display:none}}
+.faq summary::after{{content:"+";color:{t['teal']};font-weight:500}}
+.faq details[open] summary::after{{content:"–"}}
+.faq p{{margin:0 0 20px;color:{t['mid']};font-size:14.5px;line-height:1.65;max-width:72ch}}
+.apps{{max-width:900px;margin:26px auto 0;text-align:left}}
+.app{{background:{t['paper']};border:1px solid {t['line']};padding:28px 30px 30px}}
+.app .k{{font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;
+  text-transform:uppercase;color:{t['copper']}}}
+.app .q{{margin:14px 0 0;font:700 clamp(1.15rem,2.2vw,1.55rem)/1.3 'Manrope',sans-serif;
+  letter-spacing:-.025em}}
+.app .b{{margin:12px 0 0;color:{t['mid']};font-size:15px}}
+.app ul{{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:9px}}
+@media(min-width:680px){{.app ul{{grid-template-columns:1fr 1fr}}}}
+.app li{{font-size:13.5px;color:{t['mid']};padding-left:18px;position:relative}}
+.app li::before{{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;
+  background:{t['teal']}}}
+.fld{{display:grid;gap:7px}}
+.fld input,.fld select,.fld textarea{{border:1px solid {t['line2']};background:{t['paper']};
+  padding:12px 13px;font:400 15px/1.5 'Mulish',sans-serif;color:{t['ink']};border-radius:0;
+  -webkit-appearance:none;appearance:none}}
+.fld select{{background-image:linear-gradient(45deg,transparent 50%,{t['dim']} 50%),
+  linear-gradient(135deg,{t['dim']} 50%,transparent 50%);
+  background-position:calc(100% - 20px) 19px,calc(100% - 15px) 19px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}}
+.next{{max-width:820px;margin:26px auto 0;text-align:left;
+  border-top:1px solid {t['line3']}}}
+.next .r{{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:16px 0;
+  border-bottom:1px solid {t['line']}}}
+.next .i{{font:500 11.5px/1.6 'IBM Plex Mono',monospace;color:{t['teal']}}}
+.next b{{font:700 15px/1.3 'Manrope',sans-serif;letter-spacing:-.02em;display:block}}
+.next p{{margin:5px 0 0;font-size:14px;color:{t['mid']};line-height:1.55}}
 .ribbon{{position:sticky;top:0;z-index:99;background:{t['deep']};color:{t['on_deep']};
   font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;
   padding:9px 18px}}
@@ -403,6 +447,37 @@ def spec(rows):
         for i, t, d in rows) + '</div>')
 
 
+def faq(items):
+    """The live /arthur carries five questions and their answers. The mockup had
+       none, which removed the single most disarming thing on that page."""
+    return ('<div class=faq>' + "".join(
+        f'<details{" open" if i == 0 else ""}><summary>{q["q"]}</summary>'
+        f'<p>{q["a"]}</p></details>' for i, q in enumerate(items)) + '</div>')
+
+
+def applications(apps, produces):
+    out = []
+    for i, a in enumerate(apps):
+        pr = produces[i] if i < len(produces) else []
+        lis = "".join(f'<li>{x}</li>' for x in pr)
+        out.append(f'<div class=app><span class=k>{a.get("tag","")}</span>'
+                   f'<p class=q>{a.get("question","")}</p>'
+                   f'<p class=b>{a.get("body","")}</p>'
+                   f'<ul>{lis}</ul></div>')
+    return f'<div class=apps>{"".join(out)}</div>'
+
+
+def field(label, kind="text", options=None):
+    if options:
+        opts = "".join(f'<option>{o}</option>' for o in options)
+        ctl = f'<select disabled>{opts}</select>'
+    elif kind == "area":
+        ctl = '<textarea rows=5 readonly></textarea>'
+    else:
+        ctl = '<input readonly>'
+    return f'<label class=fld><span class=eyebrow>{label}</span>{ctl}</label>'
+
+
 def close(eyebrow, head, sub, primary="Start a project", ghost="See what we have shipped",
           ground=""):
     g = f" {ground}" if ground else ""
@@ -470,6 +545,11 @@ def home():
            ("contact", "ap@fintecheq.com", "doc:invoice_8841.pdf", "2026-08-02"),
            ("risk_tier", "B", "", "2026-09-21"),
        ]) + '</div>')}
+<section class="stage paperbg"><div class=wide>
+  <p class=eyebrow>The guarantees</p>
+  <h2 class=display style="font-size:clamp(1.9rem,3.8vw,2.9rem)">Five properties.<br>Enforced, not promised.</h2>
+  """ + spec([(g[0], g[1], g[2]) for g in LIVE.get("guarantees", [])]) + f"""
+</div></section>
 {stage("Verified execution", "Built to prove it ran.",
        "An HTTP 200 is not evidence that the thing you asked for happened. Work closes on a value read back out of the system that was supposed to change.",
        obj="flow", ground="sunkbg")}
@@ -482,6 +562,9 @@ def home():
      the system works to who we do this for before reading a word. -->
 {photo_stage("In production", "Built. Shipped. Running.",
              "../../janta/roi-hero.jpg", metrics=figs)}
+{stage("The standard", "Confidence comes<br>from the evidence.",
+       "Not from the adjectives. Every figure on this site names the system it came from, and the ones that cannot are marked rather than dropped.",
+       ground="g-deep")}
 
 <section class="stage paperbg"><div class=wide>
   <p class=eyebrow>Selected work</p>
@@ -491,7 +574,7 @@ def home():
       f'<a class=wcard href="work.html"><div class=shot>'
       f'<img src="../../../public{s["frame"].split("?")[0]}" alt=""></div>'
       f'<div class=b><span class=k>{s["sector"]}</span>'
-      f'<p>{s["thesis"]}</p></div></a>' for s in STUDIES[:4]) + """
+      f'<p>{s["thesis"]}</p></div></a>' for s in STUDIES[:4]) + f"""
   </div>
 </div></section>
 """ + close("Start", "See the question.<br>Build the answer.",
@@ -504,14 +587,31 @@ def home():
 def arthur():
     body = nav("Arthur") + f"""
 <header class=hero><div class=w>
-  <h1 class=display style="font-size:clamp(2.6rem,7vw,5.2rem)">The object layer.</h1>
+  <h1 class=display style="font-size:clamp(2.4rem,6.2vw,4.6rem)">Built to connect.<br>Designed to act.</h1>
   <p class=sub>Five components. Each one is a rule enforced in the write path, not a promise in a deck.</p>
 </div><div class=obj><canvas data-motion="lattice"></canvas></div></header>
 {rail()}
 <section class="stage ground"><div class=w>
   <p class=eyebrow>Architecture</p>
   <h2 class=display style="font-size:clamp(1.9rem,3.6vw,2.8rem)">What Arthur is made of.</h2>
-  {spec([(f"0{i+1}", n, d) for i, (n, d) in enumerate(COMPONENTS5)])}
+  """ + spec([(f"0{i+1}", c.get("title",""), c.get("body",""))
+               for i, c in enumerate(LIVE.get("components", []))]) + f"""
+</div></section>
+
+{stage("Demonstration", "Arthur, in motion.",
+       "A simulated product walkthrough using fictional companies. An engagement needs its own real evidence, timing, costs and acceptance checks &mdash; this is not execution footage, and the page says so.",
+       obj="flow", ground="sunkbg")}
+
+<section class="stage ground"><div class=wide>
+  <p class=eyebrow>Applications</p>
+  <h2 class=display style="font-size:clamp(1.8rem,3.6vw,2.7rem)">The applications are the point.</h2>
+  """ + applications(LIVE.get("applications", []), LIVE.get("app_produces", [])) + f"""
+</div></section>
+
+<section class="stage paperbg"><div class=wide>
+  <p class=eyebrow>FAQ</p>
+  <h2 class=display style="font-size:clamp(1.8rem,3.6vw,2.7rem)">Good questions are welcome.</h2>
+  """ + faq(LIVE.get("faq", [])) + f"""
 </div></section>
 {stage("Bitemporality", "What was true,<br>and what we knew.",
        "Two timelines on every value, which is what makes it possible to ask what was known on a given day rather than what we know now.",
@@ -543,7 +643,7 @@ def work():
            ("05", "Dabney &amp; Co.", "Brand / Hospitality", "3 weeks to production")]
     body = nav("Work") + f"""
 <header class=hero style="padding-bottom:clamp(36px,4vw,60px)"><div class=w>
-  <h1 class=display style="font-size:clamp(2.6rem,7vw,5rem)">Work.</h1>
+  <h1 class=display style="font-size:clamp(2.4rem,6.4vw,4.6rem)">Shipped,<br>not proposed.</h1>
   <p class=sub>Two bodies of work, and they are not the same claim.</p>
 </div></header>
 
@@ -565,16 +665,16 @@ def work():
      sentence, not a badge in the corner of a card. -->
 <section class="stage ground" id=operated><div class=wide>
   <p class=eyebrow>Owned and operated</p>
-  <h2 class=display style="font-size:clamp(2rem,4.2vw,3rem)">We were the first customer.</h2>
+  <h2 class=display style="font-size:clamp(2rem,4.2vw,3rem)">Companies we own<br>and operate.</h2>
   <p class=owned>These five are companies LOVELEEDAY owns and runs. They are listed as
   evidence that the studio ships &mdash; not as client engagements. We were our own
   customer on every one of them.</p>
   <div class=ledger>""" + "".join(
       f'<div class=r><div class=i>{i}</div><div><b>{n}</b></div>'
-      f'<div><p>{c}</p></div><div class=t>{s}</div></div>' for i, n, c, s in ops) + """
+      f'<div><p>{c}</p></div><div class=t>{s}</div></div>' for i, n, c, s in ops) + f"""
   </div>
 </div></section>
-""" + close("Start", "Bring us the question.",
+""" + close("Start", "Ready to start?<br>Request a fixed quote.",
             "We reply the same week, with a plan or with a reason it is not a fit.") + foot()
     return shell("Work &mdash; LOVELEEDAY Studios", body,
                  "Mockup &middot; /work &middot; two registers, never one grid")
@@ -583,49 +683,69 @@ def work():
 def about():
     body = nav("Company") + f"""
 <header class=hero style="padding-bottom:clamp(30px,3.4vw,50px)"><div class=w>
-  <h1 class=display style="font-size:clamp(2.4rem,6vw,4.4rem)">A practice, not an agency.</h1>
+  <h1 class=display style="font-size:clamp(2.3rem,5.8vw,4.2rem)">Business judgment.<br>Built as software.</h1>
   <p class=sub>Founded by Daniel J. May. Five companies owned and run, six rebuilds shipped, one standard applied to all of it.</p>
 </div></header>
 {metric_band(FIGURES)}
 <section class="stage ground"><div class=w>
   <p class=eyebrow>How engagements run</p>
-  <h2 class=display style="font-size:clamp(1.8rem,3.4vw,2.6rem)">You watch the build,<br>not just the invoice.</h2>
-  {spec([
-    ("01", "The question first", "We start in the actual queue or inbox, not in a workshop. A form is not a design problem until we can say which fields change what anybody does next."),
-    ("02", "Ship, then iterate", "A narrow first version that does one thing, in production, paid for by the people already using it."),
-    ("03", "A private review page", "Every engagement ships through a token-gated page where you see the work as it lands. No login, no index, and the URL is the credential."),
-    ("04", "Figures name their source", "Any number we give you can be traced to the system it came from, or we do not print it."),
-  ])}
+  <h2 class=display style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Five rules we do not bend.</h2>
+  """ + spec([(r.get("n",""), r.get("t",""), r.get("d","")) for r in LIVE.get("principles", [])]) + f"""
+  <p class=owned style="margin-top:28px">Every engagement also ships through a private,
+  token-gated review page &mdash; you watch the build, not just the invoice. No login and no
+  index: the unguessable URL is the credential, which is why it is named here and never
+  linked.</p>
 </div></section>
 {photo_stage("The studio", "Kalamazoo, Michigan.", "../../micruity/x_office.jpg")}
-{close("Contact", "Tell us what is costing<br>you an hour a day.", "We reply the same week.")}
+{close("Contact", "Tell us what is<br>slowing you down.", "We reply the same week.")}
 {foot()}"""
     return shell("Company &mdash; LOVELEEDAY Studios", body,
                  "Mockup &middot; /about &middot; the portal named, never linked")
 
 
 def contact():
+    """The live form collects a project TYPE and a BUDGET BAND, and closes on
+       "What happens next". The first mockup had four invented text fields and
+       none of that, which is a different form for a different business."""
     body = nav("Contact") + f"""
-<header class=hero style="padding-bottom:clamp(40px,5vw,70px)"><div class=w>
-  <h1 class=display style="font-size:clamp(2.4rem,6vw,4.4rem)">Start a project.</h1>
-  <p class=sub>Tell us the question. We reply the same week, with a plan or with a reason it is not a fit.</p>
+<header class="hero g-dawn" style="padding-bottom:clamp(34px,4vw,56px)"><div class=w>
+  <h1 class=display style="font-size:clamp(2.4rem,6vw,4.4rem)">Bring us<br>the question.</h1>
+  <p class=sub>Tell us what is slowing you down. We reply the same week, with a plan or with a
+  reason it is not a fit.</p>
 </div></header>
-<section class="stage ground" style="padding-top:0"><div class=w style="max-width:680px">
-  <form style="text-align:left;display:grid;gap:18px">
-    {"".join(f'''<label style="display:grid;gap:7px">
-      <span class=eyebrow>{l}</span>
-      <input style="border:0;border-bottom:1px solid {T['line2']};background:transparent;
-        padding:11px 2px;font:400 16px/1 'Mulish',sans-serif;color:{T['ink']}" readonly></label>'''
-      for l in ["Your name", "Email", "Company", "Budget range"])}
-    <label style="display:grid;gap:7px"><span class=eyebrow>What is costing you an hour a day</span>
-      <textarea rows=5 style="border:1px solid {T['line2']};background:{T['paper']};
-        padding:13px;font:400 15px/1.6 'Mulish',sans-serif;color:{T['ink']}" readonly></textarea></label>
+
+<section class="stage ground" style="padding-top:clamp(30px,4vw,54px)"><div class=w style="max-width:720px">
+  <form style="text-align:left;display:grid;gap:20px">
+    <div style="display:grid;gap:20px;grid-template-columns:1fr 1fr">
+      {field("Your name")}{field("Email")}
+    </div>
+    <div style="display:grid;gap:20px;grid-template-columns:1fr 1fr">
+      {field("Company")}{field("Budget", options=LIVE.get("budgets", []))}
+    </div>
+    {field("What kind of project", options=LIVE.get("project_types", []))}
+    {field("What is slowing you down", kind="area")}
     <div><span class=btn>Send project brief</span></div>
   </form>
 </div></section>
+
+<section class="stage paperbg"><div class=wide>
+  <p class=eyebrow>After you send it</p>
+  <h2 class=display style="font-size:clamp(1.8rem,3.4vw,2.6rem)">What happens next.</h2>
+  <div class=next>
+    <div class=r><div class=i>01</div><div><b>We read it and reply the same week</b>
+      <p>With a plan, or with a reason it is not a fit. A studio that only ever says yes is
+      telling you something about its pipeline, not about your problem.</p></div></div>
+    <div class=r><div class=i>02</div><div><b>A scoped quote, fixed before we start</b>
+      <p>We would rather push back on scope before an engagement begins than ask for more
+      money mid-build.</p></div></div>
+    <div class=r><div class=i>03</div><div><b>A private review page from day one</b>
+      <p>Token-gated, no login, not indexed. You watch the build as it lands.</p></div></div>
+  </div>
+</div></section>
 {foot()}"""
     return shell("Contact &mdash; LOVELEEDAY Studios", body,
-                 "Mockup &middot; /contact &middot; the funnel destination", motion=False)
+                 "Mockup &middot; /contact &middot; real project types and budget bands",
+                 motion=False)
 
 
 def legal(kind):
