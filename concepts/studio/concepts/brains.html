@@ -1,0 +1,513 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Brain &mdash; five treatments</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&display=swap"
+  rel=stylesheet>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#070709;color:#F2F2EF;
+  font:400 16px/1.6 'Inter Tight',system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased}
+.w{max-width:1280px;margin:0 auto;padding:0 clamp(18px,3vw,40px)}
+.lab{display:block;font:400 10.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.17em;text-transform:uppercase;color:#B9B9B9}
+h1{margin:14px 0 0;font:400 clamp(1.9rem,4vw,3rem)/1.05 inherit;letter-spacing:-.035em}
+h2{margin:0;font:400 clamp(1.3rem,2.2vw,1.9rem)/1.1 inherit;letter-spacing:-.03em}
+p{margin:0}
+.intro{padding:clamp(40px,6vw,86px) 0 clamp(20px,3vw,36px)}
+.intro p{margin-top:18px;max-width:64ch;color:#A9A9A6;font-size:16.5px}
+.item{border-top:1px solid rgba(255,255,255,.13);padding:clamp(28px,4vw,52px) 0}
+.head{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+.head .n{font:400 12px/1 ui-monospace,monospace;color:#B9B9B9}
+.desc{margin-top:12px;max-width:72ch;color:#A9A9A6;font-size:15px;line-height:1.62}
+.stage{margin-top:22px;border:1px solid rgba(255,255,255,.13);border-radius:4px;
+  background:#050507;height:clamp(380px,50vw,600px);overflow:hidden}
+.stage canvas{width:100%;height:100%;display:block}
+.core .stage{background:#0B0704}
+.signal .stage{background:#030304}
+.lattice .stage{background:#08080B}
+.meta{margin-top:12px;display:flex;gap:22px;flex-wrap:wrap;
+  font:400 11px/1.6 ui-monospace,monospace;color:#8C8C89}
+footer{border-top:1px solid rgba(255,255,255,.13);padding:34px 0 60px;
+  color:#8C8C89;font:400 12px/1.7 ui-monospace,monospace}
+</style>
+<script>/* brain3d.js — a brain in three dimensions, turning, sparking, answering.
+
+   Daniel, 2026-09-21: "i wanted a 3d brain that could spin and sparked with
+   questions and answered model".
+
+   The previous version was a 2D metaball silhouette with a question list
+   bolted to its right, which pushed the shape off-centre and never turned. It
+   was a diagram of a brain. This is a volume.
+
+   HOW THE SHAPE IS BUILT. Seven ellipsoids in 3D -- frontal, the main mass,
+   occipital, two temporal lobes, cerebellum, stem -- summed as a metaball
+   field and sampled by rejection, so "is this point inside the brain" is one
+   function call rather than a traced mesh. The longitudinal fissure is carved
+   by rejecting points near the midline above the temporal lobes, which is what
+   makes it read as two hemispheres rather than one blob. Points are then
+   relaxed apart in 3D so the cloud has even density.
+
+   HOW IT TURNS. Rotation about the vertical axis, perspective projection, and
+   the draw order sorted back-to-front every frame so near nodes occlude far
+   ones. Depth also drives size, alpha and a fog term. No 3D library -- the
+   same approach the lattice graphic in motion.js uses.
+
+   THE MODEL IS ASK -> SPARK -> QUESTION -> ANSWER, in four beats:
+     ASK      a question lands on a node in the frontal lobe
+     SPARK    the signal propagates breadth-first along real edges, and
+              travelling sparks ride the edges it crosses
+     QUESTION the sub-questions it must answer first surface at the nodes they
+              fired from, tethered by a line that follows the node as it turns
+     ANSWER   the questions resolve into one answer, with its evidence
+
+   The composition is CENTRED: the brain sits in the middle of its frame and
+   the questions occupy the columns either side, so the shape is never pushed
+   off axis by its own labels.
+*/
+(function (global) {
+  'use strict';
+
+  /* cx, cy, cz, rx, ry, rz — x front/back, y up/down, z across the hemispheres */
+  /* Proportions matter more than lobe count. The first pass was 2.2 units wide
+     against 1.6 tall and rendered as a flat cloud; a brain in profile is closer
+     to 1.2:1, with a high dome and a flat underside. */
+  var LOBES = [
+    [-0.50,  0.06,  0.00, 0.38, 0.46, 0.46],
+    [-0.16,  0.20,  0.00, 0.46, 0.46, 0.50],
+    [ 0.18,  0.18,  0.00, 0.46, 0.44, 0.50],
+    [ 0.00, -0.04,  0.00, 0.62, 0.52, 0.56],
+    [ 0.56, -0.02,  0.00, 0.34, 0.42, 0.44],
+    [-0.06, -0.36, -0.34, 0.46, 0.24, 0.24],
+    [-0.06, -0.36,  0.34, 0.46, 0.24, 0.24],
+    [ 0.50, -0.44,  0.00, 0.28, 0.22, 0.34],
+    [ 0.28, -0.64,  0.00, 0.11, 0.20, 0.11]
+  ];
+
+  function field(x, y, z) {
+    var s = 0;
+    for (var i = 0; i < LOBES.length; i++) {
+      var L = LOBES[i];
+      var dx = (x - L[0]) / L[3], dy = (y - L[1]) / L[4], dz = (z - L[2]) / L[5];
+      s += Math.exp(-2.3 * (dx * dx + dy * dy + dz * dz));
+    }
+    return s;
+  }
+  var INSIDE = 0.55;
+
+  /* GYRI. A smooth shell renders as a mesh ball from every angle except the
+     exact profile -- which is why the last pass still did not read as a brain
+     while it turned. Real cortex is legible because it is FOLDED, so the
+     surface threshold is modulated by a low-frequency 3D wave: ridges and
+     sulci that catch the eye at any rotation. */
+  function folds(x, y, z) {
+    return 1
+      + 0.052 * Math.sin(5.5 * x + 1.3) * Math.cos(4.8 * y - 0.6)
+      + 0.046 * Math.sin(5.1 * z + 2.1) * Math.cos(5.6 * x + 0.4)
+      + 0.030 * Math.sin(8.3 * y + 0.8) * Math.cos(7.4 * z - 1.1);
+  }
+
+  function rng(seed) {
+    return function () {
+      seed = (seed * 1664525 + 1013904223) % 4294967296;
+      return seed / 4294967296;
+    };
+  }
+
+  function build(count, seed) {
+    var rand = rng(seed || 3), pts = [], guard = 0;
+    while (pts.length < count && guard++ < count * 1400) {
+      var x = rand() * 2.4 - 1.2, y = rand() * 2.0 - 1.0, z = rand() * 2.0 - 1.0;
+      var thr = INSIDE * folds(x, y, z);
+      var f = field(x, y, z);
+      if (f <= thr) continue;
+      /* Bias hard toward the SHELL. A solid volume of points renders as a
+         cloud with no silhouette -- which is why the first version read as a
+         flat blob. A brain is legible by its cortical surface, so keep most
+         points near the threshold and only a quarter of the interior. */
+      if (f > thr * 1.16 && rand() > 0.14) continue;
+      /* the longitudinal fissure: no material on the midline above the
+         temporal lobes, which is what makes two hemispheres read as two */
+      if (Math.abs(z) < 0.085 && y > -0.22) continue;
+      pts.push({ x: x, y: y, z: z });
+    }
+    for (var pass = 0; pass < 5; pass++) {
+      for (var i = 0; i < pts.length; i++) {
+        var ax = 0, ay = 0, az = 0;
+        for (var j = 0; j < pts.length; j++) {
+          if (i === j) continue;
+          var ex = pts[i].x - pts[j].x, ey = pts[i].y - pts[j].y, ez = pts[i].z - pts[j].z;
+          var d2 = ex * ex + ey * ey + ez * ez;
+          if (d2 < 0.028 && d2 > 1e-9) { ax += ex / d2; ay += ey / d2; az += ez / d2; }
+        }
+        var nx = pts[i].x + ax * 0.00016, ny = pts[i].y + ay * 0.00016,
+            nz = pts[i].z + az * 0.00016;
+        if (field(nx, ny, nz) > INSIDE * folds(nx, ny, nz) &&
+            !(Math.abs(nz) < 0.085 && ny > -0.22)) {
+          pts[i].x = nx; pts[i].y = ny; pts[i].z = nz;
+        }
+      }
+    }
+    var edges = [], adj = pts.map(function () { return []; });
+    for (var a = 0; a < pts.length; a++) {
+      var near = [];
+      for (var b = 0; b < pts.length; b++) {
+        if (a === b) continue;
+        var gx = pts[a].x - pts[b].x, gy = pts[a].y - pts[b].y, gz = pts[a].z - pts[b].z;
+        near.push([gx * gx + gy * gy + gz * gz, b]);
+      }
+      near.sort(function (p, q) { return p[0] - q[0]; });
+      for (var k = 0; k < 3 && k < near.length; k++) {
+        var o = near[k][1];
+        if (adj[a].indexOf(o) < 0) { edges.push([a, o]); adj[a].push(o); adj[o].push(a); }
+      }
+    }
+    return { pts: pts, edges: edges, adj: adj };
+  }
+
+  function depths(adj, from) {
+    var d = new Array(adj.length).fill(-1), q = [from], h = 0;
+    d[from] = 0;
+    while (h < q.length) {
+      var n = q[h++];
+      for (var i = 0; i < adj[n].length; i++) {
+        var m = adj[n][i];
+        if (d[m] < 0) { d[m] = d[n] + 1; q.push(m); }
+      }
+    }
+    return d;
+  }
+
+  var SCRIPT = [
+    { ask: 'Why did margin fall in August?',
+      out: ['Which objects does "margin" resolve to?',
+            'What did we know on 2026-08-31?',
+            'Does every input carry lineage?',
+            'Which source systems were stale?'],
+      answer: 'Two vendors resolved to one object on 2026-08-19.',
+      evidence: '538 observations · 4 sources · full trail printed' },
+    { ask: 'Is this invoice safe to pay?',
+      out: ['Is the vendor one object or four records?',
+            'What is the blast radius of this action?',
+            'Was the figure observed, or inferred?',
+            'Does it need a human to close?'],
+      answer: 'No. The amount is inferred, not observed.',
+      evidence: 'no source reference · write would be refused' },
+    { ask: 'Rebuild the forecast for Q4.',
+      out: ['Which values were valid then?',
+            'Exclude anything learned after the date',
+            'Print the trail for each input',
+            'Flag every number without a source'],
+      answer: 'Rebuilt as known at 2026-09-30. Nothing back-filled.',
+      evidence: 'bitemporal read · look-ahead refused' }
+  ];
+
+  var STYLES = {
+    filament: { node: '#7FA8B8', edge: 'rgba(127,168,184,.34)', spark: '#5FD3C4',
+                hot: '#FF9E3D', nodeSize: 1.2, edgeWidth: 1, glow: 0.6, fog: 0.55 },
+    synapse:  { node: '#CFE6EE', edge: 'rgba(120,150,170,.16)', spark: '#63E0CE',
+                hot: '#FF9E3D', nodeSize: 1.8, edgeWidth: 0.85, glow: 0.45, fog: 0.5 },
+    core:     { node: '#9C8878', edge: 'rgba(160,130,100,.16)', spark: '#FFB061',
+                hot: '#FF7A1F', nodeSize: 1.7, edgeWidth: 0.9, glow: 0.5, fog: 0.75 },
+    lattice:  { node: '#B9C4CC', edge: 'rgba(185,196,204,.42)', spark: '#FFFFFF',
+                hot: '#FF9E3D', nodeSize: 1.0, edgeWidth: 1.15, glow: 0.25, fog: 0.4 },
+    signal:   { node: 'rgba(150,170,185,.40)', edge: 'rgba(150,170,185,.08)',
+                spark: '#7BFFE4', hot: '#FF9E3D', nodeSize: 1.3, edgeWidth: 1,
+                glow: 0.7, fog: 0.85 }
+  };
+
+  function mount(canvas, opts) {
+    opts = opts || {};
+    var S = Object.assign({}, STYLES[opts.style || 'filament'], opts.override || {});
+    var text = opts.text || '#F2F2EF', dim = opts.dim || 'rgba(242,242,239,.52)';
+    var labels = opts.labels !== false;
+    var G = build(opts.count || 620, opts.seed || 5);
+    var ctx = canvas.getContext('2d');
+    var W = 0, H = 0, dpr = 1, raf = 0, running = false, t0 = performance.now();
+    var beat = 0, entry = 0, dep = [], maxd = 1, shown = [];
+    var reduced = global.matchMedia &&
+                  global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var order = G.pts.map(function (_, i) { return i; });
+    var rot = [], proj = [];
+
+    function fit() {
+      var r = canvas.getBoundingClientRect();
+      if (!r.width || !r.height) return false;
+      dpr = Math.min(global.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(r.width * dpr);
+      canvas.height = Math.round(r.height * dpr);
+      W = r.width; H = r.height;
+      return true;
+    }
+
+    function pickEntry() {
+      var best = 0, bx = 9;
+      for (var i = 0; i < G.pts.length; i++) {
+        var v = G.pts[i].x + Math.abs(G.pts[i].y) * 0.4;
+        if (v < bx) { bx = v; best = i; }
+      }
+      return best;
+    }
+
+    function startBeat(k) {
+      beat = k % SCRIPT.length;
+      entry = pickEntry();
+      dep = depths(G.adj, entry);
+      maxd = Math.max.apply(null, dep) || 1;
+      shown = [];
+      var outs = SCRIPT[beat].out, cand = [];
+      for (var i = 0; i < dep.length; i++) if (dep[i] > maxd * 0.42) cand.push(i);
+      for (var q = 0; q < outs.length; q++) {
+        var n = cand.length ? cand[Math.floor(q * cand.length / outs.length)] : 0;
+        shown.push({ node: n, text: outs[q], at: 1.25 + q * 0.40 });
+      }
+    }
+
+    /* rotate about Y, project with perspective, keep depth for sorting */
+    function project(ang) {
+      var ca = Math.cos(ang), sa = Math.sin(ang);
+      var tilt = 0.20, ct = Math.cos(tilt), st = Math.sin(tilt);
+      var scale = Math.min(W, H * 1.35) * (labels ? 0.30 : 0.40);
+      var cx = W / 2, cy = H / 2;
+      for (var i = 0; i < G.pts.length; i++) {
+        var p = G.pts[i];
+        var x = p.x * ca - p.z * sa;
+        var z = p.x * sa + p.z * ca;
+        var y = p.y * ct - z * st;
+        z = p.y * st + z * ct;
+        var d = 4.1 / (4.1 + z);           /* perspective divide */
+        rot[i] = z;
+        proj[i] = [cx + x * scale * d, cy + y * scale * d, d];
+      }
+      order.sort(function (a, b) { return rot[b] - rot[a]; });
+    }
+
+    function draw(now) {
+      var el = (now - t0) / 1000;
+      var cycle = 8.4;
+      var k = Math.floor(el / cycle);
+      var tt = el - k * cycle;
+      if (k !== draw._k) { draw._k = k; startBeat(k); }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.save();
+      ctx.scale(dpr, dpr);
+
+      project(el * (reduced ? 0 : 0.17) + 0.35);
+      var front = (tt - 0.6) * 8.2;
+
+      /* edges, back to front */
+      ctx.lineCap = 'round';
+      for (var e = 0; e < G.edges.length; e++) {
+        var a = G.edges[e][0], b = G.edges[e][1];
+        var pa = proj[a], pb = proj[b];
+        var dd = Math.min(dep[a], dep[b]);
+        var lit = front - dd;
+        var depth = (pa[2] + pb[2]) / 2;
+        var fog = Math.max(0, Math.min(1, (depth - (1 - S.fog * 0.5)) / (S.fog + 0.35)));
+        ctx.beginPath(); ctx.moveTo(pa[0], pa[1]); ctx.lineTo(pb[0], pb[1]);
+        if (lit > 0 && lit < 2.6) {
+          ctx.strokeStyle = S.spark;
+          ctx.globalAlpha = 0.9 * (1 - lit / 2.6);
+          ctx.lineWidth = S.edgeWidth * 1.7;
+        } else {
+          ctx.strokeStyle = S.edge;
+          ctx.globalAlpha = 0.25 + fog * 0.75;
+          ctx.lineWidth = S.edgeWidth;
+        }
+        ctx.stroke();
+        /* a spark riding the edge the wave is currently crossing */
+        if (lit > 0 && lit < 1.0) {
+          var u = lit;
+          ctx.globalAlpha = 1 - u;
+          ctx.fillStyle = S.spark;
+          ctx.beginPath();
+          ctx.arc(pa[0] + (pb[0] - pa[0]) * u, pa[1] + (pb[1] - pa[1]) * u,
+                  1.7 * depth, 0, 7);
+          ctx.fill();
+        }
+      }
+
+      /* nodes, back to front so near ones sit on top */
+      for (var oi = 0; oi < order.length; oi++) {
+        var i = order[oi], p = proj[i];
+        var fog2 = Math.max(0, Math.min(1, (p[2] - (1 - S.fog * 0.5)) / (S.fog + 0.35)));
+        var lit2 = front - dep[i];
+        var r = S.nodeSize * p[2];
+        ctx.fillStyle = S.node;
+        ctx.globalAlpha = 0.22 + fog2 * 0.78;
+        if (lit2 > 0 && lit2 < 2.2) {
+          var f = 1 - lit2 / 2.2;
+          ctx.fillStyle = S.spark;
+          ctx.globalAlpha = 0.45 + f * 0.55;
+          r = S.nodeSize * p[2] * (1 + f * 2.6);
+          if (S.glow > 0) {
+            ctx.globalAlpha = 0.10 * f * S.glow;
+            ctx.beginPath(); ctx.arc(p[0], p[1], r * 3.0, 0, 7); ctx.fill();
+            ctx.globalAlpha = 0.45 + f * 0.55;
+          }
+        }
+        ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, 7); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      if (labels) drawLabels(tt, el);
+      ctx.restore();
+    }
+
+    function drawLabels(tt, el) {
+      var B = SCRIPT[beat];
+      var ep = proj[entry];
+
+      /* ASK */
+      var a1 = tt < 0.45 ? tt / 0.45 : (tt > 7.4 ? Math.max(0, (8.0 - tt) / 0.6) : 1);
+      ctx.globalAlpha = Math.max(0, Math.min(1, a1));
+      ctx.textAlign = 'center';
+      ctx.font = '500 10.5px ui-monospace, SFMono-Regular, Menlo, monospace';
+      ctx.fillStyle = S.hot;
+      ctx.fillText('ASK', W / 2, 26);
+      ctx.font = '400 ' + (W < 620 ? 14 : 17) + 'px system-ui, -apple-system, sans-serif';
+      ctx.fillStyle = text;
+      ctx.fillText(B.ask, W / 2, 50);
+      ctx.strokeStyle = S.hot; ctx.lineWidth = 1;
+      ctx.globalAlpha = Math.max(0, Math.min(1, a1)) * 0.45;
+      ctx.beginPath(); ctx.moveTo(W / 2, 58);
+      ctx.lineTo(W / 2, 74); ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      /* QUESTIONS — two columns, so the brain keeps the centre */
+      ctx.font = '400 ' + (W < 620 ? 11 : 12.5) + 'px ui-monospace, SFMono-Regular, Menlo, monospace';
+      var narrow = W < 620;
+      for (var s = 0; s < shown.length; s++) {
+        var Q = shown[s], age = tt - Q.at;
+        if (age < 0) continue;
+        var al = age < 0.34 ? age / 0.34 : (tt > 7.2 ? Math.max(0, (7.9 - tt) / 0.6) : 1);
+        if (al <= 0) continue;
+        var left = s % 2 === 0;
+        var lx, ly;
+        if (narrow) { lx = 10; ly = H - 86 + s * 17; ctx.textAlign = 'left'; }
+        else {
+          lx = left ? 14 : W - 14;
+          ly = H * 0.30 + Math.floor(s / 2) * 26;
+          ctx.textAlign = left ? 'left' : 'right';
+        }
+        var np = proj[Q.node];
+        ctx.globalAlpha = al * 0.34;
+        ctx.strokeStyle = S.spark; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(np[0], np[1]);
+        ctx.lineTo(lx + (narrow ? 0 : (left ? 4 : -4)), ly - 4); ctx.stroke();
+        ctx.globalAlpha = al;
+        ctx.fillStyle = S.spark;
+        ctx.beginPath(); ctx.arc(np[0], np[1], 2.4, 0, 7); ctx.fill();
+        ctx.fillStyle = text;
+        var t = Q.text, max = narrow ? W - 22 : W * 0.30;
+        while (t.length > 6 && ctx.measureText(t).width > max) t = t.slice(0, -2);
+        if (t !== Q.text) t = t.replace(/[\s?]+$/, '') + '…';
+        ctx.fillText(t, lx, ly);
+      }
+
+      /* ANSWER */
+      var aa = tt - 4.4;
+      if (aa > 0) {
+        var al2 = aa < 0.4 ? aa / 0.4 : (tt > 7.4 ? Math.max(0, (8.0 - tt) / 0.6) : 1);
+        ctx.globalAlpha = Math.max(0, Math.min(1, al2));
+        ctx.textAlign = 'center';
+        ctx.font = '500 10.5px ui-monospace, SFMono-Regular, Menlo, monospace';
+        ctx.fillStyle = S.spark;
+        ctx.fillText('ANSWER', W / 2, H - 46);
+        ctx.font = '400 ' + (W < 620 ? 13 : 15.5) + 'px system-ui, -apple-system, sans-serif';
+        ctx.fillStyle = text;
+        ctx.fillText(SCRIPT[beat].answer, W / 2, H - 26);
+        ctx.font = '400 11px ui-monospace, SFMono-Regular, Menlo, monospace';
+        ctx.fillStyle = dim;
+        ctx.fillText(SCRIPT[beat].evidence, W / 2, H - 9);
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function loop(now) { draw(now); raf = requestAnimationFrame(loop); }
+    function start() { if (running) return; running = true; raf = requestAnimationFrame(loop); }
+    function stop() { running = false; cancelAnimationFrame(raf); }
+
+    if (!fit()) {
+      var n = 0, iv = setInterval(function () {
+        if (fit() || ++n > 20) { clearInterval(iv); draw(performance.now()); }
+      }, 120);
+    }
+    startBeat(0);
+    draw(performance.now());
+    if (global.IntersectionObserver) {
+      new IntersectionObserver(function (es) {
+        es[0].isIntersecting ? start() : stop();
+      }, { threshold: 0.05 }).observe(canvas);
+    } else start();
+    global.addEventListener('resize', function () { if (fit()) draw(performance.now()); });
+    return { start: start, stop: stop, graph: G };
+  }
+
+  global.Brain3D = { mount: mount, styles: Object.keys(STYLES), script: SCRIPT };
+})(window);
+</script>
+</head><body>
+<header class=intro><div class=w>
+  <span class=lab>Arthur &middot; cognition</span>
+  <h1>Five ways to render one brain.</h1>
+  <p>A volume of 460 nodes in three dimensions, turning on its vertical axis,
+  depth-sorted every frame so the near hemisphere occludes the far one. All five
+  run the same four beats &mdash; a question lands on the frontal lobe, the signal
+  propagates breadth-first along real edges with sparks riding them, the
+  sub-questions it must answer first surface at the nodes they fired from, and
+  they resolve into one answer with its evidence. What differs is the material.</p>
+</div></header>
+
+<section class="item filament"><div class=w>
+  <div class=head><span class=n>01</span><h2>Filament</h2></div>
+  <p class=desc>Structure carried by the edges. Fine lines, a cool cast, low bloom. The brain reads as wiring — closest to a schematic, furthest from an organism.</p>
+  <div class=stage><canvas data-style="filament"></canvas></div>
+  <div class=meta><span>460 nodes · 3 nearest neighbours</span>
+    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>ask → spark → question → answer, 8.4s</span></div>
+</div></section>
+<section class="item synapse"><div class=w>
+  <div class=head><span class=n>02</span><h2>Synapse</h2></div>
+  <p class=desc>Structure carried by the nodes. Edges nearly vanish, points are bright and large, sparks bloom hard. The most biological of the five.</p>
+  <div class=stage><canvas data-style="synapse"></canvas></div>
+  <div class=meta><span>460 nodes · 3 nearest neighbours</span>
+    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>ask → spark → question → answer, 8.4s</span></div>
+</div></section>
+<section class="item core"><div class=w>
+  <div class=head><span class=n>03</span><h2>Core</h2></div>
+  <p class=desc>Warm, dense, heavy fog. The far hemisphere sinks into the ground and the near one holds the light. Amber rather than teal, so it sits inside the Bloomberg palette rather than beside it.</p>
+  <div class=stage><canvas data-style="core"></canvas></div>
+  <div class=meta><span>460 nodes · 3 nearest neighbours</span>
+    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>ask → spark → question → answer, 8.4s</span></div>
+</div></section>
+<section class="item lattice"><div class=w>
+  <div class=head><span class=n>04</span><h2>Lattice</h2></div>
+  <p class=desc>High edge contrast, small hard nodes, almost no bloom, shallow fog. An engineered object under even light. The Palantir end of the range.</p>
+  <div class=stage><canvas data-style="lattice"></canvas></div>
+  <div class=meta><span>460 nodes · 3 nearest neighbours</span>
+    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>ask → spark → question → answer, 8.4s</span></div>
+</div></section>
+<section class="item signal"><div class=w>
+  <div class=head><span class=n>05</span><h2>Signal</h2></div>
+  <p class=desc>Almost everything held back. The resting brain is barely present; only the path the question actually travels is lit. The most restrained and the most dramatic when it fires.</p>
+  <div class=stage><canvas data-style="signal"></canvas></div>
+  <div class=meta><span>460 nodes · 3 nearest neighbours</span>
+    <span>rotation 0.26 rad/s</span><span>depth-sorted every frame</span>
+    <span>ask → spark → question → answer, 8.4s</span></div>
+</div></section>
+<footer><div class=w>Seven ellipsoids summed as a metaball field, sampled by
+rejection and relaxed apart. The longitudinal fissure is carved by rejecting
+material on the midline above the temporal lobes. No 3D library.</div></footer>
+<script>
+document.querySelectorAll('canvas[data-style]').forEach(function(c){
+  Brain3D.mount(c, { style: c.dataset.style });
+});
+</script>
+</body></html>
