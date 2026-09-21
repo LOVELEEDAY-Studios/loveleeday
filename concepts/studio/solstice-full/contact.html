@@ -23,23 +23,52 @@ img{display:block;max-width:100%}
 .announce .w{height:38px;display:flex;align-items:center;justify-content:center;gap:14px}
 .announce a{color:#F0A87A}
 .bar{background:var(--bone);border-bottom:1px solid var(--line);position:relative;z-index:30}
-.bar .w{display:flex;align-items:center;height:64px;gap:clamp(14px,2.4vw,34px)}
+.bar > .w{position:relative;z-index:2}
+/* DIRECT CHILD, not descendant. As ".bar .w" this also matched the .w inside
+   every dropdown panel, forcing the panel's content container into a 64px
+   flex row -- which is why the panel measured 114px while its own grid
+   measured 187 and the overflow landed on the photograph. */
+.bar > .w{display:flex;align-items:center;height:64px;gap:clamp(14px,2.4vw,34px)}
 .bd{font:600 18px/1 'Inter Tight';letter-spacing:-.035em;white-space:nowrap}
 .menus{display:flex;align-items:center;gap:clamp(8px,1.4vw,20px)}
 .tab{display:flex;align-items:center;gap:6px;font:500 14px/1 'Inter Tight';
-  color:var(--mu);padding:8px 2px;cursor:default;white-space:nowrap}
-.tab i{font-size:9px;opacity:.55;position:relative;top:-1px;font-style:normal}
-.tab.on{color:var(--ink)}
-.mega{background:var(--paper);border-bottom:1px solid var(--line);
-  box-shadow:0 26px 52px -46px rgba(36,17,9,.5);padding:26px 0 22px;position:relative;z-index:50}
+  color:var(--mu);padding:9px 2px;white-space:nowrap;background:none;border:0;
+  cursor:pointer;font-family:inherit}
+.tab i{font-size:9px;opacity:.55;position:relative;top:-1px;font-style:normal;
+  transition:transform .16s ease}
+.tab.on{color:var(--ink)} .tab.on i{transform:rotate(180deg);opacity:.9}
+/* GLASS, not a solid panel: low opacity over a blur, with a specular highlight
+   on the top edge so it reads as a pane rather than a grey box. */
+.panel{position:absolute;left:0;right:0;top:100%;z-index:60;
+  background:rgba(251,246,238,.86);
+  -webkit-backdrop-filter:blur(26px) saturate(150%);
+  backdrop-filter:blur(26px) saturate(150%);
+  border-top:1px solid rgba(255,255,255,.55);
+  border-bottom:1px solid rgba(36,17,9,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.80),0 34px 64px -44px rgba(36,17,9,.52);
+  padding:26px 0 22px;
+  opacity:0;visibility:hidden;transform:translateY(-6px);pointer-events:none;
+  transition:opacity .17s ease,transform .17s ease,visibility .17s}
+.bar[data-open="Platform"] .panel[data-panel="Platform"],
+.bar[data-open="Work"] .panel[data-panel="Work"],
+.bar[data-open="Company"] .panel[data-panel="Company"],
+.bar[data-open="Engagements"] .panel[data-panel="Engagements"]{
+  opacity:1;visibility:visible;transform:none;pointer-events:auto}
+/* --hot measured 3.40:1 on the glass over a photograph. The panel head gets a
+   darker rust of its own rather than the page accent; solved for 5.06:1
+   against the worst sampled glass background. */
 .mhead{font:500 11px/1 'Inter Tight';letter-spacing:.2em;text-transform:uppercase;
-  color:var(--hot);margin-bottom:18px}
+  color:#9A320C;margin-bottom:18px}
 .pgrid{display:grid;gap:10px 26px}
 @media(min-width:900px){.pgrid{grid-template-columns:repeat(3,1fr)}}
 .mi{display:block;padding:12px 14px;border-radius:10px}
-.mi:hover{background:var(--bone)}
+.mi:hover{background:rgba(255,255,255,.55)}
 .mi b{display:block;font:500 16px/1.25 'Inter Tight';letter-spacing:-.025em}
-.mi span{display:block;margin-top:4px;font-size:13.5px;color:var(--mu);line-height:1.5}
+/* The dropdown's description text measured 3.42:1 against the glass sitting
+   over the hero photograph -- the glass is translucent by design, so what is
+   behind it is part of the contrast calculation. The panel keeps its
+   transparency and the text gets its own darker role instead. */
+.mi span{display:block;margin-top:4px;font-size:13.5px;color:#4A3A2E;line-height:1.5}
 .pfoot{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);
   font:500 11px/1 'Inter Tight';letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
 .rt{margin-left:auto;display:flex;align-items:center;gap:10px}
@@ -52,7 +81,7 @@ img{display:block;max-width:100%}
 .btn.solid{background:var(--ink);color:var(--bone);border-color:var(--ink)}
 /* over a photograph the bar goes transparent and the panel stays opaque */
 .bar.over{background:transparent;border-bottom-color:transparent}
-.bar.over .bd,.bar.over .tab{color:rgba(255,244,226,.86)}
+.bar.over .bd,.bar.over .tab{color:rgba(255,244,226,.88)}
 .bar.over .tab.on{color:#FFF4E2}
 .bar.over .btn{border-color:rgba(255,244,226,.55);color:#FFF4E2}
 .bar.over .btn.solid{background:#FFF4E2;color:#7A1A0A;border-color:#FFF4E2}
@@ -105,5 +134,33 @@ footer{background:var(--deep);color:var(--on-deep);padding:clamp(46px,6vw,78px) 
 .fnote{margin-top:14px;font:400 12px/1.65 ui-monospace,monospace;color:#8A7060;max-width:82ch}
 </style></head><body>
 <div class=ribbon>Solstice &middot; /contact &middot; every block from the live page, redesigned navigation</div>
-<div class=announce><div class=w><span>Arthur 4.0 &mdash; scoped engagements open for Q4</span><a href="arthur.html">Read the technical brief &rsaquo;</a></div></div><nav class="bar"><div class=w><a class=bd href="home.html">LOVELEEDAY</a><div class=menus><span class="tab on">Platform<i aria-hidden="true">&#9662;</i></span><span class="tab">Work<i aria-hidden="true">&#9662;</i></span><span class="tab">Company<i aria-hidden="true">&#9662;</i></span><span class="tab">Engagements<i aria-hidden="true">&#9662;</i></span></div><div class=rt><label class=search><svg width=14 height=14 viewBox="0 0 16 16" aria-hidden=true><circle cx=7 cy=7 r=5 fill=none stroke=currentColor stroke-width=1.7/><path d="M11 11 15 15" stroke=currentColor stroke-width=1.7/></svg><input placeholder="Search" readonly></label><a class=btn href="contact.html">Contact sales</a><a class="btn solid" href="contact.html">Start a project</a></div></div></nav><div class=mega><div class=w><div class=mhead>Platform</div><div class=pgrid><a class=mi href="arthur.html#architecture"><b>The architecture</b><span>Five components, each a rule in the write path</span></a><a class=mi href="arthur.html#ontology"><b>About the Ontology</b><span>One object per company, and how records resolve onto it</span></a><a class=mi href="arthur.html#architecture"><b>Lineage</b><span>Every value carries its source system and reference</span></a><a class=mi href="arthur.html#architecture"><b>Verified execution</b><span>Work closes on a value read back out of the system</span></a><a class=mi href="arthur.html"><b>In motion</b><span>A simulated walkthrough, labelled as one</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><header class=head><div class=w><h1>Bring us the question.</h1></div></header><section><div class=w><h2>WHAT HAPPENS NEXT</h2><p class=lede>Arthur 4.0 — scoped engagements open for Q4</p><p class=plain>Read the technical brief</p><p class=plain>LOVELEEDAY</p><p class=plain>Contact sales</p><p class=plain>Start a project</p></div></section><section class=wash><div class=w><span class=eyebrow>Start a project</span><p class=plain>question.</p><p class=plain>Describe the problem in your own words. You will get a reply from Daniel, not a sequence, and a fixed quote with a scope attached rather than a discovery call.</p><p class=plain>Prefer email?</p><p class=plain>hello@loveleedaystudios.com</p><span class=eyebrow>Your name</span><span class=eyebrow>Email</span><span class=eyebrow>What is the problem?</span><span class=eyebrow>Kind of work</span><p class=plain>Internal tool or workflow system</p><p class=plain>Customer-facing application</p><p class=plain>Data / financial integration</p><p class=plain>Website or brand rebuild</p><p class=plain>Arthur engagement</p><p class=plain>Something else</p><span class=eyebrow>Budget range</span><p class=plain>Under $10k</p><p class=plain>$10k – $25k</p><p class=plain>$25k – $50k</p><p class=plain>$50k+</p><p class=plain>Not sure yet</p><p class=plain>Send the brief</p><p class=plain>Usually answered the same day.</p><p class=plain>A reply, from a person</p><p class=plain>Usually the same day, with the questions we need answered to quote it.</p><p class=plain>A fixed quote with a scope</p><p class=plain>One number and a written scope. No retainer, no discovery phase you pay for.</p><p class=plain>A build you can watch</p><p class=plain>You see it deployed as it is built, not at the end.</p><p class=plain>Already have a portal link from us? Open it directly — it does not need an account.</p><p class=plain>See what we’ve shipped →</p></div></section><footer><div class=w><div class=fgrid><div class=fbrand><b>LOVELEEDAY<span> Studios</span></b><p>Intelligence architecture and the production software that runs on top of it.</p><div class=city>Kalamazoo, Michigan</div></div><div class=fcol><h3>Platform</h3><ul><li><a href="arthur.html">Arthur</a></li><li><a href="arthur.html#architecture">Architecture</a></li><li><a href="about.html#method">How we scope</a></li></ul></div><div class=fcol><h3>Work</h3><ul><li><a href="work.html#studies">Client rebuilds</a></li><li><a href="work.html">Companies we operate</a></li><li><a href="about.html#method">How we measure</a></li></ul></div><div class=fcol><h3>Company</h3><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Start a project</a></li><li><a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a></li></ul></div></div><div class=fbase><span>&copy; 2026 LOVELEEDAY Studios LLC &mdash; a Delaware company.</span><span>Kalamazoo, Michigan</span></div><p class=fnote>Figures on this site name their source. Where one is unmeasured it says so.</p><p class=fnote>Concept mockup. Every block on this page is present on the live site &mdash; the content is extracted from the rendered DOM rather than retyped. The two photographs carrying this brand are stock and are placeholders for a real shoot.</p></div></footer>
+<div class=announce><div class=w><span>Arthur 4.0 &mdash; scoped engagements open for Q4</span><a href="arthur.html">Read the technical brief &rsaquo;</a></div></div><nav class="bar" data-open=""><div class=w><a class=bd href="home.html">LOVELEEDAY</a><div class=menus><button class="tab" data-menu="Platform" aria-expanded="false">Platform<i aria-hidden="true">&#9662;</i></button><button class="tab" data-menu="Work" aria-expanded="false">Work<i aria-hidden="true">&#9662;</i></button><button class="tab" data-menu="Company" aria-expanded="false">Company<i aria-hidden="true">&#9662;</i></button><button class="tab" data-menu="Engagements" aria-expanded="false">Engagements<i aria-hidden="true">&#9662;</i></button></div><div class=rt><label class=search><svg width=14 height=14 viewBox="0 0 16 16" aria-hidden=true><circle cx=7 cy=7 r=5 fill=none stroke=currentColor stroke-width=1.7/><path d="M11 11 15 15" stroke=currentColor stroke-width=1.7/></svg><input placeholder="Search" readonly></label><a class=btn href="contact.html">Contact sales</a><a class="btn solid" href="contact.html">Start a project</a></div></div><div class=panel data-panel="Platform"><div class=w><div class=mhead>Platform</div><div class=pgrid><a class=mi href="arthur.html#architecture"><b>The architecture</b><span>Five components, each a rule in the write path</span></a><a class=mi href="arthur.html#ontology"><b>About the Ontology</b><span>One object per company, and how records resolve onto it</span></a><a class=mi href="arthur.html#architecture"><b>Lineage</b><span>Every value carries its source system and reference</span></a><a class=mi href="arthur.html#architecture"><b>Verified execution</b><span>Work closes on a value read back out of the system</span></a><a class=mi href="arthur.html"><b>In motion</b><span>A simulated walkthrough, labelled as one</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><div class=panel data-panel="Work"><div class=w><div class=mhead>Work</div><div class=pgrid><a class=mi href="work.html#studies"><b>Client rebuilds</b><span>Six, uncommissioned, and none of them named</span></a><a class=mi href="work.html#operated"><b>Companies we operate</b><span>Five we own and run. Evidence that we ship</span></a><a class=mi href="about.html#method"><b>How we measure</b><span>Page weight, Lighthouse, live position, accessibility</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><div class=panel data-panel="Company"><div class=w><div class=mhead>Company</div><div class=pgrid><a class=mi href="about.html"><b>About</b><span>A practice, and the five rules it does not bend</span></a><a class=mi href="about.html#method"><b>How we scope</b><span>Fixed before we start, pushed back on before it begins</span></a><a class=mi href="contact.html"><b>Contact</b><span>We reply the same week</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><div class=panel data-panel="Engagements"><div class=w><div class=mhead>Engagements</div><div class=pgrid><a class=mi href="contact.html"><b>Start a project</b><span>Tell us what is slowing you down</span></a><a class=mi href="contact.html"><b>What happens next</b><span>Reply, scope, and a private review page</span></a><a class=mi href="mailto:hello@loveleedaystudios.com"><b>hello@loveleedaystudios.com</b><span>Straight to the inbox</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div></nav><header class=head><div class=w><h1>Bring us the question.</h1></div></header><section><div class=w><h2>WHAT HAPPENS NEXT</h2><p class=lede>Arthur 4.0 — scoped engagements open for Q4</p><p class=plain>Read the technical brief</p><p class=plain>LOVELEEDAY</p><p class=plain>Contact sales</p><p class=plain>Start a project</p></div></section><section class=wash><div class=w><span class=eyebrow>Start a project</span><p class=plain>question.</p><p class=plain>Describe the problem in your own words. You will get a reply from Daniel, not a sequence, and a fixed quote with a scope attached rather than a discovery call.</p><p class=plain>Prefer email?</p><p class=plain>hello@loveleedaystudios.com</p><span class=eyebrow>Your name</span><span class=eyebrow>Email</span><span class=eyebrow>What is the problem?</span><span class=eyebrow>Kind of work</span><p class=plain>Internal tool or workflow system</p><p class=plain>Customer-facing application</p><p class=plain>Data / financial integration</p><p class=plain>Website or brand rebuild</p><p class=plain>Arthur engagement</p><p class=plain>Something else</p><span class=eyebrow>Budget range</span><p class=plain>Under $10k</p><p class=plain>$10k – $25k</p><p class=plain>$25k – $50k</p><p class=plain>$50k+</p><p class=plain>Not sure yet</p><p class=plain>Send the brief</p><p class=plain>Usually answered the same day.</p><p class=plain>A reply, from a person</p><p class=plain>Usually the same day, with the questions we need answered to quote it.</p><p class=plain>A fixed quote with a scope</p><p class=plain>One number and a written scope. No retainer, no discovery phase you pay for.</p><p class=plain>A build you can watch</p><p class=plain>You see it deployed as it is built, not at the end.</p><p class=plain>Already have a portal link from us? Open it directly — it does not need an account.</p><p class=plain>See what we’ve shipped →</p></div></section><footer><div class=w><div class=fgrid><div class=fbrand><b>LOVELEEDAY<span> Studios</span></b><p>Intelligence architecture and the production software that runs on top of it.</p><div class=city>Kalamazoo, Michigan</div></div><div class=fcol><h3>Platform</h3><ul><li><a href="arthur.html">Arthur</a></li><li><a href="arthur.html#architecture">Architecture</a></li><li><a href="about.html#method">How we scope</a></li></ul></div><div class=fcol><h3>Work</h3><ul><li><a href="work.html#studies">Client rebuilds</a></li><li><a href="work.html">Companies we operate</a></li><li><a href="about.html#method">How we measure</a></li></ul></div><div class=fcol><h3>Company</h3><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Start a project</a></li><li><a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a></li></ul></div></div><div class=fbase><span>&copy; 2026 LOVELEEDAY Studios LLC &mdash; a Delaware company.</span><span>Kalamazoo, Michigan</span></div><p class=fnote>Figures on this site name their source. Where one is unmeasured it says so.</p><p class=fnote>Concept mockup. Every block on this page is present on the live site &mdash; the content is extracted from the rendered DOM rather than retyped. The two photographs carrying this brand are stock and are placeholders for a real shoot.</p></div></footer>
+<script>
+(function(){
+  document.querySelectorAll('nav.bar').forEach(function(bar){
+    var timer=null;
+    function open(name){
+      clearTimeout(timer);
+      bar.dataset.open = name || '';
+      bar.querySelectorAll('.tab').forEach(function(t){
+        var on = t.dataset.menu === name;
+        t.classList.toggle('on', on);
+        t.setAttribute('aria-expanded', on ? 'true' : 'false');
+      });
+    }
+    function scheduleClose(){ timer = setTimeout(function(){ open(''); }, 160); }
+    bar.querySelectorAll('.tab').forEach(function(t){
+      t.addEventListener('mouseenter', function(){ open(t.dataset.menu); });
+      t.addEventListener('focus',      function(){ open(t.dataset.menu); });
+      t.addEventListener('click', function(e){
+        e.preventDefault();
+        open(bar.dataset.open === t.dataset.menu ? '' : t.dataset.menu);
+      });
+    });
+    bar.addEventListener('mouseleave', scheduleClose);
+    bar.addEventListener('mouseenter', function(){ clearTimeout(timer); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') open(''); });
+  });
+})();
+</script>
 </body></html>
