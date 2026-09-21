@@ -35,43 +35,99 @@
 (function (global) {
   'use strict';
 
-  /* cx, cy, cz, rx, ry, rz — x front/back, y up/down, z across the hemispheres */
-  /* Proportions matter more than lobe count. The first pass was 2.2 units wide
-     against 1.6 tall and rendered as a flat cloud; a brain in profile is closer
-     to 1.2:1, with a high dome and a flat underside. */
-  var LOBES = [
-    [-0.50,  0.06,  0.00, 0.38, 0.46, 0.46],
-    [-0.16,  0.20,  0.00, 0.46, 0.46, 0.50],
-    [ 0.18,  0.18,  0.00, 0.46, 0.44, 0.50],
-    [ 0.00, -0.04,  0.00, 0.62, 0.52, 0.56],
-    [ 0.56, -0.02,  0.00, 0.34, 0.42, 0.44],
-    [-0.06, -0.36, -0.34, 0.46, 0.24, 0.24],
-    [-0.06, -0.36,  0.34, 0.46, 0.24, 0.24],
-    [ 0.50, -0.44,  0.00, 0.28, 0.22, 0.34],
-    [ 0.28, -0.64,  0.00, 0.11, 0.20, 0.11]
-  ];
+/* Profile polygons derived by tracing a public anatomical lateral view
+   (Wikimedia Commons, 'Brain human lateral view', CC BY 2.5) and
+   simplifying. Anatomy is fact; these are re-authored outlines, not the
+   source artwork. Coordinates are normalised to a unit box, +x toward the
+   occipital pole, +y downward. */
+  var PROFILE = {
+  cerebrum: [[-0.1899, -0.5], [-0.3261, -0.4275], [-0.3667, -0.3841], [-0.4101, -0.3116], [-0.4217, -0.2536], [-0.4101, -0.1957], [-0.3667, -0.1377], [-0.3116, -0.1232], [-0.2101, -0.0652], [-0.2159, -0.0217], [-0.187, 0.0072], [-0.1029, 0.0362], [-0.0188, 0.0507], [0.0159, 0.0797], [0.0043, 0.0942], [0.0159, 0.2101], [0.013, 0.3696], [0.0333, 0.5], [0.0797, 0.5], [0.0652, 0.4275], [0.0594, 0.3116], [0.0681, 0.2391], [0.1145, 0.0942], [0.1087, 0.0797], [0.0507, 0.0362], [0.0594, 0.0217], [0.2362, -0.0217], [0.3812, -0.0362], [0.4072, -0.0652], [0.4043, -0.0942], [0.4217, -0.1377], [0.4188, -0.1812], [0.3928, -0.2536], [0.3609, -0.2826], [0.3406, -0.3406], [0.2797, -0.413], [0.1725, -0.471], [0.0942, -0.5]],
+  cerebellum: [[0.0043, 0.1348], [0.0072, 0.0768], [0.0681, 0.0188], [0.1232, 0.0072], [0.2391, -0.0159], [0.3319, -0.0159], [0.3377, -0.0043], [0.3319, 0.0072], [0.0304, 0.4942], [0.0188, 0.4246], [0.013, 0.3783], [0.0101, 0.3319]],
+  stem: [[-0.1986, -0.4971], [-0.3609, -0.3928], [-0.4101, -0.3058], [-0.4159, -0.2188], [-0.4043, -0.1841], [-0.3551, -0.1319], [-0.2275, -0.0797], [-0.213, -0.0623], [-0.2159, -0.0275], [-0.1841, 0.0072], [-0.013, 0.042], [-0.0159, 0.0594], [0.0101, 0.0768], [0.013, 0.3725], [0.0333, 0.4942], [0.0797, 0.4942], [0.0594, 0.3029], [0.1145, 0.0942], [0.0478, 0.0246], [0.2507, -0.0275], [0.3928, -0.0449], [0.4217, -0.1493], [0.3928, -0.2536], [0.2826, -0.4101], [0.0971, -0.4971]]
+  };
 
-  function field(x, y, z) {
-    var s = 0;
-    for (var i = 0; i < LOBES.length; i++) {
-      var L = LOBES[i];
-      var dx = (x - L[0]) / L[3], dy = (y - L[1]) / L[4], dz = (z - L[2]) / L[5];
-      s += Math.exp(-2.3 * (dx * dx + dy * dy + dz * dz));
-    }
-    return s;
-  }
-  var INSIDE = 0.55;
+  /* WHY THIS REPLACED THE ELLIPSOIDS.
 
-  /* GYRI. A smooth shell renders as a mesh ball from every angle except the
-     exact profile -- which is why the last pass still did not read as a brain
-     while it turned. Real cortex is legible because it is FOLDED, so the
-     surface threshold is modulated by a low-frequency 3D wave: ridges and
-     sulci that catch the eye at any rotation. */
+     Three passes tried to get a brain out of a sum of ellipsoid metaballs, and
+     each one produced a blob. The technique was wrong, not the parameters: a
+     sum of positive Gaussians is convex almost everywhere, and every feature
+     that makes a brain recognisable is CONCAVE -- the Sylvian fissure notch
+     under the temporal lobe, the step where the cerebellum tucks beneath the
+     occipital, the flat underside. Those cannot be built by adding blobs.
+
+     So the silhouette is a real traced profile and the volume is that profile
+     INFLATED: a point is inside when it falls within the outline and within a
+     half-width that tapers to zero at the outline, which is how you turn a
+     2D shape into a rounded 3D one. The distance to the outline is baked into
+     a grid once at build time rather than measured per sample. */
+  /* GYRI. A smooth inflated shell still renders as a mesh ball once it turns
+     off the profile. Real cortex is legible because it is folded, so the
+     half-width is modulated by a low-frequency 3D wave that carves ridges and
+     sulci which catch the eye at any rotation. */
   function folds(x, y, z) {
     return 1
-      + 0.052 * Math.sin(5.5 * x + 1.3) * Math.cos(4.8 * y - 0.6)
-      + 0.046 * Math.sin(5.1 * z + 2.1) * Math.cos(5.6 * x + 0.4)
-      + 0.030 * Math.sin(8.3 * y + 0.8) * Math.cos(7.4 * z - 1.1);
+      + 0.055 * Math.sin(6.0 * x + 1.3) * Math.cos(5.2 * y - 0.6)
+      + 0.048 * Math.sin(5.4 * z + 2.1) * Math.cos(6.1 * x + 0.4)
+      + 0.032 * Math.sin(8.8 * y + 0.8) * Math.cos(7.9 * z - 1.1);
+  }
+
+  var GRID = 128, DF = null, BB = null;
+
+  function polyInside(poly, x, y) {
+    var inside = false;
+    for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+      var xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1];
+      if (((yi > y) !== (yj > y)) &&
+          (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) inside = !inside;
+    }
+    return inside;
+  }
+
+  function buildField() {
+    if (DF) return;
+    var all = PROFILE.cerebrum.concat(PROFILE.cerebellum, PROFILE.stem);
+    var x0 = 9, x1 = -9, y0 = 9, y1 = -9, i;
+    for (i = 0; i < all.length; i++) {
+      x0 = Math.min(x0, all[i][0]); x1 = Math.max(x1, all[i][0]);
+      y0 = Math.min(y0, all[i][1]); y1 = Math.max(y1, all[i][1]);
+    }
+    var pad = 0.04;
+    BB = { x0: x0 - pad, x1: x1 + pad, y0: y0 - pad, y1: y1 + pad };
+    BB.w = BB.x1 - BB.x0; BB.h = BB.y1 - BB.y0;
+    DF = new Float32Array(GRID * GRID);
+    var parts = [PROFILE.cerebrum, PROFILE.cerebellum, PROFILE.stem];
+    for (var gy = 0; gy < GRID; gy++) {
+      for (var gx = 0; gx < GRID; gx++) {
+        var px = BB.x0 + (gx + 0.5) / GRID * BB.w;
+        var py = BB.y0 + (gy + 0.5) / GRID * BB.h;
+        var inAny = false;
+        for (var k = 0; k < parts.length; k++) if (polyInside(parts[k], px, py)) inAny = true;
+        if (!inAny) { DF[gy * GRID + gx] = 0; continue; }
+        /* distance to the nearest edge of whichever part contains it */
+        var best = 9;
+        for (k = 0; k < parts.length; k++) {
+          var poly = parts[k];
+          for (var a = 0, b = poly.length - 1; a < poly.length; b = a++) {
+            var ax = poly[b][0], ay = poly[b][1], bx = poly[a][0], by = poly[a][1];
+            var dx = bx - ax, dy = by - ay, L = dx * dx + dy * dy;
+            var t = L ? Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / L)) : 0;
+            var ex = px - (ax + t * dx), ey = py - (ay + t * dy);
+            var dd = Math.sqrt(ex * ex + ey * ey);
+            if (dd < best) best = dd;
+          }
+        }
+        DF[gy * GRID + gx] = best;
+      }
+    }
+  }
+
+  /* distance to the silhouette edge, 0 outside */
+  function depthAt(x, y) {
+    if (x < BB.x0 || x > BB.x1 || y < BB.y0 || y > BB.y1) return 0;
+    var gx = Math.floor((x - BB.x0) / BB.w * GRID);
+    var gy = Math.floor((y - BB.y0) / BB.h * GRID);
+    if (gx < 0 || gy < 0 || gx >= GRID || gy >= GRID) return 0;
+    return DF[gy * GRID + gx];
   }
 
   function rng(seed) {
@@ -82,20 +138,28 @@
   }
 
   function build(count, seed) {
+    buildField();
     var rand = rng(seed || 3), pts = [], guard = 0;
+    var WZ = 0.46;                      /* half-width of the widest point */
     while (pts.length < count && guard++ < count * 1400) {
-      var x = rand() * 2.4 - 1.2, y = rand() * 2.0 - 1.0, z = rand() * 2.0 - 1.0;
-      var thr = INSIDE * folds(x, y, z);
-      var f = field(x, y, z);
-      if (f <= thr) continue;
+      var x = BB.x0 + rand() * BB.w;
+      var y = BB.y0 + rand() * BB.h;
+      var z = (rand() * 2 - 1) * WZ;
+      var dEdge = depthAt(x, y);
+      if (dEdge <= 0) continue;
+      /* inflate: half-width tapers to zero at the outline */
+      var half = WZ * Math.sqrt(Math.min(1, dEdge / 0.17)) * folds(x, y, z);
+      if (Math.abs(z) > half) continue;
+      var f = 1 - Math.abs(z) / (half + 1e-6);   /* 1 at the midline, 0 at the surface */
+      var thr = 0.42;
       /* Bias hard toward the SHELL. A solid volume of points renders as a
          cloud with no silhouette -- which is why the first version read as a
          flat blob. A brain is legible by its cortical surface, so keep most
          points near the threshold and only a quarter of the interior. */
-      if (f > thr * 1.16 && rand() > 0.14) continue;
+      if (f > thr && rand() > 0.16) continue;   /* keep the cortical shell */
       /* the longitudinal fissure: no material on the midline above the
          temporal lobes, which is what makes two hemispheres read as two */
-      if (Math.abs(z) < 0.085 && y > -0.22) continue;
+      if (Math.abs(z) < 0.05 && y < 0.06) continue;   /* longitudinal fissure */
       pts.push({ x: x, y: y, z: z });
     }
     for (var pass = 0; pass < 5; pass++) {
@@ -109,8 +173,10 @@
         }
         var nx = pts[i].x + ax * 0.00016, ny = pts[i].y + ay * 0.00016,
             nz = pts[i].z + az * 0.00016;
-        if (field(nx, ny, nz) > INSIDE * folds(nx, ny, nz) &&
-            !(Math.abs(nz) < 0.085 && ny > -0.22)) {
+        var dE = depthAt(nx, ny);
+        var hw = dE > 0 ? WZ * Math.sqrt(Math.min(1, dE / 0.17)) : 0;
+        if (dE > 0 && Math.abs(nz) <= hw &&
+            !(Math.abs(nz) < 0.05 && ny < 0.06)) {
           pts[i].x = nx; pts[i].y = ny; pts[i].z = nz;
         }
       }
@@ -145,6 +211,17 @@
     return d;
   }
 
+  /* Daniel, 2026-09-21: "expand the page to other questions, larger data sets,
+     ie the municipal project we did, or security we discovered with sites and
+     user data exposure."
+
+     So the script now spans the real range: one invoice at one end, a
+     fourteen-hundred-document statutory corpus at the other. The security
+     exchange is drawn from findings that are real -- a SECURITY DEFINER
+     function with EXECUTE granted to anon, and a cross-tenant leak caused by
+     three-valued logic going NULL -- but it names no client and no site.
+     Publishing "we found this hole at X" on a marketing page is a different
+     act from finding it and disclosing it privately, and the wrong one. */
   var SCRIPT = [
     { ask: 'Why did margin fall in August?',
       out: ['Which objects does "margin" resolve to?',
@@ -152,21 +229,39 @@
             'Does every input carry lineage?',
             'Which source systems were stale?'],
       answer: 'Two vendors resolved to one object on 2026-08-19.',
-      evidence: '538 observations · 4 sources · full trail printed' },
+      evidence: '538 observations \u00b7 4 sources \u00b7 full trail printed' },
+
+    { ask: 'Who can read this table?',
+      out: ['Which functions run as SECURITY DEFINER?',
+            'Is EXECUTE granted to anon, or to PUBLIC?',
+            'Does a predicate go NULL without a tenant?',
+            'What does the public key actually return?'],
+      answer: 'A definer function was callable by anon. It returned buyer emails.',
+      evidence: 'found on a live site \u00b7 disclosed privately \u00b7 fixed before publication' },
+
+    { ask: 'Which of 1,400 municipal documents change what is owed?',
+      out: ['Which jurisdictions actually apply here?',
+            'What superseded what, and on which date?',
+            'Which portals blocked the crawler?',
+            'Which figures cite no source document?'],
+      answer: 'Nine ordinances apply. Two were superseded and still cited.',
+      evidence: 'portal crawl with archive fallback \u00b7 every figure links its document' },
+
     { ask: 'Is this invoice safe to pay?',
       out: ['Is the vendor one object or four records?',
             'What is the blast radius of this action?',
             'Was the figure observed, or inferred?',
             'Does it need a human to close?'],
       answer: 'No. The amount is inferred, not observed.',
-      evidence: 'no source reference · write would be refused' },
+      evidence: 'no source reference \u00b7 the write would be refused' },
+
     { ask: 'Rebuild the forecast for Q4.',
       out: ['Which values were valid then?',
             'Exclude anything learned after the date',
             'Print the trail for each input',
             'Flag every number without a source'],
       answer: 'Rebuilt as known at 2026-09-30. Nothing back-filled.',
-      evidence: 'bitemporal read · look-ahead refused' }
+      evidence: 'bitemporal read \u00b7 look-ahead refused' }
   ];
 
   var STYLES = {
@@ -237,7 +332,7 @@
     function project(ang) {
       var ca = Math.cos(ang), sa = Math.sin(ang);
       var tilt = 0.20, ct = Math.cos(tilt), st = Math.sin(tilt);
-      var scale = Math.min(W, H * 1.35) * (labels ? 0.30 : 0.40);
+      var scale = Math.min(W, H * 1.35) * (labels ? 0.62 : 0.82);
       var cx = W / 2, cy = H / 2;
       for (var i = 0; i < G.pts.length; i++) {
         var p = G.pts[i];
