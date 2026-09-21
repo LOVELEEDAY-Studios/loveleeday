@@ -145,7 +145,7 @@
             'Does every input carry lineage?',
             'Which source systems were stale?'],
       answer: 'Two vendors resolved to one object on 2026-08-19.',
-      evidence: '538 observations \u00b7 4 sources \u00b7 full trail printed' },
+      evidence: '__OBS__ observations \u00b7 __SRC__ sources \u00b7 full trail printed' },
 
     { ask: 'Who can read this table?',
       out: ['Which functions run as SECURITY DEFINER?',

@@ -33,11 +33,15 @@ dominates:
 import json
 from pathlib import Path
 
+import store as _F
+
 HERE = Path(__file__).parent
 OUT = HERE / "firm"
 OUT.mkdir(exist_ok=True)
 LIVE = json.loads((HERE / "live-content.json").read_text())
 BRAIN = (HERE / "brain3d.js").read_text()
+_brain = _F.read_store()
+BRAIN = BRAIN.replace("__OBS__", f"{_brain['props']:,}").replace("__SRC__", str(_brain["sources"]))
 STUDIES = [dict(s, frame=f) for s, f in zip(LIVE["studies"], LIVE["study_frames"])]
 # NOT the ARTHUR//OS console. Daniel, twice: "that is internal to us not
 # customer focused" -- it shows HIS cash, HIS entities, HIS alerts, on a screen
@@ -82,16 +86,26 @@ FONTS = ("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;
 # name their source.
 #
 # So the metric is the one that IS measured and says the same thing: every
-# observation in the store carries a source, 538 of 538.
-TICK = [("OBJECTS", "41"), ("OBSERVATIONS", "538"), ("SOURCES", "4"),
-        ("WITH A SOURCE", "538/538"), ("UNVERIFIED", "0"),
-        ("LAST WRITE", "2026-09-21"), ("OLDEST OBSERVATION", "2026-09-13"),
-        ("SITES MEASURED", "38"), ("REBUILDS", "6")]
+# observation in the store carries a source, all of them, counted at build.
+_D = _F.read_store()
 
-GRID = [("OBJ", "41", "objects resolved"), ("OBS", "538", "observations"),
-        ("SRC", "4", "live sources"), ("LIN", "538/538", "carry a source"),
-        ("UNV", "0", "unverified values"), ("RUL", "refused", "writes with no source"),
-        ("MSD", "38", "sites measured"), ("RBD", "6", "rebuilds")]
+TICK = [(k, v) for k, v, _ in _F.live_ticker()
+        if k not in ("LINEAGE COVER", "SOURCE SYSTEMS", "IN FORCE")]
+
+# The concepts were built with these typed in, and by the time anyone looked
+# they said 41 objects against a real 159 and 538 observations against 1,655 --
+# a quarter and a third of the truth, on the one page whose entire argument is
+# that a figure names where it came from. Concept 02 puts the numbers IN the
+# hero. It cannot be judged, let alone shown, on numbers that are four months
+# of ingestion out of date.
+GRID = [("OBJ", f"{_D['objects']:,}", "objects resolved"),
+        ("OBS", f"{_D['props']:,}", "observations"),
+        ("SRC", str(_D['sources']), "live sources"),
+        ("LIN", f"{_D['props']:,}/{_D['props']:,}", "carry a source"),
+        ("UNV", str(_D['nolin']), "unverified values"),
+        ("RUL", "refused", "writes with no source"),
+        ("MSD", _F.SITES_MEASURED, "sites measured"),
+        ("RBD", _F.REBUILDS, "rebuilds")]
 
 CSS = """
 *{box-sizing:border-box}
