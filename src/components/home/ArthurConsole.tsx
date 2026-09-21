@@ -273,21 +273,21 @@ export function ArthurConsole() {
 
   return (
     <div
-      className="relative w-full overflow-hidden rounded-[6px] border border-[var(--ink-3)] bg-[var(--ink-2)]"
+      className="relative w-full overflow-hidden rounded-[6px] border border-[var(--deep-line)] bg-[var(--deep-2)]"
       style={{ boxShadow: "0 40px 120px -40px rgba(0,0,0,.9)" }}
       aria-hidden="true"
     >
       {/* chrome */}
-      <div className="flex items-center gap-3 border-b border-[var(--ink-3)] px-4 py-2.5">
+      <div className="flex items-center gap-3 border-b border-[var(--deep-line)] px-4 py-2.5">
         <span className="h-1.5 w-1.5 rounded-full bg-[var(--good)]" />
-        <span className="eyebrow text-[var(--on-dark-mu)]">Arthur — resolution</span>
-        <span className="eyebrow ml-auto tnum text-[var(--on-dark-dim)]">mission 4471</span>
+        <span className="eyebrow text-[var(--on-deep-mu)]">Arthur — resolution</span>
+        <span className="eyebrow ml-auto tnum text-[var(--on-deep-dim)]">mission 4471</span>
       </div>
 
       <div className="grid grid-cols-[132px_1fr] max-[560px]:grid-cols-1">
         {/* source-system rail */}
-        <div className="border-r border-[var(--ink-3)] px-4 py-4 max-[560px]:border-r-0 max-[560px]:border-b">
-          <div className="eyebrow text-[var(--on-dark-dim)]">Sources</div>
+        <div className="border-r border-[var(--deep-line)] px-4 py-4 max-[560px]:border-r-0 max-[560px]:border-b">
+          <div className="eyebrow text-[var(--on-deep-dim)]">Sources</div>
           <ul className="mt-3.5 space-y-2.5">
             {SYS_NAME.map((n, i) => (
               <li key={n} className="flex items-center gap-2">
@@ -295,15 +295,15 @@ export function ArthurConsole() {
                   className="h-[5px] w-[5px] rounded-[1px]"
                   style={{ background: SYS[i] }}
                 />
-                <span className="text-[11.5px] text-[var(--on-dark-mu)]">{n}</span>
+                <span className="text-[11.5px] text-[var(--on-deep-mu)]">{n}</span>
               </li>
             ))}
           </ul>
-          <div className="mt-5 border-t border-[var(--ink-3)] pt-3.5">
-            <div className="eyebrow text-[var(--on-dark-dim)]">Records</div>
-            <div className="tnum mt-1.5 text-[19px] font-semibold text-[var(--on-dark)]">16</div>
-            <div className="eyebrow mt-3 text-[var(--on-dark-dim)]">Objects</div>
-            <div className="tnum mt-1.5 text-[19px] font-semibold text-[var(--on-dark)]">5</div>
+          <div className="mt-5 border-t border-[var(--deep-line)] pt-3.5">
+            <div className="eyebrow text-[var(--on-deep-dim)]">Records</div>
+            <div className="tnum mt-1.5 text-[19px] font-semibold text-[var(--on-deep)]">16</div>
+            <div className="eyebrow mt-3 text-[var(--on-deep-dim)]">Objects</div>
+            <div className="tnum mt-1.5 text-[19px] font-semibold text-[var(--on-deep)]">5</div>
           </div>
         </div>
 
@@ -312,12 +312,12 @@ export function ArthurConsole() {
       </div>
 
       {/* lineage strip — the thing that makes a figure reportable */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-[var(--ink-3)] px-4 py-2.5">
-        <span className="eyebrow text-[var(--on-dark-dim)]">Lineage</span>
-        <span className="tnum text-[11.5px] text-[var(--on-dark-mu)]">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-[var(--deep-line)] px-4 py-2.5">
+        <span className="eyebrow text-[var(--on-deep-dim)]">Lineage</span>
+        <span className="tnum text-[11.5px] text-[var(--on-deep-mu)]">
           erp:vendor/4412 → net_terms = 45
         </span>
-        <span className="tnum text-[11.5px] text-[var(--on-dark-dim)]">
+        <span className="tnum text-[11.5px] text-[var(--on-deep-dim)]">
           observed 2026-09-18 · as-known-at 2026-09-21
         </span>
       </div>

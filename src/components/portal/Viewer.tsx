@@ -49,8 +49,8 @@ export function Viewer({ src, title }: { src: string; title: string }) {
               aria-pressed={width === w.id}
               className={`min-h-[36px] px-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] transition-colors ${
                 width === w.id
-                  ? "bg-[var(--raised)] text-[var(--text)]"
-                  : "text-[var(--dim)] hover:text-[var(--muted)]"
+                  ? "bg-[var(--raised)] text-[var(--ink)]"
+                  : "text-[var(--dim)] hover:text-[var(--mid)]"
               }`}
             >
               {w.label}
@@ -66,7 +66,7 @@ export function Viewer({ src, title }: { src: string; title: string }) {
             href={src}
             target="_blank"
             rel="noreferrer"
-            className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] hover:text-[var(--accent)]"
+            className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--mid)] hover:text-[var(--accent)]"
           >
             Open full size ↗
           </a>

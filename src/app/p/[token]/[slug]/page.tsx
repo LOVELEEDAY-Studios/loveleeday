@@ -40,7 +40,7 @@ export default async function DeliverablePage({
       <div className="mx-auto max-w-[1340px] px-6 pb-8 pt-10">
         <Link
           href={`/p/${portal.token}`}
-          className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)] transition-colors hover:text-[var(--text)]"
+          className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)] transition-colors hover:text-[var(--ink)]"
         >
           ← {portal.client} · {portal.round}
         </Link>
@@ -70,7 +70,7 @@ export default async function DeliverablePage({
           <h2 className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
             Why it is built this way
           </h2>
-          <p className="mt-4 text-[15px] leading-[1.7] text-[var(--muted)]">
+          <p className="mt-4 text-[15px] leading-[1.7] text-[var(--mid)]">
             {deliverable.rationale}
           </p>
 
@@ -81,7 +81,7 @@ export default async function DeliverablePage({
             {deliverable.look.map((l) => (
               <li
                 key={l}
-                className="flex gap-3 text-[14px] leading-[1.6] text-[var(--muted)]"
+                className="flex gap-3 text-[14px] leading-[1.6] text-[var(--mid)]"
               >
                 <span
                   className="mt-[9px] h-px w-3 shrink-0 bg-[var(--accent)]"
@@ -99,7 +99,7 @@ export default async function DeliverablePage({
               </h2>
               <ul className="mt-4 space-y-2.5">
                 {deliverable.caveats.map((c) => (
-                  <li key={c} className="text-[13px] leading-[1.6] text-[var(--muted)]">
+                  <li key={c} className="text-[13px] leading-[1.6] text-[var(--mid)]">
                     {c}
                   </li>
                 ))}
@@ -154,7 +154,7 @@ function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
             >
               {n === null ? "—" : n}
             </div>
-            <div className="mt-2 text-[13px] text-[var(--muted)]">{label}</div>
+            <div className="mt-2 text-[13px] text-[var(--mid)]">{label}</div>
             <div className="mt-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--dim)]">
               {n === null ? "Not measured" : "Lighthouse, mobile"}
             </div>
@@ -162,7 +162,7 @@ function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
         ))}
       </div>
 
-      <p className="mt-7 text-[15px] leading-[1.7] text-[var(--muted)]">{seo.verdict}</p>
+      <p className="mt-7 text-[15px] leading-[1.7] text-[var(--mid)]">{seo.verdict}</p>
 
       <h3 className="mt-9 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
         Where {domain ?? "the site"} ranks on Google today
@@ -171,7 +171,7 @@ function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
         {seo.queries.map((q) => (
           <li key={q.query} className="border-t border-[var(--line)] pt-4">
             <div className="flex items-baseline justify-between gap-4">
-              <span className="text-[14px] text-[var(--text)]">&ldquo;{q.query}&rdquo;</span>
+              <span className="text-[14px] text-[var(--ink)]">&ldquo;{q.query}&rdquo;</span>
               <span
                 className="tnum shrink-0 font-[family-name:var(--font-mono)] text-[13px]"
                 style={{ color: q.position ? "var(--good)" : "var(--accent)" }}
@@ -193,13 +193,13 @@ function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
       </h3>
       <ul className="mt-4 space-y-2.5">
         {seo.notes.map((n) => (
-          <li key={n} className="text-[13px] leading-[1.6] text-[var(--muted)]">
+          <li key={n} className="text-[13px] leading-[1.6] text-[var(--mid)]">
             {n}
           </li>
         ))}
       </ul>
       {!seo.crux && (
-        <p className="mt-6 border-t border-[var(--line)] pt-5 text-[13px] leading-[1.6] text-[var(--muted)]">
+        <p className="mt-6 border-t border-[var(--line)] pt-5 text-[13px] leading-[1.6] text-[var(--mid)]">
           Google holds no Chrome UX Report field data for this domain, which means
           too few real visitors for it to report on. That is a traffic finding
           rather than a ranking one.

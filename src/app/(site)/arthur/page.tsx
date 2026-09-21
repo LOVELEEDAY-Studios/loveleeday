@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Figure } from "@/components/graphics/Figure";
 
 /* The product page.
    ==========================================================================
@@ -110,11 +111,11 @@ export default function ArthurPage() {
   return (
     <>
       {/* ── masthead ─────────────────────────────────────────────────── */}
-      <section className="border-b border-[var(--line)] bg-[var(--paper)] pt-[clamp(56px,7vw,104px)] pb-[clamp(48px,6vw,88px)]">
+      <section className="border-b border-[var(--line)] bg-[var(--ground)] pt-[clamp(48px,6vw,88px)] pb-0">
         <div className="shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <div>
             <p className="eyebrow flex items-center gap-2.5 text-[var(--dim)]">
-              <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--signal)" }} />
+              <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--teal)" }} />
               Arthur — intelligence architecture
             </p>
             <h1 className="display display-lg mt-7">
@@ -124,7 +125,7 @@ export default function ArthurPage() {
             </h1>
           </div>
           <div className="max-w-[var(--measure)] self-end">
-            <p className="text-[1.05rem] leading-[1.6] text-[var(--muted)]">
+            <p className="text-[1.05rem] leading-[1.6] text-[var(--mid)]">
               Arthur&rsquo;s codebase brings together the foundations for remembering context,
               resolving who and what a record refers to, coordinating work, selecting models, and
               acting through tools.
@@ -134,6 +135,15 @@ export default function ArthurPage() {
               in every workflow. We scope and validate the configuration for each engagement.
             </p>
           </div>
+        </div>
+        {/* The lattice, not a stock photograph. A product page for a system with
+            no physical form still needs an object, and a structure with a hard
+            silhouette is the closest honest equivalent. */}
+        <div className="shell mt-[clamp(24px,3vw,44px)]">
+          <Figure scene="lattice" className="block h-[clamp(220px,26vw,360px)] w-full" />
+          <p className="eyebrow border-t border-[var(--line)] py-2.5 text-[var(--dim)]">
+            Fig. 03 — a 5&times;5&times;5 lattice, lit and depth-sorted in the browser. No 3D library.
+          </p>
         </div>
       </section>
 
@@ -151,20 +161,20 @@ export default function ArthurPage() {
                   <span className="eyebrow tnum text-[var(--dim)]">{c.n}</span>
                   <h2 className="text-[1.3rem] font-semibold tracking-[-0.025em]">{c.title}</h2>
                 </div>
-                <p className="mt-4 text-[1.22rem] leading-[1.28] font-medium tracking-[-0.022em] text-[var(--text)]">
+                <p className="mt-4 text-[1.22rem] leading-[1.28] font-medium tracking-[-0.022em] text-[var(--ink)]">
                   {c.lead}
                 </p>
               </div>
 
               <div className="max-w-[62ch]">
-                <p className="text-[15.5px] leading-[1.62] text-[var(--muted)]">{c.body}</p>
+                <p className="text-[15.5px] leading-[1.62] text-[var(--mid)]">{c.body}</p>
 
                 {/* The chain. Three cells and two arrows -- it is the shape of
                     the mechanism, and it does more work than a diagram would. */}
                 <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-[var(--line)] py-3.5">
                   {c.chain.map((step, i) => (
                     <span key={step} className="flex items-center gap-4">
-                      <span className="eyebrow text-[var(--muted)]">{step}</span>
+                      <span className="eyebrow text-[var(--mid)]">{step}</span>
                       {i < c.chain.length - 1 && (
                         <span aria-hidden="true" className="text-[var(--line-2)]">
                           &rarr;
@@ -185,24 +195,24 @@ export default function ArthurPage() {
       </section>
 
       {/* ── the demo, on the dark stage ──────────────────────────────── */}
-      <section id="demo" className="bg-[var(--ink)] py-[clamp(64px,8vw,116px)] text-[var(--on-dark)]">
+      <section id="demo" className="bg-[var(--deep)] py-[clamp(64px,8vw,116px)] text-[var(--on-deep)]">
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div data-rise>
-              <p className="eyebrow flex items-center gap-2.5 text-[var(--on-dark-dim)]">
-                <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--signal)" }} />
+              <p className="eyebrow flex items-center gap-2.5 text-[var(--on-deep-dim)]">
+                <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--teal)" }} />
                 Watch the work unfold
               </p>
               <h2 className="display display-lg mt-6">Arthur, in motion.</h2>
             </div>
-            <p className="max-w-[var(--measure)] self-end text-[1.02rem] leading-[1.6] text-[var(--on-dark-mu)]" data-rise>
+            <p className="max-w-[var(--measure)] self-end text-[1.02rem] leading-[1.6] text-[var(--on-deep-mu)]" data-rise>
               Follow a portfolio review through parallel research, proposed changes, a website
               preview, and a verification step.
             </p>
           </div>
 
           <figure
-            className="mt-12 overflow-hidden rounded-[6px] border border-[var(--ink-3)] bg-[var(--ink-2)]"
+            className="mt-12 overflow-hidden rounded-[6px] border border-[var(--deep-line)] bg-[var(--deep-2)]"
             data-rise
           >
             <video
@@ -214,9 +224,9 @@ export default function ArthurPage() {
               <source src="/studio/arthur-demo.mp4" type="video/mp4" />
               <track kind="captions" src="/studio/captions.vtt" srcLang="en" label="English" default />
             </video>
-            <figcaption className="flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-[var(--ink-3)] px-5 py-3.5">
-              <span className="eyebrow text-[var(--signal)]">Simulated demonstration</span>
-              <span className="text-[12.5px] text-[var(--on-dark-mu)]">
+            <figcaption className="flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-[var(--deep-line)] px-5 py-3.5">
+              <span className="eyebrow text-[var(--teal)]">Simulated demonstration</span>
+              <span className="text-[12.5px] text-[var(--on-deep-mu)]">
                 Fictional companies. Simulated interface and outcomes. Silent video with on-screen
                 text — a workflow illustration, not a measured execution claim.
               </span>
@@ -226,12 +236,12 @@ export default function ArthurPage() {
       </section>
 
       {/* ── applications ─────────────────────────────────────────────── */}
-      <section className="bg-[var(--paper-2)] py-[clamp(64px,8vw,116px)]">
+      <section className="bg-[var(--ground)] py-[clamp(64px,8vw,116px)]">
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div data-rise>
               <p className="eyebrow flex items-center gap-2.5 text-[var(--dim)]">
-                <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--signal)" }} />
+                <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--teal)" }} />
                 What this opens up
               </p>
               <h2 className="display display-lg mt-6">
@@ -240,7 +250,7 @@ export default function ArthurPage() {
                 <span style={{ color: "var(--dim)" }}>are the point.</span>
               </h2>
             </div>
-            <p className="max-w-[var(--measure)] self-end text-[1.02rem] leading-[1.6] text-[var(--muted)]" data-rise>
+            <p className="max-w-[var(--measure)] self-end text-[1.02rem] leading-[1.6] text-[var(--mid)]" data-rise>
               Start with the business problem. Define the evidence, the deliverable, and what
               success should look like.
             </p>
@@ -257,7 +267,7 @@ export default function ArthurPage() {
                 <p className="mt-4 text-[1.35rem] leading-[1.32] font-medium tracking-[-0.022em]">
                   {a.question}
                 </p>
-                <p className="mt-5 max-w-[52ch] text-[15px] leading-[1.62] text-[var(--muted)]">
+                <p className="mt-5 max-w-[52ch] text-[15px] leading-[1.62] text-[var(--mid)]">
                   {a.body}
                 </p>
               </div>
@@ -267,7 +277,7 @@ export default function ArthurPage() {
                   {a.produces.map((p) => (
                     <li
                       key={p}
-                      className="border-b border-[var(--line)] py-3.5 text-[15px] text-[var(--text)]"
+                      className="border-b border-[var(--line)] py-3.5 text-[15px] text-[var(--ink)]"
                     >
                       {p}
                     </li>
@@ -299,13 +309,13 @@ export default function ArthurPage() {
                 <summary className="flex cursor-pointer list-none items-start gap-4 text-[1.02rem] font-medium tracking-[-0.015em]">
                   <span
                     aria-hidden="true"
-                    className="mt-[7px] inline-block shrink-0 text-[10px] text-[var(--signal)] transition-transform duration-300 group-open:rotate-90"
+                    className="mt-[7px] inline-block shrink-0 text-[10px] text-[var(--teal)] transition-transform duration-300 group-open:rotate-90"
                   >
                     &#9654;
                   </span>
                   {q}
                 </summary>
-                <p className="mt-3 max-w-[66ch] pl-8 text-[15px] leading-[1.62] text-[var(--muted)]">
+                <p className="mt-3 max-w-[66ch] pl-8 text-[15px] leading-[1.62] text-[var(--mid)]">
                   {a}
                 </p>
               </details>
@@ -315,7 +325,7 @@ export default function ArthurPage() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────────── */}
-      <section className="bg-[var(--paper-2)] py-[clamp(72px,9vw,128px)]">
+      <section className="bg-[var(--ground)] py-[clamp(72px,9vw,128px)]">
         <div className="shell">
           <h2 className="display text-[clamp(2.2rem,5.4vw,4.2rem)]" data-rise>
             Bring us the question.
@@ -323,13 +333,13 @@ export default function ArthurPage() {
           <div className="mt-9 flex flex-wrap gap-3" data-rise>
             <Link
               href="/contact"
-              className="inline-flex h-12 items-center rounded-[3px] bg-[var(--text)] px-6 text-[14.5px] font-semibold text-[var(--paper)] transition-opacity hover:opacity-90"
+              className="inline-flex h-12 items-center rounded-[3px] bg-[var(--ink)] px-6 text-[14.5px] font-semibold text-[var(--paper)] transition-opacity hover:opacity-90"
             >
               Start a project
             </Link>
             <Link
               href="/work"
-              className="inline-flex h-12 items-center rounded-[3px] border border-[var(--line-2)] px-6 text-[14.5px] font-semibold transition-colors hover:border-[var(--text)]"
+              className="inline-flex h-12 items-center rounded-[3px] border border-[var(--line-2)] px-6 text-[14.5px] font-semibold transition-colors hover:border-[var(--ink)]"
             >
               See what we&rsquo;ve shipped
             </Link>

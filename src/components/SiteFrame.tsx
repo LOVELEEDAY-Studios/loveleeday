@@ -1,15 +1,8 @@
-"use client";
-
-import { usePathname } from "next/navigation";
-
-/* The header is fixed so the homepage hero can run to the top of the viewport
-   and the bar can sit transparently on it. Every other page therefore needs the
-   bar's height back as padding, or its first heading hides underneath.
-
-   Reading the route here rather than in the layout keeps the layout a server
-   component: children are passed through untouched and never re-render on the
-   client. */
 export function SiteFrame({ children }: { children: React.ReactNode }) {
-  const home = usePathname() === "/";
-  return <div className={`flex-1 ${home ? "" : "pt-[62px]"}`}>{children}</div>;
+  /* The header used to be `fixed`, so every page except the homepage needed its
+     height back as padding. It is `sticky` now -- it occupies real space in the
+     flow and scrolls with the page until it pins -- so the padding is gone and
+     this component no longer needs to know which route it is on. That also
+     makes it a server component again. */
+  return <div className="flex-1">{children}</div>;
 }

@@ -70,7 +70,7 @@ export default function ContactPage() {
   }
 
   const field =
-    "mt-2 block w-full rounded-[3px] border border-[var(--line-2)] bg-[var(--paper)] px-3.5 py-3 text-[15px] text-[var(--text)] outline-none transition-colors focus:border-[var(--text)]";
+    "mt-2 block w-full rounded-[3px] border border-[var(--line-2)] bg-[var(--paper)] px-3.5 py-3 text-[15px] text-[var(--ink)] outline-none transition-colors focus:border-[var(--ink)]";
 
   return (
     <>
@@ -78,7 +78,7 @@ export default function ContactPage() {
         <div className="shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <div>
             <p className="eyebrow flex items-center gap-2.5 text-[var(--dim)]">
-              <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--signal)" }} />
+              <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--teal)" }} />
               Start a project
             </p>
             <h1 className="display display-lg mt-7">
@@ -88,7 +88,7 @@ export default function ContactPage() {
             </h1>
           </div>
           <div className="max-w-[var(--measure)] self-end">
-            <p className="text-[1.05rem] leading-[1.6] text-[var(--muted)]">
+            <p className="text-[1.05rem] leading-[1.6] text-[var(--mid)]">
               Describe the problem in your own words. You will get a reply from Daniel, not a
               sequence, and a fixed quote with a scope attached rather than a discovery call.
             </p>
@@ -96,7 +96,7 @@ export default function ContactPage() {
               Prefer email?{" "}
               <a
                 href="mailto:hello@loveleedaystudios.com"
-                className="font-medium text-[var(--text)] underline decoration-[var(--line-2)] underline-offset-4 hover:decoration-[var(--signal)]"
+                className="font-medium text-[var(--ink)] underline decoration-[var(--line-2)] underline-offset-4 hover:decoration-[var(--teal)]"
               >
                 hello@loveleedaystudios.com
               </a>
@@ -166,8 +166,8 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="inline-flex h-12 items-center rounded-[3px] px-6 text-[14.5px] font-semibold text-white transition-colors hover:bg-[var(--signal-dd)] disabled:opacity-60"
-                style={{ background: "var(--signal-d)" }}
+                className="inline-flex h-12 items-center rounded-[3px] px-6 text-[14.5px] font-semibold text-white transition-colors hover:bg-[var(--teal-d)] disabled:opacity-60"
+                style={{ background: "var(--teal-d)" }}
               >
                 {status === "submitting" ? "Sending…" : "Send the brief"}
               </button>
@@ -177,7 +177,7 @@ export default function ContactPage() {
             {status === "error" && (
               <p
                 role="alert"
-                className="mt-5 border-l-2 border-[var(--signal)] pl-4 text-[14px] text-[var(--text)]"
+                className="mt-5 border-l-2 border-[var(--teal)] pl-4 text-[14px] text-[var(--ink)]"
               >
                 {errorMessage}
               </p>
@@ -198,7 +198,7 @@ export default function ContactPage() {
                   </span>
                   <div>
                     <p className="text-[15px] font-semibold">{t}</p>
-                    <p className="mt-1.5 text-[13.5px] leading-[1.55] text-[var(--muted)]">{d}</p>
+                    <p className="mt-1.5 text-[13.5px] leading-[1.55] text-[var(--mid)]">{d}</p>
                   </div>
                 </li>
               ))}
@@ -208,7 +208,7 @@ export default function ContactPage() {
             </p>
             <Link
               href="/work"
-              className="mt-4 inline-block text-[13.5px] font-semibold underline decoration-[var(--line-2)] underline-offset-4 hover:decoration-[var(--signal)]"
+              className="mt-4 inline-block text-[13.5px] font-semibold underline decoration-[var(--line-2)] underline-offset-4 hover:decoration-[var(--teal)]"
             >
               See what we&rsquo;ve shipped &rarr;
             </Link>

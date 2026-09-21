@@ -80,7 +80,7 @@ export function BeforeAfter({
 
         {/* captions, each fading out as its side is covered */}
         <span
-          className="pointer-events-none absolute left-3 top-3 bg-[var(--ground)]/85 px-2.5 py-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--text)] transition-opacity"
+          className="pointer-events-none absolute left-3 top-3 bg-[var(--ground)]/85 px-2.5 py-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--ink)] transition-opacity"
           style={{ opacity: pos > 14 ? 1 : 0 }}
         >
           {beforeCaption}
