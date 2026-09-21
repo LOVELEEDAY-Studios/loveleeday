@@ -1,4 +1,6 @@
 import pathlib
+
+import store
 #!/usr/bin/env python3
 """THE BUILD. One site, five pages, every decision from this session in it.
 
@@ -41,6 +43,8 @@ OUT.mkdir(exist_ok=True)
 LIVE = json.loads((HERE / "live-content.json").read_text())
 CH = LIVE["chrome"]
 BRAIN_JS = (HERE / "brain3d.js").read_text()
+_brain = store.read_store()
+BRAIN_JS = BRAIN_JS.replace("__OBS__", f"{_brain['props']:,}").replace("__SRC__", str(_brain["sources"]))
 STUDIES = [dict(s, frame=f) for s, f in zip(LIVE["studies"], LIVE["study_frames"])]
 P = "../../../public/studio/"
 PW = "../../../public/portal/collab/"
@@ -86,83 +90,11 @@ PFOOT = {"Platform": ("Five components, each a rule in the write path", "Read th
          "Work": ("Thirty-eight sites measured, six rebuilt, one catalogue corrected", "See all the work"),
          "Company": ("Fixed quote, written scope, a reply from a person", "Start a project")}
 
-def live_ticker():
-    """Read the ticker from the ontology instead of typing it.
-
-    It used to be a literal list, and within hours of writing it five of its
-    eleven fields were wrong -- OBSERVATIONS said 538 against a real 1,655 and
-    SOURCES said 4 against 7 -- because connecting a source changes the numbers
-    and nothing told the page. A site whose argument is that evidence beats
-    claims cannot publish figures that no longer trace to anything.
-
-    So the band is GENERATED at build time from the store it describes, and the
-    build FAILS if the store cannot be read. A stale number is worse than a
-    missing band: the band exists to say the system is live, and a wrong one
-    says the opposite about the only thing it is there to prove.
-    """
-    import json, subprocess
-    js = r"""
-    import('%s/lib/ontology/index.mjs').then(O=>{const db=O.open();
-      const q=s=>db.prepare(s).get();
-      console.log(JSON.stringify({
-        objects: q('select count(*) n from onto_objects').n,
-        props:   q('select count(*) n from onto_props').n,
-        live:    q('select count(*) n from onto_props where superseded_by is null').n,
-        nolin:   q('select count(*) n from onto_props where source_system is null or source_ref is null').n,
-        srcs:    db.prepare('select distinct source_system s from onto_props order by 1').all().map(r=>r.s),
-        oldest:  q('select min(valid_from) v from onto_props').v,
-        last:    q('select max(observed_at) v from onto_props').v,
-        watches: q('select count(*) n from onto_watches').n,
-        fired:   q('select count(*) n from onto_firings').n}));})
-    """ % str(pathlib.Path.home() / 'arthur')
-    out = subprocess.run(['node', '-e', js], capture_output=True, text=True,
-                         cwd=str(pathlib.Path.home() / 'arthur'), timeout=60)
-    if out.returncode != 0 or not out.stdout.strip():
-        raise SystemExit('BUILD STOPPED: could not read the ontology for the ticker.\n'
-                         'Publishing typed figures is how the band went stale before.\n'
-                         + (out.stderr or '')[:400])
-    d = json.loads(out.stdout)
-    # An unreadable store was never the real risk: open() CREATES the database
-    # if it is missing, so a wiped store returns a clean, well-formed set of
-    # ZEROS and the build happily publishes "OBSERVATIONS 0". Verified by moving
-    # the file aside -- the first version of this guard passed. Assert the shape
-    # of a live store, not merely that a query answered.
-    if d['objects'] < 1 or d['props'] < 1 or not d['srcs']:
-        raise SystemExit(
-            'BUILD STOPPED: the ontology answered but is EMPTY '
-            f"(objects={d['objects']}, observations={d['props']}, sources={len(d['srcs'])}).\n"
-            'open() creates a fresh database when the file is missing, so this is what a\n'
-            'wiped or mis-pathed store looks like. Publishing zeros would claim the system\n'
-            'is live and prove the opposite.')
-    if d['nolin']:
-        raise SystemExit(
-            f"BUILD STOPPED: {d['nolin']} observation(s) carry no lineage. The band claims\n"
-            '100% lineage cover; it may not be printed while that is untrue.')
-    cover = '100%' if d['nolin'] == 0 else f"{100*(d['props']-d['nolin'])//d['props']}%"
-    return [("OBJECTS", f"{d['objects']:,}", ""),
-            ("OBSERVATIONS", f"{d['props']:,}", ""),
-            ("IN FORCE", f"{d['live']:,}", ""),
-            ("SOURCES", str(len(d['srcs'])), ""),
-            ("LINEAGE COVER", cover, ""),
-            ("WITHOUT LINEAGE", str(d['nolin']), ""),
-            ("STANDING CONDITIONS", str(d['watches']), ""),
-            ("FIRED", str(d['fired']), ""),
-            ("SITES MEASURED", "38", ""),
-            ("REBUILDS", "6", ""),
-            ("OLDEST OBSERVATION", str(d['oldest'])[:10], ""),
-            ("LAST WRITE", str(d['last'])[:10], ""),
-            ("SOURCE SYSTEMS", " \u00b7 ".join(d['srcs']), "")]
+from store import live_ticker, live_stats
 
 TICKER = live_ticker()
 
-STATS = [("OBJ", "41", "Objects resolved",
-          "Records from four systems collapsed onto single objects."),
-         ("OBS", "538", "Property observations",
-          "Each carrying its source system and source reference."),
-         ("SRC", "4", "Live source systems",
-          "Coverage is exactly as wide as what is connected."),
-         ("UNV", "0", "Unverified values",
-          "A write without lineage is refused at the path.")]
+STATS = live_stats()
 
 ASKED_FOUND = [("Asked", "Migrate the price lists into the new ERP."),
                ("Found", "Hundreds of items were selling below their own cost.")]
@@ -798,7 +730,7 @@ def arthur():
   <span class=lab>The actual output</span>
   <h2>Every value, <span class=ser>with its receipt.</span></h2>
   {console()}
-  <p class=note>41 objects, 538 property observations, four source systems. The last
+  <p class=note>{_brain['objects']:,} objects, {_brain['props']:,} property observations, {_brain['sources']} source systems. The last
   command asks what was known on a date, and the store declines to answer with anything
   it had not yet seen.</p>
 </div></section>
