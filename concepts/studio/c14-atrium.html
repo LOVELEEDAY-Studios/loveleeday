@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Concept 14 &mdash; Atrium</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700;800&family=Archivo:wght@100;200;300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Figtree:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel=stylesheet>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.ribbon{position:sticky;top:0;z-index:99;background:#101012;color:#E9E9EC;
+  font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.14em;
+  text-transform:uppercase;padding:9px 18px}
+
+:root{--bg:#140A12;--bg2:#1E0F1A;--tx:#F7EFF3;--mu:#B9A3B0;--line:#33202E;
+  --gold:#E9C46A;--rose:#C86B7E}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:400 16px/1.62 'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:1160px;margin:0 auto;padding:0 clamp(20px,3vw,40px)}
+nav{position:sticky;top:29px;z-index:40;background:rgba(20,10,18,.8);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;height:64px;gap:28px}
+nav .bd{font:800 18px/1 'Fraunces';letter-spacing:-.02em}
+nav .lk{display:flex;gap:24px;font:500 13.5px/1 'Figtree';color:var(--mu)}
+nav .rt{margin-left:auto;display:flex;gap:10px}
+.btn{border-radius:99px;padding:9px 18px;font:600 13px/1 'Figtree'}
+.btn.g{background:var(--gold);color:#2A1508}
+.btn.o{border:1px solid var(--line);color:var(--tx)}
+.hero{position:relative;text-align:center;padding:clamp(60px,9vw,128px) 0 clamp(40px,6vw,88px);
+  overflow:hidden}
+.halo{position:absolute;left:50%;top:38%;width:min(1000px,120vw);height:min(1000px,120vw);
+  transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(233,196,106,.20),rgba(200,107,126,.10) 46%,transparent 70%)}
+.rays{position:absolute;left:50%;top:38%;width:min(900px,110vw);height:min(900px,110vw);
+  transform:translate(-50%,-50%);opacity:.42}
+.hero .w{position:relative;z-index:3}
+.hero h1{font:300 clamp(2.5rem,5.6vw,4.4rem)/1.06 'Fraunces';letter-spacing:-.025em;margin:0 auto;
+  max-width:17ch}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{margin:24px auto 0;max-width:50ch;color:var(--mu);font-size:17px}
+.acts{margin-top:30px;display:flex;gap:12px;justify-content:center}
+.proof{position:relative;z-index:3;margin-top:clamp(40px,5vw,78px);display:grid;gap:26px;
+  align-items:center}
+@media(min-width:840px){.proof{grid-template-columns:1fr 1.1fr 1fr}}
+.proof .big{font:300 clamp(3.4rem,7vw,5.6rem)/1 'Fraunces';letter-spacing:-.04em;color:var(--gold);
+  font-variant-numeric:tabular-nums}
+.proof .cap{margin-top:10px;font-size:13.5px;color:var(--mu);line-height:1.5}
+.proof figure{margin:0;border-radius:999px;overflow:hidden;width:min(260px,60vw);
+  aspect-ratio:1;margin-inline:auto;border:1px solid var(--line)}
+.proof img{width:100%;height:100%;object-fit:cover}
+.proof .who b{display:block;font:600 16px/1.3 'Figtree'}
+.proof .who span{display:block;margin-top:5px;font-size:13.5px;color:var(--mu)}
+section{padding:clamp(52px,7vw,96px) 0;border-top:1px solid var(--line)}
+.eyebrow{font:600 11px/1 'Figtree';letter-spacing:.2em;text-transform:uppercase;color:var(--rose)}
+h2{font:300 clamp(1.9rem,3.8vw,3rem)/1.08 'Fraunces';letter-spacing:-.03em;margin:14px 0 0}
+h2 em{font-style:italic;color:var(--gold)}
+.rows{margin-top:32px;border-top:1px solid var(--line)}
+.rows .r{display:grid;gap:18px;padding:19px 0;border-bottom:1px solid var(--line);align-items:baseline}
+@media(min-width:820px){.rows .r{grid-template-columns:56px 1fr 1.4fr}}
+.rows .n{font:500 12.5px/1 'Figtree';color:var(--gold)}
+.rows b{font:600 17px/1.25 'Figtree'}
+.rows p{margin:0;font-size:14.5px;color:var(--mu);line-height:1.6}
+footer{padding:40px 0 66px;color:var(--mu);font-size:12.5px;border-top:1px solid var(--line)}
+
+</style></head><body>
+<div class=ribbon>Concept 14 of 15 &mdash; &ldquo;Atrium&rdquo; &middot; aubergine, a luminous halo, one enormous figure &middot; ref: WRITER &middot; Magnific</div>
+
+<nav><div class=w><span class=bd>LOVELEEDAY</span>
+  <span class=lk><a href="#">Platform</a><a href="#">Products</a><a href="#">Work</a>
+    <a href="#">Research</a><a href="#">Company</a></span>
+  <span class=rt><a class="btn o" href="#">Sign in</a><a class="btn g" href="#">Request a demo</a></span>
+</div></nav>
+<header class=hero>
+  <div class=halo></div>
+  <svg class=rays viewBox="0 0 600 600"><line x1="300" y1="300" x2="592.0" y2="300.0" stroke="#E9C46A" stroke-width="1" opacity="0.10"/><line x1="300" y1="300" x2="590.9" y2="325.4" stroke="#E9C46A" stroke-width="1" opacity="0.42"/><line x1="300" y1="300" x2="587.6" y2="350.7" stroke="#E9C46A" stroke-width="1" opacity="0.59"/><line x1="300" y1="300" x2="582.1" y2="375.6" stroke="#E9C46A" stroke-width="1" opacity="0.53"/><line x1="300" y1="300" x2="574.4" y2="399.9" stroke="#E9C46A" stroke-width="1" opacity="0.27"/><line x1="300" y1="300" x2="564.6" y2="423.4" stroke="#E9C46A" stroke-width="1" opacity="0.28"/><line x1="300" y1="300" x2="552.9" y2="446.0" stroke="#E9C46A" stroke-width="1" opacity="0.54"/><line x1="300" y1="300" x2="539.2" y2="467.5" stroke="#E9C46A" stroke-width="1" opacity="0.59"/><line x1="300" y1="300" x2="523.7" y2="487.7" stroke="#E9C46A" stroke-width="1" opacity="0.42"/><line x1="300" y1="300" x2="506.5" y2="506.5" stroke="#E9C46A" stroke-width="1" opacity="0.11"/><line x1="300" y1="300" x2="487.7" y2="523.7" stroke="#E9C46A" stroke-width="1" opacity="0.43"/><line x1="300" y1="300" x2="467.5" y2="539.2" stroke="#E9C46A" stroke-width="1" opacity="0.59"/><line x1="300" y1="300" x2="446.0" y2="552.9" stroke="#E9C46A" stroke-width="1" opacity="0.53"/><line x1="300" y1="300" x2="423.4" y2="564.6" stroke="#E9C46A" stroke-width="1" opacity="0.26"/><line x1="300" y1="300" x2="399.9" y2="574.4" stroke="#E9C46A" stroke-width="1" opacity="0.28"/><line x1="300" y1="300" x2="375.6" y2="582.1" stroke="#E9C46A" stroke-width="1" opacity="0.54"/><line x1="300" y1="300" x2="350.7" y2="587.6" stroke="#E9C46A" stroke-width="1" opacity="0.59"/><line x1="300" y1="300" x2="325.4" y2="590.9" stroke="#E9C46A" stroke-width="1" opacity="0.41"/><line x1="300" y1="300" x2="300.0" y2="592.0" stroke="#E9C46A" stroke-width="1" opacity="0.12"/><line x1="300" y1="300" x2="274.6" y2="590.9" stroke="#E9C46A" stroke-width="1" opacity="0.43"/><line x1="300" y1="300" x2="249.3" y2="587.6" stroke="#E9C46A" stroke-width="1" opacity="0.60"/><line x1="300" y1="300" x2="224.4" y2="582.1" stroke="#E9C46A" stroke-width="1" opacity="0.52"/><line x1="300" y1="300" x2="200.1" y2="574.4" stroke="#E9C46A" stroke-width="1" opacity="0.25"/><line x1="300" y1="300" x2="176.6" y2="564.6" stroke="#E9C46A" stroke-width="1" opacity="0.29"/><line x1="300" y1="300" x2="154.0" y2="552.9" stroke="#E9C46A" stroke-width="1" opacity="0.54"/><line x1="300" y1="300" x2="132.5" y2="539.2" stroke="#E9C46A" stroke-width="1" opacity="0.59"/><line x1="300" y1="300" x2="112.3" y2="523.7" stroke="#E9C46A" stroke-width="1" opacity="0.40"/><line x1="300" y1="300" x2="93.5" y2="506.5" stroke="#E9C46A" stroke-width="1" opacity="0.13"/><line x1="300" y1="300" x2="76.3" y2="487.7" stroke="#E9C46A" stroke-width="1" opacity="0.44"/><line x1="300" y1="300" x2="60.8" y2="467.5" stroke="#E9C46A" stroke-width="1" opacity="0.60"/><line x1="300" y1="300" x2="47.1" y2="446.0" stroke="#E9C46A" stroke-width="1" opacity="0.52"/><line x1="300" y1="300" x2="35.4" y2="423.4" stroke="#E9C46A" stroke-width="1" opacity="0.24"/><line x1="300" y1="300" x2="25.6" y2="399.9" stroke="#E9C46A" stroke-width="1" opacity="0.30"/><line x1="300" y1="300" x2="17.9" y2="375.6" stroke="#E9C46A" stroke-width="1" opacity="0.55"/><line x1="300" y1="300" x2="12.4" y2="350.7" stroke="#E9C46A" stroke-width="1" opacity="0.59"/><line x1="300" y1="300" x2="9.1" y2="325.4" stroke="#E9C46A" stroke-width="1" opacity="0.40"/><line x1="300" y1="300" x2="8.0" y2="300.0" stroke="#E9C46A" stroke-width="1" opacity="0.13"/><line x1="300" y1="300" x2="9.1" y2="274.6" stroke="#E9C46A" stroke-width="1" opacity="0.45"/><line x1="300" y1="300" x2="12.4" y2="249.3" stroke="#E9C46A" stroke-width="1" opacity="0.60"/><line x1="300" y1="300" x2="17.9" y2="224.4" stroke="#E9C46A" stroke-width="1" opacity="0.51"/><line x1="300" y1="300" x2="25.6" y2="200.1" stroke="#E9C46A" stroke-width="1" opacity="0.24"/><line x1="300" y1="300" x2="35.4" y2="176.6" stroke="#E9C46A" stroke-width="1" opacity="0.31"/><line x1="300" y1="300" x2="47.1" y2="154.0" stroke="#E9C46A" stroke-width="1" opacity="0.55"/><line x1="300" y1="300" x2="60.8" y2="132.5" stroke="#E9C46A" stroke-width="1" opacity="0.58"/><line x1="300" y1="300" x2="76.3" y2="112.3" stroke="#E9C46A" stroke-width="1" opacity="0.39"/><line x1="300" y1="300" x2="93.5" y2="93.5" stroke="#E9C46A" stroke-width="1" opacity="0.14"/><line x1="300" y1="300" x2="112.3" y2="76.3" stroke="#E9C46A" stroke-width="1" opacity="0.45"/><line x1="300" y1="300" x2="132.5" y2="60.8" stroke="#E9C46A" stroke-width="1" opacity="0.60"/><line x1="300" y1="300" x2="154.0" y2="47.1" stroke="#E9C46A" stroke-width="1" opacity="0.51"/><line x1="300" y1="300" x2="176.6" y2="35.4" stroke="#E9C46A" stroke-width="1" opacity="0.23"/><line x1="300" y1="300" x2="200.1" y2="25.6" stroke="#E9C46A" stroke-width="1" opacity="0.31"/><line x1="300" y1="300" x2="224.4" y2="17.9" stroke="#E9C46A" stroke-width="1" opacity="0.55"/><line x1="300" y1="300" x2="249.3" y2="12.4" stroke="#E9C46A" stroke-width="1" opacity="0.58"/><line x1="300" y1="300" x2="274.6" y2="9.1" stroke="#E9C46A" stroke-width="1" opacity="0.38"/><line x1="300" y1="300" x2="300.0" y2="8.0" stroke="#E9C46A" stroke-width="1" opacity="0.15"/><line x1="300" y1="300" x2="325.4" y2="9.1" stroke="#E9C46A" stroke-width="1" opacity="0.46"/><line x1="300" y1="300" x2="350.7" y2="12.4" stroke="#E9C46A" stroke-width="1" opacity="0.60"/><line x1="300" y1="300" x2="375.6" y2="17.9" stroke="#E9C46A" stroke-width="1" opacity="0.50"/><line x1="300" y1="300" x2="399.9" y2="25.6" stroke="#E9C46A" stroke-width="1" opacity="0.22"/><line x1="300" y1="300" x2="423.4" y2="35.4" stroke="#E9C46A" stroke-width="1" opacity="0.32"/><line x1="300" y1="300" x2="446.0" y2="47.1" stroke="#E9C46A" stroke-width="1" opacity="0.56"/><line x1="300" y1="300" x2="467.5" y2="60.8" stroke="#E9C46A" stroke-width="1" opacity="0.58"/><line x1="300" y1="300" x2="487.7" y2="76.3" stroke="#E9C46A" stroke-width="1" opacity="0.37"/><line x1="300" y1="300" x2="506.5" y2="93.5" stroke="#E9C46A" stroke-width="1" opacity="0.16"/><line x1="300" y1="300" x2="523.7" y2="112.3" stroke="#E9C46A" stroke-width="1" opacity="0.46"/><line x1="300" y1="300" x2="539.2" y2="132.5" stroke="#E9C46A" stroke-width="1" opacity="0.60"/><line x1="300" y1="300" x2="552.9" y2="154.0" stroke="#E9C46A" stroke-width="1" opacity="0.50"/><line x1="300" y1="300" x2="564.6" y2="176.6" stroke="#E9C46A" stroke-width="1" opacity="0.21"/><line x1="300" y1="300" x2="574.4" y2="200.1" stroke="#E9C46A" stroke-width="1" opacity="0.33"/><line x1="300" y1="300" x2="582.1" y2="224.4" stroke="#E9C46A" stroke-width="1" opacity="0.56"/><line x1="300" y1="300" x2="587.6" y2="249.3" stroke="#E9C46A" stroke-width="1" opacity="0.58"/><line x1="300" y1="300" x2="590.9" y2="274.6" stroke="#E9C46A" stroke-width="1" opacity="0.37"/></svg>
+  <div class=w>
+    <h1>The intelligence layer for the business you <em>already run.</em></h1>
+    <p>Five companies run on it before any client saw it. Every figure it produces names the system it came from.</p>
+    <div class=acts><a class="btn g" href="#">Request a demo</a><a class="btn o" href="#">Try it free</a></div>
+    <div class=proof>
+      <div><div class=big>11d</div><div class=cap>from first commit to the first paying venue, on olldae</div></div>
+      <!-- NO NAMED ATTRIBUTION ON A PHOTOGRAPH OF SOMEBODY ELSE. The first
+           version captioned this frame "Daniel J. May, Founder", which is a
+           stock-register photograph of two people who are not him. The WRITER
+           layout this borrows puts a real named customer in that circle; until
+           there is a real one, the frame stays unattributed. -->
+      <figure><img src="../micruity/x_office.jpg" alt=""></figure>
+      <div class=who><b>Five companies, owned and run</b>
+        <span>olldae &middot; Kronos &middot; Duezy &middot; Ops Layer &middot; Dabney &amp; Co.</span>
+        <div class=cap style="margin-top:14px">Six client rebuilds shipped this year, none of them named.</div></div>
+    </div>
+  </div>
+</header>
+<section><div class=w><p class=eyebrow>The guarantees</p>
+  <h2>Five properties. <em>Enforced,</em> not promised.</h2>
+  <div class=rows><div class=r><div class=n>01</div><div><b>Identity resolution</b></div><div><p>A payments customer, a vendor id in the ledger and a string in an email signature are three records and one company. Questions are asked about the object, never about whichever string a sour</p></div></div><div class=r><div class=n>02</div><div><b>Bitemporality</b></div><div><p>Every property knows when it was valid in the world and when it was observed. Judging an August decision with September knowledge is look-ahead bias, and the two timelines are kept apart so </p></div></div><div class=r><div class=n>03</div><div><b>Lineage</b></div><div><p>Writing a value requires its source system and source reference. The trail prints for any figure. A number with no trail is not reportable — mechanically, not as a matter of care.</p></div></div><div class=r><div class=n>04</div><div><b>Bounded autonomy</b></div><div><p>Actions are classified by blast radius. Only the reversible class runs unattended; anything touching money, outbound communication or a legal document waits for a person.</p></div></div><div class=r><div class=n>05</div><div><b>Observed completion</b></div><div><p>Work closes on a value read back out of the system that was supposed to change. An HTTP 200 is not evidence that anything happened.</p></div></div></div>
+</div></section>
+<footer><div class=w>LOVELEEDAY Studios &middot; Kalamazoo, Michigan</div></footer>
+</body></html>

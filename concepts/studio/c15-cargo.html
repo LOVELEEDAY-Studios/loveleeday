@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Concept 15 &mdash; Cargo</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700;800&family=Archivo:wght@100;200;300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Figtree:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel=stylesheet>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.ribbon{position:sticky;top:0;z-index:99;background:#101012;color:#E9E9EC;
+  font:500 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.14em;
+  text-transform:uppercase;padding:9px 18px}
+
+:root{--ground:#F1EDE6;--card:#FFFFFF;--ink:#16141F;--mu:#565166;--line:#E2DCD2;
+  --blue:#2B4BFF;--tang:#FF6B2C;--mint:#0FB57A}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font:400 16px/1.6 'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:1220px;margin:0 auto;padding:0 clamp(20px,3vw,40px)}
+nav .w{display:flex;align-items:center;height:64px;gap:28px}
+nav .bd{display:flex;align-items:center;gap:9px;
+  font:800 17px/1 'Bricolage Grotesque';letter-spacing:-.04em}
+nav .bd i{width:20px;height:20px;border-radius:7px;
+  background:linear-gradient(135deg,var(--blue),var(--mint));display:block}
+nav .lk{display:flex;gap:22px;font:500 13.5px/1 'Figtree';color:var(--mu)}
+nav .rt{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{border-radius:10px;padding:10px 17px;font:600 13.5px/1 'Figtree'}
+.btn.p{background:var(--ink);color:#fff}
+.btn.q{color:var(--mu)}
+.card{margin:0 auto;max-width:1160px;background:var(--card);border-radius:26px;
+  padding:clamp(48px,7vw,104px) clamp(22px,4vw,64px) clamp(40px,5vw,72px);
+  text-align:center;position:relative;overflow:hidden;
+  box-shadow:0 44px 90px -60px rgba(22,20,31,.42)}
+.card h1{font:800 clamp(2.4rem,5.6vw,4.4rem)/1.03 'Bricolage Grotesque';letter-spacing:-.045em;
+  margin:0 auto;max-width:17ch}
+.card h1 span{background:linear-gradient(96deg,var(--blue),var(--mint) 58%,var(--tang));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.card p{margin:22px auto 0;max-width:50ch;color:var(--mu);font-size:17.5px}
+.card .acts{margin-top:28px}
+.blob{position:absolute;border-radius:34% 66% 58% 42%/48% 38% 62% 52%;filter:blur(.4px)}
+.b1{width:120px;height:120px;left:-26px;top:38%;background:linear-gradient(140deg,#FFB020,#FF6B2C)}
+.b2{width:92px;height:92px;right:24px;top:22%;background:linear-gradient(140deg,#2B4BFF,#7FA0FF)}
+.b3{width:74px;height:74px;right:-18px;bottom:16%;background:linear-gradient(140deg,#0FB57A,#8CE8C6)}
+.b4{width:64px;height:64px;left:44px;bottom:12%;background:linear-gradient(140deg,#C86BFF,#FF9AD5)}
+.logos{padding:clamp(34px,4vw,58px) 0 clamp(40px,5vw,70px)}
+.logos .lead{text-align:center;font:500 12px/1.6 'Figtree';letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mu)}
+.lgrid{display:grid;gap:22px 30px;margin-top:28px;
+  grid-template-columns:repeat(auto-fit,minmax(118px,1fr));align-items:center}
+.lgrid span{text-align:center;font:700 16px/1 'Bricolage Grotesque';color:#8B8598;
+  letter-spacing:-.03em}
+section{padding:clamp(48px,6vw,88px) 0}
+.eyebrow{font:600 11.5px/1 'Figtree';letter-spacing:.18em;text-transform:uppercase;color:var(--tang)}
+h2{font:800 clamp(1.9rem,3.8vw,3rem)/1.06 'Bricolage Grotesque';letter-spacing:-.042em;margin:14px 0 0}
+.tiles{display:grid;gap:16px;margin-top:34px}
+@media(min-width:820px){.tiles{grid-template-columns:repeat(3,1fr)}}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px 30px}
+.tile .dot{width:34px;height:34px;border-radius:11px;display:block;
+  background:linear-gradient(140deg,var(--blue),var(--mint))}
+.tile:nth-child(2) .dot{background:linear-gradient(140deg,var(--tang),#FFB020)}
+.tile:nth-child(3) .dot{background:linear-gradient(140deg,#C86BFF,#7FA0FF)}
+.tile b{display:block;margin:16px 0 0;font:700 18px/1.22 'Bricolage Grotesque';letter-spacing:-.03em}
+.tile p{margin:9px 0 0;font-size:14.5px;line-height:1.6;color:var(--mu)}
+footer{border-top:1px solid var(--line);padding:36px 0 62px;color:var(--mu);font-size:13px}
+
+</style></head><body>
+<div class=ribbon>Concept 15 of 15 &mdash; &ldquo;Cargo&rdquo; &middot; warm card on a soft ground, objects, a logo grid as argument &middot; ref: Clay &middot; GitBook</div>
+
+<nav><div class=w><span class=bd><i></i>loveleeday</span>
+  <span class=lk><a href="#">Product</a><a href="#">Use cases</a><a href="#">Solutions</a>
+    <a href="#">Work</a><a href="#">Company</a></span>
+  <span class=rt><a class="btn q" href="#">Log in</a><a class="btn p" href="#">Start a project</a></span>
+</div></nav>
+<div class=w><div class=card>
+  <span class="blob b1"></span><span class="blob b2"></span>
+  <span class="blob b3"></span><span class="blob b4"></span>
+  <h1>Go to market with <span>unique data</span> &mdash; and the systems to act on it</h1>
+  <p>One object per company, the date it was true, the trail back to the source, and proof the work ran.</p>
+  <div class=acts><a class="btn p" href="#">Start a project &rarr;</a></div>
+</div></div>
+<div class=logos><div class=w>
+  <p class=lead>Five companies we own and run &middot; six rebuilds shipped this year</p>
+  <div class=lgrid><span>olldae</span><span>KRONOS</span><span>Duezy</span><span>Dabney &amp; Co.</span><span>Ops Layer</span><span>Arthur</span><span>RNA therapeutics</span><span>Utility-scale solar</span><span>AI service desk</span><span>Advanced materials</span><span>Retirement income</span><span>Lending software</span></div>
+</div></div>
+<section><div class=w><p class=eyebrow>The guarantees</p>
+  <h2>Five properties. Enforced, not promised.</h2>
+  <div class=tiles><div class=tile><span class=dot></span><b>Identity resolution</b><p>A payments customer, a vendor id in the ledger and a string in an email signature are three records and one company. Questions are asked about the obj</p></div><div class=tile><span class=dot></span><b>Bitemporality</b><p>Every property knows when it was valid in the world and when it was observed. Judging an August decision with September knowledge is look-ahead bias, </p></div><div class=tile><span class=dot></span><b>Lineage</b><p>Writing a value requires its source system and source reference. The trail prints for any figure. A number with no trail is not reportable — mechanica</p></div></div>
+</div></section>
+<footer><div class=w>LOVELEEDAY Studios &middot; Kalamazoo, Michigan</div></footer>
+</body></html>
