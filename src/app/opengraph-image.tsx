@@ -1,88 +1,114 @@
-import { ImageResponse } from 'next/og';
+import { ImageResponse } from "next/og";
 
-export const alt = 'LOVELEEDAY Studios — Fixed price. Production code. Done in days.';
+/* The share card. It is the only part of the site most people see first, and it
+   was still selling the old positioning -- "Fixed price. Production code. Done
+   in days." in Georgia on #111 -- months after the company stopped describing
+   itself that way. A stale OG image is the one design asset that keeps shipping
+   the previous strategy to every link anyone pastes. */
+
+export const alt = "LOVELEEDAY Studios — one object, every source";
 export const size = { width: 1200, height: 630 };
-export const contentType = 'image/png';
+export const contentType = "image/png";
 
 export default function OGImage() {
   return new ImageResponse(
     (
       <div
         style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'space-between',
-          backgroundColor: '#111111',
-          padding: '72px 80px',
-          fontFamily: 'serif',
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          backgroundColor: "#08090B",
+          padding: "68px 76px",
+          fontFamily: "sans-serif",
+          position: "relative",
         }}
       >
-        {/* Logo mark */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <svg width="52" height="52" viewBox="0 0 100 100" fill="none">
-            <rect x="20" y="20" width="25" height="25" stroke="#F3F2EE" strokeWidth="2" />
-            <rect x="55" y="20" width="25" height="25" fill="#F3F2EE" />
-            <rect x="20" y="55" width="25" height="25" fill="#F3F2EE" />
-            <path d="M55 55H80V80H55V55Z" stroke="#F3F2EE" strokeWidth="2" />
-            <circle cx="67.5" cy="67.5" r="4" fill="#F3F2EE" />
-          </svg>
-        </div>
-
-        {/* Main copy */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div
-            style={{
-              fontSize: '72px',
-              fontWeight: 600,
-              color: '#F3F2EE',
-              letterSpacing: '-0.04em',
-              lineHeight: 1,
-              fontFamily: 'Georgia, serif',
-            }}
-          >
-            LOVELEEDAY
-          </div>
-          <div
-            style={{
-              fontSize: '28px',
-              color: '#9A9990',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              fontFamily: 'monospace',
-            }}
-          >
-            Studios™
-          </div>
-          <div
-            style={{
-              fontSize: '32px',
-              color: '#D4D2C9',
-              marginTop: '16px',
-              fontFamily: 'monospace',
-              letterSpacing: '-0.01em',
-            }}
-          >
-            Fixed price. Production code. Done in days.
-          </div>
-        </div>
-
-        {/* Bottom tag */}
+        {/* the signal, as a single bar rather than a logo treatment */}
         <div
           style={{
-            fontSize: '18px',
-            color: '#5A5A55',
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase',
-            fontFamily: 'monospace',
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: "10px",
+            height: "630px",
+            backgroundColor: "#FF4713",
+            display: "flex",
+          }}
+        />
+
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+            <rect x="18" y="18" width="27" height="27" stroke="#F5F5F2" strokeWidth="4" />
+            <rect x="55" y="18" width="27" height="27" fill="#F5F5F2" />
+            <rect x="18" y="55" width="27" height="27" fill="#F5F5F2" />
+            <path d="M55 55H82V82H55V55Z" stroke="#F5F5F2" strokeWidth="4" />
+            <circle cx="68.5" cy="68.5" r="7" fill="#FF4713" />
+          </svg>
+          <div style={{ display: "flex", fontSize: "23px", color: "#F5F5F2", fontWeight: 600, letterSpacing: "0.02em" }}>
+            LOVELEEDAY
+            <span style={{ color: "#6B7179", marginLeft: "9px" }}>Studios</span>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            style={{
+              display: "flex",
+              fontSize: "104px",
+              fontWeight: 700,
+              color: "#F5F5F2",
+              letterSpacing: "-0.045em",
+              lineHeight: 1,
+            }}
+          >
+            One object.
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontSize: "104px",
+              fontWeight: 700,
+              color: "#6B7179",
+              letterSpacing: "-0.045em",
+              lineHeight: 1.06,
+            }}
+          >
+            Every source.
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontSize: "27px",
+              color: "#A0A6AE",
+              marginTop: "28px",
+              maxWidth: "820px",
+              lineHeight: 1.4,
+            }}
+          >
+            Intelligence architecture, and the production software that runs on top of it.
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            fontSize: "17px",
+            color: "#6B7179",
+            letterSpacing: "0.09em",
+            textTransform: "uppercase",
+            borderTop: "1px solid #1B1F27",
+            paddingTop: "22px",
           }}
         >
-          loveleedaystudios.com
+          <span>loveleedaystudios.com</span>
+          <span>Kalamazoo, Michigan</span>
         </div>
       </div>
     ),
-    { ...size }
+    { ...size },
   );
 }

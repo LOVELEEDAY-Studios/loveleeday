@@ -1,39 +1,45 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const dmSerif = DM_Serif_Display({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-display-var",
-  display: "swap",
-});
+/* Archivo replaces Instrument Sans and DM Serif Display together.
 
-const instrumentSans = Instrument_Sans({
+   The serif display was the agency tell -- an editorial face saying "studio",
+   where the brief is "company". And the sans had no variable axis loaded, so
+   every headline snapped to the nearest static weight and lost the optical
+   tightening a grotesque needs above about 40px.
+
+   Archivo is variable across 100-900 and was drawn for headline performance. It
+   is the one decision the whole system rests on: it has to hold at 110px in the
+   hero and stay legible at 11px in a table of figures. */
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  axes: ["wdth"],
   variable: "--font-sans-var",
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500"],
   variable: "--font-mono-var",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "LOVELEEDAY Studios — Fixed Price. Production Code. Done in Days.",
+  title: {
+    default: "LOVELEEDAY Studios — Intelligence architecture and the software it runs",
+    template: "%s — LOVELEEDAY Studios",
+  },
   description:
-    "Boutique development studio. Landing pages, full-stack apps, Stripe integrations, and internal tools — fixed price, shipped in days, not months.",
+    "LOVELEEDAY Studios builds Arthur, an intelligence system that holds context, resolves entities across sources and carries lineage on every figure — and the production software that runs on top of it.",
   alternates: {
     canonical: "https://loveleedaystudios.com",
   },
   openGraph: {
     title: "LOVELEEDAY Studios",
-    description: "Boutique dev studio. Fixed price. Done in days.",
+    description:
+      "Intelligence architecture and the software it runs. Every figure carries its source.",
     url: "https://loveleedaystudios.com",
     siteName: "LOVELEEDAY Studios",
     type: "website",
@@ -41,7 +47,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "LOVELEEDAY Studios",
-    description: "Boutique dev studio. Fixed price. Done in days.",
+    description:
+      "Intelligence architecture and the software it runs. Every figure carries its source.",
   },
   metadataBase: new URL("https://loveleedaystudios.com"),
 };
@@ -80,7 +87,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSerif.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} h-full`}
+      className={`${archivo.variable} ${jetbrainsMono.variable} h-full`}
     >
       <head>
         <script

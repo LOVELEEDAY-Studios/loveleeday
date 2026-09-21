@@ -1,163 +1,178 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
+
+/* /about.
+   ==========================================================================
+
+   The copy here was the clearest single reason the site read small. It opened
+   "LOVELEEDAY Studios is a boutique development practice" -- and a company that
+   calls itself boutique has told you its size before it has told you what it
+   does. What it actually is, is a software company that built an intelligence
+   architecture and ships production systems on top of it, run by someone whose
+   background is pricing and finance rather than agency creative.
+
+   None of the facts changed. The framing did, and the self-deprecation went.
+   ========================================================================== */
 
 export const metadata: Metadata = {
-  title: "About — LOVELEEDAY Studios",
+  title: "Company",
   description:
-    "LOVELEEDAY Studios is a boutique development practice based in Kalamazoo, MI. Fixed-price projects, direct communication, production-grade code.",
-  alternates: {
-    canonical: "https://loveleedaystudios.com/about",
-  },
+    "LOVELEEDAY Studios is a software company founded by Daniel J. May, MBA. We build Arthur, an intelligence architecture, and the production systems that run on it.",
+  alternates: { canonical: "https://loveleedaystudios.com/about" },
 };
 
-const principles = [
+const PRINCIPLES = [
   {
-    index: "01",
-    label: "Scope tightly, quote honestly.",
-    description:
-      "We would rather push back on scope before the engagement starts than ask for more money mid-build.",
+    n: "01",
+    t: "Scope tightly, quote honestly",
+    d: "We would rather push back on scope before an engagement starts than ask for more money mid-build. The number we quote is the number you pay.",
   },
   {
-    index: "02",
-    label: "Ship working code.",
-    description:
-      "Every deliverable is production-ready. No 'you'll need to wire this up yourself' handoffs. If it's in the spec, it works.",
+    n: "02",
+    t: "Ship, then iterate",
+    d: "A working system in front of real users answers questions a specification cannot. First deploy early, then change it with evidence in hand.",
   },
   {
-    index: "03",
-    label: "Speed is a feature.",
-    description:
-      "A landing page you can test in 5 days is worth more than one you test in 5 weeks. We design to ship fast without cutting corners.",
+    n: "03",
+    t: "Own the stack you run",
+    d: "We build on infrastructure you can keep — TypeScript, Postgres, standard platforms. No proprietary runtime that makes us hard to leave.",
+  },
+  {
+    n: "04",
+    t: "Say what is unmeasured",
+    d: "Where a figure has not been measured, the page says so rather than rounding a guess into a claim. That rule applies to our own site first.",
+  },
+  {
+    n: "05",
+    t: "Nothing closes without proof",
+    d: "Work is reported complete on a value read back out of the system that was supposed to change — not on a deploy that returned a 200.",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Nav activeHref="/about" />
-
-      <main className="flex-1 w-full max-w-[1280px] mx-auto px-6 md:px-10">
-        {/* Hero */}
-        <section className="pt-12 pb-16 md:pt-20 md:pb-24">
-          <h1
-            style={{
-              fontFamily: "var(--font-display-var), 'DM Serif Display', serif",
-              fontSize: "clamp(2.5rem, 5vw, 5.5rem)",
-              fontWeight: 400,
-              lineHeight: 0.95,
-              letterSpacing: "-0.04em",
-            }}
-          >
-            About the studio.
-          </h1>
-        </section>
-
-        <hr style={{ border: "none", borderTop: "1px solid var(--bone)" }} />
-
-        {/* About body */}
-        <section className="py-16 max-w-[640px]">
-          <p
-            className="text-[1.1rem] leading-[1.7] mb-6"
-            style={{ color: "var(--ink)" }}
-          >
-            LOVELEEDAY Studios is a boutique development practice. We build landing pages,
-            full-stack apps, Stripe integrations, and internal tools — fixed price, with a
-            defined scope and a defined timeline before any code is written.
-          </p>
-          <p
-            className="text-[1.1rem] leading-[1.7]"
-            style={{ color: "var(--pewter)" }}
-          >
-            We don&rsquo;t do retainers. We don&rsquo;t do vague discovery phases. You describe
-            what you need, we quote it flat, and we ship it. Most engagements close in a week.
-          </p>
-        </section>
-
-        <hr style={{ border: "none", borderTop: "1px solid var(--bone)" }} />
-
-        {/* Principles */}
-        <section className="py-16 md:py-20">
-          <div className="mb-10">
-            <span
-              style={{
-                fontFamily: "var(--font-mono-var), 'JetBrains Mono', monospace",
-                fontSize: "0.7rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: "var(--pewter)",
-              }}
-            >
-              Studio principles
-            </span>
+    <>
+      {/* ── masthead ─────────────────────────────────────────────────── */}
+      <section className="border-b border-[var(--line)] bg-[var(--paper)] pt-[clamp(56px,7vw,104px)] pb-[clamp(44px,5vw,76px)]">
+        <div className="shell grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div>
+            <p className="eyebrow flex items-center gap-2.5 text-[var(--dim)]">
+              <span className="inline-block h-[7px] w-[7px]" style={{ background: "var(--signal)" }} />
+              The company
+            </p>
+            <h1 className="display display-lg mt-7">
+              Business judgment.
+              <br />
+              <span style={{ color: "var(--dim)" }}>Intelligence architecture.</span>
+            </h1>
           </div>
-          <div className="flex flex-col gap-0 divide-y" style={{ borderColor: "var(--bone)" }}>
-            {principles.map((p) => (
-              <div key={p.index} className="py-8 grid grid-cols-1 md:grid-cols-[80px_1fr] gap-4 md:gap-10 items-start">
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono-var), 'JetBrains Mono', monospace",
-                    fontSize: "0.7rem",
-                    color: "var(--vermilion)",
-                    letterSpacing: "0.07em",
-                    paddingTop: "3px",
-                  }}
-                >
-                  [{p.index}]
-                </span>
-                <div>
-                  <p
-                    className="mb-2 font-semibold text-[1rem] leading-[1.4]"
-                    style={{ fontFamily: "var(--font-sans-var), 'Instrument Sans', sans-serif" }}
-                  >
-                    {p.label}
-                  </p>
-                  <p
-                    className="text-[0.95rem] leading-[1.65]"
-                    style={{ color: "var(--pewter)" }}
-                  >
-                    {p.description}
-                  </p>
+          <div className="max-w-[var(--measure)] self-end">
+            <p className="text-[1.05rem] leading-[1.6] text-[var(--muted)]">
+              LOVELEEDAY Studios is a software development company founded by Daniel J. May, MBA.
+              Our perspective comes from pricing, finance and operating a business: technology
+              earns its place when it helps someone make a better decision or get meaningful work
+              done.
+            </p>
+            <p className="mt-4 text-[1.05rem] leading-[1.6] text-[var(--muted)]">
+              Arthur is the software foundation. LOVELEEDAY Studios is the team responsible for
+              defining the problem, developing the solution, and reviewing the result with you.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── the founder ──────────────────────────────────────────────── */}
+      <section className="bg-[var(--ink)] py-[clamp(56px,7vw,100px)] text-[var(--on-dark)]">
+        <div className="shell grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
+          <div data-rise>
+            <p className="eyebrow text-[var(--on-dark-dim)]">Founder</p>
+            <p className="mt-5 text-[1.5rem] font-semibold tracking-[-0.028em]">Daniel J. May, MBA</p>
+            <p className="mt-2 text-[14px] text-[var(--on-dark-mu)]">Kalamazoo, Michigan</p>
+            <dl className="mt-8 divide-y divide-[var(--ink-3)] border-y border-[var(--ink-3)]">
+              {[
+                ["Founded", "2026"],
+                ["Entity", "LOVELEEDAY Studios LLC, Delaware"],
+                ["Products in production", "5"],
+              ].map(([k, val]) => (
+                <div key={k} className="flex items-baseline justify-between gap-6 py-3.5">
+                  <dt className="eyebrow text-[var(--on-dark-dim)]">{k}</dt>
+                  <dd className="tnum text-[14px] text-[var(--on-dark)]">{val}</dd>
                 </div>
-              </div>
-            ))}
+              ))}
+            </dl>
           </div>
-        </section>
+          <div className="self-center" data-rise>
+            <p className="text-[clamp(1.3rem,2.4vw,1.85rem)] leading-[1.35] font-medium tracking-[-0.024em]">
+              &ldquo;A website request can reveal a customer acquisition problem. A data question
+              can reveal an entirely new way to work.&rdquo;
+            </p>
+            <p className="mt-6 max-w-[58ch] text-[15px] leading-[1.62] text-[var(--on-dark-mu)]">
+              We look beyond the requested deliverable. What is slowing the business down? What
+              information is disconnected? Which decision needs better evidence? Arthur supports the
+              investigation; the studio turns what we learn into something people can use.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <hr style={{ border: "none", borderTop: "1px solid var(--bone)" }} />
+      {/* ── principles ───────────────────────────────────────────────── */}
+      <section id="method" className="bg-[var(--paper)] py-[clamp(56px,7vw,100px)]">
+        <div className="shell">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+            <div data-rise>
+              <p className="eyebrow text-[var(--dim)]">How we work</p>
+              <h2 className="display display-lg mt-6">
+                Five rules we
+                <br />
+                <span style={{ color: "var(--dim)" }}>do not bend.</span>
+              </h2>
+            </div>
+            <p className="max-w-[var(--measure)] self-end text-[1.02rem] leading-[1.6] text-[var(--muted)]" data-rise>
+              We do not do retainers and we do not do vague discovery phases. You describe what you
+              need, we quote it flat, and most engagements close in weeks rather than quarters.
+            </p>
+          </div>
 
-        {/* CTA */}
-        <section className="py-16 md:py-20 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8">
-          <h2
-            style={{
-              fontFamily: "var(--font-display-var), 'DM Serif Display', serif",
-              fontSize: "clamp(1.8rem, 3vw, 3rem)",
-              fontWeight: 400,
-              letterSpacing: "-0.03em",
-              lineHeight: 1.05,
-            }}
-          >
-            Ready to start?
+          <ol className="mt-14 border-t border-[var(--line)]">
+            {PRINCIPLES.map((p) => (
+              <li
+                key={p.n}
+                className="grid gap-x-8 gap-y-2 border-b border-[var(--line)] py-7 md:grid-cols-[64px_minmax(0,300px)_minmax(0,1fr)]"
+                data-rise
+              >
+                <span className="eyebrow tnum pt-1.5 text-[var(--dim)]">{p.n}</span>
+                <h3 className="text-[1.2rem] font-semibold tracking-[-0.022em]">{p.t}</h3>
+                <p className="max-w-[56ch] text-[15px] leading-[1.6] text-[var(--muted)]">{p.d}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── CTA ──────────────────────────────────────────────────────── */}
+      <section className="bg-[var(--paper-2)] py-[clamp(72px,9vw,128px)]">
+        <div className="shell">
+          <h2 className="display text-[clamp(2.2rem,5.4vw,4rem)]" data-rise>
+            Tell us what is
             <br />
-            Request a fixed quote.
+            <span style={{ color: "var(--signal)" }}>slowing you down.</span>
           </h2>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center text-sm font-semibold uppercase tracking-[0.06em] no-underline transition-opacity hover:opacity-80 min-h-[44px]"
-            style={{
-              fontFamily: "var(--font-sans-var), 'Instrument Sans', sans-serif",
-              backgroundColor: "var(--vermilion)",
-              color: "var(--paper)",
-              padding: "1rem 2.25rem",
-            }}
-          >
-            Start a Project
-          </Link>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
+          <div className="mt-9 flex flex-wrap gap-3" data-rise>
+            <Link
+              href="/contact"
+              className="inline-flex h-12 items-center rounded-[3px] bg-[var(--text)] px-6 text-[14.5px] font-semibold text-[var(--paper)] transition-opacity hover:opacity-90"
+            >
+              Start a project
+            </Link>
+            <Link
+              href="/arthur"
+              className="inline-flex h-12 items-center rounded-[3px] border border-[var(--line-2)] px-6 text-[14.5px] font-semibold transition-colors hover:border-[var(--text)]"
+            >
+              Read the architecture
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
