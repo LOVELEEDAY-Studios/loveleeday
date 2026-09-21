@@ -1059,7 +1059,7 @@ def c10():
   <p class=eyebrow>Field note no. 01 &middot; September 2026</p>
   <h1>The fastest thing we ever shipped took <em>eleven days</em>, and that is the least
   interesting fact about it.</h1>
-  <p class=by>Daniel May &middot; Kalamazoo, Michigan &middot; 9 min</p>
+  <p class=by>LOVELEEDAY Studios &middot; Kalamazoo, Michigan &middot; 9 min</p>
 </div></div>
 
 <div class=w><div class=piece>

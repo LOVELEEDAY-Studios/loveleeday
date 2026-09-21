@@ -442,7 +442,7 @@ def c14():
     <div class=proof>
       <div><div class=big>11d</div><div class=cap>from first commit to the first paying venue, on olldae</div></div>
       <!-- NO NAMED ATTRIBUTION ON A PHOTOGRAPH OF SOMEBODY ELSE. The first
-           version captioned this frame "Daniel J. May, Founder", which is a
+           version captioned this frame "LOVELEEDAY Studios, Founder", which is a
            stock-register photograph of two people who are not him. The WRITER
            layout this borrows puts a real named customer in that circle; until
            there is a real one, the frame stays unattributed. -->

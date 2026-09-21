@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Work &mdash; LOVELEEDAY Studios</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel=stylesheet>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{--ink:#241109;--bone:#FBF6EE;--paper:#FFFFFF;--mu:#6B5A4E;--dim:#8B7868;
+  --line:#E4D9C9;--hot:#C8410F;--deep:#2A0F07;--on-deep:#F6E9DB;--on-deep-mu:#C4A996;
+  --deep-line:#48210F}
+body{margin:0;background:var(--bone);color:var(--ink);
+  font:400 17px/1.62 'Inter Tight',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.w{max-width:1280px;margin:0 auto;padding:0 clamp(20px,3vw,44px)}
+.ser{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400}
+.ribbon{position:sticky;top:0;z-index:99;background:var(--ink);color:var(--bone);
+  font:500 11px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;padding:9px 18px}
+
+/* ── the redesigned bar ──────────────────────────────────────────────────── */
+.announce{background:var(--ink);color:var(--bone);font-size:13px}
+.announce .w{height:38px;display:flex;align-items:center;justify-content:center;gap:14px}
+.announce a{color:#F0A87A}
+.bar{background:var(--bone);border-bottom:1px solid var(--line);position:relative;z-index:30}
+.bar .w{display:flex;align-items:center;height:64px;gap:clamp(14px,2.4vw,34px)}
+.bd{font:600 18px/1 'Inter Tight';letter-spacing:-.035em;white-space:nowrap}
+.menus{display:flex;align-items:center;gap:clamp(8px,1.4vw,20px)}
+.tab{display:flex;align-items:center;gap:6px;font:500 14px/1 'Inter Tight';
+  color:var(--mu);padding:8px 2px;cursor:default;white-space:nowrap}
+.tab i{font-size:9px;opacity:.55;position:relative;top:-1px;font-style:normal}
+.tab.on{color:var(--ink)}
+.mega{background:var(--paper);border-bottom:1px solid var(--line);
+  box-shadow:0 26px 52px -46px rgba(36,17,9,.5);padding:26px 0 22px;position:relative;z-index:50}
+.mhead{font:500 11px/1 'Inter Tight';letter-spacing:.2em;text-transform:uppercase;
+  color:var(--hot);margin-bottom:18px}
+.pgrid{display:grid;gap:10px 26px}
+@media(min-width:900px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+.mi{display:block;padding:12px 14px;border-radius:10px}
+.mi:hover{background:var(--bone)}
+.mi b{display:block;font:500 16px/1.25 'Inter Tight';letter-spacing:-.025em}
+.mi span{display:block;margin-top:4px;font-size:13.5px;color:var(--mu);line-height:1.5}
+.pfoot{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);
+  font:500 11px/1 'Inter Tight';letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.rt{margin-left:auto;display:flex;align-items:center;gap:10px}
+.search{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:8px;
+  padding:8px 12px;color:var(--dim);background:var(--paper)}
+.search input{border:0;outline:0;background:transparent;width:clamp(70px,8vw,120px);
+  font:400 13.5px/1 'Inter Tight';color:inherit}
+.btn{border:1px solid var(--line);border-radius:8px;padding:9px 16px;
+  font:500 13.5px/1 'Inter Tight';white-space:nowrap}
+.btn.solid{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+/* over a photograph the bar goes transparent and the panel stays opaque */
+.bar.over{background:transparent;border-bottom-color:transparent}
+.bar.over .bd,.bar.over .tab{color:rgba(255,244,226,.86)}
+.bar.over .tab.on{color:#FFF4E2}
+.bar.over .btn{border-color:rgba(255,244,226,.55);color:#FFF4E2}
+.bar.over .btn.solid{background:#FFF4E2;color:#7A1A0A;border-color:#FFF4E2}
+.bar.over .search{border-color:rgba(255,244,226,.45);background:rgba(255,244,226,.10);color:#F2DCC9}
+
+/* ── hero + heads ───────────────────────────────────────────────────────── */
+.herowrap{position:relative;isolation:isolate}
+.sky{position:absolute;inset:0;overflow:hidden;z-index:0}
+.sky .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sky .grade{position:absolute;inset:0;mix-blend-mode:multiply}
+.sky .scrim{position:absolute;inset:0}
+.herowrap .bar{position:relative;z-index:40}
+.herowrap .body{position:relative;z-index:5;padding:clamp(58px,8vw,118px) 0 clamp(56px,7vw,110px)}
+.herowrap h1{font:300 clamp(2.7rem,6.2vw,5rem)/1.04 'Inter Tight';letter-spacing:-.045em;
+  color:#FFF8EE;margin:0;max-width:17ch}
+.herowrap .body p{margin:22px 0 0;max-width:52ch;color:#FBEFE1;font-size:18px}
+.herowrap .body p+p{margin-top:14px;font-size:16.5px;color:#F2DCC9}
+.head{padding:clamp(48px,6.5vw,90px) 0 clamp(22px,2.6vw,38px)}
+.head h1{font:300 clamp(2.3rem,5.2vw,4rem)/1.05 'Inter Tight';letter-spacing:-.045em;margin:0;max-width:19ch}
+.head p{margin:20px 0 0;max-width:62ch;color:var(--mu);font-size:17.5px}
+
+section{padding:clamp(48px,6vw,88px) 0;border-top:1px solid var(--line)}
+section.wash{background:var(--paper)}
+.eyebrow{font:500 11.5px/1.5 'Inter Tight';letter-spacing:.19em;text-transform:uppercase;
+  color:var(--hot);display:block}
+h2{font:300 clamp(1.9rem,3.8vw,3rem)/1.08 'Inter Tight';letter-spacing:-.04em;margin:14px 0 0;max-width:21ch}
+.lede{margin:18px 0 0;max-width:68ch;color:var(--mu);font-size:16.5px}
+.rows{margin-top:30px;border-top:1px solid var(--ink)}
+.row{display:grid;gap:16px;padding:19px 0;border-bottom:1px solid var(--line);align-items:baseline}
+@media(min-width:880px){.row{grid-template-columns:280px 1fr}}
+.row h3{margin:0;font:500 19px/1.25 'Inter Tight';letter-spacing:-.03em}
+.row p{margin:0;font-size:15.5px;color:var(--mu);line-height:1.62}
+.row p+p{margin-top:10px}
+.cap{display:block;margin-top:22px;font:500 11px/1.5 ui-monospace,monospace;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--dim)}
+.plain{margin:16px 0 0;max-width:72ch;color:var(--mu);font-size:15.5px;line-height:1.66}
+.src{margin:8px 0 0;font:400 12.5px/1.6 ui-monospace,monospace;color:var(--dim);max-width:76ch}
+footer{background:var(--deep);color:var(--on-deep);padding:clamp(46px,6vw,78px) 0 42px;border:0}
+.fgrid{display:grid;gap:40px;padding-bottom:38px;border-bottom:1px solid var(--deep-line)}
+@media(min-width:800px){.fgrid{grid-template-columns:1.4fr repeat(3,1fr)}}
+.fbrand b{font:600 15px/1 'Inter Tight'} .fbrand b span{color:var(--on-deep-mu)}
+.fbrand p{margin:16px 0 0;max-width:30ch;font-size:14.5px;line-height:1.55;color:var(--on-deep-mu)}
+.fbrand .city{margin-top:22px;font:500 11px/1 'Inter Tight';letter-spacing:.2em;
+  text-transform:uppercase;color:#9C8474}
+.fcol h3{font:500 11px/1 'Inter Tight';letter-spacing:.2em;text-transform:uppercase;color:#9C8474;margin:0}
+.fcol ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:12px}
+.fcol a{font-size:14.5px;color:var(--on-deep-mu)}
+.fbase{padding-top:24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-size:13px;color:#9C8474}
+.fnote{margin-top:14px;font:400 12px/1.65 ui-monospace,monospace;color:#8A7060;max-width:82ch}
+</style></head><body>
+<div class=ribbon>Solstice &middot; /work &middot; every block from the live page, redesigned navigation</div>
+<div class=announce><div class=w><span>Arthur 4.0 &mdash; scoped engagements open for Q4</span><a href="arthur.html">Read the technical brief &rsaquo;</a></div></div><nav class="bar"><div class=w><a class=bd href="home.html">LOVELEEDAY</a><div class=menus><span class="tab on">Platform<i aria-hidden="true">&#9662;</i></span><span class="tab">Work<i aria-hidden="true">&#9662;</i></span><span class="tab">Company<i aria-hidden="true">&#9662;</i></span><span class="tab">Engagements<i aria-hidden="true">&#9662;</i></span></div><div class=rt><label class=search><svg width=14 height=14 viewBox="0 0 16 16" aria-hidden=true><circle cx=7 cy=7 r=5 fill=none stroke=currentColor stroke-width=1.7/><path d="M11 11 15 15" stroke=currentColor stroke-width=1.7/></svg><input placeholder="Search" readonly></label><a class=btn href="contact.html">Contact sales</a><a class="btn solid" href="contact.html">Start a project</a></div></div></nav><div class=mega><div class=w><div class=mhead>Platform</div><div class=pgrid><a class=mi href="arthur.html#architecture"><b>The architecture</b><span>Five components, each a rule in the write path</span></a><a class=mi href="arthur.html#ontology"><b>About the Ontology</b><span>One object per company, and how records resolve onto it</span></a><a class=mi href="arthur.html#architecture"><b>Lineage</b><span>Every value carries its source system and reference</span></a><a class=mi href="arthur.html#architecture"><b>Verified execution</b><span>Work closes on a value read back out of the system</span></a><a class=mi href="arthur.html"><b>In motion</b><span>A simulated walkthrough, labelled as one</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><header class=head><div class=w><h1>Shipped, not proposed.</h1></div></header><section><div class=w><h2>Thirty-eight sites. Six rebuilds.</h2><span class=cap>S-01 RNA THERAPEUTICS A platform in the middle of a rename, with the old name still on its investor's portfolio page. The rebuild leads with the science rendered from a crystal structure rather than stock lab photography.</span><span class=cap>S-02 UTILITY-SCALE SOLAR A hardware company whose site read as a brochure. The rebuild puts the economics in the hero and takes its palette from the amber in the company's own tower dashboard.</span><span class=cap>S-03 AI SERVICE DESK A product whose whole claim is speed, sold behind an illustrated mascot. The rebuild makes the hero the conversation that resolves a ticket, in real interface.</span><span class=cap>S-04 ADVANCED MATERIALS A 5,009 KB homepage for a company selling a material you can hold. The rebuild leads with the material at macro and ships a fraction of the weight.</span><span class=cap>S-05 RETIREMENT INCOME An infrastructure business presenting itself in the language of a startup. The rebuild sets it in the register of the institutions it sells to.</span><span class=cap>S-06 LENDING SOFTWARE A workflow product with no workflow on the page. The rebuild shows the loan moving through it, stage by stage.</span><h2>Companies we own and operate</h2><div class=row><h3>olldae</h3><div></div></div><div class=row><h3>Kronos</h3><div></div></div><div class=row><h3>Hospitality Ops Layer</h3><div></div></div><div class=row><h3>Duezy</h3><div></div></div><h2>Ready to start? Request a fixed quote.</h2><div class=row><h3>Dabney & Co.</h3><div><p>Arthur 4.0 — scoped engagements open for Q4</p><p>Read the technical brief</p><p>LOVELEEDAY</p><p>Contact sales</p><p>Start a project</p></div></div></div></section><section class=wash><div class=w><span class=eyebrow>Selected work</span><p class=plain>proposed.</p><p class=plain>Two different things, kept separate on purpose. First, work for companies that are not ours — six sites we rebuilt without being asked, because the argument was easier to make in working HTML than in a deck. Then the five software companies LOVELEEDAY owns and runs, which prove we ship but do not prove anyone hired us.</p><span class=eyebrow>Uncommissioned</span><p class=plain>Six rebuilds.</p><p class=plain>One venture portfolio, measured end to end on page weight, Lighthouse, live search position and accessibility. Six of the companies were then rebuilt as running pages. None of it was commissioned, and every measurement names its source.</p><span class=eyebrow>S-01</span><span class=eyebrow>RNA therapeutics</span><p class=plain>A platform in the middle of a rename, with the old name still on its investor's portfolio page. The rebuild leads with the science rendered from a crystal structure rather than stock lab photography.</p><span class=eyebrow>S-02</span><span class=eyebrow>Utility-scale solar</span><p class=plain>A hardware company whose site read as a brochure. The rebuild puts the economics in the hero and takes its palette from the amber in the company's own tower dashboard.</p><span class=eyebrow>S-03</span><span class=eyebrow>AI service desk</span><p class=plain>A product whose whole claim is speed, sold behind an illustrated mascot. The rebuild makes the hero the conversation that resolves a ticket, in real interface.</p><span class=eyebrow>S-04</span><span class=eyebrow>Advanced materials</span><p class=plain>A 5,009 KB homepage for a company selling a material you can hold. The rebuild leads with the material at macro and ships a fraction of the weight.</p><span class=eyebrow>S-05</span><span class=eyebrow>Retirement income</span><p class=plain>An infrastructure business presenting itself in the language of a startup. The rebuild sets it in the register of the institutions it sells to.</p><span class=eyebrow>S-06</span><span class=eyebrow>Lending software</span><p class=plain>A workflow product with no workflow on the page. The rebuild shows the loan moving through it, stage by stage.</p><p class=plain>The companies are not named here. Each rebuild carries measured criticism of the site it replaces, and that belongs in a private review addressed to the company rather than on a marketing page. Full packages are available on request.</p><p class=plain>These are LOVELEEDAY-owned businesses, built in-house and running in production. They are listed as evidence that the studio ships, not as client engagements — we were our own customer on every one of them.</p><span class=eyebrow>SaaS / Restaurant technology</span><p class=plain>MVP in 11 days. Full v1 in 6 weeks.</p><p class=plain>Next.js</p><p class=plain>Supabase</p><p class=plain>Stripe</p><p class=plain>Vercel</p><p class=plain>Edge Functions</p><span class=eyebrow>The problem</span><p class=plain>Independent bars and restaurants ran inventory, recipes, and catering quotes across spreadsheets, text threads, and single-purpose tools. No unified view of stock levels, no costing engine, no way to produce a catering quote without a back-and-forth email chain.</p><span class=eyebrow>What we built</span><p class=plain>A full-stack restaurant operating system — live inventory tracking, recipe costing, multi-step catering quoting, and Stripe monthly billing with a self-serve portal. Twelve Supabase Edge Functions handle background sync, webhook idempotency, and rate limiting. Staff access the platform from both desktop and mobile.</p><p class=plain>Venue operators reduced catering quote turnaround from a multi-day email chain to a same-session workflow. Inventory, recipes, and billing consolidated into a single platform.</p><p class=plain>Read the build →</p><p class=plain>Visit the live site ↗</p><span class=eyebrow>Financial tooling / Multi-entity</span><p class=plain>Auth and core routing in 5 days. Full integration in 3 weeks.</p><p class=plain>Next.js</p><p class=plain>Supabase</p><p class=plain>Stripe Financial Connections</p><p class=plain>Xero API</p><span class=eyebrow>The problem</span><p class=plain>A holding company with multiple operating businesses needed a unified view of financial data across accounts — without manually exporting CSVs from Stripe, Xero, and bank portals every week.</p><span class=eyebrow>What we built</span><p class=plain>A 22-route internal platform connecting Stripe Financial Connections for live transaction feeds, Xero for accounting sync, and Supabase for persistent state and auth. Authentication is role-scoped so team members see only the data relevant to their entity. The Xero OAuth flow refreshes tokens in the background.</p><p class=plain>Cross-entity financial data pulled into a single authenticated dashboard, replacing weekly manual reconciliation across three separate vendor portals.</p><p class=plain>Read the build →</p><span class=eyebrow>Internal systems / Automation</span><p class=plain>Core pipeline in 3 weeks.</p><p class=plain>Node.js</p><p class=plain>Supabase</p><p class=plain>Resend</p><p class=plain>Fly.io</p><p class=plain>TypeScript</p><span class=eyebrow>The problem</span><p class=plain>A hospitality holding company was managing email across five accounts, calendar events across four integrations, and communications across a patchwork of manual processes — consuming hours of overhead each week.</p><span class=eyebrow>What we built</span><p class=plain>A custom ops layer handling 800+ emails per week through automated triage and routing, calendar deduplication across four grant sources, real-time communications routing, and automated government-form filing. Each module runs as a standalone daemon on Fly.io with health checks and error recovery.</p><p class=plain>Inbox-to-action cycle moved from manual review to automated routing with human-in-the-loop confirmation, across every communication channel.</p><p class=plain>Read the build →</p><span class=eyebrow>SaaS / Invoice automation</span><p class=plain>Functional billing flow in 7 days.</p><p class=plain>Next.js</p><p class=plain>Supabase</p><p class=plain>Stripe</p><p class=plain>Resend</p><p class=plain>Vercel</p><span class=eyebrow>The problem</span><p class=plain>Small service businesses were spending hours each week manually generating invoices, chasing late payments, and reconciling what had and hadn't been paid. Existing tools were either too bloated or required accounting expertise to configure.</p><span class=eyebrow>What we built</span><p class=plain>An invoice platform with client management, line-item billing, automated payment reminders via Resend, and a Stripe checkout link embedded directly in outbound email. Clients pay without creating an account. Operators see real-time payment status across all outstanding invoices in one view.</p><p class=plain>Invoice-to-payment moved from multi-day manual follow-up to an automated collect-on-send flow, with outstanding invoice tracking consolidated into a single view.</p><p class=plain>Read the build →</p><span class=eyebrow>Brand / Hospitality</span><p class=plain>Design to production in 3 weeks.</p><p class=plain>Next.js</p><p class=plain>Tailwind CSS</p><p class=plain>OpenTable API</p><p class=plain>Vercel</p><span class=eyebrow>The problem</span><p class=plain>A craft cocktail bar in Kalamazoo, MI had a web presence that hadn't kept pace with the brand. No reservation flow, slow load times, and a design that worked against the guest experience before they walked in the door.</p><span class=eyebrow>What we built</span><p class=plain>A full redesign on a custom typographic system — paired display and monospace type, a restrained palette of cream, black and deep red. OpenTable reservations embedded directly in the page. Nine responsive pages including menu, events and catering inquiry.</p><p class=plain>A web presence that matches the bar's physical aesthetic. Guests move from discovery to reservation without leaving the site.</p><p class=plain>Read the build →</p><p class=plain>Visit the live site ↗</p><p class=plain>Request a fixed quote.</p><p class=plain>Start a project</p></div></section><footer><div class=w><div class=fgrid><div class=fbrand><b>LOVELEEDAY<span> Studios</span></b><p>Intelligence architecture and the production software that runs on top of it.</p><div class=city>Kalamazoo, Michigan</div></div><div class=fcol><h3>Platform</h3><ul><li><a href="arthur.html">Arthur</a></li><li><a href="arthur.html#architecture">Architecture</a></li><li><a href="about.html#method">How we scope</a></li></ul></div><div class=fcol><h3>Work</h3><ul><li><a href="work.html#studies">Client rebuilds</a></li><li><a href="work.html">Companies we operate</a></li><li><a href="about.html#method">How we measure</a></li></ul></div><div class=fcol><h3>Company</h3><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Start a project</a></li><li><a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a></li></ul></div></div><div class=fbase><span>&copy; 2026 LOVELEEDAY Studios LLC &mdash; a Delaware company.</span><span>Kalamazoo, Michigan</span></div><p class=fnote>Figures on this site name their source. Where one is unmeasured it says so.</p><p class=fnote>Concept mockup. Every block on this page is present on the live site &mdash; the content is extracted from the rendered DOM rather than retyped. The two photographs carrying this brand are stock and are placeholders for a real shoot.</p></div></footer>
+</body></html>

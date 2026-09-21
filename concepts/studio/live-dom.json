@@ -1,0 +1,2787 @@
+{
+ "/": [
+  {
+   "role": "h1",
+   "text": "Arthur Ontology",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "Five properties. Enforced, not promised.",
+   "section": "ontology"
+  },
+  {
+   "role": "h3",
+   "text": "Identity resolution",
+   "section": "ontology"
+  },
+  {
+   "role": "h3",
+   "text": "Bitemporality",
+   "section": "ontology"
+  },
+  {
+   "role": "h3",
+   "text": "Lineage",
+   "section": "ontology"
+  },
+  {
+   "role": "h3",
+   "text": "Bounded autonomy",
+   "section": "ontology"
+  },
+  {
+   "role": "h3",
+   "text": "Observed completion",
+   "section": "ontology"
+  },
+  {
+   "role": "h2",
+   "text": "Four names. One company.",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "Thirty-eight sites. Six rebuilds.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-01 RNA THERAPEUTICS A platform in the middle of a rename, with the old name still on its investor's portfolio page. The rebuild leads with the science rendered from a crystal structure rather than stock lab photography.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-02 UTILITY-SCALE SOLAR A hardware company whose site read as a brochure. The rebuild puts the economics in the hero and takes its palette from the amber in the company's own tower dashboard.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-03 AI SERVICE DESK A product whose whole claim is speed, sold behind an illustrated mascot. The rebuild makes the hero the conversation that resolves a ticket, in real interface.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-04 ADVANCED MATERIALS A 5,009 KB homepage for a company selling a material you can hold. The rebuild leads with the material at macro and ships a fraction of the weight.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-05 RETIREMENT INCOME An infrastructure business presenting itself in the language of a startup. The rebuild sets it in the register of the institutions it sells to.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-06 LENDING SOFTWARE A workflow product with no workflow on the page. The rebuild shows the loan moving through it, stage by stage.",
+   "section": "studies"
+  },
+  {
+   "role": "h2",
+   "text": "Confidence comes from the evidence.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Claims tied to sources",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Completion tied to the task",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Authority stays explicit",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Economics worth measuring",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "See the question. Build the answer.",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "PLATFORM",
+   "section": "footer"
+  },
+  {
+   "role": "h2",
+   "text": "WORK",
+   "section": "footer"
+  },
+  {
+   "role": "h2",
+   "text": "COMPANY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Arthur 4.0 \u2014 scoped engagements open for Q4",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Read the technical brief",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Work",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Company",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Contact sales",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Arthur Platform",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "About the Ontology",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Capabilities",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start building",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Arthur Platform",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The intelligence system",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "About the Ontology",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "How records become objects",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Capabilities",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The five components",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Work for companies that are not ours",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start building",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Scope, quote, build",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Work",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Company",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The object layer for the business you already run.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Records scattered across payments, ledgers and documents are resolved into single objects \u2014 each carrying the date it was true, the date we learned it, and a trail back to the system it came from. Every workflow above it operates on the object, not the spreadsheet.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "How Arthur works",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "See the work",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Arthur \u00b7 powered by the Ontology",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Fig. 01 \u2014 sources resolve to objects; workflows and analytics read the object",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Schematic, not a screenshot",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Sites rebuilt in working HTML",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "One venture portfolio, rebuilt as running pages rather than described in a deck. Companies that are not ours.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Sites measured in that audit",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Page weight, Lighthouse mobile, live organic search position and accessibility, measured per site on 2026-09-19.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Architectural components in Arthur",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Persistent memory, identity resolution, a bitemporal record, lineage enforcement and verified tool execution. Implemented, not planned.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Timelines carried on every value",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "When it was true in the world, and separately when we learned it \u2014 which is what makes it possible to ask what was known on a date rather than only what was true.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "What the ontology guarantees",
+   "section": "ontology"
+  },
+  {
+   "role": "p",
+   "text": "Enforced, not promised.",
+   "section": "ontology"
+  },
+  {
+   "role": "p",
+   "text": "Each of these lives in the write path rather than in a deck. That is the difference between a system you can report from and a system you have to check.",
+   "section": "ontology"
+  },
+  {
+   "role": "p",
+   "text": "A payments customer, a vendor id in the ledger and a string in an email signature are three records and one company. Questions are asked about the object, never about whichever string a source happened to use.",
+   "section": "ontology"
+  },
+  {
+   "role": "p",
+   "text": "Every property knows when it was valid in the world and when it was observed. Judging an August decision with September knowledge is look-ahead bias, and the two timelines are kept apart so it cannot happen quietly.",
+   "section": "ontology"
+  },
+  {
+   "role": "p",
+   "text": "Writing a value requires its source system and source reference. The trail prints for any figure. A number with no trail is not reportable \u2014 mechanically, not as a matter of care.",
+   "section": "ontology"
+  },
+  {
+   "role": "p",
+   "text": "Actions are classified by blast radius. Only the reversible class runs unattended; anything touching money, outbound communication or a legal document waits for a person.",
+   "section": "ontology"
+  },
+  {
+   "role": "p",
+   "text": "Work closes on a value read back out of the system that was supposed to change. An HTTP 200 is not evidence that anything happened.",
+   "section": "ontology"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Identity resolution",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "One company.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Fourteen records arriving from four systems, collapsing onto five objects. Until this step exists, every figure that aggregates across systems is wrong \u2014 and coverage is exactly as wide as the sources connected, never wider.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Fig. 02 \u2014 14 records \u00b7 4 source systems \u00b7 5 resolved objects",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Uncommissioned",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "Six rebuilds.",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "One venture portfolio, measured end to end on page weight, Lighthouse, live search position and accessibility. Six of the companies were then rebuilt as running pages rather than described in a deck. None of it was commissioned, and every measurement names its source.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-01",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "RNA therapeutics",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "A platform in the middle of a rename, with the old name still on its investor's portfolio page. The rebuild leads with the science rendered from a crystal structure rather than stock lab photography.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-02",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Utility-scale solar",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "A hardware company whose site read as a brochure. The rebuild puts the economics in the hero and takes its palette from the amber in the company's own tower dashboard.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-03",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "AI service desk",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "A product whose whole claim is speed, sold behind an illustrated mascot. The rebuild makes the hero the conversation that resolves a ticket, in real interface.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-04",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Advanced materials",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "A 5,009 KB homepage for a company selling a material you can hold. The rebuild leads with the material at macro and ships a fraction of the weight.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-05",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Retirement income",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "An infrastructure business presenting itself in the language of a startup. The rebuild sets it in the register of the institutions it sells to.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-06",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Lending software",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "A workflow product with no workflow on the page. The rebuild shows the loan moving through it, stage by stage.",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "The companies are not named here. Each rebuild carries measured criticism of the site it replaces, and that belongs in a private review addressed to the company rather than on a marketing page. Full packages are available on request.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "The standard",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "from the evidence.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "This is the only dark section on the site, and it is here because this is the part that has to be read as a contract rather than as a pitch.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Separate what the evidence shows from what still needs testing.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A generated answer and a working implementation are different deliverables.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Access, integrations and production changes follow the agreed scope and human approval.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Elapsed time, human effort, quality and cost per completed task, in the actual engagement.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Bring us the question",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Build the answer.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Read the architecture",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Studios",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Intelligence architecture and the production software that runs on top of it.",
+   "section": "footer"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Kalamazoo, Michigan",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Arthur",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Architecture",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "How we scope",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Companies we operate",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "How we measure",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "About",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "hello@loveleedaystudios.com",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "\u00a9 2026 LOVELEEDAY Studios LLC \u2014 a Delaware company.",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Figures on this site name their source. Where one is unmeasured it says so.",
+   "section": "footer"
+  }
+ ],
+ "/arthur": [
+  {
+   "role": "h1",
+   "text": "Built to connect. Designed to act.",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "Persistent memory",
+   "section": "architecture"
+  },
+  {
+   "role": "h2",
+   "text": "Identity resolution",
+   "section": "architecture"
+  },
+  {
+   "role": "h2",
+   "text": "Bitemporal record",
+   "section": "architecture"
+  },
+  {
+   "role": "h2",
+   "text": "Lineage on every value",
+   "section": "architecture"
+  },
+  {
+   "role": "h2",
+   "text": "Tools, routing and verification",
+   "section": "architecture"
+  },
+  {
+   "role": "h2",
+   "text": "Arthur, in motion.",
+   "section": "demo"
+  },
+  {
+   "role": "caption",
+   "text": "SIMULATED DEMONSTRATION Fictional companies. Simulated interface and outcomes. Silent video with on-screen text \u2014 a workflow illustration, not a measured execution claim.",
+   "section": "demo"
+  },
+  {
+   "role": "h2",
+   "text": "The applications are the point.",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "Good questions are welcome.",
+   "section": "section"
+  },
+  {
+   "role": "summary",
+   "text": "\u25b6 Is Arthur a model, an agent, or a software platform?",
+   "section": "section"
+  },
+  {
+   "role": "summary",
+   "text": "\u25b6 Can Arthur work with our existing systems?",
+   "section": "section"
+  },
+  {
+   "role": "summary",
+   "text": "\u25b6 What can we ask LOVELEEDAY Studios to build?",
+   "section": "section"
+  },
+  {
+   "role": "summary",
+   "text": "\u25b6 Does Arthur improve itself automatically?",
+   "section": "section"
+  },
+  {
+   "role": "summary",
+   "text": "\u25b6 Is the demonstration video actual execution footage?",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "Bring us the question.",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "PLATFORM",
+   "section": "footer"
+  },
+  {
+   "role": "h2",
+   "text": "WORK",
+   "section": "footer"
+  },
+  {
+   "role": "h2",
+   "text": "COMPANY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Arthur 4.0 \u2014 scoped engagements open for Q4",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Read the technical brief",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Work",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Company",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Contact sales",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Arthur Platform",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "About the Ontology",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Capabilities",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start building",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Arthur Platform",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The intelligence system",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "About the Ontology",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "How records become objects",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Capabilities",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The five components",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Work for companies that are not ours",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start building",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Scope, quote, build",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Work",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Company",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "nav"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Arthur \u2014 intelligence architecture",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Designed to act.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Arthur\u2019s codebase brings together the foundations for remembering context, resolving who and what a record refers to, coordinating work, selecting models, and acting through tools.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "These are implemented architectural components, not a claim that every component runs in every workflow. We scope and validate the configuration for each engagement.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Fig. 03 \u2014 a 5\u00d75\u00d75 lattice, lit and depth-sorted in the browser. No 3D library.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Context that can outlast a conversation.",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "Journals, events and objects are stored and indexed. Retrieval makes what was stored available to the execution paths that use it, so a project carries its own history rather than being re-briefed each time.",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Project history",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Memory fabric",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Retrieved context",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "Projects need continuity. Prior decisions and constraints should inform the next piece of work. Recall coverage and integration vary by execution path.",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Why it matters",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "Four names, one company.",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "A payments customer, a vendor id in the ledger, a string in an email signature and a line in a PDF are four records and one object. Resolution collapses them, so a question is asked about the object rather than about whichever string a source happened to use.",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Source records",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Resolver",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "One object",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "Every figure that aggregates across systems is wrong until this step exists. Coverage is exactly as wide as the connected sources, and no wider.",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Why it matters",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "What was true, and what we knew.",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "Each property carries when it was valid in the world and when it was observed. You can ask what was true on a date, or what was known on a date \u2014 two different questions that most systems collapse into one.",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Valid from",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Observed at",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "As known at",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "Judging an August decision with September knowledge is look-ahead bias, and it is the default mistake. Making the two timelines separate is what stops it happening quietly.",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Why it matters",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "A number with no trail is not reportable.",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "Writing a property requires the source system and the source reference. The trail can be printed for any value, back to the record it came from.",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Source system",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Source reference",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Full trail",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "This is mechanical claim verification rather than a promise to be careful. The refusal is in the write path, so it cannot be forgotten under time pressure.",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Why it matters",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "Execution that has to prove it ran.",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "Models route to the work, tools execute against real systems, and results are checked against an observed proof string before anything is reported as done.",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Route",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Execute",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Observe proof",
+   "section": "architecture"
+  },
+  {
+   "role": "p",
+   "text": "An HTTP 200 is not evidence that the thing you asked for happened. Work closes on a value read back out of the system that was supposed to change.",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Why it matters",
+   "section": "architecture"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Watch the work unfold",
+   "section": "demo"
+  },
+  {
+   "role": "p",
+   "text": "Follow a portfolio review through parallel research, proposed changes, a website preview, and a verification step.",
+   "section": "demo"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Simulated demonstration",
+   "section": "demo"
+  },
+  {
+   "role": "p",
+   "text": "Fictional companies. Simulated interface and outcomes. Silent video with on-screen text \u2014 a workflow illustration, not a measured execution claim.",
+   "section": "demo"
+  },
+  {
+   "role": "eyebrow",
+   "text": "What this opens up",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "are the point.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Start with the business problem. Define the evidence, the deliverable, and what success should look like.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "The business question",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "\u201cWhy does this process still depend on five spreadsheets and a manual handoff?\u201d",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Examine the workflow, identify the decisions and dependencies, and turn the right part of the process into software.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "A scoped engagement can produce",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Workflow and requirements map",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Internal tool or customer-facing application",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Automation and integration plan",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Tested changes and rollout documentation",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Integrations require approved access, compatible APIs, and implementation.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Looking closer",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Arthur is an intelligence software architecture. Its components surround model reasoning with persistent memory, task scheduling, tools, routing, and evaluation. Models are part of the system; the configuration determines which capabilities a workflow can use.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "We assess your data, APIs, permissions, and requirements before committing to an integration. An adapter in the architecture does not mean a live connection to your systems already exists.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Custom applications, workflow tools, research and decision support, digital experiences, and connected creative deliverables. We agree on a specific scope and acceptance criteria around the business problem.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Arthur includes evaluation and training-governance components. These support candidate assessment and human promotion decisions. We do not claim unrestricted self-improvement or automatic quality gains.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "No. It is a simulated product walkthrough using fictional companies. An engagement needs its own real evidence, timing, costs, and acceptance checks.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "See what we\u2019ve shipped",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Studios",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Intelligence architecture and the production software that runs on top of it.",
+   "section": "footer"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Kalamazoo, Michigan",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Arthur",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Architecture",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "How we scope",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Companies we operate",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "How we measure",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "About",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "hello@loveleedaystudios.com",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "\u00a9 2026 LOVELEEDAY Studios LLC \u2014 a Delaware company.",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Figures on this site name their source. Where one is unmeasured it says so.",
+   "section": "footer"
+  }
+ ],
+ "/work": [
+  {
+   "role": "h1",
+   "text": "Shipped, not proposed.",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "Thirty-eight sites. Six rebuilds.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-01 RNA THERAPEUTICS A platform in the middle of a rename, with the old name still on its investor's portfolio page. The rebuild leads with the science rendered from a crystal structure rather than stock lab photography.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-02 UTILITY-SCALE SOLAR A hardware company whose site read as a brochure. The rebuild puts the economics in the hero and takes its palette from the amber in the company's own tower dashboard.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-03 AI SERVICE DESK A product whose whole claim is speed, sold behind an illustrated mascot. The rebuild makes the hero the conversation that resolves a ticket, in real interface.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-04 ADVANCED MATERIALS A 5,009 KB homepage for a company selling a material you can hold. The rebuild leads with the material at macro and ships a fraction of the weight.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-05 RETIREMENT INCOME An infrastructure business presenting itself in the language of a startup. The rebuild sets it in the register of the institutions it sells to.",
+   "section": "studies"
+  },
+  {
+   "role": "caption",
+   "text": "S-06 LENDING SOFTWARE A workflow product with no workflow on the page. The rebuild shows the loan moving through it, stage by stage.",
+   "section": "studies"
+  },
+  {
+   "role": "h2",
+   "text": "Companies we own and operate",
+   "section": "section"
+  },
+  {
+   "role": "h3",
+   "text": "olldae",
+   "section": "section"
+  },
+  {
+   "role": "h3",
+   "text": "Kronos",
+   "section": "section"
+  },
+  {
+   "role": "h3",
+   "text": "Hospitality Ops Layer",
+   "section": "section"
+  },
+  {
+   "role": "h3",
+   "text": "Duezy",
+   "section": "section"
+  },
+  {
+   "role": "h3",
+   "text": "Dabney & Co.",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "Ready to start? Request a fixed quote.",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "PLATFORM",
+   "section": "footer"
+  },
+  {
+   "role": "h2",
+   "text": "WORK",
+   "section": "footer"
+  },
+  {
+   "role": "h2",
+   "text": "COMPANY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Arthur 4.0 \u2014 scoped engagements open for Q4",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Read the technical brief",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Work",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Company",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Contact sales",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Arthur Platform",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "About the Ontology",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Capabilities",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start building",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Arthur Platform",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The intelligence system",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "About the Ontology",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "How records become objects",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Capabilities",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The five components",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Work for companies that are not ours",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start building",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Scope, quote, build",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Work",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Company",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "nav"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Selected work",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "proposed.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Two different things, kept separate on purpose. First, work for companies that are not ours \u2014 six sites we rebuilt without being asked, because the argument was easier to make in working HTML than in a deck. Then the five software companies LOVELEEDAY owns and runs, which prove we ship but do not prove anyone hired us.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Uncommissioned",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "Six rebuilds.",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "One venture portfolio, measured end to end on page weight, Lighthouse, live search position and accessibility. Six of the companies were then rebuilt as running pages. None of it was commissioned, and every measurement names its source.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-01",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "RNA therapeutics",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "A platform in the middle of a rename, with the old name still on its investor's portfolio page. The rebuild leads with the science rendered from a crystal structure rather than stock lab photography.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-02",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Utility-scale solar",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "A hardware company whose site read as a brochure. The rebuild puts the economics in the hero and takes its palette from the amber in the company's own tower dashboard.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-03",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "AI service desk",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "A product whose whole claim is speed, sold behind an illustrated mascot. The rebuild makes the hero the conversation that resolves a ticket, in real interface.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-04",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Advanced materials",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "A 5,009 KB homepage for a company selling a material you can hold. The rebuild leads with the material at macro and ships a fraction of the weight.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-05",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Retirement income",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "An infrastructure business presenting itself in the language of a startup. The rebuild sets it in the register of the institutions it sells to.",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "S-06",
+   "section": "studies"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Lending software",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "A workflow product with no workflow on the page. The rebuild shows the loan moving through it, stage by stage.",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "The companies are not named here. Each rebuild carries measured criticism of the site it replaces, and that belongs in a private review addressed to the company rather than on a marketing page. Full packages are available on request.",
+   "section": "studies"
+  },
+  {
+   "role": "p",
+   "text": "These are LOVELEEDAY-owned businesses, built in-house and running in production. They are listed as evidence that the studio ships, not as client engagements \u2014 we were our own customer on every one of them.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "SaaS / Restaurant technology",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "MVP in 11 days. Full v1 in 6 weeks.",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Next.js",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Supabase",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Stripe",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Vercel",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Edge Functions",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "The problem",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Independent bars and restaurants ran inventory, recipes, and catering quotes across spreadsheets, text threads, and single-purpose tools. No unified view of stock levels, no costing engine, no way to produce a catering quote without a back-and-forth email chain.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "What we built",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A full-stack restaurant operating system \u2014 live inventory tracking, recipe costing, multi-step catering quoting, and Stripe monthly billing with a self-serve portal. Twelve Supabase Edge Functions handle background sync, webhook idempotency, and rate limiting. Staff access the platform from both desktop and mobile.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Venue operators reduced catering quote turnaround from a multi-day email chain to a same-session workflow. Inventory, recipes, and billing consolidated into a single platform.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Read the build \u2192",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Visit the live site \u2197",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Financial tooling / Multi-entity",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Auth and core routing in 5 days. Full integration in 3 weeks.",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Next.js",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Supabase",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Stripe Financial Connections",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Xero API",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "The problem",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A holding company with multiple operating businesses needed a unified view of financial data across accounts \u2014 without manually exporting CSVs from Stripe, Xero, and bank portals every week.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "What we built",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A 22-route internal platform connecting Stripe Financial Connections for live transaction feeds, Xero for accounting sync, and Supabase for persistent state and auth. Authentication is role-scoped so team members see only the data relevant to their entity. The Xero OAuth flow refreshes tokens in the background.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Cross-entity financial data pulled into a single authenticated dashboard, replacing weekly manual reconciliation across three separate vendor portals.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Read the build \u2192",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Internal systems / Automation",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Core pipeline in 3 weeks.",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Node.js",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Supabase",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Resend",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Fly.io",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "TypeScript",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "The problem",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A hospitality holding company was managing email across five accounts, calendar events across four integrations, and communications across a patchwork of manual processes \u2014 consuming hours of overhead each week.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "What we built",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A custom ops layer handling 800+ emails per week through automated triage and routing, calendar deduplication across four grant sources, real-time communications routing, and automated government-form filing. Each module runs as a standalone daemon on Fly.io with health checks and error recovery.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Inbox-to-action cycle moved from manual review to automated routing with human-in-the-loop confirmation, across every communication channel.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Read the build \u2192",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "SaaS / Invoice automation",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Functional billing flow in 7 days.",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Next.js",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Supabase",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Stripe",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Resend",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Vercel",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "The problem",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Small service businesses were spending hours each week manually generating invoices, chasing late payments, and reconciling what had and hadn't been paid. Existing tools were either too bloated or required accounting expertise to configure.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "What we built",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "An invoice platform with client management, line-item billing, automated payment reminders via Resend, and a Stripe checkout link embedded directly in outbound email. Clients pay without creating an account. Operators see real-time payment status across all outstanding invoices in one view.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Invoice-to-payment moved from multi-day manual follow-up to an automated collect-on-send flow, with outstanding invoice tracking consolidated into a single view.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Read the build \u2192",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Brand / Hospitality",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Design to production in 3 weeks.",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Next.js",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Tailwind CSS",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "OpenTable API",
+   "section": "section"
+  },
+  {
+   "role": "li",
+   "text": "Vercel",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "The problem",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A craft cocktail bar in Kalamazoo, MI had a web presence that hadn't kept pace with the brand. No reservation flow, slow load times, and a design that worked against the guest experience before they walked in the door.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "What we built",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A full redesign on a custom typographic system \u2014 paired display and monospace type, a restrained palette of cream, black and deep red. OpenTable reservations embedded directly in the page. Nine responsive pages including menu, events and catering inquiry.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A web presence that matches the bar's physical aesthetic. Guests move from discovery to reservation without leaving the site.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Read the build \u2192",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Visit the live site \u2197",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Request a fixed quote.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Studios",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Intelligence architecture and the production software that runs on top of it.",
+   "section": "footer"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Kalamazoo, Michigan",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Arthur",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Architecture",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "How we scope",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Companies we operate",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "How we measure",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "About",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "hello@loveleedaystudios.com",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "\u00a9 2026 LOVELEEDAY Studios LLC \u2014 a Delaware company.",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Figures on this site name their source. Where one is unmeasured it says so.",
+   "section": "footer"
+  }
+ ],
+ "/about": [
+  {
+   "role": "h1",
+   "text": "Business judgment. Built as software.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "FOUNDED",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "ENTITY",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "SOFTWARE WE OWN AND RUN",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "Five rules we do not bend.",
+   "section": "method"
+  },
+  {
+   "role": "h3",
+   "text": "Scope tightly, quote honestly",
+   "section": "method"
+  },
+  {
+   "role": "h3",
+   "text": "Ship, then iterate",
+   "section": "method"
+  },
+  {
+   "role": "h3",
+   "text": "Own the stack you run",
+   "section": "method"
+  },
+  {
+   "role": "h3",
+   "text": "Say what is unmeasured",
+   "section": "method"
+  },
+  {
+   "role": "h3",
+   "text": "Nothing closes without proof",
+   "section": "method"
+  },
+  {
+   "role": "h2",
+   "text": "Tell us what is slowing you down.",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "PLATFORM",
+   "section": "footer"
+  },
+  {
+   "role": "h2",
+   "text": "WORK",
+   "section": "footer"
+  },
+  {
+   "role": "h2",
+   "text": "COMPANY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Arthur 4.0 \u2014 scoped engagements open for Q4",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Read the technical brief",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Work",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Company",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Contact sales",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Arthur Platform",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "About the Ontology",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Capabilities",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start building",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Arthur Platform",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The intelligence system",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "About the Ontology",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "How records become objects",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Capabilities",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The five components",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Work for companies that are not ours",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start building",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Scope, quote, build",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Work",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Company",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "nav"
+  },
+  {
+   "role": "eyebrow",
+   "text": "The company",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Built as software.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY Studios is a software development company founded by Daniel J. May, MBA. Our perspective comes from pricing, finance and operating a business: technology earns its place when it helps someone make a better decision or get meaningful work done.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Arthur is the software foundation. LOVELEEDAY Studios is the team responsible for defining the problem, developing the solution, and reviewing the result with you.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Founder",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Daniel J. May, MBA",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Kalamazoo, Michigan",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "2026",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY Studios LLC, Delaware",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "\u201cA website request can reveal a customer acquisition problem. A data question can reveal an entirely new way to work.\u201d",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "We look beyond the requested deliverable. What is slowing the business down? What information is disconnected? Which decision needs better evidence? Arthur supports the investigation; the studio turns what we learn into something people can use.",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "How we work",
+   "section": "method"
+  },
+  {
+   "role": "p",
+   "text": "do not bend.",
+   "section": "method"
+  },
+  {
+   "role": "p",
+   "text": "We do not do retainers and we do not do vague discovery phases. You describe what you need, we quote it flat, and most engagements close in weeks rather than quarters.",
+   "section": "method"
+  },
+  {
+   "role": "p",
+   "text": "We would rather push back on scope before an engagement starts than ask for more money mid-build. The number we quote is the number you pay.",
+   "section": "method"
+  },
+  {
+   "role": "p",
+   "text": "A working system in front of real users answers questions a specification cannot. First deploy early, then change it with evidence in hand.",
+   "section": "method"
+  },
+  {
+   "role": "p",
+   "text": "We build on infrastructure you can keep \u2014 TypeScript, Postgres, standard platforms. No proprietary runtime that makes us hard to leave.",
+   "section": "method"
+  },
+  {
+   "role": "p",
+   "text": "Where a figure has not been measured, the page says so rather than rounding a guess into a claim. That rule applies to our own site first.",
+   "section": "method"
+  },
+  {
+   "role": "p",
+   "text": "Work is reported complete on a value read back out of the system that was supposed to change \u2014 not on a deploy that returned a 200.",
+   "section": "method"
+  },
+  {
+   "role": "p",
+   "text": "slowing you down.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Read the architecture",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Studios",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Intelligence architecture and the production software that runs on top of it.",
+   "section": "footer"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Kalamazoo, Michigan",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Arthur",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Architecture",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "How we scope",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Companies we operate",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "How we measure",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "About",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "hello@loveleedaystudios.com",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "\u00a9 2026 LOVELEEDAY Studios LLC \u2014 a Delaware company.",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Figures on this site name their source. Where one is unmeasured it says so.",
+   "section": "footer"
+  }
+ ],
+ "/contact": [
+  {
+   "role": "h1",
+   "text": "Bring us the question.",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "WHAT HAPPENS NEXT",
+   "section": "section"
+  },
+  {
+   "role": "h2",
+   "text": "PLATFORM",
+   "section": "footer"
+  },
+  {
+   "role": "h2",
+   "text": "WORK",
+   "section": "footer"
+  },
+  {
+   "role": "h2",
+   "text": "COMPANY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Arthur 4.0 \u2014 scoped engagements open for Q4",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Read the technical brief",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Work",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Company",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Contact sales",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "header"
+  },
+  {
+   "role": "p",
+   "text": "Arthur Platform",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "About the Ontology",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Capabilities",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start building",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Arthur Platform",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The intelligence system",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "About the Ontology",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "How records become objects",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Capabilities",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "The five components",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Work for companies that are not ours",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start building",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Scope, quote, build",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Work",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Company",
+   "section": "nav"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "nav"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Start a project",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "question.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Describe the problem in your own words. You will get a reply from Daniel, not a sequence, and a fixed quote with a scope attached rather than a discovery call.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Prefer email?",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "hello@loveleedaystudios.com",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Your name",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Email",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "What is the problem?",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Kind of work",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Internal tool or workflow system",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Customer-facing application",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Data / financial integration",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Website or brand rebuild",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Arthur engagement",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Something else",
+   "section": "section"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Budget range",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Under $10k",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "$10k \u2013 $25k",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "$25k \u2013 $50k",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "$50k+",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Not sure yet",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Send the brief",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Usually answered the same day.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A reply, from a person",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Usually the same day, with the questions we need answered to quote it.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A fixed quote with a scope",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "One number and a written scope. No retainer, no discovery phase you pay for.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "A build you can watch",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "You see it deployed as it is built, not at the end.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "Already have a portal link from us? Open it directly \u2014 it does not need an account.",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "See what we\u2019ve shipped \u2192",
+   "section": "section"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Studios",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Intelligence architecture and the production software that runs on top of it.",
+   "section": "footer"
+  },
+  {
+   "role": "eyebrow",
+   "text": "Kalamazoo, Michigan",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Arthur",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Architecture",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "How we scope",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Client rebuilds",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Companies we operate",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "How we measure",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "About",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Start a project",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "hello@loveleedaystudios.com",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "LOVELEEDAY",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "\u00a9 2026 LOVELEEDAY Studios LLC \u2014 a Delaware company.",
+   "section": "footer"
+  },
+  {
+   "role": "p",
+   "text": "Figures on this site name their source. Where one is unmeasured it says so.",
+   "section": "footer"
+  }
+ ]
+}
