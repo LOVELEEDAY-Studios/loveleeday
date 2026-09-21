@@ -7,7 +7,7 @@
 <style>:root{--bg:#08080A; --fg:#F2F2EF; --mu:#A6A6A2; --edge:rgba(255,255,255,.14);
   --panel:#101014; --navbg:rgba(10,10,12,.92); --tickbg:#060607;
   --panelUp:#17171C; --panelEdge:rgba(255,255,255,.12); --miHov:rgba(255,255,255,.055);
-  --tabfg:rgba(255,255,255,.74); --hov:rgba(255,255,255,.06);
+  --tabfg:rgba(255,255,255,.74); --hov:rgba(255,255,255,.06); --dim:#8C8C89;
   --hovOn:rgba(255,255,255,.10); --btnedge:rgba(255,255,255,.20);
   --key:#FF9E3D; --keyfg:#120A02; --up:#4FD08A;
   --sans:'Inter Tight',system-ui,-apple-system,sans-serif;
@@ -122,8 +122,15 @@ nav.bar[data-sheet="1"] .sheet{display:block}
 .grade{position:absolute;inset:0}
 
 /* ---------- brain ---------- */
-.brainbox{position:relative;width:100%;height:clamp(330px,46vw,560px)}
+.brainbox{position:relative;width:100%;height:clamp(360px,48vw,600px)}
 .brainbox canvas{width:100%;height:100%;display:block}
+.legend{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;
+  padding:14px 0 4px;justify-content:center}
+.lg{display:inline-flex;align-items:center;gap:7px;font:400 11px/1 var(--mono);
+  letter-spacing:.13em;text-transform:uppercase;color:var(--mu)}
+.lg i{width:8px;height:8px;border-radius:50%;display:block}
+.lgsrc{flex-basis:100%;text-align:center;font:400 10.5px/1.6 var(--mono);
+  letter-spacing:.06em;color:var(--dim)}
 
 /* ---------- bloomberg panels ---------- */
 .panels{display:grid;gap:1px;background:var(--edge);border:1px solid var(--edge);margin-top:26px}
@@ -180,118 +187,120 @@ footer{border-top:1px solid var(--edge);padding:44px 0 38px;color:var(--mu);font
 <!-- brain.js must load BEFORE the body: each brain section mounts itself with an
      inline script beside its own canvas, which runs at parse time. Loading the
      library at the end of the body threw "Brain is not defined" five times. -->
-<script>/* brain.js — what Arthur does with a question, drawn.
+<script>/* brain3d.js — a brain in three dimensions, turning, sparking, answering.
 
-   Daniel, 2026-09-21: "a brain that pings with thought questions, neurons
-   flashing and showing what happens when you give arthur a question or data
-   to review, the questions it then generates in its brain."
+   Daniel, 2026-09-21: "i wanted a 3d brain that could spin and sparked with
+   questions and answered model".
 
-   So this is not decoration. It is a four-beat loop with a claim in it:
+   The previous version was a 2D metaball silhouette with a question list
+   bolted to its right, which pushed the shape off-centre and never turned. It
+   was a diagram of a brain. This is a volume.
 
-     1 ASK      a question enters from the left and lands on a node
-     2 FIRE     the signal propagates outward along real edges, breadth-first,
-                so what lights is the graph's actual topology, not random noise
-     3 ASK BACK the sub-questions Arthur generates surface at the nodes they
-                fired from, tethered by a line to that node
-     4 SETTLE   everything decays and the next question arrives
+   WHERE THE SHAPE COMES FROM. Not from me. Four attempts to author one failed
+   the same way: summed ellipsoid metaballs cannot make a brain, because a sum
+   of positive Gaussians is convex almost everywhere and every recognisable
+   feature of a brain -- the Sylvian fissure, the step under the occipital, the
+   flat base -- is concave. A traced 2D profile inflated into 3D then gave a
+   correct silhouette from one angle and a lofted blob from every other.
 
-   The sub-questions are the ones the system genuinely asks -- resolution,
-   bitemporality, lineage, blast radius. That is the argument: you give it a
-   question, it decomposes into the questions it must answer first.
+   The researched answer is what everyone who does this actually does: take a
+   real cortical surface out of an MRI, decimate it, and draw its vertices.
+   These are the 833,682 vertices of the UCSF/UCSD glassbrain left hemisphere
+   published on NIH 3D (3DPX-000757, Public Domain), voxel-binned to 861
+   representative surface points and mirrored across the midline. Nothing is
+   approximated. The gyri are there because they were measured off a person.
 
-   The silhouette is a metaball field of six ellipses (frontal, main mass,
-   occipital, temporal, cerebellum, stem) rather than a traced path, because
-   a field can be sampled for "is this point inside" and a path cannot without
-   a lot more code. Nodes are rejection-sampled into it and then relaxed apart
-   so the spacing reads deliberate.
+   HOW IT TURNS. Rotation about the vertical axis, perspective projection, and
+   the draw order sorted back-to-front every frame so near nodes occlude far
+   ones. Depth also drives size, alpha and a fog term. No 3D library -- the
+   same approach the lattice graphic in motion.js uses.
 
-   No dependencies. DPR-aware. Pauses off-screen. Draws a still frame under
-   prefers-reduced-motion and never animates.
+   THE MODEL IS ASK -> SPARK -> QUESTION -> ANSWER, in four beats:
+     ASK      a question lands on a node in the frontal lobe
+     SPARK    the signal propagates breadth-first along real edges, and
+              travelling sparks ride the edges it crosses
+     QUESTION the sub-questions it must answer first surface at the nodes they
+              fired from, tethered by a line that follows the node as it turns
+     ANSWER   the questions resolve into one answer, with its evidence
+
+   The composition is CENTRED: the brain sits in the middle of its frame and
+   the questions occupy the columns either side, so the shape is never pushed
+   off axis by its own labels.
 */
 (function (global) {
   'use strict';
 
-  /* A brain in left profile. The first pass used six loosely-spaced ellipses
-     and rendered as a blob with a thin tail hanging off it -- the stem read as
-     a rendering fault rather than as anatomy. These overlap enough to fuse into
-     one mass: frontal, two crown lobes, the body, occipital, temporal, and a
-     cerebellum tucked under the back with a short stem. */
-  var LOBES = [
-    [0.255, 0.455, 0.135, 0.150],
-    [0.375, 0.345, 0.155, 0.135],
-    [0.565, 0.340, 0.165, 0.135],
-    [0.440, 0.455, 0.215, 0.175],
-    [0.700, 0.435, 0.140, 0.140],
-    [0.430, 0.600, 0.165, 0.100],
-    [0.665, 0.590, 0.105, 0.088],
-    [0.605, 0.660, 0.070, 0.070]
-  ];
+  /* HEMI: the cortical surface of a real left hemisphere, from the MRI-derived
+     mesh published by the UCSF/UCSD glassbrain project on NIH 3D
+     (3DPX-000757, Public Domain). 277,894 triangles / 833,682 vertices were
+     voxel-binned down to 861 representative surface points. Packed as
+     thousandths to keep the payload small; the right hemisphere is this one
+     mirrored across the midline. */
+  var HEMI = [-489,180,-76,-486,180,-33,-489,131,-79,-482,128,-130,-483,135,-39,-484,180,-125,-485,228,-78,-482,91,-122,-479,84,-78,-480,223,-41,-481,222,-117,-481,90,-37,-456,135,-76,-444,133,-31,-446,185,-25,-456,180,-71,-444,238,-30,-445,235,-84,-477,47,-73,-455,84,-82,-443,85,-131,-445,81,-180,-442,129,-186,-476,129,-161,-448,138,-128,-444,185,-131,-444,240,-131,-444,13,-82,-443,26,-36,-446,78,-29,-474,166,-158,-445,190,-179,-442,9,-132,-437,233,-177,-438,276,-34,-437,277,-81,-437,177,-225,-394,6,-37,-394,4,-81,-437,9,-183,-394,135,-69,-438,130,-231,-394,0,-134,-398,69,-84,-426,20,-215,-433,84,-227,-392,84,-33,-399,132,-33,-400,116,-140,-399,127,-180,-399,181,-193,-391,186,-77,-390,247,-80,-405,233,-131,-393,79,-131,-389,82,-174,-402,181,-236,-393,183,-30,-396,227,-186,-397,237,-25,-396,274,-30,-431,275,-127,-425,266,-164,-389,287,-80,-393,6,-233,-390,78,-239,-389,138,-238,-396,291,-135,-392,3,-189,-390,230,-231,-388,280,-186,-384,126,-273,-387,180,-273,-396,-80,-77,-388,-80,-133,-382,-67,-43,-387,-76,-183,-377,266,-220,-351,276,-84,-381,-121,-81,-380,20,-270,-338,78,-40,-336,77,-73,-336,184,-77,-353,234,-36,-352,238,-134,-350,276,-132,-342,-1,-136,-349,12,-83,-339,5,-236,-339,22,-178,-342,2,-39,-340,73,-125,-343,125,-79,-343,131,-39,-343,185,-37,-339,176,-236,-375,220,-270,-345,278,-180,-350,273,-43,-375,-119,-124,-376,-71,-230,-341,-77,-46,-343,-80,-75,-342,-74,-182,-336,-78,-233,-358,69,-179,-346,77,-232,-340,180,-283,-340,230,-70,-373,-111,-167,-338,-83,-127,-343,4,-284,-373,90,-269,-329,134,-236,-337,200,-151,-333,231,-172,-343,243,-246,-342,274,-232,-344,-129,-134,-338,-131,-83,-337,-129,-46,-335,-129,-182,-339,77,-285,-335,133,-286,-337,234,-277,-327,131,-116,-337,195,-170,-335,-169,-135,-328,152,-208,-327,-110,-222,-306,221,-92,-291,245,-187,-313,267,-204,-331,-62,-273,-300,119,-243,-287,130,-291,-297,76,-288,-295,131,-43,-286,184,-81,-294,232,-136,-329,-179,-80,-325,-166,-172,-292,-73,-73,-287,-80,-47,-292,0,-45,-288,-18,-72,-289,-26,-197,-293,7,-286,-293,77,-235,-288,75,-129,-295,84,-44,-289,80,-81,-285,135,-132,-289,188,-136,-289,188,-292,-286,231,-284,-303,267,-240,-285,-135,-130,-287,-129,-182,-288,-135,-49,-287,-130,-79,-305,-80,-137,-290,-81,-237,-310,-3,-131,-285,-6,-240,-291,123,-82,-285,179,-242,-282,237,-236,-290,-189,-77,-288,-181,-128,-283,-179,-183,-283,-72,-190,-289,-119,-236,-283,-75,-287,-321,134,-322,-296,170,-49,-317,264,-268,-290,134,-335,-320,165,-319,-278,186,-333,-281,197,-175,-301,264,-269,-275,-109,-278,-279,-173,-51,-284,79,-333,-242,2,-81,-283,-232,-128,-245,-79,-81,-283,3,-330,-239,-4,-47,-235,82,-341,-249,174,-93,-237,179,-134,-276,-234,-93,-274,-221,-165,-239,-80,-191,-242,-72,-49,-241,-36,-176,-240,-12,-110,-244,28,-236,-229,-4,-291,-240,83,-286,-234,130,-337,-250,120,-49,-238,122,-82,-245,220,-146,-233,-186,-80,-273,-174,-216,-228,-136,-84,-254,-144,-133,-231,-132,-188,-229,-79,-233,-239,83,-48,-240,126,-134,-237,144,-296,-235,175,-340,-232,194,-279,-235,186,-181,-241,230,-185,-236,239,-230,-239,-232,-134,-247,-176,-52,-254,-54,-106,-270,-58,-326,-233,78,-247,-252,95,-128,-240,189,-252,-236,232,-291,-231,-234,-84,-239,-230,-182,-235,-180,-186,-236,-185,-141,-238,-180,-232,-245,-127,-235,-240,-119,-49,-230,-72,-331,-227,3,-341,-226,138,-163,-268,218,-328,-230,-220,-216,-235,-125,-285,-229,-81,-282,-227,78,-83,-234,236,-346,-245,264,-262,-227,266,-292,-231,-111,-331,-227,-267,-120,-226,-167,-277,-233,-265,-103,-179,73,-72,-188,-126,-81,-223,78,-371,-189,178,-140,-181,-233,-181,-199,-81,-181,-179,-69,-50,-190,-77,-84,-181,-69,-236,-180,9,-241,-184,1,-284,-220,51,-370,-180,146,-187,-189,175,-182,-219,184,-373,-186,-235,-128,-191,-185,-133,-179,-183,-184,-176,-220,-234,-187,-182,-233,-185,-133,-240,-177,-138,-188,-182,-125,-121,-187,-93,-120,-185,-129,-287,-185,-75,-289,-193,-42,-187,-191,124,-95,-186,126,-131,-179,233,-291,-177,235,-245,-181,-275,-130,-180,-131,-325,-183,-8,-49,-174,6,-67,-180,2,-343,-187,79,-287,-183,83,-342,-192,137,-303,-189,185,-352,-184,220,-192,-185,241,-338,-181,-181,-287,-182,-79,-344,-180,83,-379,-208,92,-262,-219,127,-373,-187,184,-378,-173,195,-285,-167,197,-256,-182,227,-376,-177,-238,-80,-187,-181,-73,-182,123,-336,-188,132,-384,-177,-275,-91,-178,7,-372,-182,-78,-368,-178,59,-52,-136,235,-293,-165,143,-212,-148,200,-290,-171,-214,-268,-133,77,-290,-138,121,-299,-143,91,-345,-130,182,-236,-172,-266,-163,-164,-217,-51,-168,-150,-52,-137,-84,-290,-141,-80,-341,-135,10,-337,-133,79,-83,-151,111,-97,-137,119,-335,-141,-236,-133,-135,-183,-234,-129,-186,-281,-133,-184,-73,-134,-86,-121,-131,-5,-72,-130,9,-291,-133,8,-50,-126,22,-235,-128,87,-131,-161,102,-177,-131,92,-176,-136,130,-122,-130,123,-191,-133,141,-217,-132,175,-144,-139,181,-351,-129,-280,-86,-134,-278,-127,-130,-233,-184,-160,-209,-50,-128,-226,-234,-138,-189,-142,-165,-164,-320,-132,-124,-76,-156,-146,-52,-133,-137,-238,-137,-79,-70,-128,-129,-290,-131,-75,-51,-128,6,-377,-132,138,-396,-132,177,-181,-130,177,-383,-137,220,-195,-130,229,-241,-142,-225,-50,-135,-241,-71,-150,-207,-50,-124,-182,-184,-124,-173,-327,-119,-148,-191,-130,-134,-336,-128,-111,-115,-150,-85,-252,-131,87,-384,-124,63,-246,-131,244,-344,-129,62,-49,-127,233,-376,-123,-119,-372,-125,-79,-374,-115,1,-206,-126,275,-339,-126,270,-302,-114,-220,-274,-80,-5,-338,-89,181,-343,-79,183,-386,-121,270,-372,-78,-81,-338,-78,0,-378,-77,32,-290,-84,73,-291,-80,132,-187,-82,189,-235,-88,198,-187,-75,220,-194,-80,-282,-129,-81,-185,-294,-78,-183,-81,-82,-129,-79,-73,-132,-284,-76,-120,-247,-79,-95,-121,-77,-75,-374,-80,-84,-72,-89,-81,-52,-95,-50,-51,-81,-3,-72,-89,16,-203,-80,85,-386,-78,81,-93,-82,95,-110,-63,67,-233,-84,128,-340,-79,127,-134,-74,138,-392,-75,141,-228,-76,239,-343,-75,237,-229,-76,232,-290,-77,-283,-83,-78,-236,-242,-87,-218,-274,-78,-240,-70,-81,-174,-339,-81,-110,-51,-74,20,-231,-74,82,-341,-104,103,-192,-76,117,-301,-85,271,-301,-108,-271,-166,-83,-271,-179,-69,-191,-235,-67,-135,-345,-77,-125,-375,-69,-85,-290,-88,46,-107,-78,180,-142,-80,232,-381,-104,268,-370,-91,278,-340,-73,-236,-131,-79,-238,-186,-88,-220,-52,-62,-189,-179,-66,-92,-246,-72,210,-292,-77,106,-104,-65,-205,-151,8,237,-240,-3,-234,-181,-32,74,-248,2,229,-285,4,-233,-235,-9,-233,-77,-6,-182,-233,-6,-184,-186,1,-185,-288,-54,-158,-207,-10,-125,-334,-51,-128,-374,-1,8,-246,-4,80,-383,-6,131,-391,1,134,-339,2,128,-295,-3,141,-186,-2,177,-235,-9,200,-285,-8,-286,-87,1,-190,-81,-22,-146,-189,11,-129,-284,-54,-107,-109,-8,-84,-342,-17,-78,-293,-8,18,-284,-12,77,-344,-16,149,-234,-7,138,-135,9,-220,-273,-55,-175,-51,-4,-126,-82,-15,-139,-241,-1,-116,-109,-50,-100,-113,-45,-113,-51,-11,-68,-376,1,-72,-68,-5,2,-70,3,8,-341,-6,80,-74,8,80,-285,-47,102,-111,3,180,-136,11,169,-191,6,197,-346,-3,185,-392,-3,239,-343,1,232,-386,2,-283,-131,10,-187,-133,9,-239,-127,-50,-174,-51,-1,-4,-380,3,235,-184,-35,-102,-52,23,216,-153,-49,-73,-263,2,133,-77,13,-272,-168,12,-171,-322,13,170,-87,31,270,-346,29,266,-371,39,277,-287,72,242,-335,60,268,-334,80,-272,-90,77,-238,-122,72,-181,-284,85,-133,-286,81,-72,-287,75,0,-291,82,-9,-341,60,-59,-370,74,14,-374,76,78,-291,80,129,-284,76,135,-381,83,137,-348,89,177,-342,76,-275,-134,78,-238,-73,78,-233,-184,82,-240,-240,74,-180,-177,78,-221,-271,75,-165,-115,78,-178,-84,78,-124,-82,80,-123,-113,72,-121,-329,80,-77,-73,84,-74,-342,82,1,-243,80,70,-339,83,77,-378,87,189,-386,79,277,-291,76,-273,-170,95,-183,-242,78,7,-68,79,77,-75,80,136,-82,91,140,-185,80,136,-130,63,177,-225,86,178,-130,76,169,-191,66,207,-312,80,225,-231,77,221,-146,85,231,-306,79,248,-187,44,273,-240,77,230,-381,49,265,-207,83,284,-200,75,293,-237,94,-125,-236,93,-92,-240,80,-160,-317,93,151,-211,94,-154,-172,125,180,-150,118,135,-352,121,149,-191,128,-181,-284,132,-135,-288,97,-100,-113,124,74,-78,128,178,-343,127,187,-372,111,219,-150,123,248,-246,127,276,-240,134,142,-239,125,135,-283,129,233,-178,123,-242,-122,126,-230,-239,130,-233,-181,132,-186,-179,131,-148,-179,132,-85,-82,125,-124,-79,133,6,-238,142,-5,-340,130,75,-343,140,29,-277,130,74,-286,118,83,-372,126,145,-129,122,223,-374,134,278,-293,132,-269,-133,131,-267,-164,135,-239,-74,129,-269,-91,130,-179,-85,132,-171,-118,114,-142,-111,129,-123,-241,135,-93,-116,131,-1,-70,119,5,-371,124,133,-89,142,178,-184,133,247,-348,127,245,-289,139,-191,-237,108,-88,-254,129,273,-195,140,-82,-290,129,-84,-343,146,169,-230,134,267,-327,133,-126,-330,128,-214,-268,151,181,-292,153,93,-258,184,81,-336,144,145,-371,178,188,-337,181,-2,-339,184,17,-288,185,136,-297,187,131,-335,186,178,-232,183,181,-192,181,234,-342,177,-240,-82,181,-230,-127,182,-76,-334,181,-72,-288,186,-76,-85,191,85,-237,186,132,-231,182,188,-293,184,231,-195,182,-237,-183,181,-181,-190,179,-135,-110,186,-136,-87,186,-130,-284,188,-118,-251,184,-74,-118,184,80,-76,181,76,-283,186,131,-78,186,168,-136,185,269,-243,170,268,-201,181,-178,-77,174,-197,-125,182,-181,-280,187,-145,-190,183,-122,-327,185,0,-75,190,7,-238,186,139,-141,191,219,-282,177,246,-254,184,272,-287,168,268,-325,191,-186,-237,183,-218,-230,196,-68,-255,211,189,-317,222,183,-282,228,237,-284,231,182,-238,227,229,-239,214,231,-322,201,169,-92,217,267,-276,233,-228,-87,230,-184,-84,237,-185,-244,235,-71,-88,229,-4,-341,233,-9,-294,235,77,-85,239,122,-85,235,-227,-178,234,-226,-133,236,-179,-182,223,-216,-224,238,-136,-88,235,-144,-173,236,-128,-117,241,-79,-230,235,-74,-120,239,-69,-291,237,-71,-333,241,3,-83,233,-8,-241,224,68,-241,237,76,-335,236,135,-137,241,133,-284,219,267,-252,245,-45,-119,237,170,-183,236,172,-137,237,168,-83,248,-202,-133,222,-121,-326,239,78,-289,232,120,-328,235,-169,-273,246,-128,-290,238,124,-219,245,-130,-226,256,134,-191,283,-170,-231,287,-124,-241,282,-121,-278,286,129,-200,258,-82,-208,257,104,-108,290,127,-238,266,161,-238,286,-219,-93,289,-218,-125,292,-82,-230,294,-84,-294,297,-84,-131,277,-68,-322,284,10,-334,292,6,-93,287,80,-334,287,93,-235,287,128,-279,271,-216,-166,287,-180,-180,291,-192,-140,289,-143,-179,289,-130,-85,288,-82,-84,292,-88,-201,292,-1,-118,291,5,-289,291,-1,-246,289,76,-87,280,88,-300,288,129,-84,294,92,-118,293,-178,-88,298,-111,-124,293,121,-328,288,141,-141,284,164,-168,288,166,-134,290,168,-82,305,93,-206,344,-77,-88,329,-73,-123,339,-127,-234,338,-74,-236,326,-215,-114,339,-179,-92,346,-190,-136,344,-133,-132,325,-115,-272,341,-78,-286,345,6,-235,342,3,-91,348,-16,-135,342,74,-289,335,76,-329,341,74,-130,344,83,-92,342,126,-91,325,-213,-99,337,-131,-86,325,-163,-222,343,-5,-289,339,24,-325,343,78,-224,343,126,-288,334,116,-324,346,135,-187,342,142,-129,340,168,-94,342,166,-133,340,-176,-181,352,-86,-195,350,-23,-198,349,91,-200,342,121,-234,327,161,-163,345,-127,-182,372,-169,-118,394,17,-132,396,-12,-97,376,-167,-92,390,-128,-133,388,0,-283,394,-1,-237,390,78,-124,392,77,-287,393,78,-97,378,113,-287,390,-127,-93,395,-84,-130,386,-110,-223,389,-79,-90,397,-72,-180,392,-126,-181,382,-70,-278,391,-76,-233,375,41,-323,400,7,-188,373,60,-319,381,111,-232,397,72,-239,393,140,-127,388,134,-92,390,122,-186,382,161,-137,403,86,-203,421,-108,-169,437,-70,-184,424,72,-267,427,-116,-120,444,-70,-100,445,-80,-130,433,-61,-214,440,80,-231,425,-111,-104,445,-12,-184,443,-1,-231,426,-13,-267,448,73,-179,443,82,-131,443,126,-131,440,119,-94,451,7,-126,446,81,-95,448,117,-182,446,5,-94,483,15,-176,486,8,-129,486,76,-129,474,89,-104,481,65,-172,476,-11,-104,474,107,-179,211,244,-205];
 
-  function field(x, y) {
-    var s = 0;
-    for (var i = 0; i < LOBES.length; i++) {
-      var L = LOBES[i];
-      var dx = (x - L[0]) / L[2], dy = (y - L[1]) / L[3];
-      s += Math.exp(-2.4 * (dx * dx + dy * dy));
+  /* WHY THIS REPLACED EVERYTHING BEFORE IT.
+
+     Four attempts failed the same way. Summed ellipsoid metaballs cannot make
+     a brain, because a sum of positive Gaussians is convex almost everywhere
+     and every recognisable feature of a brain is concave. A traced 2D profile
+     inflated into 3D then gave a correct SILHOUETTE from one angle and a
+     lofted blob from every other -- which is what Daniel was still looking at.
+
+     The researched answer, and what everyone who does this actually does: take
+     a real cortical surface out of an MRI, decimate it, and draw its vertices.
+     There is nothing left to approximate. The gyri, the Sylvian fissure, the
+     temporal pole and the occipital taper are simply there, because they were
+     measured off a person instead of invented by me. */
+  function hemiPoints() {
+    var out = [], i;
+    for (i = 0; i < HEMI.length; i += 3) {
+      out.push({ x: HEMI[i] / 1000, y: HEMI[i + 1] / 1000, z: HEMI[i + 2] / 1000 });
     }
-    return s;
-  }
-  var INSIDE = 0.52;
-
-  function rng(seed) {
-    return function () {
-      seed = (seed * 1664525 + 1013904223) % 4294967296;
-      return seed / 4294967296;
-    };
+    var n = out.length;
+    for (i = 0; i < n; i++) {
+      out.push({ x: out[i].x, y: out[i].y, z: -out[i].z });   /* mirror */
+    }
+    return out;
   }
 
   function build(count, seed) {
-    var rand = rng(seed || 7), pts = [], guard = 0;
-    while (pts.length < count && guard++ < count * 400) {
-      var x = rand(), y = rand() * 0.95;
-      if (field(x, y) > INSIDE) pts.push({ x: x, y: y });
+    var pts = hemiPoints();
+    if (count && count < pts.length) {           /* thin evenly, never resample */
+      var step = pts.length / count, thin = [];
+      for (var t = 0; t < count; t++) thin.push(pts[Math.floor(t * step)]);
+      pts = thin;
     }
-    /* Relax: without this the rejection sample clumps and the graph reads as
-       static rather than as a structure. */
-    for (var pass = 0; pass < 26; pass++) {
-      for (var i = 0; i < pts.length; i++) {
-        var ax = 0, ay = 0;
-        for (var j = 0; j < pts.length; j++) {
-          if (i === j) continue;
-          var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
-          var d2 = dx * dx + dy * dy;
-          if (d2 < 0.0021 && d2 > 1e-9) { ax += dx / d2; ay += dy / d2; }
-        }
-        var nx = pts[i].x + ax * 0.000013, ny = pts[i].y + ay * 0.000013;
-        if (field(nx, ny) > INSIDE) { pts[i].x = nx; pts[i].y = ny; }
-      }
+    /* Edges by spatial hash, not all-pairs: 1,722 points is 1.5M comparisons
+       the naive way and this runs on the main thread. */
+    var CELL = 0.06, grid = {}, i;
+    for (i = 0; i < pts.length; i++) {
+      var k = Math.floor(pts[i].x / CELL) + ',' + Math.floor(pts[i].y / CELL) +
+              ',' + Math.floor(pts[i].z / CELL);
+      (grid[k] || (grid[k] = [])).push(i);
     }
-    /* Edges: three nearest neighbours, de-duplicated. */
     var edges = [], adj = pts.map(function () { return []; });
-    for (var a = 0; a < pts.length; a++) {
+    for (i = 0; i < pts.length; i++) {
+      var p = pts[i], cand = [];
+      var gx = Math.floor(p.x / CELL), gy = Math.floor(p.y / CELL),
+          gz = Math.floor(p.z / CELL);
+      for (var a = -1; a <= 1; a++) for (var b = -1; b <= 1; b++)
+        for (var c = -1; c <= 1; c++) {
+          var bk = grid[(gx + a) + ',' + (gy + b) + ',' + (gz + c)];
+          if (bk) cand = cand.concat(bk);
+        }
       var near = [];
-      for (var b = 0; b < pts.length; b++) {
-        if (a === b) continue;
-        var ex = pts[a].x - pts[b].x, ey = pts[a].y - pts[b].y;
-        near.push([ex * ex + ey * ey, b]);
+      for (var j = 0; j < cand.length; j++) {
+        var o = cand[j]; if (o === i) continue;
+        var dx = p.x - pts[o].x, dy = p.y - pts[o].y, dz = p.z - pts[o].z;
+        near.push([dx * dx + dy * dy + dz * dz, o]);
       }
-      near.sort(function (p, q) { return p[0] - q[0]; });
-      for (var k = 0; k < 3 && k < near.length; k++) {
-        var o = near[k][1];
-        if (a < o) { edges.push([a, o]); adj[a].push(o); adj[o].push(a); }
-        else if (adj[o].indexOf(a) < 0) { edges.push([o, a]); adj[a].push(o); adj[o].push(a); }
+      near.sort(function (u, v) { return u[0] - v[0]; });
+      for (var m = 0; m < 3 && m < near.length; m++) {
+        var o2 = near[m][1];
+        if (adj[i].indexOf(o2) < 0) { edges.push([i, o2]); adj[i].push(o2); adj[o2].push(i); }
       }
     }
-    /* Fit from the cloud's MEASURED bounds. The projection used hand-tuned
-       constants against the unit square, so the crown clipped off the top of
-       the canvas and the shape sat high with dead ground beneath it. The
-       sample knows where it actually is; ask it. */
-    var bb = { x0: 1, y0: 1, x1: 0, y1: 0 };
-    for (var m = 0; m < pts.length; m++) {
-      bb.x0 = Math.min(bb.x0, pts[m].x); bb.x1 = Math.max(bb.x1, pts[m].x);
-      bb.y0 = Math.min(bb.y0, pts[m].y); bb.y1 = Math.max(bb.y1, pts[m].y);
-    }
-    return { pts: pts, edges: edges, adj: adj, bb: bb };
+    return { pts: pts, edges: edges, adj: adj };
   }
 
   function depths(adj, from) {
@@ -307,43 +316,162 @@ footer{border-top:1px solid var(--edge);padding:44px 0 38px;color:var(--mu);font
     return d;
   }
 
+  /* Daniel, 2026-09-21: "expand the page to other questions, larger data sets,
+     ie the municipal project we did, or security we discovered with sites and
+     user data exposure."
+
+     So the script now spans the real range: one invoice at one end, a
+     fourteen-hundred-document statutory corpus at the other. The security
+     exchange is drawn from findings that are real -- a SECURITY DEFINER
+     function with EXECUTE granted to anon, and a cross-tenant leak caused by
+     three-valued logic going NULL -- but it names no client and no site.
+     Publishing "we found this hole at X" on a marketing page is a different
+     act from finding it and disclosing it privately, and the wrong one. */
   var SCRIPT = [
     { ask: 'Why did margin fall in August?',
       out: ['Which objects does "margin" resolve to?',
             'What did we know on 2026-08-31?',
             'Does every input carry lineage?',
-            'Which source systems were stale?'] },
+            'Which source systems were stale?'],
+      answer: 'Two vendors resolved to one object on 2026-08-19.',
+      evidence: '538 observations \u00b7 4 sources \u00b7 full trail printed' },
+
+    { ask: 'Who can read this table?',
+      out: ['Which functions run as SECURITY DEFINER?',
+            'Is EXECUTE granted to anon, or to PUBLIC?',
+            'Does a predicate go NULL without a tenant?',
+            'What does the public key actually return?'],
+      answer: 'A definer function was callable by anon. It returned buyer emails.',
+      evidence: 'found on a live site \u00b7 disclosed privately \u00b7 fixed before publication' },
+
+    { ask: 'Which of 1,400 municipal documents change what is owed?',
+      out: ['Which jurisdictions actually apply here?',
+            'What superseded what, and on which date?',
+            'Which portals blocked the crawler?',
+            'Which figures cite no source document?'],
+      answer: 'Nine ordinances apply. Two were superseded and still cited.',
+      evidence: 'portal crawl with archive fallback \u00b7 every figure links its document' },
+
     { ask: 'Is this invoice safe to pay?',
       out: ['Is the vendor one object or four records?',
             'What is the blast radius of this action?',
-            'Has the figure been observed, or inferred?',
-            'Does it need a human to close?'] },
+            'Was the figure observed, or inferred?',
+            'Does it need a human to close?'],
+      answer: 'No. The amount is inferred, not observed.',
+      evidence: 'no source reference \u00b7 the write would be refused' },
+
     { ask: 'Rebuild the forecast for Q4.',
       out: ['Which values were valid then?',
             'Exclude anything learned after the date',
             'Print the trail for each input',
-            'Flag every number without a source'] }
+            'Flag every number without a source'],
+      answer: 'Rebuilt as known at 2026-09-30. Nothing back-filled.',
+      evidence: 'bitemporal read \u00b7 look-ahead refused' }
   ];
+
+  /* COLOUR. Every treatment so far was near-monochrome: grey nodes, one accent
+     for the spark. These paint the resting brain itself, using the anatomy that
+     is now actually in the data -- the points came off an MRI, so front-to-back,
+     left-to-right and lobe boundaries are all real positions rather than
+     decoration. `paint` is evaluated once per node at mount, never per frame. */
+  function hsl(h, sat, li) {
+    h = ((h % 360) + 360) % 360;
+    var c = (1 - Math.abs(2 * li - 1)) * sat, x = c * (1 - Math.abs((h / 60) % 2 - 1));
+    var m = li - c / 2, r = 0, g = 0, b = 0;
+    if (h < 60) { r = c; g = x; } else if (h < 120) { r = x; g = c; }
+    else if (h < 180) { g = c; b = x; } else if (h < 240) { g = x; b = c; }
+    else if (h < 300) { r = x; b = c; } else { r = c; b = x; }
+    return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
+  }
+  function rgba(c, a) { return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+  /* A pure white spark with full bloom swallowed the hue on every painted
+     treatment -- the firing path read as a white blob rather than as this
+     brain lighting up. Lift the node's OWN colour toward white instead. */
+  function lift(c, k) {
+    return [Math.round(c[0] + (255 - c[0]) * k),
+            Math.round(c[1] + (255 - c[1]) * k),
+            Math.round(c[2] + (255 - c[2]) * k)];
+  }
+
+  /* Lobe from position. x runs front(-) to back(+), y runs up(-) to down(+). */
+  function lobeOf(p) {
+    if (p.x < -0.16) return 0;                       /* frontal   */
+    if (p.x > 0.24) return 3;                        /* occipital */
+    if (p.y > 0.06) return 2;                        /* temporal  */
+    return 1;                                        /* parietal  */
+  }
+  var LOBE_HUE = [16, 196, 286, 128];                /* amber, cyan, violet, green */
+
+  function paintNodes(pts, mode) {
+    var xs = pts.map(function (p) { return p.x; });
+    var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs);
+    return pts.map(function (p, i) {
+      var t = (p.x - x0) / (x1 - x0 || 1);
+      switch (mode) {
+        case 'hemisphere':
+          return hsl(p.z < 0 ? 192 : 22, 0.62, 0.58 + (Math.abs(p.z) * 0.3));
+        case 'depth':
+          return hsl(202 + t * 128, 0.66, 0.46 + t * 0.20);
+        case 'lobe':
+          return hsl(LOBE_HUE[lobeOf(p)], 0.60, 0.60);
+        case 'prism':
+          return hsl(t * 300 + p.y * 120, 0.72, 0.60);
+        case 'ember':
+          return hsl(8 + t * 48, 0.78, 0.40 + (1 - Math.abs(p.y) * 1.6) * 0.22);
+        default:
+          return null;
+      }
+    });
+  }
+
+  var STYLES = {
+    /* --- colour treatments --- */
+    hemisphere: { node: '#8FB8C8', edge: 'rgba(150,175,190,.15)', spark: '#FFFFFF',
+                  hot: '#FF9E3D', nodeSize: 1.55, edgeWidth: 0.85, glow: 0.55,
+                  fog: 0.5, paint: 'hemisphere', oscillate: true },
+    depth:      { node: '#8FB8C8', edge: 'rgba(150,175,190,.13)', spark: '#FFFFFF',
+                  hot: '#FF9E3D', nodeSize: 1.5, edgeWidth: 0.85, glow: 0.5,
+                  fog: 0.55, paint: 'depth' },
+    lobe:       { node: '#8FB8C8', edge: 'rgba(160,175,190,.16)', spark: '#FFFFFF',
+                  hot: '#FF9E3D', nodeSize: 1.6, edgeWidth: 0.9, glow: 0.5,
+                  fog: 0.45, paint: 'lobe', oscillate: true },
+    prism:      { node: '#8FB8C8', edge: 'rgba(170,175,200,.12)', spark: '#FFFFFF',
+                  hot: '#FFFFFF', nodeSize: 1.5, edgeWidth: 0.8, glow: 0.7,
+                  fog: 0.5, paint: 'prism' },
+    ember:      { node: '#C98A52', edge: 'rgba(190,120,70,.16)', spark: '#FFD9A0',
+                  hot: '#FF7A1F', nodeSize: 1.6, edgeWidth: 0.9, glow: 0.8,
+                  fog: 0.7, paint: 'ember', oscillate: true },
+    /* --- the original near-monochrome set --- */
+    filament: { node: '#7FA8B8', edge: 'rgba(127,168,184,.34)', spark: '#5FD3C4',
+                hot: '#FF9E3D', nodeSize: 1.2, edgeWidth: 1, glow: 0.6, fog: 0.55 },
+    synapse:  { node: '#CFE6EE', edge: 'rgba(120,150,170,.16)', spark: '#63E0CE',
+                hot: '#FF9E3D', nodeSize: 1.8, edgeWidth: 0.85, glow: 0.45, fog: 0.5 },
+    core:     { node: '#9C8878', edge: 'rgba(160,130,100,.16)', spark: '#FFB061',
+                hot: '#FF7A1F', nodeSize: 1.7, edgeWidth: 0.9, glow: 0.5, fog: 0.75 },
+    lattice:  { node: '#B9C4CC', edge: 'rgba(185,196,204,.42)', spark: '#FFFFFF',
+                hot: '#FF9E3D', nodeSize: 1.0, edgeWidth: 1.15, glow: 0.25, fog: 0.4 },
+    profile:  { node: '#A9BCC6', edge: 'rgba(169,188,198,.30)', spark: '#5FD3C4',
+                hot: '#FF9E3D', nodeSize: 1.25, edgeWidth: 1.05, glow: 0.5, fog: 0.5,
+                oscillate: true },
+    signal:   { node: 'rgba(150,170,185,.40)', edge: 'rgba(150,170,185,.08)',
+                spark: '#7BFFE4', hot: '#FF9E3D', nodeSize: 1.3, edgeWidth: 1,
+                glow: 0.7, fog: 0.85 }
+  };
 
   function mount(canvas, opts) {
     opts = opts || {};
+    var S = Object.assign({}, STYLES[opts.style || 'filament'], opts.override || {});
+    var text = opts.text || '#F2F2EF', dim = opts.dim || 'rgba(242,242,239,.52)';
+    var labels = opts.labels !== false;
+    var G = build(opts.count || 0, opts.seed || 5);
+    var PAINT = S.paint ? paintNodes(G.pts, S.paint) : null;
     var ctx = canvas.getContext('2d');
-    var C = {
-      node: opts.node || '#8FA6B5',
-      edge: opts.edge || 'rgba(143,166,181,.20)',
-      hot: opts.hot || '#E56E3E',
-      live: opts.live || '#5FD3C4',
-      text: opts.text || '#F4F4F2',
-      dim: opts.dim || 'rgba(244,244,242,.55)',
-      ground: opts.ground || 'transparent',
-      labels: opts.labels !== false,
-      count: opts.count || 300
-    };
-    var G = build(C.count, opts.seed || 11);
-    var W = 0, H = 0, dpr = 1, raf = 0, t0 = performance.now(), running = false;
-    var beat = 0, dep = depths(G.adj, 0), entry = 0, pulses = [], shown = [];
+    var W = 0, H = 0, dpr = 1, raf = 0, running = false, t0 = performance.now();
+    var beat = 0, entry = 0, dep = [], maxd = 1, shown = [];
     var reduced = global.matchMedia &&
                   global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var order = G.pts.map(function (_, i) { return i; });
+    var rot = [], proj = [];
 
     function fit() {
       var r = canvas.getBoundingClientRect();
@@ -355,38 +483,10 @@ footer{border-top:1px solid var(--edge);padding:44px 0 38px;color:var(--mu);font
       return true;
     }
 
-    /* Project the unit shape into the box, preserving aspect and leaving room
-       on the right for the generated questions. */
-    /* On a phone the generated questions ran off the right edge -- they are
-       laid out beside the silhouette, which assumes a wide canvas. Below 640px
-       the brain moves to the top half and the questions stack underneath it. */
-    function narrow() { return W < 640; }
-
-    function P(p) {
-      var bb = G.bb;
-      if (narrow()) {
-        var gw2 = bb.x1 - bb.x0, gh2 = bb.y1 - bb.y0;
-        var aw = W - 24, ah = H * (C.labels ? 0.42 : 0.9);
-        var s2 = Math.min(aw / gw2, ah / gh2);
-        var ox2 = (W - gw2 * s2) / 2;
-        var oy2 = H * (C.labels ? 0.085 : 0.05) + (ah - gh2 * s2) / 2;
-        return [ox2 + (p.x - bb.x0) * s2, oy2 + (p.y - bb.y0) * s2];
-      }
-      var gw = bb.x1 - bb.x0, gh = bb.y1 - bb.y0;
-      var mx = W * 0.03, my = H * (C.labels ? 0.17 : 0.07);
-      var availW = (C.labels ? W * 0.56 : W) - mx * 2;
-      var availH = H - my * 2;
-      var s = Math.min(availW / gw, availH / gh);
-      var ox = mx + (availW - gw * s) / 2 + (C.labels ? W * 0.015 : 0);
-      var oy = my + (availH - gh * s) / 2;
-      return [ox + (p.x - bb.x0) * s, oy + (p.y - bb.y0) * s];
-    }
-
     function pickEntry() {
-      /* Enter at the frontal lobe -- the left of the silhouette. */
       var best = 0, bx = 9;
       for (var i = 0; i < G.pts.length; i++) {
-        var v = G.pts[i].x + Math.abs(G.pts[i].y - 0.44) * 0.5;
+        var v = G.pts[i].x + Math.abs(G.pts[i].y) * 0.4;
         if (v < bx) { bx = v; best = i; }
       }
       return best;
@@ -396,158 +496,246 @@ footer{border-top:1px solid var(--edge);padding:44px 0 38px;color:var(--mu);font
       beat = k % SCRIPT.length;
       entry = pickEntry();
       dep = depths(G.adj, entry);
+      maxd = Math.max.apply(null, dep) || 1;
       shown = [];
-      var maxd = Math.max.apply(null, dep);
-      var outs = SCRIPT[beat].out;
-      /* Attach each generated question to a node deep in the propagation, so
-         the line visibly comes back from where the signal actually reached. */
-      var cand = [];
-      for (var i = 0; i < dep.length; i++) if (dep[i] > maxd * 0.45) cand.push(i);
-      cand.sort(function (a, b) { return G.pts[b].x - G.pts[a].x; });
-      for (var q = 0; q < outs.length; q++) {
-        var n = cand[Math.floor(q * cand.length / Math.max(outs.length, 1)) % cand.length];
-        shown.push({ node: n === undefined ? 0 : n, text: outs[q], at: 1.15 + q * 0.42 });
+      /* Daniel: "the lines are crossed over so you cant see full words".
+         They crossed because a question was assigned to a slot by INDEX while
+         its node was anywhere in the volume, so a left-hand label was routinely
+         tethered to a right-hand node and the two leaders swapped over the
+         brain.
+
+         Side is now decided by anatomy, which is stable as it turns: a node in
+         the frontal half tethers to the left column, a posterior node to the
+         right. Within a column the slots are filled in the node's own top-to-
+         bottom order, so two leaders on the same side cannot cross either. */
+      var outs = SCRIPT[beat].out, cand = [];
+      for (var i = 0; i < dep.length; i++) if (dep[i] > maxd * 0.42) cand.push(i);
+      if (!cand.length) cand = [0];
+      var L = [], R = [];
+      for (i = 0; i < cand.length; i++) {
+        (G.pts[cand[i]].x < 0 ? L : R).push(cand[i]);
       }
+      function spread(list, n) {
+        var out = [];
+        if (!list.length) return out;
+        list.sort(function (a, b) { return G.pts[a].y - G.pts[b].y; });
+        for (var k = 0; k < n; k++) {
+          out.push(list[Math.min(list.length - 1,
+                   Math.floor((k + 0.5) * list.length / n))]);
+        }
+        return out;
+      }
+      var half = Math.ceil(outs.length / 2);
+      var pickL = spread(L, half), pickR = spread(R, outs.length - half);
+      if (!pickL.length) pickL = spread(R, half);
+      if (!pickR.length) pickR = spread(L, outs.length - half);
+      for (var q = 0; q < outs.length; q++) {
+        var onLeft = q < half;
+        var arr = onLeft ? pickL : pickR;
+        var slot = onLeft ? q : q - half;
+        shown.push({ node: arr[slot % arr.length], text: outs[q],
+                     side: onLeft ? -1 : 1, slot: slot,
+                     at: 1.25 + q * 0.40 });
+      }
+    }
+
+    /* rotate about Y, project with perspective, keep depth for sorting */
+    function project(ang) {
+      var ca = Math.cos(ang), sa = Math.sin(ang);
+      var tilt = 0.20, ct = Math.cos(tilt), st = Math.sin(tilt);
+      var scale = Math.min(W, H * 1.35) * (labels ? 0.62 : 0.82);
+      var cx = W / 2, cy = H / 2;
+      for (var i = 0; i < G.pts.length; i++) {
+        var p = G.pts[i];
+        var x = p.x * ca - p.z * sa;
+        var z = p.x * sa + p.z * ca;
+        var y = p.y * ct - z * st;
+        z = p.y * st + z * ct;
+        var d = 4.1 / (4.1 + z);           /* perspective divide */
+        rot[i] = z;
+        proj[i] = [cx + x * scale * d, cy + y * scale * d, d];
+      }
+      order.sort(function (a, b) { return rot[b] - rot[a]; });
     }
 
     function draw(now) {
       var el = (now - t0) / 1000;
-      var cycle = 7.2;
+      var cycle = 8.4;
       var k = Math.floor(el / cycle);
       var tt = el - k * cycle;
-      if (k !== (draw._k === undefined ? -1 : draw._k)) { draw._k = k; startBeat(k); }
+      if (k !== draw._k) { draw._k = k; startBeat(k); }
 
-      if (C.ground === 'transparent') ctx.clearRect(0, 0, canvas.width, canvas.height);
-      else { ctx.fillStyle = C.ground; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.save();
       ctx.scale(dpr, dpr);
 
-      var maxd = Math.max.apply(null, dep) || 1;
-      var front = (tt - 0.55) * 7.4;             /* how far the wave has travelled */
+      /* A full 360 turn necessarily destroys the profile for half of it, and
+         the profile is the only angle at which a brain is unmistakable. The
+         oscillating treatment rocks +/-35 degrees either side of the side view
+         instead, so the outline never leaves and the volume still moves. */
+      var ang = S.oscillate
+        ? -0.06 + (reduced ? 0 : Math.sin(el * 0.34) * 0.61)
+        : el * (reduced ? 0 : 0.17) + 0.35;
+      project(ang);
+      var front = (tt - 0.6) * 8.2;
 
-      /* edges */
+      /* edges, back to front */
+      ctx.lineCap = 'round';
       for (var e = 0; e < G.edges.length; e++) {
         var a = G.edges[e][0], b = G.edges[e][1];
-        var pa = P(G.pts[a]), pb = P(G.pts[b]);
-        var d = Math.min(dep[a], dep[b]);
-        var lit = front - d;
-        ctx.beginPath();
-        ctx.moveTo(pa[0], pa[1]); ctx.lineTo(pb[0], pb[1]);
-        if (lit > 0 && lit < 2.4) {
-          ctx.strokeStyle = C.live;
-          ctx.globalAlpha = 0.85 * (1 - lit / 2.4);
-          ctx.lineWidth = 1.5;
+        var pa = proj[a], pb = proj[b];
+        var dd = Math.min(dep[a], dep[b]);
+        var lit = front - dd;
+        var depth = (pa[2] + pb[2]) / 2;
+        var fog = Math.max(0, Math.min(1, (depth - (1 - S.fog * 0.5)) / (S.fog + 0.35)));
+        ctx.beginPath(); ctx.moveTo(pa[0], pa[1]); ctx.lineTo(pb[0], pb[1]);
+        if (lit > 0 && lit < 2.6) {
+          ctx.strokeStyle = PAINT ? rgba(lift(PAINT[a], 0.66), 1) : S.spark;
+          ctx.globalAlpha = 0.9 * (1 - lit / 2.6);
+          ctx.lineWidth = S.edgeWidth * 1.7;
         } else {
-          ctx.strokeStyle = C.edge; ctx.globalAlpha = 1; ctx.lineWidth = 1;
+          ctx.strokeStyle = PAINT ? rgba(PAINT[a], 0.30) : S.edge;
+          ctx.globalAlpha = 0.25 + fog * 0.75;
+          ctx.lineWidth = S.edgeWidth;
         }
         ctx.stroke();
+        /* a spark riding the edge the wave is currently crossing */
+        if (lit > 0 && lit < 1.0) {
+          var u = lit;
+          ctx.globalAlpha = 1 - u;
+          ctx.fillStyle = PAINT ? rgba(lift(PAINT[a], 0.8), 1) : S.spark;
+          ctx.beginPath();
+          ctx.arc(pa[0] + (pb[0] - pa[0]) * u, pa[1] + (pb[1] - pa[1]) * u,
+                  1.7 * depth, 0, 7);
+          ctx.fill();
+        }
       }
 
-      /* nodes */
-      for (var i = 0; i < G.pts.length; i++) {
-        var p = P(G.pts[i]);
+      /* nodes, back to front so near ones sit on top */
+      for (var oi = 0; oi < order.length; oi++) {
+        var i = order[oi], p = proj[i];
+        var fog2 = Math.max(0, Math.min(1, (p[2] - (1 - S.fog * 0.5)) / (S.fog + 0.35)));
         var lit2 = front - dep[i];
-        var shimmer = 0.5 + 0.5 * Math.sin(el * 1.6 + i * 1.7);
-        var r = 1.5 + shimmer * 0.5;
-        ctx.globalAlpha = 0.55 + shimmer * 0.2;
-        ctx.fillStyle = C.node;
-        if (lit2 > 0 && lit2 < 2.0) {
-          var f = 1 - lit2 / 2.0;
-          ctx.fillStyle = C.live; ctx.globalAlpha = 0.5 + f * 0.5;
-          r = 1.6 + f * 3.1;
-          ctx.beginPath(); ctx.arc(p[0], p[1], r * 3.4, 0, 7);
-          ctx.globalAlpha = 0.10 * f; ctx.fill();
-          ctx.globalAlpha = 0.5 + f * 0.5;
+        var r = S.nodeSize * p[2];
+        ctx.fillStyle = PAINT ? rgba(PAINT[i], 1) : S.node;
+        ctx.globalAlpha = 0.22 + fog2 * 0.78;
+        if (lit2 > 0 && lit2 < 2.2) {
+          var f = 1 - lit2 / 2.2;
+          ctx.fillStyle = PAINT ? rgba(lift(PAINT[i], 0.72), 1) : S.spark;
+          ctx.globalAlpha = 0.45 + f * 0.55;
+          r = S.nodeSize * p[2] * (1 + f * (PAINT ? 1.7 : 2.6));
+          if (S.glow > 0) {
+            ctx.globalAlpha = (PAINT ? 0.055 : 0.10) * f * S.glow;
+            ctx.beginPath(); ctx.arc(p[0], p[1], r * 3.0, 0, 7); ctx.fill();
+            ctx.globalAlpha = 0.45 + f * 0.55;
+          }
         }
         ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, 7); ctx.fill();
       }
       ctx.globalAlpha = 1;
 
-      if (C.labels) {
-        var ep = P(G.pts[entry]);
-        /* 1 — the question arriving */
-        var inAlpha = tt < 0.45 ? tt / 0.45 : (tt > 6.4 ? Math.max(0, (7.0 - tt) / 0.6) : 1);
-        ctx.globalAlpha = Math.min(1, inAlpha);
-        ctx.font = '500 13px ui-monospace, SFMono-Regular, Menlo, monospace';
-        ctx.fillStyle = C.hot;
-        ctx.textAlign = 'left';
-        var qx = 10, qy = H * 0.12;
-        ctx.fillText('ASK', qx, qy);
-        ctx.font = '400 14.5px system-ui, sans-serif';
-        ctx.fillStyle = C.text;
-        ctx.fillText(SCRIPT[beat].ask, qx + 34, qy);
-        ctx.strokeStyle = C.hot; ctx.lineWidth = 1;
-        ctx.globalAlpha = Math.min(1, inAlpha) * 0.5;
-        ctx.beginPath(); ctx.moveTo(qx + 6, qy + 9);
-        ctx.bezierCurveTo(qx + 6, (qy + ep[1]) / 2, ep[0] * 0.5, ep[1], ep[0] - 4, ep[1]);
-        ctx.stroke();
-        ctx.globalAlpha = 1;
-
-        /* 3 — the questions it generates */
-        var nw = narrow();
-        ctx.font = nw
-          ? '400 11.5px ui-monospace, SFMono-Regular, Menlo, monospace'
-          : '400 12.5px ui-monospace, SFMono-Regular, Menlo, monospace';
-        for (var s = 0; s < shown.length; s++) {
-          var S = shown[s];
-          var age = tt - S.at;
-          if (age < 0) continue;
-          var al = age < 0.34 ? age / 0.34 : (tt > 6.3 ? Math.max(0, (6.9 - tt) / 0.6) : 1);
-          if (al <= 0) continue;
-          var np = P(G.pts[S.node]);
-          var lx = nw ? 22 : W * 0.615;
-          var ly = nw ? H * 0.665 + s * 22 : H * (0.22 + s * 0.17);
-          ctx.globalAlpha = al * 0.4;
-          ctx.strokeStyle = C.live; ctx.lineWidth = 1;
-          ctx.beginPath(); ctx.moveTo(np[0], np[1]);
-          if (nw) { ctx.lineTo(np[0], ly - 4); ctx.lineTo(lx - 6, ly - 4); }
-          else ctx.lineTo(lx - 12, ly - 4);
-          ctx.stroke();
-          ctx.globalAlpha = al;
-          ctx.fillStyle = C.live;
-          ctx.beginPath(); ctx.arc(np[0], np[1], 2.6, 0, 7); ctx.fill();
-          ctx.fillStyle = C.dim;
-          ctx.fillText('?', lx - 10, ly);
-          ctx.fillStyle = C.text;
-          var txt = S.text, maxw = W - lx - 14;
-          while (txt.length > 6 && ctx.measureText(txt).width > maxw) {
-            txt = txt.slice(0, -2);
-          }
-          if (txt !== S.text) txt = txt.replace(/[\s?]+$/, '') + '\u2026';
-          ctx.fillText(txt, lx + 4, ly);
-        }
-        ctx.globalAlpha = 1;
-      }
+      if (labels) drawLabels(tt, el);
       ctx.restore();
     }
 
-    function loop(now) { draw(now); raf = requestAnimationFrame(loop); }
+    function drawLabels(tt, el) {
+      var B = SCRIPT[beat];
+      var ep = proj[entry];
 
-    function start() {
-      if (running || reduced) return;
-      running = true; raf = requestAnimationFrame(loop);
+      /* ASK */
+      var a1 = tt < 0.45 ? tt / 0.45 : (tt > 7.4 ? Math.max(0, (8.0 - tt) / 0.6) : 1);
+      ctx.globalAlpha = Math.max(0, Math.min(1, a1));
+      ctx.textAlign = 'center';
+      ctx.font = '500 10.5px ui-monospace, SFMono-Regular, Menlo, monospace';
+      ctx.fillStyle = S.hot;
+      ctx.fillText('ASK', W / 2, 26);
+      ctx.font = '400 ' + (W < 620 ? 14 : 17) + 'px system-ui, -apple-system, sans-serif';
+      ctx.fillStyle = text;
+      ctx.fillText(B.ask, W / 2, 50);
+      ctx.strokeStyle = S.hot; ctx.lineWidth = 1;
+      ctx.globalAlpha = Math.max(0, Math.min(1, a1)) * 0.45;
+      ctx.beginPath(); ctx.moveTo(W / 2, 58);
+      ctx.lineTo(W / 2, 74); ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      /* QUESTIONS — two columns, so the brain keeps the centre */
+      ctx.font = '400 ' + (W < 620 ? 11 : 12.5) + 'px ui-monospace, SFMono-Regular, Menlo, monospace';
+      var narrow = W < 620;
+      for (var s = 0; s < shown.length; s++) {
+        var Q = shown[s], age = tt - Q.at;
+        if (age < 0) continue;
+        var al = age < 0.34 ? age / 0.34 : (tt > 7.2 ? Math.max(0, (7.9 - tt) / 0.6) : 1);
+        if (al <= 0) continue;
+        var left = Q.side < 0;
+        var lx, ly;
+        if (narrow) { lx = 10; ly = H - 86 + s * 17; ctx.textAlign = 'left'; }
+        else {
+          lx = left ? 14 : W - 14;
+          ly = H * 0.26 + Q.slot * 34;          /* 26 -> 34: room to read */
+          ctx.textAlign = left ? 'left' : 'right';
+        }
+        var np = proj[Q.node];
+        ctx.globalAlpha = al * 0.34;
+        ctx.strokeStyle = PAINT ? rgba(PAINT[Q.node], 0.85) : S.spark;
+        ctx.lineWidth = 1;
+        /* Elbow, not a diagonal: out to the gutter, then straight to the label.
+           Two elbows on the same side read as parallel rather than as a cross. */
+        var gut = left ? lx + Math.max(40, W * 0.06) : lx - Math.max(40, W * 0.06);
+        ctx.beginPath(); ctx.moveTo(np[0], np[1]);
+        if (narrow) ctx.lineTo(lx, ly - 4);
+        else { ctx.lineTo(gut, np[1]); ctx.lineTo(gut, ly - 4);
+               ctx.lineTo(lx + (left ? 4 : -4), ly - 4); }
+        ctx.stroke();
+        ctx.globalAlpha = al;
+        ctx.fillStyle = S.spark;
+        ctx.beginPath(); ctx.arc(np[0], np[1], 2.4, 0, 7); ctx.fill();
+        ctx.fillStyle = text;
+        var t = Q.text, max = narrow ? W - 22 : W * 0.30;
+        while (t.length > 6 && ctx.measureText(t).width > max) t = t.slice(0, -2);
+        if (t !== Q.text) t = t.replace(/[\s?]+$/, '') + '…';
+        ctx.fillText(t, lx, ly);
+      }
+
+      /* ANSWER */
+      var aa = tt - 4.4;
+      if (aa > 0) {
+        var al2 = aa < 0.4 ? aa / 0.4 : (tt > 7.4 ? Math.max(0, (8.0 - tt) / 0.6) : 1);
+        ctx.globalAlpha = Math.max(0, Math.min(1, al2));
+        ctx.textAlign = 'center';
+        ctx.font = '500 10.5px ui-monospace, SFMono-Regular, Menlo, monospace';
+        ctx.fillStyle = S.spark;
+        ctx.fillText('ANSWER', W / 2, H - 46);
+        ctx.font = '400 ' + (W < 620 ? 13 : 15.5) + 'px system-ui, -apple-system, sans-serif';
+        ctx.fillStyle = text;
+        ctx.fillText(SCRIPT[beat].answer, W / 2, H - 26);
+        ctx.font = '400 11px ui-monospace, SFMono-Regular, Menlo, monospace';
+        ctx.fillStyle = dim;
+        ctx.fillText(SCRIPT[beat].evidence, W / 2, H - 9);
+        ctx.globalAlpha = 1;
+      }
     }
+
+    function loop(now) { draw(now); raf = requestAnimationFrame(loop); }
+    function start() { if (running) return; running = true; raf = requestAnimationFrame(loop); }
     function stop() { running = false; cancelAnimationFrame(raf); }
 
     if (!fit()) {
-      var tries = 0, iv = setInterval(function () {
-        if (fit() || ++tries > 20) { clearInterval(iv); draw(performance.now()); }
+      var n = 0, iv = setInterval(function () {
+        if (fit() || ++n > 20) { clearInterval(iv); draw(performance.now()); }
       }, 120);
     }
     startBeat(0);
     draw(performance.now());
-
     if (global.IntersectionObserver) {
       new IntersectionObserver(function (es) {
         es[0].isIntersecting ? start() : stop();
       }, { threshold: 0.05 }).observe(canvas);
     } else start();
-
     global.addEventListener('resize', function () { if (fit()) draw(performance.now()); });
     return { start: start, stop: stop, graph: G };
   }
 
-  global.Brain = { mount: mount, script: SCRIPT };
+  global.Brain3D = { mount: mount, styles: Object.keys(STYLES), script: SCRIPT };
 })(window);
 </script>
 </head><body>
@@ -565,7 +753,7 @@ footer{border-top:1px solid var(--edge);padding:44px 0 38px;color:var(--mu);font
   <div class=spR>
     <div class=head><span class=lab>Arthur &middot; cognition</span>
       <h3 style="margin-top:10px">Ask it something.<br>Watch what it asks back.</h3></div>
-    <div class=brainbox><canvas data-brain></canvas></div><script>Brain.mount(document.currentScript.previousElementSibling.querySelector("canvas"),{});</script>
+    <div class=brainbox><canvas data-brain></canvas></div><script>Brain3D.mount(document.currentScript.previousElementSibling.querySelector("canvas"),{style:"lobe"});</script><div class=legend><span class=lg><i style="background:#E8A24A"></i>Frontal</span><span class=lg><i style="background:#4FB6D6"></i>Parietal</span><span class=lg><i style="background:#B478E0"></i>Temporal</span><span class=lg><i style="background:#5FC98A"></i>Occipital</span><span class=lgsrc>Cortical surface from an MRI &middot; 1,722 points &middot; NIH 3D 3DPX-000757, public domain</span></div>
   </div>
 </div></header>
 

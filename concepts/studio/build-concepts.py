@@ -34,7 +34,7 @@ The five differ in what they do with all that, not in their paint:
   SIGNAL    A mosaic of photographs that re-tiles itself, brain as the single
             centrepiece, almost no other furniture.
 """
-import json
+import json, re
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -43,7 +43,7 @@ OUT.mkdir(exist_ok=True)
 LIVE = json.loads((HERE / "live-content.json").read_text())
 CH = LIVE["chrome"]
 STUDIES = [dict(s, frame=f) for s, f in zip(LIVE["studies"], LIVE["study_frames"])]
-BRAIN_JS = (HERE / "brain.js").read_text()
+BRAIN_JS = (HERE / "brain3d.js").read_text()
 
 # PHOTOGRAPHY, after the art-direction review. Of fifteen images in the library
 # exactly one survived: own-itlead (two people, server room, blue light, a
@@ -233,8 +233,15 @@ nav.bar[data-sheet="1"] .sheet{display:block}
 .grade{position:absolute;inset:0}
 
 /* ---------- brain ---------- */
-.brainbox{position:relative;width:100%;height:clamp(330px,46vw,560px)}
+.brainbox{position:relative;width:100%;height:clamp(360px,48vw,600px)}
 .brainbox canvas{width:100%;height:100%;display:block}
+.legend{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;
+  padding:14px 0 4px;justify-content:center}
+.lg{display:inline-flex;align-items:center;gap:7px;font:400 11px/1 var(--mono);
+  letter-spacing:.13em;text-transform:uppercase;color:var(--mu)}
+.lg i{width:8px;height:8px;border-radius:50%;display:block}
+.lgsrc{flex-basis:100%;text-align:center;font:400 10.5px/1.6 var(--mono);
+  letter-spacing:.06em;color:var(--dim)}
 
 /* ---------- bloomberg panels ---------- */
 .panels{display:grid;gap:1px;background:var(--edge);border:1px solid var(--edge);margin-top:26px}
@@ -371,10 +378,26 @@ def frame(grade, src=None):
             f'<div class=grade style="background:{grade}"></div></div>')
 
 
-def brain(opts="{}"):
+LOBES_LEGEND = [("Frontal", "#E8A24A"), ("Parietal", "#4FB6D6"),
+                ("Temporal", "#B478E0"), ("Occipital", "#5FC98A")]
+
+
+def brain(opts='{style:"lobe"}'):
+    """The real cortical surface, coloured by lobe.
+
+    Daniel picked Lobes from the five colour treatments. It is the one that
+    does explanatory work rather than decoration: the four regions are assigned
+    from actual position in an MRI-derived surface, so the legend underneath is
+    describing the picture rather than labelling it."""
+    legend = "".join(
+        f'<span class=lg><i style="background:{c}"></i>{n}</span>'
+        for n, c in LOBES_LEGEND)
     return (f'<div class=brainbox><canvas data-brain></canvas></div>'
-            f'<script>Brain.mount(document.currentScript.previousElementSibling'
-            f'.querySelector("canvas"),{opts});</script>')
+            f'<script>Brain3D.mount(document.currentScript.previousElementSibling'
+            f'.querySelector("canvas"),{opts});</script>'
+            f'<div class=legend>{legend}'
+            f'<span class=lgsrc>Cortical surface from an MRI &middot; '
+            f'1,722 points &middot; NIH 3D 3DPX-000757, public domain</span></div>')
 
 
 def panels(items):
@@ -435,13 +458,13 @@ def shell(name, tokens, extra_css, body):
 DARK = """--bg:#08080A; --fg:#F2F2EF; --mu:#A6A6A2; --edge:rgba(255,255,255,.14);
   --panel:#101014; --navbg:rgba(10,10,12,.92); --tickbg:#060607;
   --panelUp:#17171C; --panelEdge:rgba(255,255,255,.12); --miHov:rgba(255,255,255,.055);
-  --tabfg:rgba(255,255,255,.74); --hov:rgba(255,255,255,.06);
+  --tabfg:rgba(255,255,255,.74); --hov:rgba(255,255,255,.06); --dim:#8C8C89;
   --hovOn:rgba(255,255,255,.10); --btnedge:rgba(255,255,255,.20);
   --key:#FF9E3D; --keyfg:#120A02; --up:#4FD08A;"""
 LIGHT = """--bg:#FFFFFF; --fg:#111114; --mu:#5A5A56; --edge:rgba(0,0,0,.15);
   --panel:#F7F7F4; --navbg:rgba(255,255,255,.93); --tickbg:#F1F1EC;
   --panelUp:#FFFFFF; --panelEdge:rgba(0,0,0,.13); --miHov:rgba(0,0,0,.045);
-  --tabfg:#3E3E3A; --hov:rgba(0,0,0,.05); --hovOn:rgba(0,0,0,.08);
+  --tabfg:#3E3E3A; --hov:rgba(0,0,0,.05); --hovOn:rgba(0,0,0,.08); --dim:#6A6A66;
   --btnedge:rgba(0,0,0,.20); --key:#B4560F; --keyfg:#FFFFFF; --up:#127A46;"""
 
 ASK = ("Give it a question. It decomposes into the questions it has to answer "
@@ -635,6 +658,8 @@ def c_exchange():
 .brainwrap{background:#0A0A0D;color:#F2F2EF;border-top:1px solid var(--edge)}
 .brainwrap .lab{color:#FF9E3D}
 .brainwrap .lede{color:#A6A6A2}
+.brainwrap .lg{color:#A6A6A2}
+.brainwrap .lgsrc{color:#8C8C89}
 """
     body = f"""{ticker()}{nav()}
 <header class=hero><div class="w hgrid">
@@ -779,7 +804,22 @@ def index():
     return shell("Concepts", DARK, css, body)
 
 
+def check_tokens(css, tokens):
+    """Every var(--x) must be defined. An undefined token in a `font:` shorthand
+       silently drops the whole declaration -- this repo has been bitten by that
+       twice (--sans/--mono, then --ln for --line)."""
+    defined = set(re.findall(r"(--[\w-]+)\s*:", tokens))
+    missing = set(re.findall(r"var\((--[\w-]+)", css)) - defined
+    if missing:
+        raise SystemExit("undefined CSS tokens: " + ", ".join(sorted(missing)))
+
+
 if __name__ == "__main__":
+    # shell() appends --sans and --mono to every :root, so the guard has to see
+    # the same set the browser will.
+    SHARED = "--sans:x; --mono:x;"
+    for tok in (DARK, LIGHT):
+        check_tokens(BASE, tok + SHARED)
     for slug, name, fn in CONCEPTS:
         (OUT / f"{slug}.html").write_text(fn())
         print(f"wrote concepts/{slug}.html  ({name})")

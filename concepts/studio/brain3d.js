@@ -309,11 +309,44 @@
       dep = depths(G.adj, entry);
       maxd = Math.max.apply(null, dep) || 1;
       shown = [];
+      /* Daniel: "the lines are crossed over so you cant see full words".
+         They crossed because a question was assigned to a slot by INDEX while
+         its node was anywhere in the volume, so a left-hand label was routinely
+         tethered to a right-hand node and the two leaders swapped over the
+         brain.
+
+         Side is now decided by anatomy, which is stable as it turns: a node in
+         the frontal half tethers to the left column, a posterior node to the
+         right. Within a column the slots are filled in the node's own top-to-
+         bottom order, so two leaders on the same side cannot cross either. */
       var outs = SCRIPT[beat].out, cand = [];
       for (var i = 0; i < dep.length; i++) if (dep[i] > maxd * 0.42) cand.push(i);
+      if (!cand.length) cand = [0];
+      var L = [], R = [];
+      for (i = 0; i < cand.length; i++) {
+        (G.pts[cand[i]].x < 0 ? L : R).push(cand[i]);
+      }
+      function spread(list, n) {
+        var out = [];
+        if (!list.length) return out;
+        list.sort(function (a, b) { return G.pts[a].y - G.pts[b].y; });
+        for (var k = 0; k < n; k++) {
+          out.push(list[Math.min(list.length - 1,
+                   Math.floor((k + 0.5) * list.length / n))]);
+        }
+        return out;
+      }
+      var half = Math.ceil(outs.length / 2);
+      var pickL = spread(L, half), pickR = spread(R, outs.length - half);
+      if (!pickL.length) pickL = spread(R, half);
+      if (!pickR.length) pickR = spread(L, outs.length - half);
       for (var q = 0; q < outs.length; q++) {
-        var n = cand.length ? cand[Math.floor(q * cand.length / outs.length)] : 0;
-        shown.push({ node: n, text: outs[q], at: 1.25 + q * 0.40 });
+        var onLeft = q < half;
+        var arr = onLeft ? pickL : pickR;
+        var slot = onLeft ? q : q - half;
+        shown.push({ node: arr[slot % arr.length], text: outs[q],
+                     side: onLeft ? -1 : 1, slot: slot,
+                     at: 1.25 + q * 0.40 });
       }
     }
 
@@ -444,19 +477,26 @@
         if (age < 0) continue;
         var al = age < 0.34 ? age / 0.34 : (tt > 7.2 ? Math.max(0, (7.9 - tt) / 0.6) : 1);
         if (al <= 0) continue;
-        var left = s % 2 === 0;
+        var left = Q.side < 0;
         var lx, ly;
         if (narrow) { lx = 10; ly = H - 86 + s * 17; ctx.textAlign = 'left'; }
         else {
           lx = left ? 14 : W - 14;
-          ly = H * 0.30 + Math.floor(s / 2) * 26;
+          ly = H * 0.26 + Q.slot * 34;          /* 26 -> 34: room to read */
           ctx.textAlign = left ? 'left' : 'right';
         }
         var np = proj[Q.node];
         ctx.globalAlpha = al * 0.34;
-        ctx.strokeStyle = S.spark; ctx.lineWidth = 1;
+        ctx.strokeStyle = PAINT ? rgba(PAINT[Q.node], 0.85) : S.spark;
+        ctx.lineWidth = 1;
+        /* Elbow, not a diagonal: out to the gutter, then straight to the label.
+           Two elbows on the same side read as parallel rather than as a cross. */
+        var gut = left ? lx + Math.max(40, W * 0.06) : lx - Math.max(40, W * 0.06);
         ctx.beginPath(); ctx.moveTo(np[0], np[1]);
-        ctx.lineTo(lx + (narrow ? 0 : (left ? 4 : -4)), ly - 4); ctx.stroke();
+        if (narrow) ctx.lineTo(lx, ly - 4);
+        else { ctx.lineTo(gut, np[1]); ctx.lineTo(gut, ly - 4);
+               ctx.lineTo(lx + (left ? 4 : -4), ly - 4); }
+        ctx.stroke();
         ctx.globalAlpha = al;
         ctx.fillStyle = S.spark;
         ctx.beginPath(); ctx.arc(np[0], np[1], 2.4, 0, 7); ctx.fill();
