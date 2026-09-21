@@ -223,6 +223,64 @@ nav.bar[data-sheet="1"] .sheet{display:block}
 .sg{padding:14px 0;border-bottom:1px solid var(--edge)}
 .sg .lab{margin-bottom:8px}
 
+/* ---------- Solstice sky hero ---------- */
+.sky{position:relative;min-height:clamp(560px,66vw,760px);display:flex;
+  flex-direction:column;justify-content:center;overflow:hidden;
+  background:
+    radial-gradient(120% 80% at 18% 8%, #FFD36B 0%, rgba(255,211,107,0) 55%),
+    radial-gradient(110% 90% at 82% 18%, #FF8A2B 0%, rgba(255,138,43,0) 60%),
+    radial-gradient(130% 100% at 50% 100%, #B2210E 0%, rgba(178,33,14,0) 62%),
+    linear-gradient(170deg,#FFB13B 0%,#F0651C 44%,#8E1B0E 100%)}
+.ridge{position:absolute;left:0;right:0;bottom:0;height:62%;opacity:.5;
+  pointer-events:none}
+.ridge svg{width:100%;height:100%;display:block}
+/* The sub measured 4.25:1 over the mid-gradient. Lightening the type only buys
+   a tenth; a soft scrim behind the text block buys the whole margin and keeps
+   the gradient intact either side of it. */
+.skyin{position:relative;z-index:4;padding-top:clamp(70px,9vw,120px)}
+.skyin::before{content:"";position:absolute;inset:-60% -45%;z-index:-1;
+  /* The first version was inset only a few percent, so the radial was clipped
+     by its own box and the scrim read as a rectangle sitting on the sky. It has
+     to reach zero well inside the edge, which means a much larger box and
+     tighter stops. */
+  background:radial-gradient(38% 30% at 34% 50%,rgba(93,20,8,.40) 0%,
+    rgba(93,20,8,.20) 45%,rgba(93,20,8,0) 68%);pointer-events:none}
+.sky h1{max-width:18ch;color:#FFF8EE;font-weight:300;
+  font-size:clamp(2.5rem,6.4vw,5rem);letter-spacing:-.04em;line-height:1.02;
+  text-wrap:balance}
+.sky h1 em{font-style:italic;font-family:Georgia,'Times New Roman',serif;
+  font-weight:400;letter-spacing:-.02em}
+.skysub{margin-top:22px;max-width:48ch;color:#FFEEDC;
+  font-size:clamp(15.5px,1.6vw,18.5px);line-height:1.6}
+.acts{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px}
+.acts a{font:500 15px/1 var(--sans);color:#FFF8EE;
+  border-bottom:1px solid rgba(255,248,238,.45);padding-bottom:6px}
+.acts a:hover{border-bottom-color:#FFF8EE}
+
+/* The bar, sitting on the sky. The original concept set this cream, and
+   measured on the rendered pixels that is 1.37:1 against the bright top of the
+   gradient -- the navigation was decorative, not readable. Adopting the look
+   should not mean adopting that. Dark ink on the light end of the sky keeps the
+   transparent treatment and makes the links legible; the ticker above turns
+   translucent so the hero still runs edge to edge. */
+nav.bar.over{position:absolute;top:30px;left:0;right:0;background:transparent;
+  border-bottom:0;backdrop-filter:none;z-index:40}
+nav.bar.over .bd{color:#51120A}
+nav.bar.over .tab{color:#6A1C0C}
+nav.bar.over .tab:hover,nav.bar.over .tab[aria-expanded="true"]{background:rgba(74,10,6,.11);color:#3D0D05}
+nav.bar.over .btn{border-color:rgba(74,10,6,.42);color:#51120A}
+nav.bar.over .btn.solid{background:#3D0D05;border-color:#3D0D05;color:#FFF3E4}
+nav.bar.over .burger{border-color:rgba(74,10,6,.42);color:#51120A}
+
+/* The ticker rides the sky rather than cutting a dark band above it. A
+   translucent dark band measured 1.41:1 -- too weak against the lightest part
+   of the gradient. Dark ink, same as the nav, on no band at all. */
+.tick.onsky{background:transparent;border-bottom:1px solid rgba(74,10,6,.18);
+  position:absolute;top:0;left:0;right:0;z-index:41;backdrop-filter:none}
+.tick.onsky .tk{color:#6A1C0C}
+.tick.onsky .tk b{color:#3D0D05}
+.tick.onsky .tk i{color:#7A2A10}
+
 /* ---------- cycling photo hero ---------- */
 .stage{position:absolute;inset:0;overflow:hidden;background:#000}
 /* The library was three different shoots pretending to be one family. The
@@ -325,7 +383,7 @@ NAV_JS = """<script>
 </script>"""
 
 
-def nav():
+def nav(over=False):
     tabs = "".join(f'<button class=tab data-menu="{k}" aria-expanded=false>{k}'
                    f'<i aria-hidden=true>&#9662;</i></button>' for k in MENUS)
     foot = {"Platform": ("The whole architecture, in five components",
@@ -348,7 +406,7 @@ def nav():
         "".join(f'<a class=mi href="{h}"><b>{t}</b><span>{d}</span></a>' for t, d, h in rows) +
         '</div>' for k, rows in MENUS.items())
     # caret glyph, weighted rather than the hairline default
-    return (f'<nav class=bar data-open=""><div class=w>'
+    return (f'<nav class="bar{" over" if over else ""}" data-open=""><div class=w>'
             f'<a class=bd href="#">LOVELEEDAY</a><div class=tabs>{tabs}</div>'
             f'<div class=rt><a class=btn href="#">Contact</a>'
             f'<a class="btn solid" href="#">Start a project</a></div>'
@@ -356,7 +414,7 @@ def nav():
             f'</div>{panels}<div class=sheet><div class=w>{sheet}</div></div></nav>')
 
 
-def ticker():
+def ticker(onsky=False):
     """A ticker that never shows the same item twice on one screen.
 
     The old set was 1050px wide against a 1440px viewport, so the duplicate
@@ -371,7 +429,37 @@ def ticker():
         f'<span class=tk>{k}<b>{v}</b>'
         + (f'<i>({d})</i>' if d else '')
         + '</span>' for k, v, d in TICKER)
-    return f'<div class=tick><div class=tickrow>{one}{one}</div></div>'
+    cls = 'tick onsky' if onsky else 'tick'
+    return f'<div class="{cls}"><div class=tickrow>{one}{one}</div></div>'
+
+
+# ADOPTED FROM c12-solstice.html, at Daniel's instruction: "i want you to adopt
+# this hero and navigation."
+#
+# The sky is four layered gradients, not one -- two warm radials high, a deep
+# red radial rising from the base, and a linear underneath them all. That
+# stacking is what stops it reading as a flat CSS gradient. The ridges are
+# three silhouette layers at 50% opacity, which is what gives the horizon its
+# haze. Both are copied verbatim rather than re-derived, because the original
+# was tuned by eye and re-tuning it would only lose it.
+RIDGE = """<svg viewBox="0 0 1200 400" preserveAspectRatio="none"><polygon points="0,400 0,263 12,265 24,267 36,268 48,269 60,271 72,271 84,272 96,273 108,273 120,274 132,274 144,274 156,273 168,273 180,273 192,272 204,272 216,271 228,270 240,270 252,269 264,268 276,268 288,267 300,267 312,266 324,266 336,266 348,265 360,265 372,265 384,265 396,265 408,266 420,266 432,266 444,267 456,267 468,267 480,268 492,268 504,269 516,269 528,269 540,269 552,269 564,269 576,269 588,269 600,268 612,268 624,267 636,266 648,266 660,264 672,263 684,262 696,261 708,260 720,258 732,257 744,255 756,254 768,253 780,251 792,250 804,249 816,248 828,247 840,246 852,246 864,245 876,245 888,245 900,245 912,245 924,245 936,246 948,247 960,248 972,249 984,250 996,251 1008,252 1020,254 1032,255 1044,257 1056,258 1068,259 1080,261 1092,262 1104,263 1116,265 1128,266 1140,266 1152,267 1164,268 1176,268 1188,269 1200,269 1200,400" fill="#8E1B0E"/><polygon points="0,400 0,310 12,310 24,309 36,309 48,308 60,308 72,308 84,308 96,308 108,308 120,308 132,308 144,308 156,308 168,309 180,309 192,309 204,309 216,309 228,310 240,310 252,310 264,310 276,309 288,309 300,309 312,308 324,308 336,307 348,307 360,306 372,305 384,304 396,303 408,302 420,301 432,300 444,299 456,298 468,297 480,296 492,295 504,294 516,293 528,293 540,292 552,292 564,291 576,291 588,291 600,291 612,291 624,292 636,292 648,293 660,293 672,294 684,295 696,296 708,297 720,298 732,299 744,300 756,301 768,302 780,303 792,304 804,305 816,306 828,307 840,308 852,308 864,309 876,309 888,309 900,309 912,309 924,309 936,309 948,309 960,308 972,308 984,307 996,307 1008,306 1020,305 1032,305 1044,304 1056,303 1068,302 1080,302 1092,301 1104,301 1116,300 1128,300 1140,299 1152,299 1164,299 1176,299 1188,298 1200,298 1200,400" fill="#6E1109"/><polygon points="0,400 0,344 12,343 24,342 36,342 48,341 60,340 72,339 84,339 96,338 108,337 120,337 132,336 144,336 156,335 168,335 180,335 192,335 204,335 216,335 228,335 240,335 252,336 264,336 276,337 288,337 300,338 312,339 324,340 336,340 348,341 360,342 372,343 384,344 396,345 408,345 420,346 432,347 444,347 456,347 468,348 480,348 492,348 504,348 516,348 528,348 540,348 552,348 564,348 576,347 588,347 600,346 612,346 624,345 636,344 648,344 660,343 672,343 684,342 696,341 708,341 720,340 732,340 744,339 756,339 768,339 780,338 792,338 804,338 816,338 828,338 840,338 852,338 864,338 876,338 888,338 900,338 912,338 924,338 936,338 948,338 960,338 972,338 984,337 996,337 1008,337 1020,336 1032,336 1044,335 1056,335 1068,334 1080,333 1092,332 1104,331 1116,330 1128,329 1140,329 1152,328 1164,327 1176,326 1188,325 1200,324 1200,400" fill="#4A0A06"/></svg>"""
+
+
+def sky(headline, sub, acts=None):
+    """The Solstice hero: nav sits ON the sky, transparent, exactly as the
+       concept had it. The dropdown panels keep their own solid card, so the
+       navigation still works as a menu over a bright ground."""
+    acts = acts or [("Get in touch", "#"), ("Start building", "#")]
+    links = "".join(f'<a href="{h}">{t} &rarr;</a>' for t, h in acts)
+    return (f'<header class=sky>'
+            f'<div class=ridge>{RIDGE}</div>'
+            f'{ticker(onsky=True)}'
+            f'{nav(over=True)}'
+            f'<div class="w skyin">'
+            f'<h1>{headline}</h1>'
+            f'<p class=skysub>{sub}</p>'
+            f'<div class=acts>{links}</div>'
+            f'</div></header>')
 
 
 def frame(grade, src=None):
@@ -590,20 +678,7 @@ def c_terminal():
 """
     rails = "".join(f'<div class=rl><span>{l}</span><b>{v}</b></div>'
                     for _, v, l, _ in STATS)
-    body = f"""{ticker()}{nav()}
-<header class=hero><div class=w><div class=hgrid>
-  <div class=hmain>
-    <span class=lab>{EYEBROW_HERO}</span>
-    <h1 style="margin-top:18px">Intelligence<br>you can trace.</h1>
-    <p class=lede>The object layer for the business you already run. Every value
-    carries the date it was true, the date you learned it, and the trail back.</p>
-    <div class=cmd><span>ONTO &lt;GO&gt;</span><span>LINE &lt;GO&gt;</span>
-      <span>ASOF &lt;GO&gt;</span><span>PROOF &lt;GO&gt;</span></div>
-  </div>
-  <div class=rail>{rails}
-    <div class=railshot>{frame('linear-gradient(90deg,rgba(8,8,10,.62),rgba(8,8,10,.18))')}</div>
-  </div>
-</div></div></header>
+    body = f"""{sky("Intelligence <em>you can trace.</em>", "We build the systems other people describe &mdash; and every figure they produce names the place it came from.")}
 
 <section class=brainwrap><div class=w style="padding-top:clamp(36px,4vw,60px)">
   <span class=lab>{EYEBROW_BRAIN}</span>
@@ -655,16 +730,7 @@ def c_dispatch():
 """
     orow = "".join(f'<div><b>{v}</b><span>{l}</span></div>'
                     for _, v, l, _ in STATS)
-    body = f"""{ticker()}{nav()}
-<header class=hero>
-  {frame('linear-gradient(180deg,rgba(8,8,10,.30) 0%,rgba(8,8,10,.34) 42%,rgba(8,8,10,.94) 100%)')}
-  <div class=w>
-    <span class=lab>{EYEBROW_HERO}</span>
-    <h1 style="margin-top:16px">Intelligence<br>you can trace.</h1>
-    <p class=lede>The object layer for the business you already run.</p>
-  </div>
-  <div class=overrail><div class=orow>{orow}</div></div>
-</header>
+    body = f"""{sky("Intelligence <em>you can trace.</em>", "We build the systems other people describe &mdash; and every figure they produce names the place it came from.")}
 
 <section class=brainwrap><div class=w style="padding-top:clamp(40px,5vw,72px)">
   <span class=lab>{EYEBROW_BRAIN}</span>
@@ -710,23 +776,7 @@ def c_split():
 .spR .head{padding:clamp(20px,2.4vw,32px) clamp(20px,2.4vw,32px) 0}
 .spR .brainbox{flex:1;height:auto;min-height:300px}
 """
-    body = f"""{ticker()}{nav()}
-<header class=hero><div class=sp>
-  <div class=spL>
-    {frame('linear-gradient(180deg,rgba(8,8,10,.34),rgba(8,8,10,.92))')}
-    <div class=inner>
-      <span class=lab>{EYEBROW_HERO}</span>
-      <h1 style="margin-top:14px">Intelligence<br>you can trace.</h1>
-      <p class=lede style="color:#E8E8E4">The object layer for the business you
-      already run.</p>
-    </div>
-  </div>
-  <div class=spR>
-    <div class=head><span class=lab>{EYEBROW_BRAIN}</span>
-      <h3 style="margin-top:10px">{BRAIN_H2}</h3></div>
-    {brain()}
-  </div>
-</div></header>
+    body = f"""{sky("Intelligence <em>you can trace.</em>", "We build the systems other people describe &mdash; and every figure they produce names the place it came from.")}
 
 <section class=sec><div class=w>
   <span class=lab>What is enforced</span>
@@ -774,22 +824,7 @@ def c_exchange():
 .brainwrap .lg{color:#A6A6A2}
 .brainwrap .lgsrc{color:#8C8C89}
 """
-    body = f"""{ticker()}{nav()}
-<header class=hero><div class="w hgrid">
-  <div>
-    <span class=lab>{EYEBROW_HERO}</span>
-    <h1 style="margin-top:16px">Intelligence<br>you can trace.</h1>
-    <p class=lede>Every value carries the date it was true, the date you learned
-    it, and the trail back to the system it came from.</p>
-    <div style="margin-top:26px;display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn solid" href="#">Start a project</a>
-      <a class=btn href="#">Read the architecture</a></div>
-  </div>
-  <div>
-    <div class=shotbox>{frame('linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.30))')}</div>
-    <p class=capline>Kalamazoo, Michigan &middot; the studio and the companies it runs</p>
-  </div>
-</div></header>
+    body = f"""{sky("Intelligence <em>you can trace.</em>", "We build the systems other people describe &mdash; and every figure they produce names the place it came from.")}
 
 <section class=sec><div class=w>
   <span class=lab>The question nobody asked</span>
@@ -845,15 +880,7 @@ def c_signal():
     cells = "".join(
         f'<div class=cell><img src="{PW}{n}.jpg" alt="" loading=lazy></div>'
         for n in WALL)
-    body = f"""{ticker()}{nav()}
-<header class=hero>
-  <div class=mosaic>{cells}</div><div class=veil></div>
-  <div class=w>
-    <span class=lab>{EYEBROW_HERO}</span>
-    <h1 style="margin-top:18px">Intelligence<br>you can trace.</h1>
-    <p class=lede>The object layer for the business you already run.</p>
-  </div>
-</header>
+    body = f"""{sky("Intelligence <em>you can trace.</em>", "We build the systems other people describe &mdash; and every figure they produce names the place it came from.")}
 
 <section class=brainwrap><div class=w style="padding-top:clamp(44px,5.5vw,80px)">
   <span class=lab>{EYEBROW_BRAIN}</span>
