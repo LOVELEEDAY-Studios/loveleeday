@@ -63,7 +63,19 @@ function mount(cv, draw, fps){
   }
   fit();
 }
-function clear(x,W,H,bg){ x.fillStyle=bg; x.fillRect(0,0,W,H); }
+/* ONE GROUND FOR THE WHOLE LIBRARY.
+
+   Each object used to clear to its own ad-hoc near-white -- #F4F4F2, #F6F8FB,
+   #F7F4EE, #F7F7F5, #FBF8F2, #FFFFFF, eight values across ten objects. Drop any
+   of them onto a cream page and a visible rectangle appears behind the art,
+   which is exactly what happened to the hero on 2026-09-21. The page now tells
+   the library what ground it is sitting on.
+
+   s10 (Prism) is the one exception and keeps pure white on purpose: it is
+   subtractive, modelled as a spectrum cast on a WHITE surface, so tinting the
+   ground shifts every wavelength in it. */
+var GROUND = '#FBF8F2';
+function clear(x,W,H,bg){ x.fillStyle=(bg==='#FFFFFF_KEEP'?'#FFFFFF':GROUND); x.fillRect(0,0,W,H); }
 
 /* ══ 01 · RESOLUTION BUNDLE ═══════════════════════════════════════════════
    Edge bundling. Many records on the left collapse onto few objects on the
@@ -456,7 +468,7 @@ function s09(x,W,H,t,still){
    its complement, overlaps going deeper rather than brighter. So it is
    multiply, and it is the correct model rather than a workaround. */
 function s10(x,W,H,t,still){
-  clear(x,W,H,'#FFFFFF');
+  clear(x,W,H,'#FFFFFF_KEEP');   // subtractive: must be white
   var T=still?5:t;
   var ox=W*0.30, oy=H*1.02;                   // the refracting edge, bottom-left
   var base=-1.14 + Math.sin(T*0.17)*0.05;     // the fan drifts, slowly
@@ -558,6 +570,8 @@ TEN.forEach(function(g){
 
 window.LD = {
   mount: mount,
+  /* Tell the library what ground the page is using. Call before mounting. */
+  setGround: function(hex){ GROUND = hex; },
   ten: TEN,
   byName: BY_NAME,
   s01:s01, s02:s02, s03:s03, s04:s04, s05:s05,

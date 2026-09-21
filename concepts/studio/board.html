@@ -8,7 +8,7 @@
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:#FBF8F2;color:#16243A;
   font:400 15px/1.66 'Mulish',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit}
+a{color:inherit;text-decoration:none}
 .w{max-width:1360px;margin:0 auto;padding:0 clamp(20px,3vw,44px)}
 .lab{font:500 10px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em;
   text-transform:uppercase;color:#616D7C}
@@ -78,6 +78,18 @@ td.t{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#616D7C}
 .warn p{margin:8px 0 0;font-size:13.8px;color:#45536A;line-height:1.6}
 .warn .ev{margin-top:10px;font:400 11.5px/1.5 'IBM Plex Mono',monospace;color:#616D7C}
 footer{padding:36px 0 70px;color:#616D7C;font:400 12px/1.7 'IBM Plex Mono',monospace}
+.mocks{display:grid;gap:18px;margin-top:28px}
+@media(min-width:900px){.mocks{grid-template-columns:1fr 1fr}}
+.mock{display:block;background:#FFFFFF;border:1px solid #E6E0D6;overflow:hidden;
+  transition:border-color .16s,box-shadow .16s}
+.mock:hover{border-color:#16243A;box-shadow:0 18px 38px -26px rgba(22,36,58,.45)}
+.mock .shot{border-bottom:1px solid #E6E0D6;background:#F2EDE3;max-height:390px;overflow:hidden}
+.mock .shot img{width:100%;display:block}
+.mock .mb{padding:18px 20px 22px}
+.mock .mb b{font:800 18px/1.2 'Manrope',sans-serif;letter-spacing:-.03em}
+.mock .mb p{margin:9px 0 0;font-size:13.5px;line-height:1.58;color:#45536A}
+.mock .open{display:inline-block;margin-top:14px;background:#16243A;color:#FBF8F2;
+  font:600 12px/1 'Manrope',sans-serif;padding:9px 15px;border-radius:4px}
 </style></head><body>
 
 <header><div class=w>
@@ -90,6 +102,16 @@ footer{padding:36px 0 70px;color:#616D7C;font:400 12px/1.7 'IBM Plex Mono',monos
   the order a visitor meets it in, and the components it takes to build.</p>
   <div class=who><span>Positioning</span><span>Information architecture</span><span>Component system</span><span>Competitive analogues</span><span>Verified in-session</span></div>
 </div></header>
+
+<section><div class=w>
+  <div class=lab>00 &middot; The mockups</div>
+  <h2>Every page, built.</h2>
+  <p class=intro>Not descriptions. Each one renders in the Keynote register, wearing the
+  production tokens, using the real content from <code>src/content/work.ts</code>. The design
+  system sheet imports the same functions the pages import, so the specimen cannot drift from
+  what ships. Click any card to open it full size.</p>
+  <div class=mocks><a class=mock href="site/home.html" target=_blank><div class=shot><img src="site-thumbs/home.png" alt="Home"></div><div class=mb><b>Home</b><p>Eight stages. Hero object, component rail, three mechanism stages, the hand-off into photography, the work grid, the close.</p><span class=open>Open Home &nbsp;&rarr;</span></div></a><a class=mock href="site/system.html" target=_blank><div class=shot><img src="site-thumbs/system.png" alt="Design system"></div><div class=mb><b>Design system</b><p>Tokens with live contrast ratios, the type scale, four stage types, the evidence components and eight motion objects &mdash; rendered from the same code the pages use.</p><span class=open>Open Design system &nbsp;&rarr;</span></div></a><a class=mock href="site/arthur.html" target=_blank><div class=shot><img src="site-thumbs/arthur.png" alt="/arthur"></div><div class=mb><b>/arthur</b><p>The deep technical page. Five components as a spec table, bitemporality as its own stage, and a connector strip that distinguishes live from configured from dormant.</p><span class=open>Open /arthur &nbsp;&rarr;</span></div></a><a class=mock href="site/work.html" target=_blank><div class=shot><img src="site-thumbs/work.png" alt="/work"></div><div class=mb><b>/work</b><p>Two registers on one page: client rebuilds as a card grid, owned companies as a ledger. Never the same grid.</p><span class=open>Open /work &nbsp;&rarr;</span></div></a><a class=mock href="site/about.html" target=_blank><div class=shot><img src="site-thumbs/about.png" alt="/about"></div><div class=mb><b>/about</b><p>How engagements run, and the one sentence that names the private review portal without linking it.</p><span class=open>Open /about &nbsp;&rarr;</span></div></a><a class=mock href="site/contact.html" target=_blank><div class=shot><img src="site-thumbs/contact.png" alt="/contact"></div><div class=mb><b>/contact</b><p>The funnel destination.</p><span class=open>Open /contact &nbsp;&rarr;</span></div></a><a class=mock href="site/privacy.html" target=_blank><div class=shot><img src="site-thumbs/privacy.png" alt="/privacy"></div><div class=mb><b>/privacy</b><p>Exists because the footer links to it.</p><span class=open>Open /privacy &nbsp;&rarr;</span></div></a><a class=mock href="site/terms.html" target=_blank><div class=shot><img src="site-thumbs/terms.png" alt="/terms"></div><div class=mb><b>/terms</b><p>Exists because the footer links to it.</p><span class=open>Open /terms &nbsp;&rarr;</span></div></a></div>
+</div></section>
 
 <section><div class=w>
   <div class=lab>01 &middot; The spine</div>

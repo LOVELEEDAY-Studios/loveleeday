@@ -32,7 +32,7 @@ CSS = f"""
 *,*::before,*::after{{box-sizing:border-box}}
 body{{margin:0;background:{CREAM};color:{INK};
   font:400 15px/1.66 'Mulish',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}}
-a{{color:inherit}}
+a{{color:inherit;text-decoration:none}}
 .w{{max-width:1360px;margin:0 auto;padding:0 clamp(20px,3vw,44px)}}
 .lab{{font:500 10px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em;
   text-transform:uppercase;color:{DIM}}}
@@ -102,6 +102,18 @@ td.t{{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:{DIM}}}
 .warn p{{margin:8px 0 0;font-size:13.8px;color:{MID};line-height:1.6}}
 .warn .ev{{margin-top:10px;font:400 11.5px/1.5 'IBM Plex Mono',monospace;color:{DIM}}}
 footer{{padding:36px 0 70px;color:{DIM};font:400 12px/1.7 'IBM Plex Mono',monospace}}
+.mocks{{display:grid;gap:18px;margin-top:28px}}
+@media(min-width:900px){{.mocks{{grid-template-columns:1fr 1fr}}}}
+.mock{{display:block;background:{PAPER};border:1px solid {LINE};overflow:hidden;
+  transition:border-color .16s,box-shadow .16s}}
+.mock:hover{{border-color:{INK};box-shadow:0 18px 38px -26px rgba(22,36,58,.45)}}
+.mock .shot{{border-bottom:1px solid {LINE};background:{SUNK};max-height:390px;overflow:hidden}}
+.mock .shot img{{width:100%;display:block}}
+.mock .mb{{padding:18px 20px 22px}}
+.mock .mb b{{font:800 18px/1.2 'Manrope',sans-serif;letter-spacing:-.03em}}
+.mock .mb p{{margin:9px 0 0;font-size:13.5px;line-height:1.58;color:{MID}}}
+.mock .open{{display:inline-block;margin-top:14px;background:{INK};color:{CREAM};
+  font:600 12px/1 'Manrope',sans-serif;padding:9px 15px;border-radius:4px}}
 """
 
 
@@ -122,7 +134,31 @@ def step(i, title, body, obj=None):
             f'<span>{body}</span>{o}</div></div>')
 
 
+MOCKUPS = [
+    ("home", "Home", "Eight stages. Hero object, component rail, three mechanism stages, the hand-off into photography, the work grid, the close."),
+    ("system", "Design system", "Tokens with live contrast ratios, the type scale, four stage types, the evidence components and eight motion objects &mdash; rendered from the same code the pages use."),
+    ("arthur", "/arthur", "The deep technical page. Five components as a spec table, bitemporality as its own stage, and a connector strip that distinguishes live from configured from dormant."),
+    ("work", "/work", "Two registers on one page: client rebuilds as a card grid, owned companies as a ledger. Never the same grid."),
+    ("about", "/about", "How engagements run, and the one sentence that names the private review portal without linking it."),
+    ("contact", "/contact", "The funnel destination."),
+    ("privacy", "/privacy", "Exists because the footer links to it."),
+    ("terms", "/terms", "Exists because the footer links to it."),
+]
+
+
+def mock_grid():
+    out = []
+    for slug, name, note in MOCKUPS:
+        out.append(
+            f'<a class=mock href="site/{slug}.html" target=_blank>'
+            f'<div class=shot><img src="site-thumbs/{slug}.png" alt="{name}"></div>'
+            f'<div class=mb><b>{name}</b><p>{note}</p>'
+            f'<span class=open>Open {name} &nbsp;&rarr;</span></div></a>')
+    return f'<div class=mocks>{"".join(out)}</div>'
+
+
 def page(spine, ladder, now, nxt, comps, evidence, analogues, warnings, team):
+    mocks = mock_grid()
     return f"""<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>LOVELEEDAY &mdash; the system board</title>
@@ -141,6 +177,16 @@ def page(spine, ladder, now, nxt, comps, evidence, analogues, warnings, team):
   the order a visitor meets it in, and the components it takes to build.</p>
   <div class=who>{team}</div>
 </div></header>
+
+<section><div class=w>
+  <div class=lab>00 &middot; The mockups</div>
+  <h2>Every page, built.</h2>
+  <p class=intro>Not descriptions. Each one renders in the Keynote register, wearing the
+  production tokens, using the real content from <code>src/content/work.ts</code>. The design
+  system sheet imports the same functions the pages import, so the specimen cannot drift from
+  what ships. Click any card to open it full size.</p>
+  {mocks}
+</div></section>
 
 <section><div class=w>
   <div class=lab>01 &middot; The spine</div>
