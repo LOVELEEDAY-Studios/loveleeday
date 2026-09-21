@@ -121,6 +121,12 @@ nav.bar[data-sheet="1"] .sheet{display:block}
 .sacts{display:flex;gap:10px;flex-wrap:wrap;padding:18px 0 22px}
 
 /* ---------- components ---------- */
+.srcs{margin-top:30px;border-top:1px solid var(--line)}
+.src{display:grid;grid-template-columns:1fr;gap:4px;padding:15px 0;
+  border-bottom:1px solid var(--line)}
+@media(min-width:720px){.src{grid-template-columns:230px 1fr;gap:28px;align-items:baseline}}
+.src .sys{font:500 12px/1.4 var(--mono);letter-spacing:.09em;color:var(--hot)}
+.src .was{font:400 clamp(1rem,1.5vw,1.15rem)/1.45 var(--sans);letter-spacing:-.012em}
 .panels{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);
   margin-top:28px}
 @media(min-width:720px){.panels{grid-template-columns:repeat(2,1fr)}}
@@ -840,6 +846,29 @@ footer{background:var(--deep);color:var(--on-deep-mu);padding:56px 0 46px;font-s
   <span class=lab>In production</span>
   <h2>Measured, <span class=ser>not asserted.</span></h2>
   <div class=panels><div class=pnl><span class=code>OBJ</span><b>159</b><span>Objects resolved</span><p>Records from 7 source systems collapsed onto single objects.</p></div><div class=pnl><span class=code>OBS</span><b>1,655</b><span>Property observations</span><p>Each carrying its source system and source reference.</p></div><div class=pnl><span class=code>SRC</span><b>7</b><span>Live source systems</span><p>Coverage is exactly as wide as what is connected.</p></div><div class=pnl><span class=code>UNV</span><b>0</b><span>Unverified values</span><p>A write without lineage is refused at the path.</p></div></div>
+</div></section>
+
+<section class=sec><div class=w>
+  <span class=lab>What it reads</span>
+  <h2>A payment ledger, a satellite, <span class=ser>and the weather.</span></h2>
+  <p class=lede>Three of the seven systems resolved into the store right now, answerable in
+  the same sentence as each other. Not because a business needs satellite imagery &mdash;
+  because nothing underneath knows the difference between one feed and the next. A source is
+  an adapter that returns readings with the system they came from and the record they came
+  out of. What it can answer is bounded by what it can read, never by the department the
+  question belongs to.</p>
+  <div class=srcs><div class=src><span class=sys>email-corpus</span><span class=was>An archive of mail already sent, read once and kept.</span></div><div class=src><span class=sys>fly.io</span><span class=was>The running infrastructure. Machines, regions, what is deployed.</span></div><div class=src><span class=sys>nominatim</span><span class=was>A public gazetteer. An address turned into a place on the earth.</span></div><div class=src><span class=sys>nylas</span><span class=was>A live mailbox. What is being agreed in prose, not in a form.</span></div><div class=src><span class=sys>sentinel-2</span><span class=was>A satellite. Ten-metre optical imagery of the ground itself.</span></div><div class=src><span class=sys>stripe</span><span class=was>A payment ledger. Charges, customers, the money as it moved.</span></div><div class=src><span class=sys>weather.gov</span><span class=was>The weather. Forecast and observation, by station and hour.</span></div></div>
+  <p class=lede style="margin-top:32px">The engagements have gone the same way. A
+  catalogue's pricing, a company's marketing site, the automation sitting underneath both
+  &mdash; different rooms of a business, and the same work each time: read everything it
+  already keeps, resolve it onto the things it actually has, then say what nobody thought to
+  ask.</p>
+  <p style="margin-top:18px;font-size:clamp(1.25rem,2.2vw,1.7rem);line-height:1.3;
+    letter-spacing:-.022em"><span class=ser>The discipline changes. The method does not.</span></p>
+  <p class=note>The list above is generated from the store when this page is built. Connect a
+  source and it appears on the next build, with no sentence rewritten and nobody's word taken
+  for it &mdash; which is the only version of &ldquo;any source&rdquo; we are willing to
+  print.</p>
 </div></section>
 
 <section class="sec dark"><div class=w>

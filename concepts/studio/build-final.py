@@ -251,6 +251,12 @@ nav.bar[data-sheet="1"] .sheet{display:block}
 
 CSS += """
 /* ---------- components ---------- */
+.srcs{margin-top:30px;border-top:1px solid var(--line)}
+.src{display:grid;grid-template-columns:1fr;gap:4px;padding:15px 0;
+  border-bottom:1px solid var(--line)}
+@media(min-width:720px){.src{grid-template-columns:230px 1fr;gap:28px;align-items:baseline}}
+.src .sys{font:500 12px/1.4 var(--mono);letter-spacing:.09em;color:var(--hot)}
+.src .was{font:400 clamp(1rem,1.5vw,1.15rem)/1.45 var(--sans);letter-spacing:-.012em}
 .panels{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);
   margin-top:28px}
 @media(min-width:720px){.panels{grid-template-columns:repeat(2,1fr)}}
@@ -482,6 +488,40 @@ def hero(which, h1, paras, acts=None):
             f'<div class=hbody><div class=w><h1>{h1}</h1>{ps}{a}</div></div></div>')
 
 
+# What each connected system actually is, in the words a reader already has.
+# Keyed by the source_system string the store writes, so a source that is
+# connected without being described here still appears -- under its own name,
+# visibly undescribed -- rather than silently dropping out of the count and
+# quietly making the claim smaller than the truth.
+WORD = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six",
+        7: "seven", 8: "eight", 9: "nine", 10: "ten", 11: "eleven", 12: "twelve"}
+
+SOURCE_WORDS = {
+    "stripe":      "A payment ledger. Charges, customers, the money as it moved.",
+    "nylas":       "A live mailbox. What is being agreed in prose, not in a form.",
+    "email-corpus": "An archive of mail already sent, read once and kept.",
+    "fly.io":      "The running infrastructure. Machines, regions, what is deployed.",
+    "nominatim":   "A public gazetteer. An address turned into a place on the earth.",
+    "sentinel-2":  "A satellite. Ten-metre optical imagery of the ground itself.",
+    "weather.gov": "The weather. Forecast and observation, by station and hour.",
+}
+
+
+def sources():
+    """The list is generated, which is the only honest way to make this claim.
+
+    'We can read anything' is an adjective. Seven named systems, printed from
+    the store that holds them, is a fact -- and it gets longer on its own the
+    next time one is connected, without anyone rewriting a sentence."""
+    d = store.read_store()
+    out = '<div class=srcs>'
+    for s in d['srcs']:
+        out += (f'<div class=src><span class=sys>{s}</span>'
+                f'<span class=was>{SOURCE_WORDS.get(s, "Connected. Not yet described here.")}'
+                f'</span></div>')
+    return out + '</div>'
+
+
 def panels(items):
     return '<div class=panels>' + "".join(
         f'<div class=pnl><span class=code>{c}</span><b>{v}</b><span>{l}</span>'
@@ -616,6 +656,8 @@ def home():
        headline, and a link. A visitor should never arrive somewhere and find
        they have already read it."""
     g = LIVE["guarantees"]
+    nsrc = WORD.get(store.read_store()["sources"], store.read_store()["sources"])
+    srcs = sources()
     body = hero("server",
                 'Intelligence <span class=ser>you can trace.</span>',
                 ["The object layer for the business you already run.",
@@ -628,6 +670,29 @@ def home():
   <span class=lab>In production</span>
   <h2>Measured, <span class=ser>not asserted.</span></h2>
   {panels(STATS)}
+</div></section>
+
+<section class=sec><div class=w>
+  <span class=lab>What it reads</span>
+  <h2>A payment ledger, a satellite, <span class=ser>and the weather.</span></h2>
+  <p class=lede>Three of the {nsrc} systems resolved into the store right now, answerable in
+  the same sentence as each other. Not because a business needs satellite imagery &mdash;
+  because nothing underneath knows the difference between one feed and the next. A source is
+  an adapter that returns readings with the system they came from and the record they came
+  out of. What it can answer is bounded by what it can read, never by the department the
+  question belongs to.</p>
+  {srcs}
+  <p class=lede style="margin-top:32px">The engagements have gone the same way. A
+  catalogue's pricing, a company's marketing site, the automation sitting underneath both
+  &mdash; different rooms of a business, and the same work each time: read everything it
+  already keeps, resolve it onto the things it actually has, then say what nobody thought to
+  ask.</p>
+  <p style="margin-top:18px;font-size:clamp(1.25rem,2.2vw,1.7rem);line-height:1.3;
+    letter-spacing:-.022em"><span class=ser>The discipline changes. The method does not.</span></p>
+  <p class=note>The list above is generated from the store when this page is built. Connect a
+  source and it appears on the next build, with no sentence rewritten and nobody's word taken
+  for it &mdash; which is the only version of &ldquo;any source&rdquo; we are willing to
+  print.</p>
 </div></section>
 
 <section class="sec dark"><div class=w>
@@ -820,6 +885,22 @@ def about():
     </div>
     <div class=rows style="border-top-color:var(--deep-line);margin-top:0">{rows}</div>
   </div>
+</div></section>
+
+<section class=sec><div class=w>
+  <span class=lab>Why this exists</span>
+  <h2>People love what <span class=ser>they understand.</span></h2>
+  <p class=lede>Most of what someone runs is partly hidden from them. The books, the pipeline,
+  the catalogue, the month that went wrong for a reason nobody can name. The hidden part is
+  where the dread lives, and it is why running a business so often feels like bracing for it
+  rather than building it.</p>
+  <p class=lede>LOVELEEDAY exists to close that distance. Intelligence that knows what you
+  need is not a convenience: it is the difference between operating a company and flinching
+  at one. When the thing in front of you stops hiding things from you, it becomes possible to
+  like it again &mdash; the work, the numbers, the day.</p>
+  <p class=note>That is the ambition, and everything else on this site is the evidence that we
+  build it rather than say it. A figure here names the system it came from or it does not get
+  printed.</p>
 </div></section>
 
 <section class=sec id=method><div class=w>
