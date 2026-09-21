@@ -19,6 +19,27 @@ HERE = Path(__file__).parent
 OUT = HERE / "concepts"
 BRAIN = (HERE / "brain3d.js").read_text()
 
+COLOUR = [
+    ("hemisphere", "Hemispheres",
+     "Left cool, right warm, split on the real midline. The clearest read of the "
+     "five \u2014 you can see it is two halves of one organ, which is the whole "
+     "point of an object that resolves things."),
+    ("lobe", "Lobes",
+     "Four regions coloured by anatomy: frontal amber, parietal cyan, temporal "
+     "violet, occipital green. The boundaries are real positions from the MRI, "
+     "not decoration painted on."),
+    ("depth", "Depth",
+     "Hue runs front to back, so the colour itself encodes which way the volume "
+     "is facing as it turns. The most legible while rotating."),
+    ("ember", "Ember",
+     "Warm the whole way through, darkest at the poles. Sits inside the Bloomberg "
+     "amber palette instead of fighting it \u2014 the only one of the five that "
+     "could carry the existing brand without adding a colour."),
+    ("prism", "Prism",
+     "Full spectrum across both axes. The loudest, and the least anatomical: use "
+     "it where the brain is a brand moment rather than an explanation."),
+]
+
 TREATMENTS = [
     ("filament", "Filament",
      "Structure carried by the edges. Fine lines, a cool cast, low bloom. The "
@@ -77,6 +98,13 @@ footer{border-top:1px solid rgba(255,255,255,.13);padding:34px 0 60px;
 
 def page():
     items = ""
+    for i, (slug, name, desc) in enumerate(COLOUR):
+        items += f"""
+<section class="item {slug}"><div class=w>
+  <div class=head><span class=n>C{i+1}</span><h2>{name}</h2></div>
+  <p class=desc>{desc}</p>
+  <div class=stage><canvas data-style="{slug}"></canvas></div>
+</div></section>"""
     for i, (slug, name, desc) in enumerate(TREATMENTS):
         items += f"""
 <section class="item {slug}"><div class=w>
@@ -99,9 +127,13 @@ def page():
 </head><body>
 <header class=intro><div class=w>
   <span class=lab>Arthur &middot; cognition</span>
-  <h1>Six ways to render one brain.</h1>
-  <p>A volume of 460 nodes in three dimensions, turning on its vertical axis,
-  depth-sorted every frame so the near hemisphere occludes the far one. All six
+  <h1>In colour, and in grey.</h1>
+  <p>Five colour treatments first, then the six near-monochrome ones. The
+  geometry underneath is identical in all eleven: 1,722 points of a real
+  cortical surface, taken off an MRI, turning on its vertical axis and
+  depth-sorted every frame so the near hemisphere occludes the far one. Because
+  the points are measured rather than invented, the colour can follow the real
+  anatomy \u2014 the midline, the lobe boundaries, the front-to-back axis. All eleven
   run the same four beats &mdash; a question lands on the frontal lobe, the signal
   propagates breadth-first along real edges with sparks riding them, the
   sub-questions it must answer first surface at the nodes they fired from, and

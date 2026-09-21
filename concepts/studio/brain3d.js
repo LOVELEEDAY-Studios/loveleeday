@@ -180,7 +180,79 @@
       evidence: 'bitemporal read \u00b7 look-ahead refused' }
   ];
 
+  /* COLOUR. Every treatment so far was near-monochrome: grey nodes, one accent
+     for the spark. These paint the resting brain itself, using the anatomy that
+     is now actually in the data -- the points came off an MRI, so front-to-back,
+     left-to-right and lobe boundaries are all real positions rather than
+     decoration. `paint` is evaluated once per node at mount, never per frame. */
+  function hsl(h, sat, li) {
+    h = ((h % 360) + 360) % 360;
+    var c = (1 - Math.abs(2 * li - 1)) * sat, x = c * (1 - Math.abs((h / 60) % 2 - 1));
+    var m = li - c / 2, r = 0, g = 0, b = 0;
+    if (h < 60) { r = c; g = x; } else if (h < 120) { r = x; g = c; }
+    else if (h < 180) { g = c; b = x; } else if (h < 240) { g = x; b = c; }
+    else if (h < 300) { r = x; b = c; } else { r = c; b = x; }
+    return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
+  }
+  function rgba(c, a) { return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+  /* A pure white spark with full bloom swallowed the hue on every painted
+     treatment -- the firing path read as a white blob rather than as this
+     brain lighting up. Lift the node's OWN colour toward white instead. */
+  function lift(c, k) {
+    return [Math.round(c[0] + (255 - c[0]) * k),
+            Math.round(c[1] + (255 - c[1]) * k),
+            Math.round(c[2] + (255 - c[2]) * k)];
+  }
+
+  /* Lobe from position. x runs front(-) to back(+), y runs up(-) to down(+). */
+  function lobeOf(p) {
+    if (p.x < -0.16) return 0;                       /* frontal   */
+    if (p.x > 0.24) return 3;                        /* occipital */
+    if (p.y > 0.06) return 2;                        /* temporal  */
+    return 1;                                        /* parietal  */
+  }
+  var LOBE_HUE = [16, 196, 286, 128];                /* amber, cyan, violet, green */
+
+  function paintNodes(pts, mode) {
+    var xs = pts.map(function (p) { return p.x; });
+    var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs);
+    return pts.map(function (p, i) {
+      var t = (p.x - x0) / (x1 - x0 || 1);
+      switch (mode) {
+        case 'hemisphere':
+          return hsl(p.z < 0 ? 192 : 22, 0.62, 0.58 + (Math.abs(p.z) * 0.3));
+        case 'depth':
+          return hsl(202 + t * 128, 0.66, 0.46 + t * 0.20);
+        case 'lobe':
+          return hsl(LOBE_HUE[lobeOf(p)], 0.60, 0.60);
+        case 'prism':
+          return hsl(t * 300 + p.y * 120, 0.72, 0.60);
+        case 'ember':
+          return hsl(8 + t * 48, 0.78, 0.40 + (1 - Math.abs(p.y) * 1.6) * 0.22);
+        default:
+          return null;
+      }
+    });
+  }
+
   var STYLES = {
+    /* --- colour treatments --- */
+    hemisphere: { node: '#8FB8C8', edge: 'rgba(150,175,190,.15)', spark: '#FFFFFF',
+                  hot: '#FF9E3D', nodeSize: 1.55, edgeWidth: 0.85, glow: 0.55,
+                  fog: 0.5, paint: 'hemisphere', oscillate: true },
+    depth:      { node: '#8FB8C8', edge: 'rgba(150,175,190,.13)', spark: '#FFFFFF',
+                  hot: '#FF9E3D', nodeSize: 1.5, edgeWidth: 0.85, glow: 0.5,
+                  fog: 0.55, paint: 'depth' },
+    lobe:       { node: '#8FB8C8', edge: 'rgba(160,175,190,.16)', spark: '#FFFFFF',
+                  hot: '#FF9E3D', nodeSize: 1.6, edgeWidth: 0.9, glow: 0.5,
+                  fog: 0.45, paint: 'lobe', oscillate: true },
+    prism:      { node: '#8FB8C8', edge: 'rgba(170,175,200,.12)', spark: '#FFFFFF',
+                  hot: '#FFFFFF', nodeSize: 1.5, edgeWidth: 0.8, glow: 0.7,
+                  fog: 0.5, paint: 'prism' },
+    ember:      { node: '#C98A52', edge: 'rgba(190,120,70,.16)', spark: '#FFD9A0',
+                  hot: '#FF7A1F', nodeSize: 1.6, edgeWidth: 0.9, glow: 0.8,
+                  fog: 0.7, paint: 'ember', oscillate: true },
+    /* --- the original near-monochrome set --- */
     filament: { node: '#7FA8B8', edge: 'rgba(127,168,184,.34)', spark: '#5FD3C4',
                 hot: '#FF9E3D', nodeSize: 1.2, edgeWidth: 1, glow: 0.6, fog: 0.55 },
     synapse:  { node: '#CFE6EE', edge: 'rgba(120,150,170,.16)', spark: '#63E0CE',
@@ -203,6 +275,7 @@
     var text = opts.text || '#F2F2EF', dim = opts.dim || 'rgba(242,242,239,.52)';
     var labels = opts.labels !== false;
     var G = build(opts.count || 0, opts.seed || 5);
+    var PAINT = S.paint ? paintNodes(G.pts, S.paint) : null;
     var ctx = canvas.getContext('2d');
     var W = 0, H = 0, dpr = 1, raf = 0, running = false, t0 = performance.now();
     var beat = 0, entry = 0, dep = [], maxd = 1, shown = [];
@@ -295,11 +368,11 @@
         var fog = Math.max(0, Math.min(1, (depth - (1 - S.fog * 0.5)) / (S.fog + 0.35)));
         ctx.beginPath(); ctx.moveTo(pa[0], pa[1]); ctx.lineTo(pb[0], pb[1]);
         if (lit > 0 && lit < 2.6) {
-          ctx.strokeStyle = S.spark;
+          ctx.strokeStyle = PAINT ? rgba(lift(PAINT[a], 0.66), 1) : S.spark;
           ctx.globalAlpha = 0.9 * (1 - lit / 2.6);
           ctx.lineWidth = S.edgeWidth * 1.7;
         } else {
-          ctx.strokeStyle = S.edge;
+          ctx.strokeStyle = PAINT ? rgba(PAINT[a], 0.30) : S.edge;
           ctx.globalAlpha = 0.25 + fog * 0.75;
           ctx.lineWidth = S.edgeWidth;
         }
@@ -308,7 +381,7 @@
         if (lit > 0 && lit < 1.0) {
           var u = lit;
           ctx.globalAlpha = 1 - u;
-          ctx.fillStyle = S.spark;
+          ctx.fillStyle = PAINT ? rgba(lift(PAINT[a], 0.8), 1) : S.spark;
           ctx.beginPath();
           ctx.arc(pa[0] + (pb[0] - pa[0]) * u, pa[1] + (pb[1] - pa[1]) * u,
                   1.7 * depth, 0, 7);
@@ -322,15 +395,15 @@
         var fog2 = Math.max(0, Math.min(1, (p[2] - (1 - S.fog * 0.5)) / (S.fog + 0.35)));
         var lit2 = front - dep[i];
         var r = S.nodeSize * p[2];
-        ctx.fillStyle = S.node;
+        ctx.fillStyle = PAINT ? rgba(PAINT[i], 1) : S.node;
         ctx.globalAlpha = 0.22 + fog2 * 0.78;
         if (lit2 > 0 && lit2 < 2.2) {
           var f = 1 - lit2 / 2.2;
-          ctx.fillStyle = S.spark;
+          ctx.fillStyle = PAINT ? rgba(lift(PAINT[i], 0.72), 1) : S.spark;
           ctx.globalAlpha = 0.45 + f * 0.55;
-          r = S.nodeSize * p[2] * (1 + f * 2.6);
+          r = S.nodeSize * p[2] * (1 + f * (PAINT ? 1.7 : 2.6));
           if (S.glow > 0) {
-            ctx.globalAlpha = 0.10 * f * S.glow;
+            ctx.globalAlpha = (PAINT ? 0.055 : 0.10) * f * S.glow;
             ctx.beginPath(); ctx.arc(p[0], p[1], r * 3.0, 0, 7); ctx.fill();
             ctx.globalAlpha = 0.45 + f * 0.55;
           }
