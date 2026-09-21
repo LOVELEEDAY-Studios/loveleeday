@@ -89,7 +89,15 @@
      Two values are darker than that file recommends and the reason is measured,
      not aesthetic: at #00c4c4 the teal carries 1.9:1 on cream and at #d4866a the
      rose gold carries 2.4:1, and both were being asked to hold small text. They
-     are pulled down until they clear 4.5:1 on BOTH grounds. §"Mistake 2" keeps
+     are pulled down until they clear 4.5:1 on ALL THREE grounds.
+
+     "Both grounds" is what this said until 2026-09-21, and it was the bug: the
+     roles were measured on cream and paper and never on --sunk, which is a
+     third ground and the darkest of them. --dim came to 4.14 on it and --teal
+     to 4.30, on the client portal pages under /p where they are used for
+     running text. Lightening --sunk cannot fix it -- at a value close enough to
+     clear, it is indistinguishable from cream and stops being a recessed stage
+     at all -- so the three roles moved instead. §"Mistake 2" keeps
      the grounds at low chroma; §"Mistake 3" is why no ink here is #000. */
 
   /* Stages — all light. Dark is a stage this site cuts to exactly once. */
@@ -106,7 +114,7 @@
   /* Type on light */
   --ink: #16243A;          /* navy, doing the work #000 would do badly */
   --mid: #45536A;
-  --dim: #667383;          /* 4.56 on cream, 4.83 on paper — measured */
+  --dim: #616D7C;          /* 4.97 cream · 5.27 paper · 4.51 sunk — measured */
 
   /* Type on the one dark stage */
   --on-deep: #F6F3EC;
@@ -117,10 +125,10 @@
   --deep-line-2: #3B4D6B;  /* brighter hairline, on the deep stage */
 
   /* Accents. Teal is the action colour; copper is support and data. */
-  --teal: #0E7C7B;
+  --teal: #0E7877;        /* 4.99 cream · 5.29 paper · 4.53 sunk */
   --teal-d: #0A6261;
   --teal-wash: #E8F2F1;
-  --copper: #A36141;
+  --copper: #9B5C3E;      /* 4.96 cream · 5.26 paper · 4.51 sunk */
   --copper-wash: #F6EDE7;
   --good: #0F7B4F;
 
