@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOVELEEDAY — the heart, as connected systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Mulish:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================================
+   THE HEART, AS CONNECTED SYSTEMS.
+
+   Daniel's brief, and it is a better one than anything in the previous round:
+   "the emblem of a heart etc to be in it showing basically the heart is systems
+   connected" -- plus "modern and stylish iconic".
+
+   Why it is better: it solves the problem the last ten had. Those were ten
+   abstract geometries in search of a meaning. This one already means something,
+   and it means the two halves of the company at once -- LOVELEEDAY is the heart,
+   Arthur is the connected systems. A mark that carries the name AND the product
+   is the thing you cannot buy off a shortlist.
+
+   THE ONE HARD CONSTRAINT: the heart has to survive being made of parts. A heart
+   is read from its SILHOUETTE -- two lobes and a point -- and every node, gap
+   and trace you add is an attack on that silhouette. Every mark below is
+   therefore tested at 16px FIRST and drawn second. Three of the first drafts
+   failed that test and were rebuilt; the notes say which and why.
+
+   Construction: one 100x100 grid. The geometric heart is built the textbook
+   way -- two circles of radius r, centres one r apart, sitting on a square
+   rotated 45 degrees -- so the curves are real circles and the point is a real
+   corner, not freehand. That is what "modern and iconic" is actually made of.
+   ========================================================================== */
+:root{
+  --ground:#FBF8F2;--paper:#FFFFFF;--ink:#16243A;--mid:#45536A;--dim:#667383;
+  --line:#E6E0D6;--teal:#0E7C7B;--copper:#A36141;--deep:#16243A;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:'Mulish',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:1320px;margin:0 auto;padding:0 clamp(18px,3vw,44px)}
+.dsp{font-family:'Manrope',system-ui,sans-serif;font-weight:700;letter-spacing:-.035em}
+.lab{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim)}
+header{padding:clamp(42px,6vw,88px) 0 clamp(26px,3vw,44px);border-bottom:1px solid var(--line)}
+header h1{margin:14px 0 0;font-size:clamp(2rem,4.8vw,3.6rem);line-height:1.02}
+header p{margin:18px 0 0;max-width:76ch;font-size:15.5px;line-height:1.68;color:var(--mid)}
+code{font-family:'IBM Plex Mono',monospace;font-size:11.5px}
+.grid{display:grid;gap:clamp(16px,2vw,24px);padding:clamp(28px,3.4vw,48px) 0;grid-template-columns:1fr}
+@media(min-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;position:relative}
+.top{display:grid;grid-template-columns:1.15fr .85fr;border-bottom:1px solid var(--line)}
+.stage{display:grid;place-items:center;padding:36px 20px}
+.rev{display:grid;place-items:center;background:var(--deep);padding:36px 20px}
+.sizes{display:flex;align-items:flex-end;gap:20px;justify-content:center;
+  padding:16px 20px;border-bottom:1px solid var(--line);background:var(--ground)}
+.sizes .s{display:grid;place-items:center;gap:7px}
+.sizes .s span{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim)}
+.lockup{display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.lockup .wm{font-family:'Manrope',sans-serif;font-weight:800;font-size:17px}
+.lockup .wm i{font-style:normal;font-weight:500;color:var(--dim)}
+.body{padding:18px 20px 22px;flex:1}
+.body .n{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.body h2{margin:9px 0 0;font-family:'Manrope',sans-serif;font-size:1.28rem;font-weight:700;letter-spacing:-.026em}
+.says{margin:9px 0 0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--teal);line-height:1.5}
+.body p{margin:11px 0 0;font-size:13.4px;line-height:1.6;color:var(--mid)}
+.body .risk{margin-top:10px;font-size:12px;line-height:1.55;color:var(--copper)}
+.rec{position:absolute;top:0;right:0;background:var(--teal);color:#fff;
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 10px;z-index:2}
+footer{border-top:1px solid var(--line);padding:26px 0 60px;font-size:12.5px;color:var(--dim);line-height:1.75}
+</style>
+</head>
+<body>
+
+<header><div class="w">
+  <p class="lab">LOVELEEDAY Studios · identity · the heart brief · 2026-09-21</p>
+  <h1 class="dsp">The heart is<br>the system.</h1>
+  <p>Your brief, and it is a better one than the abstract set: the heart carries the name and the
+    connected systems carry the product, so the mark says both halves of the company at once.
+    The whole difficulty is that a heart is read from its <b>silhouette</b> — two lobes and a
+    point — and every node, gap and trace added to it is an attack on that silhouette. So each of
+    these was tested at 16px before it was refined, not after. Geometry is real: two circles of
+    equal radius, centres one radius apart, on a square rotated 45&deg;. No freehand curves.</p>
+</div></header>
+
+<div class="w"><div class="grid" id="grid"></div></div>
+
+<footer><div class="w">
+  Vector, not raster — which is what a mark has to be. Midjourney is running the same brief in
+  parallel for metaphor and silhouette exploration; anything it finds would still have to be
+  redrawn as vector to be usable, so this track is not waiting on it.
+</div></footer>
+
+<script>
+(function(){
+'use strict';
+
+/* The textbook heart, parameterised. Two circles radius r centred at
+   (50-r, y) and (50+r, y), sitting on a square rotated 45 degrees whose bottom
+   vertex is the point. Every mark below is cut out of, or built on, this same
+   path -- which is what makes them a family rather than six drawings. */
+function heartPath(r, topY, tipY){
+  var lx = 50 - r, rx = 50 + r;
+  return 'M50 '+tipY+
+         ' L'+(50-r*2)+' '+(topY+r)+
+         ' A'+r+' '+r+' 0 0 1 '+lx+' '+topY+
+         ' A'+r+' '+r+' 0 0 1 50 '+(topY+r)+
+         ' A'+r+' '+r+' 0 0 1 '+rx+' '+topY+
+         ' A'+r+' '+r+' 0 0 1 '+(50+r*2)+' '+(topY+r)+
+         ' Z';
+}
+var HEART = heartPath(17, 30, 88);
+
+var MARKS=[
+{
+  id:'H1', name:'Vessel', rec:true,
+  says:'the heart, routed',
+  /* First draft ran a spine down the middle with two branches and two node
+     squares. Inside a heart that is a very small amount of room, and it read as
+     a keyhole rather than as circulation. Three nodes on a triangle, joined,
+     says "connected" with a tenth of the ink and leaves the silhouette alone. */
+  draw:function(c,a){return ''+
+    '<path d="'+HEART+'" fill="none" stroke="'+c+'" stroke-width="9" stroke-linejoin="round"/>'+
+    '<path d="M36 51 L64 51 L50 72 Z" fill="none" stroke="'+c+'" stroke-width="6" stroke-linejoin="round"/>'+
+    '<circle cx="36" cy="51" r="6" fill="'+c+'"/>'+
+    '<circle cx="64" cy="51" r="6" fill="'+c+'"/>'+
+    '<circle cx="50" cy="72" r="6.5" fill="'+a+'"/>';},
+  p:'The silhouette stays whole and the system lives inside it — three nodes joined into a triangle, with the accent on the one at the point. This is the only one of the six where the heart outline is never interrupted, which is why it is the one that still reads as a heart at sixteen pixels.',
+  risk:'The interior detail is the first thing to go at very small sizes. Below 16px you have a plain heart — which is an acceptable floor, not a failure.'
+},
+{
+  id:'H2', name:'Lattice',
+  says:'built from parts, still whole',
+  draw:function(c,a){return ''+
+    '<defs><clipPath id="hc2"><path d="'+HEART+'"/></clipPath></defs>'+
+    '<g clip-path="url(#hc2)">'+
+      '<rect x="0" y="0" width="100" height="100" fill="'+c+'"/>'+
+      '<path d="M50 0 V100 M0 46 H100 M0 66 H100 M28 0 V100 M72 0 V100" '+
+        'fill="none" stroke="#FFFFFF" stroke-width="5"/>'+
+      '<rect x="52" y="48" width="18" height="16" fill="'+a+'"/>'+
+    '</g>';},
+  p:'A solid heart cut into cells by a grid, with one cell in the accent. The mark is made of parts and is still one object — which is the argument the company makes about records and objects, said in a shape anyone recognises in a tenth of a second.',
+  risk:'The white cuts are the mark. On a busy photograph or a mid-tone ground they close up and it becomes a solid blob.'
+},
+{
+  id:'H3', name:'Node',
+  says:'a network in the shape of a heart',
+  draw:function(c,a){return ''+
+    '<path d="M50 86 L20 56 L24 36 L38 28 L50 38 L62 28 L76 36 L80 56 Z" '+
+      'fill="none" stroke="'+c+'" stroke-width="7" stroke-linejoin="round"/>'+
+    '<path d="M50 38 V62 M24 36 L50 62 M76 36 L50 62 M20 56 L50 38 M80 56 L50 38" '+
+      'fill="none" stroke="'+c+'" stroke-width="3.5" opacity=".55"/>'+
+    '<circle cx="50" cy="38" r="6.5" fill="'+a+'"/>'+
+    ['20 56','24 36','38 28','62 28','76 36','80 56','50 86','50 62'].map(function(p){
+      var xy=p.split(' ');
+      return '<circle cx="'+xy[0]+'" cy="'+xy[1]+'" r="4.5" fill="'+c+'"/>';}).join('');},
+  p:'The heart drawn as a graph — vertices and edges, the lobes faceted into straight runs. The most literal reading of the brief and the most obviously a technology mark. The interior edges are at half weight so the outline still carries the silhouette.',
+  risk:'Faceting the lobes costs you some of the heart. It reads as a heart, but a beat slower than the curved ones do.'
+},
+{
+  id:'H4', name:'Two halves',
+  says:'two systems, one object',
+  draw:function(c,a){return ''+
+    '<defs><clipPath id="hc4"><path d="'+HEART+'"/></clipPath></defs>'+
+    '<g clip-path="url(#hc4)">'+
+      '<rect x="0" y="0" width="44" height="100" fill="'+c+'"/>'+
+      '<rect x="56" y="0" width="44" height="100" fill="'+c+'" opacity=".45"/>'+
+    '</g>'+
+    '<rect x="44" y="40" width="12" height="12" fill="'+a+'"/>'+
+    '<rect x="44" y="58" width="12" height="12" fill="'+a+'"/>';},
+  p:'One heart split down its axis into two weights, with the seam bridged by two connectors. Two systems resolving into a single object — the same sentence as the ontology, told with a shape that needs no explanation. Strongest silhouette of the six after Vessel.',
+  risk:'A split heart carries a second meaning nobody wants. The connectors are what stop it reading as broken, so they can never be dropped.'
+},
+{
+  id:'H5', name:'Trace',
+  says:'one unbroken line',
+  /* The first version's second arc did not close the right lobe -- it read as a
+     stylised 2 with a tail. The heart is now drawn as the shared path, and the
+     trace leaves it from the OUTSIDE of the right lobe, so the silhouette is
+     complete before anything continues out of it. */
+  draw:function(c,a){return ''+
+    '<path d="'+HEART+'" fill="none" stroke="'+c+'" stroke-width="9" stroke-linejoin="round"/>'+
+    '<path d="M84 47 H92" fill="none" stroke="'+c+'" stroke-width="9" stroke-linecap="butt"/>'+
+    '<circle cx="50" cy="63" r="6" fill="'+a+'"/>'+
+    '<path d="M50 63 L84 47" fill="none" stroke="'+c+'" stroke-width="6"/>';},
+  p:'The heart closes, and then one trace leaves it — from the value at its centre, out through the wall, to somewhere outside the frame. Lineage said as geometry: the line does not stop at the object, it carries on to the record it came from. The one that would animate best.',
+  risk:'The exit trace breaks the bounding box, so it needs asymmetric clear space and cannot be centred naively in a square app icon.'
+},
+{
+  id:'H6', name:'Void',
+  says:'the heart is the space between',
+  draw:function(c,a){return ''+
+    '<defs><mask id="hm6">'+
+      '<rect x="0" y="0" width="100" height="100" fill="#fff"/>'+
+      '<path d="'+heartPath(17,38,86)+'" fill="#000"/>'+
+    '</mask></defs>'+
+    '<g mask="url(#hm6)">'+
+      '<rect x="8" y="8" width="40" height="40" fill="'+c+'"/>'+
+      '<rect x="52" y="8" width="40" height="40" fill="'+c+'"/>'+
+      '<rect x="8" y="52" width="40" height="40" fill="'+c+'"/>'+
+      '<rect x="52" y="52" width="40" height="40" fill="'+a+'"/>'+
+    '</g>';},
+  p:'Four blocks — your existing quadrant mark — with the heart cut out of the middle where they meet. The systems are the solid; the heart is what appears when they connect. It is the only one of the six that keeps continuity with the mark you already own.',
+  risk:'Negative-space marks need a clean ground and enough size. On anything under about 20px the void fills in and you are left with four squares.'
+}];
+
+function svg(m,size,c,a,uid){
+  var inner = m.draw(c,a).replace(/hc(\d)|hm(\d)/g, function(s){ return s+'-'+uid; });
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 100 100" '+
+    'xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+m.name+' mark">'+inner+'</svg>';
+}
+
+var INK='#16243A', TEAL='#0E7C7B', PAPER='#FBF8F2', TEAL_L='#3FB0A8';
+var grid=document.getElementById('grid'), uid=0;
+
+MARKS.forEach(function(m){
+  var el=document.createElement('article'); el.className='card';
+  el.innerHTML=
+    (m.rec?'<span class="rec">Recommended</span>':'')+
+    '<div class="top">'+
+      '<div class="stage">'+svg(m,104,INK,TEAL,++uid)+'</div>'+
+      '<div class="rev">'+svg(m,76,PAPER,TEAL_L,++uid)+'</div>'+
+    '</div>'+
+    '<div class="sizes">'+
+      '<div class="s">'+svg(m,32,INK,TEAL,++uid)+'<span>32</span></div>'+
+      '<div class="s">'+svg(m,24,INK,TEAL,++uid)+'<span>24</span></div>'+
+      '<div class="s">'+svg(m,16,INK,TEAL,++uid)+'<span>16 · favicon</span></div>'+
+      '<div class="s">'+svg(m,24,INK,INK,++uid)+'<span>one colour</span></div>'+
+    '</div>'+
+    '<div class="lockup">'+svg(m,26,INK,TEAL,++uid)+
+      '<span class="wm">LOVELEEDAY <i>Studios</i></span></div>'+
+    '<div class="body">'+
+      '<div class="n"><span class="lab">Mark '+m.id+'</span>'+
+        '<span class="lab">'+m.says+'</span></div>'+
+      '<h2>'+m.name+'</h2><p>'+m.p+'</p>'+
+      '<p class="risk"><b>Risk:</b> '+m.risk+'</p>'+
+    '</div>';
+  grid.appendChild(el);
+});
+})();
+</script>
+</body>
+</html>

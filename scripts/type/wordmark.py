@@ -257,15 +257,21 @@ def stem_width(f, gs, cap):
 # makes the wordmark name-specific rather than a typeface set in caps: the two
 # E's share one stem, so their arms run through into a ladder. It is the same
 # sentence as the emblem -- separate parts, joined -- said in letterforms.
-def build(face, wght=800, heart=True, heart_index=1, ligature=False):
+def build(face, wght=800, heart=True, heart_index=1, ligature=False, word=None):
     f = load(face, wght)
     gs, cmap = f.getGlyphSet(), f.getBestCmap()
     upm = f["head"].unitsPerEm
     cap = getattr(f["OS/2"], "sCapHeight", None) or int(upm * 0.7)
     stem = stem_width(f, gs, cap)
-    ys = [cap * i / (SAMPLES - 1) for i in range(SAMPLES)]
+    word = WORD if word is None else word
+    # Lowercase is spaced against the x-height, not the cap: the same gap that
+    # is right between two capitals is visibly too much air between two round
+    # lowercase letters, because there is less letter either side of it.
+    lower = word == word.lower()
+    ref = (getattr(f["OS/2"], "sxHeight", None) or int(cap * 0.72)) if lower else cap
+    ys = [ref * i / (SAMPLES - 1) for i in range(SAMPLES)]
 
-    names = [cmap[ord(c)] for c in WORD]
+    names = [cmap[ord(c)] for c in word]
     prof = {}
     for n in set(names):
         prof[n] = profile(flatten(gs, n), ys)
@@ -275,16 +281,16 @@ def build(face, wght=800, heart=True, heart_index=1, ligature=False):
     for i, n in enumerate(names):
         if i:
             prev = names[i - 1]
-            d = solve_gap(prof[prev][1], prof[n][0], GAP_MEAN * cap, GAP_MIN * cap)
+            d = solve_gap(prof[prev][1], prof[n][0], GAP_MEAN * ref, GAP_MIN * ref)
             x = xs[-1] + (d if d is not None else f["hmtx"][prev][0])
         xs.append(x)
 
-    if ligature:
+    if ligature and "EE" in word:
         # The second E's stem lands exactly on the first E's arm terminals, so
         # the two share one vertical and the arms read as rungs between them.
         # Everything downstream shifts by the same amount, which keeps the
         # measured spacing of every OTHER pair untouched.
-        a, b = WORD.index("EE"), WORD.index("EE") + 1
+        a, b = word.index("EE"), word.index("EE") + 1
         bp = BoundsPen(gs); gs[names[a]].draw(bp)
         ex0, ex1 = bp.bounds[0], bp.bounds[2]
         bp2 = BoundsPen(gs); gs[names[b]].draw(bp2)
@@ -294,7 +300,7 @@ def build(face, wght=800, heart=True, heart_index=1, ligature=False):
             xs[i] += shift
 
     parts, lsb_first = [], None
-    for i, (ch, n) in enumerate(zip(WORD, names)):
+    for i, (ch, n) in enumerate(zip(word, names)):
         bp = BoundsPen(gs); gs[n].draw(bp)
         x0, y0, x1, y1 = bp.bounds
         if lsb_first is None:
@@ -353,11 +359,20 @@ def build(face, wght=800, heart=True, heart_index=1, ligature=False):
     last = names[-1]
     bp = BoundsPen(gs); gs[last].draw(bp)
     width = xs[-1] + bp.bounds[2] - lsb_first
+    # The drawn box, which for a lowercase word with an ascender and a descender
+    # is NOT the cap box. Emitting a cap-height viewBox clipped the y.
+    tops, bots = [], []
+    for i, n in enumerate(names):
+        b = BoundsPen(gs); gs[n].draw(b)
+        tops.append(-b.bounds[3]); bots.append(-b.bounds[1])
+    ink_top, ink_bot = min(tops), max(bots)
     for p in parts:
         p["d"] = p["d"]
 
-    return {"face": face, "wght": wght, "upm": upm, "cap": cap, "stem": round(stem, 1),
+    return {"face": face, "wght": wght, "upm": upm, "cap": cap, "ref": ref,
+            "word": word, "stem": round(stem, 1),
             "x0": lsb_first, "width": width, "parts": parts,
+            "ink_top": ink_top, "ink_bot": ink_bot,
             "gaps": [round(xs[i] - xs[i - 1], 1) for i in range(1, len(xs))]}
 
 
@@ -365,7 +380,8 @@ def svg(wm, fill="#16243A", heart_fill=None, height=120, pad=0.0):
     """One <svg> for the whole wordmark. The viewBox is the ink box, in font
        units, y-flipped -- so the caller only ever sets a height."""
     cap, x0, w = wm["cap"], wm["x0"], wm["width"]
-    vb = f"{x0 - pad:.1f} {-cap - pad:.1f} {w + 2 * pad:.1f} {cap + 2 * pad:.1f}"
+    top, bot = wm["ink_top"], wm["ink_bot"]
+    vb = f"{x0 - pad:.1f} {top - pad:.1f} {w + 2 * pad:.1f} {bot - top + 2 * pad:.1f}"
     body = []
     for p in wm["parts"]:
         c = heart_fill if (p["custom"] and heart_fill) else fill
