@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Design system &mdash; LOVELEEDAY</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Mulish:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel=stylesheet>
+<script src="../motion.js"></script><style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#FBF8F2;color:#16243A;
+  font:400 16px/1.62 'Mulish',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.w{max-width:1024px;margin:0 auto;padding:0 22px}
+.wide{max-width:1200px;margin:0 auto;padding:0 22px}
+.display{font-family:'Manrope',system-ui,sans-serif;font-weight:800;letter-spacing:-.042em;
+  line-height:.98}
+.eyebrow{font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.17em;
+  text-transform:uppercase;color:#616D7C;display:inline-flex;align-items:center;gap:9px}
+.eyebrow::before{content:"";width:7px;height:7px;background:#0E7877;display:block}
+.sub{color:#45536A;font-size:17px;line-height:1.5;margin:18px auto 0;max-width:34ch}
+
+/* ── announcement + nav ─────────────────────────────────────────────────── */
+.announce{background:#16243A;color:#F6F3EC;font-size:12.5px}
+.announce .wide{height:38px;display:flex;align-items:center;justify-content:center;gap:14px}
+.announce a{color:#7FD4D2}
+.nav{position:sticky;top:0;z-index:50;background:rgba(251,248,242,.86);
+  backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid #E6E0D6}
+.nav .wide{display:flex;align-items:center;height:52px;gap:26px}
+.nav .mk{font:800 15px/1 'Manrope',sans-serif;letter-spacing:-.045em}
+.nav .lk{display:flex;gap:26px;margin:0 auto;font:500 13px/1 'Mulish',sans-serif;
+  color:#45536A}
+.nav .lk a.on{color:#16243A}
+.nav .cta{background:#16243A;color:#FBF8F2;border-radius:980px;padding:7px 15px;
+  font:600 12.5px/1 'Manrope',sans-serif}
+
+/* ── stages ─────────────────────────────────────────────────────────────── */
+.stage{padding:clamp(64px,9vw,132px) 0;text-align:center;position:relative;overflow:hidden}
+.stage.ground{background:#FBF8F2}
+.stage.sunkbg{background:#F2EDE3}
+.stage.paperbg{background:#FFFFFF;border-block:1px solid #E6E0D6}
+.stage.deepbg{background:#16243A;color:#F6F3EC}
+.stage.deepbg .sub{color:#A9B3C4}
+.stage.deepbg .eyebrow{color:#A9B3C4}
+.stage h2{margin:16px 0 0}
+/* .obj is NOT scoped to .stage: the hero's object sits outside a stage, so a
+   descendant selector gave it no dimensions at all and the canvas collapsed to
+   a thumbnail in the middle of the page. */
+.obj{margin:clamp(30px,4vw,52px) auto 0;width:min(1040px,92vw);
+  height:clamp(210px,28vw,340px)}
+.obj canvas{width:100%;height:100%;display:block}
+.hero .obj{margin-top:clamp(24px,3.4vw,44px);height:clamp(240px,32vw,400px)}
+
+/* photographic stage */
+.stage.photo{color:#fff}
+.stage.photo .bleed{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage.photo .scrim{position:absolute;inset:0;
+  background:linear-gradient(103deg,rgba(22,36,58,.92) 0 38%,rgba(22,36,58,.74) 66%,
+  rgba(22,36,58,.46) 100%)}
+.stage.photo .w{position:relative;z-index:2}
+.stage.photo .eyebrow{color:rgba(255,255,255,.82)}
+.stage.photo .sub{color:rgba(255,255,255,.86)}
+
+/* ── hero + rail ────────────────────────────────────────────────────────── */
+.hero{padding:clamp(54px,7vw,96px) 0 0;text-align:center;background:#FBF8F2}
+.hero h1{font-size:clamp(3.4rem,10vw,7.4rem);margin:0}
+.hero .acts{margin-top:24px;display:flex;gap:22px;justify-content:center;
+  font:500 15px/1 'Mulish',sans-serif;color:#0E7877}
+.rail{background:#FFFFFF;border-block:1px solid #E6E0D6;
+  padding:26px 0}
+.rail .row{display:flex;gap:clamp(14px,3vw,44px);justify-content:center;flex-wrap:wrap}
+.tile{display:grid;justify-items:center;gap:9px;width:132px;text-align:center}
+.tile b{font:700 12.5px/1.25 'Manrope',sans-serif;letter-spacing:-.015em}
+.tile span{font-size:11px;color:#616D7C;line-height:1.4}
+
+/* ── evidence primitives ────────────────────────────────────────────────── */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);margin:clamp(26px,3.4vw,44px) auto 0;
+  max-width:1000px;border-top:1px solid rgba(255,255,255,.18)}
+.metrics.onlight{border-top-color:#E6E0D6}
+.metrics .m{padding:22px 10px;border-right:1px solid rgba(255,255,255,.18)}
+.metrics.onlight .m{border-right-color:#E6E0D6}
+.metrics .m:last-child{border-right:0}
+.metrics b{display:block;font:800 clamp(1.9rem,3.4vw,3rem)/1 'Manrope',sans-serif;
+  letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.metrics span{display:block;margin-top:8px;font-size:12.5px;line-height:1.4;
+  color:rgba(255,255,255,.72)}
+.metrics.onlight span{color:#616D7C}
+@media(max-width:700px){.metrics{grid-template-columns:repeat(2,1fr)}}
+
+.lin{max-width:860px;margin:26px auto 0;text-align:left;border-top:1px solid #E6E0D6}
+.lin .r{display:grid;grid-template-columns:150px 1fr 190px 104px;gap:14px;
+  align-items:baseline;padding:12px 0;border-bottom:1px solid #E6E0D6;min-height:44px}
+.lin .p{font:400 11.5px/1.4 'IBM Plex Mono',monospace;text-transform:uppercase;
+  letter-spacing:.09em;color:#616D7C}
+.lin .v{font:600 15px/1.3 'Manrope',sans-serif;font-variant-numeric:tabular-nums}
+.lin .s{font:400 11.5px/1.4 'IBM Plex Mono',monospace;color:#9B5C3E}
+.lin .o{font:400 11.5px/1.4 'IBM Plex Mono',monospace;color:#616D7C;text-align:right;
+  font-variant-numeric:tabular-nums}
+.lin .r.unsourced .s{border:1px dashed #9B5C3E;padding:3px 6px;color:#9B5C3E}
+@media(max-width:520px){.lin .r{grid-template-columns:1fr 1fr}.lin .o{text-align:left}}
+
+.chip{display:inline-block;font:500 11px/1 'IBM Plex Mono',monospace;
+  color:#9B5C3E;background:#F6EDE7;border-radius:3px;padding:5px 8px}
+.strip{display:flex;align-items:center;gap:10px;padding:11px 0;
+  border-bottom:1px solid #E6E0D6;font-size:13.5px;text-align:left}
+.strip i{width:6px;height:6px;border-radius:50%;display:block;flex:none}
+.strip b{font:600 13.5px/1 'Manrope',sans-serif}
+.strip em{font-style:normal;color:#45536A}
+.strip time{margin-left:auto;font:400 11.5px/1 'IBM Plex Mono',monospace;color:#616D7C;
+  font-variant-numeric:tabular-nums}
+
+.spec{max-width:900px;margin:26px auto 0;text-align:left;border-top:1px solid #16243A}
+.spec .r{display:grid;grid-template-columns:42px 1fr 1.4fr;gap:16px;padding:15px 0;
+  border-bottom:1px solid #E6E0D6;align-items:baseline}
+.spec .i{font:500 11.5px/1 'IBM Plex Mono',monospace;color:#0E7877}
+.spec b{font:700 15px/1.3 'Manrope',sans-serif;letter-spacing:-.02em}
+.spec p{margin:0;font-size:14px;color:#45536A;line-height:1.55}
+
+/* ── work grid ──────────────────────────────────────────────────────────── */
+.grid{display:grid;gap:18px;margin-top:clamp(28px,3.4vw,46px)}
+@media(min-width:780px){.grid{grid-template-columns:1fr 1fr}}
+.wcard{background:#FFFFFF;border:1px solid #E6E0D6;overflow:hidden;text-align:left}
+.wcard .shot{height:clamp(178px,16vw,224px);overflow:hidden;background:#F2EDE3}
+.wcard .shot img{width:100%;height:100%;object-fit:cover;object-position:top}
+.wcard .b{padding:20px 22px 24px}
+.wcard .k{font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;
+  text-transform:uppercase;color:#9B5C3E}
+.wcard p{margin:11px 0 0;font-size:14px;line-height:1.6;color:#45536A}
+
+/* the OPERATED ledger is deliberately a different register from the work grid.
+   A card next to a card reads as the same kind of thing, and these are not. */
+.ledger{margin-top:clamp(26px,3vw,40px);border-top:1px solid #16243A;text-align:left}
+.ledger .r{display:grid;gap:14px;padding:18px 0;border-bottom:1px solid #E6E0D6}
+@media(min-width:820px){.ledger .r{grid-template-columns:44px 190px 1fr 150px}}
+.ledger .i{font:500 11.5px/1 'IBM Plex Mono',monospace;color:#9B5C3E}
+.ledger b{font:700 16px/1.25 'Manrope',sans-serif;letter-spacing:-.02em}
+.ledger p{margin:0;font-size:14px;color:#45536A;line-height:1.55}
+.ledger .t{font:400 11.5px/1.5 'IBM Plex Mono',monospace;color:#616D7C}
+.owned{max-width:70ch;margin:14px auto 0;color:#45536A;font-size:15px}
+
+/* ── close + footer ─────────────────────────────────────────────────────── */
+.close{padding:clamp(66px,9vw,128px) 0;text-align:center;background:#F2EDE3}
+.close h2{font-size:clamp(2.2rem,5.4vw,4rem);margin:16px 0 0}
+.btn{display:inline-block;background:#16243A;color:#FBF8F2;border-radius:980px;
+  padding:13px 28px;font:600 15px/1 'Manrope',sans-serif;margin-top:26px}
+.btn.ghost{background:transparent;color:#0E7877;padding-left:12px}
+.foot{background:#FFFFFF;border-top:1px solid #E6E0D6;padding:44px 0 62px}
+.fcols{display:grid;gap:26px}
+@media(min-width:720px){.fcols{grid-template-columns:repeat(5,1fr)}}
+.fcols div{display:flex;flex-direction:column;gap:9px}
+.fcols b{font:700 12px/1 'Manrope',sans-serif;margin-bottom:3px}
+.fcols a{font-size:12.5px;color:#45536A}
+.frule{height:1px;background:#E6E0D6;margin:30px 0 16px}
+.flegal{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-size:12px;color:#616D7C}
+.fnote{margin:16px 0 0;font:400 11.5px/1.6 'IBM Plex Mono',monospace;color:#616D7C}
+.ribbon{position:sticky;top:0;z-index:99;background:#16243A;color:#F6F3EC;
+  font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase;
+  padding:9px 18px}
+</style></head><body>
+<div class=ribbon>Design system &middot; rendered from the same code as the pages</div>
+
+<div class=announce><div class=wide><span>Design system &mdash; the specimen sheet imports the
+same functions the pages do</span></div></div>
+<header class=hero style="padding-bottom:clamp(30px,3.4vw,50px)"><div class=w>
+  <h1 class=display style="font-size:clamp(2.2rem,5.4vw,3.8rem)">The design system.</h1>
+  <p class=sub>Not a document about the components. The same code the five pages render from.</p>
+</div></header>
+
+<section class="stage paperbg" style="padding:clamp(40px,5vw,66px) 0"><div class=wide>
+  <p class=eyebrow>01 &middot; Colour, measured</p>
+  <h2 class=display style="font-size:clamp(1.6rem,3vw,2.2rem)">Every role on every ground.</h2>
+  <p class=sub style="max-width:66ch">Each cell is the live contrast ratio, computed at build
+  time rather than asserted. The third column is why three tokens moved on 2026-09-21: the
+  palette had been measured on cream and paper and never on sunk.</p>
+  <table style="width:100%;border-collapse:collapse;margin-top:24px;text-align:left;
+    font:400 12px 'IBM Plex Mono',monospace">
+    <thead><tr><th></th><th>ground<br><span style='font-weight:400'>#FBF8F2</span></th><th>paper<br><span style='font-weight:400'>#FFFFFF</span></th><th>sunk<br><span style='font-weight:400'>#F2EDE3</span></th></tr></thead><tbody><tr><td style='font:600 13px Manrope'>--ink<br><span style='font:400 11px "IBM Plex Mono",monospace;color:#616D7C'>#16243A</span></td><td style='background:#FBF8F2;color:#16243A;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>14.70:1</span></td><td style='background:#FFFFFF;color:#16243A;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>15.58:1</span></td><td style='background:#F2EDE3;color:#16243A;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>13.36:1</span></td></tr><tr><td style='font:600 13px Manrope'>--mid<br><span style='font:400 11px "IBM Plex Mono",monospace;color:#616D7C'>#45536A</span></td><td style='background:#FBF8F2;color:#45536A;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>7.34:1</span></td><td style='background:#FFFFFF;color:#45536A;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>7.78:1</span></td><td style='background:#F2EDE3;color:#45536A;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>6.67:1</span></td></tr><tr><td style='font:600 13px Manrope'>--dim<br><span style='font:400 11px "IBM Plex Mono",monospace;color:#616D7C'>#616D7C</span></td><td style='background:#FBF8F2;color:#616D7C;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>4.97:1</span></td><td style='background:#FFFFFF;color:#616D7C;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>5.27:1</span></td><td style='background:#F2EDE3;color:#616D7C;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>4.51:1</span></td></tr><tr><td style='font:600 13px Manrope'>--teal<br><span style='font:400 11px "IBM Plex Mono",monospace;color:#616D7C'>#0E7877</span></td><td style='background:#FBF8F2;color:#0E7877;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>4.99:1</span></td><td style='background:#FFFFFF;color:#0E7877;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>5.29:1</span></td><td style='background:#F2EDE3;color:#0E7877;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>4.53:1</span></td></tr><tr><td style='font:600 13px Manrope'>--copper<br><span style='font:400 11px "IBM Plex Mono",monospace;color:#616D7C'>#9B5C3E</span></td><td style='background:#FBF8F2;color:#9B5C3E;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>4.96:1</span></td><td style='background:#FFFFFF;color:#9B5C3E;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>5.26:1</span></td><td style='background:#F2EDE3;color:#9B5C3E;text-align:center'><span style='font:600 15px Manrope'>Aa</span><br><span style='font:400 11px "IBM Plex Mono",monospace'>4.51:1</span></td></tr></tbody></table>
+</div></section>
+
+<section class="stage ground" style="padding:clamp(40px,5vw,66px) 0"><div class=wide>
+  <p class=eyebrow>02 &middot; Type</p>
+  <h2 class=display style="font-size:clamp(1.6rem,3vw,2.2rem)">Three faces, seven roles.</h2>
+  <div style="text-align:left;margin-top:22px"><div style="border-bottom:1px solid #E6E0D6;padding:16px 0;display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline"><div style="font:400 11px 'IBM Plex Mono',monospace;color:#616D7C">display / hero</div><div style="font:800 clamp(2.6rem,6vw,4.6rem)/.98 Manrope;letter-spacing:-.042em">Arthur.</div></div><div style="border-bottom:1px solid #E6E0D6;padding:16px 0;display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline"><div style="font:400 11px 'IBM Plex Mono',monospace;color:#616D7C">display / stage</div><div style="font:800 clamp(1.9rem,3.6vw,2.8rem)/1.02 Manrope;letter-spacing:-.04em">Four names. One company.</div></div><div style="border-bottom:1px solid #E6E0D6;padding:16px 0;display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline"><div style="font:400 11px 'IBM Plex Mono',monospace;color:#616D7C">sub</div><div style="font:400 17px/1.5 Mulish;color:#45536A">A number without a trail is not reportable.</div></div><div style="border-bottom:1px solid #E6E0D6;padding:16px 0;display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline"><div style="font:400 11px 'IBM Plex Mono',monospace;color:#616D7C">body</div><div style="font:400 15px/1.6 Mulish;color:#45536A">Mulish, for anything you actually read.</div></div><div style="border-bottom:1px solid #E6E0D6;padding:16px 0;display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline"><div style="font:400 11px 'IBM Plex Mono',monospace;color:#616D7C">eyebrow</div><div style="font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.17em;text-transform:uppercase;color:#616D7C">Identity resolution</div></div><div style="border-bottom:1px solid #E6E0D6;padding:16px 0;display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline"><div style="font:400 11px 'IBM Plex Mono',monospace;color:#616D7C">figure</div><div style="font:800 2.4rem/1 Manrope;letter-spacing:-.04em;font-variant-numeric:tabular-nums">38</div></div><div style="border-bottom:1px solid #E6E0D6;padding:16px 0;display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline"><div style="font:400 11px 'IBM Plex Mono',monospace;color:#616D7C">provenance</div><div style="font:500 11px 'IBM Plex Mono',monospace;color:#9B5C3E">erp:vendor/4412</div></div></div>
+</div></section>
+
+<section class="stage paperbg" style="padding:clamp(40px,5vw,66px) 0"><div class=wide>
+  <p class=eyebrow>03 &middot; Stage types</p>
+  <h2 class=display style="font-size:clamp(1.6rem,3vw,2.2rem)">Four, and the rule for each.</h2>
+  <div class=grid style="margin-top:24px">
+    <div style="border:1px solid #E6E0D6"><section class="stage sunkbg"><div class=w><p class=eyebrow>Object stage</p><h2 class=display>One mechanism.</h2><p class=sub>Always light. Never two mechanics in one stage.</p></div><div class=obj><canvas data-motion="bundle"></canvas></div></section></div>
+    <div style="border:1px solid #E6E0D6"><section class="stage photo"><img class=bleed src="../../janta/value-dsr-campus.jpg" alt=""><div class=scrim></div><div class=w><p class=eyebrow>Photographic stage</p><h2 class=display>One claim about the world.</h2></div></section></div>
+    <div style="border:1px solid #E6E0D6"><section class="stage deepbg" style="padding:44px 0">
+      <div class=w><p class=eyebrow>Data stage</p><h2 class=display style="font-size:1.7rem">The numbers are the object.</h2>
+      <div class="metrics"><div class=m><b>6</b><span>Sites rebuilt in working HTML</span></div><div class=m><b>38</b><span>Sites measured in that audit</span></div></div></div></section></div>
+    <div style="border:1px solid #E6E0D6"><section class="stage paperbg" style="padding:44px 0">
+      <div class=w style="max-width:720px"><p class=eyebrow>Quote stage</p>
+      <p style="font:600 clamp(1.2rem,2.4vw,1.6rem)/1.24 Manrope;letter-spacing:-.02em;margin:14px 0 0">
+      If there is no real sourced quote, the stage is omitted rather than filled.</p>
+      <div style="margin-top:14px"><span class=chip>rule:no-fabrication</span></div></div></section></div>
+  </div>
+</div></section>
+
+<section class="stage ground" style="padding:clamp(40px,5vw,66px) 0"><div class=wide>
+  <p class=eyebrow>04 &middot; Evidence components</p>
+  <h2 class=display style="font-size:clamp(1.6rem,3vw,2.2rem)">The parts that carry proof.</h2>
+  <div style="text-align:left;max-width:900px;margin:24px auto 0">
+    <p class=eyebrow style="margin-bottom:6px">LineageRow &mdash; last row shows the required unsourced state</p>
+    <div class=lin><div class="r"><div class=p>net_terms</div><div class=v>45 days</div><div class=s>erp:vendor/4412</div><div class=o>2026-09-18</div></div><div class="r"><div class=p>spend_ytd</div><div class=v>$412,880</div><div class=s>stripe:bal_tx</div><div class=o>2026-09-20</div></div><div class="r unsourced"><div class=p>risk_tier</div><div class=v>B</div><div class=s>no source recorded</div><div class=o>2026-09-21</div></div></div>
+    <p class=eyebrow style="margin:28px 0 6px">StatusStrip &mdash; checkedAt is required, not optional</p>
+    <div class=strip><i style="background:#0F7B4F"></i><b>Stripe</b><em>Financial Connections</em><time>checked 2026-09-21</time></div><div class=strip><i style="background:#616D7C"></i><b>ERP</b><em>Adapter present, no tenant</em><time>checked 2026-09-21</time></div><div class=strip><i style="background:#616D7C"></i><b>Toast</b><em>Implemented, not connected</em><time>checked 2026-09-21</time></div>
+    <p class=eyebrow style="margin:28px 0 6px">MetricBand &mdash; every caption names its source</p>
+    <div class="metrics onlight"><div class=m><b>6</b><span>Sites rebuilt in working HTML</span></div><div class=m><b>38</b><span>Sites measured in that audit</span></div><div class=m><b>5</b><span>Architectural components in Arthur</span></div><div class=m><b>2</b><span>Timelines carried on every value</span></div></div>
+    <p class=eyebrow style="margin:28px 0 10px">ProvenanceChip &mdash; always the literal reference</p>
+    <div style="display:flex;gap:9px;flex-wrap:wrap">
+      <span class=chip>erp:vendor/4412</span><span class=chip>doc:invoice_8841.pdf</span>
+      <span class=chip>stripe:bal_tx</span><span class=chip>model:vendor_risk/v4</span></div>
+  </div>
+</div></section>
+
+<section class="stage paperbg" style="padding:clamp(40px,5vw,66px) 0"><div class=wide>
+  <p class=eyebrow>05 &middot; Motion objects</p>
+  <h2 class=display style="font-size:clamp(1.6rem,3vw,2.2rem)">Eight of the ten, in use.</h2>
+  <div style="display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    margin-top:24px"><div style="border:1px solid #E6E0D6;background:#FFFFFF"><div style="height:126px"><canvas data-motion="lattice" style="width:100%;height:100%"></canvas></div><div style="padding:9px 12px;font:400 11px 'IBM Plex Mono',monospace;color:#616D7C;border-top:1px solid #E6E0D6">lattice &middot; hero</div></div><div style="border:1px solid #E6E0D6;background:#FFFFFF"><div style="height:126px"><canvas data-motion="bundle" style="width:100%;height:100%"></canvas></div><div style="padding:9px 12px;font:400 11px 'IBM Plex Mono',monospace;color:#616D7C;border-top:1px solid #E6E0D6">bundle &middot; identity</div></div><div style="border:1px solid #E6E0D6;background:#FFFFFF"><div style="height:126px"><canvas data-motion="series" style="width:100%;height:100%"></canvas></div><div style="padding:9px 12px;font:400 11px 'IBM Plex Mono',monospace;color:#616D7C;border-top:1px solid #E6E0D6">series &middot; lineage</div></div><div style="border:1px solid #E6E0D6;background:#FFFFFF"><div style="height:126px"><canvas data-motion="flow" style="width:100%;height:100%"></canvas></div><div style="padding:9px 12px;font:400 11px 'IBM Plex Mono',monospace;color:#616D7C;border-top:1px solid #E6E0D6">flow &middot; execution</div></div><div style="border:1px solid #E6E0D6;background:#FFFFFF"><div style="height:126px"><canvas data-motion="orbit" style="width:100%;height:100%"></canvas></div><div style="padding:9px 12px;font:400 11px 'IBM Plex Mono',monospace;color:#616D7C;border-top:1px solid #E6E0D6">orbit &middot; bitemporal</div></div><div style="border:1px solid #E6E0D6;background:#FFFFFF"><div style="height:126px"><canvas data-motion="contour" style="width:100%;height:100%"></canvas></div><div style="padding:9px 12px;font:400 11px 'IBM Plex Mono',monospace;color:#616D7C;border-top:1px solid #E6E0D6">contour &middot; measurement</div></div><div style="border:1px solid #E6E0D6;background:#FFFFFF"><div style="height:126px"><canvas data-motion="halftone" style="width:100%;height:100%"></canvas></div><div style="padding:9px 12px;font:400 11px 'IBM Plex Mono',monospace;color:#616D7C;border-top:1px solid #E6E0D6">halftone &middot; field</div></div><div style="border:1px solid #E6E0D6;background:#FFFFFF"><div style="height:126px"><canvas data-motion="prism" style="width:100%;height:100%"></canvas></div><div style="padding:9px 12px;font:400 11px 'IBM Plex Mono',monospace;color:#616D7C;border-top:1px solid #E6E0D6">prism &middot; brand moment</div></div></div>
+</div></section>
+
+<section class="stage ground" style="padding:clamp(40px,5vw,66px) 0"><div class=wide>
+  <p class=eyebrow>06 &middot; Product marks</p>
+  <h2 class=display style="font-size:clamp(1.6rem,3vw,2.2rem)">One per component.</h2>
+</div><section class=rail><div class=wide><div class=row><a class=tile href="arthur.html"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><path d="M31 12 49 22v20L31 52 13 42V22Z" fill="none" stroke="#16243A" stroke-width="2.2" stroke-linejoin="round"/><circle cx="31" cy="32" r="4" fill="#9B5C3E"/></svg><b>Persistent memory</b><span>Context that outlasts a conversation.</span></a><a class=tile href="arthur.html"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><circle cx="18" cy="20" r="5" fill="none" stroke="#16243A" stroke-width="2.1"/><circle cx="44" cy="20" r="5" fill="none" stroke="#16243A" stroke-width="2.1"/><circle cx="31" cy="46" r="5" fill="none" stroke="#16243A" stroke-width="2.1"/><path d="M22 23 27 42M40 23 35 42M23 20h16" stroke="#9B5C3E" stroke-width="2"/></svg><b>Identity resolution</b><span>Four names, one company.</span></a><a class=tile href="arthur.html"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><path d="M10 24h44M10 40h44" stroke="#16243A" stroke-width="2.1"/><circle cx="24" cy="24" r="3.6" fill="#9B5C3E"/><circle cx="40" cy="40" r="3.6" fill="#16243A"/></svg><b>Bitemporal record</b><span>What was true, and what we knew.</span></a><a class=tile href="arthur.html"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><path d="M14 48 26 30 38 38 50 16" fill="none" stroke="#16243A" stroke-width="2.2" stroke-linejoin="round"/><circle cx="50" cy="16" r="4" fill="#9B5C3E"/></svg><b>Lineage on every value</b><span>A number with no trail is not reportable.</span></a><a class=tile href="arthur.html"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><rect x="13" y="16" width="36" height="30" rx="3" fill="none" stroke="#16243A" stroke-width="2.1"/><path d="M22 32l6 6 12-14" fill="none" stroke="#9B5C3E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Verified execution</b><span>An HTTP 200 is not evidence.</span></a></div></div></section></section>
+<footer class=foot><div class=wide>
+  <div class=fcols>
+    <div><b>Platform</b><a href="arthur.html">Persistent memory</a><a href="arthur.html">Identity resolution</a><a href="arthur.html">Bitemporal record</a><a href="arthur.html">Lineage on every value</a><a href="arthur.html">Verified execution</a></div>
+    <div><b>Products</b><a href="work.html#operated">Companies we operate</a></div>
+    <div><b>Work</b><a href="work.html#studies">Selected work</a></div>
+    <div><b>Company</b><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    <div><b>Support</b><a href="arthur.html">Technical brief</a>
+      <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+  </div>
+  <div class=frule></div>
+  <div class=flegal><span>LOVELEEDAY Studios &middot; Kalamazoo, Michigan</span>
+    <span>&copy; 2026</span></div>
+  <p class=fnote>Concept mockup. Figures on this site name their source.
+  Photography is the studio&rsquo;s own; rendered objects are drawn in canvas.</p>
+</div></footer>
+<script>document.querySelectorAll('canvas[data-motion]').forEach(function(c){LD.hero(c,c.dataset.motion)});</script></body></html>
