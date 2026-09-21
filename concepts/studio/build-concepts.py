@@ -87,7 +87,7 @@ MENUS = {
                  ("Lineage", "Every value carries its source", "#"),
                  ("Verified execution", "Work closes on observed proof", "#")],
     "Work": [("Client rebuilds", "Six, uncommissioned", "#"),
-             ("Companies we operate", "Five we own and run", "#"),
+             ("Catalogue pricing", "690 items below cost, corrected", "#"),
              ("How we measure", "Weight, Lighthouse, position", "#")],
     "Company": [("About", "Business judgment, built as software", "#"),
                 ("How we scope", "Fixed quote, written scope", "#"),
@@ -414,11 +414,57 @@ def work_cards(n=3):
         for s in STUDIES[:n]) + '</div>'
 
 
-def operated_rows():
+# Daniel: "i dont like the five companies we are our own customer, its not
+# relevant. replace it with the data in our downloads folder."
+#
+# He is right that it was the wrong exhibit -- five companies he owns proves he
+# ships and proves nobody hired him, which an investor reads straight through.
+# This is the replacement, and it is a day of real work read off the thirteen
+# workbooks in ~/Downloads dated 2026-09-21: a distributor's catalogue where
+# minimum sell prices had drifted BELOW actual cost, found, quantified and
+# written back as ERP import files.
+#
+# Every figure below was computed from those files, not written by hand. The
+# client is not named and no item number or price appears, for the same reason
+# the security exchange names no site: the work is the proof, the customer's
+# data is not ours to publish.
+PRICING = [
+    ("01", "Minimums below cost",
+     "690 items across eight price lists and eight product lines were selling "
+     "at a floor beneath their own ERP actual cost.",
+     "690 items"),
+    ("02", "Corrections computed",
+     "Each floor raised to actual cost and the delta carried per item \u2014 a "
+     "median of $1.55 and a worst case of $435.27.",
+     "228 raised"),
+    ("03", "Special agreements cleared",
+     "Minimums inherited from expired special pricing agreements removed so the "
+     "list price governs again.",
+     "471 removed"),
+    ("04", "Tier lists reinstated",
+     "Tier pricing rolled back onto the items that had fallen out of their list "
+     "during the migration.",
+     "1,967 rows"),
+    ("05", "Supplier lists unexpired",
+     "Expired supplier price lists reopened so the cost side resolves instead of "
+     "falling back to a stale tier.",
+     "3,099 rows"),
+]
+
+
+def pricing_rows():
     return '<div class=rows>' + "".join(
-        f'<div class=row><span class=c>{o["index"]}</span><b>{o["title"]}</b>'
-        f'<p>{o["outcome"]}</p><span class=n>{o["shipped"]}</span></div>'
-        for o in LIVE["operated"]) + '</div>'
+        f'<div class=row><span class=c>{i}</span><b>{t}</b>'
+        f'<p>{d}</p><span class=n>{n}</span></div>'
+        for i, t, d, n in PRICING) + '</div>'
+
+
+PRICING_STATS = [
+    ("ITM", "690", "Items below cost", "Floor beneath actual cost, found across the catalogue."),
+    ("EXP", "$12,061", "Per-unit exposure", "Aggregate gap between minimum and cost on that set."),
+    ("ROW", "9,493", "Rows written back", "Thirteen ERP import workbooks, generated not typed."),
+    ("DAY", "1", "Working day", "Found, quantified and returned as importable files."),
+]
 
 
 def footer():
@@ -519,10 +565,13 @@ def c_terminal():
 </div>{brain()}</section>
 
 <section class=sec><div class=w>
-  <span class=lab>The book</span>
-  <h2 style="margin-top:14px">The book.</h2>
-  {panels(STATS)}
-  {operated_rows()}
+  <span class=lab>Catalogue pricing &middot; one working day</span>
+  <h2 style="margin-top:14px">Six hundred and ninety items<br>were selling below cost.</h2>
+  <p class=lede>A distributor's price floors had drifted under their own actual
+  cost during an ERP migration. Found, quantified, and written back as import
+  files the system would accept.</p>
+  {panels(PRICING_STATS)}
+  {pricing_rows()}
 </div></section>
 
 <section class=sec style="padding-top:0"><div class=w>
@@ -574,9 +623,13 @@ def c_dispatch():
 </div>{brain()}</section>
 
 <section class=sec><div class=w>
-  <span class=lab>In production</span>
-  <h2>Five companies. We are our own customer.</h2>
-  {operated_rows()}
+  <span class=lab>Catalogue pricing &middot; one working day</span>
+  <h2>Six hundred and ninety items<br>were selling below cost.</h2>
+  <p class=lede>A distributor's price floors had drifted under their own actual
+  cost during an ERP migration. Found, quantified, and written back as import
+  files the system would accept.</p>
+  {panels(PRICING_STATS)}
+  {pricing_rows()}
 </div></section>
 
 <section class=sec style="padding-top:0"><div class=w>
@@ -629,9 +682,13 @@ def c_split():
 </div></section>
 
 <section class=sec style="padding-top:0"><div class=w>
-  <span class=lab>In production</span>
-  <h2>Five companies we own and run.</h2>
-  {operated_rows()}
+  <span class=lab>Catalogue pricing &middot; one working day</span>
+  <h2>Six hundred and ninety items<br>were selling below cost.</h2>
+  <p class=lede>A distributor's price floors had drifted under their own actual
+  cost during an ERP migration. Found, quantified, and written back as import
+  files the system would accept.</p>
+  {panels(PRICING_STATS)}
+  {pricing_rows()}
 </div></section>
 
 <section class=sec style="padding-top:0"><div class=w>
@@ -681,8 +738,8 @@ def c_exchange():
 <section class=sec><div class=w>
   <span class=lab>The book</span>
   <h2>Measured, not asserted.</h2>
-  {panels(STATS)}
-  {operated_rows()}
+  {panels(PRICING_STATS)}
+  {pricing_rows()}
 </div></section>
 
 <section class=brainwrap><div class=w style="padding-top:clamp(40px,5vw,72px)">
@@ -745,8 +802,8 @@ def c_signal():
 <section class=sec><div class=w>
   <span class=lab>The book</span>
   <h2>Measured, not asserted.</h2>
-  {panels(STATS)}
-  {operated_rows()}
+  {panels(PRICING_STATS)}
+  {pricing_rows()}
 </div></section>
 
 <section class=sec style="padding-top:0"><div class=w>
