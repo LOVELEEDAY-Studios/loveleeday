@@ -2,10 +2,19 @@ import { v } from "./assetVersion";
 
 /* One source of truth for what this company has built.
 
-   Before this file there were two disconnected bodies of work: /work listed
-   five shipped products in inline data, and six client direction studies lived
-   only behind portal tokens with no route on the public site pointing at them.
-   A visitor could not see that they were the same company's output.
+   TWO CATEGORIES, AND THEY ARE NOT THE SAME CLAIM. Daniel, 2026-09-21: "the
+   side projects for olldae and others isn't something we need to showcase in
+   the front as those our loveleeday owned companies."
+
+   He is right, and it is a credibility point rather than a modesty one. olldae,
+   Kronos, Duezy, the ops layer and Dabney & Co. are LOVELEEDAY-owned operating
+   companies. Presenting them in the same register as client work implies five
+   customers chose us, and they did not -- we chose ourselves. A buyer who works
+   that out has caught the site overstating, which costs more than the section
+   was ever worth.
+
+   So `operated` is what we own and run, labelled as such and kept OFF the
+   homepage. `studies` is outward-facing work for companies that are not ours.
 
    NAMING, deliberately asymmetric. The shipped products are named, because they
    are Daniel's own companies or were commissioned. The six rebuilds are NOT
@@ -16,7 +25,7 @@ import { v } from "./assetVersion";
    shows; the identities stay behind the tokens. One line in `studies` reverses
    this if that call changes. */
 
-export interface Product {
+export interface Operated {
   index: string;
   slug: string;
   title: string;
@@ -31,7 +40,9 @@ export interface Product {
   meta: string;
 }
 
-export const products: Product[] = [
+/** Companies LOVELEEDAY owns and runs. Evidence that the studio ships, NOT
+    evidence that anyone hired it. Never presented as client work. */
+export const operated: Operated[] = [
   {
     index: "01",
     slug: "olldae",
@@ -173,25 +184,28 @@ export const studies: Study[] = [
    here is a projection and nothing is rounded up. */
 export const figures: { k: string; label: string; source: string }[] = [
   {
-    k: "5",
-    label: "Products in production",
-    source: "olldae, Kronos, Duezy, the ops layer and Dabney & Co. — all live, all listed below.",
-  },
-  {
     k: "6",
     label: "Sites rebuilt in working HTML",
     source:
-      "One venture portfolio, audited end to end, then rebuilt as running pages rather than described in a deck.",
+      "One venture portfolio, rebuilt as running pages rather than described in a deck. Companies that are not ours.",
   },
   {
     k: "38",
     label: "Sites measured in that audit",
     source:
-      "Page weight, Lighthouse, live search position and accessibility, measured per site on 2026-09-19.",
+      "Page weight, Lighthouse mobile, live organic search position and accessibility, measured per site on 2026-09-19.",
   },
   {
-    k: "11",
-    label: "Days to first production MVP",
-    source: "olldae, from empty repository to a deployed v1 taking real payments.",
+    k: "5",
+    label: "Architectural components in Arthur",
+    source:
+      "Persistent memory, identity resolution, a bitemporal record, lineage enforcement and verified tool execution. Implemented, not planned.",
+  },
+  {
+    k: "2",
+    label: "Timelines carried on every value",
+    source:
+      "When it was true in the world, and separately when we learned it — which is what makes it possible to ask what was known on a date rather than only what was true.",
   },
 ];
+

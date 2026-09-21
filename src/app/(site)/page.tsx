@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { ArthurConsole } from "@/components/home/ArthurConsole";
-import { figures, products, studies } from "@/content/work";
+import { figures, studies } from "@/content/work";
 
 /* The homepage.
    ==========================================================================
@@ -211,72 +211,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ 4 · THE WORK — products ════════════════════════════════════ */}
-      <section id="work" className="bg-[var(--paper-2)] py-[clamp(72px,9vw,132px)]">
-        <div className="shell">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-            <div data-rise>
-              <Eyebrow>In production</Eyebrow>
-              <h2 className="display display-lg mt-6">
-                Shipped, not
-                <br />
-                <span style={{ color: "var(--dim)" }}>proposed.</span>
-              </h2>
-            </div>
-            <p className="max-w-[var(--measure)] self-end text-[1.02rem] leading-[1.6] text-[var(--muted)]" data-rise>
-              Five products running in production, each with a stack, a time to ship and an outcome
-              stated in the language of the operator who uses it. Nothing on this page is a mockup.
-            </p>
-          </div>
+      {/* The owned-company section used to sit here and has been removed.
+          olldae, Kronos, Duezy, the operations layer and Dabney & Co. are
+          LOVELEEDAY-owned. Listing five of our own companies under "shipped,
+          not proposed" reads as five customers, and a visitor who works out
+          that we are our own client has caught the page overstating — which
+          costs more than the section was worth. They are on /work, labelled as
+          operated, where the claim is accurate. What the homepage shows instead
+          is work done for companies that are not ours. */}
 
-          <div className="mt-14 border-t border-[var(--line-2)]">
-            {products.map((p) => (
-              <article
-                key={p.slug}
-                className="grid gap-x-10 gap-y-4 border-b border-[var(--line-2)] py-9 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)]"
-                data-rise
-              >
-                <div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="eyebrow tnum text-[var(--dim)]">{p.index}</span>
-                    <h3 className="text-[1.5rem] font-semibold tracking-[-0.028em]">{p.title}</h3>
-                  </div>
-                  <p className="eyebrow mt-3 text-[var(--dim)]">{p.category}</p>
-                  <p className="mt-4 text-[13.5px] text-[var(--muted)]">{p.shipped}</p>
-                  <ul className="mt-4 flex flex-wrap gap-1.5">
-                    {p.tech.map((t) => (
-                      <li
-                        key={t}
-                        className="rounded-[2px] border border-[var(--line-2)] bg-[var(--paper)] px-2 py-1 text-[11px] text-[var(--muted)]"
-                      >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="max-w-[62ch] space-y-4">
-                  <p className="text-[15px] leading-[1.62] text-[var(--muted)]">{p.built}</p>
-                  <p className="border-l-2 border-[var(--signal)] pl-4 text-[15px] leading-[1.62] text-[var(--text)]">
-                    {p.outcome}
-                  </p>
-                  {p.link && (
-                    <a
-                      href={p.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block text-[13.5px] font-semibold underline decoration-[var(--line-2)] underline-offset-4 transition-colors hover:decoration-[var(--signal)]"
-                    >
-                      Visit the live site ↗
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ 5 · THE REBUILDS — dark stage, imagery is the studio's own ══ */}
+      {/* ═══ 4 · THE REBUILDS — work for companies that are not ours ═══ */}
       <section id="studies" className="bg-[var(--ink)] py-[clamp(72px,9vw,132px)] text-[var(--on-dark)]">
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">

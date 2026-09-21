@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { products } from "@/content/work";
+import { operated } from "@/content/work";
 
 /* Generated from the same content module the pages render, so a new project can
    never be live and missing from the sitemap. The hand-written list this
@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...fixed,
-    ...products.map((p) => ({
+    ...operated.map((p) => ({
       url: `${base}/work/${p.slug}`,
       lastModified: now,
       changeFrequency: "monthly" as const,

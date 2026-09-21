@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOVELEEDAY — four colour &amp; type systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Mulish:wght@400;500;600;700&family=Archivo:wdth,wght@75..125,300..900&family=Instrument+Serif:ital@0;1&family=Albert+Sans:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================================
+   FOUR COLOUR + TYPOGRAPHY SYSTEMS — all light grounds.
+
+   Daniel: "i dont like the use of dark colors it feels werid."
+
+   Fair. Going back to the references, the dark ground was my assumption, not
+   theirs: apple.com/mac is #F5F5F7, palantir.com/platforms/foundry is white,
+   oracle.com is white. Dark is a stage those companies cut TO for one section.
+   Nothing here has a dark ground.
+
+   Grounded in the banked knowledge rather than in taste:
+     · color-palette-mastery.md §"LOVELEEDAY Studios (Recommended System)" --
+       navy + teal + warm accent on cream, triadic, 60-30-10. System A is that
+       recommendation, tempered.
+     · §"Mistake 2: Saturated Colors on Large Surfaces" -- grounds sit at
+       chroma 0.01-0.05; full saturation is reserved for elements under ~40px.
+     · §"Mistake 3: Pure Black as Text" -- no system uses #000. Every ink is a
+       near-black carrying the hue of its own ground.
+     · typography-mastery.md §"50+ Proven Font Pairings" -- each pairing below
+       is drawn from a different CATEGORY in that table, so the four differ in
+       kind and not only in name.
+
+   Every contrast figure on this page is COMPUTED IN THE BROWSER from the hex
+   values beside it, not typed in. A palette sheet with hand-written ratios is a
+   palette sheet with wrong ratios the first time a value is nudged.
+   ========================================================================== */
+:root{--ui:#FFFFFF;--uink:#15171B;--umu:#5C626C;--udim:#858B95;--uln:#E5E6E9}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ui);color:var(--uink);
+  font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:1280px;margin:0 auto;padding:0 clamp(18px,3vw,42px)}
+a{color:inherit}
+.lab{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--udim)}
+
+/* ── page head ───────────────────────────────────────────────────────────── */
+.head{padding:clamp(42px,6vw,84px) 0 clamp(28px,3.4vw,46px);border-bottom:1px solid var(--uln)}
+.head h1{margin:14px 0 0;font-size:clamp(2rem,4.6vw,3.5rem);font-weight:600;
+  letter-spacing:-.035em;line-height:1.02}
+.head p{margin:18px 0 0;max-width:74ch;font-size:15.5px;line-height:1.68;color:var(--umu)}
+.head .cite{margin-top:16px;font-size:12.5px;color:var(--udim);line-height:1.7;max-width:74ch}
+.head code{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--uink)}
+
+/* ── one system block ────────────────────────────────────────────────────── */
+.sys{border-bottom:1px solid var(--uln);padding:clamp(34px,4.4vw,64px) 0}
+.sys-head{display:grid;gap:14px 34px;grid-template-columns:1fr}
+@media(min-width:920px){.sys-head{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);align-items:start}}
+.sys-head h2{margin:8px 0 0;font-size:clamp(1.6rem,3.2vw,2.5rem);font-weight:600;letter-spacing:-.03em;line-height:1.04}
+.sys-head .why{font-size:14.5px;line-height:1.66;color:var(--umu)}
+.sys-head .why b{color:var(--uink);font-weight:600}
+.meta{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--udim);line-height:1.8}
+
+/* ── palette strip ───────────────────────────────────────────────────────── */
+.pal{margin-top:26px;display:grid;gap:1px;background:var(--uln);border:1px solid var(--uln);
+  grid-template-columns:repeat(2,1fr)}
+@media(min-width:640px){.pal{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1040px){.pal{grid-template-columns:repeat(7,1fr)}}
+.sw{background:#fff;padding:0}
+.sw .chip{height:78px;display:block;border-bottom:1px solid rgba(0,0,0,.08)}
+.sw .meta2{padding:9px 10px 12px}
+.sw .role{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--udim)}
+.sw .hex{margin-top:3px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--uink)}
+.sw .cr{margin-top:5px;font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.5;color:var(--udim)}
+.sw .cr b{font-weight:500}
+.pass{color:#0F7B4F} .large{color:#9A6B00} .na{color:#B0B4BA}
+
+/* ── type specimen + applied sample share the system's own tokens ────────── */
+.demo{margin-top:26px;border:1px solid var(--uln);display:grid;grid-template-columns:1fr}
+@media(min-width:980px){.demo{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}}
+.spec{padding:clamp(20px,2.4vw,34px);border-bottom:1px solid var(--uln)}
+@media(min-width:980px){.spec{border-bottom:0;border-right:1px solid var(--uln)}}
+.spec .row{padding:14px 0;border-bottom:1px dashed rgba(0,0,0,.09)}
+.spec .row:last-child{border-bottom:0}
+.spec .t{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--udim);margin-bottom:7px}
+.sample{padding:clamp(22px,2.8vw,40px)}
+
+/* the applied fragment is IDENTICAL in all four; only tokens change */
+.sample .eb{font-size:11px;letter-spacing:.17em;text-transform:uppercase;display:flex;
+  align-items:center;gap:9px;white-space:nowrap;flex-wrap:nowrap}
+/* Tracked-out mono at 11px is wide, and "ARTHUR — INTELLIGENCE ARCHITECTURE"
+   was breaking after the dash in every one of the four samples. An eyebrow that
+   wraps stops being a label. */
+.sample .eb i{width:7px;height:7px;display:inline-block;font-style:normal}
+.sample h3{margin:16px 0 0;line-height:.98;letter-spacing:-.036em}
+.sample p{margin:16px 0 0;max-width:44ch;line-height:1.6}
+.btns{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;height:42px;padding:0 19px;font-size:13.5px;
+  font-weight:600;border-radius:3px;border:1px solid transparent}
+.stats{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.stats div{padding-right:16px}
+.stats b{display:block;font-size:clamp(1.7rem,3vw,2.4rem);line-height:1;letter-spacing:-.04em;
+  font-variant-numeric:tabular-nums}
+.stats span{display:block;margin-top:7px;font-size:11.5px;line-height:1.45}
+table{width:100%;border-collapse:collapse;margin-top:24px;font-size:12.5px}
+th,td{text-align:left;padding:7px 8px 7px 0}
+th{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:500}
+td.n{text-align:right;font-variant-numeric:tabular-nums;padding-right:0}
+.foot{padding:26px 0 56px;font-size:12.5px;color:var(--udim);line-height:1.75}
+</style>
+</head>
+<body>
+
+<header class="head"><div class="w">
+  <p class="lab">LOVELEEDAY Studios · colour &amp; typography study · 2026-09-21</p>
+  <h1>Four systems. No dark grounds.</h1>
+  <p>The dark ground in the last round was my assumption, not the references&rsquo;. Apple&rsquo;s
+    product pages sit on #F5F5F7, Palantir Foundry is white, Oracle is white — dark is a stage those
+    companies cut to for one section, never the whole site. Nothing below has a dark ground.
+    Each system differs in <b>category</b>, not in shade: a warm institutional one, a Swiss one, an
+    editorial one and an enterprise one. The applied fragment on the right of each block is
+    <b>identical every time</b>, so the only thing changing is colour and type.</p>
+  <p class="cite">Sourced from <code>knowledge/design/color-palette-mastery.md</code> — §&ldquo;LOVELEEDAY
+    Studios (Recommended System)&rdquo;, which System A implements; §&ldquo;Mistake 2: Saturated Colors
+    on Large Surfaces&rdquo;, which is why every ground sits at low chroma and full saturation only
+    appears under about 40px; §&ldquo;Mistake 3: Pure Black as Text&rdquo;, which is why no ink here is
+    #000. Pairings from <code>knowledge/design/typography-mastery.md</code> §&ldquo;50+ Proven Font
+    Pairings&rdquo;, one drawn from each of four different categories.
+    Every contrast ratio below is computed in the browser from the hex beside it.</p>
+</div></header>
+
+<div id="out"></div>
+
+<footer class="foot"><div class="w">
+  Contrast is measured with the WCAG 2.1 relative-luminance formula against both of the system&rsquo;s
+  own grounds. <b>AA</b> = 4.5:1, safe for body text at any size. <b>AA-lg</b> = 3:1, safe for text
+  at 24px, or 18.66px bold, and for UI borders — not for paragraphs.
+</div></footer>
+
+<script>
+(function(){
+'use strict';
+
+/* ---- contrast, computed rather than remembered ---------------------------- */
+function lin(c){c/=255;return c<=0.04045?c/12.92:Math.pow((c+0.055)/1.055,2.4);}
+function lum(h){h=h.replace('#','');
+  return 0.2126*lin(parseInt(h.substr(0,2),16))+0.7152*lin(parseInt(h.substr(2,2),16))+0.0722*lin(parseInt(h.substr(4,2),16));}
+function ratio(a,b){var x=lum(a),y=lum(b),hi=Math.max(x,y),lo=Math.min(x,y);return (hi+0.05)/(lo+0.05);}
+function badge(r){ return r>=4.5 ? '<b class="pass">AA</b>' : r>=3 ? '<b class="large">AA-lg</b>' : '<b class="na">—</b>'; }
+
+var SYS=[
+{
+  key:'A', name:'Cream &amp; Navy', sub:'The banked recommendation, tempered',
+  why:'This is <b>the system the brain already recommends for LOVELEEDAY</b> — navy for B2B credibility, a teal secondary for tech-forward energy, a warm metallic accent to bridge corporate and creative, all on cream. I have darkened the teal from #00c4c4 and the rose gold from #d4866a, because at their recommended values neither cleared 4.5:1 on cream and both were being asked to carry small text. Warm, calm, and the least likely of the four to feel cold.',
+  cat:'geometric sans display + humanist sans body',
+  fonts:{display:"'Manrope', system-ui, sans-serif", body:"'Mulish', system-ui, sans-serif", mono:"'IBM Plex Mono', monospace",
+         dName:'Manrope', bName:'Mulish', mName:'IBM Plex Mono',
+         dWeight:800, bWeight:400, tracking:'-.036em'},
+  pairCite:'Pairing category: “SaaS &amp; Modern Tech” — geometric heading + humanist body.',
+  t:{ground:'#FBF8F2',paper:'#FFFFFF',ink:'#16243A',mid:'#45536A',dim:'#667383',
+      accent:'#0E7C7B',warm:'#A36141',line:'#E6E0D6'}
+},
+{
+  key:'B', name:'Paper &amp; Signal', sub:'Swiss — one typeface, one colour',
+  why:'The most restrained of the four and the hardest to get wrong. White and a warm off-white, a near-black that is not black, hairlines, and <b>exactly one colour</b> — olldae’s own #FF4713, darkened one step so a 14px button label clears AA. One typeface across the entire system in four weights, which is the Swiss discipline: hierarchy comes from size and weight, never from a second face. Ages the best. Risks reading austere.',
+  cat:'single neo-grotesque, four weights',
+  fonts:{display:"'Archivo', system-ui, sans-serif", body:"'Archivo', system-ui, sans-serif", mono:"'JetBrains Mono', monospace",
+         dName:'Archivo', bName:'Archivo', mName:'JetBrains Mono',
+         dWeight:700, bWeight:400, tracking:'-.04em'},
+  pairCite:'Pairing category: “Minimalist &amp; Swiss Design” — single family, multiple weights.',
+  t:{ground:'#FFFFFF',paper:'#F4F4F2',ink:'#14161A',mid:'#4A4E56',dim:'#6B6F78',
+      accent:'#CF340A',warm:'#6A6F79',line:'#E3E3DF'}
+},
+{
+  key:'C', name:'Sand &amp; Sienna', sub:'Editorial — the oldest-money register',
+  why:'Warm sand, a warm near-black, burnt sienna and a sage green that does the work a second neutral usually does. The display face is a <b>high-contrast modern serif</b>, which is the one move on this page that says “this company has existed for a while” — it is the register of a research institution or a press, not a startup. Highest perceived age and authority. Least obviously a technology company, which is either the point or the problem.',
+  cat:'high-contrast serif display + clean sans body',
+  fonts:{display:"'Instrument Serif', Georgia, serif", body:"'Albert Sans', system-ui, sans-serif", mono:"'IBM Plex Mono', monospace",
+         dName:'Instrument Serif', bName:'Albert Sans', mName:'IBM Plex Mono',
+         dWeight:400, bWeight:400, tracking:'-.022em'},
+  pairCite:'Pairing category: “High-Contrast Elegance” — serif display + clean sans, maximum differentiation.',
+  t:{ground:'#F7F4EE',paper:'#FFFFFF',ink:'#1C1A17',mid:'#4E4940',dim:'#736C60',
+      accent:'#A8410F',warm:'#5E6B55',line:'#E5DFD3'}
+},
+{
+  key:'D', name:'Porcelain &amp; Blue', sub:'Enterprise — one superfamily',
+  why:'Cool porcelain, slate ink, a confident enterprise blue and a teal reserved for data. The type is a <b>single superfamily</b> — sans, serif and mono drawn together — which is exactly what IBM does and is the fastest way to read as infrastructure rather than as an agency. The most conventional of the four, and conventional is what a procurement committee is looking for. Also the easiest to mistake for someone else’s site.',
+  cat:'enterprise superfamily — sans, serif and mono from one designer',
+  fonts:{display:"'IBM Plex Sans', system-ui, sans-serif", body:"'IBM Plex Sans', system-ui, sans-serif", mono:"'IBM Plex Mono', monospace",
+         dName:'IBM Plex Sans', bName:'IBM Plex Sans', mName:'IBM Plex Mono',
+         dWeight:600, bWeight:400, tracking:'-.03em'},
+  pairCite:'Pairing category: “SaaS &amp; Modern Tech” — single-foundry consistency.',
+  t:{ground:'#F6F8FB',paper:'#FFFFFF',ink:'#0F172A',mid:'#41506B',dim:'#647289',
+      accent:'#1D4ED8',warm:'#0E7490',line:'#DEE4EE'}
+}];
+
+var ROLES=[['ground','60% — the page'],['paper','panels &amp; cards'],['ink','headings &amp; body'],
+           ['mid','secondary text'],['dim','labels &amp; captions'],['accent','10% — one action'],
+           ['warm','support &amp; data']];
+
+var out=document.getElementById('out');
+
+SYS.forEach(function(S){
+  var t=S.t, f=S.fonts;
+  var sec=document.createElement('section'); sec.className='sys';
+
+  /* ---- swatches, each carrying its own measured numbers ------------------ */
+  var pal=ROLES.map(function(r){
+    var hex=t[r[0]];
+    var onG=ratio(hex,t.ground), onP=ratio(hex,t.paper);
+    var isGround = (r[0]==='ground'||r[0]==='paper'||r[0]==='line');
+    var cr = isGround
+      ? '<span class="na">background role</span>'
+      : 'on ground <b>'+onG.toFixed(2)+'</b> '+badge(onG)+'<br>on panel &nbsp;<b>'+onP.toFixed(2)+'</b> '+badge(onP);
+    return '<div class="sw"><span class="chip" style="background:'+hex+
+      (isGround?';box-shadow:inset 0 0 0 1px rgba(0,0,0,.07)':'')+'"></span>'+
+      '<div class="meta2"><div class="role">'+r[1]+'</div><div class="hex">'+hex+'</div>'+
+      '<div class="cr">'+cr+'</div></div></div>';
+  }).join('');
+
+  /* ---- the applied fragment: byte-identical across all four -------------- */
+  var applied =
+   '<div class="sample" style="background:'+t.ground+';color:'+t.ink+';font-family:'+f.body+'">'+
+     '<p class="eb" style="color:'+t.dim+';font-family:'+f.mono+'"><i style="background:'+t.accent+'"></i>Arthur platform</p>'+
+     '<h3 style="font-family:'+f.display+';font-weight:'+f.dWeight+';letter-spacing:'+f.tracking+';font-size:clamp(2rem,3.7vw,3.1rem)">'+
+       'One object.<br><span style="color:'+t.mid+'">Every source.</span></h3>'+
+     '<p style="color:'+t.mid+';font-size:15px">Arthur resolves the same company under four different names into a single object, and carries a date and a source on every value it reports.</p>'+
+     '<div class="btns">'+
+       '<a class="btn" style="background:'+t.accent+';color:#fff">Start a project</a>'+
+       '<a class="btn" style="border-color:'+t.line+';color:'+t.ink+';background:'+t.paper+'">Read the architecture</a>'+
+     '</div>'+
+     '<div class="stats" style="border-top:1px solid '+t.line+';padding-top:20px">'+
+       '<div><b style="font-family:'+f.display+'">5</b><span style="color:'+t.dim+'">Products in production</span></div>'+
+       '<div><b style="font-family:'+f.display+'">38</b><span style="color:'+t.dim+'">Sites measured</span></div>'+
+       '<div><b style="font-family:'+f.display+'">11</b><span style="color:'+t.dim+'">Days to first MVP</span></div>'+
+     '</div>'+
+     '<table style="border-top:1px solid '+t.line+'">'+
+       '<tr><th style="color:'+t.dim+';font-family:'+f.mono+'">Object</th>'+
+           '<th style="color:'+t.dim+';font-family:'+f.mono+'">Source</th>'+
+           '<th class="n" style="color:'+t.dim+';font-family:'+f.mono+'">Confidence</th></tr>'+
+       ['FINTECH EQUIPMENT SVCS|erp:vendor/4412|0.99','NORTHWAY MANUFACTURING|stripe:cus_7HbNw|0.98',
+        'DABNEY &amp; CO.|xero:contact/31a|1.00'].map(function(r,i){
+         var c=r.split('|');
+         return '<tr style="border-top:1px solid '+t.line+'">'+
+           '<td style="color:'+t.ink+'">'+c[0]+'</td>'+
+           '<td style="color:'+t.mid+';font-family:'+f.mono+';font-size:11.5px">'+c[1]+'</td>'+
+           '<td class="n" style="color:'+(i===2?t.accent:t.warm)+';font-family:'+f.mono+'">'+c[2]+'</td></tr>';
+       }).join('')+
+     '</table>'+
+   '</div>';
+
+  sec.innerHTML =
+   '<div class="w">'+
+     '<div class="sys-head">'+
+       '<div><p class="lab">System '+S.key+'</p><h2>'+S.name+'</h2>'+
+         '<p class="meta">'+S.sub+'<br>'+S.cat+'</p></div>'+
+       '<div><p class="why">'+S.why+'</p><p class="meta">'+S.pairCite+'</p></div>'+
+     '</div>'+
+     '<div class="pal">'+pal+'</div>'+
+     '<div class="demo">'+
+       '<div class="spec" style="background:'+t.paper+'">'+
+         '<div class="row"><div class="t">Display — '+f.dName+'</div>'+
+           '<div style="font-family:'+f.display+';font-weight:'+f.dWeight+';font-size:clamp(2.4rem,5vw,4rem);line-height:.94;letter-spacing:'+f.tracking+';color:'+t.ink+'">Aa Rg 38</div></div>'+
+         '<div class="row"><div class="t">Heading — '+f.dName+' / 600</div>'+
+           '<div style="font-family:'+f.display+';font-weight:600;font-size:1.5rem;letter-spacing:-.024em;color:'+t.ink+'">Every figure, back to its source</div></div>'+
+         '<div class="row"><div class="t">Body — '+f.bName+' / 400 / 15px / 1.62</div>'+
+           '<div style="font-family:'+f.body+';font-size:15px;line-height:1.62;color:'+t.mid+'">A payments customer, a vendor id in the ledger and a string in an email signature are three records and one company. Ask about the object, never about whichever string a source happened to use.</div></div>'+
+         '<div class="row"><div class="t">Label &amp; figures — '+f.mName+'</div>'+
+           '<div style="font-family:'+f.mono+';font-size:12px;letter-spacing:.06em;color:'+t.dim+'">OBSERVED 2026-09-18 &nbsp;·&nbsp; AS-KNOWN-AT 2026-09-21 &nbsp;·&nbsp; 0123456789</div></div>'+
+       '</div>'+
+       applied+
+     '</div>'+
+   '</div>';
+  out.appendChild(sec);
+});
+})();
+</script>
+</body>
+</html>
