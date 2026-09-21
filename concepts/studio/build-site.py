@@ -684,7 +684,7 @@ def about():
     body = nav("Company") + f"""
 <header class=hero style="padding-bottom:clamp(30px,3.4vw,50px)"><div class=w>
   <h1 class=display style="font-size:clamp(2.3rem,5.8vw,4.2rem)">Business judgment.<br>Built as software.</h1>
-  <p class=sub>Founded by Daniel J. May. Five companies owned and run, six rebuilds shipped, one standard applied to all of it.</p>
+  <p class=sub>Five companies owned and run, six rebuilds shipped, one standard applied to all of it.</p>
 </div></header>
 {metric_band(FIGURES)}
 <section class="stage ground"><div class=w>

@@ -469,7 +469,7 @@ def about():
     pr = [(r.get("n", ""), r.get("t", ""), r.get("d", "")) for r in LIVE["principles"]]
     body = hero("h",
                 'Business judgment. <span class=ser>Built as software.</span>',
-                "Founded by Daniel J. May. Five companies owned and run, six rebuilds "
+                " Five companies owned and run, six rebuilds "
                 "shipped, one standard applied to all of it.",
                 [("How we scope", "/about#method"), ("See the work", "/work")],
                 "Company") + f"""
