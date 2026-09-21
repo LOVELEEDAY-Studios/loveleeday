@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Concept 09 &mdash; Catalogue</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Mulish:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel=stylesheet>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.note{position:sticky;top:0;z-index:99;background:#16243A;color:#F6F3EC;
+  font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.13em;
+  text-transform:uppercase;padding:9px 18px}
+
+:root{--paper:#FAFBFC;--card:#FFFFFF;--ink:#0F1B2D;--mid:#3F4C61;--dim:#6E7A8C;
+  --line:#E1E6ED;--acc:#0F62A8;--amber:#9A6414;--shell:1340px}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:400 14.5px/1.6 'Mulish',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:var(--shell);margin:0 auto;padding:0 clamp(20px,3vw,40px)}
+.eyebrow{font:500 10px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim)}
+.top{background:var(--ink);color:#C7D2E0}
+.top .w{display:flex;gap:24px;align-items:center;height:32px;
+  font:400 11.5px/1 'IBM Plex Mono',monospace}
+nav{border-bottom:1px solid var(--line);background:var(--card)}
+nav .w{display:flex;align-items:center;justify-content:space-between;height:58px}
+nav .brand{font:800 15.5px/1 'Manrope',sans-serif;letter-spacing:-.03em}
+nav .links{display:flex;gap:24px;font:600 13px/1 'Manrope',sans-serif;color:var(--mid)}
+nav .links a.on{color:var(--acc);box-shadow:0 18px 0 -16px var(--acc)}
+.sub{background:var(--card);border-bottom:1px solid var(--line)}
+.sub .w{display:flex;gap:26px;height:42px;align-items:center;
+  font:500 12.5px/1 'Manrope',sans-serif;color:var(--mid);overflow-x:auto}
+.sub a.on{color:var(--ink);font-weight:700}
+.hero{padding:clamp(40px,5vw,66px) 0 clamp(30px,3.4vw,44px)}
+.hero h1{font:800 clamp(1.9rem,4vw,3rem)/1.06 'Manrope',sans-serif;letter-spacing:-.04em;
+  margin:14px 0 0;max-width:21ch}
+.hero p{margin:18px 0 0;max-width:62ch;color:var(--mid);font-size:16px}
+.search{margin-top:26px;max-width:560px;display:flex;border:1px solid var(--line);
+  border-radius:7px;background:var(--card);overflow:hidden}
+.search input{flex:1;border:0;outline:0;padding:12px 15px;font:400 14px/1 'Mulish',sans-serif;
+  color:var(--mid)}
+.search span{background:var(--acc);color:#fff;padding:12px 18px;
+  font:600 13px/1 'Manrope',sans-serif}
+.cat{padding:clamp(34px,4vw,54px) 0;border-top:1px solid var(--line)}
+h2{font:800 clamp(1.2rem,2.1vw,1.6rem)/1.1 'Manrope',sans-serif;letter-spacing:-.035em;margin:12px 0 0}
+.cols{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:8px;overflow:hidden;margin-top:26px}
+@media(min-width:900px){.cols{grid-template-columns:repeat(4,1fr)}}
+.col{background:var(--card);padding:22px 20px 24px}
+.col h3{font:700 12.5px/1 'Manrope',sans-serif;letter-spacing:.02em;margin:0 0 4px}
+.col .k{font:400 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.col ul{list-style:none;margin:0;padding:0}
+.col li{padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--mid)}
+.col li:last-child{border-bottom:0}
+.col li b{color:var(--ink);font-weight:600}
+.console{margin-top:30px;border:1px solid var(--line);border-radius:9px;overflow:hidden;
+  background:var(--card)}
+.console .bar{display:flex;align-items:center;gap:9px;padding:10px 15px;
+  border-bottom:1px solid var(--line);font:400 11.5px/1 'IBM Plex Mono',monospace;color:var(--dim)}
+.console .bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.console .body{display:grid;gap:1px;background:var(--line)}
+@media(min-width:760px){.console .body{grid-template-columns:200px 1fr}}
+.console .side{background:#F4F7FA;padding:16px 15px;font-size:13px;color:var(--mid)}
+.console .side div{padding:6px 0}
+.console .side div.on{color:var(--acc);font-weight:700}
+.console .main{background:var(--card);padding:20px 22px}
+.console table{width:100%;border-collapse:collapse;font-size:13px}
+.console th{text-align:left;font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--dim);padding-bottom:9px;border-bottom:1px solid var(--line)}
+.console td{padding:10px 0;border-bottom:1px solid var(--line);color:var(--mid)}
+.console td b{color:var(--ink)}
+.ok{color:#146B4A;font-family:'IBM Plex Mono',monospace;font-size:11.5px}
+footer{border-top:1px solid var(--line);background:var(--card);padding:30px 0 60px;
+  color:var(--dim);font:400 11.5px/1.6 'IBM Plex Mono',monospace}
+
+</style></head><body>
+<div class=note>Concept 09 of 10 &mdash; &ldquo;Catalogue&rdquo; &middot; the page looks at THE SERVICES &middot; aws.amazon.com / cloud.google.com</div>
+
+<div class=top><div class=w><span>LOVELEEDAY STUDIOS</span><span>ASPEN &amp; MAY GROUP</span>
+  <span style="margin-left:auto">Console</span><span>Support</span><span>Contact sales</span></div></div>
+<nav><div class=w><span class=brand>LOVELEEDAY</span>
+  <span class=links><a class=on href="#">Capabilities</a><a href="#">Products</a>
+  <a href="#">Work</a><a href="#">Pricing</a><a href="#">Docs</a><a href="#">Company</a></span></div></nav>
+<div class=sub><div class=w><a class=on href="#">All capabilities</a><a href="#">Platform</a>
+  <a href="#">Data</a><a href="#">Interface</a><a href="#">Operations</a>
+  <a href="#">By industry</a><a href="#">By outcome</a></div></div>
+
+<div class=hero><div class=w>
+  <p class=eyebrow>Capabilities</p>
+  <h1>Twenty-four things we build, named.</h1>
+  <p>A studio that lists services in threes is telling you it does whatever is asked. This
+  is the actual catalogue, grouped the way the work is grouped, and every line is something
+  we have shipped to production more than once.</p>
+  <div class=search><input placeholder="Search capabilities, products and case files" readonly>
+    <span>Search</span></div>
+</div></div>
+
+<div class=cat><div class=w>
+  <p class=eyebrow>By category</p>
+  <h2>Four groups, six each.</h2>
+  <div class=cols><div class=col><div class=k>01</div><h3>Platform</h3><ul><li><b>Multi-tenant SaaS</b></li><li><b>Billing and metering</b></li><li><b>Auth and roles</b></li><li><b>Edge functions</b></li><li><b>Job scheduling</b></li><li><b>Audit trails</b></li></ul></div><div class=col><div class=k>02</div><h3>Data</h3><ul><li><b>Ingestion pipelines</b></li><li><b>Entity resolution</b></li><li><b>Bitemporal records</b></li><li><b>Vector retrieval</b></li><li><b>Reporting layer</b></li><li><b>Warehouse sync</b></li></ul></div><div class=col><div class=k>03</div><h3>Interface</h3><ul><li><b>Design systems</b></li><li><b>Marketing sites</b></li><li><b>Operator consoles</b></li><li><b>Mobile web</b></li><li><b>Email systems</b></li><li><b>Accessibility audits</b></li></ul></div><div class=col><div class=k>04</div><h3>Operations</h3><ul><li><b>Deploy pipelines</b></li><li><b>Observability</b></li><li><b>Incident runbooks</b></li><li><b>Cost control</b></li><li><b>Vendor integration</b></li><li><b>Handover docs</b></li></ul></div></div>
+</div></div>
+
+<div class=cat><div class=w>
+  <p class=eyebrow>Console</p>
+  <h2>What we run on it ourselves.</h2>
+  <div class=console>
+    <div class=bar><i></i><i></i><i></i><span style="margin-left:8px">
+      console.loveleedaystudios.com / operated</span></div>
+    <div class=body>
+      <div class=side><div class=on>Operated</div><div>Client work</div><div>Billing</div>
+        <div>Deployments</div><div>Domains</div><div>Mail</div><div>Settings</div></div>
+      <div class=main><table><thead><tr><th>Company</th><th>Segment</th><th>State</th>
+        <th>To first ship</th></tr></thead><tbody><tr><td><b>olldae</b></td><td>SaaS / Restaurant technology</td><td class=ok>running</td><td>MVP 11 days</td></tr><tr><td><b>Kronos</b></td><td>Financial tooling / Multi-entity</td><td class=ok>running</td><td>Live</td></tr><tr><td><b>Hospitality Ops Layer</b></td><td>Internal systems / Automation</td><td class=ok>running</td><td>Core 3 weeks</td></tr><tr><td><b>Duezy</b></td><td>SaaS / Invoice automation</td><td class=ok>running</td><td>Live</td></tr><tr><td><b>Dabney & Co.</b></td><td>Brand / Hospitality</td><td class=ok>running</td><td>3 weeks</td></tr></tbody></table></div>
+    </div>
+  </div>
+</div></div>
+
+<footer><div class=w>LOVELEEDAY STUDIOS &middot; KALAMAZOO, MICHIGAN &middot; 24 CAPABILITIES &middot; 5 OPERATED COMPANIES</div></footer>
+
+</body></html>

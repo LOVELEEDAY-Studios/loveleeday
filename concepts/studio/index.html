@@ -1,65 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LOVELEEDAY — four directions</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>LOVELEEDAY &mdash; ten directions</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Mulish:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel=stylesheet>
 <style>
-:root{--bg:#0A0B0D;--p1:#121419;--ln:#22262E;--ln2:#333944;--tx:#EFF1F4;--mu:#98A0AB;--dim:#69707B;--sig:#FF4713}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-.w{max-width:1280px;margin:0 auto;padding:0 clamp(18px,3vw,40px)}
-a{color:inherit;text-decoration:none}
-.mono{font-family:'JetBrains Mono',monospace}
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--dim)}
-header{padding:clamp(44px,6vw,86px) 0 clamp(26px,3vw,44px);border-bottom:1px solid var(--ln)}
-h1{margin:16px 0 0;font-size:clamp(2.1rem,5vw,3.9rem);font-weight:600;letter-spacing:-.038em;line-height:1}
-header p{margin:20px 0 0;max-width:70ch;font-size:16px;line-height:1.66;color:var(--mu)}
-.grid{display:grid;gap:clamp(16px,2.2vw,26px);padding:clamp(30px,4vw,56px) 0;grid-template-columns:1fr}
-@media(min-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
-.card{background:var(--p1);border:1px solid var(--ln);display:flex;flex-direction:column;overflow:hidden;
-  transition:border-color .22s,transform .22s}
-.card:hover{border-color:var(--sig);transform:translateY(-3px)}
-.shot{position:relative;aspect-ratio:16/10;border-bottom:1px solid var(--ln);overflow:hidden;background:#000}
-.shot iframe{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;
-  transform-origin:0 0;pointer-events:none}
-.body{padding:20px 20px 24px;display:flex;flex-direction:column;flex:1}
-.body .n{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
-.body h2{margin:9px 0 0;font-size:1.5rem;font-weight:600;letter-spacing:-.026em}
-.looks{margin:12px 0 0;font-size:13.5px;color:var(--sig);font-family:'JetBrains Mono',monospace}
-.body p{margin:12px 0 0;font-size:14px;line-height:1.6;color:var(--mu)}
-dl{margin:16px 0 0;display:grid;gap:9px;font-size:12.5px;line-height:1.5}
-dl div{display:grid;grid-template-columns:76px 1fr;gap:12px}
-dt{color:var(--dim);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;
-  text-transform:uppercase;padding-top:2px}
-dd{margin:0;color:var(--mu)}
-dd.risk{color:#E0A458}
-.open{margin-top:18px;display:inline-flex;align-items:center;height:38px;padding:0 18px;
-  background:var(--sig);color:#fff;font-size:13px;font-weight:600;border-radius:2px;align-self:flex-start}
-footer{border-top:1px solid var(--ln);padding:26px 0 46px;font-size:12.5px;color:var(--dim);line-height:1.7}
-</style>
-</head>
-<body>
+/* The review surface is LIGHT.
 
-<header><div class="w">
-  <p class="eyebrow">LOVELEEDAY Studios · direction study · 2026-09-21</p>
-  <h1>Four ways to look<br>like a big company.</h1>
-  <p>Each of these is a different answer to the same question, and they differ in <b>what the page is
-    looking at</b> — not in palette. Two directions that differ only in colour are one direction.
-    Built from captures of apple.com, palantir.com/platforms/foundry, nvidia.com and a Bloomberg
-    terminal taken today. Every object on every page is drawn in canvas: no stock photography, and
-    nothing licensed. Click any card to open it full size.</p>
+   It was black, which is a small thing that matters: Daniel rejected dark on
+   2026-09-21, and a board that shows ten light pages inside a black frame makes
+   every one of them look like a cutout. The surface a decision is made on is
+   part of the decision. */
+:root{--ground:#FBF8F2;--paper:#FFFFFF;--sunk:#F2EDE3;--ink:#16243A;--mid:#45536A;
+  --dim:#667383;--line:#E6E0D6;--line2:#D3CABA;--teal:#0E7C7B;--copper:#A36141}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font:400 15px/1.66 'Mulish',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.w{max-width:1520px;margin:0 auto;padding:0 clamp(20px,3vw,44px)}
+.eyebrow{font:500 10px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--dim)}
+header{padding:clamp(48px,6vw,84px) 0 clamp(30px,3.6vw,48px);border-bottom:1px solid var(--line)}
+header h1{font:800 clamp(2.1rem,4.4vw,3.3rem)/1.03 'Manrope',system-ui,sans-serif;
+  letter-spacing:-.04em;margin:16px 0 0}
+header p{margin:22px 0 0;max-width:78ch;color:var(--mid);font-size:15.5px}
+header b{color:var(--ink);font-weight:600}
+.grid{display:grid;gap:clamp(16px,1.8vw,24px);padding:clamp(28px,3.4vw,44px) 0 60px}
+@media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+.card{display:block;background:var(--paper);border:1px solid var(--line);
+  transition:border-color .16s,box-shadow .16s}
+.card:hover{border-color:var(--line2);box-shadow:0 1px 0 var(--line2)}
+/* Pre-rendered thumbnails, not live iframes.
+   The board used ten <iframe>s scaled with a transform, which is elegant and
+   does not work: Chromium never paints an offscreen iframe, so eight of the ten
+   cards were blank cream rectangles until you happened to scroll past them, and
+   ten concurrent page loads is a slow board on any machine. The thumbnails are
+   rendered by scripts, so they cannot drift from the page they show. */
+.shot{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+  background:var(--sunk)}
+.shot img{width:100%;height:auto;display:block}
+.body{padding:20px 22px 24px}
+.n{display:flex;justify-content:space-between;gap:16px}
+.card h2{font:800 20px/1.1 'Manrope',sans-serif;letter-spacing:-.03em;margin:12px 0 0}
+.looks{margin:6px 0 0;font:400 11.5px/1 'IBM Plex Mono',monospace;color:var(--copper)}
+.card > .body > p{margin:14px 0 0;font-size:14px;line-height:1.6;color:var(--mid)}
+dl{margin:16px 0 0;border-top:1px solid var(--line)}
+dl > div{display:grid;grid-template-columns:78px 1fr;gap:14px;padding:9px 0;
+  border-bottom:1px solid var(--line)}
+dt{font:500 9.5px/1.6 'IBM Plex Mono',monospace;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--dim)}
+dd{margin:0;font-size:13px;line-height:1.55;color:var(--mid)}
+dd.risk{color:var(--copper)}
+.open{display:inline-block;margin-top:18px;background:var(--ink);color:var(--ground);
+  font:600 12.5px/1 'Manrope',sans-serif;padding:10px 16px;border-radius:4px}
+footer{border-top:1px solid var(--line);padding:26px 0 70px;color:var(--dim);
+  font:400 12.5px/1.6 'IBM Plex Mono',monospace}
+</style></head><body>
+
+<header><div class=w>
+  <p class=eyebrow>LOVELEEDAY Studios &middot; direction study &middot; 2026-09-21</p>
+  <h1>Ten ways to look like a big company.</h1>
+  <p>Each of these answers the same question differently, and they differ in <b>what the page
+  is looking at</b> &mdash; not in palette. Two directions that differ only in colour are one
+  direction. 01&ndash;04 were built from captures of apple.com, palantir.com/platforms/foundry,
+  nvidia.com and a Bloomberg terminal; 05&ndash;10 add an annual report, a network console, a
+  consulting case file, a product spec, a service catalogue and an essay. <b>Every ground is
+  light</b> &mdash; dark was rejected &mdash; and each one carries the type and colour system
+  its way of looking implies, because a palette on a swatch card is a paint chip, not a
+  concept. Every object is drawn: no stock photography, nothing licensed, and the only
+  photographs are ours. Click any card to open it full size.</p>
 </div></header>
 
-<div class="w"><div class="grid" id="grid"></div></div>
+<div class=w><div class=grid id=grid></div></div>
 
-<footer><div class="w">
-  These are mockups, not builds. Copy is real where it can be and illustrative where it is labelled.
-  The live site currently runs a fifth direction, which is the one being replaced.
-</div></footer>
+<footer><div class=w>These are mockups, not builds. Copy is real where it can be and
+  illustrative where it is labelled. The live site currently runs direction 02.</div></footer>
 
 <script>
 var C=[
@@ -86,18 +101,54 @@ var C=[
   p:'A live ticker, then the page itself is the instrument: resolved objects, a running resolution pass, a lineage feed. Marketing copy has to earn its place inside a working tool.',
   strong:'The only one of the four that could not be anyone else’s site. Density is the claim — showing a live instrument says the instrument exists.',
   weak:'Least conventional. Hardest to sell to a non-technical buyer.',
-  risk:'Reads as an engineer’s site. Wrong audience and it is over in two seconds.'}
+  risk:'Reads as an engineer’s site. Wrong audience and it is over in two seconds.'},
+ {f:'c05-prospectus.html', id:'05', name:'Prospectus', looks:'an annual report',
+  at:'THE BUSINESS',
+  p:'Serif headline, a four-figure metrics band across a hard rule, then a segment table of the five companies we own and run, a chairman\u2019s letter and sourced footnotes. Cream, navy and one gold.',
+  strong:'The most \u201calready IPO\u2019d\u201d register there is, because it is the one an IPO\u2019d company actually files. It changes the claim from \u201clook at our work\u201d to \u201clook at our consequences\u201d, which no other studio site can copy without owning companies.',
+  weak:'Sober to the point of austere. There is no image on the page at all.',
+  risk:'Every figure is auditable by definition \u2014 print one you cannot source and the whole register turns against you.'},
+ {f:'c06-atlas.html', id:'06', name:'Atlas', looks:'cloudflare.com / datadoghq.com',
+  at:'THE NETWORK',
+  p:'A live status strip above the nav, then the real topology as the hero object: five products on a spine, a shared control plane, four third-party services underneath. White, graphite, one teal for live edges.',
+  strong:'Shows the thing the other nine only assert \u2014 that these products share infrastructure. A status bar on the homepage is the cheapest credibility on the internet and almost nobody does it.',
+  weak:'Only works while the diagram stays true. It is a maintenance commitment, not a layout.',
+  risk:'A status strip that ever says \u201coperational\u201d while something is down is worse than not having one.'},
+ {f:'c07-casefile.html', id:'07', name:'Case File', looks:'mckinsey.com / accenture.com',
+  at:'THE WORK',
+  p:'Full-bleed photography under a scrim, a serif case narrative with a drop cap, two captioned figures, and an explicit panel on when a page gets a photograph and when it gets a diagram.',
+  strong:'The only concept that uses the studio\u2019s own photography, and the only one that answers the photo question out loud on the page instead of leaving it to taste.',
+  weak:'Needs a real photograph per case. Six cases is six shoots.',
+  risk:'Consulting register. Handled badly it reads as a firm that writes decks rather than ships software.'},
+ {f:'c08-spec.html', id:'08', name:'Spec', looks:'linear.app / vercel.com',
+  at:'THE CRAFT',
+  p:'A specification table of our own numbers \u2014 first paint, contrast floor, licensed images, dependency count \u2014 then the palette as swatches and a dated public changelog. White, near-black, one blue used once.',
+  strong:'Publishing your own numbers is a bet only a careful studio can make. The changelog does the work a case study does, weekly, without asking anyone\u2019s permission.',
+  weak:'Quietest of the ten and the least \u201clarge\u201d. Reads as a very good two-person shop.',
+  risk:'Every number on it has to stay true, so it is the one concept that can be falsified by a deploy.'},
+ {f:'c09-catalogue.html', id:'09', name:'Catalogue', looks:'aws.amazon.com / cloud.google.com',
+  at:'THE SERVICES',
+  p:'Utility bar, primary nav, a second filter row, then twenty-four named capabilities in four columns and a console panel showing what we run on it ourselves. Cool white, navy, one amber.',
+  strong:'Reads institutional and large without a mega-menu\u2019s noise. A named catalogue beats \u201cwe do strategy, design and engineering\u201d by a distance.',
+  weak:'Twenty-four lines must all be defensible; a padded catalogue is obvious immediately.',
+  risk:'Enterprise-vendor register on a small company can read as overreach if the console panel is not real.'},
+ {f:'c10-fieldnote.html', id:'10', name:'Field Note', looks:'Stripe Press / Works in Progress',
+  at:'THE THINKING',
+  p:'The homepage is an essay. Three columns \u2014 marginalia, text, air \u2014 a drop cap, a figure drawn to scale from repository history, and three more notes underneath. Warm paper, ink, one green.',
+  strong:'Sells judgement rather than output, which is what a buyer is actually purchasing. The hardest of the ten for a competitor to copy, because it requires having something to say.',
+  weak:'Demands writing, continuously. An essay site with two essays is worse than no essay site.',
+  risk:'No product, no diagram, no price. A buyer in a hurry bounces.'}
 ];
 var g=document.getElementById('grid');
 C.forEach(function(c){
   var a=document.createElement('a'); a.className='card'; a.href=c.f; a.target='_blank';
   a.innerHTML =
-   '<div class="shot"><iframe src="'+c.f+'" scrolling="no" title="'+c.name+'"></iframe></div>'+
+   '<div class="shot"><img src="thumbs/'+c.f.replace('.html','.png')+'" alt="'+c.name+'"></div>'+
    '<div class="body">'+
      '<div class="n"><span class="eyebrow">Direction '+c.id+'</span>'+
        '<span class="eyebrow">Looks at: '+c.at+'</span></div>'+
      '<h2>'+c.name+'</h2>'+
-     '<p class="looks">register — '+c.looks+'</p>'+
+     '<p class="looks">register &mdash; '+c.looks+'</p>'+
      '<p>'+c.p+'</p>'+
      '<dl>'+
        '<div><dt>Strength</dt><dd>'+c.strong+'</dd></div>'+
@@ -108,17 +159,6 @@ C.forEach(function(c){
    '</div>';
   g.appendChild(a);
 });
-/* Scale each iframe so a 1440-wide page fits the card at whatever width the
-   card happens to be. Recomputed on resize -- a fixed scale factor is a
-   thumbnail that is wrong on every screen but the one it was written on. */
-function fitFrames(){
-  document.querySelectorAll('.shot').forEach(function(s){
-    var f=s.querySelector('iframe');
-    f.style.transform='scale('+(s.clientWidth/1440)+')';
-  });
-}
-new ResizeObserver(fitFrames).observe(document.body);
-fitFrames();
+
 </script>
-</body>
-</html>
+</body></html>

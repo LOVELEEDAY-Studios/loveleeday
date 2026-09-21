@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Concept 05 &mdash; Prospectus</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Mulish:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel=stylesheet>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.note{position:sticky;top:0;z-index:99;background:#16243A;color:#F6F3EC;
+  font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.13em;
+  text-transform:uppercase;padding:9px 18px}
+
+:root{--paper:#FBFAF7;--card:#FFFFFF;--ink:#14213D;--mid:#42506B;--dim:#6B7688;
+  --line:#E3DFD6;--rule:#14213D;--gold:#8A6A2F;--shell:1240px}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:400 15.5px/1.65 'Mulish',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:var(--shell);margin:0 auto;padding:0 clamp(20px,3.6vw,44px)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.eyebrow{font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--dim)}
+nav{border-bottom:2px solid var(--rule);background:var(--paper)}
+nav .w{display:flex;align-items:baseline;justify-content:space-between;padding-top:20px;padding-bottom:18px}
+nav .brand{font:700 17px/1 'Manrope',sans-serif;letter-spacing:-.02em}
+nav .brand em{font-style:normal;color:var(--gold)}
+nav .links{display:flex;gap:30px;font:500 12.5px/1 'Mulish',sans-serif;color:var(--mid)}
+nav .links a.on{color:var(--ink);box-shadow:0 2px 0 var(--gold)}
+.sub{border-bottom:1px solid var(--line);background:var(--card)}
+.sub .w{display:flex;gap:26px;padding:11px 0;font:400 11.5px/1 'IBM Plex Mono',monospace;color:var(--dim)}
+.hero{padding:clamp(56px,7vw,96px) 0 clamp(34px,4vw,54px)}
+.hero h1{font:400 clamp(2.6rem,5.6vw,4.4rem)/1.04 'Instrument Serif',Georgia,serif;
+  letter-spacing:-.018em;margin:18px 0 0;max-width:17ch}
+.hero .lede{margin:26px 0 0;max-width:60ch;font-size:17px;color:var(--mid)}
+.metrics{border-top:2px solid var(--rule);border-bottom:1px solid var(--line);background:var(--card)}
+.metrics .w{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.metrics .m{padding:26px 0 24px;border-right:1px solid var(--line)}
+.metrics .m:last-child{border-right:0}
+.metrics .n{font:400 clamp(2rem,3.6vw,3rem)/1 'Instrument Serif',Georgia,serif;letter-spacing:-.01em}
+.metrics .n sup{font-size:.42em;color:var(--gold);vertical-align:super}
+.metrics .l{margin-top:9px;font:500 10.5px/1.4 'IBM Plex Mono',monospace;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--dim);max-width:22ch}
+section{padding:clamp(48px,6vw,78px) 0}
+h2{font:400 clamp(1.7rem,3vw,2.5rem)/1.1 'Instrument Serif',Georgia,serif;margin:14px 0 0}
+table{width:100%;border-collapse:collapse;margin-top:30px;font-size:14px}
+th{text-align:left;font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);padding:0 14px 11px 0;border-bottom:1.5px solid var(--rule)}
+td{padding:15px 14px 15px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--mid)}
+td.name{color:var(--ink);font-weight:600;font-size:15px;white-space:nowrap}
+td.idx{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:12px;width:40px}
+.letter{display:grid;gap:clamp(26px,4vw,54px);margin-top:34px}
+@media(min-width:900px){.letter{grid-template-columns:1.25fr .75fr}}
+.letter p{margin:0 0 17px;max-width:62ch}
+.letter .drop::first-letter{float:left;font:400 3.6em/.82 'Instrument Serif',Georgia,serif;
+  padding:4px 10px 0 0;color:var(--gold)}
+.aside{border-left:2px solid var(--gold);padding-left:20px;align-self:start}
+.aside h3{font:600 13px/1.3 'Manrope',sans-serif;margin:0 0 12px;letter-spacing:-.01em}
+.aside p{font-size:13.5px;color:var(--mid);margin:0 0 13px}
+.fn{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;
+  font:400 11.5px/1.7 'IBM Plex Mono',monospace;color:var(--dim);max-width:86ch}
+footer{border-top:2px solid var(--rule);padding:34px 0 60px;background:var(--card)}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;
+  font:400 12px/1.5 'IBM Plex Mono',monospace;color:var(--dim)}
+
+</style></head><body>
+<div class=note>Concept 05 of 10 &mdash; &ldquo;Prospectus&rdquo; &middot; the page looks at THE BUSINESS &middot; an annual report</div>
+
+<nav><div class=w><span class=brand>LOVELEE<em>DAY</em></span>
+  <span class=links><a class=on href="#">Business</a><a href="#">Platform</a>
+  <a href="#">Work</a><a href="#">Practice</a><a href="#">Contact</a></span></div></nav>
+<div class=sub><div class=w><span>FY2026 &middot; SECOND HALF</span><span>KALAMAZOO, MI</span>
+  <span>PRIVATELY HELD</span><span>ASPEN &amp; MAY GROUP</span></div></div>
+
+<div class=hero><div class=w>
+  <p class=eyebrow>Statement of operations &middot; 2026</p>
+  <h1>We do not have a portfolio. We have a balance sheet.</h1>
+  <p class=lede>Most studios show you work they were paid to do. We show you the five
+  companies we own and run on the software we wrote, and then the work clients hired us
+  for. One of those is a claim about taste. The other is a claim about consequences.</p>
+</div></div>
+
+<div class=metrics><div class=w><div class=m><div class=n>5<sup>1</sup></div><div class=l>operating companies owned and run</div></div><div class=m><div class=n>6<sup>2</sup></div><div class=l>client rebuilds delivered</div></div><div class=m><div class=n>11<sup>3</sup></div><div class=l>days to first shipped MVP</div></div><div class=m><div class=n>100%<sup></sup></div><div class=l>of work shipped to production</div></div></div></div>
+
+<section><div class=w>
+  <p class=eyebrow>Segment detail</p>
+  <h2>Owned and operated.</h2>
+  <table><thead><tr><th></th><th>Company</th><th>Segment</th><th>To first ship</th>
+    <th>Stack</th></tr></thead><tbody><tr><td class=idx>01</td><td class=name>olldae</td><td>SaaS / Restaurant technology</td><td class=mono style="font-size:12.5px">MVP 11 days</td><td>Next.js · Supabase · Stripe</td></tr><tr><td class=idx>02</td><td class=name>Kronos</td><td>Financial tooling / Multi-entity</td><td class=mono style="font-size:12.5px">Live</td><td>Python · Supabase · Fly</td></tr><tr><td class=idx>03</td><td class=name>Hospitality Ops Layer</td><td>Internal systems / Automation</td><td class=mono style="font-size:12.5px">Core 3 weeks</td><td>Node · Supabase · Resend</td></tr><tr><td class=idx>04</td><td class=name>Duezy</td><td>SaaS / Invoice automation</td><td class=mono style="font-size:12.5px">Live</td><td>Next.js · Supabase · Stripe</td></tr><tr><td class=idx>05</td><td class=name>Dabney & Co.</td><td>Brand / Hospitality</td><td class=mono style="font-size:12.5px">3 weeks</td><td>Next.js · OpenTable API</td></tr></tbody></table>
+  <div class=letter>
+    <div>
+      <p class=drop>The reason to read a company by what it operates rather than by what it
+      has designed is that operating is the only part that cannot be staged. A case study is
+      written after the fact by the party with an interest in it. A running business files
+      invoices, loses customers, pays for its own mistakes and keeps a ledger of them.</p>
+      <p>Every product listed above is one we pay for. When the billing breaks on a Sunday,
+      it is our Sunday. That is the whole argument, and it is the reason this page opens with
+      a segment table instead of a hero image.</p>
+      <p>The client work sits behind this, deliberately. Six rebuilds shipped this year for
+      companies that are not ours; they are shown unnamed, because an uncommissioned redesign
+      carries criticism of the site it replaces, and publishing that is a different act from
+      sending one company its own private link.</p>
+    </div>
+    <div class=aside>
+      <h3>How to read this page</h3>
+      <p>Figures are counts, not estimates. &ldquo;To first ship&rdquo; is the interval from
+      first commit to production traffic, taken from the repository, not from memory.</p>
+      <h3>What is not here</h3>
+      <p>No revenue, no headcount, no logos we have not earned. A number we will not source
+      is a number we will not print.</p>
+    </div>
+  </div>
+  <div class=fn>
+    <sup>1</sup>&nbsp;olldae, Kronos, Hospitality Ops Layer, Duezy, Dabney &amp; Co.
+    &nbsp;&nbsp;<sup>2</sup>&nbsp;Unnamed on this page by choice; private links on request.
+    &nbsp;&nbsp;<sup>3</sup>&nbsp;olldae, first commit to first paying venue.
+  </div>
+</div></section>
+
+<footer><div class=w><span>LOVELEEDAY STUDIOS &middot; KALAMAZOO, MICHIGAN</span>
+  <span>ASPEN &amp; MAY GROUP</span><span>2026</span></div></footer>
+
+</body></html>
