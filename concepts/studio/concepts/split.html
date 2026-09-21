@@ -1,0 +1,587 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Split &mdash; LOVELEEDAY concept</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel=stylesheet>
+<style>:root{--bg:#08080A; --fg:#F2F2EF; --mu:#A6A6A2; --edge:rgba(255,255,255,.14);
+  --panel:#101014; --navbg:rgba(8,8,10,.86); --navpanel:#0D0D11; --hov:rgba(255,255,255,.07);
+  --key:#FF9E3D; --keyfg:#120A02; --up:#4FD08A;
+  --sans:'Inter Tight',system-ui,-apple-system,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;
+  background:var(--bg);color:var(--fg)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.w{max-width:1440px;margin:0 auto;padding:0 clamp(16px,2.6vw,40px)}
+h1,h2,h3{margin:0;font-weight:400;letter-spacing:-.032em;line-height:1.04}
+h1{font-size:clamp(2.3rem,6.2vw,5.2rem);text-wrap:balance}
+h2{font-size:clamp(1.7rem,3.6vw,3rem);text-wrap:balance}
+h3{font-size:clamp(1.1rem,1.7vw,1.5rem)}
+p{margin:0}
+.lab{display:block;font:400 10.5px/1 var(--mono);letter-spacing:.17em;
+  text-transform:uppercase;color:var(--key)}
+.mu{color:var(--mu)}
+.sec{padding:clamp(48px,6.5vw,104px) 0}
+.lede{margin-top:16px;max-width:60ch;color:var(--mu);font-size:clamp(14.5px,1.35vw,17px)}
+
+/* ---------- ticker (Bloomberg) ---------- */
+.tick{border-bottom:1px solid var(--edge);background:var(--panel);overflow:hidden}
+.tickrow{display:flex;gap:34px;padding:8px 0;white-space:nowrap;
+  animation:sl 42s linear infinite;width:max-content}
+@keyframes sl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tk{font:400 11.5px/1 var(--mono);letter-spacing:.06em;color:var(--mu)}
+.tk b{color:var(--fg);font-weight:400;margin-left:8px}
+.tk i{font-style:normal;margin-left:6px;color:var(--up)}
+.tk i.f{color:var(--mu)}
+@media(prefers-reduced-motion:reduce){.tickrow{animation:none}}
+
+/* ---------- dropdown nav ---------- */
+nav.bar{position:sticky;top:0;z-index:70;background:var(--navbg);
+  border-bottom:1px solid var(--edge);backdrop-filter:saturate(150%) blur(12px)}
+nav.bar > .w{display:flex;align-items:center;gap:clamp(12px,2.4vw,30px);height:58px}
+.bd{font:600 15px/1 var(--sans);letter-spacing:.01em;white-space:nowrap}
+.tabs{display:none;gap:4px}
+@media(min-width:960px){.tabs{display:flex}}
+.tab{font:400 13.5px/1 var(--sans);color:var(--mu);background:none;border:0;
+  padding:9px 11px;cursor:pointer;display:flex;align-items:center;gap:5px;border-radius:2px}
+.tab i{font-style:normal;font-size:9px;opacity:.6}
+.tab:hover,.tab.on{color:var(--fg);background:var(--hov)}
+.rt{margin-left:auto;display:none;align-items:center;gap:8px}
+@media(min-width:960px){.rt{display:flex}}
+.btn{display:inline-block;font:400 13px/1 var(--sans);padding:10px 15px;
+  border:1px solid var(--edge);border-radius:2px;white-space:nowrap}
+.btn.solid{background:var(--key);border-color:var(--key);color:var(--keyfg)}
+.panel{display:none;position:absolute;left:0;right:0;top:100%;background:var(--navpanel);
+  border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);
+  box-shadow:0 30px 70px rgba(0,0,0,.36)}
+nav.bar[data-open="Platform"] .panel[data-p="Platform"],
+nav.bar[data-open="Work"] .panel[data-p="Work"],
+nav.bar[data-open="Company"] .panel[data-p="Company"]{display:block}
+.pin{padding:22px 0 26px}
+.pgrid{display:grid;gap:2px 26px;margin-top:14px}
+@media(min-width:720px){.pgrid{grid-template-columns:repeat(4,1fr)}}
+.mi{display:block;padding:12px 0}
+.mi b{display:block;font:400 15.5px/1.3 var(--sans);letter-spacing:-.02em;color:var(--fg)}
+.mi span{display:block;margin-top:3px;font-size:13px;color:var(--mu)}
+.mi:hover b{color:var(--key)}
+.burger{display:flex;margin-left:auto;width:38px;height:38px;padding:0;cursor:pointer;
+  background:none;color:inherit;border:1px solid var(--edge);border-radius:2px;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px}
+@media(min-width:960px){.burger{display:none}}
+.burger span{display:block;width:15px;height:1.5px;background:currentColor}
+.sheet{display:none;border-top:1px solid var(--edge);background:var(--navpanel);
+  max-height:76vh;overflow-y:auto}
+nav.bar[data-sheet="1"] .sheet{display:block}
+.sg{padding:14px 0;border-bottom:1px solid var(--edge)}
+.sg .lab{margin-bottom:8px}
+
+/* ---------- cycling photo hero ---------- */
+.stage{position:absolute;inset:0;overflow:hidden;background:#000}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.5s ease;will-change:opacity,transform;
+  animation:kb 15s ease-in-out infinite alternate}
+.stage img.on{opacity:1}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.13)}}
+@media(prefers-reduced-motion:reduce){.stage img{animation:none;transition:none}}
+.grade{position:absolute;inset:0}
+
+/* ---------- brain ---------- */
+.brainbox{position:relative;width:100%;height:clamp(330px,46vw,560px)}
+.brainbox canvas{width:100%;height:100%;display:block}
+
+/* ---------- bloomberg panels ---------- */
+.panels{display:grid;gap:1px;background:var(--edge);border:1px solid var(--edge);margin-top:26px}
+@media(min-width:720px){.panels{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1080px){.panels{grid-template-columns:repeat(4,1fr)}}
+.pnl{background:var(--panel);padding:18px}
+.pnl .code{font:400 10.5px/1 var(--mono);letter-spacing:.14em;color:var(--key)}
+.pnl b{display:block;margin-top:12px;font:300 clamp(1.8rem,3vw,2.6rem)/1 var(--sans);
+  letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.pnl span{display:block;margin-top:8px;font:400 11px/1.5 var(--mono);
+  letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
+.pnl p{margin-top:9px;font-size:13px;line-height:1.55;color:var(--mu)}
+.rows{border-top:1px solid var(--edge);margin-top:24px}
+.row{display:grid;gap:4px 20px;padding:15px 0;border-bottom:1px solid var(--edge);
+  align-items:baseline}
+@media(min-width:860px){.row{grid-template-columns:52px 190px minmax(0,1fr) 120px}}
+.row .c{font:400 11.5px/1.6 var(--mono);color:var(--key)}
+.row b{font:400 17px/1.3 var(--sans);letter-spacing:-.02em}
+.row p{font-size:14px;line-height:1.55;color:var(--mu)}
+.row .n{font:400 11.5px/1.6 var(--mono);color:var(--mu);text-align:right}
+
+/* ---------- work cards ---------- */
+.grid{display:grid;gap:12px;margin-top:24px}
+@media(min-width:680px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1080px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{border:1px solid var(--edge);background:var(--panel);overflow:hidden;
+  display:flex;flex-direction:column}
+.card .sh{aspect-ratio:16/10;overflow:hidden;background:#1a1a1a}
+.card .sh img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.card .cb{padding:15px 16px 18px}
+.card p{margin-top:8px;font-size:13.5px;line-height:1.55;color:var(--mu)}
+footer{border-top:1px solid var(--edge);padding:44px 0 38px;color:var(--mu);font-size:13px}
+.fg{display:grid;gap:26px}
+@media(min-width:760px){.fg{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+.fg a{display:block;padding:4px 0;color:var(--mu)}
+.fbase{margin-top:36px;padding-top:18px;border-top:1px solid var(--edge);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font:400 11.5px/1.6 var(--mono)}
+
+
+.hero{border-bottom:1px solid var(--edge)}
+.sp{display:grid;gap:0;min-height:clamp(480px,72vh,760px)}
+@media(min-width:1000px){.sp{grid-template-columns:44% 56%}}
+.spL{position:relative;overflow:hidden;min-height:300px}
+.spL .inner{position:relative;z-index:3;padding:clamp(28px,3.4vw,54px);
+  height:100%;display:flex;flex-direction:column;justify-content:flex-end}
+.spL h1{font-size:clamp(2rem,3.6vw,3.4rem);max-width:14ch}
+.spR{border-left:1px solid var(--edge);display:flex;flex-direction:column;
+  background:#0A0A0D}
+@media(max-width:999px){.spR{border-left:0;border-top:1px solid var(--edge)}}
+.spR .head{padding:clamp(20px,2.4vw,32px) clamp(20px,2.4vw,32px) 0}
+.spR .brainbox{flex:1;height:auto;min-height:300px}
+</style>
+<!-- brain.js must load BEFORE the body: each brain section mounts itself with an
+     inline script beside its own canvas, which runs at parse time. Loading the
+     library at the end of the body threw "Brain is not defined" five times. -->
+<script>/* brain.js — what Arthur does with a question, drawn.
+
+   Daniel, 2026-09-21: "a brain that pings with thought questions, neurons
+   flashing and showing what happens when you give arthur a question or data
+   to review, the questions it then generates in its brain."
+
+   So this is not decoration. It is a four-beat loop with a claim in it:
+
+     1 ASK      a question enters from the left and lands on a node
+     2 FIRE     the signal propagates outward along real edges, breadth-first,
+                so what lights is the graph's actual topology, not random noise
+     3 ASK BACK the sub-questions Arthur generates surface at the nodes they
+                fired from, tethered by a line to that node
+     4 SETTLE   everything decays and the next question arrives
+
+   The sub-questions are the ones the system genuinely asks -- resolution,
+   bitemporality, lineage, blast radius. That is the argument: you give it a
+   question, it decomposes into the questions it must answer first.
+
+   The silhouette is a metaball field of six ellipses (frontal, main mass,
+   occipital, temporal, cerebellum, stem) rather than a traced path, because
+   a field can be sampled for "is this point inside" and a path cannot without
+   a lot more code. Nodes are rejection-sampled into it and then relaxed apart
+   so the spacing reads deliberate.
+
+   No dependencies. DPR-aware. Pauses off-screen. Draws a still frame under
+   prefers-reduced-motion and never animates.
+*/
+(function (global) {
+  'use strict';
+
+  /* A brain in left profile. The first pass used six loosely-spaced ellipses
+     and rendered as a blob with a thin tail hanging off it -- the stem read as
+     a rendering fault rather than as anatomy. These overlap enough to fuse into
+     one mass: frontal, two crown lobes, the body, occipital, temporal, and a
+     cerebellum tucked under the back with a short stem. */
+  var LOBES = [
+    [0.255, 0.455, 0.135, 0.150],
+    [0.375, 0.345, 0.155, 0.135],
+    [0.565, 0.340, 0.165, 0.135],
+    [0.440, 0.455, 0.215, 0.175],
+    [0.700, 0.435, 0.140, 0.140],
+    [0.430, 0.600, 0.165, 0.100],
+    [0.665, 0.590, 0.105, 0.088],
+    [0.605, 0.660, 0.070, 0.070]
+  ];
+
+  function field(x, y) {
+    var s = 0;
+    for (var i = 0; i < LOBES.length; i++) {
+      var L = LOBES[i];
+      var dx = (x - L[0]) / L[2], dy = (y - L[1]) / L[3];
+      s += Math.exp(-2.4 * (dx * dx + dy * dy));
+    }
+    return s;
+  }
+  var INSIDE = 0.52;
+
+  function rng(seed) {
+    return function () {
+      seed = (seed * 1664525 + 1013904223) % 4294967296;
+      return seed / 4294967296;
+    };
+  }
+
+  function build(count, seed) {
+    var rand = rng(seed || 7), pts = [], guard = 0;
+    while (pts.length < count && guard++ < count * 400) {
+      var x = rand(), y = rand() * 0.95;
+      if (field(x, y) > INSIDE) pts.push({ x: x, y: y });
+    }
+    /* Relax: without this the rejection sample clumps and the graph reads as
+       static rather than as a structure. */
+    for (var pass = 0; pass < 26; pass++) {
+      for (var i = 0; i < pts.length; i++) {
+        var ax = 0, ay = 0;
+        for (var j = 0; j < pts.length; j++) {
+          if (i === j) continue;
+          var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+          var d2 = dx * dx + dy * dy;
+          if (d2 < 0.0021 && d2 > 1e-9) { ax += dx / d2; ay += dy / d2; }
+        }
+        var nx = pts[i].x + ax * 0.000013, ny = pts[i].y + ay * 0.000013;
+        if (field(nx, ny) > INSIDE) { pts[i].x = nx; pts[i].y = ny; }
+      }
+    }
+    /* Edges: three nearest neighbours, de-duplicated. */
+    var edges = [], adj = pts.map(function () { return []; });
+    for (var a = 0; a < pts.length; a++) {
+      var near = [];
+      for (var b = 0; b < pts.length; b++) {
+        if (a === b) continue;
+        var ex = pts[a].x - pts[b].x, ey = pts[a].y - pts[b].y;
+        near.push([ex * ex + ey * ey, b]);
+      }
+      near.sort(function (p, q) { return p[0] - q[0]; });
+      for (var k = 0; k < 3 && k < near.length; k++) {
+        var o = near[k][1];
+        if (a < o) { edges.push([a, o]); adj[a].push(o); adj[o].push(a); }
+        else if (adj[o].indexOf(a) < 0) { edges.push([o, a]); adj[a].push(o); adj[o].push(a); }
+      }
+    }
+    /* Fit from the cloud's MEASURED bounds. The projection used hand-tuned
+       constants against the unit square, so the crown clipped off the top of
+       the canvas and the shape sat high with dead ground beneath it. The
+       sample knows where it actually is; ask it. */
+    var bb = { x0: 1, y0: 1, x1: 0, y1: 0 };
+    for (var m = 0; m < pts.length; m++) {
+      bb.x0 = Math.min(bb.x0, pts[m].x); bb.x1 = Math.max(bb.x1, pts[m].x);
+      bb.y0 = Math.min(bb.y0, pts[m].y); bb.y1 = Math.max(bb.y1, pts[m].y);
+    }
+    return { pts: pts, edges: edges, adj: adj, bb: bb };
+  }
+
+  function depths(adj, from) {
+    var d = new Array(adj.length).fill(-1), q = [from], h = 0;
+    d[from] = 0;
+    while (h < q.length) {
+      var n = q[h++];
+      for (var i = 0; i < adj[n].length; i++) {
+        var m = adj[n][i];
+        if (d[m] < 0) { d[m] = d[n] + 1; q.push(m); }
+      }
+    }
+    return d;
+  }
+
+  var SCRIPT = [
+    { ask: 'Why did margin fall in August?',
+      out: ['Which objects does "margin" resolve to?',
+            'What did we know on 2026-08-31?',
+            'Does every input carry lineage?',
+            'Which source systems were stale?'] },
+    { ask: 'Is this invoice safe to pay?',
+      out: ['Is the vendor one object or four records?',
+            'What is the blast radius of this action?',
+            'Has the figure been observed, or inferred?',
+            'Does it need a human to close?'] },
+    { ask: 'Rebuild the forecast for Q4.',
+      out: ['Which values were valid then?',
+            'Exclude anything learned after the date',
+            'Print the trail for each input',
+            'Flag every number without a source'] }
+  ];
+
+  function mount(canvas, opts) {
+    opts = opts || {};
+    var ctx = canvas.getContext('2d');
+    var C = {
+      node: opts.node || '#8FA6B5',
+      edge: opts.edge || 'rgba(143,166,181,.20)',
+      hot: opts.hot || '#E56E3E',
+      live: opts.live || '#5FD3C4',
+      text: opts.text || '#F4F4F2',
+      dim: opts.dim || 'rgba(244,244,242,.55)',
+      ground: opts.ground || 'transparent',
+      labels: opts.labels !== false,
+      count: opts.count || 300
+    };
+    var G = build(C.count, opts.seed || 11);
+    var W = 0, H = 0, dpr = 1, raf = 0, t0 = performance.now(), running = false;
+    var beat = 0, dep = depths(G.adj, 0), entry = 0, pulses = [], shown = [];
+    var reduced = global.matchMedia &&
+                  global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function fit() {
+      var r = canvas.getBoundingClientRect();
+      if (!r.width || !r.height) return false;
+      dpr = Math.min(global.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(r.width * dpr);
+      canvas.height = Math.round(r.height * dpr);
+      W = r.width; H = r.height;
+      return true;
+    }
+
+    /* Project the unit shape into the box, preserving aspect and leaving room
+       on the right for the generated questions. */
+    /* On a phone the generated questions ran off the right edge -- they are
+       laid out beside the silhouette, which assumes a wide canvas. Below 640px
+       the brain moves to the top half and the questions stack underneath it. */
+    function narrow() { return W < 640; }
+
+    function P(p) {
+      var bb = G.bb;
+      if (narrow()) {
+        var gw2 = bb.x1 - bb.x0, gh2 = bb.y1 - bb.y0;
+        var aw = W - 24, ah = H * (C.labels ? 0.42 : 0.9);
+        var s2 = Math.min(aw / gw2, ah / gh2);
+        var ox2 = (W - gw2 * s2) / 2;
+        var oy2 = H * (C.labels ? 0.085 : 0.05) + (ah - gh2 * s2) / 2;
+        return [ox2 + (p.x - bb.x0) * s2, oy2 + (p.y - bb.y0) * s2];
+      }
+      var gw = bb.x1 - bb.x0, gh = bb.y1 - bb.y0;
+      var mx = W * 0.03, my = H * (C.labels ? 0.17 : 0.07);
+      var availW = (C.labels ? W * 0.56 : W) - mx * 2;
+      var availH = H - my * 2;
+      var s = Math.min(availW / gw, availH / gh);
+      var ox = mx + (availW - gw * s) / 2 + (C.labels ? W * 0.015 : 0);
+      var oy = my + (availH - gh * s) / 2;
+      return [ox + (p.x - bb.x0) * s, oy + (p.y - bb.y0) * s];
+    }
+
+    function pickEntry() {
+      /* Enter at the frontal lobe -- the left of the silhouette. */
+      var best = 0, bx = 9;
+      for (var i = 0; i < G.pts.length; i++) {
+        var v = G.pts[i].x + Math.abs(G.pts[i].y - 0.44) * 0.5;
+        if (v < bx) { bx = v; best = i; }
+      }
+      return best;
+    }
+
+    function startBeat(k) {
+      beat = k % SCRIPT.length;
+      entry = pickEntry();
+      dep = depths(G.adj, entry);
+      shown = [];
+      var maxd = Math.max.apply(null, dep);
+      var outs = SCRIPT[beat].out;
+      /* Attach each generated question to a node deep in the propagation, so
+         the line visibly comes back from where the signal actually reached. */
+      var cand = [];
+      for (var i = 0; i < dep.length; i++) if (dep[i] > maxd * 0.45) cand.push(i);
+      cand.sort(function (a, b) { return G.pts[b].x - G.pts[a].x; });
+      for (var q = 0; q < outs.length; q++) {
+        var n = cand[Math.floor(q * cand.length / Math.max(outs.length, 1)) % cand.length];
+        shown.push({ node: n === undefined ? 0 : n, text: outs[q], at: 1.15 + q * 0.42 });
+      }
+    }
+
+    function draw(now) {
+      var el = (now - t0) / 1000;
+      var cycle = 7.2;
+      var k = Math.floor(el / cycle);
+      var tt = el - k * cycle;
+      if (k !== (draw._k === undefined ? -1 : draw._k)) { draw._k = k; startBeat(k); }
+
+      if (C.ground === 'transparent') ctx.clearRect(0, 0, canvas.width, canvas.height);
+      else { ctx.fillStyle = C.ground; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+      ctx.save();
+      ctx.scale(dpr, dpr);
+
+      var maxd = Math.max.apply(null, dep) || 1;
+      var front = (tt - 0.55) * 7.4;             /* how far the wave has travelled */
+
+      /* edges */
+      for (var e = 0; e < G.edges.length; e++) {
+        var a = G.edges[e][0], b = G.edges[e][1];
+        var pa = P(G.pts[a]), pb = P(G.pts[b]);
+        var d = Math.min(dep[a], dep[b]);
+        var lit = front - d;
+        ctx.beginPath();
+        ctx.moveTo(pa[0], pa[1]); ctx.lineTo(pb[0], pb[1]);
+        if (lit > 0 && lit < 2.4) {
+          ctx.strokeStyle = C.live;
+          ctx.globalAlpha = 0.85 * (1 - lit / 2.4);
+          ctx.lineWidth = 1.5;
+        } else {
+          ctx.strokeStyle = C.edge; ctx.globalAlpha = 1; ctx.lineWidth = 1;
+        }
+        ctx.stroke();
+      }
+
+      /* nodes */
+      for (var i = 0; i < G.pts.length; i++) {
+        var p = P(G.pts[i]);
+        var lit2 = front - dep[i];
+        var shimmer = 0.5 + 0.5 * Math.sin(el * 1.6 + i * 1.7);
+        var r = 1.5 + shimmer * 0.5;
+        ctx.globalAlpha = 0.55 + shimmer * 0.2;
+        ctx.fillStyle = C.node;
+        if (lit2 > 0 && lit2 < 2.0) {
+          var f = 1 - lit2 / 2.0;
+          ctx.fillStyle = C.live; ctx.globalAlpha = 0.5 + f * 0.5;
+          r = 1.6 + f * 3.1;
+          ctx.beginPath(); ctx.arc(p[0], p[1], r * 3.4, 0, 7);
+          ctx.globalAlpha = 0.10 * f; ctx.fill();
+          ctx.globalAlpha = 0.5 + f * 0.5;
+        }
+        ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, 7); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      if (C.labels) {
+        var ep = P(G.pts[entry]);
+        /* 1 — the question arriving */
+        var inAlpha = tt < 0.45 ? tt / 0.45 : (tt > 6.4 ? Math.max(0, (7.0 - tt) / 0.6) : 1);
+        ctx.globalAlpha = Math.min(1, inAlpha);
+        ctx.font = '500 13px ui-monospace, SFMono-Regular, Menlo, monospace';
+        ctx.fillStyle = C.hot;
+        ctx.textAlign = 'left';
+        var qx = 10, qy = H * 0.12;
+        ctx.fillText('ASK', qx, qy);
+        ctx.font = '400 14.5px system-ui, sans-serif';
+        ctx.fillStyle = C.text;
+        ctx.fillText(SCRIPT[beat].ask, qx + 34, qy);
+        ctx.strokeStyle = C.hot; ctx.lineWidth = 1;
+        ctx.globalAlpha = Math.min(1, inAlpha) * 0.5;
+        ctx.beginPath(); ctx.moveTo(qx + 6, qy + 9);
+        ctx.bezierCurveTo(qx + 6, (qy + ep[1]) / 2, ep[0] * 0.5, ep[1], ep[0] - 4, ep[1]);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+
+        /* 3 — the questions it generates */
+        var nw = narrow();
+        ctx.font = nw
+          ? '400 11.5px ui-monospace, SFMono-Regular, Menlo, monospace'
+          : '400 12.5px ui-monospace, SFMono-Regular, Menlo, monospace';
+        for (var s = 0; s < shown.length; s++) {
+          var S = shown[s];
+          var age = tt - S.at;
+          if (age < 0) continue;
+          var al = age < 0.34 ? age / 0.34 : (tt > 6.3 ? Math.max(0, (6.9 - tt) / 0.6) : 1);
+          if (al <= 0) continue;
+          var np = P(G.pts[S.node]);
+          var lx = nw ? 22 : W * 0.615;
+          var ly = nw ? H * 0.665 + s * 22 : H * (0.22 + s * 0.17);
+          ctx.globalAlpha = al * 0.4;
+          ctx.strokeStyle = C.live; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(np[0], np[1]);
+          if (nw) { ctx.lineTo(np[0], ly - 4); ctx.lineTo(lx - 6, ly - 4); }
+          else ctx.lineTo(lx - 12, ly - 4);
+          ctx.stroke();
+          ctx.globalAlpha = al;
+          ctx.fillStyle = C.live;
+          ctx.beginPath(); ctx.arc(np[0], np[1], 2.6, 0, 7); ctx.fill();
+          ctx.fillStyle = C.dim;
+          ctx.fillText('?', lx - 10, ly);
+          ctx.fillStyle = C.text;
+          var txt = S.text, maxw = W - lx - 14;
+          while (txt.length > 6 && ctx.measureText(txt).width > maxw) {
+            txt = txt.slice(0, -2);
+          }
+          if (txt !== S.text) txt = txt.replace(/[\s?]+$/, '') + '\u2026';
+          ctx.fillText(txt, lx + 4, ly);
+        }
+        ctx.globalAlpha = 1;
+      }
+      ctx.restore();
+    }
+
+    function loop(now) { draw(now); raf = requestAnimationFrame(loop); }
+
+    function start() {
+      if (running || reduced) return;
+      running = true; raf = requestAnimationFrame(loop);
+    }
+    function stop() { running = false; cancelAnimationFrame(raf); }
+
+    if (!fit()) {
+      var tries = 0, iv = setInterval(function () {
+        if (fit() || ++tries > 20) { clearInterval(iv); draw(performance.now()); }
+      }, 120);
+    }
+    startBeat(0);
+    draw(performance.now());
+
+    if (global.IntersectionObserver) {
+      new IntersectionObserver(function (es) {
+        es[0].isIntersecting ? start() : stop();
+      }, { threshold: 0.05 }).observe(canvas);
+    } else start();
+
+    global.addEventListener('resize', function () { if (fit()) draw(performance.now()); });
+    return { start: start, stop: stop, graph: G };
+  }
+
+  global.Brain = { mount: mount, script: SCRIPT };
+})(window);
+</script>
+</head><body>
+<div class=tick><div class=tickrow><span class=tk>OBJECTS<b>41</b><i class="">+3</i></span><span class=tk>OBSERVATIONS<b>538</b><i class="">+52</i></span><span class=tk>SOURCES<b>4</b><i class="f">0</i></span><span class=tk>LINEAGE COVER<b>100%</b><i class="f">0</i></span><span class=tk>SITES MEASURED<b>38</b><i class="f">0</i></span><span class=tk>REBUILDS<b>6</b><i class="">+1</i></span><span class=tk>UNVERIFIED<b>0</b><i class="f">0</i></span><span class=tk>OBJECTS<b>41</b><i class="">+3</i></span><span class=tk>OBSERVATIONS<b>538</b><i class="">+52</i></span><span class=tk>SOURCES<b>4</b><i class="f">0</i></span><span class=tk>LINEAGE COVER<b>100%</b><i class="f">0</i></span><span class=tk>SITES MEASURED<b>38</b><i class="f">0</i></span><span class=tk>REBUILDS<b>6</b><i class="">+1</i></span><span class=tk>UNVERIFIED<b>0</b><i class="f">0</i></span></div></div><nav class=bar data-open=""><div class=w><a class=bd href="#">LOVELEEDAY</a><div class=tabs><button class=tab data-menu="Platform" aria-expanded=false>Platform<i aria-hidden=true>&#9662;</i></button><button class=tab data-menu="Work" aria-expanded=false>Work<i aria-hidden=true>&#9662;</i></button><button class=tab data-menu="Company" aria-expanded=false>Company<i aria-hidden=true>&#9662;</i></button></div><div class=rt><a class=btn href="#">Contact</a><a class="btn solid" href="#">Start a project</a></div><button class=burger aria-label=Menu><span></span><span></span></button></div><div class=panel data-p="Platform"><div class="w pin"><span class=lab>Platform</span><div class=pgrid><a class=mi href="#"><b>Arthur</b><span>The intelligence system</span></a><a class=mi href="#"><b>The ontology</b><span>How records become objects</span></a><a class=mi href="#"><b>Lineage</b><span>Every value carries its source</span></a><a class=mi href="#"><b>Verified execution</b><span>Work closes on observed proof</span></a></div></div></div><div class=panel data-p="Work"><div class="w pin"><span class=lab>Work</span><div class=pgrid><a class=mi href="#"><b>Client rebuilds</b><span>Six, uncommissioned</span></a><a class=mi href="#"><b>Companies we operate</b><span>Five we own and run</span></a><a class=mi href="#"><b>How we measure</b><span>Weight, Lighthouse, position</span></a></div></div></div><div class=panel data-p="Company"><div class="w pin"><span class=lab>Company</span><div class=pgrid><a class=mi href="#"><b>About</b><span>Business judgment, built as software</span></a><a class=mi href="#"><b>How we scope</b><span>Fixed quote, written scope</span></a><a class=mi href="#"><b>Contact</b><span>A reply from a person</span></a></div></div></div><div class=sheet><div class=w><div class=sg><span class=lab>Platform</span><a class=mi href="#"><b>Arthur</b><span>The intelligence system</span></a><a class=mi href="#"><b>The ontology</b><span>How records become objects</span></a><a class=mi href="#"><b>Lineage</b><span>Every value carries its source</span></a><a class=mi href="#"><b>Verified execution</b><span>Work closes on observed proof</span></a></div><div class=sg><span class=lab>Work</span><a class=mi href="#"><b>Client rebuilds</b><span>Six, uncommissioned</span></a><a class=mi href="#"><b>Companies we operate</b><span>Five we own and run</span></a><a class=mi href="#"><b>How we measure</b><span>Weight, Lighthouse, position</span></a></div><div class=sg><span class=lab>Company</span><a class=mi href="#"><b>About</b><span>Business judgment, built as software</span></a><a class=mi href="#"><b>How we scope</b><span>Fixed quote, written scope</span></a><a class=mi href="#"><b>Contact</b><span>A reply from a person</span></a></div></div></div></nav>
+<header class=hero><div class=sp>
+  <div class=spL>
+    <div class=stage><img src="../../../public/studio/solstice/ridge-blaze.jpg" alt="" loading="eager"><img src="../../../public/studio/solstice/dunes-aerial.jpg" alt="" loading="eager"><img src="../../../public/studio/solstice/own-solar.jpg" alt="" loading="lazy"><img src="../../../public/studio/solstice/desert-rust.jpg" alt="" loading="lazy"><img src="../../../public/studio/solstice/ridge-haze.jpg" alt="" loading="lazy"><img src="../../../public/studio/solstice/room-golden.jpg" alt="" loading="lazy"><div class=grade style="background:linear-gradient(180deg,rgba(8,8,10,.42),rgba(8,8,10,.86))"></div></div>
+    <div class=inner>
+      <span class=lab>LOVELEEDAY STUDIOS</span>
+      <h1 style="margin-top:14px">Intelligence<br>you can trace.</h1>
+      <p class=lede style="color:#E8E8E4">The object layer for the business you
+      already run.</p>
+    </div>
+  </div>
+  <div class=spR>
+    <div class=head><span class=lab>Arthur &middot; live</span>
+      <h3 style="margin-top:10px">Ask it something. Watch what it asks back.</h3></div>
+    <div class=brainbox><canvas data-brain></canvas></div><script>Brain.mount(document.currentScript.previousElementSibling.querySelector("canvas"),{});</script>
+  </div>
+</div></header>
+
+<section class=sec><div class=w>
+  <span class=lab>What is enforced</span>
+  <h2>Four rules the write path keeps.</h2>
+  <div class=panels><div class=pnl><span class=code>OBJ</span><b>41</b><span>Objects</span><p>Four records from four systems resolve to one company.</p></div><div class=pnl><span class=code>TIME</span><b>2</b><span>Timelines</span><p>When it was true, and when we learned it.</p></div><div class=pnl><span class=code>LIN</span><b>538</b><span>Traced values</span><p>A write with no source reference is refused.</p></div><div class=pnl><span class=code>PRF</span><b>0</b><span>Unverified</span><p>Work closes on a value read back out.</p></div></div>
+</div></section>
+
+<section class=sec style="padding-top:0"><div class=w>
+  <span class=lab>In production</span>
+  <h2>Five companies we own and run.</h2>
+  <div class=rows><div class=row><span class=c>01</span><b>olldae</b><p>Venue operators reduced catering quote turnaround from a multi-day email chain to a same-session workflow. Inventory, recipes, and billing consolidated into a single platform.</p><span class=n>MVP in 11 days. Full v1 in 6 weeks.</span></div><div class=row><span class=c>02</span><b>Kronos</b><p>Cross-entity financial data pulled into a single authenticated dashboard, replacing weekly manual reconciliation across three separate vendor portals.</p><span class=n>Auth and core routing in 5 days. Full integration in 3 weeks.</span></div><div class=row><span class=c>03</span><b>Hospitality Ops Layer</b><p>Inbox-to-action cycle moved from manual review to automated routing with human-in-the-loop confirmation, across every communication channel.</p><span class=n>Core pipeline in 3 weeks.</span></div><div class=row><span class=c>04</span><b>Duezy</b><p>Invoice-to-payment moved from multi-day manual follow-up to an automated collect-on-send flow, with outstanding invoice tracking consolidated into a single view.</p><span class=n>Functional billing flow in 7 days.</span></div><div class=row><span class=c>05</span><b>Dabney & Co.</b><p>A web presence that matches the bar's physical aesthetic. Guests move from discovery to reservation without leaving the site.</p><span class=n>Design to production in 3 weeks.</span></div></div>
+</div></section>
+
+<section class=sec style="padding-top:0"><div class=w>
+  <span class=lab>Uncommissioned</span>
+  <h2>Thirty-eight measured. Six rebuilt.</h2>
+  <div class=grid><a class=card href="#"><div class=sh><img src="../../../public/portal/collab/novarna-after.jpg" alt="" loading=lazy></div><div class=cb><span class=lab>S-01 &middot; RNA therapeutics</span><p>A platform in the middle of a rename, with the old name still on its investor's portfolio page. The rebuild leads with&hellip;</p></div></a><a class=card href="#"><div class=sh><img src="../../../public/portal/collab/janta-after.jpg" alt="" loading=lazy></div><div class=cb><span class=lab>S-02 &middot; Utility-scale solar</span><p>A hardware company whose site read as a brochure. The rebuild puts the economics in the hero and takes its palette fro&hellip;</p></div></a><a class=card href="#"><div class=sh><img src="../../../public/portal/collab/fyxit-after.jpg" alt="" loading=lazy></div><div class=cb><span class=lab>S-03 &middot; AI service desk</span><p>A product whose whole claim is speed, sold behind an illustrated mascot. The rebuild makes the hero the conversation t&hellip;</p></div></a></div>
+</div></section>
+<footer><div class=w><div class=fg><div><div class=bd>LOVELEEDAY</div><p style="margin-top:10px;max-width:32ch">Intelligence architecture and the production software that runs on top of it.</p></div><div><span class=lab>Platform</span><a href="#">Arthur</a><a href="#">Architecture</a><a href="#">How we scope</a></div><div><span class=lab>Work</span><a href="#">Client rebuilds</a><a href="#">Companies we operate</a><a href="#">How we measure</a></div><div><span class=lab>Company</span><a href="#">About</a><a href="#">Start a project</a><a href="#">hello@loveleedaystudios.com</a></div></div><div class=fbase><span>&copy; 2026 LOVELEEDAY STUDIOS LLC</span><span>KALAMAZOO, MICHIGAN</span></div></div></footer>
+<script>
+(function(){
+  var bar=document.querySelector('nav.bar'); if(!bar) return;
+  var timer=null;
+  function open(n){ clearTimeout(timer); bar.dataset.open=n||'';
+    bar.querySelectorAll('.tab').forEach(function(t){
+      t.classList.toggle('on', t.dataset.menu===n);
+      t.setAttribute('aria-expanded', t.dataset.menu===n?'true':'false'); }); }
+  bar.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('mouseenter',function(){ open(t.dataset.menu); });
+    t.addEventListener('focus',function(){ open(t.dataset.menu); });
+    t.addEventListener('click',function(e){ e.preventDefault();
+      open(bar.dataset.open===t.dataset.menu?'':t.dataset.menu); }); });
+  bar.addEventListener('mouseleave',function(){ timer=setTimeout(function(){open('');},150); });
+  bar.addEventListener('mouseenter',function(){ clearTimeout(timer); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') open(''); });
+  var b=bar.querySelector('.burger');
+  if(b) b.addEventListener('click',function(){
+    bar.dataset.sheet = bar.dataset.sheet==='1' ? '' : '1'; });
+})();
+(function(){
+  document.querySelectorAll('.stage').forEach(function(st){
+    var im=st.querySelectorAll('img'); if(im.length<2) return;
+    var i=0; im[0].classList.add('on');
+    setInterval(function(){ im[i].classList.remove('on');
+      i=(i+1)%im.length; im[i].classList.add('on'); }, 4200);
+  });
+})();
+</script>
+</body></html>
