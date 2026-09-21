@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>LOVELEEDAY &mdash; the system board</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Mulish:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel=stylesheet>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#FBF8F2;color:#16243A;
+  font:400 15px/1.66 'Mulish',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.w{max-width:1360px;margin:0 auto;padding:0 clamp(20px,3vw,44px)}
+.lab{font:500 10px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em;
+  text-transform:uppercase;color:#616D7C}
+header{background:#16243A;color:#F6F3EC;padding:clamp(44px,6vw,80px) 0 clamp(36px,4.4vw,58px)}
+header .lab{color:#96A3B6}
+header h1{font:800 clamp(2.1rem,4.4vw,3.3rem)/1.03 'Manrope',system-ui,sans-serif;
+  letter-spacing:-.04em;margin:16px 0 0;max-width:24ch}
+header p{margin:20px 0 0;max-width:74ch;color:#C6CEDB;font-size:16px}
+header .who{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap}
+header .who span{border:1px solid #33435C;border-radius:3px;padding:6px 11px;
+  font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;
+  text-transform:uppercase;color:#A9B7C9}
+section{border-bottom:1px solid #E6E0D6;padding:clamp(44px,5.4vw,76px) 0}
+h2{font:800 clamp(1.5rem,2.8vw,2.2rem)/1.08 'Manrope',system-ui,sans-serif;
+  letter-spacing:-.035em;margin:14px 0 0}
+section > .w > p.intro{margin:18px 0 0;max-width:76ch;color:#45536A;font-size:15.5px}
+.panel{background:#FFFFFF;border:1px solid #E6E0D6;padding:clamp(22px,2.4vw,32px);
+  margin-top:26px}
+.panel h3{font:700 15px/1.3 'Manrope',sans-serif;letter-spacing:-.02em;margin:0 0 4px}
+.spine{background:#FFFFFF;border:1px solid #16243A;border-left:5px solid #0E7877;
+  padding:clamp(24px,2.8vw,36px);margin-top:28px}
+.spine .q{font:800 clamp(1.25rem,2.3vw,1.75rem)/1.28 'Manrope',sans-serif;
+  letter-spacing:-.025em;margin:12px 0 0}
+.spine .body{margin:18px 0 0;max-width:80ch;color:#45536A}
+.cols{display:grid;gap:16px;margin-top:26px}
+@media(min-width:900px){.cols.c3{grid-template-columns:repeat(3,1fr)}
+  .cols.c2{grid-template-columns:1fr 1fr}}
+.card{background:#FFFFFF;border:1px solid #E6E0D6;padding:22px 22px 24px}
+.card .k{font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;
+  text-transform:uppercase;color:#9B5C3E}
+.card h4{font:700 16px/1.25 'Manrope',sans-serif;letter-spacing:-.02em;margin:11px 0 0}
+.card p{margin:9px 0 0;font-size:13.8px;line-height:1.6;color:#45536A}
+.card .why{margin-top:12px;font-size:12.5px;color:#616D7C;border-top:1px solid #E6E0D6;
+  padding-top:10px}
+.ladder{margin-top:26px;border-top:1px solid #16243A}
+.rung{display:grid;gap:16px;padding:18px 0;border-bottom:1px solid #E6E0D6;align-items:start}
+@media(min-width:860px){.rung{grid-template-columns:46px 1.15fr 1.5fr 190px}}
+.rung .n{font:800 20px/1 'Manrope',sans-serif;color:#0E7877;letter-spacing:-.03em}
+.rung b{font:700 15px/1.35 'Manrope',sans-serif;letter-spacing:-.02em;display:block}
+.rung p{margin:6px 0 0;font-size:13.5px;line-height:1.58;color:#45536A}
+.rung .src{font:400 11.5px/1.55 'IBM Plex Mono',monospace;color:#616D7C}
+.order{display:grid;gap:16px;margin-top:26px}
+@media(min-width:900px){.order{grid-template-columns:1fr 1fr}}
+.ocol{background:#FFFFFF;border:1px solid #E6E0D6}
+.ocol .hd{padding:14px 20px;border-bottom:1px solid #E6E0D6;
+  font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase}
+.ocol.now .hd{color:#9B5C3E} .ocol.next .hd{color:#0E7877}
+.step{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:13px 20px;
+  border-bottom:1px solid #E6E0D6}
+.step:last-child{border-bottom:0}
+.step .i{font:500 11px/1.5 'IBM Plex Mono',monospace;color:#616D7C}
+.step b{font:700 14px/1.35 'Manrope',sans-serif;letter-spacing:-.015em;display:block}
+.step span{display:block;margin-top:4px;font-size:12.6px;color:#45536A;line-height:1.55}
+.step em{font-style:normal;color:#0E7877;font-family:'IBM Plex Mono',monospace;font-size:11.5px}
+table{width:100%;border-collapse:collapse;margin-top:24px;font-size:13.5px}
+th{text-align:left;font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.13em;
+  text-transform:uppercase;color:#616D7C;padding:0 14px 10px 0;border-bottom:1.5px solid #16243A}
+td{padding:12px 14px 12px 0;border-bottom:1px solid #E6E0D6;vertical-align:top;color:#45536A}
+td.n{color:#16243A;font-weight:600;white-space:nowrap}
+td.t{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#616D7C}
+.pill{display:inline-block;font:500 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;
+  text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:4px 7px}
+.pill.new{color:#0E7877} .pill.keep{color:#616D7C} .pill.cut{color:#9B5C3E}
+.warn{background:#FFFFFF;border:1px solid #9B5C3E;border-left:5px solid #9B5C3E;
+  padding:22px 24px;margin-top:16px}
+.warn b{display:block;font:700 15px/1.3 'Manrope',sans-serif;letter-spacing:-.02em}
+.warn p{margin:8px 0 0;font-size:13.8px;color:#45536A;line-height:1.6}
+.warn .ev{margin-top:10px;font:400 11.5px/1.5 'IBM Plex Mono',monospace;color:#616D7C}
+footer{padding:36px 0 70px;color:#616D7C;font:400 12px/1.7 'IBM Plex Mono',monospace}
+</style></head><body>
+
+<header><div class=w>
+  <div class=lab>System board &middot; 2026-09-21 &middot; four desks</div>
+  <h1>How we talk about the intelligence model, and how that becomes a reason to hire us.</h1>
+  <p>The duality has never been resolved on the site: Arthur is an intelligence
+  model we built for ourselves, and the business is people paying us to build
+  software. Lead with the product and we read as a SaaS company moonlighting.
+  Bury it and we read as any studio. This board is the argument that joins them,
+  the order a visitor meets it in, and the components it takes to build.</p>
+  <div class=who><span>Positioning</span><span>Information architecture</span><span>Component system</span><span>Competitive analogues</span><span>Verified in-session</span></div>
+</div></header>
+
+<section><div class=w>
+  <div class=lab>01 &middot; The spine</div>
+  <h2>One sentence the whole site hangs from.</h2>
+  
+<div class=spine>
+  <div class=lab>The chosen spine</div>
+  <p class=q>We hold client work to the four checks we built into Arthur for our
+  own businesses &mdash; who a record is actually about, when it was true, where
+  it came from, and proof that it happened. Hiring us buys the discipline, not
+  just the code.</p>
+  <div class=body><p>A studio&rsquo;s credibility problem is that &ldquo;we write
+  good code&rdquo; cannot be falsified until the invoice is paid. This company has
+  a falsifiable version of that claim sitting in its own repository. Arthur is
+  four enforced disciplines built for ourselves rather than for a pitch, and the
+  same posture shows up independently inside shipped systems &mdash; idempotent
+  webhooks, OAuth refresh handled unasked, per-module health checks. Nobody
+  commissioned that care, which is exactly why it is evidence. The offer is not
+  &ldquo;run on Arthur&rdquo;. It is that the person who will not ship an edge
+  function without idempotency will not ship your migration without a rollback
+  path either.</p></div>
+</div>
+<div class="cols c2">
+<div class=card><div class=k>Rejected &middot; A</div><h4>Product-first: &ldquo;Arthur is our platform, hire us to deploy it&rdquo;</h4><p>The repository will not support it under questioning. Arthur&rsquo;s own FAQ says an adapter in the architecture does not mean a live connection to your systems exists, and there is no case anywhere of Arthur running inside a client stack.</p><div class=why>Collapses into the &ldquo;SaaS company moonlighting&rdquo; distrust, and worse &mdash; the product claim itself is unverified.</div></div><div class=card><div class=k>Rejected &middot; B</div><h4>Bury it: &ldquo;fixed price, production code, done in days&rdquo;</h4><p>Close to what COPY.md argues today, down to a $200 bug-fix tier. It throws away the one differentiated asset a hundred other studios do not have: a documented internal standard for correctness.</p><div class=why>Generic against six-figure competitors, and underselling against $500 ones.</div></div>
+</div>
+</div></section>
+
+<section><div class=w>
+  <div class=lab>02 &middot; The proof ladder</div>
+  <h2>The order a sceptical buyer will accept it in.</h2>
+  <p class=intro>A buyer stops reading at the first claim they cannot check. The
+  present homepage opens with the least checkable rung &mdash; the architecture
+  &mdash; and reaches concrete evidence fourth. This is the inversion.</p>
+  <div class=ladder><div class=rung><div class=n>01</div><div><b>This is a company that ships</b></div><div><p>A live URL and a dated measurement, needing no interpretation. Thirty-eight sites measured on page weight, Lighthouse mobile, live organic position and accessibility. Exists today, and is currently the fourth thing a visitor meets.</p></div><div class=src>work.ts &middot; figures[] &middot; olldae.com live</div></div><div class=rung><div class=n>02</div><div><b>We do this cold, for companies we have never spoken to</b></div><div><p>The six uncommissioned rebuilds. The closest analogue to what a buyer is about to experience: someone looking at an unfamiliar business and producing sourced criticism plus a working alternative, unpaid. It answers &ldquo;would they do this for me&rdquo;.</p></div><div class=src>work.ts &middot; studies[] &middot; stays unnamed</div></div><div class=rung><div class=n>03</div><div><b>The standard is a habit we are not paid to have</b></div><div><p>The five companies we own and run. Highest-trust rung precisely because there was no client to blame for a corner cut, so a corner not cut is real evidence. Lives on /work, correctly labelled and correctly off the homepage &mdash; it needs one linking sentence, not promotion.</p></div><div class=src>work.ts &middot; operated[] &middot; &ldquo;we were our own customer&rdquo;</div></div><div class=rung><div class=n>04</div><div><b>Here is the architecture, if you want to check it yourself</b></div><div><p>Arthur&rsquo;s components, with the FAQ hedges intact. Confirmation for a reader already convinced, not an opening argument. The live homepage leads here, which asks an unconvinced visitor to evaluate an abstraction before seeing one concrete thing.</p></div><div class=src>arthur/page.tsx &middot; currently homepage H1</div></div><div class=rung><div class=n>05</div><div><b>Contact</b></div><div><p>The existing close already carries the argument.</p></div><div class=src>page.tsx:295 &middot; &ldquo;See the question. Build the answer.&rdquo;</div></div></div>
+</div></section>
+
+<section><div class=w>
+  <div class=lab>03 &middot; The order</div>
+  <h2>What the page does now, and what it should do.</h2>
+  <div class=order>
+    <div class="ocol now"><div class=hd>Now &mdash; live at loveleedaystudios.com</div><div class=step><div class=i>01</div><div><b>Arthur / Ontology</b><span>The abstract product claim, first. Least checkable rung in the strongest position.</span></div></div><div class=step><div class=i>02</div><div><b>Metric band</b><span>Figures, before the reader has been given a reason to care.</span></div></div><div class=step><div class=i>03</div><div><b>Five properties. Enforced, not promised.</b><span>Architecture.</span></div></div><div class=step><div class=i>04</div><div><b>Four names. One company.</b><span>The resolution demonstration.</span></div></div><div class=step><div class=i>05</div><div><b>Thirty-eight sites. Six rebuilds.</b><span>The strongest evidence, fifth.</span></div></div><div class=step><div class=i>06</div><div><b>Confidence comes from the evidence.</b><span>A full dark stage &mdash; the register rejected on 2026-09-21.</span></div></div><div class=step><div class=i>07</div><div><b>See the question. Build the answer.</b><span>Close.</span></div></div></div>
+    <div class="ocol next"><div class=hd>Proposed &mdash; Keynote register</div><div class=step><div class=i>01</div><div><b>Arthur.</b><span>The object layer, as one rendered object. A drawn object reads as a product shot; there is no photograph of an architecture.</span><em>motion: lattice</em></div></div><div class=step><div class=i>02</div><div><b>Lineup rail</b><span>Arthur&rsquo;s five architectural components as small drawn marks &mdash; NOT the five owned companies. It does the same &ldquo;there is more than one thing here&rdquo; job without breaking the content rule on the first scroll-stop.</span><em>drawn marks &times;5</em></div></div><div class=step><div class=i>03</div><div><b>Four names. One company.</b><span>Identity resolution. The motion library&rsquo;s own note on this object calls it the best explanation of identity resolution that fits in one frame.</span><em>motion: bundle</em></div></div><div class=step><div class=i>04</div><div><b>Every figure, back to its source.</b><span>Lineage. A progressive path with a crosshair reading out value, index, source reference and delta.</span><em>motion: series</em></div></div><div class=step><div class=i>05</div><div><b>Built to prove it ran.</b><span>Verified execution &mdash; a stage that does not exist today at all, though it is one of the four disciplines the spine rests on.</span><em>motion: flow</em></div></div><div class=step><div class=i>&mdash;</div><div><b>THE HAND-OFF</b><span>The medium changes register before the copy does: five drawn stages, then the first photograph. A visitor feels the shift from &ldquo;how the system works&rdquo; to &ldquo;who we do this for&rdquo; before reading a word. It is also the structural midpoint, so neither half reads as bolted on.</span></div></div><div class=step><div class=i>06</div><div><b>Built. Shipped. Running.</b><span>The first photograph on the page, because it is the first claim about the world rather than about the system. Numbers read from work.ts figures &mdash; one canonical source.</span><em>photograph + metric band</em></div></div><div class=step><div class=i>07</div><div><b>Thirty-eight sites. Six rebuilds.</b><span>The client rebuild grid, using the real frames. The separate four-photo rail above it is cut: it showed the same four sectors a second time with no new information.</span><em>photographs + contour texture</em></div></div><div class=step><div class=i>08</div><div><b>See the question. Build the answer.</b><span>The one stage where the object is signature rather than argument.</span><em>motion: prism</em></div></div></div>
+  </div>
+</div></section>
+
+<section><div class=w>
+  <div class=lab>04 &middot; Components</div>
+  <h2>What has to exist for the argument to be buildable.</h2>
+  
+<p class=intro>Five components do most of the work. The rest are extractions of
+markup that is currently written twice.</p>
+<table><thead><tr><th>Component</th><th>What it does</th><th>Maps to</th><th></th></tr></thead><tbody>
+<tr><td class=n>Stage &starf;</td><td>One polymorphic full-viewport section every other stage is built from. Get its API wrong and every section pays.</td><td class=t>NEW &middot; components/Stage.tsx</td><td><span class="pill new">new</span></td></tr><tr><td class=n>Figure &starf;</td><td>The canvas engine. It is the entire visual argument &mdash; the thing that makes the register read as a product rather than a template.</td><td class=t>components/graphics/Figure.tsx</td><td><span class="pill keep">extend</span></td></tr><tr><td class=n>ConsolePanel &starf;</td><td>The most persuasive proof object on the site, currently locked to one hard-coded dataset. Generalising it lets resolution, lineage, bitemporality and connectors reuse one component instead of four.</td><td class=t>home/ArthurConsole.tsx</td><td><span class="pill keep">promote</span></td></tr><tr><td class=n>Evidence primitives &starf;</td><td>Six parts that carry proof. If these are not consistent, nothing else on the page is credible.</td><td class=t>NEW &middot; components/evidence/*</td><td><span class="pill new">new</span></td></tr><tr><td class=n>ConnectorGrid &starf;</td><td>The only component that shows the CLIENT&rsquo;s systems rather than Arthur&rsquo;s. It does the second half of the brief.</td><td class=t>NEW &middot; from Figure&rsquo;s schematic data</td><td><span class="pill new">new</span></td></tr><tr><td class=n>Hero / ProductRail / WorkCard / CloseCTA</td><td>Currently inlined twice each &mdash; once in the concept, once as raw JSX on the live homepage. Extract.</td><td class=t>NEW extractions</td><td><span class="pill new">new</span></td></tr><tr><td class=n>ui/badge, button, card, separator</td><td>shadcn scaffolding styled against tokens that do not exist in this system. Nothing imports them.</td><td class=t>src/components/ui/*</td><td><span class="pill cut">delete</span></td></tr></tbody></table>
+<div class="cols c2">
+<div class=card><div class=k>Stage type 01</div><h4>Object stage &mdash; always light</h4><p>One mechanism, one drawn object, never two mechanics in one stage. Alternating cream and sunk grounds so two never repeat.</p><div class=why>Never uses the dark ground. That budget is spent once, elsewhere.</div></div><div class=card><div class=k>Stage type 02</div><h4>Photographic stage &mdash; dark on photo</h4><p>Full-bleed image with a navy scrim, metric band under the heading. The studio&rsquo;s own photography only.</p><div class=why>At most once per page. Scrim opacity must be checked against the actual image, not assumed.</div></div><div class=card><div class=k>Stage type 03</div><h4>Data stage &mdash; the one dark stage</h4><p>Navy ground, no photo. The numbers themselves are the object. Every value carries a source.</p><div class=why>Used exactly once, or &ldquo;dark is a stage, not a theme&rdquo; collapses.</div></div><div class=card><div class=k>Stage type 04</div><h4>Quote stage &mdash; new, light only</h4><p>Narrower shell so it does not compete with the display stages. Deliberately set smaller than a headline, because a quote is not the company&rsquo;s own claim.</p><div class=why>If there is no real sourced quote, omit the stage. Do not fabricate one.</div></div>
+</div>
+</div></section>
+
+<section><div class=w>
+  <div class=lab>05 &middot; Evidence</div>
+  <h2>The components that carry proof.</h2>
+  <p class=intro>The whole spine depends on claims being checkable, so the parts
+  that display evidence are load-bearing rather than decorative. Each needs real
+  data or it should not render at all.</p>
+  <table><thead><tr><th>Component</th><th>Required data</th><th>The rule it enforces</th></tr></thead><tbody>
+<tr><td class=n>LineageRow</td><td class=t>property · value · sourceSystem · sourceRef · observedAt</td><td>Missing source or timestamp renders a visible <b>unsourced</b> state &mdash; never silently drops the column.</td></tr><tr><td class=n>MetricBand</td><td class=t>value · caption · sourceRef</td><td>The caption carries the source inline. A number with no trail is not reportable.</td></tr><tr><td class=n>SpecTable</td><td class=t>label · value · detail · status</td><td>Status vocabulary is Confirmed / Partial / Dormant / Not found &mdash; never upgraded without evidence.</td></tr><tr><td class=n>StatusStrip</td><td class=t>label · state · detail · <b>checkedAt</b></td><td>checkedAt is required, not optional. A status strip with no timestamp is decoration, and must never show a live dot without one.</td></tr><tr><td class=n>ChangelogEntry</td><td class=t>date · change · evidenceHref</td><td>Empty renders one dim row, not a vanished section &mdash; a section that disappears reflows the page unpredictably.</td></tr><tr><td class=n>ProvenanceChip</td><td class=t>ref · kind · href</td><td>Always prints the literal reference string, never a paraphrase. Being exactly checkable is its whole job.</td></tr></tbody></table>
+<div class=warn><b>Four defects this board found in my own c1 page</b>
+<p>The footer links to /privacy and /terms and neither route exists &mdash; dead trust
+links on a site whose pitch is that every value carries a trail. The product rail tiles
+the five owned companies on the homepage, which contradicts work.ts&rsquo;s explicit rule
+that they stay off it. The stat block reads 5/6/38/11 while work.ts figures reads 6/38/5/2,
+so the same page and its data file disagree. And the footer asserts &ldquo;an Aspen &amp;
+May company&rdquo;, which appears nowhere in src, COPY.md or BRAND.md &mdash; I took it
+from conversation, not from ground truth.</p>
+<div class=ev>All four verified in-session. One further criticism was raised and is WRONG:
+&ldquo;Arthur 4.0&rdquo; is not unsourced &mdash; it is live in Nav.tsx:73. It stays.</div></div>
+</div></section>
+
+<section><div class=w>
+  <div class=lab>06 &middot; Analogues</div>
+  <h2>How companies with the same duality solve it.</h2>
+  
+<div class="cols c3">
+<div class=card><div class=k>Steal &middot; Stripe</div><h4>Services are demoted to a mid-page accelerant</h4><p>The homepage is entirely product. &ldquo;Realize value faster with dedicated experts&rdquo; appears after the product showcase and before the deep customer stories. Services read as an accelerant to the product, never a second business.</p><div class=why>Verified: stripe.com fetched</div></div><div class=card><div class=k>Steal &middot; QuantumBlack</div><h4>Nest the intelligence under a stated parent</h4><p>McKinsey &rarr; QuantumBlack &rarr; Labs. Separate URL paths and distinct page templates for the capability, its own products and client outcomes &mdash; an ownership hierarchy legible at every level.</p><div class=why>Homepage treatment unverified &mdash; the fetch returned no body content</div></div><div class=card><div class=k>Steal &middot; Thoughtworks</div><h4>Give the intelligence its own dateable artefact</h4><p>The Technology Radar is a versioned, dated snapshot with its own URL that gets re-cited for years. It is deliberately NOT on the homepage &mdash; which is also the cost: most visitors never find it.</p><div class=why>Verified in-session: hero is &ldquo;We don&rsquo;t just do AI / We do AI that works&rdquo; with AI/works&trade;; Radar absent from the homepage</div></div>
+</div>
+<div class=warn><b>The failure mode most likely to bite us &mdash; and it is not hypothetical</b>
+<p>A single &ldquo;companies we have built&rdquo; grid where five owned companies and six
+client rebuilds sit in visually identical cards separated only by a small badge. High Alpha
+ships exactly this: every portfolio card is tagged Studio, Co-Invest, Anchor or Acquired.
+Pioneer Square Labs splits Studio from Ventures cleanly at the top and then re-blurs it in the
+portfolio grid. A label in the corner of a card is not a structural distinction. A different
+page template and a stated sentence is.</p>
+<div class=ev>Verified in-session by fetching highalpha.com: the four tags are present and
+the meaning of each is defined nowhere on the page. A visitor cannot tell which companies
+were founded and which were merely invested in.</div></div>
+</div></section>
+
+<section><div class=w>
+  <div class=lab>07 &middot; Do not say</div>
+  <h2>The claims that would cost us the rest of the page.</h2>
+  <p class=intro>Every one of these is contradicted by something already written
+  in this repo. A buyer who catches one stops believing the checkable ones too.</p>
+  <div class=warn><b>&ldquo;Arthur connects to your systems&rdquo;</b><p>There is no case anywhere in the repository of Arthur running against an external company&rsquo;s data. A buyer who asks for one reference integration gets nothing, and the site would be caught contradicting itself on the same page.</p><div class=ev>Contradicted by arthur/page.tsx &mdash; &ldquo;an adapter in the architecture does not mean a live connection to your systems already exists&rdquo;</div></div><div class=warn><b>&ldquo;Arthur learns and improves on its own&rdquo;</b><p>Any self-improving or continuously-learning framing. This is one of the few places the site is already more honest than typical AI marketing. A future hero line must not undo it.</p><div class=ev>Contradicted by arthur/page.tsx &mdash; &ldquo;we do not claim unrestricted self-improvement or automatic quality gains&rdquo;</div></div><div class=warn><b>&ldquo;Five companies, five principles, one standard&rdquo;</b><p>It sounds like a headline and is actually a false-customer claim. The figures array carries &ldquo;5 &mdash; architectural components in Arthur&rdquo;, and there are also exactly five owned companies. Totalling or rhyming the two implies five customers chose us. They did not; we chose ourselves.</p><div class=ev>Verified in-session: work.ts figures[] k=&ldquo;5&rdquo; beside operated[] length 5</div></div><div class=warn><b>Two different lists both called &ldquo;the five&rdquo;</b><p>The homepage promises identity resolution, bitemporality, lineage, bounded autonomy and observed completion. The Arthur page lists persistent memory, identity resolution, bitemporal record, lineage and tools/routing/verification. Three overlap, four do not. A buyer reading both pages notices, and the proof ladder depends on not having that kind of inconsistency.</p><div class=ev>Verified in-session: page.tsx GUARANTEES vs arthur/page.tsx COMPONENTS</div></div>
+</div></section>
+
+<footer><div class=w>
+  Generated by <code>concepts/studio/build-board.py</code>. Every file-and-line
+  citation on this board was read, not recalled.
+</div></footer>
+</body></html>
