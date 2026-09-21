@@ -4,6 +4,7 @@
 <link rel=preconnect href="https://fonts.googleapis.com">
 <link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Mulish:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel=stylesheet>
+<script src="motion.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -13,6 +14,42 @@ img{display:block;max-width:100%}
   font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.13em;
   text-transform:uppercase;padding:9px 18px}
 
+.nv-util{background:var(--nv-util-bg,#16243A);color:var(--nv-util-fg,#A9B3C4)}
+.nv-util .w{display:flex;gap:22px;align-items:center;height:32px;
+  font:400 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.03em}
+.nv-util span:nth-child(3){margin-left:auto}
+.nv{border-bottom:1px solid var(--nv-line,#E6E0D6);background:var(--nv-bg,#fff);
+  position:sticky;top:29px;z-index:40;backdrop-filter:blur(10px)}
+.nv .w{display:flex;align-items:center;gap:clamp(14px,2.4vw,36px);height:60px}
+.nv .brand{font:800 16px/1 'Manrope',system-ui,sans-serif;letter-spacing:-.035em;
+  white-space:nowrap}
+.nv .links{display:flex;gap:clamp(12px,1.5vw,22px);align-items:center;
+  font:600 13px/1 'Manrope',system-ui,sans-serif;color:var(--nv-mid,#45536A);
+  white-space:nowrap;overflow:hidden}
+.nv .links a.on{color:var(--nv-ink,#16243A)}
+.nv .links .car{font-style:normal;font-size:8px;margin-left:4px;opacity:.5;
+  position:relative;top:-1px}
+.nv .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.nv-search{display:flex;align-items:center;gap:7px;border:1px solid var(--nv-line,#E6E0D6);
+  border-radius:6px;padding:7px 11px;color:var(--nv-dim,#667383);background:var(--nv-sf,#FBF8F2)}
+.nv-search input{border:0;outline:0;background:transparent;width:clamp(90px,11vw,168px);
+  font:400 12.5px/1 'Mulish',sans-serif;color:inherit}
+.nv .btn{border:1px solid var(--nv-ink,#16243A);border-radius:6px;padding:8px 14px;
+  font:600 12.5px/1 'Manrope',sans-serif;white-space:nowrap;color:var(--nv-ink,#16243A)}
+.nv .btn.solid{background:var(--nv-ink,#16243A);color:var(--nv-bg,#fff)}
+.nv-sec{border-bottom:1px solid var(--nv-line,#E6E0D6);background:var(--nv-sec-bg,#FBF8F2)}
+.nv-sec .w{display:flex;gap:clamp(14px,2vw,28px);align-items:center;height:44px;
+  font:500 12.5px/1 'Manrope',sans-serif;color:var(--nv-mid,#45536A);overflow-x:auto}
+.nv-sec a.on{color:var(--nv-ink,#16243A);font-weight:700;
+  box-shadow:0 14px 0 -12px currentColor}
+.stage{position:relative;overflow:hidden}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage .veil{position:absolute;inset:0}
+.stage .w{position:relative;z-index:2}
+.shot{position:relative;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+
+
 :root{--paper:#FAF7F0;--card:#FFFFFF;--ink:#1A1713;--mid:#4B453C;--dim:#7C7367;
   --line:#E5DFD3;--acc:#1F5B4E;--shell:1180px}
 body{margin:0;background:var(--paper);color:var(--ink);
@@ -20,12 +57,17 @@ body{margin:0;background:var(--paper);color:var(--ink);
 .w{max-width:var(--shell);margin:0 auto;padding:0 clamp(20px,3.6vw,44px)}
 .eyebrow{font:500 10px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.2em;
   text-transform:uppercase;color:var(--dim)}
-nav{border-bottom:1px solid var(--line)}
-nav .w{display:flex;align-items:baseline;justify-content:space-between;padding:22px 0 20px}
-nav .brand{font:500 19px/1 'Newsreader',Georgia,serif;letter-spacing:.005em}
-nav .links{display:flex;gap:26px;font:400 10.5px/1 'IBM Plex Mono',monospace;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
-.masthead{padding:clamp(52px,7vw,92px) 0 clamp(30px,3.6vw,46px);border-bottom:1px solid var(--line)}
+.nv{--nv-bg:#FAF7F0;--nv-line:#E5DFD3;--nv-ink:#1A1713;--nv-mid:#4B453C;
+  --nv-dim:#7C7367;--nv-sf:#FFFFFF}
+.nv-util{--nv-util-bg:#1A1713;--nv-util-fg:#B5AB9C}
+.nv-sec{--nv-sec-bg:#FFFFFF;--nv-line:#E5DFD3;--nv-mid:#4B453C;--nv-ink:#1A1713}
+.nv .brand{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:19px;
+  letter-spacing:.005em}
+.mast-art{height:clamp(240px,25vw,340px);border-bottom:1px solid var(--line);
+  background:#fff}
+.mast-art .veil{background:linear-gradient(to bottom,rgba(250,247,240,0) 40%,
+  rgba(250,247,240,.9) 100%)}
+.masthead{padding:clamp(36px,4.6vw,64px) 0 clamp(30px,3.6vw,46px);border-bottom:1px solid var(--line)}
 .masthead h1{font:400 clamp(2.4rem,5.4vw,4rem)/1.06 'Newsreader',Georgia,serif;
   letter-spacing:-.016em;margin:16px 0 0;max-width:18ch}
 .masthead h1 em{font-style:italic;color:var(--acc)}
@@ -58,9 +100,10 @@ footer{border-top:1px solid var(--line);padding:32px 0 62px;color:var(--dim);
 </style></head><body>
 <div class=note>Concept 10 of 10 &mdash; &ldquo;Field Note&rdquo; &middot; the page looks at THE THINKING &middot; stripe press / works in progress</div>
 
-<nav><div class=w><span class=brand>Loveleeday Studios</span>
-  <span class=links><a href="#">Notes</a><a href="#">Work</a><a href="#">Companies</a>
-  <a href="#">Practice</a><a href="#">Contact</a></span></div></nav>
+<div class="nv-util"><div class=w><span>FIELD NOTES</span><span>ISSUE 01 &middot; SEPTEMBER 2026</span><span>PUBLISHED MONTHLY</span><span>RSS</span><span>SUBSCRIBE</span></div></div><nav class="nv"><div class=w><span class=brand>Loveleeday Studios</span><span class=links><a href="#" class=on>Notes</a><a href="#">Work<i class=car>&#9662;</i></a><a href="#">Companies<i class=car>&#9662;</i></a><a href="#">Practice<i class=car>&#9662;</i></a><a href="#">Archive</a><a href="#">Subscribe</a></span><span class=right><a class="btn" href="#">Subscribe</a></span></div></nav><div class="nv-sec"><div class=w><a href="#" class=on>No. 01 &mdash; Eleven days</a><a href="#">No. 02 &mdash; Against discovery</a><a href="#">No. 03 &mdash; Derived artifacts</a><a href="#">No. 04 &mdash; No logos</a><a href="#">Index</a></div></div>
+
+<div class="stage mast-art"><canvas data-motion="prism"></canvas>
+  <div class=veil></div></div>
 
 <div class=masthead><div class=w>
   <p class=eyebrow>Field note no. 01 &middot; September 2026</p>
@@ -112,4 +155,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 62px;color:var(--dim);
 
 <footer><div class=w>Loveleeday Studios &middot; Field notes &middot; Kalamazoo, Michigan</div></footer>
 
+<script>
+document.querySelectorAll('canvas[data-motion]').forEach(function(c){
+  LD.hero(c, c.dataset.motion);
+});
+</script>
 </body></html>

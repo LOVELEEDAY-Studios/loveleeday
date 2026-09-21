@@ -115,6 +115,17 @@ h1{margin:0;font-weight:400;letter-spacing:-.035em;line-height:.94;
 .foot{border-top:1px solid var(--line);padding:30px 0;font-size:12.5px;color:var(--dim)}
 .note{background:#111;color:#8b8b90;font-size:11.5px;padding:10px 0;text-align:center;
   font-family:'IBM Plex Mono',monospace}
+
+/* --- deployment photography, added 2026-09-21 ----------------------------- */
+.deploy{padding:clamp(44px,5vw,74px) 0 clamp(40px,4.6vw,66px);border-top:1px solid var(--line)}
+.dep-grid{max-width:var(--shell);margin:26px auto 0;padding:0 clamp(20px,3.4vw,46px);
+  display:grid;gap:14px}
+@media(min-width:840px){.dep-grid{grid-template-columns:repeat(3,1fr)}}
+.dep-grid figure{margin:0;position:relative}
+.dep-grid img{width:100%;height:clamp(210px,19vw,280px);object-fit:cover;display:block}
+.dep-grid figcaption{position:absolute;left:14px;bottom:12px;color:#fff;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.8)}
 </style>
 </head>
 <body>
@@ -197,6 +208,19 @@ h1{margin:0;font-weight:400;letter-spacing:-.035em;line-height:.94;
     <div class="cell"><div><b>Communications</b><p>800+ messages a week triaged, routed and deduplicated against the calendar.</p></div><span class="go">Ops Layer →</span></div>
   </div>
 </div></section>
+
+<!-- Added 2026-09-21. The concept had no photograph anywhere, and a page whose
+     whole argument is "there is a real system underneath" is exactly the page
+     that benefits from showing where the system runs. -->
+<section class="deploy">
+  <div class="w"><p class="eyebrow">Deployed</p>
+    <h2 style="margin:12px 0 0">Where the object layer actually runs.</h2></div>
+  <div class="dep-grid">
+    <figure><img src="../janta/value-field-towers.jpg" alt=""><figcaption>Energy &middot; asset monitoring</figcaption></figure>
+    <figure><img src="../novarna/lab.jpg" alt=""><figcaption>Life sciences &middot; bench to report</figcaption></figure>
+    <figure><img src="../fyxit/photo-itlead.jpg" alt=""><figcaption>Education &middot; district IT</figcaption></figure>
+  </div>
+</section>
 
 <footer class="foot"><div class="w">Concept mockup — LOVELEEDAY Studios · not a live page · the schematic is drawn in canvas</div></footer>
 

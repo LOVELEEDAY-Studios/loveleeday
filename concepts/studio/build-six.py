@@ -54,6 +54,93 @@ CAPABILITIES = [
 ]
 
 
+# ---------------------------------------------------------------------------
+# The shared furniture the first pass did not have.
+#
+# Daniel, 2026-09-21, on the ten: "i dont see the motion graphics you developed
+# ... i dont see any photos ... these hero sections and navigations all look
+# boring nothing looks like billion dollar company."
+#
+# All three were true and they are one failure, not three. A big company's page
+# announces its size in the first 200 pixels, and it does it with FURNITURE: a
+# utility strip above the nav, a primary row with more items than fit
+# comfortably, a section row under it, a search field, two calls to action of
+# different weight, and then a hero carrying a real object -- a moving one or a
+# photograph -- rather than a sentence on a cream ground.
+#
+# The ten motion objects had been built and then imported by nothing, which is a
+# demo rather than a library. They are now in motion.js and every hero uses one,
+# or uses a photograph where the claim is about people.
+# ---------------------------------------------------------------------------
+
+def nav(brand_html, items, *, util=None, section=None, ctas=None, search=None,
+        cls="nv"):
+    """The furniture. `util` is the thin strip above; `section` is the row of
+       product sections below -- the single loudest "this is a large product"
+       signal on a page, and it costs nothing."""
+    u = ""
+    if util:
+        u = (f'<div class="{cls}-util"><div class=w>'
+             + "".join(f'<span>{x}</span>' for x in util) + '</div></div>')
+    caret = '<i class=car>&#9662;</i>'
+    links = "".join(
+        f'<a href="#"{" class=on" if i == 0 else ""}>{t}{caret if d else ""}</a>'
+        for i, (t, d) in enumerate(items))
+    se = (f'<label class="{cls}-search"><svg width=13 height=13 viewBox="0 0 16 16" '
+          f'aria-hidden=true><circle cx=7 cy=7 r=5 fill=none stroke=currentColor '
+          f'stroke-width=1.7/><path d="M11 11 15 15" stroke=currentColor '
+          f'stroke-width=1.7/></svg><input placeholder="{search}" readonly></label>'
+          if search else "")
+    c = "".join(f'<a class="btn{" solid" if i else ""}" href="#">{t}</a>'
+                for i, t in enumerate(ctas or []))
+    sec = ""
+    if section:
+        sec = (f'<div class="{cls}-sec"><div class=w>'
+               + "".join(f'<a href="#"{" class=on" if i == 0 else ""}>{t}</a>'
+                         for i, t in enumerate(section)) + '</div></div>')
+    return (f'{u}<nav class="{cls}"><div class=w><span class=brand>{brand_html}</span>'
+            f'<span class=links>{links}</span>'
+            f'<span class=right>{se}{c}</span></div></nav>{sec}')
+
+
+NAV_CSS = """
+.nv-util{background:var(--nv-util-bg,#16243A);color:var(--nv-util-fg,#A9B3C4)}
+.nv-util .w{display:flex;gap:22px;align-items:center;height:32px;
+  font:400 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.03em}
+.nv-util span:nth-child(3){margin-left:auto}
+.nv{border-bottom:1px solid var(--nv-line,#E6E0D6);background:var(--nv-bg,#fff);
+  position:sticky;top:29px;z-index:40;backdrop-filter:blur(10px)}
+.nv .w{display:flex;align-items:center;gap:clamp(14px,2.4vw,36px);height:60px}
+.nv .brand{font:800 16px/1 'Manrope',system-ui,sans-serif;letter-spacing:-.035em;
+  white-space:nowrap}
+.nv .links{display:flex;gap:clamp(12px,1.5vw,22px);align-items:center;
+  font:600 13px/1 'Manrope',system-ui,sans-serif;color:var(--nv-mid,#45536A);
+  white-space:nowrap;overflow:hidden}
+.nv .links a.on{color:var(--nv-ink,#16243A)}
+.nv .links .car{font-style:normal;font-size:8px;margin-left:4px;opacity:.5;
+  position:relative;top:-1px}
+.nv .right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.nv-search{display:flex;align-items:center;gap:7px;border:1px solid var(--nv-line,#E6E0D6);
+  border-radius:6px;padding:7px 11px;color:var(--nv-dim,#667383);background:var(--nv-sf,#FBF8F2)}
+.nv-search input{border:0;outline:0;background:transparent;width:clamp(90px,11vw,168px);
+  font:400 12.5px/1 'Mulish',sans-serif;color:inherit}
+.nv .btn{border:1px solid var(--nv-ink,#16243A);border-radius:6px;padding:8px 14px;
+  font:600 12.5px/1 'Manrope',sans-serif;white-space:nowrap;color:var(--nv-ink,#16243A)}
+.nv .btn.solid{background:var(--nv-ink,#16243A);color:var(--nv-bg,#fff)}
+.nv-sec{border-bottom:1px solid var(--nv-line,#E6E0D6);background:var(--nv-sec-bg,#FBF8F2)}
+.nv-sec .w{display:flex;gap:clamp(14px,2vw,28px);align-items:center;height:44px;
+  font:500 12.5px/1 'Manrope',sans-serif;color:var(--nv-mid,#45536A);overflow-x:auto}
+.nv-sec a.on{color:var(--nv-ink,#16243A);font-weight:700;
+  box-shadow:0 14px 0 -12px currentColor}
+.stage{position:relative;overflow:hidden}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage .veil{position:absolute;inset:0}
+.stage .w{position:relative;z-index:2}
+.shot{position:relative;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+"""
+
+
 def shell(n, name, looks, at, css, body, extra_head=""):
     return f"""<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
@@ -61,6 +148,7 @@ def shell(n, name, looks, at, css, body, extra_head=""):
 <link rel=preconnect href="https://fonts.googleapis.com">
 <link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
 <link href="{FONTS}" rel=stylesheet>{extra_head}
+<script src="motion.js"></script>
 <style>
 *,*::before,*::after{{box-sizing:border-box}}
 html{{-webkit-text-size-adjust:100%}}
@@ -69,10 +157,16 @@ img{{display:block;max-width:100%}}
 .note{{position:sticky;top:0;z-index:99;background:#16243A;color:#F6F3EC;
   font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.13em;
   text-transform:uppercase;padding:9px 18px}}
+{NAV_CSS}
 {css}
 </style></head><body>
 <div class=note>Concept {n} of 10 &mdash; &ldquo;{name}&rdquo; &middot; the page looks at {at} &middot; {looks}</div>
 {body}
+<script>
+document.querySelectorAll('canvas[data-motion]').forEach(function(c){{
+  LD.hero(c, c.dataset.motion);
+}});
+</script>
 </body></html>"""
 
 
@@ -89,15 +183,26 @@ body{margin:0;background:var(--paper);color:var(--ink);
 .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
 .eyebrow{font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.19em;
   text-transform:uppercase;color:var(--dim)}
-nav{border-bottom:2px solid var(--rule);background:var(--paper)}
-nav .w{display:flex;align-items:baseline;justify-content:space-between;padding-top:20px;padding-bottom:18px}
-nav .brand{font:700 17px/1 'Manrope',sans-serif;letter-spacing:-.02em}
-nav .brand em{font-style:normal;color:var(--gold)}
-nav .links{display:flex;gap:30px;font:500 12.5px/1 'Mulish',sans-serif;color:var(--mid)}
-nav .links a.on{color:var(--ink);box-shadow:0 2px 0 var(--gold)}
-.sub{border-bottom:1px solid var(--line);background:var(--card)}
-.sub .w{display:flex;gap:26px;padding:11px 0;font:400 11.5px/1 'IBM Plex Mono',monospace;color:var(--dim)}
-.hero{padding:clamp(56px,7vw,96px) 0 clamp(34px,4vw,54px)}
+.nv{--nv-bg:#FBFAF7;--nv-line:#E3DFD6;--nv-ink:#14213D;--nv-mid:#42506B;
+  --nv-dim:#6B7688;--nv-sf:#FFFFFF;border-bottom:2px solid var(--rule)}
+.nv-util{--nv-util-bg:#14213D;--nv-util-fg:#B4BECE}
+.nv .brand em{font-style:normal;color:var(--gold)}
+.nv .links a.on{color:var(--ink);box-shadow:0 20px 0 -17px var(--gold)}
+.nv-sec{--nv-sec-bg:#FFFFFF;--nv-line:#E3DFD6;--nv-mid:#42506B;--nv-ink:#14213D}
+.hero{padding:clamp(44px,5vw,74px) 0 clamp(30px,3.4vw,48px)}
+.split{display:grid;gap:clamp(28px,4vw,56px);align-items:center}
+@media(min-width:960px){.split{grid-template-columns:1.05fr .95fr}}
+.fig1{margin:0}
+.fig1 .stage{border:1px solid var(--line);background:var(--card)}
+.fig1 figcaption{margin-top:12px;font:400 11.5px/1.6 'IBM Plex Mono',monospace;
+  color:var(--dim);max-width:46ch}
+.band{position:relative;height:clamp(230px,26vw,360px);overflow:hidden;
+  border-top:2px solid var(--rule);border-bottom:1px solid var(--line)}
+.band img{width:100%;height:100%;object-fit:cover;display:block}
+.band .cap{position:absolute;left:0;right:0;bottom:0;padding:22px 0;
+  background:linear-gradient(transparent,rgba(20,33,61,.72));color:#fff}
+.band .cap .w{font:400 11.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.09em;
+  text-transform:uppercase}
 .hero h1{font:400 clamp(2.6rem,5.6vw,4.4rem)/1.04 'Instrument Serif',Georgia,serif;
   letter-spacing:-.018em;margin:18px 0 0;max-width:17ch}
 .hero .lede{margin:26px 0 0;max-width:60ch;font-size:17px;color:var(--mid)}
@@ -145,19 +250,30 @@ def c5():
                         ("11", "3", "days to first shipped MVP"),
                         ("100%", "", "of work shipped to production")])
     return shell("05", "Prospectus", "an annual report", "THE BUSINESS", C5_CSS, f"""
-<nav><div class=w><span class=brand>LOVELEE<em>DAY</em></span>
-  <span class=links><a class=on href="#">Business</a><a href="#">Platform</a>
-  <a href="#">Work</a><a href="#">Practice</a><a href="#">Contact</a></span></div></nav>
-<div class=sub><div class=w><span>FY2026 &middot; SECOND HALF</span><span>KALAMAZOO, MI</span>
-  <span>PRIVATELY HELD</span><span>ASPEN &amp; MAY GROUP</span></div></div>
+{nav("LOVELEE<em>DAY</em>",
+      [("Business", 1), ("Platform", 1), ("Companies", 1), ("Work", 0),
+       ("Practice", 1), ("Newsroom", 0)],
+      util=["FY2026 &middot; SECOND HALF", "KALAMAZOO, MICHIGAN",
+            "INVESTOR RELATIONS", "PRIVATELY HELD", "ASPEN &amp; MAY GROUP"],
+      section=["Overview", "Segments", "Operating companies", "Client work",
+               "Governance", "Letter to holders"],
+      search="Search filings and figures",
+      ctas=["Request the deck", "Start a project"])}
 
-<div class=hero><div class=w>
-  <p class=eyebrow>Statement of operations &middot; 2026</p>
-  <h1>We do not have a portfolio. We have a balance sheet.</h1>
-  <p class=lede>Most studios show you work they were paid to do. We show you the five
-  companies we own and run on the software we wrote, and then the work clients hired us
-  for. One of those is a claim about taste. The other is a claim about consequences.</p>
-</div></div>
+<div class=hero><div class=w><div class=split>
+  <div>
+    <p class=eyebrow>Statement of operations &middot; 2026</p>
+    <h1>We do not have a portfolio. We have a balance sheet.</h1>
+    <p class=lede>Most studios show you work they were paid to do. We show you the five
+    companies we own and run on the software we wrote, and then the work clients hired us
+    for. One of those is a claim about taste. The other is a claim about consequences.</p>
+  </div>
+  <figure class=fig1>
+    <div class=stage style="height:300px"><canvas data-motion="series"></canvas></div>
+    <figcaption>Fig. 1 &mdash; a measured series against its observed value. Drawn live,
+    not a screenshot of a chart.</figcaption>
+  </figure>
+</div></div></div>
 
 <div class=metrics><div class=w>{mets}</div></div>
 
@@ -196,6 +312,10 @@ def c5():
   </div>
 </div></section>
 
+<div class=band><img src="../janta/value-aerial-solar.jpg" alt="">
+  <div class=cap><div class=w>Operating asset &middot; utility-scale monitoring, built and
+  run by the studio</div></div></div>
+
 <footer><div class=w><span>LOVELEEDAY STUDIOS &middot; KALAMAZOO, MICHIGAN</span>
   <span>ASPEN &amp; MAY GROUP</span><span>2026</span></div></footer>
 """)
@@ -219,17 +339,29 @@ body{margin:0;background:var(--paper);color:var(--ink);
   font:400 11.5px/1 'IBM Plex Mono',monospace}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--live);display:inline-block;
   margin-right:7px;box-shadow:0 0 0 3px rgba(14,124,123,.24)}
-nav{border-bottom:1px solid var(--line);position:sticky;top:29px;background:rgba(255,255,255,.94);
-  backdrop-filter:blur(9px);z-index:9}
-nav .w{display:flex;align-items:center;justify-content:space-between;height:62px}
-nav .brand{font:800 16px/1 'Manrope',sans-serif;letter-spacing:-.03em}
-nav .links{display:flex;gap:26px;font:500 13px/1 'Manrope',sans-serif;color:var(--mid)}
-nav .btn{border:1px solid var(--ink);border-radius:5px;padding:8px 15px;
-  font:600 12.5px/1 'Manrope',sans-serif}
-.hero{padding:clamp(46px,6vw,80px) 0 0}
-.hero h1{font:800 clamp(2.3rem,5vw,3.9rem)/1.02 'Manrope',sans-serif;letter-spacing:-.04em;
-  margin:16px 0 0;max-width:16ch}
-.hero p{margin:22px 0 0;max-width:58ch;color:var(--mid);font-size:16.5px}
+.nv{--nv-bg:rgba(255,255,255,.94);--nv-line:#E4E8EC;--nv-ink:#101418;--nv-mid:#3C454F;
+  --nv-dim:#6C7681;--nv-sf:#F4F6F8}
+.nv-sec{--nv-sec-bg:#F4F6F8;--nv-line:#E4E8EC;--nv-mid:#3C454F;--nv-ink:#101418}
+.hero-split{padding:clamp(40px,5vw,72px) 0 clamp(30px,3.4vw,48px);
+  border-bottom:1px solid var(--line);background:linear-gradient(var(--wash),#fff)}
+.hs{display:grid;gap:clamp(28px,3.6vw,52px);align-items:center}
+@media(min-width:960px){.hs{grid-template-columns:1fr 1.02fr}}
+.hs h1{font:800 clamp(2.3rem,4.8vw,3.7rem)/1.01 'Manrope',sans-serif;
+  letter-spacing:-.042em;margin:16px 0 0;max-width:14ch}
+.hs p{margin:22px 0 0;max-width:50ch;color:var(--mid);font-size:16.5px}
+.objpanel{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;
+  box-shadow:0 22px 44px -30px rgba(16,20,24,.32)}
+.objbar{display:flex;justify-content:space-between;padding:10px 15px;
+  border-bottom:1px solid var(--line);font:400 10.5px/1 'IBM Plex Mono',monospace;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--dim)}
+.acts{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+.acts .btn{border-radius:6px;padding:11px 19px;font:600 13.5px/1 'Manrope',sans-serif}
+.acts .btn.solid{background:var(--ink);color:#fff}
+.acts .btn.ghost{border:1px solid var(--line2,#C9D2DA);color:var(--mid);background:#fff}
+.hero{padding:clamp(40px,5vw,66px) 0 0}
+.hero h2{font:800 clamp(1.5rem,2.7vw,2.1rem)/1.1 'Manrope',sans-serif;
+  letter-spacing:-.033em;margin:14px 0 0}
+.hero p{margin:20px 0 0;max-width:58ch;color:var(--mid);font-size:16.5px}
 .map{margin-top:clamp(32px,4vw,52px);border:1px solid var(--line);border-radius:10px;
   background:linear-gradient(var(--wash),#fff);overflow:hidden}
 .map .bar{display:flex;justify-content:space-between;align-items:center;
@@ -255,6 +387,12 @@ h2{font:800 clamp(1.5rem,2.7vw,2.2rem)/1.08 'Manrope',sans-serif;letter-spacing:
 .pill{justify-self:start;font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.09em;
   text-transform:uppercase;border:1px solid var(--live);color:var(--live);
   border-radius:3px;padding:5px 9px}
+.photos{padding:clamp(34px,4vw,56px) 0 clamp(44px,5vw,70px)}
+.pgrid{display:grid;gap:14px}
+@media(min-width:800px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+.pgrid figure{margin:0}
+.pgrid figcaption{margin-top:10px;font:400 11px/1.5 'IBM Plex Mono',monospace;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
 footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--dim);
   font:400 12px/1.6 'IBM Plex Mono',monospace}
 """
@@ -317,16 +455,32 @@ def c6():
 <div class=status><div class=w><span><span class=dot></span>All systems operational</span>
   <span>5 products</span><span>4 shared services</span><span>us-east &middot; iad</span>
   <span style="margin-left:auto">Updated 14:02 ET</span></div></div>
-<nav><div class=w><span class=brand>LOVELEEDAY</span>
-  <span class=links><a href="#">Platform</a><a href="#">Products</a><a href="#">Work</a>
-  <a href="#">Practice</a><a href="#">Docs</a></span>
-  <a class=btn href="#">Start a project</a></div></nav>
+{nav("LOVELEEDAY",
+     [("Platform", 1), ("Products", 1), ("Solutions", 1), ("Work", 0),
+      ("Practice", 1), ("Docs", 0), ("Support", 0)],
+     section=["Overview", "Control plane", "Data layer", "Identity", "Billing",
+              "Observability", "Status", "Changelog"],
+     search="Search docs and products",
+     ctas=["Client portal", "Start a project"])}
+
+<div class=hero-split><div class=w><div class=hs>
+  <div>
+    <p class=eyebrow>The platform</p>
+    <h1>Five companies. One control plane.</h1>
+    <p>We build each product on the same spine, so a fix to billing is a fix to billing
+    everywhere. Every record any of them holds resolves onto one object.</p>
+    <div class=acts><a class="btn solid" href="#">Explore the platform</a>
+      <a class="btn ghost" href="#">Read the architecture</a></div>
+  </div>
+  <div class=objpanel>
+    <div class=objbar><span>LIVE &middot; RECORD ROUTING</span><span>us-east &middot; iad</span></div>
+    <div class=stage style="height:320px"><canvas data-motion="flow"></canvas></div>
+  </div>
+</div></div></div>
 
 <div class=hero><div class=w>
-  <p class=eyebrow>The platform</p>
-  <h1>Five companies. One control plane.</h1>
-  <p>We build each product on the same spine, so a fix to billing is a fix to billing
-  everywhere. This is the actual topology, not an illustration of one.</p>
+  <p class=eyebrow>Topology</p>
+  <h2 style="margin-bottom:6px">This is the actual wiring, not an illustration of one.</h2>
   <div class=map>
     <div class=bar><span>TOPOLOGY &middot; PRODUCTION</span>
       <span class=legend><i>&#9632; owned</i><i>&#9633; third party</i>
@@ -341,6 +495,15 @@ def c6():
   <h2>What is running right now.</h2>
   <div class=rows>{rows}</div>
 </div></section>
+
+<div class=photos><div class=w><div class=pgrid>
+  <figure><div class=shot style="height:250px"><img src="../janta/value-field-towers.jpg" alt=""></div>
+    <figcaption>Monitoring, in the field</figcaption></figure>
+  <figure><div class=shot style="height:250px"><img src="../novarna/bench.jpg" alt=""></div>
+    <figcaption>Instrumentation, at the bench</figcaption></figure>
+  <figure><div class=shot style="height:250px"><img src="../micruity/x_office.jpg" alt=""></div>
+    <figcaption>Operators, on the console</figcaption></figure>
+</div></div></div>
 
 <footer><div class=w>LOVELEEDAY STUDIOS &middot; KALAMAZOO, MICHIGAN &middot;
   STATUS PAGE IS THE HOMEPAGE</div></footer>
@@ -411,6 +574,17 @@ p.lede{font-size:19px;line-height:1.62;color:var(--mid);margin:22px 0 0}
 @media(min-width:760px){.why dl{grid-template-columns:1fr 1fr}}
 .why dt{font:600 14px/1.4 'Manrope',sans-serif;letter-spacing:-.01em}
 .why dd{margin:5px 0 0;font-size:14.5px;line-height:1.6;color:var(--mid)}
+.nv{--nv-bg:#F7F5F1;--nv-line:#E2DDD5;--nv-ink:#171514;--nv-mid:#4A4643;
+  --nv-dim:#7A736C;--nv-sf:#FFFFFF}
+.nv-util{--nv-util-bg:#171514;--nv-util-fg:#B9B1A8}
+.nv-sec{--nv-sec-bg:#FFFFFF;--nv-line:#E2DDD5;--nv-mid:#4A4643;--nv-ink:#171514}
+.nv .brand{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:18px;
+  letter-spacing:.005em}
+.pgrid{display:grid;gap:16px;padding:0 0 clamp(40px,5vw,64px)}
+@media(min-width:840px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+.pgrid figure{margin:0}
+.pgrid figcaption{margin-top:11px;font:400 11px/1.5 'IBM Plex Mono',monospace;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--dim)}
 footer{border-top:1px solid var(--line);padding:34px 0 62px;color:var(--dim);
   font:400 11.5px/1.6 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
 """
@@ -424,9 +598,15 @@ def c7():
                        ("../fyxit/photo-hallway.jpg",
                         "Fig. 3 &mdash; the corridor. Used once, to establish where the software is actually used, and never repeated.")])
     return shell("07", "Case File", "mckinsey.com / accenture.com", "THE WORK", C7_CSS, f"""
-<nav><div class=w><span class=brand>Loveleeday Studios</span>
-  <span class=links><a href="#">Work</a><a href="#">Companies</a><a href="#">Practice</a>
-  <a href="#">Writing</a><a href="#">Contact</a></span></div></nav>
+{nav("Loveleeday Studios",
+     [("Work", 1), ("Industries", 1), ("Companies", 1), ("Capabilities", 1),
+      ("Practice", 0), ("Writing", 0)],
+     util=["SELECTED ENGAGEMENTS", "SIX REBUILDS, 2026", "KALAMAZOO",
+           "PRESS", "CAREERS"],
+     section=["All cases", "Education", "Field services", "Hospitality",
+              "Energy", "Life sciences", "Restaurant technology"],
+     search="Search cases",
+     ctas=["Private links", "Start a project"])}
 
 <div class=hero>
   <img src="../fyxit/photo-teacher.jpg" alt="">
@@ -489,6 +669,15 @@ def c7():
   different act, so the imagery is here and the identities are not.</p>
 </div></section>
 
+<div class=w><div class=pgrid>
+  <figure><div class=shot style="height:300px"><img src="../novarna/lab.jpg" alt=""></div>
+    <figcaption>Life sciences &mdash; bench to report</figcaption></figure>
+  <figure><div class=shot style="height:300px"><img src="../janta/value-dsr-campus.jpg" alt=""></div>
+    <figcaption>Energy &mdash; campus demand response</figcaption></figure>
+  <figure><div class=shot style="height:300px"><img src="../micruity/x_couple.jpg" alt=""></div>
+    <figcaption>Financial services &mdash; the household, not the account</figcaption></figure>
+</div></div>
+
 <footer><div class=w>Loveleeday Studios &middot; Kalamazoo, Michigan</div></footer>
 """)
 
@@ -507,19 +696,19 @@ body{margin:0;background:var(--paper);color:var(--ink);
 .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
 .eyebrow{font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;
   text-transform:uppercase;color:var(--dim)}
-nav{border-bottom:1px solid var(--line);position:sticky;top:29px;z-index:9;
-  background:rgba(255,255,255,.93);backdrop-filter:blur(8px)}
-nav .w{display:flex;align-items:center;justify-content:space-between;height:54px}
-nav .brand{font:700 14.5px/1 'Manrope',sans-serif;letter-spacing:-.035em}
-nav .links{display:flex;gap:22px;font:500 12.5px/1 'Manrope',sans-serif;color:var(--mid)}
+.nv{--nv-bg:rgba(255,255,255,.93);--nv-line:#EAEAEC;--nv-ink:#0D0D0F;
+  --nv-mid:#4A4D55;--nv-dim:#82868F;--nv-sf:#FAFAFA}
+.nv-util{--nv-util-bg:#0D0D0F;--nv-util-fg:#9AA0AB}
 .kbd{font:500 12px/1 'IBM Plex Mono',monospace;border:1px solid var(--line2);
   border-bottom-width:2px;border-radius:4px;padding:5px 8px;color:var(--mid);
   white-space:nowrap}
-.hero{padding:clamp(64px,9vw,120px) 0 clamp(40px,5vw,64px);max-width:720px}
+.hero{padding:clamp(44px,6vw,84px) 0 clamp(36px,4vw,58px)}
+.heroflex{display:grid;gap:clamp(26px,3.6vw,50px);align-items:center}
+@media(min-width:900px){.heroflex{grid-template-columns:1fr .92fr}}
 .hero h1{font:800 clamp(2.1rem,4.4vw,3.2rem)/1.06 'Manrope',sans-serif;
   letter-spacing:-.045em;margin:14px 0 0}
 .hero p{margin:20px 0 0;color:var(--mid);font-size:16px;max-width:54ch}
-.hero .cta{margin-top:30px;display:flex;gap:10px;align-items:center}
+.hero .cta{margin-top:30px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .btn{border-radius:6px;padding:9px 16px;font:600 13px/1 'Manrope',sans-serif}
 .btn.solid{background:var(--ink);color:#fff}
 .btn.ghost{border:1px solid var(--line2);color:var(--mid)}
@@ -579,17 +768,27 @@ def c8():
                      ("#82868F", "#fff"), ("#EAEAEC", "#0D0D0F"), ("#FAFAFA", "#0D0D0F"),
                      ("#FFFFFF", "#0D0D0F")])
     return shell("08", "Spec", "linear.app / vercel.com", "THE CRAFT", C8_CSS, f"""
-<nav><div class=w><span class=brand>LOVELEEDAY</span>
-  <span class=links><a href="#">Work</a><a href="#">Companies</a><a href="#">Practice</a>
-  <a href="#">Changelog</a><span class=kbd>&#8984;K</span></span></div></nav>
+{nav("LOVELEEDAY",
+     [("Product", 1), ("Method", 1), ("Companies", 1), ("Work", 0),
+      ("Changelog", 0), ("Docs", 0)],
+     util=["SPEC AS OF 2026-09-21", "ALL FIGURES MEASURED",
+           "STATUS: OPERATIONAL", "CHANGELOG IS PUBLIC"],
+     search="Search the spec",
+     ctas=["Sign in", "Start a project"])}
 
-<div class=w><div class=hero>
-  <p class=eyebrow>Studio</p>
-  <h1>Software that holds up when you look closely.</h1>
-  <p>Most of this page is a specification, because a studio that will not publish its own
-  numbers is asking to be judged on adjectives.</p>
-  <div class=cta><a class="btn solid" href="#">Start a project</a>
-    <a class="btn ghost" href="#">Read the changelog</a></div>
+<div class=w><div class="hero heroflex">
+  <div>
+    <p class=eyebrow>Studio</p>
+    <h1>Software that holds up when you look closely.</h1>
+    <p>Most of this page is a specification, because a studio that will not publish its own
+    numbers is asking to be judged on adjectives.</p>
+    <div class=cta><a class="btn solid" href="#">Start a project</a>
+      <a class="btn ghost" href="#">Read the changelog</a>
+      <span class=kbd>&#8984;K</span></div>
+  </div>
+  <div class=stage style="height:330px;border:1px solid var(--line);border-radius:10px">
+    <canvas data-motion="contour"></canvas>
+  </div>
 </div></div>
 
 <section><div class=w>
@@ -631,22 +830,25 @@ body{margin:0;background:var(--paper);color:var(--ink);
 .w{max-width:var(--shell);margin:0 auto;padding:0 clamp(20px,3vw,40px)}
 .eyebrow{font:500 10px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.16em;
   text-transform:uppercase;color:var(--dim)}
-.top{background:var(--ink);color:#C7D2E0}
-.top .w{display:flex;gap:24px;align-items:center;height:32px;
-  font:400 11.5px/1 'IBM Plex Mono',monospace}
-nav{border-bottom:1px solid var(--line);background:var(--card)}
-nav .w{display:flex;align-items:center;justify-content:space-between;height:58px}
-nav .brand{font:800 15.5px/1 'Manrope',sans-serif;letter-spacing:-.03em}
-nav .links{display:flex;gap:24px;font:600 13px/1 'Manrope',sans-serif;color:var(--mid)}
-nav .links a.on{color:var(--acc);box-shadow:0 18px 0 -16px var(--acc)}
-.sub{background:var(--card);border-bottom:1px solid var(--line)}
-.sub .w{display:flex;gap:26px;height:42px;align-items:center;
-  font:500 12.5px/1 'Manrope',sans-serif;color:var(--mid);overflow-x:auto}
-.sub a.on{color:var(--ink);font-weight:700}
-.hero{padding:clamp(40px,5vw,66px) 0 clamp(30px,3.4vw,44px)}
-.hero h1{font:800 clamp(1.9rem,4vw,3rem)/1.06 'Manrope',sans-serif;letter-spacing:-.04em;
-  margin:14px 0 0;max-width:21ch}
-.hero p{margin:18px 0 0;max-width:62ch;color:var(--mid);font-size:16px}
+.nv{--nv-bg:#FFFFFF;--nv-line:#E1E6ED;--nv-ink:#0F1B2D;--nv-mid:#3F4C61;
+  --nv-dim:#6E7A8C;--nv-sf:#FAFBFC}
+.nv-util{--nv-util-bg:#0F1B2D;--nv-util-fg:#C7D2E0}
+.nv-sec{--nv-sec-bg:#FFFFFF;--nv-line:#E1E6ED;--nv-mid:#3F4C61;--nv-ink:#0F1B2D}
+.nv .links a.on{color:var(--acc);box-shadow:0 20px 0 -17px var(--acc)}
+.hero-stage{min-height:clamp(340px,38vw,470px);display:flex;align-items:center;
+  border-bottom:1px solid var(--line)}
+.hero-stage .veil{background:linear-gradient(100deg,rgba(250,251,252,.97) 0 42%,
+  rgba(250,251,252,.74) 66%,rgba(250,251,252,.25) 100%)}
+.hero-stage .w{padding:clamp(30px,3.6vw,50px) clamp(20px,3vw,40px)}
+.hero-stage h1{font:800 clamp(2rem,4.2vw,3.1rem)/1.05 'Manrope',sans-serif;
+  letter-spacing:-.04em;margin:14px 0 0;max-width:20ch}
+.hero-stage p{margin:18px 0 0;max-width:60ch;color:var(--mid);font-size:16px}
+.rail{padding:clamp(26px,3vw,40px) 0 0}
+.rgrid{display:grid;gap:12px}
+@media(min-width:860px){.rgrid{grid-template-columns:repeat(4,1fr)}}
+.rgrid figure{margin:0}
+.rgrid figcaption{margin-top:9px;font:500 10.5px/1.4 'IBM Plex Mono',monospace;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--dim)}
 .search{margin-top:26px;max-width:560px;display:flex;border:1px solid var(--line);
   border-radius:7px;background:var(--card);overflow:hidden}
 .search input{flex:1;border:0;outline:0;padding:12px 15px;font:400 14px/1 'Mulish',sans-serif;
@@ -697,24 +899,40 @@ def c9():
         f'<tr><td><b>{t}</b></td><td>{c}</td><td class=ok>running</td><td>{s}</td></tr>'
         for i, t, c, s, k in OPERATED)
     return shell("09", "Catalogue", "aws.amazon.com / cloud.google.com", "THE SERVICES", C9_CSS, f"""
-<div class=top><div class=w><span>LOVELEEDAY STUDIOS</span><span>ASPEN &amp; MAY GROUP</span>
-  <span style="margin-left:auto">Console</span><span>Support</span><span>Contact sales</span></div></div>
-<nav><div class=w><span class=brand>LOVELEEDAY</span>
-  <span class=links><a class=on href="#">Capabilities</a><a href="#">Products</a>
-  <a href="#">Work</a><a href="#">Pricing</a><a href="#">Docs</a><a href="#">Company</a></span></div></nav>
-<div class=sub><div class=w><a class=on href="#">All capabilities</a><a href="#">Platform</a>
-  <a href="#">Data</a><a href="#">Interface</a><a href="#">Operations</a>
-  <a href="#">By industry</a><a href="#">By outcome</a></div></div>
+{nav("LOVELEEDAY",
+     [("Capabilities", 1), ("Products", 1), ("Industries", 1), ("Work", 0),
+      ("Pricing", 0), ("Docs", 0), ("Company", 1)],
+     util=["LOVELEEDAY STUDIOS", "ASPEN &amp; MAY GROUP", "Console", "Support",
+           "Contact sales"],
+     section=["All capabilities", "Platform", "Data", "Interface", "Operations",
+              "By industry", "By outcome", "What's new"],
+     search="Search capabilities",
+     ctas=["Console", "Contact sales"])}
 
-<div class=hero><div class=w>
-  <p class=eyebrow>Capabilities</p>
-  <h1>Twenty-four things we build, named.</h1>
-  <p>A studio that lists services in threes is telling you it does whatever is asked. This
-  is the actual catalogue, grouped the way the work is grouped, and every line is something
-  we have shipped to production more than once.</p>
-  <div class=search><input placeholder="Search capabilities, products and case files" readonly>
-    <span>Search</span></div>
-</div></div>
+<div class="stage hero-stage">
+  <canvas data-motion="halftone"></canvas>
+  <div class=veil></div>
+  <div class=w>
+    <p class=eyebrow>Capabilities</p>
+    <h1>Twenty-four things we build, named.</h1>
+    <p>A studio that lists services in threes is telling you it does whatever is asked.
+    This is the actual catalogue, grouped the way the work is grouped, and every line is
+    something we have shipped to production more than once.</p>
+    <div class=search><input placeholder="Search capabilities, products and case files" readonly>
+      <span>Search</span></div>
+  </div>
+</div>
+
+<div class=rail><div class=w><div class=rgrid>
+  <figure><div class=shot style="height:190px"><img src="../janta/software-dashboard-hero.jpg" alt=""></div>
+    <figcaption>Operator consoles</figcaption></figure>
+  <figure><div class=shot style="height:190px"><img src="../novarna/lab.jpg" alt=""></div>
+    <figcaption>Ingestion pipelines</figcaption></figure>
+  <figure><div class=shot style="height:190px"><img src="../janta/value-field-towers.jpg" alt=""></div>
+    <figcaption>Observability</figcaption></figure>
+  <figure><div class=shot style="height:190px"><img src="../micruity/x_office.jpg" alt=""></div>
+    <figcaption>Design systems</figcaption></figure>
+</div></div></div>
 
 <div class=cat><div class=w>
   <p class=eyebrow>By category</p>
@@ -753,12 +971,17 @@ body{margin:0;background:var(--paper);color:var(--ink);
 .w{max-width:var(--shell);margin:0 auto;padding:0 clamp(20px,3.6vw,44px)}
 .eyebrow{font:500 10px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.2em;
   text-transform:uppercase;color:var(--dim)}
-nav{border-bottom:1px solid var(--line)}
-nav .w{display:flex;align-items:baseline;justify-content:space-between;padding:22px 0 20px}
-nav .brand{font:500 19px/1 'Newsreader',Georgia,serif;letter-spacing:.005em}
-nav .links{display:flex;gap:26px;font:400 10.5px/1 'IBM Plex Mono',monospace;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
-.masthead{padding:clamp(52px,7vw,92px) 0 clamp(30px,3.6vw,46px);border-bottom:1px solid var(--line)}
+.nv{--nv-bg:#FAF7F0;--nv-line:#E5DFD3;--nv-ink:#1A1713;--nv-mid:#4B453C;
+  --nv-dim:#7C7367;--nv-sf:#FFFFFF}
+.nv-util{--nv-util-bg:#1A1713;--nv-util-fg:#B5AB9C}
+.nv-sec{--nv-sec-bg:#FFFFFF;--nv-line:#E5DFD3;--nv-mid:#4B453C;--nv-ink:#1A1713}
+.nv .brand{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:19px;
+  letter-spacing:.005em}
+.mast-art{height:clamp(240px,25vw,340px);border-bottom:1px solid var(--line);
+  background:#fff}
+.mast-art .veil{background:linear-gradient(to bottom,rgba(250,247,240,0) 40%,
+  rgba(250,247,240,.9) 100%)}
+.masthead{padding:clamp(36px,4.6vw,64px) 0 clamp(30px,3.6vw,46px);border-bottom:1px solid var(--line)}
 .masthead h1{font:400 clamp(2.4rem,5.4vw,4rem)/1.06 'Newsreader',Georgia,serif;
   letter-spacing:-.016em;margin:16px 0 0;max-width:18ch}
 .masthead h1 em{font-style:italic;color:var(--acc)}
@@ -819,9 +1042,18 @@ def c10():
             ("No. 04", "Why we do not show logos",
              "A wall of client marks is a claim about who chose you. Ours is a claim about what we run.")])
     return shell("10", "Field Note", "stripe press / works in progress", "THE THINKING", C10_CSS, f"""
-<nav><div class=w><span class=brand>Loveleeday Studios</span>
-  <span class=links><a href="#">Notes</a><a href="#">Work</a><a href="#">Companies</a>
-  <a href="#">Practice</a><a href="#">Contact</a></span></div></nav>
+{nav("Loveleeday Studios",
+     [("Notes", 0), ("Work", 1), ("Companies", 1), ("Practice", 1),
+      ("Archive", 0), ("Subscribe", 0)],
+     util=["FIELD NOTES", "ISSUE 01 &middot; SEPTEMBER 2026", "PUBLISHED MONTHLY",
+           "RSS", "SUBSCRIBE"],
+     section=["No. 01 &mdash; Eleven days", "No. 02 &mdash; Against discovery",
+              "No. 03 &mdash; Derived artifacts", "No. 04 &mdash; No logos",
+              "Index"],
+     ctas=["Subscribe"])}
+
+<div class="stage mast-art"><canvas data-motion="prism"></canvas>
+  <div class=veil></div></div>
 
 <div class=masthead><div class=w>
   <p class=eyebrow>Field note no. 01 &middot; September 2026</p>

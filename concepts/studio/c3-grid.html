@@ -140,6 +140,8 @@ h1{margin:16px 0 0;font-size:clamp(2.2rem,5.2vw,4.3rem);line-height:1.02;font-we
 .foot{padding:26px 0;font-size:12px;color:var(--dim)}
 .note{background:#111;color:#8b8b90;font-size:11.5px;padding:10px 0;text-align:center;
   font-family:'IBM Plex Mono',monospace}
+
+.card .top img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
@@ -292,19 +294,21 @@ var SET1=[
   ['Verified execution','Nothing closes without a value read back from the system that changed.','observed proof']
 ];
 var SET2=[
-  ['olldae','Restaurant operating system — inventory, recipe costing, catering quoting, Stripe billing.','MVP in 11 days'],
-  ['Kronos','Multi-entity finance across Stripe Financial Connections, Xero and Supabase.','22 routes'],
-  ['Duezy','Invoice automation with reminders and an embedded collect-on-send checkout.','7 days to billing'],
-  ['Portfolio audit','Thirty-eight sites measured, six rebuilt as running pages rather than slides.','6 rebuilds']
+  ['olldae','Restaurant operating system — inventory, recipe costing, catering quoting, Stripe billing.','MVP in 11 days','../micruity/x_office.jpg'],
+  ['Kronos','Multi-entity finance across Stripe Financial Connections, Xero and Supabase.','22 routes','../janta/software-dashboard-hero.jpg'],
+  ['Duezy','Invoice automation with reminders and an embedded collect-on-send checkout.','7 days to billing','../novarna/bench.jpg'],
+  ['Portfolio audit','Thirty-eight sites measured, six rebuilt as running pages rather than slides.','6 rebuilds','../janta/value-dsr-campus.jpg']
 ];
 function cards(el,set,off){
   var host=document.getElementById(el);
   set.forEach(function(c,i){
     var a=document.createElement('a'); a.className='card'; a.href='#';
-    a.innerHTML='<div class="top"><canvas></canvas></div><div class="body"><b>'+c[0]+
+    var top = c[3] ? '<div class="top"><img src="'+c[3]+'" alt=""></div>'
+                   : '<div class="top"><canvas></canvas></div>';
+    a.innerHTML=top+'<div class="body"><b>'+c[0]+
       '</b><p>'+c[1]+'</p><span class="k">'+c[2]+'</span></div>';
     host.appendChild(a);
-    art(a.querySelector('canvas'), i+off);
+    var cv=a.querySelector('canvas'); if (cv) art(cv, i+off);
   });
 }
 function art(cv,k){
