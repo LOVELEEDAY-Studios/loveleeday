@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 1 — Keynote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================================
+   CONCEPT 1 — "KEYNOTE".  What the page is looking at: THE OBJECT.
+
+   Register: apple.com/mac, captured 2026-09-21. The things that actually make
+   Apple read as Apple, none of which are "use black":
+
+     · The corporate ground is LIGHT (#F5F5F7), and BLACK is a product stage you
+       cut to. I had this backwards in the first attempt -- dark everywhere
+       flattens it, because if the whole site is a stage then nothing is.
+     · Extreme scale contrast. "Mac" sets at ~64px above 11px nav links and
+       13px captions. The ratio is the luxury signal, not the size.
+     · A PRODUCT RAIL immediately under the title -- small tiles of everything
+       the company makes. It says "there is a lineup" before it says anything
+       else, and a lineup is what a big company has.
+     · Tiny centred nav. Eleven items at 12px. Confidence is a small nav.
+     · Each section is one idea, one object, one line, full viewport.
+   ========================================================================== */
+:root{
+  --grey:#F5F5F7; --paper:#FFFFFF; --ink:#1D1D1F; --ink-2:#000000;
+  --mid:#6E6E73; --dim:#86868B; --line:#D2D2D7;
+  --blue:#0071E3; --sig:#FF4713;
+  --shell:1024px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Figtree',-apple-system,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:var(--shell);margin:0 auto;padding:0 22px}
+.wide{max-width:1360px;margin:0 auto;padding:0 22px}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.06em}
+
+/* ── nav: 12px, centred, blurred. The whole bar is 44px tall. ────────────── */
+.nav{position:sticky;top:0;z-index:60;height:44px;display:flex;align-items:center;
+  background:rgba(251,251,253,.82);backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.06)}
+.nav ul{list-style:none;display:flex;gap:clamp(14px,2.6vw,38px);align-items:center;
+  justify-content:center;margin:0 auto;padding:0;width:100%;max-width:1000px}
+.nav a{font-size:12px;color:#1d1d1f;opacity:.86;transition:opacity .2s}
+.nav a:hover{opacity:1}
+.nav .mark{display:flex;align-items:center;gap:7px;font-weight:700;font-size:12.5px;letter-spacing:.01em}
+
+/* ── hero ────────────────────────────────────────────────────────────────── */
+.hero{background:var(--grey);padding:clamp(48px,7vw,78px) 0 0;text-align:center;overflow:hidden}
+h1{margin:0;font-weight:800;letter-spacing:-.045em;line-height:.92;
+  font-size:clamp(3.6rem,11.5vw,10.5rem)}
+.kick{margin:18px auto 0;max-width:24ch;font-size:clamp(1.15rem,2.4vw,1.85rem);
+  line-height:1.22;font-weight:500;letter-spacing:-.02em;color:var(--ink)}
+.links{margin-top:20px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
+.links a{color:var(--blue);font-size:clamp(1rem,1.5vw,1.16rem);font-weight:450}
+.links a::after{content:" \203A"}
+
+/* the rendered object, centred and bleeding off the bottom of the stage */
+.stage-obj{margin-top:clamp(22px,3vw,40px);position:relative;height:clamp(320px,40vw,540px)}
+.stage-obj canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* ── the lineup rail ─────────────────────────────────────────────────────── */
+.rail{background:var(--paper);padding:clamp(30px,4vw,46px) 0 clamp(26px,3.4vw,38px)}
+.rail-in{display:flex;gap:clamp(18px,3.4vw,52px);overflow-x:auto;justify-content:flex-start;
+  scrollbar-width:none;padding-bottom:6px}
+.rail-in::-webkit-scrollbar{display:none}
+.tile{flex:0 0 auto;width:108px;text-align:center}
+.tile .art{height:74px;display:grid;place-items:center}
+.tile .art svg{display:block}
+.tile b{display:block;margin-top:8px;font-size:12px;font-weight:600;letter-spacing:-.01em}
+.tile span{display:block;margin-top:2px;font-size:10.5px;color:var(--sig);font-weight:600}
+
+/* ── full-viewport product stages ────────────────────────────────────────── */
+.stage{min-height:min(96vh,860px);display:grid;place-items:center;text-align:center;
+  padding:clamp(54px,8vw,110px) 0;position:relative;overflow:hidden}
+.stage.dark{background:var(--ink-2);color:#F5F5F7}
+.stage.light{background:var(--grey)}
+.stage h2{margin:0;font-weight:800;letter-spacing:-.042em;line-height:.96;
+  font-size:clamp(2.4rem,6.6vw,5.4rem)}
+.stage .sub{margin:16px auto 0;max-width:30ch;font-size:clamp(1rem,1.6vw,1.28rem);
+  line-height:1.4;color:var(--mid);font-weight:450}
+.stage.dark .sub{color:#A1A1A6}
+.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--sig)}
+.figure-wrap{margin-top:clamp(26px,4vw,48px);width:min(1100px,92vw);position:relative}
+.figure-wrap canvas{display:block;width:100%;height:clamp(220px,30vw,380px)}
+
+/* ── numbers ─────────────────────────────────────────────────────────────── */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(30px,4vw,52px);
+  width:min(1100px,92vw);border-top:1px solid rgba(255,255,255,.14)}
+.nums div{padding:26px 14px;border-right:1px solid rgba(255,255,255,.14)}
+.nums div:last-child{border-right:0}
+.nums b{display:block;font-size:clamp(2rem,3.6vw,3.2rem);font-weight:800;letter-spacing:-.04em;line-height:1}
+.nums span{display:block;margin-top:9px;font-size:12.5px;color:#A1A1A6;line-height:1.4}
+
+.foot{background:var(--grey);padding:34px 0;font-size:12px;color:var(--dim);line-height:1.6}
+.note{background:#111;color:#8b8b90;font-size:11.5px;padding:10px 0;text-align:center}
+@media (max-width:700px){ .nums{grid-template-columns:repeat(2,1fr)} .nums div:nth-child(2){border-right:0} }
+</style>
+</head>
+<body>
+
+<div class="note mono">CONCEPT 1 of 4 — “KEYNOTE” · the page looks at THE OBJECT · Apple register</div>
+
+<nav class="nav">
+  <ul>
+    <li class="mark">
+      <svg width="15" height="15" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <rect x="18" y="18" width="27" height="27" stroke="#1d1d1f" stroke-width="7"/>
+        <rect x="55" y="18" width="27" height="27" fill="#1d1d1f"/>
+        <rect x="18" y="55" width="27" height="27" fill="#1d1d1f"/>
+        <path d="M55 55H82V82H55V55Z" stroke="#1d1d1f" stroke-width="7"/>
+      </svg>
+    </li>
+    <li><a href="#">Arthur</a></li><li><a href="#">Platform</a></li>
+    <li><a href="#">olldae</a></li><li><a href="#">Kronos</a></li>
+    <li><a href="#">Duezy</a></li><li><a href="#">Work</a></li>
+    <li><a href="#">Company</a></li><li><a href="#">Research</a></li>
+    <li><a href="#">Support</a></li><li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="w">
+    <h1>Arthur</h1>
+    <p class="kick">The intelligence system that can show you where every answer came from.</p>
+    <div class="links"><a href="#">Learn more</a><a href="#">See it work</a></div>
+  </div>
+  <div class="stage-obj"><canvas id="obj-hero"></canvas></div>
+</header>
+
+<section class="rail">
+  <div class="wide">
+    <div class="rail-in" id="rail"></div>
+  </div>
+</section>
+
+<section class="stage dark">
+  <div class="w">
+    <p class="eyebrow">Identity resolution</p>
+    <h2>Four names.<br>One company.</h2>
+    <p class="sub">A payments customer, a vendor id, a line in a PDF. Three records. One object.</p>
+  </div>
+  <div class="figure-wrap"><canvas id="obj-resolve"></canvas></div>
+</section>
+
+<section class="stage light">
+  <div class="w">
+    <p class="eyebrow">Lineage</p>
+    <h2>Every figure,<br>back to its source.</h2>
+    <p class="sub">A number without a trail is not reportable. That rule is in the write path, not in a promise.</p>
+  </div>
+  <div class="figure-wrap"><canvas id="obj-lineage"></canvas></div>
+</section>
+
+<section class="stage dark">
+  <div class="w">
+    <p class="eyebrow">In production</p>
+    <h2>Built. Shipped.<br>Running.</h2>
+    <div class="nums">
+      <div><b>5</b><span>Products in production</span></div>
+      <div><b>6</b><span>Sites rebuilt in working HTML</span></div>
+      <div><b>38</b><span>Sites measured in one audit</span></div>
+      <div><b>11</b><span>Days to first production MVP</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot"><div class="wide">Concept mockup — LOVELEEDAY Studios · not a live page · rendered objects are drawn in canvas, no imagery licensed</div></footer>
+
+<script>
+(function(){
+'use strict';
+var R = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- the lineup rail: each product gets a drawn mark, not a screenshot ---- */
+var PRODUCTS = [
+  {n:'Arthur',   tag:'New', d:'M14 40h28M14 30h20M14 50h20'},
+  {n:'olldae',   tag:'',    d:''},
+  {n:'Kronos',   tag:'',    d:''},
+  {n:'Duezy',    tag:'',    d:''},
+  {n:'Ops Layer',tag:'',    d:''},
+  {n:'Portals',  tag:'',    d:''}
+];
+var rail = document.getElementById('rail');
+PRODUCTS.forEach(function(p,i){
+  var el=document.createElement('div'); el.className='tile';
+  el.innerHTML='<div class="art">'+mark(i)+'</div><b>'+p.n+'</b>'+(p.tag?'<span>'+p.tag+'</span>':'');
+  rail.appendChild(el);
+});
+/* six small isometric marks, each a different primitive. Drawn so the rail reads
+   as a LINEUP of distinct things rather than six copies of a logo. */
+function mark(i){
+  var c='#1d1d1f', a='#FF4713';
+  var s=['<rect x="14" y="16" width="34" height="34" rx="3" fill="none" stroke="C" stroke-width="2.4"/><circle cx="31" cy="33" r="7" fill="A"/>',
+         '<path d="M12 44 L31 14 L50 44 Z" fill="none" stroke="C" stroke-width="2.4"/><circle cx="31" cy="36" r="4.5" fill="A"/>',
+         '<circle cx="31" cy="33" r="17" fill="none" stroke="C" stroke-width="2.4"/><path d="M31 33 L31 20 M31 33 L41 39" stroke="A" stroke-width="2.8" stroke-linecap="round"/>',
+         '<rect x="13" y="22" width="36" height="22" rx="3" fill="none" stroke="C" stroke-width="2.4"/><path d="M13 30h36" stroke="C" stroke-width="2.4"/><circle cx="20" cy="26" r="2" fill="A"/>',
+         '<path d="M14 45 L23 30 L32 38 L41 19 L49 33" fill="none" stroke="C" stroke-width="2.4" stroke-linejoin="round"/><circle cx="41" cy="19" r="4" fill="A"/>',
+         '<rect x="15" y="15" width="15" height="15" fill="C"/><rect x="34" y="15" width="15" height="15" fill="none" stroke="C" stroke-width="2.4"/><rect x="15" y="34" width="15" height="15" fill="none" stroke="C" stroke-width="2.4"/><rect x="34" y="34" width="15" height="15" fill="A"/>'
+        ][i];
+  return '<svg width="62" height="62" viewBox="0 0 62 62">'+s.replace(/C/g,c).replace(/A/g,a)+'</svg>';
+}
+
+/* ---- canvas helper: dpr-correct, resize-aware, reduced-motion aware ------- */
+function scene(id, draw, animate){
+  var cv=document.getElementById(id); if(!cv) return;
+  var ctx=cv.getContext('2d'), dpr=Math.min(devicePixelRatio||1,2), W=0,H=0, t0=null, run=true;
+  function fit(){ var b=cv.getBoundingClientRect(); W=b.width; H=b.height;
+    cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
+    if(R||!animate) draw(ctx,W,H,1); }
+  new ResizeObserver(fit).observe(cv); fit();
+  if(R||!animate) return;
+  new IntersectionObserver(function(e){run=e[0].isIntersecting;}).observe(cv);
+  (function f(ts){ requestAnimationFrame(f); if(!run){t0=null;return;}
+    if(t0===null)t0=ts; draw(ctx,W,H,(ts-t0)/1000); })(performance.now());
+}
+
+/* ---- HERO OBJECT ----------------------------------------------------------
+   A slowly turning lattice of linked nodes, lit from above, sitting on the grey
+   stage. This is the "product shot" -- Apple would photograph a machine here and
+   the equivalent for a system with no physical form is a rendered one. */
+scene('obj-hero', function(x,W,H,t){
+  x.clearRect(0,0,W,H);
+  /* Third attempt at this object, and the first two failed the same way: a
+     Fibonacci sphere of small nodes has no SILHOUETTE, so on a light ground it
+     reads as scatter rather than as a thing. An Apple product stage needs an
+     object you could photograph -- clear edges, obvious volume, one light.
+
+     So it is a lattice: a 5x5x5 cube of nodes with struts along the axes, which
+     has a hard outline, a front face, and an inside you can see through. It is
+     also the right metaphor -- a structure, not a cloud. */
+  var n=5, S=[], i,j,k;
+  for(i=0;i<n;i++) for(j=0;j<n;j++) for(k=0;k<n;k++)
+    S.push({x:(i/(n-1)-0.5)*2, y:(j/(n-1)-0.5)*2, z:(k/(n-1)-0.5)*2, i:i,j:j,k:k});
+
+  /* Sized from the object's MAXIMUM projected extent, not from a guess. A
+     rotating cube is widest on its diagonal, and perspective multiplies that
+     again -- half-diagonal is R*sqrt(3), the near face scales by
+     2.6/(2.6-0.45) = 1.21, so the object needs R*2.09 of room in each
+     direction. The first pass used R = H*0.46 and the cube was cut off on
+     three sides. */
+  var cx=W/2, cy=H*0.50, R=Math.min(W*0.143, H*0.225);
+  var ry=t*0.26, rx=-0.30;                       // slow yaw, fixed tilt
+  var cy_=Math.cos(rx), sy_=Math.sin(rx), cb=Math.cos(ry), sb=Math.sin(ry);
+  var L=[-0.40,-0.62,0.68], lm=Math.hypot(L[0],L[1],L[2]);
+  L=[L[0]/lm,L[1]/lm,L[2]/lm];
+
+  var P=S.map(function(p){
+    var X=p.x*cb + p.z*sb, Z=-p.x*sb + p.z*cb;    // yaw
+    var Y=p.y*cy_ - Z*sy_;  Z=p.y*sy_ + Z*cy_;    // tilt
+    var s=2.6/(2.6-Z*0.45);
+    return {X:cx+X*R*s, Y:cy+Y*R*s, Z:Z, s:s, i:p.i, j:p.j, k:p.k,
+            nl:Math.max(0,(X*L[0]+Y*L[1]+Z*L[2])/1.74)};
+  });
+  function at(i,j,k){ return P[(i*n+j)*n+k]; }
+
+  // contact shadow
+  var sh=cy+R*1.95;
+  var g=x.createRadialGradient(cx,sh,2,cx,sh,R*2.1);
+  g.addColorStop(0,'rgba(0,0,0,.15)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  x.fillStyle=g; x.beginPath(); x.ellipse(cx,sh,R*2.0,R*0.22,0,0,7); x.fill();
+
+  // struts along the three axes only -- a lattice, not a web
+  var struts=[];
+  for(i=0;i<n;i++) for(j=0;j<n;j++) for(k=0;k<n;k++){
+    if(i<n-1) struts.push([at(i,j,k),at(i+1,j,k)]);
+    if(j<n-1) struts.push([at(i,j,k),at(i,j+1,k)]);
+    if(k<n-1) struts.push([at(i,j,k),at(i,j,k+1)]);
+  }
+  struts.sort(function(a,b){return (a[0].Z+a[1].Z)-(b[0].Z+b[1].Z);});
+  struts.forEach(function(e){
+    var dep=((e[0].Z+e[1].Z)/2+1)/2;
+    x.globalAlpha=0.05+0.42*dep*dep;
+    x.strokeStyle='#1d1d1f'; x.lineWidth=0.5+1.5*dep;
+    x.beginPath(); x.moveTo(e[0].X,e[0].Y); x.lineTo(e[1].X,e[1].Y); x.stroke();
+  });
+
+  // nodes, back to front, lit
+  P.slice().sort(function(a,b){return a.Z-b.Z;}).forEach(function(p){
+    var dep=(p.Z+1)/2, r=(1.4+3.4*dep);
+    var corner=(p.i===0||p.i===n-1)+(p.j===0||p.j===n-1)+(p.k===0||p.k===n-1);
+    x.globalAlpha=0.18+0.82*dep;
+    if(corner===3){ x.fillStyle='#FF4713'; r*=1.22; }
+    else { var v=Math.round(146-116*p.nl); x.fillStyle='rgb('+v+','+v+','+(v+4)+')'; }
+    x.beginPath(); x.arc(p.X,p.Y,r,0,7); x.fill();
+    if(p.nl>0.66 && dep>0.62){
+      x.globalAlpha=(p.nl-0.66)/0.34*0.72*dep; x.fillStyle='#fff';
+      x.beginPath(); x.arc(p.X-r*0.3,p.Y-r*0.32,r*0.36,0,7); x.fill();
+    }
+  });
+  x.globalAlpha=1;
+}, true);
+
+/* ---- RESOLUTION: many labels collapsing to one ---------------------------- */
+scene('obj-resolve', function(x,W,H,t){
+  x.clearRect(0,0,W,H);
+  var names=['stripe:cus_QX8f2','erp:vendor/4412','“FES, Inc.”','ap@fintecheq.com','xero:contact/31a','toast:loc_4471'];
+  var cx=W*0.5, cy=H*0.5;
+  var cyc=(t%6)/6, ease=cyc<0.6?(1-Math.pow(1-cyc/0.6,3)):1;
+  x.font='500 13px "IBM Plex Mono", monospace'; x.textBaseline='middle';
+  names.forEach(function(n,i){
+    var a=(i/names.length)*Math.PI*2 - Math.PI/2;
+    var Rr=Math.min(W*0.33,H*0.58)*(1-ease*0.82);
+    var px=cx+Math.cos(a)*Rr, py=cy+Math.sin(a)*Rr*0.7;
+    x.globalAlpha=0.20+0.55*(1-ease);
+    x.strokeStyle='#FF4713'; x.lineWidth=1;
+    x.beginPath(); x.moveTo(px,py); x.lineTo(cx,cy); x.stroke();
+    x.globalAlpha=0.35+0.55*(1-ease);
+    x.fillStyle='#9a9aa0'; x.textAlign = Math.cos(a)<0?'right':'left';
+    x.fillText(n, px+(Math.cos(a)<0?-10:10), py);
+  });
+  x.globalAlpha=Math.min(1,ease*1.6);
+  x.textAlign='center'; x.fillStyle='#F5F5F7';
+  x.font='700 '+Math.round(Math.min(W*0.036,30))+'px Figtree, sans-serif';
+  x.fillText('FINTECH EQUIPMENT SERVICES', cx, cy);
+  x.globalAlpha=1;
+}, true);
+
+/* ---- LINEAGE: one value, its trail printed beneath it --------------------- */
+scene('obj-lineage', function(x,W,H){
+  x.clearRect(0,0,W,H);
+  var rows=[['net_terms','45 days','erp:vendor/4412','2026-09-18'],
+            ['spend_ytd','$412,880','stripe:bal_tx','2026-09-20'],
+            ['contact','ap@fintecheq.com','doc:invoice_8841.pdf','2026-08-02'],
+            ['risk_tier','B','model:vendor_risk/v4','2026-09-21']];
+  var pad=Math.min(W*0.06,70), top=H*0.16, step=(H*0.68)/rows.length;
+  x.textBaseline='middle';
+  rows.forEach(function(r,i){
+    var y=top+i*step;
+    x.strokeStyle='#D2D2D7'; x.lineWidth=1;
+    x.beginPath(); x.moveTo(pad,y+step*0.5); x.lineTo(W-pad,y+step*0.5); x.stroke();
+    x.font='500 12px "IBM Plex Mono", monospace'; x.fillStyle='#86868B';
+    x.textAlign='left'; x.fillText(r[0].toUpperCase(), pad, y);
+    x.font='700 '+Math.round(Math.min(W*0.022,21))+'px Figtree, sans-serif'; x.fillStyle='#1d1d1f';
+    x.fillText(r[1], pad+Math.min(W*0.17,170), y);
+    x.font='400 12px "IBM Plex Mono", monospace'; x.fillStyle='#FF4713';
+    x.fillText(r[2], pad+Math.min(W*0.40,400), y);
+    x.textAlign='right'; x.fillStyle='#86868B'; x.fillText(r[3], W-pad, y);
+  });
+}, false);
+})();
+</script>
+</body>
+</html>
