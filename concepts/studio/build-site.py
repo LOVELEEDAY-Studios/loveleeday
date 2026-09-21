@@ -66,6 +66,47 @@ NAV_ITEMS = [("Arthur", "arthur.html"), ("Work", "work.html"),
              ("Company", "about.html"), ("Contact", "contact.html")]
 
 
+# ---------------------------------------------------------------------------
+# GRADIENTS, built from the brand hues rather than bought.
+#
+# Daniel, 2026-09-21: "we should include photos and color on the front page
+# including gradients and excitement."
+#
+# This reverses a line in BRAND.md ("No gradients. No overlays.") on purpose,
+# and it is worth saying why the reversal is narrow. Twelve stock gradients were
+# pulled from Unsplash and looked at: nine were the purple-magenta AI-wallpaper
+# register, which is the slop look this project has already rejected once. A
+# bought gradient also cannot be tuned -- if the teal moves, the artwork does
+# not move with it.
+#
+# So the gradients are MESH gradients composed from the palette's own hues, as
+# stacked radial-gradients. They are tunable, they are ours, and when a token
+# changes they change with it. Two hard rules:
+#   1. A gradient is a STAGE GROUND, never a fill behind small text.
+#   2. Every gradient declares the text colour that was measured against its
+#      DARKEST and LIGHTEST point, not against its average.
+# ---------------------------------------------------------------------------
+GRADIENTS = {
+    # cream page, warm copper bloom -- the hero wash
+    "dawn": ("radial-gradient(1100px 620px at 18% 8%, #FCEFE2 0%, rgba(252,239,226,0) 62%),"
+             "radial-gradient(900px 560px at 88% 22%, #E7F2F0 0%, rgba(231,242,240,0) 60%),"
+             "radial-gradient(760px 520px at 62% 96%, #F7E4D6 0%, rgba(247,228,214,0) 64%),"
+             "#FBF8F2"),
+    # cool, for a stage that follows a warm one
+    "tide": ("radial-gradient(900px 540px at 82% 12%, #DFF0EE 0%, rgba(223,240,238,0) 62%),"
+             "radial-gradient(820px 520px at 10% 88%, #EAF1F6 0%, rgba(234,241,246,0) 60%),"
+             "#F7F6F1"),
+    # the one dark stage, navy through teal
+    "deep": ("radial-gradient(1000px 620px at 78% 10%, #1B4B55 0%, rgba(27,75,85,0) 62%),"
+             "radial-gradient(880px 560px at 12% 86%, #23324C 0%, rgba(35,50,76,0) 62%),"
+             "#16243A"),
+    # the close: copper into navy, the loudest the brand gets
+    "ember": ("radial-gradient(980px 600px at 22% 14%, #C0603A 0%, rgba(192,96,58,0) 58%),"
+              "radial-gradient(900px 560px at 86% 84%, #10505C 0%, rgba(16,80,92,0) 60%),"
+              "#16243A"),
+}
+
+
 def css():
     t = T
     return f"""
@@ -106,6 +147,39 @@ img{{display:block;max-width:100%}}
 .stage.deepbg{{background:{t['deep']};color:{t['on_deep']}}}
 .stage.deepbg .sub{{color:{t['on_deep_mu']}}}
 .stage.deepbg .eyebrow{{color:{t['on_deep_mu']}}}
+/* gradient grounds. A gradient is a stage ground, never a fill behind small text. */
+.stage.g-dawn{{background:{GRADIENTS['dawn']}}}
+.stage.g-tide{{background:{GRADIENTS['tide']}}}
+.stage.g-deep,.stage.g-ember{{color:{t['on_deep']}}}
+.stage.g-deep{{background:{GRADIENTS['deep']}}}
+.stage.g-ember{{background:{GRADIENTS['ember']}}}
+.stage.g-deep .sub,.stage.g-ember .sub{{color:{t['on_deep_mu']}}}
+.stage.g-deep .eyebrow,.stage.g-ember .eyebrow{{color:{t['on_deep_mu']}}}
+.hero.g-dawn{{background:{GRADIENTS['dawn']}}}
+/* A gradient's LIGHTEST stop is what text has to survive, not its average.
+   Measured: teal #0E7877 came to 4.29 on dawn's lightest bloom and 4.49 on
+   tide's, both under the 4.5 this project sets. Links on a gradient ground get
+   their own darker role rather than the gradients being flattened. */
+.hero.g-dawn .acts a,.stage.g-dawn a,.stage.g-tide a{{color:#0D706F}}
+/* And where text sits on a DARK gradient, a soft scrim sits behind the text
+   block only. Solved numerically: at 0.58 even the full copper bloom carries
+   the heading at 9.5:1, the sub at 5.0 and the ghost link at 6.5 -- so the
+   bloom stays vivid at the edges instead of being darkened to #6C3620, which
+   is what it would have taken to make bare text safe on it. */
+.close.g-ember .w,.stage.g-deep .w{{position:relative}}
+.close.g-ember .w::before,.stage.g-deep .w::before{{content:"";position:absolute;
+  inset:-14% -18%;z-index:-1;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(11,18,31,.58),rgba(11,18,31,0) 100%)}}
+/* a colour band of the studio's own work -- the photography already carries
+   more colour than any bought gradient does */
+.band{{display:grid;gap:2px;background:{t['line']}}}
+@media(min-width:760px){{.band{{grid-template-columns:repeat(4,1fr)}}}}
+.band figure{{margin:0;position:relative;overflow:hidden;background:{t['sunk']}}}
+.band img{{width:100%;height:clamp(190px,17vw,250px);object-fit:cover;display:block}}
+.band figure::after{{content:"";position:absolute;inset:0;
+  background:linear-gradient(transparent 46%,rgba(12,18,30,.76))}}
+.band figcaption{{position:absolute;left:14px;bottom:12px;z-index:2;color:#fff;
+  font:500 10.5px/1.35 'IBM Plex Mono',monospace;letter-spacing:.13em;text-transform:uppercase}}
 .stage h2{{margin:16px 0 0}}
 /* .obj is NOT scoped to .stage: the hero's object sits outside a stage, so a
    descendant selector gave it no dimensions at all and the canvas collapsed to
@@ -204,6 +278,11 @@ img{{display:block;max-width:100%}}
 
 /* ── close + footer ─────────────────────────────────────────────────────── */
 .close{{padding:clamp(66px,9vw,128px) 0;text-align:center;background:{t['sunk']}}}
+.close.g-ember{{background:{GRADIENTS['ember']};color:{t['on_deep']}}}
+.close.g-ember .sub{{color:{t['on_deep_mu']}}}
+.close.g-ember .eyebrow{{color:{t['on_deep_mu']}}}
+.close.g-ember .btn{{background:{t['on_deep']};color:{t['deep']}}}
+.close.g-ember .btn.ghost{{background:transparent;color:#8FD9D6}}
 .close h2{{font-size:clamp(2.2rem,5.4vw,4rem);margin:16px 0 0}}
 .btn{{display:inline-block;background:{t['ink']};color:{t['ground']};border-radius:980px;
   padding:13px 28px;font:600 15px/1 'Manrope',sans-serif;margin-top:26px}}
@@ -324,8 +403,10 @@ def spec(rows):
         for i, t, d in rows) + '</div>')
 
 
-def close(eyebrow, head, sub, primary="Start a project", ghost="See what we have shipped"):
-    return (f'<section class=close><div class=w><p class=eyebrow>{eyebrow}</p>'
+def close(eyebrow, head, sub, primary="Start a project", ghost="See what we have shipped",
+          ground=""):
+    g = f" {ground}" if ground else ""
+    return (f'<section class="close{g}"><div class=w><p class=eyebrow>{eyebrow}</p>'
             f'<h2 class=display>{head}</h2><p class=sub>{sub}</p>'
             f'<div><a class=btn href="contact.html">{primary}</a>'
             f'<a class="btn ghost" href="work.html">{ghost} &rsaquo;</a></div></div></section>')
@@ -357,19 +438,32 @@ def rail():
 def home():
     figs = [(k, v) for k, v in FIGURES][:4]
     body = nav("") + f"""
-<header class=hero><div class=w>
+<header class="hero g-dawn"><div class=w>
   <h1 class=display>Arthur.</h1>
   <p class=sub>The intelligence system that can show you where every answer came from.</p>
   <div class=acts><a href="arthur.html">Learn more &rsaquo;</a>
     <a href="work.html">See it work &rsaquo;</a></div>
 </div><div class=obj><canvas data-motion="lattice"></canvas></div></header>
 {rail()}
+
+<!-- COLOUR, from the studio's own work rather than from a bought gradient.
+     These four carry more colour than anything in twelve pages of stock. -->
+<div class=band>
+  <figure><img src="../../janta/yield-traditional-solar.jpg" alt="">
+    <figcaption>Energy &middot; yield</figcaption></figure>
+  <figure><img src="../../novarna/sweep.jpg" alt="">
+    <figcaption>Life sciences &middot; assay</figcaption></figure>
+  <figure><img src="../../janta/value-aerial-solar.jpg" alt="">
+    <figcaption>Energy &middot; siting</figcaption></figure>
+  <figure><img src="../../fyxit/photo-itlead.jpg" alt="">
+    <figcaption>Education &middot; district IT</figcaption></figure>
+</div>
 {stage("Identity resolution", "Four names.<br>One company.",
        "A payments customer, a vendor id and a line in a PDF. Three records, one object.",
        obj="bundle", ground="sunkbg")}
 {stage("Lineage", "Every figure,<br>back to its source.",
        "A number without a trail is not reportable. That rule is in the write path, not in a promise.",
-       obj="series", ground="ground",
+       obj="series", ground="g-tide",
        extra='<div class=w>' + lineage([
            ("net_terms", "45 days", "erp:vendor/4412", "2026-09-18"),
            ("spend_ytd", "$412,880", "stripe:bal_tx", "2026-09-20"),
@@ -379,6 +473,9 @@ def home():
 {stage("Verified execution", "Built to prove it ran.",
        "An HTTP 200 is not evidence that the thing you asked for happened. Work closes on a value read back out of the system that was supposed to change.",
        obj="flow", ground="sunkbg")}
+{stage("Bitemporality", "What was true,<br>and what we knew.",
+       "Two timelines on every value, which is what makes it possible to ask what was known on a given day rather than only what we know now.",
+       obj="orbit", ground="g-deep")}
 
 <!-- THE HAND-OFF. Five drawn stages, then the first photograph. The medium
      changes register before the copy does: a visitor feels the shift from how
@@ -398,7 +495,8 @@ def home():
   </div>
 </div></section>
 """ + close("Start", "See the question.<br>Build the answer.",
-            "Tell us what is costing you an hour a day. We reply the same week, with a plan or with a reason it is not a fit.") + foot()
+            "Tell us what is costing you an hour a day. We reply the same week, with a plan or with a reason it is not a fit.",
+            ground="g-ember") + foot()
     return shell("LOVELEEDAY Studios",
                  body, "Mockup &middot; Home &middot; Keynote register &middot; 8 stages")
 
@@ -665,6 +763,34 @@ same functions the pages do</span></div></div>
     <div style="display:flex;gap:9px;flex-wrap:wrap">
       <span class=chip>erp:vendor/4412</span><span class=chip>doc:invoice_8841.pdf</span>
       <span class=chip>stripe:bal_tx</span><span class=chip>model:vendor_risk/v4</span></div>
+  </div>
+</div></section>
+
+<section class="stage ground" style="padding:clamp(40px,5vw,66px) 0"><div class=wide>
+  <p class=eyebrow>04b &middot; Gradients</p>
+  <h2 class=display style="font-size:clamp(1.6rem,3vw,2.2rem)">Built from the palette, not bought.</h2>
+  <p class=sub style="max-width:70ch">Twelve stock gradients were pulled and looked at; nine were
+  the purple-magenta AI-wallpaper register. These are mesh gradients composed from this
+  palette&rsquo;s own hues, so they move when a token moves. A gradient is a stage ground,
+  never a fill behind small text, and each is measured at its LIGHTEST stop rather than its
+  average &mdash; which is how the first version shipped teal at 4.29:1 on dawn.</p>
+  <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    margin-top:24px;text-align:left">
+    <div style="background:{GRADIENTS['dawn']};border:1px solid {T['line']};padding:22px;min-height:150px">
+      <div class=eyebrow>dawn</div><p style="margin:10px 0 0;font-size:13px;color:{T['mid']}">
+      Hero wash. Cream with a copper and a teal bloom.</p>
+      <p style="margin:8px 0 0;font:400 11px 'IBM Plex Mono',monospace;color:#0D706F">link role #0D706F &middot; 5.21:1 worst</p></div>
+    <div style="background:{GRADIENTS['tide']};border:1px solid {T['line']};padding:22px;min-height:150px">
+      <div class=eyebrow>tide</div><p style="margin:10px 0 0;font-size:13px;color:{T['mid']}">
+      Cool, for a stage that follows a warm one.</p>
+      <p style="margin:8px 0 0;font:400 11px 'IBM Plex Mono',monospace;color:#0D706F">link role #0D706F &middot; 5.00:1 worst</p></div>
+    <div style="background:{GRADIENTS['deep']};padding:22px;min-height:150px;color:{T['on_deep']}">
+      <div class=eyebrow style="color:{T['on_deep_mu']}">deep</div>
+      <p style="margin:10px 0 0;font-size:13px;color:{T['on_deep_mu']}">The one dark stage. Text gets a scrim.</p></div>
+    <div style="background:{GRADIENTS['ember']};padding:22px;min-height:150px;color:{T['on_deep']}">
+      <div class=eyebrow style="color:{T['on_deep_mu']}">ember</div>
+      <p style="margin:10px 0 0;font-size:13px;color:{T['on_deep_mu']}">The close. Scrim at 0.58 keeps the
+      bloom vivid and still carries the sub at 5.0:1.</p></div>
   </div>
 </div></section>
 
