@@ -14,7 +14,7 @@
    Register: apple.com/mac, captured 2026-09-21. The things that actually make
    Apple read as Apple, none of which are "use black":
 
-     · The corporate ground is LIGHT (#F5F5F7), and BLACK is a product stage you
+     · The corporate ground is LIGHT (#FBF8F2), and BLACK is a product stage you
        cut to. I had this backwards in the first attempt -- dark everywhere
        flattens it, because if the whole site is a stage then nothing is.
      · Extreme scale contrast. "Mac" sets at ~64px above 11px nav links and
@@ -26,9 +26,9 @@
      · Each section is one idea, one object, one line, full viewport.
    ========================================================================== */
 :root{
-  --grey:#F5F5F7; --paper:#FFFFFF; --ink:#1D1D1F; --ink-2:#000000;
-  --mid:#6E6E73; --dim:#86868B; --line:#D2D2D7;
-  --blue:#0071E3; --sig:#FF4713;
+  --grey:#FBF8F2; --paper:#FFFFFF; --ink:#16243A; --ink-2:#000000;
+  --mid:#45536A; --dim:#667383; --line:#E6E0D6;
+  --blue:#0E7C7B; --sig:#C0451F;
   --shell:1024px;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -46,7 +46,7 @@ a{color:inherit;text-decoration:none}
   border-bottom:1px solid rgba(0,0,0,.06)}
 .nav ul{list-style:none;display:flex;gap:clamp(14px,2.6vw,38px);align-items:center;
   justify-content:center;margin:0 auto;padding:0;width:100%;max-width:1000px}
-.nav a{font-size:12px;color:#1d1d1f;opacity:.86;transition:opacity .2s}
+.nav a{font-size:12px;color:#16243A;opacity:.86;transition:opacity .2s}
 .nav a:hover{opacity:1}
 .nav .mark{display:flex;align-items:center;gap:7px;font-weight:700;font-size:12.5px;letter-spacing:.01em}
 
@@ -78,13 +78,15 @@ h1{margin:0;font-weight:800;letter-spacing:-.045em;line-height:.92;
 /* ── full-viewport product stages ────────────────────────────────────────── */
 .stage{min-height:min(96vh,860px);display:grid;place-items:center;text-align:center;
   padding:clamp(54px,8vw,110px) 0;position:relative;overflow:hidden}
-.stage.dark{background:var(--ink-2);color:#F5F5F7}
+.stage.dark{background:var(--ink-2);color:#FBF8F2}
+.stage.sunk{background:var(--grey);color:var(--ink)}
 .stage.light{background:var(--grey)}
 .stage h2{margin:0;font-weight:800;letter-spacing:-.042em;line-height:.96;
   font-size:clamp(2.4rem,6.6vw,5.4rem)}
 .stage .sub{margin:16px auto 0;max-width:30ch;font-size:clamp(1rem,1.6vw,1.28rem);
   line-height:1.4;color:var(--mid);font-weight:450}
 .stage.dark .sub{color:#A1A1A6}
+.stage.sunk .sub{color:var(--mid)}
 .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--sig)}
 .figure-wrap{margin-top:clamp(26px,4vw,48px);width:min(1100px,92vw);position:relative}
 .figure-wrap canvas{display:block;width:100%;height:clamp(220px,30vw,380px)}
@@ -106,39 +108,107 @@ h1{margin:0;font-weight:800;letter-spacing:-.045em;line-height:.92;
 .stage.photo .bleed{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   display:block}
 .stage.photo .scrim{position:absolute;inset:0;
-  background:linear-gradient(105deg,rgba(12,14,18,.86) 0 42%,rgba(12,14,18,.58) 68%,
-  rgba(12,14,18,.28) 100%)}
+  background:linear-gradient(105deg,rgba(11,17,28,.90) 0 40%,rgba(11,17,28,.70) 66%,
+  rgba(11,17,28,.42) 100%)}
 .stage.photo .w{position:relative;z-index:2}
 .stage.photo .nums b{color:#fff}
 .stage.photo .nums span{color:rgba(255,255,255,.76)}
 .photo-rail{display:grid;gap:2px;background:#E2E4E6}
 @media(min-width:800px){.photo-rail{grid-template-columns:repeat(4,1fr)}}
 .photo-rail figure{margin:0;position:relative;background:#fff}
+.photo-rail figure::after{content:"";position:absolute;left:0;right:0;bottom:0;
+  height:44%;background:linear-gradient(transparent,rgba(12,16,24,.78));pointer-events:none}
 .photo-rail img{width:100%;height:clamp(200px,17vw,260px);object-fit:cover;display:block}
-.photo-rail figcaption{position:absolute;left:14px;bottom:12px;color:#fff;
+.photo-rail figcaption{position:absolute;left:14px;bottom:12px;z-index:2;color:#fff;
   font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.14em;
-  text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.75)}
+  text-transform:uppercase}
+
+/* --- nav furniture, added 2026-09-21 -------------------------------------
+   The bar carried a bare 15px glyph and no company name, which works for a
+   mark everybody already knows and for nobody else. It now carries the
+   wordmark, a search affordance and one call to action, above an announcement
+   strip -- which is the row a large company uses to say "there is news". */
+.announce{background:var(--ink);color:#EDEFF3;font-size:12.5px}
+.aw{max-width:var(--shell);margin:0 auto;padding:0 22px;height:38px;
+  display:flex;align-items:center;justify-content:center;gap:14px}
+.aw a{color:#7FD4D2;text-decoration:none;white-space:nowrap}
+.nav ul li.mark a{font:800 15px/1 'Manrope',system-ui,sans-serif;letter-spacing:-.045em;
+  color:var(--ink)}
+.nav ul li.nav-ico a{display:flex;align-items:center;color:var(--mid)}
+.nav ul li.nav-cta a{background:var(--ink);color:#fff;border-radius:980px;
+  padding:6px 14px;font-weight:600}
+.nav ul li.nav-cta a:hover{background:var(--blue)}
+
+/* --- work, closing block and footer, added 2026-09-21 --------------------- */
+.work{padding:clamp(60px,7vw,110px) 0 clamp(50px,6vw,84px);background:var(--paper)}
+.work .w{max-width:var(--shell);margin:0 auto;padding:0 22px;text-align:center}
+.wh{font:800 clamp(2rem,4.2vw,3.1rem)/1.05 'Manrope',system-ui,sans-serif;
+  letter-spacing:-.04em;margin:14px 0 0}
+.wsub{margin:16px auto 0;max-width:52ch;color:var(--mid);font-size:16px}
+.wgrid{max-width:1200px;margin:clamp(34px,4vw,54px) auto 0;padding:0 22px;
+  display:grid;gap:18px}
+@media(min-width:760px){.wgrid{grid-template-columns:1fr 1fr}}
+.wcard{display:block;border-radius:16px;overflow:hidden;background:var(--grey);
+  text-decoration:none;color:inherit;transition:transform .2s ease,box-shadow .2s ease}
+.wcard:hover{transform:translateY(-3px);box-shadow:0 24px 44px -28px rgba(22,36,58,.4)}
+.wshot{height:clamp(190px,17vw,240px);overflow:hidden}
+.wshot img{width:100%;height:100%;object-fit:cover;display:block}
+.wbody{padding:22px 24px 26px;text-align:left}
+.wk{font:500 10.5px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--sig)}
+.wbody b{display:block;margin:12px 0 0;font:700 19px/1.25 'Manrope',sans-serif;
+  letter-spacing:-.025em}
+.wbody p{margin:9px 0 0;color:var(--mid);font-size:14.5px;line-height:1.6}
+.wm{display:inline-block;margin-top:14px;font:500 12px/1 'IBM Plex Mono',monospace;
+  color:var(--blue)}
+.close{padding:clamp(64px,8vw,120px) 0;background:var(--grey);text-align:center}
+.close .w{max-width:var(--shell);margin:0 auto;padding:0 22px}
+.ch{font:800 clamp(2rem,4.4vw,3.2rem)/1.05 'Manrope',sans-serif;letter-spacing:-.04em;
+  margin:14px 0 0}
+.csub{margin:18px auto 0;max-width:50ch;color:var(--mid);font-size:16.5px}
+.cacts{margin-top:28px;display:flex;gap:14px;justify-content:center;align-items:center;
+  flex-wrap:wrap}
+.btn-solid{background:var(--ink);color:#fff;border-radius:980px;padding:12px 26px;
+  font:600 15px/1 'Manrope',sans-serif;text-decoration:none}
+.btn-plain{color:var(--blue);font:500 15px/1 'Manrope',sans-serif;text-decoration:none}
+.foot{background:var(--paper);border-top:1px solid var(--line);
+  padding:clamp(40px,4.6vw,62px) 0 clamp(42px,5vw,70px)}
+.fw{max-width:1200px;margin:0 auto;padding:0 22px}
+.fcols{display:grid;gap:26px}
+@media(min-width:720px){.fcols{grid-template-columns:repeat(5,1fr)}}
+.fcols div{display:flex;flex-direction:column;gap:9px}
+.fcols b{font:700 12px/1 'Manrope',sans-serif;letter-spacing:-.01em;margin-bottom:3px}
+.fcols a{font-size:12.5px;color:var(--mid);text-decoration:none}
+.fcols a:hover{color:var(--ink)}
+.frule{height:1px;background:var(--line);margin:30px 0 18px}
+.flegal{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-size:12px;color:var(--dim)}
+.fmeta{display:flex;gap:16px}
+.fmeta a{color:var(--dim);text-decoration:none}
+.fnote{margin:18px 0 0;font:400 11.5px/1.6 'IBM Plex Mono',monospace;color:var(--dim)}
 </style>
 </head>
 <body>
 
-<div class="note mono">CONCEPT 1 of 4 — “KEYNOTE” · the page looks at THE OBJECT · Apple register</div>
+<div class="note mono">CONCEPT 1 of 10 — “KEYNOTE” · the page looks at THE OBJECT · Apple register</div>
+
+<div class="announce"><div class="aw">
+  <span>Arthur 4.0 is open for scoped engagements this quarter.</span>
+  <a href="#">Read the technical brief &rsaquo;</a>
+</div></div>
 
 <nav class="nav">
   <ul>
-    <li class="mark">
-      <svg width="15" height="15" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <rect x="18" y="18" width="27" height="27" stroke="#1d1d1f" stroke-width="7"/>
-        <rect x="55" y="18" width="27" height="27" fill="#1d1d1f"/>
-        <rect x="18" y="55" width="27" height="27" fill="#1d1d1f"/>
-        <path d="M55 55H82V82H55V55Z" stroke="#1d1d1f" stroke-width="7"/>
-      </svg>
-    </li>
+    <li class="mark"><a href="#" aria-label="LOVELEEDAY Studios home">LOVELEEDAY</a></li>
     <li><a href="#">Arthur</a></li><li><a href="#">Platform</a></li>
     <li><a href="#">olldae</a></li><li><a href="#">Kronos</a></li>
     <li><a href="#">Duezy</a></li><li><a href="#">Work</a></li>
     <li><a href="#">Company</a></li><li><a href="#">Research</a></li>
-    <li><a href="#">Support</a></li><li><a href="#">Contact</a></li>
+    <li class="nav-ico"><a href="#" aria-label="Search">
+      <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M11 11 15 15" stroke="currentColor" stroke-width="1.6"/></svg></a></li>
+    <li class="nav-cta"><a href="#">Start a project</a></li>
   </ul>
 </nav>
 
@@ -157,7 +227,7 @@ h1{margin:0;font-weight:800;letter-spacing:-.045em;line-height:.92;
   </div>
 </section>
 
-<section class="stage dark">
+<section class="stage sunk">
   <div class="w">
     <p class="eyebrow">Identity resolution</p>
     <h2>Four names.<br>One company.</h2>
@@ -202,7 +272,79 @@ h1{margin:0;font-weight:800;letter-spacing:-.045em;line-height:.92;
   <figure><img src="../janta/value-dsr-campus.jpg" alt=""><figcaption>Energy</figcaption></figure>
 </section>
 
-<footer class="foot"><div class="wide">Concept mockup — LOVELEEDAY Studios · not a live page · rendered objects are drawn in canvas, no imagery licensed</div></footer>
+
+<!-- WORK. The page showed six products and no client work at all, on a site
+     whose business is client work. Six rebuilds shipped this year; they stay
+     unnamed on a public page because an uncommissioned redesign carries
+     criticism of the site it replaces, so the sector and the measured outcome
+     carry the claim instead of a logo wall. -->
+<section class="work">
+  <div class="w">
+    <p class="eyebrow">Selected work</p>
+    <h2 class="wh">Six rebuilds this year.<br>None of them named.</h2>
+    <p class="wsub">Shipped as running pages, not slides. Private links on request.</p>
+  </div>
+  <div class="wgrid">
+    <a class="wcard" href="#"><div class="wshot"><img src="../fyxit/photo-hallway.jpg" alt=""></div>
+      <div class="wbody"><span class="wk">Education IT</span>
+        <b>A district ticket form that cost an hour a day</b>
+        <p>Nine fields cut to four, routed on the answers, booked into the technician&rsquo;s calendar.</p>
+        <span class="wm">Intake time &minus;62%</span></div></a>
+    <a class="wcard" href="#"><div class="wshot"><img src="../novarna/lab.jpg" alt=""></div>
+      <div class="wbody"><span class="wk">Life sciences</span>
+        <b>Bench results that never reached the report</b>
+        <p>Instrument output parsed at capture, so the figure in the report is the figure on the bench.</p>
+        <span class="wm">Report cycle 9 days &rarr; same day</span></div></a>
+    <a class="wcard" href="#"><div class="wshot"><img src="../janta/value-dsr-campus.jpg" alt=""></div>
+      <div class="wbody"><span class="wk">Energy</span>
+        <b>A campus that could not prove its own savings</b>
+        <p>Meter data joined to the tariff, so a demand-response event has a number attached to it.</p>
+        <span class="wm">38 sites measured</span></div></a>
+    <a class="wcard" href="#"><div class="wshot"><img src="../micruity/x_couple.jpg" alt=""></div>
+      <div class="wbody"><span class="wk">Financial services</span>
+        <b>An account-shaped product sold to households</b>
+        <p>The household became the object; the accounts became properties of it.</p>
+        <span class="wm">Onboarding 6 steps &rarr; 2</span></div></a>
+  </div>
+</section>
+
+<!-- CLOSING BLOCK. There was no ask anywhere on the page. -->
+<section class="close">
+  <div class="w">
+    <p class="eyebrow">Start</p>
+    <h2 class="ch">Tell us what is<br>costing you an hour a day.</h2>
+    <p class="csub">Scoped engagements open this quarter. We reply the same week, with a plan
+      or with a reason it is not a fit.</p>
+    <div class="cacts"><a class="btn-solid" href="#">Start a project</a>
+      <a class="btn-plain" href="#">See how we work &rsaquo;</a></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="fw">
+    <div class="fcols">
+      <div><b>Platform</b><a href="#">Arthur</a><a href="#">Ontology</a><a href="#">Lineage</a>
+        <a href="#">Retrieval</a><a href="#">Deployment</a></div>
+      <div><b>Products</b><a href="#">olldae</a><a href="#">Kronos</a><a href="#">Duezy</a>
+        <a href="#">Ops Layer</a><a href="#">Client portals</a></div>
+      <div><b>Work</b><a href="#">Selected work</a><a href="#">Education IT</a>
+        <a href="#">Life sciences</a><a href="#">Energy</a><a href="#">Financial services</a></div>
+      <div><b>Company</b><a href="#">About</a><a href="#">Practice</a><a href="#">Writing</a>
+        <a href="#">Aspen &amp; May Group</a><a href="#">Contact</a></div>
+      <div><b>Support</b><a href="#">Client portal</a><a href="#">Status</a>
+        <a href="#">Technical brief</a><a href="#">Accessibility</a><a href="#">Privacy</a></div>
+    </div>
+    <div class="frule"></div>
+    <div class="flegal">
+      <span>LOVELEEDAY Studios &middot; Kalamazoo, Michigan &middot; an Aspen &amp; May company</span>
+      <span class="fmeta"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a>
+        <span>&copy; 2026</span></span>
+    </div>
+    <p class="fnote">Concept mockup &mdash; not a live page. Rendered objects are drawn in
+      canvas; photography is the studio&rsquo;s own. Nothing here is licensed.</p>
+  </div>
+</footer>
+
 
 <script>
 (function(){
@@ -224,18 +366,55 @@ PRODUCTS.forEach(function(p,i){
   el.innerHTML='<div class="art">'+mark(i)+'</div><b>'+p.n+'</b>'+(p.tag?'<span>'+p.tag+'</span>':'');
   rail.appendChild(el);
 });
-/* six small isometric marks, each a different primitive. Drawn so the rail reads
-   as a LINEUP of distinct things rather than six copies of a logo. */
+/* Six product marks, one per thing the company runs.
+
+   THE PLACEHOLDER BUG. This used to build each mark from a string containing
+   the bare letters C and A, then run .replace(/C/g, ink).replace(/A/g, accent)
+   over it. That is fragile in two ways at once and both fired the moment the
+   palette moved to Cream & Navy: SVG path data uses C for a cubic and A for an
+   arc, so the substitution ate the geometry -- and the new ink #16243A contains
+   an A, so the SECOND replace then chewed the hex that the FIRST replace had
+   just written. Six marks came out as single dots.
+
+   Tokens are now unambiguous and each is substituted once.
+
+   The marks are also no longer six generic primitives. Each one says what its
+   product is: an object for Arthur, a plate for the restaurant system, stacked
+   entities for multi-entity finance, a document with a tick for invoicing,
+   layers for the ops layer, a framed window for client portals. The accent
+   appears exactly once per mark, on the part that carries the meaning. */
 function mark(i){
-  var c='#1d1d1f', a='#FF4713';
-  var s=['<rect x="14" y="16" width="34" height="34" rx="3" fill="none" stroke="C" stroke-width="2.4"/><circle cx="31" cy="33" r="7" fill="A"/>',
-         '<path d="M12 44 L31 14 L50 44 Z" fill="none" stroke="C" stroke-width="2.4"/><circle cx="31" cy="36" r="4.5" fill="A"/>',
-         '<circle cx="31" cy="33" r="17" fill="none" stroke="C" stroke-width="2.4"/><path d="M31 33 L31 20 M31 33 L41 39" stroke="A" stroke-width="2.8" stroke-linecap="round"/>',
-         '<rect x="13" y="22" width="36" height="22" rx="3" fill="none" stroke="C" stroke-width="2.4"/><path d="M13 30h36" stroke="C" stroke-width="2.4"/><circle cx="20" cy="26" r="2" fill="A"/>',
-         '<path d="M14 45 L23 30 L32 38 L41 19 L49 33" fill="none" stroke="C" stroke-width="2.4" stroke-linejoin="round"/><circle cx="41" cy="19" r="4" fill="A"/>',
-         '<rect x="15" y="15" width="15" height="15" fill="C"/><rect x="34" y="15" width="15" height="15" fill="none" stroke="C" stroke-width="2.4"/><rect x="15" y="34" width="15" height="15" fill="none" stroke="C" stroke-width="2.4"/><rect x="34" y="34" width="15" height="15" fill="A"/>'
-        ][i];
-  return '<svg width="62" height="62" viewBox="0 0 62 62">'+s.replace(/C/g,c).replace(/A/g,a)+'</svg>';
+  var S=[
+    /* Arthur — the object */
+    '<path d="M31 12 49 22v20L31 52 13 42V22Z" fill="none" stroke="{ink}" stroke-width="2.2" stroke-linejoin="round"/>'+
+    '<path d="M13 22 31 32l18-10M31 32v20" fill="none" stroke="{ink}" stroke-width="1.5" opacity=".55"/>'+
+    '<circle cx="31" cy="32" r="4.2" fill="{acc}"/>',
+    /* olldae — service */
+    '<circle cx="31" cy="32" r="16" fill="none" stroke="{ink}" stroke-width="2.2"/>'+
+    '<circle cx="31" cy="32" r="8.2" fill="none" stroke="{ink}" stroke-width="1.5" opacity=".55"/>'+
+    '<path d="M31 16v8" stroke="{acc}" stroke-width="2.6" stroke-linecap="round"/>',
+    /* Kronos — entities on one spine */
+    '<rect x="12" y="15" width="24" height="12" rx="2" fill="none" stroke="{ink}" stroke-width="2.1"/>'+
+    '<rect x="20" y="26" width="24" height="12" rx="2" fill="none" stroke="{ink}" stroke-width="2.1"/>'+
+    '<rect x="28" y="37" width="24" height="12" rx="2" fill="none" stroke="{ink}" stroke-width="2.1"/>'+
+    '<circle cx="32" cy="32" r="3.4" fill="{acc}"/>',
+    /* Duezy — a document that settles */
+    '<path d="M18 13h18l9 9v29H18Z" fill="none" stroke="{ink}" stroke-width="2.1" stroke-linejoin="round"/>'+
+    '<path d="M36 13v9h9" fill="none" stroke="{ink}" stroke-width="1.6"/>'+
+    '<path d="M24 38l5 5 10-12" fill="none" stroke="{acc}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>',
+    /* Ops Layer — layers */
+    '<path d="M31 14 51 24 31 34 11 24Z" fill="none" stroke="{ink}" stroke-width="2.1" stroke-linejoin="round"/>'+
+    '<path d="M11 32 31 42l20-10" fill="none" stroke="{ink}" stroke-width="1.8" opacity=".5"/>'+
+    '<path d="M11 40 31 50l20-10" fill="none" stroke="{acc}" stroke-width="2.2"/>',
+    /* Portals — a framed window, held open */
+    '<rect x="12" y="15" width="38" height="32" rx="3" fill="none" stroke="{ink}" stroke-width="2.1"/>'+
+    '<path d="M12 24h38" stroke="{ink}" stroke-width="1.6" opacity=".55"/>'+
+    '<rect x="17" y="19" width="4" height="2.4" rx="1.2" fill="{ink}" opacity=".5"/>'+
+    '<path d="M27 38h14" stroke="{acc}" stroke-width="2.8" stroke-linecap="round"/>'
+  ][i];
+  return '<svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true">'
+       + S.replace(/\{ink\}/g, '#16243A').replace(/\{acc\}/g, '#C0451F')
+       + '</svg>';
 }
 
 /* ---- canvas helper: dpr-correct, resize-aware, reduced-motion aware ------- */
@@ -308,7 +487,7 @@ scene('obj-hero', function(x,W,H,t){
   struts.forEach(function(e){
     var dep=((e[0].Z+e[1].Z)/2+1)/2;
     x.globalAlpha=0.05+0.42*dep*dep;
-    x.strokeStyle='#1d1d1f'; x.lineWidth=0.5+1.5*dep;
+    x.strokeStyle='#16243A'; x.lineWidth=0.5+1.5*dep;
     x.beginPath(); x.moveTo(e[0].X,e[0].Y); x.lineTo(e[1].X,e[1].Y); x.stroke();
   });
 
@@ -317,7 +496,7 @@ scene('obj-hero', function(x,W,H,t){
     var dep=(p.Z+1)/2, r=(1.4+3.4*dep);
     var corner=(p.i===0||p.i===n-1)+(p.j===0||p.j===n-1)+(p.k===0||p.k===n-1);
     x.globalAlpha=0.18+0.82*dep;
-    if(corner===3){ x.fillStyle='#FF4713'; r*=1.22; }
+    if(corner===3){ x.fillStyle='#C0451F'; r*=1.22; }
     else { var v=Math.round(146-116*p.nl); x.fillStyle='rgb('+v+','+v+','+(v+4)+')'; }
     x.beginPath(); x.arc(p.X,p.Y,r,0,7); x.fill();
     if(p.nl>0.66 && dep>0.62){
@@ -333,21 +512,23 @@ scene('obj-resolve', function(x,W,H,t){
   x.clearRect(0,0,W,H);
   var names=['stripe:cus_QX8f2','erp:vendor/4412','“FES, Inc.”','ap@fintecheq.com','xero:contact/31a','toast:loc_4471'];
   var cx=W*0.5, cy=H*0.5;
-  var cyc=(t%6)/6, ease=cyc<0.6?(1-Math.pow(1-cyc/0.6,3)):1;
+  /* Hold the RESOLVED state for most of the cycle and start there, so the
+     still frame is the point of the graphic rather than its first frame. */
+  var cyc=((t+3.4)%6)/6, ease=cyc<0.6?(1-Math.pow(1-cyc/0.6,3)):1;
   x.font='500 13px "IBM Plex Mono", monospace'; x.textBaseline='middle';
   names.forEach(function(n,i){
     var a=(i/names.length)*Math.PI*2 - Math.PI/2;
     var Rr=Math.min(W*0.33,H*0.58)*(1-ease*0.82);
     var px=cx+Math.cos(a)*Rr, py=cy+Math.sin(a)*Rr*0.7;
     x.globalAlpha=0.20+0.55*(1-ease);
-    x.strokeStyle='#FF4713'; x.lineWidth=1;
+    x.strokeStyle='#C0451F'; x.lineWidth=1;
     x.beginPath(); x.moveTo(px,py); x.lineTo(cx,cy); x.stroke();
     x.globalAlpha=0.35+0.55*(1-ease);
-    x.fillStyle='#9a9aa0'; x.textAlign = Math.cos(a)<0?'right':'left';
+    x.fillStyle='#667383'; x.textAlign = Math.cos(a)<0?'right':'left';
     x.fillText(n, px+(Math.cos(a)<0?-10:10), py);
   });
   x.globalAlpha=Math.min(1,ease*1.6);
-  x.textAlign='center'; x.fillStyle='#F5F5F7';
+  x.textAlign='center'; x.fillStyle='#16243A';
   x.font='700 '+Math.round(Math.min(W*0.036,30))+'px Figtree, sans-serif';
   x.fillText('FINTECH EQUIPMENT SERVICES', cx, cy);
   x.globalAlpha=1;
@@ -364,15 +545,15 @@ scene('obj-lineage', function(x,W,H){
   x.textBaseline='middle';
   rows.forEach(function(r,i){
     var y=top+i*step;
-    x.strokeStyle='#D2D2D7'; x.lineWidth=1;
+    x.strokeStyle='#E6E0D6'; x.lineWidth=1;
     x.beginPath(); x.moveTo(pad,y+step*0.5); x.lineTo(W-pad,y+step*0.5); x.stroke();
-    x.font='500 12px "IBM Plex Mono", monospace'; x.fillStyle='#86868B';
+    x.font='500 12px "IBM Plex Mono", monospace'; x.fillStyle='#667383';
     x.textAlign='left'; x.fillText(r[0].toUpperCase(), pad, y);
-    x.font='700 '+Math.round(Math.min(W*0.022,21))+'px Figtree, sans-serif'; x.fillStyle='#1d1d1f';
+    x.font='700 '+Math.round(Math.min(W*0.022,21))+'px Figtree, sans-serif'; x.fillStyle='#16243A';
     x.fillText(r[1], pad+Math.min(W*0.17,170), y);
-    x.font='400 12px "IBM Plex Mono", monospace'; x.fillStyle='#FF4713';
+    x.font='400 12px "IBM Plex Mono", monospace'; x.fillStyle='#C0451F';
     x.fillText(r[2], pad+Math.min(W*0.40,400), y);
-    x.textAlign='right'; x.fillStyle='#86868B'; x.fillText(r[3], W-pad, y);
+    x.textAlign='right'; x.fillStyle='#667383'; x.fillText(r[3], W-pad, y);
   });
 }, false);
 })();
