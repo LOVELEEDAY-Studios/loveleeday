@@ -41,19 +41,19 @@ LIVE = json.loads((HERE / "live-content.json").read_text()) if (HERE / "live-con
 VARIANTS = [
     ("a", "Own work", "own-solar.jpg",
      "The studio's own photograph &mdash; utility-scale solar at golden hour, from a "
-     "system we built and run. The only one of the five that is evidence as well as art.",
+     "system we built and run. The only one of the five that is evidence as well as art.", False,
      "linear-gradient(168deg,rgba(255,176,59,.42) 0%,rgba(240,101,28,.52) 46%,rgba(120,26,10,.72) 100%)",
      "linear-gradient(96deg,rgba(58,14,6,.80) 0%,rgba(58,14,6,.54) 46%,rgba(58,14,6,.14) 100%)",
      "50% 62%"),
     ("b", "Ridge, blaze", "ridge-blaze.jpg",
      "Layered ridges under a burning sky. The closest of the five to the reference, and "
-     "the one that reads biggest &mdash; depth in the image does the work a gradient fakes.",
+     "the one that reads biggest &mdash; depth in the image does the work a gradient fakes.", False,
      "linear-gradient(168deg,rgba(255,186,72,.30) 0%,rgba(236,96,24,.44) 48%,rgba(110,22,8,.70) 100%)",
      "linear-gradient(96deg,rgba(46,10,4,.78) 0%,rgba(46,10,4,.48) 48%,rgba(46,10,4,.10) 100%)",
      "50% 58%"),
     ("c", "Dunes, aerial", "dunes-aerial.jpg",
      "Shot straight down. It reads as pattern rather than place, which keeps the page "
-     "abstract &mdash; useful for a company that is not selling a location.",
+     "abstract &mdash; useful for a company that is not selling a location.", False,
      # C measured 4.19:1 on the headline with the standard scrim -- aerial sand
      # is the brightest surface in the set and it sits directly under the type.
      # Only this variation's scrim is deepened; the others keep theirs, because
@@ -63,16 +63,57 @@ VARIANTS = [
      "50% 50%"),
     ("d", "Ridge, haze", "ridge-haze.jpg",
      "The quietest. Pastel layers and a high horizon, graded warm rather than born warm "
-     "&mdash; the most typographic of the five, because the picture argues least.",
+     "&mdash; the most typographic of the five, because the picture argues least.", False,
      "linear-gradient(168deg,rgba(255,200,110,.34) 0%,rgba(232,118,46,.46) 48%,rgba(116,34,14,.66) 100%)",
      "linear-gradient(96deg,rgba(48,16,8,.76) 0%,rgba(48,16,8,.46) 50%,rgba(48,16,8,.10) 100%)",
      "50% 56%"),
     ("e", "Desert, rust", "desert-rust.jpg",
      "Rust dunes against far mountains. The most saturated, and the one that would carry "
-     "a dark navigation bar best if the brand ever needs one.",
+     "a dark navigation bar best if the brand ever needs one.", False,
      "linear-gradient(168deg,rgba(255,168,60,.30) 0%,rgba(214,80,22,.50) 46%,rgba(96,24,10,.74) 100%)",
      "linear-gradient(96deg,rgba(40,12,6,.82) 0%,rgba(40,12,6,.52) 46%,rgba(40,12,6,.12) 100%)",
      "50% 64%"),
+
+    # ── PEOPLE ────────────────────────────────────────────────────────────────
+    # A face competes with a headline in a way a ridge does not, so these five
+    # are anchored so the subject sits in the LIGHT half, opposite the type, and
+    # the amber multiply is pulled back: a heavy wash over skin goes orange and
+    # sickly, which is the fastest way to make a real photograph look fake.
+    ("f", "Own work, the bench", "own-bench.jpg",
+     "The studio's own photograph &mdash; two scientists at the bench, warm lamp light. "
+     "People and evidence in the same frame, which is the only version of this that is "
+     "both.", True,
+     "linear-gradient(168deg,rgba(255,186,84,.20) 0%,rgba(228,106,36,.28) 48%,rgba(110,28,10,.46) 100%)",
+     "linear-gradient(96deg,rgba(38,12,5,.86) 0%,rgba(38,12,5,.56) 48%,rgba(38,12,5,.14) 100%)",
+     "68% 50%"),
+    ("g", "Two, against the light", "pair-sunset.jpg",
+     "Backlit figures at a window. People are unmistakably present and nobody's face is "
+     "competing with the headline &mdash; the most Solstice-native of the people set.", True,
+     "linear-gradient(168deg,rgba(255,176,64,.24) 0%,rgba(230,96,28,.34) 48%,rgba(104,24,8,.52) 100%)",
+     "linear-gradient(96deg,rgba(34,10,4,.84) 0%,rgba(34,10,4,.52) 48%,rgba(34,10,4,.12) 100%)",
+     "62% 50%"),
+    ("h", "One, at the bench", "bench-lamp.jpg",
+     "A single maker under a lamp. The most intimate, and the best fit for a page that "
+     "argues craft rather than scale.", True,
+     "linear-gradient(168deg,rgba(255,182,72,.18) 0%,rgba(226,100,32,.28) 48%,rgba(102,26,10,.46) 100%)",
+     "linear-gradient(96deg,rgba(32,10,4,.88) 0%,rgba(32,10,4,.58) 48%,rgba(32,10,4,.16) 100%)",
+     "70% 46%"),
+    ("i", "A room, golden", "room-golden.jpg",
+     "Several people in a room full of late light. The only one that reads as a team "
+     "rather than as an individual.", True,
+     # I measured 3.13:1 -- the brightest thing in the whole set is a window full
+     # of late sun, and it sits directly behind the headline. Its scrim is the
+     # heaviest of the ten for that reason alone.
+     "linear-gradient(168deg,rgba(255,190,88,.24) 0%,rgba(232,110,38,.34) 48%,rgba(108,28,10,.54) 100%)",
+     "linear-gradient(96deg,rgba(28,9,3,.95) 0%,rgba(28,9,3,.76) 46%,rgba(28,9,3,.26) 100%)",
+     "64% 52%"),
+    ("j", "Own work, district IT", "own-itlead.jpg",
+     "The studio's own photograph, and the hardest of the ten: it arrives blue, so the "
+     "amber has to do real work. Proof that the grade is a system rather than a filter "
+     "that only flatters images already the right colour.", True,
+     "linear-gradient(168deg,rgba(255,170,58,.44) 0%,rgba(226,92,26,.56) 48%,rgba(98,22,8,.70) 100%)",
+     "linear-gradient(96deg,rgba(30,10,4,.88) 0%,rgba(30,10,4,.58) 48%,rgba(30,10,4,.18) 100%)",
+     "66% 50%"),
 ]
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&"
@@ -135,7 +176,7 @@ footer{{border-top:1px solid var(--line);padding:40px 0 64px;color:#9C8B7C;font-
 """
 
 
-def page(key, name, photo, note, grade, scrim, anchor):
+def page(key, name, photo, note, people, grade, scrim, anchor):
     cards = "".join(
         f'<div class=card><div class=n>{g[0]}</div><b>{g[1]}</b><p>{g[2][:140]}</p></div>'
         for g in LIVE.get("guarantees", [])[:3])
@@ -200,22 +241,27 @@ header p{margin:20px 0 0;max-width:76ch;color:#6B5A4E;font-size:15.5px}
   border-top:1px solid #E4D9C9;padding-top:11px}
 .v .open{display:inline-block;margin-top:14px;background:#241109;color:#FBF6EE;
   border-radius:8px;padding:9px 16px;font:600 12.5px/1 'Inter Tight'}
+.grp{font:300 clamp(1.4rem,2.6vw,2rem)/1.1 'Inter Tight';letter-spacing:-.035em;
+  margin:clamp(30px,3.6vw,50px) 0 0;padding-bottom:14px;border-bottom:1px solid #E4D9C9}
+.grid{padding-top:20px}
 footer{border-top:1px solid #E4D9C9;padding:30px 0 66px;color:#9C8B7C;
   font:400 12px/1.7 ui-monospace,monospace}
 """
 
 
 def index(measurements):
-    cards = ""
-    for key, name, photo, note, *_ in VARIANTS:
+    groups = {False: "", True: ""}
+    for key, name, photo, note, people, *_ in VARIANTS:
         m = measurements.get(key, {})
         meas = (f"headline {m.get('h', 0):.1f}:1 &middot; sub {m.get('s', 0):.1f}:1 "
                 f"&middot; measured on the rendered pixels")
-        cards += (f'<a class=v href="12{key}.html" target=_blank>'
+        groups[people] += (f'<a class=v href="12{key}.html" target=_blank>'
                   f'<div class=shot><img src="thumbs/12{key}.png" alt="{name}"></div>'
                   f'<div class=b><div class=k>Variation {key.upper()}</div>'
                   f'<h2>{name}</h2><p>{note}</p><div class=m>{meas}</div>'
                   f'<span class=open>Open variation {key.upper()} &nbsp;&rarr;</span></div></a>')
+    cards = (f'<h3 class=grp>Landscape &mdash; the place</h3><div class=grid>{groups[False]}</div>'
+             f'<h3 class=grp>People &mdash; the work being done</h3><div class=grid>{groups[True]}</div>')
     return f"""<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Solstice &mdash; five hero photographs</title>
@@ -225,23 +271,25 @@ def index(measurements):
 <style>{INDEX_CSS}</style></head><body>
 <header><div class=w>
   <p class=eyebrow>Concept 12 &middot; Solstice &middot; hero variations</p>
-  <h1>One layout. <em>Five photographs.</em></h1>
+  <h1>One layout. <em>Ten photographs.</em></h1>
   <p>The type, the grade and the layout are held constant so the only variable is the
-  picture. Each hero is the photograph, then a multiply wash in the Solstice amber that
+  picture. Five are landscape and five have people in them; the people set is anchored so
+  the subject sits in the LIGHT half, opposite the type, and its amber wash is pulled back,
+  because a heavy grade over skin goes orange and sickly. Each hero is the photograph, then a multiply wash in the Solstice amber that
   pulls every image onto one palette, then a directional scrim. The contrast figures on
   each card were sampled from the rendered pixels underneath the headline, not assumed
   &mdash; which is the only reason to put white type over a photograph you did not take.
   <b>A is the studio&rsquo;s own photograph</b>, and it is first on purpose.</p>
 </div></header>
-<div class=w><div class=grid>{cards}</div></div>
+<div class=w>{cards}</div>
 <footer><div class=w>Generated by concepts/studio/build-solstice.py &middot; four photographs
 from Unsplash, one from the studio&rsquo;s own library.</div></footer>
 </body></html>"""
 
 
 if __name__ == "__main__":
-    for key, name, photo, note, grade, scrim, anchor in VARIANTS:
-        (OUT / f"12{key}.html").write_text(page(key, name, photo, note, grade, scrim, anchor))
+    for key, name, photo, note, people, grade, scrim, anchor in VARIANTS:
+        (OUT / f"12{key}.html").write_text(page(key, name, photo, note, people, grade, scrim, anchor))
         print("wrote solstice/12" + key + ".html")
     (OUT / "index.html").write_text(index({}))
     print("wrote solstice/index.html (contrast figures filled by verify-solstice.py)")
