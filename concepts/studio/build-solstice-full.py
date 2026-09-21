@@ -27,7 +27,7 @@
    and <p> immediately after them (kept once, as the pair), and the founder's
    name, which Daniel asked to keep off the pages.
 """
-import json, re
+import json, os, re
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -177,6 +177,18 @@ def nav(active="", over=False, open_menu=None):
                    f'<div class=w><div class=mhead>{label}</div>'
                    f'<div class=pgrid>{items}</div>'
                    f'<div class=pfoot>{CH["tagline"]}</div></div></div>')
+    # MOBILE. There was no mobile navigation at all: the desktop bar was simply
+    # rendered at 390px, which pushed the document to 832px wide -- the entire
+    # site scrolled sideways on a phone, "Engagements" sat off-canvas and five
+    # of the six names in the strip were cut. A burger and a sheet, built from
+    # the same MENUS data so the two navigations cannot drift.
+    sheet_groups = "".join(
+        f'<div class=sg><div class=sgh>{label}</div>' + "".join(
+            f'<a href="{h}"><b>{t}</b><span>{d}</span></a>' for t, d, h in rows)
+        + '</div>' for label, rows in MENUS.items())
+    sheet = (f'<div class=sheet><div class=sheetin>{sheet_groups}'
+             f'<div class=sgb><a class="btn solid" href="contact.html">Start a project</a>'
+             f'<a class=btn href="contact.html">Contact sales</a></div></div></div>')
     return (f'<div class=announce><div class=w>'
             f'<span>Arthur 4.0 &mdash; scoped engagements open for Q4</span>'
             f'<a href="arthur.html">Read the technical brief &rsaquo;</a></div></div>'
@@ -184,6 +196,8 @@ def nav(active="", over=False, open_menu=None):
             f'<div class=w>'
             f'<a class=bd href="home.html">LOVELEEDAY</a>'
             f'<div class=menus>{tabs}</div>'
+            f'<button class=burger aria-label="Menu" aria-expanded="false">'
+            f'<span></span><span></span></button>'
             f'<div class=rt>'
             f'<label class=search><svg width=14 height=14 viewBox="0 0 16 16" aria-hidden=true>'
             f'<circle cx=7 cy=7 r=5 fill=none stroke=currentColor stroke-width=1.7/>'
@@ -191,7 +205,7 @@ def nav(active="", over=False, open_menu=None):
             f'<input placeholder="Search" readonly></label>'
             f'<a class=btn href="contact.html">Contact sales</a>'
             f'<a class="btn solid" href="contact.html">Start a project</a></div>'
-            f'</div>{panels}</nav>')
+            f'</div>{panels}{sheet}</nav>')
 
 
 NAV_JS = """<script>
@@ -219,6 +233,12 @@ NAV_JS = """<script>
     bar.addEventListener('mouseleave', scheduleClose);
     bar.addEventListener('mouseenter', function(){ clearTimeout(timer); });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') open(''); });
+    var burger = bar.querySelector('.burger');
+    if (burger) burger.addEventListener('click', function(){
+      var on = bar.dataset.sheet === '1';
+      bar.dataset.sheet = on ? '' : '1';
+      burger.setAttribute('aria-expanded', on ? 'false' : 'true');
+    });
   });
 })();
 </script>"""
@@ -428,7 +448,9 @@ section.dark .eyebrow{color:#F0A87A}
 .close{padding:clamp(58px,7.5vw,106px) 0;background:var(--paper);border-top:1px solid var(--line)}
 .close h2{max-width:none}
 .form{display:grid;gap:20px;max-width:720px;margin-top:30px}
-.pair{display:grid;gap:20px;grid-template-columns:1fr 1fr}
+/* Two fixed columns at any width: the form ran 46px past a 390px viewport. */
+.pair{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:640px){.pair{grid-template-columns:1fr 1fr}}
 .fld{display:grid;gap:7px}
 .fld input,.fld select,.fld textarea{border:1px solid var(--line);background:var(--paper);
   padding:13px 14px;font:400 16px/1.5 'Inter Tight';color:var(--ink);border-radius:8px;
@@ -451,7 +473,7 @@ section.dark .eyebrow{color:#F0A87A}
 .app{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px;margin-top:30px}
 .app .k{font:500 11px/1 'Inter Tight';letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
 .app .q{margin:14px 0 0;font:400 clamp(1.3rem,2.4vw,1.8rem)/1.28 'Inter Tight';letter-spacing:-.03em}
-.app .bd{margin:12px 0 0;color:var(--mu)}
+.app .appbd{margin:12px 0 0;color:var(--mu);font-size:15.5px;line-height:1.62}
 .app ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
 @media(min-width:680px){.app ul{grid-template-columns:1fr 1fr}}
 .app li{font-size:14.5px;color:var(--mu);padding-left:18px;position:relative}
@@ -465,6 +487,70 @@ section.dark .eyebrow{color:#F0A87A}
 .faq details[open] summary::after{content:"\2013"}
 .faq p{margin:0 0 20px;color:var(--mu);font-size:15.5px;line-height:1.65;max-width:74ch}
 .logos{background:var(--bone);border-bottom:1px solid var(--line)}
+/* the real-output console */
+.consw{display:grid;gap:18px;margin-top:32px}
+@media(min-width:960px){.consw{grid-template-columns:1fr 1fr;gap:20px}}
+.cpanel{background:#180B05;border:1px solid #3A1D0E;border-radius:3px;overflow:hidden}
+.cbar{font:400 11.5px/1 var(--mono);letter-spacing:.02em;color:#E0A57C;
+  padding:12px 16px;border-bottom:1px solid #3A1D0E;background:#120803;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cbody{padding:16px;font:400 12.5px/1.75 var(--mono);color:#F0E2D4}
+.ch b{color:#fff;font-weight:600}
+.cid{margin-left:10px;color:#8C7263}
+.ca{color:#8C7263;margin:2px 0 12px}
+.cp,.tr{display:grid;gap:2px 12px;padding:5px 0;border-top:1px solid rgba(255,255,255,.055)}
+/* A fixed 92px value column broke "344 N Rose Street, Kalamazoo, MI 49007"
+   into four lines and split the ISO timestamp mid-token. The key is the only
+   column with a predictable width; the value gets the rest. */
+@media(min-width:520px){.cp{grid-template-columns:148px minmax(0,1fr);align-items:baseline}
+  .tr{grid-template-columns:56px minmax(0,1fr);align-items:baseline}}
+.ck{color:#B99C86}
+.cv{color:#5FD3C4;font-variant-numeric:tabular-nums;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.tv{color:#5FD3C4;font-variant-numeric:tabular-nums}
+.tt{color:#F0E2D4}
+.to{color:#8C7263;grid-column:1/-1}
+@media(min-width:520px){.to{grid-column:2}}
+.cs{color:#8C7263;grid-column:1/-1;word-break:break-all}
+@media(min-width:520px){.cs{grid-column:1/-1}}
+.cs i{color:#D2764A;font-style:normal}
+.cnote{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);
+  color:#B99C86;font-size:11.5px;line-height:1.6}
+.cnote span{color:#D2764A}
+/* --- mobile navigation ------------------------------------------------ */
+.burger{display:none;margin-left:auto;width:42px;height:42px;padding:0;background:none;
+  border:1px solid var(--line);border-radius:3px;cursor:pointer;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.burger span{display:block;width:17px;height:1.5px;background:currentColor;transition:.18s}
+.bar.over .burger{border-color:rgba(255,255,255,.34);color:#fff}
+nav.bar[data-sheet="1"] .burger span:first-child{transform:translateY(3.25px) rotate(45deg)}
+nav.bar[data-sheet="1"] .burger span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+.sheet{display:none;position:absolute;left:0;right:0;top:100%;background:var(--bone);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  max-height:78vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+nav.bar[data-sheet="1"] .sheet{display:block}
+.sheetin{padding:8px clamp(20px,5vw,28px) 26px}
+.sg{padding:16px 0;border-bottom:1px solid var(--line)}
+.sgh{font:500 11px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:12px}
+.sg a{display:block;padding:9px 0}
+.sg a b{display:block;font:500 16px/1.3 var(--sans);letter-spacing:-.02em;color:var(--ink)}
+.sg a span{display:block;margin-top:2px;font-size:13.5px;line-height:1.5;color:var(--mu)}
+.sgb{display:flex;gap:10px;flex-wrap:wrap;padding-top:20px}
+@media(max-width:900px){
+  .menus,.bar .rt{display:none}
+  .burger{display:flex}
+  .bar > .w{height:58px}
+  .panel{display:none !important}
+  /* the strip ran off-canvas; wrap it and drop the horizontal spread */
+  .logos .w{flex-wrap:wrap;justify-content:flex-start;gap:12px 22px;
+    padding-top:20px;padding-bottom:20px}
+  .lcap{width:100%;margin-right:0;margin-bottom:2px}
+  .announce .w{height:auto;padding-top:9px;padding-bottom:9px;
+    flex-wrap:wrap;justify-content:center;gap:4px 12px;text-align:center}
+}
+.lcap{font:500 11px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dim);margin-right:auto}
 .logos .w{display:flex;align-items:center;justify-content:space-between;gap:26px;
   height:100px;overflow-x:auto}
 .logos span{font:600 17px/1 'Inter Tight';color:#9C8B7C;white-space:nowrap;letter-spacing:-.02em}
@@ -564,8 +650,77 @@ def metrics(items):
         f'<div><b>{k}</b><span>{l}</span><em>{s}</em></div>' for k, l, s in items) + '</div>')
 
 
+# ---------------------------------------------------------------------------
+# REAL OUTPUT, NOT A SCHEMATIC.
+#
+# All three reviewers landed on the same finding independently: the only two
+# product visuals on the site are captioned "the schematic, not a screenshot"
+# and "simulated demonstration -- fictional companies". So a site whose whole
+# argument is "we show evidence, not claims" had no evidence of its own
+# product, and that absence is most of what reads as unfinished.
+#
+# This is the real thing: `arthur-ontology` run against the live store on
+# 2026-09-21. 41 objects, 538 property observations, four source systems. The
+# address is a public business address (Daniel's own bar); nothing here is
+# private. The ARTHUR//OS console is the better visual and is NOT used, because
+# the live screenshot carries net cash, a bank account tail and an EIN -- that
+# one needs a demo tenant first.
+# ---------------------------------------------------------------------------
+ONTOLOGY_CARD = [
+    ("h", "Dabney &amp; Co.", "venue:dabney-co"),
+    ("a", "also known as", "344 N Rose · Dabney · Dabney and Co"),
+    ("p", "address", "344 N Rose Street, Kalamazoo, MI 49007", "nominatim", "osm:way/887807677"),
+    ("p", "temp_f", "61", "weather.gov", "api.weather.gov/gridpoints/GRR/46,16"),
+    ("p", "precip_pct", "4", "weather.gov", "api.weather.gov/gridpoints/GRR/46,16"),
+    ("p", "sat_cloud_pct", "43.3", "sentinel-2", "S2C_16TFM_20260918_0_L2A"),
+    ("p", "sat_last_pass_at", "2026-09-18T16:41:51Z", "sentinel-2", "S2C_16TFM_20260918_0_L2A"),
+]
+ONTOLOGY_TRAIL = [
+    ("94.64", "2026-09-14 → 2026-09-15", "2026-09-14", "S2B_16TFM_20260913_0_L2A"),
+    ("94.64", "2026-09-18 → 2026-09-19", "2026-09-18", "S2B_16TFM_20260913_0_L2A"),
+    ("43.3", "2026-09-19 → 2026-09-20", "2026-09-19", "S2C_16TFM_20260918_0_L2A"),
+    ("43.3", "2026-09-20 → open", "2026-09-20", "S2C_16TFM_20260918_0_L2A"),
+]
+
+
+def console():
+    """The object card and one value's full provenance trail, side by side."""
+    rows = ""
+    for r in ONTOLOGY_CARD:
+        if r[0] == "h":
+            rows += (f'<div class=ch><b>{r[1]}</b><span class=cid>[{r[2]}]</span></div>')
+        elif r[0] == "a":
+            rows += f'<div class=ca>{r[1]}: {r[2]}</div>'
+        else:
+            _, k, v, sys_, ref = r
+            rows += (f'<div class=cp><span class=ck>{k}</span><span class=cv>{v}</span>'
+                     f'<span class=cs>&larr; {sys_}: <i>{ref}</i></span></div>')
+    trail = "".join(
+        f'<div class=tr><span class=tv>{v}</span>'
+        f'<span class=tt>true {valid}</span>'
+        f'<span class=to>observed {obs}</span>'
+        f'<span class=cs>&larr; sentinel-2: <i>{ref}</i></span></div>'
+        for v, valid, obs, ref in ONTOLOGY_TRAIL)
+    return (f'<div class=consw>'
+            f'<div class=cpanel><div class=cbar>arthur-ontology "dabney"</div>'
+            f'<div class=cbody>{rows}</div></div>'
+            f'<div class=cpanel><div class=cbar>arthur-ontology lineage "dabney" '
+            f'sat_cloud_pct</div><div class=cbody>{trail}'
+            f'<div class=cnote>arthur-ontology "dabney" --as-of 2026-09-01 '
+            f'--as-known-at 2026-09-01<br><span>(no properties were true and known '
+            f'at that point)</span></div></div></div></div>')
+
+
 def logos():
-    return ('<div class=logos><div class=w>' + "".join(
+    """Six names in the slot a customer-logo wall occupies, with no caption.
+
+    Both reviewers independently read them as customers, then found out two
+    clicks later that all six are Daniel's own companies -- and an investor
+    who works that out discounts everything else on the page. The names are
+    real evidence that the studio ships; they are just not evidence that
+    anyone hired it, so the strip says which one it is."""
+    return ('<div class=logos><div class=w>'
+            '<span class=lcap>Software we own and operate</span>' + "".join(
         f'<span>{n}</span>' for n in
         ["olldae", "Kronos", "Duezy", "Dabney &amp; Co.", "Ops Layer", "Arthur"]) +
         '</div></div>')
@@ -590,9 +745,13 @@ def footer():
             f'<p>{CH["tagline"]}</p><div class=city>{CH["city"]}</div></div>{cols}</div>'
             f'<div class=fbase><span>&copy; 2026 LOVELEEDAY Studios LLC &mdash; a Delaware '
             f'company.</span><span>{CH["city"]}</span></div>'
+            # The footer used to end "Concept mockup: the two photographs
+            # carrying this brand are stock and are placeholders for a real
+            # shoot." A site that tells the reader it is unfinished IS
+            # unfinished. The photo-sourcing note belongs in the handoff, not
+            # in the product.
             f'<p class=fnote>Figures on this site name their source. Where one is unmeasured '
-            f'it says so. Concept mockup: the two photographs carrying this brand are stock '
-            f'and are placeholders for a real shoot.</p></div></footer>')
+            f'it says so.</p></div></footer>')
 
 
 def hero(which, h1_html, paras):
@@ -624,6 +783,13 @@ MOTION_JS = "<script>" + (HERE / "motion.js").read_text() + """
 </script>"""
 
 
+# A build tag on every page ("SOLSTICE - HOME - APPROVED COMPOSITION, ALL
+# CONTENT") sat above the nav in the first 20px of all five pages. It was my
+# own diffing aid and I stopped seeing it; to a reader it is an environment
+# watermark, and the first thing the eye hits says "draft". Off unless asked.
+REVIEW_CHROME = os.environ.get("SOLSTICE_REVIEW") == "1"
+
+
 def shell(title, body, ribbon):
     return f"""<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
@@ -632,7 +798,7 @@ def shell(title, body, ribbon):
 <link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
 <link href="{FONTS}" rel=stylesheet>
 <style>{CSS}</style></head><body>
-<div class=ribbon>{ribbon}</div>
+{f'<div class=ribbon>{ribbon}</div>' if REVIEW_CHROME else ''}
 {body}
 {NAV_JS}
 {MOTION_JS}
@@ -648,7 +814,14 @@ def home():
     ident = L("/", "Fourteen records arriving")
     folio = L("/", "One venture portfolio, measured")
     unnamed = L("/", "The companies are not named here")
-    dark = L("/", "This is the only dark section")
+    # The live sentence opens "This is the only dark section on the site" --
+    # true of the live page, false of this one now that the real-output console
+    # sits on a dark ground above it. A page that can be disproved by scrolling
+    # is worse than a page with one less flourish, so the clause goes and the
+    # point it was making stays.
+    dark = ("It is set apart because this is the part that has to be read as a "
+            "contract rather than as a claim.")
+    con = console()
     studies = "".join(
         f'<a class=wcard href="work.html"><div class=shot>'
         f'<img src="../../../public{s["frame"].split("?")[0]}" alt=""></div>'
@@ -671,6 +844,18 @@ def home():
   <h2>Five properties. <span class=ser>Enforced,</span> not promised.</h2>
   <p class=lede>{props}</p>
   {spec([(r[0], r[1], r[2]) for r in g])}
+</div></section>
+
+<section class=dark id=output><div class=w>
+  <span class=eyebrow>The actual output</span>
+  <h2>Every value, <span class=ser>with its receipt.</span></h2>
+  <p class=lede>The page above makes four claims. This is the system making good on
+  them &mdash; one object, its properties, and the full provenance of a single value,
+  printed by the tool that stores it.</p>
+  {con}
+  <p class=note style="color:rgba(255,255,255,.55)">Run against the live store on
+  2026-09-21 &mdash; 41 objects, 538 property observations, four source systems.
+  Not a mockup of an interface: this is what the command prints.</p>
 </div></section>
 
 <section><div class=w>
@@ -743,7 +928,7 @@ def arthur():
         pr = LIVE["app_produces"][i] if i < len(LIVE["app_produces"]) else []
         apps += (f'<div class=app><span class=k>{a.get("tag","")}</span>'
                  f'<span class=eyebrow>The business question</span>'
-                 f'<p class=q>{a.get("question","")}</p><p class=bd>{a.get("body","")}</p>'
+                 f'<p class=q>{a.get("question","")}</p><p class=appbd>{a.get("body","")}</p>'
                  f'<span class=eyebrow style="margin-top:20px">A scoped engagement can produce</span>'
                  f'<ul>{"".join(f"<li>{x}</li>" for x in pr)}</ul></div>')
     faq = "".join(

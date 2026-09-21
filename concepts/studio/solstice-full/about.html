@@ -208,7 +208,9 @@ section.dark .eyebrow{color:#F0A87A}
 .close{padding:clamp(58px,7.5vw,106px) 0;background:var(--paper);border-top:1px solid var(--line)}
 .close h2{max-width:none}
 .form{display:grid;gap:20px;max-width:720px;margin-top:30px}
-.pair{display:grid;gap:20px;grid-template-columns:1fr 1fr}
+/* Two fixed columns at any width: the form ran 46px past a 390px viewport. */
+.pair{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:640px){.pair{grid-template-columns:1fr 1fr}}
 .fld{display:grid;gap:7px}
 .fld input,.fld select,.fld textarea{border:1px solid var(--line);background:var(--paper);
   padding:13px 14px;font:400 16px/1.5 'Inter Tight';color:var(--ink);border-radius:8px;
@@ -231,7 +233,7 @@ section.dark .eyebrow{color:#F0A87A}
 .app{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px;margin-top:30px}
 .app .k{font:500 11px/1 'Inter Tight';letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
 .app .q{margin:14px 0 0;font:400 clamp(1.3rem,2.4vw,1.8rem)/1.28 'Inter Tight';letter-spacing:-.03em}
-.app .bd{margin:12px 0 0;color:var(--mu)}
+.app .appbd{margin:12px 0 0;color:var(--mu);font-size:15.5px;line-height:1.62}
 .app ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
 @media(min-width:680px){.app ul{grid-template-columns:1fr 1fr}}
 .app li{font-size:14.5px;color:var(--mu);padding-left:18px;position:relative}
@@ -245,6 +247,70 @@ section.dark .eyebrow{color:#F0A87A}
 .faq details[open] summary::after{content:"3"}
 .faq p{margin:0 0 20px;color:var(--mu);font-size:15.5px;line-height:1.65;max-width:74ch}
 .logos{background:var(--bone);border-bottom:1px solid var(--line)}
+/* the real-output console */
+.consw{display:grid;gap:18px;margin-top:32px}
+@media(min-width:960px){.consw{grid-template-columns:1fr 1fr;gap:20px}}
+.cpanel{background:#180B05;border:1px solid #3A1D0E;border-radius:3px;overflow:hidden}
+.cbar{font:400 11.5px/1 var(--mono);letter-spacing:.02em;color:#E0A57C;
+  padding:12px 16px;border-bottom:1px solid #3A1D0E;background:#120803;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cbody{padding:16px;font:400 12.5px/1.75 var(--mono);color:#F0E2D4}
+.ch b{color:#fff;font-weight:600}
+.cid{margin-left:10px;color:#8C7263}
+.ca{color:#8C7263;margin:2px 0 12px}
+.cp,.tr{display:grid;gap:2px 12px;padding:5px 0;border-top:1px solid rgba(255,255,255,.055)}
+/* A fixed 92px value column broke "344 N Rose Street, Kalamazoo, MI 49007"
+   into four lines and split the ISO timestamp mid-token. The key is the only
+   column with a predictable width; the value gets the rest. */
+@media(min-width:520px){.cp{grid-template-columns:148px minmax(0,1fr);align-items:baseline}
+  .tr{grid-template-columns:56px minmax(0,1fr);align-items:baseline}}
+.ck{color:#B99C86}
+.cv{color:#5FD3C4;font-variant-numeric:tabular-nums;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.tv{color:#5FD3C4;font-variant-numeric:tabular-nums}
+.tt{color:#F0E2D4}
+.to{color:#8C7263;grid-column:1/-1}
+@media(min-width:520px){.to{grid-column:2}}
+.cs{color:#8C7263;grid-column:1/-1;word-break:break-all}
+@media(min-width:520px){.cs{grid-column:1/-1}}
+.cs i{color:#D2764A;font-style:normal}
+.cnote{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);
+  color:#B99C86;font-size:11.5px;line-height:1.6}
+.cnote span{color:#D2764A}
+/* --- mobile navigation ------------------------------------------------ */
+.burger{display:none;margin-left:auto;width:42px;height:42px;padding:0;background:none;
+  border:1px solid var(--line);border-radius:3px;cursor:pointer;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.burger span{display:block;width:17px;height:1.5px;background:currentColor;transition:.18s}
+.bar.over .burger{border-color:rgba(255,255,255,.34);color:#fff}
+nav.bar[data-sheet="1"] .burger span:first-child{transform:translateY(3.25px) rotate(45deg)}
+nav.bar[data-sheet="1"] .burger span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+.sheet{display:none;position:absolute;left:0;right:0;top:100%;background:var(--bone);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  max-height:78vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+nav.bar[data-sheet="1"] .sheet{display:block}
+.sheetin{padding:8px clamp(20px,5vw,28px) 26px}
+.sg{padding:16px 0;border-bottom:1px solid var(--line)}
+.sgh{font:500 11px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:12px}
+.sg a{display:block;padding:9px 0}
+.sg a b{display:block;font:500 16px/1.3 var(--sans);letter-spacing:-.02em;color:var(--ink)}
+.sg a span{display:block;margin-top:2px;font-size:13.5px;line-height:1.5;color:var(--mu)}
+.sgb{display:flex;gap:10px;flex-wrap:wrap;padding-top:20px}
+@media(max-width:900px){
+  .menus,.bar .rt{display:none}
+  .burger{display:flex}
+  .bar > .w{height:58px}
+  .panel{display:none !important}
+  /* the strip ran off-canvas; wrap it and drop the horizontal spread */
+  .logos .w{flex-wrap:wrap;justify-content:flex-start;gap:12px 22px;
+    padding-top:20px;padding-bottom:20px}
+  .lcap{width:100%;margin-right:0;margin-bottom:2px}
+  .announce .w{height:auto;padding-top:9px;padding-bottom:9px;
+    flex-wrap:wrap;justify-content:center;gap:4px 12px;text-align:center}
+}
+.lcap{font:500 11px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dim);margin-right:auto}
 .logos .w{display:flex;align-items:center;justify-content:space-between;gap:26px;
   height:100px;overflow-x:auto}
 .logos span{font:600 17px/1 'Inter Tight';color:#9C8B7C;white-space:nowrap;letter-spacing:-.02em}
@@ -262,8 +328,8 @@ footer{background:var(--deep);color:var(--on-deep);padding:clamp(46px,6vw,78px) 
   font-size:13px;color:#9C8474}
 .fnote{margin-top:14px;font:400 12px/1.65 ui-monospace,monospace;color:#8A7060;max-width:82ch}
 </style></head><body>
-<div class=ribbon>Solstice &middot; /about &middot; hero H, company facts, five principles</div>
-<div class=herowrap><div class=sky aria-hidden=true><img class=shot style="object-position:70% 46%" src="../../../public/studio/solstice/bench-lamp.jpg" alt=""><div class=grade style="background:linear-gradient(168deg,rgba(255,182,72,.18) 0%,rgba(226,100,32,.28) 48%,rgba(102,26,10,.46) 100%)"></div><div class=scrim style="background:linear-gradient(96deg,rgba(32,10,4,.88) 0%,rgba(32,10,4,.58) 48%,rgba(32,10,4,.16) 100%)"></div></div><div class=announce><div class=w><span>Arthur 4.0 &mdash; scoped engagements open for Q4</span><a href="arthur.html">Read the technical brief &rsaquo;</a></div></div><nav class="bar over" data-open=""><div class=w><a class=bd href="home.html">LOVELEEDAY</a><div class=menus><button class="tab" data-menu="Platform" aria-expanded="false">Platform<i aria-hidden="true">&#9662;</i></button><button class="tab" data-menu="Work" aria-expanded="false">Work<i aria-hidden="true">&#9662;</i></button><button class="tab" data-menu="Company" aria-expanded="false">Company<i aria-hidden="true">&#9662;</i></button><button class="tab" data-menu="Engagements" aria-expanded="false">Engagements<i aria-hidden="true">&#9662;</i></button></div><div class=rt><label class=search><svg width=14 height=14 viewBox="0 0 16 16" aria-hidden=true><circle cx=7 cy=7 r=5 fill=none stroke=currentColor stroke-width=1.7/><path d="M11 11 15 15" stroke=currentColor stroke-width=1.7/></svg><input placeholder="Search" readonly></label><a class=btn href="contact.html">Contact sales</a><a class="btn solid" href="contact.html">Start a project</a></div></div><div class=panel data-panel="Platform"><div class=w><div class=mhead>Platform</div><div class=pgrid><a class=mi href="arthur.html#architecture"><b>The architecture</b><span>Five components, each a rule in the write path</span></a><a class=mi href="arthur.html#ontology"><b>About the Ontology</b><span>One object per company, and how records resolve onto it</span></a><a class=mi href="arthur.html#architecture"><b>Lineage</b><span>Every value carries its source system and reference</span></a><a class=mi href="arthur.html#architecture"><b>Verified execution</b><span>Work closes on a value read back out of the system</span></a><a class=mi href="arthur.html"><b>In motion</b><span>A simulated walkthrough, labelled as one</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><div class=panel data-panel="Work"><div class=w><div class=mhead>Work</div><div class=pgrid><a class=mi href="work.html#studies"><b>Client rebuilds</b><span>Six, uncommissioned, and none of them named</span></a><a class=mi href="work.html#operated"><b>Companies we operate</b><span>Five we own and run. Evidence that we ship</span></a><a class=mi href="about.html#method"><b>How we measure</b><span>Page weight, Lighthouse, live position, accessibility</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><div class=panel data-panel="Company"><div class=w><div class=mhead>Company</div><div class=pgrid><a class=mi href="about.html"><b>About</b><span>A practice, and the five rules it does not bend</span></a><a class=mi href="about.html#method"><b>How we scope</b><span>Fixed before we start, pushed back on before it begins</span></a><a class=mi href="contact.html"><b>Contact</b><span>We reply the same week</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><div class=panel data-panel="Engagements"><div class=w><div class=mhead>Engagements</div><div class=pgrid><a class=mi href="contact.html"><b>Start a project</b><span>Tell us what is slowing you down</span></a><a class=mi href="contact.html"><b>What happens next</b><span>Reply, scope, and a private review page</span></a><a class=mi href="mailto:hello@loveleedaystudios.com"><b>hello@loveleedaystudios.com</b><span>Straight to the inbox</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div></nav><div class=body><div class=w><h1>Business judgment. <span class=ser>Built as software.</span></h1><p>LOVELEEDAY Studios is a software development company. Our perspective comes from pricing, operations and running businesses, not only from writing code.</p><p>Arthur is the software foundation. LOVELEEDAY Studios is the team responsible for defining the problem, developing the solution, and reviewing the result with you.</p></div></div></div>
+
+<div class=herowrap><div class=sky aria-hidden=true><img class=shot style="object-position:70% 46%" src="../../../public/studio/solstice/bench-lamp.jpg" alt=""><div class=grade style="background:linear-gradient(168deg,rgba(255,182,72,.18) 0%,rgba(226,100,32,.28) 48%,rgba(102,26,10,.46) 100%)"></div><div class=scrim style="background:linear-gradient(96deg,rgba(32,10,4,.88) 0%,rgba(32,10,4,.58) 48%,rgba(32,10,4,.16) 100%)"></div></div><div class=announce><div class=w><span>Arthur 4.0 &mdash; scoped engagements open for Q4</span><a href="arthur.html">Read the technical brief &rsaquo;</a></div></div><nav class="bar over" data-open=""><div class=w><a class=bd href="home.html">LOVELEEDAY</a><div class=menus><button class="tab" data-menu="Platform" aria-expanded="false">Platform<i aria-hidden="true">&#9662;</i></button><button class="tab" data-menu="Work" aria-expanded="false">Work<i aria-hidden="true">&#9662;</i></button><button class="tab" data-menu="Company" aria-expanded="false">Company<i aria-hidden="true">&#9662;</i></button><button class="tab" data-menu="Engagements" aria-expanded="false">Engagements<i aria-hidden="true">&#9662;</i></button></div><button class=burger aria-label="Menu" aria-expanded="false"><span></span><span></span></button><div class=rt><label class=search><svg width=14 height=14 viewBox="0 0 16 16" aria-hidden=true><circle cx=7 cy=7 r=5 fill=none stroke=currentColor stroke-width=1.7/><path d="M11 11 15 15" stroke=currentColor stroke-width=1.7/></svg><input placeholder="Search" readonly></label><a class=btn href="contact.html">Contact sales</a><a class="btn solid" href="contact.html">Start a project</a></div></div><div class=panel data-panel="Platform"><div class=w><div class=mhead>Platform</div><div class=pgrid><a class=mi href="arthur.html#architecture"><b>The architecture</b><span>Five components, each a rule in the write path</span></a><a class=mi href="arthur.html#ontology"><b>About the Ontology</b><span>One object per company, and how records resolve onto it</span></a><a class=mi href="arthur.html#architecture"><b>Lineage</b><span>Every value carries its source system and reference</span></a><a class=mi href="arthur.html#architecture"><b>Verified execution</b><span>Work closes on a value read back out of the system</span></a><a class=mi href="arthur.html"><b>In motion</b><span>A simulated walkthrough, labelled as one</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><div class=panel data-panel="Work"><div class=w><div class=mhead>Work</div><div class=pgrid><a class=mi href="work.html#studies"><b>Client rebuilds</b><span>Six, uncommissioned, and none of them named</span></a><a class=mi href="work.html#operated"><b>Companies we operate</b><span>Five we own and run. Evidence that we ship</span></a><a class=mi href="about.html#method"><b>How we measure</b><span>Page weight, Lighthouse, live position, accessibility</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><div class=panel data-panel="Company"><div class=w><div class=mhead>Company</div><div class=pgrid><a class=mi href="about.html"><b>About</b><span>A practice, and the five rules it does not bend</span></a><a class=mi href="about.html#method"><b>How we scope</b><span>Fixed before we start, pushed back on before it begins</span></a><a class=mi href="contact.html"><b>Contact</b><span>We reply the same week</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><div class=panel data-panel="Engagements"><div class=w><div class=mhead>Engagements</div><div class=pgrid><a class=mi href="contact.html"><b>Start a project</b><span>Tell us what is slowing you down</span></a><a class=mi href="contact.html"><b>What happens next</b><span>Reply, scope, and a private review page</span></a><a class=mi href="mailto:hello@loveleedaystudios.com"><b>hello@loveleedaystudios.com</b><span>Straight to the inbox</span></a></div><div class=pfoot>Intelligence architecture and the production software that runs on top of it.</div></div></div><div class=sheet><div class=sheetin><div class=sg><div class=sgh>Platform</div><a href="arthur.html#architecture"><b>The architecture</b><span>Five components, each a rule in the write path</span></a><a href="arthur.html#ontology"><b>About the Ontology</b><span>One object per company, and how records resolve onto it</span></a><a href="arthur.html#architecture"><b>Lineage</b><span>Every value carries its source system and reference</span></a><a href="arthur.html#architecture"><b>Verified execution</b><span>Work closes on a value read back out of the system</span></a><a href="arthur.html"><b>In motion</b><span>A simulated walkthrough, labelled as one</span></a></div><div class=sg><div class=sgh>Work</div><a href="work.html#studies"><b>Client rebuilds</b><span>Six, uncommissioned, and none of them named</span></a><a href="work.html#operated"><b>Companies we operate</b><span>Five we own and run. Evidence that we ship</span></a><a href="about.html#method"><b>How we measure</b><span>Page weight, Lighthouse, live position, accessibility</span></a></div><div class=sg><div class=sgh>Company</div><a href="about.html"><b>About</b><span>A practice, and the five rules it does not bend</span></a><a href="about.html#method"><b>How we scope</b><span>Fixed before we start, pushed back on before it begins</span></a><a href="contact.html"><b>Contact</b><span>We reply the same week</span></a></div><div class=sg><div class=sgh>Engagements</div><a href="contact.html"><b>Start a project</b><span>Tell us what is slowing you down</span></a><a href="contact.html"><b>What happens next</b><span>Reply, scope, and a private review page</span></a><a href="mailto:hello@loveleedaystudios.com"><b>hello@loveleedaystudios.com</b><span>Straight to the inbox</span></a></div><div class=sgb><a class="btn solid" href="contact.html">Start a project</a><a class=btn href="contact.html">Contact sales</a></div></div></div></nav><div class=body><div class=w><h1>Business judgment. <span class=ser>Built as software.</span></h1><p>LOVELEEDAY Studios is a software development company. Our perspective comes from pricing, operations and running businesses, not only from writing code.</p><p>Arthur is the software foundation. LOVELEEDAY Studios is the team responsible for defining the problem, developing the solution, and reviewing the result with you.</p></div></div></div>
 <section class=dark><div class=w>
   <div class=idg>
     <div>
@@ -293,7 +359,7 @@ footer{background:var(--deep);color:var(--on-deep);padding:clamp(46px,6vw,78px) 
   <h2>The numbers, <span class=ser>and where they come from.</span></h2>
   <div class=metrics><div><b>6</b><span>Sites rebuilt in working HTML</span><em>One venture portfolio, rebuilt as running pages rather than described in a deck. Companies that are not ours.</em></div><div><b>38</b><span>Sites measured in that audit</span><em>Page weight, Lighthouse mobile, live organic search position and accessibility, measured per site on 2026-09-19.</em></div><div><b>5</b><span>Architectural components in Arthur</span><em>Persistent memory, identity resolution, a bitemporal record, lineage enforcement and verified tool execution. Implemented, not planned.</em></div><div><b>2</b><span>Timelines carried on every value</span><em>When it was true in the world, and separately when we learned it — which is what makes it possible to ask what was known on a date rather than only what was true.</em></div></div>
 </div></section>
-<section class=close><div class=w><span class=eyebrow>Start</span><h2>Tell us what is <span class=ser>slowing you down.</span></h2><p class=lede>We reply the same week.</p><p style="margin-top:26px"><a class="btn solid" href="contact.html">Start a project</a></p></div></section><footer><div class=w><div class=fgrid><div class=fbrand><b>LOVELEEDAY<span> Studios</span></b><p>Intelligence architecture and the production software that runs on top of it.</p><div class=city>Kalamazoo, Michigan</div></div><div class=fcol><h3>Platform</h3><ul><li><a href="arthur.html">Arthur</a></li><li><a href="arthur.html#architecture">Architecture</a></li><li><a href="about.html#method">How we scope</a></li></ul></div><div class=fcol><h3>Work</h3><ul><li><a href="work.html#studies">Client rebuilds</a></li><li><a href="work.html">Companies we operate</a></li><li><a href="about.html#method">How we measure</a></li></ul></div><div class=fcol><h3>Company</h3><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Start a project</a></li><li><a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a></li></ul></div></div><div class=fbase><span>&copy; 2026 LOVELEEDAY Studios LLC &mdash; a Delaware company.</span><span>Kalamazoo, Michigan</span></div><p class=fnote>Figures on this site name their source. Where one is unmeasured it says so. Concept mockup: the two photographs carrying this brand are stock and are placeholders for a real shoot.</p></div></footer>
+<section class=close><div class=w><span class=eyebrow>Start</span><h2>Tell us what is <span class=ser>slowing you down.</span></h2><p class=lede>We reply the same week.</p><p style="margin-top:26px"><a class="btn solid" href="contact.html">Start a project</a></p></div></section><footer><div class=w><div class=fgrid><div class=fbrand><b>LOVELEEDAY<span> Studios</span></b><p>Intelligence architecture and the production software that runs on top of it.</p><div class=city>Kalamazoo, Michigan</div></div><div class=fcol><h3>Platform</h3><ul><li><a href="arthur.html">Arthur</a></li><li><a href="arthur.html#architecture">Architecture</a></li><li><a href="about.html#method">How we scope</a></li></ul></div><div class=fcol><h3>Work</h3><ul><li><a href="work.html#studies">Client rebuilds</a></li><li><a href="work.html">Companies we operate</a></li><li><a href="about.html#method">How we measure</a></li></ul></div><div class=fcol><h3>Company</h3><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Start a project</a></li><li><a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a></li></ul></div></div><div class=fbase><span>&copy; 2026 LOVELEEDAY Studios LLC &mdash; a Delaware company.</span><span>Kalamazoo, Michigan</span></div><p class=fnote>Figures on this site name their source. Where one is unmeasured it says so.</p></div></footer>
 <script>
 (function(){
   document.querySelectorAll('nav.bar').forEach(function(bar){
@@ -319,6 +385,12 @@ footer{background:var(--deep);color:var(--on-deep);padding:clamp(46px,6vw,78px) 
     bar.addEventListener('mouseleave', scheduleClose);
     bar.addEventListener('mouseenter', function(){ clearTimeout(timer); });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') open(''); });
+    var burger = bar.querySelector('.burger');
+    if (burger) burger.addEventListener('click', function(){
+      var on = bar.dataset.sheet === '1';
+      bar.dataset.sheet = on ? '' : '1';
+      burger.setAttribute('aria-expanded', on ? 'false' : 'true');
+    });
   });
 })();
 </script>
