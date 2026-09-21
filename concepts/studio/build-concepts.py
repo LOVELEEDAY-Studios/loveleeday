@@ -87,7 +87,7 @@ MENUS = {
                  ("Lineage", "Every value carries its source", "#"),
                  ("Verified execution", "Work closes on observed proof", "#")],
     "Work": [("Client rebuilds", "Six, uncommissioned", "#"),
-             ("Catalogue pricing", "690 items below cost, corrected", "#"),
+             ("Catalogue pricing", "Priced below cost, found and corrected", "#"),
              ("How we measure", "Weight, Lighthouse, position", "#")],
     "Company": [("About", "Business judgment, built as software", "#"),
                 ("How we scope", "Fixed quote, written scope", "#"),
@@ -254,6 +254,14 @@ nav.bar[data-sheet="1"] .sheet{display:block}
 .pnl span{display:block;margin-top:8px;font:400 11px/1.5 var(--mono);
   letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
 .pnl p{margin-top:9px;font-size:13px;line-height:1.55;color:var(--mu)}
+/* asked / found */
+.af{display:grid;gap:1px;background:var(--edge);border:1px solid var(--edge);
+  margin-top:26px}
+@media(min-width:760px){.af{grid-template-columns:1fr 1.35fr}}
+.afr{background:var(--panel);padding:20px 22px}
+.afr p{margin-top:10px;font:400 clamp(15px,1.5vw,18.5px)/1.45 var(--sans);
+  letter-spacing:-.015em;color:var(--fg)}
+.afr:last-child p{color:var(--key)}
 .rows{border-top:1px solid var(--edge);margin-top:24px}
 .row{display:grid;gap:4px 20px;padding:15px 0;border-bottom:1px solid var(--edge);
   align-items:baseline}
@@ -419,37 +427,66 @@ def work_cards(n=3):
 #
 # He is right that it was the wrong exhibit -- five companies he owns proves he
 # ships and proves nobody hired him, which an investor reads straight through.
-# This is the replacement, and it is a day of real work read off the thirteen
-# workbooks in ~/Downloads dated 2026-09-21: a distributor's catalogue where
-# minimum sell prices had drifted BELOW actual cost, found, quantified and
-# written back as ERP import files.
+# This is the replacement: a day of real work on a distributor's catalogue where
+# minimum sell prices had drifted BELOW actual cost.
 #
-# Every figure below was computed from those files, not written by hand. The
-# client is not named and no item number or price appears, for the same reason
-# the security exchange names no site: the work is the proof, the customer's
-# data is not ours to publish.
-PRICING = [
-    ("01", "Minimums below cost",
-     "690 items across eight price lists and eight product lines were selling "
-     "at a floor beneath their own ERP actual cost.",
-     "690 items"),
-    ("02", "Corrections computed",
-     "Each floor raised to actual cost and the delta carried per item \u2014 a "
-     "median of $1.55 and a worst case of $435.27.",
-     "228 raised"),
-    ("03", "Special agreements cleared",
-     "Minimums inherited from expired special pricing agreements removed so the "
-     "list price governs again.",
-     "471 removed"),
-    ("04", "Tier lists reinstated",
-     "Tier pricing rolled back onto the items that had fallen out of their list "
-     "during the migration.",
-     "1,967 rows"),
-    ("05", "Supplier lists unexpired",
-     "Expired supplier price lists reopened so the cost side resolves instead of "
-     "falling back to a stale tier.",
-     "3,099 rows"),
+# DELIBERATELY UNSPECIFIC, and not for modesty. Daniel, 2026-09-21: do not
+# name the ERP vendor -- he works with that system professionally and naming
+# it ties this site to that engagement -- and keep the figures general,
+# because listing specifics is what makes a story traceable back to one
+# catalogue on one date.
+#
+# So: no vendor name, no exact counts, no dollar figures, no price-list or
+# product-line counts. Precise numbers are what make a story traceable back to
+# one catalogue on one date, and the story does not need them -- "hundreds of
+# items were priced below their own cost" carries the whole argument. The shape
+# is true; the forensics stay private.
+# Daniel: "this also needs to read like palantir where we are assisting clients
+# to answer the question no one asked."
+#
+# That is the right frame and the page already had it in three places without
+# saying so. Nobody asked for thirty-eight sites to be measured. Nobody asks
+# Arthur the four sub-questions it has to answer first. And nobody asked
+# whether the price floor had fallen under the cost -- the engagement was an
+# ERP migration. The device is stated now instead of implied: what was ASKED,
+# then what was FOUND, in that order, everywhere it applies.
+ASKED_FOUND = [
+    ("Asked", "Migrate the price lists into the new ERP."),
+    ("Found", "Hundreds of items were selling below their own cost."),
 ]
+
+PRICING = [
+    ("01", "The floor was under the cost",
+     "Across several price lists and product lines, the minimum a salesperson "
+     "could quote sat beneath what the item actually cost to buy. Nobody had "
+     "asked the question, because nothing in the system asks it.",
+     "hundreds of items"),
+    ("02", "The gap was quantifiable per line",
+     "Every floor raised to actual cost, with the delta carried item by item "
+     "rather than estimated in aggregate \u2014 so the correction is auditable "
+     "line by line rather than a lump adjustment.",
+     "per item"),
+    ("03", "Expired agreements were still governing",
+     "Minimums inherited from special pricing agreements that had already lapsed "
+     "were still setting the floor. Removed, so the list price governs again.",
+     "hundreds cleared"),
+    ("04", "Items had fallen out of their own tier",
+     "Tier pricing the migration had silently dropped, reinstated against the "
+     "lists the items belong to.",
+     "thousands of rows"),
+    ("05", "The cost side was resolving to stale data",
+     "Expired supplier lists reopened, so cost resolves to a live figure instead "
+     "of falling through to whatever tier answered last.",
+     "thousands of rows"),
+]
+
+
+def asked_found(pairs=None):
+    """The Palantir device, stated rather than implied: what the client asked
+       for, then what was actually found."""
+    return '<div class=af>' + "".join(
+        f'<div class=afr><span class=lab>{k}</span><p>{v}</p></div>'
+        for k, v in (pairs or ASKED_FOUND)) + '</div>'
 
 
 def pricing_rows():
@@ -460,10 +497,14 @@ def pricing_rows():
 
 
 PRICING_STATS = [
-    ("ITM", "690", "Items below cost", "Floor beneath actual cost, found across the catalogue."),
-    ("EXP", "$12,061", "Per-unit exposure", "Aggregate gap between minimum and cost on that set."),
-    ("ROW", "9,493", "Rows written back", "Thirteen ERP import workbooks, generated not typed."),
-    ("DAY", "1", "Working day", "Found, quantified and returned as importable files."),
+    ("FND", "Hundreds", "Items below cost",
+     "Price floors sitting beneath the item's own cost to buy."),
+    ("AUD", "Per line", "Correction carried",
+     "Each delta computed item by item, not as a lump adjustment."),
+    ("OUT", "Thousands", "Rows written back",
+     "Returned as import files the system accepts, generated not typed."),
+    ("DAY", "One", "Working day",
+     "Found, quantified and handed back inside a single day."),
 ]
 
 
@@ -565,18 +606,21 @@ def c_terminal():
 </div>{brain()}</section>
 
 <section class=sec><div class=w>
-  <span class=lab>Catalogue pricing &middot; one working day</span>
-  <h2 style="margin-top:14px">Six hundred and ninety items<br>were selling below cost.</h2>
-  <p class=lede>A distributor's price floors had drifted under their own actual
-  cost during an ERP migration. Found, quantified, and written back as import
-  files the system would accept.</p>
+  <span class=lab>The question nobody asked</span>
+  <h2 style="margin-top:14px">We were hired to move<br>the price lists.</h2>
+  {asked_found()}
+  <p class=lede>The engagement was a migration. The finding was that the floor
+  had drifted under the cost on hundreds of items. Quantified line by line and
+  written back as files the system would accept, inside a working day.</p>
   {panels(PRICING_STATS)}
   {pricing_rows()}
 </div></section>
 
 <section class=sec style="padding-top:0"><div class=w>
-  <span class=lab>Uncommissioned</span>
+  <span class=lab>The question nobody asked</span>
   <h2 style="margin-top:14px">Thirty-eight measured. Six rebuilt.</h2>
+  <p class=lede>Nobody commissioned this either. The argument was easier to make
+  in working HTML than in a deck.</p>
   {work_cards()}
 </div></section>
 {footer()}"""
@@ -623,18 +667,21 @@ def c_dispatch():
 </div>{brain()}</section>
 
 <section class=sec><div class=w>
-  <span class=lab>Catalogue pricing &middot; one working day</span>
-  <h2>Six hundred and ninety items<br>were selling below cost.</h2>
-  <p class=lede>A distributor's price floors had drifted under their own actual
-  cost during an ERP migration. Found, quantified, and written back as import
-  files the system would accept.</p>
+  <span class=lab>The question nobody asked</span>
+  <h2>We were hired to move<br>the price lists.</h2>
+  {asked_found()}
+  <p class=lede>The engagement was a migration. The finding was that the floor
+  had drifted under the cost on hundreds of items. Quantified line by line and
+  written back as files the system would accept, inside a working day.</p>
   {panels(PRICING_STATS)}
   {pricing_rows()}
 </div></section>
 
 <section class=sec style="padding-top:0"><div class=w>
-  <span class=lab>Uncommissioned</span>
+  <span class=lab>The question nobody asked</span>
   <h2>Thirty-eight measured. Six rebuilt.</h2>
+  <p class=lede>Nobody commissioned this either. The argument was easier to make
+  in working HTML than in a deck.</p>
   {work_cards()}
 </div></section>
 {footer()}"""
@@ -682,18 +729,21 @@ def c_split():
 </div></section>
 
 <section class=sec style="padding-top:0"><div class=w>
-  <span class=lab>Catalogue pricing &middot; one working day</span>
-  <h2>Six hundred and ninety items<br>were selling below cost.</h2>
-  <p class=lede>A distributor's price floors had drifted under their own actual
-  cost during an ERP migration. Found, quantified, and written back as import
-  files the system would accept.</p>
+  <span class=lab>The question nobody asked</span>
+  <h2>We were hired to move<br>the price lists.</h2>
+  {asked_found()}
+  <p class=lede>The engagement was a migration. The finding was that the floor
+  had drifted under the cost on hundreds of items. Quantified line by line and
+  written back as files the system would accept, inside a working day.</p>
   {panels(PRICING_STATS)}
   {pricing_rows()}
 </div></section>
 
 <section class=sec style="padding-top:0"><div class=w>
-  <span class=lab>Uncommissioned</span>
+  <span class=lab>The question nobody asked</span>
   <h2>Thirty-eight measured. Six rebuilt.</h2>
+  <p class=lede>Nobody commissioned this either. The argument was easier to make
+  in working HTML than in a deck.</p>
   {work_cards()}
 </div></section>
 {footer()}"""
@@ -736,8 +786,12 @@ def c_exchange():
 </div></header>
 
 <section class=sec><div class=w>
-  <span class=lab>The book</span>
-  <h2>Measured, not asserted.</h2>
+  <span class=lab>The question nobody asked</span>
+  <h2>We were hired to move the price lists.</h2>
+  {asked_found()}
+  <p class=lede>The engagement was a migration. The finding was that the floor
+  had drifted under the cost on hundreds of items. Quantified line by line and
+  written back as files the system would accept, inside a working day.</p>
   {panels(PRICING_STATS)}
   {pricing_rows()}
 </div></section>
@@ -749,8 +803,10 @@ def c_exchange():
 </div>{brain()}</section>
 
 <section class=sec><div class=w>
-  <span class=lab>Uncommissioned</span>
+  <span class=lab>The question nobody asked</span>
   <h2>Thirty-eight measured. Six rebuilt.</h2>
+  <p class=lede>Nobody commissioned this either. The argument was easier to make
+  in working HTML than in a deck.</p>
   {work_cards()}
 </div></section>
 {footer()}"""
@@ -800,15 +856,21 @@ def c_signal():
 </div>{brain()}</section>
 
 <section class=sec><div class=w>
-  <span class=lab>The book</span>
-  <h2>Measured, not asserted.</h2>
+  <span class=lab>The question nobody asked</span>
+  <h2>We were hired to move the price lists.</h2>
+  {asked_found()}
+  <p class=lede>The engagement was a migration. The finding was that the floor
+  had drifted under the cost on hundreds of items. Quantified line by line and
+  written back as files the system would accept, inside a working day.</p>
   {panels(PRICING_STATS)}
   {pricing_rows()}
 </div></section>
 
 <section class=sec style="padding-top:0"><div class=w>
-  <span class=lab>Uncommissioned</span>
+  <span class=lab>The question nobody asked</span>
   <h2>Thirty-eight measured. Six rebuilt.</h2>
+  <p class=lede>Nobody commissioned this either. The argument was easier to make
+  in working HTML than in a deck.</p>
   {work_cards()}
 </div></section>
 {footer()}"""

@@ -73,6 +73,9 @@ const cub = (a: number, b: number, c: number, d: number, t: number) => {
 /* ══ SCHEMATIC — the hero. Sources below, the object layer across the middle,
    consumers above. Every route passes through the middle, which is the whole
    argument of the page rendered as geometry. ══════════════════════════════ */
+/* Named vendors are fine where they are ours to name. The ERP is not: Daniel
+   works with that system professionally, and naming it here ties this site to
+   that engagement. Describe the ROLE, not the product. */
 const SOURCES: [string, string][] = [
   ["Stripe", "payments"], ["Xero", "ledger"], ["ERP", "system of record"],
   ["Toast", "POS"], ["Email", "documents"], ["PDF", "documents"], ["Sheets", "manual"],
