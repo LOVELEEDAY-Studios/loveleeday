@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { products } from "@/content/work";
+import { operated } from "@/content/work";
 
 /* The per-project page. It used to carry its own copy of the project data,
    duplicating /work's copy; both now read src/content/work.ts. */
 
 export async function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+  return operated.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -16,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const p = products.find((c) => c.slug === slug);
+  const p = operated.find((c) => c.slug === slug);
   if (!p) return { title: "Not found" };
   return {
     title: p.title,
@@ -31,11 +31,11 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const p = products.find((c) => c.slug === slug);
+  const p = operated.find((c) => c.slug === slug);
   if (!p) notFound();
 
-  const i = products.indexOf(p);
-  const next = products[(i + 1) % products.length];
+  const i = operated.indexOf(p);
+  const next = operated[(i + 1) % operated.length];
 
   return (
     <>

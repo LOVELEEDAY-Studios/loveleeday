@@ -22,11 +22,14 @@ const COLUMNS: { title: string; links: { label: string; href: string; ext?: bool
     ],
   },
   {
+    /* No outbound link to an owned company here. A footer link to olldae.com
+       from the studio's front door reads as a client logo, and olldae is ours.
+       It lives on /work under the heading that says so. */
     title: "Work",
     links: [
-      { label: "Shipped products", href: "/work" },
-      { label: "Direction studies", href: "/work#studies" },
-      { label: "olldae", href: "https://olldae.com", ext: true },
+      { label: "Client rebuilds", href: "/work#studies" },
+      { label: "Companies we operate", href: "/work" },
+      { label: "How we measure", href: "/about#method" },
     ],
   },
   {

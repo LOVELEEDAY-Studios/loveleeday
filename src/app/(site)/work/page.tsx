@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { products, studies } from "@/content/work";
+import { operated, studies } from "@/content/work";
 
 /* /work.
    ==========================================================================
@@ -46,78 +46,11 @@ export default function WorkPage() {
             </h1>
           </div>
           <p className="max-w-[var(--measure)] self-end text-[1.05rem] leading-[1.6] text-[var(--muted)]">
-            Five products running in production, each with its stack, its time to ship and an
-            outcome stated in the language of the operator who uses it. Below them, six sites we
-            rebuilt without being asked, because the argument was easier to make in working HTML
-            than in a deck.
+            Two different things, kept separate on purpose. First, work for companies that are not
+            ours — six sites we rebuilt without being asked, because the argument was easier to make
+            in working HTML than in a deck. Then the five software companies LOVELEEDAY owns and
+            runs, which prove we ship but do not prove anyone hired us.
           </p>
-        </div>
-      </section>
-
-      {/* ── products ─────────────────────────────────────────────────── */}
-      <section className="bg-[var(--paper)] py-[clamp(56px,7vw,96px)]">
-        <div className="shell">
-          <h2 className="eyebrow text-[var(--dim)]">In production</h2>
-          <div className="mt-8 border-t border-[var(--line-2)]">
-            {products.map((p) => (
-              <article
-                key={p.slug}
-                className="grid gap-x-10 gap-y-5 border-b border-[var(--line-2)] py-10 md:grid-cols-[minmax(0,290px)_minmax(0,1fr)]"
-                data-rise
-              >
-                <div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="eyebrow tnum text-[var(--dim)]">{p.index}</span>
-                    <h3 className="text-[1.6rem] font-semibold tracking-[-0.03em]">{p.title}</h3>
-                  </div>
-                  <p className="eyebrow mt-3.5 text-[var(--dim)]">{p.category}</p>
-                  <p className="mt-4 text-[13.5px] text-[var(--muted)]">{p.shipped}</p>
-                  <ul className="mt-4 flex flex-wrap gap-1.5">
-                    {p.tech.map((t) => (
-                      <li
-                        key={t}
-                        className="rounded-[2px] border border-[var(--line-2)] px-2 py-1 text-[11px] text-[var(--muted)]"
-                      >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="max-w-[64ch] space-y-4">
-                  <div>
-                    <p className="eyebrow text-[var(--dim)]">The problem</p>
-                    <p className="mt-2.5 text-[15px] leading-[1.62] text-[var(--muted)]">{p.problem}</p>
-                  </div>
-                  <div>
-                    <p className="eyebrow text-[var(--dim)]">What we built</p>
-                    <p className="mt-2.5 text-[15px] leading-[1.62] text-[var(--muted)]">{p.built}</p>
-                  </div>
-                  <p className="border-l-2 border-[var(--signal)] pl-4 text-[15px] leading-[1.62] text-[var(--text)]">
-                    {p.outcome}
-                  </p>
-                  <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1">
-                    <Link
-                      href={"/work/" + p.slug}
-                      className="text-[13.5px] font-semibold underline decoration-[var(--line-2)] underline-offset-4 transition-colors hover:decoration-[var(--signal)]"
-                    >
-                      Read the build &rarr;
-                    </Link>
-                    {p.link && (
-                      <a
-                        href={p.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[13.5px] font-semibold text-[var(--muted)] underline decoration-[var(--line-2)] underline-offset-4 transition-colors hover:text-[var(--text)]"
-                      >
-                        Visit the live site ↗
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -177,6 +110,78 @@ export default function WorkPage() {
             replaces, and that belongs in a private review addressed to the company rather than on a
             marketing page. Full packages are available on request.
           </p>
+        </div>
+      </section>
+
+      {/* ── products ─────────────────────────────────────────────────── */}
+      <section className="bg-[var(--paper)] py-[clamp(56px,7vw,96px)]">
+        <div className="shell">
+          <h2 className="text-[1.4rem] font-semibold tracking-[-0.026em]">Companies we own and operate</h2>
+          <p className="mt-3 max-w-[64ch] text-[14.5px] leading-[1.6] text-[var(--muted)]">
+            These are LOVELEEDAY-owned businesses, built in-house and running in production. They
+            are listed as evidence that the studio ships, not as client engagements — we were our
+            own customer on every one of them.
+          </p>
+          <div className="mt-8 border-t border-[var(--line-2)]">
+            {operated.map((p) => (
+              <article
+                key={p.slug}
+                className="grid gap-x-10 gap-y-5 border-b border-[var(--line-2)] py-10 md:grid-cols-[minmax(0,290px)_minmax(0,1fr)]"
+                data-rise
+              >
+                <div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="eyebrow tnum text-[var(--dim)]">{p.index}</span>
+                    <h3 className="text-[1.6rem] font-semibold tracking-[-0.03em]">{p.title}</h3>
+                  </div>
+                  <p className="eyebrow mt-3.5 text-[var(--dim)]">{p.category}</p>
+                  <p className="mt-4 text-[13.5px] text-[var(--muted)]">{p.shipped}</p>
+                  <ul className="mt-4 flex flex-wrap gap-1.5">
+                    {p.tech.map((t) => (
+                      <li
+                        key={t}
+                        className="rounded-[2px] border border-[var(--line-2)] px-2 py-1 text-[11px] text-[var(--muted)]"
+                      >
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="max-w-[64ch] space-y-4">
+                  <div>
+                    <p className="eyebrow text-[var(--dim)]">The problem</p>
+                    <p className="mt-2.5 text-[15px] leading-[1.62] text-[var(--muted)]">{p.problem}</p>
+                  </div>
+                  <div>
+                    <p className="eyebrow text-[var(--dim)]">What we built</p>
+                    <p className="mt-2.5 text-[15px] leading-[1.62] text-[var(--muted)]">{p.built}</p>
+                  </div>
+                  <p className="border-l-2 border-[var(--signal)] pl-4 text-[15px] leading-[1.62] text-[var(--text)]">
+                    {p.outcome}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1">
+                    <Link
+                      href={"/work/" + p.slug}
+                      className="text-[13.5px] font-semibold underline decoration-[var(--line-2)] underline-offset-4 transition-colors hover:decoration-[var(--signal)]"
+                    >
+                      Read the build &rarr;
+                    </Link>
+                    {p.link && (
+                      <a
+                        href={p.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[13.5px] font-semibold text-[var(--muted)] underline decoration-[var(--line-2)] underline-offset-4 transition-colors hover:text-[var(--text)]"
+                      >
+                        Visit the live site ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
