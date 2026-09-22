@@ -74,9 +74,12 @@ const collab: Portfolio = {
         "CircNova now trades as Novarna — their own site says so, with a banner reading “CircNova is now Novarna.” Hubble IQ now trades as Fyxit AI. Both are still listed under their former names on collab.capital/portfolio. Anyone doing diligence who searches the name you published will not find the company you funded.",
     },
     {
-      title: "None of the forty companies on your portfolio page can be clicked",
+      // Forty are listed; thirty-eight are live and were measured. Both numbers are right, but
+      // the page stated them 200 words apart with nothing connecting them, so it read as a
+      // contradiction to anyone checking — which is exactly the reader this study invites.
+      title: "None of the forty companies listed on your portfolio page can be clicked",
       detail:
-        "The names are printed on the page, but not one of them is a link. Nothing happens if you try. Each company does have a detail page elsewhere on your site, and those pages carry the outbound links — but nothing on the main list reaches them. So anyone who wants to look at one of your companies has to leave your site and go searching. That is the moment you stop controlling the story.",
+        "Forty are listed; the thirty-eight still trading are the ones we measured. The names are printed on the page, but not one of them is a link. Nothing happens if you try. Each company does have a detail page elsewhere on your site, and those pages carry the outbound links — but nothing on the main list reaches them. So anyone who wants to look at one of your companies has to leave your site and go searching. That is the moment you stop controlling the story.",
     },
     {
       title: "Seven in ten of your companies run on an off-the-shelf website builder",
@@ -140,7 +143,10 @@ const collab: Portfolio = {
       thesis:
         "Affordable capital reaches nobody if the lender looking for the tool cannot find the tool. Their mission and their product writing are both strong. The page argues about software features, when the thing actually being bought is the ability to get money out of the door.",
       findings: [
-        "They do not appear in the top nine results for the exact phrase a community lender would type. Three general-purpose lending platforms rank instead, and not one of them serves mission-driven lenders specifically. That is LoanWell's whole differentiator, sitting unclaimed.",
+        // The search finding lives in `search`, which renders directly above this block under
+        // "How they are found today". Repeating it here made LoanWell the only company whose
+        // "What we changed" opened by restating a problem instead of describing the rebuild.
+        "Their whole differentiator is that they serve mission-driven lenders, and the platforms ranking above them do not. Our rebuild says that in the first line, where their page had a general claim about lending software.",
         "Our rebuild closes on the quote from their own CEO that you already publish on your portfolio page, and puts an actual borrower where their page had three abstract boxes. The section is titled “We take lending personally” and there was nobody in it.",
         "Two things worth fixing whatever you make of the rebuild. One of their product screenshots has a visual glitch, with several rows of a payment schedule duplicated over one another. And six of the seven product screenshots on their site show a real street address in the header bar, readable at full size.",
       ],
