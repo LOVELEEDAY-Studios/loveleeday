@@ -11,7 +11,7 @@
 <link rel="icon" href="assets/venturehue-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 /* -----------------------------------------------------------------------
    VentureHue — homepage rebuild, direction study by LOVELEEDAY Studios.
@@ -72,6 +72,14 @@
   --line:rgba(24,24,72,.13);
   --line-2:rgba(24,24,72,.22);
   --line-dark:rgba(255,255,255,.14);
+  /* One serif, for the figure moment only. Reference: Reducto sets its
+     999,985,821 as a centered serif on light ground, and Unify runs its
+     $861,554,265 inline inside a serif sentence. Both read as a publication
+     stating a fact. A giant geometric sans on a gradient slab — what this
+     section was — reads as a dashboard tile. The brand stays Poppins
+     everywhere else; this is the single departure and it earns its place by
+     being the one thing on the page set in it. */
+  --font-figure:'Instrument Serif', Georgia, 'Times New Roman', serif;
   --font-display:'Poppins', ui-sans-serif, system-ui, sans-serif;
   --font-body:'Open Sans', -apple-system, sans-serif;
   --font-mono:'IBM Plex Mono', ui-monospace, monospace;
@@ -217,20 +225,32 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
    set it at 2rem inside a three-up stat grid. On their LIVE site the same
    counter reads $0, which is why this gets a whole section on their own
    gradient rather than a line in a row. */
-.figure{ background:linear-gradient(104deg, var(--navy) 0%, var(--blue-mid) 52%, var(--green) 100%);
-  color:#fff; padding:clamp(60px,9vw,120px) 0; overflow:hidden; }
-.figure .inner{ display:grid; gap:clamp(24px,4vw,56px); grid-template-columns:minmax(0,1fr); align-items:end; }
-@media (min-width:900px){ .figure .inner{ grid-template-columns:1.35fr .65fr; } }
-.figure__n{
-  font-family:var(--font-display); font-weight:900; letter-spacing:-.045em; line-height:.84;
-  font-size:clamp(3.4rem,12.5vw,10.5rem); color:#fff;
-  font-variant-numeric:tabular-nums; margin:0;
+/* The figure, rebuilt against reference rather than invented. It was a
+   full-bleed gradient slab carrying a 10.5rem geometric sans number — the
+   shape of a dashboard tile, which is why the page still read as generic even
+   after the color blocking was fixed.
+
+   Reducto and Unify both do the same thing instead: put the number in a SERIF
+   and set it inside a sentence, on a light ground, so the page states a fact
+   rather than displays a metric. Unify's runs inline mid-sentence; that is the
+   version used here, because the number only means something next to the $0 it
+   is being compared with. The comparison IS the sentence. */
+.figure{ background:var(--paper); padding:clamp(72px,11vw,150px) 0; border-bottom:1px solid var(--line); }
+.figure .inner{ max-width:1180px; }
+.figure__cap{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--slate); margin:0 0 clamp(26px,4vw,44px); }
+.figure__line{
+  font-family:var(--font-figure); font-weight:400; color:var(--navy);
+  font-size:clamp(1.9rem,5.4vw,4.2rem); line-height:1.16; letter-spacing:-.015em;
+  margin:0; max-width:23ch;
 }
-.figure__n span{ color:rgba(255,255,255,.5); }
-.figure__cap{ font-family:var(--font-mono); font-size:11px; letter-spacing:.18em;
-  text-transform:uppercase; color:rgba(255,255,255,.8); margin:0 0 22px; }
-.figure__note{ color:rgba(255,255,255,.88); font-size:.98rem; line-height:1.66; max-width:34ch; }
-.figure__note b{ color:#fff; }
+.figure__line .n{ font-variant-numeric:tabular-nums; white-space:nowrap; }
+.figure__line .zero{ font-style:italic; color:var(--purple); }
+.figure__foot{ margin-top:clamp(30px,4vw,46px); padding-top:22px; border-top:1px solid var(--line);
+  display:grid; gap:18px clamp(24px,4vw,56px); grid-template-columns:minmax(0,1fr); }
+@media (min-width:820px){ .figure__foot{ grid-template-columns:repeat(3,1fr); } }
+.figure__foot p{ font-size:.92rem; line-height:1.62; margin:0; }
+.figure__foot b{ color:var(--navy); font-weight:600; }
 
 /* ================= 03 WHY — asymmetric, photo bleeds right ================= */
 .why{ padding:clamp(72px,10vw,130px) 0 0; }
@@ -362,13 +382,23 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
    Small Business Brain publish no usable mark, and an invented tile or a
    greyed placeholder for those would be worse than saying so. */
 .wall{ margin-top:clamp(44px,6vw,68px); padding-top:clamp(28px,4vw,40px); border-top:1px solid var(--line-dark); }
-.wall__label{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
-  color:rgba(255,255,255,.5); margin:0 0 20px; }
+/* Ramp puts the explanatory copy INSIDE the logo grid as its first cell rather
+   than in a label floating above it, so the grid is one object instead of a
+   caption and a strip. Same here: the "six of the nine" caveat belongs in the
+   grid it is qualifying, where it cannot be read as decoration. */
 .wall__grid{ display:grid; gap:1px; background:rgba(255,255,255,.1);
   border:1px solid rgba(255,255,255,.1); grid-template-columns:repeat(2,1fr); }
-@media (min-width:640px){ .wall__grid{ grid-template-columns:repeat(3,1fr); } }
-@media (min-width:960px){ .wall__grid{ grid-template-columns:repeat(6,1fr); } }
-.wall__cell{ background:#fff; min-height:92px; display:flex; align-items:center; justify-content:center; padding:18px 20px; }
+@media (min-width:640px){ .wall__grid{ grid-template-columns:repeat(4,1fr); } }
+@media (min-width:1040px){ .wall__grid{ grid-template-columns:repeat(4,1fr); } }
+.wall__cell{ background:#fff; min-height:104px; display:flex; align-items:center; justify-content:center; padding:18px 20px; }
+.wall__cell--copy{
+  background:var(--navy); grid-column:span 2; align-items:flex-start;
+  flex-direction:column; justify-content:center; text-align:left; padding:24px 26px;
+}
+.wall__cell--copy p{ font-size:.92rem; line-height:1.6; color:rgba(255,255,255,.82); margin:0; max-width:34ch; }
+.wall__cell--copy b{ color:#fff; font-weight:600; }
+.wall__cell--copy .small{ margin-top:12px; font-family:var(--font-mono); font-size:10px;
+  letter-spacing:.13em; text-transform:uppercase; color:rgba(255,255,255,.48); }
 .wall__cell img{ max-height:30px; width:auto; max-width:100%; object-fit:contain; }
 /* Brex is 3.8:1 and XP Health is 1:1. One max-height makes the wide mark tiny
    and the square one huge, so the outliers are capped separately to meet the
@@ -511,13 +541,18 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
   <section class="figure">
     <div class="inner">
       <div class="reveal">
-        <p class="figure__cap">Raised by founders in this network</p>
-        <p class="figure__n tnum"><span>$</span>2,192,470</p>
-      </div>
-      <div class="reveal">
-        <p class="figure__note">Equity-free. No fee to raise. That figure is the whole argument for the
-          program, and on <b>venturehue.com today the same counter reads $0</b> &mdash; beside a second one
-          reading zero founders coached.</p>
+        <p class="figure__cap">The number, and where it currently lives</p>
+        <p class="figure__line">Founders in this network have raised
+          <span class="n">$2,192,470</span>. On venturehue.com today, the same
+          counter reads <span class="zero n">$0</span>.</p>
+        <div class="figure__foot">
+          <p><b>Equity-free.</b> No equity taken and no fee to raise &mdash; the training, the network and
+            the visibility, and nothing off the top.</p>
+          <p><b>Beside it, a second counter</b> reads zero founders coached, on a page that is live and
+            indexed right now.</p>
+          <p><b>Both are recoverable.</b> The figures are published in your own archived pages; nothing here
+            was written for you.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -670,8 +705,12 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
         <b>Log scale &mdash; each tick is 10&times; the last</b>
       </div>
       <div class="wall reveal">
-        <p class="wall__label">Six of the nine, as they present themselves</p>
         <div class="wall__grid">
+          <div class="wall__cell wall__cell--copy">
+            <p><b>The companies, as they present themselves.</b> Every mark here is taken from the
+              company's own site.</p>
+            <p class="small">Six of nine &mdash; three publish no usable logo</p>
+          </div>
           <div class="wall__cell wide"><img src="logos/brex.png" loading="lazy" decoding="async" alt="Brex"></div>
           <div class="wall__cell"><img src="logos/noyo.png" loading="lazy" decoding="async" alt="Noyo"></div>
           <div class="wall__cell wide"><img src="logos/careerkarma.png" loading="lazy" decoding="async" alt="Career Karma"></div>
