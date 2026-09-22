@@ -344,6 +344,38 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
 .track__key i.direct{ background:linear-gradient(90deg,var(--green),var(--green-bright)); }
 .track__note{ margin-top:26px; font-size:12.5px; line-height:1.7; color:rgba(255,255,255,.52); max-width:78ch; }
 
+/* The companies' own marks. A list of names in bold type asserts a
+   relationship; the mark is what a reader recognises before reading anything.
+   Every one comes from the company's own site — Brex's from the logo pack on
+   their press page, Bump's from their asset directory, the rest from the
+   apple-touch-icon each company publishes to represent itself at small size.
+
+   WHITE CHIPS, because the marks disagree with each other: Brex and Bump ship
+   white-only wordmarks, Career Karma ships black, XP Health ships a black
+   rounded square. There is no single background that suits all four, so the
+   chip supplies one and each mark keeps its real colors. Brex publishes an ink
+   version for light grounds and that is the one used; Bump publishes only
+   white, so its RGB is inverted with the alpha untouched — the letterforms are
+   theirs, only their value flips, and the teal accent dot is left alone.
+
+   Six of the nine, and the page says six. Backstage Capital, BomaLink and
+   Small Business Brain publish no usable mark, and an invented tile or a
+   greyed placeholder for those would be worse than saying so. */
+.wall{ margin-top:clamp(44px,6vw,68px); padding-top:clamp(28px,4vw,40px); border-top:1px solid var(--line-dark); }
+.wall__label{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:rgba(255,255,255,.5); margin:0 0 20px; }
+.wall__grid{ display:grid; gap:1px; background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.1); grid-template-columns:repeat(2,1fr); }
+@media (min-width:640px){ .wall__grid{ grid-template-columns:repeat(3,1fr); } }
+@media (min-width:960px){ .wall__grid{ grid-template-columns:repeat(6,1fr); } }
+.wall__cell{ background:#fff; min-height:92px; display:flex; align-items:center; justify-content:center; padding:18px 20px; }
+.wall__cell img{ max-height:30px; width:auto; max-width:100%; object-fit:contain; }
+/* Brex is 3.8:1 and XP Health is 1:1. One max-height makes the wide mark tiny
+   and the square one huge, so the outliers are capped separately to meet the
+   rest at the same optical weight. */
+.wall__cell.wide img{ max-height:22px; }
+.wall__cell.sq img{ max-height:40px; }
+
 /* ================= 08 BRITTNI ================= */
 .who{ padding:clamp(76px,10vw,130px) 0; background:var(--paper-2); }
 .who__grid{ display:grid; gap:clamp(30px,5vw,68px); grid-template-columns:minmax(0,1fr); align-items:start; }
@@ -637,6 +669,18 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
         <b><i class="direct"></i> Direct win, led by VentureHue</b>
         <b>Log scale &mdash; each tick is 10&times; the last</b>
       </div>
+      <div class="wall reveal">
+        <p class="wall__label">Six of the nine, as they present themselves</p>
+        <div class="wall__grid">
+          <div class="wall__cell wide"><img src="logos/brex.png" loading="lazy" decoding="async" alt="Brex"></div>
+          <div class="wall__cell"><img src="logos/noyo.png" loading="lazy" decoding="async" alt="Noyo"></div>
+          <div class="wall__cell wide"><img src="logos/careerkarma.png" loading="lazy" decoding="async" alt="Career Karma"></div>
+          <div class="wall__cell sq"><img src="logos/xphealth.png" loading="lazy" decoding="async" alt="XP Health"></div>
+          <div class="wall__cell sq"><img src="logos/paladin.png" loading="lazy" decoding="async" alt="Paladin"></div>
+          <div class="wall__cell wide"><img src="logos/bump.png" loading="lazy" decoding="async" alt="Bump"></div>
+        </div>
+      </div>
+
       <p class="track__note">Rows 01&ndash;07 are angel-syndicate co-investments; VentureHue and its network
         participated alongside other investors and did not lead these rounds. Rows 08&ndash;09 are direct
         wins, where VentureHue's team led the grant, credit and go-to-market work itself.</p>

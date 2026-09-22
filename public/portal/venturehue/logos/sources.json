@@ -1,0 +1,65 @@
+[
+  {
+    "key": "brex",
+    "company": "Brex",
+    "domain": "brex.com",
+    "file": "logos/brex.png",
+    "source": "https://www.brex.com/_next/image?url=https%3A%2F%2Fbrand.brex.com%2Ftransform%2F34b1e6c6-3bd8-4879-96e8-8f85c550c68a%2FHP-Hero-Desktop&w=1920&q=85",
+    "w": 1920,
+    "h": 925
+  },
+  {
+    "key": "noyo",
+    "company": "Noyo",
+    "domain": "noyo.com",
+    "file": "logos/noyo.png",
+    "source": "https://framerusercontent.com/images/IIpLrpwk5Yasfs3tV8Fw12jllAE.png",
+    "w": 390,
+    "h": 390
+  },
+  {
+    "key": "careerkarma",
+    "company": "Career Karma",
+    "domain": "careerkarma.com",
+    "file": "logos/careerkarma.png",
+    "source": "https://careerkarma.com/_next/image/?url=https%3A%2F%2Fck-staging-s3-assets.s3.amazonaws.com%2Fweb-illustrations%2Flayout%2Fck_logo.png&w=128&q=75",
+    "w": 1200,
+    "h": 307
+  },
+  {
+    "key": "xphealth",
+    "company": "XP Health",
+    "domain": "xphealth.co",
+    "file": "logos/xphealth.png",
+    "source": "https://dp97y1xlp9ur8.cloudfront.net/favicon.ico",
+    "w": 128,
+    "h": 128
+  },
+  {
+    "key": "paladin",
+    "company": "Paladin",
+    "domain": "joinpaladin.com",
+    "file": "logos/paladin.png",
+    "source": "https://www.joinpaladin.com/wp-content/uploads/2023/02/cropped-Palain-Favicon-180x180.png",
+    "w": 180,
+    "h": 180
+  },
+  {
+    "key": "bump",
+    "company": "Bump Capital",
+    "domain": "usebump.com",
+    "file": "logos/bump.png",
+    "source": "https://usebump.com/images/bump-logo.png",
+    "w": 846,
+    "h": 258
+  },
+  {
+    "key": "sbb",
+    "company": "Small Business Brain",
+    "domain": "smallbusinessbrain.com",
+    "file": "logos/sbb.png",
+    "source": "https://www.smallbusinessbrain.com/wp-content/uploads/2019/04/cropped-fav-180x180.png",
+    "w": 175,
+    "h": 180
+  }
+]
