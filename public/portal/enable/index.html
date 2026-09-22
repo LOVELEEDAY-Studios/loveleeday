@@ -168,6 +168,21 @@ section.hero{
 .cred-partners span{font-size:1rem;font-weight:800;color:#fff;letter-spacing:.01em;opacity:.92}
 .cred-partners small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 
+/* Real partner marks on a dark ground. Each logo is a different aspect ratio and
+   several are dark-on-white, so they are height-normalised and inverted to read
+   as one row rather than four mismatched rectangles. */
+.partner-marks small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+.partner-marks .marks{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
+.partner-marks .marks img{
+  height:22px;width:auto;object-fit:contain;
+  filter:brightness(0) invert(1);opacity:.82;
+  transition:opacity .2s ease;
+}
+.partner-marks .marks img:hover{opacity:1}
+.partner-marks .mark-type{font-size:1rem;font-weight:800;color:#fff;opacity:.82;letter-spacing:.01em}
+@media (max-width:640px){ .partner-marks .marks img{height:18px} .partner-marks .marks{gap:12px 18px} }
+
 .hero-device{position:relative}
 .hero-device figcaption{
   margin-top:16px;text-align:center;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
@@ -362,7 +377,25 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:clamp(
             FDA&#8209;Cleared Device
           </span>
           <div class="cred-partners">
-            <div><small>Built with</small><span>Sanofi &middot; Roche &middot; Sobi</span></div>
+            <!-- Their partners' actual logos, downloaded from their own site.
+                 These were set as text while the real marks sat unused in
+                 assets/ — a pharma partner recognises the Roche lozenge before
+                 they read a word, and setting it in Montserrat throws that away.
+                 Sanofi stays as type: Enable does not publish a Sanofi mark. -->
+            <div class="partner-marks">
+              <small>Built with</small>
+              <div class="marks">
+                <img src="assets/home-page-roche-logo-800px-blue-rgb-roche-logo-r.webp" alt="Roche" width="650" height="338" loading="lazy" decoding="async">
+                <img src="assets/home-page-sobi-logo-png-0-enable-injections.webp" alt="Sobi" width="1000" height="274" loading="lazy" decoding="async">
+                <!-- Serina and Incyte are deliberately omitted here. Their marks
+                     came from JPEG sources with opaque white backgrounds, so the
+                     invert that makes Roche and Sobi read on dark turns them into
+                     solid white rectangles. They are also not among the three
+                     partners this page names. Two real logos beat four, two of
+                     which are blocks. -->
+                <span class="mark-type">Sanofi</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

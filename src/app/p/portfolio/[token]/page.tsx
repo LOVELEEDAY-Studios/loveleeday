@@ -95,7 +95,7 @@ export default async function PortfolioPage({
       {/* What the fund cannot see from its own page */}
       <section className="mx-auto max-w-[1340px] px-6 py-20">
         <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">
-          Before the redesigns
+          A few things we noticed
         </span>
         <h2 className="mt-4 max-w-[20ch] text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.06] tracking-[-0.025em]">
           Three things we found on {p.fundDomain} itself.
@@ -144,20 +144,25 @@ export default async function PortfolioPage({
 
               <div className="mt-12 grid gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,var(--measure))_minmax(0,1fr)]">
                 <div>
+                  {/* Was "Why we rebuilt it" — which asks the reader to accept
+                      that their site needed rebuilding before they have read a
+                      word. These pages arrive unsolicited; the register has to
+                      be someone admiring the company, not someone auditing it. */}
                   <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
-                    Why we rebuilt it
+                    What drew us to this one
                   </h3>
                   <p className="mt-4 text-[15px] leading-[1.7] text-[var(--mid)]">{c.thesis}</p>
                   <div className="mt-7 border-t border-[var(--line)] pt-5">
                     <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
-                      Search today
+                      How they are found today
                     </h3>
                     <p className="mt-3 text-[14px] leading-[1.65] text-[var(--mid)]">{c.search}</p>
                   </div>
                 </div>
                 <div>
+                  {/* "What we found" is the language of an inspection report. */}
                   <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
-                    What we found
+                    What we changed
                   </h3>
                   <ul className="mt-4 space-y-4">
                     {c.findings.map((f) => (
