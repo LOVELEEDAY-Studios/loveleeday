@@ -11,6 +11,39 @@ const nextConfig: NextConfig = {
     localPatterns: [{ pathname: "/portal/**", search: "" }, { pathname: "/portal/**" }],
   },
 
+  async rewrites() {
+    /* The approved marketing site is static HTML under public/site, mounted at
+       clean URLs. beforeFiles runs ahead of app routing, so these win over the
+       old (site) routes while /work, /p, /portal and /api keep working. The
+       cutover reverses by deleting this block. */
+    return {
+      beforeFiles: [
+      { source: "/", destination: "/site/index.html" },
+      { source: "/operating-system", destination: "/site/operating-system.html" },
+      { source: "/arthur", destination: "/site/arthur.html" },
+      { source: "/architecture", destination: "/site/architecture.html" },
+      { source: "/use-cases", destination: "/site/use-cases.html" },
+      { source: "/industries", destination: "/site/industries.html" },
+      { source: "/municipal-review", destination: "/site/municipal-review.html" },
+      { source: "/customer-data", destination: "/site/customer-data.html" },
+      { source: "/pricing-margins", destination: "/site/pricing-margins.html" },
+      { source: "/operational-intelligence", destination: "/site/operational-intelligence.html" },
+      { source: "/principles", destination: "/site/principles.html" },
+      { source: "/studio", destination: "/site/studio.html" },
+      ],
+    };
+  },
+
+  async redirects() {
+    /* The old marketing routes the new site supersedes. 308 so the move is
+       permanent and the link equity follows; /work stays because those are
+       real portfolio pages the new site does not replace. */
+    return [
+      { source: "/about", destination: "/studio", permanent: true },
+      { source: "/contact", destination: "/studio", permanent: true },
+    ];
+  },
+
   async headers() {
     // Client review pages and the raw deliverable HTML under /public/portal are
     // handed out one link at a time. The Next pages carry a noindex in their
