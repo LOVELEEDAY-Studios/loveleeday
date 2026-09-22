@@ -1,16 +1,34 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { portfolio } from "@/content/portfolio";
+import { getPortfolio, publishedPortfolios } from "@/content/portfolio";
 import { formatDate } from "@/content/portals";
 import { BeforeAfter } from "@/components/portal/BeforeAfter";
 import { NoteForm } from "@/components/portal/NoteForm";
 
 export const dynamicParams = false;
+
+/**
+ * One page per fund whose token is set.
+ *
+ * This returned only Collab's token while portfolio.ts already exported
+ * `publishedPortfolios` and `getPortfolio` — so a second fund could be written,
+ * given a token and listed, and would still 404 with nothing failing to say why.
+ * The route decides what exists; it has to read the same list.
+ */
 export function generateStaticParams() {
-  return [{ token: portfolio.token }];
+  return publishedPortfolios.map((p) => ({ token: p.token as string }));
 }
-export const metadata: Metadata = { title: "Collab Capital — portfolio study" };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ token: string }>;
+}): Promise<Metadata> {
+  const { token } = await params;
+  const p = getPortfolio(token);
+  return { title: p ? `${p.fund} — portfolio study` : "Portfolio study" };
+}
 
 export default async function PortfolioPage({
   params,
@@ -18,8 +36,8 @@ export default async function PortfolioPage({
   params: Promise<{ token: string }>;
 }) {
   const { token } = await params;
-  if (token !== portfolio.token) notFound();
-  const p = portfolio;
+  const p = getPortfolio(token);
+  if (!p) notFound();
 
   return (
     <>
@@ -39,7 +57,7 @@ export default async function PortfolioPage({
           <span className="hidden h-3 w-px bg-[var(--line-bright)] sm:block" aria-hidden="true" />
           <span className="tnum">Delivered {formatDate(p.deliveredOn)}</span>
           <span className="hidden h-3 w-px bg-[var(--line-bright)] sm:block" aria-hidden="true" />
-          <span className="tnum">38 sites audited</span>
+          <span className="tnum">{p.stats[0]?.k ?? p.cases.length} sites audited</span>
         </div>
         <p className="rule-left mt-10 max-w-[var(--measure)] text-[16px] leading-[1.7] text-[var(--mid)]">
           {p.intro}
