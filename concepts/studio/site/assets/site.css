@@ -291,3 +291,8 @@ h2 span{color:#8c8e95}
 @media(max-width:360px){.nav-links{gap:8px;font-size:9px}.brand{font-size:8px;letter-spacing:.06em}.brand svg{width:16px;height:16px}.page-hero h1{font-size:38px}.calculator-fields{grid-template-columns:1fr}}
 .industry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 var(--column-gap);margin-top:var(--s5)}.industry-grid a{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);padding-block:var(--s3);border-top:1px solid var(--line);font-size:18px;line-height:1.4;letter-spacing:-.02em}.industry-grid a:hover{color:#0066cc}.industry-grid a span:last-child{color:#91a1b7}
 @media(max-width:700px){.industry-grid{grid-template-columns:1fr;margin-top:var(--s4)}.industry-grid a{font-size:17px;padding-block:var(--s2)}}
+
+.form-feedback.ok{color:#2f6b4f}
+.form-feedback.warn{color:#8a4b1d}
+.form-feedback a{color:inherit;text-decoration:underline}
+.brief-form button[disabled]{opacity:.55;cursor:progress}
