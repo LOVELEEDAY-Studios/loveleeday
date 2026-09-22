@@ -74,7 +74,7 @@ fb.textContent='Sent. We reply within one working day, and a copy has downloaded
 fb.className='form-feedback ok';
 }catch(err){
 save();
-fb.innerHTML='Your brief downloaded, but it could NOT be sent from here. Email it to <a href="mailto:daniel@loveleedaystudios.com">daniel@loveleedaystudios.com</a> and we will pick it up.';
+fb.innerHTML='Your brief downloaded, but it could NOT be sent from here. Email it to <a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a> and we will pick it up.';
 fb.className='form-feedback warn';
 }finally{btn.disabled=false;btn.textContent=label;}
 })}

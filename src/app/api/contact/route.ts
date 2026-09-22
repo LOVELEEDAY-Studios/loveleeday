@@ -32,8 +32,8 @@ export async function POST(request: Request) {
 
     // Send notification to Daniel
     await resend.emails.send({
-      from: "LOVELEEDAY Studios <daniel@loveleedaystudios.com>",
-      to: "blackmarble.m.g@gmail.com",
+      from: "LOVELEEDAY Studios <hello@loveleedaystudios.com>",
+      to: "hello@loveleedaystudios.com",
       replyTo: email,
       subject: `New Project Brief — ${name} (${projectType || "Unspecified"})`,
       html: `
@@ -67,8 +67,8 @@ export async function POST(request: Request) {
 
     // Send confirmation to the client
     await resend.emails.send({
-      from: "LOVELEEDAY Studios <daniel@loveleedaystudios.com>",
-      replyTo: "daniel@loveleedaystudios.com",
+      from: "LOVELEEDAY Studios <hello@loveleedaystudios.com>",
+      replyTo: "hello@loveleedaystudios.com",
       to: email,
       subject: "Brief received — LOVELEEDAY Studios",
       html: `
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
           <h2 style="font-weight: 400; letter-spacing: -0.02em; margin-bottom: 0.5rem;">Brief received.</h2>
           <p style="color: #5A5A55; font-size: 0.9rem; margin-bottom: 2rem;">We'll reply within 24 hours with a scope, price, and timeline.</p>
           <p style="font-size: 0.9rem; line-height: 1.6;">In the meantime, feel free to reply to this email with any additional details or questions.</p>
-          <p style="font-size: 0.85rem; color: #5A5A55; line-height: 1.5; margin-top: 1.5rem;">If you don't see our reply, check your spam folder — we send from <strong>daniel@loveleedaystudios.com</strong>.</p>
+          <p style="font-size: 0.85rem; color: #5A5A55; line-height: 1.5; margin-top: 1.5rem;">If you don't see our reply, check your spam folder — we send from <strong>hello@loveleedaystudios.com</strong>.</p>
           <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #D4D2C9; font-size: 0.8rem; color: #5A5A55;">
             LOVELEEDAY Studios LLC &middot; Delaware
           </div>
