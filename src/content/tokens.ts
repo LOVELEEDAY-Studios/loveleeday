@@ -52,6 +52,10 @@ export const TOKENS = {
   // Shalanda Armstrong (100KM VC), Brittni Abiolu (VentureHue). Tokens are set,
   // so these three publish.
   enable: tokOptional("PORTAL_TOKEN_ENABLE"),
+  /* The STUDY token, distinct from `venturehue` below which is the FUND token.
+     VentureHue is both a fund on the panel and the subject of a rebuild, so it
+     needs two: one for /p/<token>/marketing-site and one for the fund page. */
+  venturehueStudy: tokOptional("PORTAL_TOKEN_VENTUREHUE"),
   lightship: tokOptional("PORTFOLIO_TOKEN_LIGHTSHIP"),
   hundredkm: tokOptional("PORTFOLIO_TOKEN_HUNDREDKM"),
   venturehue: tokOptional("PORTFOLIO_TOKEN_VENTUREHUE"),

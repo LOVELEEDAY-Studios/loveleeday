@@ -486,6 +486,46 @@ export const portals: Portal[] = [
       },
     ],
   },
+  {
+    token: TOKENS.venturehueStudy as string,
+    client: "VentureHue",
+    clientDomain: "venturehue.com",
+    project: "Marketing site — direction study",
+    round: "Round 01",
+    deliveredOn: "2026-09-22",
+    expiresOn: "2026-12-21",
+    intro:
+      "This is an unsolicited direction study and nothing here is a proposal. You coach founders on being ready for capital, and the $2,192,470 your network has raised is the proof of it. This is what your own storefront could look like carrying that.",
+    next: [
+      "Open the page and scroll it the way a pre-seed founder deciding whether to trust you would.",
+      "Leave notes anywhere on this page — they reach us by email immediately.",
+      "If the direction is right, we scope the build against your full site map.",
+    ],
+    deliverables: [
+      {
+        slug: "marketing-site",
+        title: "VentureHue — marketing site",
+        kind: "Full landing page · desktop and mobile",
+        rationale:
+          "Everything on this page is yours: the ACCESS Lab programme, the four stages, the $2,192,470 raised across your network, your sixteen years in capital access, the Michigan Founders Fund pre-accelerator with gener8tor, and your own testimonials. None of it is currently reachable on venturehue.com. The rebuild is that material, arranged.",
+        look: [
+          "The track record leads. $2,192,470 is the first number a founder sees, not a footnote.",
+          "ACCESS Lab is an indexed sequence rather than three equal cards, so the programme reads as a path.",
+          "Your own blue and purple, sampled from your stylesheet, and Poppins and Open Sans, which your site already loads.",
+          "Testimonials from Eric Williamson, Sharon Porter and Akindele Akinyemi, recovered from your own pages.",
+        ],
+        href: "/portal/venturehue/index.html",
+        card: v("/portal/venturehue/card.jpg"),
+        preview: v("/portal/venturehue/preview.jpg"),
+        caveats: [
+          "Your live homepage and /project/ both render “Nothing Found”, and the individual project pages return 404. The copy here was recovered from a June 2026 archive of your own site, not written for you.",
+          "The page carries no photography. That is a real gap and the honest reason is that we found none of yours to use. Novarna's study in this portfolio is carried by four photographs; this one is carried by type alone.",
+          "Brand colours were sampled from venturehue.com's stylesheet rather than guessed, but you have no published brand guide we could check them against.",
+          "No search positions are claimed. The tooling that measured search for other studies is not configured on this project, so rather than estimate we say nothing.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getPortal(token: string): Portal | undefined {

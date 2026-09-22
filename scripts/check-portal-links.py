@@ -38,9 +38,17 @@ for block in portals_src.split("token: TOKENS.")[1:]:
     name = re.match(r"(\w+)", block).group(1)
     slugs_by_client[name] = re.findall(r'slug:\s*"([^"]+)"', block)
 
+# TOKENS keys do not map onto env var names by upper-casing: venturehueStudy
+# reads PORTAL_TOKEN_VENTUREHUE, because VentureHue needs both a study token and
+# a fund token. Deriving the name gave a false miss on a route that actually
+# returns 200 — read the real name out of tokens.ts instead. A checker that
+# reports a miss that isn't there teaches you to ignore it.
+tokens_src = (ROOT / "src" / "content" / "tokens.ts").read_text()
+ENV_FOR_KEY = dict(re.findall(r'(\w+):\s*tokO?p?t?i?o?n?a?l?\("([A-Z0-9_]+)"\)', tokens_src))
+
 targets = []
 for key, client in entries:
-    varname = f"PORTAL_TOKEN_{key.upper()}"
+    varname = ENV_FOR_KEY.get(key, f"PORTAL_TOKEN_{key.upper()}")
     t = tok(varname)
     if not t:
         targets.append((f"{client} (no {varname})", None))

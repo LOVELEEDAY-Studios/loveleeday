@@ -1,0 +1,167 @@
+[
+  {
+    "company": "Novarna",
+    "url": "https://novarna.ai/",
+    "performance": 76,
+    "seo": 100,
+    "accessibility": 94,
+    "best_practices": 100,
+    "lcp_ms": 4877,
+    "total_bytes": 705540,
+    "final_url": "https://novarna.ai/"
+  },
+  {
+    "company": "Femly",
+    "url": "https://www.femly.com/",
+    "performance": 60,
+    "seo": 92,
+    "accessibility": 84,
+    "best_practices": 77,
+    "lcp_ms": 4483,
+    "total_bytes": 4640482,
+    "final_url": "https://www.femly.com/"
+  },
+  {
+    "company": "iCardio.ai",
+    "url": "https://www.icardio.ai/",
+    "performance": 54,
+    "seo": 82,
+    "accessibility": 90,
+    "best_practices": 96,
+    "lcp_ms": 3834,
+    "total_bytes": 5128371,
+    "final_url": "https://www.icardio.ai/"
+  },
+  {
+    "company": "Dopl Technologies",
+    "url": "https://www.dopltechnologies.com/",
+    "performance": 62,
+    "seo": 92,
+    "accessibility": 84,
+    "best_practices": 100,
+    "lcp_ms": 10313,
+    "total_bytes": 27698419,
+    "final_url": "https://www.dopltechnologies.com/"
+  },
+  {
+    "company": "Scout Space",
+    "url": "https://www.scout.space/",
+    "performance": 83,
+    "seo": 83,
+    "accessibility": 92,
+    "best_practices": 100,
+    "lcp_ms": 4065,
+    "total_bytes": 4604761,
+    "final_url": "https://www.scout.space/"
+  },
+  {
+    "company": "Scout Financial",
+    "url": "https://www.scout-financial.com/",
+    "performance": 61,
+    "seo": 91,
+    "accessibility": 86,
+    "best_practices": 100,
+    "lcp_ms": 17723,
+    "total_bytes": 5026553,
+    "final_url": "https://www.scout-financial.com/"
+  },
+  {
+    "company": "Opine",
+    "url": "https://tryopine.com/",
+    "performance": 62,
+    "seo": 100,
+    "accessibility": 100,
+    "best_practices": 77,
+    "lcp_ms": 4786,
+    "total_bytes": 1440697,
+    "final_url": "https://tryopine.com/"
+  },
+  {
+    "company": "Beam Dynamics",
+    "url": "https://www.beamdynamics.io/",
+    "performance": 85,
+    "seo": 100,
+    "accessibility": 90,
+    "best_practices": 96,
+    "lcp_ms": 3144,
+    "total_bytes": 3010983,
+    "final_url": "https://www.beamdynamics.io/"
+  },
+  {
+    "company": "Bump",
+    "url": "https://usebump.com/",
+    "performance": 86,
+    "seo": 100,
+    "accessibility": 96,
+    "best_practices": 73,
+    "lcp_ms": 2462,
+    "total_bytes": 41671407,
+    "final_url": "https://usebump.com/"
+  },
+  {
+    "company": "Social Cascade",
+    "url": "https://www.socialcascade.co/",
+    "performance": 65,
+    "seo": 100,
+    "accessibility": 96,
+    "best_practices": 100,
+    "lcp_ms": 5933,
+    "total_bytes": 731873,
+    "final_url": "https://www.socialcascade.co/"
+  },
+  {
+    "company": "Keep Company",
+    "url": "https://keep-company.com/",
+    "performance": 57,
+    "seo": 100,
+    "accessibility": 90,
+    "best_practices": 77,
+    "lcp_ms": 4083,
+    "total_bytes": 5048550,
+    "final_url": "https://keep-company.com/"
+  },
+  {
+    "company": "Health In Her HUE",
+    "url": "https://healthinherhue.com/",
+    "performance": 36,
+    "seo": 100,
+    "accessibility": 96,
+    "best_practices": 77,
+    "lcp_ms": 14184,
+    "total_bytes": 3604074,
+    "final_url": "https://healthinherhue.com/"
+  },
+  {
+    "company": "Athlytic",
+    "url": "https://app.athlytic.io/",
+    "performance": 14,
+    "seo": 67,
+    "accessibility": 70,
+    "best_practices": 54,
+    "lcp_ms": 35378,
+    "total_bytes": 13517935,
+    "final_url": "https://app.athlytic.io/"
+  },
+  {
+    "company": "Axal",
+    "url": "https://axal.ai/",
+    "performance": 87,
+    "seo": 100,
+    "accessibility": 95,
+    "best_practices": 100,
+    "lcp_ms": 3370,
+    "total_bytes": 211363,
+    "final_url": "https://www.axal.ai/"
+  },
+  {
+    "company": "Singulate",
+    "url": "https://www.singulate.com/",
+    "performance": 34,
+    "seo": 92,
+    "accessibility": 90,
+    "best_practices": 50,
+    "lcp_ms": 9826,
+    "total_bytes": 12951461,
+    "final_url": "https://www.singulate.com/"
+  }
+]

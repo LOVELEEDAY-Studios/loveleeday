@@ -48,9 +48,22 @@ export default async function PortfolioPage({
           <span className="text-[var(--dim)]"> · prepared for {p.preparedFor}</span>
         </p>
         <h1 className="mt-5 text-[clamp(2.5rem,6.5vw,4.75rem)] font-medium leading-[0.98] tracking-[-0.035em]">
-          {p.cases.length} of your companies,
-          <br />
-          rebuilt.
+          {/* Collab has six cases and this read "6 of your companies, rebuilt."
+              Lightship has one, and the same template produced "1 of your
+              companies, rebuilt." — a count is not a sentence. */}
+          {p.cases.length === 1 ? (
+            <>
+              One of your companies,
+              <br />
+              rebuilt.
+            </>
+          ) : (
+            <>
+              {p.cases.length} of your companies,
+              <br />
+              rebuilt.
+            </>
+          )}
         </h1>
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] text-[var(--mid)]">
           <span>{p.fund}</span>
@@ -177,8 +190,8 @@ export default async function PortfolioPage({
             </ul>
           </div>
           <NoteForm
-            token={portfolio.token}
-            client={portfolio.fund}
+            token={p.token as string}
+            client={p.fund}
             deliverables={p.cases.map((c) => ({ slug: c.slug, title: c.company }))}
           />
         </div>
