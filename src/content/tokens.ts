@@ -48,4 +48,10 @@ export const TOKENS = {
   corewell: tokOptional("PORTFOLIO_TOKEN_COREWELL"),
   assembly: tokOptional("PORTFOLIO_TOKEN_ASSEMBLY"),
   elab: tokOptional("PORTFOLIO_TOKEN_ELAB"),
+  // The Funder's Panel itself, 2026-09-22: Brian Brackeen (Lightship Capital),
+  // Shalanda Armstrong (100KM VC), Brittni Abiolu (VentureHue). Tokens are set,
+  // so these three publish.
+  lightship: tokOptional("PORTFOLIO_TOKEN_LIGHTSHIP"),
+  hundredkm: tokOptional("PORTFOLIO_TOKEN_HUNDREDKM"),
+  venturehue: tokOptional("PORTFOLIO_TOKEN_VENTUREHUE"),
 } as const;

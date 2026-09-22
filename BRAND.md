@@ -1,5 +1,27 @@
 # LOVELEEDAY Studios — Brand Direction
 
+> ## STALE. THE PALETTE BELOW IS NOT THE BRAND.
+>
+> **The live brand lives in `src/app/globals.css`. Read that, not this.**
+>
+> This file was last edited 2026-05-01. `globals.css` was edited 2026-09-21. On
+> 2026-09-22 three portal studies were built from the palette below and every one
+> of them was wrong — Daniel: *"what you gave vermillion is wrong and old outdated
+> against our live site."*
+>
+> | this file says | the site actually uses |
+> |---|---|
+> | Ink `#111111` near-black | `--ink: #16243A` deep navy |
+> | Paper `#F3F2EE` | `--ground: #FBF8F2` warm off-white |
+> | Accent **Vermilion `#C84B31`** | `--teal: #0E7877`, with `--copper: #9B5C3E` secondary |
+>
+> `C84B31` appears **zero** times in `src/`. It was abandoned and this file was
+> never updated. A stale brand file is more dangerous than a missing one, because
+> it answers confidently.
+>
+> Everything below is kept for the written POV only — the voice and the reasoning
+> are still useful. Take no colour, no hex and no type token from it.
+
 ## Visual POV
 
 **Refined editorial meets high-craft engineering.** Think a well-made Swiss design annual from 1972 that somehow also ships code. Strong typographic authority, breathing room, disciplined restraint — the visual language of a studio that has done this before and doesn't need to shout. Not "creative agency portfolio." Not "SaaS startup." A practice that charges for precision.
