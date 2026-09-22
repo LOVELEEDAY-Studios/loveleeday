@@ -272,7 +272,157 @@ const lightship: Portfolio = {
   ],
 };
 
-export const portfolios: Portfolio[] = [collab, lightship];
+
+/**
+ * VentureHue — Brittni Abiolu, Funder's Panel, 2026-09-22.
+ *
+ * The subject of this study is the accelerator's own site, not a portfolio
+ * company's. Every defect below was confirmed by direct request on 2026-09-22;
+ * the Lighthouse figures are a local run and cover 4 of 6, which the page says.
+ */
+const venturehue: Portfolio = {
+  token: TOKENS.venturehue,
+  fund: "VentureHue",
+  fundDomain: "venturehue.com",
+  preparedFor: "Brittni Abiolu",
+  deliveredOn: "2026-09-22",
+  intro:
+    "This one is about your own storefront rather than a portfolio company's. You run a capital-readiness programme, and the site that is supposed to introduce it to a founder currently cannot. Nothing here was commissioned and nothing is a proposal — the rebuild is the argument, and every fact in it is yours, recovered from your own pages.",
+
+  fundFindings: [
+    {
+      title: "The homepage is still carrying its theme vendor's demo contact details",
+      detail:
+        "venturehue.com returns HTTP 200 and serves the email hello@dream-theme.com, the phone number 001 234 56 78 and a SoHo New York address. Those belong to the WordPress theme's demo content, not to VentureHue. A founder who tries to contact you from the homepage is writing to a theme vendor.",
+    },
+    {
+      title: "The portfolio section was deleted and the pages return 404",
+      detail:
+        "The homepage and /project/ both render “Nothing Found”, and /project/career-karma/ returns HTTP 404 with the title “Page Not Found | VentureHue”. An archive of the same site from June 2026 shows those project pages live. The work exists; the site no longer shows it.",
+    },
+    {
+      title: "A live page is asking the reader to paste a shortcode",
+      detail:
+        "/venturehue-early-access/ is published and contains the developer instruction “paste this persona's Gravity Forms shortcode”, beside stat counters reading zero founders coached and $0 total funding. The real figure is $2,192,470 raised by founders in your network.",
+    },
+  ],
+
+  stats: [
+    { k: "$2.19M", label: "Raised by founders in the network", sub: "$2,192,470 — your own published figure, and absent from the live site" },
+    { k: "4", label: "Defects confirmed by direct request", sub: "Demo contact details, dead portfolio, 404s, shortcode in production" },
+    { k: "44", label: "Median mobile performance", sub: "Lighthouse, mobile, 4 of 6 measured locally — not the whole set" },
+    { k: "7.8s", label: "Largest contentful paint, your own site", sub: "venturehue.com, mobile. Performance 61, accessibility 84" },
+  ],
+
+  cases: [
+    {
+      slug: "venturehue",
+      company: "VentureHue",
+      domain: "venturehue.com",
+      portalToken: TOKENS.venturehueStudy as string,
+      sector: "Capital-readiness accelerator · Detroit, MI",
+      before: v("/portal/venturehue/venturehue-before.jpg"),
+      after: v("/portal/venturehue/venturehue-after.jpg"),
+      thesis:
+        "You teach founders that being ready for capital is a discipline, and the $2,192,470 your network has raised is the evidence that it works. None of that is reachable on your site today. This rebuild does not add a claim — it takes the material you already published, recovered from an archive of your own pages, and puts the track record first.",
+      findings: [
+        "ACCESS Lab is presented as an indexed sequence rather than three equal cards, so a founder reads it as a path with a beginning and an end.",
+        "The $2,192,470 leads. On the live site the equivalent counter reads $0, which is the single most damaging thing on the page.",
+        "Your own blue and purple, sampled from venturehue.com's stylesheet, and Poppins and Open Sans, which your site already loads.",
+        "Testimonials from Eric Williamson, Sharon Porter and Akindele Akinyemi, recovered from your own pages rather than written.",
+      ],
+      search:
+        "Not measured. The tooling that quoted live search positions for other studies in this portfolio is not configured on this project, so no position is claimed here rather than estimated.",
+    },
+  ],
+
+  method: [
+    "Every defect was confirmed by requesting the URL with a browser user agent and reading the response body — the demo email, the demo phone number, the “Nothing Found” pages, the 404 on a project page and the Gravity Forms instruction were each matched as literal strings in the served HTML.",
+    "Copy for the rebuild comes from a June 2026 archive of venturehue.com, because the live pages that held it now return 404. Nothing on the rebuilt page was invented.",
+    "Lighthouse ran locally on the mobile profile; the PageSpeed Insights API returned HTTP 429 across this work. Four of six sites are measured — venturehue.com, Career Karma, Upright Oats and Small Business Brain — and the median says so.",
+    "No CrUX field data is quoted anywhere. A local run cannot see it.",
+    "The rebuilt page carries no photography, and that is a real gap rather than a choice. We found none of yours to use.",
+  ],
+};
+
+
+/**
+ * 100KM VC — Shalanda Armstrong, Funder's Panel, 2026-09-22.
+ *
+ * This portfolio is HEALTHY, and the study says so. Eleven of fifteen sites are
+ * professionally built with real logos, named case studies and FDA clearances.
+ * There is no broken-site argument to make here and inventing one would be the
+ * fastest way to lose the room. The finding is elsewhere: the fund's own
+ * metadata describes a different fund than the one she runs.
+ */
+const hundredkm: Portfolio = {
+  token: TOKENS.hundredkm,
+  fund: "100KM VC",
+  fundDomain: "100kmvc.com",
+  preparedFor: "Shalanda Armstrong",
+  deliveredOn: "2026-09-22",
+  intro:
+    "We measured all fifteen and most of them are good — that is worth saying first, because it is the opposite of what an unsolicited audit usually claims. Your companies publish real logos, real case studies and real clearances. The thing worth your attention is one line of markup on your own site that no visitor ever sees and every machine does.",
+
+  fundFindings: [
+    {
+      title: "Your site tells search engines you invest in Latin America",
+      detail:
+        "100kmvc.com carries the description “We back bold founders building the future of work and health in Latin America.” in three places — the meta description, og:description and twitter:description. The phrase appears zero times in the visible page and the word Detroit appears zero times anywhere. Nobody reading the site sees it; Google, LinkedIn and every link preview render it. For a fund raising Fund I, that is the sentence an LP meets before they meet you.",
+    },
+    {
+      title: "Three sites take more than ten seconds to show anything on a phone",
+      detail:
+        "Athlytic reaches largest contentful paint at 35.4 seconds, Scout Financial at 17.7, Health In Her HUE at 14.2. Athlytic is the sharpest case: its content is genuinely rich once it arrives, and a naive check reports the page as blank — it is a Bubble app whose entire interface is assembled client-side. Performance 14, SEO 67. The content is not the problem; the wait is.",
+    },
+    {
+      title: "Two portfolio sites move more than 25 MB",
+      detail:
+        "Bump transfers 39.7 MB and Dopl Technologies 26.4 MB. Bump gets away with it — deferred loading keeps its performance at 86 — while Dopl does not, at 62 with a 10.3 second paint. The weight is not automatically the fault; what it costs depends entirely on what is deferred.",
+    },
+  ],
+
+  stats: [
+    { k: "15", label: "Companies measured", sub: "Every company on 100kmvc.com/portfolio, 2026-09-22. None failed" },
+    { k: "62", label: "Median mobile performance", sub: "Lighthouse, mobile, local run. 3 of 15 score under 50" },
+    { k: "100", label: "Median Lighthouse SEO", sub: "Their markup is fine. This portfolio's problem is not findability" },
+    { k: "35.4s", label: "Slowest first paint", sub: "Athlytic, mobile. Scout Financial 17.7s, Health In Her HUE 14.2s" },
+  ],
+
+  cases: [
+    {
+      slug: "novarna",
+      company: "Novarna",
+      domain: "novarna.ai",
+      portalToken: TOKENS.novarna,
+      sector: "AI-designed RNA therapeutics · Detroit, MI",
+      before: v("/portal/hundredkm/novarna-before.jpg"),
+      after: v("/portal/hundredkm/novarna-after.jpg"),
+      thesis:
+        "Novarna is in your portfolio and in Collab Capital's, which is why this one already exists — it was rebuilt for that study and is shown here unchanged rather than made for this meeting. Their strongest proof, the University of Michigan DiFeo Lab testing their candidates in its own facility where the designs outperformed a commercially available treatment, sat in a paragraph near the bottom of their site. Third-party validation is close to unheard of in AI-for-biology.",
+      findings: [
+        "The hero is an A-form RNA duplex built to real geometry — 32.7° of twist per base pair, 2.8 Å rise, the narrow major groove that distinguishes RNA from DNA — lit and depth-sorted in the browser with no 3D library. The whole page is 48 KB.",
+        "The DiFeo result has its own section rather than a footnote, set as a readout rather than a paragraph.",
+        "Measured 2026-09-22: novarna.ai returns performance 76, SEO 100, accessibility 94, first paint 4.9 seconds, 0.7 MB — among the healthiest in your portfolio before we touched anything.",
+        "They rebranded from CircNova and circnova.com now redirects to novarna.ai. Collab Capital's portfolio page still lists the old name; yours lists CircNova too.",
+      ],
+      search:
+        "Ninth of nine for the phrase describing their platform, measured for the Collab study on 2026-09-19. The eight above them are journals and catalogue sites rather than companies — a category with no commercial competition in it yet.",
+    },
+  ],
+
+  method: [
+    "Company list read from 100kmvc.com/portfolio directly on 2026-09-22 — fifteen companies. All fifteen returned a Lighthouse result; none is excluded.",
+    "The Latin America finding was confirmed by fetching the page and counting the phrase in the served HTML: three occurrences in metadata, zero in the rendered body, and zero occurrences of Detroit anywhere.",
+    "Lighthouse ran locally on the mobile profile because the PageSpeed Insights API returned HTTP 429 across this work. Same engine, no quota.",
+    "Two earlier claims were checked and withdrawn rather than repeated: Athlytic and Health In Her HUE were both reported elsewhere as rendering blank. Both render fully — they are client-side applications, and the honest finding is that they are slow, not empty.",
+    "Singulate returns 403 to a plain request because of a Cloudflare challenge. That is not a defect and it is scored here from a real browser render, not from the challenge page.",
+    "No CrUX field data is quoted. A local Lighthouse run cannot see it, and an absent field record would need its own explanation rather than a blank.",
+    "The Novarna study shown here was built for the Collab Capital portfolio and is presented unchanged. Every figure on it belongs to Novarna and is read from their own material.",
+  ],
+};
+
+export const portfolios: Portfolio[] = [collab, lightship, hundredkm, venturehue];
 
 /** Studies reachable right now -- the ones whose token is set. */
 export const publishedPortfolios = portfolios.filter((p) => Boolean(p.token));

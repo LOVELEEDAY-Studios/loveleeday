@@ -29,7 +29,7 @@ const FOR_DIR: Record<string, string> = {
      Enable shipped that way on 2026-09-22 and cost an afternoon to find. If you
      add a study, add it here in the same commit. */
   ...(TOKENS.enable ? { enable: TOKENS.enable } : {}),
-  ...(TOKENS.venturehue ? { venturehue: TOKENS.venturehue } : {}),
+  ...(TOKENS.venturehueStudy ? { venturehue: TOKENS.venturehueStudy } : {}),
 };
 
 export function proxy(req: NextRequest) {
