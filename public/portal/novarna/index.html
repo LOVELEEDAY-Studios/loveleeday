@@ -149,15 +149,7 @@ h1,h2,h3{margin:0;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-s
 .row .o{transition:color .45s ease}
 .row.lit .o{color:var(--red)}
 
-/* a base sequence streaming past, the way a genome browser shows one */
-.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:var(--paper);padding:11px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
-.ticker span{display:inline-block;white-space:nowrap;
-  font-family:"DM Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.42em;
-  color:var(--soft);animation:stream 42s linear infinite;will-change:transform}
-.ticker b{color:var(--red);font-weight:450}
-@keyframes stream{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* .ticker and @keyframes stream removed 2026-09-22 — see the markup comment. */
 
 /* assay rows arrive one at a time, like a result printing */
 .as{transition:opacity .5s ease,transform .5s ease}
@@ -176,7 +168,6 @@ h1,h2,h3{margin:0;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-s
 @media (prefers-reduced-motion:reduce){
   [data-rise]{opacity:1;transform:none;transition:none}
   .scrub{display:none}
-  .ticker span{animation:none}
   .as.pend{opacity:1;transform:none}
   .live-dot{animation:none}
   /* .6 was tuned for an animated field, where the worry was a moving object
@@ -430,7 +421,14 @@ h1,h2,h3{margin:0;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-s
 </div></section>
 
 <!-- 3c · SEQUENCE TICKER -->
-<div class="ticker" aria-hidden="true"><span id="tick"></span></div>
+<!-- Removed 2026-09-22. A full-width bordered strip of grey monospace RNA bases
+     sliding past — GCAUGGCAUCGAUGCUAGC… — which Daniel read, correctly, as a
+     scrollbar full of garbled text. It was overflow:hidden so it was never a
+     real scrollbar, but a 48px rule containing 6,451px of letters moving
+     horizontally is indistinguishable from one, and the letters carry no
+     meaning to anybody reading the page. Decoration imitating data. The hero
+     already renders the real molecule to real geometry; this was saying the
+     same thing again, worse. -->
 
 <!-- 4 · VALIDATION -->
 <section class="val" id="validation"><div class="val-in">
@@ -969,15 +967,8 @@ h1,h2,h3{margin:0;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-s
     onScroll();
   }
 
-  /* ---------- 6. the sequence ticker -------------------------------------- */
-  var tickEl = document.getElementById('tick');
-  if (tickEl) {
-    /* The designed region is marked in red, the same four bases the hero field
-       resolves last. Doubled so the -50% translate loops seamlessly. */
-    var seq = 'GCAUGGCAUCGAUGCUAGCUAGGCAUCGAUCGUAGCAUGCUAGCAUCGGAUCGAUCGUAGCUA';
-    var unit = seq.slice(0, 22) + '<b>' + seq.slice(22, 26) + '</b>' + seq.slice(26);
-    tickEl.innerHTML = (unit + ' &nbsp; ').repeat(8);
-  }
+  /* 6. The sequence ticker generator was removed with its markup on
+     2026-09-22. Nothing else referenced #tick. */
 })();
 </script>
 </body>
