@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<title>LOVELEEDAY — lockup</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@200;300;400;500&display=swap" rel=stylesheet>
+<style>
+:root{--ink:#241109;--void:#140804;--bone:#FBF6EE;--hot:#B4470F;
+  --sans:'Inter Tight',system-ui,sans-serif;--ser:'Instrument Serif',Georgia,serif;
+  --mono:ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bone);color:var(--ink);font:400 15px/1.5 var(--sans)}
+.band{padding:46px 56px;border-bottom:1px solid rgba(36,17,9,.14)}
+.band.dark{background:var(--void);color:var(--bone);border-bottom-color:rgba(251,246,238,.14)}
+.cap{font:500 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--hot);margin-bottom:26px}
+.band.dark .cap{color:#E8A24A}
+
+/* horizontal lockup — the mark reads as a letter in the word */
+.h{display:flex;align-items:center;gap:22px}
+.h img{width:72px;height:72px;display:block}
+.h .wm{font:200 40px/1 var(--sans);letter-spacing:.26em;text-indent:.26em}
+
+/* stacked */
+.v{display:inline-flex;flex-direction:column;align-items:center;gap:18px}
+.v img{width:104px;height:104px;display:block}
+.v .wm{font:200 30px/1 var(--sans);letter-spacing:.3em;text-indent:.3em;
+  margin-right:-.3em}
+
+/* small horizontal, as it sits in a nav */
+.nav{display:flex;align-items:center;gap:26px;padding:16px 22px;
+  border:1px solid rgba(251,246,238,.16)}
+.nav img{width:26px;height:26px;display:block}
+.nav .wm{font:500 15px/1 var(--sans);letter-spacing:.14em}
+.nav .nl{display:flex;gap:22px;margin-left:6px;font:400 14px/1 var(--sans);opacity:.8}
+.nav .btn{margin-left:auto;background:var(--bone);color:var(--ink);
+  padding:9px 16px;font:500 13px/1 var(--sans)}
+
+/* favicon ladder */
+.ico{display:flex;align-items:flex-end;gap:30px}
+.ico figure{margin:0;text-align:center}
+.ico img{display:block;image-rendering:auto;margin:0 auto 8px}
+.ico figcaption{font:500 10px/1 var(--mono);letter-spacing:.1em;opacity:.6}
+
+/* with the serif line, as the hero uses it */
+.hero{display:inline-flex;flex-direction:column;align-items:center;gap:20px}
+.hero img{width:86px;height:86px}
+.hero .wm{font:200 clamp(2rem,5vw,4.2rem)/1 var(--sans);letter-spacing:.26em;
+  text-indent:.26em;margin-right:-.26em}
+.hero .sub{font:400 1.1rem/1.4 var(--ser);font-style:italic;opacity:.92}
+</style></head><body>
+
+<div class=band>
+  <div class=cap>Horizontal lockup &middot; on bone</div>
+  <div class=h><img src="../../public/brand/heart-node.svg" alt="">
+    <span class=wm>LOVELEEDAY</span></div>
+</div>
+
+<div class="band dark">
+  <div class=cap>Horizontal lockup &middot; on ink</div>
+  <div class=h><img src="../../public/brand/heart-node-bone.svg" alt="">
+    <span class=wm>LOVELEEDAY</span></div>
+</div>
+
+<div class=band>
+  <div class=cap>Stacked</div>
+  <div class=v><img src="../../public/brand/heart-node.svg" alt="">
+    <span class=wm>LOVELEEDAY</span></div>
+</div>
+
+<div class="band dark">
+  <div class=cap>In the navigation, at real size</div>
+  <div class=nav><img src="../../public/brand/heart-node-bone.svg" alt="">
+    <span class=wm>LOVELEEDAY</span>
+    <span class=nl><span>Platform</span><span>Work</span><span>Company</span></span>
+    <span class=btn>Start a project</span></div>
+</div>
+
+<div class="band dark">
+  <div class=cap>Hero lockup, with the line</div>
+  <div class=hero><img src="../../public/brand/heart-node-bone.svg" alt="">
+    <span class=wm>LOVELEEDAY</span>
+    <span class=sub>It answers the question you did not think to ask.</span></div>
+</div>
+
+<div class=band>
+  <div class=cap>Icon ladder &mdash; the sizes it has to survive</div>
+  <div class=ico>
+    <figure><img src="../../public/brand/heart-node.svg" width=16 height=16><figcaption>16</figcaption></figure>
+    <figure><img src="../../public/brand/heart-node.svg" width=24 height=24><figcaption>24</figcaption></figure>
+    <figure><img src="../../public/brand/heart-node.svg" width=32 height=32><figcaption>32</figcaption></figure>
+    <figure><img src="../../public/brand/heart-node.svg" width=48 height=48><figcaption>48</figcaption></figure>
+    <figure><img src="../../public/brand/heart-node.svg" width=64 height=64><figcaption>64</figcaption></figure>
+    <figure><img src="../../public/brand/heart-node.svg" width=128 height=128><figcaption>128</figcaption></figure>
+  </div>
+</div>
+
+</body></html>
