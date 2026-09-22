@@ -123,10 +123,14 @@ p{ margin:0 0 16px; }
 
 /* logo mark: navy crescent + ascending bars, echoing the real gradient */
 .mark{ width:30px; height:30px; flex:none; }
+/* gap:9px applied between EVERY flex child, so it also opened a gap between
+   .v and .h and the name rendered as "Venture Hue" — their brand is one word.
+   The space belongs after the mark only. */
 .wordmark{
   font-family:var(--font-display); font-weight:800; font-size:20px;
-  letter-spacing:-.02em; display:inline-flex; align-items:center; gap:9px;
+  letter-spacing:-.02em; display:inline-flex; align-items:center; gap:0;
 }
+.wordmark .mark{ margin-right:9px; }
 .wordmark .v{ color:var(--navy); }
 .wordmark .h{ background:linear-gradient(90deg,var(--blue) 0%, var(--green) 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
@@ -143,10 +147,25 @@ p{ margin:0 0 16px; }
 .hero{ position:relative; padding:clamp(48px,8vw,96px) 0 0; overflow:hidden; }
 /* Removed. This was a 48vw grey panel holding nothing — it reads as an image
    that failed to load rather than as composition, which is worse than empty
-   space. Until there is real photography, the hero is left-weighted type with
-   air on the right, which is a deliberate arrangement instead of a gap. */
+   space. The right column now holds the photograph that panel was standing in
+   for; the panel itself stays gone. */
 .hero__band{ display:none; }
 .hero__grid{ position:relative; display:grid; grid-template-columns:minmax(0,1fr); gap:40px; }
+/* The photograph is the subject of the whole page — a founder presenting to the
+   people who write the checks — so it gets the full height of the type beside
+   it rather than being reduced to a decorative tile. Below 1040px it drops under
+   the copy, where a wider crop reads better than a tall one. */
+.hero__shot{ position:relative; border-radius:3px; overflow:hidden; background:var(--paper-2); }
+.hero__shot img{ display:block; width:100%; height:clamp(260px,42vw,560px); object-fit:cover; object-position:58% 40%; }
+.hero__shot::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(200deg, transparent 55%, rgba(20,33,61,.34) 100%);
+}
+.shot__cap{
+  position:absolute; left:0; right:0; bottom:0; z-index:1;
+  font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:rgba(255,255,255,.82); padding:10px 14px;
+}
 /* 15ch here squeezed the LEDE to one word per line — the cap belongs on the h1
    alone, which sets its own max-width below. Every overflow check passed while
    it was broken, because a word-per-line column overflows nothing. */
@@ -186,7 +205,14 @@ p{ margin:0 0 16px; }
    the two that should dominate; the supporting sections now sit tighter and
    recede, which is what gives the page a rhythm rather than a list. */
 .pillars{ padding:clamp(52px,6.5vw,88px) 0; background:var(--paper); }
-.pillars__head{ max-width:720px; margin-bottom:52px; }
+/* The section head used to be a 720px column of type with nothing opposite it.
+   The photograph is what the copy is describing — one founder being advised by
+   another — so it belongs beside the claim, not three screens away from it. */
+.pillars__top{ display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(28px,4vw,56px); align-items:center; margin-bottom:52px; }
+@media (min-width:900px){ .pillars__top{ grid-template-columns:1.15fr .85fr; } }
+.pillars__head{ max-width:720px; }
+.pillars__shot{ position:relative; border-radius:3px; overflow:hidden; margin:0; }
+.pillars__shot img{ display:block; width:100%; height:clamp(240px,30vw,400px); object-fit:cover; object-position:50% 38%; }
 .pillars__head h2{ font-size:clamp(1.9rem,4.2vw,2.9rem); }
 /* Was three equal bordered cards — the generic-card pattern that reads as
    machine-made. Now an indexed sequence with deliberately unequal columns, so
@@ -202,12 +228,39 @@ p{ margin:0 0 16px; }
   .pgrid > *{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,11fr); gap:clamp(24px,4vw,64px); align-items:start; }
   .pgrid > * h3{ margin:0; }
 }
-.pitem{ background:var(--paper); padding:32px 28px; }
-.pitem__n{ font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--purple); font-weight:600; }
-.pitem h3{ font-size:1.3rem; margin:12px 0 10px; }
-.pitem p{ font-size:14.5px; line-height:1.65; color:var(--slate); margin:0; }
+/* .pitem used to re-declare `background` and `padding:32px 28px` from the old
+   three-card design. Same specificity as `.pgrid > *` and further down the
+   file, so it won — silently deleting the left gutter that the counter above is
+   absolutely positioned into, and dropping the number on top of the heading.
+   Two numbering systems were running at once as well: this counter and a
+   literal <span class="pitem__n">01</span> in the markup, which is why every
+   row rendered its index twice. The spans are gone and this carries the
+   numbering alone. A rule that only conflicts at one breakpoint is exactly the
+   kind a spacing check passes and an eye does not. */
+.pitem{ background:transparent; }
+.pitem h3{ font-size:1.3rem; margin:0 0 10px; }
+.pitem p{ font-size:14.5px; line-height:1.65; color:var(--slate); margin:0; max-width:58ch; }
 
 /* ================= ACCESS LAB (dark) ================= */
+/* A full-bleed photograph carrying one sentence, sitting immediately before the
+   dark ACCESS Lab section so the page moves light -> image -> dark rather than
+   cutting straight from white to navy. The overlay is a fixed navy wash, not a
+   guess at the photo's own brightness: text over an unknown image is the most
+   common way a page ships at 2:1 contrast and passes every automated check. */
+.band{ position:relative; margin:clamp(56px,8vw,96px) 0 0; overflow:hidden; }
+.band img{ display:block; width:100%; height:clamp(300px,38vw,520px); object-fit:cover; object-position:50% 42%; }
+.band__wash{ position:absolute; inset:0; background:linear-gradient(90deg, rgba(12,23,41,.90) 0%, rgba(12,23,41,.62) 48%, rgba(12,23,41,.25) 100%); }
+.band__copy{ position:absolute; inset:0; display:flex; align-items:center; }
+.band__copy .inner{ width:100%; }
+.band__copy p{
+  font-family:var(--font-display); font-weight:700; color:#fff;
+  font-size:clamp(1.5rem,3.3vw,2.5rem); line-height:1.14; letter-spacing:-.02em; max-width:19ch; margin:0;
+}
+.band__copy .sub{ font-family:var(--font-body); font-weight:400; font-size:15px; line-height:1.6;
+  color:rgba(255,255,255,.82); max-width:46ch; margin-top:16px; letter-spacing:0; }
+.band__cred{ position:absolute; right:14px; bottom:10px; font-family:var(--font-mono); font-size:10px;
+  letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.55); }
+
 .lab{ background:var(--navy-deep); color:var(--white); padding:clamp(76px,10vw,132px) 0; }
 .lab .eyebrow{ color:var(--blue); }
 .lab .eyebrow::before{ background:var(--blue); }
@@ -217,8 +270,15 @@ p{ margin:0 0 16px; }
 .lab__grid{ margin-top:clamp(40px,6vw,64px); display:grid; grid-template-columns:1fr; gap:44px; }
 @media (min-width:940px){ .lab__grid{ grid-template-columns:1.05fr .95fr; gap:64px; } }
 .lab__facts{ display:flex; flex-direction:column; gap:10px; margin-top:20px; }
-.lab__fact{ font-family:var(--font-mono); font-size:13px; color:var(--slate-pale); display:flex; gap:10px; line-height:1.6; }
-.lab__fact::before{ content:"—"; color:var(--blue); flex:none; }
+/* This was `display:flex; gap:10px`, which turns every INLINE run inside it
+   into its own flex item. "Built for", the <b>, and the text after it became
+   three separate blocks with a 10px gap between each, so the bold phrases sat
+   in the middle of visible holes and the sentences broke mid-clause. Flex on a
+   container of running text is almost always this bug. The dash is positioned
+   out of the flow instead, and the sentence stays one inline run. */
+.lab__fact{ font-family:var(--font-mono); font-size:13px; color:var(--slate-pale);
+  position:relative; padding-left:20px; line-height:1.6; }
+.lab__fact::before{ content:"—"; color:var(--blue); position:absolute; left:0; top:0; }
 .lab__fact b{ color:var(--white); font-weight:600; }
 
 .steps{ border-top:1px solid var(--line-onDark); }
@@ -299,6 +359,31 @@ p{ margin:0 0 16px; }
 .cta__facts b{ color:var(--white); }
 .cta__ctas{ display:flex; gap:20px; flex-wrap:wrap; margin-top:26px; }
 .cta__glyph{ position:absolute; right:clamp(-40px,-2vw,0px); top:50%; transform:translateY(-50%); width:min(46vw,420px); opacity:.5; pointer-events:none; }
+/* The closing section ends on a person rather than a shape. It is hidden below
+   1040px instead of being stacked: a half-faded portrait under a call to action
+   reads as a loading artifact on a phone, and the CTA does not need it to work.
+   The mask is what keeps the copy legible — the photo dissolves into the navy
+   rather than sitting in a box on top of it. */
+.cta__shot{ display:none; }
+@media (min-width:1040px){
+  .cta{ isolation:isolate; }
+  .cta__shot{
+    display:block; position:absolute; right:0; top:0; bottom:0; width:min(44%,560px);
+    margin:0; z-index:0; pointer-events:none;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 42%, #000 100%);
+    mask-image:linear-gradient(90deg, transparent 0%, #000 42%, #000 100%);
+  }
+  .cta__shot img{ width:100%; height:100%; object-fit:cover; object-position:44% 30%; opacity:.5; }
+  /* The inner stays ONE column. A two-column version put the contact block in
+     column 2, which is exactly where the photograph is — the address landed
+     across her shoulder at borderline contrast. The copy and the facts both
+     live in the left half; the photo owns the right half and nothing overlaps
+     it. */
+  .cta .inner{ grid-template-columns:minmax(0,1fr); max-width:calc(var(--maxw) * .62); margin-left:max(calc((100vw - var(--maxw))/2), 0px); margin-right:0; }
+  .cta .inner > *{ position:relative; z-index:1; }
+  .cta h2, .cta .body-copy{ max-width:15ch; }
+  .cta .body-copy{ max-width:46ch; }
+}
 
 /* ================= FOOTER ================= */
 footer{ background:var(--white); padding:64px 0 0; }
@@ -363,6 +448,11 @@ address{ font-style:normal; color:var(--slate); font-size:14.5px; line-height:1.
           <a class="link-underline" href="#access-lab">How it works ↓</a>
         </div>
       </div>
+      <figure class="hero__shot reveal">
+        <img src="pitch.jpg" width="1600" height="1067" alt="A founder presenting to a seated panel of investors"
+          fetchpriority="high" decoding="async">
+        <figcaption class="shot__cap">Getting in front of the check</figcaption>
+      </figure>
     </div>
     <div class="hero__proof inner reveal">
       <div><div class="proof__k tnum">$<span class="accent">2,192,470</span></div><div class="proof__l">Raised by founders in the VentureHue network</div></div>
@@ -387,30 +477,33 @@ address{ font-style:normal; color:var(--slate); font-size:14.5px; line-height:1.
   <!-- ============ TRAINING / CAPITAL / TRACTION ============ -->
   <section class="pillars" id="about">
     <div class="inner">
-      <div class="pillars__head reveal">
-        <p class="eyebrow">Why VentureHue</p>
-        <h2>We don't just point founders toward capital. We build the readiness to get it.</h2>
-        <p class="body-copy" style="max-width:640px;">Mission-driven capital only reaches a founder if the founder can
-          get in front of it — pitch-ready, network-connected, and visible to the people writing checks. That is the
-          gap ACCESS Lab closes.</p>
+      <div class="pillars__top">
+        <div class="pillars__head reveal">
+          <p class="eyebrow">Why VentureHue</p>
+          <h2>We don't just point founders toward capital. We build the readiness to get it.</h2>
+          <p class="body-copy" style="max-width:640px;">Mission-driven capital only reaches a founder if the founder can
+            get in front of it — pitch-ready, network-connected, and visible to the people writing checks. That is the
+            gap ACCESS Lab closes.</p>
+        </div>
+        <figure class="pillars__shot reveal">
+          <img src="coaching.jpg" width="1024" height="1068" loading="lazy" decoding="async"
+            alt="Two founders in conversation, one advising the other">
+        </figure>
       </div>
       <div class="pgrid reveal">
         <div class="pitem">
-          <span class="pitem__n">01</span>
           <h3>Training</h3>
           <p>Our accelerator program is your gateway to capital readiness — comprehensive training and coaching to
             secure the funding you need to thrive. From perfecting your pitch to navigating funding opportunities
             and expanding your network.</p>
         </div>
         <div class="pitem">
-          <span class="pitem__n">02</span>
           <h3>Capital</h3>
           <p>A growing network of capital sources — traditional banks, alternative lenders, grant makers, angel
             investors, and venture capital — matched to what your business actually needs. Whether or not ACCESS
             Lab is the right fit, we point you to the right source.</p>
         </div>
         <div class="pitem">
-          <span class="pitem__n">03</span>
           <h3>Traction</h3>
           <p>We don't just help you secure capital, we help you put it to work. Our preferred-vendor network covers
             marketing, operations and financial management, so funding turns into growth instead of sitting in an
@@ -418,6 +511,22 @@ address{ font-style:normal; color:var(--slate); font-size:14.5px; line-height:1.
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ============ PHOTO BAND ============ -->
+  <section class="band reveal" aria-label="Founders working together">
+    <img src="cohort.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+      alt="Three founders working together around a table in a bright studio">
+    <div class="band__wash" aria-hidden="true"></div>
+    <div class="band__copy">
+      <div class="inner">
+        <p>Readiness is a room, not a document.</p>
+        <p class="sub">ACCESS Lab runs as a cohort because the hardest parts of raising — the questions you
+          have not been asked yet, the number you cannot defend — surface faster beside other founders than
+          they do alone.</p>
+      </div>
+    </div>
+    <span class="band__cred">Photography &middot; Pexels</span>
   </section>
 
   <!-- ============ ACCESS LAB ============ -->
@@ -572,6 +681,9 @@ address{ font-style:normal; color:var(--slate); font-size:14.5px; line-height:1.
 
   <!-- ============ FINAL CTA ============ -->
   <section class="cta" id="apply">
+    <figure class="cta__shot" aria-hidden="true">
+      <img src="founder.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="">
+    </figure>
     <div class="inner">
       <div class="reveal">
         <p class="eyebrow">Apply to the next cohort</p>
@@ -617,7 +729,9 @@ address{ font-style:normal; color:var(--slate); font-size:14.5px; line-height:1.
         <span>&copy; 2026 VentureHue. All rights reserved.</span>
         <span class="footer__credit">Homepage rebuild by <strong>LOVELEEDAY Studios</strong> — unsolicited, not
           affiliated with VentureHue or Brittni Abiolu. Copy and figures sourced from venturehue.com, a June 2026
-          Wayback Machine archive of the same site, and Brittni Abiolu's public bio.</span>
+          Wayback Machine archive of the same site, and Brittni Abiolu's public bio. Photography licensed from
+          Pexels: Mikhail Nilov, PNW Production, Christina Morillo, RDNE Stock project — stock images of
+          founders generally, never of any individual named on this page.</span>
       </div>
     </div>
   </footer>
