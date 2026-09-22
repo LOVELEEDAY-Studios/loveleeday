@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>LOVELEEDAY — review board</title>
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500&display=swap" rel=stylesheet>
+<style>
+/* The board wears the build's own tokens so nothing here flatters the pages. */
+:root{--ink:#241109;--deep:#1C0904;--bone:#FBF6EE;--paper:#FFFFFF;--mu:#63523F;
+  --line:#E4D9C9;--hot:#B4470F;--scale:.26;--w:1440px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--deep);color:var(--bone);
+  font:400 15px/1.55 'Inter Tight',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+header{padding:34px clamp(18px,3vw,44px) 22px;border-bottom:1px solid rgba(251,246,238,.14)}
+h1{margin:0;font:400 clamp(1.7rem,3vw,2.5rem)/1 'Instrument Serif',serif;letter-spacing:-.02em}
+h1 em{font-style:italic;color:#E8A24A}
+.sub{margin:10px 0 0;max-width:78ch;color:rgba(251,246,238,.68);font-size:14px}
+.sw{display:flex;gap:0;margin-top:18px;width:max-content;border:1px solid rgba(251,246,238,.2)}
+.sw i{width:52px;height:24px;display:block}
+.flag{margin:18px 0 0;padding:12px 15px;border-left:3px solid var(--hot);
+  background:rgba(180,71,15,.13);max-width:86ch;font-size:13.5px;line-height:1.55}
+.tally{margin-top:16px;font:500 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;
+  color:#E8A24A;text-transform:uppercase}
+main{column-count:3;column-gap:22px;padding:24px clamp(18px,3vw,44px) 70px}
+@media(max-width:1500px){main{column-count:2}}
+@media(max-width:900px){main{column-count:1}}
+.tile{break-inside:avoid;margin:0 0 22px;background:var(--bone);border:1px solid rgba(251,246,238,.16)}
+.tile.ok{border-color:#4FD08A;box-shadow:0 0 0 2px rgba(79,208,138,.32)}
+.head{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--ink);
+  border-bottom:1px solid rgba(251,246,238,.14)}
+.head a{color:var(--bone);text-decoration:none;font:500 13px/1 'Inter Tight',sans-serif;
+  letter-spacing:.02em;border-bottom:1px solid rgba(251,246,238,.38);padding-bottom:2px}
+.head a:hover{border-bottom-color:#E8A24A;color:#E8A24A}
+.head .n{font:500 10px/1 ui-monospace,Menlo,monospace;color:#E8A24A;letter-spacing:.14em}
+.head label{margin-left:auto;display:flex;align-items:center;gap:6px;cursor:pointer;
+  font:500 10px/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;color:rgba(251,246,238,.75)}
+.frame{position:relative;overflow:hidden;background:var(--paper)}
+.frame iframe{width:var(--w);border:0;transform:scale(var(--scale));transform-origin:0 0;
+  pointer-events:none;display:block}
+textarea{width:100%;border:0;border-top:1px solid var(--line);padding:9px 12px;resize:vertical;
+  min-height:46px;font:400 12.5px/1.5 'Inter Tight',sans-serif;color:var(--ink);background:var(--paper)}
+textarea::placeholder{color:#9A8B79}
+textarea:focus{outline:2px solid var(--hot);outline-offset:-2px}
+</style></head>
+<body>
+<header>
+  <h1>LOVELEEDAY — <em>five pages, as built.</em></h1>
+  <p class=sub>Every page at full height, nothing cropped. Click a page name to open it full size in a
+  new tab. Tick APPROVE on the ones that are done and type what is wrong on the ones that are not —
+  both save in this browser as you go.</p>
+  <div class=sw>
+    <i style="background:#FBF6EE"></i><i style="background:#E4D9C9"></i><i style="background:#B4470F"></i>
+    <i style="background:#63523F"></i><i style="background:#241109"></i><i style="background:#1C0904"></i>
+  </div>
+  <p class=flag><b>Photography is NOT updated yet.</b> Every hero here is still the old set — the
+  server room and the two lab benches. The new architectural frames are generated but not wired in, so
+  judge the copy, the structure and the new sections; the pictures are a known open item, not a proposal.</p>
+  <p class=flag><b>New since you last looked:</b> Home gains <i>&ldquo;A payment ledger, a satellite, and
+  the weather&rdquo;</i> — the seven connected sources, printed from the store. About gains
+  <i>&ldquo;People love what they understand.&rdquo;</i> And every figure on every page is now read from
+  the ontology at build time rather than typed: 159 objects, 1,655 observations, 7 sources.</p>
+  <p class=tally id=tally>0 / 5 approved</p>
+</header>
+<main id=board></main>
+<script>
+const PAGES = [
+  ['01', 'Home',    'final/home.html'],
+  ['02', 'Arthur',  'final/arthur.html'],
+  ['03', 'Work',    'final/work.html'],
+  ['04', 'About',   'final/about.html'],
+  ['05', 'Contact', 'final/contact.html'],
+];
+const SCALE = 0.26, W = 1440;
+const store = k => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch { return null; } };
+const save  = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
+
+const board = document.getElementById('board');
+for (const [n, name, src] of PAGES) {
+  const t = document.createElement('div');
+  t.className = 'tile';
+  t.innerHTML =
+    `<div class=head><span class=n>${n}</span>` +
+    `<a href="${src}" target="_blank" rel="noopener">${name}</a>` +
+    `<label><input type=checkbox data-k="ok:${name}"> APPROVE</label></div>` +
+    `<div class=frame><iframe src="${src}" loading="eager" title="${name}"></iframe></div>` +
+    `<textarea data-k="note:${name}" placeholder="What is wrong with ${name}?"></textarea>`;
+  board.appendChild(t);
+}
+
+function tally() {
+  const n = [...document.querySelectorAll('input[type=checkbox]')].filter(c => c.checked).length;
+  document.getElementById('tally').textContent = `${n} / ${PAGES.length} approved`;
+}
+for (const el of document.querySelectorAll('[data-k]')) {
+  const k = el.dataset.k, v = store(k);
+  if (el.type === 'checkbox') {
+    if (v) { el.checked = true; el.closest('.tile').classList.add('ok'); }
+    el.addEventListener('change', () => {
+      save(k, el.checked); el.closest('.tile').classList.toggle('ok', el.checked); tally();
+    });
+  } else {
+    if (v) el.value = v;
+    let d; el.addEventListener('input', () => { clearTimeout(d); d = setTimeout(() => save(k, el.value), 300); });
+  }
+}
+tally();
+
+// Size each frame to the FULL page so nothing is cropped.
+//
+// Two traps the skill records, both avoided here rather than discovered again:
+// a hero measured in viewport units grows as the iframe grows and feeds back into
+// an ever-taller tile, so heights are clamped inside the frame BEFORE measuring;
+// and a load event can fire before layout settles (or never, for a cached frame),
+// so every frame is pumped on an interval until it has been sized, instead of
+// being sized once on load.
+const done = new WeakSet();
+function size(f) {
+  let doc;
+  try { doc = f.contentDocument; } catch { return false; }
+  if (!doc || !doc.body || doc.readyState === 'loading') return false;
+  if (!doc.getElementById('board-clamp')) {
+    const s = doc.createElement('style');
+    s.id = 'board-clamp';
+    s.textContent = '[class*=hero],.herowrap{min-height:0!important;max-height:920px!important}' +
+                    'html,body{overflow-x:hidden!important}';
+    doc.head.appendChild(s);
+  }
+  const h = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight);
+  if (h < 400) return false;
+  f.style.height = h + 'px';
+  f.parentElement.style.height = Math.round(h * SCALE) + 'px';
+  return true;
+}
+setInterval(() => {
+  for (const f of document.querySelectorAll('iframe')) {
+    if (done.has(f)) continue;
+    if (size(f)) done.add(f);
+  }
+}, 400);
+</script>
+</body></html>
