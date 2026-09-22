@@ -1,10 +1,25 @@
 /**
- * The fund-level portfolio page. One token, one link, three rebuilds side by
- * side with what each site looks like today.
+ * The fund-level portfolio page. One token, one link, the rebuilds side by side
+ * with what each site looks like today.
  *
  * This is a different object to a client Portal: a Portal is addressed to one
  * company about its own work, this is addressed to the investor about several.
  * Keeping them separate stops the client-facing copy drifting into pitch copy.
+ *
+ * REGISTER (Daniel, 2026-09-22): "write this like you are talking to someone who
+ * doesn't understand tech — think like you are presenting to an executive
+ * leadership team." That is a hard constraint on every string below, not a tone
+ * preference. A managing partner is not going to ask what largest contentful
+ * paint is; they are going to skim, and whatever they cannot parse in one pass
+ * they will read as us showing off. So:
+ *   - No unexplained jargon. Not Lighthouse, LCP, og:image, CMS, SERP, HTTP 404,
+ *     h1, SVG, CrUX, no-code. Say the consequence, then the evidence.
+ *   - Every number carries its meaning: "25 seconds" is nothing until it sits
+ *     next to "most visitors leave after three."
+ *   - Lead each finding with what it costs them. The measurement is support.
+ *   - US spelling. An earlier pass shipped "organisation" four times.
+ * Translating a figure is allowed. CHANGING one is not — every number here was
+ * measured, and the plain-language version has to survive being checked.
  */
 
 import { TOKENS } from "./tokens";
@@ -50,31 +65,31 @@ const collab: Portfolio = {
   preparedFor: "Collab Capital",
   deliveredOn: "2026-09-19",
   intro:
-    "We are not a design studio and this is not a pitch for a redesign. What we do is help an organisation see something its own data already knows, and act on it. Your next advantage may begin with a question no one has asked, so we asked one about your portfolio — what do all 38 of these sites actually look like to the buyer trying to find them — and then went and measured it rather than arguing it in a deck. Nothing here was commissioned. Every figure belongs to the company it describes, and every measurement names its source.",
+    "We help organizations see something their own numbers already know, and then act on it. This is not a pitch for a redesign — the rebuilds at the end are simply how we show our work. Nobody asked us to do this. We took your portfolio page, opened all thirty-eight companies on it, and looked at each one the way a customer or an acquirer would: on a phone, from a cold search, with no introduction. Then we wrote down what we found. Every figure here belongs to the company it describes and names where it came from, so you can check any line on this page yourself.",
 
   fundFindings: [
     {
-      title: "Two portfolio companies have rebranded and the portfolio page still lists the old names",
+      title: "Two of your companies changed their names. Your portfolio page still uses the old ones",
       detail:
-        "CircNova now trades as Novarna — circnova.com serves a page titled “Novarna — The AI Design Engine for RNA Medicines” and carries a banner reading “CircNova is now Novarna.” Hubble IQ now trades as Fyxit AI, with an assistant branded Rosie. Both appear under their former names on collab.capital/portfolio.",
+        "CircNova now trades as Novarna — their own site says so, with a banner reading “CircNova is now Novarna.” Hubble IQ now trades as Fyxit AI. Both are still listed under their former names on collab.capital/portfolio. Anyone doing diligence who searches the name you published will not find the company you funded.",
     },
     {
-      title: "The portfolio page links to none of its 40 companies",
+      title: "None of the forty companies on your portfolio page can be clicked",
       detail:
-        "Checked directly: zero href values on collab.capital/portfolio point at a company page, and the element wrapping a company name has no anchor ancestor, no click handler and cursor: auto. The per-company detail pages exist and carry the outbound links — nothing on the index reaches them. Anyone wanting to look at a portfolio company has to leave and search for it.",
+        "The names are printed on the page, but not one of them is a link. Nothing happens if you try. Each company does have a detail page elsewhere on your site, and those pages carry the outbound links — but nothing on the main list reaches them. So anyone who wants to look at one of your companies has to leave your site and go searching. That is the moment you stop controlling the story.",
     },
     {
-      title: "71% of the portfolio runs on a no-code builder",
+      title: "Seven in ten of your companies run on an off-the-shelf website builder",
       detail:
-        "Eleven WordPress, nine Webflow, two Wix, two Squarespace, two Shopify, one Framer. Eleven are custom or could not be fingerprinted. That is not a criticism of the tool — it is an observation that the median portfolio company's site is doing less work than the company behind it.",
+        "Eleven on WordPress, nine on Webflow, two Wix, two Squarespace, two Shopify, one Framer. Eleven are custom-built or could not be identified. This is not a criticism of the tools; plenty of serious companies use them. It is an observation about ambition — the typical site in this portfolio is doing less work than the company standing behind it.",
     },
   ],
 
   stats: [
-    { k: "38", label: "Sites audited", sub: "Every live company in the portfolio, 2026-09-18" },
-    { k: "57", label: "Median mobile performance", sub: "Google Lighthouse. 11 of 33 score under 50" },
-    { k: "92", label: "Median Lighthouse SEO", sub: "Their markup is mostly fine. This is not the problem" },
-    { k: "19", label: "With no CrUX field data", sub: "Of 33 measured — too few real visitors for Google to report on" },
+    { k: "38", label: "Companies we opened and measured", sub: "Every live company in your portfolio, 18 September 2026" },
+    { k: "57", label: "Google's mobile speed score, median", sub: "Out of 100. Eleven of the thirty-three we could measure score below 50" },
+    { k: "92", label: "Median score for being findable", sub: "The underlying setup is mostly fine. Findability is not what is hurting them" },
+    { k: "19", label: "Have too few visitors for Google to report on", sub: "Of 33 measured. Google only publishes real-visitor data above a traffic floor" },
   ],
 
   cases: [
@@ -87,14 +102,14 @@ const collab: Portfolio = {
       before: v("/portal/collab/novarna-before.jpg"),
       after: v("/portal/collab/novarna-after.jpg"),
       thesis:
-        "Of the six, this is the only company whose product is an object rather than an interface — so the page is built around the molecule, rendered rather than illustrated. Their best proof, the University of Michigan DiFeo Lab testing their candidates in its own facility where the designs outperformed a commercially available treatment, was a paragraph near the bottom of their site. Almost nobody in AI-for-biology has third-party validation.",
+        "Of the six, this is the only company whose product is a physical thing rather than a screen, so we built the page around the molecule itself. Their single best piece of evidence was buried near the bottom of their site: the University of Michigan's DiFeo Lab tested their candidates in its own facility, and the designs outperformed a treatment already on the market. An outside laboratory willing to say that is close to unheard of in this field. It was a paragraph.",
       findings: [
-        "The hero is an A-form RNA duplex built to real geometry — 32.7° of twist per base pair, 2.8 Å rise, and the narrow major groove that distinguishes RNA from DNA — lit and depth-sorted in the browser, with the four bases NovaEngine designed arriving last and in red. No 3D library; the whole page is 48 KB.",
-        "Third-party validation now has its own section instead of a footnote, with the DiFeo result set as a readout rather than a paragraph.",
-        "Their assets already serve from novarna.ai while the domain still resolves as circnova.com — two names splitting whatever authority the domain has earned. Collab Capital still lists them as CircNova.",
+        "The opening image is the molecule, drawn to its true shape and dimensions rather than illustrated, turning slowly as you read. It is built out of the page itself rather than loaded as a graphic, so the whole thing appears instantly even on a weak phone signal.",
+        "The Michigan result now has a section of its own instead of a footnote, laid out as a result you can take in at a glance.",
+        "One thing to fix regardless of what you think of the rebuild: their files already come from novarna.ai while their web address still says circnova.com. Two names split whatever credibility the address has earned, and Google treats them as two different companies.",
       ],
       search:
-        "Ninth of nine for the phrase describing their platform. The eight above them are journals and catalog sites, not companies — a category with no commercial competition in it yet.",
+        "They appear ninth out of nine for the phrase that describes what they do. The eight above them are scientific journals and catalog sites, not competitors — which means the category has no commercial rival in it yet. That is an opening, and it will not stay open.",
     },
     {
       slug: "soarce",
@@ -105,14 +120,14 @@ const collab: Portfolio = {
       before: v("/portal/collab/soarce-before.jpg"),
       after: v("/portal/collab/soarce-after.jpg"),
       thesis:
-        "Their homepage document alone is 5,009 KB — the heaviest of all thirty-eight sites we measured. Loading the whole page moves about 30 MB, most of it one Wix bundle fetched three separate times at 5.9 MB each. A materials company whose entire pitch is stronger, lighter, cheaper should not be shipping the heaviest page in its investor's portfolio.",
+        "Their entire pitch is stronger, lighter, cheaper. Their homepage is the heaviest of all thirty-eight sites we measured — loading it pulls down about 30 megabytes, roughly a three-minute video, most of it the same file fetched three separate times. A materials company should not be shipping the heaviest page in its investor's portfolio.",
       findings: [
-        "The rebuild makes the same claims in 37 KB of document and 191 KB fully loaded — under one percent of what their page moves. Re-measured 2026-09-20.",
-        "Their own figures carry the page — 8x stronger than steel, 22 GPa tensile strength, 200x water retention — rather than being buried under the weight.",
-        "Page weight and search are the same problem here: a page that heavy is slow to crawl and slow to load for the buyer who does find it.",
+        "Our rebuild makes exactly the same claims and pulls down under one percent as much. On an ordinary phone that is the difference between appearing immediately and appearing after the visitor has already left.",
+        "Their own figures carry the page — eight times stronger than steel, two hundred times water retention — instead of being buried underneath the weight.",
+        "Weight and findability are the same problem here. A page that heavy is slow for Google to read and slow for the buyer who does manage to find it.",
       ],
       search:
-        "Not in the top 9 for the phrase describing what they sell. matregenix.com ranks first.",
+        "They do not appear in the top nine results for the phrase describing what they sell. A competitor, matregenix.com, ranks first.",
     },
     {
       slug: "loanwell",
@@ -123,14 +138,14 @@ const collab: Portfolio = {
       before: v("/portal/collab/loanwell-before.jpg"),
       after: v("/portal/collab/loanwell-after.jpg"),
       thesis:
-        "Affordable capital reaches nobody if the lender looking for the tool to deploy it cannot find you. Their product copy and mission are strong; the page argues about software features rather than about deploying capital.",
+        "Affordable capital reaches nobody if the lender looking for the tool cannot find the tool. Their mission and their product writing are both strong. The page argues about software features, when the thing actually being bought is the ability to get money out of the door.",
       findings: [
-        "Absent from the top 9 for the single phrase a CDFI would type when looking for exactly what they build, while three general-purpose lending platforms rank instead — none of which serves mission-driven lenders specifically.",
-        "The rebuild closes on the line you publish from their own CEO on your portfolio page, and puts a borrower where their page had three abstract cards — the section is titled \"We take lending personally\" and had nobody in it.",
-        "Two corrections regardless of the study: their servicing screenshot contains a rendering seam with amortization rows 11 to 14 duplicated over row 17, and six of the seven product screenshots on loanwell.com show a real work address in the header bar, legible at full size.",
+        "They do not appear in the top nine results for the exact phrase a community lender would type. Three general-purpose lending platforms rank instead, and not one of them serves mission-driven lenders specifically. That is LoanWell's whole differentiator, sitting unclaimed.",
+        "Our rebuild closes on the quote from their own CEO that you already publish on your portfolio page, and puts an actual borrower where their page had three abstract boxes. The section is titled “We take lending personally” and there was nobody in it.",
+        "Two things worth fixing whatever you make of the rebuild. One of their product screenshots has a visual glitch, with several rows of a payment schedule duplicated over one another. And six of the seven product screenshots on their site show a real street address in the header bar, readable at full size.",
       ],
       search:
-        "Not in the top 9 for “loan origination software for CDFI”. nortridge.com, themortgageoffice.com and builderspatch.com rank instead.",
+        "Not in the top nine for “loan origination software for CDFI”. Nortridge, The Mortgage Office and Builders Patch rank instead.",
     },
     {
       slug: "janta",
@@ -141,14 +156,14 @@ const collab: Portfolio = {
       before: v("/portal/collab/janta-before.jpg"),
       after: v("/portal/collab/janta-after.jpg"),
       thesis:
-        "Their best number is buried three screens down in a small comparison card. Their own worked example — 500 kW in Dallas — is 3.3 acres of fixed-tilt panels making 876,000 kWh a year against one acre of towers making 1,182,600. Multiply that out at their ratio and a 50 MW build saves 230 acres, about 174 football fields, while producing 30,660 MWh a year more. That is the whole company in one line, and today it is a footnote.",
+        "Their best number is buried three screens down in a small box. Their own worked example: 500 kilowatts in Dallas takes 3.3 acres of ordinary tilted panels to make 876,000 kilowatt-hours a year, against one acre of their towers making 1,182,600. Scale that to a 50-megawatt build and it is 230 acres saved — about 174 football fields — while producing more power, not less. That is the entire company in one sentence, and today it is a footnote.",
       findings: [
-        "The rebuild makes the land argument the page's single bold move: their own two aerial photographs, scroll-scrubbed, traditional array giving way to towers while the acreage counts 330 down to 100. The page says plainly that the 50 MW figures are their 500 kW comparison multiplied out, so the arithmetic is ours and the inputs are theirs.",
-        "A consent modal covers 23% of their first screen, including part of the value proposition. Invisible to every crawler metric; obvious the moment you load the page.",
-        "The partner logo served at /marketing/partners/pv-magazine-white.png, with alt text “PV Magazine”, is pixel-for-pixel the Third Derivative logo. A screen reader announces one organization while sighted visitors see another — and Third Derivative is an accelerator whose portfolio they are in, which their own footer lists correctly under “In the Press”.",
+        "The rebuild makes the land argument the page's one bold move: their own two aerial photographs, one dissolving into the other as you scroll, while the acreage counts down from 330 to 100. The page states plainly that the 50-megawatt figures are their own 500-kilowatt example multiplied out — the arithmetic is ours, the inputs are theirs.",
+        "A cookie consent box covers nearly a quarter of the first thing a visitor sees, including part of the sentence explaining what the company does. No automated tool flags this. It is obvious the moment a human loads the page.",
+        "One correction worth passing on. A partner logo on their site is labeled “PV Magazine” but is, pixel for pixel, the logo of Third Derivative — a different organization, and an accelerator whose program they are genuinely in. A blind visitor's screen reader announces one name while everybody else sees another. Their own footer gets it right.",
       ],
       search:
-        "Not in the top 8 for either query describing what they sell. A Reddit thread asking whether solar towers are even a real thing ranks first for one; a journal index takes the other.",
+        "Not in the top eight for either phrase describing what they sell. A Reddit thread asking whether solar towers are even a real thing ranks first for one of them; a journal index takes the other.",
     },
     {
       slug: "fyxit",
@@ -159,14 +174,14 @@ const collab: Portfolio = {
       before: v("/portal/collab/fyxit-before.jpg"),
       after: v("/portal/collab/fyxit-after.jpg"),
       thesis:
-        "Their whole claim is “does the work, not just the talking”, and the site talks. The rebuild opens on the product working: a teacher reports Wi-Fi dropping in room 214, Fyxit reads the access point, finds channel overlap, moves it and closes the issue in 2m 40s without a ticket ever being opened.",
+        "Their whole claim is “does the work, not just the talking.” The site talks. Our rebuild opens on the product doing the work: a teacher reports the Wi-Fi dropping in room 214, the system reads the access point, finds the conflict, fixes it, and closes the issue in two minutes forty seconds — without anyone ever filing a ticket.",
       findings: [
-        "The six problems on their live demo — slow Wi-Fi, a laggy computer, a jammed printer, an app that will not load, a cracked screen, a phishing email — are the most concrete thing on the site and are currently buttons. In the rebuild they are the page's spine, and the 60% figure is shown as a Monday-morning queue with outcomes rather than asserted as a stat.",
-        "Rosie is their own AI technician — she appears 810 times in their application bundle and never once on the marketing page. She answers the teacher in the rebuild, by name.",
-        "The domain still resolves as hubbleiq.com while the product is branded Fyxit AI. Two names split whatever authority the domain has earned.",
+        "The six problems on their own demo — slow Wi-Fi, a sluggish computer, a jammed printer, an app that will not open, a cracked screen, a phishing email — are the most concrete thing on the site, and today they are buttons. In the rebuild they are the spine of the page, and their claim that 60% of issues resolve themselves is shown as a Monday-morning queue with real outcomes rather than asserted as a statistic.",
+        "Rosie is their own AI technician. She appears 810 times inside their software and not once on the page selling it. In the rebuild she answers the teacher, by name.",
+        "Their web address still says hubbleiq.com while the product is called Fyxit AI. Two names, one reputation, split between them.",
       ],
       search:
-        "Not in the top 9 for “AI IT helpdesk for school districts”. The site ranking first is incidentiq.com — which Fyxit lists on its own homepage as an integration partner.",
+        "Not in the top nine for “AI IT helpdesk for school districts”. The site ranking first, incidentiq.com, is listed on Fyxit's own homepage as a partner they integrate with.",
     },
     {
       slug: "micruity",
@@ -177,23 +192,23 @@ const collab: Portfolio = {
       before: v("/portal/collab/micruity-before.jpg"),
       after: v("/portal/collab/micruity-after.jpg"),
       thesis:
-        "A category-defining product explained in the visual language of a template. The rebuild keeps their structure and their four products, and changes only how much the page is willing to say about the person on the other end of an annuity.",
+        "A category-defining product explained in the visual language of a template. Our rebuild keeps their structure and all four of their products and changes one thing only: how much the page is willing to say about the human being at the other end of a retirement annuity.",
       findings: [
-        "Ten <h1> elements on the homepage. One page should have one.",
-        "Lighthouse flags insufficient color contrast between foreground and background — a defect that affects real readers, not just a score.",
-        "Of the six, this is the site search is already working for. The rebuild is an argument about clarity, not about traffic.",
+        "Their homepage has ten competing main headlines. A page should have one — otherwise neither a reader nor a search engine can tell what it is about.",
+        "Google flags text on the page as too faint against its background to read comfortably. That is a real reader being shut out, not a score.",
+        "Of the six, this is the one where search is already working. The argument here is about clarity, not traffic.",
       ],
       search:
-        "Ranks #1 — and #9 as well, two results on one page — for “retirement income infrastructure recordkeeper insurer”, and #5 for “plan participant portability annuity”.",
+        "First — and ninth as well, two results on the same page — for “retirement income infrastructure recordkeeper insurer”, and fifth for “plan participant portability annuity”.",
     },
   ],
 
   method: [
-    "Company list taken from collab.capital's own per-company detail pages, not guessed. An earlier pass using guessed domains resolved five companies to unrelated businesses, and collabcapital.com is a parked domain that is not the fund.",
-    "Lighthouse scores are Google PageSpeed Insights, mobile strategy, run 2026-09-18. Four companies failed to return a result and are excluded rather than scored zero.",
-    "Search positions come from live Google SERPs via SerpApi, re-measured on 2026-09-19 rather than quoted from the first pass. We could see 8 to 9 organic results per query, so “not in the top 8” is the strongest claim available — it says nothing about position 9 or beyond, and nothing about Bing or any other engine.",
-    "Every figure on the six rebuilt pages belongs to the company it describes and is read from their own site. Where we have done arithmetic on their numbers — the Janta land comparison is their published 500 kW example multiplied out to 50 MW — the page says so on the page itself. We have not independently verified any of their underlying claims.",
-    "Photography across these studies is real licensed stock from Pexels, credited in each page. An earlier version of the Micruity study used AI-generated people and it was replaced. The Fyxit conversation and queue are illustrative values built to show the layout, not data from their system.",
+    "The company list came from your own per-company detail pages rather than guesswork. An earlier pass using guessed web addresses landed on five unrelated businesses, and collabcapital.com turns out to be a parked domain that is not you.",
+    "Speed scores are Google's own published measurement, run on a simulated phone on 18 September 2026. Four companies failed to return a result and are left out entirely rather than counted as zero.",
+    "Search positions come from live Google results, re-run on 19 September rather than quoted from our first pass. We can see eight or nine results per search, so “not in the top eight” is the strongest claim we are entitled to make. It says nothing about position nine or beyond, and nothing about other search engines.",
+    "Every figure on the six rebuilt pages belongs to the company it describes and was read from their own site. Where we have done arithmetic on their numbers — the Janta land comparison is their published example scaled up — the page says so on the page itself. We have not independently verified any company's underlying claims.",
+    "The photography is real licensed stock, credited on each page. An earlier version of the Micruity page used AI-generated people and we replaced it. The Fyxit conversation and queue are an illustration of the layout, not data from their system.",
   ],
 };
 
@@ -213,31 +228,31 @@ const lightship: Portfolio = {
   preparedFor: "Lightship Capital",
   deliveredOn: "2026-09-22",
   intro:
-    "We are not a design studio and this is not a pitch for a redesign. What we do is help an organisation see something its own data already knows, and act on it. Nothing here was commissioned. We read your portfolio page, opened every company on it, and measured what somebody doing diligence actually receives. The two findings that matter most are not about design at all — they are about two domains you no longer control, and both are decisions rather than opinions. The rebuild at the end is simply how we show our work.",
+    "We help organizations see something their own records already know, and then act on it. This is not a pitch for a redesign — the rebuild at the end is simply how we show our work. Nobody asked us to do this. We read your portfolio page, opened every company on it, and looked at what somebody doing diligence actually receives. The two findings that matter most have nothing to do with design. They are about two web addresses you no longer own, and both are decisions rather than opinions.",
 
   fundFindings: [
     {
-      title: "Two portfolio companies are linked to domains they no longer control",
+      title: "Two of your companies are linked from your site to web addresses they no longer own",
       detail:
-        "joinbootup.com returns HTTP 200 and serves a page titled “SLOT DANA | Panduan Lengkap Slot Deposit Via DANA Terbaru 100% Aman” — an Indonesian gambling site that acquired the lapsed domain. semiosis-ai.com returns HTTP 404 with the title “ConnectYourDomain Error | Wix.com”. Both are still linked from lightship.capital/portfolio. This is a registrar and legal problem before it is a design one.",
+        "joinbootup.com now loads an Indonesian online gambling site. The registration lapsed, somebody else bought it, and that is what they put there. semiosis-ai.com is simply gone. Both are still linked from lightship.capital/portfolio, so a visitor clicking through from your page lands on a gambling site with your recommendation behind them. This is a registrar and legal matter before it is anything else, and it is the most urgent line on this page.",
     },
     {
-      title: "A live site is shipping its CMS's own instruction text",
+      title: "A live company site is publishing its own editing software's instructions to the author",
       detail:
-        "enableinjections.com contains the literal string “Delete this tip before you publish” in its served HTML, and undock.com's navigation resolves to URLs containing “features/undefined”. Both were read from the raw response, not from a rendering. Enable has FDA clearance and partnerships with Sanofi, Roche and Sobi; the gap between that credibility and a page carrying editor scaffolding is the widest in the portfolio.",
+        "Enable Injections' site contains the sentence “Delete this tip before you publish” — a note the website software shows the writer, left in and published to the world. Undock's navigation menu produces links containing the word “undefined”, which is what appears when a value was never filled in. We read both straight from the live pages. Enable holds FDA clearance and named partnerships with Sanofi, Roche and Sobi; the distance between that credibility and a page carrying leftover scaffolding is the widest gap in your portfolio.",
     },
     {
-      title: "Page weight, not page design, is what most of these are losing to",
+      title: "What most of these are losing to is weight, not taste",
       detail:
-        "Of the seven companies measured so far, allergyamulet.com transfers 50.3 MB and reaches largest contentful paint at 25.2 seconds on a mobile connection. hautehijab.com is 13.2 seconds, undock.com 18.7, freshfry.me 8.8. These are not judgements about taste — they are the numbers Google records, and they decide whether anyone sees the design at all.",
+        "Of the seven companies measured so far, allergyamulet.com pulls down 50 megabytes — about a five-minute video — and takes 25 seconds on a phone before a visitor sees anything at all. Haute Hijab takes 13 seconds, Undock 19, FreshFry 9. For scale, most people abandon a page after three. These are not opinions about taste. They are the numbers Google records, and they decide whether anybody ever sees the design.",
     },
   ],
 
   stats: [
-    { k: "18", label: "Companies in the portfolio", sub: "Read from lightship.capital/portfolio, 2026-09-22" },
-    { k: "2", label: "Linked to domains they have lost", sub: "Bootup and Semiosis AI — confirmed by direct request" },
-    { k: "56", label: "Median mobile performance", sub: "Lighthouse, mobile, 7 of 18 measured so far — not the whole portfolio" },
-    { k: "50.3", label: "MB on the heaviest page", sub: "allergyamulet.com. LCP 25.2s. Measured locally, not estimated" },
+    { k: "18", label: "Companies in your portfolio", sub: "Read from your own portfolio page, 22 September 2026" },
+    { k: "2", label: "Linked to addresses they have lost", sub: "Bootup and Semiosis AI. We clicked through and confirmed it" },
+    { k: "56", label: "Google's mobile speed score, median", sub: "Out of 100. Seven of eighteen measured so far — not yet the whole portfolio" },
+    { k: "25s", label: "Longest wait before anything appears", sub: "allergyamulet.com on a phone. Most visitors leave after three seconds" },
   ],
 
   cases: [
@@ -250,25 +265,25 @@ const lightship: Portfolio = {
       before: v("/portal/lightship/enable-before.jpg"),
       after: v("/portal/lightship/enable-after.jpg"),
       thesis:
-        "This company has the rarest thing in medtech marketing and does not lead with it. enFuse is FDA-cleared and carries named partnerships with Sanofi, Roche and Sobi — and on the live site those partners sit under a heading called “Current Partnerships” several scrolls below the fold, after the product explanation. The rebuild changes the order and nothing else: clearance and partners ride in the hero, the mechanism is drawn rather than described, and the patient quotes they already publish do the closing.",
+        "This company holds the rarest asset in medical-device marketing and does not lead with it. Their enFuse device is FDA-cleared and carries named partnerships with Sanofi, Roche and Sobi. On the live site those partners sit under a heading several screens below the top, after the product explanation. Our rebuild changes the order and almost nothing else: the clearance and the partners are the first things you see, the device is shown as a photograph of the real product, and the patients they already quote do the closing.",
       findings: [
-        "Their site is technically healthy and this study does not claim otherwise: Lighthouse mobile on 2026-09-22 returns performance 88, SEO 100, accessibility 99, best practices 100, with largest contentful paint at 2.1 seconds. Nothing here is a speed argument.",
-        "The served HTML is 255,331 bytes for one page before a single stylesheet, script or image loads, and sixty data-lazy attributes defer the imagery. That deferral is working in their favour — it is why the page is fast — and the only cost is that the middle of the page is empty until a visitor scrolls.",
-        "The string “Delete this tip before you publish” is live in the page — the CMS's own instruction to the author, published.",
-        "The rebuild uses their own magenta and navy, sampled from the rendered page's computed styles rather than guessed, and their own Montserrat. The device is hand-built inline SVG; no stock photography.",
+        "Their site is technically healthy and this study does not pretend otherwise. Google scores it 88 out of 100 for speed and full marks for findability, and it shows its first content in 2.1 seconds. There is no speed argument to make here.",
+        "The page does carry one genuine error: the sentence “Delete this tip before you publish” is live on it. That is the website software's instruction to whoever wrote the page, published by accident.",
+        "One consequence of how their page is built is that the middle of it stays empty until a visitor scrolls. That is a deliberate technique and it is the reason the page is fast, so we are noting it rather than counting it against them.",
+        "The rebuild uses their own magenta and navy, read from their live page rather than guessed, their own typeface, their own product photograph and their own partner marks.",
       ],
       search:
-        "Not measured. The Collab study quoted live search positions from SerpApi; that key is not in this project's environment, so no position is claimed here rather than estimated from a search we did not run.",
+        "Not measured. Another study in this portfolio quotes live Google positions; the tool that produces them is not set up on this project, so rather than estimate a position we did not measure, we are telling you we do not have it.",
     },
   ],
 
   method: [
-    "Company list read from lightship.capital/portfolio directly on 2026-09-22 — 18 companies, no pagination detected.",
-    "Every domain was requested with a real browser user agent and its status and page title recorded. A 403 from a Cloudflare challenge is reported as blocked, never as broken: visuwall.com returns 403 and is excluded from every count here rather than scored as a defect.",
-    "Lighthouse was run locally, mobile profile, because the PageSpeed Insights API returned HTTP 429 on the first sixteen requests and did not recover at one request at a time. Seven of eighteen companies are measured so far; the median above says so. Two more — healthyrootsdolls.com and vyrill.com — failed to return a result and are excluded rather than scored zero.",
-    "No CrUX field data is quoted anywhere on this page. Local Lighthouse cannot see it, and an absent field record would need its own explanation rather than a blank.",
-    "Bootup and Semiosis AI are excluded from all performance figures. Measuring a domain the company no longer controls would attach a score to someone else's site.",
-    "Every figure on the Enable rebuild belongs to Enable and is read from their own site or their own published material. We have not independently verified their clinical claims.",
+    "The company list was read from lightship.capital/portfolio on 22 September 2026 — eighteen companies, with no further pages hidden behind it.",
+    "Every address was opened with an ordinary browser and its result recorded. A site that blocks automated visitors is reported as blocked and never as broken: visuwall.com blocks us, so it is excluded from every count here rather than marked as a defect.",
+    "Speed was measured with Google's own tool, run on our machines because Google's hosted version refused our requests. Seven of eighteen are measured so far and the figure above says so. Two more failed to return a result and are excluded rather than scored zero.",
+    "We quote no figures anywhere about how your companies' real visitors behave. We measured the pages, not the traffic, and we will not blur the two.",
+    "Bootup and Semiosis AI are left out of every speed figure. Scoring an address the company no longer owns would mean measuring a stranger's website.",
+    "Every figure on the Enable rebuild belongs to Enable and comes from their own material. We have not independently verified any clinical claim.",
   ],
 };
 
@@ -287,31 +302,31 @@ const venturehue: Portfolio = {
   preparedFor: "Brittni Abiolu",
   deliveredOn: "2026-09-22",
   intro:
-    "We are not a design studio and this is not a pitch for a redesign. What we do is help an organisation see something its own data already knows, and act on it. This one is about your own storefront rather than a portfolio company's, and the finding is simple enough to state in a sentence: the programme is real, the $2,192,470 is real, and a founder arriving at venturehue.com today can reach none of it. Nothing here was commissioned, and every fact in the rebuild is yours, recovered from your own pages rather than written for you.",
+    "We help organizations see something their own records already know, and then act on it. This is not a pitch for a redesign — the rebuild is simply how we show our work. This one is about your own front door rather than a portfolio company's, and the finding fits in a sentence: the program is real, the $2,192,470 is real, and a founder arriving at venturehue.com today can reach none of it. Nobody asked us to look. Every fact in the rebuild is yours, recovered from your own earlier pages rather than written for you.",
 
   fundFindings: [
     {
-      title: "The homepage is still carrying its theme vendor's demo contact details",
+      title: "Your homepage is still showing the contact details that came with the template",
       detail:
-        "venturehue.com returns HTTP 200 and serves the email hello@dream-theme.com, the phone number 001 234 56 78 and a SoHo New York address. Those belong to the WordPress theme's demo content, not to VentureHue. A founder who tries to contact you from the homepage is writing to a theme vendor.",
+        "venturehue.com publishes the email address hello@dream-theme.com, the phone number 001 234 56 78 and an address in SoHo, New York. None of those are yours. They are the sample details the website template shipped with, and they were never replaced. A founder who tries to contact you from your homepage is writing to a software vendor in another state.",
     },
     {
-      title: "The portfolio section was deleted and the pages return 404",
+      title: "Your portfolio section is gone, and the pages return an error",
       detail:
-        "The homepage and /project/ both render “Nothing Found”, and /project/career-karma/ returns HTTP 404 with the title “Page Not Found | VentureHue”. An archive of the same site from June 2026 shows those project pages live. The work exists; the site no longer shows it.",
+        "Your homepage and your portfolio section both display the words “Nothing Found”. A specific project page — Career Karma — returns a “Page Not Found” error. We checked an archived copy of your own site from June 2026 and those pages were live then. The work exists. Your site no longer shows it.",
     },
     {
-      title: "A live page is asking the reader to paste a shortcode",
+      title: "A published page is asking the reader to paste in a piece of code",
       detail:
-        "/venturehue-early-access/ is published and contains the developer instruction “paste this persona's Gravity Forms shortcode”, beside stat counters reading zero founders coached and $0 total funding. The real figure is $2,192,470 raised by founders in your network.",
+        "Your early-access page is live and contains a developer's note reading “paste this persona's Gravity Forms shortcode” — an instruction to whoever was building the page, left visible to anybody who visits it. Beside it, two counters read zero founders coached and $0 total funding. The true figure is $2,192,470 raised by founders in your network.",
     },
   ],
 
   stats: [
-    { k: "$2.19M", label: "Raised by founders in the network", sub: "$2,192,470 — your own published figure, and absent from the live site" },
-    { k: "4", label: "Defects confirmed by direct request", sub: "Demo contact details, dead portfolio, 404s, shortcode in production" },
-    { k: "44", label: "Median mobile performance", sub: "Lighthouse, mobile, 4 of 6 measured locally — not the whole set" },
-    { k: "7.8s", label: "Largest contentful paint, your own site", sub: "venturehue.com, mobile. Performance 61, accessibility 84" },
+    { k: "$2.19M", label: "Raised by founders in your network", sub: "$2,192,470 — your own published figure, and nowhere on your live site" },
+    { k: "$0", label: "What your live funding counter shows today", sub: "On your early-access page, beside a counter reading zero founders coached" },
+    { k: "4", label: "Errors we confirmed by visiting the pages", sub: "Template contact details, an empty portfolio, a broken project page, developer notes in public" },
+    { k: "7.8s", label: "Wait before your homepage shows anything", sub: "On a phone. Most visitors leave after three seconds" },
   ],
 
   cases: [
@@ -324,24 +339,24 @@ const venturehue: Portfolio = {
       before: v("/portal/venturehue/venturehue-before.jpg"),
       after: v("/portal/venturehue/venturehue-after.jpg"),
       thesis:
-        "You teach founders that being ready for capital is a discipline, and the $2,192,470 your network has raised is the evidence that it works. None of that is reachable on your site today. This rebuild does not add a claim — it takes the material you already published, recovered from an archive of your own pages, and puts the track record first.",
+        "You teach founders that being ready for capital is a discipline, and the $2,192,470 your network has raised is the proof that the teaching works. None of it is reachable on your site today. This rebuild adds no claim of its own. It takes what you already published, recovered from an archive of your own pages, and puts the track record first.",
       findings: [
-        "ACCESS Lab is presented as an indexed sequence rather than three equal cards, so a founder reads it as a path with a beginning and an end.",
-        "The $2,192,470 leads. On the live site the equivalent counter reads $0, which is the single most damaging thing on the page.",
-        "Your own blue and purple, sampled from venturehue.com's stylesheet, and Poppins and Open Sans, which your site already loads.",
-        "Testimonials from Eric Williamson, Sharon Porter and Akindele Akinyemi, recovered from your own pages rather than written.",
+        "The $2,192,470 leads the page. On your live site the equivalent counter reads $0, which is the single most damaging thing on it.",
+        "ACCESS Lab is laid out as a numbered path with a beginning and an end, rather than three identical boxes, so a founder can see what they are being taken through before they commit.",
+        "Your own blue and purple, read from your live site rather than guessed, and the two typefaces your site already loads.",
+        "The testimonials from Eric Williamson, Sharon Porter and Akindele Akinyemi are yours, recovered from your own pages rather than written by us.",
       ],
       search:
-        "Not measured. The tooling that quoted live search positions for other studies in this portfolio is not configured on this project, so no position is claimed here rather than estimated.",
+        "Not measured. The tool that produced live search positions for other studies in this portfolio is not set up on this project, so rather than estimate a position we did not measure, we are telling you we do not have it.",
     },
   ],
 
   method: [
-    "Every defect was confirmed by requesting the URL with a browser user agent and reading the response body — the demo email, the demo phone number, the “Nothing Found” pages, the 404 on a project page and the Gravity Forms instruction were each matched as literal strings in the served HTML.",
-    "Copy for the rebuild comes from a June 2026 archive of venturehue.com, because the live pages that held it now return 404. Nothing on the rebuilt page was invented.",
-    "Lighthouse ran locally on the mobile profile; the PageSpeed Insights API returned HTTP 429 across this work. Four of six sites are measured — venturehue.com, Career Karma, Upright Oats and Small Business Brain — and the median says so.",
-    "No CrUX field data is quoted anywhere. A local run cannot see it.",
-    "The rebuilt page carries no photography, and that is a real gap rather than a choice. We found none of yours to use.",
+    "Every error was confirmed by visiting the page ourselves and reading what it sent back. The template email address, the template phone number, the “Nothing Found” pages, the broken project page and the developer's note were each found word for word in the live pages.",
+    "The wording in the rebuild comes from a June 2026 archived copy of venturehue.com, because the live pages that held it now return errors. Nothing on the rebuilt page was invented.",
+    "Speed was measured with Google's own tool, run on our machines because Google's hosted version refused our requests. Four of your six sites are measured — venturehue.com, Career Karma, Upright Oats and Small Business Brain — and the figures say so.",
+    "We quote nothing about your real visitor numbers. We measured your pages, not your traffic.",
+    "The photography is real licensed stock from Pexels, credited by photographer in the page footer. It shows founders generally and never stands in for anybody named on the page — Brittni appears as initials, and the three founders quoted appear as words. Putting a stock face on a real person's name is the one thing we will not do.",
   ],
 };
 
@@ -362,36 +377,36 @@ const hundredkm: Portfolio = {
   preparedFor: "Shalanda Armstrong",
   deliveredOn: "2026-09-22",
   intro:
-    "We are not a design studio and this is not a pitch for a redesign. What we do is help an organisation see something its own data already knows, and act on it. So we asked one question about your portfolio that nobody asks — what do these fifteen companies tell a machine about themselves — and went and measured it. Most of what we found is in good shape, which is worth saying plainly. What follows is the part that is not, and what we would do about it.",
+    "We help organizations see something their own records already know, and then act on it. This is not a pitch for a redesign — the rebuild at the end is simply how we show our work. Nobody asked us to do this. We asked one question about your portfolio that almost nobody asks — what do these fifteen companies tell a machine about themselves, before a single human reads a word — and then went and measured it. Most of what we found is in good shape, and that is worth saying plainly rather than manufacturing a crisis. What follows is the part that is not, and what we would do about it.",
 
   fundFindings: [
     {
-      title: "Six of your fifteen companies share as a blank card, and the fund is one of them",
+      title: "Six of your fifteen companies arrive as a blank grey box when anyone shares their link, and you are one of the six",
       detail:
-        "We read the metadata of every company on your portfolio page — the tags LinkedIn, Slack, iMessage and Google actually render when someone shares a link. Six have no og:image at all: 100KM VC itself, Scout Financial, Beam Dynamics, Bump, Health In Her HUE and Athlytic. Three have no meta description whatsoever — iCardio.ai, Scout Space and Athlytic — so a search engine writes one on their behalf. Twelve of the fifteen carry at least one defect. You share these links constantly, in LP updates and warm intros, and six of them arrive as a grey rectangle. What this points at is small: one image and one sentence per company. It is an afternoon of work and probably the highest-leverage hour anywhere in the portfolio.",
+        "Every website carries a small preview image and a one-line description that LinkedIn, Slack, iMessage and Google display when somebody shares a link to it. It is invisible on the site itself, and it is the only thing people see when the link travels without you. Six of your companies have no preview image at all — 100KM VC itself, Scout Financial, Beam Dynamics, Bump, Health In Her HUE and Athlytic. Three have no description either, so Google writes one on their behalf. Twelve of the fifteen have at least one of these gaps. You share these links constantly, in LP updates and warm introductions, and six of them land as a grey rectangle. The fix is one image and one sentence per company: an afternoon of work, and probably the highest-return hour anywhere in the portfolio.",
     },
     {
-      title: "Your own site tells search engines you invest in Latin America",
+      title: "Your own site tells Google you invest in Latin America",
       detail:
-        "100kmvc.com carries the description “We back bold founders building the future of work and health in Latin America.” in three places — the meta description, og:description and twitter:description. The phrase appears zero times in the visible page and the word Detroit appears zero times anywhere. Nobody reading the site sees it; Google, LinkedIn and every link preview render it. For a fund raising Fund I, that is the sentence an LP meets before they meet you.",
+        "100kmvc.com carries the sentence “We back bold founders building the future of work and health in Latin America” in three separate places behind the scenes. It appears nowhere on the visible page, and the word Detroit appears nowhere at all. No visitor reading your site will ever see this. Google, LinkedIn and every link preview do. For a fund raising its first, that is the sentence an LP meets before they meet you.",
     },
     {
-      title: "Three sites take more than ten seconds to show anything on a phone",
+      title: "Three of your companies take more than ten seconds to show anything on a phone",
       detail:
-        "Athlytic reaches largest contentful paint at 35.4 seconds, Scout Financial at 17.7, Health In Her HUE at 14.2. Athlytic is the sharpest case: its content is genuinely rich once it arrives, and a naive check reports the page as blank — it is a Bubble app whose entire interface is assembled client-side. Performance 14, SEO 67. The content is not the problem; the wait is.",
+        "Athlytic takes 35 seconds. Scout Financial takes 18. Health In Her HUE takes 14. Most people leave after three. Athlytic is the clearest case of the three: its content is genuinely rich once it arrives, and an automated check reports the page as blank, because the entire interface is assembled afterwards inside the visitor's own browser. The content is not the problem. The wait is.",
     },
     {
-      title: "Two portfolio sites move more than 25 MB",
+      title: "Two of your sites download 25 megabytes or more before a visitor can use them",
       detail:
-        "Bump transfers 39.7 MB and Dopl Technologies 26.4 MB. Bump gets away with it — deferred loading keeps its performance at 86 — while Dopl does not, at 62 with a 10.3 second paint. The weight is not automatically the fault; what it costs depends entirely on what is deferred.",
+        "Bump pulls down 40 megabytes and Dopl Technologies 26. Bump gets away with it, because it holds the heavy parts back until they are needed and still scores 86 out of 100 for speed. Dopl does not, at 62, with a ten-second wait. The weight by itself is not automatically the fault — what it costs you depends entirely on what is held back.",
     },
   ],
 
   stats: [
-    { k: "6/15", label: "Share as a blank card", sub: "No og:image, including 100kmvc.com itself. Measured 2026-09-22" },
-    { k: "62", label: "Median mobile performance", sub: "Lighthouse, mobile, local run. 3 of 15 score under 50" },
-    { k: "100", label: "Median Lighthouse SEO", sub: "Their markup is fine. This portfolio's problem is not findability" },
-    { k: "35.4s", label: "Slowest first paint", sub: "Athlytic, mobile. Scout Financial 17.7s, Health In Her HUE 14.2s" },
+    { k: "6/15", label: "Arrive as a blank grey box when shared", sub: "No preview image, and 100kmvc.com is one of them. Measured 22 September 2026" },
+    { k: "62", label: "Google's mobile speed score, median", sub: "Out of 100. Three of the fifteen score below 50" },
+    { k: "100", label: "Median score for being findable", sub: "The underlying setup is excellent. Findability is not this portfolio's problem" },
+    { k: "35s", label: "Longest wait before anything appears", sub: "Athlytic on a phone. Scout Financial 18s, Health In Her HUE 14s" },
   ],
 
   cases: [
@@ -404,27 +419,26 @@ const hundredkm: Portfolio = {
       before: v("/portal/hundredkm/novarna-before.jpg"),
       after: v("/portal/hundredkm/novarna-after.jpg"),
       thesis:
-        "Novarna is in your portfolio and in Collab Capital's, which is why this one already exists — it was rebuilt for that study and is shown here unchanged rather than made for this meeting. Their strongest proof, the University of Michigan DiFeo Lab testing their candidates in its own facility where the designs outperformed a commercially available treatment, sat in a paragraph near the bottom of their site. Third-party validation is close to unheard of in AI-for-biology.",
+        "Novarna is in your portfolio and in Collab Capital's, which is why this rebuild already existed — it was built for that study and is shown here unchanged rather than made for this meeting. Their strongest piece of evidence sat in a paragraph near the bottom of their site: the University of Michigan's DiFeo Lab tested their candidates in its own facility, and the designs outperformed a treatment already on the market. An outside laboratory willing to say that is close to unheard of in this field.",
       findings: [
-        "The hero is an A-form RNA duplex built to real geometry — 32.7° of twist per base pair, 2.8 Å rise, the narrow major groove that distinguishes RNA from DNA — lit and depth-sorted in the browser with no 3D library. The whole page is 48 KB.",
-        "The DiFeo result has its own section rather than a footnote, set as a readout rather than a paragraph.",
-        "Measured 2026-09-22: novarna.ai returns performance 76, SEO 100, accessibility 94, first paint 4.9 seconds, 0.7 MB — among the healthiest in your portfolio before we touched anything.",
-        "They rebranded from CircNova and circnova.com now redirects to novarna.ai. Collab Capital's portfolio page still lists the old name; yours lists CircNova too.",
+        "The opening image is the molecule itself, drawn to its real shape and dimensions rather than illustrated, turning slowly as you read. It is built out of the page rather than loaded as a graphic, so the entire page weighs less than a single photograph.",
+        "The Michigan result now has a section of its own instead of a footnote, laid out as a result you can take in at a glance.",
+        "Measured on 22 September: novarna.ai scores 76 out of 100 for speed and full marks for findability, shows its first content in 4.9 seconds and weighs under a megabyte — among the healthiest sites in your portfolio before we touched anything.",
+        "They rebranded from CircNova, and circnova.com now forwards to novarna.ai. Your portfolio page still lists them as CircNova. So does Collab's.",
       ],
       search:
-        "Ninth of nine for the phrase describing their platform, measured for the Collab study on 2026-09-19. The eight above them are journals and catalogue sites rather than companies — a category with no commercial competition in it yet.",
+        "Ninth out of nine for the phrase that describes their platform, measured for the Collab study on 19 September. The eight above them are scientific journals and catalog sites rather than companies — the category has no commercial rival in it yet.",
     },
   ],
 
   method: [
-    "Company list read from 100kmvc.com/portfolio directly on 2026-09-22 — fifteen companies. All fifteen returned a Lighthouse result; none is excluded.",
-    "The Latin America finding was confirmed by fetching the page and counting the phrase in the served HTML: three occurrences in metadata, zero in the rendered body, zero occurrences of Detroit anywhere.",
-    "The metadata audit opened all sixteen pages in a real browser and recorded each one's description, og:title, og:description and og:image. Singulate is excluded from every count because it answers with a Cloudflare challenge rather than its own page — counting its absent tags as defects would be measuring the wrong document. Fifteen usable, twelve with at least one issue. Script: scripts/metadata-audit.py, so you can re-run it yourself.",
-    "Lighthouse ran locally on the mobile profile because the PageSpeed Insights API returned HTTP 429 across this work. Same engine, no quota.",
-    "Two earlier claims were checked and withdrawn rather than repeated: Athlytic and Health In Her HUE were both reported elsewhere as rendering blank. Both render fully — they are client-side applications, and the honest finding is that they are slow, not empty.",
-    "Singulate returns 403 to a plain request because of a Cloudflare challenge. That is not a defect and it is scored here from a real browser render, not from the challenge page.",
-    "No CrUX field data is quoted. A local Lighthouse run cannot see it, and an absent field record would need its own explanation rather than a blank.",
-    "The Novarna study shown here was built for the Collab Capital portfolio and is presented unchanged. Every figure on it belongs to Novarna and is read from their own material.",
+    "The company list was read from 100kmvc.com/portfolio on 22 September 2026 — fifteen companies. All fifteen returned a speed result; none is excluded.",
+    "The Latin America finding was confirmed by fetching the page and counting the sentence in what it actually sends: three times behind the scenes, zero times in the visible page, and zero mentions of Detroit anywhere.",
+    "The preview-image audit opened all sixteen pages in a real browser and recorded what each one publishes about itself. Singulate is excluded from every count because it answers automated visitors with a security challenge rather than its own page, and counting its missing tags would mean measuring the wrong document. Fifteen usable, twelve with at least one gap. The script is scripts/metadata-audit.py, so your team can re-run it without us.",
+    "Speed was measured with Google's own tool, run on our machines because Google's hosted version refused our requests. Same engine, no queue.",
+    "Two earlier claims were checked and withdrawn rather than repeated. Athlytic and Health In Her HUE were both reported elsewhere as showing a blank page. Both display in full. The honest finding is that they are slow, not empty.",
+    "We quote nothing about your companies' real visitor numbers. We measured the pages, not the traffic.",
+    "The Novarna rebuild shown here was built for the Collab Capital study and is presented unchanged. Every figure on it belongs to Novarna and was read from their own material.",
   ],
 };
 
