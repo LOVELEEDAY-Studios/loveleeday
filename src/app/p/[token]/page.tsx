@@ -9,7 +9,13 @@ import { portfolios } from "@/content/portfolio";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return portals.map((p) => ({ token: p.token }));
+  // A portal whose token is unset is written but deliberately unreachable, so it must not reach
+  // the param list at all: Next rejects `{ token: undefined }` with "A required parameter (token)
+  // was not provided as a string" and fails the whole build while collecting page data. That took
+  // production down for every deploy on 2026-09-22 — the site kept serving an older build, so
+  // nothing looked broken until a newly-tokened study 404'd. Mirrors publishedPortfolios in
+  // /p/portfolio/[token].
+  return portals.flatMap((p) => (p.token ? [{ token: p.token }] : []));
 }
 
 export async function generateMetadata({

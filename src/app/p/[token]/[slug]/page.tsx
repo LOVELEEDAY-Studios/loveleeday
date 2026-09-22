@@ -8,8 +8,10 @@ import { NoteForm } from "@/components/portal/NoteForm";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
+  // Same guard as the parent route: an untokened portal must not emit params, or the build fails
+  // collecting page data on `{ token: undefined }`.
   return portals.flatMap((p) =>
-    p.deliverables.map((d) => ({ token: p.token, slug: d.slug })),
+    p.token ? p.deliverables.map((d) => ({ token: p.token as string, slug: d.slug })) : [],
   );
 }
 
