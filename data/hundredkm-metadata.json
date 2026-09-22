@@ -1,0 +1,230 @@
+[
+  {
+    "title": "100KM VC",
+    "description": "We back bold founders building the future of work and health in Latin America. Strategic capital, deep support, and a founder-first mindset from day one.",
+    "ogTitle": "100KM VC",
+    "ogDesc": "We back bold founders building the future of work and health in Latin America. Strategic capital, deep support, and a founder-first mindset from day one.",
+    "ogImage": null,
+    "canonical": null,
+    "bodyLen": 1882,
+    "company": "100KM VC (the fund)",
+    "url": "https://www.100kmvc.com/",
+    "flags": [
+      "description says \"Latin America\" \u2014 the visible page never does",
+      "no og:image \u2014 every share renders as a blank card"
+    ]
+  },
+  {
+    "title": "Novarna \u2014 The AI Design Engine for RNA Medicines",
+    "description": "Novarna combines a generative AI design engine with an in-house wet lab in a continuous feedback loop \u2014 designing RNA candidates faster, cheaper, and with greater precision than any existing approach.",
+    "ogTitle": "Novarna \u2014 The AI Design Engine for RNA Medicines",
+    "ogDesc": "Novarna combines a generative AI design engine with an in-house wet lab in a continuous feedback loop \u2014 designing RNA candidates faster, cheaper, and with greater precision than any existing approach.",
+    "ogImage": "https://novarna.ai/opengraph-image?626ed7b90fa85c50",
+    "canonical": "https://novarna.ai",
+    "bodyLen": 4153,
+    "company": "Novarna",
+    "url": "https://novarna.ai/",
+    "flags": [
+      "description 200 chars \u2014 truncated in results (~155 shown)"
+    ]
+  },
+  {
+    "title": "Organic period care and more, delivered. \u2013 Femly",
+    "description": "Femly provides 100% organic cotton period care, and period care dispensers for a healthier cycle! Upgrade your cycle and increase your self-care today!",
+    "ogTitle": "Organic period care and more, delivered.",
+    "ogDesc": "Femly provides 100% organic cotton period care, and period care dispensers for a healthier cycle! Upgrade your cycle and increase your self-care today!",
+    "ogImage": "http://www.femly.com/cdn/shop/files/Untitled_design_13.png?v=1640749704",
+    "canonical": "https://www.femly.com/",
+    "bodyLen": 2985,
+    "company": "Femly",
+    "url": "https://www.femly.com/",
+    "flags": []
+  },
+  {
+    "title": "iCardio.ai",
+    "description": null,
+    "ogTitle": "iCardio.ai - AI for Ultrasound has arrived.",
+    "ogDesc": "AI may never replace doctors, but it will certainly replace doctors that act without it.",
+    "ogImage": "https://cdn.prod.website-files.com/606619d2b787374f8f805ff3/69f01e507698095cec056e23_iCardio%20Logo-blk.png",
+    "canonical": null,
+    "bodyLen": 4495,
+    "company": "iCardio.ai",
+    "url": "https://www.icardio.ai/",
+    "flags": [
+      "NO meta description \u2014 search engines write their own"
+    ]
+  },
+  {
+    "title": "Dopl Technologies",
+    "description": "Dopl Technologies | Imaging On Demand",
+    "ogTitle": "Dopl Technologies",
+    "ogDesc": "Dopl Technologies | Imaging On Demand",
+    "ogImage": "https://framerusercontent.com/images/Dj0vhIvdnP7PEKym4kZIMYFwvg.png",
+    "canonical": "https://www.dopltechnologies.com/",
+    "bodyLen": 3896,
+    "company": "Dopl Technologies",
+    "url": "https://www.dopltechnologies.com/",
+    "flags": [
+      "description only 37 chars \u2014 most of the slot unused"
+    ]
+  },
+  {
+    "title": "Scout Space",
+    "description": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogImage": "https://cdn.prod.website-files.com/67b234facbe620c976bfe28b/684899d04fdaf9570ac02abc_Group%2060%20(1).png",
+    "canonical": null,
+    "bodyLen": 1569,
+    "company": "Scout Space",
+    "url": "https://www.scout.space/",
+    "flags": [
+      "NO meta description \u2014 search engines write their own",
+      "no og:description \u2014 link previews fall back to whatever they find"
+    ]
+  },
+  {
+    "title": "Scout",
+    "description": "Meet Scout: financial infrastructure for athletes and school administrators that offers next-level tools to seamlessly navigate earnings, payments, and team finances. Built by athletes, for athletes. It\u2019s like the best coach you ever had.",
+    "ogTitle": "Scout",
+    "ogDesc": "Meet Scout: financial infrastructure for athletes and school administrators that offers next-level tools to seamlessly navigate earnings, payments, and team finances. Built by athletes, for athletes. It\u2019s like the best coach you ever had.",
+    "ogImage": null,
+    "canonical": null,
+    "bodyLen": 5364,
+    "company": "Scout Financial",
+    "url": "https://www.scout-financial.com/",
+    "flags": [
+      "description 238 chars \u2014 truncated in results (~155 shown)",
+      "no og:image \u2014 every share renders as a blank card"
+    ]
+  },
+  {
+    "title": "Opine \u2014 AI Workspace for Technical Sales & Presales",
+    "description": "Opine is the AI context layer for technical sales teams. Unify deal context, run POCs, and keep CRM current \u2014 built for SEs and revenue leaders.",
+    "ogTitle": "Opine \u2014 AI Workspace for Technical Sales & Presales",
+    "ogDesc": "Opine is the AI context layer for technical sales teams. Unify deal context, run POCs, and keep CRM current \u2014 built for SEs and revenue leaders.",
+    "ogImage": "https://tryopine.com/opengraph-image.png",
+    "canonical": "https://tryopine.com",
+    "bodyLen": 6455,
+    "company": "Opine",
+    "url": "https://tryopine.com/",
+    "flags": []
+  },
+  {
+    "title": "Beam Dynamics | Asset Management & Deployment Software",
+    "description": "Beam provides industry-leading data and tools to improve operational efficiency, boost uptime, and increase ROI on technology deployments, assets, facilities & teams.",
+    "ogTitle": "Beam Dynamics | Asset Management & Deployment Software",
+    "ogDesc": "Beam provides industry-leading data and tools to improve operational efficiency, boost uptime, and increase ROI on technology deployments, assets, facilities & teams.",
+    "ogImage": null,
+    "canonical": "https://www.beamdynamics.io",
+    "bodyLen": 8962,
+    "company": "Beam Dynamics",
+    "url": "https://www.beamdynamics.io/",
+    "flags": [
+      "description 166 chars \u2014 truncated in results (~155 shown)",
+      "no og:image \u2014 every share renders as a blank card"
+    ]
+  },
+  {
+    "title": "The #1 wealth-building banking platform for creators by creators",
+    "description": "The #1 wealth-building banking platform for creators by creators",
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogImage": null,
+    "canonical": null,
+    "bodyLen": 3757,
+    "company": "Bump",
+    "url": "https://usebump.com/",
+    "flags": [
+      "no og:description \u2014 link previews fall back to whatever they find",
+      "no og:image \u2014 every share renders as a blank card"
+    ]
+  },
+  {
+    "title": "Social Cascade \u2014 Patient Communications for Healthcare Providers",
+    "description": "Social Cascade helps healthcare providers stay present between visits with trusted content from 300+ leading health organizations, published automatically across every channel their patients use.",
+    "ogTitle": "Social Cascade \u2014 Patient Communications for Healthcare Providers",
+    "ogDesc": "Stay present between visits with trusted content from 300+ leading health organizations, published automatically across every channel your patients use.",
+    "ogImage": "https://www.socialcascade.co/images/hero-home.png",
+    "canonical": null,
+    "bodyLen": 6365,
+    "company": "Social Cascade",
+    "url": "https://www.socialcascade.co/",
+    "flags": [
+      "description 195 chars \u2014 truncated in results (~155 shown)"
+    ]
+  },
+  {
+    "title": "Scalable Mentoring & Group Coaching Platform | Keep Company",
+    "description": "Run high-impact group coaching programs with ease. Keep Company gives L&D teams scalable tools, smart matching, and dashboards that drive growth.",
+    "ogTitle": "Scalable Mentoring & Group Coaching Platform | Keep Company",
+    "ogDesc": "Run high-impact group coaching programs with ease. Keep Company gives L&D teams scalable tools, smart matching, and dashboards that drive growth.",
+    "ogImage": "https://framerusercontent.com/assets/u28i7w5j6yTuXBXxitTxCdOWrTM.jpg",
+    "canonical": "https://keep-company.com/",
+    "bodyLen": 5899,
+    "company": "Keep Company",
+    "url": "https://keep-company.com/",
+    "flags": []
+  },
+  {
+    "title": "Health In Her HUE - Find Culturally Competent Care",
+    "description": "Find and connect with healthcare providers who understand the unique needs of women of color. Explore resources tailored to your health journey.",
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogImage": null,
+    "canonical": null,
+    "bodyLen": 3313,
+    "company": "Health In Her HUE",
+    "url": "https://healthinherhue.com/",
+    "flags": [
+      "no og:description \u2014 link previews fall back to whatever they find",
+      "no og:image \u2014 every share renders as a blank card"
+    ]
+  },
+  {
+    "title": "Athlytic",
+    "description": "",
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogImage": null,
+    "canonical": null,
+    "bodyLen": 2468,
+    "company": "Athlytic",
+    "url": "https://app.athlytic.io/",
+    "flags": [
+      "NO meta description \u2014 search engines write their own",
+      "no og:description \u2014 link previews fall back to whatever they find",
+      "no og:image \u2014 every share renders as a blank card"
+    ]
+  },
+  {
+    "title": "Axal: We design, assemble, and test custom PCBs",
+    "description": "Axal is an engineering team that designs or reviews your PCB, sources components, assembles boards in-house, tests every board, and delivers verified boards to your office.",
+    "ogTitle": "Axal: We design, assemble, and test custom PCBs",
+    "ogDesc": "Axal is an engineering team that designs or reviews your PCB, sources components, assembles boards in-house, tests every board, and delivers verified boards to your office.",
+    "ogImage": "https://axal.ai/opengraph-image?51a8a2a67a3946a4",
+    "canonical": "https://axal.ai",
+    "bodyLen": 4637,
+    "company": "Axal",
+    "url": "https://axal.ai/",
+    "flags": [
+      "description 172 chars \u2014 truncated in results (~155 shown)"
+    ]
+  },
+  {
+    "title": "Just a moment...",
+    "description": null,
+    "ogTitle": null,
+    "ogDesc": null,
+    "ogImage": null,
+    "canonical": null,
+    "bodyLen": 263,
+    "company": "Singulate",
+    "url": "https://www.singulate.com/",
+    "flags": [
+      "NO meta description \u2014 search engines write their own",
+      "no og:description \u2014 link previews fall back to whatever they find",
+      "no og:image \u2014 every share renders as a blank card"
+    ]
+  }
+]

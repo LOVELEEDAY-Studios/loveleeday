@@ -50,7 +50,7 @@ const collab: Portfolio = {
   preparedFor: "Collab Capital",
   deliveredOn: "2026-09-19",
   intro:
-    "Your next advantage may begin with a question no one has asked. We asked one about your portfolio — what do all 38 of these sites actually look like to the buyer trying to find them — then answered it in working HTML rather than in a deck. Nothing here was commissioned and nothing is a proposal. Every figure belongs to the company it describes, and every measurement names its source.",
+    "We are not a design studio and this is not a pitch for a redesign. What we do is help an organisation see something its own data already knows, and act on it. Your next advantage may begin with a question no one has asked, so we asked one about your portfolio — what do all 38 of these sites actually look like to the buyer trying to find them — and then went and measured it rather than arguing it in a deck. Nothing here was commissioned. Every figure belongs to the company it describes, and every measurement names its source.",
 
   fundFindings: [
     {
@@ -213,7 +213,7 @@ const lightship: Portfolio = {
   preparedFor: "Lightship Capital",
   deliveredOn: "2026-09-22",
   intro:
-    "Nothing here was commissioned and nothing is a proposal. We read your portfolio page, opened every company on it, and measured what a buyer actually receives — then rebuilt one of them in working HTML rather than describing it in a deck. Two findings are about domains rather than design, and those matter most, because a link that leaves your own portfolio page is the first thing anyone doing diligence will click.",
+    "We are not a design studio and this is not a pitch for a redesign. What we do is help an organisation see something its own data already knows, and act on it. Nothing here was commissioned. We read your portfolio page, opened every company on it, and measured what somebody doing diligence actually receives. The two findings that matter most are not about design at all — they are about two domains you no longer control, and both are decisions rather than opinions. The rebuild at the end is simply how we show our work.",
 
   fundFindings: [
     {
@@ -287,7 +287,7 @@ const venturehue: Portfolio = {
   preparedFor: "Brittni Abiolu",
   deliveredOn: "2026-09-22",
   intro:
-    "This one is about your own storefront rather than a portfolio company's. You run a capital-readiness programme, and the site that is supposed to introduce it to a founder currently cannot. Nothing here was commissioned and nothing is a proposal — the rebuild is the argument, and every fact in it is yours, recovered from your own pages.",
+    "We are not a design studio and this is not a pitch for a redesign. What we do is help an organisation see something its own data already knows, and act on it. This one is about your own storefront rather than a portfolio company's, and the finding is simple enough to state in a sentence: the programme is real, the $2,192,470 is real, and a founder arriving at venturehue.com today can reach none of it. Nothing here was commissioned, and every fact in the rebuild is yours, recovered from your own pages rather than written for you.",
 
   fundFindings: [
     {
@@ -362,11 +362,16 @@ const hundredkm: Portfolio = {
   preparedFor: "Shalanda Armstrong",
   deliveredOn: "2026-09-22",
   intro:
-    "We measured all fifteen and most of them are good — that is worth saying first, because it is the opposite of what an unsolicited audit usually claims. Your companies publish real logos, real case studies and real clearances. The thing worth your attention is one line of markup on your own site that no visitor ever sees and every machine does.",
+    "We are not a design studio and this is not a pitch for a redesign. What we do is help an organisation see something its own data already knows, and act on it. So we asked one question about your portfolio that nobody asks — what do these fifteen companies tell a machine about themselves — and went and measured it. Most of what we found is in good shape, which is worth saying plainly. What follows is the part that is not, and what we would do about it.",
 
   fundFindings: [
     {
-      title: "Your site tells search engines you invest in Latin America",
+      title: "Six of your fifteen companies share as a blank card, and the fund is one of them",
+      detail:
+        "We read the metadata of every company on your portfolio page — the tags LinkedIn, Slack, iMessage and Google actually render when someone shares a link. Six have no og:image at all: 100KM VC itself, Scout Financial, Beam Dynamics, Bump, Health In Her HUE and Athlytic. Three have no meta description whatsoever — iCardio.ai, Scout Space and Athlytic — so a search engine writes one on their behalf. Twelve of the fifteen carry at least one defect. You share these links constantly, in LP updates and warm intros, and six of them arrive as a grey rectangle. What this points at is small: one image and one sentence per company. It is an afternoon of work and probably the highest-leverage hour anywhere in the portfolio.",
+    },
+    {
+      title: "Your own site tells search engines you invest in Latin America",
       detail:
         "100kmvc.com carries the description “We back bold founders building the future of work and health in Latin America.” in three places — the meta description, og:description and twitter:description. The phrase appears zero times in the visible page and the word Detroit appears zero times anywhere. Nobody reading the site sees it; Google, LinkedIn and every link preview render it. For a fund raising Fund I, that is the sentence an LP meets before they meet you.",
     },
@@ -383,7 +388,7 @@ const hundredkm: Portfolio = {
   ],
 
   stats: [
-    { k: "15", label: "Companies measured", sub: "Every company on 100kmvc.com/portfolio, 2026-09-22. None failed" },
+    { k: "6/15", label: "Share as a blank card", sub: "No og:image, including 100kmvc.com itself. Measured 2026-09-22" },
     { k: "62", label: "Median mobile performance", sub: "Lighthouse, mobile, local run. 3 of 15 score under 50" },
     { k: "100", label: "Median Lighthouse SEO", sub: "Their markup is fine. This portfolio's problem is not findability" },
     { k: "35.4s", label: "Slowest first paint", sub: "Athlytic, mobile. Scout Financial 17.7s, Health In Her HUE 14.2s" },
@@ -413,7 +418,8 @@ const hundredkm: Portfolio = {
 
   method: [
     "Company list read from 100kmvc.com/portfolio directly on 2026-09-22 — fifteen companies. All fifteen returned a Lighthouse result; none is excluded.",
-    "The Latin America finding was confirmed by fetching the page and counting the phrase in the served HTML: three occurrences in metadata, zero in the rendered body, and zero occurrences of Detroit anywhere.",
+    "The Latin America finding was confirmed by fetching the page and counting the phrase in the served HTML: three occurrences in metadata, zero in the rendered body, zero occurrences of Detroit anywhere.",
+    "The metadata audit opened all sixteen pages in a real browser and recorded each one's description, og:title, og:description and og:image. Singulate is excluded from every count because it answers with a Cloudflare challenge rather than its own page — counting its absent tags as defects would be measuring the wrong document. Fifteen usable, twelve with at least one issue. Script: scripts/metadata-audit.py, so you can re-run it yourself.",
     "Lighthouse ran locally on the mobile profile because the PageSpeed Insights API returned HTTP 429 across this work. Same engine, no quota.",
     "Two earlier claims were checked and withdrawn rather than repeated: Athlytic and Health In Her HUE were both reported elsewhere as rendering blank. Both render fully — they are client-side applications, and the honest finding is that they are slow, not empty.",
     "Singulate returns 403 to a plain request because of a Cloudflare challenge. That is not a defect and it is scored here from a real browser render, not from the challenge page.",
