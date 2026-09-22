@@ -14,19 +14,10 @@ mercury.com. Four things every one of them does that ours did not:
   2. No prose. Not one of the eight puts marketing sentences in a footer.
   3. The mark opens the footer at size (Palantir, Figma), rather than sitting
      small in the middle of it.
-  4. Vercel and Stripe close with a live status line. Vercel's reads
-     "ALL SYSTEMS NORMAL" beside a green dot.
 
 And the two that read most like the company Daniel wants to be next to --
 Vercel and Palantir -- put the footer on a DARK surface, so a white page has an
 ending rather than a fade.
-
-WHAT THIS DOES DIFFERENTLY FROM THEM. The status line. Every other footer's
-proof is "we are up". This site's entire argument is that a figure without
-lineage is not reportable, so its footer prints the store behind the site:
-objects, observations, sources, lineage cover -- read from the ontology at
-build time through store.py, never typed, and stamped with the date it was
-read, because a static page cannot honestly claim to be reading live.
 
 VOCABULARY. The old capability block invented six names for the intelligence
 layers ("Identity resolution", "Bitemporal record", "Standing conditions").
@@ -39,16 +30,10 @@ as a services line in the signature band, which is what they are, rather than
 as a fake nav column pointing nowhere.
 """
 
-import datetime
 import pathlib
 import re
 
-import store
-
 SITE = pathlib.Path("site")
-
-d = store.read_store()
-read_on = datetime.date.today().strftime("%-d %B %Y")
 
 SERVICES = ["Custom applications", "Workflow automation", "Data migration and cleanup",
             "Research and decision support", "Websites and digital experiences",
@@ -92,22 +77,6 @@ cols_html = "".join(
     + "</div>"
     for title, items in COLUMNS)
 
-# The one thing no other footer can print. Read, not asserted -- and dated,
-# because this page is static and "live" would be a lie.
-live = (
-    '<div class="footer-live">'
-    '<span class="footer-live-dot" aria-hidden="true"></span>'
-    '<span class="footer-live-label">The store behind this site</span>'
-    '<span class="footer-live-figs">'
-    f"<b>{d['objects']:,}</b> objects"
-    f"<i>·</i><b>{d['props']:,}</b> observations"
-    f"<i>·</i><b>{d['sources']}</b> source systems"
-    f"<i>·</i><b>{d['cover']}</b> carry lineage"
-    f"<i>·</i><b>{d['nolin']}</b> without"
-    "</span>"
-    f'<span class="footer-live-read">read {read_on}</span>'
-    "</div>")
-
 FOOTER = (
     '<footer class="site-footer"><div class="wrap">'
 
@@ -129,8 +98,6 @@ FOOTER = (
 
     f'<div class="footer-grid">{cols_html}</div>'
 
-    + live +
-
     '<div class="footer-legal">'
     '<span>&copy; 2026 LOVELEEDAY Studios</span>'
     '<span>Design concept · Interactive examples use demonstration data · '
@@ -148,5 +115,3 @@ for page in sorted(SITE.glob("*.html")):
     page.write_text(pat.sub(lambda _: FOOTER, t, count=1))
     n += 1
 print(f"footer rebuilt on {n} page(s)")
-print(f"  live strip: {d['objects']:,} objects · {d['props']:,} observations · "
-      f"{d['sources']} sources · {d['cover']} lineage · read {read_on}")
