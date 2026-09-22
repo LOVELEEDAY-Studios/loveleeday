@@ -11,130 +11,131 @@
 <link rel="icon" href="assets/venturehue-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* -----------------------------------------------------------------------
    VentureHue — homepage rebuild, direction study by LOVELEEDAY Studios.
 
-   FOUR CORRECTIONS FROM DANIEL, 2026-09-22, all landing on this file at once.
+   REDESIGNED FROM REFERENCE, 2026-09-22. Daniel: "venturehue is not a creative
+   design you need to go out on dribbble and redesign the whole site." Fair. The
+   previous pass only pulled reference for two sections and I designed the other
+   nine myself, which is how it kept landing as competent-generic: a dark hero
+   with a CSS gradient, a stat rail, three cards, a dark band. That is the
+   default SaaS arrangement, and defaults are what "AI slop" means.
 
-   1. "you changed part of the design but not the whole site." True twice.
-      I had set ONE section in a serif because two reference sites do, and left
-      the other nine headings in Poppins — which does not read as emphasis, it
-      reads as unfinished. The serif is gone. And measured across the page,
-      seven of nine headings rendered between 43px and 54px: every section
-      speaking at identical volume, which is why no section felt like the
-      point. There is now one ladder, three steps, and every section is on it.
+   So the direction here is taken whole, from ASMobbin's studio site
+   (mobbin.com/screens/be5c2b80): warm paper ground, a SERIF display with
+   italic accent words carrying the emphasis, mono section markers, and inline
+   stat rows with mono captions. Three reasons it is the right borrow rather
+   than a nicer-looking one:
 
-   2. "this site also reads like a tech brief not real customer site." The
-      worst of it, and entirely my fault. This page is VENTUREHUE'S HOMEPAGE.
-      Its reader is a Detroit founder who needs capital. I had written an AUDIT
-      addressed to Brittni and dropped it inside her own homepage — "the same
-      counter reads $0", "six of nine, three publish no usable logo", "log
-      scale, each tick is 10x the last", "rows 01-07 are angel-syndicate
-      co-investments". Every one of those is a finding for the portfolio page
-      and none of them is homepage copy. All rewritten to speak to the founder.
-      What we found belongs in the portal, not in the client's own voice.
+     1. It works with NO PHOTOGRAPHY. VentureHue publishes none of its own and
+        the last pass proved stock is worse than nothing. This register carries
+        a page on type and paper alone.
+     2. It is WARM. The audience is a founder deciding whether to trust a
+        program with the hardest year of their business. A serif with italics
+        reads like a person; a geometric sans on navy reads like a vendor.
+     3. It is the opposite of the "tech brief" this page kept sounding like.
 
-   3. "the photos you choose look like stock and ugly." Also true, and the fix
-      is removal rather than replacement. VentureHue publishes no photography
-      of its own, and generic smiling-business-people stock is the single
-      loudest machine-made signal a page can carry. Zero photographs beats four
-      bad ones. The page now carries its weight in type, color and their own
-      numbers — which is what they actually have.
+   Also taken: Supabase (mobbin.com/screens/09b1d45f) for the centred hero with
+   its second line in the brand color and a quiet logo rail beneath the fold,
+   and Mistral (b840ac19) for placing that rail immediately under the hero
+   rather than halfway down the page.
 
-   4. "the hero section looks bad as well." It was leaning on one of those
-      stock photographs for half its width. Rebuilt on their own gradient,
-      which is sampled from their real logo, with the type doing the work.
+   THE SERIF IS BACK, AND THAT IS THE POINT. An earlier pass set one section in
+   Instrument Serif and left nine in Poppins, which read as unfinished — Daniel
+   caught it. The lesson was commit or remove, not "never serif". The whole page
+   is on it now, so it is a system rather than an orphan. Poppins is gone
+   entirely; Inter carries UI and body, where it is invisible by design.
 
-   Palette from their REAL logo file: #181848 navy and #489030 green are its
-   two most-used colors, #0078A8 the middle of its gradient. #00AEEF stays
-   because their live stylesheet declares it as the site accent. Wordmark is
-   the concept Daniel supplied, knocked out to white-on-transparent and
-   rendered through mask-image so one file tints to any ground.
+   Palette from their REAL logo file: #181848 navy, #489030 green, #0078A8 the
+   middle of its gradient, and #00AEEF which their live stylesheet declares as
+   the site accent. Paper is warmed off pure grey so the page has a temperature.
+   Wordmark is the concept Daniel supplied, knocked out to white-on-transparent
+   and rendered through mask-image so one file tints to any ground.
 
-   The live site currently serves a WordPress theme demo: the homepage renders
-   "Nothing Found", most /project/ pages 404, and the footer still carries
-   dream-theme.com placeholder contact details. Copy here comes from the live
-   nav and a June 2026 Wayback snapshot that still had the real content. The
-   $2,192,470 and Brittni Abiolu's bio facts are given, verified, used as
-   provided.
+   Copy speaks to a FOUNDER, not to Brittni. Everything we found about her
+   broken site lives in the portal, in our voice, not here in hers.
 ----------------------------------------------------------------------- */
 :root{
   --navy:#181848;
-  --navy-deep:#0D0D2B;
-  --navy-ink:#07071A;
-  --blue:#00AEEF;
-  --blue-mid:#0078A8;
+  --ink:#171726;
+  --ink-soft:#4A4A5E;
+  --ink-faint:#8A8A9A;
+  --blue:#0078A8;
+  --blue-bright:#00AEEF;
   --green:#489030;
-  --green-bright:#6BC23F;
   --purple:#6B1E74;
-  --paper:#F7F7F3;
-  --paper-2:#ECECE5;
-  --ink:#181848;
-  --slate:#4B5568;
-  --slate-pale:#B9C0D4;
-  --line:rgba(24,24,72,.13);
-  --line-2:rgba(24,24,72,.22);
-  --line-dark:rgba(255,255,255,.15);
-  --font-display:'Poppins', ui-sans-serif, system-ui, sans-serif;
-  --font-body:'Open Sans', -apple-system, sans-serif;
-  --font-mono:'IBM Plex Mono', ui-monospace, monospace;
-  /* ONE LADDER, THREE STEPS, real distance between them. */
-  --t-hero: clamp(3rem, 8.6vw, 6.8rem);
-  --t-major: clamp(2.1rem, 5.4vw, 4.2rem);
-  --t-minor: clamp(1.5rem, 3vw, 2.3rem);
-  --gutter: clamp(20px, 5vw, 72px);
-  --maxw: 1320px;
+  /* Warmed off neutral grey on purpose. A page with no photography gets its
+     temperature from the paper or it gets none. */
+  --paper:#F4F1EA;
+  --paper-2:#EBE7DD;
+  --card:#FBFAF7;
+  --line:rgba(23,23,38,.14);
+  --line-2:rgba(23,23,38,.26);
+  --line-dark:rgba(255,255,255,.16);
+  --serif:'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --sans:'Inter', -apple-system, system-ui, sans-serif;
+  --mono:'IBM Plex Mono', ui-monospace, monospace;
+  --t-hero: clamp(2.9rem, 7.6vw, 6.2rem);
+  --t-major: clamp(2.1rem, 4.8vw, 3.8rem);
+  --t-minor: clamp(1.5rem, 2.8vw, 2.2rem);
+  --gutter: clamp(20px, 5vw, 76px);
+  --maxw: 1240px;
 }
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
 body{
   margin:0; background:var(--paper); color:var(--ink);
-  font-family:var(--font-body); overflow-x:hidden;
+  font-family:var(--sans); font-size:16px; overflow-x:hidden;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
 img{ display:block; max-width:100%; }
 a{ color:inherit; text-decoration:none; }
 .inner{ max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); }
-::selection{ background:var(--blue); color:#fff; }
+::selection{ background:var(--navy); color:var(--paper); }
 :focus-visible{ outline:2px solid var(--blue); outline-offset:3px; }
 
-h1,h2,h3{ font-family:var(--font-display); font-weight:700; letter-spacing:-.03em; margin:0; line-height:1.06; color:var(--navy); }
-h2{ font-size:var(--t-minor); }
-h2.major{ font-size:var(--t-major); letter-spacing:-.035em; }
-p{ margin:0; line-height:1.68; color:var(--slate); }
-.lede{ font-size:clamp(1.02rem,1.45vw,1.14rem); line-height:1.66; }
+/* The serif carries every display line on the page. Italic is the emphasis
+   mechanism throughout — not bold, not color — which is what gives the
+   reference its voice. */
+h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.015em;
+  line-height:1.06; margin:0; color:var(--ink); }
+h1{ font-size:var(--t-hero); }
+h2{ font-size:var(--t-major); }
+h3{ font-size:var(--t-minor); line-height:1.15; }
+em{ font-style:italic; }
+p{ margin:0; line-height:1.7; color:var(--ink-soft); }
+.lede{ font-size:1.06rem; line-height:1.72; }
 .tnum{ font-variant-numeric:tabular-nums; }
 
-.eyebrow{
-  font-family:var(--font-mono); font-size:11px; letter-spacing:.16em;
-  text-transform:uppercase; font-weight:600; color:var(--slate);
-  display:inline-flex; align-items:center; gap:10px; margin:0 0 22px;
-}
-.eyebrow::before{ content:""; width:22px; height:2px; background:var(--blue); flex:none; }
-.on-dark .eyebrow{ color:var(--slate-pale); }
+/* Numbered section markers, straight from the reference: "02 · PRICING". They
+   give the page an order to follow and cost nothing. */
+.marker{ font-family:var(--mono); font-size:11px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-faint); margin:0 0 clamp(20px,3vw,30px);
+  display:flex; align-items:center; gap:12px; }
+.marker::after{ content:""; height:1px; flex:1; background:var(--line); max-width:120px; }
+.on-dark .marker{ color:rgba(255,255,255,.5); }
+.on-dark .marker::after{ background:var(--line-dark); }
 .on-dark h1,.on-dark h2,.on-dark h3{ color:#fff; }
-.on-dark p{ color:rgba(255,255,255,.76); }
+.on-dark p{ color:rgba(255,255,255,.74); }
 
-.btn{
-  display:inline-flex; align-items:center; gap:10px;
-  font-family:var(--font-body); font-weight:700; font-size:15px;
-  padding:15px 28px; border-radius:2px; border:1.5px solid transparent;
-  transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
-}
-.btn-primary{ background:var(--navy); color:#fff; }
-.btn-primary:hover{ background:var(--blue-mid); transform:translateY(-2px); }
-.btn-bright{ background:var(--blue); color:var(--navy-ink); }
-.btn-bright:hover{ background:#fff; transform:translateY(-2px); }
-.btn-line{ background:transparent; color:#fff; border-color:rgba(255,255,255,.45); }
-.btn-line:hover{ background:#fff; color:var(--navy); transform:translateY(-2px); }
-.link-u{ font-family:var(--font-mono); font-size:13px; border-bottom:1.5px solid var(--blue);
-  padding-bottom:3px; transition:border-color .2s ease; }
-.link-u:hover{ border-color:var(--green-bright); }
+.btn{ display:inline-flex; align-items:center; gap:9px; font-family:var(--sans);
+  font-weight:500; font-size:15px; padding:14px 26px; border-radius:999px;
+  border:1px solid transparent; transition:background .2s, color .2s, border-color .2s, transform .2s; }
+.btn-solid{ background:var(--ink); color:var(--paper); }
+.btn-solid:hover{ background:var(--navy); transform:translateY(-1px); }
+.btn-quiet{ background:transparent; color:var(--ink); border-color:var(--line-2); }
+.btn-quiet:hover{ border-color:var(--ink); transform:translateY(-1px); }
+.on-dark .btn-solid{ background:var(--paper); color:var(--ink); }
+.on-dark .btn-quiet{ color:#fff; border-color:rgba(255,255,255,.4); }
+.on-dark .btn-quiet:hover{ border-color:#fff; }
+.link-q{ font-family:var(--mono); font-size:12.5px; letter-spacing:.02em;
+  border-bottom:1px solid var(--line-2); padding-bottom:3px; transition:border-color .2s; }
+.link-q:hover{ border-color:var(--ink); }
 
-.reveal{ opacity:0; transform:translateY(24px);
-  transition:opacity .75s cubic-bezier(.2,.7,.2,1), transform .75s cubic-bezier(.2,.7,.2,1); }
+.reveal{ opacity:0; transform:translateY(22px);
+  transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
 .reveal.in{ opacity:1; transform:none; }
 @media (prefers-reduced-motion:reduce){
   html{ scroll-behavior:auto; }
@@ -142,246 +143,217 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
   *{ animation:none !important; transition-duration:.001ms !important; }
 }
 
-.wordmark{
-  display:block; flex:none; width:139px; height:32px; background:currentColor;
+.wordmark{ display:block; flex:none; width:132px; height:30px; background:currentColor;
   -webkit-mask:url(assets/venturehue-wordmark.png) left center / contain no-repeat;
-  mask:url(assets/venturehue-wordmark.png) left center / contain no-repeat;
-}
-.nav .wordmark{ color:var(--navy); }
-.footer .wordmark{ color:#fff; width:156px; height:36px; }
+  mask:url(assets/venturehue-wordmark.png) left center / contain no-repeat; }
+.nav .wordmark{ color:var(--ink); }
+.footer .wordmark{ color:var(--paper); width:150px; height:34px; }
 
 /* ================= NAV ================= */
-.nav{ position:sticky; top:0; z-index:60; background:rgba(247,247,243,.9);
-  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
-.nav .inner{ display:flex; align-items:center; justify-content:space-between; height:76px; gap:20px; }
-.nav__links{ display:flex; align-items:center; gap:34px; list-style:none; margin:0; padding:0; }
-.nav__links a{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:.09em;
-  text-transform:uppercase; opacity:.7; transition:opacity .2s ease; }
-.nav__links a:hover{ opacity:1; }
+.nav{ position:sticky; top:0; z-index:60; background:rgba(244,241,234,.86);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+.nav .inner{ display:flex; align-items:center; justify-content:space-between; height:80px; gap:20px; }
+.nav__links{ display:flex; align-items:center; gap:32px; list-style:none; margin:0; padding:0; }
+.nav__links a{ font-family:var(--mono); font-size:11.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-soft); transition:color .2s; }
+.nav__links a:hover{ color:var(--ink); }
 @media (max-width:900px){ .nav__links{ display:none; } }
 
 /* ================= 01 HERO =================
-   Their own gradient, sampled from their logo, doing what the stock photograph
-   was doing badly. The type carries the section. */
-.hero{ position:relative; overflow:hidden; color:#fff;
-  background:linear-gradient(112deg, var(--navy-ink) 0%, var(--navy) 34%, var(--blue-mid) 74%, var(--green) 100%); }
-/* A soft vignette so the type side stays deep and the color opens toward the
-   right, instead of a flat two-tone wash. */
-.hero::after{ content:""; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(120% 90% at 8% 40%, rgba(7,7,26,.72) 0%, rgba(7,7,26,0) 62%); }
-.hero__body{ position:relative; z-index:1; padding:clamp(70px,11vw,148px) 0 0; }
-.hero h1{ font-size:var(--t-hero); font-weight:800; line-height:.94; letter-spacing:-.045em;
-  color:#fff; max-width:12ch; }
-/* Was rgba(255,255,255,.55), which over the gradient read as greyed-out rather
-   than as a second voice — a disabled heading, not a designed one. Their own
-   green, which also lands where the gradient is heading, so the line belongs
-   to the page instead of sitting on top of it. Measured on the navy end it
-   sits on: 6.3:1. */
-.hero h1 em{ font-style:normal; display:block; color:var(--green-bright); }
-.hero .lede{ margin-top:28px; max-width:46ch; color:rgba(255,255,255,.84); }
-.hero__ctas{ display:flex; align-items:center; gap:26px; flex-wrap:wrap; margin-top:36px; }
-.hero__ctas .link-u{ color:#fff; }
-.hero__rail{ position:relative; z-index:1; margin-top:clamp(56px,8vw,110px);
-  border-top:1px solid rgba(255,255,255,.22); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
-.hero__rail > div{ padding:26px 24px 36px 0; border-right:1px solid rgba(255,255,255,.22); }
-.hero__rail > div:last-child{ border-right:0; }
-@media (max-width:760px){
-  .hero__rail{ grid-template-columns:1fr; }
-  .hero__rail > div{ border-right:0; border-bottom:1px solid rgba(255,255,255,.22); padding-bottom:22px; }
-}
-.hero__rail .k{ font-family:var(--font-display); font-weight:800; font-size:clamp(1.5rem,2.8vw,2.05rem);
-  color:#fff; line-height:1; letter-spacing:-.03em; }
-.hero__rail .l{ margin-top:11px; font-size:12.5px; line-height:1.55; color:rgba(255,255,255,.72); max-width:24ch; }
+   Centred, after Supabase: headline, second line in the brand color, a short
+   lede, two buttons, and the proof rail immediately beneath rather than halfway
+   down the page. No gradient and no photograph — the paper and the serif are
+   the design. */
+.hero{ padding:clamp(56px,9vw,124px) 0 clamp(40px,5vw,64px); text-align:center; }
+.hero h1{ max-width:16ch; margin:0 auto; letter-spacing:-.025em; }
+.hero h1 em{ display:block; color:var(--green); }
+.hero .lede{ margin:clamp(24px,3.4vw,34px) auto 0; max-width:52ch; color:var(--ink-soft); }
+.hero__ctas{ display:flex; justify-content:center; align-items:center; gap:14px;
+  flex-wrap:wrap; margin-top:clamp(28px,3.6vw,38px); }
 
-/* ================= 02 THE NUMBER =================
-   Founder-facing. It used to say "the same counter reads $0", which is a
-   finding about their broken site — true, useful, and addressed to the wrong
-   person on the wrong page. */
-.figure{ background:var(--paper); padding:clamp(72px,11vw,146px) 0; border-bottom:1px solid var(--line); }
-.figure .inner{ max-width:1180px; }
-.figure__cap{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--slate); margin:0 0 clamp(26px,4vw,42px); }
-.figure__line{ font-family:var(--font-display); font-weight:700; color:var(--navy);
-  font-size:var(--t-major); line-height:1.08; letter-spacing:-.035em; margin:0; max-width:18ch; }
-.figure__line .n{ font-variant-numeric:tabular-nums; white-space:nowrap; color:var(--blue-mid); }
-.figure__foot{ margin-top:clamp(32px,4.5vw,50px); padding-top:24px; border-top:1px solid var(--line);
-  display:grid; gap:20px clamp(24px,4vw,56px); grid-template-columns:minmax(0,1fr); }
+/* The stat row, after ASMobbin: a figure in the serif with a mono caption
+   under it, sitting on a hairline. Not boxed cards. */
+.proof{ margin-top:clamp(48px,7vw,92px); padding-top:clamp(26px,3.4vw,36px);
+  border-top:1px solid var(--line); display:grid; gap:clamp(22px,3vw,40px);
+  grid-template-columns:repeat(3,minmax(0,1fr)); text-align:left; }
+@media (max-width:700px){ .proof{ grid-template-columns:1fr; text-align:center; } }
+.proof .k{ font-family:var(--serif); font-size:clamp(1.9rem,3.6vw,2.7rem); line-height:1;
+  letter-spacing:-.02em; color:var(--ink); }
+.proof .l{ margin-top:10px; font-family:var(--mono); font-size:10.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-faint); line-height:1.6; }
+
+/* A quiet logo rail directly under the hero, after Mistral and Supabase.
+   Grayscale at rest so it supports the headline instead of competing with it. */
+.rail{ padding:clamp(36px,5vw,58px) 0 clamp(52px,7vw,84px); }
+.rail__cap{ font-family:var(--mono); font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-faint); text-align:center; margin:0 0 26px; }
+.rail__row{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+  gap:clamp(26px,4.5vw,64px); }
+.rail__row img{ height:26px; width:auto; opacity:.5; filter:grayscale(1);
+  transition:opacity .25s, filter .25s; }
+.rail__row img.sq{ height:34px; }
+.rail__row img:hover{ opacity:1; filter:none; }
+
+/* ================= 02 THE NUMBER ================= */
+.figure{ padding:clamp(64px,9vw,120px) 0; border-top:1px solid var(--line); }
+.figure__line{ font-family:var(--serif); font-size:var(--t-major); line-height:1.12;
+  letter-spacing:-.02em; color:var(--ink); margin:0; max-width:21ch; }
+.figure__line .n{ font-variant-numeric:tabular-nums; white-space:nowrap; color:var(--blue); }
+.figure__foot{ margin-top:clamp(34px,4.6vw,52px); padding-top:26px; border-top:1px solid var(--line);
+  display:grid; gap:24px clamp(24px,4vw,56px); grid-template-columns:minmax(0,1fr); }
 @media (min-width:820px){ .figure__foot{ grid-template-columns:repeat(3,1fr); } }
-.figure__foot p{ font-size:.93rem; line-height:1.64; margin:0; }
-.figure__foot b{ color:var(--navy); font-weight:600; }
+.figure__foot h3{ font-size:1.15rem; }
+.figure__foot p{ margin-top:10px; font-size:.94rem; }
 
 /* ================= 03 THE THREE ================= */
-.three{ padding:clamp(72px,10vw,126px) 0; }
-.three__head{ max-width:30ch; margin-bottom:clamp(38px,5vw,58px); }
-.trio{ border-top:1px solid var(--line-2); }
-.trio__row{ display:grid; grid-template-columns:minmax(0,1fr); gap:8px clamp(24px,5vw,64px);
-  padding:clamp(26px,3.4vw,42px) 0; border-bottom:1px solid var(--line-2); align-items:baseline; }
-@media (min-width:860px){ .trio__row{ grid-template-columns:auto 5fr 9fr; } }
-.trio__n{ font-family:var(--font-display); font-weight:800; font-size:clamp(2rem,4.4vw,3.1rem);
-  line-height:.9; letter-spacing:-.045em; color:transparent; -webkit-text-stroke:1.2px var(--line-2); }
-.trio__row:hover .trio__n{ color:var(--blue); -webkit-text-stroke:0; }
-.trio h3{ font-size:clamp(1.22rem,2.1vw,1.55rem); }
-.trio p{ font-size:.97rem; max-width:62ch; }
+.three{ padding:clamp(64px,9vw,120px) 0; border-top:1px solid var(--line); }
+.three h2{ max-width:22ch; }
+.trio{ margin-top:clamp(40px,5.4vw,64px); border-top:1px solid var(--line); }
+.trio__row{ display:grid; grid-template-columns:minmax(0,1fr); gap:10px clamp(24px,5vw,64px);
+  padding:clamp(26px,3.4vw,40px) 0; border-bottom:1px solid var(--line); align-items:baseline; }
+@media (min-width:860px){ .trio__row{ grid-template-columns:auto 4fr 8fr; } }
+.trio__n{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--ink-faint); }
+.trio p{ font-size:.97rem; max-width:60ch; }
 
-/* ================= 04 QUOTE BAND — replaces the stock photo band ==========
-   The band used to be a full-bleed photograph of three strangers. A founder's
-   own sentence is warmer than a stock office and it is actually theirs. */
-.band{ background:var(--navy-ink); color:#fff; padding:clamp(72px,10vw,128px) 0; }
-.band blockquote{ margin:0; font-family:var(--font-display); font-weight:600; color:#fff;
-  font-size:var(--t-major); line-height:1.14; letter-spacing:-.03em; max-width:19ch; }
-.band__who{ margin-top:clamp(26px,3.4vw,38px); font-family:var(--font-mono); font-size:12px;
-  letter-spacing:.06em; color:var(--blue); }
-.band__who span{ display:block; margin-top:6px; color:rgba(255,255,255,.55); letter-spacing:.1em;
-  text-transform:uppercase; font-size:10.5px; }
+/* ================= 04 QUOTE ================= */
+.band{ padding:clamp(64px,9vw,120px) 0; background:var(--paper-2);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.band blockquote{ margin:0; font-family:var(--serif); font-size:var(--t-major);
+  line-height:1.16; letter-spacing:-.02em; color:var(--ink); max-width:20ch; }
+.band blockquote em{ color:var(--blue); }
+.band__who{ margin-top:clamp(26px,3.4vw,36px); font-family:var(--mono); font-size:11.5px;
+  letter-spacing:.06em; color:var(--ink); }
+.band__who span{ display:block; margin-top:6px; color:var(--ink-faint);
+  letter-spacing:.13em; text-transform:uppercase; font-size:10.5px; }
 
-/* ================= 05 ACCESS LAB ================= */
-.lab{ background:var(--navy); color:#fff; padding:clamp(76px,10vw,132px) 0; }
-.lab__head{ display:grid; gap:clamp(22px,4vw,56px); grid-template-columns:minmax(0,1fr); align-items:end;
-  padding-bottom:clamp(36px,5vw,54px); border-bottom:1px solid var(--line-dark); }
-@media (min-width:920px){ .lab__head{ grid-template-columns:1.25fr .75fr; } }
-.lab h2{ max-width:13ch; }
-.lab h2 em{ font-style:normal; color:var(--blue); }
-.lab__facts{ display:grid; gap:13px; margin-top:26px; }
-/* One inline run each. A flex container here turns every inline child into a
-   flex item, so each <b> becomes its own block with gaps around it. */
-.lab__fact{ position:relative; padding-left:22px; font-family:var(--font-mono);
-  font-size:12.5px; line-height:1.68; color:rgba(255,255,255,.74); }
-.lab__fact::before{ content:""; position:absolute; left:0; top:.6em; width:10px; height:1px; background:var(--blue); }
-.lab__fact b{ color:#fff; font-weight:600; }
+/* ================= 05 ACCESS LAB (the one dark section) =================
+   Exactly one inversion on the page, on the section that is the product. More
+   than one and the paper stops meaning anything. */
+.lab{ background:var(--navy); color:#fff; padding:clamp(72px,10vw,128px) 0; }
+.lab__head{ display:grid; gap:clamp(24px,4vw,56px); grid-template-columns:minmax(0,1fr); align-items:end;
+  padding-bottom:clamp(34px,4.6vw,50px); border-bottom:1px solid var(--line-dark); }
+@media (min-width:920px){ .lab__head{ grid-template-columns:1.2fr .8fr; } }
+.lab h2{ max-width:14ch; }
+.lab h2 em{ color:var(--blue-bright); }
+.lab__facts{ display:grid; gap:14px; margin-top:26px; }
+/* One inline run each. Flex here would make every inline child a flex item and
+   drop each <b> into its own block with gaps around it. */
+.lab__fact{ position:relative; padding-left:22px; font-size:.92rem; line-height:1.7;
+  color:rgba(255,255,255,.76); }
+.lab__fact::before{ content:""; position:absolute; left:0; top:.72em; width:10px; height:1px;
+  background:var(--blue-bright); }
+.lab__fact b{ color:#fff; font-weight:500; }
 .steps{ display:grid; gap:0; margin-top:clamp(40px,5vw,64px); grid-template-columns:minmax(0,1fr); }
 @media (min-width:860px){ .steps{ grid-template-columns:repeat(4,1fr); } }
-.step{ padding:30px clamp(18px,2vw,28px) 34px 0; border-top:2px solid var(--blue); }
+.step{ padding:28px clamp(18px,2vw,28px) 32px 0; border-top:1px solid var(--line-dark); }
 .step + .step{ border-left:1px solid var(--line-dark); padding-left:clamp(18px,2vw,28px); }
 @media (max-width:859px){ .step + .step{ border-left:0; padding-left:0; } }
-.step .n{ font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; color:var(--blue); }
-.step h3{ margin-top:14px; font-size:1.15rem; }
-.step p{ margin-top:12px; font-size:.9rem; line-height:1.66; }
+.step .n{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--blue-bright); }
+.step h3{ margin-top:14px; font-size:1.3rem; }
+.step p{ margin-top:11px; font-size:.9rem; line-height:1.68; }
 
-/* ================= 06 TRACK RECORD =================
-   The chart stays, because the shape of the portfolio is worth seeing. What
-   went is the methodology: "log scale, each tick is 10x the last" and a
-   three-line disclaimer about co-investment are written for an analyst. A
-   founder wants to know who else got funded. The honesty stays, in a sentence
-   they would actually say out loud. */
-.track{ background:var(--navy-ink); color:#fff; padding:clamp(76px,10vw,132px) 0; }
+/* ================= 06 TRACK RECORD ================= */
+.track{ padding:clamp(64px,9vw,120px) 0; }
 .track__head{ display:grid; gap:clamp(22px,4vw,56px); grid-template-columns:minmax(0,1fr); align-items:end;
-  margin-bottom:clamp(40px,5vw,58px); }
-@media (min-width:920px){ .track__head{ grid-template-columns:1.2fr .8fr; } }
+  margin-bottom:clamp(38px,5vw,56px); }
+@media (min-width:920px){ .track__head{ grid-template-columns:1.15fr .85fr; } }
 .track h2{ max-width:16ch; }
-.trow{ display:grid; grid-template-columns:clamp(34px,4vw,54px) minmax(0,1fr) auto;
-  gap:0 clamp(12px,2.6vw,30px); align-items:baseline;
-  padding:clamp(13px,1.7vw,17px) 0; border-top:1px solid var(--line-dark); }
-.trow:last-of-type{ border-bottom:1px solid var(--line-dark); }
-.trow .o{ font-family:var(--font-mono); font-size:12px; color:rgba(255,255,255,.4); }
-.trow .name{ font-family:var(--font-display); font-weight:700; font-size:clamp(.98rem,1.7vw,1.16rem); color:#fff; }
-.trow .cat{ font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--slate-pale); margin-left:12px; opacity:.7; }
-.trow .amt{ font-family:var(--font-mono); font-size:13px; color:rgba(255,255,255,.9); white-space:nowrap; text-align:right; }
-.trow .amt.direct{ color:var(--green-bright); }
-.trow .bar{ grid-column:2 / -1; margin-top:10px; height:6px; background:rgba(255,255,255,.09);
-  border-radius:100px; overflow:hidden; }
-.trow .bar i{ display:block; height:100%; border-radius:100px; transform-origin:left;
-  background:linear-gradient(90deg, var(--blue-mid), var(--blue));
-  animation:barGrow 1s cubic-bezier(.2,.7,.2,1) both; }
-.trow .bar i.direct{ background:linear-gradient(90deg, var(--green), var(--green-bright)); }
-@keyframes barGrow{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
-.track__key{ display:flex; flex-wrap:wrap; gap:10px 28px; margin-top:26px;
-  font-family:var(--font-mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
-  color:rgba(255,255,255,.6); }
+.trow{ display:grid; grid-template-columns:clamp(30px,3.6vw,46px) minmax(0,1fr) auto;
+  gap:0 clamp(12px,2.6vw,28px); align-items:baseline;
+  padding:clamp(13px,1.7vw,17px) 0; border-top:1px solid var(--line); }
+.trow:last-of-type{ border-bottom:1px solid var(--line); }
+.trow .o{ font-family:var(--mono); font-size:11px; color:var(--ink-faint); }
+.trow .name{ font-family:var(--serif); font-size:clamp(1.05rem,1.8vw,1.3rem); color:var(--ink); }
+.trow .cat{ font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-faint); margin-left:12px; }
+.trow .amt{ font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); white-space:nowrap; text-align:right; }
+.trow .amt.direct{ color:var(--green); }
+.trow .bar{ grid-column:2 / -1; margin-top:11px; height:4px; background:rgba(23,23,38,.09);
+  border-radius:999px; overflow:hidden; }
+.trow .bar i{ display:block; height:100%; border-radius:999px; transform-origin:left;
+  background:var(--blue); animation:grow 1s cubic-bezier(.2,.7,.2,1) both; }
+.trow .bar i.direct{ background:var(--green); }
+@keyframes grow{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+.track__key{ display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:24px;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-faint); }
 .track__key b{ display:inline-flex; align-items:center; gap:9px; font-weight:400; }
-.track__key i{ width:22px; height:6px; border-radius:100px; background:linear-gradient(90deg,var(--blue-mid),var(--blue)); }
-.track__key i.direct{ background:linear-gradient(90deg,var(--green),var(--green-bright)); }
-.track__note{ margin-top:22px; font-size:13px; line-height:1.72; color:rgba(255,255,255,.56); max-width:70ch; }
-
-/* The companies' own marks, each taken from that company's own site. White
-   chips because the marks disagree: Brex and Bump ship white-only wordmarks,
-   Career Karma black, XP Health a black square — no one ground suits them all.
-   Copy sits INSIDE the grid as its first cell, so the grid is one object. */
-.wall{ margin-top:clamp(44px,6vw,64px); }
-.wall__grid{ display:grid; gap:1px; background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.1); grid-template-columns:repeat(2,1fr); }
-@media (min-width:640px){ .wall__grid{ grid-template-columns:repeat(4,1fr); } }
-.wall__cell{ background:#fff; min-height:104px; display:flex; align-items:center; justify-content:center; padding:18px 20px; }
-.wall__cell img{ max-height:30px; width:auto; max-width:100%; object-fit:contain; }
-.wall__cell.wide img{ max-height:22px; }
-.wall__cell.sq img{ max-height:40px; }
-.wall__cell--copy{ background:var(--navy); grid-column:span 2; flex-direction:column;
-  align-items:flex-start; justify-content:center; text-align:left; padding:24px 26px; }
-.wall__cell--copy p{ font-size:.93rem; line-height:1.62; color:rgba(255,255,255,.84); margin:0; max-width:32ch; }
-.wall__cell--copy b{ color:#fff; font-weight:600; }
+.track__key i{ width:20px; height:4px; border-radius:999px; background:var(--blue); }
+.track__key i.direct{ background:var(--green); }
+.track__note{ margin-top:22px; font-size:.93rem; line-height:1.72; color:var(--ink-soft); max-width:66ch; }
 
 /* ================= 07 BRITTNI ================= */
-.who{ padding:clamp(76px,10vw,128px) 0; background:var(--paper-2); }
-.who__grid{ display:grid; gap:clamp(30px,5vw,68px); grid-template-columns:minmax(0,1fr); align-items:start; }
-@media (min-width:940px){ .who__grid{ grid-template-columns:.85fr 1.15fr; } }
-.who__card{ background:var(--navy); color:#fff; padding:clamp(30px,3.6vw,44px); }
-.who__badge{ width:62px; height:62px; border-radius:50%; display:grid; place-items:center;
-  background:linear-gradient(130deg, var(--blue) 0%, var(--green-bright) 100%);
-  font-family:var(--font-display); font-weight:800; font-size:1.25rem; color:var(--navy-ink); letter-spacing:-.02em; }
-.who__card h3{ margin-top:22px; font-size:1.42rem; color:#fff; }
-.who__role{ font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--blue); margin-top:8px; }
-.who__quote{ margin-top:22px; font-size:1rem; line-height:1.68; color:rgba(255,255,255,.88); font-style:italic; }
-.who__cite{ margin-top:16px; font-family:var(--font-mono); font-size:11px; color:rgba(255,255,255,.52); }
+.who{ padding:clamp(64px,9vw,120px) 0; border-top:1px solid var(--line); }
+.who__grid{ display:grid; gap:clamp(32px,5vw,72px); grid-template-columns:minmax(0,1fr); align-items:start; }
+@media (min-width:940px){ .who__grid{ grid-template-columns:.8fr 1.2fr; } }
+.who__card{ background:var(--card); border:1px solid var(--line); padding:clamp(28px,3.4vw,40px); }
+.who__badge{ width:56px; height:56px; border-radius:50%; display:grid; place-items:center;
+  background:var(--navy); color:var(--paper); font-family:var(--serif); font-size:1.2rem; }
+.who__card h3{ margin-top:22px; font-size:1.5rem; }
+.who__role{ font-family:var(--mono); font-size:10.5px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--ink-faint); margin-top:8px; }
+.who__quote{ margin-top:22px; font-family:var(--serif); font-size:1.24rem; line-height:1.42;
+  color:var(--ink); font-style:italic; }
+.who__cite{ margin-top:16px; font-family:var(--mono); font-size:10.5px; color:var(--ink-faint); }
 .who .lede{ margin-top:20px; max-width:48ch; }
-.creds{ margin-top:clamp(28px,3.4vw,40px); border-top:1px solid var(--line-2); }
+.creds{ margin-top:clamp(28px,3.4vw,40px); border-top:1px solid var(--line); }
 .cred{ display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(14px,2.4vw,30px);
-  padding:18px 0; border-bottom:1px solid var(--line-2); align-items:baseline; }
-.cred .y{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--purple); min-width:52px; }
-.cred p{ font-size:.94rem; }
-.cred b{ color:var(--navy); font-weight:700; }
+  padding:17px 0; border-bottom:1px solid var(--line); align-items:baseline; }
+.cred .y{ font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--purple); min-width:50px; }
+.cred p{ font-size:.93rem; }
+.cred b{ color:var(--ink); font-weight:500; }
 
 /* ================= 08 QUOTES ================= */
-.quotes{ background:var(--green); color:#fff; padding:clamp(72px,10vw,124px) 0; }
-.quotes h2{ color:#fff; max-width:14ch; }
-.quotes .eyebrow{ color:rgba(255,255,255,.82); }
-.quotes .eyebrow::before{ background:rgba(255,255,255,.7); }
-.qgrid{ display:grid; gap:clamp(20px,2.6vw,34px); margin-top:clamp(38px,5vw,56px); grid-template-columns:minmax(0,1fr); }
+.quotes{ padding:clamp(64px,9vw,120px) 0; background:var(--paper-2);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.qgrid{ display:grid; gap:clamp(24px,3vw,40px); margin-top:clamp(38px,5vw,56px);
+  grid-template-columns:minmax(0,1fr); }
 @media (min-width:900px){ .qgrid{ grid-template-columns:repeat(3,1fr); } }
-.qcard{ border-top:2px solid rgba(255,255,255,.45); padding-top:24px; }
-.qcard blockquote{ margin:0; font-size:1.01rem; line-height:1.64; color:#fff; }
-.qcard .who-q{ margin-top:20px; font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; color:rgba(255,255,255,.84); }
-.qcard .who-q b{ display:block; font-size:12.5px; letter-spacing:.02em; color:#fff; margin-bottom:4px; }
+.qcard{ border-top:1px solid var(--line-2); padding-top:24px; }
+.qcard blockquote{ margin:0; font-family:var(--serif); font-size:1.22rem; line-height:1.42; color:var(--ink); }
+.qcard .who-q{ margin-top:20px; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-faint); }
+.qcard .who-q b{ display:block; font-size:11.5px; letter-spacing:.06em; color:var(--ink);
+  margin-bottom:5px; font-weight:500; text-transform:none; }
 
 /* ================= 09 PRESS ================= */
-.press{ padding:clamp(72px,10vw,118px) 0; }
-.pitem{ display:grid; grid-template-columns:minmax(0,1fr); gap:6px clamp(24px,4vw,56px);
-  padding:clamp(22px,2.8vw,32px) 0; border-top:1px solid var(--line-2); }
+.press{ padding:clamp(64px,9vw,112px) 0; }
+.pitem{ display:grid; grid-template-columns:minmax(0,1fr); gap:8px clamp(24px,4vw,56px);
+  padding:clamp(22px,2.8vw,32px) 0; border-top:1px solid var(--line); }
 @media (min-width:860px){ .pitem{ grid-template-columns:1fr auto; align-items:start; } }
-.pitem:last-of-type{ border-bottom:1px solid var(--line-2); }
-.pitem h3{ font-size:clamp(1.02rem,1.8vw,1.2rem); max-width:52ch; line-height:1.32; }
-.pitem p{ margin-top:10px; font-size:.93rem; max-width:62ch; }
-.pitem .src{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.12em;
+.pitem:last-of-type{ border-bottom:1px solid var(--line); }
+.pitem h3{ font-size:1.32rem; max-width:48ch; line-height:1.24; }
+.pitem p{ margin-top:10px; font-size:.93rem; max-width:60ch; }
+.pitem .src{ font-family:var(--mono); font-size:10px; letter-spacing:.13em;
   text-transform:uppercase; color:var(--purple); white-space:nowrap; }
 
 /* ================= 10 CTA ================= */
-.cta{ position:relative; overflow:hidden; color:#fff;
-  background:linear-gradient(248deg, var(--navy-ink) 0%, var(--navy) 36%, var(--blue-mid) 78%, var(--green) 100%); }
-.cta::after{ content:""; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(120% 90% at 10% 50%, rgba(7,7,26,.7) 0%, rgba(7,7,26,0) 64%); }
-.cta__body{ position:relative; z-index:1; padding:clamp(76px,10vw,132px) 0; }
-.cta h2{ color:#fff; font-size:var(--t-major); max-width:12ch; }
-.cta p{ margin-top:22px; max-width:44ch; color:rgba(255,255,255,.84); }
-.cta__ctas{ display:flex; gap:18px; flex-wrap:wrap; margin-top:34px; }
-.cta__facts{ display:flex; flex-wrap:wrap; gap:8px 34px; margin-top:38px;
-  font-family:var(--font-mono); font-size:12px; color:rgba(255,255,255,.72); }
-.cta__facts b{ color:#fff; font-weight:600; }
+.cta{ padding:clamp(76px,10vw,136px) 0; background:var(--navy); color:#fff; text-align:center; }
+.cta h2{ max-width:16ch; margin:0 auto; }
+.cta h2 em{ color:var(--blue-bright); }
+.cta p{ margin:26px auto 0; max-width:46ch; }
+.cta__ctas{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:34px; }
+.cta__facts{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px 32px; margin-top:40px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:rgba(255,255,255,.6); }
+.cta__facts b{ color:#fff; font-weight:400; }
 
 /* ================= FOOTER ================= */
-.footer{ background:var(--navy-ink); color:#fff; padding:clamp(56px,7vw,84px) 0 34px; }
+.footer{ background:var(--ink); color:var(--paper); padding:clamp(52px,7vw,80px) 0 32px; }
 .footer__grid{ display:grid; gap:clamp(28px,4vw,56px); grid-template-columns:minmax(0,1fr); }
 @media (min-width:860px){ .footer__grid{ grid-template-columns:1.6fr 1fr 1fr; } }
-.footer__tag{ margin-top:18px; font-size:.93rem; color:rgba(255,255,255,.68); max-width:30ch; }
-.footer__head{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--blue); margin:0 0 16px; }
-.footer__list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; font-size:.93rem; color:rgba(255,255,255,.78); }
-.footer__list a:hover{ color:#fff; }
-.footer__bottom{ margin-top:clamp(40px,5vw,60px); padding-top:24px; border-top:1px solid var(--line-dark);
+.footer__tag{ margin-top:18px; font-family:var(--serif); font-size:1.12rem; line-height:1.4;
+  color:rgba(244,241,234,.78); max-width:26ch; }
+.footer__head{ font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:rgba(244,241,234,.42); margin:0 0 16px; }
+.footer__list{ list-style:none; margin:0; padding:0; display:grid; gap:11px; font-size:.92rem;
+  color:rgba(244,241,234,.74); }
+.footer__list a:hover{ color:var(--paper); }
+.footer__bottom{ margin-top:clamp(40px,5vw,60px); padding-top:24px; border-top:1px solid rgba(244,241,234,.16);
   display:flex; flex-wrap:wrap; gap:14px 30px; justify-content:space-between;
-  font-family:var(--font-mono); font-size:10.5px; color:rgba(255,255,255,.44); }
-.footer__credit{ max-width:74ch; line-height:1.75; }
-.footer__credit b{ color:rgba(255,255,255,.72); font-weight:600; }
+  font-family:var(--mono); font-size:10px; color:rgba(244,241,234,.42); }
+.footer__credit{ max-width:72ch; line-height:1.8; }
+.footer__credit b{ color:rgba(244,241,234,.66); font-weight:400; }
 </style>
 </head>
 <body>
@@ -395,58 +367,76 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
       <li><a href="#track-record">Our founders</a></li>
       <li><a href="#who">Team</a></li>
     </ul>
-    <a class="btn btn-primary" href="#apply" style="padding:12px 22px;font-size:14px">Apply Now</a>
+    <a class="btn btn-solid" href="#apply" style="padding:11px 22px;font-size:14px">Apply</a>
   </div>
 </header>
 
 <main>
 
   <!-- ============ 01 HERO ============ -->
-  <section class="hero on-dark" id="hero">
-    <div class="hero__body">
-      <div class="inner">
-        <p class="eyebrow">Detroit &middot; Capital readiness for overlooked founders</p>
-        <h1>Get capital.<em>Gain traction.</em></h1>
-        <p class="lede">You have built something real. What you need now is to be ready when the room
-          asks &mdash; a number you can defend, a network that answers, and someone in your corner who has
-          sat on both sides of the table.</p>
-        <div class="hero__ctas">
-          <a class="btn btn-bright" href="#apply">Apply to ACCESS Lab</a>
-          <a class="link-u" href="#access-lab">See how it works &darr;</a>
+  <section class="hero" id="hero">
+    <div class="inner">
+      <h1>Get capital.<em>Gain traction.</em></h1>
+      <p class="lede">You have built something real. What you need now is to be ready when the room asks
+        &mdash; a number you can defend, a network that answers, and someone in your corner who has sat on
+        both sides of the table.</p>
+      <div class="hero__ctas">
+        <a class="btn btn-solid" href="#apply">Apply to ACCESS Lab</a>
+        <a class="btn btn-quiet" href="#access-lab">See how it works</a>
+      </div>
+
+      <div class="proof">
+        <div>
+          <div class="k tnum">$2,192,470</div>
+          <div class="l">Raised by founders in our network</div>
+        </div>
+        <div>
+          <div class="k tnum">100+</div>
+          <div class="l">Founders coached through ACCESS Lab</div>
+        </div>
+        <div>
+          <div class="k">Equity&#8209;free</div>
+          <div class="l">No equity taken, no fee on what you raise</div>
         </div>
       </div>
-      <div class="inner">
-        <div class="hero__rail">
-          <div>
-            <div class="k tnum">$2,192,470</div>
-            <div class="l">Raised by founders in our network</div>
-          </div>
-          <div>
-            <div class="k tnum">100+</div>
-            <div class="l">Founders coached through ACCESS Lab</div>
-          </div>
-          <div>
-            <div class="k tnum">Equity-free</div>
-            <div class="l">No equity taken, and no fee to raise</div>
-          </div>
-        </div>
+    </div>
+  </section>
+
+  <!-- ============ LOGO RAIL ============ -->
+  <section class="rail reveal">
+    <div class="inner">
+      <p class="rail__cap">Companies our founders and our syndicate have backed</p>
+      <div class="rail__row">
+        <img src="logos/brex.png" loading="lazy" decoding="async" alt="Brex">
+        <img class="sq" src="logos/noyo.png" loading="lazy" decoding="async" alt="Noyo">
+        <img src="logos/careerkarma.png" loading="lazy" decoding="async" alt="Career Karma">
+        <img class="sq" src="logos/xphealth.png" loading="lazy" decoding="async" alt="XP Health">
+        <img class="sq" src="logos/paladin.png" loading="lazy" decoding="async" alt="Paladin">
+        <img src="logos/bump.png" loading="lazy" decoding="async" alt="Bump">
       </div>
     </div>
   </section>
 
   <!-- ============ 02 THE NUMBER ============ -->
   <section class="figure">
-    <div class="inner">
-      <div class="reveal">
-        <p class="figure__cap">What our founders have raised</p>
-        <p class="figure__line">Founders in this network have raised <span class="n">$2,192,470</span>.</p>
-        <div class="figure__foot">
-          <p><b>You keep all of it.</b> ACCESS Lab takes no equity and charges no fee on what you raise.
-            The program is the program.</p>
-          <p><b>It is lines of credit, grants and rounds.</b> Not one kind of money &mdash; whichever kind
-            your business actually needs.</p>
-          <p><b>And it is people you can call.</b> Angels, grant makers, and lenders who already know the
-            program and take the introduction.</p>
+    <div class="inner reveal">
+      <p class="marker">01 &middot; What our founders have raised</p>
+      <p class="figure__line">Founders in this network have raised
+        <span class="n">$2,192,470</span> &mdash; and they <em>kept all of it.</em></p>
+      <div class="figure__foot">
+        <div>
+          <h3>Equity&#8209;free, always</h3>
+          <p>ACCESS Lab takes no equity and charges no fee on what you raise. The program is the program.</p>
+        </div>
+        <div>
+          <h3>Whatever kind you need</h3>
+          <p>Lines of credit, grants and rounds &mdash; not one kind of money, but the one your business
+            actually needs right now.</p>
+        </div>
+        <div>
+          <h3>People you can call</h3>
+          <p>Angels, grant makers and lenders who already know the program and take the introduction when
+            it comes from us.</p>
         </div>
       </div>
     </div>
@@ -454,27 +444,24 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
 
   <!-- ============ 03 THE THREE ============ -->
   <section class="three" id="three">
-    <div class="inner">
-      <div class="three__head reveal">
-        <p class="eyebrow">What we do</p>
-        <h2>We don't point you toward capital. We get you ready to reach it.</h2>
-      </div>
+    <div class="inner reveal">
+      <p class="marker">02 &middot; What we do</p>
+      <h2>We don't point you toward capital. We get you <em>ready to reach it.</em></h2>
       <div class="trio">
-        <div class="trio__row reveal">
+        <div class="trio__row">
           <span class="trio__n">01</span>
           <h3>Training</h3>
-          <p>Your gateway to capital readiness &mdash; coaching that takes you from a pitch you are not
-            sure about to one you can give from memory, and a clear read on which funding is worth your
-            time and which is not.</p>
+          <p>Coaching that takes you from a pitch you are not sure about to one you can give from memory,
+            and a clear read on which funding is worth your time and which is not.</p>
         </div>
-        <div class="trio__row reveal">
+        <div class="trio__row">
           <span class="trio__n">02</span>
           <h3>Capital</h3>
-          <p>A growing network of real sources: banks, alternative lenders, grant makers, angel investors
-            and venture capital &mdash; matched to what your business needs. If ACCESS Lab is not the right
-            fit for you, we will still point you to the one that is.</p>
+          <p>A growing network of real sources: banks, alternative lenders, grant makers, angels and
+            venture capital &mdash; matched to your business. If ACCESS Lab is not the right fit for you,
+            we will still point you to the one that is.</p>
         </div>
-        <div class="trio__row reveal">
+        <div class="trio__row">
           <span class="trio__n">03</span>
           <h3>Traction</h3>
           <p>Money in the account is not the finish line. Our preferred-vendor network covers marketing,
@@ -485,11 +472,11 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
     </div>
   </section>
 
-  <!-- ============ 04 QUOTE BAND ============ -->
-  <section class="band on-dark reveal">
+  <!-- ============ 04 QUOTE ============ -->
+  <section class="band reveal">
     <div class="inner">
-      <blockquote>&ldquo;The funding process took three months total. I received $92K in business credit,
-        which I'm using to hire and grow.&rdquo;</blockquote>
+      <blockquote>&ldquo;The funding process took three months total. I received <em>$92K in business
+        credit,</em> which I'm using to hire and grow.&rdquo;</blockquote>
       <p class="band__who">Sharon Porter<span>Founder &middot; ACCESS Lab</span></p>
     </div>
   </section>
@@ -499,12 +486,12 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
     <div class="inner">
       <div class="lab__head">
         <div class="reveal">
-          <p class="eyebrow">The program</p>
-          <h2 class="major">VentureHue <em>ACCESS Lab.</em></h2>
+          <p class="marker">03 &middot; The program</p>
+          <h2>VentureHue <em>ACCESS Lab.</em></h2>
         </div>
         <div class="reveal">
           <p>A capital readiness accelerator for early-stage technology founders. No equity taken, no fee
-            to raise &mdash; just the training, the network and the visibility it takes to get funded.</p>
+            to raise &mdash; the training, the network and the visibility it takes to get funded.</p>
           <div class="lab__facts">
             <div class="lab__fact">Built for <b>underrepresented and overlooked</b> pre-seed and seed-stage technology founders</div>
             <div class="lab__fact">Led by <b>Brittni Abiolu</b>, Program Manager of the Michigan Founders Fund Pre-Accelerator with gener8tor</div>
@@ -535,23 +522,23 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
         <div class="step reveal">
           <span class="n">04</span>
           <h3>Raise</h3>
-          <p>Training, the capital network and the visibility work run together until you are in front of
-            the right source with a number you can defend.</p>
+          <p>Training, the network and the visibility work run together until you are in front of the right
+            source with a number you can defend.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============ 06 TRACK RECORD ============ -->
-  <section class="track on-dark" id="track-record">
+  <section class="track" id="track-record">
     <div class="inner">
       <div class="track__head">
         <div class="reveal">
-          <p class="eyebrow">Our founders</p>
-          <h2 class="major">Rounds our founders have closed.</h2>
+          <p class="marker">04 &middot; Our founders</p>
+          <h2>Rounds our founders have <em>closed.</em></h2>
         </div>
-        <p class="reveal">Some of these are rounds our angel syndicate invested in alongside other
-          investors. Some are wins our own team led from start to close. Both are on this list.</p>
+        <p class="reveal">Some are rounds our angel syndicate invested in alongside other investors. Some
+          are wins our own team led from start to close. Both are on this list.</p>
       </div>
 
       <div class="reveal">
@@ -571,22 +558,8 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
         <b><i class="direct"></i> Led by our team, start to close</b>
       </div>
       <p class="track__note">A $35,000 grant and a $300M Series D are both on this list, and the bars are
-        scaled so you can see all of them at once. The small ones are the wins we led ourselves &mdash;
-        and for the founder, they were the ones that changed the year.</p>
-
-      <div class="wall reveal">
-        <div class="wall__grid">
-          <div class="wall__cell wall__cell--copy">
-            <p><b>Companies our founders and our syndicate have backed.</b></p>
-          </div>
-          <div class="wall__cell wide"><img src="logos/brex.png" loading="lazy" decoding="async" alt="Brex"></div>
-          <div class="wall__cell"><img src="logos/noyo.png" loading="lazy" decoding="async" alt="Noyo"></div>
-          <div class="wall__cell wide"><img src="logos/careerkarma.png" loading="lazy" decoding="async" alt="Career Karma"></div>
-          <div class="wall__cell sq"><img src="logos/xphealth.png" loading="lazy" decoding="async" alt="XP Health"></div>
-          <div class="wall__cell sq"><img src="logos/paladin.png" loading="lazy" decoding="async" alt="Paladin"></div>
-          <div class="wall__cell wide"><img src="logos/bump.png" loading="lazy" decoding="async" alt="Bump"></div>
-        </div>
-      </div>
+        scaled so you can see all of them at once. The small ones are the wins we led ourselves &mdash; and
+        for that founder, they were the ones that changed the year.</p>
     </div>
   </section>
 
@@ -604,8 +577,8 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
           <p class="who__cite">&mdash; Brittni Abiolu</p>
         </div>
         <div class="reveal">
-          <p class="eyebrow">Who you'll be working with</p>
-          <h2>Sixteen years of capital access, built into one program.</h2>
+          <p class="marker">05 &middot; Who you'll work with</p>
+          <h2>Sixteen years of capital access, built into <em>one program.</em></h2>
           <p class="lede">Brittni has spent her career on both sides of the table &mdash; inside the
             institutions that write the checks, and beside the founders trying to reach them. ACCESS Lab is
             what that experience looks like as a program.</p>
@@ -621,11 +594,11 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
   </section>
 
   <!-- ============ 08 QUOTES ============ -->
-  <section class="quotes on-dark">
+  <section class="quotes">
     <div class="inner">
       <div class="reveal">
-        <p class="eyebrow">What founders say</p>
-        <h2>Funding that actually closed.</h2>
+        <p class="marker">06 &middot; What founders say</p>
+        <h2>Funding that <em>actually closed.</em></h2>
       </div>
       <div class="qgrid reveal">
         <div class="qcard">
@@ -653,9 +626,9 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
   <!-- ============ 09 PRESS ============ -->
   <section class="press">
     <div class="inner">
-      <div class="reveal" style="margin-bottom:clamp(28px,4vw,40px)">
-        <p class="eyebrow">In the news</p>
-        <h2>Detroit is paying attention.</h2>
+      <div class="reveal" style="margin-bottom:clamp(26px,3.6vw,38px)">
+        <p class="marker">07 &middot; In the news</p>
+        <h2>Detroit is <em>paying attention.</em></h2>
       </div>
       <div class="pitem reveal">
         <div>
@@ -678,21 +651,20 @@ p{ margin:0; line-height:1.68; color:var(--slate); }
 
   <!-- ============ 10 CTA ============ -->
   <section class="cta on-dark" id="apply">
-    <div class="cta__body">
-      <div class="inner">
-        <p class="eyebrow">Apply to the next cohort</p>
-        <h2 class="major">Ready to get capital-ready?</h2>
-        <p>If you are building a technology company and need to raise from angels and venture capital
-          &mdash; or you just need the network to be seen &mdash; ACCESS Lab is built for you.</p>
-        <div class="cta__ctas">
-          <a class="btn btn-bright" href="mailto:info@venturehue.com?subject=ACCESS%20Lab%20Application">Apply to ACCESS Lab</a>
-          <a class="btn btn-line" href="mailto:info@venturehue.com">Talk to our team</a>
-        </div>
-        <div class="cta__facts">
-          <span><b>Detroit, Michigan</b></span>
-          <span>info@venturehue.com</span>
-          <span>Mon&ndash;Fri, 9am&ndash;6pm ET</span>
-        </div>
+    <div class="inner reveal">
+      <!-- Non-breaking hyphen: at 16ch centred this wrapped as "capital-" /
+           "ready?", splitting the compound across two lines. -->
+      <h2>Ready to get <em>capital&#8209;ready?</em></h2>
+      <p>If you are building a technology company and need to raise from angels and venture capital
+        &mdash; or you just need the network to be seen &mdash; ACCESS Lab is built for you.</p>
+      <div class="cta__ctas">
+        <a class="btn btn-solid" href="mailto:info@venturehue.com?subject=ACCESS%20Lab%20Application">Apply to ACCESS Lab</a>
+        <a class="btn btn-quiet" href="mailto:info@venturehue.com">Talk to our team</a>
+      </div>
+      <div class="cta__facts">
+        <span><b>Detroit, Michigan</b></span>
+        <span>info@venturehue.com</span>
+        <span>Mon&ndash;Fri, 9am&ndash;6pm ET</span>
       </div>
     </div>
   </section>
