@@ -69,3 +69,12 @@ fb.innerHTML='Your brief downloaded, but it could NOT be sent from here. Email i
 fb.className='form-feedback warn';
 }finally{btn.disabled=false;btn.textContent=label;}
 })}
+
+/* Architecture figures start their motion when they are scrolled to, and
+   stay running after -- retriggering a loop on every re-entry makes the
+   page feel twitchy on a scroll back up. */
+(function(){const f=[...document.querySelectorAll('.layer-fig')];if(!f.length)return;
+if(!('IntersectionObserver' in window)){f.forEach(e=>e.classList.add('is-in'));return}
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+e.target.classList.add('is-in');io.unobserve(e.target)}})},{threshold:.25});
+f.forEach(e=>io.observe(e))})();
