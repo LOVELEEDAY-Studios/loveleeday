@@ -77,11 +77,12 @@ for name, img in [("favicon-32.png", tinted(32, INK)), ("favicon-16.png", tinted
 pathlib.Path("public/site/assets/icon.svg").write_text(svg)
 tinted(180, WHITE, bg=(20, 17, 14)).save("public/site/assets/apple-icon.png", optimize=True)
 
-TAGS = ('<link rel="icon" href="/site/assets/icon.svg" type="image/svg+xml">'
-        '<link rel="icon" href="/site/assets/favicon-32.png" sizes="32x32" type="image/png">'
-        '<link rel="icon" href="/site/assets/favicon-16.png" sizes="16x16" type="image/png">'
-        '<link rel="apple-touch-icon" href="/site/assets/apple-icon.png">'
-        '<link rel="shortcut icon" href="/favicon.ico">')
+V = "2"   # bump when an icon file changes; browsers cache favicons hard
+TAGS = (f'<link rel="icon" href="/site/assets/icon.svg?v={V}" type="image/svg+xml">'
+        f'<link rel="icon" href="/site/assets/favicon-32.png?v={V}" sizes="32x32" type="image/png">'
+        f'<link rel="icon" href="/site/assets/favicon-16.png?v={V}" sizes="16x16" type="image/png">'
+        f'<link rel="apple-touch-icon" href="/site/assets/apple-icon.png?v={V}">'
+        f'<link rel="shortcut icon" href="/favicon.ico?v={V}">')
 
 n = 0
 for page in sorted(pathlib.Path("public/site").glob("*.html")):
