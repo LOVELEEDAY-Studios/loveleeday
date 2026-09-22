@@ -70,7 +70,12 @@ export default async function PortfolioPage({
           <span className="hidden h-3 w-px bg-[var(--line-bright)] sm:block" aria-hidden="true" />
           <span className="tnum">Delivered {formatDate(p.deliveredOn)}</span>
           <span className="hidden h-3 w-px bg-[var(--line-bright)] sm:block" aria-hidden="true" />
-          <span className="tnum">{p.stats[0]?.k ?? p.cases.length} sites audited</span>
+          {/* Explicit, never derived from stats[0]. That fallback assumed the first stat is always
+              a count of sites, which held for Collab (38) and Lightship (18) and produced "6/15
+              sites audited" for 100KM — whose first stat is the blank-preview count — and
+              "$2.19M sites audited" for VentureHue, whose first stat is a funding total. Both of
+              those are hero lines on studies addressed to named partners. */}
+          <span className="tnum">{p.heroNote}</span>
         </div>
         <p className="rule-left mt-10 max-w-[var(--measure)] text-[16px] leading-[1.7] text-[var(--mid)]">
           {p.intro}
@@ -98,7 +103,12 @@ export default async function PortfolioPage({
           A few things we noticed
         </span>
         <h2 className="mt-4 max-w-[20ch] text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.06] tracking-[-0.025em]">
-          Three things we found on {p.fundDomain} itself.
+          {/* Counted, not written. The literal "Three" sat above four findings on the 100KM
+              study — the one page whose whole argument is that small unchecked details cost you
+              credibility. */}
+          {["One", "Two", "Three", "Four", "Five", "Six"][p.fundFindings.length - 1] ??
+            p.fundFindings.length}{" "}
+          {p.fundFindings.length === 1 ? "thing" : "things"} we found on {p.fundDomain} itself.
         </h2>
         <div className="mt-12 grid gap-px bg-[var(--line)] md:grid-cols-3">
           {p.fundFindings.map((f, i) => (

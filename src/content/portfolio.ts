@@ -46,6 +46,9 @@ export interface Portfolio {
   /** Undefined until the fund's token is set: written, not yet reachable. */
   token?: string;
   fund: string;
+  /** The line under the fund name in the hero. Written per study, because what was reviewed
+   *  differs: a whole portfolio, part of one, or the fund's own site. */
+  heroNote: string;
   fundDomain: string;
   preparedFor: string;
   deliveredOn: string;
@@ -61,6 +64,7 @@ export interface Portfolio {
 const collab: Portfolio = {
   token: TOKENS.collab,
   fund: "Collab Capital",
+  heroNote: "38 companies reviewed",
   fundDomain: "collab.capital",
   preparedFor: "Collab Capital",
   deliveredOn: "2026-09-19",
@@ -230,6 +234,7 @@ const collab: Portfolio = {
 const lightship: Portfolio = {
   token: TOKENS.lightship,
   fund: "Lightship Capital",
+  heroNote: "18 companies reviewed",
   fundDomain: "lightship.capital",
   preparedFor: "Lightship Capital",
   deliveredOn: "2026-09-22",
@@ -304,6 +309,7 @@ const lightship: Portfolio = {
 const venturehue: Portfolio = {
   token: TOKENS.venturehue,
   fund: "VentureHue",
+  heroNote: "Your own site, reviewed",
   fundDomain: "venturehue.com",
   preparedFor: "Brittni Abiolu",
   deliveredOn: "2026-09-22",
@@ -379,6 +385,7 @@ const venturehue: Portfolio = {
 const hundredkm: Portfolio = {
   token: TOKENS.hundredkm,
   fund: "100KM VC",
+  heroNote: "15 companies reviewed",
   fundDomain: "100kmvc.com",
   preparedFor: "Shalanda Armstrong",
   deliveredOn: "2026-09-22",
