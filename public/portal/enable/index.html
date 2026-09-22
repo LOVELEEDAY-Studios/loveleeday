@@ -228,12 +228,48 @@ section{position:relative}
 /* ---------- HOW ENFUSE WORKS ---------- */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border-radius:var(--r);overflow:hidden}
 @media (max-width:820px){ .steps{grid-template-columns:1fr} }
-.step{background:#fff;padding:clamp(28px,3vw,38px) clamp(24px,2.6vw,32px);position:relative}
-.step .n{font-size:.78rem;font-weight:800;letter-spacing:.12em;color:var(--magenta)}
+.step{background:#fff;padding:0 0 clamp(28px,3vw,38px);position:relative;display:flex;flex-direction:column}
+.step > *:not(.step-shot){margin-left:clamp(24px,2.6vw,32px);margin-right:clamp(24px,2.6vw,32px)}
+.step .n{font-size:.78rem;font-weight:800;letter-spacing:.12em;color:var(--magenta);margin-top:clamp(24px,2.6vw,32px)}
+/* Each of these three cards carried a hand-drawn 52px SVG glyph. Enable
+   publishes a real photograph of every one of the three systems — the syringe
+   transfer, the device worn on a patient, the connected layer — so the drawing
+   was standing in for a picture that already existed. Same error as the hero,
+   one section further down. */
+.step-shot{margin:0 0 4px;background:var(--paper-2);overflow:hidden}
+.step-shot img{display:block;width:100%;height:clamp(180px,17vw,230px);object-fit:cover}
 .step .icon{width:52px;height:52px;margin:18px 0 20px;color:var(--magenta)}
 .step h3{font-size:1.22rem;line-height:1.25}
 .step p{margin-top:12px;font-size:.92rem}
 .step .tag{display:inline-block;margin-top:16px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);background:var(--paper-2);padding:5px 10px;border-radius:6px}
+
+/* Enable's own three-step setup sequence — fill, start, remove. It is the whole
+   value proposition in one picture and it was not on this page at all. Sits
+   directly under the three systems, because it is what those three do together. */
+.setup-strip{margin-top:clamp(28px,4vw,44px);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff}
+.setup-strip img{display:block;width:100%;height:auto}
+.setup-strip figcaption{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);
+  padding:12px 18px;border-top:1px solid var(--line)}
+
+/* A full-bleed photograph of the people the device is for, carrying one line.
+   The wash is a fixed magenta-to-transparent, not a guess at the photo's own
+   brightness — white type over an unknown image is how a page ships at 2:1 and
+   passes every automated check. */
+.people-band{position:relative;overflow:hidden}
+.people-band img{display:block;width:100%;height:clamp(300px,36vw,480px);object-fit:cover;object-position:50% 28%}
+/* The first wash ran .92 -> .62 by 46%, which put the body copy over the
+   subject's face at roughly 2:1 — legible in a thumbnail and not on the page.
+   The source is a SQUARE photo in a wide box, so object-position-x does nothing
+   to move the people off the copy; the only lever is the wash. It now holds
+   near-opaque across the whole left half and only releases past 70%. */
+.people-band .wash{position:absolute;inset:0;background:linear-gradient(90deg,
+  rgba(120,15,102,.97) 0%, rgba(120,15,102,.94) 42%, rgba(120,15,102,.55) 72%, rgba(120,15,102,.08) 100%)}
+.people-band .copy{position:absolute;inset:0;display:flex;align-items:center}
+.people-band .copy .wrap{width:100%}
+.people-band h2{color:#fff;max-width:19ch;margin:0;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1.12}
+.people-band p{color:#fff;max-width:40ch;margin-top:16px;font-size:1rem;line-height:1.6}
+.people-band .cred{position:absolute;right:16px;bottom:10px;font-size:.66rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.6)}
 
 /* ---------- CLEARANCE / PARTNERS (dark, validation style) ---------- */
 .proof{margin-top:clamp(32px,5vw,48px)}
@@ -251,6 +287,18 @@ section{position:relative}
 .partner-cell span{font-weight:800;font-size:1.05rem;letter-spacing:.01em;color:rgba(255,255,255,.86)}
 
 /* ---------- COMMERCIAL / TESTIMONIALS ---------- */
+/* The section titled "Patients love enFuse" opened straight onto three quote
+   cards with no picture of the thing being loved. This is Enable's own studio
+   shot of the complete system. */
+.product-shot{margin:clamp(28px,4vw,44px) 0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper-2)}
+/* contain, not cover. This is a studio shot on a grey sweep, and cropping it to
+   a band cut the top off the vial and the bottom off the device — the two
+   objects the caption names. The panel is set to the photo's own grey so the
+   letterboxing is invisible. */
+.product-shot img{display:block;width:100%;height:clamp(240px,30vw,400px);object-fit:contain;background:#C7C7C7}
+.product-shot figcaption{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);
+  padding:12px 18px;border-top:1px solid var(--line);background:#fff}
+
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media (max-width:900px){ .testi-grid{grid-template-columns:1fr} }
 .testi{background:var(--tint);border-radius:var(--r);padding:28px 26px;position:relative}
@@ -458,11 +506,10 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:clamp(
   <div class="steps">
     <div class="step" data-rise>
       <span class="n">01</span>
-      <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <rect x="10" y="6" width="14" height="30" rx="3" stroke="currentColor" stroke-width="2"/>
-        <path d="M24 20h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H24" stroke="currentColor" stroke-width="2"/>
-        <circle cx="17" cy="14" r="2.4" fill="currentColor"/>
-      </svg>
+      <figure class="step-shot">
+        <img src="assets/enfuse-syringe-transfer-system-for-wearable-drug.webp" loading="lazy"
+          decoding="async" alt="A prefilled syringe being loaded into the enFuse transfer system">
+      </figure>
       <h3>enFuse Transfer Systems</h3>
       <p>Moves the medication from vial or prefilled syringe into the wearable's reservoir &mdash; the
         preparation step that happens before the device ever touches skin.</p>
@@ -470,11 +517,10 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:clamp(
     </div>
     <div class="step" data-rise>
       <span class="n">02</span>
-      <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="2"/>
-        <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2"/>
-        <line x1="24" y1="41" x2="24" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
+      <figure class="step-shot">
+        <img src="assets/empaveli-injector-by-apellis-pharmaceuticals-pow.webp" loading="lazy"
+          decoding="async" alt="The enFuse wearable adhered to a patient's abdomen">
+      </figure>
       <h3>enFuse Wearable</h3>
       <p>Adheres to the skin and delivers large volumes of medication subcutaneously, hands&#8209;free,
         instead of an IV line &mdash; the device patients actually wear.</p>
@@ -482,17 +528,38 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:clamp(
     </div>
     <div class="step" data-rise>
       <span class="n">03</span>
-      <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <rect x="14" y="6" width="20" height="36" rx="4" stroke="currentColor" stroke-width="2"/>
-        <path d="M20 16h8M20 24h8M20 32h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
+      <figure class="step-shot">
+        <img src="assets/smart-enfuse-connected-device-ecosystem-mobile-a.webp" loading="lazy"
+          decoding="async" alt="The enFuse device paired with its companion app and clinician dashboard">
+      </figure>
       <h3>enFuse Smart Technology</h3>
       <p>A companion digital layer &mdash; built with Aptar Digital Health &mdash; that tracks the
         infusion and keeps patients and providers connected to it in real time.</p>
       <span class="tag">Connected care</span>
     </div>
   </div>
+
+  <figure class="setup-strip" data-rise>
+    <img src="assets/three-step-enfuse-wearable-setup-process-infogra.webp" loading="lazy"
+      decoding="async" alt="The three-step enFuse setup: fill, start, remove">
+    <figcaption>Fill &middot; Start &middot; Remove &mdash; Enable's own setup sequence</figcaption>
+  </figure>
 </div></section>
+
+<!-- WHO IT IS FOR — the client's own photography of the people it treats -->
+<section class="people-band" data-rise aria-label="The people enFuse is for">
+  <img src="assets/about-2022-1-20-enableinjections-76178-edit-enab.jpg" loading="lazy"
+    decoding="async" alt="Three people standing together against an Enable magenta backdrop">
+  <div class="wash" aria-hidden="true"></div>
+  <div class="copy">
+    <div class="wrap">
+      <h2>An infusion used to mean a chair and an afternoon.</h2>
+      <p>enFuse delivers 5 to 25 milliliters under the skin, hands-free, while the person wearing it
+        carries on with the day. That is the change the clearance and the partnerships are underwriting.</p>
+    </div>
+  </div>
+  <span class="cred">Photography &middot; Enable Injections</span>
+</section>
 
 <!-- PARTNERS & CLEARANCE — the credibility this study pulls above the fold -->
 <section class="pad on-dark" id="partners"><div class="wrap">
@@ -534,6 +601,12 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:clamp(
     <p class="col">The EMPAVELI Injector, built on the enFuse platform with Apellis, is already in
       patients' hands. These are their own words.</p>
   </div>
+
+  <figure class="product-shot" data-rise>
+    <img src="assets/patient-preference-icon-100-preferred-enfuse-ove.webp" loading="lazy"
+      decoding="async" alt="The complete enFuse system: vial transfer unit and the wearable device">
+    <figcaption>The complete system &mdash; transfer unit and wearable, photographed by Enable</figcaption>
+  </figure>
 
   <div class="testi-grid">
     <div class="testi" data-rise>
