@@ -38,14 +38,24 @@ const PLATFORM = [
 ];
 
 export function LogoMark({ size = 22 }: { size?: number }) {
+  /* Daniel's heart, the same traced path the favicon and the site mark use.
+     currentColor so it tints to whatever surface it sits on. */
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none"
+    <svg width={size} height={size} viewBox="0 0 512 512" fill="currentColor"
          xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="shrink-0">
-      <rect x="18" y="18" width="27" height="27" stroke="currentColor" strokeWidth="7" />
-      <rect x="55" y="18" width="27" height="27" fill="currentColor" />
-      <rect x="18" y="55" width="27" height="27" fill="currentColor" />
-      <path d="M55 55H82V82H55V55Z" stroke="currentColor" strokeWidth="7" />
-      <circle cx="68.5" cy="68.5" r="9" fill="var(--teal)" />
+      <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)">
+        <path d="M3625 4649 c-104 -26 -586 -194 -635 -221 -77 -43 -119 -77 -246
+-200 -129 -124 -159 -137 -240 -113 -70 21 -181 100 -305 219 -121 116 -195
+159 -379 220 -214 71 -334 70 -562 -3 -68 -22 -167 -51 -220 -65 -208 -54
+-347 -163 -476 -373 -97 -159 -103 -181 -113 -378 -5 -93 -13 -192 -19 -220
+-24 -113 -28 -193 -22 -460 8 -322 4 -309 176 -594 130 -217 141 -227 388
+-384 82 -53 121 -90 211 -202 44 -55 115 -136 156 -180 42 -44 109 -120 150
+-170 98 -120 124 -143 276 -242 224 -147 335 -280 579 -700 93 -161 185 -203
+277 -125 58 48 354 408 544 660 95 126 161 203 205 240 162 135 180 153 241
+252 77 126 115 159 286 250 226 119 281 161 465 348 360 366 403 501 375 1182
+-10 231 -22 284 -89 387 -65 100 -90 151 -132 270 -71 207 -106 243 -310 323
+-100 39 -144 70 -233 163 -91 96 -135 119 -233 123 -41 2 -93 -1 -115 -7z" />
+      </g>
     </svg>
   );
 }

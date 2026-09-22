@@ -100,8 +100,7 @@ FOOTER = (
 
     '<div class="footer-legal">'
     '<span>&copy; 2026 LOVELEEDAY Studios</span>'
-    '<span>Design concept · Interactive examples use demonstration data · '
-    'Lifestyle photography is licensed stock</span>'
+    '<span>Interactive examples use demonstration data · Photography is licensed stock</span>'
     '</div>'
 
     '</div></footer>')
