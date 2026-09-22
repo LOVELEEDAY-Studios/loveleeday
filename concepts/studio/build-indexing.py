@@ -69,8 +69,8 @@ for name, (prio, freq, section) in PAGES.items():
     url = ORIGIN + ("/" if name == "index.html" else "/" + name)
     # The homepage card demonstrates; the rest carry the brand card, which is
     # the one that survives being rendered two inches wide.
-    img = f"{ORIGIN}/assets/share-home.png" if name == "index.html" \
-          else f"{ORIGIN}/assets/share.png"
+    img = f"{ORIGIN}/assets/share-home.jpg" if name == "index.html" \
+          else f"{ORIGIN}/assets/share.jpg"
 
     if name == "index.html":
         ld = ('{"@context":"https://schema.org","@type":"Organization",'
