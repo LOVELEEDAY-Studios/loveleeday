@@ -51,6 +51,24 @@ const nextConfig: NextConfig = {
     // metadata; the static files cannot, so the header covers both.
     return [
       {
+        /* The site shipped with HSTS from Vercel but nothing stopping another
+           origin from framing it, so a client review page could be loaded
+           invisibly under a decoy and clicked through. frame-ancestors is the
+           modern control; X-Frame-Options covers browsers that ignore CSP.
+           Deliberately NOT a full CSP: the marketing pages under public/site
+           carry inline <script> and <style>, and a script-src without a nonce
+           would break them silently in production. */
+        source: "/(.*)",
+        headers: [
+          { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+      {
+        // Listed after the site-wide block so its stricter Referrer-Policy wins.
         source: "/:path(p|portal)/:rest*",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet" },
