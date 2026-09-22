@@ -23,6 +23,13 @@ const FOR_DIR: Record<string, string> = {
   novarna: TOKENS.novarna,
   soarce: TOKENS.soarce,
   loanwell: TOKENS.loanwell,
+  /* A study added to portals.ts but not to this map 404s for everyone, with the
+     deliberate silence this gate was built for — no log line, no error, and a
+     404 that reads as "the file is missing" rather than "you are not allowed".
+     Enable shipped that way on 2026-09-22 and cost an afternoon to find. If you
+     add a study, add it here in the same commit. */
+  ...(TOKENS.enable ? { enable: TOKENS.enable } : {}),
+  ...(TOKENS.venturehue ? { venturehue: TOKENS.venturehue } : {}),
 };
 
 export function proxy(req: NextRequest) {

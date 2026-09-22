@@ -60,16 +60,34 @@ const nextConfig: NextConfig = {
            would break them silently in production. */
         source: "/(.*)",
         headers: [
-          { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
-          { key: "X-Frame-Options", value: "DENY" },
+          /* 'self', not 'none'. The threat is another origin framing a client
+             review page under a decoy — 'self' stops that just as completely.
+             'none' also blocked the site framing its OWN deliverables, and the
+             portal Viewer is an iframe of /portal/<slug>/ served from the same
+             origin, so every client preview went blank. Shipped 2026-09-22 in
+             b7f15d7 and caught by Daniel opening a portal, not by any check. */
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
         ],
       },
       {
-        // Listed after the site-wide block so its stricter Referrer-Policy wins.
-        source: "/:path(p|portal)/:rest*",
+        /* Listed after the site-wide block so its stricter Referrer-Policy wins.
+           Was "/:path(p|portal)/:rest*". Next 16 uses path-to-regexp v8, which
+           REMOVED the :param(regex) form — that pattern is not a stricter match,
+           it is an invalid one, and every /portal/<slug>/index.html returned 404
+           while /site/index.html beside it returned 200. Two plain sources
+           instead. See AGENTS.md: this is not the Next you know. */
+        source: "/p/:rest*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+        ],
+      },
+      {
+        source: "/portal/:rest*",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet" },
           { key: "Referrer-Policy", value: "no-referrer" },
