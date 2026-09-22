@@ -39,7 +39,7 @@ ORIGIN = "https://loveleedaystudios.com"
 
 PAGES = ["index", "operating-system", "arthur", "architecture", "use-cases",
          "industries", "municipal-review", "customer-data", "pricing-margins",
-         "operational-intelligence", "principles", "studio"]
+         "operational-intelligence", "principles", "studio", "privacy"]
 
 def clean(name):
     return "/" if name == "index" else "/" + name

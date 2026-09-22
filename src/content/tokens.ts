@@ -24,6 +24,16 @@ function tok(name: string): string {
   return v;
 }
 
+/** A fund study may exist before it is shareable: no token, not published. */
+function tokOptional(name: string): string | undefined {
+  const v = process.env[name];
+  if (!v) return undefined;
+  if (v.length < 12) {
+    throw new Error(`Share token ${name} is set but too short to be a credential.`);
+  }
+  return v;
+}
+
 export const TOKENS = {
   micruity: tok("PORTAL_TOKEN_MICRUITY"),
   janta: tok("PORTAL_TOKEN_JANTA"),
@@ -32,4 +42,10 @@ export const TOKENS = {
   soarce: tok("PORTAL_TOKEN_SOARCE"),
   loanwell: tok("PORTAL_TOKEN_LOANWELL"),
   collab: tok("PORTFOLIO_TOKEN_COLLAB"),
+  elemental: tokOptional("PORTAL_TOKEN_ELEMENTAL"),
+  // Funds on the PitchMI AI & Software panel. Each publishes the moment its
+  // token is set; until then the study is written but unreachable.
+  corewell: tokOptional("PORTFOLIO_TOKEN_COREWELL"),
+  assembly: tokOptional("PORTFOLIO_TOKEN_ASSEMBLY"),
+  elab: tokOptional("PORTFOLIO_TOKEN_ELAB"),
 } as const;

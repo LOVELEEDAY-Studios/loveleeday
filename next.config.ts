@@ -30,6 +30,7 @@ const nextConfig: NextConfig = {
       { source: "/operational-intelligence", destination: "/site/operational-intelligence.html" },
       { source: "/principles", destination: "/site/principles.html" },
       { source: "/studio", destination: "/site/studio.html" },
+      { source: "/privacy", destination: "/site/privacy.html" },
       ],
     };
   },
