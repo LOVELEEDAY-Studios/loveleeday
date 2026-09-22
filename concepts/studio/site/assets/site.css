@@ -301,8 +301,7 @@ h2 span{color:#8c8e95}
 /* ── FOOTER ────────────────────────────────────────────────────────────────
    One grid, one surface, every item a real destination. Dark because the page
    above is white and a page should end rather than fade -- the move Vercel and
-   Palantir both make. Figures in the live strip are read from the ontology at
-   build time by store.py and stamped with the date they were read.           */
+   Palantir both make.                                                     */
 .site-footer{background:#14110e;color:#c9c2b8;padding-block:76px 40px;border-top:0}
 
 .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--s5);
@@ -331,23 +330,14 @@ h2 span{color:#8c8e95}
   color:#bdb5aa;text-decoration:none;transition:color .15s}
 .footer-col a:hover{color:#fff}
 
-.footer-live{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;padding:15px 20px;
-  border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.035)}
-.footer-live-dot{width:7px;height:7px;border-radius:50%;background:#3ddc84;flex:none;
-  box-shadow:0 0 0 3px rgba(61,220,132,.16)}
-.footer-live-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7d756a}
-.footer-live-figs{font-size:13px;color:#a9a196;font-variant-numeric:tabular-nums}
-.footer-live-figs b{color:#fff;font-weight:600}
-.footer-live-figs i{font-style:normal;color:#4d453c;padding:0 9px}
-.footer-live-read{margin-left:auto;font-size:11px;color:#8b8277;white-space:nowrap}
 
-.footer-legal{display:flex;justify-content:space-between;gap:var(--s4);margin-top:var(--s4);
+.footer-legal{display:flex;justify-content:space-between;gap:var(--s4);
+  padding-top:var(--s4);border-top:1px solid rgba(255,255,255,.1);
   font-size:11px;line-height:1.7;color:#615a51}
 
 @media(max-width:900px){
   .footer-grid,.footer-services-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4) var(--s3)}
-  .footer-live-read{margin-left:0;width:100%}
-}
+  }
 @media(max-width:700px){
   .site-footer{padding-block:56px 32px}
   .footer-top{flex-direction:column;gap:var(--s4)}
