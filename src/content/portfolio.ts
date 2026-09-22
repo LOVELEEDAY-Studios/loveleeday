@@ -198,7 +198,81 @@ const collab: Portfolio = {
 };
 
 /** Every fund study that exists. One publishes only once it has a token. */
-export const portfolios: Portfolio[] = [collab];
+/**
+ * Lightship Capital — Brian Brackeen, Funder's Panel, 2026-09-22.
+ *
+ * Every figure below was checked directly with curl or local Lighthouse on
+ * 2026-09-22, not taken from a research summary. Where the coverage is partial
+ * the denominator is stated on the page rather than rounded away — 7 of 18
+ * measured is a finding; "median performance 56" on its own would be a claim.
+ */
+const lightship: Portfolio = {
+  token: TOKENS.lightship,
+  fund: "Lightship Capital",
+  fundDomain: "lightship.capital",
+  preparedFor: "Lightship Capital",
+  deliveredOn: "2026-09-22",
+  intro:
+    "Nothing here was commissioned and nothing is a proposal. We read your portfolio page, opened every company on it, and measured what a buyer actually receives — then rebuilt one of them in working HTML rather than describing it in a deck. Two findings are about domains rather than design, and those matter most, because a link that leaves your own portfolio page is the first thing anyone doing diligence will click.",
+
+  fundFindings: [
+    {
+      title: "Two portfolio companies are linked to domains they no longer control",
+      detail:
+        "joinbootup.com returns HTTP 200 and serves a page titled “SLOT DANA | Panduan Lengkap Slot Deposit Via DANA Terbaru 100% Aman” — an Indonesian gambling site that acquired the lapsed domain. semiosis-ai.com returns HTTP 404 with the title “ConnectYourDomain Error | Wix.com”. Both are still linked from lightship.capital/portfolio. This is a registrar and legal problem before it is a design one.",
+    },
+    {
+      title: "A live site is shipping its CMS's own instruction text",
+      detail:
+        "enableinjections.com contains the literal string “Delete this tip before you publish” in its served HTML, and undock.com's navigation resolves to URLs containing “features/undefined”. Both were read from the raw response, not from a rendering. Enable has FDA clearance and partnerships with Sanofi, Roche and Sobi; the gap between that credibility and a page carrying editor scaffolding is the widest in the portfolio.",
+    },
+    {
+      title: "Page weight, not page design, is what most of these are losing to",
+      detail:
+        "Of the seven companies measured so far, allergyamulet.com transfers 50.3 MB and reaches largest contentful paint at 25.2 seconds on a mobile connection. hautehijab.com is 13.2 seconds, undock.com 18.7, freshfry.me 8.8. These are not judgements about taste — they are the numbers Google records, and they decide whether anyone sees the design at all.",
+    },
+  ],
+
+  stats: [
+    { k: "18", label: "Companies in the portfolio", sub: "Read from lightship.capital/portfolio, 2026-09-22" },
+    { k: "2", label: "Linked to domains they have lost", sub: "Bootup and Semiosis AI — confirmed by direct request" },
+    { k: "56", label: "Median mobile performance", sub: "Lighthouse, mobile, 7 of 18 measured so far — not the whole portfolio" },
+    { k: "50.3", label: "MB on the heaviest page", sub: "allergyamulet.com. LCP 25.2s. Measured locally, not estimated" },
+  ],
+
+  cases: [
+    {
+      slug: "enable",
+      company: "Enable Injections",
+      domain: "enableinjections.com",
+      portalToken: TOKENS.enable as string,
+      sector: "Wearable large-volume drug delivery · Cincinnati, OH",
+      before: v("/portal/lightship/enable-before.jpg"),
+      after: v("/portal/lightship/enable-after.jpg"),
+      thesis:
+        "This company has the rarest thing in medtech marketing and does not lead with it. enFuse is FDA-cleared and carries named partnerships with Sanofi, Roche and Sobi — and on the live site those partners sit under a heading called “Current Partnerships” several scrolls below the fold, after the product explanation. The rebuild changes the order and nothing else: clearance and partners ride in the hero, the mechanism is drawn rather than described, and the patient quotes they already publish do the closing.",
+      findings: [
+        "Their site is technically healthy and this study does not claim otherwise: Lighthouse mobile on 2026-09-22 returns performance 88, SEO 100, accessibility 99, best practices 100, with largest contentful paint at 2.1 seconds. Nothing here is a speed argument.",
+        "The served HTML is 255,331 bytes for one page before a single stylesheet, script or image loads, and sixty data-lazy attributes defer the imagery. That deferral is working in their favour — it is why the page is fast — and the only cost is that the middle of the page is empty until a visitor scrolls.",
+        "The string “Delete this tip before you publish” is live in the page — the CMS's own instruction to the author, published.",
+        "The rebuild uses their own magenta and navy, sampled from the rendered page's computed styles rather than guessed, and their own Montserrat. The device is hand-built inline SVG; no stock photography.",
+      ],
+      search:
+        "Not measured. The Collab study quoted live search positions from SerpApi; that key is not in this project's environment, so no position is claimed here rather than estimated from a search we did not run.",
+    },
+  ],
+
+  method: [
+    "Company list read from lightship.capital/portfolio directly on 2026-09-22 — 18 companies, no pagination detected.",
+    "Every domain was requested with a real browser user agent and its status and page title recorded. A 403 from a Cloudflare challenge is reported as blocked, never as broken: visuwall.com returns 403 and is excluded from every count here rather than scored as a defect.",
+    "Lighthouse was run locally, mobile profile, because the PageSpeed Insights API returned HTTP 429 on the first sixteen requests and did not recover at one request at a time. Seven of eighteen companies are measured so far; the median above says so. Two more — healthyrootsdolls.com and vyrill.com — failed to return a result and are excluded rather than scored zero.",
+    "No CrUX field data is quoted anywhere on this page. Local Lighthouse cannot see it, and an absent field record would need its own explanation rather than a blank.",
+    "Bootup and Semiosis AI are excluded from all performance figures. Measuring a domain the company no longer controls would attach a score to someone else's site.",
+    "Every figure on the Enable rebuild belongs to Enable and is read from their own site or their own published material. We have not independently verified their clinical claims.",
+  ],
+};
+
+export const portfolios: Portfolio[] = [collab, lightship];
 
 /** Studies reachable right now -- the ones whose token is set. */
 export const publishedPortfolios = portfolios.filter((p) => Boolean(p.token));
