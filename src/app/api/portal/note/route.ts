@@ -70,7 +70,7 @@ export async function POST(request: Request) {
           <p style="line-height:1.6;white-space:pre-wrap;margin:0">${esc(note)}</p>
         </div>
         <p style="margin-top:1.5rem;font-size:12px;color:#5A5A55">
-          <a href="https://loveleedaystudios.com/p/${esc(portal.token)}${deliverable ? "/" + esc(deliverable.slug) : ""}" style="color:#111">Open the portal page they were looking at</a>
+          <a href="https://loveleedaystudios.com/p/${esc(portal.token ?? "")}${deliverable ? "/" + esc(deliverable.slug) : ""}" style="color:#111">Open the portal page they were looking at</a>
         </p>
       </div>`,
     });

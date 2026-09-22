@@ -28,7 +28,8 @@ export interface Case {
 }
 
 export interface Portfolio {
-  token: string;
+  /** Undefined until the fund's token is set: written, not yet reachable. */
+  token?: string;
   fund: string;
   fundDomain: string;
   preparedFor: string;
@@ -42,7 +43,7 @@ export interface Portfolio {
   method: string[];
 }
 
-export const portfolio: Portfolio = {
+const collab: Portfolio = {
   token: TOKENS.collab,
   fund: "Collab Capital",
   fundDomain: "collab.capital",
@@ -195,3 +196,16 @@ export const portfolio: Portfolio = {
     "Photography across these studies is real licensed stock from Pexels, credited in each page. An earlier version of the Micruity study used AI-generated people and it was replaced. The Fyxit conversation and queue are illustrative values built to show the layout, not data from their system.",
   ],
 };
+
+/** Every fund study that exists. One publishes only once it has a token. */
+export const portfolios: Portfolio[] = [collab];
+
+/** Studies reachable right now -- the ones whose token is set. */
+export const publishedPortfolios = portfolios.filter((p) => Boolean(p.token));
+
+export function getPortfolio(token: string): Portfolio | undefined {
+  return publishedPortfolios.find((p) => p.token === token);
+}
+
+/** Kept so existing imports do not break; prefer getPortfolio(token). */
+export const portfolio = collab;
