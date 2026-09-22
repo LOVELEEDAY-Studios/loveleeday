@@ -137,6 +137,9 @@ a{color:inherit;text-decoration:none}
   font:400 1rem/1.3 var(--ser);font-style:italic;color:var(--amber)}
 
 /* brain + close */
+.bleed{position:relative;height:clamp(320px,56vh,680px);background:#241109;
+  border-top:1px solid var(--edge)}
+.bleed .plate{position:absolute;inset:0}
 .brain{position:relative;background:#0B0608;overflow:hidden;height:clamp(430px,68vh,740px);
   border-top:1px solid var(--edge)}
 .brain canvas{display:block;width:100%;height:100%}
@@ -163,8 +166,8 @@ foot{display:block;padding:34px 0 48px;border-top:1px solid var(--edge);
   <div class=mark>LOVELEEDAY</div>
   <div class=line>It answers the question you did not think to ask.</div>
   <div class=w><div class=rule>
-    <div><b>379</b>aliases resolved</div><div><b>159</b>objects</div>
-    <div><b>1,659</b>observations</div><div><b>7</b>live sources</div>
+    <div><b>381</b>aliases resolved</div><div><b>160</b>objects</div>
+    <div><b>1,660</b>observations</div><div><b>7</b>live sources</div>
     <div><b>0</b>without lineage</div>
   </div></div></div></div>
 
@@ -175,10 +178,12 @@ foot{display:block;padding:34px 0 48px;border-top:1px solid var(--edge);
   be traced is refused before anyone can publish it.</p>
 </div></section>
 
+<div class=bleed><div class=plate><img src="../../../public/studio/firm/people-corridor.jpg" alt=""></div></div>
+
 <section class=arch id=platform><div class=w>
   <span class=lab>The platform</span>
   <h2>Five components. <em>Each one enforced in the write path.</em></h2>
-  <div class=ar><div class=n>01</div><div><div class=nm>Ontology</div><div class=cl>Four strings, one object.</div></div><div class=ds>379 aliases resolve onto 159 objects across 7 systems. Ask about the company, never about whichever name a source happened to use.</div><div class=fg>379 &rarr; 159</div></div><div class=ar><div class=n>02</div><div><div class=nm>Lineage</div><div class=cl>A figure with no trail is not reportable.</div></div><div class=ds>A write without a source system and a source reference is refused at the path &mdash; not flagged, not defaulted, refused. 0 of 1,659 observations carry none.</div><div class=fg>100%</div></div><div class=ar><div class=n>03</div><div><div class=nm>Bitemporal record</div><div class=cl>What was true, and what we knew.</div></div><div class=ds>Every value carries when it was true in the world and when we learned it. Judging an August decision with September knowledge is look-ahead bias; the store will not do it.</div><div class=fg>2 timelines</div></div><div class=ar><div class=n>04</div><div><div class=nm>Verifier</div><div class=cl>It refuses our own numbers first.</div></div><div class=ds>Every figure in a claim is checked against the 696 properties in force. Unsupported means do not publish.</div><div class=fg>696 checked</div></div><div class=ar><div class=n>05</div><div><div class=nm>Standing conditions</div><div class=cl>The question you did not think to ask.</div></div><div class=ds>4 conditions watch the store and fire when the world changes underneath a decision. 2 have fired.</div><div class=fg>4 watching</div></div>
+  <div class=ar><div class=n>01</div><div><div class=nm>Ontology</div><div class=cl>Four strings, one object.</div></div><div class=ds>381 aliases resolve onto 160 objects across 7 systems. Ask about the company, never about whichever name a source happened to use.</div><div class=fg>381 &rarr; 160</div></div><div class=ar><div class=n>02</div><div><div class=nm>Lineage</div><div class=cl>A figure with no trail is not reportable.</div></div><div class=ds>A write without a source system and a source reference is refused at the path &mdash; not flagged, not defaulted, refused. 0 of 1,660 observations carry none.</div><div class=fg>100%</div></div><div class=ar><div class=n>03</div><div><div class=nm>Bitemporal record</div><div class=cl>What was true, and what we knew.</div></div><div class=ds>Every value carries when it was true in the world and when we learned it. Judging an August decision with September knowledge is look-ahead bias; the store will not do it.</div><div class=fg>2 timelines</div></div><div class=ar><div class=n>04</div><div><div class=nm>Verifier</div><div class=cl>It refuses our own numbers first.</div></div><div class=ds>Every figure in a claim is checked against the 697 properties in force. Unsupported means do not publish.</div><div class=fg>697 checked</div></div><div class=ar><div class=n>05</div><div><div class=nm>Standing conditions</div><div class=cl>The question you did not think to ask.</div></div><div class=ds>4 conditions watch the store and fire when the world changes underneath a decision. 2 have fired.</div><div class=fg>4 watching</div></div>
 </div></section>
 
 <section class=prod><div class=w>
@@ -209,13 +214,13 @@ vendor:fintech-equipment-services  (vendor)  matched on "FES" via alias</pre></d
   <div class=hd>
     <div><span class=lab>Verifier &middot; live</span>
       <h3>It refuses <em>our own numbers first.</em></h3></div>
-    <p class=note>Every figure in a claim is checked against the 696 properties in force.
+    <p class=note>Every figure in a claim is checked against the 697 properties in force.
     This is the check run against a sentence we wrote for this page. It failed, so the sentence
     is not on it.</p>
   </div>
   <div class=term><div class=tb><i></i><i></i><i></i><span>arthur-verify</span></div><pre><span class=cmd>$ arthur-verify "We resolved 4,000 objects for a Fortune 500 client last quarter."</span>
 
-verifying 2 figure(s) against 696 live properties
+verifying 2 figure(s) against 697 live properties
 ────────────────────────────────────────────────────────────────────────
   UNSUPPORTED  4,000
                no live property holds this value — do not publish it
@@ -227,6 +232,8 @@ verifying 2 figure(s) against 696 live properties
 
 <div class=brain><canvas data-brain></canvas></div>
 
+<div class=bleed><div class=plate><img src="../../../public/studio/firm/colonnade.jpg" alt=""></div></div>
+
 <section class=src><div class=w>
   <span class=lab>What it reads</span>
   <h2 style="margin:14px 0 clamp(24px,4vh,44px);font:300 clamp(2.2rem,5.2vw,4.4rem)/1.02 var(--sans);letter-spacing:-.042em;max-width:19ch">A payment ledger, a satellite, <em style="font-family:var(--ser);font-style:italic;font-weight:400;color:var(--amber)">and the weather.</em></h2>
@@ -236,11 +243,15 @@ verifying 2 figure(s) against 696 live properties
   system can answer is bounded by what it can read, never by the department the question belongs to.</p>
 </div></section>
 
+<div class=bleed><div class=plate><img src="../../../public/studio/firm/people-concourse.jpg" alt=""></div></div>
+
 <section class=work id=work><div class=w>
   <span class=lab>The work</span>
   <h2 style="margin:14px 0 0;font:300 clamp(2.2rem,5.2vw,4.4rem)/1.02 var(--sans);letter-spacing:-.042em;max-width:21ch">The answer you asked for, <em style="font-family:var(--ser);font-style:italic;font-weight:400;color:var(--amber)">and the one you did not.</em></h2>
-  <div class=wg><div class=wc><span class=k>Catalogue pricing</span><div class=t>An ERP migration</div><div class=d>Hundreds of items carried a price floor beneath what the item cost to buy. Found, quantified line by line, and written back as import files inside one working day.</div><div class=f>Nobody asked the question</div></div><div class=wc><span class=k>Portfolio rebuilds</span><div class=t>38 sites measured, 6 rebuilt</div><div class=d>Six companies in one venture portfolio, measured end to end on page weight, Lighthouse and live search position, then rebuilt to prove the argument in working HTML.</div><div class=f>Nobody commissioned them</div></div><div class=wc><span class=k>The object layer</span><div class=t>159 objects, 7 live sources</div><div class=d>A payment ledger, a mailbox, an infrastructure fleet, a gazetteer, a satellite and the weather, resolved onto single objects and answerable in one sentence.</div><div class=f>Running now</div></div></div>
+  <div class=wg><div class=wc><span class=k>Catalogue pricing</span><div class=t>An ERP migration</div><div class=d>Hundreds of items carried a price floor beneath what the item cost to buy. Found, quantified line by line, and written back as import files inside one working day.</div><div class=f>Nobody asked the question</div></div><div class=wc><span class=k>Portfolio rebuilds</span><div class=t>38 sites measured, 6 rebuilt</div><div class=d>Six companies in one venture portfolio, measured end to end on page weight, Lighthouse and live search position, then rebuilt to prove the argument in working HTML.</div><div class=f>Nobody commissioned them</div></div><div class=wc><span class=k>The object layer</span><div class=t>160 objects, 7 live sources</div><div class=d>A payment ledger, a mailbox, an infrastructure fleet, a gazetteer, a satellite and the weather, resolved onto single objects and answerable in one sentence.</div><div class=f>Running now</div></div></div>
 </div></section>
+
+<div class=bleed><div class=plate><img src="../../../public/studio/firm/people-window.jpg" alt=""></div></div>
 
 <section class=end id=company><div class=w>
   <h2>We give <em>the day back.</em></h2>
@@ -398,7 +409,7 @@ Every figure on this page is read from the ontology at build time</div></foot>
             'Does every input carry lineage?',
             'Which source systems were stale?'],
       answer: 'Two vendors resolved to one object on 2026-08-19.',
-      evidence: '1,659 observations \u00b7 7 sources \u00b7 full trail printed' },
+      evidence: '1,660 observations \u00b7 7 sources \u00b7 full trail printed' },
 
     { ask: 'Who can read this table?',
       out: ['Which functions run as SECURITY DEFINER?',
