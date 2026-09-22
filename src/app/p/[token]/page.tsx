@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getPortal, isExpired, formatDate, portals } from "@/content/portals";
 import { NoteForm } from "@/components/portal/NoteForm";
 import { BeforeAfter } from "@/components/portal/BeforeAfter";
-import { portfolio } from "@/content/portfolio";
+import { portfolios } from "@/content/portfolio";
 
 export const dynamicParams = false;
 
@@ -76,9 +76,20 @@ export default async function PortalPage({
         {portal.deliverables.map((d, i) => {
           // Match on the client, not the deliverable: a portal may carry several
           // pages while the comparison is of the site as a whole.
-          const cmp = portfolio.cases.find(
-            (c) => c.company.toLowerCase() === portal.client.toLowerCase(),
-          );
+          //
+          // Search EVERY portfolio, not `portfolio` — that export is an alias
+          // for Collab kept so old imports would not break, so this lookup only
+          // ever saw Collab's six companies. Enable Injections belongs to
+          // Lightship and VentureHue to its own study, so both found nothing,
+          // `cmp` came back undefined, and the `{cmp && ...}` guard removed the
+          // comparison with no error and no empty box — the two clients whose
+          // portals most needed a before/after were the two that silently had
+          // none. Daniel, 2026-09-22: "for enable injector you dont have the
+          // scroll of before and after." A conditional render is the quietest
+          // possible failure; there is nothing on the page to notice.
+          const cmp = portfolios
+            .flatMap((p) => p.cases)
+            .find((c) => c.company.toLowerCase() === portal.client.toLowerCase());
           const flip = i % 2 === 1;
           return (
             <article
