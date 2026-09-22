@@ -465,7 +465,7 @@ export const portals: Portal[] = [
         caveats: [
           "Every claim, figure, partner name and patient quote belongs to you and was read from enableinjections.com on 2026-09-22. We have not independently verified any clinical claim.",
           "The device image is your own photograph, downloaded from your site. An earlier version of this study drew the device as a diagram instead; it was replaced because it did not look like your product.",
-          "Your site defers sixty images with data-lazy. That is working in your favour and we kept the approach — it is why your page is fast.",
+          "Your site defers sixty images with data-lazy. That is working in your favor and we kept the approach — it is why your page is fast.",
           "No search positions are claimed anywhere in this study. The tooling that measured search for other studies in this portfolio is not configured on this project, so rather than estimate we say nothing.",
         ],
         seo: {
@@ -520,7 +520,7 @@ export const portals: Portal[] = [
         caveats: [
           "Your live homepage and /project/ both render “Nothing Found”, and the individual project pages return 404. The copy here was recovered from a June 2026 archive of your own site, not written for you.",
           "The page carries no photography. That is a real gap and the honest reason is that we found none of yours to use. Novarna's study in this portfolio is carried by four photographs; this one is carried by type alone.",
-          "Brand colours were sampled from venturehue.com's stylesheet rather than guessed, but you have no published brand guide we could check them against.",
+          "Brand colors were sampled from venturehue.com's stylesheet rather than guessed, but you have no published brand guide we could check them against.",
           "No search positions are claimed. The tooling that measured search for other studies is not configured on this project, so rather than estimate we say nothing.",
         ],
       },
