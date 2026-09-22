@@ -345,3 +345,102 @@ h2 span{color:#8c8e95}
   .footer-line{font-size:17px}
   .footer-legal{flex-direction:column;gap:var(--s2)}
 }
+
+/* ── ARCHITECTURE LAYER FIGURES ────────────────────────────────────────────
+   Five diagrams, one per layer, each showing that layer's own mechanic. The
+   panel, border, radius and blue are the ones .schema already uses, and the
+   green and amber are the ones .form-feedback already uses, so no new colour
+   enters the palette. Motion stays paused until the figure is scrolled into
+   view, and is removed entirely under prefers-reduced-motion -- where every
+   figure holds its resolved final state, so the diagram still reads.        */
+.layer-fig{margin:var(--s4) 0 0;padding:var(--s3);border:1px solid #e5e9ef;border-radius:12px;
+  background:#fafbfd}
+.layer-fig svg{display:block;width:100%;height:auto;overflow:visible}
+
+.layer-fig text{font-family:var(--sans);font-size:11px;fill:#5d6672}
+.layer-fig .fig-t{text-anchor:middle}
+.layer-fig .fig-lab{font-size:10px;fill:#929cab}
+.layer-fig .fig-axis{font-size:9px;letter-spacing:.12em;fill:#a4acb8;text-anchor:start}
+.layer-fig .fig-in rect{fill:#fff;stroke:#e1e6ee}
+.layer-fig .fig-out rect{fill:#eaf1fb;stroke:#d3e2f6}
+.layer-fig .fig-out text{fill:#3d6ca3;font-weight:550}
+.layer-fig .fig-link{fill:none;stroke:#c3cedd;stroke-width:1.5}
+.layer-fig .fig-pulse{fill:none;stroke:#8fb5e2;stroke-width:1.5;opacity:0}
+
+/* Each figure's motion is one timeline; the stagger is a delay per element. */
+.layer-fig .d0{--d:0s}.layer-fig .d1{--d:.28s}.layer-fig .d2{--d:.56s}
+
+/* 01 identity — the connectors draw, then the resolved object breathes once. */
+[data-fig=identity] .fig-link{stroke-dasharray:180;stroke-dashoffset:180;
+  animation:figDraw .75s ease-out var(--d) forwards}
+[data-fig=identity] .fig-in{opacity:0;animation:figIn .45s ease-out var(--d) forwards}
+[data-fig=identity] .fig-out{opacity:0;animation:figIn .5s ease-out .95s forwards}
+[data-fig=identity] .fig-pulse{animation:figPulse 2.6s ease-out 1.3s infinite}
+
+/* 02 lineage — the trail builds downward, one link at a time. */
+[data-fig=lineage] .fig-in,[data-fig=lineage] .fig-out,[data-fig=lineage] .fig-lab{
+  opacity:0;animation:figIn .45s ease-out var(--d) forwards}
+[data-fig=lineage] .fig-link.vert{stroke-dasharray:26;stroke-dashoffset:26;
+  animation:figDraw .3s ease-out var(--d) forwards}
+
+/* 03 memory — the scrubber sweeps and the readout changes with it. */
+[data-fig=memory] .fig-track{stroke:#e8ecf2;stroke-width:12;stroke-linecap:round}
+[data-fig=memory] .fig-seg{fill:#dbe6f5}
+[data-fig=memory] .fig-seg.b{fill:#b9d0ef}
+[data-fig=memory] .fig-scrub line{stroke:#0071e3;stroke-width:1.5}
+[data-fig=memory] .fig-scrub circle{fill:#0071e3}
+[data-fig=memory] .fig-scrub{animation:figSweep 7s cubic-bezier(.65,0,.35,1) infinite}
+[data-fig=memory] .fig-readout{font-size:11px;fill:#3d6ca3;text-anchor:start;font-weight:550}
+[data-fig=memory] .r1{animation:figSwapA 7s linear infinite}
+[data-fig=memory] .r2{animation:figSwapB 7s linear infinite}
+
+/* 04 verification — both outcomes shown, because both are real outcomes. */
+[data-fig=verification] .fig-gate rect{fill:#fff;stroke:#d7dde6}
+[data-fig=verification] .fig-branch{fill:none;stroke:#d7dde6;stroke-width:1.5}
+[data-fig=verification] .fig-res rect{stroke-width:1}
+[data-fig=verification] .fig-res.pass rect{fill:#eaf4ee;stroke:#c6e0d1}
+[data-fig=verification] .fig-res.pass text{fill:#2f6b4f}
+[data-fig=verification] .fig-res.fail rect{fill:#fbf0e7;stroke:#ecd6c2}
+[data-fig=verification] .fig-res.fail text{fill:#8a4b1d}
+[data-fig=verification] .fig-res,[data-fig=verification] .fig-branch{opacity:.28}
+[data-fig=verification] .pass{animation:figAlt 6s ease-in-out infinite}
+[data-fig=verification] .fail{animation:figAlt 6s ease-in-out 3s infinite}
+
+/* 05 awareness — the value rises, crosses, and the condition fires. */
+[data-fig=awareness] .fig-thresh{stroke:#e0b48a;stroke-width:1.5;stroke-dasharray:4 4}
+[data-fig=awareness] .fig-lab.thr{fill:#b58150}
+[data-fig=awareness] .fig-curve{fill:none;stroke:#c3cedd;stroke-width:1.5;
+  stroke-dasharray:430;stroke-dashoffset:430;animation:figDraw 3.4s ease-in-out infinite}
+[data-fig=awareness] .fig-dot{fill:#0071e3;
+  animation:figRide 3.4s ease-in-out infinite;offset-path:path("M14 140 C 90 138, 150 128, 208 112 S 320 72, 396 52")}
+[data-fig=awareness] .fig-fire{opacity:0;animation:figFire 3.4s ease-out infinite}
+[data-fig=awareness] .fig-fire rect{fill:#fbf0e7;stroke:#ecd6c2}
+[data-fig=awareness] .fig-fire text{fill:#8a4b1d}
+[data-fig=awareness] .fig-fire .ring{fill:none;stroke:#e0b48a;stroke-width:1.5}
+
+@keyframes figDraw{to{stroke-dashoffset:0}}
+@keyframes figIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes figPulse{0%{opacity:.5;r:14}70%{opacity:0;r:34}100%{opacity:0;r:34}}
+@keyframes figSweep{0%,6%{transform:translateX(30px)}47%,53%{transform:translateX(250px)}
+  94%,100%{transform:translateX(452px)}}
+@keyframes figSwapA{0%,44%{opacity:1}52%,100%{opacity:0}}
+@keyframes figSwapB{0%,44%{opacity:0}52%,100%{opacity:1}}
+@keyframes figAlt{0%,4%{opacity:.28}12%,44%{opacity:1}52%,100%{opacity:.28}}
+@keyframes figRide{0%{offset-distance:0%;opacity:0}8%{opacity:1}
+  76%,100%{offset-distance:100%;opacity:1}}
+@keyframes figFire{0%,72%{opacity:0}82%,92%{opacity:1}100%{opacity:0}}
+
+/* Paused until scrolled to: motion that has already finished off-screen is
+   motion nobody saw, and five looping figures running at once is a battery
+   cost for something the reader is not looking at. */
+.layer-fig svg *{animation-play-state:paused}
+.layer-fig.is-in svg *{animation-play-state:running}
+
+@media(prefers-reduced-motion:reduce){
+  .layer-fig svg *{animation:none!important;opacity:1!important;
+    stroke-dashoffset:0!important;offset-distance:100%!important}
+  [data-fig=memory] .r1{opacity:0!important}
+  [data-fig=memory] .fig-scrub{transform:translateX(452px)}
+  [data-fig=verification] .fig-res,[data-fig=verification] .fig-branch{opacity:1!important}
+}
+@media(max-width:700px){.layer-fig{padding:var(--s2)}}
