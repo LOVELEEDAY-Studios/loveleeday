@@ -419,15 +419,15 @@ const hundredkm: Portfolio = {
       before: v("/portal/hundredkm/novarna-before.jpg"),
       after: v("/portal/hundredkm/novarna-after.jpg"),
       thesis:
-        "Novarna is in your portfolio and in Collab Capital's, which is why this rebuild already existed — it was built for that study and is shown here unchanged rather than made for this meeting. Their strongest piece of evidence sat in a paragraph near the bottom of their site: the University of Michigan's DiFeo Lab tested their candidates in its own facility, and the designs outperformed a treatment already on the market. An outside laboratory willing to say that is close to unheard of in this field.",
+        "Their strongest piece of evidence sits in a paragraph near the bottom of their site: the University of Michigan's DiFeo Lab tested their candidates in its own facility, and the designs outperformed a treatment already on the market. An outside laboratory willing to put its name to that is close to unheard of in this field, and on the page it is set as body text like everything else around it. This rebuild changes almost nothing except what the page leads with.",
       findings: [
         "The opening image is the molecule itself, drawn to its real shape and dimensions rather than illustrated, turning slowly as you read. It is built out of the page rather than loaded as a graphic, so the entire page weighs less than a single photograph.",
         "The Michigan result now has a section of its own instead of a footnote, laid out as a result you can take in at a glance.",
         "Measured on 22 September: novarna.ai scores 76 out of 100 for speed and full marks for findability, shows its first content in 4.9 seconds and weighs under a megabyte — among the healthiest sites in your portfolio before we touched anything.",
-        "They rebranded from CircNova, and circnova.com now forwards to novarna.ai. Your portfolio page still lists them as CircNova. So does Collab's.",
+        "They rebranded from CircNova, and circnova.com now forwards to novarna.ai. Your portfolio page still lists them under the old name, so anyone doing diligence who searches what you published will not find the company you funded.",
       ],
       search:
-        "Ninth out of nine for the phrase that describes their platform, measured for the Collab study on 19 September. The eight above them are scientific journals and catalog sites rather than companies — the category has no commercial rival in it yet.",
+        "Ninth out of nine for the phrase that describes their platform, measured on live Google results on 19 September. The eight above them are scientific journals and catalog sites rather than companies — the category has no commercial rival in it yet.",
     },
   ],
 
@@ -438,7 +438,7 @@ const hundredkm: Portfolio = {
     "Speed was measured with Google's own tool, run on our machines because Google's hosted version refused our requests. Same engine, no queue.",
     "Two earlier claims were checked and withdrawn rather than repeated. Athlytic and Health In Her HUE were both reported elsewhere as showing a blank page. Both display in full. The honest finding is that they are slow, not empty.",
     "We quote nothing about your companies' real visitor numbers. We measured the pages, not the traffic.",
-    "The Novarna rebuild shown here was built for the Collab Capital study and is presented unchanged. Every figure on it belongs to Novarna and was read from their own material.",
+    "Every figure on the Novarna rebuild belongs to Novarna and was read from their own site and their own published material. We have not independently verified any of their scientific claims.",
   ],
 };
 
