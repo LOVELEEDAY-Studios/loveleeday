@@ -123,8 +123,8 @@ export function NoteForm({ token, client, deliverables, defaultSlug, compact }: 
       {state === "error" && (
         <p className="mt-4 text-[13px] text-[var(--accent)]">
           {error}. You can also email{" "}
-          <a className="underline" href="mailto:daniel@loveleedaystudios.com">
-            daniel@loveleedaystudios.com
+          <a className="underline" href="mailto:hello@loveleedaystudios.com">
+            hello@loveleedaystudios.com
           </a>
           .
         </p>

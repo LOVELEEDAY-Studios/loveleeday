@@ -22,8 +22,8 @@ export default function PortalLayout({
             aria-label="LOVELEEDAY Studios — home"
           >
             <LogoMark size={26} />
-            <span className="text-[13px] font-medium tracking-[-0.01em]">
-              loveleeday<span className="text-[var(--dim)]"> studios</span><span className="text-[var(--accent)]">.</span>
+            <span className="text-[13px] font-semibold tracking-[0.18em]">
+              LOVELEEDAY
             </span>
           </Link>
           <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
@@ -37,8 +37,8 @@ export default function PortalLayout({
       <footer className="border-t border-[var(--line)]">
         <div className="mx-auto flex max-w-[1340px] flex-col gap-2 px-6 py-6 text-[12px] text-[var(--mid)] sm:flex-row sm:items-center sm:justify-between">
           <span>LOVELEEDAY Studios LLC</span>
-          <a href="mailto:daniel@loveleedaystudios.com" className="hover:text-[var(--ink)]">
-            daniel@loveleedaystudios.com
+          <a href="mailto:hello@loveleedaystudios.com" className="hover:text-[var(--ink)]">
+            hello@loveleedaystudios.com
           </a>
         </div>
       </footer>
