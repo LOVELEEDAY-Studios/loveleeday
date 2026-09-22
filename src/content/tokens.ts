@@ -51,6 +51,7 @@ export const TOKENS = {
   // The Funder's Panel itself, 2026-09-22: Brian Brackeen (Lightship Capital),
   // Shalanda Armstrong (100KM VC), Brittni Abiolu (VentureHue). Tokens are set,
   // so these three publish.
+  enable: tokOptional("PORTAL_TOKEN_ENABLE"),
   lightship: tokOptional("PORTFOLIO_TOKEN_LIGHTSHIP"),
   hundredkm: tokOptional("PORTFOLIO_TOKEN_HUNDREDKM"),
   venturehue: tokOptional("PORTFOLIO_TOKEN_VENTUREHUE"),

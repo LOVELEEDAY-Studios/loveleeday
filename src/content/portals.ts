@@ -431,6 +431,61 @@ export const portals: Portal[] = [
       },
     ],
   },
+  {
+    token: TOKENS.enable as string,
+    client: "Enable Injections",
+    clientDomain: "enableinjections.com",
+    project: "Marketing site — direction study",
+    round: "Round 01",
+    deliveredOn: "2026-09-22",
+    expiresOn: "2026-12-21",
+    intro:
+      "This is an unsolicited direction study and nothing here is a proposal. Your site is technically healthy — we measured it before we touched anything, and it scores better than most of the portfolio it sits in. The argument is about order, not speed: the things that make you credible are at the bottom of the page.",
+    next: [
+      "Open the page and scroll it the way a pharma partner would.",
+      "Leave notes anywhere on this page — they reach us by email immediately.",
+      "If the direction is right, we scope the build against your full site map.",
+    ],
+    deliverables: [
+      {
+        slug: "marketing-site",
+        title: "Enable Injections — marketing site",
+        kind: "Full landing page · desktop and mobile",
+        rationale:
+          "You have FDA clearance and named programs with Sanofi, Roche and Sobi. On the live site those sit under a heading called Current Partnerships, several scrolls below the fold, after the product explanation. This rebuild changes the order and almost nothing else — clearance and partners ride in the hero, and your own patient quotes do the closing.",
+        look: [
+          "The hero leads with the device, the clearance and the three partner names, in that order.",
+          "The device is your own photograph, not an illustration we drew.",
+          "Your product description is used verbatim. We did not rewrite what you say enFuse does.",
+          "Montserrat and your own magenta and navy, sampled from your rendered page rather than guessed.",
+        ],
+        href: "/portal/enable/index.html",
+        card: v("/portal/enable/card.jpg"),
+        preview: v("/portal/enable/preview.jpg"),
+        caveats: [
+          "Every claim, figure, partner name and patient quote belongs to you and was read from enableinjections.com on 2026-09-22. We have not independently verified any clinical claim.",
+          "The device image is your own photograph, downloaded from your site. An earlier version of this study drew the device as a diagram instead; it was replaced because it did not look like your product.",
+          "Your site defers sixty images with data-lazy. That is working in your favour and we kept the approach — it is why your page is fast.",
+          "No search positions are claimed anywhere in this study. The tooling that measured search for other studies in this portfolio is not configured on this project, so rather than estimate we say nothing.",
+        ],
+        seo: {
+          measuredOn: "2026-09-22",
+          performance: 88,
+          seoScore: 100,
+          accessibility: 99,
+          crux: false,
+          queries: [],
+          verdict:
+            "Healthy, and better than most of the portfolio around it. Largest contentful paint 2.1 seconds, best practices 100. There is no performance problem here to solve and this study does not pretend otherwise.",
+          notes: [
+            "Lighthouse mobile, run locally 2026-09-22. The PageSpeed Insights API returned HTTP 429 across this portfolio, so every score in this study is from a local run of the same engine.",
+            "No CrUX field data is quoted. A local Lighthouse run cannot see it, and an absent field record needs its own explanation rather than a blank.",
+            "Total transfer 4.49 MB. Heavy in absolute terms, but the deferral means it does not cost the user the way the raw number suggests.",
+          ],
+        },
+      },
+    ],
+  },
 ];
 
 export function getPortal(token: string): Portal | undefined {
