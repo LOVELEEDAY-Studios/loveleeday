@@ -32,7 +32,7 @@ export async function POST(request: Request) {
 
     // Send notification to Daniel
     await resend.emails.send({
-      from: "LOVELEEDAY Studios <arthur@olldae.com>",
+      from: "LOVELEEDAY Studios <daniel@loveleedaystudios.com>",
       to: "blackmarble.m.g@gmail.com",
       replyTo: email,
       subject: `New Project Brief — ${name} (${projectType || "Unspecified"})`,
@@ -67,7 +67,8 @@ export async function POST(request: Request) {
 
     // Send confirmation to the client
     await resend.emails.send({
-      from: "LOVELEEDAY Studios <arthur@olldae.com>",
+      from: "LOVELEEDAY Studios <daniel@loveleedaystudios.com>",
+      replyTo: "daniel@loveleedaystudios.com",
       to: email,
       subject: "Brief received — LOVELEEDAY Studios",
       html: `
