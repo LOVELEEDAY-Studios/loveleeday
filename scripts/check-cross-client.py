@@ -62,30 +62,106 @@ def quoted_strings(block):
         yield m.group(1), block[:m.start()].count("\n")
 
 
+# A company study may name ITS OWN investor — LoanWell quoting its CEO on Collab,
+# Soarce's footer saying "Collab Capital portfolio company" — because that is the
+# company's own relationship. It may not name a fund it has nothing to do with.
+# Novarna is deliberately in two lists: it is in both portfolios, so both are its
+# own. Derived from portfolio.ts rather than typed, so adding a case updates it.
+def studies_by_fund(portfolio_src):
+    """company NAME -> the funds that hold it.
+
+    Keyed on `company:`, not on `slug:`. The first cut used slug and every
+    portal came back owned by nobody, because portals.ts gives EVERY portal
+    slug "marketing-site" — identity lives in its `client:` field. The guard
+    then reported 9 violations that were all a company naming its own investor,
+    which is the behavior it exists to permit. A guard that fails by crying
+    wolf gets switched off, so it is as broken as one that fails by permitting.
+    """
+    owners = {}
+    for key, block, _ in fund_blocks(portfolio_src):
+        for company in re.findall(r'company:\s*"([^"]+)"', block):
+            owners.setdefault(company, set()).add(key)
+    return owners
+
+
 if __name__ == "__main__":
     src = (ROOT / "src" / "content" / "portfolio.ts").read_text()
-    base_line = 0
     problems = []
+    checked_strings = 0
+    checked_files = []
 
+    # --- 1. The fund pages. A fund page may name only itself. ---
     for key, block, pos in fund_blocks(src):
         block_line = src[:pos].count("\n")
         others = {k: v for k, v in CLIENTS.items() if k != key}
         for text, rel_line in quoted_strings(block):
+            checked_strings += 1
             for other_key, aliases in others.items():
                 for alias in aliases:
                     if alias in text:
-                        problems.append((block_line + rel_line + 1, key, other_key, alias, text))
+                        problems.append(("portfolio.ts", block_line + rel_line + 1,
+                                         f"the {key} fund page", other_key, alias, text))
+    checked_files.append("src/content/portfolio.ts")
+
+    # --- 2. portals.ts. Each portal's copy is keyed by its own slug. ---
+    owners = studies_by_fund(src)
+    portals = (ROOT / "src" / "content" / "portals.ts").read_text()
+    # Portal blocks are delimited the same way the studies are: by their slug.
+    slug_pos = [(m.group(1), m.start()) for m in re.finditer(r'client:\s*"([^"]+)"', portals)]
+    for i, (slug, pos) in enumerate(slug_pos):
+        end = slug_pos[i + 1][1] if i + 1 < len(slug_pos) else len(portals)
+        block = portals[pos:end]
+        block_line = portals[:pos].count("\n")
+        allowed = owners.get(slug, set())
+        for text, rel_line in quoted_strings(block):
+            checked_strings += 1
+            for other_key, aliases in CLIENTS.items():
+                if other_key in allowed:
+                    continue
+                for alias in aliases:
+                    if alias in text:
+                        problems.append(("portals.ts", block_line + rel_line + 1,
+                                         f"the {slug} portal", other_key, alias, text))
+    checked_files.append("src/content/portals.ts")
+
+    # --- 3. The rendered study pages. Same rule, read as raw text. ---
+    # The study folders are named by slug (enable, novarna); owners is keyed by
+    # company name. Map one to the other off portfolio.ts rather than guessing.
+    slug_to_company = dict(re.findall(r'slug:\s*"([^"]+)",\s*\n\s*company:\s*"([^"]+)"', src))
+    for page in sorted((ROOT / "public" / "portal").glob("*/index.html")):
+        slug = page.parent.name
+        allowed = owners.get(slug_to_company.get(slug, slug), set())
+        body = page.read_text()
+        # Strip <style> and HTML comments: the reasoning lives there on purpose.
+        body = re.sub(r"<style.*?</style>|<!--.*?-->", "", body, flags=re.S)
+        for other_key, aliases in CLIENTS.items():
+            if other_key in allowed:
+                continue
+            for alias in aliases:
+                if alias in body:
+                    line = body[:body.index(alias)].count("\n") + 1
+                    ctx = body[max(0, body.index(alias) - 60):body.index(alias) + 80]
+                    problems.append((f"portal/{slug}/index.html", line,
+                                     f"the {slug} study", other_key, alias,
+                                     " ".join(ctx.split())))
+        checked_files.append(str(page.relative_to(ROOT)))
+
+    scope = (f"{len(checked_files)} files · {checked_strings} client-facing strings "
+             f"· {len(list((ROOT / 'public' / 'portal').glob('*/index.html')))} rendered study pages")
 
     if not problems:
-        n = sum(1 for _ in fund_blocks(src))
-        print(f"{n} fund studies checked — no page names another client")
+        print(f"no page names a client it does not belong to")
+        print(f"  scope: {scope}")
+        print(f"  NOT covered: template literals, copy built at runtime, and text "
+              f"inside <style> or HTML comments (intentional — the reasoning lives there)")
         sys.exit(0)
 
-    print(f"{len(problems)} cross-client reference(s) — a client's page naming another client:\n")
-    for line, page, other, alias, text in problems:
-        print(f"  portfolio.ts:{line}")
-        print(f"    on the {page} page, naming {other} as \"{alias}\"")
+    print(f"{len(problems)} cross-client reference(s) — a page naming a client it does not belong to:\n")
+    for f, line, page, other, alias, text in problems:
+        print(f"  {f}:{line}")
+        print(f"    on {page}, naming {other} as \"{alias}\"")
         print(f"    {text[:140]}")
         print()
+    print(f"scope: {scope}")
     print("Write each study as if the others do not exist. Provenance belongs in git.")
     sys.exit(2)

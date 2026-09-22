@@ -20,7 +20,7 @@ client will see.
   python3 scripts/refresh-frames.py --check    # exit 2 if anything is stale, shoot nothing
   python3 scripts/refresh-frames.py --all      # re-shoot everything
 """
-import io, sys
+import io, re, sys, urllib.request
 from pathlib import Path
 from patchright.sync_api import sync_playwright
 from PIL import Image
@@ -28,6 +28,38 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 PORTAL = ROOT / "public" / "portal"
 W, H = 1440, 900
+BASE = "http://localhost:3111"
+
+
+def gate_tokens():
+    """dir -> its ?k= token, read from tokens.ts + .env.local.
+
+    The gate param is `k`. Deriving env var names by upper-casing the TOKENS key
+    does not work — venturehueStudy reads PORTAL_TOKEN_VENTUREHUE — so the real
+    name comes out of tokens.ts.
+    """
+    tokens_src = (ROOT / "src" / "content" / "tokens.ts").read_text()
+    env_for_key = dict(re.findall(r'(\w+):\s*tokO?p?t?i?o?n?a?l?\("([A-Z0-9_]+)"\)', tokens_src))
+    env = (ROOT / ".env.local").read_text()
+    proxy_src = (ROOT / "src" / "proxy.ts").read_text()
+    out = {}
+    # FOR_DIR maps a portal DIRECTORY to a TOKENS key; read it rather than guess.
+    for dir_name, key in re.findall(r"(\w+):\s*TOKENS\.(\w+)", proxy_src):
+        var = env_for_key.get(key)
+        if not var:
+            continue
+        m = re.search(rf"^{var}=(\S+)", env, re.M)
+        if m:
+            out[dir_name] = m.group(1)
+    return out
+
+
+def http_up():
+    try:
+        urllib.request.urlopen(BASE, timeout=2)
+        return True
+    except Exception:
+        return False
 
 SCROLL = """async () => {
   const step = Math.floor(window.innerHeight * 0.7);
@@ -67,11 +99,33 @@ if __name__ == "__main__":
         print(f"\n{len(work)} stale frame(s) — a client would see the old build. Run without --check.")
         sys.exit(2)
 
+    # Capture over HTTP, not file://. Chromium refuses to load a CSS
+    # mask-image across file:// origins, so a study whose logo is rendered as a
+    # tintable mask captures with NO LOGO and saves clean — the frame a client
+    # sees on the portfolio page would simply be missing the brand. Nothing
+    # about that failure is loud: every computed style is correct, the file is
+    # valid, and only looking at the pixels catches it. VentureHue hit this on
+    # 2026-09-22. The dev server is therefore a REQUIREMENT for a re-shoot, not
+    # a convenience; without it we refuse rather than write a degraded frame.
+    tokens = gate_tokens()
+    if not http_up():
+        print(f"\n{BASE} is not responding — start the dev server (npm run dev) first.")
+        print("Refusing to capture over file://: CSS masks do not load there and the")
+        print("frames would save successfully with the logo missing.")
+        sys.exit(3)
+
     with sync_playwright() as pw:
         b = pw.chromium.launch(channel="chrome", headless=True)
         pg = b.new_page(viewport={"width": W, "height": H}, reduced_motion="reduce", device_scale_factor=1)
         for frame, study, _ in work:
-            pg.goto(f"file://{study}", wait_until="load", timeout=45000)
+            slug = study.parent.name
+            url = f"{BASE}/portal/{slug}/index.html"
+            if slug in tokens:
+                url += f"?k={tokens[slug]}"
+            pg.goto(url, wait_until="load", timeout=45000)
+            if pg.title().strip().lower().startswith(("404", "page not found")):
+                print(f"  REFUSED {frame.name} — {url.split('?')[0]} returned a 404 page")
+                continue
             pg.wait_for_timeout(1200)
             pg.evaluate(SCROLL)
             # A study that renders near-blank is a capture bug, not a design. Saving
