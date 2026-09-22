@@ -76,6 +76,17 @@ def read_store():
             f"BUILD STOPPED: {d['nolin']} observation(s) carry no lineage. The pages claim\n"
             '100% lineage cover; it may not be printed while that is untrue.')
 
+    # A test harness writing into the live store is not a connected system.
+    # On 2026-09-22 an `isolation-test` source appeared and the page was about
+    # to publish "8 live sources" with a test artifact counted as one of them --
+    # the exact overclaim this store exists to refuse. Filter explicitly and
+    # loudly, never silently, so a real source is never dropped by accident.
+    TEST_SOURCES = {'isolation-test', 'test', 'fixture', 'synthetic', 'demo'}
+    excluded = [s for s in d['srcs'] if s in TEST_SOURCES]
+    if excluded:
+        print(f"  note: excluded {len(excluded)} test source(s) from the published "
+              f"list: {', '.join(excluded)}")
+    d['srcs'] = [s for s in d['srcs'] if s not in TEST_SOURCES]
     d['sources'] = len(d['srcs'])
     d['cover'] = '100%' if d['nolin'] == 0 else f"{100*(d['props']-d['nolin'])//d['props']}%"
     _cache = d

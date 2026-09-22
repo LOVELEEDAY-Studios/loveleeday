@@ -54,8 +54,16 @@ OUT.mkdir(exist_ok=True)
 D = _F.read_store()
 
 PHOTO = "../../../public/studio/firm/"
+# Two of these are generated to the palette; two are real photographs from
+# Pexels (Khoa Vo, Victor Lucas), graded warm so a stock frame sits in the same
+# light rather than announcing itself. Of 25 stock candidates only these two
+# survived the brand: the register needs the person SMALL and anonymous inside
+# the architecture, and almost all stock "people in offices" is the opposite --
+# a face at a laptop, which is what made the old site read as a small shop.
 FRAMES = {"atrium": "atrium.jpg", "colonnade": "colonnade.jpg",
-          "people-window": "people-window.jpg"}
+          "people-window": "people-window.jpg",
+          "people-corridor": "people-corridor.jpg",
+          "people-concourse": "people-concourse.jpg"}
 
 BRAIN = (HERE / "brain3d.js").read_text() \
     .replace("__OBS__", f"{D['props']:,}").replace("__SRC__", str(D['sources']))
@@ -275,6 +283,9 @@ a{color:inherit;text-decoration:none}
   font:400 1rem/1.3 var(--ser);font-style:italic;color:var(--amber)}
 
 /* brain + close */
+.bleed{position:relative;height:clamp(320px,56vh,680px);background:#241109;
+  border-top:1px solid var(--edge)}
+.bleed .plate{position:absolute;inset:0}
 .brain{position:relative;background:#0B0608;overflow:hidden;height:clamp(430px,68vh,740px);
   border-top:1px solid var(--edge)}
 .brain canvas{display:block;width:100%;height:100%}
@@ -358,6 +369,8 @@ def build():
   be traced is refused before anyone can publish it.</p>
 </div></section>
 
+<div class=bleed>{plate('people-corridor')}</div>
+
 <section class=arch id=platform><div class=w>
   <span class=lab>The platform</span>
   <h2>Five components. <em>Each one enforced in the write path.</em></h2>
@@ -399,6 +412,8 @@ def build():
 
 <div class=brain><canvas data-brain></canvas></div>
 
+<div class=bleed>{plate('colonnade')}</div>
+
 <section class=src><div class=w>
   <span class=lab>What it reads</span>
   <h2 style="margin:14px 0 clamp(24px,4vh,44px);font:300 clamp(2.2rem,5.2vw,4.4rem)/1.02 var(--sans);letter-spacing:-.042em;max-width:19ch">A payment ledger, a satellite, <em style="font-family:var(--ser);font-style:italic;font-weight:400;color:var(--amber)">and the weather.</em></h2>
@@ -408,11 +423,15 @@ def build():
   system can answer is bounded by what it can read, never by the department the question belongs to.</p>
 </div></section>
 
+<div class=bleed>{plate('people-concourse')}</div>
+
 <section class=work id=work><div class=w>
   <span class=lab>The work</span>
   <h2 style="margin:14px 0 0;font:300 clamp(2.2rem,5.2vw,4.4rem)/1.02 var(--sans);letter-spacing:-.042em;max-width:21ch">The answer you asked for, <em style="font-family:var(--ser);font-style:italic;font-weight:400;color:var(--amber)">and the one you did not.</em></h2>
   <div class=wg>{work}</div>
 </div></section>
+
+<div class=bleed>{plate('people-window')}</div>
 
 <section class=end id=company><div class=w>
   <h2>We give <em>the day back.</em></h2>
