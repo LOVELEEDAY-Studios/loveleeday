@@ -274,7 +274,7 @@ export default async function CivicPage({ params }: { params: Promise<{ token: s
             deliverables={[{ slug: "analysis", title: "County analysis" }]}
             intent="start"
             heading="Reply to us"
-            blurb="Tell us when to walk the team through it, or what to look at next. It reaches Daniel directly."
+            blurb="Tell us when to walk the team through it, or what to look at next."
           />
         </div>
       </section>
