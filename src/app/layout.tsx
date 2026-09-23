@@ -57,6 +57,17 @@ export const metadata: Metadata = {
       "Intelligence architecture and the software it runs. Every figure carries its source.",
   },
   metadataBase: new URL("https://loveleedaystudios.com"),
+  /* The same icon set, in the same order, as the static homepage (public/site/*.html),
+     so a client page and the landing page show one tab icon. */
+  icons: {
+    icon: [
+      { url: "/site/assets/icon.svg?v=3", type: "image/svg+xml" },
+      { url: "/site/assets/favicon-32.png?v=3", sizes: "32x32", type: "image/png" },
+      { url: "/site/assets/favicon-16.png?v=3", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/site/assets/apple-icon.png?v=3",
+    shortcut: "/favicon.ico?v=3",
+  },
 };
 
 export default function RootLayout({
