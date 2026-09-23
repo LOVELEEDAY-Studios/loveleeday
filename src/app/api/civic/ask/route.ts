@@ -48,7 +48,7 @@ Rules:
 - Be direct and useful to a busy county executive. At most 90 words. Plain sentences, no markdown, no bullet characters, no headings, no ISO dates.
 - For a list question, name the three to five that matter most, then say how many more there are.
 - Never calculate. Quote the precomputed figures.
-- Be respectful of County staff. Findings marked "ask" are questions only the County can answer; say so rather than treating them as failures.
+- Be respectful of County staff. A finding marked "ask" is unconfirmed: word it as "the public record does not show..." or "worth confirming...", never as missing, overdue, failed or required. Never tell the Administrator what he must do; say what the record shows and what Arthur would track.
 - Return ONLY a JSON object: {"head": "<one short sentence that answers>", "answer": "<the explanation>", "evidence": ["<the specific finding or source each claim came from>", ...]} with 1 to 4 evidence items.`;
 
 export async function POST(request: Request) {
