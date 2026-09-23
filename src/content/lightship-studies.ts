@@ -17,7 +17,7 @@ import { v } from "./assetVersion";
 export const btwVideos: Video[] = [
   {
     title: "Sponsor Columbus 2027 — 28-second spot",
-    caption: "For sponsor decks, outreach emails and LinkedIn. Cut entirely from Black Tech Week's own 2024–2025 footage and music.",
+    caption: "For sponsor decks, outreach emails and LinkedIn. Cut from Black Tech Week's own 2024–2025 footage, set to a licensed track: “Basketball Training” by Arulo (Mixkit).",
     src: v("/portal/blacktechweek/video/btw-sponsor-16x9.mp4"),
     poster: v("/portal/blacktechweek/video/btw-sponsor-16x9.jpg"),
     aspect: "16/9",
@@ -34,7 +34,7 @@ export const btwVideos: Video[] = [
 export const foundationVideos: Video[] = [
   {
     title: "Lightship Foundation — 25-second story",
-    caption: "Bootcamp, the Startup Train and Black Tech Week in one cut, for donors and corporate partners. Your footage; the music bed is Black Tech Week's.",
+    caption: "Bootcamp, the Startup Train and Black Tech Week in one cut, for donors and corporate partners. Your footage, set to a licensed track: “Lord Knows” by Arulo (Mixkit).",
     src: v("/portal/lightshipfoundation/video/lightship-foundation-16x9.mp4"),
     poster: v("/portal/lightshipfoundation/video/lightship-foundation-16x9.jpg"),
     aspect: "16/9",
@@ -191,7 +191,7 @@ export const lightshipPortals: Portal[] = [
         preview: v("/portal/blacktechweek/preview.jpg"),
         caveats: [
           "Every number is Black Tech Week's own, as published on blacktechweek.com on 22 September 2026: 12,000+ attendees, 25+ sessions, 145+ speakers, $120M+ raised by attendees and $1.13B+ in attendee revenue.",
-          "All photography and footage is Black Tech Week's own, from your site and your YouTube channel. The videos use your recap's music. Nothing is stock.",
+          "All photography and footage is Black Tech Week's own, from your site and your YouTube channel; nothing is stock. The music is licensed (Mixkit's free commercial license, cleared for web and social, not for TV or radio broadcast).",
           "The waitlist forms on this page are a direction, not wired to your email list.",
           "Found on the live site: /registration returns an error page but still appears in Google, the share-image address is malformed so link previews break, and the homepage's top photo shows Portuguese stage screens.",
         ],
@@ -246,7 +246,7 @@ export const lightshipPortals: Portal[] = [
         caveats: [
           "Every impact figure is the Foundation's own, read from lightship.foundation/impact on 22 September 2026. Program dates and cities are current as of that day and change as cohorts open.",
           "Bootcamp testimonials appear unattributed because they are unattributed on your site. We did not add names.",
-          "The video uses your Bootcamp and Startup Train footage with Black Tech Week's music bed. The Bootcamp video downloaded without its own sound.",
+          "The video uses your Bootcamp and Startup Train footage, set to licensed music (Mixkit's free commercial license, cleared for web and social, not for TV or radio broadcast).",
         ],
         videos: foundationVideos,
       },
