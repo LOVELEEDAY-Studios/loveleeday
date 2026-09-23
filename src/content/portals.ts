@@ -420,7 +420,7 @@ export const portals: Portal[] = [
         preview: v("/portal/micruity/preview.jpg"),
         caveats: [
           "Every figure on the page is a placeholder. Latency, counterparty count, settlement window and onboarding time are ours, not yours, and would be replaced with your real numbers or removed.",
-          "Photography is real licensed stock from Pexels — Askar Abayev, Baraa Obied, Yan Krukau and Mikhail Nilov — credited in the page source. An earlier version of this study used AI-generated people; it was replaced, because a page about someone's retirement should not be illustrated with someone who does not exist.",
+          "Photography is real licensed stock from Pexels — Askar Abayev, Baraa Obied, Yan Krukau and Mikhail Nilov — credited in the page source.",
           "Logos in the trust bar are indicative placement, not claimed relationships.",
         ],
         seo: {

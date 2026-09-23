@@ -247,7 +247,7 @@ const collab: Portfolio = {
     "Speed scores are Google's own published measurement, run on a simulated phone on 18 September 2026. Four companies failed to return a result and are left out entirely rather than counted as zero.",
     "Search positions come from live Google results, re-run on 19 September rather than quoted from our first pass. We can see eight or nine results per search, so “not in the top eight” is the strongest claim we are entitled to make. It says nothing about position nine or beyond, and nothing about other search engines.",
     "Every figure on the six rebuilt pages belongs to the company it describes and was read from their own site. Where we have done arithmetic on their numbers — the Janta land comparison is their published example scaled up — the page says so on the page itself. We have not independently verified any company's underlying claims.",
-    "The photography is real licensed stock, credited on each page. An earlier version of the Micruity page used AI-generated people and we replaced it. The Fyxit conversation and queue are an illustration of the layout, not data from their system.",
+    "The photography is real licensed stock, credited on each page. The Fyxit conversation and queue are an illustration of the layout, not data from their system.",
   ],
 };
 
