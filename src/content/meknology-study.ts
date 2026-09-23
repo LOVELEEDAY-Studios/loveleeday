@@ -18,7 +18,7 @@ import { meknologyResearch } from "./meknology-research";
 export const meknology: Portfolio = {
   token: TOKENS.meknologyPortfolio,
   fund: "Meknology",
-  eyebrow: "Prepared for Meknology",
+  eyebrow: "Meknology",
   headline: "Your site, rebuilt. Your next market, mapped.",
   heroNote: "Website and market intelligence",
   fundDomain: "meknology.com",
