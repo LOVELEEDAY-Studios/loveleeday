@@ -1,0 +1,26 @@
+[
+  {
+    "file": "biochar.jpg",
+    "photographer": "Alexandra Kollstrem",
+    "url": "https://www.pexels.com/photo/person-harvesting-onions-9117894/",
+    "query": "charcoal soil hands garden"
+  },
+  {
+    "file": "distillery.jpg",
+    "photographer": "Tiago Antonio",
+    "url": "https://www.pexels.com/photo/copper-distillation-equipment-in-rustic-setup-28792582/",
+    "query": "distillery copper still"
+  },
+  {
+    "file": "grain.jpg",
+    "photographer": "cottonbro studio",
+    "url": "https://www.pexels.com/photo/a-person-holding-dried-grains-5538163/",
+    "query": "spent grain brewery mash"
+  },
+  {
+    "file": "tanks.jpg",
+    "photographer": "ELEVATE",
+    "url": "https://www.pexels.com/photo/blue-plastic-pail-1267361/",
+    "query": "brewery stainless steel fermentation tanks"
+  }
+]
