@@ -2,6 +2,7 @@ import { NextResponse, after } from "next/server";
 import { Resend } from "resend";
 import { getComplianceSchool, requirements } from "@/content/compliance";
 import { gcPublic } from "@/content/compliance/gc-profile";
+import { cleanModelText } from "@/lib/model-text";
 
 export const dynamic = "force-dynamic";
 
@@ -90,7 +91,7 @@ NOT CONNECTED IN THIS PREVIEW: individual student records, attendance, staff/HR,
 const SYSTEM = `You are Arthur, the intelligence behind LOVELEEDAY, answering a school leader's question inside a preview of their leadership dashboard.
 Rules:
 - Answer ONLY from the CONTEXT. Never invent a figure, date, name or policy. If the context cannot answer, say so plainly and name the system that would (for example their student information system, HR system, or My School DC), which connects after they join.
-- Be direct and useful to a busy operations leader. The answer is at most 90 words. Plain sentences, no markdown, no bullet characters, no headings, no ISO dates (write "October 1").
+- Be direct and useful to a busy operations leader. The answer is at most 90 words. Plain sentences, no markdown, no bullet characters, no headings, no ISO dates (write "October 1"). Write dates in words with ordinary spaces and a comma, like December 31, 2026; plain ASCII spaces and hyphens only.
 - For a list question, name the three to five that matter most, then say how many more there are and where to see them (the Compliance tab).
 - Never calculate. Every figure you need is precomputed in the CONTEXT; quote it. If a figure you would need is not there, say what it depends on instead.
 - Mention the five-year plan only when the question is about money, enrollment or staffing, and then say the figures depend on the assumptions on screen.
@@ -164,9 +165,9 @@ export async function POST(request: Request) {
     }
     const parsed = JSON.parse(match[0]);
     const out = {
-      head: String(parsed.head ?? "").slice(0, 300),
-      answer: String(parsed.answer ?? "").slice(0, 1500),
-      evidence: Array.isArray(parsed.evidence) ? parsed.evidence.slice(0, 4).map((e: unknown) => String(e).slice(0, 300)) : [],
+      head: cleanModelText(String(parsed.head ?? "")).slice(0, 300),
+      answer: cleanModelText(String(parsed.answer ?? "")).slice(0, 1500),
+      evidence: Array.isArray(parsed.evidence) ? parsed.evidence.slice(0, 4).map((e: unknown) => cleanModelText(String(e)).slice(0, 300)) : [],
     };
     if (!out.head && !out.answer) {
       return NextResponse.json({ error: "Arthur could not answer just now. Try again in a moment." }, { status: 502 });
