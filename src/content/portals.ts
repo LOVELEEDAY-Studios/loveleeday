@@ -526,6 +526,50 @@ export const portals: Portal[] = [
       },
     ],
   },
+  {
+    token: TOKENS.meknology as string,
+    client: "Meknology",
+    clientDomain: "meknology.com",
+    project: "Marketing site — direction study",
+    round: "Round 01",
+    deliveredOn: "2026-09-22",
+    expiresOn: "2026-12-21",
+    intro:
+      "This is an unsolicited direction study and nothing here is a proposal. Your system turns a brewery's weekly disposal bill into three things it can sell, and that is a story brewers understand in one sentence. Your current site takes seven sections to get there. This is the same material, told in the order a brewery owner would ask for it.",
+    next: [
+      "Open the page and scroll it the way a brewery owner paying for hauling every week would.",
+      "Leave notes anywhere on this page — they reach us by email immediately.",
+      "If the direction is right, we scope the build against your full site map.",
+    ],
+    deliverables: [
+      {
+        slug: "marketing-site",
+        title: "Meknology — marketing site",
+        kind: "Full landing page · desktop and mobile",
+        rationale:
+          "Your best material isn't on your homepage. The planned deployments at Mammoth Distilling, Roar Brewing and HOMES Brewpub, the $50,000 state grant, Techstars and Kalamazoo Forward Ventures behind you, and a founder who designed products at Ford and Whirlpool. A brewery owner deciding whether to trust new equipment in their plant looks for exactly those things, and today they find a stock water splash and an unfinished FAQ answer. The rebuild puts that proof on the page.",
+        look: [
+          "The headline is the decision the buyer is actually making: stop paying to haul it away, start selling what's in it.",
+          "One diagram shows the whole idea: three waste streams go in, and feed, biochar and clean water come out.",
+          "Color means something. Your own blue, sampled from your logo, now stands only for water. Amber is grain and charcoal is biochar, so a color anywhere on the page tells you which product you are reading about.",
+          "The seven problem cards became one table, with how things are today next to how they'd be with Meknology, so each problem sits beside its answer.",
+          "Your four contact forms became four doors with a label on each, so a farmer buying feed and an investor never land in the same form.",
+          "Your first sites, your backers and Daniel Hodges' engineering background each get their own section. None of them is on your current homepage.",
+        ],
+        href: "/portal/meknology/index.html",
+        card: v("/portal/meknology/card.jpg"),
+        preview: v("/portal/meknology/preview.jpg"),
+        caveats: [
+          "Every product claim and the 12–24 month payback are yours, taken from meknology.com on 2026-09-22. The first sites, the grant, the backers and Daniel's background come from Second Wave Media (October 2025), Michigan EGLE and CB Insights, not from your site.",
+          "Mammoth, Roar and HOMES are labeled as planned deployments because that is how the press reported them. If any is now running, it should say so and carry a number.",
+          "We left out the product images on your current site. They look computer-generated, and a buyer judging physical equipment will notice. Photography here is licensed stock of breweries, grain and soil, credited in the footer, and none of it shows your system. A real photo of the prototype would beat every image on the page.",
+          "One FAQ answer on your live site still contains a placeholder: \"(word for taking biological ingredients to make plastic)\". We filled it in as \"bioplastics\"; your live site is worth fixing today regardless.",
+          "Your site lists Southfield as your location, while Second Wave reported a move to Kalamazoo. We wrote \"Built in Michigan\" rather than pick one.",
+          "Your homepage has no search description, no share image, and all 31 of its images have empty alt text. This page has the description and the alt text; the share image comes with the build.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getPortal(token: string): Portal | undefined {

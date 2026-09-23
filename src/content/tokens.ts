@@ -59,4 +59,6 @@ export const TOKENS = {
   lightship: tokOptional("PORTFOLIO_TOKEN_LIGHTSHIP"),
   hundredkm: tokOptional("PORTFOLIO_TOKEN_HUNDREDKM"),
   venturehue: tokOptional("PORTFOLIO_TOKEN_VENTUREHUE"),
+  // Kalamazoo Forward Ventures portfolio company, pitched direct 2026-09-22.
+  meknology: tokOptional("PORTAL_TOKEN_MEKNOLOGY"),
 } as const;

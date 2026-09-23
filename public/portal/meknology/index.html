@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meknology — Stop paying to haul it away</title>
+<meta name="description" content="Meknology's patented steam-based system turns brewery and distillery wastewater into three things you can sell or reuse: high-protein animal feed, biochar fertilizer and clean water. Built in Michigan.">
+<meta property="og:title" content="Meknology — Stop paying to haul it away">
+<meta property="og:description" content="One waste stream in. Animal feed, biochar fertilizer and clean water out. For breweries and distilleries.">
+<link rel="canonical" href="https://www.meknology.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* -----------------------------------------------------------------------
+   Meknology — homepage rebuild, direction study by LOVELEEDAY Studios.
+
+   REFERENCE, taken whole rather than section by section:
+     Farm Minerals (mobbin.com/sites/sections/bf35191f) — warm paper ground,
+     a light-weight grotesk set large, stat LEDGERS on hairline rules with
+     uppercase captions, and full-bleed photography split against type. It is
+     an agricultural input company selling a circular story to farmers, which
+     is structurally Meknology's second customer.
+     T1 Energy (mobbin.com/sites/sections/e65538de) — the two-tone headline,
+     where the second line is the same size in a quieter ink.
+
+   Why this register and not the current blue-gradient SaaS one: the buyer is
+   a brewery or distillery owner. They are people who care about material,
+   craft and the physical plant. A page that looks like a fintech app tells
+   them this is software. It is steel, steam and grain.
+
+   COLOUR IS MEANING. Meknology's own blue (#2F75F2, sampled from their logo)
+   is kept and it means WATER and only water. Grain gets an amber, biochar
+   gets char. The three outputs are the three accents, so a colour anywhere on
+   the page tells you which product you are reading about.
+   ----------------------------------------------------------------------- */
+:root{
+  --paper:#F2EEE6; --paper-2:#E9E3D8; --ink:#17181A; --ink-2:#5B5A55; --rule:#CFC7B8;
+  --water:#2F75F2; --grain:#B7862F; --char:#2A2926;
+  --display:"Geist",system-ui,sans-serif; --mono:"Geist Mono",ui-monospace,monospace;
+  --gut:clamp(20px,4vw,56px); --max:1320px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--display);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.mono{font:500 11.5px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase}
+.muted{color:var(--ink-2)}
+.marker{display:flex;gap:14px;align-items:baseline;margin-bottom:28px}
+.marker b{font-weight:500;color:var(--ink)}
+.marker span{color:var(--ink-2)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-color:var(--rule)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav img{height:22px;width:auto}
+.nav ul{display:flex;gap:32px;list-style:none}
+.nav ul a{text-decoration:none;color:var(--ink-2);font-size:14px}
+.nav ul a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;border-radius:999px;background:var(--ink);color:var(--paper);text-decoration:none;font-size:14.5px;font-weight:500;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px);background:#000}
+.btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper)}
+.btn .arr{transition:transform .2s}.btn:hover .arr{transform:translateX(3px)}
+
+/* hero */
+.hero{padding:clamp(56px,9vw,120px) 0 0}
+.hero h1{font-weight:300;font-size:clamp(42px,6.3vw,96px);line-height:1;letter-spacing:-.035em;text-wrap:balance}
+.hero h1 em{font-style:normal;color:#A39C8E;display:block}
+.hero__row{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--gut);align-items:end;margin-top:clamp(36px,5vw,64px)}
+.hero__lede{font-size:clamp(17px,1.5vw,20px);line-height:1.55;max-width:46ch;color:var(--ink-2)}
+.hero__lede strong{color:var(--ink);font-weight:500}
+.hero__cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.hero__img{margin-top:clamp(40px,6vw,72px);position:relative;height:clamp(340px,52vw,640px);overflow:hidden}
+.hero__img img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero__tag{position:absolute;left:var(--gut);bottom:24px;color:#fff;display:flex;gap:10px;align-items:center}
+.hero__tag i{width:8px;height:8px;border-radius:50%;background:#fff;display:block}
+
+/* ledger */
+.ledger{padding:clamp(72px,9vw,128px) 0}
+.ledger__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--gut)}
+.ledger h2,.sec h2,.proc h2{font-weight:300;font-size:clamp(32px,4vw,56px);line-height:1.04;letter-spacing:-.03em}
+.ledger h2 em,.sec h2 em,.proc h2 em{font-style:normal;color:#A39C8E}
+.rows{border-top:1px solid var(--ink)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end;padding:22px 0;border-bottom:1px solid var(--rule)}
+.row .n{font-weight:300;font-size:clamp(40px,4.6vw,64px);line-height:1;letter-spacing:-.03em}
+.row .l{text-align:right;color:var(--ink-2)}
+.row .l b{display:block;color:var(--ink);font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.row .l small{font:400 11px/1.4 var(--mono);letter-spacing:.04em}
+
+/* process */
+.proc{background:var(--char);color:#EDE8DE;padding:clamp(72px,9vw,128px) 0}
+.proc .marker b{color:#EDE8DE}.proc .marker span,.proc .muted{color:#9B968B}
+.proc h2 em{color:#77736B}
+.proc__head{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);align-items:end;margin-bottom:clamp(40px,6vw,72px)}
+.proc__head p{color:#B9B3A7;max-width:48ch}
+.diagram{width:100%;height:auto;overflow:visible}
+.diagram text{font-family:var(--mono);font-size:12px;letter-spacing:.08em;fill:#B9B3A7;text-transform:uppercase}
+.diagram .big{font-family:var(--display);font-size:22px;letter-spacing:-.01em;fill:#EDE8DE;text-transform:none}
+.flow{stroke-dasharray:4 10;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-28}}
+.dm{display:none}
+.dm .mono{color:#77736B;display:block;margin-bottom:8px}
+.dm p{font-size:19px;color:#EDE8DE}
+.dm i{display:block;width:0;height:36px;margin:14px 0 14px 12px;border-left:2px dashed #77736B}
+.dm__box{background:#33322E;border:1px solid #4A4843;border-radius:4px;padding:16px 18px}
+.dm__box b{font-weight:400;font-size:20px}
+.dm ul{list-style:none}
+.dm li{display:flex;align-items:center;gap:12px;font-size:19px;padding:6px 0}
+.dm li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c)}
+h2,h3,blockquote{text-wrap:balance}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);margin-top:clamp(40px,6vw,72px);border-top:1px solid #3F3D39;padding-top:28px}
+.steps li{list-style:none}
+.steps .mono{color:#77736B;display:block;margin-bottom:12px}
+.steps h3{font-weight:400;font-size:22px;letter-spacing:-.01em;margin-bottom:8px}
+.steps p{color:#B9B3A7;font-size:15.5px}
+
+/* outputs */
+.sec{padding:clamp(72px,9vw,128px) 0}
+.sec__head{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.sec__head p{color:var(--ink-2);max-width:46ch}
+.outs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px)}
+.out{display:flex;flex-direction:column;background:var(--paper-2)}
+.out__img{aspect-ratio:4/5;overflow:hidden;position:relative}
+.out__img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.out:hover .out__img img{transform:scale(1.03)}
+.out__water{background:var(--water);display:flex;align-items:flex-end;padding:28px;color:#fff}
+.out__water svg{position:absolute;inset:0;width:100%;height:100%}
+.out__water span{position:relative;font-weight:300;font-size:clamp(64px,7vw,104px);line-height:.9;letter-spacing:-.04em}
+.out__body{padding:24px 24px 28px;border-top:3px solid var(--c)}
+.out__body .mono{color:var(--c);display:block;margin-bottom:10px}
+.out__body h3{font-weight:400;font-size:24px;line-height:1.15;letter-spacing:-.015em;margin-bottom:10px}
+.out__body p{color:var(--ink-2);font-size:15.5px}
+.out__body dl{margin-top:18px;border-top:1px solid var(--rule)}
+.out__body dl div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.out__body dt{color:var(--ink-2)}.out__body dd{text-align:right}
+
+/* replaces */
+.cmp{border-top:1px solid var(--ink)}
+.cmp__h,.cmp__r{display:grid;grid-template-columns:.9fr 1.3fr 1.3fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.cmp__h{padding:14px 0;color:var(--ink-2)}
+.cmp__r h3{font-weight:500;font-size:17px}
+.cmp__r p{color:var(--ink-2);font-size:15.5px}
+.cmp__r p:last-child{color:var(--ink)}
+
+/* split */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:640px;background:var(--paper-2)}
+.split__img{position:relative;overflow:hidden}
+.split__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.split__body{padding:clamp(48px,6vw,96px) var(--gut);display:flex;flex-direction:column;justify-content:space-between;gap:48px}
+.pilots{border-top:1px solid var(--ink)}
+.pilots li{list-style:none;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--rule)}
+.pilots li b{font-weight:400;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.02em}
+.pilots li span{color:var(--ink-2);text-align:right}
+.fine{font:400 12px/1.5 var(--mono);letter-spacing:.03em;color:var(--ink-2)}
+
+/* founder */
+.founder{padding:clamp(80px,10vw,140px) 0}
+.founder__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--gut)}
+.founder blockquote{font-weight:300;font-size:clamp(34px,4.4vw,64px);line-height:1.06;letter-spacing:-.03em}
+.founder blockquote::before{content:"\201C";color:var(--water)}
+.founder blockquote::after{content:"\201D";color:var(--water)}
+.cv{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid var(--rule);padding-top:24px}
+.cv b{display:block;font-weight:500;margin-bottom:4px}
+.cv span{color:var(--ink-2);font-size:15px}
+.who h3{font-weight:400;font-size:28px;letter-spacing:-.02em;margin-bottom:6px}
+
+/* backers */
+.backers{border-top:1px solid var(--ink)}
+.backers li{list-style:none;display:grid;grid-template-columns:1.1fr 1fr .5fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.backers b{font-weight:400;font-size:20px;letter-spacing:-.01em}
+.backers span{color:var(--ink-2)}
+.backers em{font-style:normal;text-align:right;color:var(--ink-2)}
+
+/* paths */
+.paths{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--rule)}
+.path{padding:28px 24px 32px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:14px;min-height:300px;text-decoration:none;transition:background .25s}
+.path:hover{background:var(--paper-2)}
+.path .mono{color:var(--ink-2)}
+.path h3{font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-.015em}
+.path p{color:var(--ink-2);font-size:15px;flex:1}
+.path .go{display:flex;justify-content:space-between;align-items:center;font-weight:500;font-size:14.5px;padding-top:14px;border-top:1px solid var(--rule)}
+.path--lead{background:var(--ink);color:var(--paper)}
+.path--lead:hover{background:#000}
+.path--lead .mono,.path--lead p{color:#A9A398}
+.path--lead .go{border-color:#3F3D39}
+
+/* faq */
+.faq{border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:56px 1fr 24px;gap:12px;padding:22px 0;font-size:19px;letter-spacing:-.01em;align-items:baseline}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .mono{color:var(--ink-2)}
+.faq summary i{font-style:normal;font-weight:300;font-size:24px;line-height:1;transition:transform .25s;justify-self:end}
+.faq details[open] summary i{transform:rotate(45deg)}
+.faq details p{padding:0 36px 24px 68px;color:var(--ink-2);max-width:78ch}
+
+/* close + footer */
+.close{background:var(--water);color:#fff;padding:clamp(80px,10vw,140px) 0}
+.close h2{font-weight:300;font-size:clamp(44px,6.6vw,100px);line-height:.98;letter-spacing:-.04em;max-width:13ch}
+.close h2 em{font-style:normal;color:#A9C6FA;display:block}
+.close__row{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-top:48px;flex-wrap:wrap}
+.close p{max-width:44ch;color:#DCE7FD}
+.close .btn{background:#fff;color:var(--ink)}
+.foot{padding:48px 0 56px;font-size:14px;color:var(--ink-2)}
+.foot__top{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-bottom:28px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.foot__top img{height:20px;width:auto}
+.foot__top ul{display:flex;gap:24px;list-style:none}
+.foot__top a{text-decoration:none}
+.foot__bot{display:flex;justify-content:space-between;gap:24px;padding-top:24px;flex-wrap:wrap}
+.foot__credit b{color:var(--ink);font-weight:500}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .nav ul{display:none}
+  .hero__row,.ledger__grid,.proc__head,.sec__head,.founder__grid,.split{grid-template-columns:1fr}
+  .hero__cta{justify-content:flex-start}
+  .outs,.steps{grid-template-columns:1fr}
+  .paths{grid-template-columns:1fr 1fr}
+  .split__img{min-height:420px}
+  .cmp__h{display:none}
+  .cmp__r{grid-template-columns:1fr;gap:6px}
+  .backers li{grid-template-columns:1fr;gap:4px}
+  .backers em{text-align:left}
+  .cv{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .paths{grid-template-columns:1fr}
+  .path{min-height:0}
+  .diagram{display:none}
+  .dm{display:block}
+  .row{grid-template-columns:1fr;gap:8px}
+  .row .l{text-align:left}
+  .faq summary{grid-template-columns:36px 1fr 20px;font-size:17px}
+  .faq details p{padding:0 0 22px 48px}
+  .nav .btn{height:38px;padding:0 14px;font-size:13.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  .flow{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" aria-label="Meknology home"><img src="assets/meknology-logo.svg" alt="Meknology" width="141" height="22"></a>
+    <ul>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#outputs">What you get</a></li>
+      <li><a href="#pilots">Pilots</a></li>
+      <li><a href="#faq">Questions</a></li>
+    </ul>
+    <a class="btn" href="#start">Talk to us <span class="arr">&rarr;</span></a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="mono muted rv">For breweries and distilleries</p>
+    <h1 class="rv" style="margin-top:22px">Stop paying to haul it away. <em>Start selling what&rsquo;s in it.</em></h1>
+    <div class="hero__row">
+      <p class="hero__lede rv">Spent wash, stillage and process wastewater are a cost you pay every week: hauling, tipping fees, and a discharge permit you have to keep. Meknology&rsquo;s patented system runs on your site and turns that same stream into <strong>animal feed, biochar fertilizer and clean water</strong>.</p>
+      <div class="hero__cta rv">
+        <a class="btn" href="#start">See if your site fits <span class="arr">&rarr;</span></a>
+        <a class="btn btn--ghost" href="#how">How it works</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__img">
+    <img src="tanks.jpg" alt="Stainless steel fermentation tanks in a working brewery" fetchpriority="high">
+    <div class="hero__tag mono"><i></i> Where the waste starts</div>
+  </div>
+</header>
+
+<section class="ledger">
+  <div class="wrap ledger__grid">
+    <div>
+      <div class="marker mono rv"><b>01</b><span>The short version</span></div>
+      <h2 class="rv">One waste stream in. <em>Three products out.</em></h2>
+    </div>
+    <div class="rows">
+      <div class="row rv"><span class="n">3</span><div class="l"><b>Products from one stream</b>Feed, fertilizer and water, each with its own buyer</div></div>
+      <div class="row rv"><span class="n">12&ndash;24 mo</span><div class="l"><b>Typical payback</b>Depends on your waste volume and what the outputs sell for</div></div>
+      <div class="row rv"><span class="n">$50,000</span><div class="l"><b>State grant</b>Awarded by Michigan&rsquo;s Department of Environment, Great Lakes and Energy</div></div>
+      <div class="row rv"><span class="n">~12,000</span><div class="l"><b>US brewers and distillers</b>Every one of them makes this waste</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="proc" id="how">
+  <div class="wrap">
+    <div class="proc__head">
+      <div>
+        <div class="marker mono rv"><b>02</b><span>How it works</span></div>
+        <h2 class="rv">Heat does the separating. <em>Nothing leaves as waste.</em></h2>
+      </div>
+      <p class="rv">A steam-based process pulls clean water out of the stream and leaves the solids behind. The solids become feed and biochar. The water goes back into your wash cycle. The design reuses heat from its own power supply, which is where the efficiency comes from.</p>
+    </div>
+
+    <svg class="diagram rv" viewBox="0 0 1200 360" role="img" aria-label="Diagram: spent wash, stillage and wastewater enter the Meknology system, which outputs dried distillers' grains, biochar fertilizer and clean water.">
+      <g fill="none" stroke-width="2">
+        <path class="flow" d="M180 80 C 360 80, 380 180, 470 180" stroke="#77736B"/>
+        <path class="flow" d="M180 180 L 470 180" stroke="#77736B"/>
+        <path class="flow" d="M180 280 C 360 280, 380 180, 470 180" stroke="#77736B"/>
+        <path class="flow" d="M730 180 C 820 180, 840 80, 950 80" stroke="#B7862F"/>
+        <path class="flow" d="M730 180 L 950 180" stroke="#8A857B"/>
+        <path class="flow" d="M730 180 C 820 180, 840 280, 950 280" stroke="#2F75F2"/>
+      </g>
+      <text x="0" y="60">In</text>
+      <text class="big" x="0" y="86">Spent wash</text>
+      <text class="big" x="0" y="186">Stillage</text>
+      <text class="big" x="0" y="286">Wastewater</text>
+      <rect x="470" y="110" width="260" height="140" rx="4" fill="#33322E" stroke="#4A4843"/>
+      <text x="500" y="146">Meknology system</text>
+      <text class="big" x="500" y="186">Steam separation</text>
+      <text x="500" y="222" style="fill:#77736B">Patented · on your site</text>
+      <text x="970" y="60">Out</text>
+      <circle cx="958" cy="80" r="5" fill="#B7862F"/><text class="big" x="975" y="88">Animal feed</text>
+      <circle cx="958" cy="180" r="5" fill="#8A857B"/><text class="big" x="975" y="188">Biochar fertilizer</text>
+      <circle cx="958" cy="280" r="5" fill="#2F75F2"/><text class="big" x="975" y="288">Clean water</text>
+    </svg>
+
+    <div class="dm" aria-hidden="true">
+      <span class="mono">In</span>
+      <p>Spent wash · Stillage · Wastewater</p>
+      <i></i>
+      <div class="dm__box"><span class="mono">Meknology system</span><b>Steam separation</b></div>
+      <i></i>
+      <span class="mono">Out</span>
+      <ul><li style="--c:#B7862F">Animal feed</li><li style="--c:#8A857B">Biochar fertilizer</li><li style="--c:#2F75F2">Clean water</li></ul>
+    </div>
+
+    <ol class="steps">
+      <li class="rv"><span class="mono">Step 1</span><h3>It installs on site</h3><p>Sized to your output, from a microbrewery to a large distillery. If you are short on space, ask about the pickup service instead.</p></li>
+      <li class="rv"><span class="mono">Step 2</span><h3>It runs with little attention</h3><p>Built for low-touch operation, with remote monitoring and full service support behind it.</p></li>
+      <li class="rv"><span class="mono">Step 3</span><h3>You sell or reuse what comes out</h3><p>Sell the feed and fertilizer yourself, or join the resale and profit-sharing program and let us find the buyers.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="outputs">
+  <div class="wrap">
+    <div class="sec__head">
+      <div>
+        <div class="marker mono rv"><b>03</b><span>What you get</span></div>
+        <h2 class="rv">Each output has <em>a buyer waiting.</em></h2>
+      </div>
+      <p class="rv">None of these is a novelty product. Feed mills, farms, vineyards and regenerative growers already buy them. The difference is that you are now the one selling.</p>
+    </div>
+    <div class="outs">
+      <article class="out rv" style="--c:var(--grain)">
+        <div class="out__img"><img src="grain.jpg" alt="Hands in a bed of spent brewing grain" loading="lazy"></div>
+        <div class="out__body">
+          <span class="mono">Output 01 · Grain</span>
+          <h3>Dried distillers&rsquo; grains</h3>
+          <p>High-protein livestock feed made from your spent grain. Farmers and feed markets already buy it.</p>
+          <dl><div><dt>Buyers</dt><dd>Livestock farms, feed markets</dd></div><div><dt>Also used in</dt><dd>Bioreactors, bioplastics, hydroponics</dd></div></dl>
+        </div>
+      </article>
+      <article class="out rv" style="--c:var(--char)">
+        <div class="out__img"><img src="biochar.jpg" alt="Hands lifting a harvest from dark, rich soil" loading="lazy"></div>
+        <div class="out__body">
+          <span class="mono">Output 02 · Soil</span>
+          <h3>Phosphorus-enhanced biochar</h3>
+          <p>A carbon-rich soil amendment packed with nutrients, for growers moving away from synthetic fertilizer.</p>
+          <dl><div><dt>Buyers</dt><dd>Farms, vineyards</dd></div><div><dt>Market</dt><dd>Regenerative agriculture</dd></div></dl>
+        </div>
+      </article>
+      <article class="out rv" style="--c:var(--water)">
+        <div class="out__img out__water" aria-hidden="true">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="none"><g fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.5">
+            <path d="M0 120 Q100 90 200 120 T400 120"/><path d="M0 170 Q100 140 200 170 T400 170"/><path d="M0 220 Q100 190 200 220 T400 220"/><path d="M0 270 Q100 240 200 270 T400 270"/></g></svg>
+          <span>H<sub style="font-size:.45em">2</sub>O</span>
+        </div>
+        <div class="out__body">
+          <span class="mono">Output 03 · Water</span>
+          <h3>Clean, reusable water</h3>
+          <p>Treated to drinking-water standard and fed back into your wash, cooling or even bottling, depending on local rules.</p>
+          <dl><div><dt>Reused for</dt><dd>Cleaning, cooling, bottling</dd></div><div><dt>Result</dt><dd>Less discharged, fewer permit worries</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec__head">
+      <div>
+        <div class="marker mono rv"><b>04</b><span>What it replaces</span></div>
+        <h2 class="rv">The weekly waste problem, <em>line by line.</em></h2>
+      </div>
+    </div>
+    <div class="cmp">
+      <div class="cmp__h mono"><span>The issue</span><span>Today</span><span>With Meknology</span></div>
+      <div class="cmp__r rv"><h3>Disposal cost</h3><p>Hauling, tipping fees and treatment-plant charges, every week.</p><p>Processed on site. The cost becomes something you sell.</p></div>
+      <div class="cmp__r rv"><h3>Compliance</h3><p>Strict discharge rules for wastewater and stillage, and fines or shutdowns if you miss.</p><p>Far less leaves your site, so the standard is easier to meet.</p></div>
+      <div class="cmp__r rv"><h3>Finding takers</h3><p>Farmers who take spent grain are seasonal and hard to schedule.</p><p>Dried grain stores and ships. Or we find the buyer for you.</p></div>
+      <div class="cmp__r rv"><h3>Storage</h3><p>Wet, heavy waste that spoils fast and smells.</p><p>Dry products and clean water. Nothing left to rot.</p></div>
+      <div class="cmp__r rv"><h3>Staff time</h3><p>Brewers pulled off production to manage waste.</p><p>Low-touch system, monitored remotely.</p></div>
+      <div class="cmp__r rv"><h3>Sustainability</h3><p>Pressure from customers, investors and certifiers.</p><p>A closed loop you can point to, with products to show for it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="split" id="pilots">
+  <div class="split__img"><img src="distillery.jpg" alt="Copper distillation equipment in a craft distillery" loading="lazy"></div>
+  <div class="split__body">
+    <div>
+      <div class="marker mono rv"><b>05</b><span>First sites</span></div>
+      <h2 class="rv" style="font-weight:300;font-size:clamp(32px,4vw,56px);line-height:1.04;letter-spacing:-.03em">Michigan producers, <em style="font-style:normal;color:#A39C8E">first in line.</em></h2>
+    </div>
+    <div>
+      <ul class="pilots">
+        <li class="rv"><b>Mammoth Distilling</b><span>Central Lake</span></li>
+        <li class="rv"><b>Roar Brewing Co.</b><span>Detroit</span></li>
+        <li class="rv"><b>HOMES Brewpub</b><span>Ann Arbor</span></li>
+      </ul>
+      <p class="fine" style="margin-top:18px">Planned deployments, as reported by Second Wave Media, October 2025.</p>
+    </div>
+  </div>
+</section>
+
+<section class="founder">
+  <div class="wrap founder__grid">
+    <div class="who">
+      <div class="marker mono rv"><b>06</b><span>Who builds it</span></div>
+      <h3 class="rv">Daniel Hodges</h3>
+      <p class="muted rv">Founder and President</p>
+    </div>
+    <div>
+      <blockquote class="rv">If we are brave, we can see a better future for everybody.</blockquote>
+      <div class="cv">
+        <div class="rv"><b>Mechanical engineer</b><span>BS, Michigan State University</span></div>
+        <div class="rv"><b>Mechatronics and robotics</b><span>MS, Lawrence Technological University</span></div>
+        <div class="rv"><b>Product design</b><span>Ford, Whirlpool and BrassCraft</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec__head">
+      <div>
+        <div class="marker mono rv"><b>07</b><span>Backed by</span></div>
+        <h2 class="rv">Already on board. <em>Grants, funds and accelerators.</em></h2>
+      </div>
+    </div>
+    <ul class="backers">
+      <li class="rv"><b>Michigan EGLE</b><span>Department of Environment, Great Lakes and Energy</span><em class="mono">Grant</em></li>
+      <li class="rv"><b>Techstars</b><span>Global startup accelerator</span><em class="mono">Investor</em></li>
+      <li class="rv"><b>Kalamazoo Forward Ventures</b><span>Southwest Michigan venture fund</span><em class="mono">Investor</em></li>
+      <li class="rv"><b>Red Cedar Ventures</b><span>MSU Research Foundation</span><em class="mono">Pre-seed</em></li>
+      <li class="rv"><b>Centrepolis Accelerator</b><span>Lawrence Technological University</span><em class="mono">Accelerator</em></li>
+      <li class="rv"><b>Conquer Accelerator</b><span>Startup accelerator</span><em class="mono">Accelerator</em></li>
+      <li class="rv"><b>City of Southfield</b><span>Municipal partner</span><em class="mono">Partner</em></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="start" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec__head">
+      <div>
+        <div class="marker mono rv"><b>08</b><span>Start here</span></div>
+        <h2 class="rv">Four ways in. <em>Pick yours.</em></h2>
+      </div>
+      <p class="rv">Each one goes to a short form built for that conversation, so you only answer questions that apply to you.</p>
+    </div>
+    <div class="paths">
+      <a class="path path--lead rv" href="https://www.meknology.com/"><span class="mono">Breweries &amp; distilleries</span><h3>Put the system on my site</h3><p>Purchase or lease. Tell us your volume and we&rsquo;ll tell you what it would earn.</p><span class="go">Get an estimate <span>&rarr;</span></span></a>
+      <a class="path rv" href="https://www.meknology.com/"><span class="mono">Farms &amp; feed buyers</span><h3>Buy grain or fertilizer</h3><p>One-time or recurring orders, from 1 ton to more than 500.</p><span class="go">Request supply <span>&rarr;</span></span></a>
+      <a class="path rv" href="https://www.meknology.com/"><span class="mono">Suppliers</span><h3>Supply parts or service</h3><p>Brewing equipment, electronic and mechanical components, repair.</p><span class="go">Become a supplier <span>&rarr;</span></span></a>
+      <a class="path rv" href="https://www.meknology.com/"><span class="mono">Accredited investors</span><h3>Invest in Meknology</h3><p>For accredited investors under SEC rules.</p><span class="go">Investor contact <span>&rarr;</span></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec__head">
+      <div>
+        <div class="marker mono rv"><b>09</b><span>Questions</span></div>
+        <h2 class="rv">What producers <em>ask first.</em></h2>
+      </div>
+    </div>
+    <div class="faq">
+      <details><summary><span class="mono">01</span>What kinds of waste can the system process?<i>+</i></summary><p>Spent wash, stillage and wastewater: the streams usually treated as a disposal cost. They become feed, fertilizer and clean water.</p></details>
+      <details><summary><span class="mono">02</span>How does this cut our disposal costs?<i>+</i></summary><p>Processing on site means no hauling, no tipping fees and no third-party treatment. You also end up with products to sell or reuse, or you can join the resale and profit-sharing program.</p></details>
+      <details><summary><span class="mono">03</span>What are dried distillers&rsquo; grains, and who buys them?<i>+</i></summary><p>High-protein, nutrient-rich livestock feed made from spent grain. Farmers and feed markets buy it, which gives you a direct revenue stream. It also has uses in bioreactors, bioplastics and hydroponics.</p></details>
+      <details><summary><span class="mono">04</span>What is phosphorus-enhanced biochar, and who wants it?<i>+</i></summary><p>A carbon-rich soil amendment packed with nutrients. Farms, vineyards and regenerative growers are looking for sustainable alternatives to synthetic fertilizer.</p></details>
+      <details><summary><span class="mono">05</span>Can it really make drinkable water from our wastewater?<i>+</i></summary><p>Yes. The patented process treats wastewater to potable standard, so it can be reused for cleaning, cooling or even bottling, depending on your application and local regulations.</p></details>
+      <details><summary><span class="mono">06</span>How does this help with environmental compliance?<i>+</i></summary><p>You discharge much less wastewater, which makes the standards easier to meet and fines easier to avoid. A circular process also strengthens your sustainability record.</p></details>
+      <details><summary><span class="mono">07</span>Does it work for small craft producers?<i>+</i></summary><p>Setups are modular and sized to your production, from a microbrewery to a major distillery. If space is tight, ask about the waste pickup service.</p></details>
+      <details><summary><span class="mono">08</span>How long until it pays for itself?<i>+</i></summary><p>Most customers see a return within 12 to 24 months, depending on waste volume and the resale value of what comes out.</p></details>
+      <details><summary><span class="mono">09</span>What support or maintenance does it need?<i>+</i></summary><p>It is designed for low-touch operation, with remote monitoring and full service support.</p></details>
+      <details><summary><span class="mono">10</span>How is this different from traditional treatment?<i>+</i></summary><p>Traditional treatment gets rid of waste. This turns it into products, so waste stops being a cost center and starts paying.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2 class="rv">Your waste already has value. <em>Let&rsquo;s measure it.</em></h2>
+    <div class="close__row">
+      <p class="rv">Tell us what you produce and how much. We&rsquo;ll come back with what your site would recover, and what it would earn.</p>
+      <a class="btn rv" href="#start">Start the conversation <span class="arr">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <img src="assets/meknology-logo.svg" alt="Meknology" width="128" height="20">
+      <ul>
+        <li><a href="https://www.linkedin.com/company/meknology">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/MeknologyLLC/">Facebook</a></li>
+        <li><a href="https://www.meknology.com/privacy-statement">Privacy</a></li>
+      </ul>
+    </div>
+    <div class="foot__bot">
+      <span>&copy; Meknology. Built in Michigan.</span>
+      <span class="foot__credit">Homepage rebuild by <b>LOVELEEDAY Studios</b> &mdash; unsolicited, not affiliated with Meknology. Photography: ELEVATE, cottonbro studio, Alexandra Kollstrem, Tiago Antonio (Pexels).</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const els = document.querySelectorAll('.rv');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    els.forEach(e => e.classList.add('in')); return;
+  }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -8% 0px' });
+  els.forEach(e => io.observe(e));
+})();
+</script>
+</body>
+</html>

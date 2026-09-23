@@ -27,6 +27,7 @@ TARGETS = {
     "undock": "https://undock.com/",
     "cmodel": "https://cmodel.io/",
     "venturehue": "https://venturehue.com/",
+    "meknology": "https://www.meknology.com/",
 }
 
 
