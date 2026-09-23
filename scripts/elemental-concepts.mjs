@@ -20,16 +20,17 @@ const ELN = { light: "Light", story: "Story", craft: "Craft", motion: "Motion" }
 const concepts = [
   {
     file: "c1-periodic", n: 1, name: "Periodic",
-    idea: "Elemental as the element every brand needs. A periodic-table system: the mark is a tile, every film is an element with its own symbol, and the grid does the storytelling.",
+    idea: "Elemental as the element every brand needs. Their real logo leads; every film becomes an element tile with its own symbol, and the grid does the storytelling. Reviewed by nine departments.",
     fonts: "Inter+Tight:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500",
     display: "'Inter Tight',sans-serif", text: "'Inter Tight',sans-serif", mono: "'IBM Plex Mono',monospace",
-    c: { bg: "#F3F1EC", ink: "#0F0F11", mid: "#6B6B72", line: "#D9D6CF", accent: "#FF4F2E", panel: "#FFFFFF", dark: "#0F0F11", onDark: "#F3F1EC" },
-    mark: (c) => `<span class="mk"><svg viewBox="0 0 44 44" width="40" height="40" aria-hidden="true"><rect x="1" y="1" width="42" height="42" fill="${c.accent}"/><text x="5" y="11" font-family="IBM Plex Mono" font-size="7" fill="#fff">00</text><text x="6" y="35" font-family="Inter Tight" font-weight="800" font-size="22" fill="#fff">El</text></svg><b>Elemental</b></span>`,
-    tagline: "The essential element.",
-    h1: "Film and photography,<br>reduced to what <em>matters.</em>",
-    lede: "Elemental is a production studio for brands that want to be remembered. We write, direct, shoot and finish films and photography, with a team that scales from one to twenty around the work.",
+    c: { bg: "#F3F1EC", ink: "#0F0F11", mid: "#62626A", line: "#D9D6CF", accent: "#C83414", panel: "#FFFFFF", dark: "#0F0F11", onDark: "#F3F1EC" },
+    // Elemental's real logo (their flame + wordmark), recoloured to ink for the light page.
+    mark: () => `<span class="mk"><img src="../img/logo-dark.svg" alt="Elemental Media" width="118" height="36" style="height:36px;width:auto"></span>`,
+    tagline: "Film and photography studio · Kalamazoo, Michigan",
+    h1: "Every brand has<br>an essential element.<br><em>We film it.</em>",
+    lede: "The studio behind Bell’s Inspired Brewing, Kalamazoo Airport’s When a City Has an Airport and Landscape Forms’ People’s Dept. One team, from a single photographer to a crew of twenty.",
     layout: "split", work: "tiles",
-    close: "Every brand has an essential element.<br><em>We film it.</em>",
+    close: "What is <em>yours?</em>",
   },
   {
     file: "c2-four-elements", n: 2, name: "Four Elements",
@@ -89,7 +90,7 @@ function css(k) {
   const c = k.c;
   return `
 :root{--bg:${c.bg};--ink:${c.ink};--mid:${c.mid};--line:${c.line};--ac:${c.accent};--panel:${c.panel};--dark:${c.dark};--on:${c.onDark};--d:${k.display};--t:${k.text};--m:${k.mono};--g:clamp(20px,4vw,60px)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--t);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}html{scroll-behavior:smooth}:focus-visible{outline:2px solid var(--ac);outline-offset:3px}footer .g{align-items:start}body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--t);-webkit-font-smoothing:antialiased}
 img,video{display:block;max-width:100%}a{color:inherit;text-decoration:none}.w{max-width:1360px;margin:0 auto;padding:0 var(--g)}
 .s{aspect-ratio:2.39/1;width:100%;object-fit:cover;background:#000}
 .lab{font:500 11px/1 var(--m);letter-spacing:.18em;text-transform:uppercase;color:var(--mid)}
@@ -187,10 +188,11 @@ function page(k) {
   else if (k.layout === "full") hero = `<header class="hero full">${heroFilm}<div class="w cap"><div class="hero row" style="padding:0"><h1>${k.h1}</h1><p class="lede">${k.lede}</p></div></div></header>`;
   else hero = `<header class="hero"><div class="w"><span class="tag">${k.tagline}</span><div class="row"><h1>${k.h1}</h1><p class="lede">${k.lede}</p></div>${heroFilm}</div></header>`;
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Elemental 2.0 · Concept ${k.n}: ${k.name}</title><meta name="robots" content="noindex">
+<title>Elemental Media · Film and photography studio · Concept ${k.n}: ${k.name}</title><meta name="robots" content="noindex"><meta name="description" content="Elemental Media: brand films, commercials and photography for Bell’s, Stryker, Shinola and Kalamazoo College. Kalamazoo, Michigan.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=${k.fonts}&display=swap" rel="stylesheet">
-<style>${css(k)}</style></head><body>
+<style>${css(k)}</style>
+<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Elemental Media", url: "https://weareelementalmedia.com", email: "contact@inyourelement.media", telephone: "+1-269-568-1093", address: { "@type": "PostalAddress", addressLocality: "Kalamazoo", addressRegion: "MI", addressCountry: "US" }, sameAs: ["https://vimeo.com/user49532874", "https://www.instagram.com/elementalmediakzoo/"], employee: [{ "@type": "Person", name: "Esther Tuttle", jobTitle: "Creative Director" }, { "@type": "Person", name: "Nick Turske", jobTitle: "Managing Director" }] })}</script></head><body>
 <nav class="top"><div class="w"><a href="#" aria-label="Elemental, home">${k.mark(k.c)}</a>
 <ul id="m"><li><a href="#work">Work</a></li><li><a href="#capabilities">Capabilities</a></li><li><a href="#studio">Studio</a></li><li><a href="#contact">Contact</a></li></ul>
 <a class="cta" href="#contact">Start a project</a>
@@ -199,10 +201,10 @@ ${hero}
 <section class="blk" id="work"><div class="w"><div class="hd"><h2>Selected work</h2><span class="lab">2020 – 2026</span></div>${work(k)}</div></section>
 <section class="blk" id="social"><div class="w"><div class="hd"><h2>One shoot.<br>Every <em>channel.</em></h2><p style="margin:0;max-width:44ch;color:var(--mid)">A client pays for one production. From the same footage, Elemental delivers the brand film and every cut their social team needs. Shown here with Factory Coffee&rsquo;s footage.</p></div>
 <div class="soc">
-<figure class="m239"><video src="../social/master-239.mp4" poster="../social/master-239.jpg" autoplay muted loop playsinline></video><figcaption><b>Brand film</b><span>2.39 · website, broadcast, :30</span></figcaption></figure>
-<figure class="m916"><video src="../social/reel-916.mp4" poster="../social/reel-916.jpg" autoplay muted loop playsinline></video><figcaption><b>Reel</b><span>9:16 · Reels, TikTok, Shorts</span></figcaption></figure>
-<figure class="m45"><video src="../social/feed-45.mp4" poster="../social/feed-45.jpg" autoplay muted loop playsinline></video><figcaption><b>Feed</b><span>4:5 · Instagram, LinkedIn</span></figcaption></figure>
-<figure class="m11"><video src="../social/square-11.mp4" poster="../social/square-11.jpg" autoplay muted loop playsinline></video><figcaption><b>Bumper</b><span>1:1 · six-second paid</span></figcaption></figure>
+<figure class="m239"><video class="lazyv" data-src="../social/master-239.mp4" poster="../social/master-239.jpg" muted loop playsinline preload="none" aria-label="Factory Coffee footage, master-239 cut"></video><figcaption><b>Brand film</b><span>2.39 · website, broadcast, :30</span></figcaption></figure>
+<figure class="m916"><video class="lazyv" data-src="../social/reel-916.mp4" poster="../social/reel-916.jpg" muted loop playsinline preload="none" aria-label="Factory Coffee footage, reel-916 cut"></video><figcaption><b>Reel</b><span>9:16 · Reels, TikTok, Shorts</span></figcaption></figure>
+<figure class="m45"><video class="lazyv" data-src="../social/feed-45.mp4" poster="../social/feed-45.jpg" muted loop playsinline preload="none" aria-label="Factory Coffee footage, feed-45 cut"></video><figcaption><b>Feed</b><span>4:5 · Instagram, LinkedIn</span></figcaption></figure>
+<figure class="m11"><video class="lazyv" data-src="../social/square-11.mp4" poster="../social/square-11.jpg" muted loop playsinline preload="none" aria-label="Factory Coffee footage, square-11 cut"></video><figcaption><b>Bumper</b><span>1:1 · six-second paid</span></figcaption></figure>
 <figure class="m11"><img src="../social/still-11.jpg" alt="Still frame of a latte pour"><figcaption><b>Stills</b><span>Grid posts, press, web</span></figcaption></figure>
 </div></div></section>
 <section class="blk" id="capabilities"><div class="w"><div class="hd"><h2>Capabilities</h2></div><div class="cap3">
@@ -210,7 +212,7 @@ ${hero}
 <div><span class="lab">02 · Photography</span><h3>Campaign and brand photography</h3><p>Portraits, lifestyle, product and editorial, shot to live alongside the film.</p><ul><li>Portraits and headshots</li><li>Lifestyle and editorial</li><li>Product</li><li>Events and retouching</li></ul></div>
 <div><span class="lab">03 · Studio &amp; rental</span><h3>Crew and equipment</h3><p>A team that scales from one to twenty, and the kit we shoot on, available to other productions.</p><ul><li>Cameras, lenses and support</li><li>Lighting and grip</li><li>Audio</li><li>Rates on request</li></ul></div>
 </div></div></section>
-<section class="logos" aria-label="Clients"><div class="w"><span class="lab" style="color:#6b6b6b">Selected clients</span><div class="lg">${logos.map((l) => `<img src="../brands/${l}-colour.png" alt="${logoAlt[l]}" loading="lazy">`).join("")}</div></div></section>
+<section class="logos" aria-label="Clients"><div class="w"><span class="lab" style="color:#6b6b6b">Selected clients · as shown on weareelementalmedia.com</span><div class="lg">${logos.map((l) => `<img src="../brands/${l}-colour.png" alt="${logoAlt[l]}" loading="lazy">`).join("")}</div></div></section>
 <section class="blk" id="studio"><div class="w team"><p class="body">A core team in Kalamazoo, Michigan, built to scale for productions anywhere.</p><div class="p"><b>Esther Tuttle</b><span>Creative Director</span></div><div class="p"><b>Nick Turske</b><span>Managing Director</span></div></div></section>
 <section class="close" id="contact"><div class="w"><h2>${k.close}</h2><div class="ct"><a href="mailto:contact@inyourelement.media">contact@inyourelement.media</a><a href="tel:+12695681093">269.568.1093</a></div></div></section>
 <footer><div class="w"><div class="g"><div>${k.mark(k.c)}<p style="margin:14px 0 0;max-width:30ch">${k.tagline}</p></div>
@@ -218,7 +220,9 @@ ${hero}
 <div><h4>Contact</h4><ul><li><a href="mailto:contact@inyourelement.media">Email</a></li><li><a href="tel:+12695681093">269.568.1093</a></li><li>Kalamazoo, Michigan</li></ul></div>
 <div><h4>Follow</h4><ul><li><a href="https://vimeo.com/user49532874">Vimeo</a></li><li><a href="https://www.instagram.com/elementalmediakzoo/">Instagram</a></li></ul></div></div>
 <div class="fn"><span>© 2026 Elemental Media</span><span>Elemental 2.0 · Concept ${k.n} of 5 · a proposed identity by LOVELEEDAY Studios</span></div></div></footer>
-<script>(()=>{const n=document.querySelector('nav.top'),b=n.querySelector('.bb');b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')});n.querySelectorAll('ul a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')))})()</script>
+<script>(()=>{const n=document.querySelector('nav.top'),b=n.querySelector('.bb');b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')});n.querySelectorAll('ul a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
+const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(!v.src){v.src=v.dataset.src}v.play().catch(()=>{})}else if(v.src){v.pause()}}),{rootMargin:'200px'});
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('video.lazyv').forEach(v=>io.observe(v))})()</script>
 </body></html>`;
 }
 
