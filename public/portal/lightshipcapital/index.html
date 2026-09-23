@@ -77,8 +77,6 @@ h1,h2,h3{font-family:var(--disp);font-weight:400;letter-spacing:-.01em;text-wrap
 .beam{position:absolute;left:66.3%;top:26.5%;width:220vmax;height:220vmax;transform:translate(-50%,-50%);z-index:1;pointer-events:none;
   background:conic-gradient(from 0deg,transparent 0deg,rgba(255,229,130,.11) 8deg,rgba(255,229,130,.03) 20deg,transparent 26deg,transparent 360deg);
   animation:sweep 11s linear infinite;mix-blend-mode:screen}
-.lamp{position:absolute;left:78%;top:36%;width:14px;height:14px;border-radius:50%;background:#FFE58A;z-index:2;transform:translate(-50%,-50%);
-  box-shadow:0 0 14px 4px rgba(255,209,0,.55),0 0 46px 14px rgba(255,209,0,.16);animation:blink 11s linear infinite}
 @keyframes sweep{to{transform:translate(-50%,-50%) rotate(360deg)}}
 @keyframes blink{0%,100%{opacity:.8}50%{opacity:1}}
 .hero .wrap{position:relative;z-index:3;width:100%;padding-bottom:clamp(48px,8vw,96px)}
@@ -90,10 +88,10 @@ h1,h2,h3{font-family:var(--disp);font-weight:400;letter-spacing:-.01em;text-wrap
 /* bearings (criteria) */
 .bear{background:var(--navy);color:#fff}
 .bear .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
-.bear div{padding:40px 32px 44px 0}
-.bear div+div{padding-left:32px;border-left:1px solid rgba(255,255,255,.18)}
+.bear .wrap>div{padding:40px 32px 44px 0}
+.bear .wrap>div+div{padding-left:32px;border-left:1px solid rgba(255,255,255,.18)}
 .bear .label{color:var(--tint)}
-.bear div{display:flex;flex-direction:column}
+.bear .wrap>div{display:flex;flex-direction:column}
 .bear b{display:block;font-family:var(--disp);font-weight:400;font-size:27px;line-height:1.15;margin-top:10px}
 .bear p{margin-top:10px;color:#DCE3F2;font-size:16px}
 
@@ -217,7 +215,7 @@ a.co:hover .co__img img,a.co:focus .co__img img{filter:none}
   .nav.open ul{display:flex}
   .nav .wrap{position:relative}
   .bear .wrap,.head,.chart__head,.idea,.doors,.team{grid-template-columns:1fr}
-  .bear div,.bear div+div{padding:26px 0;border-left:0;border-bottom:1px solid rgba(255,255,255,.18)}
+  .bear .wrap>div,.bear .wrap>div+div{padding:26px 0;border-left:0;border-bottom:1px solid rgba(255,255,255,.18)}
   .idea__img{min-height:360px}
   .grid{grid-template-columns:1fr 1fr}
   .contact{grid-template-columns:1fr 1fr}
@@ -243,10 +241,13 @@ a.co:hover .co__img img,a.co:focus .co__img img{filter:none}
   .hero::after{background:linear-gradient(180deg,rgba(7,15,42,.35) 0%,rgba(7,15,42,.55) 32%,rgba(7,15,42,.88) 58%,rgba(7,15,42,.94) 100%)}
   .nav .wrap{gap:10px}
   .beam{display:none}
-  .hero>img{object-position:66% center}
+  .hero{flex-direction:column;align-items:stretch;min-height:0;background:var(--night)}
+  .hero>img{position:relative;inset:auto;height:78vw;min-height:300px;object-position:66% 35%}
+  .hero::after{display:none}
+  .hero .wrap{padding-top:28px}
 }
 @media (prefers-reduced-motion:reduce){
-  .beam,.lamp,.port .halo{animation:none}
+  .beam,.port .halo{animation:none}
 }
 </style>
 </head>
