@@ -37,7 +37,7 @@ export const meknologyResearch: Research = {
     {
       title: "WMU's drink contract is the gate, and it is not public",
       detail:
-        "We could not find WMU Athletics' beverage sponsor or contract term in any public record. Gatorade is a partner of the Mid-American Conference, which WMU plays in, and big schools usually sign exclusive deals of several years; Michigan signed one with Coca-Cola in May 2026. Until that contract is known, “replace Gatorade” is a question for WMU's athletics business office, not a product decision.",
+        "We did not find WMU Athletics' beverage sponsor or contract term in the public web sources we searched; a contract that was never published, or that sits in university purchasing records, would not show up there. Gatorade is a partner of the Mid-American Conference, which WMU plays in, and big schools usually sign exclusive deals of several years; Michigan signed one with Coca-Cola in May 2026. Until that contract is known, “replace Gatorade” is a question for WMU's athletics business office, not a product decision.",
     },
   ],
   verdict:
