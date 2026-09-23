@@ -28,6 +28,8 @@ CONTROLS = [
      "Each client's records are isolated in the database itself, not only in software. One client cannot read another's rows."),
     ("Backups that are checked, not assumed.",
      "Client data is backed up every day. Our own operating records are copied daily to two independent providers, each copy downloaded again and compared byte for byte, with a full restore rehearsed every week."),
+    ("A backup ransomware cannot erase.",
+     "One offsite copy of our operating records sits under a retention lock: for fourteen days after it is written, no one, including us, can delete or overwrite it. We test that lock by trying to delete a file ourselves, and the storage refuses."),
     ("Tested from the outside.",
      "We probe our own website, client portal and database the way an attacker would look first: exposed files, keys left in code, pages reachable without signing in, and anonymous attempts to read or write data. What it finds is fixed before new work ships."),
     ("Nothing goes out without approval.",
@@ -44,18 +46,20 @@ t = block.sub(lambda m: m.group(1) + "".join(art(f"{i:02d}", h, b) for i, (h, b)
 
 old_rules = "and the state and local requirements of wherever you operate."
 assert old_rules in t, "rules sentence not found"
-t = t.replace(old_rules, "and the state and local requirements of wherever you operate. We keep a register of the breach-notification, student-privacy and consumer-privacy laws of all fifty states and the District of Columbia, and the federal and industry standards for every sector we serve, each tied to the official text, so the obligations written into your agreement are the ones that actually apply to you.", 1)
+if "We keep a register" not in t:
+    t = t.replace(old_rules, "and the state and local requirements of wherever you operate. We keep a register of the breach-notification, student-privacy and consumer-privacy laws of all fifty states and the District of Columbia, and the federal and industry standards for every sector we serve, each tied to the official text, so the obligations written into your agreement are the ones that actually apply to you.", 1)
 
 old_intro = "None of the three below are done"
-assert old_intro in t, "roadmap intro not found"
+assert old_intro in t or "None of the items below are done" in t, "roadmap intro not found"
 t = t.replace(old_intro, "None of the items below are done", 1)
 
 sso = re.search(r'<article class="principle-long"><span class="row-number">&mdash;</span><h3>Single sign-on.*?</article>', t, re.S)
 assert sso, "SSO roadmap item not found"
 locked = art("&mdash;", "Backups that cannot be deleted.",
              "Underway. Our offsite copies are verified daily, but they can still be removed with the same access that writes them. We are adding a retention lock so that no one, including us, can delete a backup before it ages out.")
-if "Backups that cannot be deleted." not in t:
-    t = t[: sso.end()] + locked + t[sso.end():]
+# Shipped 2026-09-23 (R2 bucket lock, proven by scripts/r2-lock-probe.sh), so it
+# moves from the roadmap into the controls list above.
+t = t.replace(locked, "")
 
 P.write_text(t)
 print("security.html updated:", len(CONTROLS), "controls")
