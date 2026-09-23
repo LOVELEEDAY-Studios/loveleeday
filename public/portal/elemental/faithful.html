@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Elemental Media — Video &amp; Photo Production, Kalamazoo</title>
+<meta name="description" content="Elemental Media is an agency-model production company in Kalamazoo, Michigan. Video, photography and equipment rental for brands like Bell's, Ford, Stryker and Shinola.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Urbanist:wght@800;900&display=swap" rel="stylesheet">
+<style>
+/* Elemental's own system, read from weareelementalmedia.com on 2026-09-23:
+   cream #FFFDFA, navy #4D5C95, dusty rose #B46969, headlines in Visby CF ExtraBold with
+   2.5px outlined words, Poppins body. Urbanist 800 stands in for Visby (licensed font).
+   Every film and still sits in ONE frame: 2.39:1. */
+:root{--cream:#FFFDFA;--navy:#4D5C95;--navy-d:#2E3765;--rose:#B46969;--ink:#16171d;--dark:#101116;--mid:#5f6272;--line:#e9e3da;
+  --display:"Urbanist","Visby CF",system-ui,sans-serif;--text:"Poppins",system-ui,sans-serif;--gut:clamp(20px,4vw,56px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 16px/1.7 var(--text);-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+.scope{aspect-ratio:2.39/1;width:100%;object-fit:cover;background:#0b0c10}
+.d{font-family:var(--display);font-weight:800;letter-spacing:-.025em;line-height:.98;margin:0}
+.o{color:transparent;-webkit-text-stroke:2.5px var(--stroke,#fff)}
+.hero h1,.reel h2{--stroke:#fff}
+.story h2,.services h2{--stroke:var(--navy)}
+.work h2,.cases h2{--stroke:var(--rose)}
+.eyebrow{font:600 12px/1 var(--text);letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:15px 22px;border:1.5px solid currentColor;font:500 15px/1 var(--text);text-decoration:none;transition:background .2s,color .2s}
+.btn svg{width:14px;height:14px}
+.btn.rose{color:var(--rose)}.btn.rose:hover{background:var(--rose);color:#fff}
+.btn.navy{color:var(--navy)}.btn.navy:hover{background:var(--navy);color:#fff}
+.btn.light{color:#fff}.btn.light:hover{background:#fff;color:var(--dark)}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+
+/* header */
+.nav{position:sticky;top:0;z-index:40;background:rgba(16,17,22,.92);backdrop-filter:blur(10px);color:#fff}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav .logo img{height:34px;width:auto}
+.nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font:500 14px/1 var(--text);opacity:.86}
+.nav ul a:hover{opacity:1}
+.nav .cta{padding:11px 18px;font-size:14px}
+.nav .right{display:flex;align-items:center;gap:26px}
+.burger-btn{display:none;background:none;border:0;min-width:44px;min-height:44px;cursor:pointer;align-items:center;justify-content:center;margin-right:-10px}
+.burger{position:relative;width:24px;height:16px;display:block}
+.burger i{position:absolute;left:0;width:100%;height:2px;background:#fff;border-radius:2px;transition:transform .25s,opacity .2s,top .25s}
+.burger i:nth-child(1){top:0}.burger i:nth-child(2){top:7px}.burger i:nth-child(3){top:14px}
+.nav.open .burger i:nth-child(1){top:7px;transform:rotate(45deg)}.nav.open .burger i:nth-child(2){opacity:0}.nav.open .burger i:nth-child(3){top:7px;transform:rotate(-45deg)}
+
+/* hero: the loop in 2.39, headline over it on wide screens, under it on phones */
+.hero{background:var(--dark);color:#fff}
+.hero .frame{position:relative}
+.hero .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,11,15,.72) 0%,rgba(10,11,15,.25) 55%,rgba(10,11,15,0) 100%)}
+.hero .copy{position:absolute;left:0;right:0;bottom:0;top:0;z-index:2;display:flex;align-items:center}
+.hero h1{font-size:clamp(3rem,8.6vw,8.4rem)}
+.hero h1 .o{-webkit-text-stroke-color:#fff}
+.hero .under{margin-top:clamp(20px,2.6vw,34px);display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center}
+.hero .under p{margin:0;max-width:44ch;color:#e4e5ea;font-size:15px;line-height:1.6}
+.sound{display:inline-flex;align-items:center;gap:10px;background:none;border:1px solid #3a3d4a;color:#fff;padding:10px 16px;font:500 13px/1 var(--text);cursor:pointer}
+
+/* intro */
+.intro{padding:clamp(72px,10vw,140px) 0}
+.intro .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,96px);align-items:end}
+.intro p.lede{font-size:clamp(18px,1.6vw,21px);line-height:1.65;color:#2d2f38;margin:0 0 18px}
+.intro .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.stat div{padding:22px 16px 0 0}
+.stat b{display:block;font:800 clamp(28px,3vw,40px)/1 var(--display);color:var(--navy)}
+.stat span{font-size:13px;color:var(--mid)}
+
+/* story */
+.story{padding:0 0 clamp(72px,10vw,130px)}
+.story h2{font-size:clamp(2.6rem,7vw,6.6rem);color:var(--navy)}
+.story .stars{color:var(--rose);-webkit-text-stroke:0;letter-spacing:.02em}
+.story .fn{margin-top:18px;font-size:14px;color:var(--mid)}
+
+/* reel */
+.reel{background:var(--dark);color:#fff;padding:clamp(64px,8vw,110px) 0}
+.reel .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px;margin-bottom:28px}
+.reel h2{font-size:clamp(2.2rem,5vw,4.2rem)}
+.reel h2 .o{-webkit-text-stroke-color:#fff}
+.player{position:relative;cursor:pointer}
+.player .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.18);border:0;cursor:pointer;color:#fff}
+.player .play span{width:84px;height:84px;border-radius:50%;border:2px solid #fff;display:grid;place-items:center;transition:transform .2s}
+.player:hover .play span{transform:scale(1.06)}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* work */
+.work{padding:clamp(72px,10vw,130px) 0}
+.work .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px}
+.work h2{font-size:clamp(2.4rem,5.6vw,5rem);color:var(--rose)}
+.work h2 .o{-webkit-text-stroke-color:var(--rose)}
+.films{display:grid;grid-template-columns:repeat(2,1fr);gap:48px 32px;margin-top:48px}
+.film{text-decoration:none}
+.film .player{overflow:hidden}
+.film img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.film:hover img{transform:scale(1.03)}
+.film .meta{display:flex;justify-content:space-between;gap:16px;margin-top:14px;align-items:baseline}
+.film h3{margin:0;font:700 20px/1.3 var(--text);letter-spacing:-.01em;color:var(--ink)}
+.film p{margin:4px 0 0;font-size:14px;color:var(--mid)}
+.film .yr{font:500 13px/1 var(--text);color:var(--rose);white-space:nowrap}
+.film.wide{grid-column:1/-1}
+
+/* services */
+.services{background:#f6f1ea;padding:clamp(72px,10vw,130px) 0}
+.services h2{font-size:clamp(2.4rem,5.6vw,5rem);color:var(--navy)}
+.services h2 .o{-webkit-text-stroke-color:var(--navy)}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.svc h3{font:800 28px/1 var(--display);color:var(--navy);margin:20px 0 10px}
+.svc p{margin:0;color:#43454f;font-size:15px}
+.svc ul{margin:14px 0 0;padding:0;list-style:none;font-size:14px;color:var(--mid)}
+.svc li{padding:7px 0;border-top:1px solid #e6dfd4}
+
+/* clients */
+.clients{padding:clamp(64px,8vw,100px) 0}
+.clients .eyebrow{display:block;text-align:center;margin-bottom:36px;color:var(--mid)}
+.logos{display:grid;grid-template-columns:repeat(6,1fr);gap:36px 28px;align-items:center}
+.logos img{width:100%;max-width:120px;height:52px;object-fit:contain;margin:0 auto;filter:grayscale(1);opacity:.62;transition:filter .3s,opacity .3s}
+.logos img:hover{filter:none;opacity:1}
+
+/* case studies */
+.cases{padding:0 0 clamp(72px,10vw,130px)}
+.cases .grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px}
+.case{position:relative;display:block;text-decoration:none;color:#fff;overflow:hidden}
+.case img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.case:hover img{transform:scale(1.03)}
+.case .cap{position:absolute;inset:auto 0 0 0;padding:24px;background:linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,0))}
+.case h3{margin:0;font:800 clamp(24px,2.6vw,34px)/1 var(--display)}
+.case p{margin:6px 0 0;font-size:14px;color:#e2e2e8}
+.cases h2{font-size:clamp(2.4rem,5.6vw,5rem);color:var(--rose)}
+.cases h2 .o{-webkit-text-stroke-color:var(--rose)}
+
+/* close */
+.close{background:var(--navy-d);color:#fff;padding:clamp(80px,11vw,150px) 0;text-align:center}
+.close h2{font-size:clamp(2.4rem,6vw,5.6rem)}
+.close p{font-size:clamp(18px,1.8vw,22px);color:#cfd3e6;margin:18px 0 34px}
+footer{background:var(--dark);color:#a8abb8;padding:56px 0 40px;font-size:14px}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px}
+footer img{height:32px;width:auto}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+footer .fine{margin-top:40px;padding-top:22px;border-top:1px solid #23252e;font-size:12px}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .nav ul{display:none;position:absolute;top:74px;left:0;right:0;flex-direction:column;gap:0;background:rgba(16,17,22,.98);padding:6px var(--gut) 18px}
+  .nav.open ul{display:flex}
+  .nav ul a{display:block;padding:15px 0;font-size:18px;border-bottom:1px solid #23252e}
+  .burger-btn{display:inline-flex}
+  .nav .cta{display:none}
+  .intro .grid,.cases .grid{grid-template-columns:1fr}
+  .films{grid-template-columns:1fr}
+  .svc{grid-template-columns:1fr}
+  .logos{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:1100px){
+  .hero .copy{position:static;padding:30px 0 48px}
+  .hero .frame::after{display:none}
+}
+@media (max-width:720px){
+  .stat{grid-template-columns:1fr 1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.film img,.case img{transition:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Elemental Media home"><img src="img/logo-white.svg" alt="Elemental Media" width="111" height="34"></a>
+    <div class="right">
+      <ul id="menu">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#cases">Case Studies</a></li>
+        <li><a href="#reel">Reel</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn light cta" href="#contact">Start the conversation</a>
+      <button class="burger-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="frame">
+    <video class="scope" id="heroVid" src="video/hero-loop.mp4" poster="video/hero-poster.jpg" autoplay muted loop playsinline aria-label="Moments from Elemental Media films: a runner, a latte pour, a guitarist, a Bell's pour, a paper airplane, an athlete, a fan"></video>
+    <div class="copy"><div class="wrap" style="width:100%">
+      <h1 class="d"><span class="o">Hey there.</span><br>What&rsquo;s your vision?</h1>
+      <div class="under">
+        <p>An agency-model production company in Kalamazoo. Three people on a photo shoot or a crew of twenty on set, built around your goals, your values and your vibe.</p>
+        <a class="btn light" href="#reel">Watch the reel <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2l4 4-4 4"/></svg></a>
+      </div>
+    </div></div>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap grid">
+    <div class="reveal">
+      <span class="eyebrow">Writing · Directing · Cinematography · Photography</span>
+      <p class="lede" style="margin-top:22px">We know the key to the perfect visual is you. So we shape the team to the job, not the job to the team, and we stay responsive to what makes sense for you.</p>
+      <p class="lede">So look around. Check us out. Drop a line. We look forward to the conversation.</p>
+      <div class="ctas">
+        <a class="btn rose" href="#work">Check out our work <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2l4 4-4 4"/></svg></a>
+        <a class="btn navy" href="#contact">Get in touch <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+    <div class="stat reveal">
+      <div><b>3–20</b><span>Crew, sized to the shoot</span></div>
+      <div><b>Video</b><span>Spots, brand films, docs</span></div>
+      <div><b>Photo</b><span>Product, people, place</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap reveal">
+    <h2 class="d">You&rsquo;ve got a story.<br><span class="o">Let&rsquo;s tell the </span><span class="stars">****</span><span class="o"> out of it.</span><span class="stars">*</span></h2>
+    <p class="fn">*We leave the choice of the four-letter word entirely to you.</p>
+  </div>
+</section>
+
+<section class="reel" id="reel">
+  <div class="wrap">
+    <div class="top reveal">
+      <h2 class="d"><span class="o">The</span> reel.</h2>
+      <p style="margin:0;color:#b9bcc8;max-width:40ch">Seventy-four seconds of the work, from a brewery floor to a runway.</p>
+    </div>
+    <div class="player reveal" data-vimeo="1056144355">
+      <img class="scope" src="img/athlete.jpg" alt="A woman reading in a bright cafe, from an Elemental Media film" loading="lazy">
+      <button class="play" type="button" aria-label="Play the Elemental Media demo reel"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M7 4v16l13-8z"/></svg></span></button>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2 class="d"><span class="o">Recent</span><br>work.</h2>
+      <p style="margin:0;color:var(--mid);max-width:38ch">Brand films, spots and director&rsquo;s cuts. Every one of them plays right here.</p>
+    </div>
+    <div class="films">
+      <a class="film wide reveal" href="https://vimeo.com/903444253" data-vimeo="903444253">
+        <div class="player"><img class="scope" src="img/bells.jpg" alt="A glass of Bell's beer on the bar" loading="lazy"><span class="play" aria-hidden="true"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M7 4v16l13-8z"/></svg></span></span></div>
+        <div class="meta"><div><h3>Bell&rsquo;s Brewery</h3><p>Inspired Brewing · brand film</p></div><span class="yr">2024</span></div>
+      </a>
+      <a class="film reveal" href="https://vimeo.com/1084291973" data-vimeo="1084291973">
+        <div class="player"><img class="scope" src="img/runner.jpg" alt="A runner on a leaf-covered trail" loading="lazy"><span class="play" aria-hidden="true"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M7 4v16l13-8z"/></svg></span></span></div>
+        <div class="meta"><div><h3>Landscape Forms</h3><p>People&rsquo;s Dept. · director&rsquo;s cut</p></div><span class="yr">2025</span></div>
+      </a>
+      <a class="film reveal" href="https://vimeo.com/1036036347" data-vimeo="1036036347">
+        <div class="player"><img class="scope" src="img/mother.jpg" alt="A mother and daughter embracing in an airport terminal" loading="lazy"><span class="play" aria-hidden="true"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M7 4v16l13-8z"/></svg></span></span></div>
+        <div class="meta"><div><h3>Kalamazoo Airport</h3><p>When a City Has an Airport · :30</p></div><span class="yr">2024</span></div>
+      </a>
+      <a class="film reveal" href="https://vimeo.com/1169612500" data-vimeo="1169612500">
+        <div class="player"><img class="scope" src="img/tension.jpg" alt="A fan with hands pressed together, watching a game" loading="lazy"><span class="play" aria-hidden="true"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M7 4v16l13-8z"/></svg></span></span></div>
+        <div class="meta"><div><h3>Burdick&rsquo;s</h3><p>Sports · :15</p></div><span class="yr">2026</span></div>
+      </a>
+      <a class="film reveal" href="https://vimeo.com/711788096" data-vimeo="711788096">
+        <div class="player"><img class="scope" src="img/guitar.jpg" alt="A guitarist on stage under string lights" loading="lazy"><span class="play" aria-hidden="true"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M7 4v16l13-8z"/></svg></span></span></div>
+        <div class="meta"><div><h3>Stedman USA</h3><p>Director&rsquo;s cut</p></div><span class="yr">2022</span></div>
+      </a>
+      <a class="film wide reveal" href="https://vimeo.com/422185776" data-vimeo="422185776">
+        <div class="player"><img class="scope" src="img/pour.jpg" alt="Milk poured into espresso at a Kalamazoo coffee shop" loading="lazy"><span class="play" aria-hidden="true"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M7 4v16l13-8z"/></svg></span></span></div>
+        <div class="meta"><div><h3>Factory Coffee</h3><p>Coffee Shop in a Can</p></div><span class="yr">2020</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <h2 class="d reveal"><span class="o">What</span> we do.</h2>
+    <div class="svc">
+      <div class="reveal">
+        <img class="scope" src="img/tension.jpg" alt="" loading="lazy">
+        <h3>Video</h3>
+        <p>Spots, brand films and documentaries, from the first idea through the final grade.</p>
+        <ul><li>Writing and directing</li><li>Cinematography and drone</li><li>Edit, color and sound</li></ul>
+      </div>
+      <div class="reveal">
+        <img class="scope" src="img/florist.jpg" alt="" loading="lazy">
+        <h3>Photo</h3>
+        <p>Product, people and place, shot for campaigns, websites and the shelf.</p>
+        <ul><li>Campaign and lifestyle</li><li>Product and food</li><li>Headshots and teams</li></ul>
+      </div>
+      <div class="reveal">
+        <img class="scope" src="img/drill.jpg" alt="" loading="lazy">
+        <h3>Equipment rental</h3>
+        <p>The same kit we shoot on, available to Kalamazoo productions by the day.</p>
+        <ul><li>Cinema cameras and lenses</li><li>Lighting and grip</li><li>Audio</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="clients" aria-label="Clients">
+  <div class="wrap">
+    <span class="eyebrow">A few of the brands we&rsquo;ve made films for</span>
+    <div class="logos">
+      <img src="brands/ford-colour.png" alt="Ford" loading="lazy"><img src="brands/stryker-colour.png" alt="Stryker" loading="lazy"><img src="brands/shinola-colour.png" alt="Shinola" loading="lazy"><img src="brands/bells-colour.png" alt="Bell's Brewery" loading="lazy"><img src="brands/vml-colour.png" alt="VML" loading="lazy"><img src="brands/pactiv-colour.png" alt="Pactiv Evergreen" loading="lazy">
+      <img src="brands/kzoocollege-colour.png" alt="Kalamazoo College" loading="lazy"><img src="brands/bounty-colour.png" alt="Bounty" loading="lazy"><img src="brands/usahockey-colour.png" alt="USA Hockey" loading="lazy"><img src="brands/sweetwaters-colour.png" alt="Sweetwaters" loading="lazy"><img src="brands/brine-colour.png" alt="Brick and Brine" loading="lazy"><img src="brands/ooly-colour.png" alt="OOLY" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="cases" id="cases">
+  <div class="wrap">
+    <h2 class="d reveal"><span class="o">Case studies</span><br>highlights.</h2>
+    <p class="reveal" style="color:var(--mid);max-width:52ch;margin:18px 0 0">An inside look at how we bring ideas to life. The results speak for themselves.</p>
+    <div class="grid">
+      <a class="case reveal" href="https://weareelementalmedia.com/case-study/brick-and-brine/">
+        <img class="scope" src="img/case-brick-and-brine.webp" alt="Brick and Brine, Kalamazoo" loading="lazy">
+        <div class="cap"><h3>Brick and Brine</h3><p>Read the case study</p></div>
+      </a>
+      <a class="case reveal" href="https://weareelementalmedia.com/case-study/pactiv-evergreen/">
+        <img class="scope" src="img/case-pactiv-evergreen.webp" alt="Pactiv Evergreen Smart Pour" loading="lazy">
+        <div class="cap"><h3>Pactiv Evergreen</h3><p>Read the case study</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="contact">
+  <div class="wrap reveal">
+    <h2 class="d">Your audience wants to connect.</h2>
+    <p>We can hook that up for you.</p>
+    <a class="btn light" href="https://weareelementalmedia.com/contact/">Start the conversation <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2l4 4-4 4"/></svg></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div><img src="img/logo-white.svg" alt="Elemental Media" width="105" height="32"><p style="margin:14px 0 0;max-width:30ch">Video and photo production in Kalamazoo, Michigan.</p></div>
+      <ul><li><a href="#work">Work</a></li><li><a href="#services">Services</a></li><li><a href="#cases">Case Studies</a></li><li><a href="#contact">Contact</a></li></ul>
+      <ul><li><a href="https://vimeo.com/user49532874">Vimeo</a></li><li><a href="https://www.instagram.com/elementalmediakzoo/">Instagram</a></li><li><a href="https://www.facebook.com/Elementalkzoo/">Facebook</a></li></ul>
+    </div>
+    <p class="fine">&copy; 2026 Elemental Media. All rights reserved. A direction study by LOVELEEDAY Studios, built from Elemental&rsquo;s own films.</p>
+  </div>
+</footer>
+
+<script>
+(()=>{
+  const n=document.querySelector('.nav'),b=n.querySelector('.burger-btn');
+  b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')});
+  n.querySelectorAll('ul a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b.setAttribute('aria-expanded','false')}));
+  // Films play in place: swap the still for Vimeo's player on click.
+  document.querySelectorAll('[data-vimeo]').forEach(el=>{
+    el.addEventListener('click',e=>{
+      const p=el.classList.contains('player')?el:el.querySelector('.player');
+      if(!p||p.querySelector('iframe'))return;
+      e.preventDefault();
+      const f=document.createElement('iframe');
+      f.src='https://player.vimeo.com/video/'+el.dataset.vimeo+'?autoplay=1&title=0&byline=0&portrait=0&dnt=1';
+      f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title='Elemental Media film';
+      p.appendChild(f);p.querySelector('.play')?.remove();
+    });
+  });
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){document.getElementById('heroVid').removeAttribute('autoplay');document.getElementById('heroVid').pause()}
+  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
