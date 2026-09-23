@@ -131,6 +131,47 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
         </div>
       </section>
 
+      <section className="border-t border-[var(--line)]">
+        <div className="mx-auto max-w-[1340px] px-6 py-20">
+          <span className={`${mono} text-[var(--accent)]`}>The offer</span>
+          <h2 className="mt-4 max-w-[24ch] text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.06] tracking-[-0.025em]">
+            Start small this month. Earn the rest by next year.
+          </h2>
+          <div className="mt-12 grid gap-px bg-[var(--line)] lg:grid-cols-2">
+            <div className="bg-[var(--paper)] p-8">
+              <span className={`${mono} text-[var(--dim)]`}>Now · 2026–27</span>
+              <h3 className="mt-4 text-[22px] font-medium">Compliance desk</h3>
+              <p className="mt-2 tnum text-[34px] leading-none tracking-[-0.02em]">$1,950<span className="text-[15px] text-[var(--mid)]"> a month</span></p>
+              <ul className="mt-6 grid gap-2.5 text-[14.5px] leading-[1.6] text-[var(--mid)]">
+                <li>The calendar above, live for your whole team, with every date kept current as DC PCSB and OSSE publish</li>
+                <li>A document vault: last year&apos;s filings and this year&apos;s, attached to the requirement they answer</li>
+                <li>Arthur drafts each packet two weeks out and chases the owner at 14, 7 and 2 days</li>
+                <li>A board-ready compliance report before every board meeting</li>
+                <li>A weekly status note to you: what was filed, what is next, what is stuck</li>
+              </ul>
+              <p className="mt-6 text-[13px] leading-[1.6] text-[var(--dim)]">
+                At $23,400 a year it sits under the $25,000 line that requires a public bid, so it can start this week and
+                run next to the vendors you already have. Month to month; stop whenever it stops earning its place.
+              </p>
+            </div>
+            <div className="bg-[var(--paper)] p-8">
+              <span className={`${mono} text-[var(--dim)]`}>From 2027–28</span>
+              <h3 className="mt-4 text-[22px] font-medium">Compliance and student data, together</h3>
+              <p className="mt-2 tnum text-[34px] leading-none tracking-[-0.02em]">$3,900<span className="text-[15px] text-[var(--mid)]"> a month</span></p>
+              <ul className="mt-6 grid gap-2.5 text-[14.5px] leading-[1.6] text-[var(--mid)]">
+                <li>Everything in the compliance desk</li>
+                <li>Student data submissions handled end to end: enrollment audit, attendance and discipline validation, the Compass and OSSE data collections</li>
+                <li>A named DC data specialist on your account, with Arthur doing the checking and the chasing</li>
+              </ul>
+              <p className="mt-6 text-[13px] leading-[1.6] text-[var(--dim)]">
+                Only once the first year has shown you the work. At that size it goes through your normal public bid, and
+                you compare us with whoever else answers it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="next" className="border-t border-[var(--line)]">
         <div className="mx-auto grid max-w-[1340px] items-start gap-10 px-6 py-20 lg:grid-cols-[1fr_1.1fr] lg:py-28">
           <div>
