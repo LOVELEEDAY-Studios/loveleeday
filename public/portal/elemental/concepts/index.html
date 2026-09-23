@@ -24,4 +24,9 @@ header p{color:var(--mid);max-width:62ch}
 <a class="card" href="c4-elements.html"><div class="shot"><img src="shots/c4-elements-thumb.jpg" alt="Concept 4 preview"></div><div class="b"><span class="n">CONCEPT 04</span><h2>Elements</h2><p>The name becomes the whole system: Light, Story, Craft and Motion, each its own colour field with the film that shows it best. Browse the work by element. &ldquo;Bring the fifth element: you.&rdquo;</p><div class="go"><span class="btn b1">Open</span></div></div></a>
 <a class="card" href="c5-crew.html"><div class="shot"><img src="shots/c5-crew-thumb.jpg" alt="Concept 5 preview"></div><div class="b"><span class="n">CONCEPT 05</span><h2>Crew</h2><p>Their agency model made visible: one studio, any size crew, 1 to 3 to 20. Warm navy, rose numerals, the people named, the work as proof. &ldquo;What size is your story?&rdquo;</p><div class="go"><span class="btn b1">Open</span></div></div></a>
 </div></div>
+<script>
+// Each concept is gated by the same key as this board; carry it onto every link.
+const k=new URLSearchParams(location.search).get('k');
+if(k)document.querySelectorAll('a.card').forEach(a=>{a.href=a.getAttribute('href')+'?k='+encodeURIComponent(k)});
+</script>
 </body></html>
