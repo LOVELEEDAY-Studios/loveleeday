@@ -126,14 +126,15 @@ export const lightshipCases: Case[] = [
     before: v("/portal/lightshipcapital/lightshipcapital-before.jpg"),
     after: v("/portal/lightshipcapital/lightshipcapital-after.jpg"),
     thesis:
-      "The live site is a brochure built for browsing: an ocean photograph, three portfolio highlights, a slideshow. But two of the fund's three audiences are reading a document. An LP doing diligence and a co-investor sizing up the roster want the thesis, the whole portfolio and the team in one place they can scan. So the rebuild is laid out like a fund document, not a marketing page. The references are Titan's quiet, dark financial register and Vercel's hairline-ruled investor lists. A fixed index down the side shows where you are, criteria sit in a table, and all eighteen companies are on one page.",
-    findings: [
-      "All eighteen companies on one page, each linked to the company. Bootup and Semiosis AI are listed but deliberately not linked, with a plain note on why.",
-      "“How we invest” becomes a criteria table: who you back, where, and at what stage. A founder can tell whether they fit in ten seconds.",
-      "Founders and LPs get separate first buttons, and the real contact routes on your own site each get a labeled door.",
-      "Your navy and yellow, read from your own site, and your wordmark. The type is a serif with a monospaced companion, which reads like a report rather than an advertisement.",
-    ],
-    search:
+      "A lightship is a lighthouse that floats: where the water is too deep for a tower, you anchor a ship and put a light on it. Lightship Capital does the same with capital, so the rebuild makes that visible instead of describing it. The centerpiece is a chart, a dark map of the United States with a light at the home city of every company the fund backs, glowing out of Cincinnati. It shows the thesis at a glance and it's honest about the exceptions: 13 of the 17 companies we could place are outside New York, Boston and San Francisco. Every word of the page is rewritten in one voice, plain, confident and a little nautical, but every fact is Lightship's own. The type is a classic American newspaper pairing, Caslon and Franklin, chosen to read as established rather than trendy.",
+      findings: [
+        "The hero opens on Lightship's own ocean photograph, with a slow lighthouse beam sweeping across it, under a new line: “Not every great founder lives on a coast.”",
+        "The chart: eighteen companies as lights on a map of the country, placed at their home cities. Hover over any light to see who is there.",
+        "The logbook: all eighteen companies shown with their own pictures, home cities and descriptions, each linked. The live site shows three.",
+        "Criteria are rewritten as three plain answers: who, where and when. Team bios say what each person does for a founder, and contact becomes “Signal us,” with four direct routes.",
+        "Bootup and Semiosis AI stay on the roster but aren't linked, because one old address now shows a gambling site and the other no longer loads.",
+      ],
+      search:
       "Not measured. The findings above come from reading the pages, not from search tools.",
   },
   {
