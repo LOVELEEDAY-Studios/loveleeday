@@ -63,6 +63,7 @@ h1,h2,h3{font-family:var(--disp);font-weight:400;letter-spacing:-.01em;text-wrap
 .nav .btn--y{gap:0}
 .nav.solid{background:rgba(7,15,42,.94);backdrop-filter:blur(8px)}
 .nav__btn{display:none;color:#fff;font:600 15px var(--text);cursor:pointer;background:none;border:0;min-height:44px;padding:0 6px;align-items:center}
+.burger{position:relative;display:block;width:24px;height:16px}.burger i{position:absolute;left:0;width:100%;height:2px;border-radius:2px;background:#fff;transition:transform .25s,opacity .2s,top .25s}.burger i:nth-child(1){top:0}.burger i:nth-child(2){top:7px}.burger i:nth-child(3){top:14px}.nav.open .burger i:nth-child(1){top:7px;transform:rotate(45deg)}.nav.open .burger i:nth-child(2){opacity:0}.nav.open .burger i:nth-child(3){top:7px;transform:rotate(-45deg)}
 .nav__btn:focus-visible,.nav a:focus-visible,.btn:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
 .nav img{height:40px;width:auto}
@@ -209,10 +210,12 @@ a.co:hover .co__img img,a.co:focus .co__img img{filter:none}
 .credit b{color:#fff;font-weight:600}
 
 @media (max-width:1000px){
-  .nav__btn{display:inline-flex}
+  .nav__btn{display:inline-flex;order:3;margin-left:6px}
+  .nav .wrap>.btn--y{margin-left:auto}
   .nav ul{display:none;position:absolute;top:84px;left:0;right:0;flex-direction:column;gap:0;background:rgba(7,15,42,.97);padding:8px var(--gut) 18px}
   .nav ul a{display:block;padding:14px 0;font-size:18px;border-bottom:1px solid rgba(255,255,255,.12)}
   .nav.open ul{display:flex}
+  .nav.open{background:rgba(7,15,42,.97)}
   .nav .wrap{position:relative}
   .bear .wrap,.head,.chart__head,.idea,.doors,.team{grid-template-columns:1fr}
   .bear .wrap>div,.bear .wrap>div+div{padding:26px 0;border-left:0;border-bottom:1px solid rgba(255,255,255,.18)}
@@ -256,7 +259,7 @@ a.co:hover .co__img img,a.co:focus .co__img img{filter:none}
 <nav class="nav">
   <div class="wrap">
     <a href="https://www.lightship.capital/" aria-label="Lightship Capital home"><img src="assets/header-logo-full.png" alt="Lightship" width="160" height="40"></a>
-    <button class="nav__btn" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <button class="nav__btn" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="Open menu"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
     <ul id="navlinks">
       <li><a href="#chart">The chart</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
@@ -504,7 +507,7 @@ a.co:hover .co__img img,a.co:focus .co__img img{filter:none}
 
 <script>
 (()=>{const n=document.querySelector('.nav');const f=()=>n.classList.toggle('solid',scrollY>window.innerHeight*.6);addEventListener('scroll',f,{passive:true});f();
-const b=n.querySelector('.nav__btn');b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+const b=n.querySelector('.nav__btn');b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')});
 document.querySelectorAll('.nav ul a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b.setAttribute('aria-expanded','false')}))})();
 </script>
 </body>
