@@ -1,0 +1,61 @@
+"""Brings security.html up to the controls verified on 2026-09-23. Every claim
+added here was probed that day (see the commit message for the evidence).
+Idempotent: each replacement asserts its anchor, so a stale page fails loudly.
+
+  python3 scripts/update-security-page.py
+"""
+import pathlib
+import re
+
+P = pathlib.Path(__file__).resolve().parent.parent / "concepts/studio/site/security.html"
+t = P.read_text()
+
+
+def art(n, title, body):
+    return f'<article class="principle-long"><span class="row-number">{n}</span><h3>{title}</h3><p>{body}</p></article>'
+
+
+CONTROLS = [
+    ("Multi-factor sign-in, enforced by the database.",
+     "Every client account requires a one-time code from an authenticator app. The database itself refuses a session that has not completed that second step, so a stolen password cannot read or change anything, even by going around the website."),
+    ("You can only join by invitation.",
+     "Client accounts are created by LOVELEEDAY, never self-registered. Joining one takes an invitation sent to a named address. The link works only for that confirmed email address, once, and expires. A forwarded or leaked link is useless to anyone else."),
+    ("Encryption, in transit and at rest.",
+     "Traffic runs over TLS, with browsers told to use it every time. Data is encrypted at rest by the database, and working machines use full-disk encryption."),
+    ("Hosted in the United States.",
+     "Client data is stored and processed within the United States, on established cloud infrastructure."),
+    ("A separate space for every client.",
+     "Each client's records are isolated in the database itself, not only in software. One client cannot read another's rows."),
+    ("Backups that are checked, not assumed.",
+     "Client data is backed up every day. Our own operating records are copied daily to two independent providers, each copy downloaded again and compared byte for byte, with a full restore rehearsed every week."),
+    ("Tested from the outside.",
+     "We probe our own website, client portal and database the way an attacker would look first: exposed files, keys left in code, pages reachable without signing in, and anonymous attempts to read or write data. What it finds is fixed before new work ships."),
+    ("Nothing goes out without approval.",
+     "Sending mail, moving money, changing records &mdash; outbound actions pass an approval and logging step rather than running unsupervised."),
+    ("Secrets the software never sees.",
+     "Credentials are held in a controlled store and used without being exposed to the tools that call them, and never shipped to a browser."),
+    ("A complete record.",
+     "Actions are logged and reviewable after the fact, not reconstructed from memory."),
+]
+
+block = re.compile(r'(<h2 class="sr-only">Controls in place today</h2>)(?:<article class="principle-long">.*?</article>)+(</div></section>)', re.S)
+assert block.search(t), "controls block not found"
+t = block.sub(lambda m: m.group(1) + "".join(art(f"{i:02d}", h, b) for i, (h, b) in enumerate(CONTROLS, 1)) + m.group(2), t, count=1)
+
+old_rules = "and the state and local requirements of wherever you operate."
+assert old_rules in t, "rules sentence not found"
+t = t.replace(old_rules, "and the state and local requirements of wherever you operate. We keep a register of the breach-notification, student-privacy and consumer-privacy laws of all fifty states and the District of Columbia, and the federal and industry standards for every sector we serve, each tied to the official text, so the obligations written into your agreement are the ones that actually apply to you.", 1)
+
+old_intro = "None of the three below are done"
+assert old_intro in t, "roadmap intro not found"
+t = t.replace(old_intro, "None of the items below are done", 1)
+
+sso = re.search(r'<article class="principle-long"><span class="row-number">&mdash;</span><h3>Single sign-on.*?</article>', t, re.S)
+assert sso, "SSO roadmap item not found"
+locked = art("&mdash;", "Backups that cannot be deleted.",
+             "Underway. Our offsite copies are verified daily, but they can still be removed with the same access that writes them. We are adding a retention lock so that no one, including us, can delete a backup before it ages out.")
+if "Backups that cannot be deleted." not in t:
+    t = t[: sso.end()] + locked + t[sso.end():]
+
+P.write_text(t)
+print("security.html updated:", len(CONTROLS), "controls")
