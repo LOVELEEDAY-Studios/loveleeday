@@ -2,7 +2,7 @@ import type { Research } from "./portfolio";
 
 /* Market intelligence for Meknology, researched 2026-09-22. Every figure below is
    in a named source in `sources`; where firms disagree the range is given. The
-   WMU incumbent sponsor is NOT public and the copy says so rather than guessing. */
+   WMU incumbent sponsor was not found in the public web sources searched, and the copy says so. */
 export const meknologyResearch: Research = {
   kicker: "Market intelligence",
   title: "The protein drink idea, and whether Western Michigan is the place to start.",
@@ -35,7 +35,7 @@ export const meknologyResearch: Research = {
         "Gatorade is sugar, salt and water for hydration. A protein drink competes with recovery drinks instead: Gatorade Recover (20g protein), Fairlife Core Power (26 to 42g) and Muscle Milk. NCAA rules no longer cap how much protein a school can give athletes (the 30% limit was removed in 2017). But most athletic departments require NSF Certified for Sport testing against banned substances before anything reaches a player.",
     },
     {
-      title: "WMU's drink contract is the gate, and it is not public",
+      title: "WMU's drink contract is the gate, and we have not confirmed it",
       detail:
         "We did not find WMU Athletics' beverage sponsor or contract term in the public web sources we searched; a contract that was never published, or that sits in university purchasing records, would not show up there. Gatorade is a partner of the Mid-American Conference, which WMU plays in, and big schools usually sign exclusive deals of several years; Michigan signed one with Coca-Cola in May 2026. Until that contract is known, “replace Gatorade” is a question for WMU's athletics business office, not a product decision.",
     },
