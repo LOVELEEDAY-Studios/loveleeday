@@ -7,7 +7,7 @@ import {
   requirements,
   requirementSources,
 } from "@/content/compliance";
-import { ComplianceApp } from "@/components/compliance/ComplianceApp";
+import { Dashboard } from "@/components/dashboard/Dashboard";
 import { NoteForm } from "@/components/portal/NoteForm";
 
 export const dynamicParams = false;
@@ -36,7 +36,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
     <>
       <section className="mx-auto max-w-[1340px] px-6 pb-14 pt-16 sm:pt-24">
         <p className={`${mono} text-[var(--accent)]`}>
-          Compliance calendar
+          Leadership dashboard
           <span className="text-[var(--dim)]"> · prepared for {s.preparedFor}, {s.short}</span>
         </p>
         <h1 className="mt-5 max-w-[17ch] text-[clamp(2.4rem,6vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.035em]">
@@ -46,8 +46,8 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
           You told Daniel this morning that nobody can say what is due when, that the work is spread across ten logins,
           and that it takes more of your week than it should. So we built it. Below is {s.short}&apos;s full {s.year}{" "}
           compliance year, built from the two calendars DC actually publishes, sorted to the requirements that apply to
-          a single-campus elementary school. It works: open any line, change its status, attach a file, or download the
-          whole year into your calendar.
+          a single-campus elementary school. Then we went further, to what you said leadership spends weeks on: planning
+          the next five years across too many data sources. It all sits in one dashboard below, and it works.
         </p>
       </section>
 
@@ -69,11 +69,19 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
       </section>
 
       <section className="mx-auto max-w-[1340px] px-6 py-16">
-        <div className="mb-8 flex flex-wrap items-baseline justify-between gap-3">
-          <h2 className="text-[clamp(1.6rem,3vw,2.3rem)] font-medium tracking-[-0.02em]">Your {s.year} compliance year</h2>
-          <span className="text-[13px] text-[var(--dim)]">Working preview · your changes stay in this browser</span>
+        <div className="mb-8 grid gap-3 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <h2 className="text-[clamp(1.6rem,3vw,2.3rem)] font-medium tracking-[-0.02em]">Your leadership dashboard</h2>
+            <p className="mt-2 max-w-[62ch] text-[15px] leading-[1.65] text-[var(--mid)]">
+              Compliance is one tab. The others are what you asked about: a five-year plan your team can move with a slider
+              instead of weeks of spreadsheets, enrollment against the charter&apos;s ceiling, and student and faculty
+              profiles for retention and satisfaction. Public figures are yours from the record; anything marked sample is
+              what your own systems will fill in.
+            </p>
+          </div>
+          <span className="text-[13px] text-[var(--dim)]">Working preview · click anything</span>
         </div>
-        <ComplianceApp items={requirements} storageKey={`llc-compliance-${token}`} school={s.short} />
+        <Dashboard items={requirements} storageKey={`llc-compliance-${token}`} school={s.short} />
       </section>
 
       <section className="border-t border-[var(--line)]">
