@@ -36,6 +36,7 @@ const COLUMNS: { title: string; links: { label: string; href: string; ext?: bool
     title: "Company",
     links: [
       { label: "About", href: "/about" },
+      { label: "Security & compliance", href: "/security" },
       { label: "Start a project", href: "/contact" },
       { label: "hello@loveleedaystudios.com", href: "mailto:hello@loveleedaystudios.com", ext: true },
     ],

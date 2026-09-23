@@ -27,6 +27,7 @@ import { useEffect, useState } from "react";
 const COMPANY = [
   { label: "Work", href: "/work" },
   { label: "Company", href: "/about" },
+  { label: "Security", href: "/security" },
 ];
 
 const PLATFORM = [
