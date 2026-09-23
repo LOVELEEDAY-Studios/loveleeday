@@ -75,6 +75,8 @@ export interface Portfolio {
   researchFirst?: boolean;
   /** Where the fund findings were found, finishing "N things we found …". Defaults to the fund's own domain. */
   findingsScope?: string;
+  /** The close: what the reader does next. Rendered as its own section before the method. */
+  close?: { title: string; body: string; cta: { label: string; href: string }; secondary?: { label: string; href: string } };
 }
 
 export interface Research {
@@ -82,6 +84,8 @@ export interface Research {
   title: string;
   intro: string;
   verdict?: string;
+  /** The plan as numbered steps; replaces the verdict paragraph when present. */
+  steps?: { when: string; what: string }[];
   points: { title: string; detail: string }[];
   sources: { label: string; url: string }[];
 }
@@ -271,6 +275,12 @@ const lightship: Portfolio = {
   researchFirst: true,
   research: lightshipResearch,
   findingsScope: "across your eighteen companies",
+  close: {
+    title: "Start with step one this week.",
+    body: "The two portfolio links and Black Tech Week's broken ticket address and share image are an afternoon's work, and they are the first things a sponsor or LP will click. Tell us to go and we'll fix them this week, then set up the Columbus sponsor package and the first portfolio brief on a call.",
+    cta: { label: "Email Daniel to get started", href: "mailto:daniel@loveleedaystudios.com?subject=Lightship%20%E2%80%94%20let%27s%20start" },
+    secondary: { label: "About LOVELEEDAY Studios", href: "https://loveleedaystudios.com/" },
+  },
 
   fundFindings: [
     {

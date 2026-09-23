@@ -55,12 +55,12 @@ export const lightshipResearch: Research = {
     {
       title: "Columbus is a sponsor market you have to win from scratch",
       detail:
-        "Experience Columbus projects about 10,000 attendees and $5.4 million in visitor spending for the 2027 edition. JobsOhio already presents Black Tech Week, so the statewide partner carries over. The city-level partners do not. That is a list of companies to research, rank and approach, and the 28-second sponsor spot below is the first thing we would put in the outreach.",
+        "Experience Columbus projects 7,500 to 10,000 attendees and $5.4 million in visitor spending for the 2027 edition. JobsOhio already presents Black Tech Week, so the statewide partner carries over. The city-level partners do not. That is a list of companies to research, rank and approach, and the 28-second sponsor spot below is the first thing we would put in the outreach.",
     },
     {
       title: "Where Black Tech Week sits against the events it competes with",
       detail:
-        "AfroTech runs about 40,000 attendees, with tickets from $450 to $2,250. Black Is Tech runs about 5,000. a16z's Tech Week is free and spread across a city. Black Tech Week publishes 12,000+ attendees, and your Foundation's own counter shows 19,000 registrations. A new host city is the one moment you can reset ticket tiers and sponsor packages without anyone noticing a price change. We would build that comparison properly before the Columbus packages are set.",
+        "AfroTech runs about 40,000 attendees. Black Is Tech runs about 5,000. a16z's Tech Week is free and spread across a city. Black Tech Week publishes 12,000+ attendees, and your Foundation's own counter shows 19,000 registrations. A new host city is the one moment you can reset ticket tiers and sponsor packages without anyone noticing a price change. We would build that comparison properly before the Columbus packages are set.",
     },
     {
       title: "The fund's front door hasn't changed since 2022",
@@ -80,6 +80,11 @@ export const lightshipResearch: Research = {
   ],
   verdict:
     "Three steps, in order. This week: fix the two portfolio links, redirect Black Tech Week's old ticket address and repair its share image, all small, quick jobs. Before Columbus sponsorship opens: the rebuilt Black Tech Week site, the sponsor spot and a researched, ranked list of Columbus sponsor prospects, delivered as one package. Then, every quarter: a portfolio intelligence brief for your LPs, covering where each company stands and what has changed since the last one.",
+  steps: [
+    { when: "This week", what: "Fix the two portfolio links, redirect Black Tech Week's old ticket address and repair its share image. Small, quick jobs, and the first things a sponsor or LP clicks." },
+    { when: "Before Columbus sponsorship opens", what: "The rebuilt Black Tech Week site, the sponsor spot and a researched, ranked list of Columbus sponsor prospects, delivered as one package." },
+    { when: "Every quarter", what: "A portfolio intelligence brief for your LPs: where each company stands, what has changed since the last one, and site health across the portfolio." },
+  ],
   sources: [
     { label: "FOX19 — Black Tech Week leaves Cincinnati for Columbus (7 Sep 2026)", url: "https://www.fox19.com/2026/09/07/black-tech-week-leaves-queen-city-columbus/" },
     { label: "Experience Columbus — Black Tech Week selects Columbus as 2027 host city", url: "https://www.experiencecolumbus.com/articles/post/black-tech-week-selects-columbus-as-2027-host-city/" },
