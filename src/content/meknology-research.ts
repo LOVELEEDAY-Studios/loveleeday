@@ -5,9 +5,9 @@ import type { Research } from "./portfolio";
    WMU incumbent sponsor was not found in the public web sources searched, and the copy says so. */
 export const meknologyResearch: Research = {
   kicker: "Market intelligence",
-  title: "The protein drink idea, and whether Western Michigan is the place to start.",
+  title: "The protein drink idea, and how to turn Western Michigan's interest into a first customer.",
   intro:
-    "You told us you want to turn the protein in your spent-grain stream into a canned drink, and that Western Michigan University could use it for its athletes instead of Gatorade. Here is what the market says. The short version: the money is real and the science is proven, but someone large got there first, and the Gatorade framing points at the wrong shelf. There is a better way in.",
+    "You told us you want to turn the protein in your spent-grain stream into a canned drink, and that Western Michigan University's athletics department has already said it is interested in using it for its athletes. That interest is the most valuable thing on this page: most beverage startups spend years trying to get a first institutional buyer to the table. Here is what the market says, and how to turn that interest into a product on the sideline.",
   points: [
     {
       title: "The market is about $2 billion in the US and growing 8% a year",
@@ -35,13 +35,13 @@ export const meknologyResearch: Research = {
         "Gatorade is sugar, salt and water for hydration. A protein drink competes with recovery drinks instead: Gatorade Recover (20g protein), Fairlife Core Power (26 to 42g) and Muscle Milk. NCAA rules no longer cap how much protein a school can give athletes (the 30% limit was removed in 2017). But most athletic departments require NSF Certified for Sport testing against banned substances before anything reaches a player.",
     },
     {
-      title: "WMU's drink contract is the gate, and we have not confirmed it",
+      title: "WMU is interested. The one question to ask them is about their drink contract",
       detail:
-        "We did not find WMU Athletics' beverage sponsor or contract term in the public web sources we searched; a contract that was never published, or that sits in university purchasing records, would not show up there. Gatorade is a partner of the Mid-American Conference, which WMU plays in, and big schools usually sign exclusive deals of several years; Michigan signed one with Coca-Cola in May 2026. Until that contract is known, “replace Gatorade” is a question for WMU's athletics business office, not a product decision.",
+        "Athletics departments usually have an exclusive beverage sponsor for several years at a time; Michigan signed one with Coca-Cola in May 2026, and Gatorade is a partner of the Mid-American Conference, which WMU plays in. We did not find WMU's own contract in the public web sources we searched, and an unpublished contract would not show up there. Since they are already interested, ask them directly: whether their deal is exclusive, and whether a recovery drink counts as the same category as Gatorade. If it does not, that is your way in.",
     },
   ],
   verdict:
-    "Start with WMU's Nutrition and Dietetics program, not the athletics sponsorship. It is accredited and already teaches sustainable food systems. A small research batch of a spent-grain recovery drink, formulated and taste-tested with faculty and students, gives you real nutrition and taste data, a Kalamazoo circular-economy story, and a case for MEDC or MSU Product Center support, which also offers product development and co-packing help. In parallel, sell dried spent grain or a protein concentrate to an ingredient processor, as EverGrain does, so the drink never has to carry the business on its own. Bell's in Comstock and New Holland in Holland are natural partners: Bell's already sends its spent grain to cattle feed, and New Holland runs a brewery and a distillery side by side. Once the recovery drink has data and NSF certification behind it, the athletics conversation is about adding a product next to Gatorade, which is far easier than replacing it.",
+    "Turn WMU Athletics' interest into a written pilot while it is warm. Position the drink as a recovery drink served after training, next to Gatorade rather than instead of it; depending on how their contract is written, that may avoid a sponsorship conflict, and it is where a protein drink belongs anyway. Bring in WMU's sports nutrition staff and its accredited Nutrition and Dietetics program to formulate and taste-test a small batch, which gives you real nutrition and taste data and a Kalamazoo circular-economy story. The MSU Product Center can help with product development and co-packing for that first batch, and NSF Certified for Sport testing has to be done before it reaches athletes. In parallel, sell dried spent grain or a protein concentrate to an ingredient processor, as EverGrain does, so the drink never has to carry the business on its own. Bell's in Comstock and New Holland in Holland are natural grain partners: Bell's already sends its spent grain to cattle feed, and New Holland runs a brewery and a distillery side by side. A signed pilot with a Division I athletics department is also the strongest line you can put in front of investors.",
   sources: [
     { label: "Research and Markets — US ready-to-drink protein beverages", url: "https://www.researchandmarkets.com/reports/5854311/ready-to-drink-protein-beverages-market-share" },
     { label: "Fortune Business Insights — RTD protein beverages market", url: "https://www.fortunebusinessinsights.com/rtd-protein-beverages-market-103179" },
