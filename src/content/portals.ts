@@ -548,7 +548,7 @@ export const portals: Portal[] = [
     deliveredOn: "2026-09-22",
     expiresOn: "2026-12-21",
     intro:
-      "Thank you for the time today. Your system turns a brewery's weekly disposal bill into three things it can sell, and a brewer understands that in one sentence. Your current site takes seven sections to get there. This is a first direction for the same material, told in the order a brewery owner would ask for it. Tell us what is wrong with it; that is what the note box below is for.",
+      "Thank you for the time at PitchMI yesterday. Your system turns a brewery's weekly disposal bill into three things it can sell, and a brewer understands that in one sentence. Your current site takes seven sections to get there. This is a first direction for the same material, told in the order a brewery owner would ask for it. Tell us what is wrong with it; that is what the note box below is for.",
     next: [
       "Open the page and scroll it the way a brewery owner paying for hauling every week would.",
       "Leave notes anywhere on this page — they reach us by email immediately.",

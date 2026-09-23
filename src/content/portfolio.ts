@@ -270,7 +270,7 @@ const lightship: Portfolio = {
   preparedFor: "Brian Brackeen",
   deliveredOn: "2026-09-22",
   intro:
-    "Thank you for the time at PitchMI tonight. You asked what LOVELEEDAY does, so rather than describe it, we did some. We help organizations see something their own records already know, and then act on it. This page has four parts: market intelligence on Black Tech Week's move to Columbus and on the fund's own presence; what we found across all eighteen of your portfolio companies; rebuilds of blacktechweek.com, lightship.capital and lightship.foundation, each with the reasoning behind it; and three short videos cut from your own footage. Every figure names where it came from, so you can check any line yourself.",
+    "Thank you for the time at PitchMI yesterday. You asked what LOVELEEDAY does, so rather than describe it, we did some. We help organizations see something their own records already know, and then act on it. This page has four parts: market intelligence on Black Tech Week's move to Columbus and on the fund's own presence; what we found across all eighteen of your portfolio companies; rebuilds of blacktechweek.com, lightship.capital and lightship.foundation, each with the reasoning behind it; and three short videos cut from your own footage. Every figure names where it came from, so you can check any line yourself.",
 
   researchFirst: true,
   research: lightshipResearch,
