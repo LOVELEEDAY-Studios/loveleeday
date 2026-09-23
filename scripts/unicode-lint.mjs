@@ -47,8 +47,10 @@ function scanFile(file) {
     for (const m of line.matchAll(BAD)) {
       const c = m[0];
       if (c === BOM && i === 0 && m.index === 0) continue; // a leading BOM is harmless
+      // A mid-file BOM in source is almost always deliberate (e.g. the Excel CSV prefix in
+      // dabney ExportButton.tsx), so it warns; the rendering hazards above block.
       const what = ERRORS[c] || WARN[c] || "byte-order mark U+FEFF mid-file";
-      const isWarn = c in WARN;
+      const isWarn = c in WARN || c === BOM;
       isWarn ? warnings++ : errors++;
       const ctx = line.slice(Math.max(0, m.index - 30), m.index + 30).replace(BAD, (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`);
       console.log(`${isWarn ? "warn " : "ERROR"} ${file}:${i + 1}:${m.index + 1}  ${what}  …${ctx}…`);
