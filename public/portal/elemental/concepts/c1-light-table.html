@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concept 1 · Light Table — Elemental Media</title><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Urbanist:wght@800;900&display=swap" rel="stylesheet">
+<style>
+/* CONCEPT 1 — LIGHT TABLE. Their cream, navy and rose, grown up: an editorial film magazine.
+   Frames laid out like stills on a light table, generous white space, colored client logos. */
+:root{--cream:#FFFDFA;--paper:#F4EFE7;--navy:#4D5C95;--rose:#B46969;--ink:#1b1c22;--mid:#6b6d78;--d:"Urbanist",sans-serif;--t:"Poppins",sans-serif;--g:clamp(20px,4vw,64px)}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:400 15px/1.7 var(--t)}img,video{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.w{max-width:1360px;margin:0 auto;padding:0 var(--g)}.s{aspect-ratio:2.39/1;width:100%;object-fit:cover}
+nav{display:flex;justify-content:space-between;align-items:center;height:84px}nav img{height:34px;filter:brightness(0) saturate(100%) invert(33%) sepia(19%) saturate(1400%) hue-rotate(194deg)}
+nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0;font:500 14px var(--t)}nav .b{display:none}
+h1{font:900 clamp(3rem,9vw,9rem)/.9 var(--d);letter-spacing:-.04em;color:var(--navy);margin:48px 0 0}h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2.5px var(--navy)}
+.lede{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin:26px 0 40px;color:var(--mid);max-width:100%}.lede p{max-width:46ch;margin:0}
+.btn{display:inline-block;padding:14px 22px;border:1.5px solid var(--rose);color:var(--rose);font-weight:500}
+.table{background:var(--paper);padding:56px 0}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+.f{position:relative}.f .c{margin-top:10px;font-size:13px;color:var(--mid)}.f b{color:var(--ink);font-weight:600;margin-right:8px}
+.f1{grid-column:1/9}.f2{grid-column:9/13;align-self:end}.f3{grid-column:1/5}.f4{grid-column:5/13}.f5{grid-column:2/8}.f6{grid-column:8/13;align-self:center}
+.logos{padding:90px 0}.logos h2,.cta h2{font:800 clamp(2rem,4.4vw,3.6rem)/1 var(--d);letter-spacing:-.03em;color:var(--rose);margin:0 0 40px}
+.lg{display:grid;grid-template-columns:repeat(6,1fr);gap:40px 28px;align-items:center}.lg img{height:54px;width:100%;object-fit:contain}
+.cta{background:var(--navy);color:#fff;padding:100px 0}.cta h2{color:#fff}.cta a{border-bottom:1px solid #fff8;margin-right:36px;font-size:20px}
+footer{padding:36px 0;font-size:13px;color:var(--mid)}
+@media(max-width:900px){nav ul{display:none}nav .b{display:block;width:26px;height:14px;border-top:2px solid var(--navy);border-bottom:2px solid var(--navy);position:relative}nav .b::after{content:"";position:absolute;left:0;right:0;top:4px;border-top:2px solid var(--navy)}.grid>*{grid-column:1/-1!important}.lg{grid-template-columns:repeat(3,1fr)}}
+.el{font-style:normal;font-weight:600;color:#B46969;letter-spacing:.06em;text-transform:uppercase;font-size:11px}</style></head><body>
+<div class="w"><nav><img src="../img/logo-white.svg" alt="Elemental Media"><ul><li>Work</li><li>Photography</li><li>Rental</li><li>Studio</li><li>Contact</li></ul><span class="b" aria-label="Menu"></span></nav>
+<h1>Let&rsquo;s tell the<br><em>**** out of it.</em></h1>
+<div class="lede"><p>Elemental is a film and photography studio in Kalamazoo, built to scale: a one-person crew for a portrait, a legion for a set of twenty.</p><a class="btn" href="#">See the work</a></div>
+<video class="s" src="../video/hero-loop.mp4" autoplay muted loop playsinline></video></div>
+<section class="table"><div class="w grid">
+<div class="f f1"><img class="s" src="../img/bells.jpg" alt=""><div class="c"><b>Bell&rsquo;s Brewery</b>Inspired Brewing · 2024 · <em class="el">Light</em></div></div>
+<div class="f f2"><img class="s" src="../img/guitar.jpg" alt=""><div class="c"><b>Stedman USA</b>Director&rsquo;s cut · 2022 · <em class="el">Light</em></div></div>
+<div class="f f3"><img class="s" src="../img/tension.jpg" alt=""><div class="c"><b>Burdick&rsquo;s</b>Sports :15 · 2026 · <em class="el">Story</em></div></div>
+<div class="f f4"><img class="s" src="../img/runner.jpg" alt=""><div class="c"><b>Landscape Forms</b>People&rsquo;s Dept. · 2025 · <em class="el">Motion</em></div></div>
+<div class="f f5"><img class="s" src="../img/mother.jpg" alt=""><div class="c"><b>Kalamazoo Airport</b>When a City Has an Airport · 2024 · <em class="el">Story</em></div></div>
+<div class="f f6"><img class="s" src="../img/pour.jpg" alt=""><div class="c"><b>Factory Coffee</b>Coffee Shop in a Can · 2020 · <em class="el">Craft</em></div></div>
+</div></section>
+<section class="logos"><div class="w"><h2>Brands we&rsquo;ve made films for.</h2><div class="lg">
+<img src="../brands/ford-colour.png" alt="Ford"><img src="../brands/stryker-colour.png" alt="Stryker"><img src="../brands/shinola-colour.png" alt="Shinola"><img src="../brands/bells-colour.png" alt="Bell's"><img src="../brands/vml-colour.png" alt="VML"><img src="../brands/pactiv-colour.png" alt="Pactiv Evergreen"><img src="../brands/kzoocollege-colour.png" alt="Kalamazoo College"><img src="../brands/bounty-colour.png" alt="Bounty"><img src="../brands/usahockey-colour.png" alt="USA Hockey"><img src="../brands/sweetwaters-colour.png" alt="Sweetwaters"><img src="../brands/brine-colour.png" alt="Brick and Brine"><img src="../brands/ooly-colour.png" alt="OOLY">
+</div></div></section>
+<section class="cta"><div class="w"><h2>Your audience wants to connect.</h2><a href="mailto:contact@inyourelement.media">contact@inyourelement.media</a><a href="tel:+12695681093">269.568.1093</a></div></section>
+<footer class="w">© 2026 Elemental Media · Kalamazoo, Michigan · Concept 1 of 5 by LOVELEEDAY Studios</footer>
+</body></html>
