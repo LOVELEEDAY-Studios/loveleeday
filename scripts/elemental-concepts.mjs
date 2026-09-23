@@ -6,12 +6,12 @@ import fs from "fs";
 const OUT = "public/portal/elemental/concepts";
 
 const films = [
-  { key: "bells", client: "Bell’s Brewery", title: "Inspired Brewing", yr: "2024", el: "light", sym: "Bl", n: 1, v: "903444253" },
-  { key: "runner", client: "Landscape Forms", title: "People’s Dept.", yr: "2025", el: "motion", sym: "Lf", n: 2, v: "1084291973" },
-  { key: "mother", client: "Kalamazoo Airport", title: "When a City Has an Airport", yr: "2024", el: "story", sym: "Ka", n: 3, v: "1036036347" },
-  { key: "tension", client: "Burdick’s", title: "Sports :15", yr: "2026", el: "story", sym: "Bu", n: 4, v: "1169612500" },
-  { key: "guitar", client: "Stedman USA", title: "Director’s cut", yr: "2022", el: "light", sym: "St", n: 5, v: "711788096" },
-  { key: "pour", client: "Factory Coffee", title: "Coffee Shop in a Can", yr: "2020", el: "craft", sym: "Fc", n: 6, v: "422185776" },
+  { key: "bells", client: "Bell’s Brewery", title: "Inspired Brewing", yr: "2024", el: "light", sym: "Bl", n: 1, v: "903444253", pv: "bells" },
+  { key: "runner", client: "Landscape Forms", title: "People’s Dept.", yr: "2025", el: "motion", sym: "Lf", n: 2, v: "1084291973", pv: "landscape" },
+  { key: "mother", client: "Kalamazoo Airport", title: "When a City Has an Airport", yr: "2024", el: "story", sym: "Ka", n: 3, v: "1036036347", pv: "airport" },
+  { key: "tension", client: "Burdick’s", title: "Sports :15", yr: "2026", el: "story", sym: "Bu", n: 4, v: "1169612500", pv: "burdicks" },
+  { key: "guitar", client: "Stedman USA", title: "Director’s cut", yr: "2022", el: "light", sym: "St", n: 5, v: "711788096", pv: "stedman" },
+  { key: "pour", client: "Factory Coffee", title: "Coffee Shop in a Can", yr: "2020", el: "craft", sym: "Fc", n: 6, v: "422185776", pv: "factory" },
 ];
 const logos = ["ford", "stryker", "shinola", "bells", "vml", "pactiv", "kzoocollege", "bounty", "usahockey", "sweetwaters", "brine", "ooly"];
 const logoAlt = { ford: "Ford", stryker: "Stryker", shinola: "Shinola", bells: "Bell’s Brewery", vml: "VML", pactiv: "Pactiv Evergreen", kzoocollege: "Kalamazoo College", bounty: "Bounty", usahockey: "USA Hockey", sweetwaters: "Sweetwaters Donut Mill", brine: "Brick+Brine", ooly: "OOLY" };
@@ -29,7 +29,7 @@ const concepts = [
     tagline: "Film and photography studio · Kalamazoo, Michigan",
     h1: "Every brand has<br>an essential element.<br><em>We film it.</em>",
     lede: "The studio behind Bell’s Inspired Brewing, Kalamazoo Airport’s When a City Has an Airport and Landscape Forms’ People’s Dept. One team, from a single photographer to a crew of twenty.",
-    layout: "split", work: "tiles",
+    layout: "split", work: "tiles", globe: true,
     close: "What is <em>yours?</em>",
   },
   {
@@ -126,12 +126,17 @@ section.blk{padding:clamp(64px,8vw,120px) 0;border-top:1px solid var(--line)}
 .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--line);border:2px solid var(--line)}
 .tile{background:var(--panel);padding:18px;position:relative}.tile .top{display:flex;justify-content:space-between;font:500 11px/1 var(--m);color:var(--mid)}
 .tile .sym{font:800 clamp(40px,5vw,64px)/1 var(--d);letter-spacing:-.03em;margin:22px 0 4px}.tile .nm{font:600 15px/1.3 var(--t)}.tile .ds{font:400 12px/1.4 var(--m);color:var(--mid)}
-.tile img{margin-top:16px}
+.tile .hv{margin-top:16px}
 .idx .r{display:grid;grid-template-columns:60px 1.2fr 1fr 80px;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);position:relative}
 .idx .r h3{font:800 clamp(28px,4vw,54px)/1 var(--d);letter-spacing:.01em;text-transform:uppercase}.idx .r:hover h3{color:var(--ac)}
 .idx .r .pv{position:absolute;right:100px;top:50%;width:min(360px,30vw);transform:translateY(-50%);opacity:0;transition:opacity .3s;pointer-events:none}.idx .r:hover .pv{opacity:1}
 .els{display:grid;gap:18px}.el{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;align-items:center;padding:36px;border-radius:4px;background:var(--panel)}
 .el .nm{font:600 13px/1 var(--t);letter-spacing:.18em;text-transform:uppercase}.el h3{font-size:clamp(2.4rem,5vw,4.6rem);line-height:1;margin:10px 0 12px;font-weight:600}.el p{color:var(--mid);margin:0;max-width:40ch}
+.hv{position:relative;display:block;overflow:hidden}.hv video{position:absolute;inset:0;opacity:0;transition:opacity .35s}.hv.on video{opacity:1}
+.globe .gw{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,90px);align-items:center}
+.globe h2{font-size:clamp(2.4rem,5vw,4.4rem);line-height:1;letter-spacing:-.035em;font-weight:800;margin:14px 0 18px}.globe p{color:var(--mid);font-size:17px;max-width:44ch;margin:0}
+.gbox canvas{width:100%;height:auto;display:block;max-width:560px;margin:0 auto}
+@media(max-width:980px){.globe .gw{grid-template-columns:1fr}}
 .soc{display:grid;grid-template-columns:2.2fr .72fr .9fr 1fr 1fr;gap:18px;align-items:end}
 .soc figure{margin:0}.soc video,.soc img{width:100%;object-fit:cover;background:#000;border-radius:10px}
 .soc .m239 video{aspect-ratio:2.39/1;border-radius:4px}.soc .m916 video{aspect-ratio:9/16}.soc .m45 video{aspect-ratio:4/5}.soc .m11 video,.soc .m11 img{aspect-ratio:1/1}
@@ -159,7 +164,50 @@ footer .fn{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);dis
 `;
 }
 
-const fig = (f) => `<img class="s" src="../img/${f.key}.jpg" alt="${f.client}, ${f.title}" loading="lazy">`;
+// A film frame: the still, with the film's own 3-second preview laid over it that plays on hover.
+const fig = (f) => `<span class="hv"><img class="s" src="../img/${f.key}.jpg" alt="${f.client}, ${f.title}" loading="lazy"><video class="s" data-src="../video/pv-${f.pv}.mp4" muted loop playsinline preload="none" aria-hidden="true"></video></span>`;
+
+// Kalamazoo to the world: an orthographic globe with arcs travelling out from Kalamazoo.
+// Destinations are unnamed on purpose: this says "a small team can go anywhere", not
+// "we have shot here".
+const globe = (k) => `<section class="blk globe" id="studio"><div class="w gw">
+<div class="gtx"><span class="lab">Based in Kalamazoo, Michigan</span><h2>A small team.<br>A <em>big world.</em></h2>
+<p>Elemental is built to travel. The core team is in Kalamazoo, and it scales from a single photographer to a crew of twenty, wherever the story is: across the country or across an ocean.</p></div>
+<div class="gbox"><canvas id="globe" width="1200" height="1200" aria-label="A globe with routes travelling out from Kalamazoo, Michigan to cities across North America and the world" role="img"></canvas></div>
+</div></section>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script>(async()=>{
+const cv=document.getElementById('globe'),ctx=cv.getContext('2d'),W=cv.width,R=W*0.46;
+const home=[-85.59,42.29];
+const to=[[-74.0,40.7],[-118.2,34.05],[-87.63,41.88],[-97.74,30.27],[-80.19,25.76],[-122.33,47.6],[-104.99,39.74],[-79.38,43.65],[-99.13,19.43],[-0.13,51.5],[2.35,48.86],[-157.86,21.31],[-43.2,-22.9],[139.69,35.68]];
+const world=await (await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json')).json();
+const land=topojson.feature(world,world.objects.land);
+const proj=d3.geoOrthographic().scale(R).translate([W/2,W/2]).clipAngle(90).precision(0.3);
+const path=d3.geoPath(proj,ctx);const grat=d3.geoGraticule10();
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const css=getComputedStyle(document.documentElement);const ac=css.getPropertyValue('--ac').trim(),ink=css.getPropertyValue('--ink').trim(),line=css.getPropertyValue('--line').trim();
+const arcs=to.map((d,i)=>({d,i,interp:d3.geoInterpolate(home,d),delay:i*0.55}));
+let t0=performance.now();
+function frame(now){
+  const t=(now-t0)/1000;
+  proj.rotate([reduce?88:88-Math.sin(t*0.12)*38,-22]);
+  ctx.clearRect(0,0,W,W);
+  ctx.beginPath();path({type:'Sphere'});ctx.fillStyle='#FFFFFF';ctx.fill();ctx.lineWidth=2;ctx.strokeStyle=line;ctx.stroke();
+  ctx.beginPath();path(grat);ctx.lineWidth=1;ctx.strokeStyle=line;ctx.stroke();
+  ctx.beginPath();path(land);ctx.fillStyle='#E6E2DA';ctx.fill();
+  for(const a of arcs){
+    const cyc=reduce?1:((t-a.delay)%7.7+7.7)%7.7/3.2;const p=Math.min(cyc,1);if(p<=0)continue;
+    const pts=d3.range(0,p+0.001,0.02).map(a.interp);
+    ctx.beginPath();path({type:'LineString',coordinates:pts});ctx.lineWidth=2.4;ctx.strokeStyle=ac;ctx.globalAlpha=cyc>2?Math.max(0,1-(cyc-2)):0.9;ctx.stroke();ctx.globalAlpha=1;
+    if(p>=1){const e=proj(a.d);const vis=d3.geoDistance(a.d,[-proj.rotate()[0],-proj.rotate()[1]])<Math.PI/2;if(e&&vis){ctx.beginPath();ctx.arc(e[0],e[1],6,0,7);ctx.fillStyle=ink;ctx.fill();}}
+  }
+  const h=proj(home);ctx.beginPath();ctx.arc(h[0],h[1],11,0,7);ctx.fillStyle=ac;ctx.fill();
+  ctx.beginPath();ctx.arc(h[0],h[1],11+((t*14)%26),0,7);ctx.strokeStyle=ac;ctx.globalAlpha=Math.max(0,1-((t*14)%26)/26);ctx.lineWidth=2;ctx.stroke();ctx.globalAlpha=1;
+  if(!reduce)requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})().catch(()=>{document.querySelector('.gbox').style.display='none'})</script>`;
 
 function work(k) {
   if (k.work === "tiles") {
@@ -212,8 +260,8 @@ ${hero}
 <div><span class="lab">02 · Photography</span><h3>Campaign and brand photography</h3><p>Portraits, lifestyle, product and editorial, shot to live alongside the film.</p><ul><li>Portraits and headshots</li><li>Lifestyle and editorial</li><li>Product</li><li>Events and retouching</li></ul></div>
 <div><span class="lab">03 · Studio &amp; rental</span><h3>Crew and equipment</h3><p>A team that scales from one to twenty, and the kit we shoot on, available to other productions.</p><ul><li>Cameras, lenses and support</li><li>Lighting and grip</li><li>Audio</li><li>Rates on request</li></ul></div>
 </div></div></section>
-<section class="logos" aria-label="Clients"><div class="w"><span class="lab" style="color:#6b6b6b">Selected clients · as shown on weareelementalmedia.com</span><div class="lg">${logos.map((l) => `<img src="../brands/${l}-colour.png" alt="${logoAlt[l]}" loading="lazy">`).join("")}</div></div></section>
-<section class="blk" id="studio"><div class="w team"><p class="body">A core team in Kalamazoo, Michigan, built to scale for productions anywhere.</p><div class="p"><b>Esther Tuttle</b><span>Creative Director</span></div><div class="p"><b>Nick Turske</b><span>Managing Director</span></div></div></section>
+<section class="logos" aria-label="Clients"><div class="w"><span class="lab" style="color:#6b6b6b">Selected clients</span><div class="lg">${logos.map((l) => `<img src="../brands/${l}-colour.png" alt="${logoAlt[l]}" loading="lazy">`).join("")}</div></div></section>
+${k.globe ? globe(k) : `<section class="blk" id="studio"><div class="w team"><p class="body">A core team in Kalamazoo, Michigan, built to scale for productions anywhere.</p><div class="p"><b>Esther Tuttle</b><span>Creative Director</span></div><div class="p"><b>Nick Turske</b><span>Managing Director</span></div></div></section>`}
 <section class="close" id="contact"><div class="w"><h2>${k.close}</h2><div class="ct"><a href="mailto:contact@inyourelement.media">contact@inyourelement.media</a><a href="tel:+12695681093">269.568.1093</a></div></div></section>
 <footer><div class="w"><div class="g"><div>${k.mark(k.c)}<p style="margin:14px 0 0;max-width:30ch">${k.tagline}</p></div>
 <div><h4>Studio</h4><ul><li><a href="#work">Work</a></li><li><a href="#capabilities">Capabilities</a></li><li><a href="#studio">About</a></li></ul></div>
@@ -222,7 +270,11 @@ ${hero}
 <div class="fn"><span>© 2026 Elemental Media</span><span>Elemental 2.0 · Concept ${k.n} of 5 · a proposed identity by LOVELEEDAY Studios</span></div></div></footer>
 <script>(()=>{const n=document.querySelector('nav.top'),b=n.querySelector('.bb');b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')});n.querySelectorAll('ul a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
 const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(!v.src){v.src=v.dataset.src}v.play().catch(()=>{})}else if(v.src){v.pause()}}),{rootMargin:'200px'});
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('video.lazyv').forEach(v=>io.observe(v))})()</script>
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('video.lazyv').forEach(v=>io.observe(v));
+// Hover a film frame and its preview plays; leave and it pauses. Mouse and trackpad only.
+if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('.hv').forEach(h=>{const v=h.querySelector('video');const host=h.closest('a,.el,.card,.tile')||h;
+host.addEventListener('mouseenter',()=>{if(!v.src)v.src=v.dataset.src;v.play().then(()=>h.classList.add('on')).catch(()=>{})});
+host.addEventListener('mouseleave',()=>{h.classList.remove('on');v.pause()})})})()</script>
 </body></html>`;
 }
 
