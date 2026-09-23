@@ -73,6 +73,8 @@ export interface Portfolio {
   research?: Research;
   /** Render the research above the site findings — for studies where it is the headline. */
   researchFirst?: boolean;
+  /** Where the fund findings were found, finishing "N things we found …". Defaults to the fund's own domain. */
+  findingsScope?: string;
 }
 
 export interface Research {
@@ -268,6 +270,7 @@ const lightship: Portfolio = {
 
   researchFirst: true,
   research: lightshipResearch,
+  findingsScope: "across your eighteen companies",
 
   fundFindings: [
     {
