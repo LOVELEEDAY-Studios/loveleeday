@@ -68,4 +68,6 @@ export const TOKENS = {
   lightshipFoundation: tokOptional("PORTAL_TOKEN_LIGHTSHIPFOUNDATION"),
   // Lanette Dailey-Reese, Global Citizens PCS (DC), 2026-09-23: the compliance calendar pitch.
   globalCitizens: tokOptional("PORTFOLIO_TOKEN_GLOBALCITIZENS"),
+  // Terrell Cole, Interim County Administrator/Controller, Kalamazoo County, 2026-09-23.
+  kalcounty: tokOptional("PORTFOLIO_TOKEN_KALCOUNTY"),
 } as const;

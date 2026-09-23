@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { getPortal } from "@/content/portals";
 import { getPortfolio } from "@/content/portfolio";
 import { getComplianceSchool } from "@/content/compliance";
+import { getCivic } from "@/content/civic/kalamazoo";
 
 export const dynamic = "force-dynamic";
 
@@ -25,8 +26,9 @@ export async function POST(request: Request) {
     // reproduced 2026-09-23). A form that silently cannot send is worse than no form.
     const found = getPortal(token);
     const pf = found ? undefined : getPortfolio(token);
-    const cs = found || pf ? undefined : getComplianceSchool(token);
-    if (!found && !pf && !cs) {
+    const civic = found || pf ? undefined : getCivic(token);
+    const cs = found || pf || civic ? undefined : getComplianceSchool(token);
+    if (!found && !pf && !cs && !civic) {
       return NextResponse.json({ error: "Unknown review link" }, { status: 404 });
     }
     const portal = found ?? (pf
@@ -37,15 +39,23 @@ export async function POST(request: Request) {
           round: "Round 01",
           deliverables: pf.cases.map((c) => ({ slug: c.slug, title: c.company })),
         }
-      : {
-          token: cs!.token,
-          client: cs!.short,
-          project: "Compliance calendar",
-          round: "Round 01",
-          deliverables: [{ slug: "compliance", title: "Compliance calendar" }],
-        });
+      : civic
+        ? {
+            token: civic.token,
+            client: civic.short,
+            project: "County analysis",
+            round: "Round 01",
+            deliverables: [{ slug: "analysis", title: "County analysis" }],
+          }
+        : {
+            token: cs!.token,
+            client: cs!.short,
+            project: "Compliance calendar",
+            round: "Round 01",
+            deliverables: [{ slug: "compliance", title: "Compliance calendar" }],
+          });
     const portfolioLink = !found;
-    const linkBase = cs ? "compliance/" : "portfolio/";
+    const linkBase = civic ? "civic/" : cs ? "compliance/" : "portfolio/";
 
     const name = String(body.name ?? "").trim().slice(0, 120);
     const email = String(body.email ?? "").trim().slice(0, 200);
