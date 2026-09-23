@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { LogoMark } from "@/components/Nav";
 
 /* Portals are handed out one link at a time. They must never turn up in a
@@ -16,7 +15,9 @@ export default function PortalLayout({
     <div className="flex min-h-full flex-1 flex-col">
       <header className="border-b border-[var(--line)]">
         <div className="mx-auto flex max-w-[1340px] items-center justify-between px-6 py-4">
-          <Link
+          {/* A plain anchor: "/" is a static HTML file behind a rewrite, so next/link's RSC
+              prefetch of it 404s on every portal page. */}
+          <a
             href="/"
             className="flex items-center gap-2.5 text-[var(--ink)]"
             aria-label="LOVELEEDAY Studios — home"
@@ -25,7 +26,7 @@ export default function PortalLayout({
             <span className="text-[13px] font-semibold tracking-[0.18em]">
               LOVELEEDAY
             </span>
-          </Link>
+          </a>
           <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
             Private review
           </span>
