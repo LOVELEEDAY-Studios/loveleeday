@@ -20,6 +20,8 @@ CONTROLS = [
      "Every client account requires a one-time code from an authenticator app. The database itself refuses a session that has not completed that second step, so a stolen password cannot read or change anything, even by going around the website."),
     ("You can only join by invitation.",
      "Client accounts are created by LOVELEEDAY, never self-registered. Joining one takes an invitation sent to a named address. The link works only for that confirmed email address, once, and expires. A forwarded or leaked link is useless to anyone else."),
+    ("Single sign-on for institutions.",
+     "Organizations that manage accounts centrally can sign their people in through their own identity provider (SAML&nbsp;2.0), which then owns the second factor. Each organization's connection is set up with them, and signing in through it still requires an invitation to your account."),
     ("Encryption, in transit and at rest.",
      "Traffic runs over TLS, with browsers told to use it every time. Data is encrypted at rest by the database, and working machines use full-disk encryption."),
     ("Hosted in the United States.",
@@ -53,8 +55,9 @@ old_intro = "None of the three below are done"
 assert old_intro in t or "None of the items below are done" in t, "roadmap intro not found"
 t = t.replace(old_intro, "None of the items below are done", 1)
 
-sso = re.search(r'<article class="principle-long"><span class="row-number">&mdash;</span><h3>Single sign-on.*?</article>', t, re.S)
-assert sso, "SSO roadmap item not found"
+# SSO shipped 2026-09-23 (arthur-launch 6b3eec8 + a50350f, SAML enabled on the
+# loveleeday project), so its roadmap entry is removed; it is in CONTROLS above.
+t = re.sub(r'<article class="principle-long"><span class="row-number">&mdash;</span><h3>Single sign-on.*?</article>', "", t, count=1, flags=re.S)
 locked = art("&mdash;", "Backups that cannot be deleted.",
              "Underway. Our offsite copies are verified daily, but they can still be removed with the same access that writes them. We are adding a retention lock so that no one, including us, can delete a backup before it ages out.")
 # Shipped 2026-09-23 (R2 bucket lock, proven by scripts/r2-lock-probe.sh), so it
