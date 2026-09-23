@@ -1,0 +1,37 @@
+[
+ {
+  "file": "c1-periodic",
+  "n": 1,
+  "name": "Periodic",
+  "idea": "Elemental as the element every brand needs. A periodic-table system: the mark is a tile, every film is an element with its own symbol, and the grid does the storytelling.",
+  "tagline": "The essential element."
+ },
+ {
+  "file": "c2-four-elements",
+  "n": 2,
+  "name": "Four Elements",
+  "idea": "Every film is made of four things. Fire is light, water is story, earth is craft, air is motion. An alchemical mark of four triangles, four colours, and work you browse by element.",
+  "tagline": "Light. Story. Craft. Motion."
+ },
+ {
+  "file": "c3-pictures",
+  "n": 3,
+  "name": "Elemental Pictures",
+  "idea": "The national production-house move. A monochrome studio identity, a condensed wordmark with a single ember bar, a credits-roll index of films, and almost no copy. The work carries it.",
+  "tagline": "Film and photography for brands."
+ },
+ {
+  "file": "c4-fundamental",
+  "n": 4,
+  "name": "Fundamental",
+  "idea": "Elemental means primary. So the identity is built from primaries: a circle, a square and a triangle in red, blue and yellow. Swiss grid, heavy grotesk, confident and corporate.",
+  "tagline": "Fundamental films."
+ },
+ {
+  "file": "c5-studio",
+  "n": 5,
+  "name": "Studio",
+  "idea": "The premium agency direction. Deep evergreen and brass, an editorial serif, a refined flame redrawn as a single line. Built for a CMO: calm, credible, and specific about how the work gets made.",
+  "tagline": "Brand films, made with care."
+ }
+]
