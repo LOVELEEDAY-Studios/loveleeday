@@ -184,7 +184,7 @@ export const lightshipPortals: Portal[] = [
     clientDomain: "blacktechweek.com",
     project: "Columbus 2027 — site direction and sponsor video",
     intro:
-      "Thank you for the time at PitchMI tonight. Columbus is the moment Black Tech Week gets a new first impression, so here is a first direction for it: a homepage that explains the event before it asks for an email, and two short videos cut from your own footage, one for sponsors and one for the waitlist.",
+      "Thank you for the time at PitchMI yesterday. Columbus is the moment Black Tech Week gets a new first impression, so here is a first direction for it: a homepage that explains the event before it asks for an email, and two short videos cut from your own footage, one for sponsors and one for the waitlist.",
     deliverables: [
       {
         slug: "marketing-site",
@@ -212,7 +212,7 @@ export const lightshipPortals: Portal[] = [
     clientDomain: "lightship.capital",
     project: "Fund site — direction study",
     intro:
-      "Thank you for the time at PitchMI tonight. lightship.capital still reads “© 2022”, and it shows three of your eighteen companies. Here is what it looks like when an LP or a founder can read the whole fund in one scroll.",
+      "Thank you for the time at PitchMI yesterday. lightship.capital still reads “© 2022”, and it shows three of your eighteen companies. Here is what it looks like when an LP or a founder can read the whole fund in one scroll.",
     deliverables: [
       {
         slug: "marketing-site",
@@ -238,7 +238,7 @@ export const lightshipPortals: Portal[] = [
     clientDomain: "lightship.foundation",
     project: "Foundation site — direction study and video",
     intro:
-      "Thank you for the time at PitchMI tonight. The Foundation's work is bigger than its site lets it look: 17,000 innovators served, Bootcamp, Founder Gym, and Black Tech Week itself. Here is a direction that answers a founder, a donor and a partner each in their own terms, plus a short film cut from your footage.",
+      "Thank you for the time at PitchMI yesterday. The Foundation's work is bigger than its site lets it look: 17,000 innovators served, Bootcamp, Founder Gym, and Black Tech Week itself. Here is a direction that answers a founder, a donor and a partner each in their own terms, plus a short film cut from your footage.",
     deliverables: [
       {
         slug: "marketing-site",
