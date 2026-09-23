@@ -22,7 +22,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Security & Compliance",
   description:
-    "How LOVELEEDAY Studios protects client data: multi-factor authentication, US-only hosting, per-client isolation, tested backups, and a stated posture on SOC 2, penetration testing and SSO.",
+    "How LOVELEEDAY Studios protects client data: multi-factor authentication, US-only hosting, per-client isolation, automated daily backups, and a stated posture on SOC 2, penetration testing and SSO.",
   alternates: { canonical: "https://loveleedaystudios.com/security" },
 };
 
@@ -35,8 +35,8 @@ const CONTROLS: [string, string, string][] = [
    "Application compute runs on Fly.io in Chicago. Databases run on Supabase, hosted on AWS in us-east-1. Data does not leave the United States as part of normal operation."],
   ["04", "Per-client isolation",
    "Each client's data lives in its own tenant, enforced by Row-Level Security in the database — not only in application code. One client cannot read another's rows."],
-  ["05", "Backups, restore-tested",
-   "Backups run on a recurring schedule and are replicated to two independent providers. Restores are tested, not assumed to work."],
+  ["05", "Automated daily backups",
+   "Client data runs on managed Postgres with automated daily backups. Our internal operating records are additionally replicated to two independent providers, with restores tested rather than assumed."],
   ["06", "Least-privilege secret handling",
    "Credentials are scoped to what they need and held in a central, access-controlled store — never committed to source control and never shipped to a browser."],
   ["07", "An approval gate on outbound actions",
