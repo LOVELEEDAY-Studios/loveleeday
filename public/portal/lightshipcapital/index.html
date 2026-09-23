@@ -79,9 +79,9 @@ h1,h2,h3{font-family:var(--disp);font-weight:400;letter-spacing:-.01em;text-wrap
   animation:sweep 11s linear infinite;mix-blend-mode:screen}
 @keyframes sweep{to{transform:translate(-50%,-50%) rotate(360deg)}}
 @keyframes blink{0%,100%{opacity:.8}50%{opacity:1}}
-.hero .wrap{position:relative;z-index:3;width:100%;padding-bottom:clamp(48px,8vw,96px)}
+.hero .wrap{position:relative;z-index:3;width:100%;padding-top:calc(84px + clamp(24px,5vh,56px));padding-bottom:clamp(48px,8vh,96px)}
 .hero .label{color:var(--tint)}
-.hero h1{font-size:clamp(50px,7.8vw,124px);line-height:.96;margin:18px 0 26px;max-width:13ch}
+.hero h1{font-size:clamp(50px,min(7.8vw,12.5vh),124px);line-height:.96;margin:18px 0 26px;max-width:13ch}
 .hero p{font-size:clamp(18px,1.6vw,21px);max-width:54ch;color:#E6ECF7}
 .hero__cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
 
