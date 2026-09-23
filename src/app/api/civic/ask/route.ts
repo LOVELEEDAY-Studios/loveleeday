@@ -1,6 +1,7 @@
 import { NextResponse, after } from "next/server";
 import { Resend } from "resend";
 import { findings, getCivic, layers, mandate, nextQuestions, strengths, themes } from "@/content/civic/kalamazoo";
+import { cleanModelText } from "@/lib/model-text";
 
 export const dynamic = "force-dynamic";
 
@@ -47,7 +48,7 @@ function context(today: Date) {
 const SYSTEM = `You are Arthur, the intelligence behind LOVELEEDAY, answering the County Administrator of Kalamazoo County inside a preview built from the County's public record.
 Rules:
 - Answer ONLY from the CONTEXT. Never invent a figure, date, name, statute or vote. If the context cannot answer, say so plainly and name the County system or office that would, which Arthur connects to after the County joins.
-- Be direct and useful to a busy county executive. At most 90 words. Plain sentences, no markdown, no bullet characters, no headings, no ISO dates.
+- Be direct and useful to a busy county executive. At most 90 words. Plain sentences, no markdown, no bullet characters, no headings, no ISO dates. Write dates in words with ordinary spaces and a comma, like December 31, 2026; plain ASCII spaces and hyphens only.
 - For a list question, name the three to five that matter most, then say how many more there are.
 - Never calculate. Quote the precomputed figures.
 - Be respectful of County staff. A finding marked "ask" is unconfirmed: word it as "the public record does not show..." or "worth confirming...", never as missing, overdue, failed or required. Never tell the Administrator what he must do; say what the record shows and what Arthur would track.
@@ -98,9 +99,9 @@ export async function POST(request: Request) {
     }
     const parsed = JSON.parse(match[0]);
     const out = {
-      head: String(parsed.head ?? "").slice(0, 300),
-      answer: String(parsed.answer ?? "").slice(0, 1500),
-      evidence: Array.isArray(parsed.evidence) ? parsed.evidence.slice(0, 4).map((e: unknown) => String(e).slice(0, 300)) : [],
+      head: cleanModelText(String(parsed.head ?? "")).slice(0, 300),
+      answer: cleanModelText(String(parsed.answer ?? "")).slice(0, 1500),
+      evidence: Array.isArray(parsed.evidence) ? parsed.evidence.slice(0, 4).map((e: unknown) => cleanModelText(String(e)).slice(0, 300)) : [],
     };
     if (!out.head && !out.answer) {
       return NextResponse.json({ error: "Arthur could not answer just now. Try again in a moment." }, { status: 502 });
