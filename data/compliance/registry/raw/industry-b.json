@@ -1,0 +1,1078 @@
+{
+  "generated": "2026-09-23",
+  "items": [
+    {
+      "id": "us-cjis-security-addendum",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "criminal-justice",
+      "industries": [
+        "local-government"
+      ],
+      "exists": true,
+      "title": "FBI CJIS Security Policy — CJIS Security Addendum",
+      "citation": "CJIS Security Policy (CJISD-ITS-DOC-08140), Appendix H — Security Addendum; 28 CFR 20.33",
+      "applies_to_vendor": "A vendor (private contractor) with access to, or that stores/processes/transmits, Criminal Justice Information (CJI) on behalf of a criminal justice agency must sign the CJIS Security Addendum, undergo personnel security screening (fingerprint-based background check) for all personnel with access, and implement the CJIS Security Policy's technical/administrative controls proportionate to the CJI handled.",
+      "key_obligations": [
+        "Execute the CJIS Security Addendum (Appendix H) as part of, or an attachment to, the agreement with the criminal justice agency",
+        "Submit personnel with access to CJI for a state and national fingerprint-based background check before granting access; agencies may deny/revoke access for a disqualifying criminal history",
+        "Implement CJIS Security Policy controls (advanced authentication, encryption of CJI at rest/in transit, audit logging, incident response, media protection) proportionate to the CJI handled",
+        "Limit access to CJI to personnel who have completed required security awareness training",
+        "Undergo/allow audits by the CJIS Systems Agency or FBI CJIS Division"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": "CJI includes criminal history record information and other data the FBI CJIS Division provides, such as biometric, identity history, biographic, property, and case/incident history data.",
+      "penalties": "Loss of access to CJI/CJIS systems; the addendum subjects contractor personnel to termination of access and potential referral for criminal or civil action for misuse.",
+      "effective_or_amended": "CJIS Security Policy v6.1 (2026-06-25 revision, per le.fbi.gov)",
+      "source_url": "https://le.fbi.gov/cjis-division/cjis-security-policy-resource-center/appendicies/security-addendum.pdf",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "Did not fetch the full current CJIS Security Policy v6.1 document (600+ pages) to confirm every policy-area detail; addendum text and personnel-screening requirement were confirmed from the official PDF. Whether LOVELEEDAY ever actually touches CJI (vs. metadata) determines whether this item applies at all.",
+      "how_to_comply": [
+        {
+          "step": "Determine whether any LOVELEEDAY product/contract will store, process, or transmit CJI (criminal history, biometric, or justice-system case data) for a law-enforcement or criminal-justice-agency client",
+          "source_url": "https://le.fbi.gov/cjis-division/cjis-security-policy-resource-center/appendicies/security-addendum.pdf"
+        },
+        {
+          "step": "If yes, have the contracting criminal justice agency execute the CJIS Security Addendum with LOVELEEDAY as the private contractor",
+          "source_url": "https://le.fbi.gov/cjis-division/cjis-security-policy-resource-center/appendicies/security-addendum.pdf"
+        },
+        {
+          "step": "Submit each LOVELEEDAY employee/contractor who will access CJI for a state/national fingerprint-based background check via the contracting agency",
+          "source_url": "https://le.fbi.gov/cjis-division/cjis-security-policy-resource-center/appendicies/security-addendum.pdf"
+        },
+        {
+          "step": "Implement CJIS Security Policy technical controls (encryption, advanced authentication, audit logging, incident response) on the systems that touch CJI",
+          "source_url": "https://le.fbi.gov/cjis-division/cjis-security-policy-resource-center/appendicies"
+        }
+      ],
+      "attestation": "Signed CJIS Security Addendum (Appendix H) plus completed fingerprint-based background checks for in-scope personnel",
+      "triggered_when": "LOVELEEDAY software stores, processes, or transmits Criminal Justice Information for a police department, sheriff, court, or other criminal-justice-agency client",
+      "not_triggered_when": "The client is a general local-government department (finance, parks, permitting) with no criminal-justice data, or LOVELEEDAY only receives de-identified/aggregate statistics",
+      "effort": "high — requires the criminal justice agency to sponsor the addendum, background-check every in-scope employee, and build to CJIS technical controls (FIPS-validated encryption, advanced authentication); not a self-service certification"
+    },
+    {
+      "id": "us-govramp-authorization",
+      "jurisdiction": "US",
+      "level": "state",
+      "domain": "other",
+      "industries": [
+        "local-government"
+      ],
+      "exists": true,
+      "title": "GovRAMP (formerly StateRAMP) Security Authorization",
+      "citation": "StateRAMP Security Assessment Framework v4.0 (Feb 2025)",
+      "applies_to_vendor": "A cloud service provider (SaaS/PaaS/IaaS) selling to a state or local government that has adopted GovRAMP/StateRAMP policy must obtain a GovRAMP security status (Authorized, Provisional, or In Process) commensurate with the data category, via a StateRAMP-approved Third Party Assessment Organization (3PAO).",
+      "key_obligations": [
+        "Classify the cloud offering's data using the StateRAMP Data Classification Tool to determine required security category",
+        "Engage a StateRAMP-approved 3PAO to perform a full security assessment",
+        "Complete the System Security Plan (SR-SSP), Security Controls Template (SR-SCT), and Plan of Action & Milestones (POA&M)",
+        "Obtain sponsorship/approval from a participating government's Authorizing Official for full Authorized status",
+        "Maintain continuous monitoring post-authorization"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "Loss of eligibility to sell/renew contracts with state and local governments that mandate GovRAMP status",
+      "effective_or_amended": "Security Assessment Framework v4.0, February 2025",
+      "source_url": "https://govramp.org/wp-content/uploads/2025/02/StateRAMP-Security-Assessment-Framework-4.0.pdf",
+      "secondary_sources": [
+        "https://govramp.org/authorized"
+      ],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "GovRAMP is a voluntary/state-adopted program, not a federal statute — applicability depends on which state/local government client requires it in its procurement policy; did not confirm which specific states currently mandate it.",
+      "how_to_comply": [
+        {
+          "step": "Confirm whether target state/local government clients require GovRAMP/StateRAMP status in their procurement rules",
+          "source_url": "https://govramp.org/faqs"
+        },
+        {
+          "step": "Use the StateRAMP Data Classification Tool to determine the applicable security category for the LOVELEEDAY product",
+          "source_url": "https://govramp.org/wp-content/uploads/2022/12/Authorized-Service-Provider-Getting-Started-Guide.pdf"
+        },
+        {
+          "step": "Engage a StateRAMP-approved 3PAO and notify the GovRAMP PMO to move status to 'In Process'",
+          "source_url": "https://govramp.org/wp-content/uploads/2022/12/Authorized-Service-Provider-Getting-Started-Guide.pdf"
+        },
+        {
+          "step": "Complete SR-SSP, SR-SCT, and POA&M documentation and pass the 3PAO assessment for Authorization",
+          "source_url": "https://govramp.org/wp-content/uploads/2025/02/StateRAMP-Security-Assessment-Framework-4.0.pdf"
+        }
+      ],
+      "attestation": "GovRAMP Authorized or Provisional status listing on the GovRAMP Authorized Vendors list",
+      "triggered_when": "LOVELEEDAY sells a cloud-hosted SaaS product directly to a state agency or local government that has adopted a GovRAMP/StateRAMP requirement in procurement policy",
+      "not_triggered_when": "Client governments have no GovRAMP mandate, or LOVELEEDAY's product is on-premise / not a cloud service in scope",
+      "effort": "high — 6–12 months average per govramp.org, requires a paid 3PAO assessment and ongoing continuous monitoring"
+    },
+    {
+      "id": "us-tx-ramp",
+      "jurisdiction": "US",
+      "level": "state",
+      "domain": "other",
+      "industries": [
+        "local-government"
+      ],
+      "exists": true,
+      "title": "Texas Risk and Authorization Management Program (TX-RAMP)",
+      "citation": "Texas Government Code § 2054.0593; TX-RAMP Program Manual v3.1 (May 2025)",
+      "applies_to_vendor": "A cloud computing service provider must obtain TX-RAMP certification before contracting to provide the service to a Texas state agency, institution of higher education, or public community college.",
+      "key_obligations": [
+        "Determine certification Level (Level 1 for public/non-confidential/low-impact data; Level 2 for confidential/higher-impact data)",
+        "Submit assessment responses meeting Level 2 criteria, or submit evidence of an equivalent StateRAMP Category 2 or FedRAMP Moderate authorization",
+        "May obtain TX-RAMP Provisional Status, allowing a Texas agency to contract for up to 18 months while full certification is completed",
+        "Maintain certification through DIR's ongoing program requirements"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "A Texas state agency, university, or community college may not enter into or renew a contract for a cloud computing service that has not received TX-RAMP certification",
+      "effective_or_amended": "Program Manual 3.1, per DIR May 2025 publication",
+      "source_url": "https://dir.texas.gov/information-security/texas-risk-and-authorization-management-program-tx-ramp",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "This program legally binds only contracts with Texas state agencies/higher-ed/community colleges, not Texas municipalities generally; jurisdiction recorded as US per registry instruction though the program is Texas-specific.",
+      "how_to_comply": [
+        {
+          "step": "Confirm the Texas client is a state agency, public university, or community college (TX-RAMP's actual scope) rather than a city/county not covered by the statute",
+          "source_url": "https://dir.texas.gov/information-security/texas-risk-and-authorization-management-program-tx-ramp/tx-ramp-eligibility"
+        },
+        {
+          "step": "Submit a TX-RAMP request through DIR and select Level 1 or Level 2 based on data sensitivity",
+          "source_url": "https://dir.texas.gov/information-security/texas-risk-and-authorization-management-program-tx-ramp/tx-ramp-request"
+        },
+        {
+          "step": "Complete the assessment (or provide existing StateRAMP Category 2 / FedRAMP Moderate authorization as equivalent evidence) or apply for Provisional Status to contract while certification is pending",
+          "source_url": "https://dir.texas.gov/sites/default/files/2025-05/TX-RAMP%20Program%20Manual%203.1.pdf"
+        }
+      ],
+      "attestation": "TX-RAMP Certification (Level 1 or Level 2) or Provisional Status letter from Texas DIR",
+      "triggered_when": "LOVELEEDAY contracts to provide a cloud computing service to a Texas state agency, public university, or community college",
+      "not_triggered_when": "The Texas client is a city, county, or school district not covered by Texas Government Code 2054.0593, or the product is not a 'cloud computing service' as DIR defines it",
+      "effort": "medium — Level 1 is a self-attestation; Level 2 requires a more detailed assessment, though existing StateRAMP/FedRAMP work can be reused"
+    },
+    {
+      "id": "us-doj-ada-title-ii-web-accessibility",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "local-government"
+      ],
+      "exists": true,
+      "title": "ADA Title II Rule — Accessibility of Web Content and Mobile Apps of State and Local Government",
+      "citation": "28 CFR Part 35, Subpart H (§§35.200–35.207), as amended by 89 FR 31320 (Apr. 24, 2024) and the 2026 Interim Final Rule extending compliance dates",
+      "applies_to_vendor": "The legal duty runs to the state/local government entity, not directly to LOVELEEDAY, but a vendor building a public-facing website or app for a covered government client must deliver content conforming to WCAG 2.1 Level AA so the government client can meet its own compliance date.",
+      "key_obligations": [
+        "Web content and mobile apps that state/local governments provide or make available must conform to WCAG 2.1 Level AA",
+        "Government entities with total population of 50,000 or more must comply by April 26, 2027 (per 2026 Interim Final Rule, extended from April 24, 2026)",
+        "Government entities with total population under 50,000, or any special district government, must comply by April 26, 2028 (extended from April 26, 2027)",
+        "Limited exceptions exist (e.g., archived web content, preexisting conventional electronic documents, certain third-party content, individualized password-protected documents)"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "DOJ/private-party ADA Title II enforcement (injunctive relief, compensatory damages in some circumstances) against the government entity; a vendor's noncompliant deliverable exposes the government client, and by extension the vendor, to contractual liability.",
+      "effective_or_amended": "Final rule April 24, 2024; compliance dates extended by 2026 Interim Final Rule",
+      "source_url": "https://www.ada.gov/resources/2024-03-08-web-rule/",
+      "secondary_sources": [
+        "https://www.ada.gov/assets/pdfs/2026-ifr.pdf"
+      ],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "Did not independently confirm the exact April 2026 Interim Final Rule Federal Register citation number; relied on ada.gov's summary of the extended dates.",
+      "how_to_comply": [
+        {
+          "step": "Build all client-facing web content and mobile apps delivered to local-government clients to conform to WCAG 2.1 Level AA success criteria",
+          "source_url": "https://www.ada.gov/resources/2024-03-08-web-rule/"
+        },
+        {
+          "step": "Track each government client's population-based compliance deadline (April 26, 2027 for population ≥50,000; April 26, 2028 for <50,000/special districts) and schedule remediation/testing before it",
+          "source_url": "https://www.ada.gov/assets/pdfs/2026-ifr.pdf"
+        },
+        {
+          "step": "Run automated + manual accessibility testing (screen reader, keyboard-only navigation, color contrast) before each government-facing release and document conformance for the client's compliance file",
+          "source_url": "https://www.ada.gov/resources/small-entity-compliance-guide/"
+        }
+      ],
+      "attestation": "WCAG 2.1 AA conformance report / VPAT (Voluntary Product Accessibility Template) the government client will request from LOVELEEDAY",
+      "triggered_when": "LOVELEEDAY builds or maintains a public-facing website, portal, or mobile app for a state or local government client",
+      "not_triggered_when": "The deliverable is purely internal/back-office tooling never exposed to the public, or content falls under a named Title II exception (e.g., true archival content)",
+      "effort": "medium-high — WCAG 2.1 AA conformance requires design and engineering discipline (semantic HTML, contrast, keyboard nav, ARIA) but is achievable without third-party certification"
+    },
+    {
+      "id": "us-section-508-ict-accessibility",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "local-government"
+      ],
+      "exists": true,
+      "title": "Section 508 of the Rehabilitation Act — ICT Accessibility for Federally Funded Technology",
+      "citation": "29 U.S.C. § 794d; 36 CFR Part 1194 (Revised 508 Standards, incorporating WCAG 2.0/2.1 Level AA by reference)",
+      "applies_to_vendor": "A vendor providing information and communication technology (ICT) that a federal agency (or a state/local program built with federal funds and subject to a Section 508 flow-down clause) develops, procures, maintains, or uses must ensure that ICT conforms to the Revised 508 Standards.",
+      "key_obligations": [
+        "Conform ICT (software, websites, electronic documents) to the Revised 508 Standards, which generally require WCAG 2.1 Level AA conformance",
+        "Complete an Accessibility Conformance Report (ACR)/VPAT when requested during federal or federally-funded procurement",
+        "Support the federal agency's annual Section 508 conformance reporting obligations by supplying accurate accessibility documentation"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "Federal agency may reject or terminate procurement of noncompliant ICT; complaints can be filed with the agency or the U.S. Access Board",
+      "effective_or_amended": "Revised 508 Standards; phased compliance deadlines extended by one year in 2026 per section508.gov",
+      "source_url": "https://www.section508.gov/manage/laws-and-policies/section-508-law/",
+      "secondary_sources": [
+        "https://www.section508.gov/blog/do-section-508-accessibility-standards-apply-to-mywebsite/"
+      ],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "Section 508 binds federal agencies directly; whether it flows down to LOVELEEDAY depends on the specific federal-funding agreement or grant terms the local-government client operates under — did not confirm a specific flow-down clause.",
+      "how_to_comply": [
+        {
+          "step": "Determine whether the local-government client's project is federally funded with a Section 508 flow-down requirement in the grant/contract",
+          "source_url": "https://www.section508.gov/blog/do-section-508-accessibility-standards-apply-to-mywebsite/"
+        },
+        {
+          "step": "Build ICT deliverables to conform with the Revised 508 Standards (WCAG 2.1 AA) under 36 CFR Part 1194",
+          "source_url": "https://www.section508.gov/manage/laws-and-policies/section-508-law/"
+        },
+        {
+          "step": "Prepare an Accessibility Conformance Report (VPAT) documenting conformance for the procuring agency",
+          "source_url": "https://www.section508.gov/manage/playbooks/exec-guide-accessibility/"
+        }
+      ],
+      "attestation": "Accessibility Conformance Report (ACR/VPAT)",
+      "triggered_when": "LOVELEEDAY's software is procured, developed, or used by a federal agency, or by a state/local government program under a contract/grant that flows down Section 508 requirements",
+      "not_triggered_when": "The client and funding source are purely state/local with no federal funding or flow-down clause (ADA Title II governs instead)",
+      "effort": "medium — largely the same WCAG 2.1 AA engineering work as the ADA Title II item, plus producing a VPAT document"
+    },
+    {
+      "id": "us-public-records-vendor-exposure",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "public-records",
+      "industries": [
+        "local-government"
+      ],
+      "exists": true,
+      "title": "Public-Records Exposure of Vendor Contracts and Data Held for Government Clients (general note; federal FAR analog)",
+      "citation": "48 CFR Subpart 24.2 (FAR Part 24, Protection of Privacy and Freedom of Information), 48 CFR 24.202–24.203",
+      "applies_to_vendor": "General principle, illustrated by the federal FOIA/FAR framework: records a vendor submits to, or creates for, a government agency (contracts, pricing, technical proposals, and often correspondence) become agency records subject to public-records/open-records requests, unless a specific statutory exemption (e.g., trade secrets, confidential commercial/financial information) applies and the vendor has properly marked/asserted it.",
+      "key_obligations": [
+        "Under the federal framework, a competitive proposal in the government's possession is not releasable under FOIA (48 CFR 24.202), but after award, released records are evaluated under FOIA exemptions (trade secrets, confidential commercial or financial information) — the vendor must affirmatively mark and assert confidentiality to preserve protection (48 CFR 24.203)",
+        "Every U.S. state has its own open/public-records law (state analogs to FOIA) governing records held by state and local government agencies, including vendor contracts, invoices, and often correspondence with vendors — LOVELEEDAY must assume anything it sends to a local-government client can become a public record unless the client's specific state law provides an exemption LOVELEEDAY has invoked",
+        "Contracts with local governments should include a provision requiring the agency to notify the vendor of a public-records request for the vendor's confidential/proprietary information before releasing it, where the applicable state records law allows"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": "Public-records exposure is about the vendor's own contract/technical/pricing information, not client end-user PII per se, but overly broad recordkeeping practices increase what becomes discoverable.",
+      "penalties": "Varies by state; disclosure of unmarked confidential information via a state public-records request; the federal analog is enforced through FOIA litigation against the agency, not the contractor",
+      "effective_or_amended": null,
+      "source_url": "https://www.ecfr.gov/current/title-48/chapter-1/subchapter-D/part-24/subpart-24.2",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "This item is deliberately a general, cross-jurisdiction note, not a 50-state survey. The federal FAR/FOIA provisions cited are directly binding only on federal procurement, not the state/municipal contracts LOVELEEDAY actually signs; they are cited per the brief's instruction to describe the general pattern from one authoritative source, illustrating the same trade-secret/confidential-commercial-information logic most state open-records laws (each with its own citation) also use. Each specific state or municipal client's own open-records statute should be checked before relying on any exemption.",
+      "how_to_comply": [
+        {
+          "step": "Mark all technical, pricing, and proprietary submissions to government clients as 'Confidential — Trade Secret/Proprietary' and identify the specific exemption category being claimed (mirrors the FAR 24.203 approach), so the client's records officer knows the vendor's position before a request is decided",
+          "source_url": "https://www.ecfr.gov/current/title-48/chapter-1/subchapter-D/part-24/subpart-24.2/section-24.203"
+        },
+        {
+          "step": "Negotiate a contract clause requiring the government client to notify LOVELEEDAY before releasing records LOVELEEDAY has marked confidential, so LOVELEEDAY can seek a state-law exemption or objection if applicable",
+          "source_url": "https://www.ecfr.gov/current/title-48/chapter-1/subchapter-D/part-24"
+        },
+        {
+          "step": "Before signing with any specific local-government client, have counsel check that state's own public/open-records statute (each state differs) for the scope of vendor-record exemptions available",
+          "source_url": "https://www.ecfr.gov/current/title-48/chapter-1/subchapter-D/part-24"
+        }
+      ],
+      "attestation": null,
+      "triggered_when": "LOVELEEDAY submits contracts, technical proposals, pricing, or other records to a state or local government client, all of which are presumptively public records absent a specific, properly asserted exemption",
+      "not_triggered_when": "LOVELEEDAY works only with private-sector or non-FOIA-exempt-agency clients where state open-records law does not apply",
+      "effort": "low — primarily a contract-drafting and document-marking discipline, not a technical or certification program"
+    },
+    {
+      "id": "us-dfars-252-204-7012",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "manufacturing"
+      ],
+      "exists": true,
+      "title": "DFARS 252.204-7012 — Safeguarding Covered Defense Information and Cyber Incident Reporting",
+      "citation": "48 CFR 252.204-7012; DFARS Subpart 204.73",
+      "applies_to_vendor": "A contractor or subcontractor whose contract includes this clause and who has Covered Defense Information (CDI, a form of CUI) on its internal information system must implement NIST SP 800-171 security requirements on that system, and report cyber incidents affecting CDI or the contractor's ability to perform to DoD within 72 hours of discovery.",
+      "key_obligations": [
+        "Provide 'adequate security' on all covered contractor information systems that process, store, or transmit covered defense information",
+        "Implement NIST SP 800-171 security requirements (or document deviations in a System Security Plan and Plan of Action & Milestones)",
+        "Rapidly report cyber incidents to DoD within 72 hours of discovery via the DoD DIBNet portal, and preserve/provide forensic images on request",
+        "Flow the clause down to subcontractors whose effort will involve covered defense information",
+        "Maintain the required CMMC assessment level as a condition of award for contracts that incorporate the CMMC clause"
+      ],
+      "notice_deadline": "72 hours of discovery of a cyber incident",
+      "regulator_notice": "Report via DIBNet (DoD-designated portal) to DoD, not a state AG",
+      "personal_info_definition_notes": "Covers 'Covered Defense Information,' a category of CUI — not personal information specifically, though CDI can include technical data, operationally critical support info, and CUI categories that overlap with PII",
+      "penalties": "Contract termination for default, False Claims Act exposure for misrepresenting compliance, ineligibility for award",
+      "effective_or_amended": "Clause version referenced: MAY 2024",
+      "source_url": "https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting.",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": null,
+      "how_to_comply": [
+        {
+          "step": "Confirm whether any DoD prime/subcontract LOVELEEDAY holds or will hold includes DFARS 252.204-7012 and whether LOVELEEDAY's system will process Covered Defense Information",
+          "source_url": "https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting."
+        },
+        {
+          "step": "Implement the NIST SP 800-171 security requirements on the information system that touches CDI and document a System Security Plan (SSP) and Plan of Action & Milestones (POA&M) for any gaps",
+          "source_url": "https://csrc.nist.gov/projects/protecting-controlled-unclassified-information"
+        },
+        {
+          "step": "Register in the DoD DIBNet portal and stand up an incident-reporting process able to report within 72 hours of discovery",
+          "source_url": "https://www.acquisition.gov/dfars/subpart-204.73-safeguarding-covered-defense-information-and-cyber-incident-reporting"
+        },
+        {
+          "step": "Flow the clause down to any subcontractor that will handle covered defense information on LOVELEEDAY's behalf",
+          "source_url": "https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting."
+        }
+      ],
+      "attestation": "Self-assessment score submitted to the Supplier Performance Risk System (SPRS), SSP/POA&M, and — where the contract requires it — a CMMC certificate/self-assessment",
+      "triggered_when": "LOVELEEDAY holds a DoD contract or subcontract (including as a manufacturing/distribution software vendor to a defense supplier) that flows down DFARS 252.204-7012 because covered defense information will be processed, stored, or transmitted",
+      "not_triggered_when": "LOVELEEDAY's manufacturing/distribution clients are entirely commercial with no DoD prime or subcontract, or the information involved is not CDI/CUI",
+      "effort": "high — implementing all applicable NIST SP 800-171 controls (110 requirements under Rev 2) across a production environment is a significant security-engineering undertaking"
+    },
+    {
+      "id": "us-nist-sp-800-171",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "manufacturing"
+      ],
+      "exists": true,
+      "title": "NIST SP 800-171 — Protecting Controlled Unclassified Information in Nonfederal Systems",
+      "citation": "NIST SP 800-171 Rev. 2 (Feb 2020, currently the DoD/CMMC-referenced baseline) and Rev. 3 (May 2024, final)",
+      "applies_to_vendor": "A nonfederal organization (including a software vendor to a manufacturer/distributor) that processes, stores, or transmits Controlled Unclassified Information (CUI) on behalf of a federal agency, or as a DoD contractor/subcontractor under DFARS 252.204-7012, must implement the security requirements in SP 800-171.",
+      "key_obligations": [
+        "Implement the 110 security requirements (Rev 2) or the updated/renumbered requirement set (Rev 3) across 14 control families: access control, awareness & training, audit & accountability, configuration management, identification & authentication, incident response, maintenance, media protection, personnel security, physical protection, risk assessment, security assessment, system & communications protection, system & information integrity",
+        "DoD contracts currently reference Rev 2 via the CMMC rule; Rev 3 is the current NIST publication and agencies are expected to transition over time",
+        "Document implementation status and any unimplemented requirements in a System Security Plan (SSP) and Plan of Action & Milestones (POA&M)",
+        "Submit a Basic Assessment score to DoD's Supplier Performance Risk System (SPRS) for applicable contracts"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": "CUI can include export-controlled technical data, proprietary manufacturing/business information, and in some categories personal information tied to a federal program — determined by the CUI Registry.",
+      "penalties": "Loss of contract eligibility; False Claims Act liability for false compliance attestations; part of CMMC assessment failure",
+      "effective_or_amended": "Rev. 3 finalized May 2024 (Rev 2, Feb 2020, remains the DoD/CMMC reference version)",
+      "source_url": "https://csrc.nist.gov/projects/protecting-controlled-unclassified-information",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "Did not independently confirm which revision (2 vs 3) any specific current DoD contract clause references at this moment; per public reporting, CMMC 32 CFR Part 170 references Rev 2 as of this writing.",
+      "how_to_comply": [
+        {
+          "step": "Scope which LOVELEEDAY systems store/process/transmit CUI for a manufacturing/distribution client's federal or DoD-flow-down work",
+          "source_url": "https://csrc.nist.gov/projects/protecting-controlled-unclassified-information"
+        },
+        {
+          "step": "Implement the applicable SP 800-171 security requirement families on those systems (access control, encryption, audit logging, incident response, etc.)",
+          "source_url": "https://csrc.nist.gov/pubs/sp/800/171/r3/ipd"
+        },
+        {
+          "step": "Complete a self-assessment against SP 800-171A, score it, and submit the score to SPRS if required by contract",
+          "source_url": "https://csrc.nist.gov/pubs/sp/800/171/a/r3/final"
+        }
+      ],
+      "attestation": "SPRS self-assessment score; SSP and POA&M; CMMC Level 2 certificate/self-assessment where required",
+      "triggered_when": "LOVELEEDAY's software stores, processes, or transmits Controlled Unclassified Information for a manufacturing/distribution client performing on a federal or DoD contract",
+      "not_triggered_when": "The manufacturing/distribution client's use of LOVELEEDAY's product is purely commercial, with no CUI or federal contract flow-down involved",
+      "effort": "high — same underlying control set as DFARS 252.204-7012; a multi-month security program build-out for a small vendor"
+    },
+    {
+      "id": "us-cmmc-32-cfr-170",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "manufacturing"
+      ],
+      "exists": true,
+      "title": "Cybersecurity Maturity Model Certification (CMMC) Program",
+      "citation": "32 CFR Part 170",
+      "applies_to_vendor": "A DoD contractor or subcontractor that will process, store, or transmit Federal Contract Information (FCI) or CUI must achieve and maintain the CMMC Status (Level 1, 2, or 3) specified in the contract before award and throughout performance; the level required flows down to subcontractors based on what CUI/FCI they will handle.",
+      "key_obligations": [
+        "Level 1 (Foundational): annual self-assessment against 15 basic safeguarding requirements (for FCI only)",
+        "Level 2 (Advanced): the 110 requirements from NIST SP 800-171 R2, via either a third-party (C3PAO) assessment or, for a defined subset of contracts, self-assessment",
+        "Level 3 (Expert): the Level 2 requirements plus 24 additional requirements from NIST SP 800-172, assessed by the Defense Industrial Base Cybersecurity Assessment Center (DIBCAC)",
+        "A subcontractor that will process/store/transmit CUI must hold at minimum CMMC Level 2 (Self); if the prime contract requires Level 2 (C3PAO) or Level 3 (DIBCAC), the subcontractor's minimum status is still Level 2 (C3PAO) per 32 CFR 170.23",
+        "Annual affirmation of continued compliance by a senior company official"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "Ineligibility for contract award; False Claims Act exposure for false affirmations of CMMC status",
+      "effective_or_amended": "32 CFR Part 170 — current eCFR version",
+      "source_url": "https://www.ecfr.gov/current/title-32/subtitle-A/chapter-I/subchapter-G/part-170",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "CMMC contract-clause rollout (DFARS 252.204-7021) phase-in schedule for when specific contracts start requiring it was not independently re-verified this session.",
+      "how_to_comply": [
+        {
+          "step": "Determine the CMMC level required by the specific DoD prime contract or subcontract LOVELEEDAY supports, based on whether FCI or CUI is involved",
+          "source_url": "https://www.ecfr.gov/current/title-32/subtitle-A/chapter-I/subchapter-G/part-170/subpart-D/section-170.23"
+        },
+        {
+          "step": "For Level 1, complete and annually renew a self-assessment against the 15 FCI safeguarding requirements",
+          "source_url": "https://www.ecfr.gov/current/title-32/subtitle-A/chapter-I/subchapter-G/part-170"
+        },
+        {
+          "step": "For Level 2, implement all NIST SP 800-171 R2 requirements and engage a C3PAO for a third-party assessment (or self-assess if the specific contract allows)",
+          "source_url": "https://www.ecfr.gov/current/title-32/subtitle-A/chapter-I/subchapter-G/part-170/subpart-D/section-170.17"
+        },
+        {
+          "step": "Have a senior company official submit the annual affirmation of continued compliance in the DoD supplier portal",
+          "source_url": "https://www.ecfr.gov/current/title-32/subtitle-A/chapter-I/subchapter-G/part-170"
+        }
+      ],
+      "attestation": "CMMC Status certificate (Level 1/2 self-assessment or Level 2 C3PAO / Level 3 DIBCAC certificate) recorded in the DoD supplier system",
+      "triggered_when": "LOVELEEDAY is a subcontractor (directly or via a manufacturing/distribution client) on a DoD contract that requires CMMC status because FCI or CUI will be processed, stored, or transmitted",
+      "not_triggered_when": "LOVELEEDAY's manufacturing/distribution clients have no DoD contracts, or the LOVELEEDAY product never touches FCI/CUI",
+      "effort": "high for Level 2/3 (third-party or DIBCAC assessment, full NIST 800-171/800-172 control implementation); low-medium for Level 1 (self-assessment against 15 basic controls)"
+    },
+    {
+      "id": "us-itar-technical-data",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "manufacturing"
+      ],
+      "exists": true,
+      "title": "ITAR — Export Control of Technical Data Related to Defense Articles",
+      "citation": "22 CFR Parts 120–130 (International Traffic in Arms Regulations); definition of 'technical data' at 22 CFR 120.33",
+      "applies_to_vendor": "If LOVELEEDAY's software stores, transmits, or provides access to ITAR-controlled technical data (data required for the design, development, production, or maintenance of a defense article on the U.S. Munitions List) on behalf of a manufacturing client, LOVELEEDAY becomes subject to ITAR's controls on 'export,' including release to a foreign person wherever located, and may need to register with the Directorate of Defense Trade Controls (DDTC).",
+      "key_obligations": [
+        "Identify whether any client data qualifies as 'technical data' (design, development, production, operation, repair, or maintenance information) for a USML-listed defense article",
+        "Prevent 'deemed export' — do not give any foreign-person employee, contractor, or cloud-region access to ITAR technical data without a license or applicable exemption",
+        "Register with DDTC if LOVELEEDAY itself manufactures, exports, or brokers defense articles/services (registration is generally not required for a data processor that merely hosts data under an exemption, but access controls are still required)",
+        "Store/segregate ITAR technical data in access-controlled, U.S.-person-only environments"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "Civil penalties up to statutory maximums per violation and criminal penalties (fines and imprisonment) under the Arms Export Control Act; debarment from future defense contracts",
+      "effective_or_amended": null,
+      "source_url": "https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-120/subpart-C/section-120.33",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "Whether LOVELEEDAY registration with DDTC is required (vs. an exemption applying) is a fact-specific legal determination outside the scope of this general item; flag for counsel review before onboarding any client whose data may include USML technical data.",
+      "how_to_comply": [
+        {
+          "step": "Screen new manufacturing clients and their data for USML-controlled technical data before onboarding; do not accept ITAR technical data into a system not built for it",
+          "source_url": "https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-120/subpart-C/section-120.33"
+        },
+        {
+          "step": "If ITAR data will be handled, restrict system access to verified U.S. persons only and geofence hosting to U.S. data centers/regions",
+          "source_url": "https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-120"
+        },
+        {
+          "step": "Consult export-control counsel on whether LOVELEEDAY must register with DDTC or qualifies for an exemption, before signing a contract that involves ITAR technical data",
+          "source_url": "https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-120"
+        }
+      ],
+      "attestation": "No standard third-party certificate; a buyer may ask for an ITAR compliance/export-control policy, U.S.-person-only access attestation, or DDTC registration number if applicable",
+      "triggered_when": "A manufacturing client's data stored or processed by LOVELEEDAY includes technical data for a defense article on the U.S. Munitions List",
+      "not_triggered_when": "The manufacturing client makes only commercial (non-defense) products, or LOVELEEDAY never receives design/production/technical data tied to a USML article — the default assumption for most LOVELEEDAY manufacturing clients",
+      "effort": "high if triggered (access segregation, U.S.-persons-only staffing, possible DDTC registration); most LOVELEEDAY manufacturing clients should aim to stay in the 'not triggered' state by contract scope"
+    },
+    {
+      "id": "us-ear-technical-data",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "manufacturing"
+      ],
+      "exists": true,
+      "title": "EAR — Export Control of Dual-Use Technology and Technical Data",
+      "citation": "15 CFR Parts 730–774 (Export Administration Regulations); scope at 15 CFR Part 734",
+      "applies_to_vendor": "If LOVELEEDAY's software stores, transmits, or provides foreign-person access to export-controlled 'technology' (as defined and classified under an Export Control Classification Number on the Commerce Control List) on behalf of a manufacturing/distribution client, LOVELEEDAY must treat any release of that technology to a foreign person — including within the U.S. cloud environment — as a 'deemed export' subject to EAR licensing requirements.",
+      "key_obligations": [
+        "Determine the Export Control Classification Number (ECCN) of any controlled technology/technical data a client asks LOVELEEDAY to store or process",
+        "Treat visual/oral/written release of controlled technology or source code to a foreign person as an export requiring a license or applicable exception (15 CFR 734.15)",
+        "Screen for restricted parties/countries before granting system access to controlled technology",
+        "Maintain export-control compliance procedures if regularly hosting EAR-controlled technology"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "Civil and criminal penalties under the Export Control Reform Act, administered by BIS; denial of export privileges",
+      "effective_or_amended": null,
+      "source_url": "https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-734",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "EAR classification (ECCN determination) is fact-specific per product/technology and was not performed here; this item states the general framework only.",
+      "how_to_comply": [
+        {
+          "step": "Ask manufacturing/distribution clients whether the data/technology LOVELEEDAY will host is subject to an ECCN under the Commerce Control List",
+          "source_url": "https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-734"
+        },
+        {
+          "step": "If controlled technology is involved, restrict access (including cloud-region and support-staff access) to authorized/screened persons and countries, treating any foreign-person access as a deemed export requiring a license or exception",
+          "source_url": "https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-734/section-734.15"
+        },
+        {
+          "step": "Screen users/clients against BIS restricted- and denied-party lists before granting access",
+          "source_url": "https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-744"
+        }
+      ],
+      "attestation": "No standard third-party certificate; a buyer may ask for an export-control compliance policy or ECCN determination for the data involved",
+      "triggered_when": "A manufacturing/distribution client's data hosted by LOVELEEDAY includes EAR-controlled technology/technical data (dual-use or otherwise controlled under the Commerce Control List)",
+      "not_triggered_when": "The client's technology/data is EAR99 (not separately controlled) or purely commercial business data with no export-controlled technical content — the default for most LOVELEEDAY manufacturing clients",
+      "effort": "medium-high if triggered (ECCN determination, access screening); low if LOVELEEDAY's contract scope stays limited to non-controlled business/operations data"
+    },
+    {
+      "id": "us-tcpa-47-cfr-64-1200",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "hospitality",
+        "retail"
+      ],
+      "exists": true,
+      "title": "TCPA — Restrictions on Telemarketing Calls and Text Messages",
+      "citation": "47 U.S.C. § 227; 47 CFR 64.1200",
+      "applies_to_vendor": "If LOVELEEDAY builds or operates SMS/voice marketing/notification features for a hospitality or retail client, LOVELEEDAY (as the platform enabling the calls/texts) shares exposure with the client for TCPA-compliant consent capture, since the FCC treats text messages as 'calls' under the TCPA and 64.1200 requires prior express written consent for autodialed/prerecorded marketing calls and texts.",
+      "key_obligations": [
+        "Obtain prior express written consent — a signed (including electronic) agreement clearly authorizing autodialed/prerecorded marketing calls or texts — before sending marketing messages via an automatic telephone dialing system or prerecorded voice",
+        "For non-marketing informational calls/texts, obtain at least prior express consent",
+        "Honor opt-out requests and maintain internal do-not-call lists; transmit accurate caller ID/telemarketer identification information",
+        "Design consent-capture and opt-out flows so the client can demonstrate compliant consent records if challenged"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": "Phone numbers and consent records are the core data elements at issue.",
+      "penalties": "Private right of action, statutory damages per violation (higher for willful/knowing violations), plus FCC enforcement",
+      "effective_or_amended": null,
+      "source_url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "Did not confirm the current exact dollar-penalty figures, which are indexed periodically; consult FCC's current guidance before quoting a number to a client.",
+      "how_to_comply": [
+        {
+          "step": "Build the SMS/voice feature so that a client cannot enable marketing sends to a contact without a stored, timestamped record of prior express written consent",
+          "source_url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200"
+        },
+        {
+          "step": "Implement automatic honoring of STOP/opt-out keywords and suppress further sends to opted-out numbers",
+          "source_url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-L/section-64.1200"
+        },
+        {
+          "step": "Pass accurate caller ID / sender identification through any calling feature",
+          "source_url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-64/subpart-P/section-64.1601"
+        }
+      ],
+      "attestation": "No formal certificate; clients/carriers (via 10DLC registration) will ask for documented consent-capture and opt-out workflows",
+      "triggered_when": "LOVELEEDAY's product sends or enables a hospitality/retail client to send marketing or informational SMS/voice messages using an automatic telephone dialing system or prerecorded voice",
+      "not_triggered_when": "All messaging is one-to-one, manually dialed, non-marketing, and outside TCPA's autodialer/prerecorded-voice triggers (a narrow carve-out; treat most bulk messaging features as in-scope)",
+      "effort": "medium — mainly a product/consent-UX design requirement, not a certification, but must be built correctly from the start"
+    },
+    {
+      "id": "us-can-spam-16-cfr-316",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "hospitality",
+        "retail"
+      ],
+      "exists": true,
+      "title": "CAN-SPAM Act — Commercial Email Requirements",
+      "citation": "15 U.S.C. § 7701 et seq.; 16 CFR Part 316",
+      "applies_to_vendor": "If LOVELEEDAY builds or operates email-marketing features for hospitality/retail clients, the platform must support the CAN-SPAM requirements the client is legally obligated to meet for every commercial email.",
+      "key_obligations": [
+        "Do not use false or misleading header/from/subject-line information",
+        "Clearly identify the message as an advertisement (where applicable) and include the sender's valid physical postal address",
+        "Provide a clear and conspicuous opt-out mechanism in every commercial email, and honor opt-out requests within the statutory processing window without charge",
+        "Not sell or transfer the recipient's email address after an opt-out, except to a service provider helping comply with CAN-SPAM"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": "Email addresses and opt-out status are the key data elements.",
+      "penalties": "FTC civil penalties per violation (email), private right of action for some ISPs, and criminal penalties for aggravated violations",
+      "effective_or_amended": null,
+      "source_url": "https://www.ftc.gov/legal-library/browse/rules/can-spam-rule",
+      "secondary_sources": [
+        "https://www.ftc.gov/legal-library/browse/federal-register-notices/definitions-implementation-reporting-requirements-under-can-spam-act-16-cfr-part-316"
+      ],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "Did not independently verify the current per-email civil penalty amount, which the FTC periodically adjusts for inflation.",
+      "how_to_comply": [
+        {
+          "step": "Build email-sending features so every commercial email template requires a valid physical postal address and a working one-click unsubscribe link",
+          "source_url": "https://www.ftc.gov/legal-library/browse/rules/can-spam-rule"
+        },
+        {
+          "step": "Process opt-out requests automatically and suppress the address from future sends within the statute's processing window, without requiring payment or additional information beyond the email address",
+          "source_url": "https://www.ftc.gov/legal-library/browse/federal-register-notices/definitions-implementation-reporting-requirements-under-can-spam-act-16-cfr-part-316"
+        },
+        {
+          "step": "Do not allow header/subject-line spoofing in the platform's send configuration",
+          "source_url": "https://www.ftc.gov/legal-library/browse/rules/can-spam-rule"
+        }
+      ],
+      "attestation": "No formal certificate; email service providers (e.g., for deliverability) will review compliant sending practices",
+      "triggered_when": "LOVELEEDAY's product sends or enables a hospitality/retail client to send commercial (marketing) email",
+      "not_triggered_when": "All email is purely transactional (e.g., receipts, reservation confirmations) with no promotional content, which CAN-SPAM treats differently (lighter requirements, but still must avoid false header information)",
+      "effort": "low — mostly a product-template requirement (address, unsubscribe link) rather than a certification"
+    },
+    {
+      "id": "us-ftc-act-section-5-data-security",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "consumer-privacy",
+      "industries": [
+        "hospitality",
+        "retail"
+      ],
+      "exists": true,
+      "title": "FTC Act Section 5 — Unfair or Deceptive Data Security Practices",
+      "citation": "15 U.S.C. § 45(a)",
+      "applies_to_vendor": "LOVELEEDAY, as the vendor building and operating the software that stores hospitality/retail customer data, must implement reasonable security practices and not misrepresent its security posture, since the FTC treats a failure to provide reasonable security as an 'unfair practice,' and false security claims as 'deceptive,' under Section 5 — enforcement can reach a vendor/processor directly, not only the retailer/hotel that is FTC's typical target.",
+      "key_obligations": [
+        "Implement reasonable security measures proportionate to the sensitivity of the data held (encryption in transit/at rest, access controls, patching, vendor oversight)",
+        "Do not make false or misleading representations about the platform's security practices in marketing, contracts, or a privacy policy",
+        "Maintain incident-response capability; a known, unremediated vulnerability that leads to a breach has repeatedly been treated by the FTC as unreasonable security",
+        "Apply extra care to sensitive data categories the FTC has flagged (payment card data, precise geolocation, health, children's data)"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "FTC consent orders (often lengthy compliance/audit obligations), civil penalties for order violations, and reputational/contractual fallout",
+      "effective_or_amended": null,
+      "source_url": "https://www.ftc.gov/news-events/topics/protecting-consumer-privacy-security/privacy-security-enforcement",
+      "secondary_sources": [
+        "https://search.ftc.gov/system/files/ftc_gov/pdf/ftc-unfair-security-letter-ferguson.pdf"
+      ],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "Section 5 is enforced case-by-case through FTC consent orders and complaints rather than a fixed checklist; 'reasonable security' is inferred from FTC enforcement history, not a bright-line regulatory text.",
+      "how_to_comply": [
+        {
+          "step": "Adopt and document a written information-security program covering encryption, access control, vendor/subprocessor oversight, patch management, and incident response, sized to the sensitivity of hospitality/retail customer and payment data handled",
+          "source_url": "https://www.ftc.gov/news-events/topics/protecting-consumer-privacy-security/privacy-security-enforcement"
+        },
+        {
+          "step": "Review all external security representations (privacy policy, sales/marketing claims, any certifications referenced) for accuracy before publishing, since a false claim is independently actionable as deceptive",
+          "source_url": "https://search.ftc.gov/system/files/ftc_gov/pdf/ftc-unfair-security-letter-ferguson.pdf"
+        },
+        {
+          "step": "Remediate known vulnerabilities promptly and maintain evidence of doing so, since unremediated known flaws have driven FTC unfairness findings",
+          "source_url": "https://www.ftc.gov/news-events/topics/protecting-consumer-privacy-security/privacy-security-enforcement"
+        }
+      ],
+      "attestation": "No formal certificate; a written information security program plus (often) a SOC 2 report is the practical evidence a client or the FTC would expect",
+      "triggered_when": "LOVELEEDAY collects, stores, processes, or transmits hospitality/retail customer personal data in the United States — this applies essentially to every LOVELEEDAY client relationship, not a narrow trigger",
+      "not_triggered_when": "Not applicable — Section 5 is a baseline that applies to virtually all LOVELEEDAY operations; there is no legitimate way to opt out of 'reasonable security' obligations",
+      "effort": "medium — building and documenting a reasonable security program is ongoing operational discipline, not a one-time certification"
+    },
+    {
+      "id": "us-ada-title-iii-website-accessibility",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "hospitality",
+        "retail"
+      ],
+      "exists": true,
+      "title": "ADA Title III — Website Accessibility for Public Accommodations (no final DOJ regulation)",
+      "citation": "42 U.S.C. §§ 12181–12189 (Title III); DOJ's Title III implementing regulations at 28 CFR Part 36 — no web-specific technical standard has been adopted",
+      "applies_to_vendor": "Honest legal position: DOJ has never issued a final Title III regulation setting a specific technical accessibility standard (such as WCAG) for websites of private businesses ('public accommodations'); DOJ withdrew its prior rulemakings on the subject. DOJ's longstanding informal guidance is that Title III's general nondiscrimination and effective-communication requirements apply to websites, and courts (not a regulation) have overwhelmingly required WCAG-level conformance in practice, driving a large volume of private ADA website litigation against hospitality and retail businesses. LOVELEEDAY should build to WCAG 2.1 AA as the de facto litigation-risk-reducing standard, while being accurate with clients that no DOJ rule mandates it.",
+      "key_obligations": [
+        "No DOJ Title III regulation currently specifies a technical web-accessibility standard — this is DOJ's own stated position",
+        "DOJ's 'Guidance on Web Accessibility and the ADA' states the general nondiscrimination/effective-communication provisions of Title III apply to websites of public accommodations, without prescribing a specific technical standard",
+        "In practice, courts overwhelmingly reference WCAG 2.1/2.2 AA as the evidentiary benchmark in Title III website litigation, so building to that standard is the practical way to reduce litigation exposure even though it is not a codified legal requirement"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "Private lawsuits (often high-volume, plaintiff's-bar-driven) seeking injunctive relief and attorney's fees; no direct DOJ civil penalty scheme has been triggered by lack of a specific web rule",
+      "effective_or_amended": "DOJ's Title III web rulemakings have been withdrawn; most recent DOJ guidance dated 2022",
+      "source_url": "https://www.ada.gov/resources/web-guidance/",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "This is an accurate statement of the regulatory gap as of this session, not legal advice; case law differs across federal circuits on whether/how Title III applies to websites with no physical nexus.",
+      "how_to_comply": [
+        {
+          "step": "Build hospitality/retail client-facing websites and apps to conform with WCAG 2.1 (or current 2.2) Level AA as a practical risk-reduction standard, while telling clients honestly that this is not a codified DOJ requirement for Title III",
+          "source_url": "https://www.ada.gov/resources/web-guidance/"
+        },
+        {
+          "step": "Ensure effective communication alternatives exist (e.g., accessible contact methods) consistent with Title III's general nondiscrimination requirement",
+          "source_url": "https://www.ada.gov/law-and-regs/regulations/title-iii-regulations/"
+        }
+      ],
+      "attestation": "No formal certificate; a VPAT/WCAG conformance statement is the practical document clients request",
+      "triggered_when": "LOVELEEDAY builds a public-facing website or app for a hospitality or retail client that is a 'place of public accommodation' under Title III",
+      "not_triggered_when": "Purely internal/back-office tooling with no public-facing surface",
+      "effort": "medium — same WCAG 2.1 AA engineering discipline as the government items above, done here as risk mitigation rather than a codified mandate"
+    },
+    {
+      "id": "us-aicpa-soc-2",
+      "jurisdiction": "US",
+      "level": "industry",
+      "domain": "other",
+      "industries": [
+        "professional-services"
+      ],
+      "exists": true,
+      "title": "AICPA SOC 2 — System and Organization Controls Report",
+      "citation": "AICPA SOC 2 (based on the AICPA Trust Services Criteria); 2018 SOC 2 Description Criteria (with revised implementation guidance, 2022)",
+      "applies_to_vendor": "LOVELEEDAY, as a service organization holding data for professional-services clients (accounting firms, law firms, etc.), can undergo an independent CPA-firm audit against the Trust Services Criteria (security, availability, processing integrity, confidentiality, privacy) and receive a SOC 2 report, which is the standard attestation professional-services buyers request of a software vendor.",
+      "key_obligations": [
+        "A SOC 2 Type I report evaluates the design of controls at a specific point in time; a SOC 2 Type II report evaluates operating effectiveness over an observation window, typically 3 to 12 months",
+        "The report is prepared by a licensed CPA firm (not AICPA itself) performing an attestation engagement under AICPA's SSAE standards, using the AICPA's Trust Services Criteria and Description Criteria",
+        "Only a CPA firm can issue the report; AICPA membership/licensure governs which firms may perform SOC engagements"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "Not a legal penalty regime — failure to obtain SOC 2 typically means loss of the sales opportunities/RFPs that require it, not a fine",
+      "effective_or_amended": "2018 SOC 2 Description Criteria with revised implementation guidance, 2022",
+      "source_url": "https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": null,
+      "how_to_comply": [
+        {
+          "step": "Complete a readiness assessment (gap analysis against the Trust Services Criteria, typically security at minimum) — can be self-performed or via a readiness consultant",
+          "source_url": "https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services"
+        },
+        {
+          "step": "Remediate control gaps (access control, change management, encryption, vendor management, incident response, logging) and document policies",
+          "source_url": "https://www.aicpa-cima.com/resources/download/get-description-criteria-for-your-organizations-soc-2-r-report"
+        },
+        {
+          "step": "Engage a licensed CPA firm to perform a SOC 2 Type I examination first (point-in-time design assessment) to validate control design",
+          "source_url": "https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services"
+        },
+        {
+          "step": "Operate the controls through a 3–12 month observation window, then have the CPA firm perform the SOC 2 Type II examination testing operating effectiveness",
+          "source_url": "https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services"
+        }
+      ],
+      "attestation": "SOC 2 Type I or Type II report issued by a licensed CPA firm",
+      "triggered_when": "A professional-services client (accounting firm, law firm, consultancy) or its own regulators/auditors requires evidence of independently audited security controls before buying or renewing LOVELEEDAY's software",
+      "not_triggered_when": "Small/early clients who accept a security questionnaire or self-attestation instead of a formal report — common for early-stage vendors before their first SOC 2",
+      "effort": "high — Type I typically takes a few months of control remediation plus the audit; Type II adds a multi-month observation window before the audit; ongoing annual renewal effort thereafter"
+    },
+    {
+      "id": "us-aba-model-rule-1-6c",
+      "jurisdiction": "US",
+      "level": "industry",
+      "domain": "other",
+      "industries": [
+        "professional-services"
+      ],
+      "exists": true,
+      "title": "ABA Model Rule 1.6(c) — Lawyer's Duty of Reasonable Efforts to Prevent Disclosure, as it Flows Down to Vendors",
+      "citation": "ABA Model Rules of Professional Conduct, Rule 1.6(c) (and Comment); related Model Rule 5.3 (supervision of nonlawyer assistance)",
+      "applies_to_vendor": "Model Rule 1.6(c) requires a lawyer to 'make reasonable efforts to prevent the inadvertent or unauthorized disclosure of, or unauthorized access to, information relating to the representation of a client.' Because law firms are LOVELEEDAY's client, this duty flows down through Model Rule 5.3 to any nonlawyer vendor a firm uses — meaning a law-firm client will conduct (and expects LOVELEEDAY to support) due diligence on LOVELEEDAY as its technology vendor before entrusting client data to LOVELEEDAY's platform.",
+      "key_obligations": [
+        "Model Rule 1.6(c): a lawyer must make reasonable efforts to prevent unauthorized disclosure of or access to client information — the standard is 'reasonable,' not a specific technical checklist",
+        "Model Rule 5.3 requires supervising lawyers to make reasonable efforts to ensure a nonlawyer vendor's conduct is compatible with the lawyer's professional obligations, driving law-firm vendor due-diligence questionnaires",
+        "ABA Formal Opinion 477 (cybersecurity duties for electronic client information) and related ethics opinions describe factors a lawyer should evaluate before selecting a vendor: where the data is stored, who owns/controls it, whether it is encrypted, and the ability to retrieve/delete it",
+        "On a breach, the lawyer has a duty under Model Rule 1.4 to notify affected clients — a LOVELEEDAY security incident affecting a law-firm client's data would trigger that client's own notification duty, so LOVELEEDAY needs a prompt incident-notification process to the firm"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": "'Information relating to the representation' is broader than PII — it includes any information about a legal matter, not just personal data.",
+      "penalties": "Not directly enforceable against LOVELEEDAY (the Model Rules bind lawyers, adopted state-by-state by each state's bar); practical consequence is loss of law-firm clients or contract liability if LOVELEEDAY fails the firm's vendor diligence",
+      "effective_or_amended": null,
+      "source_url": "https://www.americanbar.org/groups/professional_responsibility/publications/model_rules_of_professional_conduct/rule_1_6_confidentiality_of_information/",
+      "secondary_sources": [
+        "https://www.americanbar.org/content/dam/aba/administrative/professional_responsibility/ethics-opinions/aba-formal-opinion-477.pdf"
+      ],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "Model Rules are adopted (often with local variations) by each state's bar, not directly binding in their ABA form; a specific law-firm client's home-state version of Rule 1.6(c)/5.3 could differ slightly.",
+      "how_to_comply": [
+        {
+          "step": "Maintain data location/ownership/encryption/deletion documentation (where data is stored, who controls it, how it's encrypted, how the firm can retrieve or purge it on termination) to answer law-firm vendor due-diligence questionnaires built around ABA Formal Opinion 477 factors",
+          "source_url": "https://www.americanbar.org/content/dam/aba/administrative/professional_responsibility/ethics-opinions/aba-formal-opinion-477.pdf"
+        },
+        {
+          "step": "Build and commit to a prompt security-incident notification process to law-firm clients, supporting their Model Rule 1.4 client-notification duty",
+          "source_url": "https://www.americanbar.org/groups/professional_responsibility/publications/model_rules_of_professional_conduct/rule_1_6_confidentiality_of_information/"
+        },
+        {
+          "step": "Offer a data-processing/confidentiality addendum in the LOVELEEDAY contract that mirrors Rule 1.6(c)'s reasonable-efforts standard (encryption, access control, staff confidentiality obligations)",
+          "source_url": "https://www.americanbar.org/groups/professional_responsibility/publications/model_rules_of_professional_conduct/rule_1_6_confidentiality_of_information/comment_on_rule_1_6/"
+        }
+      ],
+      "attestation": "No formal certificate; a completed vendor-security questionnaire and a signed confidentiality/data-processing addendum are what a law firm will actually request",
+      "triggered_when": "LOVELEEDAY holds or processes 'information relating to the representation' for a law-firm client (documents, case data, communications)",
+      "not_triggered_when": "The professional-services client is not a law firm (e.g., an accounting or consulting firm), where different professional-conduct rules apply instead",
+      "effort": "low-medium — mostly documentation and contract-addendum work built on top of the general security program already required"
+    },
+    {
+      "id": "us-irs-pub-4557-wisp",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "financial-privacy",
+      "industries": [
+        "professional-services"
+      ],
+      "exists": true,
+      "title": "IRS Publication 4557 / Written Information Security Plan (WISP) for Tax-Preparer Clients",
+      "citation": "IRS Publication 4557 (Safeguarding Taxpayer Data); Gramm-Leach-Bliley Act Safeguards Rule (16 CFR Part 314), which Pub. 4557 implements guidance for; IRC § 7216 (tax return information confidentiality)",
+      "applies_to_vendor": "Tax-preparer clients of LOVELEEDAY are themselves treated as 'financial institutions' under the Gramm-Leach-Bliley Act and must maintain a Written Information Security Plan (WISP) covering their own systems and their vendors. LOVELEEDAY, as a vendor holding or processing taxpayer data on the preparer's behalf, must support the preparer's WISP obligations and comply with IRC § 7216 restrictions on use/disclosure of tax return information.",
+      "key_obligations": [
+        "Support the tax-preparer client's WISP: provide documentation of LOVELEEDAY's own security controls (access control, encryption, employee training, incident response) so the preparer can include LOVELEEDAY in its required vendor/service-provider oversight section",
+        "Do not use taxpayer return information for any purpose beyond what the preparer authorizes, consistent with IRC § 7216 and its implementing regulations (26 CFR 301.7216-1 et seq.)",
+        "Notify the tax-preparer client promptly of any security incident involving taxpayer data so the preparer can meet its own IRS/FTC notification obligations",
+        "Assist with the preparer's required annual WISP review and update"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": "Taxpayer data includes SSNs, income, and other tax-return information — a high-sensitivity category.",
+      "penalties": "IRC § 7216 criminal penalties (misdemeanor, fine and/or imprisonment) for unauthorized disclosure/use of tax return information by the preparer; FTC Safeguards Rule enforcement against the preparer for failing to maintain a WISP; contractual liability for LOVELEEDAY if it causes the preparer's noncompliance",
+      "effective_or_amended": null,
+      "source_url": "https://www.irs.gov/pub/irs-pdf/p4557.pdf",
+      "secondary_sources": [
+        "https://www.irs.gov/pub/irs-pdf/p5708.pdf"
+      ],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "The WISP legal obligation binds the tax-preparer client directly (as the GLBA-covered financial institution), not LOVELEEDAY directly; LOVELEEDAY's obligation is contractual/derivative through its role as the preparer's service provider.",
+      "how_to_comply": [
+        {
+          "step": "Provide tax-preparer clients with a security-controls summary/questionnaire response they can incorporate into their own WISP's service-provider oversight section",
+          "source_url": "https://www.irs.gov/pub/irs-pdf/p4557.pdf"
+        },
+        {
+          "step": "Restrict use of any taxpayer data LOVELEEDAY processes to the specific purpose the preparer authorizes, consistent with IRC 7216",
+          "source_url": "https://www.irs.gov/pub/irs-pdf/p4557.pdf"
+        },
+        {
+          "step": "Build a defined incident-notification SLA to tax-preparer clients so they can meet their own breach-response obligations",
+          "source_url": "https://www.irs.gov/pub/irs-pdf/p5708.pdf"
+        }
+      ],
+      "attestation": "No formal certificate; a completed security questionnaire referencing IRS Pub. 4557/5708 categories (employee management, information systems, detecting/managing system failures) is what a tax-preparer client will request",
+      "triggered_when": "LOVELEEDAY holds or processes taxpayer return data on behalf of a tax-preparation professional-services client",
+      "not_triggered_when": "The professional-services client does not prepare tax returns (e.g., general bookkeeping/consulting with no taxpayer-data handling)",
+      "effort": "low-medium — mostly documentation support for the client's own WISP, layered on LOVELEEDAY's general security program"
+    },
+    {
+      "id": "us-fcra-tenant-screening",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "financial-privacy",
+      "industries": [
+        "property"
+      ],
+      "exists": true,
+      "title": "FCRA — Consumer Reports Used in Tenant Screening",
+      "citation": "15 U.S.C. § 1681 et seq. (Fair Credit Reporting Act); FTC/CFPB implementing guidance",
+      "applies_to_vendor": "If LOVELEEDAY's property-management software incorporates or displays tenant-screening consumer reports (credit, criminal, eviction history) or itself compiles such reports for property clients, LOVELEEDAY may be acting as (or facilitating) a 'consumer reporting agency' or a 'user' of consumer reports under FCRA, triggering permissible-purpose, accuracy, and adverse-action obligations.",
+      "key_obligations": [
+        "A consumer report (credit report, background/eviction/criminal history report) may be furnished only for a permissible purpose, such as a landlord's tenant-screening decision",
+        "Users of consumer reports (property clients) must obtain the applicant's authorization and provide FCRA-required adverse action notices when a report contributes to a denial or adverse rental decision",
+        "If LOVELEEDAY itself assembles or resells consumer-report data (rather than passing through a licensed screening company's report), it may itself qualify as a consumer reporting agency, triggering accuracy, dispute-handling, and permissible-purpose obligations directly",
+        "The safer architecture is for LOVELEEDAY to integrate with/embed a licensed third-party tenant-screening CRA rather than compiling reports itself"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": "Consumer report data includes credit history, criminal records, eviction history, and other information bearing on creditworthiness, character, or mode of living.",
+      "penalties": "Statutory damages, actual damages, punitive damages, and attorney's fees in private FCRA litigation; FTC/CFPB enforcement",
+      "effective_or_amended": null,
+      "source_url": "https://www.ftc.gov/business-guidance/resources/using-consumer-reports-what-landlords-need-know",
+      "secondary_sources": [
+        "https://www.ftc.gov/business-guidance/resources/what-tenant-background-screening-companies-need-know-about-fair-credit-reporting-act"
+      ],
+      "retrieved": "2026-09-23",
+      "verified": false,
+      "uncertainty": "Could not reach the primary statutory text at ecfr.gov/uscode for 15 U.S.C. 1681 directly in this session (search returned only FTC guidance and secondary sources); source_url here is FTC's official guidance page rather than the codified statute text itself. Recommend pulling the exact U.S. Code citation from uscode.house.gov or ecfr.gov before finalizing.",
+      "how_to_comply": [
+        {
+          "step": "Architect the product to integrate with a licensed third-party tenant-screening consumer reporting agency (CRA) for the actual report generation, rather than LOVELEEDAY compiling credit/criminal/eviction data itself, to avoid becoming a CRA",
+          "source_url": "https://www.ftc.gov/business-guidance/resources/what-tenant-background-screening-companies-need-know-about-fair-credit-reporting-act"
+        },
+        {
+          "step": "Build workflow features that capture the applicant's FCRA authorization and generate the required adverse-action notice when a property-client user denies an application based in part on the report",
+          "source_url": "https://www.ftc.gov/business-guidance/resources/using-consumer-reports-what-landlords-need-know"
+        },
+        {
+          "step": "If LOVELEEDAY ever does assemble/resell report data directly, implement FCRA's accuracy, dispute-handling, and permissible-purpose-verification obligations as a consumer reporting agency",
+          "source_url": "https://www.ftc.gov/business-guidance/resources/what-tenant-background-screening-companies-need-know-about-fair-credit-reporting-act"
+        }
+      ],
+      "attestation": "No standard certificate; property clients may ask for a data-processing addendum and confirmation of how tenant-screening data is sourced (integrated CRA vs. self-compiled)",
+      "triggered_when": "LOVELEEDAY's software collects, displays, stores, or transmits consumer-report tenant-screening data (credit, criminal, eviction history) for a property-management client's leasing decisions",
+      "not_triggered_when": "LOVELEEDAY's product only manages leases/maintenance/payments and never touches tenant-screening consumer-report data",
+      "effort": "medium — primarily an architecture decision (integrate vs. build) plus adverse-action workflow support; high if LOVELEEDAY ever becomes a CRA itself"
+    },
+    {
+      "id": "us-fair-housing-act-3604c-advertising",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "property"
+      ],
+      "exists": true,
+      "title": "Fair Housing Act — Nondiscriminatory Advertising, as it Touches Property-Management Software",
+      "citation": "42 U.S.C. § 3604(c); HUD implementing regulations, 24 CFR Part 100",
+      "applies_to_vendor": "If LOVELEEDAY builds listing, advertising, tenant-matching, or ad-targeting features for a property-management/real-estate client, those features must not make, print, publish, or cause a notice, statement, or advertisement that indicates a preference, limitation, or discrimination on a protected basis (race, color, religion, sex, handicap, familial status, national origin) to an 'ordinary reader/listener,' regardless of intent — including HUD's specific guidance on digital ad-targeting platforms.",
+      "key_obligations": [
+        "Do not build listing/ad copy or image tools that convey a preference/limitation based on a protected class",
+        "Do not build or expose ad-targeting/audience-selection features (e.g., for a client's digital ad campaigns) that allow exclusion of protected classes or proxies for them (e.g., zip codes correlated with race) from seeing housing ads — HUD's 2024 guidance on digital-platform advertising specifically addresses algorithmic ad delivery and lookalike audiences",
+        "Ensure listing-matching/recommendation algorithms do not systematically steer protected classes toward or away from certain listings",
+        "Apply the same standard to tenant-matching or screening-criteria tools that could function as a proxy for discriminatory advertising"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "HUD administrative complaints/charges, private lawsuits, civil penalties, and damages; HUD's 2019 charge against Facebook over ad-targeting tools is a relevant precedent for platform/vendor exposure",
+      "effective_or_amended": "HUD FHEO Guidance on Advertising Through Digital Platforms, 2024",
+      "source_url": "https://www.hud.gov/sites/documents/huddojstatement.pdf",
+      "secondary_sources": [
+        "https://archives.hud.gov/news/2024/FHEO_Guidance_on_Advertising_through_Digital_Platforms.pdf",
+        "https://archives.hud.gov/news/2019/HUD_v_Facebook.pdf"
+      ],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": "Primary source_url used is a HUD/DOJ joint statement summarizing 3604(c); the 2024 digital-advertising guidance PDF (in secondary_sources) is on the archives.hud.gov subdomain, still an official HUD source but not independently re-fetched in full this session.",
+      "how_to_comply": [
+        {
+          "step": "Build content-review or automated screening into listing/ad-creation tools to catch language or imagery that conveys a preference/limitation on a protected class before publication",
+          "source_url": "https://www.hud.gov/sites/documents/huddojstatement.pdf"
+        },
+        {
+          "step": "If LOVELEEDAY builds or integrates digital ad-targeting for property clients, disable or restrict targeting parameters that exclude protected classes or their proxies (following the HUD v. Facebook precedent and 2024 digital-platform guidance)",
+          "source_url": "https://archives.hud.gov/news/2019/HUD_v_Facebook.pdf"
+        },
+        {
+          "step": "Audit any listing-recommendation or matching algorithm for disparate steering effects on protected classes",
+          "source_url": "https://archives.hud.gov/news/2024/FHEO_Guidance_on_Advertising_through_Digital_Platforms.pdf"
+        }
+      ],
+      "attestation": "No formal certificate; a fair-housing compliance review or documented ad-targeting restrictions is what a sophisticated property client or HUD investigation would look for",
+      "triggered_when": "LOVELEEDAY builds listing, advertising, tenant-matching/recommendation, or ad-targeting features used to advertise or match applicants to a dwelling",
+      "not_triggered_when": "LOVELEEDAY's product is limited to internal operations (maintenance tickets, rent collection, accounting) with no advertising or applicant-matching feature",
+      "effort": "medium — mostly product-design guardrails (content review, restricted targeting parameters) rather than a certification"
+    },
+    {
+      "id": "us-iso-27001-certification",
+      "jurisdiction": "US",
+      "level": "industry",
+      "domain": "other",
+      "industries": [
+        "all"
+      ],
+      "exists": true,
+      "title": "ISO/IEC 27001 — Information Security Management System Certification",
+      "citation": "ISO/IEC 27001:2022 (amended 2024)",
+      "applies_to_vendor": "LOVELEEDAY can implement an Information Security Management System (ISMS) conforming to ISO/IEC 27001:2022 and obtain third-party certification from an accredited certification body, which is a cross-industry, internationally recognized way to demonstrate systematic security management to any client across all six of LOVELEEDAY's serviced industries.",
+      "key_obligations": [
+        "Establish, implement, maintain, and continually improve an ISMS addressing organizational context, leadership commitment, risk assessment and treatment, and the Annex A control set",
+        "Undergo a two-stage external audit (Stage 1 documentation review, Stage 2 implementation audit) by an accredited certification body to obtain initial certification",
+        "Maintain the ISMS through annual surveillance audits and full recertification (typically every 3 years)"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "Not a legal penalty regime — loss of certification for noncompliance, and loss of sales opportunities requiring it",
+      "effective_or_amended": "ISO/IEC 27001:2022 (latest edition)",
+      "source_url": "https://www.iso.org/standard/27001",
+      "secondary_sources": [],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": null,
+      "how_to_comply": [
+        {
+          "step": "Define the ISMS scope (which systems/data/offices are in-scope) and perform a risk assessment against ISO/IEC 27001:2022 Clause 6 and the Annex A control set",
+          "source_url": "https://www.iso.org/standard/27001"
+        },
+        {
+          "step": "Implement required controls, policies, and a Statement of Applicability documenting which Annex A controls apply and why",
+          "source_url": "https://www.iso.org/publication/PUB100484.html"
+        },
+        {
+          "step": "Engage an accredited certification body for the Stage 1/Stage 2 audit; maintain via annual surveillance audits",
+          "source_url": "https://www.iso.org/standard/27001"
+        }
+      ],
+      "attestation": "ISO/IEC 27001 certificate issued by an accredited certification body",
+      "triggered_when": "A client in any LOVELEEDAY-served industry requires internationally recognized, independently certified security-management evidence (common in cross-border, enterprise, or government-adjacent procurement)",
+      "not_triggered_when": "SOC 2 alone satisfies the client's requirement (common for U.S.-only buyers) — ISO 27001 and SOC 2 overlap substantially but are not identical; many small U.S. vendors start with SOC 2 and add ISO 27001 later for international/enterprise deals",
+      "effort": "high — full ISMS build-out and external certification audit; similar or greater effort than SOC 2, with recurring annual surveillance"
+    },
+    {
+      "id": "us-nist-csf-2-0-baseline",
+      "jurisdiction": "US",
+      "level": "federal",
+      "domain": "other",
+      "industries": [
+        "all"
+      ],
+      "exists": true,
+      "title": "NIST Cybersecurity Framework (CSF) 2.0 — Free Baseline",
+      "citation": "NIST CSWP 29, The NIST Cybersecurity Framework (CSF) 2.0 (Feb. 2024)",
+      "applies_to_vendor": "LOVELEEDAY can adopt NIST CSF 2.0 as a free, voluntary baseline to organize and communicate its cybersecurity program across all six industries it serves — CSF 2.0 is not a certification, but many buyers accept a CSF-organized security questionnaire response, and it maps cleanly to controls also required by SP 800-171/CMMC, the FTC Safeguards Rule, and SOC 2's Trust Services Criteria.",
+      "key_obligations": [
+        "Organize the security program around CSF 2.0's six Functions: Govern, Identify, Protect, Detect, Respond, and Recover",
+        "Use the framework's Tiers to characterize the rigor of current cybersecurity risk-governance practices and Profiles to describe current vs. target state",
+        "No mandatory reporting or external audit — CSF 2.0 is self-implemented and voluntary unless a specific contract or other law separately requires it"
+      ],
+      "notice_deadline": null,
+      "regulator_notice": null,
+      "personal_info_definition_notes": null,
+      "penalties": "None directly — voluntary framework, no enforcement mechanism of its own",
+      "effective_or_amended": "CSF 2.0 released February 26, 2024",
+      "source_url": "https://www.nist.gov/cyberframework",
+      "secondary_sources": [
+        "https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final"
+      ],
+      "retrieved": "2026-09-23",
+      "verified": true,
+      "uncertainty": null,
+      "how_to_comply": [
+        {
+          "step": "Map LOVELEEDAY's existing security controls (from the SOC 2 / FTC Act reasonable-security program) to the CSF 2.0 six Functions to produce a Current Profile",
+          "source_url": "https://www.nist.gov/cyberframework"
+        },
+        {
+          "step": "Identify gaps against a Target Profile appropriate to the sensitivity of client data handled across the six served industries",
+          "source_url": "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf"
+        },
+        {
+          "step": "Use the resulting CSF-organized documentation to answer client security questionnaires and RFPs at $0 marginal certification cost",
+          "source_url": "https://www.nist.gov/publications/nist-cybersecurity-framework-20-resource-overview-guide"
+        }
+      ],
+      "attestation": "No certificate — a CSF-mapped self-assessment/questionnaire response is the artifact buyers see",
+      "triggered_when": "Any client across LOVELEEDAY's industries requests a structured description of LOVELEEDAY's cybersecurity risk-management program, or LOVELEEDAY wants a free baseline before investing in SOC 2/ISO 27001",
+      "not_triggered_when": "Not applicable — free and voluntary for every LOVELEEDAY engagement; there's no scenario where adopting it is inappropriate",
+      "effort": "low — free framework, self-implemented; the effort is in mapping existing controls, not in a new audit"
+    }
+  ]
+}

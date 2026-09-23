@@ -1,0 +1,30 @@
+{
+ "note": "Second-pass verification by rendering official pages in a real browser (scripts/render-statute.mjs), after the research agents were blocked by JS-only code sites and Cloudflare. Each entry below was upgraded only after reading the rendered official text. Applied by build-compliance-registry.py.",
+ "checked": "2026-09-23",
+ "upgrades": {
+  "us-fcra-tenant-screening": {"source_url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title15-section1681b&num=0&edition=prelim", "note": "15 U.S.C. 1681b (permissible purposes) read on the Office of the Law Revision Counsel site."},
+  "us-ak-breach-notification": {"source_url": "https://www.akleg.gov/basis/statutes.asp#45.48.040", "note": "AS 45.48 rendered on akleg.gov; Sec. 45.48.040 present in the rendered statute text."},
+  "us-co-breach-notification": {"source_url": "https://leg.colorado.gov/sites/default/files/2018a_1128_signed.pdf", "note": "Confirmed against the signed enacting act HB18-1128 (adds C.R.S. 6-1-716, third-party service provider duty). Later amendments not checked."},
+  "us-fl-consumer-privacy": {"source_url": "https://www.flsenate.gov/Laws/Statutes/2025/501.72", "note": "Enforcement section 501.72 read on flsenate.gov: violations are unfair/deceptive trade practices enforced solely by the Department of Legal Affairs."},
+  "us-hi-breach-notification": {"source_url": "https://www.capitol.hawaii.gov/hrscurrent/Vol11_Ch0476-0490/HRS0487N/HRS_0487N-0002.htm", "note": "HRS 487N-2 read on capitol.hawaii.gov (rendered past the Cloudflare block)."},
+  "us-ia-consumer-privacy": {"source_url": "https://www.legis.iowa.gov/docs/code/2025/715D.5.pdf", "note": "Iowa Code 715D.5 Processor duties read from the official PDF."},
+  "us-in-consumer-privacy": {"source_url": "https://iga.in.gov/laws/2025/ic/titles/24#24-15-8", "note": "Rendered iga.in.gov: IC 24-15 exists with Chapter 5 'Responsibility According to Role; Controllers and Processors'. Citation and structure confirmed; section-level text of processor duties not read."},
+  "us-la-student-privacy": {"source_url": "https://legis.la.gov/legis/Law.aspx?d=920124", "note": "La. R.S. 17:3914 read on legis.la.gov."},
+  "us-ms-breach-notification": {"source_url": "https://billstatus.ls.state.ms.us/documents/2010/pdf/HB/0500-0599/HB0583SG.pdf", "note": "Confirmed against HB 583 (2010) as sent to the Governor, the enacting act for Miss. Code 75-24-29. Later amendments not checked."},
+  "us-nd-breach-notification": {"source_url": "https://ndlegis.gov/cencode/t51c30.pdf", "note": "N.D.C.C. 51-30-03 read: a person maintaining data it does not own must notify the owner or licensee immediately following discovery."},
+  "us-nd-student-privacy": {"source_url": "https://ndlegis.gov/cencode/t15-1c07.pdf", "note": "N.D.C.C. 15.1-07-25.3 read: a school-district policy duty (board permission before sharing student data), not a direct operator statute."},
+  "us-nj-consumer-privacy": {"source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.PDF", "note": "P.L.2023, c.266 text read from the official PDF (controller/processor definitions confirmed). Codified section numbers still not confirmed."},
+  "us-nm-breach-notification": {"source_url": "https://www.nmlegis.gov/Sessions/17%20Regular/final/HB0015.pdf", "note": "Confirmed against the enacting act 2017 HB 15 (Data Breach Notification Act, incl. the 'service provider' definition). Later amendments not checked."},
+  "us-ok-student-privacy": {"source_url": "https://www.oklegislature.gov/cf_pdf/2013-14%20ENR/hB/HB1989%20ENR.PDF", "note": "Confirmed against enrolled HB 1989 (2013), which created 70 O.S. 3-168 (Student Data Accessibility, Transparency and Accountability Act). Later amendments not checked."},
+  "us-sd-breach-notification": {"source_url": "https://sdlegislature.gov/api/Statutes/22-40-20.html", "note": "SDCL 22-40-20 read via the legislature's own API: consumer notice not later than sixty days from discovery."},
+  "us-ny-consumer-privacy": {"source_url": "https://www.nysenate.gov/legislation/bills/2025/S3044", "note": "exists:false confirmed: the New York Privacy Act (2025 S3044) is shown as ACTIVE, i.e. pending and not enacted, on nysenate.gov."}
+ },
+ "still_unverified": {
+  "us-ga-breach-notification": "Georgia's official code (LexisNexis-hosted) and legis.ga.gov did not render the section text.",
+  "us-ga-student-privacy": "Same Georgia limitation.",
+  "us-hi-student-privacy": "HRS 302A-500 page still blocked.",
+  "us-in-breach-notification": "iga.in.gov rendered, but IC 24-4.9-3-2 text did not appear.",
+  "us-ms-student-privacy": "SB 2777 (2015) PDF not retrievable.",
+  "us-tn-student-privacy": "Tennessee bill PDFs did not render readable text."
+ }
+}
