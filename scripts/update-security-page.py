@@ -68,5 +68,18 @@ locked = art("&mdash;", "Backups that cannot be deleted.",
 # moves from the roadmap into the controls list above.
 t = t.replace(locked, "")
 
+# The closing "Start a project" matches the header's ink pill (.nav-cta), not
+# the blue form button (.primary). site.css hides .nav-cta at phone width
+# (the header collapses), so .page-cta keeps its copy visible.
+t = t.replace('<a class="primary" href="studio.html#project-brief">Start a project',
+              '<a class="nav-cta" href="studio.html#project-brief">Start a project', 1)
+CSS_PATH = P.parent / "assets/site.css"
+CSS_RULE = ("\n/* A section CTA wearing the header's pill: same ink, same size, and visible at\n"
+            "   phone width, where site.css hides the header's own copy. */\n"
+            ".page-cta a.nav-cta{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:1.5;flex:none}\n")
+css = CSS_PATH.read_text()
+if ".page-cta a.nav-cta" not in css:
+    CSS_PATH.write_text(css.rstrip("\n") + "\n" + CSS_RULE)
+
 P.write_text(t)
 print("security.html updated:", len(CONTROLS), "controls")

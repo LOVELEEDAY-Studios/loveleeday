@@ -458,3 +458,7 @@ h2 span{color:#8c8e95}
 .build-nav .nav-short{display:none}
 .dropdown-panel a.dropdown-more{color:var(--blue);margin-top:var(--s1);border-top:1px solid var(--line);padding-top:var(--s2)}
 @media(max-width:700px){.build-nav .nav-long{display:none}.build-nav .nav-short{display:inline}}
+
+/* A section CTA wearing the header's pill: same ink, same size, and visible at
+   phone width, where site.css hides the header's own copy. */
+.page-cta a.nav-cta{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:1.5;flex:none}
