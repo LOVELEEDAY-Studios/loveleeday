@@ -242,7 +242,7 @@ form.join .btn:hover{box-shadow:none;transform:none;background:#000}
   <div class="wrap">
     <p>Be first in line for Columbus 2027.</p>
     <div>
-      <form class="join" action="https://www.blacktechweek.com/#newsletter" method="get">
+      <form class="join" data-demo>
         <label class="mono" for="e1" style="position:absolute;left:-9999px">Email address</label>
         <input id="e1" type="email" placeholder="Your email address" required>
         <button class="btn" type="submit">Get early access</button>
@@ -267,7 +267,7 @@ form.join .btn:hover{box-shadow:none;transform:none;background:#000}
         <div class="day__body">
           <span class="mono">Learn</span>
           <h3>25+ sessions. 145+ speakers.</h3>
-          <p>Conversations with the people building across tech, culture and capital, on stages across the week.</p>
+          <p>Conversations with the people building across tech, culture and capital, staged throughout the week.</p>
           <a href="https://www.blacktechweek.com/speaker-application">Apply to speak →</a>
         </div>
       </article>
@@ -276,7 +276,7 @@ form.join .btn:hover{box-shadow:none;transform:none;background:#000}
         <div class="day__body">
           <span class="mono">Raise</span>
           <h3>Investor office hours.</h3>
-          <p>Founders sit down with investors one to one. Attendees have raised more than $120 million between them.</p>
+          <p>Founders sit down with investors one-on-one. Attendees have raised more than $120 million between them.</p>
           <a href="https://www.blacktechweek.com/vc-matching">Book office hours →</a>
         </div>
       </article>
@@ -304,7 +304,7 @@ form.join .btn:hover{box-shadow:none;transform:none;background:#000}
       <div><b>$1.13B+</b><span>Attendee revenue generated</span></div>
     </div>
     <p class="src">Black Tech Week's own figures, as published on blacktechweek.com.</p>
-    <a class="btn btn--ghost" style="margin-top:28px" href="https://www.youtube.com/@blacktechweek">Watch the 2026 recap</a>
+    <a class="btn btn--ghost" style="margin-top:28px" href="https://www.youtube.com/watch?v=TjUTTWGrpgM" target="_blank" rel="noopener">Watch the 2025 recap</a>
   </div>
 </section>
 
@@ -376,7 +376,7 @@ form.join .btn:hover{box-shadow:none;transform:none;background:#000}
       <figure class="r4"><img src="assets/two-attendees-embracing-seen-from-behind.jpg" alt="Two attendees embracing, seen from behind" loading="lazy"></figure>
       <figure class="r5"><img src="assets/three-attendees-in-lanyards-laughing-together.jpg" alt="Three attendees in lanyards laughing together" loading="lazy"></figure>
       <figure class="r6"><img src="assets/a-speaker-seated-on-stage-mid-interview.jpg" alt="A speaker seated on stage mid-interview" loading="lazy"></figure>
-      <figure class="r7"><img src="assets/a-full-auditorium-facing-the-lit-black-tech-week.jpg" alt="A full auditorium facing the Black Tech Week stage" loading="lazy"></figure>
+      <figure class="r7"><img src="assets/a-packed-theatre-watching-a-black-tech-week-sess.jpg" alt="A packed theatre watching a Black Tech Week session" loading="lazy" style="object-position:center 70%"></figure>
     </div>
   </div>
 </section>
@@ -387,7 +387,7 @@ form.join .btn:hover{box-shadow:none;transform:none;background:#000}
     <div class="close__row">
       <p>Be first to hear the dates, the speakers and the ticket release.</p>
       <div>
-        <form class="join" action="https://www.blacktechweek.com/#newsletter" method="get">
+        <form class="join" data-demo>
           <label class="mono" for="e2" style="position:absolute;left:-9999px">Email address</label>
           <input id="e2" type="email" placeholder="Your email address" required>
           <button class="btn" type="submit">Join the waitlist</button>
@@ -411,5 +411,6 @@ form.join .btn:hover{box-shadow:none;transform:none;background:#000}
   </div>
 </footer>
 
+<script>document.querySelectorAll('form[data-demo]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const n=f.parentElement.querySelector('.note');if(n)n.textContent='Thanks — in the live build this joins the Columbus 2027 waitlist.'}))</script>
 </body>
 </html>

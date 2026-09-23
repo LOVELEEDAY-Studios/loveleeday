@@ -7,7 +7,7 @@
 <meta name="description" content="Lightship Capital is a Cincinnati venture fund for Founders of Color, LGBTQ+ founders, women and innovators with disabilities. Pre-seed to Series A, with the Midwest and the South as home waters. Eighteen companies and counting.">
 <meta property="og:title" content="Lightship Capital — Not every great founder lives on a coast">
 <meta property="og:description" content="A Cincinnati venture fund putting capital where the map goes quiet. Pre-seed to Series A.">
-<meta property="og:image" content="assets/89d8f8-76521f775dba4f06a162f64093b8825b-mv2.jpg">
+<meta property="og:image" content="lightship-hero.jpg">
 <link rel="icon" href="assets/lc-sym-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,6 +60,7 @@ h1,h2,h3{font-family:var(--disp);font-weight:400;letter-spacing:-.01em;text-wrap
 
 /* nav */
 .nav{position:sticky;top:0;z-index:20;margin-bottom:-84px;transition:background .3s}
+.nav .btn--y{gap:0}
 .nav.solid{background:rgba(7,15,42,.94);backdrop-filter:blur(8px)}
 .nav__btn{display:none;color:#fff;font:600 15px var(--text);cursor:pointer;background:none;border:0;min-height:44px;padding:0 6px;align-items:center}
 .nav__btn:focus-visible,.nav a:focus-visible,.btn:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
@@ -71,9 +72,9 @@ h1,h2,h3{font-family:var(--disp);font-weight:400;letter-spacing:-.01em;text-wrap
 
 /* hero — the beam: a slow sweep of light across their own ocean photograph */
 .hero{position:relative;min-height:min(94vh,840px);display:flex;align-items:flex-end;color:#fff;background:var(--navy);overflow:hidden}
-.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,15,42,.6) 0%,rgba(7,15,42,.15) 38%,rgba(7,15,42,.82) 100%)}
-.beam{position:absolute;left:78%;top:36%;width:220vmax;height:220vmax;transform:translate(-50%,-50%);z-index:1;pointer-events:none;
+.beam{position:absolute;left:66.3%;top:26.5%;width:220vmax;height:220vmax;transform:translate(-50%,-50%);z-index:1;pointer-events:none;
   background:conic-gradient(from 0deg,transparent 0deg,rgba(255,229,130,.11) 8deg,rgba(255,229,130,.03) 20deg,transparent 26deg,transparent 360deg);
   animation:sweep 11s linear infinite;mix-blend-mode:screen}
 .lamp{position:absolute;left:78%;top:36%;width:14px;height:14px;border-radius:50%;background:#FFE58A;z-index:2;transform:translate(-50%,-50%);
@@ -239,8 +240,10 @@ a.co:hover .co__img img,a.co:focus .co__img img{filter:none}
   .case::after{background:linear-gradient(180deg,rgba(7,15,42,.4) 0%,rgba(7,15,42,.9) 45%,rgba(7,15,42,.93) 100%)}
   .nav .btn--y{height:40px;padding:0 14px;font-size:14px;white-space:nowrap}
   .nav .btn--y .long{display:none}
+  .hero::after{background:linear-gradient(180deg,rgba(7,15,42,.35) 0%,rgba(7,15,42,.55) 32%,rgba(7,15,42,.88) 58%,rgba(7,15,42,.94) 100%)}
   .nav .wrap{gap:10px}
-  .lamp,.beam{left:70%;top:24%}
+  .beam{display:none}
+  .hero>img{object-position:66% center}
 }
 @media (prefers-reduced-motion:reduce){
   .beam,.lamp,.port .halo{animation:none}
@@ -265,9 +268,8 @@ a.co:hover .co__img img,a.co:focus .co__img img{filter:none}
 </nav>
 
 <header class="hero">
-  <img src="assets/89d8f8-76521f775dba4f06a162f64093b8825b-mv2.jpg" alt="Open ocean under a clear sky" fetchpriority="high">
+  <img src="lightship-hero.jpg" alt="A red lightship anchored at sea at dusk, its lantern lit" fetchpriority="high">
   <div class="beam" aria-hidden="true"></div>
-  <div class="lamp" aria-hidden="true"></div>
   <div class="wrap">
     <span class="label">Lightship Capital · Cincinnati, Ohio</span>
     <h1>Not every great founder lives on a coast.</h1>
@@ -429,7 +431,7 @@ a.co:hover .co__img img,a.co:focus .co__img img{filter:none}
 </section>
 
 <section class="case">
-  <img src="horizon.jpg" alt="Sailboats spread across calm water toward the horizon" loading="lazy">
+  <img src="lightship-horizon.jpg" alt="Dark swells at dusk with a single distant light on the horizon" loading="lazy">
   <div class="wrap">
     <span class="label">From the logbook · Proov</span>
     <h2>A home test that reads what a woman's hormones are already saying.</h2>
@@ -462,7 +464,7 @@ a.co:hover .co__img img,a.co:focus .co__img img{filter:none}
     <span class="label">The fleet</span>
     <h2>Lightship doesn't sail alone.</h2>
     <div class="doors">
-      <a class="door" href="https://lightshipanchor.com/" target="_blank" rel="noopener"><span class="label">Anchor Fund</span><h3>Venture capital, at global scale.</h3><p>A fund-of-funds in the making, backing high-caliber venture managers and co-investing alongside them across the Americas, Africa and Europe.</p><span class="go">lightshipanchor.com →</span></a>
+      <a class="door" href="https://lightshipanchor.com/" target="_blank" rel="noopener"><span class="label">Anchor Fund</span><h3>The next stage of capital.</h3><p>A fund-of-funds and direct-investment vehicle backing high-caliber venture managers and the companies breaking out of early stage into institutional-ready growth.</p><span class="go">lightshipanchor.com →</span></a>
       <a class="door" href="https://www.lightship.foundation/" target="_blank" rel="noopener"><span class="label">Lightship Foundation</span><h3>Where founders learn the water.</h3><p>Bootcamps, accelerators and the guidance founders need at every stage, and the home of Black Tech Week.</p><span class="go">lightship.foundation →</span></a>
     </div>
   </div>
@@ -495,7 +497,7 @@ a.co:hover .co__img img,a.co:focus .co__img img{filter:none}
       <li><a href="https://www.instagram.com/lightship.capital/">Instagram</a></li>
       <li><a href="https://www.facebook.com/lightship.cap/">Facebook</a></li>
     </ul>
-    <p class="credit">Direction study for Lightship Capital by <b>LOVELEEDAY Studios</b>. Portfolio images are each company's own; the hero photograph is Lightship's own. Other photography: Diego F. Parra, Frederick Adegoke Snr., <span style="font-family:system-ui,sans-serif">天玑 不器</span> (Pexels). Map from US Census boundaries (us-atlas).</p>
+    <p class="credit">Direction study for Lightship Capital by <b>LOVELEEDAY Studios</b>. Portfolio images are each company's own; the lightship and horizon images were generated for this study with Midjourney. Other photography: Diego F. Parra, <span style="font-family:system-ui,sans-serif">天玑 不器</span> (Pexels). Map from US Census boundaries (us-atlas).</p>
   </div>
 </footer>
 

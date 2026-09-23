@@ -27,7 +27,20 @@ function ResearchSection({ r }: { r: Research }) {
             </div>
           ))}
         </div>
-        {r.verdict && (
+        {r.steps ? (
+          <div className="mt-14">
+            <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">Where we would start</h3>
+            <ol className="mt-6 grid gap-px bg-[var(--line)] md:grid-cols-3">
+              {r.steps.map((st, i) => (
+                <li key={st.when} className="bg-[var(--raised)] p-7">
+                  <span className="tnum text-[40px] leading-none text-[var(--accent)]">{i + 1}</span>
+                  <h4 className="mt-4 text-[18px] font-medium leading-[1.3] text-[var(--ink)]">{st.when}</h4>
+                  <p className="mt-2 text-[15px] leading-[1.65] text-[var(--mid)]">{st.what}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ) : r.verdict && (
           <div className="mt-12 border-l-2 border-[var(--accent)] pl-6">
             <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
               Where we would start
@@ -136,6 +149,9 @@ export default async function PortfolioPage({
         <p className="rule-left mt-10 max-w-[var(--measure)] text-[16px] leading-[1.7] text-[var(--mid)]">
           {p.intro}
         </p>
+        {p.close && (
+          <a href="#next" className="mt-8 inline-flex min-h-[48px] items-center bg-[var(--accent)] px-5 text-[14px] font-medium text-white transition-colors hover:bg-[var(--accent-dim)]">See the next step →</a>
+        )}
       </section>
 
       {/* Portfolio-wide numbers */}
@@ -258,6 +274,24 @@ export default async function PortfolioPage({
       </section>
 
       {!p.researchFirst && p.research && <ResearchSection r={p.research} />}
+
+      {p.close && (
+        <section id="next" className="border-t border-[var(--line)]">
+          <div className="mx-auto grid max-w-[1340px] items-end gap-10 px-6 py-20 lg:grid-cols-[1.2fr_1fr] lg:py-28">
+            <div>
+              <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">Next step</span>
+              <h2 className="mt-4 text-[clamp(2rem,4.4vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.03em]">{p.close.title}</h2>
+              <p className="mt-6 max-w-[var(--measure)] text-[17px] leading-[1.7] text-[var(--mid)]">{p.close.body}</p>
+            </div>
+            <div className="flex flex-wrap gap-3 lg:justify-end">
+              <a href={p.close.cta.href} className="inline-flex min-h-[52px] items-center bg-[var(--accent)] px-6 text-[15px] font-medium text-white transition-colors hover:bg-[var(--accent-dim)]">{p.close.cta.label}</a>
+              {p.close.secondary && (
+                <a href={p.close.secondary.href} target="_blank" rel="noreferrer" className="inline-flex min-h-[52px] items-center border border-[var(--line-bright)] px-6 text-[15px] text-[var(--ink)] hover:border-[var(--ink)]">{p.close.secondary.label}</a>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Method + note */}
       <section className="bg-[var(--sunk)]">
