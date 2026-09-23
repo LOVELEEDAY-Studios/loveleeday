@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { civicClients, findings, getCivic, layers, mandate, strengths, themes, type Theme } from "@/content/civic/kalamazoo";
+import { civicClients, findings, getCivic, layers, mandate, nextQuestions, strengths, themes, type Theme } from "@/content/civic/kalamazoo";
 import { CivicAsk } from "@/components/civic/CivicAsk";
 import { NoteForm } from "@/components/portal/NoteForm";
 
@@ -74,8 +74,9 @@ export default async function CivicPage({ params }: { params: Promise<{ token: s
         <p className="mt-8 max-w-[40rem] text-[17px] leading-[1.7] text-[#6c7481]">
           Every ordinance and policy in the Document Center, the statutes that set the County&apos;s deadlines, the budget,
           the audit, the relief-fund reports, the Board&apos;s votes and each department&apos;s published results. Arthur
-          read 4,383 documents and tested each against a clock set by someone else. This is what it found, what it can
-          answer today, and what it would keep watching.
+          read 4,383 documents and tested each against a clock set by someone else. These are first findings, made from
+          the outside with public records only. They are a starting point for what Arthur can answer once it works from
+          the inside.
         </p>
         <div className="mt-10 flex flex-wrap gap-3 text-[14px]">
           <a href="#findings" className="rounded-full bg-[#1d1d1f] px-5 py-2.5 font-medium text-white">
@@ -156,6 +157,32 @@ export default async function CivicPage({ params }: { params: Promise<{ token: s
             </div>
           );
         })}
+      </section>
+
+      {/* The questions nobody has asked */}
+      <section className="border-t border-[#e4e5e9]">
+        <div className="mx-auto max-w-[1180px] px-6 py-24">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
+            <div>
+              <Eyebrow>This is the outside view</Eyebrow>
+              <Two a="Public records answered these." b="Your own records answer the rest." />
+            </div>
+            <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
+              Every finding above came from what the County publishes. The more useful questions sit across systems that
+              have never been read together, so nobody has had the time to ask them. Connected to the County&apos;s own
+              records, Arthur answers them with sources, and keeps the answers current.
+            </p>
+          </div>
+          <ol className="mt-14 grid gap-x-10 md:grid-cols-2 lg:grid-cols-3">
+            {nextQuestions.map((x, i) => (
+              <li key={x.q} className="border-t border-[#e4e5e9] py-6">
+                <span className="text-[12px] tabular-nums text-[#3778bc]">{String(i + 1).padStart(2, "0")}</span>
+                <p className="mt-2 text-[16px] font-medium leading-[1.45] tracking-[-0.01em] text-[#1d1d1f]">{x.q}</p>
+                <p className="mt-2 text-[13px] leading-[1.6] text-[#8c8e95]">Joins: {x.joins}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
       {/* The Board already asked */}

@@ -388,6 +388,21 @@ export const layers = [
   },
 ];
 
+/* What Arthur could answer once connected, questions that need two or more of the County's
+   own systems joined together. None is answered on this page; each is named with the
+   records it would join, so it reads as scope, not as a claim. */
+export const nextQuestions = [
+  { q: "Which residents touch three or more County services in a year: the jail, the health department, housing, the courts?", joins: "Jail, health, housing and court records, matched with consent rules" },
+  { q: "What is the dispatch vacancy costing each month in overtime, and when does it cross the cost of hiring?", joins: "KCCDA staffing, payroll and overtime" },
+  { q: "Which Board decisions from the last five years were never reported back on or never carried out?", joins: "Every vote in CivicClerk against department reports" },
+  { q: "Which contracts renew automatically in the next twelve months, and which vendors are paid by more than one department?", joins: "Contracts, purchase orders and accounts payable" },
+  { q: "How long does a FOIA request take, by department, and which ones are asked for again and again?", joins: "FOIA log and response records" },
+  { q: "What must happen, and by which Board meeting, for each millage renewal to reach the ballot on time?", joins: "Millage terms, the election calendar and Board agendas" },
+  { q: "Where would the opioid settlement do the most good, given who is dying after release from jail?", joins: "Medical Examiner, jail release and settlement plan" },
+  { q: "Which grants carry matching requirements or reporting dates in the next year, and who owns each one?", joins: "Grant awards, the budget and the statutory calendar" },
+  { q: "What does the permanent Administrator need to know on day one?", joins: "Everything above, kept current, so the handover is a document, not a memory" },
+];
+
 /* The Board already asked for this. Quoted from its own plan, so the proposal is a
    continuation, not a new idea. */
 export const mandate = {
