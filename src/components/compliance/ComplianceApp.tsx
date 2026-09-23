@@ -49,7 +49,7 @@ function Pill({ children, tone = "mid" }: { children: React.ReactNode; tone?: "m
     bad: "border-[#B3261E] text-[#B3261E]",
   }[tone];
   return (
-    <span className={`inline-flex items-center whitespace-nowrap border px-1.5 py-px font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.12em] ${c}`}>
+    <span className={`inline-flex items-center whitespace-nowrap rounded-full border px-2 py-px text-[9.5px] font-semibold uppercase tracking-[0.1em] ${c}`}>
       {children}
     </span>
   );
@@ -129,7 +129,7 @@ function Drawer({ r, t, today, save, onClose }: {
                   <button
                     key={s.k}
                     onClick={() => save(r.id, { status: s.k, ...(DONE(s.k) && !t.submittedOn ? { submittedOn: today } : {}) })}
-                    className={`min-h-[38px] border px-2.5 text-[12.5px] ${(t.status ?? "open") === s.k ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--on-deep)]" : "border-[var(--line-2)] bg-[var(--paper)] hover:bg-[var(--sunk)]"}`}
+                    className={`min-h-[36px] rounded-full border px-3 text-[12px] ${(t.status ?? "open") === s.k ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--on-deep)]" : "border-[var(--line-2)] bg-[var(--paper)] hover:bg-[var(--sunk)]"}`}
                   >
                     {s.label}
                   </button>
@@ -318,7 +318,7 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
               Their deadlines have passed. Mark each one Submitted with its confirmation number, and the board report has a
               complete record for the year.
             </p>
-            <details className="mt-3 border border-[var(--line)] bg-[var(--paper)]">
+            <details className="mt-3 overflow-hidden rounded-[12px] border border-[var(--line)] bg-[var(--paper)]">
               <summary className="cursor-pointer px-4 py-3 text-[13px] text-[var(--teal)]">Show all {past.length}</summary>
               {past.map((r) => <Row key={r.id} r={r} />)}
             </details>
@@ -330,7 +330,7 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
               Week of {fmt(wk, { month: "long", day: "numeric" })}
               <span className="tnum font-[family-name:var(--font-mono)] text-[11px] text-[var(--dim)]">{rs.length} due</span>
             </h3>
-            <div className="mt-3 border border-[var(--line)] bg-[var(--paper)]">
+            <div className="mt-3 overflow-hidden rounded-[12px] border border-[var(--line)] bg-[var(--paper)]">
               {rs.map((r) => <Row key={r.id} r={r} />)}
             </div>
           </div>
@@ -358,9 +358,9 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
             <span className="ml-3 tnum text-[13px] font-normal text-[var(--dim)]">{inMonth.length} deadlines</span>
           </h3>
           <div className="flex gap-1">
-            <button onClick={() => shift(-1)} className="min-h-[40px] border border-[var(--line-2)] px-3 text-[13px] hover:bg-[var(--sunk)]" aria-label="Previous month">←</button>
-            <button onClick={() => setMonth(today.slice(0, 7))} className="min-h-[40px] border border-[var(--line-2)] px-3 text-[13px] hover:bg-[var(--sunk)]">Today</button>
-            <button onClick={() => shift(1)} className="min-h-[40px] border border-[var(--line-2)] px-3 text-[13px] hover:bg-[var(--sunk)]" aria-label="Next month">→</button>
+            <button onClick={() => shift(-1)} className="min-h-[38px] rounded-full border border-[var(--line-2)] px-4 text-[13px] hover:bg-[var(--sunk)]" aria-label="Previous month">←</button>
+            <button onClick={() => setMonth(today.slice(0, 7))} className="min-h-[38px] rounded-full border border-[var(--line-2)] px-4 text-[13px] hover:bg-[var(--sunk)]">Today</button>
+            <button onClick={() => shift(1)} className="min-h-[38px] rounded-full border border-[var(--line-2)] px-4 text-[13px] hover:bg-[var(--sunk)]" aria-label="Next month">→</button>
           </div>
         </div>
         <div className="mt-4 hidden grid-cols-7 gap-px border border-[var(--line)] bg-[var(--line)] md:grid">
@@ -397,7 +397,7 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
           })}
         </div>
         {day && day.startsWith(month) && (
-          <div className="mt-4 hidden border border-[var(--line)] bg-[var(--paper)] md:block">
+          <div className="mt-4 hidden overflow-hidden rounded-[12px] border border-[var(--line)] bg-[var(--paper)] md:block">
             <div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-2.5">
               <span className="text-[14px] font-medium">{fmt(day, { weekday: "long", month: "long", day: "numeric" })}</span>
               <button onClick={() => setDay(null)} className="text-[13px] text-[var(--mid)] hover:text-[var(--ink)]">Close</button>
@@ -405,7 +405,7 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
             {inMonth.filter((r) => r.due === day).map((r) => <Row key={r.id} r={r} />)}
           </div>
         )}
-        <div className="mt-4 border border-[var(--line)] bg-[var(--paper)] md:hidden">
+        <div className="mt-4 overflow-hidden rounded-[12px] border border-[var(--line)] bg-[var(--paper)] md:hidden">
           {inMonth.length ? inMonth.map((r) => <Row key={r.id} r={r} />) : <p className="p-4 text-[14px] text-[var(--mid)]">Nothing due this month.</p>}
         </div>
         <p className="mt-3 flex flex-wrap gap-4 text-[12px] text-[var(--dim)]">
@@ -467,19 +467,19 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search requirements, portals, agencies"
-            className="min-h-[42px] w-full max-w-[26rem] border border-[var(--line-2)] bg-[var(--paper)] px-3 text-[14px] outline-none focus:border-[var(--ink)]"
+            className="min-h-[40px] w-full max-w-[26rem] rounded-full border border-[var(--line-2)] bg-[var(--paper)] px-3 text-[14px] outline-none focus:border-[var(--ink)]"
           />
           {([["yes", "Applies to you"], ["if", "Only if triggered"], ["no", "Doesn't apply"], ["any", "Everything"]] as const).map(([k, l]) => (
             <button
               key={k}
               onClick={() => setScope(k)}
-              className={`min-h-[42px] border px-3 text-[13px] ${scope === k ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--on-deep)]" : "border-[var(--line-2)] hover:bg-[var(--sunk)]"}`}
+              className={`min-h-[38px] rounded-full border px-3.5 text-[12.5px] ${scope === k ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--on-deep)]" : "border-[var(--line-2)] hover:bg-[var(--sunk)]"}`}
             >
               {l} <span className="tnum opacity-70">{k === "any" ? items.length : items.filter((r) => r.applies === k).length}</span>
             </button>
           ))}
         </div>
-        <div className="mt-4 border border-[var(--line)] bg-[var(--paper)]">
+        <div className="mt-4 overflow-hidden rounded-[12px] border border-[var(--line)] bg-[var(--paper)]">
           {list.map((r) => <Row key={r.id} r={r} />)}
           {!list.length && <p className="p-4 text-[14px] text-[var(--mid)]">No matches.</p>}
         </div>
@@ -493,10 +493,10 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
     const owners = new Map<string, number>();
     for (const r of next30) owners.set(tracks[r.id]?.owner ?? r.owner, (owners.get(tracks[r.id]?.owner ?? r.owner) ?? 0) + 1);
     return (
-      <div className="border border-[var(--line)] bg-[var(--paper)] p-6 sm:p-8">
+      <div className="overflow-hidden rounded-[12px] border border-[var(--line)] bg-[var(--paper)] p-6 sm:p-8">
         <div className="flex flex-wrap items-baseline justify-between gap-3">
           <h3 className="text-[20px] font-medium">Compliance report to the board</h3>
-          <button onClick={() => window.print()} className="min-h-[40px] border border-[var(--line-2)] px-3 text-[13px] hover:bg-[var(--sunk)]">Print</button>
+          <button onClick={() => window.print()} className="min-h-[38px] rounded-full border border-[var(--line-2)] px-4 text-[13px] hover:bg-[var(--sunk)]">Print</button>
         </div>
         <p className="mt-1 text-[13px] text-[var(--dim)]">{school} · as of {fmt(today, { month: "long", day: "numeric", year: "numeric" })}</p>
         <div className="mt-6 grid gap-px bg-[var(--line)] sm:grid-cols-4">
@@ -573,7 +573,7 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
             </button>
           ))}
         </div>
-        <button onClick={downloadIcs} className="mb-2 min-h-[40px] border border-[var(--line-2)] px-3 text-[13px] hover:bg-[var(--sunk)]">
+        <button onClick={downloadIcs} className="mb-2 min-h-[38px] rounded-full border border-[var(--line-2)] px-4 text-[13px] hover:bg-[var(--sunk)]">
           Add to Outlook / Google Calendar
         </button>
       </div>

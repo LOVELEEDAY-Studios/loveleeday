@@ -68,20 +68,29 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1340px] px-6 py-16">
-        <div className="mb-8 grid gap-3 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <h2 className="text-[clamp(1.6rem,3vw,2.3rem)] font-medium tracking-[-0.02em]">Your leadership dashboard</h2>
-            <p className="mt-2 max-w-[62ch] text-[15px] leading-[1.65] text-[var(--mid)]">
-              Compliance is one tab. The others are what you asked about: a five-year plan your team can move with a slider
-              instead of weeks of spreadsheets, enrollment against the charter&apos;s ceiling, and student and faculty
-              profiles for retention and satisfaction. Public figures are yours from the record; anything marked sample is
-              what your own systems will fill in.
+      <section className="ll-os bg-[#f5f5f7]">
+        <div className="mx-auto max-w-[1340px] px-6 py-20">
+          <div className="mb-10 grid gap-6 lg:grid-cols-2 lg:items-end">
+            <div>
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980]">Your leadership dashboard</span>
+              <h2 className="mt-4 text-[clamp(2.2rem,4.4vw,3rem)] font-medium leading-[1.1] tracking-[-0.045em]">
+                Ask simply.
+                <br />
+                <span className="text-[#8c8e95]">Plan completely.</span>
+              </h2>
+            </div>
+            <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#7d8088]">
+              Compliance is one part of it. The rest is what you asked about: a five-year plan your team moves with a
+              slider instead of weeks of spreadsheets, enrollment against the charter&apos;s ceiling, and student and
+              faculty profiles for retention and satisfaction.
             </p>
           </div>
-          <span className="text-[13px] text-[var(--dim)]">Working preview · click anything</span>
+          <Dashboard items={requirements} storageKey={`llc-compliance-${token}`} school={s.short} />
+          <p className="mt-4 text-center text-[10.5px] leading-[1.6] text-[#9699a1]">
+            Interactive preview. Figures marked public come from Global Citizens&apos; own public record; figures marked
+            sample show what your systems fill in once connected.
+          </p>
         </div>
-        <Dashboard items={requirements} storageKey={`llc-compliance-${token}`} school={s.short} />
       </section>
 
       <section className="border-t border-[var(--line)]">

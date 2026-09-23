@@ -222,6 +222,35 @@ body {
 /* Figures line up in columns or they are not figures. */
 .tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1, "ss01" 1; }
 
+/* A client's interior pages, as the homepage shows them (public/site/assets/site.css,
+   .system-shell): Apple system type, white panels, #3778bc blue, hairline #edf0f4.
+   Components inside read the same tokens as the portal pages, so re-pointing the
+   tokens here restyles them without forking the components. */
+.ll-os {
+  --ink: #1d1d1f;
+  --mid: #6c7481;
+  --dim: #8b8e96;
+  --paper: #ffffff;
+  --ground: #ffffff;
+  --sunk: #f5f7fa;
+  --line: #edf0f4;
+  --line-2: #dcdfe6;
+  --teal: #3778bc;
+  --teal-d: #3970af;
+  --teal-wash: #f0f5fc;
+  --copper: #b06a3f;
+  --copper-wash: #fbf3ed;
+  --good: #2f8a62;
+  --bar: #a9c6e8;
+  --bar-strong: #3778bc;
+  --bar-warm: #e3b594;
+  --on-deep: #ffffff;
+  --font-mono-var: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
 /* A hairline down the left of a column. Cheap, and instantly reads considered. */
 .rule-left { border-left: 1px solid var(--line-2); padding-left: 1.6rem; }
 

@@ -19,7 +19,7 @@ export function Bars({
   capLabel?: string;
 }) {
   const max = Math.max(cap ?? 0, ...data.map((d) => d.value)) * 1.12 || 1;
-  const tone = { teal: "var(--teal)", copper: "var(--copper)", ink: "var(--ink)", muted: "var(--line-2)" };
+  const tone = { teal: "var(--bar, var(--teal))", copper: "var(--bar-warm, var(--copper))", ink: "var(--bar-strong, var(--ink))", muted: "var(--line-2)" };
   return (
     <div>
       <div className="relative flex items-end gap-2" style={{ height }}>
