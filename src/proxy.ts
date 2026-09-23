@@ -30,6 +30,7 @@ const FOR_DIR: Record<string, string> = {
      add a study, add it here in the same commit. */
   ...(TOKENS.enable ? { enable: TOKENS.enable } : {}),
   ...(TOKENS.venturehueStudy ? { venturehue: TOKENS.venturehueStudy } : {}),
+  ...(TOKENS.meknology ? { meknology: TOKENS.meknology } : {}),
 };
 
 export function proxy(req: NextRequest) {
