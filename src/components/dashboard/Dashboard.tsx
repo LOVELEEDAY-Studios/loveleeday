@@ -105,13 +105,17 @@ function Slider({ label, value, min, max, step, onChange, format }: { label: str
   );
 }
 
-export function Dashboard({ items, storageKey, school }: { items: Requirement[]; storageKey: string; school: string }) {
+export function Dashboard({ items, storageKey, school, token }: { items: Requirement[]; storageKey: string; school: string; token: string }) {
   const [tab, setTab] = useState<Tab>("overview");
   const [p, setP] = useState<PlanInputs>(DEFAULTS);
   const [preset, setPreset] = useState("Current plan");
   const [asked, setAsked] = useState<number | null>(null);
   const [showEvidence, setShowEvidence] = useState(false);
   const qi = asked ?? 0;
+  const [custom, setCustom] = useState<{ q: string; head: string; answer: string; evidence: string[] } | null>(null);
+  const [draft, setDraft] = useState("");
+  const [asking, setAsking] = useState(false);
+  const [askErr, setAskErr] = useState("");
   const set = (patch: Partial<PlanInputs>) => {
     setPreset("");
     setP((prev) => ({ ...prev, ...patch }));
@@ -156,6 +160,48 @@ export function Dashboard({ items, storageKey, school }: { items: Requirement[];
       a: `October 2026 carries ${octCount} deadlines, the most of any month, clustered on October 1, the Enrollment Audit window and the Compass data submissions around October 23. Those should be assigned now.`,
     },
   ];
+
+  const shown = custom ?? { q: questions[qi].q, head: questions[qi].head, answer: questions[qi].a, evidence: [questions[qi].evidence] };
+
+  async function ask(e: React.FormEvent) {
+    e.preventDefault();
+    const question = draft.trim();
+    if (question.length < 4 || asking) return;
+    setAsking(true);
+    setAskErr("");
+    setShowEvidence(false);
+    try {
+      const res = await fetch("/api/compliance/ask", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          token,
+          question,
+          plan: plan.map(({ year, grades, enrollment, revenue, expenses, net, teachers, hires, staff }) => ({ year, grades, enrollment, revenue, expenses, net, teachers, hires, staff })),
+          assumptions: {
+            fillRatePct: p.fillRate,
+            seatsPerGrade: p.seatsPerGrade,
+            fundingPerStudent: p.perPupil,
+            fundingGrowthPct: p.perPupilGrowth,
+            studentsPerTeacher: p.studentsPerTeacher,
+            costPerStaffMember: p.staffCostPerTeacher,
+            raisePct: p.raise,
+            teacherTurnoverPct: p.attrition,
+            buildingCostPerYear: p.facilityCost,
+            otherCostPerStudent: p.otherPerPupil,
+          },
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Arthur could not answer just now.");
+      setCustom({ q: question, head: data.head, answer: data.answer, evidence: data.evidence ?? [] });
+      setDraft("");
+    } catch (err) {
+      setAskErr(err instanceof Error ? err.message : "Arthur could not answer just now.");
+    } finally {
+      setAsking(false);
+    }
+  }
 
   return (
     <div className="ll-os overflow-hidden rounded-[16px] border border-[#dcdfe6] bg-white shadow-[0_24px_56px_#202d4210]">
@@ -214,24 +260,25 @@ export function Dashboard({ items, storageKey, school }: { items: Requirement[];
                     <button
                       key={x.q}
                       role="tab"
-                      aria-selected={qi === i}
+                      aria-selected={!custom && qi === i}
                       onClick={() => {
                         setAsked(i);
+                        setCustom(null);
                         setShowEvidence(false);
                       }}
-                      className={`min-h-[36px] rounded-full border px-3.5 text-[12px] ${qi === i ? "border-[#d8e6f8] bg-[#f0f5fc] text-[#3970af]" : "border-[#e8ebf0] bg-white text-[#818692] hover:text-[#4a4f58]"}`}
+                      className={`min-h-[36px] rounded-full border px-3.5 text-[12px] ${!custom && qi === i ? "border-[#d8e6f8] bg-[#f0f5fc] text-[#3970af]" : "border-[#e8ebf0] bg-white text-[#818692] hover:text-[#4a4f58]"}`}
                     >
                       {x.tab}
                     </button>
                   ))}
                 </div>
-                <h3 className="mt-6 text-[22px] font-medium leading-[1.35] tracking-[-0.025em]">{questions[qi].q}</h3>
+                <h3 className="mt-6 text-[22px] font-medium leading-[1.35] tracking-[-0.025em]">{shown.q}</h3>
                 <div className="mt-5 flex gap-4">
                   <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[8px] bg-[linear-gradient(130deg,#f1f5fa,#e1e9f7)] text-[18px] text-[#618bbc]" aria-hidden="true">✧</span>
                   <div className="min-w-0 max-w-[560px] text-[14px] leading-[1.75] text-[#6c7481]">
-                    <strong className="font-medium text-[#323b48]">{questions[qi].head}</strong>
+                    <strong className="font-medium text-[#323b48]">{shown.head}</strong>
                     <br />
-                    {questions[qi].a}
+                    {shown.answer}
                     <button onClick={() => setShowEvidence((v) => !v)} aria-expanded={showEvidence} className="mt-3 block min-h-[24px] text-[12px] text-[#477bae]">
                       View the evidence <span aria-hidden="true">↗</span>
                     </button>
@@ -239,15 +286,34 @@ export function Dashboard({ items, storageKey, school }: { items: Requirement[];
                       <div className="mt-2 border-l border-[#cbd9ed] pl-4 text-[12px] leading-[1.8] text-[#778393]">
                         <strong className="font-medium text-[#394b64]">Grounded in</strong>
                         <br />
-                        {questions[qi].evidence}
+                        {shown.evidence.map((ev, i) => (
+                          <span key={i} className="block">{ev}</span>
+                        ))}
                       </div>
                     )}
                   </div>
                 </div>
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[8px] border border-[#e2e6ed] bg-[#fcfcfd] p-4 text-[11px] text-[#999fab]">
-                  <span>Ask about budget, enrollment, staff or compliance</span>
-                  <span className="text-[#6c86a8]">Grounded in your school&apos;s record ✧</span>
-                </div>
+                <form onSubmit={ask} className="mt-6 flex flex-wrap items-center gap-3 rounded-[8px] border border-[#e2e6ed] bg-[#fcfcfd] p-2 pl-4 focus-within:border-[#b9cde8]">
+                  <label htmlFor="ask-arthur" className="sr-only">Ask Arthur a question</label>
+                  <input
+                    id="ask-arthur"
+                    value={draft}
+                    onChange={(e) => setDraft(e.target.value)}
+                    maxLength={400}
+                    placeholder="Ask your own question: budget, enrollment, staffing or a deadline"
+                    className="min-h-[40px] min-w-0 flex-1 bg-transparent text-[13px] text-[#323b48] outline-none placeholder:text-[#999fab]"
+                  />
+                  <button
+                    type="submit"
+                    disabled={asking || draft.trim().length < 4}
+                    className="min-h-[36px] rounded-full bg-[#1d1d1f] px-4 text-[12px] text-white disabled:bg-[#c9ccd3]"
+                  >
+                    {asking ? "Thinking…" : "Ask Arthur ✧"}
+                  </button>
+                </form>
+                <p className={`mt-2 text-[11px] ${askErr ? "text-[#b3261e]" : "text-[#999fab]"}`} aria-live="polite">
+                  {askErr || "Live. Arthur answers from your school's public record, the DC calendars and the plan on your screen, and shows where each answer came from."}
+                </p>
               </div>
 
               <div className="grid gap-5 xl:grid-cols-2">

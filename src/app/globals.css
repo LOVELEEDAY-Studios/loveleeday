@@ -244,12 +244,23 @@ body {
   --bar: #a9c6e8;
   --bar-strong: #3778bc;
   --bar-warm: #e3b594;
+  /* The :root aliases resolve against the cream palette where they are declared,
+     so they have to be re-pointed here too or the note form stays teal. */
+  --accent: #3778bc;
+  --accent-dim: #2f6aa6;
+  --raised: #ffffff;
+  --line-bright: #dcdfe6;
   --on-deep: #ffffff;
   --font-mono-var: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
 }
+
+.ll-os form input:not([type=range]):not([type=radio]):not([type=checkbox]),
+.ll-os form textarea { border-radius: 8px; border-color: #dcdfe6; }
+.ll-os form button[type=submit] { border-radius: 9999px; }
+.ll-os form fieldset label { border-radius: 10px; }
 
 /* A hairline down the left of a column. Cheap, and instantly reads considered. */
 .rule-left { border-left: 1px solid var(--line-2); padding-left: 1.6rem; }
