@@ -2,7 +2,8 @@
 
 The header is copied verbatim into each page (there is no include step), so the
 dropdown is inserted before the Studio dropdown in every file that has one. The
-six services are the footer's "What we build" list, word for word. None has a
+six services were the footer's "What we build" list, word for word (that
+footer block was removed once this dropdown replaced it). None has a
 page of its own yet, so each one opens the project brief, which is where the
 footer CTA already sends people.
 
