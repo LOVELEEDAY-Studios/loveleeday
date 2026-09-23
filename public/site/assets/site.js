@@ -87,3 +87,12 @@ if(!('IntersectionObserver' in window)){f.forEach(e=>e.classList.add('is-in'));r
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
 e.target.classList.add('is-in');io.unobserve(e.target)}})},{threshold:.25});
 f.forEach(e=>io.observe(e))})();
+
+// Phone-width menu (scripts/add-mobile-menu.py): open/close the sheet, close on
+// navigation, Escape, or widening past the phone breakpoint.
+(()=>{const nav=document.querySelector('.nav'),btn=document.querySelector('.nav-toggle');if(!nav||!btn)return;
+const set=o=>{nav.classList.toggle('menu-open',o);btn.setAttribute('aria-expanded',String(o));btn.setAttribute('aria-label',o?'Close menu':'Open menu');document.body.classList.toggle('menu-lock',o)};
+btn.addEventListener('click',()=>set(!nav.classList.contains('menu-open')));
+nav.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>set(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('menu-open')){set(false);btn.focus()}});
+window.matchMedia('(min-width:701px)').addEventListener('change',e=>{if(e.matches)set(false)})})();
