@@ -70,4 +70,6 @@ export const TOKENS = {
   globalCitizens: tokOptional("PORTFOLIO_TOKEN_GLOBALCITIZENS"),
   // Terrell Cole, Interim County Administrator/Controller, Kalamazoo County, 2026-09-23.
   kalcounty: tokOptional("PORTFOLIO_TOKEN_KALCOUNTY"),
+  // Elemental Media, Kalamazoo production company: the pitch page (the rebuild is `elemental`).
+  elementalPitch: tokOptional("PORTFOLIO_TOKEN_ELEMENTAL"),
 } as const;

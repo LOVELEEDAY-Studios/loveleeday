@@ -35,6 +35,7 @@ const FOR_DIR: Record<string, string> = {
   ...(TOKENS.blacktechweek ? { blacktechweek: TOKENS.blacktechweek } : {}),
   ...(TOKENS.lightshipCapital ? { lightshipcapital: TOKENS.lightshipCapital } : {}),
   ...(TOKENS.lightshipFoundation ? { lightshipfoundation: TOKENS.lightshipFoundation } : {}),
+  ...(TOKENS.elemental ? { elemental: TOKENS.elemental } : {}),
 };
 
 export function proxy(req: NextRequest, event: NextFetchEvent) {
