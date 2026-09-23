@@ -59,6 +59,9 @@ shutil.copytree(SRC, DEST, ignore=shutil.ignore_patterns(
     "robots.txt", "sitemap.xml", "board.html", "board-shots", "test-site.mjs"))
 print(f"copied {len(list(DEST.rglob('*')))} files to public/site/")
 
+import hashlib
+ASSET_VERSION = {a: hashlib.sha256((SRC / "assets" / a).read_bytes()).hexdigest()[:10] for a in ("site.css", "site.js")}
+
 # ── rewrite paths for the mount point ────────────────────────────────────────
 for name in PAGES:
     p = DEST / f"{name}.html"
@@ -68,6 +71,11 @@ for name in PAGES:
 
     t = t.replace('src="assets/', 'src="/site/assets/')
     t = t.replace('href="assets/', 'href="/site/assets/')
+    # Content-fingerprint the stylesheet and script. They are served with a 4-hour
+    # browser cache, so without this a phone kept the old site.css against new HTML
+    # and the new mobile menu button rendered unstyled (2026-09-23).
+    for asset in ("site.css", "site.js"):
+        t = t.replace(f'"/site/assets/{asset}"', f'"/site/assets/{asset}?v={ASSET_VERSION[asset]}"')
     t = t.replace("url(assets/", "url(/site/assets/")
 
     # Internal links and the tags that must agree with them.
