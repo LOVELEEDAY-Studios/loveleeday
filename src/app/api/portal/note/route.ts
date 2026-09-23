@@ -2,6 +2,7 @@ import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { getPortal } from "@/content/portals";
 import { getPortfolio } from "@/content/portfolio";
+import { getComplianceSchool } from "@/content/compliance";
 
 export const dynamic = "force-dynamic";
 
@@ -24,17 +25,27 @@ export async function POST(request: Request) {
     // reproduced 2026-09-23). A form that silently cannot send is worse than no form.
     const found = getPortal(token);
     const pf = found ? undefined : getPortfolio(token);
-    if (!found && !pf) {
+    const cs = found || pf ? undefined : getComplianceSchool(token);
+    if (!found && !pf && !cs) {
       return NextResponse.json({ error: "Unknown review link" }, { status: 404 });
     }
-    const portal = found ?? {
-      token: pf!.token,
-      client: pf!.fund,
-      project: "Portfolio study",
-      round: "Round 01",
-      deliverables: pf!.cases.map((c) => ({ slug: c.slug, title: c.company })),
-    };
+    const portal = found ?? (pf
+      ? {
+          token: pf.token,
+          client: pf.fund,
+          project: "Portfolio study",
+          round: "Round 01",
+          deliverables: pf.cases.map((c) => ({ slug: c.slug, title: c.company })),
+        }
+      : {
+          token: cs!.token,
+          client: cs!.short,
+          project: "Compliance calendar",
+          round: "Round 01",
+          deliverables: [{ slug: "compliance", title: "Compliance calendar" }],
+        });
     const portfolioLink = !found;
+    const linkBase = cs ? "compliance/" : "portfolio/";
 
     const name = String(body.name ?? "").trim().slice(0, 120);
     const email = String(body.email ?? "").trim().slice(0, 200);
@@ -76,7 +87,7 @@ export async function POST(request: Request) {
           <p style="line-height:1.6;white-space:pre-wrap;margin:0">${esc(note)}</p>
         </div>
         <p style="margin-top:1.5rem;font-size:12px;color:#5A5A55">
-          <a href="https://loveleedaystudios.com/p/${portfolioLink ? "portfolio/" : ""}${esc(portal.token ?? "")}${!portfolioLink && deliverable ? "/" + esc(deliverable.slug) : ""}" style="color:#111">Open the portal page they were looking at</a>
+          <a href="https://loveleedaystudios.com/p/${portfolioLink ? linkBase : ""}${esc(portal.token ?? "")}${!portfolioLink && deliverable ? "/" + esc(deliverable.slug) : ""}" style="color:#111">Open the portal page they were looking at</a>
         </p>
       </div>`,
     });
