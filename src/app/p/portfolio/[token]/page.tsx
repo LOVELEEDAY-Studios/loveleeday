@@ -1,7 +1,60 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPortfolio, publishedPortfolios } from "@/content/portfolio";
+import { getPortfolio, publishedPortfolios, type Research } from "@/content/portfolio";
+
+function ResearchSection({ r }: { r: Research }) {
+  return (
+    <section className="border-b border-[var(--line)]">
+      <div className="mx-auto max-w-[1340px] px-6 py-20 lg:py-24">
+        <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">
+          {r.kicker}
+        </span>
+        <h2 className="mt-4 max-w-[22ch] text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.06] tracking-[-0.025em]">
+          {r.title}
+        </h2>
+        <p className="rule-left mt-8 max-w-[var(--measure)] text-[16px] leading-[1.7] text-[var(--mid)]">
+          {r.intro}
+        </p>
+        <div className="mt-12 grid gap-px bg-[var(--line)] md:grid-cols-2 lg:grid-cols-3">
+          {r.points.map((pt, i) => (
+            <div key={pt.title} className="bg-[var(--ground)] p-7">
+              <span className="font-[family-name:var(--font-mono)] text-[11px] tracking-[0.18em] text-[var(--dim)] tnum">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-4 text-[17px] font-medium leading-[1.3]">{pt.title}</h3>
+              <p className="mt-3 text-[14px] leading-[1.65] text-[var(--mid)]">{pt.detail}</p>
+            </div>
+          ))}
+        </div>
+        {r.verdict && (
+          <div className="mt-12 border-l-2 border-[var(--accent)] pl-6">
+            <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
+              Where we would start
+            </h3>
+            <p className="mt-3 max-w-[var(--measure)] text-[16px] leading-[1.7] text-[var(--ink)]">
+              {r.verdict}
+            </p>
+          </div>
+        )}
+        <details className="mt-10">
+          <summary className="cursor-pointer font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)] hover:text-[var(--accent)]">
+            Sources ({r.sources.length})
+          </summary>
+          <ul className="mt-4 space-y-2">
+            {r.sources.map((s) => (
+              <li key={s.url} className="text-[13px] leading-[1.6] text-[var(--mid)]">
+                <a href={s.url} target="_blank" rel="noreferrer" className="underline decoration-[var(--line-bright)] underline-offset-2 hover:text-[var(--accent)]">
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      </div>
+    </section>
+  );
+}
 import { formatDate } from "@/content/portals";
 import { BeforeAfter } from "@/components/portal/BeforeAfter";
 import { NoteForm } from "@/components/portal/NoteForm";
@@ -44,14 +97,16 @@ export default async function PortfolioPage({
       {/* Header */}
       <section className="mx-auto max-w-[1340px] px-6 pb-16 pt-16 sm:pt-24">
         <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">
-          Portfolio study
+          {p.eyebrow ?? "Portfolio study"}
           <span className="text-[var(--dim)]"> · prepared for {p.preparedFor}</span>
         </p>
         <h1 className="mt-5 text-[clamp(2.5rem,6.5vw,4.75rem)] font-medium leading-[0.98] tracking-[-0.035em]">
           {/* Collab has six cases and this read "6 of your companies, rebuilt."
               Lightship has one, and the same template produced "1 of your
               companies, rebuilt." — a count is not a sentence. */}
-          {p.cases.length === 1 ? (
+          {p.headline ? (
+            p.headline
+          ) : p.cases.length === 1 ? (
             <>
               One of your companies,
               <br />
@@ -96,6 +151,10 @@ export default async function PortfolioPage({
           ))}
         </div>
       </section>
+
+      {/* For a founder, the research is half of what we are showing them — it
+          sits under the numbers, ahead of the site findings, not after them. */}
+      {p.researchFirst && p.research && <ResearchSection r={p.research} />}
 
       {/* What the fund cannot see from its own page */}
       <section className="mx-auto max-w-[1340px] px-6 py-20">
@@ -188,6 +247,8 @@ export default async function PortfolioPage({
           </article>
         ))}
       </section>
+
+      {!p.researchFirst && p.research && <ResearchSection r={p.research} />}
 
       {/* Method + note */}
       <section className="bg-[var(--sunk)]">
