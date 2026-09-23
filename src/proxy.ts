@@ -43,7 +43,14 @@ export function proxy(req: NextRequest, event: NextFetchEvent) {
   // Only documents are gated. Anything with a non-HTML extension is an asset.
   const last = pathname.split("/").pop() ?? "";
   const isDocument = !last.includes(".") || last.endsWith(".html");
-  if (!isDocument) return NextResponse.next();
+  if (!isDocument) {
+    /* Videos use preload="none", so a request for the file's first byte is someone pressing play.
+       Later range requests of the same play are skipped. */
+    if (last.endsWith(".mp4") && /^bytes=0-/.test(req.headers.get("range") ?? "bytes=0-")) {
+      event.waitUntil(recordView(req.headers, pathname, req.cookies.get(TEAM_COOKIE)?.value === "1"));
+    }
+    return NextResponse.next();
+  }
 
   const dir = pathname.split("/")[2] ?? "";
   const expected = FOR_DIR[dir];
