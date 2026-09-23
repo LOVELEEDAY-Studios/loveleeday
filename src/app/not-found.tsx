@@ -51,7 +51,7 @@ export default function NotFound() {
             textDecoration: "none",
           }}
         >
-          <img src="/icon.svg" alt="" width={28} height={28} style={{ filter: "invert(1)" }} />
+          <img src="/site/assets/icon.svg" alt="" width={28} height={28} style={{ filter: "invert(1)" }} />
           LOVELEEDAY
         </a>
 

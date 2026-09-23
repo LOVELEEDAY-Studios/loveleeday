@@ -80,7 +80,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: "LOVELEEDAY Studios",
     url: "https://loveleedaystudios.com",
-    logo: "https://loveleedaystudios.com/icon.svg",
+    logo: "https://loveleedaystudios.com/site/assets/icon.svg",
     contactPoint: {
       "@type": "ContactPoint",
       email: "hello@loveleedaystudios.com",
