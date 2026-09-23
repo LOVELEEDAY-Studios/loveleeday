@@ -66,4 +66,6 @@ export const TOKENS = {
   blacktechweek: tokOptional("PORTAL_TOKEN_BLACKTECHWEEK"),
   lightshipCapital: tokOptional("PORTAL_TOKEN_LIGHTSHIPCAPITAL"),
   lightshipFoundation: tokOptional("PORTAL_TOKEN_LIGHTSHIPFOUNDATION"),
+  // Lanette Dailey-Reese, Global Citizens PCS (DC), 2026-09-23: the compliance calendar pitch.
+  globalCitizens: tokOptional("PORTFOLIO_TOKEN_GLOBALCITIZENS"),
 } as const;
