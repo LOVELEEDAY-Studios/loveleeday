@@ -17,6 +17,7 @@ export default function PortalLayout({
         <div className="mx-auto flex max-w-[1340px] items-center justify-between px-6 py-4">
           {/* A plain anchor: "/" is a static HTML file behind a rewrite, so next/link's RSC
               prefetch of it 404s on every portal page. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a
             href="/"
             className="flex items-center gap-2.5 text-[var(--ink)]"

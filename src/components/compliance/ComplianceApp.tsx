@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import type { Requirement } from "@/content/compliance";
 
 type Status = "open" | "progress" | "review" | "submitted" | "accepted";
@@ -31,11 +31,12 @@ const fmt = (s: string, o: Intl.DateTimeFormatOptions = { month: "short", day: "
   parse(s).toLocaleDateString("en-US", o);
 const daysUntil = (s: string, today: string) => Math.round((parse(s).getTime() - parse(today).getTime()) / DAY);
 
-function load(key: string): Tracks {
+const noSubscribe = () => () => {};
+function readRaw(key: string): string {
   try {
-    return JSON.parse(localStorage.getItem(key) ?? "{}");
+    return localStorage.getItem(key) ?? "{}";
   } catch {
-    return {};
+    return "{}";
   }
 }
 
@@ -58,37 +59,180 @@ function DueTag({ r, t, today }: { r: Requirement; t?: Track; today: string }) {
   if (DONE(t?.status)) return <Pill tone="good">{t?.status === "accepted" ? "Accepted" : "Submitted"}</Pill>;
   if (!r.due) return <Pill>{r.dueLabel || "Date TBD"}</Pill>;
   const n = daysUntil(r.due, today);
-  if (n < 0) return <Pill tone="bad">Confirm filed</Pill>;
+  if (n < 0) return <Pill>Mark off</Pill>;
   if (n === 0) return <Pill tone="copper">Due today</Pill>;
   if (n <= 14) return <Pill tone="copper">{n} day{n === 1 ? "" : "s"}</Pill>;
   return <Pill>{n} days</Pill>;
 }
 
+/* ---------- detail drawer ---------- */
+
+function Drawer({ r, t, today, save, onClose }: {
+  r: Requirement;
+  t: Track;
+  today: string;
+  save: (id: string, patch: Partial<Track>) => void;
+  onClose: () => void;
+}) {
+  const [confirmation, setConfirmation] = useState(t.confirmation ?? "");
+  const [notes, setNotes] = useState(t.notes ?? "");
+  return (
+    <div className="fixed inset-0 z-50 flex justify-end bg-[#16243A]/40" onClick={() => onClose()} role="dialog" aria-modal="true" aria-label={r.title}>
+      <div className="h-full w-full max-w-[36rem] overflow-y-auto bg-[var(--ground)] shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="sticky top-0 flex items-center justify-between border-b border-[var(--line)] bg-[var(--ground)] px-6 py-3">
+          <span className="flex gap-2">
+            <Pill tone={r.agency === "OSSE" ? "copper" : "teal"}>{r.agency}</Pill>
+            <Pill>{r.kind}</Pill>
+          </span>
+          <button onClick={() => onClose()} className="min-h-[40px] px-2 text-[20px] leading-none text-[var(--mid)] hover:text-[var(--ink)]" aria-label="Close">×</button>
+        </div>
+        <div className="px-6 py-6">
+          <h3 className="text-[22px] font-medium leading-[1.2] tracking-[-0.015em]">{r.title}</h3>
+          <dl className="mt-5 grid grid-cols-[7.5rem_1fr] gap-x-4 gap-y-2.5 text-[14px]">
+            <dt className="text-[var(--dim)]">Due</dt>
+            <dd>
+              {r.due ? fmt(r.due, { weekday: "long", month: "long", day: "numeric", year: "numeric" }) : r.dueLabel || "Date not yet published"}
+              {r.precision === "season" && <span className="text-[var(--dim)]"> ({r.dueLabel}, end of window shown)</span>}
+              {r.precision === "window" && <span className="text-[var(--dim)]"> ({r.dueLabel})</span>}
+              {r.projected && <span className="block text-[12.5px] text-[var(--copper)]">Projected from OSSE&apos;s 2025–26 calendar. OSSE has not published 2026–27 yet.</span>}
+            </dd>
+            <dt className="text-[var(--dim)]">File it in</dt>
+            <dd>{r.platform}{r.alsoVia?.length ? <span className="block text-[12.5px] text-[var(--dim)]">Also via {r.alsoVia.join(", ")}</span> : null}</dd>
+            <dt className="text-[var(--dim)]">Who must file</dt>
+            <dd>{r.whoMustSubmit}{r.appliesWhy && <span className="block text-[12.5px] text-[var(--teal)]">{r.appliesWhy}</span>}</dd>
+            {r.contact && (<><dt className="text-[var(--dim)]">Agency contact</dt><dd className="break-words">{r.contact}</dd></>)}
+            {r.alsoOsse && r.agency === "DC PCSB" && (<><dt className="text-[var(--dim)]">Note</dt><dd>OSSE requests this too, so it may overlap with an OSSE submission.</dd></>)}
+          </dl>
+          {r.purpose && <p className="mt-5 whitespace-pre-line text-[14px] leading-[1.65] text-[var(--mid)]">{r.purpose}</p>}
+          {r.guideUrl && (
+            <a href={r.guideUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-[40px] items-center border border-[var(--ink)] px-3 text-[13px] hover:bg-[var(--ink)] hover:text-[var(--on-deep)]">
+              {r.guide || "Official guidance"} ↗
+            </a>
+          )}
+
+          <div className="mt-8 border-l-2 border-[var(--teal)] bg-[var(--teal-wash)] p-4">
+            <h4 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--teal-d)]">What Arthur does for this one</h4>
+            <ol className="mt-2 grid list-decimal gap-1 pl-5 text-[13.5px] leading-[1.55] text-[var(--ink)]">
+              <li>Watches {r.agency === "OSSE" ? "OSSE" : "DC PCSB"} for changes to the date or the rules{r.guideUrl ? ", and keeps the official guide attached here" : ""}.</li>
+              <li>Pulls last year&apos;s filing and the documents it needs out of your vault.</li>
+              <li>Drafts the packet and sends it to {t.owner ?? r.owner} for review {r.due ? "two weeks before the deadline" : "as soon as a date is published"}.</li>
+              <li>Reminds the owner at 14, 7 and 2 days, and asks for the confirmation number once it is filed.</li>
+            </ol>
+            <p className="mt-2 text-[12.5px] text-[var(--mid)]">Pressing submit in {r.platform} stays with your team. The login belongs to the school.</p>
+          </div>
+
+          <div className="mt-8 grid gap-5">
+            <label className="grid gap-1.5 text-[13px]">
+              <span className="text-[var(--dim)]">Status</span>
+              <div className="flex flex-wrap gap-1">
+                {STATUS.map((s) => (
+                  <button
+                    key={s.k}
+                    onClick={() => save(r.id, { status: s.k, ...(DONE(s.k) && !t.submittedOn ? { submittedOn: today } : {}) })}
+                    className={`min-h-[38px] border px-2.5 text-[12.5px] ${(t.status ?? "open") === s.k ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--on-deep)]" : "border-[var(--line-2)] bg-[var(--paper)] hover:bg-[var(--sunk)]"}`}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
+            </label>
+            <label className="grid gap-1.5 text-[13px]">
+              <span className="text-[var(--dim)]">Owner</span>
+              <select
+                value={t.owner ?? r.owner}
+                onChange={(e) => save(r.id, { owner: e.target.value })}
+                className="min-h-[42px] border border-[var(--line-2)] bg-[var(--paper)] px-2 text-[14px]"
+              >
+                {[...new Set([r.owner, ...OWNERS])].map((o) => <option key={o}>{o}</option>)}
+              </select>
+            </label>
+            {DONE(t.status) && (
+              <label className="grid gap-1.5 text-[13px]">
+                <span className="text-[var(--dim)]">Confirmation number</span>
+                <input
+                  value={confirmation}
+                  onChange={(e) => setConfirmation(e.target.value)}
+                  onBlur={() => save(r.id, { confirmation })}
+                  placeholder="From the portal's receipt"
+                  className="min-h-[42px] border border-[var(--line-2)] bg-[var(--paper)] px-3 text-[14px]"
+                />
+              </label>
+            )}
+            <label className="grid gap-1.5 text-[13px]">
+              <span className="text-[var(--dim)]">Documents</span>
+              <input
+                type="file"
+                multiple
+                onChange={(e) =>
+                  save(r.id, {
+                    files: [
+                      ...(t.files ?? []),
+                      ...[...(e.target.files ?? [])].map((f) => ({ name: f.name, size: f.size, added: today })),
+                    ],
+                  })
+                }
+                className="text-[13px] file:mr-3 file:min-h-[38px] file:border file:border-[var(--line-2)] file:bg-[var(--paper)] file:px-3"
+              />
+              {t.files?.length ? (
+                <ul className="grid gap-1">
+                  {t.files.map((f, i) => (
+                    <li key={i} className="flex justify-between border-b border-[var(--line)] py-1 text-[13px]">
+                      <span className="truncate">{f.name}</span>
+                      <span className="tnum text-[var(--dim)]">{Math.max(1, Math.round(f.size / 1024))} KB</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </label>
+            <label className="grid gap-1.5 text-[13px]">
+              <span className="text-[var(--dim)]">Notes</span>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                onBlur={() => save(r.id, { notes })}
+                rows={3}
+                className="border border-[var(--line-2)] bg-[var(--paper)] p-3 text-[14px]"
+              />
+            </label>
+          </div>
+          <p className="mt-6 text-[12px] leading-[1.6] text-[var(--dim)]">
+            Preview: your changes are saved in this browser only. In the live version they are shared with your team, and
+            documents go into the school&apos;s vault.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 export function ComplianceApp({ items, storageKey, school }: { items: Requirement[]; storageKey: string; school: string }) {
-  const [today, setToday] = useState("2026-09-23");
-  const [tracks, setTracks] = useState<Tracks>({});
+  /* Today and the saved statuses exist only in the browser; the page itself is built once at deploy. */
+  const today = useSyncExternalStore(noSubscribe, () => iso(new Date()), () => "2026-09-23");
+  const raw = useSyncExternalStore(noSubscribe, () => readRaw(storageKey), () => "{}");
+  const [, bump] = useState(0);
+  const tracks = useMemo<Tracks>(() => {
+    try {
+      return JSON.parse(raw);
+    } catch {
+      return {};
+    }
+  }, [raw]);
   const [tab, setTab] = useState<"upcoming" | "calendar" | "portals" | "all" | "report">("upcoming");
   const [open, setOpen] = useState<string | null>(null);
-  const [month, setMonth] = useState("2026-09");
+  const [monthSel, setMonth] = useState<string | null>(null);
+  const month = monthSel ?? today.slice(0, 7);
   const [day, setDay] = useState<string | null>(null);
   const [q, setQ] = useState("");
   const [scope, setScope] = useState<"yes" | "if" | "no" | "any">("yes");
 
-  useEffect(() => {
-    const t = iso(new Date());
-    setToday(t);
-    setMonth(t.slice(0, 7));
-    setTracks(load(storageKey));
-  }, [storageKey]);
-
-  const save = (id: string, patch: Partial<Track>) =>
-    setTracks((prev) => {
-      const next = { ...prev, [id]: { ...prev[id], ...patch } };
-      try {
-        localStorage.setItem(storageKey, JSON.stringify(next));
-      } catch {}
-      return next;
-    });
+  const save = (id: string, patch: Partial<Track>) => {
+    const next = { ...tracks, [id]: { ...tracks[id], ...patch } };
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(next));
+    } catch {}
+    bump((n) => n + 1);
+  };
 
   const mine = useMemo(() => items.filter((r) => r.applies === "yes"), [items]);
   const dated = mine.filter((r) => r.due);
@@ -280,7 +424,7 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
     return (
       <div>
         <p className="max-w-[64ch] text-[14px] leading-[1.65] text-[var(--mid)]">
-          The same year's work, sorted by where it has to be filed. Each login shows how much is waiting behind it and when the
+          The same year&apos;s work, sorted by where it has to be filed. Each login shows how much is waiting behind it and when the
           next thing is due, so a single sitting in one system clears everything queued there.
         </p>
         <div className="mt-6 grid gap-px border border-[var(--line)] bg-[var(--line)] md:grid-cols-2 xl:grid-cols-3">
@@ -391,141 +535,6 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
     );
   }
 
-  /* ---------- detail drawer ---------- */
-
-  function Drawer({ r }: { r: Requirement }) {
-    const t = tracks[r.id] ?? {};
-    const [confirmation, setConfirmation] = useState(t.confirmation ?? "");
-    const [notes, setNotes] = useState(t.notes ?? "");
-    return (
-      <div className="fixed inset-0 z-50 flex justify-end bg-[#16243A]/40" onClick={() => setOpen(null)} role="dialog" aria-modal="true" aria-label={r.title}>
-        <div className="h-full w-full max-w-[36rem] overflow-y-auto bg-[var(--ground)] shadow-2xl" onClick={(e) => e.stopPropagation()}>
-          <div className="sticky top-0 flex items-center justify-between border-b border-[var(--line)] bg-[var(--ground)] px-6 py-3">
-            <span className="flex gap-2">
-              <Pill tone={r.agency === "OSSE" ? "copper" : "teal"}>{r.agency}</Pill>
-              <Pill>{r.kind}</Pill>
-            </span>
-            <button onClick={() => setOpen(null)} className="min-h-[40px] px-2 text-[20px] leading-none text-[var(--mid)] hover:text-[var(--ink)]" aria-label="Close">×</button>
-          </div>
-          <div className="px-6 py-6">
-            <h3 className="text-[22px] font-medium leading-[1.2] tracking-[-0.015em]">{r.title}</h3>
-            <dl className="mt-5 grid grid-cols-[7.5rem_1fr] gap-x-4 gap-y-2.5 text-[14px]">
-              <dt className="text-[var(--dim)]">Due</dt>
-              <dd>
-                {r.due ? fmt(r.due, { weekday: "long", month: "long", day: "numeric", year: "numeric" }) : r.dueLabel || "Date not yet published"}
-                {r.precision === "season" && <span className="text-[var(--dim)]"> ({r.dueLabel}, end of window shown)</span>}
-                {r.precision === "window" && <span className="text-[var(--dim)]"> ({r.dueLabel})</span>}
-                {r.projected && <span className="block text-[12.5px] text-[var(--copper)]">Projected from OSSE&apos;s 2025–26 calendar. OSSE has not published 2026–27 yet.</span>}
-              </dd>
-              <dt className="text-[var(--dim)]">File it in</dt>
-              <dd>{r.platform}{r.alsoVia?.length ? <span className="block text-[12.5px] text-[var(--dim)]">Also via {r.alsoVia.join(", ")}</span> : null}</dd>
-              <dt className="text-[var(--dim)]">Who must file</dt>
-              <dd>{r.whoMustSubmit}{r.appliesWhy && <span className="block text-[12.5px] text-[var(--teal)]">{r.appliesWhy}</span>}</dd>
-              {r.contact && (<><dt className="text-[var(--dim)]">Agency contact</dt><dd className="break-words">{r.contact}</dd></>)}
-              {r.alsoOsse && r.agency === "DC PCSB" && (<><dt className="text-[var(--dim)]">Note</dt><dd>OSSE requests this too, so it may overlap with an OSSE submission.</dd></>)}
-            </dl>
-            {r.purpose && <p className="mt-5 whitespace-pre-line text-[14px] leading-[1.65] text-[var(--mid)]">{r.purpose}</p>}
-            {r.guideUrl && (
-              <a href={r.guideUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-[40px] items-center border border-[var(--ink)] px-3 text-[13px] hover:bg-[var(--ink)] hover:text-[var(--on-deep)]">
-                {r.guide || "Official guidance"} ↗
-              </a>
-            )}
-
-            <div className="mt-8 border-l-2 border-[var(--teal)] bg-[var(--teal-wash)] p-4">
-              <h4 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--teal-d)]">What Arthur does for this one</h4>
-              <ol className="mt-2 grid list-decimal gap-1 pl-5 text-[13.5px] leading-[1.55] text-[var(--ink)]">
-                <li>Watches {r.agency === "OSSE" ? "OSSE" : "DC PCSB"} for changes to the date or the rules{r.guideUrl ? ", and keeps the official guide attached here" : ""}.</li>
-                <li>Pulls last year&apos;s filing and the documents it needs out of your vault.</li>
-                <li>Drafts the packet and sends it to {t.owner ?? r.owner} for review {r.due ? "two weeks before the deadline" : "as soon as a date is published"}.</li>
-                <li>Reminds the owner at 14, 7 and 2 days, and asks for the confirmation number once it is filed.</li>
-              </ol>
-              <p className="mt-2 text-[12.5px] text-[var(--mid)]">Pressing submit in {r.platform} stays with your team. The login belongs to the school.</p>
-            </div>
-
-            <div className="mt-8 grid gap-5">
-              <label className="grid gap-1.5 text-[13px]">
-                <span className="text-[var(--dim)]">Status</span>
-                <div className="flex flex-wrap gap-1">
-                  {STATUS.map((s) => (
-                    <button
-                      key={s.k}
-                      onClick={() => save(r.id, { status: s.k, ...(DONE(s.k) && !t.submittedOn ? { submittedOn: today } : {}) })}
-                      className={`min-h-[38px] border px-2.5 text-[12.5px] ${(t.status ?? "open") === s.k ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--on-deep)]" : "border-[var(--line-2)] bg-[var(--paper)] hover:bg-[var(--sunk)]"}`}
-                    >
-                      {s.label}
-                    </button>
-                  ))}
-                </div>
-              </label>
-              <label className="grid gap-1.5 text-[13px]">
-                <span className="text-[var(--dim)]">Owner</span>
-                <select
-                  value={t.owner ?? r.owner}
-                  onChange={(e) => save(r.id, { owner: e.target.value })}
-                  className="min-h-[42px] border border-[var(--line-2)] bg-[var(--paper)] px-2 text-[14px]"
-                >
-                  {[...new Set([r.owner, ...OWNERS])].map((o) => <option key={o}>{o}</option>)}
-                </select>
-              </label>
-              {DONE(t.status) && (
-                <label className="grid gap-1.5 text-[13px]">
-                  <span className="text-[var(--dim)]">Confirmation number</span>
-                  <input
-                    value={confirmation}
-                    onChange={(e) => setConfirmation(e.target.value)}
-                    onBlur={() => save(r.id, { confirmation })}
-                    placeholder="From the portal's receipt"
-                    className="min-h-[42px] border border-[var(--line-2)] bg-[var(--paper)] px-3 text-[14px]"
-                  />
-                </label>
-              )}
-              <label className="grid gap-1.5 text-[13px]">
-                <span className="text-[var(--dim)]">Documents</span>
-                <input
-                  type="file"
-                  multiple
-                  onChange={(e) =>
-                    save(r.id, {
-                      files: [
-                        ...(t.files ?? []),
-                        ...[...(e.target.files ?? [])].map((f) => ({ name: f.name, size: f.size, added: today })),
-                      ],
-                    })
-                  }
-                  className="text-[13px] file:mr-3 file:min-h-[38px] file:border file:border-[var(--line-2)] file:bg-[var(--paper)] file:px-3"
-                />
-                {t.files?.length ? (
-                  <ul className="grid gap-1">
-                    {t.files.map((f, i) => (
-                      <li key={i} className="flex justify-between border-b border-[var(--line)] py-1 text-[13px]">
-                        <span className="truncate">{f.name}</span>
-                        <span className="tnum text-[var(--dim)]">{Math.max(1, Math.round(f.size / 1024))} KB</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
-              </label>
-              <label className="grid gap-1.5 text-[13px]">
-                <span className="text-[var(--dim)]">Notes</span>
-                <textarea
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  onBlur={() => save(r.id, { notes })}
-                  rows={3}
-                  className="border border-[var(--line-2)] bg-[var(--paper)] p-3 text-[14px]"
-                />
-              </label>
-            </div>
-            <p className="mt-6 text-[12px] leading-[1.6] text-[var(--dim)]">
-              Preview: your changes are saved in this browser only. In the live version they are shared with your team, and
-              documents go into the school&apos;s vault.
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   const tabs = [
     ["upcoming", "Coming up"],
     ["calendar", "Calendar"],
@@ -577,7 +586,9 @@ export function ComplianceApp({ items, storageKey, school }: { items: Requiremen
         {tab === "report" && Report()}
       </div>
 
-      {current && <Drawer key={current.id} r={current} />}
+      {current && (
+        <Drawer key={current.id} r={current} t={tracks[current.id] ?? {}} today={today} save={save} onClose={() => setOpen(null)} />
+      )}
     </div>
   );
 }
