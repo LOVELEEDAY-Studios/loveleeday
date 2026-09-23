@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { getPortal } from "@/content/portals";
-import { portfolio } from "@/content/portfolio";
+import { getPortfolio } from "@/content/portfolio";
 
 export const dynamic = "force-dynamic";
 
@@ -19,23 +19,28 @@ export async function POST(request: Request) {
     // endpoint cannot be used to send mail from an arbitrary payload. The
     // fund-level portfolio page carries its own token and is accepted the same
     // way — it is a different object but the same trust boundary.
+    // Every portfolio page, not `portfolio` — that export is an alias for Collab, so notes sent
+    // from the Lightship and Meknology pages were rejected with "Unknown review link" (404,
+    // reproduced 2026-09-23). A form that silently cannot send is worse than no form.
     const found = getPortal(token);
-    const isPortfolio = token === portfolio.token;
-    if (!found && !isPortfolio) {
+    const pf = found ? undefined : getPortfolio(token);
+    if (!found && !pf) {
       return NextResponse.json({ error: "Unknown review link" }, { status: 404 });
     }
     const portal = found ?? {
-      token: portfolio.token,
-      client: portfolio.fund,
+      token: pf!.token,
+      client: pf!.fund,
       project: "Portfolio study",
       round: "Round 01",
-      deliverables: portfolio.cases.map((c) => ({ slug: c.slug, title: c.company })),
+      deliverables: pf!.cases.map((c) => ({ slug: c.slug, title: c.company })),
     };
+    const portfolioLink = !found;
 
     const name = String(body.name ?? "").trim().slice(0, 120);
     const email = String(body.email ?? "").trim().slice(0, 200);
     const note = String(body.note ?? "").trim().slice(0, 5000);
     const slug = String(body.slug ?? "").trim();
+    const intent = body.intent === "start" ? "start" : "feedback";
 
     if (!name || !email || !note) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -53,14 +58,15 @@ export async function POST(request: Request) {
       `<tr style="border-bottom:1px solid #D4D2C9"><td style="padding:.6rem 0;font:600 11px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#5A5A55">${esc(k)}</td><td style="padding:.6rem 0;text-align:right">${v}</td></tr>`;
 
     await resend.emails.send({
-      from: "LOVELEEDAY Portal <arthur@olldae.com>",
+      from: "LOVELEEDAY Portal <hello@loveleedaystudios.com>",
       to: "blackmarble.m.g@gmail.com",
       replyTo: email,
-      subject: `Portal note — ${portal.client}: ${name}`,
+      subject: `${intent === "start" ? "READY TO START" : "Portal note"} — ${portal.client}: ${name}`,
       html: `<div style="font-family:Inter,-apple-system,sans-serif;max-width:620px;margin:0 auto;background:#F3F2EE;padding:2rem;color:#111">
         <h2 style="font-weight:400;letter-spacing:-.02em;margin:0 0 1.25rem">Review note — ${esc(portal.client)}</h2>
         <table style="width:100%;border-collapse:collapse">
           ${row("From", `${esc(name)} &lt;<a href="mailto:${esc(email)}" style="color:#111">${esc(email)}</a>&gt;`)}
+          ${row("Intent", intent === "start" ? "Let's get started" : "Feedback on the work")}
           ${row("About", esc(about))}
           ${row("Project", esc(portal.project))}
           ${row("Round", esc(portal.round))}
@@ -70,7 +76,7 @@ export async function POST(request: Request) {
           <p style="line-height:1.6;white-space:pre-wrap;margin:0">${esc(note)}</p>
         </div>
         <p style="margin-top:1.5rem;font-size:12px;color:#5A5A55">
-          <a href="https://loveleedaystudios.com/p/${esc(portal.token ?? "")}${deliverable ? "/" + esc(deliverable.slug) : ""}" style="color:#111">Open the portal page they were looking at</a>
+          <a href="https://loveleedaystudios.com/p/${portfolioLink ? "portfolio/" : ""}${esc(portal.token ?? "")}${!portfolioLink && deliverable ? "/" + esc(deliverable.slug) : ""}" style="color:#111">Open the portal page they were looking at</a>
         </p>
       </div>`,
     });
@@ -78,8 +84,9 @@ export async function POST(request: Request) {
     // The client gets their own words back, so the note is a record and not a
     // message into a void.
     await resend.emails.send({
-      from: "LOVELEEDAY Studios <arthur@olldae.com>",
+      from: "LOVELEEDAY Studios <hello@loveleedaystudios.com>",
       to: email,
+      replyTo: "daniel@loveleedaystudios.com",
       subject: `Note received — ${portal.client} review`,
       html: `<div style="font-family:Inter,-apple-system,sans-serif;max-width:620px;margin:0 auto;background:#F3F2EE;padding:2rem;color:#111">
         <h2 style="font-weight:400;letter-spacing:-.02em;margin:0 0 .5rem">Note received.</h2>
