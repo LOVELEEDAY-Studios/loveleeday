@@ -44,6 +44,14 @@ PAGES = ["index", "operating-system", "arthur", "architecture", "use-cases",
 def clean(name):
     return "/" if name == "index" else "/" + name
 
+# ── typography guard: never ship characters that render as errors ─────────────
+# (a narrow no-break space made a client read "December312026", 2026-09-23)
+import subprocess, sys
+_lint = subprocess.run(["node", str(ROOT / "scripts" / "unicode-lint.mjs"), str(SRC)], capture_output=True, text=True)
+if _lint.returncode != 0:
+    print(_lint.stdout[-3000:])
+    sys.exit("BUILD STOPPED: unicode-lint found characters that render as errors (above)")
+
 # ── copy, excluding what the app owns or what is review-only ─────────────────
 if DEST.exists():
     shutil.rmtree(DEST)
