@@ -1,6 +1,6 @@
 import { NextResponse, after } from "next/server";
 import { Resend } from "resend";
-import { findings, getCivic, layers, mandate, strengths, themes } from "@/content/civic/kalamazoo";
+import { findings, getCivic, layers, mandate, nextQuestions, strengths, themes } from "@/content/civic/kalamazoo";
 
 export const dynamic = "force-dynamic";
 
@@ -38,6 +38,8 @@ function context(today: Date) {
   });
   lines.push("ARTHUR PARTS:");
   for (const l of layers) lines.push(`- ${l.name}: ${l.does} Would have caught: ${l.would}`);
+  lines.push("QUESTIONS ARTHUR COULD ANSWER ONCE CONNECTED (not answered yet; these are scope):");
+  for (const x of nextQuestions) lines.push(`- ${x.q} (joins: ${x.joins})`);
   lines.push("NOT CONNECTED (these need the County's own systems after it joins): internal finance ledgers, HR and payroll, case management, 911 CAD data, internal email, unpublished minutes or contracts.");
   return lines.join("\n");
 }
