@@ -289,7 +289,7 @@ export default async function PortfolioPage({
               deliverables={p.cases.map((c) => ({ slug: c.slug, title: c.company }))}
               intent="start"
               heading="Reply to us"
-              blurb="Say the word and we start this week, or tell us what to change first. It reaches Daniel directly, and we answer within one business day."
+              blurb="Say the word and we start this week, or tell us what to change first. We answer within one business day."
             />
           </div>
         </section>

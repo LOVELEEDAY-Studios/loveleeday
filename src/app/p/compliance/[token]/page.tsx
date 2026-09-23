@@ -318,7 +318,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
             deliverables={[{ slug: "compliance", title: "Analysis and dashboard" }]}
             intent="start"
             heading="Reply to us"
-            blurb="Say the word and we start with October, or tell us what to look at next. It reaches Daniel directly."
+            blurb="Say the word and we start with October, or tell us what to look at next."
           />
         </div>
       </section>
