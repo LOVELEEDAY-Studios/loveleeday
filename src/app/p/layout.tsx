@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LogoMark } from "@/components/Nav";
+import { ViewBeacon } from "@/components/portal/ViewBeacon";
 
 /* Portals are handed out one link at a time. They must never turn up in a
    search result, a sitemap, or a referrer-driven crawl. */
@@ -35,6 +36,7 @@ export default function PortalLayout({
       </header>
 
       <main className="flex-1">{children}</main>
+      <ViewBeacon />
 
       <footer className="border-t border-[var(--line)]">
         <div className="mx-auto flex max-w-[1340px] flex-col gap-2 px-6 py-6 text-[12px] text-[var(--mid)] sm:flex-row sm:items-center sm:justify-between">
