@@ -168,9 +168,12 @@ export default async function PortfolioPage({
               credibility. */}
           {["One", "Two", "Three", "Four", "Five", "Six"][p.fundFindings.length - 1] ??
             p.fundFindings.length}{" "}
-          {p.fundFindings.length === 1 ? "thing" : "things"} we found on {p.fundDomain} itself.
+          {p.fundFindings.length === 1 ? "thing" : "things"} we found{" "}
+          {p.findingsScope ?? <>on {p.fundDomain} itself</>}.
         </h2>
-        <div className="mt-12 grid gap-px bg-[var(--line)] md:grid-cols-3">
+        <div
+          className={`mt-12 grid gap-px bg-[var(--line)] ${p.fundFindings.length % 3 === 0 || p.fundFindings.length === 1 ? "md:grid-cols-3" : "md:grid-cols-2"}`}
+        >
           {p.fundFindings.map((f, i) => (
             <div key={f.title} className="bg-[var(--ground)] p-7">
               <span className="font-[family-name:var(--font-mono)] text-[11px] tracking-[0.18em] text-[var(--dim)] tnum">
@@ -201,7 +204,7 @@ export default async function PortfolioPage({
                   </p>
                 </div>
                 <Link
-                  href={`/p/${c.portalToken}/marketing-site`}
+                  href={`/p/${c.portalToken}`}
                   className="inline-flex min-h-[44px] items-center bg-[var(--accent)] px-5 text-[14px] font-medium text-white transition-colors hover:bg-[var(--accent-dim)]"
                 >
                   Open the full package
