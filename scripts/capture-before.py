@@ -28,6 +28,7 @@ TARGETS = {
     "cmodel": "https://cmodel.io/",
     "venturehue": "https://venturehue.com/",
     "meknology": "https://www.meknology.com/",
+    "blacktechweek": "https://blacktechweek.com/",
 }
 
 

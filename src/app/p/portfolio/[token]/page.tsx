@@ -57,6 +57,7 @@ function ResearchSection({ r }: { r: Research }) {
 }
 import { formatDate } from "@/content/portals";
 import { BeforeAfter } from "@/components/portal/BeforeAfter";
+import { Videos } from "@/components/portal/Videos";
 import { NoteForm } from "@/components/portal/NoteForm";
 
 export const dynamicParams = false;
@@ -243,6 +244,11 @@ export default async function PortfolioPage({
                   </ul>
                 </div>
               </div>
+              {c.videos && (
+                <div className="mt-14 border-t border-[var(--line)] pt-10">
+                  <Videos videos={c.videos} />
+                </div>
+              )}
             </div>
           </article>
         ))}

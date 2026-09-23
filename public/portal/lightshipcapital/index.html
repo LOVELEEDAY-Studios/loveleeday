@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lightship Capital — Investing in Remarkable</title>
+<meta name="description" content="Lightship Capital is a Cincinnati venture fund backing underrepresented founders across the Midwest and South, from post-product/pre-seed through Series A. GP Brian Brackeen and Candice Matthews Brackeen. Portfolio, thesis and how to apply, in one page.">
+<meta property="og:title" content="Lightship Capital — Investing in Remarkable">
+<meta property="og:description" content="A Cincinnati venture fund backing founders of color, women, LGBTQ+ and disabled founders across the Midwest and South. Eighteen portfolio companies, one page.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* -----------------------------------------------------------------------
+   Lightship Capital — homepage rebuild, direction study by LOVELEEDAY Studios.
+
+   REFERENCE, taken whole rather than section by section:
+     Titan (mobbin.com/screens/f2e96a69-ac49-4209-8bf4-35c85e0a15a9) — a dark,
+     confident financial-services register: black ground, quiet award-winning
+     copy, sharp-cornered pill CTAs, a card carousel instead of a scrapbook of
+     photos. It reads like a firm that manages money, not a template.
+     Vercel "Individual investors" (mobbin.com/sites/sections/76d76107) — a
+     bordered, hairline-ruled grid with no photography, just names and one
+     line of context each. Built for a reader doing due diligence, not
+     browsing.
+
+   Why this and not the live site's register: lightship.capital is a Wix
+   marketing page — full-bleed ocean photo, centered white headline, rounded
+   yellow pill buttons, a slideshow, three curated "highlight" cards with a
+   "full portfolio" button hiding the other fifteen companies across a
+   separate page. That is a brochure for browsing. Two of the three
+   audiences this page needs to serve — an LP doing diligence and a
+   co-investor sizing up the roster — are reading a document, not browsing a
+   brochure. So the whole architecture here is a document: a sticky
+   left-hand index instead of a top nav, ledger tables instead of card grids,
+   a masthead instead of a headshot wall, and the full eighteen-company
+   portfolio on this one page instead of three highlights and a link away.
+
+   COLOUR AND LOGO ARE THEIRS, KEPT EXACTLY: navy #122359 and yellow #FFD100
+   both sampled from lightship.capital's own hero and button pixels; the
+   wordmark and ship-icon mark are their own PNGs pulled from the live site.
+   Nothing here is invented — every figure, name and sentence in quotes is
+   copied from lightship.capital, lightship.foundation or a portfolio
+   company's own site, cited inline in this comment where it isn't obvious:
+   team bios and "how we invest" criteria from /about; portfolio list, links
+   and one-liners from /portfolio; contact emails from /contact; Anchor Fund
+   copy from /anchorfund; address and socials from the site footer.
+   ----------------------------------------------------------------------- */
+:root{
+  --navy:#0c1a33; --navy-2:#132a52; --navy-3:#0a1528;
+  --line:rgba(233,229,216,.14); --line-2:rgba(233,229,216,.26);
+  --gold:#FFD100; --sky:#4FB3E8;
+  --cream:#F1ECDE; --muted:#93A0BE; --muted-2:#6C7A9C;
+  --serif:"Newsreader",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  --gut:clamp(20px,4vw,64px); --rail-w:288px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--cream);font:400 17px/1.6 var(--serif);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-weight:400;text-wrap:balance}
+.mono{font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.eyebrow{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+em{font-style:italic;color:var(--sky)}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 22px;background:var(--gold);color:var(--navy-3);text-decoration:none;font:600 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px);background:#FFDD40}
+.btn--ghost{background:transparent;color:var(--cream);border:1px solid var(--line-2)}
+.btn--ghost:hover{background:var(--navy-2);transform:translateY(-2px)}
+.btn .arr{transition:transform .18s}.btn:hover .arr{transform:translateX(3px)}
+
+/* ---------- shell: sticky index rail + document column ---------- */
+.shell{display:grid;grid-template-columns:var(--rail-w) 1fr;min-height:100vh}
+.rail{position:sticky;top:0;align-self:start;height:100vh;border-right:1px solid var(--line);padding:30px 26px;display:flex;flex-direction:column;gap:36px;overflow-y:auto}
+.rail__brand{display:flex;align-items:center;gap:12px}
+.rail__brand img{width:26px;height:26px}
+.rail__brand span{font:500 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.rail nav{display:flex;flex-direction:column}
+.rail nav a{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:baseline;padding:11px 0;text-decoration:none;color:var(--muted-2);border-bottom:1px solid transparent;font-size:14.5px;transition:color .2s}
+.rail nav a .idx{font:500 11px/1 var(--mono);color:var(--muted-2)}
+.rail nav a:hover{color:var(--cream)}
+.rail nav a.active{color:var(--cream)}
+.rail nav a.active .idx{color:var(--gold)}
+.rail__foot{margin-top:auto;display:flex;flex-direction:column;gap:14px}
+.rail__loc{font-size:13px;color:var(--muted);line-height:1.5}
+.rail__soc{display:flex;gap:14px}
+.rail__soc a{font:500 11px/1 var(--mono);text-transform:uppercase;color:var(--muted-2);text-decoration:none}
+.rail__soc a:hover{color:var(--gold)}
+
+.topbar,.idxbar{display:none}
+
+.main{min-width:0}
+.sec{padding:clamp(56px,7vw,108px) clamp(24px,5vw,72px);border-bottom:1px solid var(--line)}
+.sec:last-child{border-bottom:none}
+.sec__head{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);align-items:end;margin-bottom:clamp(36px,5vw,60px)}
+.sec__head h2{font-size:clamp(30px,3.6vw,50px);line-height:1.08;letter-spacing:-.01em}
+.sec__head p{color:var(--muted);max-width:44ch;font-size:16px}
+.marker{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.marker b{font:500 12px/1 var(--mono);color:var(--gold);letter-spacing:.1em}
+.marker span{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+
+/* ---------- 00 opening ---------- */
+.open{padding-top:clamp(64px,9vw,120px)}
+.open h1{font-size:clamp(40px,6vw,84px);line-height:1.02;letter-spacing:-.015em;max-width:15ch}
+.open__row{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--gut);margin-top:clamp(28px,4vw,48px);align-items:start}
+.open__lede{font-size:clamp(17px,1.4vw,19.5px);line-height:1.6;color:var(--muted);max-width:52ch}
+.open__lede + .open__lede{margin-top:16px}
+.open__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.facts{border-top:1px solid var(--line)}
+.facts div{display:grid;grid-template-columns:1fr 1.5fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.facts dt{font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2)}
+.facts dd{font-size:14.5px;color:var(--cream)}
+
+/* ---------- 01 how we invest — criteria ledger ---------- */
+.crit{border-top:1px solid var(--line)}
+.crit__row{display:grid;grid-template-columns:.7fr 2.3fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.crit__row h3{font-size:19px;font-weight:500;color:var(--gold)}
+.crit__row p{color:var(--muted);font-size:15.5px;max-width:70ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tag{border:1px solid var(--line-2);padding:5px 12px;font:500 11.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--cream)}
+
+/* ---------- 02 portfolio ledger ---------- */
+.pf{border-top:1px solid var(--line)}
+.pf__row{display:grid;grid-template-columns:44px 1.1fr 1.7fr 110px;gap:20px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .18s}
+a.pf__row:hover{background:var(--navy-2)}
+.pf__row .n{font:500 12px/1 var(--mono);color:var(--muted-2)}
+.pf__row h3{font-size:18px;font-weight:500}
+.pf__row p{color:var(--muted);font-size:14.5px}
+.pf__row .go{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--sky);text-align:right;white-space:nowrap}
+.pf__row.is-off{opacity:.56}
+.pf__row.is-off h3{color:var(--muted)}
+.pf__row.is-off .go{color:var(--muted-2)}
+.pf__note{margin-top:18px;font-size:13px;color:var(--muted-2);max-width:70ch}
+
+/* ---------- 03 case study ---------- */
+.case{display:grid;grid-template-columns:.9fr 1.4fr;gap:var(--gut);align-items:center}
+.case__img{overflow:hidden;position:relative}
+.case__img img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+.case blockquote{font-size:clamp(24px,2.8vw,34px);line-height:1.32;letter-spacing:-.01em;font-style:italic;color:var(--cream)}
+.case blockquote::before{content:"\201C"}
+.case blockquote::after{content:"\201D"}
+.case .go{margin-top:22px;display:inline-flex}
+
+/* ---------- 04 team masthead ---------- */
+.team{border-top:1px solid var(--line)}
+.person{display:grid;grid-template-columns:.9fr 2.1fr;gap:24px;padding:30px 0;border-bottom:1px solid var(--line)}
+.person h3{font-size:26px;font-weight:500}
+.person .role{display:block;margin-top:4px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.person p{color:var(--muted);font-size:15.5px;max-width:64ch}
+
+/* ---------- 05 beyond the fund ---------- */
+.beyond{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut)}
+.beyond__card{border:1px solid var(--line-2);padding:32px}
+.beyond__card h3{font-size:23px;margin-bottom:6px}
+.beyond__card .tagline{color:var(--gold);font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:14px}
+.beyond__card p{color:var(--muted);font-size:15px;margin-bottom:20px}
+
+/* ---------- 06 paths / apply ---------- */
+.paths{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.path{padding:28px 26px 32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px;min-height:190px}
+.path .who{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2)}
+.path h3{font-size:20px;font-weight:500}
+.path p{color:var(--muted);font-size:14.5px;flex:1}
+.path a{color:var(--sky);text-decoration:none;font-size:14.5px;word-break:break-word}
+.path a:hover{color:var(--gold)}
+.path--lead{background:var(--navy-2)}
+
+/* ---------- footer ---------- */
+.foot{padding:44px clamp(24px,5vw,72px) 56px}
+.foot__top{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-bottom:26px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.foot__top img{height:20px;width:auto}
+.foot__top ul{display:flex;gap:22px;list-style:none;flex-wrap:wrap}
+.foot__top a{text-decoration:none;color:var(--muted);font-size:13.5px}
+.foot__top a:hover{color:var(--gold)}
+.foot__bot{display:flex;justify-content:space-between;gap:24px;padding-top:22px;flex-wrap:wrap;font-size:13px;color:var(--muted-2)}
+.foot__bot b{color:var(--muted);font-weight:500}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .shell{grid-template-columns:1fr}
+  .rail{display:none}
+  .topbar{display:flex;position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--navy) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);align-items:center;justify-content:space-between;padding:14px var(--gut)}
+  .topbar img{height:20px}
+  .idxbar{display:flex;gap:0;overflow-x:auto;position:sticky;top:53px;z-index:29;background:var(--navy);border-bottom:1px solid var(--line);padding:0 var(--gut)}
+  .idxbar a{flex:none;padding:12px 14px;font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted-2);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+  .idxbar a.active{color:var(--gold);border-color:var(--gold)}
+  .open__row,.sec__head,.case,.beyond{grid-template-columns:1fr}
+  .facts div,.crit__row{grid-template-columns:1fr;gap:6px}
+  .pf__row{grid-template-columns:28px 1fr;row-gap:4px}
+  .pf__row p{grid-column:2/3}
+  .pf__row .go{grid-column:2/3;text-align:left}
+  .person{grid-template-columns:1fr;gap:8px}
+  .paths{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img src="assets/header-logo-full.png" alt="Lightship Capital">
+  <a class="btn" href="https://www.lightship.capital/apply" style="height:36px;padding:0 16px;font-size:11.5px">Apply</a>
+</div>
+<div class="idxbar mono" id="idxbar">
+  <a href="#open">00 Start</a>
+  <a href="#invest">01 Invest</a>
+  <a href="#portfolio">02 Portfolio</a>
+  <a href="#case">03 Case study</a>
+  <a href="#team">04 Team</a>
+  <a href="#beyond">05 Beyond</a>
+  <a href="#apply">06 Apply</a>
+</div>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="rail__brand">
+      <img src="assets/lc-sym-mark.png" alt="">
+      <span>Lightship</span>
+    </div>
+    <nav id="rail-nav">
+      <a href="#open"><span class="idx">00</span><span>Start</span></a>
+      <a href="#invest"><span class="idx">01</span><span>How we invest</span></a>
+      <a href="#portfolio"><span class="idx">02</span><span>Portfolio</span></a>
+      <a href="#case"><span class="idx">03</span><span>Case study</span></a>
+      <a href="#team"><span class="idx">04</span><span>Team</span></a>
+      <a href="#beyond"><span class="idx">05</span><span>Beyond the fund</span></a>
+      <a href="#apply"><span class="idx">06</span><span>Apply</span></a>
+    </nav>
+    <div class="rail__foot">
+      <a class="btn" href="https://www.lightship.capital/apply" style="justify-content:center">Apply for funding</a>
+      <div class="rail__loc">2900 Reading Rd<br>Cincinnati, OH 45206</div>
+      <div class="rail__soc">
+        <a href="https://twitter.com/lightshipcap">Twitter</a>
+        <a href="https://www.instagram.com/lightship.capital/">Instagram</a>
+        <a href="https://www.facebook.com/lightship.cap/">Facebook</a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="sec open" id="open">
+      <p class="eyebrow rv">Cincinnati, OH &middot; Venture Capital</p>
+      <h1 class="rv" style="margin-top:18px">Investing in <em>remarkable.</em></h1>
+      <div class="open__row">
+        <div>
+          <p class="open__lede rv">By seeking entrepreneurs and funds who leverage modest resources to produce outsized returns, Lightship finds and develops remarkable talent while catalyzing emerging ecosystems.</p>
+          <p class="open__lede rv">We believe impact and profit are simultaneously achievable.</p>
+          <div class="open__cta rv">
+            <a class="btn" href="https://www.lightship.capital/apply">Apply for funding <span class="arr">&rarr;</span></a>
+            <a class="btn btn--ghost" href="#apply">For LPs &amp; co-investors</a>
+          </div>
+        </div>
+        <dl class="facts rv">
+          <div><dt>Who we back</dt><dd>Founders of Color, LGBTQ+, Women &amp; Innovators with Disabilities</dd></div>
+          <div><dt>Where</dt><dd>Anywhere in the US except New York, Boston &amp; San Francisco &mdash; Midwest &amp; South are the focus</dd></div>
+          <div><dt>Stage</dt><dd>Post-Product, Post-Revenue, Pre-Seed to Series A</dd></div>
+          <div><dt>Leadership</dt><dd>Candice Matthews Brackeen &amp; Brian Brackeen, General Partners</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="sec" id="invest">
+      <div class="sec__head">
+        <div>
+          <div class="marker rv"><b>01</b><span>How we invest</span></div>
+          <h2 class="rv">Criteria, <em>stated plainly.</em></h2>
+        </div>
+        <p class="rv">Lightship Capital invests in remarkable businesses led by FOC (Founders of Color), LGBTQ+, Women &amp; Innovators with Disabilities &mdash; supporting founders and their teams with the resources every startup needs to thrive.</p>
+      </div>
+      <div class="crit">
+        <div class="crit__row rv">
+          <h3>Industries</h3>
+          <div>
+            <p>Five sectors, as stated on lightship.capital/about.</p>
+            <div class="tags">
+              <span class="tag">CPG</span><span class="tag">E-Commerce</span><span class="tag">Sustainability</span><span class="tag">Artificial Intelligence</span><span class="tag">Health Tech</span>
+            </div>
+          </div>
+        </div>
+        <div class="crit__row rv">
+          <h3>Where</h3>
+          <p>Companies based anywhere in the United States, excluding New York, Boston, and San Francisco. Companies based in the Midwest and South are the focus, and firms based in or willing to relocate to Ohio, Tulsa, OK or Arkansas are given additional consideration.</p>
+        </div>
+        <div class="crit__row rv">
+          <h3>Stage</h3>
+          <p>Post-Product, Post-Revenue, Pre-Seed to Series A.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="portfolio">
+      <div class="sec__head">
+        <div>
+          <div class="marker rv"><b>02</b><span>Portfolio &middot; 18 companies</span></div>
+          <h2 class="rv">The whole roster, <em>not the highlights.</em></h2>
+        </div>
+        <p class="rv">Lightship's own portfolio page shows three companies and a "full portfolio" button for the other fifteen. Here is the complete list, in the order lightship.capital/portfolio lists it, each linking straight to the company.</p>
+      </div>
+      <div class="pf">
+        <a class="pf__row rv" href="https://proovtest.com/" target="_blank" rel="noopener"><span class="n">01</span><h3>Proov</h3><p>Helping women become empowered about their unique cycles.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://www.allergyamulet.com/" target="_blank" rel="noopener"><span class="n">02</span><h3>Allergy Amulet</h3><p>The world&rsquo;s smallest &amp; fastest consumer food allergen sensor.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://healthyrootsdolls.com/" target="_blank" rel="noopener"><span class="n">03</span><h3>Healthy Roots Dolls</h3><p>Represent the beauty of our diversity through dolls and storybooks.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://www.boddlelearning.com/" target="_blank" rel="noopener"><span class="n">04</span><h3>Boddle Learning</h3><p>Make learning fun with our personalized K-6 math game.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://undock.com/m/" target="_blank" rel="noopener"><span class="n">05</span><h3>Undock</h3><p>The super calendar with scheduling that works like autocomplete.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://www.hautehijab.com/" target="_blank" rel="noopener"><span class="n">06</span><h3>Haute Hijab</h3><p>Creating a world where every woman feels comfortable and confident.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://femisecrets.com/" target="_blank" rel="noopener"><span class="n">07</span><h3>Femi Secrets</h3><p>The first period award-winning company making a woman&rsquo;s life easier.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://www.vyrill.com/" target="_blank" rel="noopener"><span class="n">08</span><h3>Vyrill</h3><p>Harnessing the power of video to elevate your brand&rsquo;s content.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://karemobile.com/" target="_blank" rel="noopener"><span class="n">09</span><h3>Kare Mobile</h3><p>Offering affordable, comprehensive, and convenient dental treatment.</p><span class="go">Visit &rarr;</span></a>
+        <div class="pf__row is-off rv"><span class="n">10</span><h3>Bootup</h3><p>The fastest way for individuals to launch their tech careers.</p><span class="go">Not linked</span></div>
+        <a class="pf__row rv" href="https://www.freshfry.me/" target="_blank" rel="noopener"><span class="n">11</span><h3>FreshFry</h3><p>A safer and easier way to replenish and extend the life of your frying oil.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://visuwall.com/" target="_blank" rel="noopener"><span class="n">12</span><h3>Visuwall</h3><p>Leverage storefronts to deliver brand messaging and capture analytics.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://enableinjections.com/" target="_blank" rel="noopener"><span class="n">13</span><h3>Enable Injections</h3><p>A simple, friendly and wearable drug delivery solution.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://www.getarbit.com/" target="_blank" rel="noopener"><span class="n">14</span><h3>Arbit</h3><p>Empowering both buyers and sellers in the sneaker resell market.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://curlmix.com/" target="_blank" rel="noopener"><span class="n">15</span><h3>CurlMix</h3><p>Master your curls in 21 days.</p><span class="go">Visit &rarr;</span></a>
+        <a class="pf__row rv" href="https://www.brevitypitch.com/" target="_blank" rel="noopener"><span class="n">16</span><h3>Brevity Pitch</h3><p>AI-powered role play that unlocks your service quotient.</p><span class="go">Visit &rarr;</span></a>
+        <div class="pf__row is-off rv"><span class="n">17</span><h3>Semiosis AI</h3><p>Making the job search easier &ndash; use Jobby.</p><span class="go">Not linked</span></div>
+        <a class="pf__row rv" href="https://www.cmodel.io/" target="_blank" rel="noopener"><span class="n">18</span><h3>CModel</h3><p>Your strategic co-pilot for every decision.</p><span class="go">Visit &rarr;</span></a>
+      </div>
+      <p class="pf__note rv">Not linked, by design: joinbootup.com&rsquo;s domain has lapsed and now serves an unrelated Indonesian gambling site, and semiosis-ai.com no longer resolves to a live company site. Both still appear above so the roster stays complete &mdash; they just aren&rsquo;t sent anywhere broken.</p>
+    </section>
+
+    <section class="sec" id="case">
+      <div class="marker rv"><b>03</b><span>Case study</span></div>
+      <div class="case" style="margin-top:22px">
+        <div class="case__img rv"><img src="assets/lsc-web-template2-page1-prv-png.png" alt="Photograph from Lightship Capital's Proov case study, from lightship.capital" loading="lazy"></div>
+        <div class="rv">
+          <blockquote>Proov was created to empower women to know more about their menstrual cycles, ovulation health, and PdG levels.</blockquote>
+          <a class="btn btn--ghost go" href="https://www.lightship.capital/proov">Read the full case study <span class="arr">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="team">
+      <div class="sec__head">
+        <div>
+          <div class="marker rv"><b>04</b><span>Team</span></div>
+          <h2 class="rv">Who&rsquo;s <em>behind it.</em></h2>
+        </div>
+        <p class="rv">Bios as published on lightship.capital/about.</p>
+      </div>
+      <div class="team">
+        <div class="person rv">
+          <div><h3>Candice Matthews Brackeen</h3><span class="role">General Partner</span></div>
+          <p>Candice Brackeen is the General Partner of Lightship, the Cincinnati-based venture capital fund. Lightship Capital works to support underrepresented, early-stage, transformational businesses.</p>
+        </div>
+        <div class="person rv">
+          <div><h3>Brian Brackeen</h3><span class="role">General Partner</span></div>
+          <p>Brian Brackeen is the General Partner of Lightship, the Cincinnati-based venture capital fund. Brian is responsible for fund operations, entrepreneurial training, and leadership of the AI team.</p>
+        </div>
+        <div class="person rv">
+          <div><h3>Alexis Alston</h3><span class="role">Partner</span></div>
+          <p>Alexis Alston is a Partner of Lightship, where she is the first contact for our founders, prepares investment memorandum, and manages deal flow.</p>
+        </div>
+        <div class="person rv">
+          <div><h3>Marlon Avery</h3><span class="role">Engineering Director</span></div>
+          <p>Marlon Avery is the Engineering Director of Lightship, where he evaluates the tech ecosystem and engineering infrastructure of early-stage startups and emerging company investments.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="beyond">
+      <div class="marker rv"><b>05</b><span>Beyond the fund</span></div>
+      <h2 class="rv" style="font-size:clamp(28px,3.4vw,44px);margin:14px 0 32px">Two more doors <em>into Lightship.</em></h2>
+      <div class="beyond">
+        <div class="beyond__card rv">
+          <span class="tagline">Anchor Fund</span>
+          <h3>Venture Capital. Global Scale.</h3>
+          <p>Anchor is targeting a multi-billion dollar fund-of-funds designed to scale access to exceptional managers and markets &mdash; investing in high-caliber venture fund managers and selectively co-investing in their most compelling opportunities across the Americas, Africa, and Europe.</p>
+          <a class="btn btn--ghost" href="https://lightshipanchor.com/">lightshipanchor.com &rarr;</a>
+        </div>
+        <div class="beyond__card rv">
+          <span class="tagline">Lightship Foundation</span>
+          <h3>Entrepreneurship, made accessible</h3>
+          <p>&ldquo;Our mission is to make entrepreneurship accessible for courageous and committed founders at every stage,&rdquo; delivering the guidance, education and support they need to launch, grow and scale &mdash; per lightship.foundation.</p>
+          <a class="btn btn--ghost" href="https://www.lightship.foundation/">lightship.foundation &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="apply" style="border-bottom:none">
+      <div class="sec__head">
+        <div>
+          <div class="marker rv"><b>06</b><span>Get in touch</span></div>
+          <h2 class="rv">Four doors in. <em>Pick yours.</em></h2>
+        </div>
+        <p class="rv">Contact routing exactly as published on lightship.capital/contact and /apply.</p>
+      </div>
+      <div class="paths">
+        <div class="path path--lead rv">
+          <span class="who">Founders</span>
+          <h3>Apply for funding</h3>
+          <p>Post-Product, Post-Revenue, Pre-Seed through Series A.</p>
+          <a href="https://www.lightship.capital/apply">lightship.capital/apply &rarr;</a>
+        </div>
+        <div class="path rv">
+          <span class="who">Investors, partners &amp; sponsors</span>
+          <h3>Contact the fund</h3>
+          <p>For diligence, co-investment or partnership conversations.</p>
+          <a href="mailto:info@lightship.capital">info@lightship.capital</a>
+        </div>
+        <div class="path rv">
+          <span class="who">Journalists</span>
+          <h3>Press &amp; media</h3>
+          <p>Director of Communication.</p>
+          <a href="mailto:Vanessa@lightship.foundation">Vanessa@lightship.foundation</a>
+        </div>
+        <div class="path rv">
+          <span class="who">Speaking &mdash; Brian &amp; Candice</span>
+          <h3>Book the GPs</h3>
+          <p>Handled by Ricky Singh at Gravity Speakers.</p>
+          <a href="mailto:ricky@gravityspeakers.com">ricky@gravityspeakers.com</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="foot__top">
+    <img src="assets/header-logo-full.png" alt="Lightship Capital">
+    <ul>
+      <li><a href="https://www.lightship.capital/">lightship.capital</a></li>
+      <li><a href="https://twitter.com/lightshipcap">Twitter</a></li>
+      <li><a href="https://www.facebook.com/lightship.cap/">Facebook</a></li>
+      <li><a href="https://www.instagram.com/lightship.capital/">Instagram</a></li>
+      <li><a href="https://calendly.com/lightship-office-hours/20min">Office hours</a></li>
+    </ul>
+  </div>
+  <div class="foot__bot">
+    <span>&copy; Lightship Capital. 2900 Reading Rd, Cincinnati, OH 45206.</span>
+    <span>Direction study for Lightship Capital by <b>LOVELEEDAY Studios</b>. Logo, colors and all quoted copy are Lightship Capital&rsquo;s own, from lightship.capital and lightship.foundation.</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const idxLinks = [...document.querySelectorAll('#rail-nav a, #idxbar a')];
+  const sections = idxLinks
+    .filter(a => a.closest('#rail-nav'))
+    .map(a => document.querySelector(a.getAttribute('href')));
+
+  const setActive = (id) => {
+    idxLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  };
+
+  if ('IntersectionObserver' in window) {
+    const io2 = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => s && io2.observe(s));
+  }
+
+  const els = document.querySelectorAll('.rv');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    els.forEach(e => e.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(e => io.observe(e));
+  }
+})();
+</script>
+</body>
+</html>

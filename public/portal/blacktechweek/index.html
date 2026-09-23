@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Black Tech Week — Columbus, July 2027</title>
+<meta name="description" content="Black Tech Week moves to Columbus, Ohio in July 2027. Three days of sessions, investor office hours, a career fair and 12,000+ people building what comes next. Join the waitlist.">
+<meta property="og:title" content="Black Tech Week — Columbus, July 2027">
+<meta property="og:description" content="New city. Same motion. Three days of sessions, investor office hours and a career fair. Join the waitlist.">
+<meta property="og:image" content="assets/a-packed-theatre-watching-a-black-tech-week-sess.jpg">
+<link rel="icon" href="assets/b-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,500;62..125,700;62..125,900&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* -----------------------------------------------------------------------
+   Black Tech Week — homepage rebuild, direction study by LOVELEEDAY Studios.
+
+   WHAT THIS IS ANSWERING. The live site (built 2026 by CannedSpinach) is
+   already dark, loud and on-brand, so a darker, louder version of it is not a
+   redesign — the first pass of this study did exactly that and Daniel called
+   it: "the site looks the exact same." The live page's real problem is not
+   its look. It never says what HAPPENS at Black Tech Week: no programme, no
+   "what you get for three days", seven equal "ways in" with no hierarchy, a
+   stat grid with no story, a recap button that goes to a channel, and the old
+   /registration address still in Google returning a 404.
+
+   REFERENCE, taken whole:
+     Eventbrite / Reconvene Summit (mobbin.com/sites/sections/d2ac77c3) — the
+     crowd IS the hero: full-bleed photograph of people, the event name set as
+     a single oversized line across it.
+     Stripe Sessions (mobbin.com/sites/sections/a258f377) — the facts row:
+     what / when / where set as a quiet, scannable strip under the image.
+   Then inverted for this brand: the live site is ink-on-black; this one runs
+   on their OWN paper colour (#F2F0EE, the most-used colour on their live
+   page), with a WIDE heavy grotesk (Archivo at 125% width) where they use a
+   condensed one. Same brand, opposite silhouette.
+
+   COLOUR = THEIR PALETTE, read from the live page's computed styles:
+   paper #F2F0EE · ink #231F20 · yellow #FFD100 · blue #28AAE1 · green #8CC640.
+   Yellow is the ACTION colour only (waitlist). Blue marks sections. Green
+   appears once, on the Columbus year.
+   ----------------------------------------------------------------------- */
+:root{
+  --paper:#F2F0EE; --paper-2:#E7E4E0; --ink:#231F20; --ink-2:#5E5857; --rule:#D3CEC9;
+  --yellow:#FFD100; --blue:#28AAE1; --green:#8CC640;
+  --wide:"Archivo",system-ui,sans-serif; --mono:"Martian Mono",ui-monospace,monospace;
+  --gut:clamp(18px,3.6vw,52px); --max:1360px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--wide);font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.mono{font:500 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.wide{font-family:var(--wide);font-variation-settings:"wdth" 125;font-weight:900;letter-spacing:-.02em;text-transform:uppercase}
+h1,h2,h3{text-wrap:balance}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--ink)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand i{width:34px;height:34px;background:var(--ink);display:grid;place-items:center}
+.brand i img{width:22px;height:22px}
+.brand b{font-family:var(--wide);font-variation-settings:"wdth" 125;font-weight:900;font-size:15px;letter-spacing:.01em;text-transform:uppercase}
+.nav ul{display:flex;gap:28px;list-style:none}
+.nav ul a{text-decoration:none;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.nav ul a:hover{text-decoration:underline}
+.btn{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 20px;background:var(--yellow);color:var(--ink);border:1px solid var(--ink);text-decoration:none;font:700 14px/1 var(--wide);font-variation-settings:"wdth" 110;text-transform:uppercase;letter-spacing:.02em;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--ink)}
+.btn--ink{background:var(--ink);color:var(--paper)}
+.btn--ghost{background:transparent}
+
+/* hero */
+.hero{position:relative;height:min(78vh,760px);min-height:520px;overflow:hidden;border-bottom:1px solid var(--ink)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(35,31,32,.15) 0%,rgba(35,31,32,.1) 45%,rgba(35,31,32,.78) 100%)}
+.hero__in{position:absolute;inset:auto 0 0 0;z-index:2;padding-bottom:clamp(24px,4vw,48px);color:#fff}
+.hero__kick{display:inline-flex;gap:10px;align-items:center;background:var(--paper);color:var(--ink);padding:8px 12px;margin-bottom:18px}
+.hero__kick i{width:8px;height:8px;background:var(--green);border-radius:50%}
+.hero h1{font-size:clamp(46px,10.2vw,168px);line-height:.86}
+.hero h1 span{display:block}
+.hero h1 .yr{color:var(--yellow)}
+/* facts strip */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--ink)}
+.facts div{padding:20px var(--gut) 22px;border-right:1px solid var(--ink)}
+.facts div:last-child{border-right:0}
+.facts .mono{color:var(--ink-2);display:block;margin-bottom:8px}
+.facts b{font-family:var(--wide);font-variation-settings:"wdth" 112;font-weight:700;font-size:clamp(18px,1.7vw,24px);letter-spacing:-.01em}
+
+/* waitlist band */
+.wl{background:var(--yellow);border-bottom:1px solid var(--ink)}
+.wl .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:var(--gut);align-items:center;padding-top:30px;padding-bottom:30px}
+.wl p{font-family:var(--wide);font-variation-settings:"wdth" 118;font-weight:700;font-size:clamp(20px,2.2vw,30px);line-height:1.12;text-transform:uppercase;letter-spacing:-.01em}
+form.join{display:flex;gap:0}
+form.join input{flex:1;min-width:0;height:54px;border:1px solid var(--ink);border-right:0;background:var(--paper);padding:0 16px;font:400 16px var(--wide)}
+form.join .btn{height:54px;background:var(--ink);color:var(--paper)}
+form.join .btn:hover{box-shadow:none;transform:none;background:#000}
+.note,.wl .note{margin-top:10px;font:400 12px/1.5 var(--mono);color:var(--ink);text-transform:none;letter-spacing:0}
+
+/* sections */
+.sec{padding:clamp(64px,8vw,120px) 0;border-bottom:1px solid var(--ink)}
+.head{display:grid;grid-template-columns:1.35fr 1fr;gap:var(--gut);align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.tag{display:inline-flex;gap:10px;align-items:center;margin-bottom:18px;color:var(--ink)}
+.tag i{width:22px;height:3px;background:var(--blue);display:block}
+.sec h2{font-size:clamp(32px,4.1vw,62px);line-height:.94}
+.head p{color:var(--ink-2);max-width:48ch;font-size:18px}
+
+/* three days */
+.days{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
+.day{border-right:1px solid var(--ink);display:flex;flex-direction:column}
+.day:last-child{border-right:0}
+.day__img{aspect-ratio:4/3;overflow:hidden;border-bottom:1px solid var(--ink)}
+.day__img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.day:hover .day__img img{transform:scale(1.04)}
+.day__body{padding:24px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1}
+.day__body .mono{color:var(--blue)}
+.day h3{font-family:var(--wide);font-variation-settings:"wdth" 118;font-weight:900;text-transform:uppercase;font-size:clamp(24px,2.3vw,32px);line-height:.98;letter-spacing:-.01em}
+.day p{color:var(--ink-2);font-size:16px;flex:1}
+.day a{font:700 13px/1 var(--wide);text-transform:uppercase;letter-spacing:.03em;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.day a:hover{text-decoration:underline}
+
+/* record */
+.rec{display:grid;grid-template-columns:1.05fr 1fr;border-bottom:1px solid var(--ink)}
+.rec__img{position:relative;min-height:560px;border-right:1px solid var(--ink)}
+.rec__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rec__body{padding:clamp(40px,5vw,72px) var(--gut)}
+.ledger{margin-top:34px;border-top:1px solid var(--ink)}
+.ledger div{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--rule)}
+.ledger b{font-family:var(--wide);font-variation-settings:"wdth" 125;font-weight:900;font-size:clamp(40px,4.6vw,68px);line-height:.9;letter-spacing:-.03em}
+.ledger span{text-align:right;color:var(--ink-2);font-size:15px;max-width:22ch}
+.src{margin-top:16px;font:400 11px/1.5 var(--mono);color:var(--ink-2)}
+
+/* move */
+.move{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--ink)}
+.city{position:relative;aspect-ratio:16/10;overflow:hidden}
+.city img{width:100%;height:100%;object-fit:cover}
+.city:first-child{border-right:1px solid var(--ink)}
+.city figcaption{position:absolute;left:0;bottom:0;background:var(--paper);padding:14px 18px;border-top:1px solid var(--ink);border-right:1px solid var(--ink)}
+.city figcaption b{display:block;font-family:var(--wide);font-variation-settings:"wdth" 118;font-weight:900;text-transform:uppercase;font-size:clamp(18px,2vw,26px);line-height:1}
+.city figcaption .mono{color:var(--ink-2)}
+.city--next figcaption{background:var(--green)}
+.city--next figcaption .mono{color:var(--ink)}
+
+/* ways in */
+.ways{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(14px,1.6vw,22px)}
+.lead{display:grid;grid-template-rows:1fr 1fr;gap:clamp(14px,1.6vw,22px)}
+.panel{border:1px solid var(--ink);padding:28px;display:flex;flex-direction:column;gap:12px;text-decoration:none;transition:transform .15s,box-shadow .15s;background:var(--paper)}
+.panel:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--ink)}
+.panel h3{font-family:var(--wide);font-variation-settings:"wdth" 125;font-weight:900;text-transform:uppercase;font-size:clamp(30px,3.2vw,48px);line-height:.9;letter-spacing:-.02em}
+.panel p{color:var(--ink-2);flex:1;max-width:44ch}
+.panel .go{font:700 13px/1 var(--wide);text-transform:uppercase;letter-spacing:.03em}
+.panel--blue{background:var(--blue);color:var(--ink)}
+.panel--blue p{color:var(--ink)}
+.more{border:1px solid var(--ink)}
+.more .mono{display:block;padding:18px 22px;border-bottom:1px solid var(--ink);color:var(--ink-2)}
+.more a{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:18px 22px;border-bottom:1px solid var(--rule);text-decoration:none}
+.more a:last-child{border-bottom:0}
+.more a:hover{background:var(--paper-2)}
+.more b{font-family:var(--wide);font-variation-settings:"wdth" 118;font-weight:700;text-transform:uppercase;font-size:18px}
+.more span{color:var(--ink-2);font-size:14px}
+
+/* room */
+.room{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(120px,13vw,190px);gap:6px}
+.room figure{overflow:hidden;background:var(--paper-2)}
+.room img{width:100%;height:100%;object-fit:cover}
+.r1{grid-column:1/6;grid-row:span 2}.r2{grid-column:6/9;grid-row:span 2}.r3{grid-column:9/13}
+.r4{grid-column:9/13}.r5{grid-column:1/4}.r6{grid-column:4/8}.r7{grid-column:8/13}
+
+/* close */
+.close{background:var(--ink);color:var(--paper);padding:clamp(72px,9vw,128px) 0}
+.close h2{font-size:clamp(46px,9vw,150px);line-height:.84}
+.close h2 .g{color:var(--green)}
+.close__row{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);align-items:end;margin-top:44px}
+.close p{color:#BDB6B3;max-width:44ch}
+.close form.join input{background:var(--paper);border-color:var(--paper)}
+.close form.join .btn{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.close .note{color:#BDB6B3}
+.foot{background:var(--ink);color:#BDB6B3;border-top:1px solid #3a3536;padding:28px 0 36px;font-size:13px}
+.foot .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot ul{display:flex;gap:18px;list-style:none}
+.foot a{text-decoration:none}.foot a:hover{color:var(--paper)}
+.foot b{color:var(--paper);font-weight:700}
+
+@media (max-width:980px){
+  .nav ul{display:none}
+  .facts{grid-template-columns:1fr 1fr}
+  .facts div:nth-child(2){border-right:0}
+  .facts div:nth-child(-n+2){border-bottom:1px solid var(--ink)}
+  .wl .wrap,.head,.rec,.move,.ways,.close__row{grid-template-columns:1fr}
+  .days{grid-template-columns:1fr}
+  .day{border-right:0;border-bottom:1px solid var(--ink)}
+  .rec__img{min-height:380px;border-right:0;border-bottom:1px solid var(--ink)}
+  .city:first-child{border-right:0;border-bottom:1px solid var(--ink)}
+  .room{grid-template-columns:repeat(6,1fr);grid-auto-rows:120px}
+  .r1{grid-column:1/7}.r2{grid-column:1/4;grid-row:span 1}.r3{grid-column:4/7}.r4{grid-column:1/4}.r5{grid-column:4/7}.r6{grid-column:1/4}.r7{grid-column:4/7}
+}
+@media (max-width:560px){
+  .nav .btn{height:40px;padding:0 12px;font-size:12px}
+  .brand b{font-size:13px}
+  .hero{min-height:480px}
+  .facts b{font-size:17px}
+  .ledger span{max-width:none}
+  form.join{flex-direction:column;gap:8px}
+  form.join input{flex:none;height:54px;border-right:1px solid var(--ink)}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="https://www.blacktechweek.com/"><i><img src="assets/b-logo.png" alt=""></i><b>Black Tech Week</b></a>
+    <ul>
+      <li><a href="#days">The three days</a></li>
+      <li><a href="#record">Track record</a></li>
+      <li><a href="#in">Get involved</a></li>
+      <li><a href="https://www.blacktechweek.com/sponsor">Sponsor</a></li>
+    </ul>
+    <a class="btn" href="#join">Join the waitlist</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <img src="assets/a-packed-theatre-watching-a-black-tech-week-sess.jpg" alt="A packed theatre watching a Black Tech Week session" fetchpriority="high">
+  <div class="hero__in">
+    <div class="wrap">
+      <span class="hero__kick mono"><i></i>New city. Same motion.</span>
+      <h1 class="wide"><span>Columbus</span><span class="yr">July 2027</span></h1>
+    </div>
+  </div>
+</header>
+
+<section class="facts" aria-label="Event facts">
+  <div><span class="mono">What</span><b>Black Tech Week</b></div>
+  <div><span class="mono">When</span><b>July 2027 · 3 days</b></div>
+  <div><span class="mono">Where</span><b>Columbus, Ohio</b></div>
+  <div><span class="mono">Who</span><b>12,000+ people</b></div>
+</section>
+
+<section class="wl" id="join">
+  <div class="wrap">
+    <p>Be first in line for Columbus 2027.</p>
+    <div>
+      <form class="join" action="https://www.blacktechweek.com/#newsletter" method="get">
+        <label class="mono" for="e1" style="position:absolute;left:-9999px">Email address</label>
+        <input id="e1" type="email" placeholder="Your email address" required>
+        <button class="btn" type="submit">Get early access</button>
+      </form>
+      <p class="note">Early access to Columbus 2027.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="days">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="tag mono"><i></i>What happens at Black Tech Week</span>
+        <h2 class="wide">Three days. Three reasons to be in the room.</h2>
+      </div>
+      <p>Every summer Black Tech Week puts founders, investors, technologists and creators in one place long enough for something to happen. Here is what that means in practice.</p>
+    </div>
+    <div class="days">
+      <article class="day">
+        <div class="day__img"><img src="assets/a-speaker-seated-on-stage-mid-interview.jpg" alt="A speaker seated on stage mid-interview" loading="lazy"></div>
+        <div class="day__body">
+          <span class="mono">Learn</span>
+          <h3>25+ sessions. 145+ speakers.</h3>
+          <p>Conversations with the people building across tech, culture and capital, on stages across the week.</p>
+          <a href="https://www.blacktechweek.com/speaker-application">Apply to speak →</a>
+        </div>
+      </article>
+      <article class="day">
+        <div class="day__img"><img src="assets/an-attendee-asking-a-question-at-a-floor-microph.jpg" alt="An attendee asking a question at a floor microphone" loading="lazy"></div>
+        <div class="day__body">
+          <span class="mono">Raise</span>
+          <h3>Investor office hours.</h3>
+          <p>Founders sit down with investors one to one. Attendees have raised more than $120 million between them.</p>
+          <a href="https://www.blacktechweek.com/vc-matching">Book office hours →</a>
+        </div>
+      </article>
+      <article class="day">
+        <div class="day__img"><img src="assets/three-attendees-in-lanyards-laughing-together.jpg" alt="Three attendees in lanyards laughing together" loading="lazy"></div>
+        <div class="day__body">
+          <span class="mono">Hire &amp; get hired</span>
+          <h3>The career fair.</h3>
+          <p>Companies meet the talent in the room, and the talent meets the companies worth joining.</p>
+          <a href="https://www.blacktechweek.com/career-fair-interest">Join the career fair →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="rec" id="record">
+  <div class="rec__img"><img src="assets/an-attendee-wearing-a-black-tech-week-badge-lit-.jpg" alt="An attendee wearing a Black Tech Week badge" loading="lazy" style="object-position:center 30%"></div>
+  <div class="rec__body">
+    <span class="tag mono"><i></i>The track record</span>
+    <h2 class="wide" style="font-size:clamp(34px,4.4vw,64px);line-height:.92">What the room is worth.</h2>
+    <div class="ledger">
+      <div><b>12,000+</b><span>Attendees</span></div>
+      <div><b>$120M+</b><span>Raised by attendees</span></div>
+      <div><b>$1.13B+</b><span>Attendee revenue generated</span></div>
+    </div>
+    <p class="src">Black Tech Week's own figures, as published on blacktechweek.com.</p>
+    <a class="btn btn--ghost" style="margin-top:28px" href="https://www.youtube.com/@blacktechweek">Watch the 2026 recap</a>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="tag mono"><i></i>The move</span>
+        <h2 class="wide">Cincinnati started a chapter. Columbus begins the next.</h2>
+      </div>
+      <p>Five summers in Cincinnati built what Black Tech Week is now. In July 2027 it opens in Columbus, with the same people and a new city to build in.</p>
+    </div>
+    <div class="move">
+      <figure class="city"><img src="assets/black-tech-week-cincinnati.jpg" alt="The Cincinnati skyline and the Roebling bridge" loading="lazy"><figcaption><span class="mono">2022 – 2026</span><b>Cincinnati</b></figcaption></figure>
+      <figure class="city city--next"><img src="assets/black-tech-week-columbus.jpg" alt="The Columbus skyline over the Scioto River" loading="lazy"><figcaption><span class="mono">From July 2027</span><b>Columbus</b></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="in">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="tag mono"><i></i>Get involved</span>
+        <h2 class="wide">Build Columbus 2027 with us.</h2>
+      </div>
+      <p>Two ways matter most before tickets open. The rest are below.</p>
+    </div>
+    <div class="ways">
+      <div class="lead">
+        <a class="panel panel--blue" href="https://www.blacktechweek.com/sponsor">
+          <span class="mono">For companies</span>
+          <h3>Sponsor Columbus 2027</h3>
+          <p>Put your company in front of 12,000+ founders, engineers and investors in a new host city, in the year it arrives.</p>
+          <span class="go">Start a sponsor conversation →</span>
+        </a>
+        <a class="panel" href="https://www.blacktechweek.com/speaker-application">
+          <span class="mono">For speakers</span>
+          <h3>Take the stage</h3>
+          <p>Shape what comes next on the Columbus stage.</p>
+          <span class="go">Apply to speak →</span>
+        </a>
+      </div>
+      <div class="more">
+        <span class="mono">More ways in</span>
+        <a href="https://www.blacktechweek.com/vc-matching"><div><b>VC office hours</b><br><span>Connect founders and capital.</span></div>→</a>
+        <a href="https://www.blacktechweek.com/career-fair-interest"><div><b>Career fair</b><br><span>Meet remarkable talent.</span></div>→</a>
+        <a href="https://www.blacktechweek.com/volunteer"><div><b>Volunteer</b><br><span>Bring it to life.</span></div>→</a>
+        <a href="https://www.blacktechweek.com/activate"><div><b>Community events</b><br><span>Make something alongside us.</span></div>→</a>
+        <a href="https://www.blacktechweek.com/meetup-inquiry"><div><b>Meetups</b><br><span>Bring Black Tech Week to your city.</span></div>→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="border-bottom:0">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="tag mono"><i></i>The room</span>
+        <h2 class="wide">Find your people.</h2>
+      </div>
+      <p>Photographs from Black Tech Week. <a href="https://www.instagram.com/blacktechweek/">More on Instagram →</a></p>
+    </div>
+    <div class="room">
+      <figure class="r1"><img src="assets/a-meetup-group-cheering-together-outdoors.jpg" alt="A meetup group cheering together outdoors" loading="lazy"></figure>
+      <figure class="r2"><img src="assets/two-attendees-hugging-between-sessions.jpg" alt="Two attendees hugging between sessions" loading="lazy"></figure>
+      <figure class="r3"><img src="assets/an-attendee-asking-a-question-at-a-floor-microph.jpg" alt="An attendee asking a question at a floor microphone" loading="lazy"></figure>
+      <figure class="r4"><img src="assets/two-attendees-embracing-seen-from-behind.jpg" alt="Two attendees embracing, seen from behind" loading="lazy"></figure>
+      <figure class="r5"><img src="assets/three-attendees-in-lanyards-laughing-together.jpg" alt="Three attendees in lanyards laughing together" loading="lazy"></figure>
+      <figure class="r6"><img src="assets/a-speaker-seated-on-stage-mid-interview.jpg" alt="A speaker seated on stage mid-interview" loading="lazy"></figure>
+      <figure class="r7"><img src="assets/a-full-auditorium-facing-the-lit-black-tech-week.jpg" alt="A full auditorium facing the Black Tech Week stage" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2 class="wide">Columbus.<br><span class="g">July 2027.</span></h2>
+    <div class="close__row">
+      <p>Be first to hear the dates, the speakers and the ticket release.</p>
+      <div>
+        <form class="join" action="https://www.blacktechweek.com/#newsletter" method="get">
+          <label class="mono" for="e2" style="position:absolute;left:-9999px">Email address</label>
+          <input id="e2" type="email" placeholder="Your email address" required>
+          <button class="btn" type="submit">Join the waitlist</button>
+        </form>
+        <p class="note">A Lightship Foundation event.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <ul>
+      <li><a href="https://www.instagram.com/blacktechweek/">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/company/black-tech-week/">LinkedIn</a></li>
+      <li><a href="https://x.com/blacktechweek">X</a></li>
+      <li><a href="https://www.tiktok.com/@blacktechweek">TikTok</a></li>
+      <li><a href="https://www.youtube.com/@blacktechweek">YouTube</a></li>
+    </ul>
+    <span>Direction study for Black Tech Week by <b>LOVELEEDAY Studios</b>. All photography is Black Tech Week's own.</span>
+  </div>
+</footer>
+
+</body>
+</html>

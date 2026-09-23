@@ -15,6 +15,7 @@
 
 import { TOKENS } from "./tokens";
 import { v } from "./assetVersion";
+import { lightshipPortals } from "./lightship-studies";
 
 export interface Deliverable {
   slug: string;
@@ -33,6 +34,18 @@ export interface Deliverable {
   caveats?: string[];
   /** Measured search visibility. Every figure here comes from a named source. */
   seo?: Seo;
+  /** Commercials cut from the client's own footage. */
+  videos?: Video[];
+}
+
+export interface Video {
+  title: string;
+  /** One line: what it is for and where it runs. */
+  caption: string;
+  src: string;
+  poster: string;
+  /** "16/9" or "9/16". */
+  aspect: string;
 }
 
 export interface SeoQuery {
@@ -570,6 +583,7 @@ export const portals: Portal[] = [
       },
     ],
   },
+  ...lightshipPortals,
 ];
 
 export function getPortal(token: string): Portal | undefined {
