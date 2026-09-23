@@ -25,6 +25,8 @@
 import { TOKENS } from "./tokens";
 import { v } from "./assetVersion";
 import { meknology } from "./meknology-study";
+import type { Video } from "./portals";
+import { lightshipCases, lightshipResearch } from "./lightship-studies";
 
 export interface Case {
   slug: string;
@@ -41,6 +43,8 @@ export interface Case {
   findings: string[];
   /** The search line, already bounded. */
   search: string;
+  /** Commercials cut from the company's own footage. */
+  videos?: Video[];
 }
 
 export interface Portfolio {
@@ -253,12 +257,17 @@ const collab: Portfolio = {
 const lightship: Portfolio = {
   token: TOKENS.lightship,
   fund: "Lightship Capital",
-  heroNote: "18 companies reviewed",
+  eyebrow: "Lightship",
+  headline: "Your fund, your foundation and your week, rebuilt.",
+  heroNote: "18 companies reviewed · 3 of your sites rebuilt · 3 videos",
   fundDomain: "lightship.capital",
-  preparedFor: "Lightship Capital",
+  preparedFor: "Brian Brackeen",
   deliveredOn: "2026-09-22",
   intro:
-    "We help organizations see something their own records already know, and then act on it. This is not a pitch for a redesign — the rebuild at the end is simply how we show our work. Nobody asked us to do this. We read your portfolio page, opened every company on it, and looked at what somebody doing diligence actually receives. The two findings that matter most have nothing to do with design. They are about two web addresses you no longer own, and both are decisions rather than opinions.",
+    "Thank you for the time at PitchMI tonight. You asked what LOVELEEDAY does, so rather than describe it, we did some. We help organizations see something their own records already know, and then act on it. This page has four parts: market intelligence on Black Tech Week's move to Columbus and on the fund's own presence; what we found across all eighteen of your portfolio companies; rebuilds of blacktechweek.com, lightship.capital and lightship.foundation, each with the reasoning behind it; and three short videos cut from your own footage. Every figure names where it came from, so you can check any line yourself.",
+
+  researchFirst: true,
+  research: lightshipResearch,
 
   fundFindings: [
     {
@@ -274,18 +283,24 @@ const lightship: Portfolio = {
     {
       title: "What most of these are losing to is weight, not taste",
       detail:
-        "Of the seven companies measured so far, allergyamulet.com pulls down 50 megabytes — about a five-minute video — and takes 25 seconds on a phone before a visitor sees anything at all. Haute Hijab takes 13 seconds, Undock 19, FreshFry 9. For scale, most people abandon a page after three. These are not opinions about taste. They are the numbers Google records, and they decide whether anybody ever sees the design.",
+        "Across the fourteen sites Google could score, the median mobile speed score is 66 out of 100. On a phone, CModel takes 33 seconds to show its main content, and Allergy Amulet takes 25 seconds while pulling down 37 megabytes, about a four-minute video's worth. For scale, most people leave a page after three seconds. These are not opinions about taste. They are the numbers Google records, and they decide whether anybody ever sees the design.",
+    },
+    {
+      title: "Thirteen of fourteen sites leave images undescribed",
+      detail:
+        "Every image on a website should carry a short text description. It is what screen readers speak aloud, and it is how search engines understand a picture. Thirteen of the fourteen sites we could measure leave some images without one. Vyrill leaves 89 of its 91 images blank, and Healthy Roots Dolls 28 of 33. It is an afternoon's fix per site, with real value for search and for accessibility.",
     },
   ],
 
   stats: [
     { k: "18", label: "Companies in your portfolio", sub: "Read from your own portfolio page, 22 September 2026" },
-    { k: "2", label: "Linked to addresses they have lost", sub: "Bootup and Semiosis AI. We clicked through and confirmed it" },
-    { k: "56", label: "Google's mobile speed score, median", sub: "Out of 100. Seven of eighteen measured so far — not yet the whole portfolio" },
-    { k: "25s", label: "Longest wait before anything appears", sub: "allergyamulet.com on a phone. Most visitors leave after three seconds" },
+    { k: "2", label: "Portfolio links that send people somewhere else", sub: "Bootup's lapsed domain now serves a gambling site; Semiosis AI's no longer loads" },
+    { k: "66", label: "Google's mobile speed score, median", sub: "Out of 100, across the fourteen sites Google could score" },
+    { k: "13 of 14", label: "Sites with undescribed images", sub: "Invisible to screen readers and to image search" },
   ],
 
   cases: [
+    ...lightshipCases,
     {
       slug: "enable",
       company: "Enable Injections",
@@ -310,7 +325,8 @@ const lightship: Portfolio = {
   method: [
     "The company list was read from lightship.capital/portfolio on 22 September 2026 — eighteen companies, with no further pages hidden behind it.",
     "Every address was opened with an ordinary browser and its result recorded. A site that blocks automated visitors is reported as blocked and never as broken: visuwall.com blocks us, so it is excluded from every count here rather than marked as a defect.",
-    "Speed was measured with Google's own tool, run on our machines because Google's hosted version refused our requests. Seven of eighteen are measured so far and the figure above says so. Two more failed to return a result and are excluded rather than scored zero.",
+    "Speed was measured with Google's own tool, run on our machines because Google's hosted version refused our requests. It returned a score for fourteen of the eighteen. The other four are excluded rather than scored zero: Visuwall and CurlMix turn away automated visitors, and Bootup's and Semiosis AI's addresses no longer belong to the companies.",
+    "The rebuilds of blacktechweek.com, lightship.capital and lightship.foundation use only your own words, figures and photography, read from those sites on 22 September 2026. The three videos are cut from your own YouTube footage.",
     "We quote no figures anywhere about how your companies' real visitors behave. We measured the pages, not the traffic, and we will not blur the two.",
     "Bootup and Semiosis AI are left out of every speed figure. Scoring an address the company no longer owns would mean measuring a stranger's website.",
     "Every figure on the Enable rebuild belongs to Enable and comes from their own material. We have not independently verified any clinical claim.",

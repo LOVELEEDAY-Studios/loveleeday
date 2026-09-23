@@ -31,6 +31,9 @@ const FOR_DIR: Record<string, string> = {
   ...(TOKENS.enable ? { enable: TOKENS.enable } : {}),
   ...(TOKENS.venturehueStudy ? { venturehue: TOKENS.venturehueStudy } : {}),
   ...(TOKENS.meknology ? { meknology: TOKENS.meknology } : {}),
+  ...(TOKENS.blacktechweek ? { blacktechweek: TOKENS.blacktechweek } : {}),
+  ...(TOKENS.lightshipCapital ? { lightshipcapital: TOKENS.lightshipCapital } : {}),
+  ...(TOKENS.lightshipFoundation ? { lightshipfoundation: TOKENS.lightshipFoundation } : {}),
 };
 
 export function proxy(req: NextRequest) {

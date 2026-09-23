@@ -62,4 +62,8 @@ export const TOKENS = {
   // Kalamazoo Forward Ventures portfolio company, pitched direct 2026-09-22.
   meknology: tokOptional("PORTAL_TOKEN_MEKNOLOGY"),
   meknologyPortfolio: tokOptional("PORTFOLIO_TOKEN_MEKNOLOGY"),
+  // Brian Brackeen (Lightship Capital), met 2026-09-22. His three sites, each its own study.
+  blacktechweek: tokOptional("PORTAL_TOKEN_BLACKTECHWEEK"),
+  lightshipCapital: tokOptional("PORTAL_TOKEN_LIGHTSHIPCAPITAL"),
+  lightshipFoundation: tokOptional("PORTAL_TOKEN_LIGHTSHIPFOUNDATION"),
 } as const;

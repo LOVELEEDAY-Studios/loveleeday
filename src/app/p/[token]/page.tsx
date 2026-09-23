@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getPortal, isExpired, formatDate, portals } from "@/content/portals";
 import { NoteForm } from "@/components/portal/NoteForm";
 import { BeforeAfter } from "@/components/portal/BeforeAfter";
+import { Videos } from "@/components/portal/Videos";
 import { portfolios } from "@/content/portfolio";
 
 export const dynamicParams = false;
@@ -218,6 +219,11 @@ export default async function PortalPage({
                     Top of page
                   </span>
                 </a>
+                {d.videos && (
+                  <div className="mt-12">
+                    <Videos videos={d.videos} />
+                  </div>
+                )}
                 </div>
               </div>
             </article>

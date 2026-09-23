@@ -1,0 +1,821 @@
+[
+  {
+    "company": "Visuwall",
+    "fund_outbound_link": "https://visuwall.com/",
+    "requested_url": "https://visuwall.com/",
+    "final_url": "https://visuwall.com/?__cf_chl_rt_tk=9A0rH7vQbPQXGXv6_neDgOPp0tRTkrMeGVUxqhYs3Bg-1790126571-1.0.1.1-.1B9XGex_owhfYsDs5i1dVEEZQwlKdn4s8uQKi_shm8",
+    "http_status": 403,
+    "status_note": "BLOCKED - Cloudflare bot-challenge returns HTTP 403 to both curl and headless Chrome. The blocked response body itself contains injected Russian-language casino spam text mixed into the real VisuWall nav/copy - could not confirm whether this is cached/compromised content or a challenge-page artifact; flagged for manual human-browser check, not asserted as a hack.",
+    "platform": "Squarespace",
+    "page_title": "VisuWall",
+    "has_meta_description": true,
+    "meta_description": "",
+    "has_og_image_tag": true,
+    "og_image_url": "http://static1.squarespace.com/static/64a013cc507d4a10702a0f4d/t/64a016a4cd0e9802bfb62f26/1688213156980/VW_Logos-01.png?format=1500w",
+    "og_image_reachable": true,
+    "image_count": 0,
+    "images_missing_alt": 0,
+    "broken_images": 0,
+    "total_transferred_bytes": 1251130,
+    "load_time_ms": 9938,
+    "footer_copyright_year": null,
+    "nav_link_count": 27,
+    "sample_failed_requests": [
+      "https://brunhild.challenges.cloudflare.com/cdn-cgi/challenge-platform/h/b/i/a3f5bda49ff9f32d/..bhCWBl44A1.aKX7cy9FP2WuCGnBSWzq5dRBF3LLvU-1790126572-1.2.1.1-4JlczsjOd7B03yyMbAOr3dW1Fw09nilspXBqRYEIDWOR",
+      "https://brunhild.challenges.cloudflare.com/cdn-cgi/challenge-platform/h/b/i/a3f5bdc26f47fa1f/FbwxuAfteZCuFLVMYlWw9Jfbp.jX6kXpA4sXgAJGBLs-1790126577-1.2.1.1-qPbZfJnwNZ9mP6KgseEZcQeXb6QtrowHLa.SleFWLmCw",
+      "https://static1.squarespace.com/static/vta/5c5a519771c10ba3470d8101/versioned-assets/1718130742063-ZB0N0KP2JGXANVM5KICL/static.css"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "measured": false,
+      "reason": "Excluded \u2014 Cloudflare 403 block, would measure the challenge page not the site."
+    },
+    "business_context": {
+      "what": "Ad-tech marketplace that turns vacant storefront windows into data-driven digital/static advertising with computer-vision foot-traffic and audience analytics.",
+      "hq": "New York, NY",
+      "stage": "Seed (marked 'Exited' on Crunchbase/PitchBook)",
+      "funding_total": "$1.7M (last round $950K, Mar 2021)",
+      "news_2025_2026": "No new funding found for 2025-2026; multiple data providers (Crunchbase, PitchBook, LeadIQ) list the company as '(Exited)', consistent with the live site now blocking all automated/bot traffic.",
+      "citations": [
+        "https://www.crunchbase.com/organization/visuwall",
+        "https://pitchbook.com/profiles/company/157766-50",
+        "https://www.lightship.capital/post/lightship-leads-investment-in-ad-tech-company-visuwall"
+      ]
+    }
+  },
+  {
+    "company": "Proov",
+    "fund_outbound_link": "https://proovtest.com/",
+    "requested_url": "https://proovtest.com/",
+    "final_url": "https://proovtest.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "Shopify",
+    "page_title": "Proov Test | Fertility Tests | Hormone Support | Official Site",
+    "has_meta_description": true,
+    "meta_description": "Our medical-quality fertility diagnostic testing and support can increase your chances of pregnancy by up to 75%. Get pregnant faster with Proov. Shop Directly.",
+    "has_og_image_tag": false,
+    "og_image_url": null,
+    "og_image_reachable": false,
+    "image_count": 49,
+    "images_missing_alt": 8,
+    "broken_images": 1,
+    "total_transferred_bytes": 3728373,
+    "load_time_ms": 7813,
+    "footer_copyright_year": "2026",
+    "nav_link_count": 15,
+    "sample_failed_requests": [
+      "https://shopify-gtm-suite.getelevar.com/configs/2312469e4d86fdb44f4c187d702e514df98393a2/config.js",
+      "https://proovtest.com/api/collect",
+      "https://proovtest.com/shopify_pay/accelerated_checkout",
+      "https://proovtest.com/cart.js"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 48,
+      "seo": 92,
+      "accessibility": 84,
+      "best_practices": 54,
+      "lcp_ms": 10566,
+      "total_bytes_lighthouse": 4124968
+    },
+    "business_context": {
+      "what": "At-home hormone/fertility test strips and women's reproductive health diagnostics.",
+      "hq": "Cincinnati, OH",
+      "stage": "Series A",
+      "funding_total": "$10.9M total; $9.7M Series A (Hambrecht Ducera Growth Ventures led, w/ Lightship Capital)",
+      "news_2025_2026": "July 2025: founder Amy Beckley spoke publicly about building recurring revenue / partnerships beyond one-time fertility tests; no new funding round reported for 2025-2026.",
+      "citations": [
+        "https://www.mobihealthnews.com/news/home-fertility-testing-company-proov-scoops-97m",
+        "https://www.prweb.com/releases/proov-r-to-expand-women-s-hormone-health-solutions-to-advance-women-s-health-and-offer-more-accessible-care-with-9-7m-series-a-funding-818789350.html"
+      ]
+    }
+  },
+  {
+    "company": "Allergy Amulet",
+    "fund_outbound_link": "https://www.allergyamulet.com/",
+    "requested_url": "https://www.allergyamulet.com/",
+    "final_url": "https://www.allergyamulet.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "Squarespace",
+    "page_title": "Allergy Amulet",
+    "has_meta_description": true,
+    "meta_description": "The Allergy Amulet is a fast and portable food allergen and ingredient sensor. Learn more now!",
+    "has_og_image_tag": true,
+    "og_image_url": "http://static1.squarespace.com/static/55329e37e4b02842e063c322/t/5cdeb9e9848351000114e725/1558100459112/AA-Badge-Blue-Small.jpg?format=1500w",
+    "og_image_reachable": true,
+    "image_count": 36,
+    "images_missing_alt": 7,
+    "broken_images": 1,
+    "total_transferred_bytes": 66294118,
+    "load_time_ms": 14351,
+    "footer_copyright_year": "2026",
+    "nav_link_count": 25,
+    "sample_failed_requests": [
+      "https://js.hs-scripts.com/2621841.js",
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-5NBJ8Q19BY&gtm=45je69l1v9123943700za20gxf1&_p=1790126590920&gcd=13l3l3l3l2l1&npa=0&dma=0&_eu=EBAI&cid=1723143747.1790126591&frm=0&ir=1&ngs=1&pscdl=",
+      "https://skyfire.vimeocdn.com/1790130191-0x92548e99acf68a0b3060723c6dc904c0731b9773/83ca79b6-fb72-4cde-8684-cde96ed4f6c1/psid=a9ce588cded8214a3ffe4d56e0854fa98087275f1790126591/v2/range/prot/cmFuZ2U9OD",
+      "https://skyfire.vimeocdn.com/1790130191-0x92548e99acf68a0b3060723c6dc904c0731b9773/83ca79b6-fb72-4cde-8684-cde96ed4f6c1/psid=a9ce588cded8214a3ffe4d56e0854fa98087275f1790126591/v2/playlist/av/83ca79b6/"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 35,
+      "seo": 85,
+      "accessibility": 81,
+      "best_practices": 73,
+      "lcp_ms": 25305,
+      "total_bytes_lighthouse": 36716142
+    },
+    "business_context": {
+      "what": "Portable molecular sensor for on-site food allergen/toxin detection (consumer wearable + Amulet Scientific B2B platform).",
+      "hq": "Madison, WI",
+      "stage": "Series A",
+      "funding_total": "$12.6-13.16M total; most recent: $0.76M debt (Mar 2026), $0.75M Series A-III (Jun 2025, Wisconsin Investment Fund)",
+      "news_2025_2026": "Active small follow-on raises through March 2026 (debt + Series A-III extension) \u2014 signals ongoing runway needs rather than a big new round.",
+      "citations": [
+        "https://tracxn.com/d/companies/allergy-amulet/__EYYZukw4h8pfdjBKh6Ds4ESmKSfytUAalfZxS3uBZNM/funding-and-investors",
+        "https://news.crunchbase.com/startups/exclusive-allergy-amulet-lands-3-3m-seed-round-for-food-allergen-sensor/"
+      ]
+    }
+  },
+  {
+    "company": "Healthy Roots Dolls",
+    "fund_outbound_link": "https://healthyrootsdolls.com/",
+    "requested_url": "https://healthyrootsdolls.com/",
+    "final_url": "https://healthyrootsdolls.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "Shopify",
+    "page_title": "Healthy Roots Dolls: Beautiful Black Dolls",
+    "has_meta_description": true,
+    "meta_description": "Healthy Roots Dolls is a toy company that teaches natural hair care to young girls of color with beautiful black dolls. Help us celebrate the beauty of diversity with our curlfriends!",
+    "has_og_image_tag": true,
+    "og_image_url": "http://healthyrootsdolls.com/cdn/shop/files/08.23.2022_Curlfriend_and_Friends.01_1200x1200.webp?v=1765839081",
+    "og_image_reachable": true,
+    "image_count": 33,
+    "images_missing_alt": 28,
+    "broken_images": 9,
+    "total_transferred_bytes": 5346092,
+    "load_time_ms": 8558,
+    "footer_copyright_year": "2026",
+    "nav_link_count": 11,
+    "sample_failed_requests": [
+      "https://healthyrootsdolls.com/api/collect",
+      "https://monorail-edge.shopifysvc.com/v1/produce",
+      "https://healthyrootsdolls.com/shopify_pay/accelerated_checkout",
+      "https://loox.io/widget/ykwTmxApYx/rating?h=1790119145264",
+      "https://analytics.tiktok.com/api/v2/shopify_pixel"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 53,
+      "seo": 92,
+      "accessibility": 82,
+      "best_practices": 73,
+      "lcp_ms": 6570,
+      "total_bytes_lighthouse": 5177941
+    },
+    "business_context": {
+      "what": "Dolls and storybooks teaching natural hair care to young girls of color.",
+      "hq": "Detroit, MI",
+      "stage": "Seed",
+      "funding_total": "$1.5M (Backstage Capital led; Lightship Capital participated)",
+      "news_2025_2026": "No funding, acquisition, or shutdown news found for 2025-2026 in available sources \u2014 company appears quiet publicly.",
+      "citations": [
+        "https://www.lightship.capital/post/lightship-capital-leads-round-for-healthy-roots-dolls",
+        "https://afrotech.com/toy-company-healthy-roots-dolls-raises-1m-seed-to-represent-the-beauty-of-diversity-and-representation"
+      ]
+    }
+  },
+  {
+    "company": "Boddle",
+    "fund_outbound_link": "https://www.boddlelearning.com/",
+    "requested_url": "https://www.boddlelearning.com/",
+    "final_url": "https://www.boddlelearning.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "Webflow",
+    "page_title": "Boddle Learning | 3D Math and ELA Game for K-6 Kids",
+    "has_meta_description": true,
+    "meta_description": "Boost math and English engagement and close learning gaps with the most interactive 3D learning game. Tackle learning loss and help your kids excel in K-6 math and ELA with Boddle's adaptive learning platform!",
+    "has_og_image_tag": true,
+    "og_image_url": "https://cdn.prod.website-files.com/6015e7f6893a7f207ebc1351/66df271dd8e3e288b8ab87a5_Boddle%20Open%20Graph.png",
+    "og_image_reachable": true,
+    "image_count": 90,
+    "images_missing_alt": 34,
+    "broken_images": 0,
+    "total_transferred_bytes": 10922090,
+    "load_time_ms": 13673,
+    "footer_copyright_year": null,
+    "nav_link_count": 26,
+    "sample_failed_requests": [
+      "https://www.google.com/ccm/collect?rcb=15&frm=0&apvc=1&ae=g&auid=1483798799.1790126615&dt=Boddle%20Learning%20%7C%203D%20Math%20and%20ELA%20Game%20for%20K-6%20Kids&en=page_view&dl=https%3A%2F%2Fwww.bo",
+      "https://www.google.com/ccm/collect?rcb=12&frm=0&apvc=0&auid=1483798799.1790126615&dt=Boddle%20Learning%20%7C%203D%20Math%20and%20ELA%20Game%20for%20K-6%20Kids&tid=AW-18242115430&en=page_view&dl=https%",
+      "https://www.google.com/rmkt/collect/18242115430/?random=1790126615711&cv=11&fst=1790126615711&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be69l1h1v9255573477z8849502309za20kzb849502309zd84950",
+      "https://ad.doubleclick.net/ccm/s/collect?auid=1483798799.1790126615&gtm=45He69l1h1v849502309za204zd849502309xeaxf3&fmt=8",
+      "https://www.recaptcha.net/recaptcha/api2/clr?k=6LfPxykhAAAAAL9nCusU4x3BDTfnJ_eKk_69wjL8"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 72,
+      "seo": 100,
+      "accessibility": 89,
+      "best_practices": 69,
+      "lcp_ms": 3460,
+      "total_bytes_lighthouse": 7312854
+    },
+    "business_context": {
+      "what": "Game-based K-6 math/English learning platform (Boddle Learning).",
+      "hq": "Oklahoma / Cortado Ventures region (OK-based investors; company often listed OKC-area)",
+      "stage": "Seed, revenue-generating (~$10-25M revenue estimated, 2.5M+ students)",
+      "funding_total": "$4.35M total across 3 rounds (Halcyon, Cortado Ventures, AT&T Ventures)",
+      "news_2025_2026": "No new 2025-2026 round found; prior recognition includes $500K Yass Prize grant and monthly revenue growth from $60K to $235K under a subscription-model shift.",
+      "citations": [
+        "https://tracxn.com/d/companies/boddle-learning/__q3P3dZKS0-n4BF88ALpgk_8grmGIezJYbtUJaNNI2IY"
+      ]
+    }
+  },
+  {
+    "company": "Undock",
+    "fund_outbound_link": "https://undock.com/m/",
+    "requested_url": "https://undock.com/m/",
+    "final_url": "https://undock.com/l/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "Next.js (custom)",
+    "page_title": "Undock | Make time \u2013\u00a0anywhere you type",
+    "has_meta_description": true,
+    "meta_description": "See suggestions for meetings times wherever you type. Undock is autocomplete for your calendar.",
+    "has_og_image_tag": true,
+    "og_image_url": "https://images.ctfassets.net/69ygoegobx90/6cjwMv4zEEhPIa6jeNaZBz/7f4e0f3b71646ce8b5091c5ea5d67959/og-image-default.jpg",
+    "og_image_reachable": true,
+    "image_count": 19,
+    "images_missing_alt": 16,
+    "broken_images": 0,
+    "total_transferred_bytes": 3019464,
+    "load_time_ms": 3042,
+    "footer_copyright_year": "2026",
+    "nav_link_count": 6,
+    "sample_failed_requests": [],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 74,
+      "seo": 82,
+      "accessibility": 85,
+      "best_practices": 96,
+      "lcp_ms": 18106,
+      "total_bytes_lighthouse": 4802520
+    },
+    "business_context": {
+      "what": "AI-assisted meeting scheduling tool ('autocomplete for finding time to meet').",
+      "hq": "New York, NY",
+      "stage": "Seed",
+      "funding_total": "$1.7M total ($1.6M seed, 2020)",
+      "news_2025_2026": "Headcount down to ~7 people (from 11 in 2023); 2024 revenue ~$499K, up from $394.7K in 2023 \u2014 small but still growing team is shrinking while revenue grows, no shutdown confirmed.",
+      "citations": [
+        "https://www.cbinsights.com/company/undock",
+        "https://getlatka.com/companies/undock/funding"
+      ]
+    }
+  },
+  {
+    "company": "Haute Hijab",
+    "fund_outbound_link": "https://www.hautehijab.com/",
+    "requested_url": "https://www.hautehijab.com/",
+    "final_url": "https://www.hautehijab.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "Shopify",
+    "page_title": "Haute Hijab - Hijabs & Accessories for the World's Most Powerful Women",
+    "has_meta_description": true,
+    "meta_description": "Welcome to Haute Hijab! Our mission is to create a world where every woman feels comfortable and confident. Shop premium hijabs in jersey, chiffon, woven, and satin \u2014 plus underscarves, magnets, and more! Free US shipping.",
+    "has_og_image_tag": true,
+    "og_image_url": "http://www.hautehijab.com/cdn/shop/files/Logo.jpg?v=1658242183",
+    "og_image_reachable": true,
+    "image_count": 58,
+    "images_missing_alt": 12,
+    "broken_images": 1,
+    "total_transferred_bytes": 5872920,
+    "load_time_ms": 12010,
+    "footer_copyright_year": "2026",
+    "nav_link_count": 305,
+    "sample_failed_requests": [
+      "https://ht3.hautehijab.com/tmpixel.min.js?t=1790208000000",
+      "https://monorail-edge.shopifysvc.com/v1/produce",
+      "https://ad.doubleclick.net/ccm/s/collect?auid=118598175.1790126633&gtm=45He69l1v867963342za200zd867963342xeaxf1&fmt=8",
+      "https://www.google.com/ccm/collect?rcb=19&frm=0&apvc=1&ae=g&auid=118598175.1790126633&dt=Haute%20Hijab%20-%20Hijabs%20%26%20Accessories%20for%20the%20World%27s%20Most%20Powerful%20Women&en=page_view&d",
+      "https://www.hautehijab.com/api/collect"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 40,
+      "seo": 92,
+      "accessibility": 92,
+      "best_practices": 54,
+      "lcp_ms": 8070,
+      "total_bytes_lighthouse": 7720052
+    },
+    "business_context": {
+      "what": "Modest-fashion brand selling hijabs and related apparel.",
+      "hq": "New York, NY",
+      "stage": "Series A-ish (multiple seed/undisclosed rounds)",
+      "funding_total": "$2.3-3.89M total; last disclosed round undisclosed amount, Jun 2022",
+      "news_2025_2026": "26 employees as of 2025; no 2025-2026 funding news found.",
+      "citations": [
+        "https://us.fashionnetwork.com/news/Haute-hijab-closes-2-3-million-funding-round,1066662.html"
+      ]
+    }
+  },
+  {
+    "company": "Femi Secrets",
+    "fund_outbound_link": "https://femisecrets.com/",
+    "requested_url": "https://femisecrets.com/",
+    "final_url": "https://www.femisecrets.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "Shopify",
+    "page_title": "Life Changing Period Products \u2013 Femi Secrets",
+    "has_meta_description": true,
+    "meta_description": "Heavy periods, fibroids, PCOS, Endometriosis, Leak Proof, Period Panties",
+    "has_og_image_tag": true,
+    "og_image_url": "http://www.femisecrets.com/cdn/shop/files/imageedit_326_7389682894.png?height=628&pad_color=FFFFFF&v=1642084292&width=1200",
+    "og_image_reachable": true,
+    "image_count": 47,
+    "images_missing_alt": 12,
+    "broken_images": 0,
+    "total_transferred_bytes": 36725510,
+    "load_time_ms": 13654,
+    "footer_copyright_year": "2026",
+    "nav_link_count": 25,
+    "sample_failed_requests": [
+      "https://cdn.shopify.com/videos/c/o/v/771512980cb54616ba0333e5c23e4f15.mov",
+      "https://apps.pagefly.io/install",
+      "https://www.femisecrets.com/api/collect",
+      "https://www.femisecrets.com/shopify_pay/accelerated_checkout",
+      "https://code.tidio.co/w6vlyzi2mjfyjqvqdejxq9txjnawqtht.js?extensionVersion=1.4.1"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 67,
+      "seo": 92,
+      "accessibility": 87,
+      "best_practices": 73,
+      "lcp_ms": 6243,
+      "total_bytes_lighthouse": 9170118
+    },
+    "business_context": {
+      "what": "Natural, chemical-free feminine hygiene/period-care products.",
+      "hq": "Buffalo, NY",
+      "stage": "Seed",
+      "funding_total": "Seed round Sep 2021 (amount undisclosed in available sources)",
+      "news_2025_2026": "As of March 2026 listed with only 5 employees \u2014 a shrink signal; no funding or shutdown news found. Note: a same-named hair-extension brand ('Femi S. Hair') is a different, unrelated company \u2014 do not conflate.",
+      "citations": [
+        "https://www.prnewswire.com/news-releases/lightship-capital-invests-in-femi-secrets-award-winning-feminine-care-brand-301387401.html",
+        "https://tracxn.com/d/companies/femi-secrets/__c4USyvFOFgtW3w-YJ27DUTOohBlVnsVtdLcm17eMLZE"
+      ]
+    }
+  },
+  {
+    "company": "Vyrill",
+    "fund_outbound_link": "https://www.vyrill.com/",
+    "requested_url": "https://www.vyrill.com/",
+    "final_url": "https://www.vyrill.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "Webflow",
+    "page_title": "Video Commerce, Video Search, and Video Insights Platform | Vyrill",
+    "has_meta_description": true,
+    "meta_description": "Transform your e-commerce with AI-powered video marketing. Discover how Vyrill finds and promotes authentic video reviews to boost conversions by 131%. Book a demo today.",
+    "has_og_image_tag": true,
+    "og_image_url": "https://cdn.prod.website-files.com/61a79b1f82e7eb0f0c62c637/6202b837d07023b1ab50a639_Asset%2012%201.png",
+    "og_image_reachable": true,
+    "image_count": 91,
+    "images_missing_alt": 89,
+    "broken_images": 0,
+    "total_transferred_bytes": 4194499,
+    "load_time_ms": 1748,
+    "footer_copyright_year": "2025",
+    "nav_link_count": 120,
+    "sample_failed_requests": [
+      "https://analytics.google.com/g/collect?v=2&tid=G-6X2EMM3M7C&gtm=45je69l1v9101410996za20gxf1&_p=1790126659103&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAIAGA&cid=829874753.1790126659&frm=0&pscdl=noapi&"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 64,
+      "seo": 92,
+      "accessibility": 83,
+      "best_practices": 77,
+      "lcp_ms": 16604,
+      "total_bytes_lighthouse": 4069739
+    },
+    "business_context": {
+      "what": "AI-powered video intelligence/UGC video-commerce marketing platform.",
+      "hq": "San Francisco, CA",
+      "stage": "Seed",
+      "funding_total": "$4.85M total; $3M seed (Noemis Ventures + Lightship Capital)",
+      "news_2025_2026": "17 employees as of mid-2026; no new funding news found for 2025-2026.",
+      "citations": [
+        "https://www.vyrill.com/blog/vyrill-raises-3m-seed-round"
+      ]
+    }
+  },
+  {
+    "company": "Fresh Fry",
+    "fund_outbound_link": "https://www.freshfry.me/",
+    "requested_url": "https://www.freshfry.me/",
+    "final_url": "https://freshfry.me/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "Shopify",
+    "page_title": "FreshFry: Powered by Plants. Home of Pods.",
+    "has_meta_description": true,
+    "meta_description": "Transforming waste into a promising future. The FreshFry Pod is an innovative and easy to use product that purifies cooking oil to help you focus on serving delicious food.",
+    "has_og_image_tag": true,
+    "og_image_url": "https://cdn.shopify.com/s/files/1/0454/8952/0802/files/FF_InstaIcons-02_60c3e3fe-7bef-4ff5-b179-d818d975a447.png?v=1631029595",
+    "og_image_reachable": true,
+    "image_count": 6,
+    "images_missing_alt": 5,
+    "broken_images": 3,
+    "total_transferred_bytes": 5150131,
+    "load_time_ms": 8090,
+    "footer_copyright_year": "2026",
+    "nav_link_count": 33,
+    "sample_failed_requests": [
+      "https://a.remarketstats.com/px/smart/?c=24d1add2443e239&type=img&partner_id=7e88c50f5f6512aa955ce4d612d48a03un&partner_rid=811b0798-b6ed-11f1-9be4-55dac34bd2c4",
+      "https://freshfry.me/api/collect",
+      "https://analytics.google.com/g/collect?v=2&tid=G-G0GRS3M6L0&gtm=45je69l1v868864541za200zd868864541xf1&_p=1790126661285&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dN2ZkMj.dNTU0Yz&_eu=AAAAAGAC&cid=4938453",
+      "https://www.google.com/ccm/collect?rcb=10&frm=0&apvc=1&auid=1078160517.1790126662&dt=FreshFry%3A%20Powered%20by%20Plants.%20Home%20of%20Pods.&tid=AW-369223031&en=page_view&dl=https%3A%2F%2Ffreshfry.me",
+      "https://freshfry.me/shopify_pay/accelerated_checkout"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 50,
+      "seo": 92,
+      "accessibility": 88,
+      "best_practices": 73,
+      "lcp_ms": 18104,
+      "total_bytes_lighthouse": 7456903
+    },
+    "business_context": {
+      "what": "Patented pods/filters that purify and extend the usable life of commercial frying oil.",
+      "hq": "Louisville, KY",
+      "stage": "Seed",
+      "funding_total": "$1.7M total (last round Dec 2023)",
+      "news_2025_2026": "As of May 2025, still working with outside CFO-services partners on capital raise support \u2014 signals an active but not-yet-closed raise; no new round confirmed.",
+      "citations": [
+        "https://venturefirst.com/case-studies/fresh-fry/"
+      ]
+    }
+  },
+  {
+    "company": "Kare Mobile",
+    "fund_outbound_link": "https://www.kare.mobi/",
+    "requested_url": "https://www.kare.mobi/",
+    "final_url": "https://karemobile.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "WordPress",
+    "page_title": "Home - Kare Mobile",
+    "has_meta_description": false,
+    "meta_description": null,
+    "has_og_image_tag": true,
+    "og_image_url": "https://karemobile.com/wp-content/uploads/2023/03/kare-mobile-current-states.png",
+    "og_image_reachable": true,
+    "image_count": 21,
+    "images_missing_alt": 4,
+    "broken_images": 0,
+    "total_transferred_bytes": 4646969,
+    "load_time_ms": 2069,
+    "footer_copyright_year": null,
+    "nav_link_count": 52,
+    "sample_failed_requests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-YTWQ5621DE&gtm=45je69l1v9123618671za200zd9123618671xf1&_p=1790126669918&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&cid=918397558.1790126670&frm=0&ng"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 80,
+      "seo": 92,
+      "accessibility": 89,
+      "best_practices": 77,
+      "lcp_ms": 4123,
+      "total_bytes_lighthouse": 3690730
+    },
+    "business_context": {
+      "what": "Turnkey mobile dental clinic vans + software/back-office platform for dentists to run mobile practices, targeting 'dental deserts'.",
+      "hq": "Detroit, MI (expanding via Michigan/Kentucky partners)",
+      "stage": "Seed",
+      "funding_total": "$1M+ across 12 investors (incl. AWS Startups, CareQuest Innovation Partners)",
+      "news_2025_2026": "2025: Health First Community Health partnered with KARE Mobile Dentistry of Louisville to expand to Henderson, Morganfield, Owensboro, Providence KY.",
+      "citations": [
+        "https://www.lightship.capital/post/kare-mobile-expands-affordable-mobile-dental-care-to-underserved-michigan-communities"
+      ]
+    }
+  },
+  {
+    "company": "Bootup",
+    "fund_outbound_link": "https://www.joinbootup.com/",
+    "requested_url": "https://www.joinbootup.com/",
+    "final_url": "https://www.joinbootup.com/",
+    "http_status": 200,
+    "status_note": "DOMAIN LAPSED / SQUATTED - joinbootup.com resolves (HTTP 200, confirmed independently via curl, not an automation artifact) to Indonesian online-gambling SEO spam (\"SLOT DANA\" deposit guides), with 453 nav links and requests referencing an unrelated Indonesian retail domain (mothercare.co.id) on the same hosting. The founding company (Chandler Malone) is alive and active as \"Bootup Studios\" with a 2025-2026 AI product (LaunchMate) and an ongoing Lightship Foundation Bootcamp partnership through 2027 - the company did not fail, its old domain did.",
+    "platform": "Custom / unidentified",
+    "page_title": "SLOT DANA | Panduan Lengkap Slot Deposit Via DANA Terbaru 100% Aman",
+    "has_meta_description": true,
+    "meta_description": "Panduan praktis deposit slot via dana. Cara daftar tanpa rekening, sistem enkripsi terbaru, serta tips kelola saldo mulai 5.000 rupiah saja.",
+    "has_og_image_tag": true,
+    "og_image_url": "https://joiboot.pages.dev/img/promo-alexistogel-slot-deposit-dana-panduan-lengkap.webp",
+    "og_image_reachable": true,
+    "image_count": 52,
+    "images_missing_alt": 16,
+    "broken_images": 0,
+    "total_transferred_bytes": 2239465,
+    "load_time_ms": 6030,
+    "footer_copyright_year": null,
+    "nav_link_count": 453,
+    "sample_failed_requests": [
+      "https://www.mothercare.co.id/static/version1741963345/frontend/Codilar/mothercare/id_ID/fonts/mothercare_2020-thin-webfont.woff2",
+      "https://www.mothercare.co.id/static/version1741963345/frontend/Codilar/mothercare/id_ID/fonts/mothercare_2020-regular-webfont.woff2",
+      "https://www.mothercare.co.id/static/version1741963345/frontend/Codilar/mothercare/id_ID/fonts/mothercare_2020-demi-webfont.woff2",
+      "https://www.mothercare.co.id/static/version1741963345/_cache/merged/fac5fbb731d8a9118c7561e0e8b1fc67.min.css",
+      "https://www.mothercare.co.id/static/version1741963345/_cache/merged/56b5914bf926abed304351798d035de2.min.css"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "measured": false,
+      "reason": "Excluded \u2014 domain now serves unrelated gambling spam, measuring it would mischaracterize the company."
+    },
+    "business_context": {
+      "what": "Originally an ed-tech/career-bootcamp company; founder Chandler Malone pivoted the operating brand to 'Bootup Studios,' an AI-powered venture studio helping laid-off professionals launch businesses (product: LaunchMate).",
+      "hq": "Miami, FL / Tulsa, OK ecosystem",
+      "stage": "Seed ($2.1M raised historically)",
+      "funding_total": "$2.1M",
+      "news_2025_2026": "Actively operating in 2025-2026: LaunchMate AI agent launched May-Aug 2025; pilots at Morehouse College and University of Tulsa; slated to serve Lightship Foundation Bootcamp participants through 2027. IMPORTANT: the company is alive and still Lightship-affiliated, but its old domain joinbootup.com has lapsed and now resolves to unrelated gambling content \u2014 the portfolio page link is broken/dangerous, not the company.",
+      "citations": [
+        "https://finance.yahoo.com/news/bootup-studios-announces-ai-powered-122800062.html",
+        "https://www.mogulmillennial.com/chandler-malone-bootup/",
+        "https://refreshmiami.com/news/when-the-layoffs-hit-this-miami-founder-built-a-studio-to-help-people-launch-their-own-companies/"
+      ]
+    }
+  },
+  {
+    "company": "Enable Injections",
+    "fund_outbound_link": "https://enableinjections.com/",
+    "requested_url": "https://enableinjections.com/",
+    "final_url": "https://enableinjections.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "WordPress",
+    "page_title": "Enable Injections | High-Volume Wearable Drug Delivery Systems",
+    "has_meta_description": true,
+    "meta_description": "Enable Injections specializes in high-volume wearable drug delivery systems. Creators of the enFuse\u00ae On-Body Platform. Drug delivery redefined.",
+    "has_og_image_tag": true,
+    "og_image_url": "https://enableinjections.com/wp-content/uploads/2024/10/2022-1-19-EnableInjections-74540-WEB-Purple-e1728665310825.jpg",
+    "og_image_reachable": true,
+    "image_count": 18,
+    "images_missing_alt": 0,
+    "broken_images": 0,
+    "total_transferred_bytes": 14346034,
+    "load_time_ms": 12543,
+    "footer_copyright_year": "2025",
+    "nav_link_count": 66,
+    "sample_failed_requests": [
+      "https://enableinjections.com/wp-content/uploads/2026/03/enableinjections-hype-video-optim2.mp4"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 89,
+      "seo": 100,
+      "accessibility": 99,
+      "best_practices": 100,
+      "lcp_ms": 2232,
+      "total_bytes_lighthouse": 4746287
+    },
+    "business_context": {
+      "what": "Maker of the enFuse wearable on-body injector for high-volume subcutaneous drug delivery, used in pharma-partnered products.",
+      "hq": "Cincinnati, OH",
+      "stage": "Series C (growth stage, well past typical fund seed check)",
+      "funding_total": "$344M total across 12 rounds; $30M from Sanofi Jan 2026",
+      "news_2025_2026": "Oct 2025 Incyte partnership; Mar 2025 CE mark; Jan 2026 $30M Sanofi investment; Jul 2026 Sanofi won FDA approval for first anticancer treatment delivered via an on-body injector using Enable's enFuse platform. This is the fund's standout later-stage success story.",
+      "citations": [
+        "https://firstwordpharma.com/story/7047203",
+        "https://www.medicaldesignandoutsourcing.com/enable-injections-enfuse-on-body-injector/"
+      ]
+    }
+  },
+  {
+    "company": "Arbit",
+    "fund_outbound_link": "https://www.getarbit.com/",
+    "requested_url": "https://www.getarbit.com/",
+    "final_url": "https://www.getarbit.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "Webflow",
+    "page_title": "Arbit \u2014 Real-Time Market Data for Commerce Platforms",
+    "has_meta_description": true,
+    "meta_description": "Real-time marketplace pricing and normalized product data delivered via API for resale and commerce platforms.",
+    "has_og_image_tag": true,
+    "og_image_url": "https://cdn.prod.website-files.com/63960dc5fb295182678f5a6a/63a240ce2a1b5c5170d76789_Open-Graph-Image.jpg",
+    "og_image_reachable": true,
+    "image_count": 32,
+    "images_missing_alt": 21,
+    "broken_images": 0,
+    "total_transferred_bytes": 13186065,
+    "load_time_ms": 5697,
+    "footer_copyright_year": "2022",
+    "nav_link_count": 21,
+    "sample_failed_requests": [
+      "https://analytics.google.com/g/collect?v=2&tid=G-X92PN03853&gtm=45je69l1v9133093513za200zd9133093513xf1&_p=1790126691528&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZGVlNj&_eu=AAAAACAC&cid=2116832027.17"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 71,
+      "seo": 100,
+      "accessibility": 90,
+      "best_practices": 77,
+      "lcp_ms": 8349,
+      "total_bytes_lighthouse": 10140480
+    },
+    "business_context": {
+      "what": "Information-services/data company (Tulsa, OK).",
+      "hq": "Tulsa, OK",
+      "stage": "Seed",
+      "funding_total": "$1.57M (Atento Capital, Lightship Capital, ACT House)",
+      "news_2025_2026": "Merged with/acquired by The Sneaker Database on 03-May-2025 \u2014 an exit, though a small one; the original standalone product/site may no longer be the operating entity.",
+      "citations": [
+        "https://pitchbook.com/profiles/company/528710-68"
+      ]
+    }
+  },
+  {
+    "company": "CurlMix",
+    "fund_outbound_link": "https://curlmix.com/",
+    "requested_url": "https://curlmix.com/",
+    "final_url": "https://www.google.com/",
+    "http_status": 200,
+    "status_note": "AUTOMATION-BLOCKED for measurement, but live for humans - curl (no JS) returns HTTP 200 and a full normal Shopify storefront (the \"EasyLockdown\" Shopify app is installed). Both Playwright (real Chrome, headless) and Lighthouse (headless Chrome) are redirected client-side to google.com / hang indefinitely after JS executes - consistent with bot/anti-scraper detection, not a broken storefront. Do not read this as \"the company site is down.\"",
+    "platform": "Custom / unidentified",
+    "page_title": "Google",
+    "has_meta_description": false,
+    "meta_description": null,
+    "has_og_image_tag": false,
+    "og_image_url": null,
+    "og_image_reachable": false,
+    "image_count": 6,
+    "images_missing_alt": 6,
+    "broken_images": 6,
+    "total_transferred_bytes": 1801391,
+    "load_time_ms": 2571,
+    "footer_copyright_year": null,
+    "nav_link_count": 5,
+    "sample_failed_requests": [
+      "https://curlmix.com/cdn/shopifycloud/storefront/assets/storefront/load_feature-1bd60354.js",
+      "https://curlmix.com/cdn/shopifycloud/storefront/assets/shopify_pay/storefront-bf1cdb70.js?v=20250812",
+      "https://cdn.attn.tv/curlmix/dtag.js?source=app-embed",
+      "https://cdn.shopify.com/extensions/01a0b604-4814-7a0a-87b3-4dfc3c0ce8cb/oxi-social-login-156/assets/init.js",
+      "https://cdn.shopify.com/extensions/01a0c3fc-9a5c-7c5f-b063-158ed04d9cfc/klaviyo-email-marketing-73/assets/app.js"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "measured": false,
+      "reason": "Excluded \u2014 site redirects headless browsers to google.com / hangs Lighthouse indefinitely (anti-bot app); not representative of the real, human-visible storefront."
+    },
+    "business_context": {
+      "what": "Textured/curly-hair care products (Shark Tank alum, Black-owned).",
+      "hq": "Chicago, IL",
+      "stage": "Growth / distressed",
+      "funding_total": "$16.5M total (Cleveland Avenue, Lightship Capital, BrainTrust Fund, Ossian Capital, +14 investors)",
+      "news_2025_2026": "2025 crisis: founder Kim Lewis launched #ProtectCurlMix, needing 20,000 orders in 60 days to avoid closing by end of 2025, citing tariffs/ingredient costs/supply-chain delays; staff cut from 40 to 14.",
+      "citations": [
+        "https://www.globalcosmeticsnews.com/curlmix-launches-protectcurlmix-campaign-as-founder-seeks-20000-orders-to-avoid-closure/"
+      ]
+    }
+  },
+  {
+    "company": "Brevity",
+    "fund_outbound_link": "https://www.brevitypitch.com/",
+    "requested_url": "https://www.brevitypitch.com/",
+    "final_url": "https://www.brevitypitch.com/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "HubSpot CMS",
+    "page_title": "AI Sales Coaching to Reinforce Every Conversation",
+    "has_meta_description": true,
+    "meta_description": "Brevity is the AI sales coaching platform that reinforces your methodology: training plans, AI role-plays, and live-call analysis in one loop. See it work.",
+    "has_og_image_tag": true,
+    "og_image_url": "https://www.brevitypitch.com/og/default.png",
+    "og_image_reachable": true,
+    "image_count": 42,
+    "images_missing_alt": 2,
+    "broken_images": 0,
+    "total_transferred_bytes": 463152,
+    "load_time_ms": 1567,
+    "footer_copyright_year": "2026",
+    "nav_link_count": 20,
+    "sample_failed_requests": [
+      "https://api.claydar.com/tracker/event",
+      "https://app.hubspot.com/conversations-visitor/8989544/threads/utk/68f6f6cb014d473eb807b7e9679c1576?uuid=598f4cb7b14c4bffac6c93e236bb8b3f&mobile=false&mobileSafari=false&hideWelcomeMessage=false&hstc=&"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 83,
+      "seo": 92,
+      "accessibility": 93,
+      "best_practices": 77,
+      "lcp_ms": 3936,
+      "total_bytes_lighthouse": 917999
+    },
+    "business_context": {
+      "what": "AI-based pitch-deck preparation tool for startups.",
+      "hq": "Minneapolis, MN",
+      "stage": "Seed",
+      "funding_total": "$2M total; last round Feb 2023",
+      "news_2025_2026": "No funding or operating news found for 2025-2026 \u2014 longest funding silence of any company researched (over 3 years since last disclosed round).",
+      "citations": [
+        "https://tracxn.com/d/companies/brevity/__sx9IKh-musR1k06P2Zq_BXGePEsa-AZGNjHE_T7Mv4g"
+      ]
+    }
+  },
+  {
+    "company": "Semiosis AI",
+    "fund_outbound_link": "https://www.semiosis-ai.com/",
+    "requested_url": "https://www.semiosis-ai.com/",
+    "final_url": "https://www.semiosis-ai.com/",
+    "http_status": 404,
+    "status_note": "DOMAIN DISCONNECTED - semiosis-ai.com returns HTTP 404 \"Reconnect Your Domain | Wix.com\" (confirmed via curl and headless browser both). The domain has been unlinked from its Wix site. Cannot confirm whether the AI recruiting-language company Lightship invested in still operates under a different domain, has shut down, or simply let a Wix billing/DNS lapse - flag as ambiguous, needs a direct check with Lightship.",
+    "platform": "Wix",
+    "page_title": "Reconnect Your Domain | Wix.com",
+    "has_meta_description": false,
+    "meta_description": null,
+    "has_og_image_tag": false,
+    "og_image_url": null,
+    "og_image_reachable": false,
+    "image_count": 0,
+    "images_missing_alt": 0,
+    "broken_images": 0,
+    "total_transferred_bytes": 219833,
+    "load_time_ms": 1407,
+    "footer_copyright_year": null,
+    "nav_link_count": 2,
+    "sample_failed_requests": [],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "measured": false,
+      "reason": "Excluded \u2014 domain returns Wix \"not connected\" 404, nothing real to measure."
+    },
+    "business_context": {
+      "what": "Originally an AI company per Lightship's portfolio listing; the live semiosis-ai.com domain now serves a resume-writing/job-search tool ('Jobby') under the same brand name.",
+      "hq": "Unknown / unclear if same operating entity",
+      "stage": "Unknown",
+      "funding_total": "Not found",
+      "news_2025_2026": "Ambiguous: could not confirm whether the current semiosis-ai.com resume-support product is the same company Lightship invested in, a pivot, or a domain that changed hands \u2014 needs direct confirmation from Lightship. Flag rather than assert either way.",
+      "citations": [
+        "https://www.semiosis-ai.com/"
+      ]
+    }
+  },
+  {
+    "company": "CModel",
+    "fund_outbound_link": "https://www.cmodel.io/",
+    "requested_url": "https://www.cmodel.io/",
+    "final_url": "https://www.cmodel.io/",
+    "http_status": 200,
+    "status_note": null,
+    "platform": "HubSpot CMS",
+    "page_title": "Decision Intelligence for Economic Growth | CModel",
+    "has_meta_description": true,
+    "meta_description": "CModel connects economic development organizations and the businesses they serve to measure ecosystems, surface risk, and move growth forward.",
+    "has_og_image_tag": true,
+    "og_image_url": "https://www.cmodel.io/opengraph.jpg",
+    "og_image_reachable": true,
+    "image_count": 26,
+    "images_missing_alt": 12,
+    "broken_images": 0,
+    "total_transferred_bytes": 3382749,
+    "load_time_ms": 3322,
+    "footer_copyright_year": "2026",
+    "nav_link_count": 21,
+    "sample_failed_requests": [
+      "https://www.google-analytics.com/g/collect?v=2&tid=G-8VQ5W33WH6&gtm=45je69l1h1v9119709939za200zd9119709939xf1&_p=1790126704291&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=820453609.1790126705&frm=0&ngs=1&pscdl=n"
+    ],
+    "visible_error_flags": [],
+    "lighthouse_mobile": {
+      "performance": 36,
+      "seo": 100,
+      "accessibility": 100,
+      "best_practices": 77,
+      "lcp_ms": 33157,
+      "total_bytes_lighthouse": 8552336
+    },
+    "business_context": {
+      "what": "Decision-intelligence SaaS platform for economic development organizations (business retention/expansion, incentive tracking, impact reporting).",
+      "hq": "Birmingham, AL (relocated from San Francisco, Jun 2024)",
+      "stage": "Seed",
+      "funding_total": "$1.25M (Lightship Capital, Alabama Futures Fund, Techstars/AWS accelerators)",
+      "news_2025_2026": "No new funding disclosed for 2025-2026; site is the most polished/best-maintained of the whole portfolio (HubSpot CMS, complete meta/og tags, 2026 copyright).",
+      "citations": [
+        "https://www.cbinsights.com/company/c-model"
+      ]
+    }
+  }
+]

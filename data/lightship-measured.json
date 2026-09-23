@@ -1,13 +1,156 @@
 [
   {
+    "company": "Proov",
+    "url": "https://proovtest.com/",
+    "performance": 48,
+    "seo": 92,
+    "accessibility": 84,
+    "best_practices": 54,
+    "lcp_ms": 10566,
+    "total_bytes": 4124968,
+    "final_url": "https://proovtest.com/"
+  },
+  {
+    "company": "Allergy Amulet",
+    "url": "https://www.allergyamulet.com/",
+    "performance": 35,
+    "seo": 85,
+    "accessibility": 81,
+    "best_practices": 73,
+    "lcp_ms": 25305,
+    "total_bytes": 36716142,
+    "final_url": "https://www.allergyamulet.com/"
+  },
+  {
+    "company": "Healthy Roots Dolls",
+    "url": "https://healthyrootsdolls.com/",
+    "performance": 53,
+    "seo": 92,
+    "accessibility": 82,
+    "best_practices": 73,
+    "lcp_ms": 6570,
+    "total_bytes": 5177941,
+    "final_url": "https://healthyrootsdolls.com/"
+  },
+  {
+    "company": "Boddle",
+    "url": "https://www.boddlelearning.com/",
+    "performance": 72,
+    "seo": 100,
+    "accessibility": 89,
+    "best_practices": 69,
+    "lcp_ms": 3460,
+    "total_bytes": 7312854,
+    "final_url": "https://www.boddlelearning.com/"
+  },
+  {
+    "company": "Undock",
+    "url": "https://undock.com/m/",
+    "performance": 74,
+    "seo": 82,
+    "accessibility": 85,
+    "best_practices": 96,
+    "lcp_ms": 18106,
+    "total_bytes": 4802520,
+    "final_url": "https://undock.com/l/"
+  },
+  {
+    "company": "Haute Hijab",
+    "url": "https://www.hautehijab.com/",
+    "performance": 40,
+    "seo": 92,
+    "accessibility": 92,
+    "best_practices": 54,
+    "lcp_ms": 8070,
+    "total_bytes": 7720052,
+    "final_url": "https://www.hautehijab.com/"
+  },
+  {
+    "company": "Femi Secrets",
+    "url": "https://femisecrets.com/",
+    "performance": 67,
+    "seo": 92,
+    "accessibility": 87,
+    "best_practices": 73,
+    "lcp_ms": 6243,
+    "total_bytes": 9170118,
+    "final_url": "https://www.femisecrets.com/"
+  },
+  {
+    "company": "Vyrill",
+    "url": "https://www.vyrill.com/",
+    "performance": 64,
+    "seo": 92,
+    "accessibility": 83,
+    "best_practices": 77,
+    "lcp_ms": 16604,
+    "total_bytes": 4069739,
+    "final_url": "https://www.vyrill.com/"
+  },
+  {
+    "company": "Fresh Fry",
+    "url": "https://www.freshfry.me/",
+    "performance": 50,
+    "seo": 92,
+    "accessibility": 88,
+    "best_practices": 73,
+    "lcp_ms": 18104,
+    "total_bytes": 7456903,
+    "final_url": "https://freshfry.me/"
+  },
+  {
+    "company": "Kare Mobile",
+    "url": "https://www.kare.mobi/",
+    "performance": 80,
+    "seo": 92,
+    "accessibility": 89,
+    "best_practices": 77,
+    "lcp_ms": 4123,
+    "total_bytes": 3690730,
+    "final_url": "https://karemobile.com/"
+  },
+  {
     "company": "Enable Injections",
     "url": "https://enableinjections.com/",
-    "performance": 88,
+    "performance": 89,
     "seo": 100,
     "accessibility": 99,
     "best_practices": 100,
-    "lcp_ms": 2076,
-    "total_bytes": 4494792,
+    "lcp_ms": 2232,
+    "total_bytes": 4746287,
     "final_url": "https://enableinjections.com/"
+  },
+  {
+    "company": "Arbit",
+    "url": "https://www.getarbit.com/",
+    "performance": 71,
+    "seo": 100,
+    "accessibility": 90,
+    "best_practices": 77,
+    "lcp_ms": 8349,
+    "total_bytes": 10140480,
+    "final_url": "https://www.getarbit.com/"
+  },
+  {
+    "company": "Brevity",
+    "url": "https://www.brevitypitch.com/",
+    "performance": 83,
+    "seo": 92,
+    "accessibility": 93,
+    "best_practices": 77,
+    "lcp_ms": 3936,
+    "total_bytes": 917999,
+    "final_url": "https://www.brevitypitch.com/"
+  },
+  {
+    "company": "CModel",
+    "url": "https://www.cmodel.io/",
+    "performance": 36,
+    "seo": 100,
+    "accessibility": 100,
+    "best_practices": 77,
+    "lcp_ms": 33157,
+    "total_bytes": 8552336,
+    "final_url": "https://www.cmodel.io/"
   }
 ]

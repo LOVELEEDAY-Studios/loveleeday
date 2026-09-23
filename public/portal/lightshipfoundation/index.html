@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lightship Foundation — Founder, Partner &amp; Community Guide</title>
+<meta name="description" content="Lightship Foundation runs three free founder programs — Bootcamp, Founder Gym and Black Tech Week — that have served 17,000+ entrepreneurs and moved $750M. A founder, partner and donor guide. Direction study by LOVELEEDAY Studios.">
+<meta property="og:title" content="Lightship Foundation — Founder, Partner &amp; Community Guide">
+<meta property="og:description" content="Three free programs, one mission: Bootcamp, Founder Gym and Black Tech Week. 17,000+ founders served, $750M raised.">
+<link rel="canonical" href="https://www.lightship.foundation/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* -----------------------------------------------------------------------
+   Lightship Foundation — direction study by LOVELEEDAY Studios.
+
+   FIRST DRAFT REJECTED, ON PURPOSE LOGGED HERE: an earlier pass at this file
+   used a full-bleed photo hero, floating stat "chips" over the photo, and
+   three solid-color program cards in the client's own blue/gold/teal — i.e.
+   it re-skinned lightship.foundation's OWN homepage almost section-for-section
+   (hero -> stat photo -> three program blocks -> partner band -> impact grid).
+   Correct call to kill it: a founder or funder landing on it would not be able
+   to tell it apart from the site they already have.
+
+   THIS VERSION is a different artifact, not a different paint job: an
+   ANNUAL-REPORT / FOUNDER-PARTNER-DONOR GUIDE, not a marketing homepage.
+   Reference, taken whole: nonprofit and foundation annual-report sites on
+   Mobbin (ledger-style impact statements, a supporters list read like a
+   donor page, a comparison table instead of marketing cards) crossed with
+   editorial long-form sites — serif display type, hairline rules, captioned
+   photography set INTO the text rather than behind it, index numbers instead
+   of icons. The whole page is organized by WHO is reading (a founder deciding
+   whether to give up three days; a funder deciding whether the money worked;
+   the community) rather than by the client's own nav order, because those are
+   different questions with different evidence, and a homepage that answers
+   "what is Lightship" three different ways in three different voices is more
+   useful to Daniel's contact than one more scroll of hero-stats-cards-footer.
+
+   TYPE breaks from both the client's site (Inter Tight + a licensed marker
+   font called "Edo") and from every prior LOVELEEDAY study (Meknology: Geist.
+   VentureHue: Instrument Serif. Novarna: Fraunces/IBM Plex. Soarce: Space
+   Grotesk). Newsreader (an editorial serif built for long-form reading) carries
+   headlines and pull-quotes; Public Sans carries body and UI; JetBrains Mono
+   carries every number, date and data label — the report's "instrument" voice.
+
+   COLOR: the client's own gold #FAC200, teal #00BD9D and blue #0095DB (sampled
+   from their Elementor kit, post-11.css) survive only as thin accents — an
+   underline, a rule, a tag — never as a full section fill. The page runs on
+   warm paper instead of their black-and-white blocks, which is the single
+   biggest reason it reads as a different site at a glance.
+
+   Every number, name, quote, date and dollar figure is quoted or paraphrased
+   from lightship.foundation (home, /about/, /bootcamp/, /foundergym/,
+   /partners/, /impact/, /blog/) as captured 2026-09-22, or from the Stripe
+   donate link and the JobsOhio grant program named on their own /bootcamp/
+   page. Photography and the wordmark are Lightship's own.
+   ----------------------------------------------------------------------- */
+:root{
+  --paper:#FBF8F1; --paper-2:#F2EBDA; --ink:#15130F; --ink-soft:#5B584C; --rule:#DDD3BC; --rule-2:#C9BDA0;
+  --gold:#B98900; --gold-bright:#FAC200; --teal:#007A63; --blue:#0072A3;
+  --serif:"Newsreader",Georgia,serif; --sans:"Public Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  --gut:clamp(20px,4.4vw,64px); --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+h1,h2,h3,blockquote{font-family:var(--serif);text-wrap:balance}
+em{font-style:italic;color:var(--ink)}
+.mono{font-family:var(--mono)}
+.eyebrow{display:flex;gap:10px;align-items:baseline;font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px}
+.eyebrow b{color:var(--ink)}
+.muted{color:var(--ink-soft)}
+.rule{border:0;border-top:1px solid var(--rule)}
+.hair{border-top:1px solid var(--rule)}
+
+/* links & buttons */
+.lnk{display:inline-flex;align-items:baseline;gap:8px;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;font-weight:600}
+.lnk:hover{border-color:transparent;background:linear-gradient(transparent 60%,var(--gold-bright) 60%)}
+.lnk .arr{font-family:var(--mono)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border:1.5px solid var(--ink);border-radius:2px;text-decoration:none;font:600 14px/1 var(--sans);letter-spacing:.01em;background:transparent;color:var(--ink);transition:background .15s,color .15s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn--solid{background:var(--ink);color:var(--paper)}
+.btn--solid:hover{background:#000;color:var(--paper)}
+.btn--gold{border-color:var(--gold);color:var(--gold)}
+.btn--gold:hover{background:var(--gold);color:#fff}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--rule)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+.nav__brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav__brand img{height:15px;width:auto;filter:invert(1)}
+.nav__brand .tag{font:600 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);border-left:1px solid var(--rule-2);padding-left:10px}
+.nav ul{display:flex;gap:26px;list-style:none}
+.nav ul a{text-decoration:none;color:var(--ink);font:600 14px/1 var(--sans)}
+.nav ul a:hover{color:var(--gold)}
+.nav__cta{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.nav__cta .txt{font:600 13.5px/1 var(--sans);color:var(--ink-soft);text-decoration:none;white-space:nowrap}
+.nav__cta .txt:hover{color:var(--ink)}
+.nav .btn{height:40px;padding:0 18px;font-size:13px;white-space:nowrap}
+
+/* cover */
+.cover{padding:clamp(48px,8vw,84px) 0 clamp(56px,8vw,96px)}
+.cover__top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:baseline;padding-bottom:22px;border-bottom:1px solid var(--rule);margin-bottom:clamp(36px,5vw,56px)}
+.cover__meta{display:flex;gap:22px;flex-wrap:wrap;font:500 13px/1 var(--mono);color:var(--ink-soft)}
+.cover__grid{display:grid;grid-template-columns:1.3fr .9fr;gap:var(--gut);align-items:start}
+.cover h1{font-weight:500;font-size:clamp(38px,5.6vw,74px);line-height:1.04;letter-spacing:-.01em}
+.cover h1 em{color:var(--gold)}
+.cover__lede{margin-top:26px;max-width:56ch;font-size:19px;line-height:1.6;color:var(--ink-soft)}
+.cover__cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
+.cover__figure{border:1px solid var(--rule);padding:10px;background:#fff}
+.cover__figure img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.cover__figure figcaption{margin-top:10px;font:500 12.5px/1.4 var(--mono);color:var(--ink-soft)}
+.citeline{display:flex;flex-wrap:wrap;gap:0;margin-top:36px;font:500 13.5px/1 var(--mono);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.citeline span{padding:14px 20px 14px 0;margin-right:20px;border-right:1px solid var(--rule)}
+.citeline span:last-child{border-right:0}
+.citeline b{color:var(--ink);display:block;font-size:16px;margin-bottom:2px}
+
+/* path chooser */
+.paths{padding:0 0 clamp(56px,8vw,96px)}
+.paths__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.path{padding:32px 28px;border-right:1px solid var(--rule);text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:14px;min-height:220px}
+.path:last-child{border-right:0}
+.path:hover{background:var(--paper-2)}
+.path .idx{font:600 13px/1 var(--mono);color:var(--ink-soft)}
+.path h3{font-weight:500;font-size:24px;letter-spacing:-.01em;line-height:1.15}
+.path p{font-size:14.5px;color:var(--ink-soft);flex:1}
+.path .go{font:600 13px/1 var(--sans);border-top:1px solid var(--rule);padding-top:14px}
+
+/* section shell */
+.sec{padding:clamp(64px,8vw,104px) 0}
+.sec--band{background:var(--paper-2)}
+.sec--ink{background:var(--ink);color:var(--paper)}
+.sec--ink .muted{color:#B7B2A0}
+.sec--ink .rule,.sec--ink .hair{border-color:#33312A}
+.sec__head{max-width:70ch;margin-bottom:clamp(36px,5vw,56px)}
+.sec__head h2{font-weight:500;font-size:clamp(30px,4vw,48px);line-height:1.08;letter-spacing:-.01em}
+.sec__head h2 em{color:var(--gold-bright)}
+.sec--ink .sec__head h2 em{color:var(--gold-bright)}
+.sec__head p{margin-top:16px;font-size:16.5px;max-width:60ch;color:var(--ink-soft)}
+.sec--ink .sec__head p{color:#D8D4C6}
+
+/* comparison table */
+.ctable{width:100%;border-collapse:collapse;font-size:15px}
+.ctable th{text-align:left;font:600 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);padding:0 16px 14px 0;border-bottom:1px solid var(--ink)}
+.ctable td{padding:20px 16px 20px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.ctable td:first-child,.ctable th:first-child{padding-left:0}
+.ctable .prog{font-family:var(--serif);font-size:19px;font-weight:500}
+.ctable .prog span{display:block;font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;margin-top:5px}
+.ctable .prog--bc span{color:var(--blue)}
+.ctable .prog--fg span{color:var(--teal)}
+.ctable .prog--btw span{color:var(--gold)}
+.ctable a{white-space:nowrap}
+
+/* detail blocks */
+.detail{margin-top:56px;padding-top:48px;border-top:1px solid var(--rule)}
+.detail__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--gut)}
+.detail h3{font-weight:500;font-size:clamp(24px,2.8vw,34px);letter-spacing:-.01em;line-height:1.15}
+.detail p{margin-top:16px;color:var(--ink-soft);max-width:56ch}
+
+.deflist{margin-top:8px}
+.deflist .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.deflist .row dt{font:600 15px/1.3 var(--serif)}
+.deflist .row dd{font:500 13.5px/1.4 var(--mono);color:var(--ink-soft)}
+
+.olist{counter-reset:step;margin-top:8px}
+.olist li{list-style:none;counter-increment:step;display:grid;grid-template-columns:56px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.olist li::before{content:counter(step,decimal-leading-zero);font:500 22px/1 var(--serif);color:var(--teal)}
+.olist h4{font-weight:600;font-size:16.5px;margin-bottom:6px}
+.olist p{font-size:14.5px;color:var(--ink-soft)}
+
+.callout{margin-top:36px;border:1px solid var(--blue);padding:24px 26px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+.callout p{font-size:14.5px;color:var(--ink-soft);max-width:60ch}
+.callout b{display:block;font-family:var(--serif);font-size:18px;color:var(--blue);margin-bottom:6px}
+
+/* pull quotes */
+.quotes{margin-top:56px;padding-top:48px;border-top:1px solid var(--rule)}
+.pq{padding:28px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:60px 1fr;gap:20px}
+.pq .mark{font-family:var(--serif);font-size:44px;line-height:.6;color:var(--gold);padding-top:12px}
+.pq blockquote{font-size:clamp(19px,2.2vw,25px);line-height:1.4;font-style:italic;font-weight:400}
+.pq footer{margin-top:14px;font:600 12.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+
+/* ledger */
+.ledger{margin-top:8px}
+.lrow{display:grid;grid-template-columns:44px 1fr auto;gap:20px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--rule)}
+.lrow .n{font:500 14px/1 var(--mono);color:var(--ink-soft)}
+.lrow .l{font-size:15.5px}
+.lrow .v{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.6vw,32px);text-align:right;white-space:nowrap}
+
+/* supporters */
+.supporters{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);margin-top:8px}
+.supporters h3{font:600 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:14px}
+.srow{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #33312A;font-size:15px}
+.srow span{color:#B7B2A0;font-size:12.5px;text-align:right;font-family:var(--mono)}
+
+.cta-box{margin-top:44px;border:1px solid var(--paper);padding:clamp(28px,3.4vw,40px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta-box p{max-width:44ch;color:#D8D4C6;font-size:14.5px}
+.cta-box .btns{display:flex;gap:14px;flex-wrap:wrap}
+.sec--ink .btn{border-color:var(--paper);color:var(--paper)}
+.sec--ink .btn:hover{background:var(--paper);color:var(--ink)}
+.sec--ink .btn--gold{border-color:var(--gold-bright);color:var(--gold-bright)}
+.sec--ink .btn--gold:hover{background:var(--gold-bright);color:var(--ink)}
+
+/* feature (black tech week) */
+.feature__grid{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--gut);align-items:start}
+.feature blockquote{font-size:clamp(26px,3.6vw,42px);line-height:1.16;font-style:italic;font-weight:400;max-width:22ch}
+.feature .citeline{margin-top:30px}
+.feature__photo{border:1px solid var(--rule-2)}
+.feature__photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.feature__photo figcaption{padding:12px 14px;font:500 12.5px/1.4 var(--mono);color:var(--ink-soft);border-top:1px solid var(--rule-2)}
+
+/* roster */
+.roster{margin-top:8px;columns:2;column-gap:var(--gut)}
+.rperson{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);break-inside:avoid}
+.rperson img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.rperson b{display:block;font-size:15px;font-weight:600}
+.rperson span{display:block;font:500 12px/1.3 var(--mono);color:var(--ink-soft)}
+
+/* news */
+.nlist{margin-top:8px}
+.nrow{display:grid;grid-template-columns:140px 1fr auto;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:inherit}
+.nrow:hover h4{text-decoration:underline}
+.nrow time{font:500 12.5px/1 var(--mono);color:var(--ink-soft)}
+.nrow h4{font-family:var(--serif);font-weight:500;font-size:18px}
+.nrow .cat{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--blue);white-space:nowrap}
+
+/* close */
+.close{padding:clamp(64px,9vw,110px) 0;text-align:center}
+.close h2{font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.08;max-width:20ch;margin:0 auto}
+.close h2 em{color:var(--gold)}
+.close p{margin:20px auto 0;max-width:52ch;color:var(--ink-soft)}
+.close__cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+
+/* footer */
+.foot{background:var(--ink);color:#B7B2A0;padding:44px 0}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot img{height:14px;filter:invert(1) brightness(0) invert(1)}
+.foot ul{display:flex;gap:20px;list-style:none;flex-wrap:wrap}
+.foot ul a{text-decoration:none;color:#B7B2A0;font-size:13.5px}
+.foot ul a:hover{color:#fff}
+.foot .bot{margin-top:26px;padding-top:20px;border-top:1px solid #33312A;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px}
+.foot .bot b{color:#fff}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .nav ul{display:none}
+  .cover__grid,.detail__grid,.feature__grid{grid-template-columns:1fr}
+  .cover__figure{margin-top:36px;max-width:420px}
+  .paths__grid{grid-template-columns:1fr}
+  .path{border-right:0;border-bottom:1px solid var(--rule);min-height:0}
+  .path:last-child{border-bottom:0}
+  .ctable{display:block;overflow-x:auto;white-space:nowrap}
+  .deflist .row,.supporters{grid-template-columns:1fr}
+  .roster{columns:1}
+  .callout{grid-template-columns:1fr}
+  .nrow{grid-template-columns:1fr;gap:6px}
+  .cta-box{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:640px){
+  .nav .txt{display:none}
+  .citeline{flex-direction:column}
+  .citeline span{border-right:0;border-bottom:1px solid var(--rule);margin-right:0;width:100%}
+  .pq{grid-template-columns:1fr}
+  .pq .mark{display:none}
+  .lrow{grid-template-columns:32px 1fr;row-gap:4px}
+  .lrow .v{grid-column:2;text-align:left}
+  .nav .wrap{height:58px}
+  .cover__meta{gap:14px;font-size:11.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="nav__brand" href="#top" aria-label="Lightship Foundation home">
+      <img src="assets/lightship-foundation.svg" alt="Lightship Foundation" width="110" height="14">
+      <span class="tag">Founder &amp; Partner Guide</span>
+    </a>
+    <ul>
+      <li><a href="#founders">For Founders</a></li>
+      <li><a href="#partners">For Partners</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+    <div class="nav__cta">
+      <a class="txt" href="https://buy.stripe.com/3cs02U4d44ZA2nC28e">Donate</a>
+      <a class="btn" href="https://www.lightship.foundation/apply/">Apply</a>
+    </div>
+  </div>
+</nav>
+
+<header class="cover" id="top">
+  <div class="wrap">
+    <div class="cover__top rv">
+      <div class="eyebrow" style="margin:0"><b>Lightship Foundation</b> · Founder, Partner &amp; Community Guide</div>
+      <div class="cover__meta"><span>Kalamazoo &amp; Cincinnati</span><span>DBA Hillman Accelerator LLC</span><span>Est. 2022</span></div>
+    </div>
+
+    <div class="cover__grid">
+      <div>
+        <h1 class="rv">If you're building,<br><em>you belong here.</em></h1>
+        <p class="cover__lede rv">Lightship Foundation makes entrepreneurship accessible for courageous, committed founders at every stage — through three free programs, corporate and civic partnerships, and strategic capital. This page is organized by who's reading it: a founder deciding whether to apply, a partner or donor deciding whether to fund the next cohort, or the community following the work.</p>
+        <div class="cover__cta rv">
+          <a class="btn btn--solid" href="#founders">I'm a founder <span class="arr">&rarr;</span></a>
+          <a class="btn" href="#partners">I'm a partner or donor <span class="arr">&rarr;</span></a>
+        </div>
+      </div>
+      <figure class="cover__figure rv">
+        <img src="assets/insight-organized-for-action.webp" alt="A fireside chat on the Black Tech Week stage">
+        <figcaption>Black Tech Week, a Lightship Foundation program. Photo: Lightship Foundation.</figcaption>
+      </figure>
+    </div>
+
+    <div class="citeline rv">
+      <span><b>$750M</b>Raised by Lightship alumni</span>
+      <span><b>17,000+</b>Founders &amp; innovators served</span>
+      <span><b>200+</b>Jobs created per year</span>
+      <span><b>$228,647</b>Average annual revenue</span>
+    </div>
+  </div>
+</header>
+
+<section class="paths">
+  <div class="wrap">
+    <div class="paths__grid">
+      <a class="path rv" href="#founders">
+        <span class="idx">01 — Founders</span>
+        <h3>Apply to a program.</h3>
+        <p>Three free paths — a 3-day bootcamp, a 4-week equity-free sprint, or a 3-day culture-and-capital event — compared side by side, with real dates.</p>
+        <span class="go">Compare programs &rarr;</span>
+      </a>
+      <a class="path rv" href="#partners">
+        <span class="idx">02 — Partners &amp; donors</span>
+        <h3>See what the money did.</h3>
+        <p>Eight numbers, sourced from Lightship's own impact page, plus the full list of current civic and corporate partners.</p>
+        <span class="go">Read the impact ledger &rarr;</span>
+      </a>
+      <a class="path rv" href="#community">
+        <span class="idx">03 — Community</span>
+        <h3>Meet who's building it.</h3>
+        <p>Black Tech Week, the team behind the programs, and the founders who've already been through them.</p>
+        <span class="go">Go to Black Tech Week &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="founders">
+  <div class="wrap">
+    <div class="sec__head">
+      <div class="eyebrow">For founders</div>
+      <h2 class="rv">Three programs,<br><em>one mission.</em></h2>
+      <p class="rv">We're an impact-driven organization building programs that help entrepreneurs start, scale and sustain their businesses — through expert mentorship, corporate partnerships and strategic capital.</p>
+    </div>
+
+    <table class="ctable rv">
+      <thead>
+        <tr><th>Program</th><th>Format</th><th>Cost</th><th>Duration</th><th>What you leave with</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="prog prog--bc">Lightship Bootcamp<span>8 Ohio cities, 2026</span></td>
+          <td>In-person</td>
+          <td>Free — meals &amp; lodging covered</td>
+          <td>3 days</td>
+          <td>Sharper pitch, a usable financial model, a stronger legal foundation</td>
+          <td><a class="lnk" href="#bootcamp">Details <span class="arr">&rarr;</span></a></td>
+        </tr>
+        <tr>
+          <td class="prog prog--fg">Founder Gym<span>Equity-free</span></td>
+          <td>Cohort-based</td>
+          <td>Free</td>
+          <td>4 weeks</td>
+          <td>A validated idea, an MVP direction, a brand &amp; launch plan</td>
+          <td><a class="lnk" href="#foundergym">Details <span class="arr">&rarr;</span></a></td>
+        </tr>
+        <tr>
+          <td class="prog prog--btw">Black Tech Week<span>Owned by Lightship</span></td>
+          <td>In-person event</td>
+          <td>Ticketed</td>
+          <td>3 days</td>
+          <td>Investor, corporate &amp; community connections at scale</td>
+          <td><a class="lnk" href="https://www.blacktechweek.com" target="_blank" rel="noopener">blacktechweek.com <span class="arr">&rarr;</span></a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="detail" id="bootcamp">
+      <div class="detail__grid">
+        <div>
+          <div class="eyebrow">Lightship Bootcamp</div>
+          <h3 class="rv">Your first million is closer than you think.</h3>
+          <p class="rv">A free, in-person program that brings entrepreneurs together for three focused days of learning, mentorship and growth. Lightship covers accommodations and meals, so founders can fully engage in refining their business strategy, financials and investor pitch.</p>
+          <a class="lnk rv" style="margin-top:22px" href="https://www.lightship.foundation/bootcamp/#interest">See the 2026 application &rarr;</a>
+
+          <div class="callout rv">
+            <p><b>Supported by JobsOhio</b>Eligible founders may explore the JobsOhio Small Business Grant — non-dilutive funding of up to $50,000 for equipment, technology and workforce development.</p>
+            <a class="btn" href="https://www.lightship.foundation/bootcamp/">Start a grant application</a>
+          </div>
+        </div>
+        <div>
+          <div class="eyebrow">2026 cities &amp; dates</div>
+          <dl class="deflist rv">
+            <div class="row"><dt>Marietta, OH</dt><dd>March 23&ndash;25</dd></div>
+            <div class="row"><dt>Youngstown, OH</dt><dd>April 21&ndash;23</dd></div>
+            <div class="row"><dt>Columbus, OH</dt><dd>May 18&ndash;20</dd></div>
+            <div class="row"><dt>Dayton, OH</dt><dd>June 15&ndash;17</dd></div>
+            <div class="row"><dt>Toledo, OH</dt><dd>September 8&ndash;10</dd></div>
+            <div class="row"><dt>Cincinnati, OH</dt><dd>October 19&ndash;21</dd></div>
+            <div class="row"><dt>Cleveland, OH</dt><dd>November 2&ndash;4</dd></div>
+            <div class="row"><dt>Akron, OH</dt><dd>November 16&ndash;18</dd></div>
+          </dl>
+          <p class="muted rv" style="margin-top:14px;font-size:13.5px">Rolling applications, first-come first-served. Once a cohort is full, applications close.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail" id="foundergym">
+      <div class="detail__grid">
+        <div>
+          <div class="eyebrow">Founder Gym</div>
+          <h3 class="rv">Where ideas become action.</h3>
+          <p class="rv">An equity-free program combining expert training, proven frameworks and hands-on mentorship to help entrepreneurs build with clarity, confidence and purpose.</p>
+          <a class="lnk rv" style="margin-top:22px" href="https://www.lightship.foundation/foundergym/apply/">Apply to Founder Gym &rarr;</a>
+        </div>
+        <ol class="olist rv">
+          <li><div><h4>Build your foundation</h4><p>Align your purpose with your idea, define your customer, and validate your problem and solution using frameworks like the Lean Canvas.</p></div></li>
+          <li><div><h4>Know your market</h4><p>Discover early adopters, uncover where your market is underserved, and shape an MVP that resonates with real customer needs.</p></div></li>
+          <li><div><h4>Master money &amp; operations</h4><p>Learn smart pricing, understand your cost structure, and put simple systems in place so your business runs smoothly.</p></div></li>
+          <li><div><h4>Brand &amp; launch</h4><p>Craft a brand that reflects your vision, build an actionable launch plan, and gather real feedback to iterate on.</p></div></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="quotes">
+      <div class="eyebrow rv">What the founder community says</div>
+      <div class="pq rv"><span class="mark">&ldquo;</span><div><blockquote>I've taken numerous startup programs. This was the best program I've ever been involved with.</blockquote><footer>Lightship Bootcamp founder</footer></div></div>
+      <div class="pq rv"><span class="mark">&ldquo;</span><div><blockquote>Reconnecting with my why in the first week was crucial — it reinforced the importance of validating before building.</blockquote><footer>Riva Kajangu, Founder Gym alum</footer></div></div>
+      <div class="pq rv"><span class="mark">&ldquo;</span><div><blockquote>Numbers don't lie. The simple financial approach helped me truly understand my business instead of outsourcing the numbers.</blockquote><footer>Riva Kajangu, Founder Gym alum</footer></div></div>
+      <p class="muted rv" style="margin-top:18px;font-size:13px">Bootcamp quotes are published on lightship.foundation/bootcamp without individual attribution; Founder Gym quotes carry the founder's name on lightship.foundation/foundergym.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--ink" id="partners">
+  <div class="wrap">
+    <div class="sec__head">
+      <div class="eyebrow">For partners &amp; donors</div>
+      <h2 class="rv">The results<br><em>behind the work.</em></h2>
+      <p class="rv">Lightship Foundation exists to empower remarkable entrepreneurs with the education, community and capital needed to build scalable companies, create jobs and drive long-term economic growth. Every figure below is published on lightship.foundation/impact.</p>
+    </div>
+
+    <div class="ledger">
+      <div class="lrow rv"><span class="n">01</span><span class="l">Served across all programs</span><span class="v">17,000+</span></div>
+      <div class="lrow rv"><span class="n">02</span><span class="l">Program applications</span><span class="v">4,000+</span></div>
+      <div class="lrow rv"><span class="n">03</span><span class="l">Raised by Lightship alumni</span><span class="v">$750M</span></div>
+      <div class="lrow rv"><span class="n">04</span><span class="l">Average company revenue</span><span class="v">$228K+</span></div>
+      <div class="lrow rv"><span class="n">05</span><span class="l">Revenue generated by BTW attendees</span><span class="v">$1.13B</span></div>
+      <div class="lrow rv"><span class="n">06</span><span class="l">Jobs created per year, Lightship &amp; alumni companies</span><span class="v">200</span></div>
+      <div class="lrow rv"><span class="n">07</span><span class="l">Average valuation, bootcamp company</span><span class="v">$1.9M</span></div>
+      <div class="lrow rv"><span class="n">08</span><span class="l">Black Tech Week registrations</span><span class="v">19,000+</span></div>
+    </div>
+
+    <div class="supporters" style="margin-top:64px">
+      <div>
+        <h3>Current partners</h3>
+        <div class="srow rv"><span>City of Cincinnati</span><span>Municipal</span></div>
+        <div class="srow rv"><span>Hamilton County, Ohio</span><span>Municipal</span></div>
+        <div class="srow rv"><span>JobsOhio</span><span>Economic development</span></div>
+        <div class="srow rv"><span>Ohio Third Frontier</span><span>State partner</span></div>
+        <div class="srow rv"><span>Surdna Foundation</span><span>Foundation</span></div>
+        <div class="srow rv"><span>T.D. Jakes Foundation</span><span>Foundation</span></div>
+      </div>
+      <div>
+        <h3>Current sponsors</h3>
+        <div class="srow rv"><span>Procter &amp; Gamble</span><span>Corporate</span></div>
+        <div class="srow rv"><span>Kroger</span><span>Corporate</span></div>
+        <div class="srow rv"><span>Fifth Third</span><span>Corporate</span></div>
+        <div class="srow rv"><span>Cooley</span><span>Legal</span></div>
+        <div class="srow rv"><span>FBT Gibbons</span><span>Legal</span></div>
+        <div class="srow rv"><span>Visit Cincy, REDI Cincinnati, Build In Tulsa</span><span>Ecosystem</span></div>
+      </div>
+    </div>
+
+    <div class="cta-box rv">
+      <p>Every dollar funds a bootcamp seat, a Founder Gym cohort, or a Black Tech Week connection. Partnerships fund a city; donations fund a founder.</p>
+      <div class="btns">
+        <a class="btn btn--gold" href="https://buy.stripe.com/3cs02U4d44ZA2nC28e">Donate &rarr;</a>
+        <a class="btn" href="https://www.lightship.foundation/contact-us/">Bring Lightship to your city &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="community">
+  <div class="wrap">
+    <div class="sec__head">
+      <div class="eyebrow">Community — Black Tech Week</div>
+    </div>
+    <div class="feature__grid">
+      <div>
+        <blockquote class="rv">Content. Connection. Culture.</blockquote>
+        <p class="rv muted" style="margin-top:22px;max-width:52ch">An award-winning, culture-driven experience supported by community and corporate collaboration. BTW connects investors, entrepreneurs, tech professionals and creatives across three full days of curated content, meaningful connections and incredible energy — owned and run by Lightship Foundation, not a separate organization.</p>
+        <div class="citeline rv">
+          <span><b>19,000+</b>Registrations</span>
+          <span><b>$1.13B</b>Revenue generated by attendees</span>
+        </div>
+        <a class="lnk rv" style="margin-top:28px" href="https://www.blacktechweek.com" target="_blank" rel="noopener">Visit blacktechweek.com &rarr;</a>
+      </div>
+      <figure class="feature__photo rv">
+        <img src="assets/build-stronger-founders.webp" alt="A speaker on stage at a Black Tech Week partner event">
+        <figcaption>Black Tech Week, Cincinnati. Photo: Lightship Foundation.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band" id="team">
+  <div class="wrap">
+    <div class="sec__head">
+      <div class="eyebrow">Why we exist</div>
+      <h2 class="rv">Building a more<br><em>inclusive innovation economy.</em></h2>
+      <p class="rv">We help founders build sustainable companies, generate wealth, and reinvest in their communities — because entrepreneurship is one of the most effective tools for building resilient communities. Six things we hold ourselves to: community first, creativity as a catalyst, bold innovation, sustainable impact, excellence over everything, and joy in the work.</p>
+    </div>
+    <div class="eyebrow rv">Meet the team</div>
+    <div class="roster rv">
+      <div class="rperson"><img src="assets/candice-matthews-brackeen.webp" alt="Candice Matthews Brackeen"><div><b>Candice Matthews Brackeen</b><span>CEO</span></div></div>
+      <div class="rperson"><img src="assets/alexis-alston.webp" alt="Alexis Alston"><div><b>Alexis Alston</b><span>Director of Corporate Partnerships</span></div></div>
+      <div class="rperson"><img src="assets/raquel-robinson.webp" alt="Raquel Robinson"><div><b>Raquel Robinson</b><span>Executive Director</span></div></div>
+      <div class="rperson"><img src="assets/dari-daniels.webp" alt="Dari Daniels"><div><b>Dari Daniels</b><span>Chief of Staff</span></div></div>
+      <div class="rperson"><img src="assets/vanessa-misoon.webp" alt="Vanessa Misoon"><div><b>Vanessa Misoon</b><span>Director of Communications</span></div></div>
+      <div class="rperson"><img src="assets/kate-dejesus.webp" alt="Kate deJesus"><div><b>Kate deJesus</b><span>Head of Content</span></div></div>
+      <div class="rperson"><img src="assets/steven-shaw.webp" alt="Steven Shaw"><div><b>Steven Shaw</b><span>Project Manager</span></div></div>
+      <div class="rperson"><img src="assets/yasvin-rajapakse.webp" alt="Yasvin Rajapakse"><div><b>Yasvin Rajapakse</b><span>Program Manager</span></div></div>
+      <div class="rperson"><img src="assets/rod-walton.webp" alt="Rod Walton"><div><b>Rod Walton</b><span>Entrepreneur in Residence</span></div></div>
+      <div class="rperson"><img src="assets/derrick-l-maultsby-jr.webp" alt="Derrick L. Maultsby, Jr"><div><b>Derrick L. Maultsby, Jr</b><span>Managing Associate, FBT Gibbons LLP</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head">
+      <div class="eyebrow">Latest from Lightship</div>
+      <h2 class="rv" style="font-size:clamp(26px,3vw,38px)">Founder stories &amp; impact.</h2>
+    </div>
+    <div class="nlist">
+      <a class="nrow rv" href="https://www.lightship.foundation/blog/">
+        <time>Oct 30, 2025</time>
+        <h4>Founders: AI Is A Better Writer Than You Are. Use It.</h4>
+        <span class="cat">Insights</span>
+      </a>
+      <a class="nrow rv" href="https://www.lightship.foundation/blog/">
+        <time>Mar 11, 2025</time>
+        <h4>Lightship Foundation Expands Support for Entrepreneurs Nationwide with Founder Gym Acquisition</h4>
+        <span class="cat">Announcement</span>
+      </a>
+      <a class="nrow rv" href="https://www.lightship.foundation/blog/">
+        <time>Dec 17, 2024</time>
+        <h4>Lightship Foundation and JobsOhio Deepen Collaboration to Propel Innovation Across Ohio</h4>
+        <span class="cat">Partnership</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2 class="rv">If you're ready to build,<br><em>you belong here.</em></h2>
+    <p class="rv">Three programs. One mission. Pick your path above, or start with the one thing that's true for everyone who's come through Lightship: they applied.</p>
+    <div class="close__cta rv">
+      <a class="btn btn--solid" href="https://www.lightship.foundation/apply/">Start your founder journey &rarr;</a>
+      <a class="btn" href="https://www.lightship.foundation/contact-us/">Talk to us about partnering &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <img src="assets/lightship-foundation.svg" alt="Lightship Foundation">
+    <ul>
+      <li><a href="https://www.lightship.foundation/contact-us/">Contact</a></li>
+      <li><a href="https://www.blacktechweek.com" target="_blank" rel="noopener">Black Tech Week</a></li>
+      <li><a href="https://www.instagram.com/lightshipfdn">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/company/lightship-foundation">LinkedIn</a></li>
+    </ul>
+  </div>
+  <div class="wrap bot">
+    <span>Copyright &copy; 2026 Hillman Accelerator LLC (DBA, Lightship Foundation)</span>
+    <span>Founder &amp; partner guide for Lightship Foundation by <b>LOVELEEDAY Studios</b>. Photography and wordmark are Lightship Foundation's own.</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const els = document.querySelectorAll('.rv');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    els.forEach(e => e.classList.add('in')); return;
+  }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -6% 0px' });
+  els.forEach(e => io.observe(e));
+})();
+</script>
+</body>
+</html>
