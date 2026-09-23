@@ -24,6 +24,7 @@
 
 import { TOKENS } from "./tokens";
 import { v } from "./assetVersion";
+import { meknology } from "./meknology-study";
 
 export interface Case {
   slug: string;
@@ -59,6 +60,24 @@ export interface Portfolio {
   stats: { k: string; label: string; sub: string }[];
   cases: Case[];
   method: string[];
+  /** A study addressed to a founder about their own company rather than to a fund about its
+   *  portfolio. The fund wording ("Portfolio study", "One of your companies, rebuilt.") reads
+   *  wrong to the person whose company it is. */
+  eyebrow?: string;
+  headline?: string;
+  /** Market research delivered alongside the rebuild. Every point names its source. */
+  research?: Research;
+  /** Render the research above the site findings — for studies where it is the headline. */
+  researchFirst?: boolean;
+}
+
+export interface Research {
+  kicker: string;
+  title: string;
+  intro: string;
+  verdict?: string;
+  points: { title: string; detail: string }[];
+  sources: { label: string; url: string }[];
 }
 
 const collab: Portfolio = {
@@ -455,7 +474,7 @@ const hundredkm: Portfolio = {
   ],
 };
 
-export const portfolios: Portfolio[] = [collab, lightship, hundredkm, venturehue];
+export const portfolios: Portfolio[] = [collab, lightship, hundredkm, venturehue, meknology];
 
 /** Studies reachable right now -- the ones whose token is set. */
 export const publishedPortfolios = portfolios.filter((p) => Boolean(p.token));

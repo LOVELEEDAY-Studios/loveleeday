@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPortal, isExpired, formatDate, portals } from "@/content/portals";
 import { NoteForm } from "@/components/portal/NoteForm";
@@ -136,20 +135,21 @@ export default async function PortalPage({
                     ))}
                   </ul>
 
-                  <div className="mt-9 flex flex-wrap items-center gap-3">
-                    <Link
-                      href={`/p/${portal.token}/${d.slug}`}
-                      className="inline-flex min-h-[44px] items-center bg-[var(--accent)] px-5 text-[14px] font-medium text-white transition-colors hover:bg-[var(--accent-dim)]"
-                    >
-                      Open and review
-                    </Link>
+                  {/* ONE button. There were two here plus a third on the
+                      screenshot ("Open and review", "Full screen", "Open and
+                      review →") and they led to two different places. Daniel,
+                      2026-09-22: "dont do the open and preview and full screen
+                      buttons that is confusing for clients one button." A
+                      client wants to see their site, so the button opens it,
+                      full size, as a real page they can scroll. */}
+                  <div className="mt-9">
                     <a
                       href={`${d.href}?k=${portal.token}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex min-h-[44px] items-center border border-[var(--line-bright)] px-5 text-[14px] text-[var(--mid)] transition-colors hover:border-[var(--ink)] hover:text-[var(--ink)]"
+                      className="inline-flex min-h-[44px] items-center bg-[var(--accent)] px-5 text-[14px] font-medium text-white transition-colors hover:bg-[var(--accent-dim)]"
                     >
-                      Full screen ↗
+                      View the redesign
                     </a>
                   </div>
 
@@ -197,8 +197,10 @@ export default async function PortalPage({
 
                 {/* The screenshot is the object on the page, not a card around
                     one: no padding, no radius, hairline only. */}
-                <Link
-                  href={`/p/${portal.token}/${d.slug}`}
+                <a
+                  href={`${d.href}?k=${portal.token}`}
+                  target="_blank"
+                  rel="noreferrer"
                   className="group block"
                 >
                   <div className="overflow-hidden border border-[var(--line-bright)] bg-[var(--raised)] transition-colors group-hover:border-[var(--accent)]">
@@ -212,11 +214,10 @@ export default async function PortalPage({
                       className="block w-full"
                     />
                   </div>
-                  <span className="mt-3 flex items-center justify-between font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)] transition-colors group-hover:text-[var(--accent)]">
-                    <span className="hidden sm:inline">Top of page · scroll the live version</span>
-                    <span aria-hidden="true">Open and review →</span>
+                  <span className="mt-3 block font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
+                    Top of page
                   </span>
-                </Link>
+                </a>
                 </div>
               </div>
             </article>
