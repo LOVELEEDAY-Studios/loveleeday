@@ -1,4 +1,5 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse, type NextFetchEvent, type NextRequest } from "next/server";
+import { recordView, TEAM_COOKIE } from "@/lib/visits";
 import { TOKENS } from "@/content/tokens";
 
 /* The files under /public/portal are the deliverables themselves: six full
@@ -36,7 +37,7 @@ const FOR_DIR: Record<string, string> = {
   ...(TOKENS.lightshipFoundation ? { lightshipfoundation: TOKENS.lightshipFoundation } : {}),
 };
 
-export function proxy(req: NextRequest) {
+export function proxy(req: NextRequest, event: NextFetchEvent) {
   const { pathname, searchParams } = req.nextUrl;
 
   // Only documents are gated. Anything with a non-HTML extension is an asset.
@@ -46,7 +47,11 @@ export function proxy(req: NextRequest) {
 
   const dir = pathname.split("/")[2] ?? "";
   const expected = FOR_DIR[dir];
-  if (expected && searchParams.get("k") === expected) return NextResponse.next();
+  if (expected && searchParams.get("k") === expected) {
+    // A study opened straight from its link never passes through a /p/ page, so it is counted here.
+    event.waitUntil(recordView(req.headers, pathname, req.cookies.get(TEAM_COOKIE)?.value === "1"));
+    return NextResponse.next();
+  }
 
   /* 404 rather than 403: a 403 confirms the path exists, which is exactly the
      thing a guessed URL should not learn. */

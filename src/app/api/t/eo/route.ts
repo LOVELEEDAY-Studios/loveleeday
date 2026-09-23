@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { after } from "next/server";
+import { isAutomation } from "@/lib/visits";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +26,7 @@ export async function GET(request: Request) {
       token: t.slice(0, 64),
       ua: ua ? ua.slice(0, 400) : null,
       ip_hash: ip ? createHash("sha256").update(ip.toLowerCase()).digest("hex").slice(0, 16) : null,
-      proxy: isBot(ua),
+      proxy: isBot(ua) || isAutomation(ua),
       referer: request.headers.get("referer")?.slice(0, 300) ?? null,
     };
     after(async () => {
