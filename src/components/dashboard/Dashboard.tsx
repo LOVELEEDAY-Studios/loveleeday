@@ -9,7 +9,6 @@ import {
   Users,
   ClipboardCheck,
   Database,
-  Sparkles,
 } from "lucide-react";
 import type { Requirement } from "@/content/compliance";
 import { gcPublic, gcSample } from "@/content/compliance/gc-profile";
@@ -56,14 +55,14 @@ const PRESETS: { name: string; patch: Partial<PlanInputs> }[] = [
   { name: "Keep more teachers", patch: { attrition: 10, raise: 4.5 } },
 ];
 
-const mono = "font-[family-name:var(--font-mono)] text-[10.5px] uppercase tracking-[0.16em]";
+const mono = "text-[9px] font-semibold uppercase tracking-[0.12em]";
 
 function Card({ title, tag, children, className = "" }: { title?: string; tag?: "public" | "sample" | "model"; children: React.ReactNode; className?: string }) {
   return (
-    <div className={`border border-[var(--line)] bg-[var(--paper)] p-5 ${className}`}>
+    <div className={`rounded-[12px] border border-[#edf0f4] bg-white p-5 ${className}`}>
       {(title || tag) && (
         <div className="mb-4 flex items-start justify-between gap-3">
-          {title && <h3 className="text-[14.5px] font-medium leading-[1.3]">{title}</h3>}
+          {title && <h3 className="text-[14px] font-medium leading-[1.35] tracking-[-0.01em]">{title}</h3>}
           {tag && <Tag kind={tag} />}
         </div>
       )}
@@ -74,22 +73,22 @@ function Card({ title, tag, children, className = "" }: { title?: string; tag?: 
 
 function Tag({ kind }: { kind: "public" | "sample" | "model" }) {
   const t = {
-    public: ["Public record", "border-[var(--teal)] text-[var(--teal)]"],
-    sample: ["Sample data", "border-[var(--copper)] text-[var(--copper)]"],
-    model: ["Your model", "border-[var(--ink)] text-[var(--ink)]"],
+    public: ["Public record", "bg-[#f0f5fc] text-[#3970af]"],
+    sample: ["Sample data", "bg-[#fbf3ed] text-[#a0603a]"],
+    model: ["Your model", "bg-[#f2f3f5] text-[#4a4f58]"],
   }[kind];
-  return <span className={`shrink-0 border px-1.5 py-px ${mono} !text-[9.5px] ${t[1]}`}>{t[0]}</span>;
+  return <span className={`shrink-0 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] ${t[1]}`}>{t[0]}</span>;
 }
 
 function Kpi({ k, label, sub, tag }: { k: string; label: string; sub?: string; tag?: "public" | "sample" | "model" }) {
   return (
-    <div className="bg-[var(--paper)] p-4 sm:p-5">
+    <div className="rounded-[12px] border border-[#edf0f4] bg-white p-4 sm:p-5">
       <div className="flex flex-wrap-reverse items-start justify-between gap-2">
-        <span className="tnum text-[28px] leading-none tracking-[-0.02em] sm:text-[32px]">{k}</span>
+        <span className="tnum text-[26px] font-medium leading-none tracking-[-0.035em] sm:text-[30px]">{k}</span>
         {tag && <Tag kind={tag} />}
       </div>
-      <span className="mt-2 block text-[13px] font-medium">{label}</span>
-      {sub && <span className="mt-0.5 block text-[12px] text-[var(--dim)]">{sub}</span>}
+      <span className="mt-2.5 block text-[12.5px] text-[#323b48]">{label}</span>
+      {sub && <span className="mt-0.5 block text-[11.5px] text-[#969ba6]">{sub}</span>}
     </div>
   );
 }
@@ -101,7 +100,7 @@ function Slider({ label, value, min, max, step, onChange, format }: { label: str
         <span className="text-[var(--mid)]">{label}</span>
         <span className="tnum font-medium">{format(value)}</span>
       </span>
-      <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} className="w-full accent-[var(--teal)]" />
+      <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} className="w-full accent-[#3778bc]" />
     </label>
   );
 }
@@ -111,6 +110,8 @@ export function Dashboard({ items, storageKey, school }: { items: Requirement[];
   const [p, setP] = useState<PlanInputs>(DEFAULTS);
   const [preset, setPreset] = useState("Current plan");
   const [asked, setAsked] = useState<number | null>(null);
+  const [showEvidence, setShowEvidence] = useState(false);
+  const qi = asked ?? 0;
   const set = (patch: Partial<PlanInputs>) => {
     setPreset("");
     setP((prev) => ({ ...prev, ...patch }));
@@ -127,83 +128,127 @@ export function Dashboard({ items, storageKey, school }: { items: Requirement[];
 
   const questions = [
     {
+      tab: "Plan the next grade",
       q: "Can we afford to open grade 5 in 2027–28?",
-      a: `On the current assumptions, ${y2.net >= 0 ? "yes" : "not yet"}. 2027–28 ends ${y2.net >= 0 ? "with a surplus" : "with a deficit"} of ${fmtMoney(Math.abs(y2.net))} at ${y2.enrollment} students across ${y2.grades} grades. A classroom covers its own staff once it holds ${Math.ceil((p.staffCostPerTeacher * (1 + p.otherStaffPerTeacher)) / (p.perPupil - p.otherPerPupil))} students, so the risk is an under-filled grade, not the grade itself.`,
+      head: y2.net >= 0 ? "Yes, on the current plan." : "Not yet, on the current plan.",
+      evidence: "5-year plan tab · FY25 990: $6.11M revenue on 198 students · UPSFF FY27 $15,455 · charter ceiling 400",
+      a: `2027–28 ends ${y2.net >= 0 ? "with a surplus" : "with a deficit"} of ${fmtMoney(Math.abs(y2.net))} at ${y2.enrollment} students across ${y2.grades} grades. A classroom covers its own staff once it holds ${Math.ceil((p.staffCostPerTeacher * (1 + p.otherStaffPerTeacher)) / (p.perPupil - p.otherPerPupil))} students, so the risk is an under-filled grade, not the grade itself.`,
     },
     {
+      tab: "Staff for growth",
       q: "How many teachers do we need to hire for next year?",
-      a: `${y2.hires} hires for 2027–28: ${Math.max(0, y2.teachers - y1.teachers)} new positions as enrollment grows to ${y2.enrollment}, and about ${y2.hires - Math.max(0, y2.teachers - y1.teachers)} to replace the ${p.attrition}% who typically leave. Immersion roles in Mandarin and Spanish take longest to fill, so those postings should go up first.`,
+      head: `${y2.hires} hires for 2027–28.`,
+      evidence: "5-year plan tab: students per teacher, turnover rate · HR system once connected",
+      a: `${Math.max(0, y2.teachers - y1.teachers)} new positions as enrollment grows to ${y2.enrollment}, and about ${y2.hires - Math.max(0, y2.teachers - y1.teachers)} to replace the ${p.attrition}% who typically leave. Immersion roles in Mandarin and Spanish take longest to fill, so those postings should go up first.`,
     },
     {
+      tab: "Stress-test enrollment",
       q: "What if enrollment comes in 10 points under plan?",
+      head: low.some((y) => y.net < 0) ? "It dips into deficit." : "The plan holds, with less room.",
+      evidence: "5-year plan tab, rerun at fill rate minus 10 points · October audited count",
       a: `Five-year net falls from ${fmtMoney(fiveYearNet)} to ${fmtMoney(low.reduce((a, y) => a + y.net, 0))}. ${low.find((y) => y.net < 0) ? `The first deficit year would be ${low.find((y) => y.net < 0)!.year}.` : "No year goes into deficit, but the cushion for the building thins."} That is the number to watch in the October count.`,
     },
     {
+      tab: "Find the crunch",
       q: "When are our heaviest compliance weeks?",
+      head: `October: ${octCount} deadlines.`,
+      evidence: "DC PCSB 2026–27 LEA Submission Calendar · OSSE LEA Requirements Calendar",
       a: `October 2026 carries ${octCount} deadlines, the most of any month, clustered on October 1, the Enrollment Audit window and the Compass data submissions around October 23. Those should be assigned now.`,
     },
   ];
 
   return (
-    <div className="border border-[var(--line-2)] bg-[var(--ground)] shadow-[0_24px_60px_-30px_rgba(22,36,58,0.35)]">
-      {/* app bar */}
-      <div className="flex items-center justify-between border-b border-[var(--line)] bg-[var(--deep)] px-4 py-3 text-[var(--on-deep)]">
-        <div className="flex items-center gap-3">
-          <span className="grid h-7 w-7 place-items-center bg-[var(--teal)] text-[12px] font-semibold">GC</span>
-          <span className="text-[14px] font-medium">{school}</span>
-          <span className="hidden text-[12px] text-[var(--on-deep-mu)] sm:inline">· Leadership dashboard</span>
+    <div className="ll-os overflow-hidden rounded-[16px] border border-[#dcdfe6] bg-white shadow-[0_24px_56px_#202d4210]">
+      <div className="flex min-h-[56px] flex-wrap items-center justify-between gap-2 border-b border-[#edf0f4] px-4 py-3 text-[11px] text-[#8b8e96] sm:px-6">
+        <div className="flex items-center gap-4">
+          <span className="flex gap-1" aria-hidden="true">
+            <i className="h-2 w-2 rounded-full bg-[#dfe2e8]" />
+            <i className="h-2 w-2 rounded-full bg-[#dfe2e8]" />
+            <i className="h-2 w-2 rounded-full bg-[#dfe2e8]" />
+          </span>
+          <span>LOVELEEDAY / {school}</span>
         </div>
-        <span className="hidden text-[11.5px] text-[var(--on-deep-mu)] sm:inline">Powered by Arthur · LOVELEEDAY</span>
+        <span className="flex items-center gap-2 text-[10px]">
+          <i className="h-[5px] w-[5px] rounded-full bg-[#719cb1]" aria-hidden="true" />
+          Interactive system preview
+        </span>
       </div>
 
       <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[210px_minmax(0,1fr)]">
         {/* nav */}
-        <nav className="flex min-w-0 gap-1 overflow-x-auto border-b border-[var(--line)] bg-[var(--sunk)] p-2 lg:flex-col lg:border-b-0 lg:border-r lg:p-3" aria-label="Dashboard">
+        <nav className="flex min-w-0 gap-1 overflow-x-auto border-b border-[#edf0f4] bg-[#fafbfc] p-2 lg:flex-col lg:border-b-0 lg:border-r lg:px-4 lg:py-6" aria-label="Dashboard">
+          <span className="mx-2 mb-3 hidden text-[9px] uppercase tracking-[0.12em] text-[#a0a3ab] lg:block">Workspace</span>
           {NAV.map(({ k, label, icon: Icon }) => (
             <button
               key={k}
               onClick={() => setTab(k)}
-              className={`flex min-h-[40px] shrink-0 items-center gap-2.5 px-3 text-left text-[13.5px] ${tab === k ? "bg-[var(--paper)] font-medium text-[var(--ink)] shadow-[inset_2px_0_0_var(--teal)]" : "text-[var(--mid)] hover:bg-[var(--paper)]/60 hover:text-[var(--ink)]"}`}
+              className={`flex min-h-[36px] shrink-0 items-center gap-2 rounded-[8px] px-2.5 text-left text-[12.5px] ${tab === k ? "bg-[#eaf1fb] text-[#3778bc]" : "text-[#8b8f99] hover:bg-[#f1f3f6] hover:text-[#4a4f58]"}`}
             >
-              <Icon size={16} strokeWidth={1.8} />
+              <Icon size={14} strokeWidth={1.6} />
               {label}
             </button>
           ))}
+          <span className="mx-2 my-6 hidden h-px bg-[#e8ebef] lg:block" />
+          <span className="mx-2 mb-3 hidden text-[9px] uppercase tracking-[0.12em] text-[#a0a3ab] lg:block">Connected context</span>
+          <p className="mx-2 hidden text-[11px] leading-[1.8] text-[#969ba6] lg:block">
+            Charter and amendments
+            <br />DC PCSB and OSSE calendars
+            <br />990 and audited financials
+            <br />My School DC profile
+          </p>
         </nav>
 
-        <div className="min-w-0 p-4 sm:p-6">
+        <div className="min-w-0 bg-white p-4 sm:p-6 lg:p-8">
           {tab === "overview" && (
             <div className="grid gap-5">
-              <div className="grid grid-cols-2 gap-px border border-[var(--line)] bg-[var(--line)] xl:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
                 <Kpi k={String(gcPublic.enrollment2425)} label="Students, 2024–25" sub={`charter allows ${gcPublic.ceiling[6].n} by 2027–28`} tag="public" />
                 <Kpi k={fmtMoney(gcPublic.revenueFY25)} label="Revenue, FY25" sub={`+${Math.round((gcPublic.revenueFY25 / gcPublic.revenueFY24 - 1) * 100)}% on FY24`} tag="public" />
                 <Kpi k={fmtMoney(y2.net)} label="Projected 2027–28 net" sub={`at ${y2.enrollment} students`} tag="model" />
                 <Kpi k={String(octCount)} label="Compliance deadlines in October" sub="your heaviest month" tag="public" />
               </div>
 
-              <Card>
-                <div className="flex items-center gap-2 text-[14.5px] font-medium">
-                  <Sparkles size={16} className="text-[var(--teal)]" /> Ask Arthur
-                </div>
-                <p className="mt-1 text-[12.5px] text-[var(--dim)]">
-                  Questions leadership asks every planning season, answered from the model and your data. In the live version
-                  you type your own.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+              <div>
+                <div className="flex flex-wrap gap-2" role="tablist" aria-label="Questions for Arthur">
                   {questions.map((x, i) => (
                     <button
                       key={x.q}
-                      onClick={() => setAsked(i)}
-                      className={`min-h-[40px] border px-3 text-left text-[13px] ${asked === i ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--on-deep)]" : "border-[var(--line-2)] hover:bg-[var(--sunk)]"}`}
+                      role="tab"
+                      aria-selected={qi === i}
+                      onClick={() => {
+                        setAsked(i);
+                        setShowEvidence(false);
+                      }}
+                      className={`min-h-[36px] rounded-full border px-3.5 text-[12px] ${qi === i ? "border-[#d8e6f8] bg-[#f0f5fc] text-[#3970af]" : "border-[#e8ebf0] bg-white text-[#818692] hover:text-[#4a4f58]"}`}
                     >
-                      {x.q}
+                      {x.tab}
                     </button>
                   ))}
                 </div>
-                {asked !== null && (
-                  <p className="mt-4 border-l-2 border-[var(--teal)] bg-[var(--teal-wash)] p-4 text-[14px] leading-[1.65]">{questions[asked].a}</p>
-                )}
-              </Card>
+                <h3 className="mt-6 text-[22px] font-medium leading-[1.35] tracking-[-0.025em]">{questions[qi].q}</h3>
+                <div className="mt-5 flex gap-4">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[8px] bg-[linear-gradient(130deg,#f1f5fa,#e1e9f7)] text-[18px] text-[#618bbc]" aria-hidden="true">✧</span>
+                  <div className="min-w-0 max-w-[560px] text-[14px] leading-[1.75] text-[#6c7481]">
+                    <strong className="font-medium text-[#323b48]">{questions[qi].head}</strong>
+                    <br />
+                    {questions[qi].a}
+                    <button onClick={() => setShowEvidence((v) => !v)} aria-expanded={showEvidence} className="mt-3 block min-h-[24px] text-[12px] text-[#477bae]">
+                      View the evidence <span aria-hidden="true">↗</span>
+                    </button>
+                    {showEvidence && (
+                      <div className="mt-2 border-l border-[#cbd9ed] pl-4 text-[12px] leading-[1.8] text-[#778393]">
+                        <strong className="font-medium text-[#394b64]">Grounded in</strong>
+                        <br />
+                        {questions[qi].evidence}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[8px] border border-[#e2e6ed] bg-[#fcfcfd] p-4 text-[11px] text-[#999fab]">
+                  <span>Ask about budget, enrollment, staff or compliance</span>
+                  <span className="text-[#6c86a8]">Grounded in your school&apos;s record ✧</span>
+                </div>
+              </div>
 
               <div className="grid gap-5 xl:grid-cols-2">
                 <Card title="Enrollment: charter ceiling vs your plan" tag="model">
@@ -237,7 +282,7 @@ export function Dashboard({ items, storageKey, school }: { items: Requirement[];
                         setP({ ...DEFAULTS, ...pr.patch });
                         setPreset(pr.name);
                       }}
-                      className={`min-h-[34px] border px-2.5 text-[12px] ${preset === pr.name ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--on-deep)]" : "border-[var(--line-2)] hover:bg-[var(--sunk)]"}`}
+                      className={`min-h-[32px] rounded-full border px-3 text-[11.5px] ${preset === pr.name ? "border-[#d8e6f8] bg-[#f0f5fc] text-[#3970af]" : "border-[#e8ebf0] text-[#818692] hover:text-[#4a4f58]"}`}
                     >
                       {pr.name}
                     </button>
@@ -262,7 +307,7 @@ export function Dashboard({ items, storageKey, school }: { items: Requirement[];
                 </p>
               </Card>
               <div className="grid content-start gap-5">
-                <div className="grid grid-cols-2 gap-px border border-[var(--line)] bg-[var(--line)] xl:grid-cols-4">
+                <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
                   <Kpi k={fmtMoney(fiveYearNet)} label="Five-year net" />
                   <Kpi k={firstDeficit ? firstDeficit.year : "None"} label="First deficit year" />
                   <Kpi k={String(plan[plan.length - 1].enrollment)} label="Students at full build" sub="of 400 allowed" />
@@ -312,7 +357,7 @@ export function Dashboard({ items, storageKey, school }: { items: Requirement[];
           {tab === "enrollment" && (
             <div className="grid gap-5 xl:grid-cols-2">
               <Card title="What the charter allows each year" tag="public">
-                <Bars data={gcPublic.ceiling.map((c) => ({ label: c.sy, value: c.n, tone: c.sy === "24–25" ? "muted" : "ink" }))} />
+                <Bars data={gcPublic.ceiling.map((c) => ({ label: c.sy, value: c.n, tone: c.sy === "24–25" ? "ink" : "teal" }))} />
                 <p className="mt-3 text-[12.5px] leading-[1.6] text-[var(--mid)]">
                   In 2024–25 the school enrolled {gcPublic.enrollment2425} against a ceiling of 250. The ceiling reaches 400 in
                   2027–28, the year the new {gcPublic.building.ward} building is meant to be full.
@@ -350,7 +395,7 @@ export function Dashboard({ items, storageKey, school }: { items: Requirement[];
 
           {tab === "students" && (
             <div className="grid gap-5">
-              <div className="grid grid-cols-2 gap-px border border-[var(--line)] bg-[var(--line)] xl:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
                 <Kpi k={String(gcPublic.qsr.enrolled)} label="Students at the site review" sub={gcPublic.qsr.asOf} tag="public" />
                 <Kpi k={`${Math.round((gcPublic.qsr.swd / gcPublic.qsr.enrolled) * 100)}%`} label="Students with disabilities" sub={`${gcPublic.qsr.swd} students`} tag="public" />
                 <Kpi k={`${Math.round((gcPublic.qsr.eml / gcPublic.qsr.enrolled) * 100)}%`} label="Emerging multilingual learners" sub={`${gcPublic.qsr.eml} students`} tag="public" />
@@ -389,7 +434,7 @@ export function Dashboard({ items, storageKey, school }: { items: Requirement[];
 
           {tab === "faculty" && (
             <div className="grid gap-5">
-              <div className="grid grid-cols-2 gap-px border border-[var(--line)] bg-[var(--line)] xl:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
                 <Kpi k={String(gcSample.staffRoles.reduce((a, r) => a + r.n, 0))} label="Staff today" tag="sample" />
                 <Kpi k={`${gcSample.retention[gcSample.retention.length - 1].pct}%`} label="Teachers retained" sub="this year" tag="sample" />
                 <Kpi k={String(y2.hires)} label="Hires needed for 2027–28" sub="from your 5-year plan" tag="model" />
