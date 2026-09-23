@@ -25,7 +25,7 @@ export const meknology: Portfolio = {
   preparedFor: "Daniel Hodges",
   deliveredOn: "2026-09-22",
   intro:
-    "Thank you for the time today. You asked what we could do, so rather than describe it we did some. This page has two parts. The first is market intelligence on the idea you raised with us: turning the protein in your spent-grain stream into a drink, and whether Western Michigan University's athletes are a realistic first customer. The second is a rebuild of meknology.com that puts the proof you already have in front of the brewery owners and investors you are talking to. Every figure names where it came from, so you can check any line yourself.",
+    "Thank you for the time today. You asked what we could do, so rather than describe it we did some. This page has two parts. The first is market intelligence on the idea you raised with us: turning the protein in your spent-grain stream into a drink, and how to turn Western Michigan University athletics' interest into your first customer. The second is a rebuild of meknology.com that puts the proof you already have in front of the brewery owners and investors you are talking to. Every figure names where it came from, so you can check any line yourself.",
 
   researchFirst: true,
   research: meknologyResearch,
