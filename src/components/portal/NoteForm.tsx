@@ -9,12 +9,16 @@ interface Props {
   /** Preselect when the form sits inside one deliverable's page. */
   defaultSlug?: string;
   compact?: boolean;
+  /** Show the "what is this about" choice, preselected to this intent. */
+  intent?: "start" | "feedback";
+  heading?: string;
+  blurb?: string;
 }
 
 /* Feedback has to land in Daniel's inbox the moment it is written. A client who
    has to open their mail client to reply is a client who replies tomorrow, or
    not at all. */
-export function NoteForm({ token, client, deliverables, defaultSlug, compact }: Props) {
+export function NoteForm({ token, client, deliverables, defaultSlug, compact, intent, heading, blurb }: Props) {
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -74,12 +78,26 @@ export function NoteForm({ token, client, deliverables, defaultSlug, compact }: 
             : "text-[26px] font-medium leading-[1.2] tracking-[-0.02em]"
         }
       >
-        Leave a note
+        {heading ?? "Leave a note"}
       </h2>
       <p className="mt-3 max-w-[var(--measure)] text-[14px] leading-[1.6] text-[var(--mid)]">
-        Anything at all — a section that does not work, a number that is wrong, a
-        direction you want pushed harder. It reaches us immediately.
+        {blurb ??
+          "Anything at all — a section that does not work, a number that is wrong, a direction you want pushed harder. It reaches us immediately."}
       </p>
+
+      {intent && (
+        <fieldset className="mt-7">
+          <legend className={label}>What is this about?</legend>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            {([["start", "Let's get started"], ["feedback", "Feedback on the work"]] as const).map(([v, t]) => (
+              <label key={v} className="flex min-h-[48px] cursor-pointer items-center gap-3 border border-[var(--line-bright)] px-4 text-[15px] text-[var(--ink)] has-[:checked]:border-[var(--accent)]">
+                <input type="radio" name="intent" value={v} defaultChecked={v === intent} className="accent-[var(--accent)]" />
+                {t}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      )}
 
       <div className="mt-7 grid gap-5 sm:grid-cols-2">
         <label className="block">
@@ -135,7 +153,7 @@ export function NoteForm({ token, client, deliverables, defaultSlug, compact }: 
         disabled={state === "sending"}
         className="mt-7 inline-flex min-h-[44px] items-center bg-[var(--accent)] px-6 text-[14px] font-medium text-white transition-colors hover:bg-[var(--accent-dim)] disabled:opacity-50"
       >
-        {state === "sending" ? "Sending…" : "Send note"}
+        {state === "sending" ? "Sending…" : intent ? "Send" : "Send note"}
       </button>
     </form>
   );
