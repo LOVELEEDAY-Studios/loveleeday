@@ -1,0 +1,23 @@
+[
+ {
+  "file": "01-bells.mp3",
+  "client": "Bell’s Brewery",
+  "title": "“The Long Way Round” (spec sample, not a real client ad)",
+  "style": "Warm Americana folk, acoustic guitar, upright bass, brushed drums, harmonica",
+  "lyrics": "Hop fields catch the evening light / Kalamazoo, we brew it right / Take the long way round / Bell’s, from our hometown"
+ },
+ {
+  "file": "02-airport.mp3",
+  "client": "Kalamazoo Airport",
+  "title": "“Fly Local” (spec sample, not a real client ad)",
+  "style": "Bright upbeat pop jingle, handclaps, synth bass, stacked vocals",
+  "lyrics": "Short lines and an easy park / Home by dinner, gone by dark / Fly local, fly Kalamazoo / The whole wide world starts here for you / Kalamazoo"
+ },
+ {
+  "file": "03-factory-coffee.mp3",
+  "client": "Factory Coffee",
+  "title": "“Coffee Shop in a Can” (spec sample, not a real client ad)",
+  "style": "Playful indie funk, clean wah guitar, tight drums, falsetto hook",
+  "lyrics": "Crack it open, hear it fizz / Your whole café right here, it is / A coffee shop in a can / Factory Coffee, that’s the plan"
+ }
+]
