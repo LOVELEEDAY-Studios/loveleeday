@@ -492,3 +492,8 @@ h2 span{color:#8c8e95}
 @media(prefers-reduced-motion:reduce){.nav-toggle span{transition:none}}
 
 .footer-social{display:inline-flex;align-items:center;gap:.4em}.footer-social-icon{width:1em;height:1em;flex:none}
+
+/* footer lockup matches header proportions: mark = 1.85 x wordmark size, same tracking */
+.footer-mark svg{width:48px;height:48px}
+.footer-mark span{letter-spacing:.12em}
+@media (max-width:720px){.footer-mark svg{width:41px;height:41px}}
