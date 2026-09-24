@@ -14,5 +14,6 @@
     "The diagram shows what that spreadsheet is really doing.\n\nOn the left, the official systems. In the middle, the file that bridges them: mappings between systems, exceptions and special terms, notes on why numbers were adjusted.\n\nOn the right, the real risk. It all lives with one person.\n\nWhen they're out, the report waits. When they leave, the understanding leaves with them.",
     "Before you replace a spreadsheet, read it:\n\n1. Every column that matches one system to another is a relationship your systems should know about.\n2. Every exceptions tab is a set of rules that deserve names.\n3. Every margin note is context someone will need again.\n\nTreat the file as a specification, not a problem. The person who built it is your best expert.",
     "Question for operators:\n\nWhat's the one spreadsheet your organization couldn't run a month without?\n\nAnd how many people know how it works?"
-  ]
+  ],
+  "date": "2026-09-02"
 }
