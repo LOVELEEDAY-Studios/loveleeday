@@ -11,7 +11,50 @@ Prepared 2026-09-24. Everything below is paste-ready for the Upwork agency profi
 ## Agency name
 **LOVELEEDAY Studios**
 
-## Positioning (updated 2026-09-24, Daniel: "so we can be good margin and price")
+## FINAL — site-matched (2026-09-24, Daniel: "the profile for loveleeday does not match what our site says")
+Everything below is taken from loveleedaystudios.com (home, use cases, pricing & margins, principles, studio), read live on 2026-09-24, plus the sprint menu from Daniel's launch plan. This version replaces the two drafts further down.
+
+**Agency name:** LOVELEEDAY Studios
+**Title:** Software studio for custom apps, automation and data intelligence, powered by Arthur
+**Tagline:** Pure intelligence. For a fuller life.
+**Hourly rate:** $125/hr (sell speed, not a lower price)
+
+**Overview:**
+Your business already has the information. It lives across systems that speak different languages. LOVELEEDAY brings them into a shared understanding, connecting what happened, what it means and what deserves your attention.
+
+LOVELEEDAY Studios is a software studio built around Arthur, our intelligence system. Arthur connects context, preserves memory and grounds every answer in evidence, which lets us understand your records quickly and ship finished work in days, not weeks.
+
+What we build:
+• Custom applications
+• Workflow automation
+• Data migration and cleanup
+• Research and decision support
+• Websites and digital experiences
+• Brand, content and creative
+
+Where the work begins:
+• Customer data: connect records, surface duplicates, and make missing or conflicting information visible.
+• Pricing and margins: connect realized selling prices with costs, discounts and fees to see where margin is being lost.
+• Operational intelligence: connect changes across suppliers, items, places and teams into a reviewable decision.
+• Municipal review: organize ordinances and laws, track changes, and prepare a cited register of issues to review.
+
+How we work: understand, build, verify, ship. Evidence before confidence. Uncertainty stays visible. People keep the decision. Every project has a fixed scope, a fixed price and a working preview early.
+
+LOVELEEDAY Sprints (fixed price):
+• Data cleanup or analysis: 24 hours, from $350
+• AI business analysis: 24 hours, from $500
+• Executive dashboard: 48 hours, from $750
+• Landing page: 48 hours, from $750
+• Workflow automation: 48–72 hours, from $750
+• Website redesign: 72 hours, from $1,500
+• Prototype or MVP: 3–7 days, from $2,500
+
+Start with a question. Tell us the decision you need to make, the records you have, and what a useful result would look like.
+
+**Services (Upwork allows up to 10):** Web Development · Mobile/Web App Development · Automation · AI Integration · Data Analytics · Data Cleaning · Business Intelligence · Web Design · Landing Pages · Branding
+**Skills (15):** Next.js · React · TypeScript · Node.js · Supabase · PostgreSQL · Stripe · API Integration · Workflow Automation · AI Agent Development · Data Cleaning · Dashboard · Web Design · Landing Page · Business Intelligence
+
+## Positioning (updated 2026-09-24, Daniel: "so we can be good margin and price") — superseded by FINAL above
 The agency leads with **pricing and margin**, which is where the owner's profile already sells (Pricing and Margin Strategist for Distributors and Manufacturers, $150/hr). Software and automation are how the work gets delivered, not the headline.
 
 ## Title (headline) — USE THIS
