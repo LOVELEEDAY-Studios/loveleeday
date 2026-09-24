@@ -490,3 +490,5 @@ h2 span{color:#8c8e95}
   body.menu-lock{overflow:hidden}
 }
 @media(prefers-reduced-motion:reduce){.nav-toggle span{transition:none}}
+
+.footer-social{display:inline-flex;align-items:center;gap:.4em}.footer-social-icon{width:1em;height:1em;flex:none}
