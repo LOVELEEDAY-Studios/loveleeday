@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { getStudio, layers, measured, questions, studio } from "@/content/studio/elemental";
 import { NoteForm } from "@/components/portal/NoteForm";
 import { CommercialPlayer } from "@/components/studio/CommercialPlayer";
+import { BeforeAfter } from "@/components/portal/BeforeAfter";
+import { CivicAsk } from "@/components/civic/CivicAsk";
 
 export const dynamicParams = false;
 
@@ -56,7 +58,6 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
   if (!s) notFound();
   const k = s.studyToken ?? "";
   const rebuild = `/portal/elemental/concepts/c1-periodic.html?k=${k}`;
-  const board = `/portal/elemental/concepts/index.html?k=${k}`;
   // The reel and the voice samples appear the moment their files exist in public/.
   const pub = (p: string) => fs.existsSync(path.join(process.cwd(), "public", p));
   const hasReel = pub("portal/elemental/video/elemental-reel-2026.mp4");
@@ -101,8 +102,8 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
             <Eyebrow>Elemental 2.0</Eyebrow>
             <Two a="And a new front door." b="Built on the name." />
             <p className="mt-6 max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
-              Elemental: the essential element. We explored five identities and recommend this one. Your logo leads, and every
-              film becomes an element on a periodic table of the work.
+              Elemental: the essential element. Your logo leads, and every film becomes an element on a periodic table of the
+              work.
             </p>
             <ul className="mt-6 grid gap-3 text-[14px] leading-[1.6] text-[#4a4d55]">
               {[
@@ -122,15 +123,34 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
               <a href={rebuild} className="inline-block rounded-full bg-[#1d1d1f] px-5 py-2.5 text-[14px] font-medium text-white">
                 Open Elemental 2.0
               </a>
-              <a href={board} className="inline-block rounded-full border border-[#dcdfe6] px-5 py-2.5 text-[14px] text-[#1d1d1f] hover:border-[#3778bc]">
-                See all five directions
-              </a>
             </div>
           </div>
           <a href={rebuild} className="block overflow-hidden rounded-2xl border border-[#e4e5e9] shadow-[0_24px_60px_-30px_rgba(0,0,0,0.35)]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/portal/elemental/img/concept1-top.jpg" alt="The Elemental 2.0 homepage, Concept 1" className="block w-full" />
+            <img src="/portal/elemental/img/concept1-top.jpg" alt="The Elemental 2.0 homepage" className="block w-full" />
           </a>
+        </div>
+
+        <div className="mt-24">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
+            <div>
+              <Eyebrow>Before and after</Eyebrow>
+              <Two a="Today, and 2.0." b="Drag to compare." />
+            </div>
+            <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
+              The first screen of weareelementalmedia.com as it loads today, and the same screen as Elemental 2.0, both at 1440 by
+              900.
+            </p>
+          </div>
+          <div className="mt-10 overflow-hidden rounded-2xl border border-[#e4e5e9]">
+            <BeforeAfter
+              before="/portal/elemental/img/before-top.jpg"
+              after="/portal/elemental/img/concept1-top.jpg"
+              label="Elemental Media homepage today and as Elemental 2.0"
+              beforeCaption="Today"
+              afterCaption="Elemental 2.0"
+            />
+          </div>
         </div>
       </section>
 
@@ -275,6 +295,31 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
               </li>
             ))}
           </ol>
+        </div>
+
+        <div className="mt-20 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <Eyebrow>Ask Arthur</Eyebrow>
+            <p className="mt-4 max-w-[26rem] text-[15px] leading-[1.7] text-[#6c7481]">
+              Ask it anything about this proposal. Today it knows what is on this page; connected, it knows your footage, jobs
+              and clients.
+            </p>
+          </div>
+          <CivicAsk
+            token={token}
+            endpoint="/api/studio/ask"
+            source="Elemental Media proposal"
+            presets={[
+              "What would Arthur do for us in the first 30 days?",
+              "How does one shoot become every channel?",
+              "Where is our site losing people?",
+              "How would Arthur help us bid jobs?",
+              "Who owns our footage if we use Arthur?",
+            ]}
+            placeholder="Ask anything about the proposal"
+            inputLabel="Ask Arthur a question about the Elemental Media proposal"
+            reading="Arthur is working on"
+          />
         </div>
       </section>
 

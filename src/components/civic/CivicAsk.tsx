@@ -12,7 +12,15 @@ const PRESETS = [
   "How could the County contract for this?",
 ];
 
-export function CivicAsk({ token }: { token: string }) {
+export function CivicAsk({
+  token,
+  endpoint = "/api/civic/ask",
+  presets = PRESETS,
+  source = "Kalamazoo County public record",
+  placeholder = "Ask anything about the County's public record",
+  inputLabel = "Ask a question about Kalamazoo County",
+  reading = "Arthur is reading the record for",
+}: { token: string; endpoint?: string; presets?: string[]; source?: string; placeholder?: string; inputLabel?: string; reading?: string }) {
   const [q, setQ] = useState("");
   const [asked, setAsked] = useState("");
   const [busy, setBusy] = useState(false);
@@ -27,7 +35,7 @@ export function CivicAsk({ token }: { token: string }) {
     setA(null);
     setAsked(text);
     try {
-      const r = await fetch("/api/civic/ask", {
+      const r = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, question: text }),
@@ -48,11 +56,11 @@ export function CivicAsk({ token }: { token: string }) {
         <span className="h-2.5 w-2.5 rounded-full bg-[#e4e5e9]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#e4e5e9]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#e4e5e9]" />
-        <span className="ml-3 text-[12px] text-[#7d8088]">Ask Arthur · Kalamazoo County public record</span>
+        <span className="ml-3 text-[12px] text-[#7d8088]">Ask Arthur · {source}</span>
       </div>
       <div className="p-5 sm:p-7">
         <div className="flex flex-wrap gap-2">
-          {PRESETS.map((p) => (
+          {presets.map((p) => (
             <button
               key={p}
               type="button"
@@ -67,13 +75,13 @@ export function CivicAsk({ token }: { token: string }) {
           className="mt-5 flex flex-col gap-2 sm:flex-row"
           onSubmit={(e) => { e.preventDefault(); ask(q); }}
         >
-          <label htmlFor="civic-ask" className="sr-only">Ask a question about Kalamazoo County</label>
+          <label htmlFor="civic-ask" className="sr-only">{inputLabel}</label>
           <input
             id="civic-ask"
             value={q}
             onChange={(e) => setQ(e.target.value)}
             maxLength={400}
-            placeholder="Ask anything about the County's public record"
+            placeholder={placeholder}
             className="min-w-0 flex-1 rounded-full border border-[#dcdfe6] bg-white px-4 py-2.5 text-[15px] text-[#1d1d1f] outline-none focus:border-[#3778bc]"
           />
           <button
@@ -86,7 +94,7 @@ export function CivicAsk({ token }: { token: string }) {
         </form>
 
         <div aria-live="polite" className="mt-6 min-h-[4rem]">
-          {busy && <p className="text-[14px] text-[#7d8088]">Arthur is reading the record for “{asked}”…</p>}
+          {busy && <p className="text-[14px] text-[#7d8088]">{reading} “{asked}”…</p>}
           {err && <p className="text-[14px] text-[#b3261e]">{err}</p>}
           {a && (
             <div>

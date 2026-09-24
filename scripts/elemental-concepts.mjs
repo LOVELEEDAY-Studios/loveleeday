@@ -132,7 +132,7 @@ section.blk{padding:clamp(64px,8vw,120px) 0;border-top:1px solid var(--line)}
 .idx .r .pv{position:absolute;right:100px;top:50%;width:min(360px,30vw);transform:translateY(-50%);opacity:0;transition:opacity .3s;pointer-events:none}.idx .r:hover .pv{opacity:1}
 .els{display:grid;gap:18px}.el{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;align-items:center;padding:36px;border-radius:4px;background:var(--panel)}
 .el .nm{font:600 13px/1 var(--t);letter-spacing:.18em;text-transform:uppercase}.el h3{font-size:clamp(2.4rem,5vw,4.6rem);line-height:1;margin:10px 0 12px;font-weight:600}.el p{color:var(--mid);margin:0;max-width:40ch}
-.hv{position:relative;display:block;overflow:hidden}.hv video{position:absolute;inset:0;opacity:0;transition:opacity .35s}.hv.on video{opacity:1}
+.hv{position:relative;display:block;overflow:hidden}.hv video{position:absolute;inset:0;opacity:0;transition:opacity .5s cubic-bezier(.2,.7,.2,1);will-change:opacity}.hv.on video{opacity:1}.hv img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}.hv.on img{transform:scale(1.02)}
 .globe .gw{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,90px);align-items:center}
 .globe h2{font-size:clamp(2.4rem,5vw,4.4rem);line-height:1;letter-spacing:-.035em;font-weight:800;margin:14px 0 18px}.globe p{color:var(--mid);font-size:17px;max-width:44ch;margin:0}
 .gbox canvas{width:100%;height:auto;display:block;max-width:560px;margin:0 auto}
@@ -271,10 +271,14 @@ ${k.globe ? globe(k) : `<section class="blk" id="studio"><div class="w team"><p 
 <script>(()=>{const n=document.querySelector('nav.top'),b=n.querySelector('.bb');b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')});n.querySelectorAll('ul a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
 const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(!v.src){v.src=v.dataset.src}v.play().catch(()=>{})}else if(v.src){v.pause()}}),{rootMargin:'200px'});
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('video.lazyv').forEach(v=>io.observe(v));
-// Hover a film frame and its preview plays; leave and it pauses. Mouse and trackpad only.
-if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('.hv').forEach(h=>{const v=h.querySelector('video');const host=h.closest('a,.el,.card,.tile')||h;
-host.addEventListener('mouseenter',()=>{if(!v.src)v.src=v.dataset.src;v.play().then(()=>h.classList.add('on')).catch(()=>{})});
-host.addEventListener('mouseleave',()=>{h.classList.remove('on');v.pause()})})})()</script>
+// Hover a film frame and its preview plays. Previews are fetched as the frames come near the
+// viewport, so hovering starts instantly; the frame only fades in once real frames are playing.
+if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+const warm=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const v=e.target.querySelector('video');if(!v.src){v.preload='auto';v.src=v.dataset.src;v.load()}warm.unobserve(e.target)}}),{rootMargin:'400px'});
+document.querySelectorAll('.hv').forEach(h=>{warm.observe(h);const v=h.querySelector('video');const host=h.closest('a,.el,.card,.tile')||h;let out;
+v.addEventListener('playing',()=>h.classList.add('on'));
+host.addEventListener('mouseenter',()=>{clearTimeout(out);if(!v.src){v.src=v.dataset.src}v.play().catch(()=>{})});
+host.addEventListener('mouseleave',()=>{h.classList.remove('on');out=setTimeout(()=>{v.pause();v.currentTime=0},500)})})}})()</script>
 </body></html>`;
 }
 
