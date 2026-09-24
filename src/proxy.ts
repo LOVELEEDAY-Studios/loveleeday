@@ -1,6 +1,6 @@
 import { NextResponse, type NextFetchEvent, type NextRequest } from "next/server";
 import { recordView, TEAM_COOKIE } from "@/lib/visits";
-import { TOKENS } from "@/content/tokens";
+import { STUDY_DIRS } from "@/content/study-dirs";
 
 /* The files under /public/portal are the deliverables themselves: six full
    rebuilds of real companies' sites, each carrying measured criticism of the
@@ -17,27 +17,7 @@ import { TOKENS } from "@/content/tokens";
    LoanWell's study and nothing else. A shared set would have let any client we
    sent a link to read every other client's critique, which is the same leak in
    a politer form. */
-const FOR_DIR: Record<string, string> = {
-  micruity: TOKENS.micruity,
-  janta: TOKENS.janta,
-  fyxit: TOKENS.fyxit,
-  novarna: TOKENS.novarna,
-  soarce: TOKENS.soarce,
-  loanwell: TOKENS.loanwell,
-  /* A study added to portals.ts but not to this map 404s for everyone, with the
-     deliberate silence this gate was built for — no log line, no error, and a
-     404 that reads as "the file is missing" rather than "you are not allowed".
-     Enable shipped that way on 2026-09-22 and cost an afternoon to find. If you
-     add a study, add it here in the same commit. */
-  ...(TOKENS.enable ? { enable: TOKENS.enable } : {}),
-  ...(TOKENS.venturehueStudy ? { venturehue: TOKENS.venturehueStudy } : {}),
-  ...(TOKENS.meknology ? { meknology: TOKENS.meknology } : {}),
-  ...(TOKENS.blacktechweek ? { blacktechweek: TOKENS.blacktechweek } : {}),
-  ...(TOKENS.lightshipCapital ? { lightshipcapital: TOKENS.lightshipCapital } : {}),
-  ...(TOKENS.lightshipFoundation ? { lightshipfoundation: TOKENS.lightshipFoundation } : {}),
-  ...(TOKENS.elemental ? { elemental: TOKENS.elemental } : {}),
-  ...(TOKENS.startupzooStudy ? { startupzoo: TOKENS.startupzooStudy } : {}),
-};
+const FOR_DIR = STUDY_DIRS;
 
 export function proxy(req: NextRequest, event: NextFetchEvent) {
   const { pathname, searchParams } = req.nextUrl;
