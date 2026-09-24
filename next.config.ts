@@ -43,6 +43,13 @@ const nextConfig: NextConfig = {
     return [
       { source: "/about", destination: "/studio", permanent: true },
       { source: "/contact", destination: "/studio", permanent: true },
+      // www served a second copy of every page (200, not a redirect). One host for Google.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.loveleedaystudios.com" }],
+        destination: "https://loveleedaystudios.com/:path*",
+        permanent: true,
+      },
     ];
   },
 
