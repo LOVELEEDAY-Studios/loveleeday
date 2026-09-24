@@ -64,6 +64,9 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
   const voices: { file: string; title: string; voice: string; script: string }[] = pub("portal/elemental/voice/samples.json")
     ? JSON.parse(fs.readFileSync(path.join(process.cwd(), "public/portal/elemental/voice/samples.json"), "utf8"))
     : [];
+  const jingles: { file: string; client: string; title: string; style: string; lyrics: string }[] = pub("portal/elemental/jingles/jingles.json")
+    ? JSON.parse(fs.readFileSync(path.join(process.cwd(), "public/portal/elemental/jingles/jingles.json"), "utf8"))
+    : [];
 
   return (
     <div className="ll-os bg-white">
@@ -228,6 +231,35 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
               </li>
             ))}
           </ol>
+        </section>
+      )}
+
+      {/* Jingles: shown once they exist */}
+      {jingles.length > 0 && (
+        <section className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
+          <div className="mx-auto max-w-[1180px] px-6 py-24">
+            <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
+              <div>
+                <Eyebrow>Jingles</Eyebrow>
+                <Two a="Written, sung and mixed." b="For three of your clients." />
+              </div>
+              <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
+                Original lyrics, music and vocals by Arthur, cut to radio length. Samples to show what we could make with you, not
+                anything these clients commissioned or approved.
+              </p>
+            </div>
+            <ol className="mt-12 grid gap-5 md:grid-cols-3">
+              {jingles.map((x) => (
+                <li key={x.file} className="rounded-2xl border border-[#e4e5e9] bg-white p-6">
+                  <span className="text-[12px] text-[#3778bc]">{x.client}</span>
+                  <h3 className="mt-2 text-[17px] font-medium text-[#1d1d1f]">{x.title.replace(/ \(spec sample.*\)$/, "")}</h3>
+                  <p className="mt-1 text-[13px] text-[#7d8088]">{x.style}</p>
+                  <audio className="mt-4 w-full" controls preload="none" src={`/portal/elemental/jingles/${x.file}`} />
+                  <p className="mt-4 text-[14px] italic leading-[1.7] text-[#4a4d55]">{x.lyrics}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </section>
       )}
 
