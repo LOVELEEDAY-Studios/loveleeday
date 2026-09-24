@@ -1,0 +1,64 @@
+[
+  {
+    "file": "01-owwyl-app.png",
+    "title": "Owwyl: AI bookkeeping that closes the books overnight",
+    "url": "https://owwyl.com",
+    "category": "Web, Mobile & Software Dev",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "AI Agent Development"
+    ],
+    "overview": "Goal: small businesses needed their books closed every night without a bookkeeper, and owners needed to see only the one item that genuinely needs a person.\n\nWhat we built: Owwyl, an AI accounting product. It reads the bank feed, the card processor and the bills inbox as one stream, matches every bill to the payment that settled it, and posts real double-entry. When it is not sure, it holds the transaction and explains why, instead of guessing. It includes a reconciliation queue ranked by confidence, a month-end close checklist that checks itself, exceptions that flag when subledgers do not tie to the ledger, and 40 financial reports (P&L, balance sheet, cash flow, trial balance, A/R and A/P aging, tax and payroll) generated live from the ledger.\n\nStack: Next.js, TypeScript, Supabase/Postgres, Stripe Financial Connections, Xero import.\n\nResult: a working multi-tenant product live at owwyl.com, running a real business's books every night."
+  },
+  {
+    "file": "02-client-portal.png",
+    "title": "Secure client portal with MFA, SSO and encrypted documents",
+    "url": "https://loveleedaystudios.com",
+    "category": "Web, Mobile & Software Dev",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Web Design"
+    ],
+    "overview": "Goal: give clients one secure place to receive deliverables, sign contracts and pay, with security good enough for schools and public agencies.\n\nWhat we built: a client portal with required multi-factor sign-in, single sign-on, encrypted document storage, code-protected outside sharing, time-limited staff access and a full access history. Clients see their deliverables, contracts awaiting signature, billing and team in one calm interface. Shown with a demo organization.\n\nStack: Next.js, TypeScript, Supabase with row-level security, encrypted storage.\n\nResult: live for LOVELEEDAY clients at portal.loveleedaystudios.com."
+  },
+  {
+    "file": "03-loveleeday-site.png",
+    "title": "LOVELEEDAY: brand and website for an intelligence operating system",
+    "url": "https://loveleedaystudios.com",
+    "category": "Web, Mobile & Software Dev",
+    "skills": [
+      "Web Design",
+      "Landing Page",
+      "JavaScript"
+    ],
+    "overview": "Goal: explain a complex product (Arthur, an intelligence system that connects records, preserves memory and grounds answers in evidence) in a way a business owner understands in seconds.\n\nWhat we built: the complete LOVELEEDAY brand and website: positioning, copy, photography direction, an interactive system preview, use-case pages (municipal review, customer data, pricing and margins, operational intelligence), a security page and a project-brief tool. Fast, accessible and consistent across 20+ pages.\n\nResult: live at loveleedaystudios.com."
+  },
+  {
+    "file": "04-pricing-margins.png",
+    "title": "Pricing and margin analysis: see what sells and what it leaves",
+    "url": "https://loveleedaystudios.com/pricing-margins",
+    "category": "Data Science & Analytics",
+    "skills": [
+      "Business Intelligence",
+      "Dashboard",
+      "Data Cleaning"
+    ],
+    "overview": "Goal: help distributors, manufacturers and retailers see where margin is being lost between the listed price and what a sale actually leaves after discounts and variable costs.\n\nWhat we built: a margin review workflow that reconciles catalogue items with cost records, realized selling prices, discounts and fees; flags losses, margins below target and missing or outdated costs; and proposes item-level price changes with every assumption kept attached. Includes an interactive contribution-margin calculator.\n\nResult: a reviewable pricing plan instead of a spreadsheet guess, built from the team's experience running annual price rolls across thousands of SKUs."
+  },
+  {
+    "file": "05-owwyl-brand.png",
+    "title": "Owwyl: brand identity and marketing site concepts",
+    "url": "https://owwyl.com",
+    "category": "Design & Creative",
+    "skills": [
+      "Web Design",
+      "Landing Page"
+    ],
+    "overview": "Goal: make an AI bookkeeping product's marketing site look like a major brand and match the product it sells.\n\nWhat we did: a full design review of 100 live pages, research across current fintech brands, six logo directions, six type-and-colour systems with measured accessibility contrast, and five complete homepage concepts built in the product's own design system, using real product screens and licensed photography.\n\nResult: a clear, testable set of directions for the client to choose from, delivered in a day."
+  }
+]
