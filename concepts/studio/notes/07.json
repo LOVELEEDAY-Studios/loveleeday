@@ -1,0 +1,18 @@
+{
+  "n": "07",
+  "slug": "migration-is-where-data-goes-to-die",
+  "title": "Migration is where data goes to die.",
+  "dek": "Every migration ends with a slide that says all records moved. Six months later, people keep finding what didn't make the trip.",
+  "summary": "What gets lost when you move systems, and how to carry the meaning across, not just the rows.",
+  "topic": "Migration",
+  "read": 4,
+  "photo": "note-07.jpg",
+  "alt": "Moving boxes in a sunlit room",
+  "caption": "Everything fits in the boxes. The reasons behind it rarely do.",
+  "linkedin": [
+    "Every migration ends with the same slide.\n\n\"100% of records migrated.\"\n\nThe count matches. The project closes.\n\nThen, for six months, people keep finding what didn't make the trip. The note behind a special price. The history of every change. The old account number half the team still uses.\n\nThe rows moved. The meaning didn't.\n\nFull note in the comments.",
+    "The diagram shows what a typical migration carries, and what it should.\n\nThe usual: current values only.\n\nBetter: the current values, plus the history with its dates, the notes and exceptions attached, and every old identifier kept as an alias so it still finds the right record.\n\nSame project. Very different system on day one.",
+    "Three tests for your next migration, beyond matching record counts:\n\n1. Write down twenty real questions the business asks. Run them against both systems, before and after.\n2. Reconcile totals by customer and by month, not just the grand total.\n3. Pick ten old identifiers people still use and confirm each one still finds its record.\n\nIf the old questions still have answers, you're done.",
+    "For anyone who has lived through a system change:\n\nWhat was the thing you discovered, months later, that didn't come across?\n\nHistory, notes, old codes, something else?"
+  ]
+}

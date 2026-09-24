@@ -1,0 +1,33 @@
+<p>Every organization has an official system and a real one. The official one is the software the company paid for, with its training sessions and its login screen. The real one is a spreadsheet on someone's laptop called something like "master list FINAL v3," and it's the file everyone asks for when they actually need an answer.</p>
+<p>It's easy to treat that spreadsheet as a failure, a sign that people won't use the proper tools. It's more useful to treat it as a map. It shows exactly where the official systems stopped being enough.</p>
+
+<h2>What the spreadsheet knows</h2>
+<p>Open one of these files and look closely. There's a column that matches customer names from one system to account numbers in another. There's a tab of exceptions: the three accounts that get special terms, the product that ships in a different unit, the supplier who always invoices late. There are notes in the margins explaining why a number was adjusted.</p>
+<p>That isn't clutter. It's the organization's actual logic, the judgment and the mappings that no single system was designed to hold. Someone built it because the work required it, and they kept it current because nothing else was.</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 640 200" role="img" aria-label="Official systems with gaps between them, bridged by a spreadsheet holding mappings, exceptions and notes">
+    <g font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="13" fill="#1d1d1f">
+      <g fill="#fff" stroke="#d9dadf"><rect x="0" y="10" width="150" height="40" rx="4"/><rect x="0" y="80" width="150" height="40" rx="4"/><rect x="0" y="150" width="150" height="40" rx="4"/></g>
+      <text x="14" y="35">Ordering system</text><text x="14" y="105">Accounting</text><text x="14" y="175">Customer records</text>
+      <rect x="230" y="55" width="190" height="90" rx="4" fill="#1d1d1f"/>
+      <text x="248" y="82" fill="#fff" font-weight="600">The spreadsheet</text>
+      <text x="248" y="102" fill="#a1a1a6" font-size="12">Mappings between systems</text><text x="248" y="119" fill="#a1a1a6" font-size="12">Exceptions and special terms</text><text x="248" y="136" fill="#a1a1a6" font-size="12">Notes on why</text>
+      <g fill="#fff" stroke="#d9dadf"><rect x="490" y="80" width="150" height="40" rx="4"/></g>
+      <text x="504" y="105">One person</text>
+      <g stroke="#9a9ca2" fill="none"><path d="M150 30 C195 30 195 100 230 100"/><path d="M150 100 L230 100"/><path d="M150 170 C195 170 195 100 230 100"/><path d="M420 100 L490 100" stroke-dasharray="4 4"/></g>
+    </g>
+  </svg>
+  <figcaption>The spreadsheet bridges the gaps between systems. Its weakness is that it lives with one person.</figcaption>
+</figure>
+
+<h2>The real risk</h2>
+<p>The danger isn't the spreadsheet itself. It's that the logic inside it lives with one person. When they're on vacation, the monthly report waits. When they leave, the file stays behind but the understanding goes with them, and the next person inherits a workbook full of formulas nobody can explain.</p>
+<p>There's a quieter risk too. Because the spreadsheet sits outside the official systems, its corrections never flow back. The same account gets fixed by hand every month, forever, and the source system never learns.</p>
+
+<blockquote>Don't ban the spreadsheet. Read it. It's the most honest document you have.</blockquote>
+
+<h2>Learn from it, then make it durable</h2>
+<p>Banning spreadsheets doesn't work. People go back to them the moment a deadline arrives, because the need that created them is still there. The better move is to treat the spreadsheet as a specification. Sit with the person who maintains it and ask what each column is for. Every mapping is a relationship the systems should know about. Every exception is a rule that deserves a name. Every note is context someone will need again.</p>
+<p>Then move that logic somewhere shared, where it's visible, owned, and kept with its history. The person who built the spreadsheet stops being a single point of failure and becomes the expert who shaped the system everyone else now uses.</p>
+<p>That's often where LOVELEEDAY starts: with the file people actually trust. The logic in it becomes part of a shared understanding that Arthur can explain, and nobody has to rebuild it from memory.</p>

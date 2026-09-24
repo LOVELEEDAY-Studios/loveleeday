@@ -1,0 +1,35 @@
+<p>Every organization has a meeting that goes the same way. Someone puts a number on the screen. Someone else has a different number for the same thing. The next forty minutes are spent on which number is right, and the decision the meeting was called for gets pushed to next week.</p>
+<p>Nobody in that room is careless. The problem is that neither number can show where it came from. Without a trail, a figure is just a claim, and two claims can only be settled by whoever argues longer.</p>
+
+<h2>A number without a trail</h2>
+<p>Think about how a figure reaches a report. Someone exports a list from one system, filters it, pastes it into a spreadsheet, adds a column from another export, and sums the result. Each step is reasonable. But once the total is in a slide, every one of those steps is invisible. Which export? Which filter? Were returns included? Was the second list pulled before or after month end?</p>
+<p>The person who built it might remember. Three months later, they probably won't. And the next person who needs the same number will build it again, slightly differently, and get a slightly different answer.</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 640 200" role="img" aria-label="A reported value connected back to the source system and record it came from">
+    <g font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="13" fill="#1d1d1f">
+      <rect x="0" y="70" width="190" height="60" rx="4" fill="#1d1d1f"/>
+      <text x="16" y="96" fill="#fff" font-weight="600">Q3 revenue: $412,800</text>
+      <text x="16" y="116" fill="#a1a1a6" font-size="12">The number in the report</text>
+      <g fill="#fff" stroke="#d9dadf">
+        <rect x="260" y="20" width="170" height="34" rx="4"/><rect x="260" y="83" width="170" height="34" rx="4"/><rect x="260" y="146" width="170" height="34" rx="4"/>
+        <rect x="470" y="20" width="170" height="34" rx="4"/><rect x="470" y="83" width="170" height="34" rx="4"/><rect x="470" y="146" width="170" height="34" rx="4"/>
+      </g>
+      <text x="274" y="42">Source: the ledger</text><text x="274" y="105">Query: posted, Jul-Sep</text><text x="274" y="168">Pulled: Oct 3, 9:14 am</text>
+      <text x="484" y="42">Record: journal 4471</text><text x="484" y="105">Excludes: returns</text><text x="484" y="168">Owner: finance team</text>
+      <g stroke="#9a9ca2" fill="none"><path d="M190 100 C225 100 225 37 260 37"/><path d="M190 100 L260 100"/><path d="M190 100 C225 100 225 163 260 163"/><path d="M430 37 L470 37"/><path d="M430 100 L470 100"/><path d="M430 163 L470 163"/></g>
+    </g>
+  </svg>
+  <figcaption>Lineage: a value carries where it came from, how it was pulled, and what it leaves out.</figcaption>
+</figure>
+
+<h2>What changes when the trail comes with it</h2>
+<p>Now imagine the same number arrives with its history attached. It knows it came from the ledger, which records it was built from, what was excluded, and when it was pulled. When a second number disagrees, you don't argue. You open both trails and look for the step where they part ways. Usually it takes a minute. One included returns and one didn't. One was pulled before the late invoices posted.</p>
+<p>That is a very different meeting. The disagreement becomes a finding instead of a standoff, and people stop defending their spreadsheets and start comparing them.</p>
+
+<blockquote>A number you can trace settles an argument. A number you can't trace starts one.</blockquote>
+
+<h2>Evidence is a habit, not a feature</h2>
+<p>You don't need new software to start. You need a rule: no figure goes into a decision without a line underneath it saying where it came from. The source system, the filter, the date. It feels slow for about two weeks. Then it becomes the fastest part of the process, because nobody rebuilds a number they can already see the recipe for.</p>
+<p>The same rule makes uncertainty visible. If a figure is missing a month of data, the trail says so. If two sources had to be matched by hand, the trail says that too. A report that admits its gaps is more useful than one that hides them behind a clean total.</p>
+<p>This is the idea behind lineage in what LOVELEEDAY builds. Every answer Arthur gives points back to the systems and records it was built from, so the question after "what is the number" is always answered too: how do we know.</p>

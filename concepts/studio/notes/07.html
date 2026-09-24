@@ -1,0 +1,34 @@
+<p>A system migration always ends with a slide that says "100% of records migrated." The count matches. The project closes. Then, over the next six months, people keep discovering things that didn't make the trip: the note that explained why an account has special terms, the history of every price change, the old customer number that half the team still uses in email.</p>
+<p>The rows moved. The meaning didn't. That's why migration is where so much data quietly goes to die.</p>
+
+<h2>What gets left behind</h2>
+<p>Migrations are planned around fields. Old field A maps to new field B, and a tool copies the values across. What doesn't map neatly gets dropped, flattened or forced into a field that almost fits. History is the first casualty: most migrations bring over the current value and leave the record of how it got there. Free-text notes go next, because the new system has no place for them. Codes get remapped, and the old identifiers disappear.</p>
+<p>Each loss seems small on its own. Together, they erase the reasons behind a decade of decisions. The new system is clean, and nobody can explain anything in it.</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 640 210" role="img" aria-label="An old system record moving to a new system, with what is usually lost and what should be carried">
+    <g font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="13" fill="#1d1d1f">
+      <g fill="#fff" stroke="#d9dadf"><rect x="0" y="40" width="170" height="130" rx="4"/></g>
+      <text x="14" y="64" font-weight="600">Old system record</text>
+      <text x="14" y="88" font-size="12" fill="#6e7077">Current values</text><text x="14" y="108" font-size="12" fill="#6e7077">Price history</text><text x="14" y="128" font-size="12" fill="#6e7077">Notes and exceptions</text><text x="14" y="148" font-size="12" fill="#6e7077">Old account number</text>
+      <rect x="470" y="40" width="170" height="130" rx="4" fill="#1d1d1f"/>
+      <text x="484" y="64" fill="#fff" font-weight="600">New system record</text>
+      <text x="484" y="88" fill="#a1a1a6" font-size="12">Current values</text><text x="484" y="108" fill="#a1a1a6" font-size="12">History, preserved</text><text x="484" y="128" fill="#a1a1a6" font-size="12">Notes, attached</text><text x="484" y="148" fill="#a1a1a6" font-size="12">Old number, as alias</text>
+      <g stroke="#9a9ca2" fill="none"><path d="M170 84 L470 84"/><path d="M170 104 L470 104"/><path d="M170 124 L470 124"/><path d="M170 144 L470 144"/></g>
+      <g fill="#fff" stroke="#d9dadf"><rect x="240" y="8" width="160" height="26" rx="4"/><rect x="240" y="176" width="160" height="26" rx="4"/></g>
+      <text x="254" y="25" font-size="12">Usual: values only</text><text x="254" y="193" font-size="12">Better: meaning too</text>
+    </g>
+  </svg>
+  <figcaption>Migration: carry the history, the notes and the old identifiers, not just the current values.</figcaption>
+</figure>
+
+<h2>The count is the wrong test</h2>
+<p>Matching record counts proves that rows arrived. It says nothing about whether the new system can answer the questions the old one could. A better test is to write down twenty real questions the business asks, like "what did we charge this customer last spring, and why," and run them against both systems before and after. Where the answers differ, something was lost.</p>
+<p>The same goes for totals. Reconcile the numbers that matter, by customer and by month, not just the grand total. A grand total can match while every line underneath it is wrong.</p>
+
+<blockquote>A migration isn't done when the rows arrive. It's done when the old questions still have answers.</blockquote>
+
+<h2>Carry the meaning across</h2>
+<p>A few habits change the outcome. Keep every old identifier as an alias on the new record, so the account number people still use in email still finds the right customer. Bring history across as history, with its dates, instead of only the latest value. Attach the notes, even if the new system has no obvious field for them. And keep a trail from every new record back to the old one it came from, so any question about the past can be followed home.</p>
+<p>None of this is glamorous, and it takes longer than a field map. But it's the difference between a new system that starts from zero and one that starts with everything the organization already learned.</p>
+<p>This is often the first project LOVELEEDAY takes on: moving and cleaning data so the meaning comes with it. Arthur keeps the old names, the history and the trail, so nothing the organization knew is lost in the move.</p>

@@ -1,0 +1,18 @@
+{
+  "n": "06",
+  "slug": "alerts-are-noise-conditions-are-signal",
+  "title": "Alerts are noise. Conditions are signal.",
+  "dek": "Alerts watch events, and most events don't matter. What matters is when something a decision depended on stops being true.",
+  "summary": "Stop watching every event. Watch for the moment a decision's assumptions change, and bring that decision back into focus with the reason attached.",
+  "topic": "Awareness",
+  "read": 4,
+  "photo": "note-06.jpg",
+  "alt": "A lighthouse on the coast at dusk",
+  "caption": "A lighthouse doesn't report every wave. It marks the one thing that matters.",
+  "linkedin": [
+    "Most teams have an alert channel nobody reads.\n\nIt fires forty times a day.\nPeople learn to scroll past it.\nThe one alert that mattered gets ignored with the rest.\n\nThe problem isn't too many alerts. It's that alerts watch events, and most events don't matter.\n\nFull note in the comments.",
+    "The diagram shows the difference.\n\nFive invoices arrive. Four are ordinary. One carries a cost that breaks the assumption a price was built on.\n\nAn alert system reports all five.\nA standing condition lets four pass quietly and turns the fifth into one message: revisit the price, here's why.\n\nFewer signals. Each one worth reading.",
+    "A two-minute habit for your next big decision:\n\nWhen you set a price, approve a budget or sign a contract, write down what has to stay true for it to remain a good call.\n\n1. The cost it assumes.\n2. The volume it assumes.\n3. The timing it assumes.\n\nThose three lines are the only things worth watching. Everything else can stay in the log.",
+    "Question for leaders:\n\nThink of a decision that went wrong slowly.\n\nWas there a moment when one of its assumptions changed and nobody connected it back to the decision?\n\nWhat would have caught it?"
+  ]
+}

@@ -32,6 +32,8 @@ const nextConfig: NextConfig = {
       { source: "/studio", destination: "/site/studio.html" },
       { source: "/privacy", destination: "/site/privacy.html" },
       { source: "/security", destination: "/site/security.html" },
+      { source: "/notes", destination: "/site/notes.html" },
+      { source: "/notes/:slug", destination: "/site/notes/:slug.html" },
       ],
     };
   },

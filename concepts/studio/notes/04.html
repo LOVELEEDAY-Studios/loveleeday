@@ -1,0 +1,35 @@
+<p>Ask four systems in the same company what a "customer" is, and you'll get four honest answers. The point of sale says a customer is a transaction with a card attached. The CRM says it's a company with contacts and a sales stage. The ERP says it's a bill-to account with payment terms. The inbox says it's whoever wrote to you last week.</p>
+<p>None of them is wrong. Each was built for one job, and it describes the world in the words that job needs. That's why they don't talk to each other. They were never meant to.</p>
+
+<h2>Same word, different things</h2>
+<p>The trouble starts with words that look shared but aren't. An "order" in the point of sale is a single ticket. In the ERP it may be a sales order with several shipments, each invoiced separately. A "unit" might be one bottle in one system and a case of twelve in another. A "location" might be a store, a warehouse bin, or a billing address.</p>
+<p>When two systems use the same word for different things, every report that combines them is quietly comparing apples to crates. The totals look fine. They just don't mean what the reader thinks they mean.</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 640 220" role="img" aria-label="Four systems each defining customer differently, connected through a shared model">
+    <g font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="13" fill="#1d1d1f">
+      <g fill="#fff" stroke="#d9dadf">
+        <rect x="0" y="6" width="220" height="44" rx="4"/><rect x="0" y="60" width="220" height="44" rx="4"/><rect x="0" y="114" width="220" height="44" rx="4"/><rect x="0" y="168" width="220" height="44" rx="4"/>
+      </g>
+      <text x="14" y="25" font-weight="600">Point of sale</text><text x="14" y="42" font-size="12" fill="#6e7077">Customer = a card on a ticket</text>
+      <text x="14" y="79" font-weight="600">CRM</text><text x="14" y="96" font-size="12" fill="#6e7077">Customer = a company, contacts</text>
+      <text x="14" y="133" font-weight="600">ERP</text><text x="14" y="150" font-size="12" fill="#6e7077">Customer = a bill-to account</text>
+      <text x="14" y="187" font-weight="600">Inbox</text><text x="14" y="204" font-size="12" fill="#6e7077">Customer = whoever wrote last</text>
+      <g stroke="#9a9ca2" fill="none"><path d="M220 28 C320 28 340 109 420 109"/><path d="M220 82 C320 82 340 109 420 109"/><path d="M220 136 C320 136 340 109 420 109"/><path d="M220 190 C320 190 340 109 420 109"/></g>
+      <rect x="420" y="76" width="220" height="66" rx="4" fill="#1d1d1f"/>
+      <text x="438" y="104" fill="#fff" font-weight="600">Shared model: Customer</text><text x="438" y="124" fill="#a1a1a6" font-size="12">One meaning, four translations</text>
+    </g>
+  </svg>
+  <figcaption>Integration: each system keeps its own language. The shared model translates between them.</figcaption>
+</figure>
+
+<h2>Why copying fields isn't enough</h2>
+<p>The usual fix is an integration: when a record changes in one system, copy some fields into another. It feels like progress, and for simple cases it works. But a field copy moves values, not meaning. It will happily sync a quantity of "1" from a system that means one case into a system that means one bottle. Now the error isn't just in a report. It's in two systems at once, and each one looks right on its own.</p>
+<p>Connect five systems that way, pair by pair, and you have ten connections to maintain, each with its own assumptions. Change one system and several of them break in ways nobody notices until the numbers stop adding up.</p>
+
+<blockquote>Integration isn't moving data between systems. It's agreeing on what the data means.</blockquote>
+
+<h2>Translation is the real work</h2>
+<p>The better approach starts with the business, not the software. Decide what the things you care about actually are: a customer, an order, a product, a unit. Write down what each one means for you. Then map every system's version onto that shared meaning, once, instead of mapping every system onto every other.</p>
+<p>Each system keeps its own language and keeps doing the job it's good at. The shared model sits above them and translates. When someone asks how many units a customer bought this year, the answer comes from the model, which knows that a case is twelve bottles and that three accounts are one company.</p>
+<p>That shared understanding is what LOVELEEDAY builds. The systems stay where they are. Arthur connects what they mean.</p>
