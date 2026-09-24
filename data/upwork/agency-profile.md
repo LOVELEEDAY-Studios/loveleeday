@@ -11,10 +11,43 @@ Prepared 2026-09-24. Everything below is paste-ready for the Upwork agency profi
 ## Agency name
 **LOVELEEDAY Studios**
 
-## Title (headline)
+## Positioning (updated 2026-09-24, Daniel: "so we can be good margin and price")
+The agency leads with **pricing and margin**, which is where the owner's profile already sells (Pricing and Margin Strategist for Distributors and Manufacturers, $150/hr). Software and automation are how the work gets delivered, not the headline.
+
+## Title (headline) — USE THIS
+Pricing & margin recovery for distributors and manufacturers, with the tools to keep it fixed
+
+## Overview — USE THIS (paste into "Agency overview")
+Most distributors and manufacturers are losing margin inside their own price file, and cannot see where. LOVELEEDAY Studios finds the leak, puts a dollar figure on it, and builds the tools that stop it coming back.
+
+The leaks are usually structural. Deal codes that store net prices instead of a discount off list re-discount themselves every time you raise prices, compounding year over year. Increases get weighted against raw twelve-month sales, so dead accounts distort them and the numbers don't survive contact with a customer. Reps quote by phone because the price file is too hard to use.
+
+What we deliver:
+- **Price file and deal code audit:** every leak found and quantified in dollars, customer by customer.
+- **Annual price increase modeling:** cost pass-through, margin floors, CPI and strategic carve-outs, weighted against revenue that is actually in play.
+- **Margin analysis:** by customer, product line and channel, so you know which accounts can absorb an increase.
+- **Rep-facing quoting tools:** the field prices correctly without calling the office.
+- **Automation:** price roll files, ERP and spreadsheet data cleanup, and margin dashboards that update themselves.
+
+Our team runs annual price rolls for a national distributor, across thousands of SKUs and hundreds of customer-specific deal codes, and ships production software (bookkeeping, restaurant operations and client portals) that real businesses run on every day.
+
+Send us your price file structure and we'll tell you on one call where we would look first.
+
+## Fixed-price offers — pricing & margin (lead with these)
+| Offer | Price | Delivery | What they get |
+|---|---|---|---|
+| Price file leak audit | $750 | 5 days | Deal codes, net-vs-discount structure and margin leaks, quantified in dollars, with a ranked fix list |
+| Price increase model | $1,500 | 1 week | A workbook modeling the annual increase with margin floors, cost pass-through and account-level impact |
+| Rep quoting tool | from $2,500 | 2 weeks | A simple quoting tool on top of your price file, so reps price correctly without calling in |
+| Margin dashboard | from $2,000 | 2 weeks | Margin by customer, product line and channel, refreshed automatically from your ERP export |
+
+Agency hourly rate for pricing work: **$125/hr** (under the owner's $150, so the agency wins work without undercutting the personal profile).
+
+## Earlier draft (software-led) — kept for reference
+### Title
 Custom software, AI automation and websites for businesses that have outgrown spreadsheets
 
-## Overview (paste into "Agency overview")
+### Overview
 Most small and mid-size businesses already have the information they need. It is spread across a POS, a bank feed, an inbox, a spreadsheet and three tools that do not talk to each other. LOVELEEDAY Studios connects those systems and builds software that does the work.
 
 We are a small studio that ships production software, not prototypes. Our own products run real businesses every day:
