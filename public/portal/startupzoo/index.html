@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Startup Zoo · Where Kalamazoo’s founders meet capital</title>
+<meta name="description" content="Startup Zoo is Kalamazoo's nonprofit hub for founders: Pitch Night for $10,000 equity-free every other month, a year-long residency at no cost, and the Southwest Michigan Entrepreneurship Summit.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/cohort.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NGO","name":"Startup Zoo","url":"https://startupzoo.org","email":"info@startupzoo.org","taxID":"46-4930151","address":{"@type":"PostalAddress","streetAddress":"229 E Michigan Ave, Suite 335","addressLocality":"Kalamazoo","addressRegion":"MI","postalCode":"49007"},"founder":[{"@type":"Person","name":"Carl Brown"},{"@type":"Person","name":"Ryan Goins"}]}</script>
+<style>
+:root{--ink:#12134F;--paper:#F6F4EF;--white:#fff;--blue:#14C1F2;--bink:#0A6690;--orange:#BF4219;--gold:#F2A93B;--mid:#55606B;--line:#E2DED5;--dk:#12134F}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.d{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.035em;line-height:.98}
+.eb{font:600 12px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--bink)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:14px 22px;font:600 15px/1 Inter,sans-serif;text-decoration:none;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.b1{background:var(--ink);color:#fff}.b1:hover{background:#23257a}
+.b2{border:1.5px solid var(--ink);color:var(--ink)}.b2:hover{background:var(--ink);color:#fff}
+.bo{background:var(--orange);color:#fff}.bo:hover{background:#a3370f}
+/* nav */
+header{position:sticky;top:0;z-index:20;background:rgba(246,244,239,.92);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.nav .logo img{height:40px;width:auto}
+.links{display:flex;align-items:center;gap:30px;list-style:none}
+.links a{text-decoration:none;font-weight:500;font-size:15px}
+.links a:hover{color:var(--bink)}
+.bb{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative}
+.bb span,.bb span::before,.bb span::after{position:absolute;left:11px;width:22px;height:2px;background:var(--ink);content:"";transition:transform .25s,top .25s,opacity .2s}
+.bb span{top:21px}.bb span::before{left:0;top:-7px}.bb span::after{left:0;top:7px}
+.open .bb span{background:transparent}.open .bb span::before{top:0;transform:rotate(45deg)}.open .bb span::after{top:0;transform:rotate(-45deg)}
+/* hero */
+.hero{padding:64px 0 88px}
+.hg{display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(3rem,6.2vw,5.6rem);margin:22px 0 26px}
+.hero h1 em{font-style:normal;color:var(--bink)}
+.lede{font-size:19px;line-height:1.6;color:var(--mid);max-width:34rem}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.ph{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/3.4;background:#dfe7ec}
+.ph img{width:100%;height:100%;object-fit:cover}
+.next{position:absolute;left:18px;right:18px;bottom:18px;background:#fff;border-radius:16px;padding:18px 20px;display:flex;gap:16px;align-items:center;box-shadow:0 18px 40px -18px rgba(18,19,79,.45)}
+.date{flex:none;width:62px;text-align:center;border-radius:12px;background:var(--ink);color:#fff;padding:8px 0}
+.date b{display:block;font:800 26px/1 'Bricolage Grotesque';letter-spacing:-.03em}
+.date small{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.next p{font-size:14px;color:var(--mid);line-height:1.45}
+.next strong{display:block;color:var(--ink);font-size:16px}
+.next a{margin-left:auto;flex:none;font-weight:600;font-size:14px;color:var(--bink);text-decoration:none;white-space:nowrap}
+/* proof */
+.proof{background:var(--dk);color:#fff;padding:72px 0}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.pg div{border-top:2px solid var(--blue);padding-top:18px}
+.pg b{display:block;font:800 clamp(2.3rem,4vw,3.4rem)/1 'Bricolage Grotesque';letter-spacing:-.04em}
+.pg span{display:block;margin-top:10px;color:#b7c3cc;font-size:15px;line-height:1.5}
+/* sections */
+section.s{padding:112px 0}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.sh h2{font-size:clamp(2.4rem,4.6vw,4rem);margin-top:16px}
+.sh p{color:var(--mid);font-size:17px;max-width:32rem}
+/* summit */
+.summit{background:var(--white)}
+.sg{display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:260px 260px;gap:14px}
+.sg figure{border-radius:16px;overflow:hidden;position:relative}
+.sg img{width:100%;height:100%;object-fit:cover}
+.sg .k{grid-row:span 2;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:28px}
+.sg .k img{height:auto;border-radius:12px;margin-bottom:22px}
+.sg .k h3{font:800 28px/1.05 'Bricolage Grotesque';letter-spacing:-.03em}
+.sg .k p{color:#b7c3cc;font-size:14px;margin-top:10px}
+figcaption{position:absolute;left:12px;bottom:12px;background:rgba(18,19,79,.78);color:#fff;font-size:12px;padding:5px 10px;border-radius:999px}
+/* programs */
+.prog{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px;display:flex;flex-direction:column}
+.card .tag{align-self:flex-start;font:600 12px/1 Inter;letter-spacing:.08em;text-transform:uppercase;padding:7px 11px;border-radius:999px;background:#e5f6fd;color:var(--bink)}
+.card h3{font:800 34px/1 'Bricolage Grotesque';letter-spacing:-.035em;margin:18px 0 12px}
+.card p{color:var(--mid)}
+.card ul{list-style:none;margin:20px 0 26px;display:grid;gap:9px}
+.card li{padding-left:22px;position:relative;font-size:15px}
+.card li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:2px;background:var(--gold)}
+.card .btn{margin-top:auto;align-self:flex-start}
+.card.hot{background:var(--ink);color:#fff;border-color:var(--ink)}
+.card.hot p{color:#b7c3cc}.card.hot .tag{background:var(--orange);color:#fff}
+/* winner */
+.win{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
+.win img{border-radius:20px}
+.win h2{font-size:clamp(2.4rem,4.4vw,3.8rem);margin:16px 0 18px}
+.win p{color:var(--mid);font-size:17px}
+/* residents */
+.res{background:var(--white)}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;border-top:1px solid var(--line)}
+.rg div{padding:22px 4px;border-bottom:1px solid var(--line)}
+.rg b{display:block;font:600 18px/1.3 Inter;letter-spacing:-.01em}
+.rg span{color:var(--mid);font-size:14px}
+.cohort{font:600 13px/1 Inter;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin:40px 0 4px}
+.cohort:first-of-type{margin-top:0}
+/* impact */
+.imp{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.imp div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px}
+.imp b{display:block;font:800 22px/1.2 'Bricolage Grotesque';letter-spacing:-.02em}
+.imp p{color:var(--mid);font-size:15px;margin-top:8px}
+.note{margin-top:22px;font-size:14px;color:var(--mid)}
+/* new space */
+.space{background:var(--blue);color:var(--ink)}
+.space .eb{color:var(--ink)}
+.sp{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.sp h2{font-size:clamp(2.6rem,5vw,4.4rem);margin:16px 0 20px}
+.sp p{font-size:18px;max-width:30rem}
+.sp img{border-radius:20px}
+/* team */
+.tg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.tg div{border-top:1px solid var(--line);padding-top:18px}
+.tg b{display:block;font-size:17px}.tg span{color:var(--mid);font-size:14px}
+/* support */
+.sup{background:var(--dk);color:#fff;text-align:center;padding:120px 0}
+.sup h2{font-size:clamp(2.6rem,5.4vw,4.6rem);max-width:15ch;margin:18px auto 22px}
+.sup p{color:#b7c3cc;max-width:36rem;margin:0 auto 34px;font-size:18px}
+.sup .eb{color:var(--blue)}
+.sup .ctas{justify-content:center}
+.sup .b2{border-color:#fff;color:#fff}.sup .b2:hover{background:#fff;color:var(--ink)}
+/* footer */
+footer{background:#0B0C36;color:#b7c3cc;padding:72px 0 40px;font-size:14px}
+.fg{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr;gap:40px}
+footer img{height:44px;width:auto;margin-bottom:18px}
+footer h4{color:#fff;font:600 13px/1 Inter;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+footer ul{list-style:none;display:grid;gap:10px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+.nl{display:flex;gap:8px;margin-top:6px}
+.nl input{flex:1;min-width:0;border-radius:999px;border:1px solid #2c2e70;background:#15175a;color:#fff;padding:12px 16px;font:inherit}
+.nl button{border:0;border-radius:999px;background:var(--blue);color:var(--ink);font:600 14px Inter;padding:0 18px;cursor:pointer}
+.fb{border-top:1px solid #23255e;margin-top:56px;padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:1000px){
+ .hg,.win,.sp,.sh{grid-template-columns:1fr}
+ .pg{grid-template-columns:repeat(2,1fr)}
+ .sg{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+ .sg .k{grid-column:span 2;grid-row:auto}
+ .sg figure{height:220px}
+ .imp,.tg{grid-template-columns:1fr 1fr}
+ .fg{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+ .bb{display:block}
+ .links{display:none;position:absolute;top:76px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 16px 20px}
+ .links li a{display:block;padding:14px 4px;border-bottom:1px solid var(--line)}
+ .links li:last-child a{margin-top:14px;border:0;justify-content:center}
+ .open .links{display:flex}
+}
+@media (max-width:640px){
+ .wrap{padding:0 16px}
+ .hero{padding:36px 0 56px}
+ section.s{padding:72px 0}
+ .prog,.imp,.tg,.fg{grid-template-columns:1fr}
+ .pg{gap:24px}
+ .card{padding:26px}
+ .next{position:static;margin-top:0;border-radius:0 0 16px 16px;box-shadow:none;flex-wrap:wrap}
+ .next a{margin-left:78px}
+ .ph{aspect-ratio:auto}.ph img{aspect-ratio:4/3}
+ .sg{grid-template-columns:1fr}.sg .k{grid-column:auto}
+ .sh{margin-bottom:36px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+ <nav class="wrap nav" aria-label="Main">
+  <a class="logo" href="#top" aria-label="Startup Zoo, home"><img src="img/logo-blue.svg" alt="Startup Zoo" width="79" height="40"></a>
+  <button class="bb" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+  <ul class="links" id="menu">
+   <li><a href="#pitch">Pitch Night</a></li>
+   <li><a href="#programs">Residency</a></li>
+   <li><a href="#summit">Summit</a></li>
+   <li><a href="#space">Space</a></li>
+   <li><a href="#impact">Impact</a></li>
+   <li><a class="btn b1" href="#pitch">Apply to pitch</a></li>
+  </ul>
+ </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="wrap hg">
+  <div>
+   <span class="eb">Kalamazoo · since 2012 · nonprofit</span>
+   <h1 class="d">Where Kalamazoo’s founders meet <em>capital.</em></h1>
+   <p class="lede">Pitch for $10,000 equity-free every other month. Spend a year in residency at no cost, with introductions to at least 50 investors. And meet Michigan’s funders every September at the Summit.</p>
+   <div class="ctas">
+    <a class="btn b1" href="#pitch">Apply for Pitch Night</a>
+    <a class="btn b2" href="#support">Support the Zoo</a>
+   </div>
+  </div>
+  <div>
+   <div class="ph">
+    <img src="img/cohort.jpg" alt="Startup Zoo founders, residents and supporters together in the space" width="2400" height="1600" fetchpriority="high">
+    <div class="next">
+     <div class="date"><small>Nov</small><b>13</b></div>
+     <p><strong>Pitch Night</strong>Friday, 6 to 8 PM · five founders, three judges, $10,000</p>
+     <a href="#pitch">Get a ticket →</a>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="proof" aria-label="Startup Zoo by the numbers">
+ <div class="wrap pg">
+  <div><b>$10,000</b><span>Equity-free, to one founder at every Pitch Night</span></div>
+  <div><b>9</b><span>Residency companies across our last two cohorts</span></div>
+  <div><b>100+</b><span>Founders and funders at the 2026 Summit</span></div>
+  <div><b>$250,000</b><span>PitchMI AI &amp; Software semifinal, hosted at the Summit</span></div>
+ </div>
+</section>
+
+<section class="s summit" id="summit">
+ <div class="wrap">
+  <div class="sh">
+   <div><span class="eb">Southwest Michigan Entrepreneurship Summit</span><h2 class="d">Thank you, Kalamazoo.</h2></div>
+   <p>On September 21 and 22 founders, funders and partners filled the Kalamazoo Institute of Arts for Pitch Night, a full day of founder and funder panels, and the PitchMI AI &amp; Software semifinal with the MSU Research Foundation and MEDC.</p>
+  </div>
+  <div class="sg">
+   <div class="k">
+    <img src="img/jewel.jpg" alt="Jewel Burks Solomon, keynote speaker" loading="lazy" width="940" height="788">
+    <div><span class="eb" style="color:var(--blue)">2026 keynote</span><h3>Jewel Burks Solomon</h3><p>Managing Partner, Collab Capital. Former head of Google for Startups in the US; founded Partpic, acquired by Amazon.</p></div>
+   </div>
+   <figure><img src="img/panel.jpg" alt="Founders on a Summit panel" loading="lazy"><figcaption>Summit 2025</figcaption></figure>
+   <figure><img src="img/crowd.jpg" alt="A full room at the Summit" loading="lazy"><figcaption>Summit 2025</figcaption></figure>
+   <figure><img src="img/network.jpg" alt="Founders and funders talking between sessions" loading="lazy"><figcaption>Summit 2025</figcaption></figure>
+   <figure><img src="img/talk.jpg" alt="Two attendees in conversation" loading="lazy"><figcaption>Summit 2025</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="s" id="programs">
+ <div class="wrap">
+  <div class="sh">
+   <div><span class="eb">Programs</span><h2 class="d">Four ways in.</h2></div>
+   <p>Open to Southwest Michigan companies, with priority for Kalamazoo County. Pick the one that fits where you are.</p>
+  </div>
+  <div class="prog">
+   <article class="card hot" id="pitch">
+    <span class="tag">Next: Friday, November 13</span>
+    <h3>Pitch Night</h3>
+    <p>The quickest pitch for capital in Southwest Michigan. The community votes five Kalamazoo businesses onto the stage; they pitch three judges for five minutes.</p>
+    <ul><li>$10,000 equity-free to the winner</li><li>Every other month, 6 to 8 PM</li><li>Customers, partners and free resources for every finalist</li></ul>
+    <a class="btn bo" href="https://forms.gle/JrX5PardcWB6s9rW8">Apply to pitch</a>
+   </article>
+   <article class="card">
+    <span class="tag">12 months · no cost</span>
+    <h3>Residency</h3>
+    <p>A full-time, in-house year for companies with at least a year of traction, to find product-market fit and get investment-ready.</p>
+    <ul><li>Introductions to at least 50 investors</li><li>Prepare to raise up to $1M</li><li>Product, marketing, sales and operations support</li></ul>
+    <a class="btn b2" href="#support">Join the next cohort's list</a>
+   </article>
+   <article class="card" id="space">
+    <span class="tag">$150 an hour</span>
+    <h3>Space</h3>
+    <p>Rooms for workshops, board meetings and launches, in the middle of downtown Kalamazoo.</p>
+    <ul><li>See what is free and book it online</li><li>Member rates for Startup Zoo members</li><li>A new space opens later this year</li></ul>
+    <a class="btn b2" href="#support">Book a room</a>
+   </article>
+   <article class="card">
+    <span class="tag">Kalamazoo County</span>
+    <h3>Membership</h3>
+    <p>A network of founders, mentors and rare connections, and the tools to use it.</p>
+    <ul><li>A business grant database, matched to your company</li><li>Discounted rental rates</li><li>Discounts on software</li></ul>
+    <a class="btn b2" href="#support">Become a member</a>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="s res" aria-labelledby="win-h">
+ <div class="wrap">
+  <div class="win">
+   <img src="img/winners.jpg" alt="Leon Footwear and the Pitch Night finalists holding their prize checks" loading="lazy" width="1800" height="1239">
+   <div>
+    <span class="eb">Latest Pitch Night winner</span>
+    <h2 class="d" id="win-h">Leon Footwear took home $10,000.</h2>
+    <p>A full house on November 19, 2025, with founders and supporters from across Michigan. Next up: November 13, and the application is open now.</p>
+    <div class="ctas"><a class="btn b1" href="#pitch">Apply for November 13</a></div>
+   </div>
+  </div>
+
+  <div style="margin-top:112px">
+   <div class="sh"><div><span class="eb">Residents</span><h2 class="d">Built at the Zoo.</h2></div><p>Companies that spent a year in the building, full-time.</p></div>
+   <p class="cohort">2024–2025</p>
+   <div class="rg">
+    <div><b>Lady Rogue Beauty</b><span>Shalini Hernandez</span></div>
+    <div><b>Rituil</b><span>Michael and James Gallagher</span></div>
+    <div><b>Kalamagonia</b><span>Michael Beyene</span></div>
+    <div><b>The Roche Collection</b><span>Nicole Triplett</span></div>
+    <div><b>Dabney &amp; Co</b><span>Daniel J. May</span></div>
+   </div>
+   <p class="cohort">2023–2024</p>
+   <div class="rg">
+    <div><b>Zero to Wear</b><span>Kaleena Eugene-Louis</span></div>
+    <div><b>Samson Haircare</b><span>Adam Muncy and Jake Hamlet</span></div>
+    <div><b>Royal Clothing</b><span>Aaron Gipson</span></div>
+    <div><b>Coordinista</b><span>Cindy Bauer · pre-seed round announced</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="s" id="impact">
+ <div class="wrap">
+  <div class="sh">
+   <div><span class="eb">Impact, reported</span><h2 class="d">What happens after the pitch.</h2></div>
+   <p>Every dollar awarded and what each founder did next, kept current and sourced, for founders, funders and sponsors.</p>
+  </div>
+  <div class="imp">
+   <div><b>Equity-free capital</b><p>$10,000 at every Pitch Night, to a Kalamazoo founder, with no equity taken.</p></div>
+   <div><b>Follow-on funding</b><p>Coordinista, 2023–2024 resident, has announced a pre-seed round from local venture groups.</p></div>
+   <div><b>Companies in residence</b><p>Nine companies across the last two cohorts, working full-time from the Zoo.</p></div>
+  </div>
+  <p class="note">The full report, every award and every follow-on round with its source, publishes with the new space.</p>
+ </div>
+</section>
+
+<section class="s space">
+ <div class="wrap sp">
+  <div>
+   <span class="eb">Coming this year</span>
+   <h2 class="d">A bigger home for Kalamazoo’s founders.</h2>
+   <p>Private offices, open desks, a coffee bar, meeting rooms and an event space, built with our founding partners. Claim a spot before it opens.</p>
+   <div class="ctas"><a class="btn b1" href="#support">Ask about founding membership</a></div>
+  </div>
+  <img src="img/space.jpg" alt="The Startup Zoo space today" loading="lazy" width="1360" height="884">
+ </div>
+</section>
+
+<section class="s" aria-labelledby="team-h">
+ <div class="wrap">
+  <div class="sh"><div><span class="eb">The team</span><h2 class="d" id="team-h">Who is at the Zoo.</h2></div><p>Cofounded by Ryan Goins and Carl Brown. Email us at <a href="mailto:info@startupzoo.org" style="color:var(--bink)">info@startupzoo.org</a>.</p></div>
+  <div class="tg">
+   <div><b>Carl Brown</b><span>Executive Director</span></div>
+   <div><b>Jasmine Childress</b><span>Community Manager</span></div>
+   <div><b>Adam Muncy</b><span>Entrepreneur in Residence</span></div>
+   <div><b>Christopher Cayton</b><span>Community Engagement Specialist</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="sup" id="support">
+ <div class="wrap">
+  <span class="eb">Support the Zoo</span>
+  <h2 class="d">Every founder here was a bet someone made.</h2>
+  <p>Startup Zoo is a 501(c)(3). Gifts fund Pitch Night prizes, the residency and programs that stay free for founders.</p>
+  <div class="ctas"><a class="btn bo" href="https://startupzoo.org/donate/">Donate</a><a class="btn b2" href="mailto:info@startupzoo.org?subject=Sponsoring%20Startup%20Zoo">Sponsor a Pitch Night</a></div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="fg">
+   <div><img src="img/logo-white.svg" alt="Startup Zoo" width="87" height="44"><p>Kalamazoo’s hub for founders. A 501(c)(3) nonprofit, EIN 46-4930151.</p></div>
+   <div><h4>Programs</h4><ul><li><a href="#pitch">Pitch Night</a></li><li><a href="#programs">Residency</a></li><li><a href="#summit">Summit</a></li><li><a href="#space">Space</a></li></ul></div>
+   <div><h4>Visit</h4><ul><li>229 E Michigan Ave, Suite 335</li><li>Kalamazoo, MI 49007</li><li><a href="mailto:info@startupzoo.org">info@startupzoo.org</a></li></ul></div>
+   <div><h4>Events, grants and funding, monthly</h4><form class="nl" onsubmit="event.preventDefault();this.innerHTML='<p>Thanks. You are on the list.</p>'"><label for="nl" style="position:absolute;left:-9999px">Email address</label><input id="nl" type="email" placeholder="you@company.com" required><button>Join</button></form></div>
+  </div>
+  <div class="fb"><span>© 2026 Startup Zoo</span><span>Concept by LOVELEEDAY for Startup Zoo</span></div>
+ </div>
+</footer>
+<script>
+(()=>{const h=document.querySelector('header'),b=h.querySelector('.bb');
+b.addEventListener('click',()=>{const o=h.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')});
+h.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>{h.classList.remove('open');b.setAttribute('aria-expanded','false')}));
+// Keep the review key on in-page links that leave the page.
+const k=new URLSearchParams(location.search).get('k');if(k)document.querySelectorAll('a[href^="index.html"]').forEach(a=>a.href+=(a.href.includes('?')?'&':'?')+'k='+k)})();
+</script>
+</body>
+</html>

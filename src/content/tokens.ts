@@ -72,4 +72,7 @@ export const TOKENS = {
   kalcounty: tokOptional("PORTFOLIO_TOKEN_KALCOUNTY"),
   // Elemental Media, Kalamazoo production company: the pitch page (the rebuild is `elemental`).
   elementalPitch: tokOptional("PORTFOLIO_TOKEN_ELEMENTAL"),
+  // Startup Zoo (Carl Brown), Kalamazoo entrepreneurship hub; Dabney is a resident. Pitch + homepage study.
+  startupzoo: tokOptional("PORTFOLIO_TOKEN_STARTUPZOO"),
+  startupzooStudy: tokOptional("PORTAL_TOKEN_STARTUPZOO"),
 } as const;
