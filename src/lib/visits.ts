@@ -37,6 +37,18 @@ async function insert(table: string, row: Record<string, unknown>) {
   if (!r.ok) console.error(`${table}_store_failed`, r.status, (await r.text()).slice(0, 200));
 }
 
+/* Every Ask Arthur question, so the team portal can show who asked what (it was email-only). */
+export async function recordAsk(headers: Headers, row: { surface: string; token: string; client: string; question: string; head: string }) {
+  await insert("ask_questions", {
+    surface: row.surface,
+    page_token: row.token.slice(0, 64),
+    client: row.client.slice(0, 120),
+    question: row.question.slice(0, 400),
+    head: row.head.slice(0, 300),
+    ip_hash: await hashIp(clientIp(headers)),
+  });
+}
+
 export async function recordView(headers: Headers, path: string, teamCookie: boolean) {
   const ua = headers.get("user-agent") ?? "";
   await insert("page_views", {

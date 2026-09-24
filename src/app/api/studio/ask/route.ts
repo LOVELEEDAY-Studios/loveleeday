@@ -2,6 +2,7 @@ import { NextResponse, after } from "next/server";
 import { Resend } from "resend";
 import { getStudio, layers, measured, questions } from "@/content/studio/elemental";
 import { cleanModelText } from "@/lib/model-text";
+import { recordAsk } from "@/lib/visits";
 
 export const dynamic = "force-dynamic";
 
@@ -100,6 +101,7 @@ export async function POST(request: Request) {
     if (!out.head && !out.answer) return fail();
 
     after(async () => {
+      await recordAsk(request.headers, { surface: "studio", token, client: client.short, question, head: out.head }).catch((e) => console.error("ask log", e));
       try {
         if (!process.env.RESEND_API_KEY) return;
         await new Resend(process.env.RESEND_API_KEY).emails.send({
