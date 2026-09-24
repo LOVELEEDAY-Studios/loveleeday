@@ -130,7 +130,7 @@ ld_index = {"@context": "https://schema.org", "@graph": [
     {"@type": "CollectionPage", "url": BASE + "/notes", "name": "Systems Notes — LOVELEEDAY",
      "isPartOf": {"@type": "WebSite", "name": "LOVELEEDAY", "url": BASE + "/"}}, crumbs([])]}
 index_page = (head("Systems Notes — LOVELEEDAY", "Notes on how organizations actually work, and why their systems don't. Identity, evidence, memory and integration, in plain language.",
-                   "/notes", share(first), ld_index, "website")
+                   "/notes", "/site/assets/notes/share-index.jpg", ld_index, "website")
               + "<body class=\"\">" + nav_t[nav_t.find("<a class=\"skip\""):] + '<main id="main">' + index + "</main>" + foot_t.replace("</body>", filter_js + "</body>"))
 (SITE / "notes.html").write_text(index_page)
 
@@ -162,17 +162,26 @@ for i, n in enumerate(notes):
 # ---------- css, sitemap data, share cards ----------
 (SITE / "assets/notes.css").write_text((NOTES / "notes.css").read_text())
 (ROOT / "src/content/notes.json").write_text(json.dumps([{"slug": n["slug"], "date": n["date"]} for n in notes], indent=2) + "\n")
-cards = "".join(
-    f'<div class="card" id="share-{n["n"]}"><img src="../../../public/site/assets/notes/{n["photo"]}" alt="">'
-    f'<div class="txt"><span class="k">Systems Notes · {n["n"]}</span><h1>{e(n["title"])}</h1><span class="brand">LOVELEEDAY</span></div></div>'
-    for n in notes)
+# Same pattern as the site's own cards (share.jpg, share-home.jpg): full-bleed photo under a dark
+# wash, the white heart and wordmark top left, a white first line and a warm tan second line.
+A = "../../../public/site/assets/notes/"
+def card(cid, photo, l1, l2, sub):
+    return (f'<div class="card" id="{cid}"><img class="ph" src="{A}{photo}" alt="">'
+            f'<div class="brand"><img src="{A}mark-white.png" alt="">LOVELEEDAY</div>'
+            f'<div class="txt"><h1>{e(l1)}<br><span>{e(l2)}</span></h1><p>{e(sub)}</p></div></div>')
+cards = card("share-index", "notes-index.jpg", "How organizations actually work.", "And why their systems don't.",
+             "Systems Notes · A new note every Wednesday") + "".join(
+    card(f"share-{n['n']}", n["photo"], n["card"][0], n["card"][1], f"Systems Notes · Note {n['n']}") for n in notes)
 (NOTES / "_share.html").write_text(
-    "<!doctype html><meta charset=utf-8><style>body{margin:0;background:#fff;font-family:-apple-system,Helvetica,Arial,sans-serif}"
-    ".card{width:1200px;height:630px;display:grid;grid-template-columns:560px 1fr;background:#f5f5f7;color:#1d1d1f}"
-    ".card img{width:560px;height:630px;object-fit:cover}.txt{padding:64px 60px;display:flex;flex-direction:column}"
-    ".k{font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:#777980;font-weight:600}"
-    "h1{font-size:58px;line-height:1.04;letter-spacing:-.045em;font-weight:500;margin:28px 0 0;text-wrap:balance}"
-    ".brand{margin-top:auto;font-size:17px;letter-spacing:.2em;font-weight:600}</style>" + cards)
+    "<!doctype html><meta charset=utf-8><style>body{margin:0;background:#000;font-family:-apple-system,Helvetica,Arial,sans-serif}"
+    ".card{width:1200px;height:630px;position:relative;overflow:hidden;color:#fff}"
+    ".ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}"
+    ".card::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,11,10,.86) 0%,rgba(12,11,10,.55) 50%,rgba(12,11,10,.5) 100%)}"
+    ".brand{position:absolute;z-index:1;left:80px;top:60px;display:flex;align-items:center;gap:12px;font-size:17px;letter-spacing:.2em;font-weight:600}"
+    ".brand img{width:24px;height:24px}"
+    ".txt{position:absolute;z-index:1;left:80px;right:80px;bottom:64px}"
+    "h1{font-size:66px;line-height:1.04;letter-spacing:-.045em;font-weight:600;margin:0}h1 span{color:#d5b185}"
+    "p{font-size:21px;color:rgba(255,255,255,.78);margin:24px 0 0}</style>" + cards)
 
 # ---------- menu + footer link on every page ----------
 changed = 0

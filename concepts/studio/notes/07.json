@@ -15,5 +15,9 @@
     "Three tests for your next migration, beyond matching record counts:\n\n1. Write down twenty real questions the business asks. Run them against both systems, before and after.\n2. Reconcile totals by customer and by month, not just the grand total.\n3. Pick ten old identifiers people still use and confirm each one still finds its record.\n\nIf the old questions still have answers, you're done.",
     "For anyone who has lived through a system change:\n\nWhat was the thing you discovered, months later, that didn't come across?\n\nHistory, notes, old codes, something else?"
   ],
-  "date": "2026-09-16"
+  "date": "2026-09-16",
+  "card": [
+    "Migration is where",
+    "data goes to die."
+  ]
 }

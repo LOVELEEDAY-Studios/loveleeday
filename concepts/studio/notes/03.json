@@ -15,5 +15,9 @@
     "Three habits that make the past fair to judge:\n\n1. When a value changes, keep the old one. Add, don't overwrite.\n2. Record two dates: when it became true, and when you learned it.\n3. In every review, start with \"what did we know then?\" before \"what do we know now?\"\n\nYou'll also start to see patterns in late information, like the vendor whose changes always reach you six weeks after they take effect.",
     "A question for anyone who runs reviews or post-mortems:\n\nHow often does your team judge a past decision using information that didn't exist yet when it was made?\n\nAnd what would change if you could see exactly what was known on the day?"
   ],
-  "date": "2026-08-19"
+  "date": "2026-08-19",
+  "card": [
+    "What you knew,",
+    "and when you knew it."
+  ]
 }
