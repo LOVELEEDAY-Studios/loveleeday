@@ -1,0 +1,18 @@
+{
+  "n": "04",
+  "slug": "your-systems-dont-talk",
+  "title": "Your systems don't talk. They were never meant to.",
+  "dek": "An ERP, a point of sale, a CRM and an inbox each describe the world in their own words. Copying fields between them moves values, not meaning.",
+  "summary": "An ERP, a point of sale, a CRM and an inbox each describe the world in their own language. Translation, not more syncing, is the real work.",
+  "topic": "Integration",
+  "read": 4,
+  "photo": "note-04.jpg",
+  "alt": "A busy, sunlit train station concourse",
+  "caption": "Thousands of journeys, one timetable everyone agrees on.",
+  "linkedin": [
+    "Ask four systems what a \"customer\" is.\n\nThe point of sale: a card on a ticket.\nThe CRM: a company and its contacts.\nThe ERP: a bill-to account.\nThe inbox: whoever wrote last.\n\nAll four are right. That's the problem.\n\nYour systems don't talk because they were never meant to.\n\nFull note in the comments.",
+    "The diagram shows four systems, each with its own definition of a customer, all translated through one shared model.\n\nThat's the difference between integrating and understanding.\n\nCopying fields from system to system moves values. It will happily sync a quantity of 1 from a system that means one case into one that means one bottle.\n\nA shared model moves meaning. Each system keeps its language. The model translates.",
+    "Before your next integration project, do this:\n\n1. List the five words your business runs on. Customer, order, product, unit, location.\n2. Write one sentence defining each, for your business, not for any one system.\n3. For every system, note where its version differs from yours.\n\nThat document will prevent more errors than the integration itself.",
+    "A question for anyone who has lived through an integration project:\n\nWhat's the word that meant something different in every system?\n\nFor a lot of teams it's \"unit.\" For others it's \"customer\" or \"order.\"\n\nWhich one was it for you?"
+  ]
+}

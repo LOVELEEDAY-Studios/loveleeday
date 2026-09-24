@@ -1,0 +1,18 @@
+{
+  "n": "05",
+  "slug": "the-spreadsheet-is-the-real-system",
+  "title": "The spreadsheet is the real system.",
+  "dek": "Every organization has an official system and a real one. The real one is usually a spreadsheet, and it shows exactly where the software stopped being enough.",
+  "summary": "Where the work actually happens in most organizations, and why that's a signal worth reading, not a failure worth banning.",
+  "topic": "Operations",
+  "read": 4,
+  "photo": "note-05.jpg",
+  "alt": "A person working on a laptop by a window",
+  "caption": "The file everyone asks for usually lives on one laptop.",
+  "linkedin": [
+    "Every organization has two systems.\n\nThe official one, with the training sessions and the login screen.\n\nAnd the real one: a spreadsheet called \"master list FINAL v3\" that everyone asks for when they actually need an answer.\n\nThat spreadsheet isn't a failure. It's a map of exactly where your software stopped being enough.\n\nFull note in the comments.",
+    "The diagram shows what that spreadsheet is really doing.\n\nOn the left, the official systems. In the middle, the file that bridges them: mappings between systems, exceptions and special terms, notes on why numbers were adjusted.\n\nOn the right, the real risk. It all lives with one person.\n\nWhen they're out, the report waits. When they leave, the understanding leaves with them.",
+    "Before you replace a spreadsheet, read it:\n\n1. Every column that matches one system to another is a relationship your systems should know about.\n2. Every exceptions tab is a set of rules that deserve names.\n3. Every margin note is context someone will need again.\n\nTreat the file as a specification, not a problem. The person who built it is your best expert.",
+    "Question for operators:\n\nWhat's the one spreadsheet your organization couldn't run a month without?\n\nAnd how many people know how it works?"
+  ]
+}

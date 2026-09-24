@@ -1,0 +1,30 @@
+<p>Ask a simple question inside almost any organization: how much did we do with Harbor Supply last year? Finance pulls a number from the ledger. Sales pulls a different one from the CRM. Someone in operations remembers a third figure from an email thread. All three people are right, and all three numbers are wrong.</p>
+  <p>The problem isn't the math. It's that "Harbor Supply" isn't one thing in your systems. It's five.</p>
+
+  <h2>How one company becomes five</h2>
+  <p>In the ledger it's vendor 10423, set up years ago by someone who has since left. In the CRM it's "Harbor Supply Co." with a period, because that's how a salesperson typed it. In the inbox it's "HSC," because that's what their team signs their emails with. The payment processor knows it by a customer ID. And the spreadsheet your controller actually trusts calls it "Harbor (old account)" because of a merger nobody fully cleaned up.</p>
+  <p>No single record is a mistake. Each system named the company the way that system needed to. But nothing connects them, so every question that crosses systems starts with a person doing detective work.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 220" role="img" aria-label="Five names in five systems resolving to one company">
+      <g font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="13" fill="#1d1d1f">
+        <g fill="#fff" stroke="#d9dadf">
+          <rect x="0" y="6" width="190" height="34" rx="4"/><rect x="0" y="50" width="190" height="34" rx="4"/><rect x="0" y="94" width="190" height="34" rx="4"/><rect x="0" y="138" width="190" height="34" rx="4"/><rect x="0" y="182" width="190" height="34" rx="4"/>
+        </g>
+        <text x="14" y="28">Ledger · vendor 10423</text><text x="14" y="72">CRM · Harbor Supply Co.</text><text x="14" y="116">Inbox · "HSC"</text><text x="14" y="160">Payments · cus_8Q2…</text><text x="14" y="204">Sheet · Harbor (old acct)</text>
+        <g stroke="#9a9ca2" fill="none"><path d="M190 23 C300 23 330 111 420 111"/><path d="M190 67 C300 67 330 111 420 111"/><path d="M190 111 L420 111"/><path d="M190 155 C300 155 330 111 420 111"/><path d="M190 199 C300 199 330 111 420 111"/></g>
+        <rect x="420" y="78" width="220" height="66" rx="4" fill="#1d1d1f"/>
+        <text x="440" y="106" fill="#fff" font-weight="600">Harbor Supply</text><text x="440" y="126" fill="#a1a1a6" font-size="12">One company · five sources</text>
+      </g>
+    </svg>
+    <figcaption>Identity resolution: each source keeps its own name, and all of them point to one object.</figcaption>
+  </figure>
+
+  <blockquote>The fix isn't renaming everything. It's giving every name somewhere to point.</blockquote>
+
+  <h2>What it costs</h2>
+  <p>The cost rarely shows up as a line item. It shows up as the Monday meeting that spends twenty minutes reconciling two reports. It shows up as a price increase sent to a customer who was already on a special agreement under a different account. It shows up when the one person who knows that "HSC" and vendor 10423 are the same company goes on vacation.</p>
+
+  <h2>Giving every name somewhere to point</h2>
+  <p>The answer isn't a massive cleanup project where everyone agrees on one true name. Those projects stall, because every system still needs its own. The answer is a layer above the systems that knows these five records are one company, keeps each source's name as an alias, and remembers where each fact came from.</p>
+  <p>Once that exists, the question "how much did we do with Harbor Supply?" has one answer, and you can see exactly which records it was built from.</p>

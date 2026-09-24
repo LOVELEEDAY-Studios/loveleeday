@@ -1,0 +1,18 @@
+{
+  "n": "01",
+  "slug": "one-company-five-names",
+  "title": "One company, five names.",
+  "dek": "The same customer lives in your inbox, your ledger and your CRM under different names. Every report quietly disagrees, and nobody can say why.",
+  "summary": "The same customer is \"HSC\" in the inbox, a vendor ID in the ledger and a different record in the CRM. Every report quietly disagrees, and nobody can say why.",
+  "topic": "Identity",
+  "read": 6,
+  "photo": "note-01.jpg",
+  "alt": "A wall of numbered grey mailboxes",
+  "caption": "Every box has a number. None of them know who lives there.",
+  "linkedin": [
+    "Ask a simple question: how much did we do with our biggest supplier last year?\n\nFinance has one number.\nSales has another.\nOperations remembers a third.\n\nAll three people are right. All three numbers are wrong.\n\nThe problem isn't the math. That supplier isn't one thing in your systems. It's five.\n\nFull note in the comments.",
+    "The diagram shows how one company becomes five.\n\nIn the ledger it's vendor 10423. In the CRM it's \"Harbor Supply Co.\" In the inbox it's \"HSC.\" The payment processor has a customer ID. The spreadsheet calls it \"Harbor (old acct).\"\n\nNo record is a mistake. Each system named it the way that system needed.\n\nThe fix isn't renaming everything. It's giving every name somewhere to point.",
+    "A quick test you can run Monday:\n\n1. Pick your five most important customers or suppliers.\n2. Search for each one in every system you use: ledger, CRM, inbox, payments, the spreadsheet.\n3. Write down every name, number and nickname you find.\n\nIf any of them has more than two, every report that combines those systems is quietly disagreeing with itself.",
+    "Question for finance and operations leaders:\n\nWho in your organization is the person who knows that \"HSC\" and vendor 10423 are the same company?\n\nWhat happens when they're on vacation?"
+  ]
+}

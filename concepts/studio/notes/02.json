@@ -1,0 +1,18 @@
+{
+  "n": "02",
+  "slug": "an-answer-you-cant-trace",
+  "title": "An answer you can't trace is an opinion.",
+  "dek": "When a number arrives without its history, the meeting argues about whose figure is right instead of what to do. Lineage turns that argument into a one-minute check.",
+  "summary": "Why every number in a report should point back to the record it came from, and what changes in the room when it does.",
+  "topic": "Evidence",
+  "read": 4,
+  "photo": "note-02.jpg",
+  "alt": "A long corridor of archive drawers",
+  "caption": "Everything is kept. The hard part is finding which drawer a number came from.",
+  "linkedin": [
+    "Two people. Two numbers. Same question.\n\nThe next forty minutes go to deciding which number is right.\nThe decision the meeting was for moves to next week.\n\nNobody was careless. Neither number could show where it came from.\n\nA figure without a trail is a claim. Claims get settled by whoever argues longer.\n\nFull note in the comments.",
+    "This diagram is the whole idea.\n\nOn the left, the number in the report.\nOn the right, everything it should carry with it: the system it came from, the query, the date it was pulled, the record behind it, what it excludes, who owns it.\n\nWhen two numbers disagree and both carry that trail, you stop debating. You open both and find the step where they part ways. Usually it takes a minute.",
+    "A rule you can start Monday, no new software required:\n\n1. No figure goes into a decision without one line underneath it.\n2. That line says the source system, the filter, and the date pulled.\n3. If anything was matched by hand or is missing, the line says that too.\n\nIt feels slow for two weeks. Then it becomes the fastest part of the process, because nobody rebuilds a number they can already see the recipe for.",
+    "Honest question for operators and finance leaders:\n\nWhen two reports disagree in your organization, how long does it usually take to find out why?\n\nMinutes, days, or never?\n\nAnd who is the person everyone asks?"
+  ]
+}

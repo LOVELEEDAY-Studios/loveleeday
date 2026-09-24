@@ -1,0 +1,34 @@
+<p>Most teams have an alert channel nobody reads. It started with good intentions: tell us when inventory drops below a level, when a payment is late, when a cost changes. Within a month it was firing forty times a day, and people learned to scroll past it. The one alert that mattered arrived in the middle of the noise and was ignored with the rest.</p>
+<p>The problem isn't that there are too many alerts. It's that alerts watch events, and most events don't matter. What matters is when something you decided on stops being true.</p>
+
+<h2>Events versus assumptions</h2>
+<p>An event is anything that happens: an invoice arrives, a number moves, a record changes. A business produces thousands of them every day. An assumption is narrower. It's a fact a decision depends on. We priced this product assuming it costs us four dollars. We staffed Saturdays assuming the event calendar stays light. We extended credit assuming the customer pays in thirty days.</p>
+<p>Every decision rests on a few assumptions like these. Usually nobody writes them down. They live in the head of the person who made the call, and when one of them quietly changes, nobody connects the change back to the decision.</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 640 210" role="img" aria-label="Many events filtered through a standing condition so only a meaningful change reaches the decision">
+    <g font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="13" fill="#1d1d1f">
+      <g fill="#fff" stroke="#d9dadf">
+        <rect x="0" y="6" width="150" height="30" rx="4"/><rect x="0" y="46" width="150" height="30" rx="4"/><rect x="0" y="86" width="150" height="30" rx="4"/><rect x="0" y="126" width="150" height="30" rx="4"/><rect x="0" y="166" width="150" height="30" rx="4"/>
+      </g>
+      <text x="14" y="26" font-size="12">Invoice, cost $4.02</text><text x="14" y="66" font-size="12">Invoice, cost $3.98</text><text x="14" y="106" font-size="12">Invoice, cost $4.05</text><text x="14" y="146" font-size="12">Invoice, cost $4.71</text><text x="14" y="186" font-size="12">Invoice, cost $4.03</text>
+      <g fill="#fff" stroke="#d9dadf"><rect x="220" y="66" width="200" height="70" rx="4"/></g>
+      <text x="236" y="92" font-weight="600">Standing condition</text><text x="236" y="112" font-size="12" fill="#6e7077">Price assumes cost near $4</text><text x="236" y="128" font-size="12" fill="#6e7077">Flag if it moves 10% or more</text>
+      <g stroke="#9a9ca2" fill="none"><path d="M150 21 C190 21 190 101 220 101" stroke-opacity=".35"/><path d="M150 61 C190 61 190 101 220 101" stroke-opacity=".35"/><path d="M150 101 L220 101" stroke-opacity=".35"/><path d="M150 141 C190 141 190 101 220 101"/><path d="M150 181 C190 181 190 101 220 101" stroke-opacity=".35"/><path d="M420 101 L470 101"/></g>
+      <rect x="470" y="68" width="170" height="66" rx="4" fill="#1d1d1f"/>
+      <text x="486" y="95" fill="#fff" font-weight="600">Revisit the price</text><text x="486" y="115" fill="#a1a1a6" font-size="12">One signal, with its reason</text>
+    </g>
+  </svg>
+  <figcaption>Awareness: five events, one condition, one signal worth acting on.</figcaption>
+</figure>
+
+<h2>Write the assumption down</h2>
+<p>A standing condition is an assumption written down and watched. Instead of "tell me every time a cost changes," it says "this price was set assuming a cost near four dollars; tell me if that stops being true." Small movements pass quietly. The invoice that breaks the assumption brings the decision back into focus, with the reason attached.</p>
+<p>That's a different kind of message. It doesn't say "something happened." It says "a decision you made may no longer hold, and here's why." People read those.</p>
+
+<blockquote>An alert tells you something happened. A condition tells you a decision needs another look.</blockquote>
+
+<h2>Fewer signals, better decisions</h2>
+<p>The discipline starts at the moment of the decision. When you set a price, approve a budget, or sign a contract, spend two minutes writing down what has to stay true for it to remain a good call. Those notes become the conditions worth watching. Everything else can stay in the log where it belongs.</p>
+<p>Over time, the conditions tell a story of their own. You learn which assumptions break often, which decisions are fragile, and where the organization keeps being surprised. That's far more useful than a channel full of numbers crossing lines.</p>
+<p>This is how awareness works in what LOVELEEDAY builds. Arthur watches the conditions behind a decision and brings it back into focus when its assumptions shift, instead of adding to the noise.</p>

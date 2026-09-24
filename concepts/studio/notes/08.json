@@ -1,0 +1,18 @@
+{
+  "n": "08",
+  "slug": "intelligence-is-an-architecture",
+  "title": "Intelligence is an architecture, not a chatbot.",
+  "dek": "A chat window on top of scattered data produces confident guesses faster. Real understanding comes from five layers underneath the conversation.",
+  "summary": "The five layers that turn scattered information into one understanding, in plain language, and why the chat window is only the last inch.",
+  "topic": "Architecture",
+  "read": 4,
+  "photo": "note-08.jpg",
+  "alt": "Looking up into a glass dome",
+  "caption": "What makes a dome stand is the structure you don't notice.",
+  "linkedin": [
+    "The fastest way to add \"AI\" to an organization is a chat window on top of its data.\n\nIt demos beautifully.\n\nThen someone asks a question that crosses two systems. The answer is just as fluent, and quietly wrong.\n\nA chat window on scattered data doesn't create understanding. It produces confident guesses faster.\n\nFull note in the comments.",
+    "The diagram shows what sits underneath an answer worth trusting.\n\nIdentity: what things are, across systems.\nMemory: what was true, and when.\nLineage: where every claim came from.\nVerification: checked before it's called done.\nAwareness: noticing when things change.\n\nFive layers do the understanding. The conversation is the last inch.",
+    "Five questions to ask any \"intelligent\" system before you trust it:\n\n1. Does it know two names can mean the same thing?\n2. Can it show the records an answer came from?\n3. Can it tell you what it believed last quarter?\n4. Does it say when information is missing?\n5. Does it notice change, or wait to be asked?\n\nFive yeses: real understanding. Otherwise, an articulate guess.",
+    "Question for anyone evaluating AI tools right now:\n\nWhen a tool gives you a confident answer, how do you check it?\n\nAnd what would it take for you to trust one without checking?"
+  ]
+}

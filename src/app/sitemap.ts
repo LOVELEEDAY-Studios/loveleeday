@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { operated } from "@/content/work";
+import notes from "@/content/notes.json";
 
 /* Generated from the same content module the pages render, so a new project can
    never be live and missing from the sitemap. The hand-written list this
@@ -33,6 +34,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/work`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${base}/security`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${base}/notes`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    /* Written by scripts/build-notes.py from the same source the pages are built from. */
+    ...notes.map((n) => ({ url: `${base}/notes/${n.slug}`, lastModified: new Date(n.date), changeFrequency: "yearly" as const, priority: 0.6 })),
   ];
 
   return [
