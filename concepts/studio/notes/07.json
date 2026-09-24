@@ -14,5 +14,6 @@
     "The diagram shows what a typical migration carries, and what it should.\n\nThe usual: current values only.\n\nBetter: the current values, plus the history with its dates, the notes and exceptions attached, and every old identifier kept as an alias so it still finds the right record.\n\nSame project. Very different system on day one.",
     "Three tests for your next migration, beyond matching record counts:\n\n1. Write down twenty real questions the business asks. Run them against both systems, before and after.\n2. Reconcile totals by customer and by month, not just the grand total.\n3. Pick ten old identifiers people still use and confirm each one still finds its record.\n\nIf the old questions still have answers, you're done.",
     "For anyone who has lived through a system change:\n\nWhat was the thing you discovered, months later, that didn't come across?\n\nHistory, notes, old codes, something else?"
-  ]
+  ],
+  "date": "2026-09-16"
 }

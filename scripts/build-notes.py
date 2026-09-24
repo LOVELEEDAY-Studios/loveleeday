@@ -29,6 +29,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE, SRC, NOTES = ROOT / "public/site", ROOT / "concepts/studio/site", ROOT / "concepts/studio/notes"
 BASE = "https://loveleedaystudios.com"
 PUBLISHED = "2026-09-24"
+BUILT = __import__("datetime").date.today().isoformat()
 
 notes = []
 for meta_path in sorted(NOTES.glob("[0-9][0-9].json")):
@@ -101,7 +102,8 @@ topics = []
 for n in notes:
     if n["topic"] not in topics:
         topics.append(n["topic"])
-first, rest = notes[0], notes[1:]
+by_date = sorted(notes, key=lambda n: n["date"], reverse=True)
+first, rest = by_date[0], by_date[1:]
 index = (
     '<section class="notes-hero"><div class="wrap"><span class="eyebrow">Systems Notes</span>'
     "<h1>How organizations actually work.<br><span>And why their systems don't.</span></h1>"
@@ -149,7 +151,7 @@ for i, n in enumerate(notes):
     )
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Article", "headline": n["title"].rstrip("."), "description": n["dek"], "image": BASE + share(n),
-         "datePublished": n["date"], "dateModified": n["date"], "url": url, "mainEntityOfPage": url,
+         "datePublished": n["date"], "dateModified": BUILT, "url": url, "mainEntityOfPage": url,
          "author": {"@type": "Organization", "name": "LOVELEEDAY Studios", "url": BASE + "/"},
          "publisher": {"@type": "Organization", "name": "LOVELEEDAY Studios", "url": BASE + "/"}},
         crumbs([{"@type": "ListItem", "position": 3, "name": n["title"].rstrip("."), "item": url}])]}
