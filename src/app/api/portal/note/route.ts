@@ -5,6 +5,7 @@ import { getPortfolio } from "@/content/portfolio";
 import { getComplianceSchool } from "@/content/compliance";
 import { getCivic } from "@/content/civic/kalamazoo";
 import { getStudio } from "@/content/studio/elemental";
+import { getHub } from "@/content/hub/startupzoo";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +29,8 @@ export async function POST(request: Request) {
     const found = getPortal(token);
     const pf = found ? undefined : getPortfolio(token);
     const st = found || pf ? undefined : getStudio(token);
-    const civic = found || pf || st ? undefined : getCivic(token);
+    const hub = found || pf || st ? undefined : getHub(token);
+    const civic = found || pf || st ? undefined : (getCivic(token) ?? hub);
     const cs = found || pf || st || civic ? undefined : getComplianceSchool(token);
     if (!found && !pf && !cs && !civic && !st) {
       return NextResponse.json({ error: "Unknown review link" }, { status: 404 });
@@ -53,9 +55,9 @@ export async function POST(request: Request) {
         ? {
             token: civic.token,
             client: civic.short,
-            project: "County analysis",
+            project: hub ? "Startup Zoo proposal" : "County analysis",
             round: "Round 01",
-            deliverables: [{ slug: "analysis", title: "County analysis" }],
+            deliverables: [{ slug: "analysis", title: hub ? "Startup Zoo proposal" : "County analysis" }],
           }
         : {
             token: cs!.token,
@@ -65,7 +67,7 @@ export async function POST(request: Request) {
             deliverables: [{ slug: "compliance", title: "Compliance calendar" }],
           });
     const portfolioLink = !found;
-    const linkBase = st ? "studio/" : civic ? "civic/" : cs ? "compliance/" : "portfolio/";
+    const linkBase = st ? "studio/" : hub ? "hub/" : civic ? "civic/" : cs ? "compliance/" : "portfolio/";
 
     const name = String(body.name ?? "").trim().slice(0, 120);
     const email = String(body.email ?? "").trim().slice(0, 200);
