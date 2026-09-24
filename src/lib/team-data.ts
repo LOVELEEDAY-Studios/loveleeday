@@ -70,7 +70,9 @@ export async function teamData() {
     const outside = views.filter((v) => !v.team && !v.bot && !(v.ip && teamIps.has(v.ip)) && !nearSend(Date.parse(v.at)) && !beforeSend(Date.parse(v.at)));
 
     const tokens = new Set(bid.pages.map((p) => p.path.split("/").pop()!.split("?")[0]).concat(bid.pages.map((p) => new URL(p.path, "https://x").searchParams.get("k") ?? "")));
-    const asks = raw.asks.filter((a) => tokens.has(a.token));
+    const allAsks = raw.asks.filter((a) => tokens.has(a.token));
+    // A question asked before the proposal went out is us trying it, the same as a pre-send view.
+    const asks = allAsks.filter((a) => !beforeSend(Date.parse(a.at)));
 
     const events: Event[] = [
       ...sent.map((s) => ({ at: s.sent_at, kind: "sent" as const, text: `Sent to ${s.to}`, detail: s.subject, human: true })),
@@ -85,7 +87,7 @@ export async function teamData() {
         const how = h ? "viewed" : ours ? "viewed by us" : v.bot || nearSend(t) ? "fetched by a machine" : "viewed before it was sent";
         return { at: v.at, kind: "visit" as const, text: `${pageLabel(bid, v.path)} ${how}`, detail: device(v.ua), human: h };
       }),
-      ...asks.map((a) => ({ at: a.at, kind: "ask" as const, text: `Asked Arthur: “${a.q}”`, detail: a.head, human: true })),
+      ...allAsks.map((a) => { const pre = beforeSend(Date.parse(a.at)); return { at: a.at, kind: "ask" as const, text: `${pre ? "Asked Arthur before it was sent" : "Asked Arthur"}: “${a.q}”`, detail: a.head, human: !pre }; }),
     ].sort((a, b) => b.at.localeCompare(a.at));
 
     const isSent = sent.length > 0 || Boolean(bid.sentOn);
