@@ -1,0 +1,38 @@
+[
+ {
+  "file": "01-studio.mp3",
+  "title": "Elemental, about the studio",
+  "voice": "Low and close (the house voice)",
+  "script": "We started with a camera and a question. What makes a moment worth keeping? Light that means something. A story that moves. Craft you can feel. Elemental Media. Films built from the elements."
+ },
+ {
+  "file": "02-clients.mp3",
+  "title": "Elemental, about its clients",
+  "voice": "Warm documentary narrator",
+  "script": "A brewery with decades of craft behind every pour. An airport that's the front door to its city. A coffee shop that fits in a can. Different stories. Same job: find the true thing, and film it like it matters. Elemental Media."
+ },
+ {
+  "file": "03-craft-brewing.mp3",
+  "title": "Craft brewing spot (spec / sample, not a real client ad)",
+  "voice": "Friendly and textured",
+  "script": "Somewhere in Michigan, a hop field is catching the last of the light. Come autumn, it's in your glass. Brewed slow, by people who'd rather get it right than get it fast. Here's to the long way around."
+ },
+ {
+  "file": "04-civic-airport.mp3",
+  "title": "Hometown airport spot (spec / sample, not a real client ad)",
+  "voice": "Bright and proud",
+  "script": "Short lines. Easy parking. Friendly faces who remember yours. Your next trip starts close to home, at the airport that belongs to all of us. Fly local. Fly Kalamazoo."
+ },
+ {
+  "file": "05-radio-rentals.mp3",
+  "title": "Radio :15, Elemental equipment rental",
+  "voice": "Punchy radio read",
+  "script": "Shooting this weekend? Don't buy the kit. Rent it. Cinema cameras, lenses, lights and grip, prepped by working crews. Elemental Media rentals. Book today at we are elemental media dot com."
+ },
+ {
+  "file": "06-testimonial.mp3",
+  "title": "Client testimonial (sample voice, not a real client)",
+  "voice": "Natural and conversational",
+  "script": "Honestly? I thought a video would be a headache. They showed up, they listened, and two weeks later we had a film our whole team shares. People still stop me to ask who made it."
+ }
+]
