@@ -15,5 +15,9 @@
     "Five questions to ask any \"intelligent\" system before you trust it:\n\n1. Does it know two names can mean the same thing?\n2. Can it show the records an answer came from?\n3. Can it tell you what it believed last quarter?\n4. Does it say when information is missing?\n5. Does it notice change, or wait to be asked?\n\nFive yeses: real understanding. Otherwise, an articulate guess.",
     "Question for anyone evaluating AI tools right now:\n\nWhen a tool gives you a confident answer, how do you check it?\n\nAnd what would it take for you to trust one without checking?"
   ],
-  "date": "2026-09-23"
+  "date": "2026-09-23",
+  "card": [
+    "Intelligence is an",
+    "architecture, not a chatbot."
+  ]
 }

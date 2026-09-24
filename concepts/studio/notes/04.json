@@ -15,5 +15,9 @@
     "Before your next integration project, do this:\n\n1. List the five words your business runs on. Customer, order, product, unit, location.\n2. Write one sentence defining each, for your business, not for any one system.\n3. For every system, note where its version differs from yours.\n\nThat document will prevent more errors than the integration itself.",
     "A question for anyone who has lived through an integration project:\n\nWhat's the word that meant something different in every system?\n\nFor a lot of teams it's \"unit.\" For others it's \"customer\" or \"order.\"\n\nWhich one was it for you?"
   ],
-  "date": "2026-08-26"
+  "date": "2026-08-26",
+  "card": [
+    "Your systems don't talk.",
+    "They were never meant to."
+  ]
 }
