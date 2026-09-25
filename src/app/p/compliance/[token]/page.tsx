@@ -224,7 +224,8 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
       {/* The system */}
       <section id="dashboard" className="bg-[#f5f5f7]">
         <div className="mx-auto max-w-[1340px] px-6 py-24">
-          <div className="mb-12 grid gap-6 lg:grid-cols-2 lg:items-end">
+          {/* The dashboard runs wider (1340) than the page column (1180); the heading keeps the column's left edge. */}
+          <div className="mx-auto mb-12 grid max-w-[1132px] gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow>The working system</Eyebrow>
               <Two a="Ask simply." b="Plan completely." />
