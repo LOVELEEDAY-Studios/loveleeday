@@ -72,7 +72,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
     <div className="ll-os bg-white">
       {/* The spot */}
       <section className="bg-[#0d0e12] text-white">
-        <div className="mx-auto max-w-[1280px] px-6 pb-16 pt-16 sm:pt-20">
+        <div className="mx-auto max-w-[1180px] px-6 pb-16 pt-16 sm:pt-20">
           <Eyebrow dark>For Elemental Media · a spec spot, a rebuild, and what comes next</Eyebrow>
           <Two dark size="h1" a="We cut you a spot." b="From your own footage." />
           <div className="mt-10">

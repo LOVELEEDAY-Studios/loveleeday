@@ -206,7 +206,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
         <ol className="mt-14 border-t border-[#e4e5e9]">
           {steps.map((x) => (
             <li key={x.n} className="grid gap-6 border-b border-[#e4e5e9] py-10 lg:grid-cols-[4rem_1.1fr_1.4fr_12rem] lg:gap-10">
-              <span className="text-[12px] tabular-nums text-[#a0a3ab]">{x.n}</span>
+              <span className="text-[12px] tabular-nums text-[#6a6e77]">{x.n}</span>
               <div>
                 <span className={`text-[10px] font-semibold uppercase tracking-[0.16em] ${x.who === "You asked" ? "text-[#3778bc]" : "text-[#8b8e96]"}`}>{x.who}</span>
                 <h3 className="mt-2 text-[22px] font-medium leading-[1.3] tracking-[-0.025em] text-[#1d1d1f]">{x.ask}</h3>
@@ -236,7 +236,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
             </p>
           </div>
           <Dashboard items={requirements} storageKey={`llc-compliance-${token}`} school={s.short} token={s.token} />
-          <p className="mt-4 text-center text-[10.5px] leading-[1.6] text-[#9699a1]">
+          <p className="mt-4 text-center text-[10.5px] leading-[1.6] text-[#6a6e77]">
             Interactive preview. Figures marked public come from Global Citizens&apos; public record. Figures marked sample show
             what your own systems fill in once connected. This preview holds no student information.
           </p>
@@ -257,8 +257,8 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
             ["Your board", "Assembled the night before", "A compliance and planning report, kept current all year"],
           ].map(([what, before, after]) => (
             <div key={what} className="bg-white p-7">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#a0a3ab]">{what}</span>
-              <p className="mt-4 text-[14px] leading-[1.6] text-[#a0a3ab] line-through decoration-[#d5d8de]">{before}</p>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6a6e77]">{what}</span>
+              <p className="mt-4 text-[14px] leading-[1.6] text-[#6a6e77] line-through decoration-[#d5d8de]">{before}</p>
               <p className="mt-1 text-[16px] leading-[1.55] text-[#1d1d1f]">{after}</p>
             </div>
           ))}

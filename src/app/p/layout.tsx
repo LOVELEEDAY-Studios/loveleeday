@@ -13,12 +13,12 @@ export default function PortalLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div className="flex min-h-full flex-1 flex-col">
-      {/* The same header geometry as the landing page (concepts/studio/site/assets/site.css
-          .nav / .wrap / .brand): 1080px content column with 40px gutters, 72px bar, 24px
-          heart, 13px system-font wordmark at .12em and weight 650. Phone width follows the
-          site's 700px rules: 24px gutter, 64px bar, 18px heart, 9px wordmark. */}
+      {/* The landing page's bar and lockup (72px bar, 24px heart, 13px wordmark at .12em / 650;
+          phone: 64px bar, 18px heart, 9px wordmark), on the PORTAL's column: the proposal pages
+          are a 1180px column with 24px gutters, so the logo and footer start where the section
+          headings start. The landing's 1080/40 column left the header and footer off that edge. */}
       <header className="border-b border-[#00000012] bg-white">
-        <div className="mx-auto flex h-[72px] w-[min(1080px,calc(100%-80px))] items-center justify-between max-[700px]:h-[64px] max-[700px]:w-[calc(100%-48px)]">
+        <div className="mx-auto flex h-[72px] max-w-[var(--portal-col,1180px)] items-center justify-between px-6 max-[700px]:h-[64px]">
           {/* A plain anchor: "/" is a static HTML file behind a rewrite, so next/link's RSC
               prefetch of it 404s on every portal page. */}
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
@@ -45,7 +45,7 @@ export default function PortalLayout({
       <ViewBeacon />
 
       <footer className="border-t border-[var(--line)]">
-        <div className="mx-auto flex max-w-[1340px] flex-col gap-2 px-6 py-6 text-[12px] text-[var(--mid)] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-[var(--portal-col,1180px)] flex-col gap-2 px-6 py-6 text-[12px] text-[var(--mid)] sm:flex-row sm:items-center sm:justify-between">
           <span>LOVELEEDAY Studios LLC</span>
           <a href="mailto:hello@loveleedaystudios.com" className="hover:text-[var(--ink)]">
             hello@loveleedaystudios.com
