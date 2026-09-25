@@ -9,7 +9,7 @@ fs.mkdirSync(out, { recursive: true });
 const b = await chromium.launch();
 for (const [w, h, tag] of [[1440, 900, "1440"], [390, 844, "390"]]) {
   const p = await b.newPage({ viewport: { width: w, height: h } });
-  await p.goto("file://" + path.resolve(file), { waitUntil: "load" });
+  await p.goto(/^https?:\/\//.test(file) ? file : "file://" + path.resolve(file), { waitUntil: "load" });
   await p.evaluate(async () => {
     document.querySelectorAll("img[loading=lazy]").forEach((i) => (i.loading = "eager"));
     for (let y = 0; y < document.body.scrollHeight; y += 500) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 60)); }
