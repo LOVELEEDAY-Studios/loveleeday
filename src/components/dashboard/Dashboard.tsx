@@ -214,7 +214,7 @@ export function Dashboard({ items, storageKey, school, token }: { items: Require
           </span>
           <span>LOVELEEDAY / {school}</span>
         </div>
-        <span className="flex items-center gap-2 text-[10px]">
+        <span className="flex items-center gap-2 text-[11px]">
           <i className="h-[5px] w-[5px] rounded-full bg-[#719cb1]" aria-hidden="true" />
           Interactive system preview
         </span>
