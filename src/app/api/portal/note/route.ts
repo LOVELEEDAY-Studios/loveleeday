@@ -6,6 +6,7 @@ import { getComplianceSchool } from "@/content/compliance";
 import { getCivic } from "@/content/civic/kalamazoo";
 import { getStudio } from "@/content/studio/elemental";
 import { getHub } from "@/content/hub/startupzoo";
+import { getWightman } from "@/content/hub/wightman";
 
 export const dynamic = "force-dynamic";
 
@@ -32,7 +33,8 @@ export async function POST(request: Request) {
     const hub = found || pf || st ? undefined : getHub(token);
     const civic = found || pf || st ? undefined : (getCivic(token) ?? hub);
     const cs = found || pf || st || civic ? undefined : getComplianceSchool(token);
-    if (!found && !pf && !cs && !civic && !st) {
+    const wm = found || pf || st || civic || cs ? undefined : getWightman(token);
+    if (!found && !pf && !cs && !civic && !st && !wm) {
       return NextResponse.json({ error: "Unknown review link" }, { status: 404 });
     }
     const portal = found ?? (pf
@@ -43,7 +45,15 @@ export async function POST(request: Request) {
           round: "Round 01",
           deliverables: pf.cases.map((c) => ({ slug: c.slug, title: c.company })),
         }
-      : st
+      : wm
+        ? {
+            token: wm.token,
+            client: wm.short,
+            project: "What Arthur can see across your territory",
+            round: "Round 01",
+            deliverables: [{ slug: "intelligence", title: "Territory intelligence brief" }],
+          }
+        : st
         ? {
             token: st.token!,
             client: st.short,
