@@ -557,7 +557,7 @@ export function WightmanDashboard({ token, preparedFor, rows, corridors, surviva
           </div>
         )}
 
-        <p className="mt-10 text-[11.5px] text-[#8c8e95]">Built {new Date(builtAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })} from public records: EGLE, IFA and Ohio EPA priority lists, USAspending.gov, Wightman project pages, OpenStreetMap, Foursquare open places and city meeting records. Arthur is not connected to any Wightman system.</p>
+        <p className="mt-10 text-[11.5px] text-[#8c8e95]">Built {new Date(builtAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short", timeZone: "America/Detroit" })} from public records: EGLE, IFA and Ohio EPA priority lists, USAspending.gov, Wightman project pages, OpenStreetMap, Foursquare open places and city meeting records. Arthur is not connected to any Wightman system.</p>
             </div>
           </div>
         </div>
