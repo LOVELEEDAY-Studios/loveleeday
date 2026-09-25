@@ -75,4 +75,6 @@ export const TOKENS = {
   // Startup Zoo (Carl Brown), Kalamazoo entrepreneurship hub; Dabney is a resident. Pitch + homepage study.
   startupzoo: tokOptional("PORTFOLIO_TOKEN_STARTUPZOO"),
   startupzooStudy: tokOptional("PORTAL_TOKEN_STARTUPZOO"),
+  // Phil Doorlag, Wightman (Kalamazoo), met at Dabney 2026-09-25: the territory intelligence brief.
+  wightman: tokOptional("PORTAL_TOKEN_WIGHTMAN"),
 } as const;
