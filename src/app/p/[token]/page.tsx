@@ -41,6 +41,7 @@ export default async function PortalPage({
 
   return (
     <>
+      <span hidden data-portal-col="1340" />
       {/* Header. The client's name is the largest thing on the page; ours is a
           26px mark in the bar above it. That ordering is the whole posture. */}
       <section className="mx-auto max-w-[1340px] px-6 pb-14 pt-16 sm:pt-24">

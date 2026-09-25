@@ -108,6 +108,7 @@ export default async function PortfolioPage({
 
   return (
     <>
+      <span hidden data-portal-col="1340" />
       {/* Header */}
       <section className="mx-auto max-w-[1340px] px-6 pb-16 pt-16 sm:pt-24">
         <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">

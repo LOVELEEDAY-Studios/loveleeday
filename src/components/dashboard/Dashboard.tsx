@@ -88,7 +88,7 @@ function Kpi({ k, label, sub, tag }: { k: string; label: string; sub?: string; t
         {tag && <Tag kind={tag} />}
       </div>
       <span className="mt-2.5 block text-[12.5px] text-[#323b48]">{label}</span>
-      {sub && <span className="mt-0.5 block text-[11.5px] text-[#969ba6]">{sub}</span>}
+      {sub && <span className="mt-0.5 block text-[11.5px] text-[#6a6e77]">{sub}</span>}
     </div>
   );
 }
@@ -223,7 +223,7 @@ export function Dashboard({ items, storageKey, school, token }: { items: Require
       <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[210px_minmax(0,1fr)]">
         {/* nav */}
         <nav className="flex min-w-0 gap-1 overflow-x-auto border-b border-[#edf0f4] bg-[#fafbfc] p-2 lg:flex-col lg:border-b-0 lg:border-r lg:px-4 lg:py-6" aria-label="Dashboard">
-          <span className="mx-2 mb-3 hidden text-[9px] uppercase tracking-[0.12em] text-[#a0a3ab] lg:block">Workspace</span>
+          <span className="mx-2 mb-3 hidden text-[9px] uppercase tracking-[0.12em] text-[#6a6e77] lg:block">Workspace</span>
           {NAV.map(({ k, label, icon: Icon }) => (
             <button
               key={k}
@@ -235,8 +235,8 @@ export function Dashboard({ items, storageKey, school, token }: { items: Require
             </button>
           ))}
           <span className="mx-2 my-6 hidden h-px bg-[#e8ebef] lg:block" />
-          <span className="mx-2 mb-3 hidden text-[9px] uppercase tracking-[0.12em] text-[#a0a3ab] lg:block">Connected context</span>
-          <p className="mx-2 hidden text-[11px] leading-[1.8] text-[#969ba6] lg:block">
+          <span className="mx-2 mb-3 hidden text-[9px] uppercase tracking-[0.12em] text-[#6a6e77] lg:block">Connected context</span>
+          <p className="mx-2 hidden text-[11px] leading-[1.8] text-[#6a6e77] lg:block">
             Charter and amendments
             <br />DC PCSB and OSSE calendars
             <br />990 and audited financials
@@ -301,7 +301,7 @@ export function Dashboard({ items, storageKey, school, token }: { items: Require
                     onChange={(e) => setDraft(e.target.value)}
                     maxLength={400}
                     placeholder="Ask your own question: budget, enrollment, staffing or a deadline"
-                    className="min-h-[40px] min-w-0 flex-1 bg-transparent text-[13px] text-[#323b48] outline-none placeholder:text-[#999fab]"
+                    className="min-h-[40px] min-w-0 flex-1 bg-transparent text-[13px] text-[#323b48] outline-none placeholder:text-[#868a93]"
                   />
                   <button
                     type="submit"
@@ -311,7 +311,7 @@ export function Dashboard({ items, storageKey, school, token }: { items: Require
                     {asking ? "Thinking…" : "Ask Arthur ✧"}
                   </button>
                 </form>
-                <p className={`mt-2 text-[11px] ${askErr ? "text-[#b3261e]" : "text-[#999fab]"}`} aria-live="polite">
+                <p className={`mt-2 text-[11px] ${askErr ? "text-[#b3261e]" : "text-[#6a6e77]"}`} aria-live="polite">
                   {askErr || "Live. Arthur answers from your school's public record, the DC calendars and the plan on your screen, and shows where each answer came from."}
                 </p>
               </div>

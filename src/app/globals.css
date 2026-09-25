@@ -283,3 +283,7 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Portal pages built on the wider 1340px column (portfolio, site study) carry a marker so the
+   shared header and footer in app/p/layout.tsx sit on the same edge as their content. */
+body:has([data-portal-col="1340"]) { --portal-col: 1340px; }
