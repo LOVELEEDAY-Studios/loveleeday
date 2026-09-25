@@ -236,7 +236,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
             </p>
           </div>
           <Dashboard items={requirements} storageKey={`llc-compliance-${token}`} school={s.short} token={s.token} />
-          <p className="mt-4 text-center text-[10.5px] leading-[1.6] text-[#6a6e77]">
+          <p className="mt-4 text-center text-[11.5px] leading-[1.6] text-[#6a6e77]">
             Interactive preview. Figures marked public come from Global Citizens&apos; public record. Figures marked sample show
             what your own systems fill in once connected. This preview holds no student information.
           </p>
