@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { after } from "next/server";
-import { isAutomation } from "@/lib/visits";
+import { clientIp, isAutomation } from "@/lib/visits";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +21,7 @@ export async function GET(request: Request) {
   const t = new URL(request.url).searchParams.get("t");
   if (t) {
     const ua = request.headers.get("user-agent") ?? "";
-    const ip = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim();
+    const ip = clientIp(request.headers);
     const row = {
       token: t.slice(0, 64),
       ua: ua ? ua.slice(0, 400) : null,

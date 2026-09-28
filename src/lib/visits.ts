@@ -22,8 +22,14 @@ export async function hashIp(ip: string) {
   return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 16);
 }
 
+// The domain is proxied through Cloudflare, so x-forwarded-for reaches Vercel carrying Cloudflare's edge
+// address: every visitor through the same edge collapsed into one hash, and Wightman's Windows PC shared
+// "our" hashes (2026-09-28). cf-connecting-ip is the real client; x-forwarded-for stays for direct hits.
 export const clientIp = (headers: Headers) =>
-  (headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || headers.get("x-real-ip") || "";
+  headers.get("cf-connecting-ip")?.trim() ||
+  (headers.get("x-forwarded-for") ?? "").split(",")[0].trim() ||
+  headers.get("x-real-ip") ||
+  "";
 
 async function insert(table: string, row: Record<string, unknown>) {
   const url = process.env.OPENS_SUPABASE_URL;

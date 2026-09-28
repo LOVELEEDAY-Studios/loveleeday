@@ -2,7 +2,7 @@ import { NextResponse, after } from "next/server";
 import { Resend } from "resend";
 import { findings, getCivic, layers, mandate, nextQuestions, strengths, themes } from "@/content/civic/kalamazoo";
 import { cleanModelText } from "@/lib/model-text";
-import { recordAsk } from "@/lib/visits";
+import { clientIp, recordAsk } from "@/lib/visits";
 
 export const dynamic = "force-dynamic";
 
@@ -65,7 +65,7 @@ export async function POST(request: Request) {
     const question = String(body.question ?? "").trim().slice(0, 400);
     if (question.length < 4) return NextResponse.json({ error: "Ask a question" }, { status: 400 });
 
-    const ip = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "anon";
+    const ip = clientIp(request.headers) || "anon";
     if (limited(`ip:${ip}`, 15, 10 * 60_000) || limited(`tok:${token}`, 150, 24 * 3600_000)) {
       return NextResponse.json({ error: "That is a lot of questions for one preview. Give it a few minutes." }, { status: 429 });
     }
