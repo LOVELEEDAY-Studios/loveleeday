@@ -31,7 +31,7 @@ export const clientIp = (headers: Headers) =>
   headers.get("x-real-ip") ||
   "";
 
-async function insert(table: string, row: Record<string, unknown>) {
+async function insert(table: "page_views" | "ask_questions", row: Record<string, unknown>) {
   const url = process.env.OPENS_SUPABASE_URL;
   const key = process.env.OPENS_SUPABASE_ANON_KEY;
   if (!url || !key) return;
