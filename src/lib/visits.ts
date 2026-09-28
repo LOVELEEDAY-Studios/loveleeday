@@ -55,7 +55,7 @@ export async function recordAsk(headers: Headers, row: { surface: string; token:
   });
 }
 
-export async function recordView(headers: Headers, path: string, teamCookie: boolean) {
+export async function recordView(headers: Headers, path: string, teamCookie: boolean, visit?: { id?: string; dwellMs?: number }) {
   const ua = headers.get("user-agent") ?? "";
   await insert("page_views", {
     path: path.slice(0, 300),
@@ -64,5 +64,7 @@ export async function recordView(headers: Headers, path: string, teamCookie: boo
     team_cookie: teamCookie,
     automation: isAutomation(ua),
     referer: headers.get("referer")?.slice(0, 300) ?? null,
+    visit_id: visit?.id ?? null,
+    dwell_ms: visit?.dwellMs ?? null,
   });
 }
