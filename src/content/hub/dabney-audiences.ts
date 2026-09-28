@@ -14,21 +14,21 @@ export const copy = {
   asOf: "September 28",
   hero: {
     a: "21 audiences existed. None matched what actually sells.",
-    b: "Nine built, one blocked, three broken, and a map for the rest.",
+    b: "Nine built, two deleted, one saved audience still stuck.",
     intro:
-      "Every custom audience, lookalike, saved audience and the targeting on all 69 ad sets touched in the last 90 days, read live from the Meta Marketing API on act_24502732409351450. The account already has real audiences — engagers, a Brevo list, one working lookalike — but nothing built for a Purchase, nothing for a reservation click, and no audience organized around the three things ads actually need to do here: get someone engaged, get them to reserve, get them to buy.",
+      "Every custom audience, lookalike, saved audience and the targeting on all 87 ad sets (any status), read live from the Meta Marketing API on act_24502732409351450. The account already has real audiences — engagers, a Brevo list, one working lookalike — but nothing built for a Purchase, nothing for a reservation click, and no audience organized around the three things ads actually need to do here: get someone engaged, get them to reserve, get them to buy. A follow-up pass deleted the two audiences that were both broken and unused everywhere, and left alone everything a live or reactivatable ad set still depends on.",
   },
   grades: { a: "Where each audience type stood,", b: "and where it stands now.", intro: "Struck-through grade is before this session; the bold one is after today's builds. Saved audiences and event-response audiences are graded on what the API allows, not what would be ideal." },
   model: { a: "One audience set per goal,", b: "matched to the event the ad set optimizes on.", intro: "Four rules for how the account's audiences should fit together, given what's already built and what still needs a human." },
-  fixes: { a: "Nine built today,", b: "four still need a decision.", intro: "Every build below has an id read back from the Meta API. What's left needs either Ads Manager (the saved audience) or a delete you'd have to approve (the three broken lookalikes)." },
+  fixes: { a: "Eleven done,", b: "five still need a decision.", intro: "Every build and delete below has an id read back from the Meta API before and after. What's left needs either Ads Manager (the saved audience), a live ad set repointed first (the two duplicate pairs), or a straight answer on which Brevo list is really which." },
 };
 
 export const glance: { k: string; label: string; src: string }[] = [
-  { k: "21 → 30", label: "Custom + lookalike audiences before and after this session.", src: "Meta Marketing API, customaudiences, Sept 28" },
+  { k: "21 → 28", label: "Custom + lookalike audiences: 30 after Monday's builds, 28 after deleting 2 confirmed-dead lookalikes.", src: "Meta Marketing API, customaudiences, Sept 28" },
   { k: "9", label: "New audiences created this session — 5 rule-based, 4 lookalikes.", src: "This session's customaudiences POSTs" },
-  { k: "3", label: "Existing lookalikes permanently broken (“too small,” Meta says delete and recreate).", src: "delivery_status on 3 LOOKALIKE audiences" },
-  { k: "4", label: "Duplicate audience pairs already in the account (Page engagers, IG engagers, two Brevo-sourced lists).", src: "Name/subtype match across the 21 pre-existing audiences" },
-  { k: "1", label: "Saved audience blocked outright: the app has no permission to create one via the API.", src: "POST act_.../saved_audiences → (#3)" },
+  { k: "2 of 3", label: "Broken lookalikes deleted (zero ad sets referenced them, any status). The third stays: 5 paused ad sets still reference it.", src: "DELETE customaudiences × 2 + full 87-ad-set reference check" },
+  { k: "0 of 4", label: "Duplicate pairs consolidated — one live ad set depends on both “older” copies flagged for deletion; a third pair turned out to be 3 lists, not 2. All skipped, none touched.", src: "87-ad-set targeting scan, any status" },
+  { k: "1", label: "Saved audience still blocked: the app has no API permission, and the UI build wasn't driven this round — see findings.", src: "POST act_.../saved_audiences → (#3)" },
   { k: "0", label: "Ad sets optimizing on Purchase, in 87 total / 69 touched in 90 days.", src: "adsets, optimization_goal breakdown" },
 ];
 
@@ -85,9 +85,9 @@ export const audienceTable: { eyebrow: string; a: string; b: string; intro: stri
     ["DAB | Engagement | LAL 1% Event Responders (US)", "Lookalike 1%", "1,000–1,000 (building)", "New, updating", "0", "0"],
     ["BF · Lookalike 1% (email)", "Lookalike 1%", "2.1M–2.5M", "Ready, working", "2", "0"],
     ["BF · FB Page Engagers 365d", "Page engagement", "3,700–4,400", "Ready, working — duplicate of “FB Page Engagers – 365d (warm)”", "2", "1"],
-    ["FB Page Engagers – 365d (warm)", "Page engagement", "3,600–4,300", "Ready, working — duplicate of “BF · FB Page Engagers 365d”", "20", "0"],
+    ["FB Page Engagers – 365d (warm)", "Page engagement", "3,600–4,300", "Kept — 1 ACTIVE + 25 paused ad sets depend on it, incl. the ad set this is duplicated against", "26", "0"],
     ["BF · IG Engagers 365d", "Instagram engagement", "2,100–2,500", "Ready, working — duplicate of “Instagram Engagers – 365d”", "2", "1"],
-    ["Instagram Engagers – 365d (Dabney)", "Instagram engagement", "3,500–4,100", "Ready, working — duplicate of “BF · IG Engagers 365d”", "20", "0"],
+    ["Instagram Engagers – 365d (Dabney)", "Instagram engagement", "3,500–4,100", "Kept — 1 ACTIVE + 19 paused ad sets depend on it, incl. the ad set this is duplicated against", "20", "0"],
     ["BF · Email List (Brevo master)", "Customer list", "2,000–2,300", "Ready, working — overlaps Subscribers/Customers below", "2", "1"],
     ["Dabney — Customers (Brevo, synced)", "Customer list", "2,300–2,700", "Ready, working, syncing (updated most recently of all)", "20", "0"],
     ["Dabney — Subscribers (clean)", "Customer list", "2,000–2,400", "Ready, working", "20", "0"],
@@ -101,9 +101,9 @@ export const audienceTable: { eyebrow: string; a: string; b: string; intro: stri
     ["Event Page Visitors – 90d", "Website", "20–20", "Stale — unused 30+ days / never used", "0", "0"],
     ["Gift Card Page Visitors – 90d", "Website", "20–20", "Stale — unused 30+ days / never used", "0", "0"],
     ["Website Visitors – 180d", "Website", "20–20", "Stale — unused 30+ days / never used", "0", "0"],
-    ["LAL 1% – Dabney — Regulars/VIP (US)", "Lookalike 1%", "— (broken)", "Broken — Meta: delete and recreate", "0", "0"],
-    ["LAL 1% – Dabney — Customers (Brevo, synced) (US)", "Lookalike 1%", "— (broken)", "Broken — Meta: delete and recreate", "0", "0"],
-    ["LAL 1% – Page Engagers (US)", "Lookalike 1%", "— (broken)", "Broken — Meta: delete and recreate", "0", "0"],
+    ["LAL 1% – Dabney — Regulars/VIP (US)", "Lookalike 1%", "— (deleted)", "Deleted Sept 28 — zero references, confirmed gone", "0", "0"],
+    ["LAL 1% – Dabney — Customers (Brevo, synced) (US)", "Lookalike 1%", "— (deleted)", "Deleted Sept 28 — zero references, confirmed gone", "0", "0"],
+    ["LAL 1% – Page Engagers (US)", "Lookalike 1%", "— (broken)", "Broken, kept — 5 paused ad sets still reference it", "5", "0"],
   ],
 };
 
@@ -113,7 +113,7 @@ export const grades: { area: string; grade: string; was?: string; why: string }[
   { area: "Engagement retargeting", was: "B−", grade: "B", why: "Page and IG engagers already worked; added Event Responders and Video Viewers 50%+ as the two missing engagement sources, plus a working lookalike replacing the broken legacy one. Both new sources start too-small and need a few days to populate." },
   { area: "Geo/demo targeting", was: "C", grade: "C", why: "No saved audience matches the account's own best-performing segment (women 25–54, 15mi — 0.55 RSVP/$ vs 0.37 for 65+). Building one is blocked at the API level this session; grade holds until it's built in Ads Manager." },
   { area: "Customer lists", was: "B", grade: "B", why: "Already covered — Regulars/VIP, Subscribers (clean), and two Brevo-sourced lists exist with consented, first-party data. Nothing new needed; the gap is dedup, not coverage." },
-  { area: "Housekeeping", was: "D", grade: "D", why: "3 permanently broken lookalikes and 4 duplicate pairs sat in the account before this session and still do — creating audiences was authorized, deleting or renaming existing ones was not, so they're flagged, not touched." },
+  { area: "Housekeeping", was: "D", grade: "C−", why: "2 of 3 broken lookalikes are gone — deleted and confirmed after checking they had zero references anywhere on the account. The third stays live (5 paused ad sets reference it) and none of the 3 duplicate candidates were consolidated: an ACTIVE ad set depends on both flagged Page/IG-engager copies, and the Brevo “pair” turned out to be three lists with no confirmed duplicate among them." },
 ];
 
 export const findings: { sev: Sev; area: string; t: string; d: string }[] = [
@@ -132,20 +132,20 @@ export const findings: { sev: Sev; area: string; t: string; d: string }[] = [
   {
     sev: "fix",
     area: "Saved audience",
-    t: "“Kalamazoo core — women 25–54, 15mi” could not be created: the API refused the call outright.",
-    d: "POST act_24502732409351450/saved_audiences returned (#3) “Application does not have the capability to make this API call.” This is an app-level capability gate, not a token or targeting problem — the same request with corrected targeting JSON gets the identical error. None of the account's 6 existing saved audiences target this segment (all use 18–65 with no gender split, mostly a 30mi radius). Needs your call: build it once in Ads Manager (a 30-second click) and note it here, since the API path is closed.",
+    t: "“DAB | Prospecting | Kalamazoo women 25–54, 15mi” still doesn't exist — the API refuses it, and it wasn't driven through the UI this round either.",
+    d: "POST act_24502732409351450/saved_audiences returned (#3) “Application does not have the capability to make this API call” — an app-level capability gate, not a token or targeting problem. Building it instead through Ads Manager's UI would mean driving either a headless authenticated Meta browser session (none exists yet — no stored session was found) or Daniel's own signed-in Chrome via OS-level keystrokes on his live desktop. Both are real actions on a live production ad account; this session did the read-only legwork (confirmed no saved audience covers this segment; researched the Audiences UI path) but held off on actually driving either browser without Daniel confirming directly in this thread that now is a good time — a relayed “approved” note isn't the same as him being at the keyboard. Fastest path: a 30-second manual build in Ads Manager, or say go-ahead here and it'll be driven headless.",
   },
   {
-    sev: "fix",
+    sev: "good",
     area: "Lookalikes",
-    t: "Three existing lookalikes are permanently broken, not just small.",
-    d: "“LAL 1% – Dabney — Regulars/VIP (US),” “LAL 1% – Dabney — Customers (Brevo, synced) (US)” and “LAL 1% – Page Engagers (US)” all report approximate_count −1 and operation_status “We couldn't create your lookalike audience. Please delete this audience and try creating it again.” None have recovered since creation. Not deleted this session (deletion wasn't authorized) — delete-and-recreate is the fix Meta itself names.",
+    t: "Two of the three permanently broken lookalikes are deleted. The third stays — live ad sets still reference it.",
+    d: "“LAL 1% – Dabney — Regulars/VIP (US)” (120257408917880370) and “LAL 1% – Dabney — Customers (Brevo, synced) (US)” (120257402644970370) were referenced by zero ad sets of any status, so both were deleted and confirmed gone by a follow-up GET (“does not exist”) and a fresh customaudiences list (30 → 28). “LAL 1% – Page Engagers (US)” (120256126580060370) is still referenced by 5 paused ad sets (Cocktail Classes, Private Events, Takeout retargeting, Memberships warm, Reservations) — paused can be reactivated, so per the standing rule (skip if any ad set references it) this one was left alone, not deleted.",
   },
   {
     sev: "watch",
     area: "Duplicates",
-    t: "Four audience pairs do the same job twice: Page engagers, IG engagers, and two Brevo-sourced customer lists.",
-    d: "“BF · FB Page Engagers 365d” and “FB Page Engagers – 365d (warm)” are both a 365-day page_engaged rule at nearly identical size (3.7–4.4k vs 3.6–4.3k). Same pattern for the two IG-engager audiences and “BF · Email List (Brevo master)” against “Dabney — Subscribers (clean).” Splits reach and reporting across two audiences that should be one; not touched this session since consolidating means deleting one of each pair.",
+    t: "Zero of the flagged duplicate pairs were consolidated — checking references changed the picture on two of them, and a third wasn't a clean pair.",
+    d: "The “older” Page-Engagers audience (“FB Page Engagers – 365d (warm),” 120256126579250370) and the “older” IG-Engagers audience (“Instagram Engagers – 365d (Dabney),” 120243349890970370) are both still used by one currently ACTIVE ad set (“Warm — Page+IG engagers, Subscribers, Customers,” 120260990445470370) plus 19–25 paused/campaign-paused ones each — deleting either would pull an audience out from under a live ad set, so neither was touched. The Brevo-list “pair” turned out to be three lists (BF · Email List (Brevo master), Dabney — Customers (Brevo, synced), Dabney — Subscribers (clean)), each a plausibly distinct segment, not two copies of one — there's no clearly-older duplicate to delete without risking a real customer list. All three duplicate candidates are still flagged in the table below; none were deleted this round.",
   },
   {
     sev: "watch",
@@ -178,9 +178,11 @@ export const fixes: { t: string; d: string; tag: "done" | "free" | "needs" | "mo
   { tag: "done", t: "Built Purchasers 365d, Reserve-Click 180d, and Reserve-not-Purchased 180d.", d: "All three read back “ready for use” immediately after creation (ids 120261005211140370, …211220370, …211320370). Sizes show Meta's 20-count populate floor and will grow with real traffic over the next day or two." },
   { tag: "done", t: "Built Event Responders 365d and Video Viewers 50%+ 365d for the Engagement goal.", d: "Both accepted by the API (ids …211370370, …211820370) and already report a real starting count of 1,000, flagged too-small — expected for brand-new page-engagement audiences." },
   { tag: "done", t: "Built four 1% US lookalikes: Page Engagers (replacement), Reserve-Clickers, Purchasers, and Event Responders.", d: "All four created and “Updating” (ids …219570370, …219820370, …220400370, …220720370). The Purchasers one will most likely stay too-small until the seed does — tracked as an open item, not reported as working." },
-  { tag: "needs", t: "Build the “Kalamazoo core — women 25–54, 15mi” saved audience in Ads Manager.", d: "The API refused it with (#3), an app-capability error, not a targeting or token problem. A 30-second manual build in Ads Manager is the only path; nothing here can do it for you." },
-  { tag: "needs", t: "Delete and recreate the three permanently broken lookalikes.", d: "Meta's own message on all three: “We couldn't create your lookalike audience. Please delete this audience and try creating it again.” Deleting existing audiences wasn't authorized this session, so they're flagged, not removed." },
-  { tag: "needs", t: "Decide whether to consolidate the four duplicate audience pairs.", d: "Page engagers, IG engagers, and two Brevo-sourced lists each exist twice at near-identical size. Keeping both halves reach and reporting; merging means picking one of each pair to delete." },
+  { tag: "done", t: "Deleted the 2 broken lookalikes nothing referenced.", d: "“LAL 1% – Dabney — Regulars/VIP (US)” (120257408917880370) and “LAL 1% – Dabney — Customers (Brevo, synced) (US)” (120257402644970370) — both zero-use across all 87 ad sets, both DELETE'd, both confirmed gone by a follow-up GET and a fresh customaudiences count (30 → 28)." },
+  { tag: "needs", t: "The third broken lookalike is still live — it's used by 5 paused ad sets.", d: "“LAL 1% – Page Engagers (US)” (120256126580060370) can't be deleted without your call: those 5 ad sets (Cocktail Classes, Private Events, Takeout retargeting, Memberships warm, Reservations) are paused, not archived, and could be turned back on. Say the word if they're truly dead and it'll go." },
+  { tag: "needs", t: "The Page-Engagers and IG-Engagers duplicate pairs can't be consolidated as asked — one currently ACTIVE ad set depends on both “older” copies.", d: "“Warm — Page+IG engagers, Subscribers, Customers” (120260990445470370) is live right now and targets both 120256126579250370 and 120243349890970370 — the two audiences flagged for deletion. Deleting either breaks that ad set's targeting today. Consolidating means either pointing that ad set at the newer duplicates first (a targeting edit, out of scope this session) or leaving both copies as-is." },
+  { tag: "needs", t: "The Brevo “duplicate” is really three lists, not two — needs you to say which are actually the same people.", d: "BF · Email List (Brevo master), Dabney — Customers (Brevo, synced), and Dabney — Subscribers (clean) are all Brevo-sourced and similarly sized (2.0k–2.7k), but nothing here confirms which, if any, are exact duplicates versus genuinely different segments (e.g. a cleaned subset). Deleting the wrong one destroys a real customer list — flagged, not guessed at." },
+  { tag: "needs", t: "Build “DAB | Prospecting | Kalamazoo women 25–54, 15mi” in Ads Manager.", d: "The API still refuses it with (#3), an app-capability error. Driving it through the UI needs either a headless authenticated Meta session (none exists) or your live Chrome — held off on both without you confirming directly that now's the time; a 30-second manual build is the fastest path if you'd rather just do it." },
   { tag: "free", t: "Point new Reservations and Sales ad sets at the audiences built today once they clear the too-small flag.", d: "No spend needed — swapping an ad set's targeting to an existing lookalike or exclusion list is a targeting edit, which this session didn't make and didn't need to; it's the natural next step once sizes fill in." },
 ];
 
@@ -190,7 +192,9 @@ export const method: string[] = [
   "GET saved_audiences — 6 returned, none matching a women 25–54 / 15mi Kalamazoo segment.",
   "GET 32226134143696687 (pixel “Reservations”) — confirmed shared with the Dabney & Co. business, last_fired_time Sept 27, 2026.",
   "POST customaudiences × 5 (rule-based) and × 4 (origin_audience_id lookalikes); every response's id and delivery_status quoted above came from a follow-up GET on that id, not from the creation response alone.",
-  "POST saved_audiences × 1 — refused with error code 3, quoted verbatim above.",
+  "POST saved_audiences × 1 — refused with error code 3, quoted verbatim above; not retried through Ads Manager's UI this round (see findings).",
+  "GET adsets a second time, unfiltered by date and including every effective_status, specifically to check the 3 broken lookalikes and the 3 duplicate-candidate audiences for live references before deleting anything.",
+  "DELETE customaudiences × 2 (the two confirmed zero-reference broken lookalikes), each followed by a GET on the same id (returned “does not exist”) and a fresh customaudiences list (30 → 28) as proof.",
   "Cross-referenced against src/content/hub/dabney-ads.ts (women 25–54 vs 65+ RSVP/$, FB in-stream waste, Schedule/Purchase tracking findings) and the interest-id list and audience ids in ~/arthur/scripts/build-live-event-campaign.mjs.",
-  "No campaign, ad set, ad, or budget was created, activated, or changed. Every write in this session was an audience-creation POST.",
+  "No campaign, ad set, ad, or budget was created, activated, or changed, and no live ad set's targeting was edited. The only writes this session: 9 audience-creation POSTs and 2 audience DELETEs, both confirmed unused by any ad set of any status before deleting.",
 ];
