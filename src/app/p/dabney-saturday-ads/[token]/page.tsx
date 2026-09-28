@@ -83,7 +83,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ token: 
       <section id="creative" className="mx-auto max-w-[1180px] px-6 py-20">
         <Eyebrow>Creative</Eyebrow>
         <Two a="The approved artwork," b="used in every ad below." />
-        <div className="mt-10 grid gap-8 sm:grid-cols-3">
+        <div className="mt-10 grid gap-8 sm:grid-cols-4">
           <figure>
             <img src="/dabney-saturday-ads/noskips-poster.png" alt="No Skips poster, black and orange design" className="w-full rounded-xl border border-[#e4e5e9]" />
             <figcaption className="mt-2 text-[13px] text-[#6c7481]">No Skips — Ad A &amp; B (poster, black-and-orange design)</figcaption>
@@ -95,6 +95,10 @@ export default async function ReviewPage({ params }: { params: Promise<{ token: 
           <figure>
             <img src="/dabney-saturday-ads/homecoming-poster.png" alt="Homecoming: An All-Beyoncé Night poster" className="w-full rounded-xl border border-[#e4e5e9]" />
             <figcaption className="mt-2 text-[13px] text-[#6c7481]">Homecoming — Ad A &amp; B (poster, posted to IG/FB stories 9/28)</figcaption>
+          </figure>
+          <figure>
+            <img src="/dabney-saturday-ads/serita-poster.png" alt="Serita's Black Rose Duo poster" className="w-full rounded-xl border border-[#e4e5e9]" />
+            <figcaption className="mt-2 text-[13px] text-[#6c7481]">Serita's Black Rose Duo — Friday exception (poster)</figcaption>
           </figure>
         </div>
       </section>
