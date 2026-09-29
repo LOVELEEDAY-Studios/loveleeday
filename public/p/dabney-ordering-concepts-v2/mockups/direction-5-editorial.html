@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction 5 — The Editorial Table</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Arimo:wght@400;500;700&family=Cousine:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F1E4C9; --cream:#FDFAF5; --burg:#5C0E2E; --ink:#0F0805; --teal:#0B504F; --gold:#B79A5B;
+  --sans:'Arimo',Arial,sans-serif; --disp:'Fraunces',Georgia,serif; --mono:'Cousine',monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.banner{background:var(--burg);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 14px}
+.masthead{display:flex;align-items:center;justify-content:space-between;padding:20px 44px;border-bottom:3px solid var(--ink)}
+.wordmark{font-family:var(--disp);font-weight:600;font-size:22px;letter-spacing:-.01em}
+.navtag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+
+.headline{padding:54px 44px 30px;max-width:920px}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+h1{font-family:var(--disp);font-weight:600;font-size:clamp(2.4rem,6vw,4.4rem);line-height:.98;letter-spacing:-.01em;margin:16px 0 0}
+.dek{font-family:var(--disp);font-style:italic;font-weight:500;font-size:17px;color:rgba(15,8,5,.68);max-width:56ch;margin:18px 0 0;line-height:1.6}
+
+.collage{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;padding:0 44px 10px}
+.collage .big img{width:100%;height:420px;object-fit:cover}
+.collage .stack{display:grid;grid-template-rows:1fr 1fr;gap:14px}
+.collage .stack img{width:100%;height:203px;object-fit:cover}
+.cap{font-family:var(--mono);font-size:10px;color:rgba(15,8,5,.45);margin-top:6px}
+
+.article{max-width:720px;margin:0 auto;padding:44px 44px 20px;columns:1;font-size:16px;line-height:1.85}
+.dropcap:first-letter{font-family:var(--disp);font-size:64px;float:left;line-height:.8;padding-right:8px;padding-top:6px;color:var(--burg);font-weight:600}
+.pullquote{font-family:var(--disp);font-style:italic;font-weight:500;font-size:24px;line-height:1.4;color:var(--burg);border-left:3px solid var(--gold);padding-left:24px;margin:34px 0}
+.pullquote cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(15,8,5,.5);margin-top:10px}
+.order-chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;font-weight:700;background:var(--ink);color:var(--cream);padding:4px 11px 4px 4px;border-radius:99px;text-decoration:none;vertical-align:middle;margin:0 2px}
+.order-chip .px{background:var(--gold);color:var(--ink);border-radius:99px;padding:2px 8px}
+
+.dishrow{padding:10px 44px 60px;max-width:720px;margin:0 auto}
+.dishrow-h{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);border-top:1px solid rgba(15,8,5,.14);padding-top:22px;margin-bottom:16px}
+.dishes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dish{display:flex;gap:12px}
+.dish img{width:64px;height:64px;object-fit:cover;border-radius:4px;flex:none}
+.dish-name{font-weight:700;font-size:13.5px}
+.dish-price{font-family:var(--mono);font-size:12px;color:var(--burg);margin-top:2px}
+
+.credit{border-top:1px solid rgba(15,8,5,.14);padding:22px 44px;font-family:var(--mono);font-size:10.5px;color:rgba(15,8,5,.5);max-width:720px;margin:0 auto}
+
+@media (max-width:900px){
+  .collage{grid-template-columns:1fr}
+  .collage .big img{height:260px}
+  .collage .stack{grid-template-columns:1fr 1fr;grid-template-rows:1fr}
+  .collage .stack img{height:180px}
+  .dishes{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .masthead,.headline,.collage,.article,.dishrow,.credit{padding-left:18px;padding-right:18px}
+  .dropcap:first-letter{font-size:46px}
+  .pullquote{font-size:19px;padding-left:16px}
+}
+</style>
+</head>
+<body>
+<div class="banner">Design exploration — Direction 5 of 5, &ldquo;The Editorial Table&rdquo; — nothing here is live</div>
+<div class="masthead"><div class="wordmark">DABNEY &amp; CO.</div><div class="navtag">The Kitchen, Told Right</div></div>
+
+<section class="headline">
+  <span class="eyebrow">Direction 5 · The Editorial Table</span>
+  <h1>The table<br>we set.</h1>
+  <p class="dek">A magazine read before it&rsquo;s an order form &mdash; Julienne&rsquo;s recipe-article layout and Squarespace&rsquo;s bold editorial hero, in service of a menu that has a story worth reading before you tap Order.</p>
+</section>
+
+<div class="collage">
+  <div class="big"><img src="../img/loc-band.jpg" alt="Live music at Dabney"><div class="cap">Live at Dabney &mdash; the room this menu is written for.</div></div>
+  <div class="stack">
+    <img src="../img/steakhouse-sandwich.jpg" alt="Dabney Steakhouse Sandwich">
+    <img src="../img/hero-kitchen.jpg" alt="Spicy Fried Chicken &amp; Cornbread">
+  </div>
+</div>
+
+<article class="article">
+  <p class="dropcap">Southern Contemporary Kitchen, at 344 N Rose St, is one of three things Dabney &amp; Co. does &mdash; alongside craft cocktails and live music &mdash; and the one most often eaten in a hurry, out of a delivery bag, with no story attached. This direction argues the story should travel with the order, not get left at the door.</p>
+
+  <p>Start with the <a class="order-chip" href="direction-1-builder.html">Dabney Steakhouse Sandwich <span class="px">$13</span></a> &mdash; thin-sliced roast beef, Swiss, tomato jam and horseradish cream on a toasted brioche bun. It is the kitchen&rsquo;s answer to a question most Southern menus don&rsquo;t ask: what does a steakhouse look like handed across a bar instead of a white tablecloth?</p>
+
+  <p>Then the <a class="order-chip" href="direction-1-builder.html">Spicy Fried Chicken &amp; Cornbread <span class="px">$10</span></a>, a plate built to be loud &mdash; crisp fried chicken over jalape&ntilde;o cornbread, maple drizzle cutting the heat. It is the single most-ordered item across three delivery apps, for a plain reason: it survives a bag better than almost anything else on the menu.</p>
+
+  <blockquote class="pullquote">
+    Named for John Dabney &mdash; an enslaved Virginia caterer and bartender whose craft was renowned while his freedom was withheld. Southern Hospitality, Liberated.
+    <cite>dabneyandco.com/about, quoted verbatim</cite>
+  </blockquote>
+
+  <p>The name is not a garnish. The site&rsquo;s own about page is direct about it: &ldquo;We take our name from John Dabney &mdash; and carry it as an ethic, not an ornament.&rdquo; A menu page that tells that story once, plainly, before asking for a card number, is doing something the DoorDash listing never will.</p>
+
+  <p>For the table, not the takeout box: the <a class="order-chip" href="direction-1-builder.html">Sweet Heat Fried Chicken Flatbread <span class="px">$11</span></a>, mozzarella and a spicy maple drizzle over crisp flatbread &mdash; built for the room in the photograph above, where the kitchen and the bandstand share a Tuesday-through-Saturday calendar.</p>
+</article>
+
+<div class="dishrow">
+  <div class="dishrow-h">Order what you just read</div>
+  <div class="dishes">
+    <div class="dish"><img src="../img/steakhouse-sandwich.jpg" alt=""><div><div class="dish-name">Dabney Steakhouse Sandwich</div><div class="dish-price">$13.00</div></div></div>
+    <div class="dish"><img src="../img/hero-kitchen.jpg" alt=""><div><div class="dish-name">Spicy Fried Chicken &amp; Cornbread</div><div class="dish-price">$10.00</div></div></div>
+  </div>
+</div>
+
+<div class="credit">Built from: Julienne&rsquo;s recipe-article layout &middot; Squarespace&rsquo;s bold editorial hero &middot; the dabney-ordering-review recommendation to give the kitchen a real story, not just a listing. Heritage framing quoted verbatim from the live dabneyandco.com/about, not paraphrased or invented. Full sources on the review page.</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ReviewControl, ReviewSubmit } from "@/components/portal/ReviewControl";
-import { CONCEPTS_URL, findings, fixes, getOrderingClient, glance, grades, ladder, method, orderingClients, type Sev } from "@/content/hub/dabney-ordering";
+import { CONCEPTS_URL, CONCEPTS_V2_URL, findings, fixes, getOrderingClient, glance, grades, ladder, method, orderingClients, type Sev } from "@/content/hub/dabney-ordering";
 
 export const dynamicParams = false;
 
@@ -100,6 +100,9 @@ export default async function OrderingReviewPage({ params }: { params: Promise<{
           </a>
           <a href={CONCEPTS_URL} className="rounded-full border border-[#3778bc] px-5 py-2.5 text-[#3778bc] hover:bg-[#eaf2fb]">
             See five ordering concepts that would fix this →
+          </a>
+          <a href={CONCEPTS_V2_URL} className="rounded-full border border-[#3778bc] px-5 py-2.5 text-[#3778bc] hover:bg-[#eaf2fb]">
+            Round 2: five new visual directions, benchmarked →
           </a>
         </div>
       </section>

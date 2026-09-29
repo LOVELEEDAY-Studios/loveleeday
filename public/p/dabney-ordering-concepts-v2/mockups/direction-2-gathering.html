@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction 2 — The Gathering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Arimo:wght@400;500;700&family=Cousine:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F1E4C9; --cream:#FDFAF5; --burg:#5C0E2E; --burgd:#4A0B23;
+  --gold:#B79A5B; --goldlt:#E2CB94; --ink:#0F0805;
+  --sans:'Arimo',Arial,sans-serif; --disp:'Fraunces',Georgia,serif; --mono:'Cousine',monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.banner{background:var(--burgd);color:var(--goldlt);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 14px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 44px;border-bottom:1px solid rgba(92,14,46,.18)}
+.wordmark{font-family:var(--disp);font-weight:600;font-style:italic;font-size:20px;color:var(--burg)}
+.navtag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,8,5,.5)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:0;border-bottom:1px solid rgba(92,14,46,.18)}
+.hero-l{padding:40px 44px}
+.hero-r img{width:100%;height:100%;object-fit:cover;min-height:340px}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--burg)}
+h1{font-family:var(--disp);font-weight:600;letter-spacing:-.01em;font-size:clamp(2rem,4vw,3.1rem);line-height:1.02;margin:14px 0 0;color:var(--ink)}
+.sub{color:rgba(15,8,5,.65);max-width:48ch;margin:14px 0 0;font-size:14.5px;line-height:1.65}
+
+.hc{margin-top:30px;background:var(--cream);border:1px solid rgba(92,14,46,.25);border-radius:16px;padding:22px}
+.hc-row{display:flex;align-items:center;justify-content:space-between}
+.hc-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,8,5,.55)}
+.hc-count{font-family:var(--disp);font-size:34px;font-weight:600;color:var(--burg)}
+input[type=range]{width:100%;margin-top:14px;accent-color:var(--burg)}
+.hc-meta{display:flex;justify-content:space-between;margin-top:16px;font-size:12.5px}
+.datepick{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.dchip{font-family:var(--mono);font-size:11.5px;padding:8px 13px;border:1px solid rgba(15,8,5,.18);border-radius:8px;background:var(--cream)}
+.dchip.active{background:var(--burg);color:var(--paper);border-color:var(--burg)}
+.dchip.closed{opacity:.3;text-decoration:line-through}
+.leadnote{font-family:var(--mono);font-size:10px;color:rgba(15,8,5,.45);margin-top:10px}
+.leadnote .tag{color:var(--burg);font-weight:700}
+
+.tiers{padding:12px 44px 60px}
+.tiers-h{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--burg);margin:34px 0 18px}
+.tiercards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tier{background:var(--cream);border:1.5px solid rgba(92,14,46,.22);border-radius:18px;padding:24px;position:relative}
+.tier.mid{border-color:var(--burg);box-shadow:0 8px 30px rgba(92,14,46,.14)}
+.tier .flag{position:absolute;top:-11px;left:22px;background:var(--burg);color:var(--paper);font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
+.tier-name{font-family:var(--disp);font-weight:600;font-size:23px;color:var(--burg)}
+.tier-pg{font-family:var(--mono);font-size:12px;color:rgba(15,8,5,.5);margin-top:4px}
+.tier-price{font-family:var(--disp);font-size:38px;font-weight:600;margin-top:14px}
+.tier-price small{font-family:var(--mono);font-size:12px;font-weight:400;color:rgba(15,8,5,.5)}
+.tier-list{margin:16px 0 0;padding:0;list-style:none;font-size:13px;line-height:1.9;color:rgba(15,8,5,.72)}
+.tier-list li:before{content:"— "; color:var(--gold)}
+.tier-cta{display:block;width:100%;text-align:center;margin-top:18px;background:transparent;border:1.5px solid var(--burg);color:var(--burg);font-weight:700;font-size:13px;padding:11px;border-radius:99px}
+.tier.mid .tier-cta{background:var(--burg);color:var(--paper)}
+.proposed{display:inline-block;margin-left:6px;font-family:var(--mono);font-size:9px;font-weight:700;color:var(--burg);border:1px solid var(--burg);border-radius:99px;padding:2px 7px;vertical-align:middle}
+
+.breakdown{margin-top:34px;background:var(--cream);border:1px solid rgba(92,14,46,.2);border-radius:16px;padding:22px 24px}
+.breakdown-h{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--burg)}
+.bline{display:flex;justify-content:space-between;font-size:13.5px;padding:9px 0;border-bottom:1px solid rgba(15,8,5,.08)}
+.bline b{font-weight:600}
+.btotal{display:flex;justify-content:space-between;font-family:var(--mono);font-size:15px;font-weight:700;margin-top:10px;padding-top:10px;border-top:2px solid var(--burg)}
+.deposit{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:16px}
+.dep-btn{background:var(--burg);color:var(--paper);font-weight:700;font-size:13.5px;padding:13px 26px;border:0;border-radius:99px}
+.dep-note{font-size:12px;color:rgba(15,8,5,.55);max-width:38ch;line-height:1.55}
+
+.credit{border-top:1px solid rgba(92,14,46,.18);padding:22px 44px;font-family:var(--mono);font-size:10.5px;color:rgba(15,8,5,.55)}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-r img{min-height:220px}
+  .tiercards{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .nav,.hero-l,.tiers,.credit{padding-left:18px;padding-right:18px}
+  .hc{padding:18px}
+  .hc-count{font-size:28px}
+}
+</style>
+</head>
+<body>
+<div class="banner">Design exploration — Direction 2 of 5, &ldquo;The Gathering&rdquo; — nothing here is live, no payment processed</div>
+<div class="nav"><div class="wordmark">Dabney &amp; Co.</div><div class="navtag">Large Gatherings</div></div>
+
+<section class="hero">
+  <div class="hero-l">
+    <span class="eyebrow">Direction 2 · The Gathering</span>
+    <h1>A headcount slider,<br>not a phone call.</h1>
+    <p class="sub">Blue Apron&rsquo;s per-serving customizer and Churnkey&rsquo;s usage slider, reshaped into three catering tiers with a live per-guest price &mdash; and a deposit to hold the date, the same way private-event bookings already work.</p>
+
+    <div class="hc">
+      <div class="hc-row"><span class="hc-label">Guests</span><span class="hc-count" id="hcnum">24</span></div>
+      <input type="range" min="15" max="50" value="24" id="hcslider" oninput="updateHC(this.value)">
+      <div class="hc-meta"><span>15 min</span><span>50 max</span></div>
+      <div class="hc-label" style="margin-top:18px">Pickup date</div>
+      <div class="datepick">
+        <span class="dchip closed">Wed Sep 30</span>
+        <span class="dchip closed">Thu Oct 1</span>
+        <span class="dchip active">Fri Oct 2</span>
+        <span class="dchip">Sat Oct 3</span>
+        <span class="dchip closed">Sun Oct 4</span>
+        <span class="dchip closed">Mon Oct 5</span>
+      </div>
+      <p class="leadnote"><span class="tag">Placeholder:</span> 48-hour lead time shown here is a default, not a number confirmed with the kitchen &mdash; and Sun/Mon are shown closed because Dabney is closed those days, computed against today, Tue Sep 29.</p>
+    </div>
+  </div>
+  <div class="hero-r"><img src="../img/half-the-room.jpg" alt="Dabney private dining room, set for a gathering"></div>
+</section>
+
+<section class="tiers">
+  <div class="tiers-h">Three tiers, priced live for <span id="hcnum2">24</span> guests</div>
+  <div class="tiercards">
+    <div class="tier">
+      <div class="tier-name">Essentials</div>
+      <div class="tier-pg">$18 / guest<span class="proposed">Proposed</span></div>
+      <div class="tier-price">$<span id="p1">432</span></div>
+      <ul class="tier-list">
+        <li>Sunday Dinner Sandwich, one per guest</li>
+        <li>Jalape&ntilde;o Cornbread w/ Bacon, shared</li>
+        <li>Harvest Soul Salad, shared</li>
+      </ul>
+      <button class="tier-cta">Select Essentials</button>
+    </div>
+    <div class="tier mid">
+      <span class="flag">Most booked</span>
+      <div class="tier-name">Signature</div>
+      <div class="tier-pg">$26 / guest<span class="proposed">Proposed</span></div>
+      <div class="tier-price">$<span id="p2">624</span></div>
+      <ul class="tier-list">
+        <li>Everything in Essentials</li>
+        <li>Smoked Bacon Apricot Flatbread, shared</li>
+        <li>Sweet Heat Fried Chicken Flatbread, shared</li>
+        <li>Peach Cobbler Cornbread, shared</li>
+      </ul>
+      <button class="tier-cta">Select Signature</button>
+    </div>
+    <div class="tier">
+      <div class="tier-name">Full Spread</div>
+      <div class="tier-pg">$36 / guest<span class="proposed">Proposed</span></div>
+      <div class="tier-price">$<span id="p3">864</span></div>
+      <ul class="tier-list">
+        <li>Everything in Signature, full portions</li>
+        <li>Both salads, both flatbreads, both cornbreads</li>
+        <li>Steakhouse Sandwich swapped in for half the group</li>
+      </ul>
+      <button class="tier-cta">Select Full Spread</button>
+    </div>
+  </div>
+
+  <div class="breakdown">
+    <div class="breakdown-h">How Signature is built &mdash; line by line, real prices</div>
+    <div class="bline"><b>Sunday Dinner Sandwich</b><span>24 &times; $13.00 = $312.00</span></div>
+    <div class="bline"><b>Jalape&ntilde;o Cornbread w/ Bacon</b><span>6 shared &times; $9.00 = $54.00</span></div>
+    <div class="bline"><b>Harvest Soul Salad</b><span>6 shared &times; $12.00 = $72.00</span></div>
+    <div class="bline"><b>Smoked Bacon Apricot Flatbread</b><span>6 shared &times; $11.00 = $66.00</span></div>
+    <div class="bline"><b>Sweet Heat Fried Chicken Flatbread</b><span>6 shared &times; $11.00 = $66.00</span></div>
+    <div class="bline"><b>Peach Cobbler Cornbread</b><span>6 shared &times; $8.00 = $48.00</span></div>
+    <div class="btotal"><span>Signature total, 24 guests</span><span>$618.00 &asymp; $26/guest</span></div>
+    <div class="deposit">
+      <button class="dep-btn">Pay 50% deposit to hold Fri Oct 2 &mdash; $309.00</button>
+      <p class="dep-note">Same Stripe Checkout pattern already live for invoice partial-payments and private-event minimums; balance due at pickup.</p>
+    </div>
+  </div>
+</section>
+
+<div class="credit">Built from: Blue Apron per-serving customizer &middot; Churnkey usage slider &middot; Expedia group-quote form. Real per-item prices from Toast (DABNEY KITCHEN); the three tiers and their per-guest pricing are new math proposed here, not an existing catering SKU. Full sources on the review page.</div>
+
+<script>
+var base1=18, base2=26, base3=36;
+function updateHC(v){
+  document.getElementById('hcnum').textContent=v;
+  document.getElementById('hcnum2').textContent=v;
+  document.getElementById('p1').textContent=(base1*v).toLocaleString();
+  document.getElementById('p2').textContent=(base2*v).toLocaleString();
+  document.getElementById('p3').textContent=(base3*v).toLocaleString();
+}
+</script>
+</body>
+</html>
