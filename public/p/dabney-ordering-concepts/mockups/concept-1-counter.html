@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 1 — The Counter</title>
+<link rel="stylesheet" href="concepts.css">
+<style>
+  html,body{background:var(--cream)}
+  .c1-hero{background:var(--burgd);color:var(--paper);padding:34px 40px 30px}
+  .c1-hero .wrap{padding:0}
+  .c1-h1{font-size:clamp(1.9rem,4vw,3rem);color:var(--paper);line-height:1.05}
+  .c1-sub{font-family:var(--serif);font-style:italic;color:rgba(241,228,201,.82);max-width:44ch;margin-top:10px;font-size:15px;line-height:1.6}
+  .c1-controls{display:flex;flex-wrap:wrap;gap:22px;align-items:center;margin-top:22px}
+  .c1-slotlabel{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--goldlt);margin-bottom:8px}
+
+  .c1-body{display:grid;grid-template-columns:1fr 360px;gap:0;align-items:start}
+  .c1-menu{padding:34px 40px}
+  .c1-group-title{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--burg);border-bottom:1px solid rgba(183,154,91,.4);padding-bottom:10px;margin:34px 0 18px}
+  .c1-group-title:first-child{margin-top:0}
+  .c1-items{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .c1-item{display:flex;gap:14px;background:var(--cream);border:1px solid rgba(183,154,91,.35);padding:14px}
+  .c1-item img{width:84px;height:84px;object-fit:cover;flex:none}
+  .c1-item-name{font-family:var(--sans);font-size:14px;color:var(--burg);text-transform:uppercase;letter-spacing:.01em;line-height:1.25}
+  .c1-item-desc{font-family:var(--serif);font-size:12.5px;color:rgba(15,8,5,.62);line-height:1.45;margin-top:4px}
+  .c1-item-row{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+  .c1-item-price{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ink)}
+  .c1-add{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;background:var(--burg);color:var(--paper);border:1px solid var(--burg)}
+  .c1-add.added{background:var(--teal);border-color:var(--teal)}
+
+  .c1-cart{position:sticky;top:0;align-self:start;background:var(--paper);border-left:1px solid rgba(183,154,91,.4);min-height:100vh;padding:30px 26px}
+  .c1-cart-title{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--burg)}
+  .c1-cart-line{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid rgba(183,154,91,.3);font-size:13.5px}
+  .c1-cart-line b{font-family:var(--sans);font-weight:400;text-transform:uppercase;font-size:12.5px;color:var(--ink)}
+  .c1-cart-line span.qty{font-family:var(--mono);color:rgba(15,8,5,.5)}
+  .c1-cart-total{display:flex;justify-content:space-between;font-family:var(--mono);font-size:15px;font-weight:700;margin-top:16px;padding-top:14px;border-top:2px solid var(--burg)}
+  .c1-cart-fee{font-family:var(--mono);font-size:11px;color:rgba(15,8,5,.55);margin-top:6px}
+  .c1-empty-note{font-family:var(--serif);font-style:italic;font-size:12.5px;color:rgba(15,8,5,.55);margin-top:10px;line-height:1.5}
+
+  @media (max-width:900px){
+    .c1-body{grid-template-columns:1fr}
+    .c1-items{grid-template-columns:1fr}
+    .c1-cart{position:static;min-height:0;border-left:0;border-top:1px solid rgba(183,154,91,.4)}
+  }
+  @media (max-width:480px){
+    .c1-hero{padding:22px 18px 22px}
+    .c1-menu{padding:20px 18px}
+    .c1-item{flex-direction:row}
+    .c1-item img{width:64px;height:64px}
+    .c1-controls{gap:14px}
+    .c1-cart{padding:22px 18px}
+  }
+</style>
+</head>
+<body>
+<div class="concept-banner">Design exploration only — Dabney &amp; Co. ordering concept 1 of 5 — nothing here is live</div>
+<div class="nav">
+  <div class="nav-logo"><img src="../img/dabney-leaf-white.png" alt=""> Dabney &amp; Co.</div>
+  <ul class="nav-links"><li>Menu</li><li>Pantry</li><li>Catering</li></ul>
+  <a class="nav-cta" href="#">Sign in</a>
+</div>
+
+<section class="c1-hero">
+  <div class="wrap">
+    <span class="eyebrow">Southern Contemporary Kitchen &middot; Order Ahead</span>
+    <div class="c1-h1">Order pickup.<br>Skip the app fees.</div>
+    <p class="c1-sub">The same kitchen menu as DoorDash and Uber Eats &mdash; ordered straight through Dabney, no 15&ndash;30% commission taken off the top.</p>
+    <div class="c1-controls">
+      <div class="toggle"><button class="active">Pickup</button><button>Delivery</button></div>
+      <div>
+        <div class="c1-slotlabel">Ready by</div>
+        <div class="slots">
+          <span class="slot">5:15p</span>
+          <span class="slot active">5:30p</span>
+          <span class="slot">5:45p</span>
+          <span class="slot">6:00p</span>
+          <span class="slot full">6:15p</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="c1-body">
+  <div class="c1-menu">
+    <div class="c1-group-title">Gourmet Sandwiches</div>
+    <div class="c1-items">
+      <div class="c1-item">
+        <img src="../img/steakhouse-sandwich.jpg" alt="Dabney Steakhouse Sandwich">
+        <div style="flex:1">
+          <div class="c1-item-name">Dabney Steakhouse Sandwich</div>
+          <div class="c1-item-desc">Thin-sliced roast beef, Swiss, greens, tomato jam &amp; horseradish cream.</div>
+          <div class="c1-item-row"><span class="c1-item-price">$13.00</span><button class="c1-add added">Added &middot; 1</button></div>
+        </div>
+      </div>
+      <div class="c1-item">
+        <img src="../img/flatbread.jpg" alt="Smoked Bacon Apricot Flatbread">
+        <div style="flex:1">
+          <div class="c1-item-name">Fried Green Tomato BLT</div>
+          <div class="c1-item-desc">Fried green tomato, brown sugar bacon, mixed greens, garlic aioli, toasted bread.</div>
+          <div class="c1-item-row"><span class="c1-item-price">$13.00</span><button class="c1-add">Add</button></div>
+        </div>
+      </div>
+      <div class="c1-item">
+        <img src="../img/flatbread.jpg" alt="Smoked Bacon Apricot Flatbread">
+        <div style="flex:1">
+          <div class="c1-item-name">Sunday Dinner Sandwich</div>
+          <div class="c1-item-desc">Roasted turkey, sharp cheddar, slow-braised collards, cranberry relish.</div>
+          <div class="c1-item-row"><span class="c1-item-price">$13.00</span><button class="c1-add">Add</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c1-group-title">Appetizers &amp; Flatbreads</div>
+    <div class="c1-items">
+      <div class="c1-item">
+        <img src="../img/flatbread.jpg" alt="Smoked Bacon Apricot Flatbread">
+        <div style="flex:1">
+          <div class="c1-item-name">Smoked Bacon Apricot Flatbread</div>
+          <div class="c1-item-desc">Crisp flatbread, smoky bacon, mozzarella, sweet apricot, collards.</div>
+          <div class="c1-item-row"><span class="c1-item-price">$11.00</span><button class="c1-add">Add</button></div>
+        </div>
+      </div>
+      <div class="c1-item">
+        <img src="../img/hero-kitchen.jpg" alt="Spicy Fried Chicken &amp; Cornbread">
+        <div style="flex:1">
+          <div class="c1-item-name">Spicy Fried Chicken &amp; Cornbread</div>
+          <div class="c1-item-desc">Crispy fried chicken, spice rub, jalapeño cornbread, maple drizzle.</div>
+          <div class="c1-item-row"><span class="c1-item-price">$10.00</span><button class="c1-add added">Added &middot; 2</button></div>
+        </div>
+      </div>
+      <div class="c1-item">
+        <img src="../img/hero-kitchen.jpg" alt="Jalapeño Cornbread with Smoked Bacon">
+        <div style="flex:1">
+          <div class="c1-item-name">Grandma's Collard Green Dip</div>
+          <div class="c1-item-desc">The most-ordered app on delivery &mdash; ask for extra pita.</div>
+          <div class="c1-item-row"><span class="c1-item-price">$10.00</span><button class="c1-add">Add</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c1-group-title">Desserts</div>
+    <div class="c1-items">
+      <div class="c1-item">
+        <img src="../img/hero-kitchen.jpg" alt="Peach Cobbler Cornbread">
+        <div style="flex:1">
+          <div class="c1-item-name">Peach Cobbler Cornbread</div>
+          <div class="c1-item-desc">Warm peach cobbler and cream cheese icing over cornbread.</div>
+          <div class="c1-item-row"><span class="c1-item-price">$8.00</span><button class="c1-add">Add</button></div>
+        </div>
+      </div>
+      <div class="c1-item">
+        <img src="../img/hero-kitchen.jpg" alt="Lemon Blueberry Cornbread">
+        <div style="flex:1">
+          <div class="c1-item-name">Lemon Blueberry Cornbread</div>
+          <div class="c1-item-desc">Michigan blueberries and bright lemon. A simple slice of home.</div>
+          <div class="c1-item-row"><span class="c1-item-price">$8.00</span><button class="c1-add">Add</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="c1-cart">
+    <div class="c1-cart-title">Your order &middot; Pickup 5:30p</div>
+    <div class="c1-cart-line"><b>Dabney Steakhouse Sandwich</b><span class="qty">×1</span><span>$13.00</span></div>
+    <div class="c1-cart-line"><b>Spicy Fried Chicken &amp; Cornbread</b><span class="qty">×2</span><span>$20.00</span></div>
+    <div class="c1-cart-total"><span>Total</span><span>$33.00</span></div>
+    <div class="c1-cart-fee">No delivery commission &middot; pay with card at checkout</div>
+    <a class="btn full" href="#" style="margin-top:20px">Continue to checkout</a>
+    <p class="c1-empty-note">Checkout hands off to Toast&rsquo;s own hosted order screen with this cart pre-filled &mdash; see &ldquo;How it would be built&rdquo; on the review page.</p>
+  </aside>
+</div>
+<footer class="concept-foot">344 N Rose St, Kalamazoo, MI &middot; Concept 1 of 5 &middot; Not live</footer>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 2 — Who's Eating &amp; When</title>
+<link rel="stylesheet" href="concepts.css">
+<style>
+  html,body{background:var(--paper)}
+  .c2-hero{padding:36px 40px 10px}
+  .c2-h1{font-size:clamp(1.9rem,4vw,3rem);max-width:16ch}
+  .c2-sub{font-family:var(--serif);font-style:italic;color:rgba(15,8,5,.62);max-width:46ch;margin-top:10px;font-size:15px;line-height:1.6}
+
+  .stepper{display:flex;gap:0;margin:26px 0 0;max-width:640px}
+  .step{flex:1;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding-bottom:10px;border-bottom:3px solid rgba(183,154,91,.35);color:rgba(15,8,5,.4)}
+  .step.done{border-color:var(--gold);color:var(--burg)}
+  .step.active{border-color:var(--burg);color:var(--burg);font-weight:700}
+
+  .c2-body{display:grid;grid-template-columns:340px 1fr;gap:30px;padding:26px 40px 50px}
+  .c2-panel{padding:22px}
+  .field-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--burg);margin-bottom:8px}
+  .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .chip{font-family:var(--mono);font-size:11.5px;padding:9px 14px;border:1px solid rgba(15,8,5,.2);background:var(--cream)}
+  .chip.active{background:var(--burg);color:var(--paper);border-color:var(--burg)}
+  .headcount{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+  .headcount .num{font-family:var(--sans);font-size:34px;color:var(--burg);min-width:46px;text-align:center}
+  .headcount button{width:38px;height:38px;border:1px solid var(--burg);background:var(--cream);color:var(--burg);font-family:var(--mono);font-size:16px}
+  .rec-note{font-family:var(--serif);font-style:italic;font-size:12.5px;color:rgba(15,8,5,.6);line-height:1.55;border-top:1px solid rgba(183,154,91,.4);padding-top:16px;margin-top:6px}
+
+  .bundle-card{background:var(--cream);border:2px solid var(--burg);padding:0}
+  .bundle-head{display:flex;justify-content:space-between;align-items:flex-start;padding:22px 24px 0}
+  .bundle-name{font-family:var(--sans);font-size:22px;text-transform:uppercase;color:var(--burg)}
+  .bundle-tag{font-family:var(--serif);font-style:italic;font-size:13px;color:rgba(15,8,5,.6);margin-top:4px;max-width:34ch}
+  .bundle-price{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--ink);white-space:nowrap}
+  .bundle-photo{height:200px;overflow:hidden;margin:18px 24px 0}
+  .bundle-photo img{width:100%;height:100%;object-fit:cover}
+  .bundle-lines{padding:18px 24px}
+  .bundle-line{display:flex;justify-content:space-between;font-size:13.5px;padding:9px 0;border-bottom:1px solid rgba(183,154,91,.3)}
+  .bundle-line b{font-family:var(--sans);font-weight:400;text-transform:uppercase;font-size:12.5px}
+  .bundle-line span{font-family:var(--mono);color:rgba(15,8,5,.55)}
+  .bundle-math{display:flex;justify-content:space-between;padding:14px 24px;font-family:var(--mono);font-size:12px;color:rgba(15,8,5,.55);border-top:1px dashed rgba(183,154,91,.5)}
+  .bundle-math b{color:var(--ink)}
+  .bundle-cta{padding:20px 24px 24px}
+
+  .alt-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+  .alt-card{background:var(--cream);border:1px solid rgba(183,154,91,.4);padding:16px}
+  .alt-name{font-family:var(--sans);font-size:14px;color:var(--burg);text-transform:uppercase}
+  .alt-price{font-family:var(--mono);font-size:13px;margin-top:6px}
+  .alt-desc{font-family:var(--serif);font-size:12px;color:rgba(15,8,5,.55);margin-top:4px;line-height:1.45}
+
+  @media (max-width:900px){
+    .c2-body{grid-template-columns:1fr}
+  }
+  @media (max-width:480px){
+    .c2-hero{padding:22px 18px 6px}
+    .c2-body{padding:18px 18px 40px;gap:22px}
+    .c2-panel{padding:16px}
+    .bundle-photo{margin:16px 16px 0;height:150px}
+    .bundle-head{padding:18px 16px 0}
+    .bundle-lines{padding:14px 16px}
+    .bundle-cta{padding:16px}
+    .alt-row{grid-template-columns:1fr}
+    .stepper{max-width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="concept-banner">Design exploration only — Dabney &amp; Co. ordering concept 2 of 5 — nothing here is live</div>
+<div class="nav">
+  <div class="nav-logo"><img src="../img/dabney-leaf-white.png" alt=""> Dabney &amp; Co.</div>
+  <ul class="nav-links"><li>Menu</li><li>Pantry</li><li>Catering</li></ul>
+  <a class="nav-cta" href="#">Sign in</a>
+</div>
+
+<section class="c2-hero wrap" style="padding-left:0;padding-right:0">
+  <div class="wrap">
+    <span class="eyebrow on-paper">Southern Contemporary Kitchen &middot; Order Ahead</span>
+    <div class="c2-h1 h1">Who&rsquo;s eating, and when?</div>
+    <p class="c2-sub">Tell us the headcount and the occasion &mdash; we build the order. Today&rsquo;s average delivery order is one sandwich for $27.50; a table for two runs closer to $45.</p>
+    <div class="stepper">
+      <div class="step done">1 &middot; Headcount</div>
+      <div class="step active">2 &middot; Your bundle</div>
+      <div class="step">3 &middot; Add &amp; checkout</div>
+    </div>
+  </div>
+</section>
+
+<div class="c2-body">
+  <div class="c2-panel card">
+    <div class="field-label">Who&rsquo;s eating</div>
+    <div class="headcount">
+      <button>&minus;</button><div class="num">2</div><button>+</button>
+    </div>
+    <div class="field-label">Occasion</div>
+    <div class="chip-row">
+      <span class="chip active">Dinner for two</span>
+      <span class="chip">Family meal</span>
+      <span class="chip">Watching the game</span>
+      <span class="chip">Just me</span>
+    </div>
+    <div class="field-label">Ready by</div>
+    <div class="chip-row">
+      <span class="chip">5:30p</span>
+      <span class="chip active">6:00p</span>
+      <span class="chip">6:30p</span>
+    </div>
+    <p class="rec-note">Built from today&rsquo;s à la carte kitchen menu &mdash; the same items and prices as pickup, delivery and the Toast 3PO menu. Nothing here is a separate SKU.</p>
+  </div>
+
+  <div>
+    <div class="bundle-card">
+      <div class="bundle-head">
+        <div>
+          <div class="bundle-name">Supper for Two</div>
+          <div class="bundle-tag">Two sandwiches, a dip to share, and a sweet finish &mdash; sized for a table of two.</div>
+        </div>
+        <div class="bundle-price">$42</div>
+      </div>
+      <div class="bundle-photo"><img src="../img/steakhouse-sandwich.jpg" alt="Dabney Steakhouse Sandwich, part of the Supper for Two bundle"></div>
+      <div class="bundle-lines">
+        <div class="bundle-line"><b>Dabney Steakhouse Sandwich</b><span>×2 &middot; $26.00</span></div>
+        <div class="bundle-line"><b>Grandma's Collard Green Dip</b><span>×1 &middot; $10.00</span></div>
+        <div class="bundle-line"><b>Peach Cobbler Cornbread</b><span>×1 &middot; $8.00</span></div>
+      </div>
+      <div class="bundle-math"><span>À la carte would run $44.00</span><b>Bundled: $42</b></div>
+      <div class="bundle-cta"><a class="btn full" href="#">Add Supper for Two &middot; $42</a></div>
+    </div>
+
+    <div class="alt-row">
+      <div class="alt-card">
+        <div class="alt-name">Flatbread Night</div>
+        <div class="alt-price">$34</div>
+        <div class="alt-desc">3 flatbreads, mixed &mdash; a table of three or a night in for two with leftovers. À la carte $33.</div>
+      </div>
+      <div class="alt-card">
+        <div class="alt-name">Dip Board</div>
+        <div class="alt-price">$20</div>
+        <div class="alt-desc">Collard green dip, black eyed pea hummus, pita &amp; cornbread for the table. À la carte $18 + pita.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="concept-foot">344 N Rose St, Kalamazoo, MI &middot; Concept 2 of 5 &middot; Not live</footer>
+</body>
+</html>
