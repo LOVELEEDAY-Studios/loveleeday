@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 3 — The Large-Gathering Builder</title>
+<link rel="stylesheet" href="concepts.css">
+<style>
+  html,body{background:var(--teald)} body{color:var(--paper)}
+  .c3-hero{padding:36px 40px 0;background:linear-gradient(180deg,var(--teal),var(--teald))}
+  .c3-h1{color:var(--paper);font-size:clamp(1.9rem,4vw,3rem);max-width:20ch}
+  .c3-sub{font-family:var(--serif);font-style:italic;color:rgba(241,228,201,.82);max-width:48ch;margin-top:10px;font-size:15px;line-height:1.6}
+  .c3-photo{height:220px;overflow:hidden;margin-top:24px}
+  .c3-photo img{width:100%;height:100%;object-fit:cover;filter:brightness(.75)}
+
+  .c3-body{padding:34px 40px 50px;display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .slider-card{background:rgba(253,250,245,.06);border:1px solid rgba(226,203,148,.35);padding:24px}
+  .field-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--goldlt);margin-bottom:10px}
+  .slider-row{display:flex;align-items:center;gap:18px}
+  .slider-track{position:relative;flex:1;height:4px;background:rgba(226,203,148,.3);border-radius:2px}
+  .slider-fill{position:absolute;left:0;top:0;bottom:0;width:42%;background:var(--gold);border-radius:2px}
+  .slider-knob{position:absolute;left:42%;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:50%;background:var(--paper);border:3px solid var(--burg)}
+  .slider-num{font-family:var(--sans);font-size:30px;color:var(--paper);min-width:64px;text-align:right}
+  .datebar{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+  .datefield{flex:1;min-width:150px}
+  .datefield label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(241,228,201,.55);margin-bottom:6px}
+  .datefield .val{font-family:var(--mono);font-size:13px;background:rgba(253,250,245,.08);border:1px solid rgba(226,203,148,.35);padding:10px 12px;color:var(--paper)}
+  .lead-note{font-family:var(--serif);font-style:italic;font-size:12.5px;color:rgba(241,228,201,.65);margin-top:14px;line-height:1.5}
+
+  .tiers{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
+  .tier{background:rgba(253,250,245,.06);border:1px solid rgba(226,203,148,.3);padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:center}
+  .tier.rec{border-color:var(--gold);background:rgba(226,203,148,.12)}
+  .tier-name{font-family:var(--sans);font-size:16px;color:var(--paper);text-transform:uppercase}
+  .tier-desc{grid-column:1/2;font-family:var(--serif);font-size:12.5px;color:rgba(241,228,201,.65);line-height:1.5;max-width:40ch}
+  .tier-price{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--goldlt);text-align:right}
+  .tier-total{grid-column:2/3;font-family:var(--mono);font-size:11px;color:rgba(241,228,201,.55);text-align:right}
+  .rec-badge{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--burg);background:var(--goldlt);padding:2px 8px;border-radius:99px;margin-left:8px}
+
+  .right-panel{background:var(--cream);color:var(--ink);padding:26px}
+  .right-panel .field-label{color:var(--burg)}
+  .breakdown{margin-top:6px}
+  .breakdown .bundle-line{display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(183,154,91,.3)}
+  .breakdown .bundle-line b{font-family:var(--sans);font-weight:400;text-transform:uppercase;font-size:12px;color:var(--ink)}
+  .breakdown .bundle-line span{font-family:var(--mono);color:rgba(15,8,5,.55)}
+  .deposit-box{margin-top:20px;padding:18px;background:var(--paper);border:1px solid var(--gold)}
+  .deposit-row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;margin-bottom:6px}
+  .deposit-row.total{font-size:16px;font-weight:700;border-top:1px solid rgba(183,154,91,.5);padding-top:10px;margin-top:8px}
+
+  @media (max-width:900px){ .c3-body{grid-template-columns:1fr} }
+  @media (max-width:480px){
+    .c3-hero{padding:22px 18px 0}
+    .c3-photo{height:150px}
+    .c3-body{padding:20px 18px 40px;gap:22px}
+    .slider-card,.right-panel{padding:18px}
+    .slider-num{font-size:24px}
+    .tier{grid-template-columns:1fr}
+    .tier-price,.tier-total{text-align:left}
+  }
+</style>
+</head>
+<body>
+<div class="concept-banner">Design exploration only — Dabney &amp; Co. ordering concept 3 of 5 — nothing here is live</div>
+<div class="nav" style="background:var(--teald)">
+  <div class="nav-logo"><img src="../img/dabney-leaf-white.png" alt=""> Dabney &amp; Co.</div>
+  <ul class="nav-links"><li>Menu</li><li>Pantry</li><li>Catering</li></ul>
+  <a class="nav-cta" href="#">Sign in</a>
+</div>
+
+<section class="c3-hero">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--goldlt)">Catering &amp; Large Gatherings &middot; Pickup</span>
+    <div class="c3-h1 h1">Feeding the office, the wake, the watch party.</div>
+    <p class="c3-sub">Set the headcount, pick a tier built from the real kitchen menu, and reserve a pickup window. A deposit holds the date &mdash; the balance is due at pickup, the same way a private-event booking works today.</p>
+    <div class="c3-photo"><img src="../img/private-events-hero.jpg" alt="Guests gathered at Dabney &amp; Co."></div>
+  </div>
+</section>
+
+<div class="c3-body">
+  <div>
+    <div class="slider-card">
+      <div class="field-label">Headcount</div>
+      <div class="slider-row">
+        <div class="slider-track"><div class="slider-fill"></div><div class="slider-knob"></div></div>
+        <div class="slider-num">25</div>
+      </div>
+      <div class="datebar">
+        <div class="datefield"><label>Pickup date</label><div class="val">Sat, Oct 11</div></div>
+        <div class="datefield"><label>Pickup time</label><div class="val">12:30 PM</div></div>
+      </div>
+      <p class="lead-note">Pickup must be at least 48 hours out so the kitchen can prep &mdash; today the earliest slot would be Fri, Oct 3, 2:00 PM. (Kitchen lead time is a placeholder default here; confirm the real number before this ships.)</p>
+    </div>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-name">Essentials</div>
+        <div class="tier-price">$17<span style="font-size:11px">/guest</span></div>
+        <div class="tier-desc">Mixed gourmet sandwiches, a shared side, a cornbread dessert for the table.</div>
+        <div class="tier-total">$414 for 25</div>
+      </div>
+      <div class="tier rec">
+        <div class="tier-name">Signature <span class="rec-badge">Recommended</span></div>
+        <div class="tier-price">$21<span style="font-size:11px">/guest</span></div>
+        <div class="tier-desc">Sandwiches plus flatbreads, a dip board, and a dessert every few guests.</div>
+        <div class="tier-total">$524 for 25</div>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Full Spread</div>
+        <div class="tier-price">$35<span style="font-size:11px">/guest</span></div>
+        <div class="tier-desc">Everything above, more of it, and a full dessert per guest.</div>
+        <div class="tier-total">$863 for 25</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="field-label">Signature &middot; 25 guests &middot; how the price is built</div>
+    <div class="breakdown">
+      <div class="bundle-line"><b>Gourmet sandwiches</b><span>25 × $13.00 = $325.00</span></div>
+      <div class="bundle-line"><b>Flatbreads (¼ per guest)</b><span>7 × $11.00 = $77.00</span></div>
+      <div class="bundle-line"><b>Dip boards (1 per 5 guests)</b><span>5 × $10.00 = $50.00</span></div>
+      <div class="bundle-line"><b>Cornbread desserts (1 per 3)</b><span>9 × $8.00 = $72.00</span></div>
+    </div>
+    <div class="deposit-box">
+      <div class="deposit-row"><span>Package total</span><span>$524.00</span></div>
+      <div class="deposit-row"><span>Deposit due today (50%)</span><span>$262.00</span></div>
+      <div class="deposit-row total"><span>Due at pickup</span><span>$262.00</span></div>
+    </div>
+    <a class="btn full" href="#" style="margin-top:20px">Pay deposit &amp; hold Oct 11, 12:30 PM</a>
+    <p class="rec-note" style="color:rgba(15,8,5,.55);margin-top:14px">Every line above is today&rsquo;s real à la carte kitchen price, divided across the headcount &mdash; there is no separate catering SKU yet. Deposit checkout would run on the same Stripe Checkout pattern already live for private-event and invoice payments.</p>
+  </div>
+</div>
+<footer class="concept-foot">344 N Rose St, Kalamazoo, MI &middot; Concept 3 of 5 &middot; Not live</footer>
+</body>
+</html>

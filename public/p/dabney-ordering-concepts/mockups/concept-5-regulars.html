@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 5 — Regulars &amp; Reorder</title>
+<link rel="stylesheet" href="concepts.css">
+<style>
+  html,body{background:var(--burgdd)}
+  .c5-wrap{max-width:1180px;margin:0 auto;padding:44px 40px 60px;display:grid;grid-template-columns:1fr 420px;gap:50px;align-items:center}
+  .c5-copy{color:var(--paper)}
+  .c5-h1{color:var(--paper);max-width:14ch}
+  .c5-sub{font-family:var(--serif);font-style:italic;color:rgba(241,228,201,.82);max-width:40ch;margin-top:14px;font-size:15.5px;line-height:1.65}
+  .hook-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px;max-width:440px}
+  .hook{border:1px solid rgba(226,203,148,.3);padding:14px}
+  .hook b{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--goldlt)}
+  .hook span{display:block;font-family:var(--serif);font-size:12px;color:rgba(241,228,201,.75);margin-top:6px;line-height:1.5}
+
+  .phone{background:var(--paper);border-radius:34px;border:8px solid #17181c;width:360px;margin:0 auto;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+  .phone-status{display:flex;justify-content:space-between;padding:10px 20px 0;font-family:var(--mono);font-size:10px;color:rgba(15,8,5,.5)}
+  .phone-head{padding:18px 20px 14px;background:var(--burgd);color:var(--paper)}
+  .phone-greet{font-family:var(--sans);font-size:17px;text-transform:none}
+  .phone-sub{font-family:var(--serif);font-style:italic;font-size:12px;color:rgba(241,228,201,.8);margin-top:4px}
+
+  .sms{margin:16px 20px 0;background:#e8f7e9;border-radius:14px;padding:10px 14px;font-family:var(--sans);font-size:12.5px;color:#1a3d1c;max-width:86%}
+  .sms b{display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#3a7a3e;margin-bottom:3px}
+
+  .reorder-card{margin:16px 20px 0;background:var(--cream);border:1px solid rgba(183,154,91,.4);border-radius:10px;padding:14px;display:flex;gap:12px}
+  .reorder-card img{width:56px;height:56px;border-radius:8px;object-fit:cover}
+  .reorder-name{font-family:var(--sans);font-size:12.5px;color:var(--burg);text-transform:uppercase}
+  .reorder-items{font-family:var(--serif);font-size:11.5px;color:rgba(15,8,5,.6);margin-top:3px;line-height:1.4}
+  .reorder-price{font-family:var(--mono);font-size:12px;font-weight:700;margin-top:6px}
+
+  .reorder-btn{margin:14px 20px 0;display:block;text-align:center;background:var(--burg);color:var(--paper);font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:14px;border-radius:10px}
+
+  .stamps{margin:18px 20px 0;background:var(--cream);border-radius:10px;padding:14px;border:1px solid rgba(183,154,91,.4)}
+  .stamps-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--burg)}
+  .stamp-row{display:flex;gap:8px;margin-top:10px}
+  .stamp{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;color:var(--gold)}
+  .stamp.filled{background:var(--gold);color:var(--burg)}
+
+  .qr-row{display:flex;align-items:center;gap:14px;margin:18px 20px 20px;background:var(--burgd);border-radius:10px;padding:14px}
+  .qr{width:56px;height:56px;background:var(--paper);display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);gap:2px;padding:5px}
+  .qr div{background:var(--ink)}
+  .qr div.o{background:transparent}
+  .qr-copy{font-family:var(--serif);font-size:11.5px;color:rgba(241,228,201,.85);line-height:1.4}
+  .qr-copy b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--goldlt);margin-bottom:3px}
+
+  @media (max-width:900px){
+    .c5-wrap{grid-template-columns:1fr;padding:30px 24px 50px;justify-items:center;text-align:center}
+    .c5-copy{text-align:center}
+    .c5-sub{margin-left:auto;margin-right:auto}
+    .hook-row{margin-left:auto;margin-right:auto}
+  }
+  @media (max-width:480px){
+    .c5-wrap{padding:20px 16px 40px;gap:26px}
+    .phone{width:100%;border-radius:22px;border-width:0}
+    .hook-row{grid-template-columns:1fr 1fr;max-width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="concept-banner">Design exploration only — Dabney &amp; Co. ordering concept 5 of 5 — nothing here is live</div>
+<div class="nav" style="background:var(--burgdd)">
+  <div class="nav-logo"><img src="../img/dabney-leaf-white.png" alt=""> Dabney &amp; Co.</div>
+  <ul class="nav-links"><li>Menu</li><li>Pantry</li><li>Catering</li></ul>
+  <a class="nav-cta" href="#">Sign in</a>
+</div>
+
+<div class="c5-wrap">
+  <div class="c5-copy">
+    <span class="eyebrow">For Regulars &middot; Phone-First</span>
+    <div class="c5-h1 h1">Order the usual in one tap.</div>
+    <p class="c5-sub">149 of 166 delivery orders already come through DoorDash &mdash; this is the reason to come back through Dabney instead: your last order, saved, ready in one tap, picked up under a QR at the bar, and a text the second it&rsquo;s hot.</p>
+    <div class="hook-row">
+      <div class="hook"><b>Trigger</b><span>A text: &ldquo;Order the usual? Ready by 6.&rdquo;</span></div>
+      <div class="hook"><b>Action</b><span>One tap reorders your last cart, no re-typing.</span></div>
+      <div class="hook"><b>Reward</b><span>Kitchen adds a surprise extra some nights &mdash; today, a slice of cornbread on the house.</span></div>
+      <div class="hook"><b>Investment</b><span>Every order fills the stamp row toward a free item.</span></div>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="phone-status"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+    <div class="phone-head">
+      <div class="phone-greet">Hey Daniel &mdash; order the usual?</div>
+      <div class="phone-sub">Last picked up Thursday, 6:04 PM</div>
+    </div>
+    <div class="sms"><b>Text from Dabney &amp; Co.</b>Ready in 15. Same order as last time? Reply YES or tap to change it.</div>
+    <div class="reorder-card">
+      <img src="../img/steakhouse-sandwich.jpg" alt="Dabney Steakhouse Sandwich">
+      <div>
+        <div class="reorder-name">Your last order</div>
+        <div class="reorder-items">Steakhouse Sandwich, Fried Green Tomatoes</div>
+        <div class="reorder-price">$20.00</div>
+      </div>
+    </div>
+    <a class="reorder-btn" href="#">Reorder for 6:00 PM</a>
+    <div class="stamps">
+      <div class="stamps-label">Your stamp row &middot; 4 of 6</div>
+      <div class="stamp-row">
+        <div class="stamp filled">&#10003;</div><div class="stamp filled">&#10003;</div><div class="stamp filled">&#10003;</div><div class="stamp filled">&#10003;</div><div class="stamp">5</div><div class="stamp">6</div>
+      </div>
+    </div>
+    <div class="qr-row">
+      <div class="qr"><div></div><div></div><div class="o"></div><div></div><div></div><div class="o"></div><div></div><div class="o"></div><div></div><div class="o"></div><div></div><div></div><div class="o"></div><div></div><div></div><div></div><div class="o"></div><div></div><div class="o"></div><div></div><div></div><div></div><div class="o"></div><div></div><div></div></div>
+      <div class="qr-copy"><b>Pickup at the bar</b>Show this code &mdash; no line, no app, no delivery fee.</div>
+    </div>
+  </div>
+</div>
+<footer class="concept-foot">344 N Rose St, Kalamazoo, MI &middot; Concept 5 of 5 &middot; Not live</footer>
+</body>
+</html>
