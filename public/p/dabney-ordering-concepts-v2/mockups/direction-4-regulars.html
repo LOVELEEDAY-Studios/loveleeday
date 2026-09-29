@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction 4 — The Regular</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&family=Arimo:wght@400;500;700&family=Tinos:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F1E4C9; --cream:#FDFAF5; --burg:#5C0E2E; --burgd:#4A0B23;
+  --gold:#B79A5B; --ink:#0F0805;
+  --sans:'Arimo',Arial,sans-serif; --serif:'Tinos',Georgia,serif; --mono:'Cousine',monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.banner{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 14px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 44px;border-bottom:1px solid rgba(15,8,5,.12)}
+.wordmark{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--burg)}
+.navtag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,8,5,.45)}
+
+.stage{display:grid;grid-template-columns:1fr 420px;gap:50px;padding:50px 44px 70px;align-items:start}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--burg)}
+h1{font-family:var(--sans);font-weight:700;letter-spacing:-.02em;font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.08;margin:14px 0 0}
+.sub{font-family:var(--serif);font-style:italic;color:rgba(15,8,5,.62);max-width:44ch;margin:14px 0 0;font-size:15px;line-height:1.65}
+.hooksteps{margin-top:34px;display:grid;gap:16px}
+.hookstep{display:grid;grid-template-columns:28px 1fr;gap:12px}
+.hookstep .n{font-family:var(--mono);font-weight:700;color:var(--gold);font-size:14px}
+.hookstep b{display:block;font-size:13.5px}
+.hookstep p{margin:3px 0 0;font-size:12.5px;color:rgba(15,8,5,.6);line-height:1.5}
+
+.phone{width:100%;max-width:390px;margin:0 auto;background:var(--ink);border-radius:34px;padding:10px;box-shadow:0 24px 60px rgba(15,8,5,.28)}
+.screen{background:var(--cream);border-radius:26px;overflow:hidden}
+.sms{padding:22px 18px 8px}
+.smslabel{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(15,8,5,.4);text-align:center}
+.bubble{background:var(--burg);color:var(--paper);border-radius:16px 16px 16px 4px;padding:12px 15px;font-size:13px;max-width:82%;margin-top:10px;line-height:1.45}
+.card{margin:18px;background:#fff;border:1px solid rgba(15,8,5,.1);border-radius:18px;overflow:hidden}
+.card-top{padding:16px 16px 4px}
+.card-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(15,8,5,.45)}
+.card-title{font-weight:700;font-size:15px;margin-top:4px}
+.orderline{display:flex;justify-content:space-between;padding:10px 16px;border-top:1px solid rgba(15,8,5,.08);font-size:12.5px}
+.orderline b{font-weight:600}
+.orderline span{font-family:var(--mono);color:rgba(15,8,5,.5)}
+.total{display:flex;justify-content:space-between;padding:12px 16px;font-family:var(--mono);font-weight:700;font-size:13.5px;border-top:2px solid var(--ink)}
+.reorder{display:block;width:calc(100% - 32px);margin:14px 16px 18px;background:var(--burg);color:var(--paper);font-weight:700;font-size:14px;padding:14px;border:0;border-radius:99px;text-align:center}
+.stamps{display:flex;gap:6px;padding:0 18px 18px;justify-content:center}
+.stamp{width:26px;height:26px;border-radius:99px;border:1.5px solid var(--gold)}
+.stamp.on{background:var(--gold)}
+.qr{margin:0 18px 20px;background:#fff;border:1px solid rgba(15,8,5,.1);border-radius:14px;padding:16px;text-align:center}
+.qr-box{width:74px;height:74px;margin:0 auto;background:repeating-linear-gradient(45deg,var(--ink) 0 4px,#fff 4px 8px);border-radius:6px}
+.qr-note{font-family:var(--mono);font-size:10px;color:rgba(15,8,5,.5);margin-top:8px}
+
+.credit{border-top:1px solid rgba(15,8,5,.12);padding:22px 44px;font-family:var(--mono);font-size:10.5px;color:rgba(15,8,5,.5)}
+
+@media (max-width:900px){.stage{grid-template-columns:1fr;gap:34px}}
+@media (max-width:480px){.nav,.stage,.credit{padding-left:18px;padding-right:18px}}
+</style>
+</head>
+<body>
+<div class="banner">Design exploration — Direction 4 of 5, &ldquo;The Regular&rdquo; — nothing here sends a real text or charges a card</div>
+<div class="nav"><div class="wordmark">Dabney &amp; Co.</div><div class="navtag">Regulars</div></div>
+
+<section class="stage">
+  <div>
+    <span class="eyebrow">Direction 4 · The Regular</span>
+    <h1>One tap reorders<br>what you always get.</h1>
+    <p class="sub">Blue Bottle&rsquo;s &ldquo;reorder last order&rdquo; card and Taco Bell&rsquo;s order-again screen, wired to Nir Eyal&rsquo;s Hook Model &mdash; built for the DoorDash regular who already has a saved habit, just on the expensive channel.</p>
+    <div class="hooksteps">
+      <div class="hookstep"><span class="n">1</span><div><b>Trigger</b><p>A text: &ldquo;Order the usual? Ready by 6:15.&rdquo;</p></div></div>
+      <div class="hookstep"><span class="n">2</span><div><b>Action</b><p>One tap reorders the saved cart &mdash; no menu to re-browse.</p></div></div>
+      <div class="hookstep"><span class="n">3</span><div><b>Variable reward</b><p>An occasional kitchen surprise on the ticket, never promised.</p></div></div>
+      <div class="hookstep"><span class="n">4</span><div><b>Investment</b><p>The stamp row &mdash; each visit makes the next trigger land better.</p></div></div>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="screen">
+      <div class="sms">
+        <div class="smslabel">Text message, 5:40 PM</div>
+        <div class="bubble">Order the usual? Ready by 6:15 &mdash; just reply YES or tap below.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-tag">Your last order &middot; Sep 23</span><div class="card-title">Sunday Dinner Sandwich</div></div>
+        <div class="orderline"><b>Sunday Dinner Sandwich</b><span>$13.00</span></div>
+        <div class="orderline"><b>Lemon Blueberry Cornbread</b><span>$8.00</span></div>
+        <div class="total"><span>Total</span><span>$21.00</span></div>
+      </div>
+      <button class="reorder">Reorder &middot; ready 6:15p</button>
+      <div class="stamps">
+        <span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span>
+        <span class="stamp on"></span><span class="stamp"></span><span class="stamp"></span>
+      </div>
+      <div class="qr">
+        <div class="qr-box"></div>
+        <div class="qr-note">Show at the bar &mdash; no line, no app, no delivery fee</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="credit">Built from: Blue Bottle Coffee &ldquo;Reorder last order&rdquo; card &middot; Taco Bell order-again screen &middot; CHOPT and Zomato reorder patterns &middot; the hooked-ux Hook Model. Needs a phone-number identity and saved cart, which don&rsquo;t exist for takeout in the codebase today &mdash; the highest-effort direction of the five. Full sources on the review page.</div>
+</body>
+</html>

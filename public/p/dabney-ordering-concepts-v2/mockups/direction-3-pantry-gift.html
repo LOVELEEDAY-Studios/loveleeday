@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction 3 — The Pantry, Gifted</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=Arimo:wght@400;500;700&family=Cousine:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F0805; --ink2:#1b100c; --paper:#F1E4C9; --cream:#FDFAF5;
+  --gold:#B79A5B; --goldlt:#E8D4A0; --burg:#5C0E2E;
+  --sans:'Arimo',Arial,sans-serif; --disp:'Cormorant Garamond',Georgia,serif; --mono:'Cousine',monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ink);color:var(--goldlt);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.banner{background:var(--gold);color:var(--ink);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 14px;font-weight:700}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 44px;border-bottom:1px solid rgba(183,154,91,.28)}
+.wordmark{font-family:var(--disp);font-style:italic;font-weight:600;font-size:22px;color:var(--goldlt)}
+.navtag{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,212,160,.55)}
+
+.hero{position:relative;min-height:420px;display:flex;align-items:flex-end}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--ink) 10%,rgba(15,8,5,.25) 70%)}
+.hero-inner{position:relative;padding:60px 44px 44px;max-width:640px}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--disp);font-weight:600;font-style:italic;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.05;margin:14px 0 0;color:var(--goldlt)}
+.sub{color:rgba(232,212,160,.72);max-width:46ch;margin:16px 0 0;font-size:14.5px;line-height:1.65}
+
+.shelf{padding:50px 44px 10px}
+.shelf-h{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prod{background:var(--ink2);border:1px solid rgba(183,154,91,.3);border-radius:4px;overflow:hidden}
+.prod img{height:180px;width:100%;object-fit:cover}
+.prod-body{padding:16px}
+.prod-name{font-family:var(--disp);font-size:20px;font-style:italic;color:var(--goldlt)}
+.prod-desc{font-size:11.5px;color:rgba(232,212,160,.55);margin-top:5px;line-height:1.5}
+.prod-row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.prod-price{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:700}
+.prod-add{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 12px;border-radius:2px}
+
+.trio{margin:26px 44px 0;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--gold);border-radius:4px;overflow:hidden}
+.trio img{height:100%;width:100%;object-fit:cover;min-height:220px}
+.trio-body{padding:28px}
+.trio-tag{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.trio-name{font-family:var(--disp);font-size:30px;font-style:italic;margin-top:8px;color:var(--goldlt)}
+.trio-price{font-family:var(--mono);font-size:22px;color:var(--gold);margin-top:10px;font-weight:700}
+.trio-note{font-size:12.5px;color:rgba(232,212,160,.6);margin-top:8px;line-height:1.6}
+.trio-cta{margin-top:16px;background:var(--gold);color:var(--ink);font-weight:700;font-size:13px;padding:12px 24px;border:0;border-radius:2px}
+
+.gift{margin:40px 44px 60px;background:var(--ink2);border:1px solid rgba(183,154,91,.3);border-radius:4px;padding:28px}
+.gift-h{font-family:var(--disp);font-style:italic;font-size:22px;color:var(--goldlt)}
+.gift-h .proposed{display:inline-block;margin-left:10px;font-family:var(--mono);font-size:9px;font-weight:700;color:var(--ink);background:var(--gold);border-radius:2px;padding:3px 8px;vertical-align:middle;font-style:normal}
+.gift-row{display:flex;gap:22px;margin-top:20px;flex-wrap:wrap}
+.gift-col{flex:1;min-width:220px}
+.gift-label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(232,212,160,.55);margin-bottom:8px}
+.gift-input{width:100%;background:var(--ink);border:1px solid rgba(183,154,91,.35);color:var(--goldlt);padding:10px 12px;font-family:var(--sans);font-size:13px;border-radius:2px}
+textarea.gift-input{resize:none;height:64px;font-style:italic}
+.sendcal{display:flex;gap:7px;flex-wrap:wrap}
+.dchip{font-family:var(--mono);font-size:11px;padding:7px 12px;border:1px solid rgba(183,154,91,.35);border-radius:2px;color:rgba(232,212,160,.8)}
+.dchip.active{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.dchip.closed{opacity:.3;text-decoration:line-through}
+.toggle-row{display:flex;align-items:center;gap:10px;margin-top:8px}
+.swtoggle{width:38px;height:20px;border-radius:99px;background:rgba(183,154,91,.3);position:relative;display:inline-block}
+.swtoggle.on{background:var(--gold)}
+.swtoggle span{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:99px;background:var(--ink2)}
+.swtoggle.on span{left:20px;background:var(--ink)}
+.pantrydrop-note{font-size:12px;color:rgba(232,212,160,.55);margin-top:6px;line-height:1.55}
+
+.pickup-note{margin:0 44px 50px;font-family:var(--mono);font-size:11.5px;color:rgba(232,212,160,.6);border-top:1px solid rgba(183,154,91,.25);padding-top:16px}
+.credit{border-top:1px solid rgba(183,154,91,.25);padding:22px 44px;font-family:var(--mono);font-size:10.5px;color:rgba(232,212,160,.5)}
+.credit a{color:var(--gold)}
+
+@media (max-width:900px){
+  .products{grid-template-columns:1fr}
+  .trio{grid-template-columns:1fr}
+  .gift-row{flex-direction:column}
+}
+@media (max-width:480px){
+  .nav,.hero-inner,.shelf,.pickup-note,.credit{padding-left:18px;padding-right:18px}
+  .trio,.gift{margin-left:18px;margin-right:18px}
+  h1{font-size:2.1rem}
+}
+</style>
+</head>
+<body>
+<div class="banner">Design exploration — Direction 3 of 5, &ldquo;The Pantry, Gifted&rdquo; — nothing here is live or charges a card</div>
+<div class="nav"><div class="wordmark">The Dabney Pantry</div><div class="navtag">Gifting</div></div>
+
+<section class="hero">
+  <img src="../img/pantry-hero.jpg" alt="Dabney Pantry, real shelf">
+  <div class="hero-inner">
+    <span class="eyebrow">Direction 3 · The Pantry, Gifted</span>
+    <h1>Send the kitchen<br>to someone&rsquo;s door.</h1>
+    <p class="sub">Goldbelly-grade product photography, Instacart&rsquo;s gift toggle and a scheduled-send calendar borrowed from DoorDash and sweetgreen &mdash; built around the three real Pantry items already selling zero units a month.</p>
+  </div>
+</section>
+
+<section class="shelf">
+  <div class="shelf-h">The real shelf</div>
+  <div class="products">
+    <div class="prod">
+      <img src="../img/pantry-salad.jpg" alt="Honey Lemon Pepper Dressing">
+      <div class="prod-body">
+        <div class="prod-name">Honey Lemon Pepper Dressing</div>
+        <div class="prod-desc">12 oz &middot; contains honey, not for infants under 1.</div>
+        <div class="prod-row"><span class="prod-price">$12.00</span><button class="prod-add">Add</button></div>
+      </div>
+    </div>
+    <div class="prod">
+      <img src="../img/pantry-collard.jpg" alt="Grandma's Collard Green Dip">
+      <div class="prod-body">
+        <div class="prod-name">Grandma&rsquo;s Collard Green Dip</div>
+        <div class="prod-desc">16 oz &middot; contains milk, keep refrigerated.</div>
+        <div class="prod-row"><span class="prod-price">$12.00</span><button class="prod-add">Add</button></div>
+      </div>
+    </div>
+    <div class="prod">
+      <img src="../img/pantry-hummus.jpg" alt="Black-Eyed Pea Hummus">
+      <div class="prod-body">
+        <div class="prod-name">Black-Eyed Pea Hummus</div>
+        <div class="prod-desc">10 oz &middot; keep refrigerated.</div>
+        <div class="prod-row"><span class="prod-price">$12.00</span><button class="prod-add">Add</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trio">
+    <img src="../img/pantry-spread.jpg" alt="The Dabney Trio, all three Pantry items">
+    <div class="trio-body">
+      <div class="trio-tag">The complete shelf</div>
+      <div class="trio-name">The Dabney Trio</div>
+      <div class="trio-price">$30.00</div>
+      <p class="trio-note">All three, together &mdash; the live Pantry&rsquo;s own bundle, unchanged. Small batches, kept cold, use-by label.</p>
+      <button class="trio-cta">Add the Trio</button>
+    </div>
+  </div>
+
+  <div class="gift">
+    <div class="gift-h">Make it a gift<span class="proposed">Proposed — not on the live Pantry today</span></div>
+    <div class="gift-row">
+      <div class="gift-col">
+        <div class="gift-label">Recipient name</div>
+        <input class="gift-input" placeholder="Who is this for?">
+        <div class="gift-label" style="margin-top:14px">Gift note</div>
+        <textarea class="gift-input">Thought you'd love a taste of Dabney &mdash; enjoy!</textarea>
+      </div>
+      <div class="gift-col">
+        <div class="gift-label">Schedule the send</div>
+        <div class="sendcal">
+          <span class="dchip closed">Wed Sep 30</span>
+          <span class="dchip closed">Thu Oct 1</span>
+          <span class="dchip active">Fri Oct 2</span>
+          <span class="dchip">Sat Oct 3</span>
+        </div>
+        <div class="gift-label" style="margin-top:18px">Pantry Drop <span style="color:rgba(232,212,160,.4);font-weight:400;text-transform:none">— repeat this order weekly</span></div>
+        <div class="toggle-row"><span class="swtoggle" onclick="this.classList.toggle('on')"><span></span></span><span style="font-size:12.5px">Off</span></div>
+        <p class="pantrydrop-note">The one piece of this whole review that creates a recurring order instead of a one-off. Needs Stripe recurring Checkout wired in &mdash; not built anywhere in the codebase today.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="pickup-note">Pickup Tue&ndash;Sat, 4&ndash;9 PM at the bar &mdash; copied from the live dabneyandco.com/pantry, unchanged.</p>
+</section>
+
+<div class="credit">Built from: Instacart &ldquo;Make it a gift&rdquo; &middot; DoorDash gift note + recipient flow &middot; sweetgreen scheduled gift send &middot; Selfridges gift packaging. Product names, prices and pickup hours read live from dabneyandco.com/pantry, Sep 29, 2026. Full sources on the review page.</div>
+</body>
+</html>

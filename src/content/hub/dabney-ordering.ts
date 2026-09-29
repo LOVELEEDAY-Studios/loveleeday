@@ -17,6 +17,7 @@ export const glance = [
 
 export type Sev = "fix" | "watch" | "good";
 export const CONCEPTS_URL = "/p/dabney-ordering-concepts/dabney-ordering-concepts-internal";
+export const CONCEPTS_V2_URL = "/p/dabney-ordering-concepts-v2/dabney-ordering-concepts-v2-internal";
 export const grades: { area: string; grade: string; why: string; concepts?: number[] }[] = [
   { area: "DoorDash", grade: "B−", why: "Live, DashPass, a strong description, 4.6 stars and consistent +$1.50 pricing. It carries the whole channel. But 10+ reviews is too few to rank, there's no merchant-funded offer, and hours end at 10:55 PM while Uber Eats says 11:15." },
   { area: "Uber Eats", grade: "D", why: "55 item photos and good descriptions, better than DoorDash. But it showed \"Delivery unavailable\" at 7 PM on a Saturday, has no rating, and its only offer is Buy 1, get 1 on hummus and on a $1.50 blueberry sauce. 14 orders in three months." },

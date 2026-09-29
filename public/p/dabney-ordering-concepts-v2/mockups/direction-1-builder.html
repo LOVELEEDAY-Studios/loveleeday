@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction 1 — The Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tinos:ital@0;1&family=Cousine:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F1E4C9; --cream:#FDFAF5; --burg:#5C0E2E; --burgd:#4A0B23;
+  --gold:#B79A5B; --ink:#0F0805; --teal:#0B504F; --tealL:#127a76;
+  --line:rgba(15,8,5,.12);
+  --sans:'Inter',system-ui,sans-serif; --serif:'Tinos',Georgia,serif; --mono:'Cousine',monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.banner{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px 14px}
+.wrap{max-width:1220px;margin:0 auto;padding:0 44px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 44px;border-bottom:1px solid var(--line)}
+.wordmark{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--burg)}
+.navtag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,8,5,.45)}
+
+.hero{padding:38px 44px 0}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--tealL)}
+h1{font-family:var(--sans);font-weight:800;letter-spacing:-.03em;font-size:clamp(1.9rem,4vw,3.1rem);line-height:1.03;margin:12px 0 0;color:var(--ink)}
+.sub{font-family:var(--serif);font-style:italic;color:rgba(15,8,5,.62);max-width:52ch;margin:14px 0 0;font-size:15.5px;line-height:1.6}
+
+.controls{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-end;margin:26px 0 0;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.toggle{display:inline-flex;border:1.5px solid var(--ink);border-radius:99px;overflow:hidden}
+.toggle button{background:transparent;border:0;font-size:13px;font-weight:600;padding:10px 22px;color:var(--ink)}
+.toggle button.active{background:var(--ink);color:var(--cream)}
+.slotlabel{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,8,5,.5);margin-bottom:8px}
+.slots{display:flex;gap:8px;flex-wrap:wrap}
+.slot{font-family:var(--mono);font-size:12px;padding:9px 14px;border:1px solid var(--line);background:var(--cream);border-radius:8px}
+.slot.active{background:var(--tealL);color:#fff;border-color:var(--tealL)}
+.slot.full{opacity:.35;text-decoration:line-through}
+.locrow{font-size:12.5px;color:rgba(15,8,5,.55)}
+.locrow b{color:var(--ink)}
+
+.body{display:grid;grid-template-columns:1fr 360px;gap:0;align-items:start}
+.menu{padding:30px 44px 70px}
+.group-title{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--burg);border-bottom:1px solid var(--line);padding-bottom:9px;margin:32px 0 16px}
+.group-title:first-child{margin-top:0}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.item{display:flex;gap:12px;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:12px;transition:opacity .2s}
+.item img{width:72px;height:72px;object-fit:cover;border-radius:10px;flex:none}
+.item-ph{width:72px;height:72px;border-radius:10px;flex:none;background:linear-gradient(135deg,var(--paper),#e7d9b8)}
+.item-name{font-weight:600;font-size:13.5px;line-height:1.25}
+.item-desc{font-family:var(--serif);font-size:12px;color:rgba(15,8,5,.58);line-height:1.4;margin-top:3px}
+.item-row{display:flex;align-items:center;justify-content:space-between;margin-top:9px}
+.item-price{font-family:var(--mono);font-size:13px;font-weight:700}
+.add{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;background:var(--ink);color:var(--cream);border:0;border-radius:99px}
+.add.added{background:var(--tealL)}
+.item.off{opacity:.42}
+.off-note{font-family:var(--mono);font-size:9.5px;color:var(--burg);margin-top:6px;display:block}
+
+.cart{position:sticky;top:0;background:var(--paper);border-left:1px solid var(--line);min-height:100%;padding:30px 26px 40px}
+.cart-title{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--burg)}
+.cart-line{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid rgba(15,8,5,.1);font-size:13.5px}
+.cart-line b{font-weight:600}
+.cart-line span.qty{font-family:var(--mono);color:rgba(15,8,5,.5);font-size:12px}
+.cart-total{display:flex;justify-content:space-between;font-family:var(--mono);font-size:16px;font-weight:700;margin-top:16px;padding-top:14px;border-top:2px solid var(--ink)}
+.savings{margin-top:10px;background:rgba(11,80,79,.1);border:1px solid rgba(11,80,79,.3);border-radius:10px;padding:10px 12px;font-size:12px;color:var(--teal);line-height:1.5}
+.checkout{display:block;width:100%;text-align:center;margin-top:16px;background:var(--tealL);color:#fff;font-weight:700;font-size:14px;padding:14px;border:0;border-radius:12px}
+.build-note{font-family:var(--mono);font-size:10.5px;color:rgba(15,8,5,.45);margin-top:10px;line-height:1.6}
+
+.credit{border-top:1px solid var(--line);padding:22px 44px;font-family:var(--mono);font-size:10.5px;color:rgba(15,8,5,.5);letter-spacing:.02em}
+.credit a{color:var(--tealL);text-decoration:underline}
+
+@media (max-width:900px){
+  .body{grid-template-columns:1fr}
+  .items{grid-template-columns:1fr}
+  .cart{position:static;border-left:0;border-top:1px solid var(--line)}
+}
+@media (max-width:480px){
+  .nav,.hero,.menu,.credit{padding-left:18px;padding-right:18px}
+  .cart{padding:24px 18px}
+  .controls{gap:16px}
+}
+</style>
+</head>
+<body>
+<div class="banner">Design exploration — Direction 1 of 5, &ldquo;The Builder&rdquo; — nothing here is live or wired to checkout</div>
+<div class="nav">
+  <div class="wordmark">Dabney &amp; Co.</div>
+  <div class="navtag">Order</div>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">Direction 1 · The Builder</span>
+  <h1>Order it your way,<br>ready when you say.</h1>
+  <p class="sub">A live-feeling builder in the shape of Sweetgreen&rsquo;s order flow, with Uber Eats/DoorDash-style time slots for a real pickup or delivery window &mdash; Dabney&rsquo;s own commission-free front door.</p>
+  <div class="controls">
+    <div class="toggle"><button class="active" onclick="setMode(this,'pickup')">Pickup</button><button onclick="setMode(this,'delivery')">Delivery</button></div>
+    <div>
+      <div class="slotlabel">Ready by · Tue, Sep 29</div>
+      <div class="slots">
+        <span class="slot">5:15p</span>
+        <span class="slot active">5:30p</span>
+        <span class="slot">5:45p</span>
+        <span class="slot">6:00p</span>
+        <span class="slot full">6:15p</span>
+      </div>
+    </div>
+    <div class="locrow" id="locrow">Pickup at <b>344 N Rose St</b> &middot; Tue&ndash;Sat, 4:30&ndash;10:55p</div>
+  </div>
+</section>
+
+<div class="body">
+  <div class="menu">
+    <div class="group-title">Appetizers</div>
+    <div class="items">
+      <div class="item" id="it-cornbread">
+        <img src="../img/hero-kitchen.jpg" alt="Spicy Fried Chicken &amp; Cornbread">
+        <div>
+          <div class="item-name">Spicy Fried Chicken &amp; Cornbread</div>
+          <div class="item-desc">Crispy fried chicken, spice rub, jalape&ntilde;o cornbread, maple drizzle.</div>
+          <div class="item-row"><span class="item-price">$10.00</span><button class="add" onclick="addItem(this,'Spicy Fried Chicken &amp; Cornbread',10)">Add</button></div>
+        </div>
+      </div>
+      <div class="item off" id="it-fgt" data-delivery-off="1">
+        <div class="item-ph"></div>
+        <div>
+          <div class="item-name">Fried Green Tomatoes</div>
+          <div class="item-desc">Cornmeal-crusted, fried to order.</div>
+          <div class="item-row"><span class="item-price">$7.00</span><button class="add" disabled>Pickup only</button></div>
+          <span class="off-note">Kept off delivery — travels soggy, per the kitchen&rsquo;s own DoorDash menu rule.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-ph"></div>
+        <div>
+          <div class="item-name">Jalape&ntilde;o Cornbread, Smoked Bacon</div>
+          <div class="item-desc">Fluffy jalape&ntilde;o cornbread, maple, crispy bacon.</div>
+          <div class="item-row"><span class="item-price">$9.00</span><button class="add" onclick="addItem(this,'Jalape&ntilde;o Cornbread, Smoked Bacon',9)">Add</button></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-ph"></div>
+        <div>
+          <div class="item-name">Sweet Heat Fried Chicken Flatbread</div>
+          <div class="item-desc">Fried chicken, mozzarella, red onion, spicy maple.</div>
+          <div class="item-row"><span class="item-price">$11.00</span><button class="add" onclick="addItem(this,'Sweet Heat Fried Chicken Flatbread',11)">Add</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-title">Gourmet Sandwiches</div>
+    <div class="items">
+      <div class="item" id="it-steak">
+        <img src="../img/steakhouse-sandwich.jpg" alt="Dabney Steakhouse Sandwich">
+        <div>
+          <div class="item-name">Dabney Steakhouse Sandwich</div>
+          <div class="item-desc">Thin-sliced roast beef, Swiss, tomato jam, horseradish cream, brioche.</div>
+          <div class="item-row"><span class="item-price">$13.00</span><button class="add" onclick="addItem(this,'Dabney Steakhouse Sandwich',13)">Add</button></div>
+        </div>
+      </div>
+      <div class="item" data-delivery-off="1">
+        <div class="item-ph"></div>
+        <div>
+          <div class="item-name">Fried Green Tomato BLT</div>
+          <div class="item-desc">Fried green tomato, bacon, greens, brioche.</div>
+          <div class="item-row"><span class="item-price">$13.00</span><button class="add" onclick="addItem(this,'Fried Green Tomato BLT',13)">Add</button></div>
+          <span class="off-note" style="display:none">Kept off delivery — travels soggy.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-ph"></div>
+        <div>
+          <div class="item-name">Sunday Dinner Sandwich</div>
+          <div class="item-desc">The kitchen&rsquo;s best seller across every channel.</div>
+          <div class="item-row"><span class="item-price">$13.00</span><button class="add" onclick="addItem(this,'Sunday Dinner Sandwich',13)">Add</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-title">Desserts</div>
+    <div class="items">
+      <div class="item">
+        <div class="item-ph"></div>
+        <div>
+          <div class="item-name">Lemon Blueberry Cornbread</div>
+          <div class="item-desc">The most-ordered item on Uber Eats.</div>
+          <div class="item-row"><span class="item-price">$8.00</span><button class="add" onclick="addItem(this,'Lemon Blueberry Cornbread',8)">Add</button></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-ph"></div>
+        <div>
+          <div class="item-name">Peach Cobbler Cornbread</div>
+          <div class="item-desc">Warm, spiced, finished to order.</div>
+          <div class="item-row"><span class="item-price">$8.00</span><button class="add" onclick="addItem(this,'Peach Cobbler Cornbread',8)">Add</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart">
+    <div class="cart-title">Your order</div>
+    <div id="cartlines">
+      <div class="cart-line"><b>Dabney Steakhouse Sandwich</b><span class="qty">&times;1</span></div>
+      <div class="cart-line"><b>Spicy Fried Chicken &amp; Cornbread</b><span class="qty">&times;1</span></div>
+      <div class="cart-line"><b>Lemon Blueberry Cornbread</b><span class="qty">&times;1</span></div>
+    </div>
+    <div class="cart-total"><span>Subtotal</span><span id="subtotal">$31.00</span></div>
+    <div class="savings">No delivery commission on this order &mdash; the same cart on DoorDash would cost the kitchen 15&ndash;30% of $31.00.</div>
+    <button class="checkout">Continue to checkout</button>
+    <p class="build-note">Menu data: live from Toast (DABNEY KITCHEN 3PO). Checkout: hands this cart to Dabney&rsquo;s existing order.toasttab.com/online/drinkswithdabney flow &mdash; Toast&rsquo;s API is read-only, so this page can&rsquo;t inject a kitchen ticket itself.</p>
+  </div>
+</div>
+
+<div class="credit">Built from: Sweetgreen order builder (dressing/sides toggle) &middot; Uber Eats build-your-own-meal customization &middot; Uber Eats &amp; DoorDash schedule-ahead time pickers. Full sources on the review page.</div>
+
+<script>
+function setMode(btn,mode){
+  document.querySelectorAll('.toggle button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  var loc=document.getElementById('locrow');
+  var offs=document.querySelectorAll('[data-delivery-off]');
+  if(mode==='delivery'){
+    loc.innerHTML='Delivery to <b>your address</b> &middot; Tue&ndash;Sat, 4:30&ndash;10:55p';
+    offs.forEach(function(el){el.classList.add('off'); var b=el.querySelector('button'); if(b){b.disabled=true; b.textContent='Off delivery';} var n=el.querySelector('.off-note'); if(n) n.style.display='block';});
+  } else {
+    loc.innerHTML='Pickup at <b>344 N Rose St</b> &middot; Tue&ndash;Sat, 4:30&ndash;10:55p';
+    offs.forEach(function(el){el.classList.remove('off'); var b=el.querySelector('button'); if(b){b.disabled=false; b.textContent='Add';} var n=el.querySelector('.off-note'); if(n) n.style.display='none';});
+  }
+}
+function addItem(btn,name,price){
+  btn.textContent='Added'; btn.classList.add('added');
+  var row=document.createElement('div'); row.className='cart-line';
+  row.innerHTML='<b>'+name+'</b><span class="qty">&times;1</span>';
+  document.getElementById('cartlines').appendChild(row);
+  var sub=document.getElementById('subtotal');
+  var v=parseFloat(sub.textContent.replace('$',''))+price;
+  sub.textContent='$'+v.toFixed(2);
+}
+</script>
+</body>
+</html>
