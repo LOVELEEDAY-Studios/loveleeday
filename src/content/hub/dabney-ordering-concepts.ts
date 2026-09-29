@@ -137,27 +137,28 @@ export const concepts: Concept[] = [
     n: 4,
     id: "pantry",
     name: "The Pantry Shelf",
-    tagline: "Packaged retail, a $30 trio, a recurring pickup, and a gift option.",
+    tagline: "The real shelf: three real SKUs, a $30 trio, plus a proposed recurring pickup and gift option.",
     forWhom: "Someone who wants Dabney at home without a reservation — a gift, a weekly habit, a cabinet stocked with the kitchen's best-travelling dishes.",
     steps: [
-      "Browse three packaged items (typographic cards, matching the real /shop page's pattern for items without dedicated photography yet)",
-      "See the trio price called out against the à-la-carte total",
-      "Optionally turn on \"Pantry Drop\" — the same order, repeating on a chosen weekday, Tue–Sat",
-      "Optionally mark it as a gift, with a note",
-      "Add to cart",
+      "Browse the three real Pantry items, with the live page's real photos and copy",
+      "See the trio ($30) called out against the three individual $12 items",
+      "Optionally turn on \"Pantry Drop\" — proposed, not on the live page today — the same order, repeating on a chosen weekday, Tue–Sat",
+      "Optionally mark it as a gift, with a note — also proposed, not live today",
+      "Add to cart; pickup is Tue–Sat, 4–9 PM at the bar, per the live page",
     ],
     fixes:
       "Grade: \"The Pantry\" (C) — \"a clear offer… 0 orders so far. It's retail, not dinner delivery, so it can't carry the $10k goal alone.\"",
     effect:
       "Doesn't move the $10k delivery goal by itself (the review says so directly) — it's a second, small, commission-free revenue line with near-zero marginal kitchen labor, and \"Pantry Drop\" is the one piece of this whole review that creates a recurring order instead of a one-off.",
     build: [
-      { label: "Live Pantry SKUs/photos", exists: false, note: "GAP: dabneyandco.com/pantry is referenced in the ordering review as a live page with 3 SKUs at $12 each / $30 for the trio, but no /pantry route exists in this local checkout of ~/Projects/dabney, and no dedicated packaged-retail photography was found in public/. The three items and photos shown here are placeholders — real menu dishes at the review's real prices, not the live page's actual copy." },
-      { label: "Recurring \"Pantry Drop\"", exists: false, note: "New. Would need a subscription/recurring-order object — Stripe supports recurring Checkout, but nothing in this codebase wires a recurring food pre-order today." },
-      { label: "Checkout", exists: true, note: "Same Stripe Checkout pattern as invoice/membership payments — this is closer to the gift-card flow (src/app/api/giftcard/checkout) than to a same-day Toast order, since it's pure retail with no real-time kitchen ticket." },
+      { label: "Live Pantry SKUs/photos", exists: true, note: "Read directly from the live dabneyandco.com/pantry (Sep 29, 2026): Honey Lemon Pepper Dressing (12 oz, $12, contains honey, not for infants under 1), Grandma's Collard Green Dip (16 oz, $12, contains milk, keep refrigerated), Black-Eyed Pea Hummus (10 oz, $12, keep refrigerated), and The Dabney Trio ($30, all three). Photos pulled from the live page's own image URLs (/pantry/img/salad.jpg, collard.jpg, hummus.jpg, spread.jpg, hero.jpg) and used untouched. Pickup: Tue–Sat, 4–9 PM at the bar, small batches kept cold with a use-by label — also copied from the live page." },
+      { label: "Recurring \"Pantry Drop\"", exists: false, note: "New, and NOT on the live page — this concept's proposed addition. Would need a subscription/recurring-order object; Stripe supports recurring Checkout, but nothing in this codebase wires a recurring food pre-order today." },
+      { label: "Gift option", exists: false, note: "New, and NOT on the live page — the live Pantry has no gift/send-to-someone-else flow today. Proposed here, clearly tagged as such on the mockup." },
+      { label: "Checkout", exists: false, note: "The live Pantry already has its own order flow at /pantry/order/ (not read in this session) — closer to the gift-card Stripe flow (src/app/api/giftcard/checkout) than to a same-day Toast order, since it's pure retail with no real-time kitchen ticket." },
     ],
-    effort: "Low for a one-time trio purchase (closest to the existing gift-card Stripe flow); medium for true recurring \"Pantry Drop\" billing and fulfillment reminders.",
+    effort: "Low — the real shelf and trio already exist live; the new work here is just \"Pantry Drop\" recurring billing and the gift flow.",
     risks: [
-      "The live Pantry page's real photography and exact SKU copy weren't available to read in this session — don't ship the placeholder dish names without checking the real page first.",
+      "\"Pantry Drop\" and the gift option are additions on top of a page that already works today — worth confirming they're wanted before building, not because the shelf itself is unproven.",
       "Recurring orders need someone to actually prep and hold three items every week without a reservation system prompting it — an operational commitment, not just a checkout feature.",
     ],
     shots: { desktop: `${BASE}/shots/concept-4-pantry-1440.png`, phone: `${BASE}/shots/concept-4-pantry-390.png` },
@@ -198,7 +199,7 @@ export const concepts: Concept[] = [
 
 export const designNotes = [
   "Brand tokens copied verbatim from dabney-brand.css and globals.css: paper #F1E4C9, cream #FDFAF5, burg #5C0E2E, gold #B79A5B, ink #0F0805, teal #0B504F; Arimo / Tinos / Cousine.",
-  "Real dish names and prices read from ~/Projects/dabney/menu-mockups/data/menu.json (the DABNEY KITCHEN section). Real photography from public/images and public/menu-book/covers/assets — the in-room shots (steakhouse sandwich, flatbread, southern-kitchen-hero, private-events-hero), not the white-background product renders in mockups/food-assets, which read as AI/heavily-styled and were left out of these five concepts.",
-  "Design references consulted and named per concept: refactoring-ui (hierarchy, spacing, one accent color) for the counter and bundle wizard layouts; hooked-ux (Nir Eyal's Hook Model) explicitly for Concept 5's trigger/action/reward/investment structure; component-patterns-mastery.md for the stepper and cart-panel patterns. No knowledge-design file was found specific to restaurant ordering — general commerce/UX patterns were used instead, noted here rather than cited to a file that doesn't exist.",
-  "All five are static HTML, screenshotted headless (Playwright, channel 'chrome', no visible window) at 1440×900 desktop and 390×844 phone. Run through node ~/arthur/scripts/visual-critic.mjs against every screenshot; the tool flagged \"cut off\" on full-bleed banner/footer text near the image edge on several renders — verified false by pixel-level crops (the text has full padding inside its own band; the critic appears to conflate \"near the screenshot edge\" with \"clipped by its container\" on this full-bleed layout style). Genuine issues it caught were fixed: a duplicate/mismatched stock photo on two different Pantry items (replaced with typographic cards matching the real /shop page's own convention for un-photographed items), a background-color bleed below the page footer on two mockups, and cart line-items wrapping badly on the 390px view.",
+  "Real dish names and prices read from ~/Projects/dabney/menu-mockups/data/menu.json (the DABNEY KITCHEN section) for Concepts 1–3. Concept 4's items, copy, allergen notes and photos are read directly from the LIVE dabneyandco.com/pantry (verified Sep 29, 2026), not from the local repo. Other real photography from public/images and public/menu-book/covers/assets — the in-room shots (steakhouse sandwich, flatbread, southern-kitchen-hero, private-events-hero), not the white-background product renders in mockups/food-assets, which read as AI/heavily-styled and were left out of these five concepts.",
+  "Design references consulted and named per concept: refactoring-ui (hierarchy, spacing, one accent color) for the counter and bundle wizard layouts; hooked-ux (Nir Eyal's Hook Model) for Concept 5's design logic — the framework is explained here on the review page, not exposed as jargon in the customer-facing mockup itself, which just shows the resulting trigger/action/reward/investment as plain benefit copy; component-patterns-mastery.md for the stepper and cart-panel patterns. No knowledge-design file was found specific to restaurant ordering — general commerce/UX patterns were used instead, noted here rather than cited to a file that doesn't exist.",
+  "All five are static HTML, screenshotted headless (Playwright, channel 'chrome', no visible window) at 1440×900 desktop and 390×844 phone. Run through node ~/arthur/scripts/visual-critic.mjs against every screenshot; the tool flagged \"cut off\" on full-bleed banner/footer text near the image edge on several renders — verified false by pixel-level crops (the text has full padding inside its own band; the critic appears to conflate \"near the screenshot edge\" with \"clipped by its container\" on this full-bleed layout style). Genuine issues it caught or that a coordinator review caught were fixed: a background-color bleed below the page footer on two mockups, cart line-items wrapping badly on the 390px view, Concept 3's example dates not matching real weekdays (recomputed with `date`, never asserted), and Concept 5's phone hero text-align inconsistency between a centered paragraph and a left-drifting two-line heading (a block box with max-width sitting flush-left inside a text-align:center parent — fixed by left-aligning the whole hero at the phone breakpoint).",
 ];

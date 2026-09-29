@@ -43,6 +43,7 @@ h1,h2,h3{font-family:var(--sans);font-weight:400;text-transform:uppercase;letter
 .pill.gold{background:var(--paper);color:var(--burg);border:1px solid var(--gold)}
 .pill.ok{background:var(--ok-bg);color:var(--ok)}
 .pill.teal{background:var(--teal);color:var(--paper)}
+.proposed-tag{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:none;color:var(--gold);border:1px solid var(--gold);border-radius:99px;padding:2px 8px;vertical-align:middle}
 
 .card{background:var(--cream);border:1px solid rgba(183,154,91,.4)}
 
