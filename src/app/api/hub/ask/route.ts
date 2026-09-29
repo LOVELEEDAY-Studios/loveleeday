@@ -1,3 +1,4 @@
+import { arthurFetch } from "@/lib/arthur-core";
 import { NextResponse, after } from "next/server";
 import { Resend } from "resend";
 import { findings, getHub, layers, nextQuestions, proof, strengths, themes } from "@/content/hub/startupzoo";
@@ -70,7 +71,7 @@ export async function POST(request: Request) {
     const key = process.env.CEREBRAS_API_KEY;
     if (!key) return NextResponse.json({ error: "Arthur is not configured" }, { status: 503 });
 
-    const res = await fetch(API, {
+    const res = await arthurFetch(API, {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", "User-Agent": UA },
       body: JSON.stringify({
@@ -123,3 +124,5 @@ export async function POST(request: Request) {
     return fail(500);
   }
 }
+
+export const maxDuration = 60;

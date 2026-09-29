@@ -1,3 +1,4 @@
+import { arthurFetch } from "@/lib/arthur-core";
 import { NextResponse, after } from "next/server";
 import { Resend } from "resend";
 import { getWightman } from "@/content/hub/wightman";
@@ -106,7 +107,7 @@ export async function POST(request: Request) {
     const messages = [{ role: "system", content: SYSTEM }, { role: "user", content: `CONTEXT\n${context(new Date(), question)}\n\nQUESTION\n${question}` }];
     let content = "";
     for (const effort of ["high", "medium"]) {
-      const res = await fetch(API, {
+      const res = await arthurFetch(API, {
         method: "POST",
         headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", "User-Agent": UA },
         body: JSON.stringify({ model: "gpt-oss-120b", temperature: 0.2, max_tokens: 12000, reasoning_effort: effort, messages }),
@@ -143,3 +144,5 @@ export async function POST(request: Request) {
     return fail(500);
   }
 }
+
+export const maxDuration = 60;
