@@ -1,3 +1,4 @@
+import { arthurFetch } from "@/lib/arthur-core";
 import { NextResponse, after } from "next/server";
 import { Resend } from "resend";
 import { getComplianceSchool, requirements } from "@/content/compliance";
@@ -137,7 +138,7 @@ export async function POST(request: Request) {
     if (!key) return NextResponse.json({ error: "Arthur is not configured" }, { status: 503 });
 
     const today = new Date().toISOString().slice(0, 10);
-    const res = await fetch(API, {
+    const res = await arthurFetch(API, {
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", "User-Agent": UA },
       body: JSON.stringify({
@@ -195,3 +196,5 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Arthur could not answer just now. Try again in a moment." }, { status: 500 });
   }
 }
+
+export const maxDuration = 60;
