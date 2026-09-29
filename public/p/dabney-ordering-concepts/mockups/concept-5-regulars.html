@@ -11,10 +11,9 @@
   .c5-copy{color:var(--paper)}
   .c5-h1{color:var(--paper);max-width:14ch}
   .c5-sub{font-family:var(--serif);font-style:italic;color:rgba(241,228,201,.82);max-width:40ch;margin-top:14px;font-size:15.5px;line-height:1.65}
-  .hook-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px;max-width:440px}
-  .hook{border:1px solid rgba(226,203,148,.3);padding:14px}
-  .hook b{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--goldlt)}
-  .hook span{display:block;font-family:var(--serif);font-size:12px;color:rgba(241,228,201,.75);margin-top:6px;line-height:1.5}
+  .why-row{display:grid;gap:12px;margin-top:30px;max-width:420px}
+  .why{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:baseline;font-family:var(--serif);font-size:14px;color:rgba(241,228,201,.88);line-height:1.5}
+  .why b{font-family:var(--mono);color:var(--goldlt)}
 
   .phone{background:var(--paper);border-radius:34px;border:8px solid #17181c;width:360px;margin:0 auto;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.4)}
   .phone-status{display:flex;justify-content:space-between;padding:10px 20px 0;font-family:var(--mono);font-size:10px;color:rgba(15,8,5,.5)}
@@ -50,12 +49,16 @@
     .c5-wrap{grid-template-columns:1fr;padding:30px 24px 50px;justify-items:center;text-align:center}
     .c5-copy{text-align:center}
     .c5-sub{margin-left:auto;margin-right:auto}
-    .hook-row{margin-left:auto;margin-right:auto}
+    .why-row{margin-left:auto;margin-right:auto}
   }
   @media (max-width:480px){
-    .c5-wrap{padding:20px 16px 40px;gap:26px}
+    .c5-wrap{padding:20px 16px 40px;gap:26px;justify-items:stretch}
     .phone{width:100%;border-radius:22px;border-width:0}
-    .hook-row{grid-template-columns:1fr 1fr;max-width:100%}
+    /* Left-align the whole hero on phone — a centered box with a fixed max-width just
+       looks like a headline mis-indent (each <br> line centers within a narrow, left-anchored
+       box instead of the box itself centering), so phone gets a plain left-aligned column. */
+    .c5-copy{text-align:left}
+    .c5-sub,.why-row{margin-left:0;margin-right:0}
   }
 </style>
 </head>
@@ -72,11 +75,10 @@
     <span class="eyebrow">For Regulars &middot; Phone-First</span>
     <div class="c5-h1 h1">Order the usual in one tap.</div>
     <p class="c5-sub">149 of 166 delivery orders already come through DoorDash &mdash; this is the reason to come back through Dabney instead: your last order, saved, ready in one tap, picked up under a QR at the bar, and a text the second it&rsquo;s hot.</p>
-    <div class="hook-row">
-      <div class="hook"><b>Trigger</b><span>A text: &ldquo;Order the usual? Ready by 6.&rdquo;</span></div>
-      <div class="hook"><b>Action</b><span>One tap reorders your last cart, no re-typing.</span></div>
-      <div class="hook"><b>Reward</b><span>Kitchen adds a surprise extra some nights &mdash; today, a slice of cornbread on the house.</span></div>
-      <div class="hook"><b>Investment</b><span>Every order fills the stamp row toward a free item.</span></div>
+    <div class="why-row">
+      <div class="why"><b>01</b><span>A text lets you know the second it&rsquo;s hot &mdash; no app to open first.</span></div>
+      <div class="why"><b>02</b><span>One tap reorders your last cart. Nothing to re-type.</span></div>
+      <div class="why"><b>03</b><span>Every order fills your stamp row toward a free item on the house.</span></div>
     </div>
   </div>
 
