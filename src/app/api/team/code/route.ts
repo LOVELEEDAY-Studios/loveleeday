@@ -2,17 +2,9 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { isTeamEmail, PENDING_COOKIE, signPending } from "@/lib/team-auth";
 import { clientIp } from "@/lib/visits";
+import { limited } from "@/lib/guard";
 
 export const dynamic = "force-dynamic";
-
-const hits = new Map<string, number[]>();
-function limited(key: string, max: number, windowMs: number) {
-  const now = Date.now();
-  const recent = (hits.get(key) ?? []).filter((t) => now - t < windowMs);
-  recent.push(now);
-  hits.set(key, recent);
-  return recent.length > max;
-}
 
 /* Step one of sign-in. The reply is the same whether or not the address is on the team, so the
    form cannot be used to discover who is. */

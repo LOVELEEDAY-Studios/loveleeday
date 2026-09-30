@@ -40,7 +40,9 @@ export async function signSession(email: string) {
 
 export async function readSession(value: string | undefined): Promise<string | null> {
   if (!value) return null;
-  const [e, exp, sig] = value.split(".");
+  const parts = value.split(".");
+  if (parts.length !== 3) return null; // exact shape: a valid token with junk appended is not a token
+  const [e, exp, sig] = parts;
   if (!e || !exp || !sig || Date.now() > Number(exp)) return null;
   if (!same(sig, await hmac(`session:${e}.${exp}`))) return null;
   const email = Buffer.from(e, "base64url").toString();
@@ -56,7 +58,9 @@ export async function signPending(email: string, code: string) {
 
 export async function checkPending(value: string | undefined, code: string): Promise<string | null> {
   if (!value || !/^\d{6}$/.test(code)) return null;
-  const [e, exp, sig] = value.split(".");
+  const parts = value.split(".");
+  if (parts.length !== 3) return null; // exact shape: a valid token with junk appended is not a token
+  const [e, exp, sig] = parts;
   if (!e || !exp || !sig || Date.now() > Number(exp)) return null;
   if (!same(sig, await hmac(`code:${e}.${exp}:${code}`))) return null;
   const email = Buffer.from(e, "base64url").toString();

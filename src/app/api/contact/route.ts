@@ -1,5 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { escapeHtml, isEmail, limited } from "@/lib/guard";
+import { clientIp } from "@/lib/visits";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +29,20 @@ export async function POST(request: Request) {
     if (!name || !email || !details) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
+    email = String(email).trim().slice(0, 254);
+    if (!isEmail(email)) return NextResponse.json({ error: "That email address does not look right." }, { status: 400 });
+    // The form mails whatever address is typed in, so it is bounded per sender and per address (sim lab, 2026-09-30).
+    if (limited(`ip:${clientIp(request.headers)}`, 5, 60 * 60_000) || limited(`to:${email.toLowerCase()}`, 2, 24 * 60 * 60_000)) {
+      return NextResponse.json({ error: "Thanks, we already have your brief. We'll be in touch soon." }, { status: 429 });
+    }
+    // Everything a visitor typed is escaped before it goes into the HTML we send to our own inbox.
+    const plain = (s: unknown, n: number) => String(s ?? "").replace(/[\r\n\t]+/g, " ").slice(0, n);
+    const subjectLine = `New Project Brief — ${plain(name, 120)} (${plain(projectType, 60) || "Unspecified"})`;
+    name = escapeHtml(String(name).slice(0, 200));
+    projectType = escapeHtml(String(projectType ?? "").slice(0, 100));
+    budget = escapeHtml(String(budget ?? "").slice(0, 100));
+    details = escapeHtml(String(details).slice(0, 10_000));
+    const emailHtml = escapeHtml(email);
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -35,7 +51,7 @@ export async function POST(request: Request) {
       from: "LOVELEEDAY Studios <hello@loveleedaystudios.com>",
       to: "hello@loveleedaystudios.com",
       replyTo: email,
-      subject: `New Project Brief — ${name} (${projectType || "Unspecified"})`,
+      subject: subjectLine,
       html: `
         <div style="font-family: Inter, -apple-system, sans-serif; max-width: 600px; margin: 0 auto; background: #F3F2EE; padding: 2rem; color: #111;">
           <h2 style="font-weight: 400; letter-spacing: -0.02em; margin-bottom: 1.5rem;">New Project Brief</h2>
@@ -46,7 +62,7 @@ export async function POST(request: Request) {
             </tr>
             <tr style="border-bottom: 1px solid #D4D2C9;">
               <td style="padding: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #5A5A55;">Email</td>
-              <td style="padding: 0.75rem 0; text-align: right; font-weight: 500;"><a href="mailto:${email}" style="color: #111;">${email}</a></td>
+              <td style="padding: 0.75rem 0; text-align: right; font-weight: 500;"><a href="mailto:${emailHtml}" style="color: #111;">${emailHtml}</a></td>
             </tr>
             <tr style="border-bottom: 1px solid #D4D2C9;">
               <td style="padding: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #5A5A55;">Project Type</td>
