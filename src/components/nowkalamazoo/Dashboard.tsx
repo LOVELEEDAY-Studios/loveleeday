@@ -244,6 +244,11 @@ function Meetings({ data, desk }: { data: Any; desk: Any }) {
                   <td className="px-4 py-3 text-[#5b606a]">
                     {r.schedule}
                     {r.time ? `, ${r.time}` : ""}
+                    {r.corrected && (
+                      <span className="mt-1 block text-[12px] text-[#8a6420]">
+                        The directory&apos;s schedule points to {day(r.corrected.directory?.[0])}; the body&apos;s own calendar says {day(r.corrected.official)}.
+                      </span>
+                    )}
                   </td>
                   <td className="px-4 py-3">
                     <span className="whitespace-nowrap">{p?.posted ? <Tag tone="blue">Posted · {p.items?.length ?? 0} items</Tag> : <A href={r.agendaUrl}>Watch page</A>}</span>
