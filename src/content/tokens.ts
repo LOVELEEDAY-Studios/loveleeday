@@ -77,4 +77,6 @@ export const TOKENS = {
   startupzooStudy: tokOptional("PORTAL_TOKEN_STARTUPZOO"),
   // Phil Doorlag, Wightman (Kalamazoo), met at Dabney 2026-09-25: the territory intelligence brief.
   wightman: tokOptional("PORTAL_TOKEN_WIGHTMAN"),
+  // NowKalamazoo (Ben Lando), Kalamazoo's nonprofit newsroom, 2026-09-30. Kristie May is on the team.
+  nowkalamazoo: tokOptional("PORTAL_TOKEN_NOWKALAMAZOO"),
 } as const;
