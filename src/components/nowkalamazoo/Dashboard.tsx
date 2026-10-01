@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Newspaper, FileSearch, Landmark, CalendarDays, Clock } from "lucide-react";
+import { Newspaper, FileSearch, Landmark, CalendarDays, Clock, HandCoins } from "lucide-react";
 
 /* NowKalamazoo working view. Light surface, one blue for emphasis, amber only for "not covered" and
    "clock running". Every row links to its public source. The time panel is the newsroom's to edit:
@@ -24,6 +24,7 @@ const time = (s?: string | null) => {
 
 const TABS = [
   ["desk", "Story and records desk", FileSearch],
+  ["grants", "Grants", HandCoins],
   ["meetings", "Meeting watch", Landmark],
   ["morning", "Morning desk", Newspaper],
   ["calendar", "Calendar", CalendarDays],
@@ -376,6 +377,139 @@ function Calendar({ data }: { data: Any }) {
   );
 }
 
+/* ---------------- Grants ---------------- */
+const STATUS: Record<string, string> = { open: "Open", rolling: "Rolling", "next-cycle": "Next cycle" };
+function Grants({ g, today }: { g: Any; today: string }) {
+  const grants: Any[] = g.grants ?? [];
+  const fresh = grants.filter((x) => !x.existingFunder);
+  const next = grants.filter((x) => x.existingFunder);
+  const dated = grants.filter((x) => x.deadlineDate && x.deadlineDate >= today).sort((a, b) => a.deadlineDate.localeCompare(b.deadlineDate));
+  const soon = dated.filter((x) => (Date.parse(x.deadlineDate) - Date.parse(today)) / 864e5 <= 60);
+  const strong = fresh.filter((x) => x.fit >= 5);
+  const beats: Any[] = [...(g.beats ?? [])].sort((a, b) => b.stories2026 - a.stories2026);
+  const max = Math.max(1, ...beats.map((b) => b.stories2026));
+  const [open, setOpen] = useState<number | null>(null);
+  const days = (d: string) => Math.round((Date.parse(d) - Date.parse(today)) / 864e5);
+  const Card = ({ x, i }: { x: Any; i: number }) => (
+    <li className="rounded-[12px] border border-[#edf0f4] bg-white">
+      <button onClick={() => setOpen(open === i ? null : i)} className="grid w-full gap-2 px-5 py-4 text-left sm:grid-cols-[1fr_auto] sm:items-start">
+        <span>
+          <span className="block text-[15.5px] font-medium leading-[1.4] text-[#1d1d1f]">{x.funder}</span>
+          <span className="block text-[13.5px] leading-[1.5] text-[#5b606a]">{x.program}</span>
+        </span>
+        <span className="flex flex-wrap items-center gap-2 sm:justify-end">
+          <span className="text-[12px] tabular-nums text-[#3778bc]">Fit {x.fit}/5</span>
+          {x.deadlineDate && x.deadlineDate >= today ? (
+            <Tag tone={days(x.deadlineDate) <= 30 ? "amber" : "blue"}>
+              Due {day(x.deadlineDate)} · {days(x.deadlineDate)} days
+            </Tag>
+          ) : (
+            <Tag tone="grey">{STATUS[x.status] ?? x.status}</Tag>
+          )}
+        </span>
+      </button>
+      <div className="border-t border-[#eef0f3] px-5 py-4">
+        <p className="text-[14px] leading-[1.65] text-[#1d1d1f]">
+          <span className="text-[#8c8e95]">Why NowKalamazoo: </span>
+          {x.why}
+        </p>
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {(x.beats ?? []).map((b: string) => (
+            <span key={b} className="rounded-full bg-[#f1f2f4] px-2.5 py-0.5 text-[11.5px] text-[#4a4d55]">
+              {b.replace(/\s*\(.*\)$/, "")}
+            </span>
+          ))}
+        </div>
+        {open === i && (
+          <div className="mt-4 grid gap-3 text-[13.5px] leading-[1.6] text-[#5b606a] sm:grid-cols-2">
+            <div>
+              <span className="block text-[11px] font-medium uppercase tracking-[0.1em] text-[#8c8e95]">Amount</span>
+              {x.amount}
+            </div>
+            <div>
+              <span className="block text-[11px] font-medium uppercase tracking-[0.1em] text-[#8c8e95]">Deadline</span>
+              {x.deadline}
+            </div>
+            <div className="sm:col-span-2">
+              <span className="block text-[11px] font-medium uppercase tracking-[0.1em] text-[#8c8e95]">Eligibility</span>
+              {x.eligibility}
+            </div>
+            <div className="sm:col-span-2">
+              <span className="block text-[11px] font-medium uppercase tracking-[0.1em] text-[#8c8e95]">Who to talk to</span>
+              {x.contact?.name ? `${x.contact.name}${x.contact.title ? `, ${x.contact.title}` : ""}` : "No program officer is named publicly"}
+              {x.contact?.email && <> · {x.contact.email}</>}
+              {x.contact?.portal && (
+                <>
+                  {" · "}
+                  <A href={x.contact.portal}>Application portal</A>
+                </>
+              )}
+              {x.contactNote && <span className="mt-1 block text-[12.5px] text-[#8c8e95]">{x.contactNote}</span>}
+            </div>
+          </div>
+        )}
+        <div className="mt-3 flex flex-wrap gap-x-4 text-[12.5px]">
+          <button onClick={() => setOpen(open === i ? null : i)} className="text-[#3778bc]">
+            {open === i ? "Less" : "Amount, deadline, eligibility and contact"}
+          </button>
+          <A href={x.url}>Funder&apos;s page</A>
+        </div>
+      </div>
+    </li>
+  );
+  return (
+    <>
+      <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <Kpi k={String(fresh.length)} label="Funders matched to your reporting that have not funded you yet" />
+        <Kpi k={String(strong.length)} label="Of them, a strong fit (5 of 5)" />
+        <Kpi k={String(soon.length)} label="Deadlines in the next 60 days" />
+        <Kpi k={dated[0] ? day(dated[0].deadlineDate) : "—"} label={dated[0] ? `Next deadline: ${dated[0].funder}` : "No dated deadline"} />
+      </div>
+
+      <Panel title="What you report on, measured" note={`Stories in 2026, read ${day(g.readAt)} from your archive`}>
+        <div className="mt-4 grid gap-2">
+          {beats.map((b) => (
+            <div key={b.beat} className="grid grid-cols-[minmax(0,15rem)_1fr_2.5rem] items-center gap-3 text-[13px]">
+              <span className="truncate text-[#4a4d55]" title={b.beat}>
+                {b.beat.replace(/\s*\(.*\)$/, "")}
+              </span>
+              <span className="h-2.5 rounded-full bg-[#3778bc]" style={{ width: `${(b.stories2026 / max) * 100}%`, minWidth: 4 }} />
+              <span className="text-right tabular-nums text-[#1d1d1f]">{b.stories2026}</span>
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 max-w-[48rem] text-[13px] leading-[1.65] text-[#7d8088]">
+          Arthur reads what the newsroom publishes and matches it against what funders say they fund. Nobody asked it to look: the reporting itself is
+          the application.
+        </p>
+      </Panel>
+
+      <Panel title="Funders who have not funded you yet" note="Ranked by fit, then deadline">
+        <ol className="mt-4 grid gap-3">
+          {fresh.map((x, i) => (
+            <Card key={i} x={x} i={i} />
+          ))}
+        </ol>
+      </Panel>
+
+      {!!next.length && (
+        <Panel title="Funders you already have: the next ask" note="A new program or a new beat to bring them">
+          <ol className="mt-4 grid gap-3">
+            {next.map((x, i) => (
+              <Card key={i} x={x} i={fresh.length + i} />
+            ))}
+          </ol>
+        </Panel>
+      )}
+
+      <p className="mt-6 max-w-[48rem] text-[12.5px] leading-[1.6] text-[#8c8e95]">
+        Every funder, amount, deadline and contact is from the funder&apos;s own page or a cited listing, read {day(g.readAt)}. Where a funder publishes no
+        program officer, it says so instead of guessing. Eligibility marked &ldquo;likely&rdquo; needs the newsroom to confirm a requirement only it can see.
+      </p>
+    </>
+  );
+}
+
 /* ---------------- Time back ---------------- */
 const WORK = [
   { k: "Checking agendas for 44 public bodies", before: 6, after: 1 },
@@ -437,8 +571,8 @@ function TimeBack() {
   );
 }
 
-export function NowDashboard({ preparedFor, data, desk }: { token: string; preparedFor: string; data: Any; desk: Any }) {
-  const tabs = TABS.filter(([k]) => k !== "desk" || desk);
+export function NowDashboard({ preparedFor, data, desk, grants }: { token: string; preparedFor: string; data: Any; desk: Any; grants?: Any }) {
+  const tabs = TABS.filter(([k]) => (k !== "desk" || desk) && (k !== "grants" || grants));
   const [tab, setTab] = useState<Tab>(tabs[0][0]);
   useEffect(() => {
     const h = window.location.hash.slice(1) as Tab;
@@ -477,6 +611,7 @@ export function NowDashboard({ preparedFor, data, desk }: { token: string; prepa
         {tab === "meetings" && <Meetings data={data} desk={desk} />}
         {tab === "morning" && <Morning data={data} desk={desk} />}
         {tab === "calendar" && <Calendar data={data} />}
+        {tab === "grants" && grants && <Grants g={grants} today={data.builtAt} />}
         {tab === "time" && <TimeBack />}
       </div>
     </div>
