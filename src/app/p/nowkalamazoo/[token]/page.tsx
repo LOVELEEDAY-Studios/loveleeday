@@ -80,6 +80,9 @@ export default async function NowKalamazooPage({ params }: { params: Promise<{ t
           <a href="#findings" className="rounded-full bg-[#1d1d1f] px-5 py-2.5 font-medium text-white">
             See the {findings.length} findings
           </a>
+          <a href={`/p/nowkalamazoo/${c.token}/dashboard`} className="rounded-full border border-[#dcdfe6] px-5 py-2.5 text-[#1d1d1f] hover:border-[#3778bc]">
+            See this morning, with Arthur
+          </a>
           <a href="#ask" className="rounded-full border border-[#dcdfe6] px-5 py-2.5 text-[#1d1d1f] hover:border-[#3778bc]">
             Ask Arthur
           </a>
