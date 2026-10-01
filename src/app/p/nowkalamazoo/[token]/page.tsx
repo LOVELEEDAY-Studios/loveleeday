@@ -18,6 +18,11 @@ import {
 } from "@/content/hub/nowkalamazoo";
 import { CivicAsk } from "@/components/civic/CivicAsk";
 import { NoteForm } from "@/components/portal/NoteForm";
+import desk from "@/content/hub/nowkalamazoo-desk.json";
+import grantsData from "@/content/hub/nowkalamazoo-grants.json";
+
+/* The day the public record was read; deadline counts are measured from it so the page does not drift. */
+const TODAY = grantsData.readAt;
 
 /* built-from-reference: /p/hub/[token] (Startup Zoo). Same sections in the same order: headline,
    strengths band, sourced findings, proof already running, the intelligence layer and its questions,
@@ -64,6 +69,11 @@ export default async function NowKalamazooPage({ params }: { params: Promise<{ t
   const c = getNow(token);
   if (!c) notFound();
 
+  const newFunders = (grantsData.grants as { existingFunder?: boolean }[]).filter((g) => !g.existingFunder);
+  const nextDue = (grantsData.grants as { funder: string; deadlineDate: string | null }[])
+    .filter((g) => g.deadlineDate && g.deadlineDate >= TODAY && g.funder !== "NIHCM Foundation")
+    .sort((a, b) => a.deadlineDate!.localeCompare(b.deadlineDate!))[0];
+  const daysTo = (d: string | null) => Math.round((Date.parse(d!) - Date.parse(TODAY)) / 864e5);
   const verified = findings.filter((f) => f.status === "verified").length;
   const asks = findings.length - verified;
 
@@ -156,6 +166,38 @@ export default async function NowKalamazooPage({ params }: { params: Promise<{ t
         })}
       </section>
 
+      {/* Built this morning */}
+      <section className="border-t border-[#e4e5e9]">
+        <div className="mx-auto max-w-[1180px] px-6 py-24">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
+            <div>
+              <Eyebrow>Built this morning</Eyebrow>
+              <Two a="Nobody asked for these." b="Arthur found them anyway." />
+            </div>
+            <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
+              From public data alone, Arthur did a morning&apos;s work for the newsroom: the leads in posted agendas, the records
+              requests they call for, and the grants your own reporting already qualifies you for.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-2 gap-5 lg:grid-cols-4">
+            {[
+              [String(desk.leads.length), "Story leads in agendas and records posted for the next two weeks"],
+              [String(desk.foia.length), "Michigan FOIA requests drafted, ready for an editor to file"],
+              [String(newFunders.length), "Funders matched to your published work that have not funded you"],
+              [nextDue ? `${daysTo(nextDue.deadlineDate)} days` : "—", nextDue ? `Until ${nextDue.funder} closes` : "No dated deadline"],
+            ].map(([k, l]) => (
+              <div key={l} className="rounded-2xl border border-[#e4e5e9] p-6">
+                <div className="text-[clamp(1.8rem,3.4vw,2.4rem)] font-medium tracking-[-0.04em] text-[#1d1d1f]">{k}</div>
+                <div className="mt-1 text-[14px] leading-[1.55] text-[#4a4d55]">{l}</div>
+              </div>
+            ))}
+          </div>
+          <a href={`/p/nowkalamazoo/${c.token}/dashboard`} className="mt-10 inline-block rounded-full bg-[#1d1d1f] px-5 py-2.5 text-[14px] font-medium text-white">
+            Open this morning&apos;s desk
+          </a>
+        </div>
+      </section>
+
       {/* Proof already running */}
       <section className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
         <div className="mx-auto max-w-[1180px] px-6 py-24">
@@ -243,7 +285,7 @@ export default async function NowKalamazooPage({ params }: { params: Promise<{ t
             presets={[
               "What would Arthur do in the first 30 days?",
               "How would Arthur help us cover more meetings?",
-              "How would this help with funders and sponsors?",
+              "Which grants are we eligible for?",
               "Does Arthur write our stories?",
               "Who owns our sources and reader data?",
             ]}
