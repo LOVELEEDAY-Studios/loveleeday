@@ -1,0 +1,1339 @@
+{
+ "builtAt": "2026-09-30",
+ "directoryGenerated": "2026-07-10T19:17:59.013Z",
+ "meetings": [
+  {
+   "category": "County & Cities",
+   "body": "Kalamazoo County Government",
+   "name": "Kalamazoo County Board of Commissioners",
+   "schedule": "1st and 3rd Thu.",
+   "time": "4:30 (Committee of the Whole) 6:30 (Regular Board Meeting)",
+   "agendaUrl": "https://www.kalcounty.com/board/meetings/",
+   "dates": [
+    "2026-10-01"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "Kalamazoo County Government",
+   "name": "Kalamazoo County Planning Commission",
+   "schedule": "Varies: PC is composed of numerous Boards and Committees",
+   "time": null,
+   "agendaUrl": "https://www.kalcounty.com/planning/",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "County & Cities",
+   "body": "Kalamazoo County Government",
+   "name": "Kalamazoo County Parks and Recreation Commission",
+   "schedule": "1st Thursday",
+   "time": "3 p.m.",
+   "agendaUrl": "https://www.kalcounty.gov/698/Parks-and-Recreation-Commission",
+   "dates": [
+    "2026-10-01"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "Kalamazoo County Government",
+   "name": "Road Commission of Kalamazoo County",
+   "schedule": "Alternate Tuesdays",
+   "time": "3 p.m.",
+   "agendaUrl": "https://www.kalamazoocountyroads.com/meetings.php",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Kalamazoo",
+   "name": "Kalamazoo City Commission",
+   "schedule": "1st and 3rd Mondays",
+   "time": "7 p.m.",
+   "agendaUrl": "https://kalamazoomi.portal.civicclerk.com/?category_id=26",
+   "dates": [
+    "2026-10-05"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Kalamazoo",
+   "name": "Kalamazoo City Planning",
+   "schedule": "1st Thurs. or 2nd Wed.",
+   "time": "7 p.m.",
+   "agendaUrl": "https://kalamazoomi.portal.civicclerk.com/?category_id=29",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Kalamazoo",
+   "name": "Kalamazoo City Zoning Board of Appeals",
+   "schedule": "2nd Thursday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://kalamazoomi.portal.civicclerk.com/?category_id=30",
+   "dates": [
+    "2026-10-08"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Kalamazoo",
+   "name": "Kalamazoo City Utility Policy Committee",
+   "schedule": "2nd Thursday",
+   "time": "8:30 a.m.",
+   "agendaUrl": "https://www.kalamazoocity.org/Government/Boards-Commissions/Utility-Policy-Committee-UPC/Utility-Policy-Committee-UPC-Documents",
+   "dates": [
+    "2026-10-08"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Kalamazoo",
+   "name": "Kalamazoo City Parks and Recreation Board",
+   "schedule": "1st or 2nd Tuesday",
+   "time": "5:30 p.m",
+   "agendaUrl": "https://www.kalamazoocity.org/Government/Boards-Commissions/Minutes-Agendas?dlv_OC%20CL%20Public%20DocLib%20Relative=(pageindex=3)",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Kalamazoo",
+   "name": "Kalamazoo City Citizens Public Safety Review and Appeals Board",
+   "schedule": "2nd Tuesday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.kalamazoocity.org/Government/Boards-Commissions/Minutes-Agendas",
+   "dates": [
+    "2026-10-13"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Kalamazoo",
+   "name": "Kalamazoo City Downtown Development Authority & Downtown Economic Growth Authority",
+   "schedule": "3rd Monday",
+   "time": "3 p.m.",
+   "agendaUrl": "https://www.kalamazoocity.org/Government/Boards-Commissions/Downtown-Development-Authority-Downtown-Economic-Growth-Authority",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Portage",
+   "name": "Portage City Council",
+   "schedule": "2nd and 4th Tuesdays (may vary)",
+   "time": "6 p.m.",
+   "agendaUrl": "https://portagemi.gov/610/City-Council-Meeting-Agendas-Minutes",
+   "dates": [
+    "2026-10-13"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Portage",
+   "name": "Portage City Zoning Board of Appeals",
+   "schedule": "2nd Monday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://mi-portage.civicplus.com/AgendaCenter/Zoning-Board-of-Appeals-10",
+   "dates": [
+    "2026-10-12"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Portage",
+   "name": "Portage City Planning Commission",
+   "schedule": "1st and 3rd Thursdays",
+   "time": null,
+   "agendaUrl": "https://mi-portage.civicplus.com/AgendaCenter/Planning-Commission-13",
+   "dates": [
+    "2026-10-01"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Portage",
+   "name": "Portage City Environmental Board",
+   "schedule": "2nd Wednesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://mi-portage.civicplus.com/AgendaCenter/Environmental-Board-6",
+   "dates": [
+    "2026-10-14"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "City of Portage",
+   "name": "Portage City Park Board",
+   "schedule": "1st Wednesday",
+   "time": "6:30 p.m.",
+   "agendaUrl": "https://mi-portage.civicplus.com/AgendaCenter/Park-Board-8",
+   "dates": [
+    "2026-10-07"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "Parchment",
+   "name": "Parchment City Commission",
+   "schedule": "1st and 3rd Mondays",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.parchment.org/agendas-minutes/city-commission/",
+   "dates": [
+    "2026-10-05"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "Parchment",
+   "name": "Parchment Planning Commission",
+   "schedule": "4th Wednesday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.parchment.org/agendas-minutes/planning-commission",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "Parchment",
+   "name": "Parchment Zoning Board of Appeals",
+   "schedule": "3rd Thursday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.parchment.org/agendas-minutes/zoning-board-of-appeals",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "Galesburg",
+   "name": "Galesburg City Council",
+   "schedule": "1st or 2nd Monday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.galesburgcity.org/residents/city_council_minutes_and_agendas.php",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "County & Cities",
+   "body": "Galesburg",
+   "name": "Galesburg Planning Commission",
+   "schedule": "3rd monday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.galesburgcity.org/residents/planning_commission.php#outer-144sub-593",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "County & Cities",
+   "body": "Galesburg",
+   "name": "Galesburg Zoning Board of Appeals",
+   "schedule": null,
+   "time": null,
+   "agendaUrl": "https://www.galesburgcity.org/residents/zoning_board_of_appeals.php",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Townships",
+   "body": "Oshtemo Township",
+   "name": "Oshtemo Township Board",
+   "schedule": "2nd and 4th Tuesday",
+   "time": "5:30 p.m.",
+   "agendaUrl": "https://www.oshtemo.org/Boards-Committees/Agendas-and-Minutes/Township-Board-Agenda-Packets",
+   "dates": [
+    "2026-10-13"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Oshtemo Township",
+   "name": "Oshtemo Township Planning Commission",
+   "schedule": "2nd and 4th Thursday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.oshtemo.org/Boards-Committees/Agendas-and-Minutes/Planning-Commission-Agenda-Packets",
+   "dates": [
+    "2026-10-08"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Oshtemo Township",
+   "name": "Oshtemo Township Zoning Board of Appeals",
+   "schedule": "4th Tuesday",
+   "time": "3 p.m.",
+   "agendaUrl": "https://www.oshtemo.org/Boards-Committees/Agendas-and-Minutes/Zoning-Board-of-Appeals-Agenda-Packets",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Oshtemo Township",
+   "name": "Oshtemo Township Downtown Development Authority",
+   "schedule": "3rd Thu. every other month",
+   "time": "3 p.m.",
+   "agendaUrl": "https://www.oshtemo.org/Boards-Committees/Downtown-Development-Authority",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Townships",
+   "body": "Oshtemo Township",
+   "name": "Oshtemo Township South Drake Road Corridor Improvement Authority",
+   "schedule": "1st Wed. every 3 months",
+   "time": "12 p.m.",
+   "agendaUrl": "https://www.oshtemo.org/Boards-Committees/Agendas-and-Minutes",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Townships",
+   "body": "Comstock Township",
+   "name": "Comstock Township Board",
+   "schedule": "1st and 3rd Mondays",
+   "time": "6 p.m.",
+   "agendaUrl": "https://comstock-mi.granicus.com/ViewPublisher.php?view_id=1",
+   "dates": [
+    "2026-10-05"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Comstock Township",
+   "name": "Comstock Township Planning Commission",
+   "schedule": "2nd and 4th Thursdays",
+   "time": "7 p.m.",
+   "agendaUrl": "https://comstock-mi.granicus.com/ViewPublisher.php?view_id=1",
+   "dates": [
+    "2026-10-08"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Comstock Township",
+   "name": "Comstock Township Zoning Board of Appeals",
+   "schedule": "4th Tuesday",
+   "time": "4 p.m.",
+   "agendaUrl": "https://comstock-mi.granicus.com/ViewPublisher.php?view_id=1",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Comstock Township",
+   "name": "Comstock Township Park Board",
+   "schedule": "2nd Monday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://comstock-mi.granicus.com/ViewPublisher.php?view_id=1",
+   "dates": [
+    "2026-10-12"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Comstock Township",
+   "name": "Comstock Township Downtown Development Authority",
+   "schedule": "4th Wednesday",
+   "time": "5:30 p.m.",
+   "agendaUrl": "https://comstock-mi.granicus.com/ViewPublisher.php?view_id=1",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Texas Charter Township",
+   "name": "Texas Charter Township Board",
+   "schedule": "2nd and 4th Mondays",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.texastownship.org/AgendaCenter/Township-Board-3",
+   "dates": [
+    "2026-10-12"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Texas Charter Township",
+   "name": "Texas Charter Township Planning Commission",
+   "schedule": "4th Tuesday",
+   "time": "6 p.m",
+   "agendaUrl": "https://www.texastownship.org/AgendaCenter/Planning-Commission-4",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Texas Charter Township",
+   "name": "Texas Charter Township Zoning Board of Appeals",
+   "schedule": "4th Wednesday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.texastownship.org/AgendaCenter/Zoning-Board-of-Appeals-5",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Texas Charter Township",
+   "name": "Texas Charter Township DDA",
+   "schedule": "4th Thursday",
+   "time": "9 a.m.",
+   "agendaUrl": "https://www.texastownship.org/AgendaCenter/Downtown-Development-Authority-DDA-10",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Alamo Township",
+   "name": "Alamo Township Board of Trustees",
+   "schedule": "2nd Monday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://alamotownshipmi.gov/minutes/",
+   "dates": [
+    "2026-10-12"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Alamo Township",
+   "name": "Alamo Township Planning Commission",
+   "schedule": "1st Tuesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://alamotownshipmi.gov/minutes/",
+   "dates": [
+    "2026-10-06"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Cooper Township",
+   "name": "Cooper Township Board",
+   "schedule": "2nd Monday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.coopertwp.org/minutes-and-agendas/township-board-minutes/",
+   "dates": [
+    "2026-10-12"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Cooper Township",
+   "name": "Cooper Township Planning Commission",
+   "schedule": "3rd Wednesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.coopertwp.org/minutes-and-agendas/planning-commission-minutes/",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Cooper Township",
+   "name": "Cooper Township Zoning Board of Appeal",
+   "schedule": "As needed",
+   "time": null,
+   "agendaUrl": "https://www.coopertwp.org/minutes-and-agendas/zoning-board-of-appeals-minutes/",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Townships",
+   "body": "Charleston Township",
+   "name": "Charleston Township Board",
+   "schedule": "4th Tuesday",
+   "time": "4 p.m.",
+   "agendaUrl": "https://www.charlestontownship.org/boards___commissions/minutes___agendas.php#outer-8",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Charleston Township",
+   "name": "Charleston Township Planning Commission",
+   "schedule": "3rd Tuesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.charlestontownship.org/boards___commissions/minutes___agendas.php#outer-8",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Charleston Township",
+   "name": "Charleston Township Zoning Board of Appeals",
+   "schedule": "As needed",
+   "time": null,
+   "agendaUrl": "https://www.charlestontownship.org/boards___commissions/minutes___agendas.php#outer-8",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Townships",
+   "body": "Climax Township",
+   "name": "Climax Township Board",
+   "schedule": "2nd Tuesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.climaxtownship.org/regular-board-meetings",
+   "dates": [
+    "2026-10-13"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Climax Township",
+   "name": "Climax Township Planning Commission",
+   "schedule": "4 Mondays a year",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.climaxtownship.org/planning-commission",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Townships",
+   "body": "Schoolcraft Township",
+   "name": "Schoolcraft Township Board",
+   "schedule": "2nd tue, 6p",
+   "time": "6 p.m.",
+   "agendaUrl": "https://schoolcrafttownshipmi.gov/meeting-minutes/",
+   "dates": [
+    "2026-10-13"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Schoolcraft Township",
+   "name": "Schoolcraft Township Planning Commission",
+   "schedule": "1st mon, 9p",
+   "time": "9 p.m.",
+   "agendaUrl": "https://schoolcrafttownshipmi.gov/meeting-minutes/",
+   "dates": [
+    "2026-10-05"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Schoolcraft Township",
+   "name": "Schoolcraft Township Zoning Board Of Appeals",
+   "schedule": "As needed",
+   "time": null,
+   "agendaUrl": "https://schoolcrafttownshipmi.gov/meeting-minutes/",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Townships",
+   "body": "Pavilion Township",
+   "name": "Pavilion Township Board",
+   "schedule": "2nd Monday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.paviliontwpmi.gov/board-meeting-dates",
+   "dates": [
+    "2026-10-12"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Pavilion Township",
+   "name": "Pavilion Township Planning Commission",
+   "schedule": "3rd thur, 7p",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.paviliontwpmi.gov/board-meeting-dates",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Pavilion Township",
+   "name": "Pavilion Township Zoning Board Of Appeals",
+   "schedule": "2nd Tuesday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.paviliontwpmi.gov/board-meeting-dates",
+   "dates": [
+    "2026-10-13"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Ross Township",
+   "name": "Ross Township Board",
+   "schedule": "3rd Tuesday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://rosstownshipmi.gov/meeting-agendas-minutes/#",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Ross Township",
+   "name": "Ross Township Planning Commission",
+   "schedule": "1st Wednesday",
+   "time": "5:30 p.m.",
+   "agendaUrl": "https://rosstownshipmi.gov/meeting-agendas-minutes/#",
+   "dates": [
+    "2026-10-07"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Ross Township",
+   "name": "Ross Township Zoning Board of Appeals",
+   "schedule": "4th Monday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://rosstownshipmi.gov/meeting-agendas-minutes/#",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Richland Township",
+   "name": "Richland Township Board of Trustees",
+   "schedule": "3rd Tuesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.richlandtwp.net/boards___officials/agendas_minutes___reports/board.php",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Richland Township",
+   "name": "Richland Township Planning Commission",
+   "schedule": "4th Wednesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.richlandtwp.net/boards___officials/agendas_minutes___reports/planning_commission.php",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Richland Township",
+   "name": "Richland Township Zoning Board of Appeals",
+   "schedule": "3rd Tuesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.richlandtwp.net/boards___officials/agendas_minutes___reports/zoning_board_of_appeals.php",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Kalamazoo Township",
+   "name": "Kalamazoo Township Board of Trustees",
+   "schedule": "2nd and 4th Monday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.ktwp.org/board-of-trustees-meetings/",
+   "dates": [
+    "2026-10-12"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Kalamazoo Township",
+   "name": "Kalamazoo Township Planning Commission",
+   "schedule": "1st Thursday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.ktwp.org/planning-commission-meetings/",
+   "dates": [
+    "2026-10-01"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Kalamazoo Township",
+   "name": "Kalamazoo Township Zoning Board of Appeals",
+   "schedule": "3rd Wednesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.ktwp.org/zoning-board-of-appeals-meetings/",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Brady Township",
+   "name": "Brady Township Board of Trustees",
+   "schedule": "1st Wednesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://bradytwpmi.documents-on-demand.com/?l=e49c41a3f5294175a5a87c1e456e0428",
+   "dates": [
+    "2026-10-07"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Brady Township",
+   "name": "Brady Township Planning Commission",
+   "schedule": "4 times a year, 3rd Thursdsay",
+   "time": "7 p.m.",
+   "agendaUrl": "https://bradytwpmi.documents-on-demand.com/?l=bf2f86e221b342e0a93f00d182bbf9ac",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Brady Township",
+   "name": "Brady Township Zoning Board of Appeals",
+   "schedule": "As needed",
+   "time": null,
+   "agendaUrl": "https://bradytwpmi.documents-on-demand.com/?l=06d2a28702b642bcbb24d21861d26306&r=593F1B0EF1808F8611F039A85F1C894C",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Townships",
+   "body": "Prairie Ronde Township",
+   "name": "Prairie Ronde Township Township Board",
+   "schedule": "2nd Tuesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://prairierondetwp.net/meeting-agendas-minutes-draft/",
+   "dates": [
+    "2026-10-13"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Prairie Ronde Township",
+   "name": "Prairie Ronde Planning Commission",
+   "schedule": "4 times a year, 3rd Tuesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://prairierondetwp.net/meeting-agendas-minutes-draft/",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Prairie Ronde Township",
+   "name": "Prairie Ronde Zoning Board of Appeals",
+   "schedule": null,
+   "time": null,
+   "agendaUrl": "https://prairierondetwp.net/township-officers/",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Townships",
+   "body": "Wakeshma Township",
+   "name": "Wakeshma Township Board",
+   "schedule": "1st Monday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.wakeshmatownship.com/government/township_board.php#outer-122",
+   "dates": [
+    "2026-10-05"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Townships",
+   "body": "Wakeshma Township",
+   "name": "Wakeshma Township Planning Commission",
+   "schedule": "4 times a year, on Monday",
+   "time": "7 p.m.",
+   "agendaUrl": "http://www.wakeshmatownship.com/index-6.html",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Villages",
+   "body": "Vicksburg Village",
+   "name": "Vicksburg Village Council",
+   "schedule": "1st and 3rd Monday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://vicksburgmi.org/village-news/",
+   "dates": [
+    "2026-10-05"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Villages",
+   "body": "Vicksburg Village",
+   "name": "Vicksburg Village Planning and Zoning",
+   "schedule": "2nd Monday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://vicksburgmi.org/village-news/",
+   "dates": [
+    "2026-10-12"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Villages",
+   "body": "Richland Village",
+   "name": "Richland Village Council",
+   "schedule": "2nd Monday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://villageofrichland.org/governing_bodies/village_council.php",
+   "dates": [
+    "2026-10-12"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Villages",
+   "body": "Richland Village",
+   "name": "Richland Village Planning Commission",
+   "schedule": "4th Thursday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://villageofrichland.org/governing_bodies/planning_commission.php",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Villages",
+   "body": "Richland Village",
+   "name": "Richland Village Zoning Board of Appeals",
+   "schedule": "As needed",
+   "time": null,
+   "agendaUrl": "https://villageofrichland.org/governing_bodies/zoning_board_of_appeals.php",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Villages",
+   "body": "Climax Village",
+   "name": "Climax Village Council",
+   "schedule": "1st and 3rd Monday",
+   "time": "6:30 p.m.",
+   "agendaUrl": "https://www.villageofclimax.org/",
+   "dates": [
+    "2026-10-05"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "School Districts",
+   "body": "Kalamazoo Public Schools Board of Education",
+   "name": "Kalamazoo Public Schools Board of Education",
+   "schedule": "1st and 3rd Thursday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.kalamazoopublicschools.com/board/meeting-materials-archive",
+   "dates": [
+    "2026-10-01"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "School Districts",
+   "body": "Portage Public Schools Board of Education",
+   "name": "Portage Public Schools Board of Education",
+   "schedule": "4th Monday",
+   "time": "6:30 p.m.",
+   "agendaUrl": "https://www.portageps.org/page/board-meeting-dates-agendas/",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "School Districts",
+   "body": "Parchment School District Board of Education",
+   "name": "Parchment School District Board of Education",
+   "schedule": "4th Monday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.parchmentschools.org/documents/district-information/board-of-education/board-minutes/101518",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "School Districts",
+   "body": "Galesburg-Augusta Community Schools Board of Education",
+   "name": "Galesburg-Augusta Community Schools Board of Education",
+   "schedule": "3rd Monday",
+   "time": "6:30 p.m.",
+   "agendaUrl": "https://www.g-aschools.org/page/board-of-education",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "School Districts",
+   "body": "Vicksburg Community Schools Board of Education",
+   "name": "Vicksburg Community Schools Board of Education",
+   "schedule": "2nd Monday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://meetings.boardbook.org/Public/Organization/1649",
+   "dates": [
+    "2026-10-12"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "School Districts",
+   "body": "Climax-Scotts Community Schools Board of Education",
+   "name": "Climax-Scotts Community Schools Board of Education",
+   "schedule": "3rd Monday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.csschools.net/ourdistrict/boardofeducation/",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "School Districts",
+   "body": "Schoolcraft Community Schools Board of Education",
+   "name": "Schoolcraft Community Schools Board of Education",
+   "schedule": "1st Monday",
+   "time": "5:30 p.m.",
+   "agendaUrl": "https://meetings.boardbook.org/Public/Organization/2500",
+   "dates": [
+    "2026-10-05"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Arcadia",
+   "name": "Arcadia",
+   "schedule": "3rd Monday",
+   "time": null,
+   "agendaUrl": "https://www.arcadiakzoo.com/more/document-archive/",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Eastside",
+   "name": "Eastside",
+   "schedule": null,
+   "time": null,
+   "agendaUrl": "https://www.facebook.com/KalamazooENA",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Edison",
+   "name": "Edison",
+   "schedule": "Annually, next meeting 9/27/2026",
+   "time": "12:00 p.m.",
+   "agendaUrl": "https://www.edisonneighborhood.com/",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Milwood",
+   "name": "Milwood",
+   "schedule": "4th Tuesday",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.milwood-mi.org/resources",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Northside",
+   "name": "Northside",
+   "schedule": "3rd Tuesday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.nacdkzoo.com/community-board-meetings",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Oakland-Winchell",
+   "name": "Oakland-Winchell",
+   "schedule": "3rd Wednesday, does not meet in June, July, or August",
+   "time": "7 p.m.",
+   "agendaUrl": "https://www.winchellneighborhood.org/odwna-meeting-minutes.html",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Oakwood",
+   "name": "Oakwood",
+   "schedule": null,
+   "time": null,
+   "agendaUrl": "https://oakwoodneighborhood.org/",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Parkview Hills",
+   "name": "Parkview Hills",
+   "schedule": "2nd Tuesday",
+   "time": null,
+   "agendaUrl": "https://drive.google.com/drive/folders/1zZ4RArPODjIiTiRFvQxzSriP7viJQPDK",
+   "dates": [
+    "2026-10-13"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Stuart",
+   "name": "Stuart",
+   "schedule": "2nd Tuesday",
+   "time": "6 p.m.",
+   "agendaUrl": "https://www.stuartneighborhood.org/",
+   "dates": [
+    "2026-10-13"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Vine",
+   "name": "Vine",
+   "schedule": "3rd Tuesday",
+   "time": "5:30 p.m.",
+   "agendaUrl": "http://vineneighborhood.org/",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "West Main Hill",
+   "name": "West Main Hill",
+   "schedule": "3rd Tuesday",
+   "time": "7:30 p.m.",
+   "agendaUrl": "https://www.facebook.com/westmainhillneighbors/",
+   "dates": [],
+   "parsed": true
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Westnedge Hill",
+   "name": "Westnedge Hill",
+   "schedule": "1st Thursday",
+   "time": "5:45 p.m.",
+   "agendaUrl": "https://westnedgehill.org/meeting-minutes",
+   "dates": [
+    "2026-10-01"
+   ],
+   "parsed": true
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Westwood",
+   "name": "Westwood",
+   "schedule": "3rd Wednesday, every other month starting January",
+   "time": "7 p.m.",
+   "agendaUrl": "https://westwoodneighborhoodkalamazoo.com/meetings",
+   "dates": null,
+   "parsed": false
+  },
+  {
+   "category": "Neighborhood Associations",
+   "body": "Douglas",
+   "name": "Douglas",
+   "schedule": null,
+   "time": null,
+   "agendaUrl": "https://www.douglasneighborhood.org/",
+   "dates": null,
+   "parsed": false
+  }
+ ],
+ "events": {
+  "weekStart": "2026-10-01",
+  "weekEnd": "2026-10-07",
+  "total": 316,
+  "duplicates": 3,
+  "noDescription": 0,
+  "noVenue": 7,
+  "byDay": [
+   [
+    "2026-10-01",
+    54
+   ],
+   [
+    "2026-10-02",
+    36
+   ],
+   [
+    "2026-10-03",
+    72
+   ],
+   [
+    "2026-10-04",
+    26
+   ],
+   [
+    "2026-10-05",
+    36
+   ],
+   [
+    "2026-10-06",
+    57
+   ],
+   [
+    "2026-10-07",
+    35
+   ]
+  ],
+  "topCategories": [
+   [
+    "Social Activities",
+    77
+   ],
+   [
+    "Music",
+    50
+   ],
+   [
+    "Community",
+    46
+   ],
+   [
+    "Classes",
+    40
+   ],
+   [
+    "Food & Drink",
+    39
+   ],
+   [
+    "Creative",
+    36
+   ],
+   [
+    "Outdoors",
+    35
+   ],
+   [
+    "Hobby",
+    30
+   ]
+  ],
+  "sample": [
+   {
+    "title": "Kalamazoo Farmers Market",
+    "start": "2026-10-01 08:00:00",
+    "url": "https://nowkalamazoo.org/event/kalamazoo-farmers-market-4/2026-10-01/",
+    "venue": "Kalamazoo Farmers Market",
+    "cats": [
+     "Community",
+     "Environment",
+     "Farmers Markets",
+     "Food & Drink",
+     "Health & Wellness",
+     "Outdoors",
+     "Plants",
+     "Shopping",
+     "Social Activities"
+    ],
+    "desc": 514
+   },
+   {
+    "title": "Muffins and the Market",
+    "start": "2026-10-01 09:00:00",
+    "url": "https://nowkalamazoo.org/event/muffins-and-the-market-4/2026-10-01/",
+    "venue": "Portage District Library",
+    "cats": [
+     "Classes",
+     "Discussion",
+     "Education"
+    ],
+    "desc": 871
+   },
+   {
+    "title": "Yoga at RACC",
+    "start": "2026-10-01 09:00:00",
+    "url": "https://nowkalamazoo.org/event/yoga-at-richland-area-community-center/2026-10-01/",
+    "venue": "Richland Area Community Center",
+    "cats": [
+     "Yoga"
+    ],
+    "desc": 921
+   },
+   {
+    "title": "Budgeting for Success: Workshop at Alma Powell Library",
+    "start": "2026-10-01 09:00:00",
+    "url": "https://nowkalamazoo.org/event/budgeting-for-success-workshop-at-alma-powell-library-2/",
+    "venue": "Kalamazoo Public Library, Alma Powell",
+    "cats": [
+     "Education",
+     "Finance"
+    ],
+    "desc": 196
+   },
+   {
+    "title": "Kalamazoo In Bloom End of Season Plant Pull",
+    "start": "2026-10-01 09:00:00",
+    "url": "https://nowkalamazoo.org/event/kalamazoo-in-bloom-end-of-season-plant-pull/2026-10-01/",
+    "venue": "Various",
+    "cats": [
+     "Community",
+     "Nature",
+     "Outdoors",
+     "Plants",
+     "Volunteer"
+    ],
+    "desc": 1427
+   },
+   {
+    "title": "Gull Landing Goodwill Boutique Grand Opening",
+    "start": "2026-10-01 09:00:00",
+    "url": "https://nowkalamazoo.org/event/gull-landing-goodwill-boutique-grand-opening/",
+    "venue": "Gull Landing",
+    "cats": [
+     "Business",
+     "Recycling",
+     "Ribbon Cutting / Groundbreaking",
+     "Shopping"
+    ],
+    "desc": 402
+   },
+   {
+    "title": "Stitch and Chat at Galesburg Library",
+    "start": "2026-10-01 10:00:00",
+    "url": "https://nowkalamazoo.org/event/stitch-and-chat-at-galesburg-library-3/2026-10-01/",
+    "venue": "Galesburg Charleston Memorial District Library",
+    "cats": [
+     "Crafting",
+     "Creative",
+     "Hobby",
+     "Social Activities"
+    ],
+    "desc": 338
+   },
+   {
+    "title": "Tai Chi Club at Vicksburg District Library",
+    "start": "2026-10-01 10:30:00",
+    "url": "https://nowkalamazoo.org/event/tai-chi-club-at-vicksburg-district-library-2/2026-10-01/",
+    "venue": "Vicksburg District Library",
+    "cats": [
+     "Health & Wellness"
+    ],
+    "desc": 125
+   }
+  ]
+ },
+ "posts": [
+  {
+   "date": "2026-09-28T05:45:00",
+   "title": "Resisting & Obstructing: Why and how we investigated R&O charges",
+   "url": "https://nowkalamazoo.org/2026/09/resisting-obstructing-why-and-how-we-investigated-ro-charges/"
+  },
+  {
+   "date": "2026-09-27T21:00:00",
+   "title": "Resisting & Obstructing: The ‘gateway felony’",
+   "url": "https://nowkalamazoo.org/2026/09/resisting-obstructing-the-gateway-felony/"
+  },
+  {
+   "date": "2026-09-27T20:59:00",
+   "title": "Resisting & Obstructing: How community concerns turn into a five-part investigative series",
+   "url": "https://nowkalamazoo.org/2026/09/resisting-obstructing-how-community-concerns-turn-into-a-five-part-investigative-series/"
+  },
+  {
+   "date": "2026-09-27T20:58:00",
+   "title": "Resisting & Obstructing: Data shows race is a factor in these felony charges",
+   "url": "https://nowkalamazoo.org/2026/09/resisting-obstructing-data-shows-race-is-a-factor-in-these-felony-charges/"
+  },
+  {
+   "date": "2026-09-27T20:57:00",
+   "title": "Resisting & Obstructing: The felony charge that can only come from the police encounter, not the 9-1-1 call",
+   "url": "https://nowkalamazoo.org/2026/09/resisting-obstructing-the-felony-charge-that-can-only-come-from-the-police-encounter-not-the-9-1-1-call/"
+  },
+  {
+   "date": "2026-09-27T20:56:00",
+   "title": "Resisting & Obstructing: The felony that’s in the eye of the beholder with a badge",
+   "url": "https://nowkalamazoo.org/2026/09/resisting-obstructing-the-felony-thats-in-the-eye-of-the-beholder-with-a-badge/"
+  },
+  {
+   "date": "2026-09-25T05:45:00",
+   "title": "League of Women Voters Kalamazoo releases 2026 voting guide",
+   "url": "https://nowkalamazoo.org/2026/09/league-of-women-voters-kalamazoo-releases-2026-voting-guide/"
+  },
+  {
+   "date": "2026-09-25T05:45:00",
+   "title": "‘This will be one of the gathering spaces for people to come together’",
+   "url": "https://nowkalamazoo.org/2026/09/this-will-be-one-of-the-gathering-spaces-for-people-to-come-together/"
+  },
+  {
+   "date": "2026-09-24T15:00:00",
+   "title": "Your guide to the 2026 election in Kalamazoo County",
+   "url": "https://nowkalamazoo.org/2026/09/your-guide-to-the-2026-election-in-kalamazoo-county/"
+  },
+  {
+   "date": "2026-09-23T10:18:08",
+   "title": "Register to vote in Kalamazoo County",
+   "url": "https://nowkalamazoo.org/2026/09/register-to-vote-in-kalamazoo-county/"
+  },
+  {
+   "date": "2026-09-23T10:17:00",
+   "title": "Make a pledge to vote",
+   "url": "https://nowkalamazoo.org/2026/09/make-a-pledge-to-vote/"
+  },
+  {
+   "date": "2026-09-23T10:13:11",
+   "title": "Check your voter registration status",
+   "url": "https://nowkalamazoo.org/2026/09/check-your-voter-registration-status/"
+  }
+ ],
+ "issues": [
+  {
+   "date": "2026-09-30T05:45:00",
+   "title": "9/30/26: Race and residence in resisting and obstructing",
+   "url": "https://nowkalamazoo.org/newsletters/daily/9-30-26-race-and-residence-in-resisting-and-obstructing/"
+  },
+  {
+   "date": "2026-09-29T05:45:00",
+   "title": "9/29/26: Why and how we investigated",
+   "url": "https://nowkalamazoo.org/newsletters/daily/9-29-26-why-and-how-we-investigated/"
+  },
+  {
+   "date": "2026-09-28T05:45:00",
+   "title": "9/28/26: Resisting & Obstructing in the spotlight",
+   "url": "https://nowkalamazoo.org/newsletters/daily/9-28-26-resisting-obstructing-in-the-spotlight/"
+  },
+  {
+   "date": "2026-09-25T05:45:00",
+   "title": "9/25/26: A new start for The Clover Room",
+   "url": "https://nowkalamazoo.org/newsletters/daily/9-25-26-a-new-start-for-the-clover-room/"
+  },
+  {
+   "date": "2026-09-24T05:45:00",
+   "title": "9/24/26: Here come the ballots!",
+   "url": "https://nowkalamazoo.org/newsletters/daily/9-24-26-here-come-the-ballots/"
+  },
+  {
+   "date": "2026-09-23T05:45:00",
+   "title": "9/23/26: A new Flock policy",
+   "url": "https://nowkalamazoo.org/newsletters/daily/9-23-26-a-new-flock-policy/"
+  },
+  {
+   "date": "2026-09-22T05:45:00",
+   "title": "9/22/26: Another data center pause",
+   "url": "https://nowkalamazoo.org/newsletters/daily/9-22-26-another-data-center-pause/"
+  },
+  {
+   "date": "2026-09-21T05:45:00",
+   "title": "9/21/26: Do we still have to boil water?",
+   "url": "https://nowkalamazoo.org/newsletters/daily/9-21-26-do-we-still-have-to-boil-water/"
+  },
+  {
+   "date": "2026-09-18T05:45:00",
+   "title": "9/18/26: ArtPrize, meet Kalamazoo",
+   "url": "https://nowkalamazoo.org/newsletters/daily/9-18-26-artprize-meet-kalamazoo/"
+  },
+  {
+   "date": "2026-09-17T05:45:00",
+   "title": "9/17/26: Gardening for tranquility",
+   "url": "https://nowkalamazoo.org/newsletters/daily/9-17-26-gardening-for-tranquility/"
+  }
+ ]
+}
