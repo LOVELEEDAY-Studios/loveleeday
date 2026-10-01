@@ -24,5 +24,7 @@ export default async function DashboardPage({ params }: { params: Promise<{ toke
   if (!c) notFound();
   const deskFile = path.join(process.cwd(), "src/content/hub/nowkalamazoo-desk.json");
   const desk = fs.existsSync(deskFile) ? JSON.parse(fs.readFileSync(deskFile, "utf8")) : null;
-  return <NowDashboard token={c.token} preparedFor={c.preparedFor} data={data as never} desk={desk} />;
+  const grantsFile = path.join(process.cwd(), "src/content/hub/nowkalamazoo-grants.json");
+  const grants = fs.existsSync(grantsFile) ? JSON.parse(fs.readFileSync(grantsFile, "utf8")) : null;
+  return <NowDashboard token={c.token} preparedFor={c.preparedFor} data={data as never} desk={desk} grants={grants} />;
 }
