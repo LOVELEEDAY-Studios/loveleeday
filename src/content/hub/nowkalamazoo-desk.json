@@ -1,0 +1,1502 @@
+{
+ "readAt": "2026-09-30",
+ "notes": [
+  "Directory dates for the County BOC (Oct 1) and KPS (Oct 1) are wrong; correct dates are Oct 6 and Oct 8. Portage City Council is Oct 6 not Oct 13.",
+  "Coverage counts: NowKalamazoo WP search API, posts and newsletterglue since 2026-07-01, then verified locally by requiring the jurisdiction phrase (e.g. \"Oshtemo Township\") plus a body-type keyword in the full text. WP search alone is loose and overcounts; counts are mentions, not stories. Jurisdiction-level count included separately.",
+  "USAspending award amounts are total obligations to date, not FY2026 spending."
+ ],
+ "agendas": [
+  {
+   "body": "Kalamazoo City Planning Commission",
+   "date": "2026-10-01",
+   "time": "7:00 PM",
+   "agendaUrl": "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5455,plainText=false)",
+   "posted": true,
+   "items": [
+    {
+     "title": "Public hearing P.C. #2026.07: Special Use Permit for a rooming/boarding house (5 bedrooms, up to 5 adults, 1907 home in the Vine Historic District) at 613 Pearl Street",
+     "amount": "Application fee not stated for this item",
+     "party": "Joshua Staple (contract owner)",
+     "url": "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5455,plainText=false)"
+    },
+    {
+     "title": "Public hearing P.C. #2026.08: Special Use Permit for a transitional residence (college student recovery housing) in the 8,772 sq ft former fraternity house at 1500 Fraternity Village Drive",
+     "amount": "Application fee $375 (form also shows $390)",
+     "party": "Frat 15 LLC; staff report names Unified Recovery Clinics as partner",
+     "url": "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5455,plainText=false)"
+    },
+    {
+     "title": "Reports: City Planner report, Strategic Vision update, Site Plan update",
+     "amount": null,
+     "party": null,
+     "url": "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5450,plainText=false)"
+    },
+    {
+     "title": "Draft Sept 3 minutes in the packet record the Planning Commission hearing on putting the data center / BESS / crypto-mining moratorium into the zoning ordinance (P.C. #2026.06), and an ALPA letter asking for conservation zoning districts",
+     "amount": null,
+     "party": "Asylum Lake Preservation Association",
+     "url": "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5455,plainText=false)"
+    }
+   ]
+  },
+  {
+   "body": "Kalamazoo City Commission (Committee of the Whole and Business Meeting)",
+   "date": "2026-10-05",
+   "time": "Committee of the Whole 5:00 PM (portal time); Business Meeting 7:00 PM",
+   "agendaUrl": "https://kalamazoomi.portal.civicclerk.com/?category_id=26",
+   "posted": false,
+   "note": "CivicClerk lists event 2539 (agendaId 2228) but agendaIsPublish=false and publishedFiles is empty as of Sep 30 2026. Item below is NOT from the agenda; it is from NowKalamazoo's own 9/22/26 newsletter.",
+   "items": [
+    {
+     "title": "Public hearing and final vote on writing the data center / BESS / bitcoin-mining moratorium into the city zoning ordinance (per NowKalamazoo 9/22/26; initial one-year moratorium approved Aug 17)",
+     "amount": null,
+     "party": null,
+     "url": "https://nowkalamazoo.org/newsletters/daily/9-22-26-another-data-center-pause/"
+    }
+   ]
+  },
+  {
+   "body": "Kalamazoo County Board of Commissioners (Committee of the Whole 4:00 PM; Regular Board 6:30 PM)",
+   "date": "2026-10-06",
+   "time": "4:00 PM Committee of the Whole; 6:30 PM Regular; 6:45 PM budget hearing",
+   "agendaUrl": "https://kalamazoocomi.civicclerk.com/",
+   "posted": false,
+   "note": "Directory lists Oct 1 (1st and 3rd Thu); the county notice says 1st and 3rd TUESDAY, so the meeting is Oct 6. Only notices are published (files 12068, 13145); no agenda yet.",
+   "items": [
+    {
+     "title": "Public hearing on proposed 2027 county budget and increasing property taxes: millage 7.8354 proposed, a 4.74% increase",
+     "amount": "Revenue increase $4,493,001",
+     "party": null,
+     "url": "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13145,plainText=false)"
+    }
+   ]
+  },
+  {
+   "body": "Kalamazoo County Board of Commissioners (Special Meeting, already held)",
+   "date": "2026-09-28",
+   "time": "11:00 AM",
+   "agendaUrl": "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13202,plainText=false)",
+   "posted": true,
+   "note": "Before the Oct 1-14 window but the newest posted BOC packet.",
+   "items": [
+    {
+     "title": "Continued discussion: direction to HR Director on 2027 health plan design, specifically anti-obesity GLP-1 coverage; committee recommends Option 3 ($200/month copay while keeping rebate eligibility); packet says GLP-1 anti-obesity spend was $1,264,000 in 2024 and $1,539,100 in 2025; BCBSM disqualifies drug classes with copay above $150 per fill from rebates",
+     "amount": "$1,539,100 (2025 GLP-1 spend); 2027 premium target 5-6% increase",
+     "party": "Blue Cross Blue Shield of Michigan; Sharon Brown, HR Director",
+     "url": "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13205,plainText=false)"
+    }
+   ]
+  },
+  {
+   "body": "Kalamazoo County Public Housing Commission",
+   "date": "2026-10-01",
+   "time": "4:30 PM",
+   "agendaUrl": "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13215,plainText=false)",
+   "posted": true,
+   "items": [
+    {
+     "title": "Property update: Bethany House, Veterans Initiative (Keystone House), Hays Park, Sugarloaf (case management and wraparound services; end-of-year report)",
+     "amount": null,
+     "party": "HOPE thru Navigation",
+     "url": "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13215,plainText=false)"
+    },
+    {
+     "title": "Old business: liability insurance for Bethany House and Keystone; future of Hays Park homes (subcommittee); add a Finance Subcommittee",
+     "amount": null,
+     "party": null,
+     "url": "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13215,plainText=false)"
+    },
+    {
+     "title": "New business: proposal from HOPE thru Navigation; extension request for school program (ISK, Tammy Natho); housing assistance for Sugarloaf residents (Mary Balkema)",
+     "amount": null,
+     "party": "HOPE thru Navigation; Integrated Services of Kalamazoo",
+     "url": "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13215,plainText=false)"
+    }
+   ]
+  },
+  {
+   "body": "Kalamazoo County Parks Commission",
+   "date": "2026-10-01",
+   "time": "3:00 PM (portal time)",
+   "agendaUrl": "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13221,plainText=false)",
+   "posted": true,
+   "note": "Agenda file 13221 is published but the PDF would not parse (pdftotext returned no text). Items not extracted.",
+   "items": []
+  },
+  {
+   "body": "Road Commission of Kalamazoo County",
+   "date": "2026-10-06",
+   "time": "3:00 PM",
+   "agendaUrl": "https://www.kalamazoocountyroads.com/userfiles/kcrc/file/Meetings/2026%20Combined%20Agendas.pdf",
+   "posted": false,
+   "note": "Combined 2026 agenda PDF ends at Sept 22; Oct 6 has only a CivicClerk notice (file 13003).",
+   "items": []
+  },
+  {
+   "body": "Road Commission of Kalamazoo County (Sept 22, newest posted agenda)",
+   "date": "2026-09-22",
+   "time": "3:00 PM",
+   "agendaUrl": "https://www.kalamazoocountyroads.com/userfiles/kcrc/file/Meetings/2026%20Combined%20Agendas.pdf",
+   "posted": true,
+   "items": [
+    {
+     "title": "Approval of payroll and vendor accounts",
+     "amount": "Payroll $201,485.04; vendor accounts $2,391,398.38",
+     "party": null,
+     "url": null
+    },
+    {
+     "title": "Request approval of five 800 MHz mobile radio purchase",
+     "amount": null,
+     "party": null,
+     "url": null
+    },
+    {
+     "title": "Request to rescind the previous and approve the revised Local Road Capital Improvement Plan for Brady Township",
+     "amount": null,
+     "party": "Brady Township",
+     "url": null
+    }
+   ]
+  },
+  {
+   "body": "Portage City Council",
+   "date": "2026-10-06",
+   "time": "6:00 PM (CivicClerk); directory said Oct 13",
+   "agendaUrl": "https://portagemi.portal.civicclerk.com/",
+   "posted": false,
+   "note": "CivicClerk event 2236 agendaIsPublish=false. City says agendas publish the Thursday before (Oct 1).",
+   "items": []
+  },
+  {
+   "body": "Portage City Planning Commission",
+   "date": "2026-10-01",
+   "time": "7:00 PM",
+   "agendaUrl": "https://mi-portage.civicplus.com/AgendaCenter/Planning-Commission-13",
+   "posted": false,
+   "note": "Newest posted agenda in AgendaCenter is Sept 3, 2026.",
+   "items": []
+  },
+  {
+   "body": "Kalamazoo Public Schools Board of Education",
+   "date": "2026-10-08",
+   "time": "7:00 PM",
+   "agendaUrl": "https://www.kalamazoopublicschools.com/board/2024-25-meeting-materials",
+   "posted": false,
+   "note": "Directory said Oct 1; KPS bylaws page lists regular meetings Oct 8 and Oct 22. Newest posted packet is Sept 10 (consent items: purchase recommendations 2027-13 through 2027-17, Consumers Energy easement for Northglade Montessori Magnet School, 403(b) restatement).",
+   "items": []
+  },
+  {
+   "body": "Kalamazoo Township Board of Trustees",
+   "date": "2026-10-13",
+   "time": "Special meeting Oct 6 6:00 PM; work session Oct 13 6:00 PM; regular Oct 13 7:00 PM",
+   "agendaUrl": "https://www.ktwp.org/board-of-trustees-meetings/",
+   "posted": false,
+   "note": "Meeting pages exist with no agenda attached. Township site banner: offices closed Sept 29 2:00 PM to Oct 1 8:30 AM for a software conversion, and a Residential Solid Waste Collection Request for Proposals is posted under News.",
+   "items": []
+  },
+  {
+   "body": "Comstock Township Planning Commission",
+   "date": "2026-10-08",
+   "time": "6:00 PM",
+   "agendaUrl": "https://comstock-mi.granicus.com/AgendaViewer.php?view_id=1&event_id=563",
+   "posted": true,
+   "items": [
+    {
+     "title": "Public hearing and discussion: Comstock Center text amendment to allow foster care support services (logistics management and emergency shelter), proposed with DHHS",
+     "amount": null,
+     "party": "Michigan DHHS (collaborator per applicant)",
+     "url": "https://comstock-mi.granicus.com/AgendaViewer.php?view_id=1&event_id=563"
+    },
+    {
+     "title": "Discussion: Data Center zoning ordinance provisions (staff note: no apparent data center project proposed to staff)",
+     "amount": null,
+     "party": null,
+     "url": "https://comstock-mi.granicus.com/AgendaViewer.php?view_id=1&event_id=563"
+    },
+    {
+     "title": "Discussion: Solar regulations zoning provisions",
+     "amount": null,
+     "party": null,
+     "url": "https://comstock-mi.granicus.com/AgendaViewer.php?view_id=1&event_id=563"
+    },
+    {
+     "title": "Draft Sept 10 minutes in packet: Planning Commission approved special land use and site plan for a 400 MW battery energy storage system (Swan Energy / Cygnet Energy / CIP) with conditions; host agreement $825 per MW per year for 20 years; assessor estimates $500,000,000 investment yields about $1,000,000 tax revenue to the township; fire chief estimates $1.0-1.2 million of equipment need; applicant offered $100,000 for a fire department analysis",
+     "amount": "$825/MW/yr x 20 yrs; $500,000,000 investment; $100,000 fire analysis",
+     "party": "CIP; Cygnet Energy; Swan Energy",
+     "url": "https://d3n9y02raazwpg.cloudfront.net/comstock-mi/3acd6a45-cef1-11f0-bb28-005056a89546-0b9bf436-a25f-4e94-afe2-ed56dbe5f4b1-1790525065.pdf"
+    }
+   ]
+  },
+  {
+   "body": "Comstock Township Board",
+   "date": "2026-10-05",
+   "time": "unknown",
+   "agendaUrl": "https://comstock-mi.granicus.com/ViewPublisher.php?view_id=1",
+   "posted": false,
+   "note": "No Oct 5 Board entry found in the Granicus listing (rows start with Planning Commission Oct 8).",
+   "items": []
+  },
+  {
+   "body": "Kalamazoo City Civil Rights Board",
+   "date": "2026-10-07",
+   "time": "5:00 PM",
+   "agendaUrl": "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5460,plainText=false)",
+   "posted": true,
+   "items": [
+    {
+     "title": "Update on proposed Chapter 18 and 18A edits (ordinance review subcommittee)",
+     "amount": null,
+     "party": null,
+     "url": "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5459,plainText=false)"
+    },
+    {
+     "title": "Civil rights complaint update; email communication update; nomination of new board member; open board position announcement",
+     "amount": null,
+     "party": null,
+     "url": "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5459,plainText=false)"
+    }
+   ]
+  },
+  {
+   "body": "Kalamazoo City Zoning Board of Appeals",
+   "date": "2026-10-08",
+   "time": "n/a",
+   "agendaUrl": "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5454,plainText=false)",
+   "posted": true,
+   "note": "Meeting CANCELLED (notice file 5454).",
+   "items": []
+  },
+  {
+   "body": "Kalamazoo City Historic Preservation Commission",
+   "date": "2026-10-14",
+   "time": "6:00 PM (portal time)",
+   "agendaUrl": "https://kalamazoomi.portal.civicclerk.com/",
+   "posted": false,
+   "items": []
+  },
+  {
+   "body": "Texas Charter Township Board",
+   "date": "2026-10-12",
+   "time": "unknown",
+   "agendaUrl": "https://www.texastownship.org/AgendaCenter/Township-Board-3",
+   "posted": false,
+   "note": "Newest posted is Sept 28 (Committee of the Whole on FY27 budget; bills $720,087.53, payroll $86,557.48).",
+   "items": []
+  },
+  {
+   "body": "Oshtemo Township Planning Commission / Board",
+   "date": "2026-10-08",
+   "time": "unknown",
+   "agendaUrl": "https://www.oshtemo.org/Boards-Committees/Agendas-and-Minutes/Planning-Commission-Agenda-Packets",
+   "posted": false,
+   "note": "oshtemo.org returns 403 to curl (Akamai). WebFetch read the listing: newest packets Sept 24, Sept 10, Aug 27; no October packets posted.",
+   "items": []
+  }
+ ],
+ "coverage": [
+  {
+   "body": "Kalamazoo County Board of Commissioners",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 12,
+   "posts": 1,
+   "newsletters": 11,
+   "jurisdictionMentionsSinceJul1": 96,
+   "latest": {
+    "title": "9/23/26: A new Flock policy",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-23-26-a-new-flock-policy/",
+    "date": "2026-09-23"
+   }
+  },
+  {
+   "body": "Kalamazoo County Planning Commission",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 20,
+   "posts": 2,
+   "newsletters": 18,
+   "jurisdictionMentionsSinceJul1": 96,
+   "latest": {
+    "title": "9/28/26: Resisting & Obstructing in the spotlight",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-28-26-resisting-obstructing-in-the-spotlight/",
+    "date": "2026-09-28"
+   }
+  },
+  {
+   "body": "Kalamazoo County Parks and Recreation Commission",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 8,
+   "posts": 0,
+   "newsletters": 8,
+   "jurisdictionMentionsSinceJul1": 96,
+   "latest": {
+    "title": "9/24/26: Here come the ballots!",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-24-26-here-come-the-ballots/",
+    "date": "2026-09-24"
+   }
+  },
+  {
+   "body": "Road Commission of Kalamazoo County",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 6,
+   "posts": 1,
+   "newsletters": 5,
+   "jurisdictionMentionsSinceJul1": 6,
+   "latest": {
+    "title": "9/21/26: Do we still have to boil water?",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-21-26-do-we-still-have-to-boil-water/",
+    "date": "2026-09-21"
+   }
+  },
+  {
+   "body": "Kalamazoo City Commission",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 19,
+   "posts": 3,
+   "newsletters": 16,
+   "jurisdictionMentionsSinceJul1": 43,
+   "latest": {
+    "title": "9/23/26: A new Flock policy",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-23-26-a-new-flock-policy/",
+    "date": "2026-09-23"
+   }
+  },
+  {
+   "body": "Kalamazoo City Planning",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 16,
+   "posts": 3,
+   "newsletters": 13,
+   "jurisdictionMentionsSinceJul1": 43,
+   "latest": {
+    "title": "9/23/26: A new Flock policy",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-23-26-a-new-flock-policy/",
+    "date": "2026-09-23"
+   }
+  },
+  {
+   "body": "Kalamazoo City Zoning Board of Appeals",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 1,
+   "posts": 1,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 43,
+   "latest": {
+    "title": "\u2018That\u2019s when I start getting geeked\u2019",
+    "url": "https://nowkalamazoo.org/2026/07/thats-when-i-start-getting-geeked/",
+    "date": "2026-07-10"
+   }
+  },
+  {
+   "body": "Kalamazoo City Utility Policy Committee",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 1,
+   "posts": 0,
+   "newsletters": 1,
+   "jurisdictionMentionsSinceJul1": 43,
+   "latest": {
+    "title": "8/25/26: Who will be in charge of Portage?",
+    "url": "https://nowkalamazoo.org/newsletters/daily/8-25-26-who-will-be-in-charge-of-portage/",
+    "date": "2026-08-25"
+   }
+  },
+  {
+   "body": "Kalamazoo City Parks and Recreation Board",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 2,
+   "posts": 0,
+   "newsletters": 2,
+   "jurisdictionMentionsSinceJul1": 43,
+   "latest": {
+    "title": "9/11/26: Data centers in Schoolcraft?",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-11-26-data-centers-in-schoolcraft/",
+    "date": "2026-09-11"
+   }
+  },
+  {
+   "body": "Kalamazoo City Citizens Public Safety Review and Appeals Board",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 43,
+   "latest": null
+  },
+  {
+   "body": "Kalamazoo City Downtown Development Authority & Downtown Economic Growth Authority",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 43,
+   "latest": null
+  },
+  {
+   "body": "Portage City Council",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 8,
+   "posts": 1,
+   "newsletters": 7,
+   "jurisdictionMentionsSinceJul1": 16,
+   "latest": {
+    "title": "Resisting & Obstructing: The felony that\u2019s in the eye of the beholder with a badge",
+    "url": "https://nowkalamazoo.org/2026/09/resisting-obstructing-the-felony-thats-in-the-eye-of-the-beholder-with-a-badge/",
+    "date": "2026-09-27"
+   }
+  },
+  {
+   "body": "Portage City Zoning Board of Appeals",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 16,
+   "latest": null
+  },
+  {
+   "body": "Portage City Planning Commission",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 7,
+   "posts": 1,
+   "newsletters": 6,
+   "jurisdictionMentionsSinceJul1": 16,
+   "latest": {
+    "title": "9/28/26: Resisting & Obstructing in the spotlight",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-28-26-resisting-obstructing-in-the-spotlight/",
+    "date": "2026-09-28"
+   }
+  },
+  {
+   "body": "Portage City Environmental Board",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 16,
+   "latest": null
+  },
+  {
+   "body": "Portage City Park Board",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 1,
+   "posts": 0,
+   "newsletters": 1,
+   "jurisdictionMentionsSinceJul1": 16,
+   "latest": {
+    "title": "9/11/26: Data centers in Schoolcraft?",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-11-26-data-centers-in-schoolcraft/",
+    "date": "2026-09-11"
+   }
+  },
+  {
+   "body": "Parchment City Commission",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 1,
+   "posts": 0,
+   "newsletters": 1,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": {
+    "title": "7/8/26: Test the vote",
+    "url": "https://nowkalamazoo.org/newsletters/daily/7-8-26-test-the-vote/",
+    "date": "2026-07-08"
+   }
+  },
+  {
+   "body": "Parchment Planning Commission",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 2,
+   "posts": 0,
+   "newsletters": 2,
+   "jurisdictionMentionsSinceJul1": 18,
+   "latest": {
+    "title": "9/28/26: Resisting & Obstructing in the spotlight",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-28-26-resisting-obstructing-in-the-spotlight/",
+    "date": "2026-09-28"
+   }
+  },
+  {
+   "body": "Parchment Zoning Board of Appeals",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 18,
+   "latest": null
+  },
+  {
+   "body": "Galesburg City Council",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Galesburg Planning Commission",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 9,
+   "latest": null
+  },
+  {
+   "body": "Galesburg Zoning Board of Appeals",
+   "category": "County & Cities",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 9,
+   "latest": null
+  },
+  {
+   "body": "Oshtemo Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 3,
+   "posts": 0,
+   "newsletters": 3,
+   "jurisdictionMentionsSinceJul1": 8,
+   "latest": {
+    "title": "9/25/26: A new start for The Clover Room",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-25-26-a-new-start-for-the-clover-room/",
+    "date": "2026-09-25"
+   }
+  },
+  {
+   "body": "Oshtemo Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 2,
+   "posts": 0,
+   "newsletters": 2,
+   "jurisdictionMentionsSinceJul1": 8,
+   "latest": {
+    "title": "9/3/26: Stop the presses",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-3-26-stop-the-presses/",
+    "date": "2026-09-03"
+   }
+  },
+  {
+   "body": "Oshtemo Township Zoning Board of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 8,
+   "latest": null
+  },
+  {
+   "body": "Oshtemo Township Downtown Development Authority",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 8,
+   "latest": null
+  },
+  {
+   "body": "Oshtemo Township South Drake Road Corridor Improvement Authority",
+   "category": "Townships",
+   "mentionsSinceJul1": 8,
+   "posts": 0,
+   "newsletters": 8,
+   "jurisdictionMentionsSinceJul1": 8,
+   "latest": {
+    "title": "9/29/26: Why and how we investigated",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-29-26-why-and-how-we-investigated/",
+    "date": "2026-09-29"
+   }
+  },
+  {
+   "body": "Comstock Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 5,
+   "posts": 0,
+   "newsletters": 5,
+   "jurisdictionMentionsSinceJul1": 25,
+   "latest": {
+    "title": "9/14/26: Hot dog!",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-14-26-hot-dog/",
+    "date": "2026-09-14"
+   }
+  },
+  {
+   "body": "Comstock Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 6,
+   "posts": 0,
+   "newsletters": 6,
+   "jurisdictionMentionsSinceJul1": 25,
+   "latest": {
+    "title": "9/28/26: Resisting & Obstructing in the spotlight",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-28-26-resisting-obstructing-in-the-spotlight/",
+    "date": "2026-09-28"
+   }
+  },
+  {
+   "body": "Comstock Township Zoning Board of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 25,
+   "latest": null
+  },
+  {
+   "body": "Comstock Township Park Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 4,
+   "posts": 0,
+   "newsletters": 4,
+   "jurisdictionMentionsSinceJul1": 25,
+   "latest": {
+    "title": "9/9/26: ICE in Michigan",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-9-26-ice-in-michigan/",
+    "date": "2026-09-09"
+   }
+  },
+  {
+   "body": "Comstock Township Downtown Development Authority",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 25,
+   "latest": null
+  },
+  {
+   "body": "Texas Charter Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 2,
+   "posts": 1,
+   "newsletters": 1,
+   "jurisdictionMentionsSinceJul1": 9,
+   "latest": {
+    "title": "The August 2026 Primary is over. Here\u2019s who won",
+    "url": "https://nowkalamazoo.org/2026/08/the-august-2026-primary-is-over-heres-who-won/",
+    "date": "2026-08-05"
+   }
+  },
+  {
+   "body": "Texas Charter Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 2,
+   "posts": 0,
+   "newsletters": 2,
+   "jurisdictionMentionsSinceJul1": 9,
+   "latest": {
+    "title": "9/11/26: Data centers in Schoolcraft?",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-11-26-data-centers-in-schoolcraft/",
+    "date": "2026-09-11"
+   }
+  },
+  {
+   "body": "Texas Charter Township Zoning Board of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 9,
+   "latest": null
+  },
+  {
+   "body": "Texas Charter Township DDA",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 9,
+   "latest": null
+  },
+  {
+   "body": "Alamo Township Board of Trustees",
+   "category": "Townships",
+   "mentionsSinceJul1": 1,
+   "posts": 1,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": {
+    "title": "The August 2026 Primary is over. Here\u2019s who won",
+    "url": "https://nowkalamazoo.org/2026/08/the-august-2026-primary-is-over-heres-who-won/",
+    "date": "2026-08-05"
+   }
+  },
+  {
+   "body": "Alamo Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": null
+  },
+  {
+   "body": "Cooper Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": null
+  },
+  {
+   "body": "Cooper Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": null
+  },
+  {
+   "body": "Cooper Township Zoning Board of Appeal",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": null
+  },
+  {
+   "body": "Charleston Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": null
+  },
+  {
+   "body": "Charleston Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": null
+  },
+  {
+   "body": "Charleston Township Zoning Board of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": null
+  },
+  {
+   "body": "Climax Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Climax Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Schoolcraft Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": null
+  },
+  {
+   "body": "Schoolcraft Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 2,
+   "posts": 0,
+   "newsletters": 2,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": {
+    "title": "9/28/26: Resisting & Obstructing in the spotlight",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-28-26-resisting-obstructing-in-the-spotlight/",
+    "date": "2026-09-28"
+   }
+  },
+  {
+   "body": "Schoolcraft Township Zoning Board Of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": null
+  },
+  {
+   "body": "Pavilion Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 1,
+   "posts": 0,
+   "newsletters": 1,
+   "jurisdictionMentionsSinceJul1": 6,
+   "latest": {
+    "title": "7/13/26: The importance of telling stories",
+    "url": "https://nowkalamazoo.org/newsletters/daily/7-13-26-the-importance-of-telling-stories/",
+    "date": "2026-07-13"
+   }
+  },
+  {
+   "body": "Pavilion Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 1,
+   "posts": 0,
+   "newsletters": 1,
+   "jurisdictionMentionsSinceJul1": 6,
+   "latest": {
+    "title": "7/22/26: Data center delay",
+    "url": "https://nowkalamazoo.org/newsletters/daily/data-center-delay/",
+    "date": "2026-07-22"
+   }
+  },
+  {
+   "body": "Pavilion Township Zoning Board Of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 6,
+   "latest": null
+  },
+  {
+   "body": "Ross Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": null
+  },
+  {
+   "body": "Ross Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": null
+  },
+  {
+   "body": "Ross Township Zoning Board of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": null
+  },
+  {
+   "body": "Richland Township Board of Trustees",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Richland Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Richland Township Zoning Board of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Kalamazoo Township Board of Trustees",
+   "category": "Townships",
+   "mentionsSinceJul1": 3,
+   "posts": 1,
+   "newsletters": 2,
+   "jurisdictionMentionsSinceJul1": 11,
+   "latest": {
+    "title": "8/17/26: Connecting kids to fresh foods",
+    "url": "https://nowkalamazoo.org/newsletters/daily/8-17-26-connecting-kids-to-fresh-foods/",
+    "date": "2026-08-17"
+   }
+  },
+  {
+   "body": "Kalamazoo Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 1,
+   "posts": 0,
+   "newsletters": 1,
+   "jurisdictionMentionsSinceJul1": 11,
+   "latest": {
+    "title": "7/10/26: Beer cans, sure. But also a Model T?",
+    "url": "https://nowkalamazoo.org/newsletters/daily/7-10-26-beer-cans-sure-but-also-a-model-t/",
+    "date": "2026-07-10"
+   }
+  },
+  {
+   "body": "Kalamazoo Township Zoning Board of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 11,
+   "latest": null
+  },
+  {
+   "body": "Brady Township Board of Trustees",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Brady Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Brady Township Zoning Board of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Prairie Ronde Township Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": null
+  },
+  {
+   "body": "Prairie Ronde Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": null
+  },
+  {
+   "body": "Prairie Ronde Zoning Board of Appeals",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": null
+  },
+  {
+   "body": "Wakeshma Township Board",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Wakeshma Township Planning Commission",
+   "category": "Townships",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 2,
+   "latest": null
+  },
+  {
+   "body": "Vicksburg Village Council",
+   "category": "Villages",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Vicksburg Village Planning and Zoning",
+   "category": "Villages",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Richland Village Council",
+   "category": "Villages",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": null
+  },
+  {
+   "body": "Richland Village Planning Commission",
+   "category": "Villages",
+   "mentionsSinceJul1": 1,
+   "posts": 1,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": {
+    "title": "Nonprofit Spotlight: Great Lakes Acoustic Music Association (GLAMA)",
+    "url": "https://nowkalamazoo.org/2026/09/nonprofit-spotlight-great-lakes-acoustic-music-association-glama/",
+    "date": "2026-09-02"
+   }
+  },
+  {
+   "body": "Richland Village Zoning Board of Appeals",
+   "category": "Villages",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": null
+  },
+  {
+   "body": "Climax Village Council",
+   "category": "Villages",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Kalamazoo Public Schools Board of Education",
+   "category": "School Districts",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 1,
+   "latest": null
+  },
+  {
+   "body": "Portage Public Schools Board of Education",
+   "category": "School Districts",
+   "mentionsSinceJul1": 1,
+   "posts": 0,
+   "newsletters": 1,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": {
+    "title": "9/30/26: Race and residence in resisting and obstructing",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-30-26-race-and-residence-in-resisting-and-obstructing/",
+    "date": "2026-09-30"
+   }
+  },
+  {
+   "body": "Parchment School District Board of Education",
+   "category": "School Districts",
+   "mentionsSinceJul1": 2,
+   "posts": 0,
+   "newsletters": 2,
+   "jurisdictionMentionsSinceJul1": 18,
+   "latest": {
+    "title": "9/14/26: Hot dog!",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-14-26-hot-dog/",
+    "date": "2026-09-14"
+   }
+  },
+  {
+   "body": "Galesburg-Augusta Community Schools Board of Education",
+   "category": "School Districts",
+   "mentionsSinceJul1": 1,
+   "posts": 0,
+   "newsletters": 1,
+   "jurisdictionMentionsSinceJul1": 9,
+   "latest": {
+    "title": "8/17/26: Connecting kids to fresh foods",
+    "url": "https://nowkalamazoo.org/newsletters/daily/8-17-26-connecting-kids-to-fresh-foods/",
+    "date": "2026-08-17"
+   }
+  },
+  {
+   "body": "Vicksburg Community Schools Board of Education",
+   "category": "School Districts",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Climax-Scotts Community Schools Board of Education",
+   "category": "School Districts",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": null
+  },
+  {
+   "body": "Schoolcraft Community Schools Board of Education",
+   "category": "School Districts",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Arcadia",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Eastside",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Edison",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 8,
+   "posts": 2,
+   "newsletters": 6,
+   "jurisdictionMentionsSinceJul1": 8,
+   "latest": {
+    "title": "\u2018This will be one of the gathering spaces for people to come together\u2019",
+    "url": "https://nowkalamazoo.org/2026/09/this-will-be-one-of-the-gathering-spaces-for-people-to-come-together/",
+    "date": "2026-09-25"
+   }
+  },
+  {
+   "body": "Milwood",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 3,
+   "posts": 1,
+   "newsletters": 2,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": {
+    "title": "8/10/26: Milwood association redux",
+    "url": "https://nowkalamazoo.org/newsletters/daily/8-10-26-milwood-association-redux/",
+    "date": "2026-08-10"
+   }
+  },
+  {
+   "body": "Northside",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 26,
+   "posts": 9,
+   "newsletters": 17,
+   "jurisdictionMentionsSinceJul1": 26,
+   "latest": {
+    "title": "9/30/26: Race and residence in resisting and obstructing",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-30-26-race-and-residence-in-resisting-and-obstructing/",
+    "date": "2026-09-30"
+   }
+  },
+  {
+   "body": "Oakland-Winchell",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Oakwood",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Parkview Hills",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Stuart",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 3,
+   "posts": 1,
+   "newsletters": 2,
+   "jurisdictionMentionsSinceJul1": 3,
+   "latest": {
+    "title": "9/29/26: Why and how we investigated",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-29-26-why-and-how-we-investigated/",
+    "date": "2026-09-29"
+   }
+  },
+  {
+   "body": "Vine",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 8,
+   "posts": 1,
+   "newsletters": 7,
+   "jurisdictionMentionsSinceJul1": 8,
+   "latest": {
+    "title": "9/25/26: A new start for The Clover Room",
+    "url": "https://nowkalamazoo.org/newsletters/daily/9-25-26-a-new-start-for-the-clover-room/",
+    "date": "2026-09-25"
+   }
+  },
+  {
+   "body": "West Main Hill",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Westnedge Hill",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Westwood",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  },
+  {
+   "body": "Douglas",
+   "category": "Neighborhood Associations",
+   "mentionsSinceJul1": 0,
+   "posts": 0,
+   "newsletters": 0,
+   "jurisdictionMentionsSinceJul1": 0,
+   "latest": null
+  }
+ ],
+ "leads": [
+  {
+   "lead": "Kalamazoo County proposes a 4.74% millage increase worth $4.49 million; public hearing Tuesday Oct 6",
+   "why": "The posted notice says millage 7.8354 is proposed for the 2027 budget, a 4.74% increase and $4,493,001 more revenue. The hearing is at 6:45 PM.",
+   "sources": [
+    "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13145,plainText=false)",
+    "https://www.kalcounty.gov/budgetbook27"
+   ],
+   "covered": null,
+   "foia": "2027 budget work papers, department requests and revenue projections behind the $4,493,001 increase."
+  },
+  {
+   "lead": "County health plan: Commissioners weigh dropping or rationing GLP-1 weight-loss drug coverage after $1.5 million in 2025 spend",
+   "why": "The Sept 28 special-meeting packet shows anti-obesity GLP-1 spend of $1,264,000 (2024) and $1,539,100 (2025), and that a $200 copay would cost the county BCBSM rebates because plans with copays over $150 lose them. Employees are directly affected and no NowKalamazoo story on GLP-1 turned up.",
+   "sources": [
+    "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13205,plainText=false)",
+    "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13202,plainText=false)"
+   ],
+   "covered": null,
+   "foia": "BCBSM correspondence, rebate calculations and Plan Design Committee minutes on 2027 GLP-1 coverage, Jan 1 2025 to Sept 30 2026."
+  },
+  {
+   "lead": "Comstock Township planners OK a 400 MW battery plant (CIP / Cygnet Energy) while the fire department says it needs $1.0-1.2 million of equipment",
+   "why": "Draft Sept 10 minutes: approval with conditions, $825 per MW per year host agreement for 20 years, $500 million investment yielding about $1 million in township tax, and the applicant offering only $100,000 for a fire analysis. Residents objected to data centers and solar at the same meeting.",
+   "sources": [
+    "https://d3n9y02raazwpg.cloudfront.net/comstock-mi/3acd6a45-cef1-11f0-bb28-005056a89546-0b9bf436-a25f-4e94-afe2-ed56dbe5f4b1-1790525065.pdf"
+   ],
+   "covered": "https://nowkalamazoo.org/newsletters/daily/9-15-26-battery-project-is-a-go/",
+   "foia": "Community host agreement, development agreement drafts, fire department resource analysis and CIP/Cygnet correspondence with Comstock Township."
+  },
+  {
+   "lead": "Data center rules arrive in two places in one week: City of Kalamazoo final vote Oct 5, Comstock Township Planning Commission discussion Oct 8",
+   "why": "Kalamazoo is finalizing a zoning-ordinance moratorium on data centers, BESS and crypto mining. Comstock staff is circulating a sample data center ordinance while noting no project has been proposed. NowKalamazoo has covered the city; Comstock Township has no township-level stories since Jul 1.",
+   "sources": [
+    "https://comstock-mi.granicus.com/AgendaViewer.php?view_id=1&event_id=563",
+    "https://nowkalamazoo.org/newsletters/daily/9-22-26-another-data-center-pause/"
+   ],
+   "covered": "https://nowkalamazoo.org/newsletters/daily/9-22-26-another-data-center-pause/",
+   "foia": "Any inquiry, pre-application or NDA from a data center or crypto-mining developer received by Kalamazoo Township planning or Comstock Township, Jan 1 to Sept 30 2026."
+  },
+  {
+   "lead": "Road Commission holds a $25 million federal Safe Streets grant through 2030 while residents fight its tree removals",
+   "why": "USAspending shows award 693JJ32540510 ($25,000,000, DOT, period 2025-09-19 to 2030-09-19) to the Board of County Road Commissioners. NowKalamazoo has covered the tree fights but no Safe Streets newsletter hit since Jul 1.",
+   "sources": [
+    "https://api.usaspending.gov/api/v2/awards/ASST_NON_693JJ32540510_069/",
+    "https://www.kalamazoocountyroads.com/userfiles/kcrc/file/Meetings/2026%20Combined%20Agendas.pdf"
+   ],
+   "covered": "https://nowkalamazoo.org/2026/07/how-to-save-a-tree/",
+   "foia": "SS4A grant agreement, project list, obligated and spent amounts, and consultant contracts under award 693JJ32540510."
+  },
+  {
+   "lead": "City Planning Commission hears a student recovery-housing permit (Frat 15 LLC, 1500 Fraternity Village Drive) and a 5-room traveler boarding house on Pearl Street, Oct 1",
+   "why": "Both special use permits are on the Oct 1 agenda; the recovery house is a partnership with Unified Recovery Clinics in an 8,772 sq ft former fraternity house. No NowKalamazoo story found on either.",
+   "sources": [
+    "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5455,plainText=false)",
+    "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5450,plainText=false)"
+   ],
+   "covered": null,
+   "foia": "Applications, neighbor notice responses and correspondence for P.C. #2026.07 and #2026.08."
+  },
+  {
+   "lead": "County Public Housing Commission: Sugarloaf residents, Hays Park homes and liability insurance on Oct 1 agenda",
+   "why": "Agenda lists housing assistance for Sugarloaf residents, a HOPE thru Navigation proposal, an end-of-year Sugarloaf report, and old business on liability insurance for Bethany House and Keystone. Zero NowKalamazoo hits for Sugarloaf, Hays Park or the commission.",
+   "sources": [
+    "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13215,plainText=false)"
+   ],
+   "covered": null,
+   "foia": "Insurance policies and quotes for Bethany House and Keystone House, HOPE thru Navigation proposal, and Sugarloaf resident assistance spending."
+  },
+  {
+   "lead": "Kalamazoo Township residential trash hauling RFP is out; board meets Oct 6 and Oct 13",
+   "why": "The township site banner says a Residential Solid Waste Collection RFP is posted. NowKalamazoo covered Portage single-hauler but nothing on the township RFP since Jul 1.",
+   "sources": [
+    "https://www.ktwp.org/meetings/regular-board-of-trustees-meeting-tuesday-october-13-2026-700-p-m/",
+    "https://www.ktwp.org/board-of-trustees-meetings/"
+   ],
+   "covered": "https://nowkalamazoo.org/2026/05/single-hauler-wins-in-portage/",
+   "foia": "The RFP, bids received and scoring sheets for Kalamazoo Township residential solid waste collection."
+  },
+  {
+   "lead": "Local firm Seven Generations Architecture & Engineering holds multiple federal contracts, the largest $18.9 million (DoD DHA)",
+   "why": "USAspending shows Kalamazoo-based recipient with W912DY20C0025 at $18,928,609.50 (2020-06-28 to 2025-06-27, options value $20,753,961.98) plus Interior and DHA awards. Nothing in NowKalamazoo archive. Federal contracts, so federal FOIA, not Michigan.",
+   "sources": [
+    "https://api.usaspending.gov/api/v2/awards/CONT_AWD_W912DY20C0025_9700_-NONE-_-NONE-/"
+   ],
+   "covered": null,
+   "foia": "Federal FOIA to DHA/Army Corps for the W912DY20C0025 statement of work and modifications (not a Michigan FOIA)."
+  },
+  {
+   "lead": "Oshtemo Township has had zero NowKalamazoo stories since Jul 1 despite regular packets",
+   "why": "Verified coverage: 0 posts, 3 newsletter mentions for the board since Jul 1. Planning Commission packets exist for Aug 27, Sept 10 and Sept 24; the site blocks automated reads, so it is a gap AI-assisted agenda reading would close.",
+   "sources": [
+    "https://www.oshtemo.org/Boards-Committees/Agendas-and-Minutes/Planning-Commission-Agenda-Packets"
+   ],
+   "covered": null,
+   "foia": "Oshtemo Township Planning Commission and Board packets and staff memos Aug 1 to Sept 30 2026 (if the site stays inaccessible)."
+  },
+  {
+   "lead": "Pre-election campaign finance statements for Nov 3 local races are due Oct 23",
+   "why": "County Clerk says the pre-election statement closes Oct 18 and is due by 5:00 PM Oct 23; local candidate reports are viewable on the clerk site. No FOIA needed, reports are public.",
+   "sources": [
+    "https://www.kalcounty.gov/450/Campaign-Finance",
+    "https://www.kalcounty.gov/726/Running-for-Office"
+   ],
+   "covered": "https://nowkalamazoo.org/2026/09/your-guide-to-the-2026-election-in-kalamazoo-county/",
+   "foia": "None needed; pull filed statements from the Clerk and compare to Pre-election deadlines."
+  },
+  {
+   "lead": "City Civil Rights Board reviews proposed Chapter 18 and 18A ordinance edits and a complaint update, Oct 7",
+   "why": "Agenda items F.5 and F.7; no NowKalamazoo mention of the board.",
+   "sources": [
+    "https://kalamazoomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=5459,plainText=false)"
+   ],
+   "covered": null,
+   "foia": "Draft Chapter 18/18A redlines and the Civil Rights Board complaint log (redacted) for 2026."
+  }
+ ],
+ "foia": [
+  {
+   "body": "Kalamazoo County (Board of Commissioners; HR Department)",
+   "coordinator": "FOIA agent is the Board of Commissioners, 269-384-8111, 201 W Kalamazoo Ave (per kalcounty.gov FOIA pages found via search)",
+   "portal": "https://kalamazoocountymi.govqa.us/ (linked from https://www.kalcounty.gov/1141/Freedom-of-Information-Act)",
+   "request": "Under MCL 15.231 et seq., I request copies of: (1) all communications between Kalamazoo County Human Resources and Blue Cross Blue Shield of Michigan from Jan 1, 2025 through Sept 30, 2026 concerning coverage, copays, rebates or utilization of anti-obesity GLP-1 drugs; (2) the 2027 health plan design options document and cost model presented to the Board of Commissioners on or before Sept 28, 2026, including the Option 1, 2 and 3 premium tables; (3) minutes and materials of the Plan Design Committee for 2026 meetings; (4) the 2025 and 2024 prescription spend reports showing the $1,539,100 and $1,264,000 anti-obesity GLP-1 figures. Electronic copies requested. Under MCL 15.235 the body must respond within 5 business days of receipt; it may extend once by up to 10 business days with written notice; it may charge fees under MCL 15.234 and request a deposit. Request is made under the Michigan Freedom of Information Act, MCL 15.231 et seq.",
+   "why": "Employee benefit cost decision with seven-figure drug spend and no NowKalamazoo coverage."
+  },
+  {
+   "body": "Charter Township of Comstock",
+   "coordinator": "foia@comstockmi.gov (listed on https://comstockmi.gov/freedom-of-information-act/)",
+   "portal": null,
+   "request": "Under MCL 15.231 et seq., I request: (1) the executed or draft community host agreement for the 400 MW battery energy storage system proposed by CIP / Swan Energy / Cygnet Energy, including the $825 per MW per year terms; (2) any draft development agreement for the project; (3) the Fire Department resource analysis and Chief Beauchamp's equipment list submitted Aug 1 to Sept 30, 2026; (4) all correspondence between township staff or the township attorney and CIP, Swan Energy or Cygnet Energy from Jan 1 to Sept 30, 2026; (5) the assessor's report on tax revenue and property value impact. Under MCL 15.235 the body must respond within 5 business days of receipt; it may extend once by up to 10 business days with written notice; it may charge fees under MCL 15.234 and request a deposit. Request is made under the Michigan Freedom of Information Act, MCL 15.231 et seq.",
+   "why": "Largest private investment in the township ($500 million) with a stated fire safety funding gap."
+  },
+  {
+   "body": "Road Commission of Kalamazoo County",
+   "coordinator": "Coordinator not verified. Contact on agenda: info@kalamazoocountyroads.com, 269-381-3171, 4400 S 26th Street, Kalamazoo MI 49048. Road Commission is a separate legal entity from the county portal.",
+   "portal": null,
+   "request": "Under MCL 15.231 et seq., I request: (1) the executed Safe Streets and Roads for All implementation grant agreement for U.S. DOT award 693JJ32540510 ($25,000,000); (2) the project list, schedule and budget by location; (3) invoices and reimbursement requests submitted under the award through Sept 30, 2026; (4) contracts and procurement records for consultants or contractors paid from the award. Under MCL 15.235 the body must respond within 5 business days of receipt; it may extend once by up to 10 business days with written notice; it may charge fees under MCL 15.234 and request a deposit. Request is made under the Michigan Freedom of Information Act, MCL 15.231 et seq.",
+   "why": "$25 million of federal money through 2030; recurring public concern about road commission decisions."
+  },
+  {
+   "body": "City of Kalamazoo (Community Planning and Economic Development; City Attorney as FOIA Coordinator)",
+   "coordinator": "City Attorney is FOIA Coordinator; email FOIA@kalamazoocity.org; mail 241 W South St (per City FOIA page via search; city page returned 403 to curl, portal page fetched directly)",
+   "portal": "https://kalamazoomi.govqa.us/WEBAPP/_rs/SupportHome.aspx",
+   "request": "Under MCL 15.231 et seq., I request: (1) the complete application file for P.C. #2026.08 (Frat 15 LLC, 1500 Fraternity Village Drive), including application, site plans, letters of support or objection, and any program description from Unified Recovery Clinics; (2) the complete file for P.C. #2026.07 (613 Pearl Street); (3) all notices mailed to neighbors and responses received, Aug 1 to Oct 1, 2026. Under MCL 15.235 the body must respond within 5 business days of receipt; it may extend once by up to 10 business days with written notice; it may charge fees under MCL 15.234 and request a deposit. Request is made under the Michigan Freedom of Information Act, MCL 15.231 et seq.",
+   "why": "Neighborhood-impact permits hearing Oct 1 with no coverage."
+  },
+  {
+   "body": "City of Kalamazoo (City Attorney / Planning)",
+   "coordinator": "FOIA@kalamazoocity.org",
+   "portal": "https://kalamazoomi.govqa.us/WEBAPP/_rs/SupportHome.aspx",
+   "request": "Under MCL 15.231 et seq., I request all inquiries, pre-application meeting notes, and correspondence with any developer or operator of a data center, battery energy storage system or cryptocurrency mining operation received by the City of Kalamazoo from Jan 1, 2026 through Sept 30, 2026, including those that preceded the Aug 17, 2026 moratorium resolution. Under MCL 15.235 the body must respond within 5 business days of receipt; it may extend once by up to 10 business days with written notice; it may charge fees under MCL 15.234 and request a deposit. Request is made under the Michigan Freedom of Information Act, MCL 15.231 et seq.",
+   "why": "Shows who prompted the moratorium; final vote Oct 5."
+  }
+ ],
+ "unreachable": [
+  {
+   "source": "Oshtemo Township agenda packets",
+   "url": "https://www.oshtemo.org/Boards-Committees/Agendas-and-Minutes/Township-Board-Agenda-Packets",
+   "error": "HTTP 403 Access Denied (Akamai) to curl; listing read via WebFetch, no October packets posted"
+  },
+  {
+   "source": "City of Kalamazoo FOIA page",
+   "url": "https://www.kalamazoocity.org/Government/Request-Public-Documents-FOIA",
+   "error": "HTTP 403 to curl; coordinator details taken from web search result, GovQA portal itself fetched OK"
+  },
+  {
+   "source": "Kalamazoo County Parks Commission Oct 1 agenda PDF",
+   "url": "https://kalamazoocomi.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13221,plainText=false)",
+   "error": "PDF downloads but contains no extractable text"
+  },
+  {
+   "source": "Michigan campaign finance (CFR) candidate reports",
+   "url": "https://www.kalcounty.gov/450/Campaign-Finance",
+   "error": "Not queried; only filing deadlines read via search. Local candidate reports are on the clerk site and not pulled"
+  },
+  {
+   "source": "EGLE MiEnviro permits/violations Kalamazoo County",
+   "url": "https://www.michigan.gov/egle",
+   "error": "Not queried (JS portal). Search found only a Sept 23 2026 oil-and-gas supervisor meeting (Climax Township) and a 2022 Graphic Packaging article, not used as a lead"
+  },
+  {
+   "source": "Jail/court data, Brady, Alamo, Cooper, Pavilion, Ross and other small townships/villages",
+   "url": "n/a",
+   "error": "Not attempted within time"
+  },
+  {
+   "source": "Portage City Council and Planning Commission Oct agendas",
+   "url": "https://portagemi.portal.civicclerk.com/",
+   "error": "Not published yet (agendaIsPublish=false)"
+  }
+ ]
+}

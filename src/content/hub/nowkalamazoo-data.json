@@ -10,9 +10,15 @@
    "time": "4:30 (Committee of the Whole) 6:30 (Regular Board Meeting)",
    "agendaUrl": "https://www.kalcounty.com/board/meetings/",
    "dates": [
-    "2026-10-01"
+    "2026-10-06"
    ],
-   "parsed": true
+   "parsed": true,
+   "corrected": {
+    "directory": [
+     "2026-10-01"
+    ],
+    "official": "2026-10-06"
+   }
   },
   {
    "category": "County & Cities",
@@ -132,9 +138,15 @@
    "time": "6 p.m.",
    "agendaUrl": "https://portagemi.gov/610/City-Council-Meeting-Agendas-Minutes",
    "dates": [
-    "2026-10-13"
+    "2026-10-06"
    ],
-   "parsed": true
+   "parsed": true,
+   "corrected": {
+    "directory": [
+     "2026-10-13"
+    ],
+    "official": "2026-10-06"
+   }
   },
   {
    "category": "County & Cities",
@@ -832,9 +844,15 @@
    "time": "7 p.m.",
    "agendaUrl": "https://www.kalamazoopublicschools.com/board/meeting-materials-archive",
    "dates": [
-    "2026-10-01"
+    "2026-10-08"
    ],
-   "parsed": true
+   "parsed": true,
+   "corrected": {
+    "directory": [
+     "2026-10-01"
+    ],
+    "official": "2026-10-08"
+   }
   },
   {
    "category": "School Districts",
@@ -1230,7 +1248,7 @@
   },
   {
    "date": "2026-09-27T21:00:00",
-   "title": "Resisting & Obstructing: The ‘gateway felony’",
+   "title": "Resisting & Obstructing: The \u2018gateway felony\u2019",
    "url": "https://nowkalamazoo.org/2026/09/resisting-obstructing-the-gateway-felony/"
   },
   {
@@ -1250,7 +1268,7 @@
   },
   {
    "date": "2026-09-27T20:56:00",
-   "title": "Resisting & Obstructing: The felony that’s in the eye of the beholder with a badge",
+   "title": "Resisting & Obstructing: The felony that\u2019s in the eye of the beholder with a badge",
    "url": "https://nowkalamazoo.org/2026/09/resisting-obstructing-the-felony-thats-in-the-eye-of-the-beholder-with-a-badge/"
   },
   {
@@ -1260,7 +1278,7 @@
   },
   {
    "date": "2026-09-25T05:45:00",
-   "title": "‘This will be one of the gathering spaces for people to come together’",
+   "title": "\u2018This will be one of the gathering spaces for people to come together\u2019",
    "url": "https://nowkalamazoo.org/2026/09/this-will-be-one-of-the-gathering-spaces-for-people-to-come-together/"
   },
   {
