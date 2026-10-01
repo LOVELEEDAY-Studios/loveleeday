@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Newspaper, FileSearch, Landmark, CalendarDays, Clock, HandCoins } from "lucide-react";
+import { Newspaper, FileSearch, Landmark, CalendarDays, Clock, HandCoins, Sun } from "lucide-react";
 
 /* NowKalamazoo working view. Light surface, one blue for emphasis, amber only for "not covered" and
    "clock running". Every row links to its public source. The time panel is the newsroom's to edit:
@@ -22,15 +22,6 @@ const time = (s?: string | null) => {
   return `${h % 12 || 12}:${m[2]} ${h < 12 ? "a.m." : "p.m."}`;
 };
 
-const TABS = [
-  ["desk", "Story and records desk", FileSearch],
-  ["grants", "Grants", HandCoins],
-  ["meetings", "Meeting watch", Landmark],
-  ["morning", "Morning desk", Newspaper],
-  ["calendar", "Calendar", CalendarDays],
-  ["time", "Time back", Clock],
-] as const;
-type Tab = (typeof TABS)[number][0];
 
 function Kpi({ k, label }: { k: string; label: string }) {
   return (
@@ -571,48 +562,290 @@ function TimeBack() {
   );
 }
 
-export function NowDashboard({ preparedFor, data, desk, grants }: { token: string; preparedFor: string; data: Any; desk: Any; grants?: Any }) {
-  const tabs = TABS.filter(([k]) => (k !== "desk" || desk) && (k !== "grants" || grants));
-  const [tab, setTab] = useState<Tab>(tabs[0][0]);
-  useEffect(() => {
-    const h = window.location.hash.slice(1) as Tab;
-    if (tabs.some(([k]) => k === h)) setTab(h);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+/* ---------------- Today ---------------- */
+const ASKS = [
+  "Which grants are we eligible for right now?",
+  "What is on the County agenda that we have not covered?",
+  "Which records request should we file first?",
+  "Which townships have we not written about since July?",
+];
+
+function Today({ token, preparedFor, data, desk, grants }: { token: string; preparedFor: string; data: Any; desk: Any; grants: Any }) {
+  const [askQ, setAskQ] = useState("");
+  const [asking, setAsking] = useState(false);
+  const [askErr, setAskErr] = useState("");
+  const [askOut, setAskOut] = useState<Any>(null);
+  async function askArthur(e?: React.FormEvent, preset?: string) {
+    e?.preventDefault();
+    const question = preset ?? (askQ.trim() || ASKS[0]);
+    if (preset) setAskQ(preset);
+    setAsking(true);
+    setAskErr("");
+    try {
+      const res = await fetch("/api/nowkalamazoo/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token, question }) });
+      const out = await res.json();
+      if (!res.ok) throw new Error(out.error || "Arthur could not answer just now.");
+      setAskOut(out);
+    } catch (err) {
+      setAskErr(err instanceof Error ? err.message : "Arthur could not answer just now.");
+    } finally {
+      setAsking(false);
+    }
+  }
+
+  const today = data.builtAt;
+  const leads: Any[] = (desk?.leads ?? []).filter((l: Any) => !l.covered);
+  const allGrants: Any[] = grants?.grants ?? [];
+  const fresh = allGrants.filter((g) => !g.existingFunder);
+  const due = fresh
+    .filter((g) => g.deadlineDate && g.deadlineDate >= today && g.fit >= 4)
+    .sort((a, b) => a.deadlineDate.localeCompare(b.deadlineDate));
+  const days = (d: string) => Math.round((Date.parse(d) - Date.parse(today)) / 864e5);
+  const fixed = (data.meetings as Any[]).filter((m) => m.corrected);
+  const first = (s?: string[]) => s?.[0];
+
+  const items: { tag: "public" | "sample"; kind: string; title: string; body: string; href?: string }[] = [
+    ...due.slice(0, 2).map((g) => ({
+      tag: "public" as const,
+      kind: `Grant · closes in ${days(g.deadlineDate)} days`,
+      title: `${g.funder}: ${g.program.replace(/\s*\(.*\)$/, "")}`,
+      body: g.why,
+      href: g.url,
+    })),
+    ...leads.slice(0, 3).map((l) => ({ tag: "public" as const, kind: "Not yet covered", title: l.lead, body: l.why, href: first(l.sources) })),
+    ...(fixed.length
+      ? [
+          {
+            tag: "public" as const,
+            kind: "Directory check",
+            title: `${fixed.length} meeting dates in your directory are wrong this month`,
+            body: fixed.map((m) => `${m.name}: ${day(m.corrected.official)}, not ${day(m.corrected.directory?.[0])}`).join(". ") + ".",
+          },
+        ]
+      : []),
+    {
+      tag: "sample",
+      kind: "Sponsor run",
+      title: "A newsletter sponsorship ends Friday: the impact report is ready",
+      body: "Once connected to the email platform: sends, opens and impressions for every day of the run, in a finished report for Gabrielle, with a renewal note queued for 30 days before the slot lapses.",
+    },
+    {
+      tag: "sample",
+      kind: "Records clock",
+      title: "Two FOIA requests pass their five-business-day deadline this week",
+      body: "Once connected to the records log: every request with its filing date and statutory clock, the follow-up drafted the day an agency goes quiet, and the extension date if one is claimed.",
+    },
+  ];
+
   return (
-    <div className="ll-os min-h-screen bg-[#f7f8fa]">
-      <div className="mx-auto max-w-[1180px] px-6 pb-24 pt-12">
-        <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980]">NowKalamazoo · prepared for {preparedFor}</span>
-        <h1 className="mt-3 text-[clamp(2rem,4.2vw,3rem)] font-medium leading-[1.08] tracking-[-0.045em] text-[#1d1d1f]">
-          This morning, with Arthur.
-          <br />
-          <span className="text-[#8c8e95]">Built from your public record.</span>
-        </h1>
-        <p className="mt-4 max-w-[44rem] text-[15px] leading-[1.7] text-[#6c7481]">
-          Everything here was read from public sources on {day(data.builtAt)}: your meeting directory, your events calendar, your archive, and the
-          agendas and records around them. Connected to the newsroom&apos;s own tools, the same view runs every morning.
-        </p>
-        <nav className="mt-8 flex gap-1 overflow-x-auto border-b border-[#e4e5e9]" role="tablist">
-          {tabs.map(([k, label, Icon]) => (
-            <button
-              key={k}
-              role="tab"
-              aria-selected={tab === k}
-              onClick={() => setTab(k)}
-              className={`-mb-px flex shrink-0 items-center gap-2 border-b-2 px-3.5 py-3 text-[13.5px] ${
-                tab === k ? "border-[#1d1d1f] text-[#1d1d1f]" : "border-transparent text-[#7d8088] hover:text-[#1d1d1f]"
-              }`}
-            >
-              <Icon size={15} strokeWidth={1.75} />
-              {label}
-            </button>
+    <div className="grid gap-6">
+      <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
+        <Kpi k={String(desk?.leads?.length ?? 0)} label="story leads in agendas and records posted for the next two weeks" />
+        <Kpi k={String(fresh.length)} label="funders matched to your published work that have not funded you" />
+        <Kpi k={due[0] ? `${days(due[0].deadlineDate)} days` : "—"} label={due[0] ? `until ${due[0].funder} closes` : "no dated deadline"} />
+        <Kpi k={String(data.events.total)} label={`events on your calendar, ${day(data.events.weekStart)} to ${day(data.events.weekEnd)}`} />
+      </div>
+
+      <form onSubmit={askArthur} className="rounded-[12px] border border-[#edf0f4] bg-[#fcfcfd] p-4 sm:p-5">
+        <div className="flex gap-4">
+          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[8px] bg-[linear-gradient(130deg,#f1f5fa,#e1e9f7)] text-[18px] text-[#618bbc]" aria-hidden="true">
+            ✧
+          </span>
+          <div className="min-w-0 flex-1">
+            <label htmlFor="nk-ask" className="block text-[14px] font-medium text-[#1d1d1f]">
+              Ask Arthur about your newsroom
+            </label>
+            <div className="mt-3 flex flex-wrap items-center gap-2 rounded-[8px] border border-[#e2e6ed] bg-white p-1.5 pl-3 focus-within:border-[#b9cde8]">
+              <input id="nk-ask" value={askQ} onChange={(e) => setAskQ(e.target.value)} placeholder={ASKS[0]} className="min-w-[200px] flex-1 bg-transparent text-[13.5px] outline-none" />
+              <button type="submit" disabled={asking} className="min-h-[34px] rounded-[7px] bg-[#1d1d1f] px-4 text-[12.5px] text-white disabled:opacity-50">
+                {asking ? "Reading…" : "Ask"}
+              </button>
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {ASKS.map((a) => (
+                <button
+                  key={a}
+                  type="button"
+                  disabled={asking}
+                  onClick={() => askArthur(undefined, a)}
+                  className="min-h-[32px] rounded-full border border-[#e8ebf0] bg-white px-3 text-[12px] text-[#818692] hover:border-[#d8e6f8] hover:text-[#3970af] disabled:opacity-50"
+                >
+                  {a}
+                </button>
+              ))}
+            </div>
+            {askErr && <p className="mt-2 text-[12px] text-[#a0603a]">{askErr}</p>}
+            {askOut && (
+              <div className="mt-4 max-w-[640px] text-[13.5px] leading-[1.75] text-[#6c7481]">
+                <strong className="font-medium text-[#323b48]">{askOut.head}</strong>
+                <br />
+                {askOut.answer}
+                {askOut.evidence?.length > 0 && (
+                  <div className="mt-3 border-l border-[#cbd9ed] pl-4 text-[12px] leading-[1.8] text-[#778393]">
+                    <strong className="font-medium text-[#394b64]">Grounded in</strong>
+                    {askOut.evidence.map((ev: string, i: number) => (
+                      <span key={i} className="block">
+                        {ev}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </form>
+
+      <div>
+        <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+          <h3 className="text-[14px] font-medium text-[#1d1d1f]">Good morning, {preparedFor.split(" ")[0]}. Here&apos;s what changed.</h3>
+          <span className="text-[11.5px] text-[#8b8e96]">Public record items are real today. Sample items show what your own tools fill in.</span>
+        </div>
+        <div className="grid gap-3 xl:grid-cols-2">
+          {items.map((it, i) => (
+            <div key={i} className="rounded-[12px] border border-[#edf0f4] bg-white p-5">
+              <div className="flex items-start justify-between gap-3">
+                <span className="text-[9px] font-semibold uppercase tracking-[0.12em] text-[#6a6e77]">{it.kind}</span>
+                <span
+                  className={`shrink-0 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] ${
+                    it.tag === "public" ? "bg-[#f0f5fc] text-[#3970af]" : "bg-[#fbf3ed] text-[#a0603a]"
+                  }`}
+                >
+                  {it.tag === "public" ? "Public record" : "Sample data"}
+                </span>
+              </div>
+              <h4 className="mt-2 text-[14.5px] font-medium leading-[1.4] tracking-[-0.01em] text-[#1d1d1f]">
+                {it.href ? (
+                  <a href={it.href} target="_blank" rel="noreferrer" className="underline decoration-[#cfe0f2] underline-offset-2">
+                    {it.title}
+                  </a>
+                ) : (
+                  it.title
+                )}
+              </h4>
+              <p className="mt-1.5 text-[12.5px] leading-[1.65] text-[#6c7481]">{it.body}</p>
+            </div>
           ))}
-        </nav>
-        {tab === "desk" && desk && <Desk desk={desk} />}
-        {tab === "meetings" && <Meetings data={data} desk={desk} />}
-        {tab === "morning" && <Morning data={data} desk={desk} />}
-        {tab === "calendar" && <Calendar data={data} />}
-        {tab === "grants" && grants && <Grants g={grants} today={data.builtAt} />}
-        {tab === "time" && <TimeBack />}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const NAV = [
+  ["today", "Today", Sun],
+  ["desk", "Stories and records", FileSearch],
+  ["grants", "Grants", HandCoins],
+  ["meetings", "Meeting watch", Landmark],
+  ["morning", "Morning desk", Newspaper],
+  ["calendar", "Calendar", CalendarDays],
+  ["time", "Time back", Clock],
+] as const;
+type NavKey = (typeof NAV)[number][0];
+
+export function NowDashboard({ token, preparedFor, data, desk, grants }: { token: string; preparedFor: string; data: Any; desk: Any; grants?: Any }) {
+  const nav = NAV.filter(([k]) => (k !== "desk" || desk) && (k !== "grants" || grants));
+  const [tab, setTab] = useState<NavKey>("today");
+  useEffect(() => {
+    const h = window.location.hash.slice(1) as NavKey;
+    if (nav.some(([k]) => k === h)) setTab(h);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const pick = (k: NavKey) => {
+    setTab(k);
+    try {
+      history.replaceState(null, "", `#${k}`);
+    } catch {}
+  };
+  return (
+    <div className="ll-os min-h-screen bg-[#f5f5f7]">
+      <div className="mx-auto max-w-[1340px] px-4 pb-16 pt-8 sm:px-6">
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980]">NowKalamazoo · prepared for {preparedFor}</span>
+            <h1 className="mt-2 text-[clamp(1.6rem,3vw,2.2rem)] font-medium tracking-[-0.04em] text-[#1d1d1f]">This morning in your newsroom, with Arthur</h1>
+          </div>
+          <a href={`/p/nowkalamazoo/${token}`} className="rounded-full border border-[#dcdfe6] bg-white px-4 py-2 text-[13px] text-[#1d1d1f] hover:border-[#3778bc]">
+            Back to the proposal
+          </a>
+        </div>
+
+        {/* The LOVELEEDAY system shell, same as every client workspace: window bar, workspace nav, pane. */}
+        <div className="ll-os overflow-hidden rounded-[16px] border border-[#dcdfe6] bg-white shadow-[0_24px_56px_#202d4210]">
+          <div className="flex min-h-[56px] flex-wrap items-center justify-between gap-2 border-b border-[#edf0f4] px-4 py-3 text-[11px] text-[#8b8e96] sm:px-6">
+            <div className="flex items-center gap-4">
+              <span className="flex gap-1" aria-hidden="true">
+                <i className="h-2 w-2 rounded-full bg-[#dfe2e8]" />
+                <i className="h-2 w-2 rounded-full bg-[#dfe2e8]" />
+                <i className="h-2 w-2 rounded-full bg-[#dfe2e8]" />
+              </span>
+              <span>LOVELEEDAY / NowKalamazoo</span>
+            </div>
+            <span className="flex items-center gap-2 text-[11px]">
+              <i className="h-[5px] w-[5px] rounded-full bg-[#719cb1]" aria-hidden="true" />
+              Interactive system preview
+            </span>
+          </div>
+
+          <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[210px_minmax(0,1fr)]">
+            <nav className="flex min-w-0 gap-1 overflow-x-auto border-b border-[#edf0f4] bg-[#fafbfc] p-2 lg:flex-col lg:border-b-0 lg:border-r lg:px-4 lg:py-6" aria-label="Dashboard">
+              <span className="mx-2 mb-3 hidden text-[9px] uppercase tracking-[0.12em] text-[#6a6e77] lg:block">Workspace</span>
+              {nav.map(([k, label, Icon]) => (
+                <button
+                  key={k}
+                  type="button"
+                  onClick={() => pick(k)}
+                  className={`flex min-h-[36px] shrink-0 items-center gap-2 rounded-[8px] px-2.5 text-left text-[12.5px] ${
+                    tab === k ? "bg-[#eaf1fb] text-[#3778bc]" : "text-[#8b8f99] hover:bg-[#f1f3f6] hover:text-[#4a4f58]"
+                  }`}
+                >
+                  <Icon size={14} strokeWidth={1.6} />
+                  {label}
+                </button>
+              ))}
+              <span className="mx-2 my-6 hidden h-px bg-[#e8ebef] lg:block" />
+              <span className="mx-2 mb-3 hidden text-[9px] uppercase tracking-[0.12em] text-[#6a6e77] lg:block">Connected context</span>
+              <p className="mx-2 hidden text-[11px] leading-[1.8] text-[#6a6e77] lg:block">
+                Your meeting directory
+                <br />
+                County and city agendas
+                <br />
+                Your archive and newsletter
+                <br />
+                Your events calendar
+                <br />
+                Funders&apos; published programs
+                <br />
+                USAspending.gov
+              </p>
+              <span className="mx-2 mb-3 mt-6 hidden text-[9px] uppercase tracking-[0.12em] text-[#6a6e77] lg:block">Once connected</span>
+              <p className="mx-2 hidden text-[11px] leading-[1.8] text-[#a0a4ad] lg:block">
+                Email platform and opens
+                <br />
+                Givebutter and Stripe
+                <br />
+                Sponsor bookings
+                <br />
+                Grant agreements
+                <br />
+                Records request log
+              </p>
+            </nav>
+
+            <div className="min-w-0 bg-white p-4 sm:p-6 lg:p-8 [&>*:first-child]:mt-0 [&>*:first-child>*:first-child]:mt-0">
+              {tab === "today" && <Today token={token} preparedFor={preparedFor} data={data} desk={desk} grants={grants} />}
+              {tab === "desk" && desk && <Desk desk={desk} />}
+              {tab === "grants" && grants && <Grants g={grants} today={data.builtAt} />}
+              {tab === "meetings" && <Meetings data={data} desk={desk} />}
+              {tab === "morning" && <Morning data={data} desk={desk} />}
+              {tab === "calendar" && <Calendar data={data} />}
+              {tab === "time" && <TimeBack />}
+              <p className="mt-10 text-[11.5px] leading-[1.6] text-[#8b8e96]">
+                Built {day(data.builtAt)}{" "}from public records: NowKalamazoo&apos;s meeting directory, archive, newsletter and events calendar, county and city
+                agenda postings, funders&apos; published programs and USAspending.gov. Arthur is not connected to any NowKalamazoo system.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
