@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Holly Jolly — The Long Table Issue</title>
+<meta name="description" content="Wrapping paper and greeting cards drawn by named artists, showing every kind of family. Order by Monday, Dec 7 for Christmas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,200..500,0..100,0..1;1,9..144,200..500,0..100,0..1&family=Instrument+Sans:wght@400;500;600&family=Shantell+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3ECE0; --paper2:#EAE0D0; --ink:#1E1420; --ink2:#4A3B4C; --pom:#B8324A; --line:rgba(30,20,32,.18);
+  --serif:'Fraunces',Georgia,serif; --sans:'Instrument Sans',system-ui,sans-serif; --hand:'Shantell Sans',cursive;
+  --gut:clamp(16px,2.4vw,40px); --ease:cubic-bezier(.22,.9,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--pom);outline-offset:3px}
+.grid>*{min-width:0}.grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gut);padding:0 var(--gut)}
+.lab{font:500 11px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.disp{font-family:var(--serif);font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0;font-weight:300;letter-spacing:-.045em;line-height:.88}
+.disp em{font-style:italic;font-variation-settings:'opsz' 144,'SOFT' 100,'WONK' 1;color:var(--pom);letter-spacing:-.04em}
+.body{max-width:min(62ch,100%);color:var(--ink2)}
+.rule{height:1px;background:var(--line)}
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.mask{overflow:hidden}.mask>img{clip-path:inset(100% 0 0 0);transition:clip-path 1.4s var(--ease)}.mask.in>img{clip-path:inset(0)}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.mask>img{clip-path:none;transition:none}html{scroll-behavior:auto}}
+
+/* top strip + masthead */
+.strip{background:var(--ink);color:var(--paper);text-align:center;padding:9px var(--gut)}
+.mast{position:sticky;top:0;z-index:40;background:rgba(243,236,224,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.mast .in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px var(--gut)}
+.mast nav{display:flex;gap:28px}
+.mast nav a,.cartbtn{position:relative}
+.mast nav a::after,.cartbtn::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.mast nav a:hover::after,.cartbtn:hover::after{transform:scaleX(1);transform-origin:left}
+.logo{font:300 26px/1 var(--serif);font-variation-settings:'opsz' 72,'WONK' 1,'SOFT' 100;letter-spacing:-.03em;font-style:italic}
+.mast .r{justify-self:end;display:flex;gap:28px;align-items:center}
+
+/* cover */
+.cover{position:relative;padding-top:clamp(20px,3vw,40px);padding-bottom:clamp(40px,6vw,90px)}
+.cover .meta{grid-column:1/-1;display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--ink);margin-bottom:clamp(10px,2vw,28px)}
+.cover h1{grid-column:1/10;grid-row:2;font-size:clamp(76px,15.6vw,260px);position:relative;z-index:3;margin-top:.05em;mix-blend-mode:normal}
+.cover h1 span{display:block}
+.cover h1 .ind{padding-left:.55em}
+.cover .photo{grid-column:7/12;grid-row:2/4;aspect-ratio:2/3;position:relative;z-index:1;margin-top:-.2em}
+.cover .lines{grid-column:1/6;grid-row:3;align-self:end;position:relative;z-index:4;padding-bottom:6px}
+.cover .lines p.big{font:300 clamp(20px,1.9vw,28px)/1.25 var(--serif);font-variation-settings:'opsz' 36;letter-spacing:-.015em;max-width:26ch;margin-bottom:26px}
+.btn{display:inline-flex;align-items:center;gap:14px;background:var(--pom);color:var(--paper);padding:17px 26px 17px 28px;font:600 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;transition:background .4s,gap .5s var(--ease)}
+.btn:hover{background:var(--ink);gap:24px}
+.btn.ghost{background:none;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.cover .side{grid-column:12/13;grid-row:2;writing-mode:vertical-rl;justify-self:end;white-space:nowrap;padding-top:6px}
+.tag{position:absolute;z-index:5;background:var(--paper);color:var(--ink);padding:14px 18px 14px 40px;clip-path:polygon(22px 0,100% 0,100% 100%,0 100%,0 22px);font:400 14px/1.2 var(--hand);transform:rotate(-5deg);box-shadow:0 0 0 1px var(--ink) inset}
+.tag::before{content:"";position:absolute;left:13px;top:15px;width:9px;height:9px;border-radius:50%;background:var(--ink)}
+.tag{white-space:nowrap}.tag b{display:block;font:500 11px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px}
+.cover>.tag{position:relative;grid-column:6/8;grid-row:3;align-self:end;justify-self:center;margin-bottom:9%;left:auto;bottom:auto;justify-self:start;margin-left:28%;z-index:5}
+.folio{position:absolute;right:calc(var(--gut) + 8px);bottom:-16px}
+
+/* letter */
+.letter{padding-block:clamp(80px,12vw,200px) clamp(60px,8vw,120px)}
+.letter .lab{grid-column:1/4;padding-top:1.1em}
+.letter p.q{grid-column:4/12;font:300 clamp(30px,4.3vw,70px)/1.06 var(--serif);font-variation-settings:'opsz' 120;letter-spacing:-.035em}
+.letter p.q em{font-style:italic;color:var(--pom);font-variation-settings:'opsz' 120,'SOFT' 100,'WONK' 1}
+.letter .sig{grid-column:4/9;margin-top:40px;display:flex;gap:18px;align-items:center}
+.letter .sig span{font:400 22px var(--hand);color:var(--ink2)}
+
+/* contents */
+.toc{background:var(--ink);color:var(--paper);padding:clamp(60px,8vw,130px) 0 clamp(70px,9vw,140px);position:relative}
+.toc .head{grid-column:1/13;display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(28px,4vw,60px)}
+.toc h2{font-size:clamp(64px,10vw,170px)}
+.toc h2 em{color:#E4788B}
+.toc .list{grid-column:1/13;border-top:1px solid rgba(243,236,224,.35)}
+.art{display:grid;grid-template-columns:70px 1fr minmax(0,300px) 130px 40px;align-items:center;gap:var(--gut);padding:clamp(18px,2.2vw,30px) 0;border-bottom:1px solid rgba(243,236,224,.35);position:relative;transition:padding .6s var(--ease),color .3s}
+.art .n{font:300 18px var(--serif);font-variation-settings:'opsz' 18;opacity:.65}
+.art .t{font:300 clamp(34px,5.2vw,86px)/.95 var(--serif);font-variation-settings:'opsz' 144;letter-spacing:-.04em;transition:transform .7s var(--ease),font-style .3s}
+.art .d{font-size:14.5px;line-height:1.45;opacity:.78}
+.art .p{font:400 clamp(20px,1.8vw,28px) var(--serif);font-variation-settings:'opsz' 30;text-align:right}
+.art .add{width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(243,236,224,.6);display:grid;place-items:center;font-size:18px;transition:background .3s,color .3s,transform .5s var(--ease)}
+.art:hover .t{transform:translateX(20px);font-style:italic}
+.art:hover .add,.art .add:hover{background:var(--pom);box-shadow:none;transform:rotate(90deg)}
+.art.lead .t::after{content:"Lead story";font:500 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;vertical-align:top;margin-left:14px;color:#E4788B;font-style:normal}
+.peek{position:fixed;left:0;top:0;width:260px;aspect-ratio:4/5;pointer-events:none;z-index:30;opacity:0;transform:translate(-50%,-50%) scale(.85) rotate(-3deg);transition:opacity .35s,transform .45s var(--ease);overflow:hidden}
+.peek.on{opacity:1}
+.peek img{position:absolute;inset:0;opacity:0;transition:opacity .3s}.peek img.on{opacity:1}
+.toc .note{grid-column:1/13;display:flex;justify-content:space-between;margin-top:26px;opacity:.7;flex-wrap:wrap;gap:8px}
+
+/* spread */
+.spread{position:relative;height:min(110vh,980px);overflow:hidden;color:var(--paper);background:var(--ink)}
+.spread>img{position:absolute;inset:-6% 0;height:112%;will-change:transform}
+.spread::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,10,22,.0) 35%,rgba(20,10,22,.55))}
+.spread .c{position:absolute;z-index:2;inset:0;display:grid;align-content:end;padding-bottom:clamp(36px,6vw,90px)}
+.spread blockquote{grid-column:7/13;font:300 clamp(30px,3.9vw,64px)/1.04 var(--serif);font-variation-settings:'opsz' 120;letter-spacing:-.035em}
+.spread blockquote em{font-style:italic}
+.spread cite{grid-column:7/13;font-style:normal;margin-top:26px;opacity:.85}
+.spread .cap{position:absolute;left:var(--gut);bottom:26px;z-index:2;opacity:.8}
+.spread .cap2{position:absolute;left:var(--gut);top:26px;z-index:2}
+
+/* artists */
+.artists{padding-block:clamp(80px,11vw,180px)}
+.artists .a1{grid-column:1/6;grid-row:1/3;aspect-ratio:4/5}
+.artists .txt{grid-column:7/13;grid-row:1;align-self:start;padding-top:20px}
+.artists h2{font-size:clamp(54px,6.6vw,110px);margin:18px 0 34px}
+.artists .a2{grid-column:8/12;grid-row:2;aspect-ratio:3/2;margin-top:clamp(30px,5vw,70px);position:relative}
+.artists .a2 .tag{right:-20px;top:-26px;left:auto;transform:rotate(4deg)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);margin-top:40px;padding-top:20px;border-top:1px solid var(--ink)}
+.facts div b{display:block;font:300 clamp(34px,3.6vw,56px)/1 var(--serif);font-variation-settings:'opsz' 100;letter-spacing:-.04em;margin-bottom:6px}
+.facts div span{font-size:13.5px;color:var(--ink2);line-height:1.4;display:block}
+
+/* family set */
+.set{background:var(--paper2);padding:clamp(70px,9vw,140px) 0}
+.set .top{grid-column:1/13;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:clamp(24px,3vw,44px)}
+.set h2{font-size:clamp(60px,9.4vw,160px)}
+.stage{grid-column:1/10;position:relative;aspect-ratio:3/2;overflow:hidden}
+.hot{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;z-index:3}
+.hot::before{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 1px var(--ink)}
+.hot::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 1px var(--paper);animation:ping 2.8s var(--ease) infinite}
+@keyframes ping{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.5);opacity:0}}
+.hot .pop{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translate(-50%,8px);width:230px;background:var(--paper);color:var(--ink);padding:14px 16px;opacity:0;pointer-events:none;transition:opacity .35s,transform .5s var(--ease);box-shadow:0 20px 40px -20px rgba(30,20,32,.5)}
+.hot .pop b{display:block;font:500 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;color:var(--pom)}
+.hot .pop span{font-size:14px;line-height:1.4;display:block}
+.hot.dn .pop{bottom:auto;top:calc(100% + 8px);transform:translate(-50%,-8px)}
+.hot:hover .pop,.hot:focus-visible .pop,.hot.open .pop{opacity:1;transform:translate(-50%,0)}
+.hot:hover::before,.hot.open::before{background:var(--pom);box-shadow:none}
+.set .side{grid-column:10/13;display:flex;flex-direction:column;justify-content:space-between;padding-bottom:4px}
+.set .price{font:300 clamp(64px,6.5vw,104px)/1 var(--serif);font-variation-settings:'opsz' 144;letter-spacing:-.05em}
+.set .price sup{font-size:.38em;vertical-align:top;position:relative;top:.25em;letter-spacing:0}
+.set ul{list-style:none;margin:22px 0 28px}
+.set li{display:flex;justify-content:space-between;padding:11px 0;border-top:1px solid var(--line);font-size:15px}
+.set li:last-child{border-bottom:1px solid var(--line)}
+.set .small{position:absolute;right:var(--gut);bottom:var(--gut);width:23%;aspect-ratio:2/3;z-index:2;box-shadow:0 0 0 6px var(--paper)}
+
+
+/* hands */
+.hands{padding-block:clamp(70px,10vw,170px) clamp(70px,9vw,140px)}
+.hands .h1{grid-column:1/8;aspect-ratio:3/2;background:var(--paper2)}
+.hands .col{grid-column:9/13;align-self:end}
+.hands .r{grid-column:9/13;grid-row:1;aspect-ratio:2/3;margin-top:-6vw;position:relative;z-index:2;align-self:start}
+.hands h2{font-size:clamp(44px,6vw,100px);margin:16px 0 24px}
+.ship{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(50px,7vw,100px);border-top:1px solid var(--ink)}
+.ship div{padding:22px var(--gut) 0 0}
+.ship b{display:block;font:300 clamp(28px,3vw,46px)/1.05 var(--serif);font-variation-settings:'opsz' 90;letter-spacing:-.035em;margin:10px 0 6px}
+.ship span.s{font-size:14px;color:var(--ink2);display:block;max-width:34ch}
+
+/* colophon */
+footer{background:var(--ink);color:var(--paper);padding:clamp(50px,6vw,90px) 0 26px;overflow:hidden}
+footer .row{grid-column:1/13;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:30px}
+footer .row a{opacity:.8}footer .row a:hover{opacity:1;color:#E4788B}
+footer .word{grid-column:1/13;font-size:clamp(90px,32vw,560px);line-height:.95;letter-spacing:-.065em;white-space:nowrap;margin:0 -.03em .22em;font-style:italic;font-variation-settings:'opsz' 144,'SOFT' 100,'WONK' 1;font-weight:200;color:#E4788B}
+footer .fine{grid-column:1/13;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(243,236,224,.3);padding-top:18px;margin-top:40px;opacity:.7}
+
+/* cart */
+.scrim{position:fixed;inset:0;background:rgba(30,20,32,.45);opacity:0;pointer-events:none;transition:opacity .5s;z-index:60}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--paper);z-index:61;transform:translateX(102%);transition:transform .7s var(--ease);display:flex;flex-direction:column;padding:26px}
+.drawer.on{transform:none}
+.drawer h3{font:300 44px/1 var(--serif);font-variation-settings:'opsz' 100;letter-spacing:-.04em}
+.drawer .hd{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:18px;border-bottom:1px solid var(--ink)}
+.drawer .items{flex:1;overflow:auto;padding:6px 0}
+.line{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.line .nm{font:300 24px/1.1 var(--serif);font-variation-settings:'opsz' 40;letter-spacing:-.02em}
+.line .q{display:flex;align-items:center;gap:12px;font-size:14px;margin-top:6px}
+.line .q button{width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--ink)}
+.line .q button:hover{background:var(--ink);color:var(--paper)}
+.empty{padding:40px 0;color:var(--ink2);font:italic 300 22px/1.3 var(--serif)}
+.ft{padding-top:16px}
+.prog{height:3px;background:var(--line);margin:10px 0 18px}.prog i{display:block;height:100%;background:var(--pom);width:0;transition:width .7s var(--ease)}
+.tot{display:flex;justify-content:space-between;font:300 30px var(--serif);font-variation-settings:'opsz' 60;margin-bottom:16px}
+.ft .btn{width:100%;justify-content:space-between}
+
+/* mobile */
+@media (max-width:900px){
+  body{font-size:16px}
+  .mast .in{grid-template-columns:auto 1fr}.mast nav{display:none}.mast .r{gap:16px}.logo{font-size:24px}
+  .cover{padding-top:16px}
+  .cover .meta{flex-wrap:wrap;gap:4px 14px}.cover .meta span:nth-child(2){display:none}
+  .cover h1{grid-column:1/13;grid-row:2;font-size:clamp(78px,24.5vw,140px);line-height:.85}
+  .cover .photo{grid-column:3/13;grid-row:3;margin:3vw 0 0;aspect-ratio:4/5}
+  .cover .lines{grid-column:1/13;grid-row:4;margin-top:28px}
+  .cover .side{display:none}
+  .cover>.tag{grid-column:7/13;grid-row:3;align-self:start;justify-self:end;margin:5% 3% 0 0;transform:rotate(5deg)}
+  .folio{display:none}
+  .letter{padding-top:70px}.letter .lab{grid-column:1/13;margin-bottom:20px}
+  .letter p.q{grid-column:1/13;font-size:clamp(31px,9vw,44px)}.letter .sig{grid-column:1/13}
+  .art{grid-template-columns:34px 1fr auto;gap:6px 12px;padding:22px 0}
+  .art .d{grid-column:2/4;grid-row:2;max-width:36ch}.art .p{grid-column:3;grid-row:1;align-self:start;padding-top:6px}.art .add{display:none}
+  .art .t{font-size:clamp(30px,8.6vw,46px);text-wrap:balance}.art:hover .t{transform:none}
+  .art.lead .t::after{display:none}
+  .peek{display:none}
+  .spread{height:92vh}.spread::after{background:linear-gradient(180deg,rgba(20,10,22,0) 25%,rgba(20,10,22,.75))}
+  .spread blockquote,.spread cite{grid-column:1/13}.spread blockquote{font-size:clamp(28px,8.2vw,40px)}
+  .spread .cap{display:none}
+  .artists .a1{grid-column:1/12;grid-row:2;margin-top:34px}.artists .txt{grid-column:1/13;grid-row:1}
+  .artists .a2{grid-column:5/13;grid-row:3}
+  .facts{grid-template-columns:1fr 1fr 1fr;gap:12px}.facts div span{font-size:12px}
+  .set .top{flex-direction:column;align-items:flex-start}
+  .stage{grid-column:1/13;aspect-ratio:4/5}.stage>img{object-position:40% 50%}
+  .stage .small{width:34%}
+  .hot .pop{width:190px}
+  .set .side{grid-column:1/13;margin-top:28px}
+  .hands .h1{grid-column:1/13}.hands .r{grid-column:6/13;grid-row:2;margin-top:-18vw;width:100%}.hands .col{grid-column:1/13;margin-top:28px}
+  .ship{grid-template-columns:1fr;}.ship div{padding:20px 0;border-bottom:1px solid var(--line)}
+  footer .word{font-size:34vw}
+}
+</style>
+</head>
+<body>
+
+<div class="strip lab">Free shipping on $59+ &nbsp;·&nbsp; Order by Monday, Dec 7 for Christmas</div>
+
+<header class="mast">
+  <div class="in">
+    <nav class="lab" aria-label="Main"><a href="#contents">Contents</a><a href="#artists">The Artists</a><a href="#set">Family Set</a><a href="#delivery">Delivery</a></nav>
+    <a href="#top" class="logo" aria-label="Holly Jolly home">Holly Jolly</a>
+    <div class="r lab"><span class="issue" style="opacity:.6">No. 01</span><button class="cartbtn" id="cartBtn" aria-label="Open cart">Bag (<span id="cartN">0</span>)</button></div>
+  </div>
+</header>
+
+<main id="top">
+<section class="cover grid" aria-label="Cover">
+  <div class="meta lab"><span>The Holiday Issue</span><span>Wrapping paper &amp; greeting cards</span><span>Drawn by named artists, paid royalties</span></div>
+  <h1 class="disp"><span class="rv">The Long</span><span class="rv ind" style="transition-delay:.12s"><em>Table</em></span><span class="rv" style="transition-delay:.24s">Issue</span></h1>
+  <div class="photo mask"><img src="../imagery/hero-rolls-gift.png" alt="Three tall rolls of wrapping paper printed with illustrated families, beside a gift tied in red ribbon, on a deep red ground" data-par="0.05" style="object-position:80% 50%"></div>
+  <div class="lines rv" style="transition-delay:.5s">
+    <p class="big">Paper and cards for the whole family, drawn by artists who are paid every time one sells.</p>
+    <a class="btn" href="#contents">Read the contents <span aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="tag rv" style="transition-delay:.9s"><b>Family Set</b>$64.99, ships free</div>
+  <div class="side lab">Autumn / Winter &nbsp;·&nbsp; Issue 01 &nbsp;·&nbsp; Holly Jolly Gift Company</div>
+</section>
+
+<section class="letter grid" aria-label="Editor's letter">
+  <div class="lab">From the table</div>
+  <p class="q rv">Every family wraps the same way: <em>too much tape</em>, a ribbon saved from last year, someone's hands steadying the corner. We asked artists to draw <em>the people who sit at the table</em> and then we printed it on paper heavy enough to keep.</p>
+  <div class="sig rv"><div class="tag" style="position:relative;transform:rotate(-3deg)"><b>Order by</b>Mon, Dec 7</div><span>— the Holly Jolly table</span></div>
+</section>
+
+<section class="toc" id="contents" aria-label="Contents">
+  <div class="grid">
+    <div class="head"><h2 class="disp rv">In this <em>issue</em></h2><span class="lab" style="max-width:22ch;text-align:right">Four ways to bring the table home. Tap the + to add.</span></div>
+    <div class="list" id="list"></div>
+    <div class="note lab"><span>Free shipping on $59+</span><span>Printed on demand, so it never sells out</span></div>
+  </div>
+  <div class="peek" id="peek"></div>
+</section>
+
+<section class="spread" aria-label="Pull quote">
+  <img src="../imagery/hands-wrapping.png" alt="Several pairs of hands wrapping a gift in illustrated paper by candlelight and string lights" data-par="0.12" style="object-position:50% 58%">
+  <div class="cap2 lab">Plate I</div>
+  <div class="c grid"><blockquote class="rv">The best table is the one with <em>one more chair</em> pulled up.</blockquote><cite class="lab rv">Issue 01 &nbsp;/&nbsp; Opening spread</cite></div>
+  <div class="cap lab">The long table, set for the first Saturday of December</div>
+</section>
+
+<section class="artists grid" id="artists" aria-label="The artists">
+  <div class="a1 mask"><img src="../imagery/pattern-long-table.png" alt="Illustration of many families passing plates around a long holiday table, including a wheelchair user and grandparents" data-par="0.04"></div>
+  <div class="txt">
+    <div class="lab">Feature &nbsp;/&nbsp; Page 24</div>
+    <h2 class="disp rv">The <em>hands</em> behind it</h2>
+    <p class="body rv" style="font-size:19px;color:var(--ink)">Each pattern is drawn by one named artist. Their name goes on the roll, on the tag and on this page, and a royalty comes back to them on every sale.</p>
+    <p class="body rv" style="margin-top:16px">Black, Latino, Asian, South Asian, Indigenous and mixed families. Same-sex parents, grandparents raising grandchildren, adoptive and military families, wheelchairs and hearing aids drawn as the ordinary things they are.</p>
+    <div class="facts rv"><div><b>Nov 1</b><span>Artists announced, by name</span></div><div><b>Royalty</b><span>Paid on every roll and card</span></div><div><b>Gouache</b><span>Painted by hand, then printed</span></div></div>
+  </div>
+  <div class="a2 mask"><img src="../imagery/pattern-snow-day.png" alt="Illustration of children and adults sledding and building a snowman, one child in a wheelchair" style="object-position:50% 40%"></div>
+</section>
+
+<section class="set" id="set" aria-label="The Family Set">
+  <div class="grid">
+    <div class="top"><div><div class="lab" style="margin-bottom:14px">Still life &nbsp;/&nbsp; Page 38</div><h2 class="disp rv">The Family <em>Set</em></h2></div><p class="body" style="max-width:34ch">Everything for one table in one box. Touch the dots to see what is inside.</p></div>
+    <div class="stage mask" id="stage">
+      <img src="../imagery/flatlay-cards.png" alt="Greeting cards with illustrated family covers, two wrapped gifts, kraft tags, ribbon, scissors and holly on cream linen">
+      <button class="hot" style="left:77%;top:50%" aria-label="The roll, wrapped"><span class="pop"><b>One roll</b><span>Heavy matte paper, one artist's pattern, enough for a table of gifts.</span></span></button>
+      <button class="hot" style="left:36%;top:42%" aria-label="Printable tags"><span class="pop"><b>Printable tags</b><span>Gift tags to print at home, each signed by its artist.</span></span></button>
+      <button class="hot dn" style="left:34%;top:14%" aria-label="Ribbon and scissors"><span class="pop"><b>Ribbon-ready</b><span>Cut to fit the roll, tied how you like.</span></span></button>
+      <button class="hot" style="left:18%;top:66%" aria-label="Five cards"><span class="pop"><b>Five cards</b><span>Blank inside, in matching envelopes.</span></span></button>
+    </div>
+    <div class="side">
+      <div><div class="lab">Contents of the box</div>
+      <ul><li><span>Wrapping paper roll</span><span>1</span></li><li><span>Greeting cards</span><span>5</span></li><li><span>Printable tags</span><span>Set</span></li><li><span>Shipping</span><span>Free</span></li></ul></div>
+      <div><div class="price">$64<sup>.99</sup></div><div style="margin-top:20px"><button class="btn" data-add="set">Add the set <span aria-hidden="true">+</span></button></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="hands grid" id="delivery" aria-label="Delivery">
+  <div class="h1 mask"><img src="../imagery/gift-cutout.png" alt="A gift wrapped in illustrated family paper with a cream ribbon and kraft tag" data-par="0.04" style="object-fit:contain"></div>
+  <div class="col">
+    <div class="lab">Back page</div>
+    <h2 class="disp rv">Wrapped <em>by Christmas</em></h2>
+    <p class="body rv">Each order is printed on demand, packed flat and shipped free from $59. Order by Monday, Dec 7 and it arrives before the table is set.</p>
+    <div class="tag" style="position:relative;display:inline-block;margin-top:26px;transform:rotate(-3deg)"><b>Last order day</b>Monday, Dec 7</div>
+  </div>
+  <div class="ship" style="grid-column:1/13">
+    <div class="rv"><span class="lab">01 / Roll</span><b>$21.99</b><span class="s">One roll, one artist, one pattern.</span></div>
+    <div class="rv"><span class="lab">02 / Cards</span><b>$34.99</b><span class="s">A ten-pack, blank inside.</span></div>
+    <div class="rv"><span class="lab">03 / Bundle</span><b>$59.99</b><span class="s">Three rolls, free shipping included.</span></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="grid">
+    <div class="row lab"><a href="#contents">Contents</a><a href="#artists">The Artists</a><a href="#set">Family Set</a><a href="#delivery">Delivery</a><span style="opacity:.6">Artists announced Nov 1</span></div>
+    <div class="word disp" aria-hidden="true">Holly Jolly</div>
+    <div class="fine lab"><span>© The Holly Jolly Gift Company</span><span>Issue 01 &nbsp;·&nbsp; The Long Table</span><span>Order by Mon, Dec 7</span></div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Your bag" aria-hidden="true">
+  <div class="hd"><h3>Your <em style="font-style:italic;color:var(--pom)">bag</em></h3><button class="lab" id="closeCart">Close</button></div>
+  <div class="items" id="items"></div>
+  <div class="ft"><div class="lab" id="shipMsg"></div><div class="prog"><i id="prog"></i></div>
+    <div class="tot"><span>Total</span><span id="tot">$0.00</span></div>
+    <button class="btn" id="checkout">Checkout <span aria-hidden="true">&rarr;</span></button></div>
+</aside>
+
+<script>
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const P=[
+ {id:'set',n:'01',t:'The Family Set',d:'One roll, five cards, printable tags. Ships free.',p:64.99,img:'../imagery/flatlay-cards',lead:1},
+ {id:'roll',n:'02',t:'The Roll',d:'Heavy matte paper, one artist, one pattern.',p:21.99,img:'../imagery/roll-cutout'},
+ {id:'cards',n:'03',t:'The Card Ten-Pack',d:'Ten gouache covers, blank inside, with envelopes.',p:34.99,img:'../imagery/pattern-snow-day'},
+ {id:'bundle',n:'04',t:'The Three-Roll Bundle',d:'Wrap the whole table. Free shipping included.',p:59.99,img:'../imagery/hero-rolls-gift'}
+];
+const list=document.getElementById('list'),peek=document.getElementById('peek');
+P.forEach(x=>{
+  const r=document.createElement('div');r.className='art rv'+(x.lead?' lead':'');
+  r.innerHTML=`<span class="n">${esc(x.n)}</span><span class="t">${esc(x.t)}</span><span class="d">${esc(x.d)}</span><span class="p">$${x.p.toFixed(2)}</span><button class="add" aria-label="Add ${esc(x.t)} to bag" data-add="${esc(x.id)}">+</button>`;
+  list.appendChild(r);
+  const im=document.createElement('img');im.src=(x.img.startsWith('..')?'':'imagery/')+x.img+'.png';im.alt='';peek.appendChild(im);
+  r.addEventListener('mouseenter',()=>{[...peek.children].forEach(c=>c.classList.toggle('on',c===im));peek.classList.add('on')});
+  r.addEventListener('mouseleave',()=>peek.classList.remove('on'));
+  r.addEventListener('mousemove',e=>{peek.style.left=(e.clientX+190)+'px';peek.style.top=e.clientY+'px';peek.style.transform='translate(-50%,-50%) scale(1) rotate(-3deg)'});
+  r.addEventListener('mouseleave',()=>peek.style.transform='translate(-50%,-50%) scale(.85) rotate(-3deg)');
+});
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv,.mask').forEach(el=>io.observe(el));
+requestAnimationFrame(()=>document.querySelectorAll('.cover .rv,.cover .mask').forEach(el=>el.classList.add('in')));
+/* parallax */
+const pars=[...document.querySelectorAll('[data-par]')];
+function par(){const h=innerHeight;pars.forEach(i=>{const b=i.parentElement.getBoundingClientRect();if(b.bottom<0||b.top>h)return;const k=+i.dataset.par,c=(b.top+b.height/2-h/2);i.style.transform=`translate3d(0,${(-c*k).toFixed(1)}px,0) scale(1.1)`+(i.parentElement.classList.contains('mask')&&!i.parentElement.classList.contains('in')?' scale(1.12)':'')})}
+addEventListener('scroll',()=>requestAnimationFrame(par),{passive:true});par();
+/* hotspots (touch) */
+document.querySelectorAll('.hot').forEach(h=>h.addEventListener('click',e=>{e.stopPropagation();const o=h.classList.contains('open');document.querySelectorAll('.hot').forEach(x=>x.classList.remove('open'));if(!o)h.classList.add('open')}));
+document.addEventListener('click',()=>document.querySelectorAll('.hot').forEach(x=>x.classList.remove('open')));
+/* cart */
+const price=Object.fromEntries(P.map(x=>[x.id,x]));let cart={};
+const $=id=>document.getElementById(id);
+function open(o){$('drawer').classList.toggle('on',o);$('scrim').classList.toggle('on',o);$('drawer').setAttribute('aria-hidden',!o)}
+function render(){
+  const ids=Object.keys(cart);let sum=0,n=0;const box=$('items');box.textContent='';
+  if(!ids.length){const e=document.createElement('div');e.className='empty';e.textContent='Nothing on the table yet.';box.appendChild(e)}
+  ids.forEach(id=>{const q=cart[id],it=price[id];sum+=q*it.p;n+=q;
+    const l=document.createElement('div');l.className='line';
+    l.innerHTML=`<div><div class="nm">${esc(it.t)}</div><div class="q"><button data-dec="${esc(id)}" aria-label="Fewer">&minus;</button>${q}<button data-inc="${esc(id)}" aria-label="More">+</button></div></div><div style="font:300 22px var(--serif)">$${(q*it.p).toFixed(2)}</div>`;box.appendChild(l)});
+  $('cartN').textContent=n;$('tot').textContent='$'+sum.toFixed(2);
+  const left=59-sum;$('prog').style.width=Math.min(100,sum/59*100)+'%';
+  $('shipMsg').textContent=sum===0?'Free shipping on $59+':left>0?`$${left.toFixed(2)} away from free shipping`:'Free shipping unlocked';
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-add]');if(a){const id=a.dataset.add;cart[id]=(cart[id]||0)+1;render();open(true)}
+  const i=e.target.closest('[data-inc]');if(i){cart[i.dataset.inc]++;render()}
+  const d=e.target.closest('[data-dec]');if(d){const id=d.dataset.dec;if(--cart[id]<=0)delete cart[id];render()}
+});
+$('cartBtn').onclick=()=>open(true);$('closeCart').onclick=()=>open(false);$('scrim').onclick=()=>open(false);
+addEventListener('keydown',e=>{if(e.key==='Escape')open(false)});
+render();
+</script>
+</body>
+</html>
