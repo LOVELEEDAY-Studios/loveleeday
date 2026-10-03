@@ -127,7 +127,7 @@ export const panel = {
   hero: {
     a: "None of the four is launch-ready.",
     b: "Pop converts best, Editorial looks best, and the art is the gap in all of them.",
-    intro: "Four reviewers wrote their grades independently from the same screenshots and live-page probes, then converged. The recommendation is a hybrid: Editorial's type and restraint on Pop's conversion spine, with Storybook's street kept for the story page. Image generation ran out of credit mid-round, so every design reuses one 8-image gpt-image set. That set is placeholder, not final art.",
+    intro: "Graded through four lenses (art director, web/UX, e-commerce operator, performance marketer) by one reviewer, from the same screenshots and live-page probes. The recommendation is a hybrid: Editorial's type and restraint on Pop's conversion spine, with Storybook's street kept for the story page. Image generation ran out of credit mid-round, so every design reuses one 8-image gpt-image set. That set is placeholder, not final art.",
   },
 };
 
