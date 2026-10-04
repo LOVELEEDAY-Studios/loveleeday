@@ -90,7 +90,7 @@ export async function POST(request: Request) {
       html: `
         <div style="font-family: Inter, -apple-system, sans-serif; max-width: 600px; margin: 0 auto; background: #F3F2EE; padding: 2rem; color: #111;">
           <h2 style="font-weight: 400; letter-spacing: -0.02em; margin-bottom: 0.5rem;">Brief received.</h2>
-          <p style="color: #5A5A55; font-size: 0.9rem; margin-bottom: 2rem;">We'll reply within 24 hours with a scope, price, and timeline.</p>
+          <p style="color: #5A5A55; font-size: 0.9rem; margin-bottom: 2rem;">We'll reply within one working day to talk through scope and next steps.</p>
           <p style="font-size: 0.9rem; line-height: 1.6;">In the meantime, feel free to reply to this email with any additional details or questions.</p>
           <p style="font-size: 0.85rem; color: #5A5A55; line-height: 1.5; margin-top: 1.5rem;">If you don't see our reply, check your spam folder — we send from <strong>hello@loveleedaystudios.com</strong>.</p>
           <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #D4D2C9; font-size: 0.8rem; color: #5A5A55;">
