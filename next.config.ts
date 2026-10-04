@@ -1,6 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* src/content/assetVersion.ts reads public/<path> through a runtime path.join, so the
+     file tracer cannot see which files it needs and copies ALL of public/ into every
+     dynamic route that imports it. On 2026-10-04 /team/portals reached 264 MB (limit
+     250) once 101 MB of review images landed in public/p, and every deploy failed.
+     v() is only ever called on /portal/** paths; everything else in public/ is served
+     by the CDN and never read by a function. A new public/ folder belongs here too. */
+  outputFileTracingExcludes: {
+    "*": [
+      "public/p/**",
+      "public/board-shots/**",
+      "public/site/**",
+      "public/brand/**",
+      "public/studio/**",
+      "public/dabney-saturday-ads/**",
+      "public/review/**",
+    ],
+  },
   images: {
     /* The portfolio frames are served with a ?v=<content hash> so a regenerated
        image is a new URL and no cache can hand back a stale one. next/image
