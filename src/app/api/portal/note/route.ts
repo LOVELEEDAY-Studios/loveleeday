@@ -137,7 +137,7 @@ export async function POST(request: Request) {
     // The client gets their own words back, so the note is a record and not a
     // message into a void.
     await resend.emails.send({
-      from: "LOVELEEDAY Studios <hello@loveleedaystudios.com>",
+      from: "LOVELEEDAY <hello@loveleedaystudios.com>",
       to: email,
       replyTo: "daniel@loveleedaystudios.com",
       subject: `Note received — ${portal.client} review`,

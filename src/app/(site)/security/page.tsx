@@ -22,7 +22,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Security & Compliance",
   description:
-    "How LOVELEEDAY Studios protects client data: multi-factor authentication, US-only hosting, per-client isolation, automated daily backups, and a stated posture on SOC 2, penetration testing and SSO.",
+    "How LOVELEEDAY protects client data: multi-factor authentication, US-only hosting, per-client isolation, automated daily backups, and a stated posture on SOC 2, penetration testing and SSO.",
   alternates: { canonical: "https://loveleedaystudios.com/security" },
 };
 

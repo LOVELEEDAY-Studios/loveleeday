@@ -24,7 +24,7 @@ import { figures, studies } from "@/content/work";
    ========================================================================== */
 
 export const metadata: Metadata = {
-  title: "LOVELEEDAY Studios — the object layer for the business you already run",
+  title: "LOVELEEDAY — the object layer for the business you already run",
   description:
     "Arthur resolves records scattered across payments, ledgers and documents into single objects, each carrying the date it was true, the date we learned it, and a trail back to its source.",
   alternates: { canonical: "https://loveleedaystudios.com" },

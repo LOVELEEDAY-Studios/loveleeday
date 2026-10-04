@@ -46,7 +46,7 @@ export const operated: Operated[] = [
   {
     index: "01",
     slug: "olldae",
-    meta: "How LOVELEEDAY Studios built a bar and restaurant operating system in 11 days — Next.js, Supabase, Stripe, twelve Edge Functions.",
+    meta: "How LOVELEEDAY built a bar and restaurant operating system in 11 days — Next.js, Supabase, Stripe, twelve Edge Functions.",
     title: "olldae",
     category: "SaaS / Restaurant technology",
     tech: ["Next.js", "Supabase", "Stripe", "Vercel", "Edge Functions"],

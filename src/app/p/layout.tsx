@@ -26,7 +26,7 @@ export default function PortalLayout({
             href="/"
             className="flex shrink-0 items-center gap-2 text-[#1d1d1f] text-[13px] font-[650] tracking-[0.12em] max-[700px]:text-[9px] max-[700px]:tracking-[0.1em]"
             style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif' }}
-            aria-label="LOVELEEDAY Studios — home"
+            aria-label="LOVELEEDAY — home"
           >
             <span
               aria-hidden="true"
