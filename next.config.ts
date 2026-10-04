@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
      v() is only ever called on /portal/** paths; everything else in public/ is served
      by the CDN and never read by a function. A new public/ folder belongs here too. */
   outputFileTracingExcludes: {
-    "*": [
+    "/**": [
       "public/p/**",
       "public/board-shots/**",
       "public/site/**",
