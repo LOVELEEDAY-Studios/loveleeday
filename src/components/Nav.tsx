@@ -83,7 +83,7 @@ export function Nav() {
       {/* 2 · the company */}
       <div className="border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--paper)_90%,transparent)] backdrop-blur-xl">
         <div className="shell flex h-[58px] items-center gap-7">
-          <Link href="/" aria-label="LOVELEEDAY Studios — home"
+          <Link href="/" aria-label="LOVELEEDAY — home"
                 className="flex items-center gap-2.5 text-[var(--ink)]">
             <LogoMark />
             <span className="font-[family-name:var(--font-sans-var)] text-[14px] font-bold tracking-[0.005em]">

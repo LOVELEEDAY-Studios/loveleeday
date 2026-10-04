@@ -48,7 +48,7 @@ export async function POST(request: Request) {
 
     // Send notification to Daniel
     await resend.emails.send({
-      from: "LOVELEEDAY Studios <hello@loveleedaystudios.com>",
+      from: "LOVELEEDAY <hello@loveleedaystudios.com>",
       to: "hello@loveleedaystudios.com",
       replyTo: email,
       subject: subjectLine,
@@ -83,10 +83,10 @@ export async function POST(request: Request) {
 
     // Send confirmation to the client
     await resend.emails.send({
-      from: "LOVELEEDAY Studios <hello@loveleedaystudios.com>",
+      from: "LOVELEEDAY <hello@loveleedaystudios.com>",
       replyTo: "hello@loveleedaystudios.com",
       to: email,
-      subject: "Brief received — LOVELEEDAY Studios",
+      subject: "Brief received — LOVELEEDAY",
       html: `
         <div style="font-family: Inter, -apple-system, sans-serif; max-width: 600px; margin: 0 auto; background: #F3F2EE; padding: 2rem; color: #111;">
           <h2 style="font-weight: 400; letter-spacing: -0.02em; margin-bottom: 0.5rem;">Brief received.</h2>

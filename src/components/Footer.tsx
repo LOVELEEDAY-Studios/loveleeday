@@ -49,7 +49,7 @@ export function Footer() {
       <div className="shell pt-20 pb-10">
         <div className="grid gap-12 border-b border-[var(--deep-line)] pb-14 md:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
-            <Link href="/" className="flex items-center gap-2.5" aria-label="LOVELEEDAY Studios — home">
+            <Link href="/" className="flex items-center gap-2.5" aria-label="LOVELEEDAY — home">
               <LogoMark size={24} />
               <span className="text-[13.5px] font-semibold">
                 LOVELEEDAY<span className="text-[var(--on-deep-mu)]"> Studios</span>

@@ -38,12 +38,12 @@ export const metadata: Metadata = {
     template: "%s — LOVELEEDAY",
   },
   description:
-    "LOVELEEDAY Studios builds Arthur, an intelligence system that holds context, resolves entities across sources and carries lineage on every figure — and the production software that runs on top of it.",
+    "LOVELEEDAY builds Arthur, an intelligence system that holds context, resolves entities across sources and carries lineage on every figure — and the production software that runs on top of it.",
   alternates: {
     canonical: "https://loveleedaystudios.com",
   },
   openGraph: {
-    title: "LOVELEEDAY Studios",
+    title: "LOVELEEDAY",
     description:
       "Intelligence architecture and the software it runs. Every figure carries its source.",
     url: "https://loveleedaystudios.com",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LOVELEEDAY Studios",
+    title: "LOVELEEDAY",
     description:
       "Intelligence architecture and the software it runs. Every figure carries its source.",
   },
@@ -78,7 +78,9 @@ export default function RootLayout({
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "LOVELEEDAY Studios",
+    name: "LOVELEEDAY",
+    legalName: "LOVELEEDAY Studios LLC",
+    alternateName: "LOVELEEDAY Studios",
     url: "https://loveleedaystudios.com",
     logo: "https://loveleedaystudios.com/site/assets/icon.svg",
     contactPoint: {
@@ -97,7 +99,8 @@ export default function RootLayout({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "LOVELEEDAY Studios",
+    name: "LOVELEEDAY",
+    alternateName: "LOVELEEDAY Studios",
     url: "https://loveleedaystudios.com",
   };
 

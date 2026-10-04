@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Brief Received — LOVELEEDAY Studios",
+  title: "Brief Received — LOVELEEDAY",
   description: "Your project brief has been received. We'll respond within 24 hours.",
   alternates: {
     canonical: "https://loveleedaystudios.com/contact/success",

@@ -6,7 +6,7 @@ import { ImageResponse } from "next/og";
    itself that way. A stale OG image is the one design asset that keeps shipping
    the previous strategy to every link anyone pastes. */
 
-export const alt = "LOVELEEDAY Studios — one object, every source";
+export const alt = "LOVELEEDAY — one object, every source";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

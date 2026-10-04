@@ -17,7 +17,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Company",
   description:
-    "LOVELEEDAY Studios is a software company founded by Daniel J. May, MBA. We build Arthur, an intelligence architecture, and the production systems that run on it.",
+    "LOVELEEDAY is a software company founded by Daniel J. May, MBA. We build Arthur, an intelligence architecture, and the production systems that run on it.",
   alternates: { canonical: "https://loveleedaystudios.com/about" },
 };
 
@@ -68,13 +68,13 @@ export default function AboutPage() {
           </div>
           <div className="max-w-[var(--measure)] self-end">
             <p className="text-[1.05rem] leading-[1.6] text-[var(--mid)]">
-              LOVELEEDAY Studios is a software development company founded by Daniel J. May, MBA.
+              LOVELEEDAY is a software development company founded by Daniel J. May, MBA.
               Our perspective comes from pricing, finance and operating a business: technology
               earns its place when it helps someone make a better decision or get meaningful work
               done.
             </p>
             <p className="mt-4 text-[1.05rem] leading-[1.6] text-[var(--mid)]">
-              Arthur is the software foundation. LOVELEEDAY Studios is the team responsible for
+              Arthur is the software foundation. LOVELEEDAY is the team responsible for
               defining the problem, developing the solution, and reviewing the result with you.
             </p>
           </div>

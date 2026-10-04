@@ -94,7 +94,7 @@ const FAQ = [
     "We assess your data, APIs, permissions, and requirements before committing to an integration. An adapter in the architecture does not mean a live connection to your systems already exists.",
   ],
   [
-    "What can we ask LOVELEEDAY Studios to build?",
+    "What can we ask LOVELEEDAY to build?",
     "Custom applications, workflow tools, research and decision support, digital experiences, and connected creative deliverables. We agree on a specific scope and acceptance criteria around the business problem.",
   ],
   [

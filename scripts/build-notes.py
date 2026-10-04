@@ -152,8 +152,8 @@ for i, n in enumerate(notes):
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Article", "headline": n["title"].rstrip("."), "description": n["dek"], "image": BASE + share(n),
          "datePublished": n["date"], "dateModified": BUILT, "url": url, "mainEntityOfPage": url,
-         "author": {"@type": "Organization", "name": "LOVELEEDAY Studios", "url": BASE + "/"},
-         "publisher": {"@type": "Organization", "name": "LOVELEEDAY Studios", "url": BASE + "/"}},
+         "author": {"@type": "Organization", "name": "LOVELEEDAY", "url": BASE + "/"},
+         "publisher": {"@type": "Organization", "name": "LOVELEEDAY", "url": BASE + "/"}},
         crumbs([{"@type": "ListItem", "position": 3, "name": n["title"].rstrip("."), "item": url}])]}
     page = (head(f"{n['title'].rstrip('.')} — Systems Notes — LOVELEEDAY", n["dek"], f"/notes/{n['slug']}", share(n), ld)
             + '<body class="">' + nav_t[nav_t.find('<a class="skip"'):] + '<main id="main">' + body + "</main>" + foot_t)
