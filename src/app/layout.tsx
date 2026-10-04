@@ -34,8 +34,8 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "LOVELEEDAY Studios — Intelligence architecture and the software it runs",
-    template: "%s — LOVELEEDAY Studios",
+    default: "LOVELEEDAY — The AI operating system for business",
+    template: "%s — LOVELEEDAY",
   },
   description:
     "LOVELEEDAY Studios builds Arthur, an intelligence system that holds context, resolves entities across sources and carries lineage on every figure — and the production software that runs on top of it.",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description:
       "Intelligence architecture and the software it runs. Every figure carries its source.",
     url: "https://loveleedaystudios.com",
-    siteName: "LOVELEEDAY Studios",
+    siteName: "LOVELEEDAY",
     type: "website",
   },
   twitter: {
