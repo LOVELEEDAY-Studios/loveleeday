@@ -44,6 +44,7 @@ const nextConfig: NextConfig = {
       { source: "/industries/manufacturing", destination: "/site/industries/manufacturing.html" },
       { source: "/industries/property", destination: "/site/industries/property.html" },
       { source: "/trust", destination: "/site/trust.html" },
+      { source: "/integrations", destination: "/site/integrations.html" },
       { source: "/talk", destination: "/site/talk.html" },
       { source: "/municipal-review", destination: "/site/municipal-review.html" },
       { source: "/customer-data", destination: "/site/customer-data.html" },
