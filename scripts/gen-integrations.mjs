@@ -102,7 +102,9 @@ const items = defs.map((d) => {
   return {
     key: d.key, name: d.name, vendor: d.vendor, group: group[0], category: CATEGORY_LABEL[d.category] ?? d.category,
     method: method(d.auth_method), status, reads: OVERRIDES[d.key] ?? reads(d.objects),
-    logo: logo && fs.existsSync(LOGO_OUT + logo) ? `/integrations/logos/${logo}` : null,
+    // Catalog logo first; otherwise a mark committed here under the connector key (vendor logo or a plain file/server icon).
+    logo: logo && fs.existsSync(LOGO_OUT + logo) ? `/integrations/logos/${logo}`
+      : ((f) => (f ? `/integrations/logos/${f}` : null))(["svg", "png"].map((x) => `${d.key}.${x}`).find((f) => fs.existsSync(LOGO_OUT + f))),
   };
 });
 

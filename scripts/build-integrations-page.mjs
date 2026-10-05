@@ -12,7 +12,7 @@ const post = trust.slice(trust.indexOf("</main>"));
 
 const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const TITLE = "Integrations — LOVELEEDAY";
-const DESC = `A plain directory of the ${data.items.length} accounting, CRM, commerce, property and other systems LOVELEEDAY can read, with an honest label on each: Available, Vendor approval or Coming soon.`;
+const DESC = "The accounting, CRM, commerce, property and other systems LOVELEEDAY connects to, read-only, by sign-in, key or file.";
 const URL_ = "https://loveleedaystudios.com/integrations";
 
 let head = pre
@@ -42,34 +42,30 @@ const CSS = `.pub .ic-state{border:1px solid var(--line);border-radius:14px;padd
 head = head.replace(/<style>[\s\S]*?<\/style>/, () => `<style>${CSS}</style>`);
 head = head.replace(/"@type":"WebPage"/, '"@type":"CollectionPage"');
 
-const count = (s) => data.items.filter((i) => i.status === s).length;
-const STATES = [
-  ["Available", "good", "You can connect this today, by signing in, sharing a key, or sending a file."],
-  ["Vendor approval", "wait", "The vendor has to approve our access first. We request it with you, and nothing is read until it is granted."],
-  ["Coming soon", "info", "Built, but the vendor sign-in is not switched on yet. Ask and we will tell you where it stands."],
-];
-const pillClass = Object.fromEntries(STATES.map(([k, c]) => [k, c]));
-
+// The public page lists only what a customer can connect today. Where we stand with a vendor (approval pending, sign-in
+// not switched on) is our business, not theirs: Daniel 2026-10-05, "do you think a customer needs to see that". Anything
+// not listed is covered by the "Not listed?" panel. The portal catalog keeps the full ladder for signed-in clients.
 const order = new Map(data.groups.map((g, n) => [g.id, n]));
-const items = [...data.items].sort((a, b) => order.get(a.group) - order.get(b.group) || a.name.localeCompare(b.name));
-const groups = data.groups.filter((g) => items.some((i) => i.group === g.id));
+const items = data.items.filter((i) => i.status === "Available").sort((a, b) => order.get(a.group) - order.get(b.group) || a.name.localeCompare(b.name));
+const groups = data.groups.map((g) => ({ ...g, count: items.filter((i) => i.group === g.id).length })).filter((g) => g.count);
 
-const card = (i) => `<article class="ic-card" data-group="${esc(i.group)}" data-q="${esc((i.name + " " + i.vendor + " " + i.category).toLowerCase())}"><div class="ic-top"><span class="ic-logo">${i.logo ? `<img src="${esc(i.logo)}" alt="" width="24" height="24">` : esc(i.name[0])}</span><div><b>${esc(i.name)}</b><span class="xs">${esc(i.category)}</span></div></div><p>${esc(i.reads)}</p><div class="ic-meta"><span class="pill ${pillClass[i.status]}"><span class="dot${i.status === "Available" ? "" : i.status === "Vendor approval" ? " wait" : " off"}"></span>${i.status}</span><span class="pill">${esc(i.method)}</span></div></article>`;
+// Each logo sits on a square tinted with its own brand colour (scripts/logo-colors.py), so the wall reads as distinct systems.
+const COLORS = JSON.parse(fs.readFileSync(root + "src/content/logo-colors.json", "utf8"));
+const tint = (i) => { const c = (i.logo && COLORS[i.logo.split("/").pop()]) || "#5B6472"; return `background:${c}2E;border-color:${c}73`; };
+const card = (i) => `<article class="ic-card" data-group="${esc(i.group)}" data-q="${esc((i.name + " " + i.vendor + " " + i.category).toLowerCase())}"><div class="ic-top"><span class="ic-logo" style="${tint(i)}">${i.logo ? `<img src="${esc(i.logo)}" alt="" width="24" height="24">` : esc(i.name[0])}</span><div><b>${esc(i.name)}</b><span class="xs">${esc(i.category)}</span></div></div><p>${esc(i.reads)}</p><div class="ic-meta"><span class="pill">${esc(i.method)}</span></div></article>`;
 
 const body = `
 
 <section class="wrap pagehead" style="padding-top:64px"><span class="eyebrow">Integrations</span><h1 class="title" style="font-size:56px">Reads the systems<br><span>you already run.</span></h1>
-<p class="lead">A directory of the ${items.length} systems LOVELEEDAY can read, and where each one stands today. Every connection is read-only, and every one carries one of three plain labels.</p></section>
-
-<section class="wrap"><div class="grid g3">${STATES.map(([k, c, t]) => `<div class="ic-state"><div class="row between"><b style="font-size:14px">${k}</b><span class="pill ${c}">${count(k)}</span></div><p>${t}</p></div>`).join("")}</div></section>
+<p class="lead">Connect by signing in, sharing a key, or sending a file. Every connection is read-only: nothing is written back to your systems without your approval.</p></section>
 
 <section class="wrap" style="padding-top:48px"><span class="eyebrow">Directory</span>
 <div class="ic-bar"><div class="tabs" role="group" aria-label="Filter by category"><button class="tab on" type="button" data-f="all">All<small>${items.length}</small></button>${groups.map((g) => `<button class="tab" type="button" data-f="${esc(g.id)}">${esc(g.label)}<small>${g.count}</small></button>`).join("")}</div>
 <input class="ic-search" id="ic-q" type="search" placeholder="Search systems" aria-label="Search systems" autocomplete="off"></div>
 <div class="ic-grid" id="ic-grid">${items.map(card).join("")}</div>
-<p class="ic-empty" id="ic-empty" hidden>Nothing matches that search. Tell us the system and we will tell you where it stands.</p></section>
+<p class="ic-empty" id="ic-empty" hidden>Nothing matches that search. Tell us the system you run and we will show you how it connects.</p></section>
 
-<section class="wrap" style="padding-top:56px;padding-bottom:96px"><div class="panel tint row between" style="padding:36px 40px"><div><h2 class="h">Not listed?</h2><p class="muted mt8" style="max-width:520px">If your system has an export, a database or an API, we can usually read it. Tell us what you run and we will say honestly how it connects.</p></div><div class="row"><a class="btn dark" href="/studio#project-brief">Tell us what you run</a></div></div></section>
+<section class="wrap" style="padding-top:56px;padding-bottom:96px"><div class="panel tint row between" style="padding:36px 40px"><div><h2 class="h">Not listed?</h2><p class="muted mt8" style="max-width:520px">If your system has an export, a database or an API, we can usually read it. Tell us what you run and we will show you how it connects.</p></div><div class="row"><a class="btn dark" href="/studio#project-brief">Tell us what you run</a></div></div></section>
 <script>(function(){var f="all",q="",cards=[].slice.call(document.querySelectorAll(".ic-card")),tabs=[].slice.call(document.querySelectorAll(".tabs .tab")),empty=document.getElementById("ic-empty");function run(){var n=0;cards.forEach(function(c){var ok=(f==="all"||c.dataset.group===f)&&(!q||c.dataset.q.indexOf(q)>-1);c.hidden=!ok;if(ok)n++});empty.hidden=n>0}tabs.forEach(function(t){t.addEventListener("click",function(){f=t.dataset.f;tabs.forEach(function(x){x.classList.toggle("on",x===t)});run()})});document.getElementById("ic-q").addEventListener("input",function(e){q=e.target.value.trim().toLowerCase();run()})})();</script>
 `;
 fs.writeFileSync(root + "public/site/integrations.html", head + body + post);

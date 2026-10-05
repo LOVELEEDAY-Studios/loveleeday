@@ -203,7 +203,7 @@
    "method": "Key",
    "status": "Available",
    "reads": "Reads work orders, service requests, inspections and assets. Read-only.",
-   "logo": null
+   "logo": "/integrations/logos/cityworks.png"
   },
   {
    "key": "clickup",
@@ -247,7 +247,7 @@
    "method": "File",
    "status": "Available",
    "reads": "Reads a spreadsheet or CSV you send us, mapped to your columns.",
-   "logo": null
+   "logo": "/integrations/logos/csv-excel-upload.svg"
   },
   {
    "key": "databricks",
@@ -291,7 +291,7 @@
    "method": "Key",
    "status": "Available",
    "reads": "Reads customers, vendors, sales invoices and purchase invoices. Read-only.",
-   "logo": null
+   "logo": "/integrations/logos/dynamics-365-business-central.svg"
   },
   {
    "key": "dynamics-365-finance-operations",
@@ -302,7 +302,7 @@
    "method": "Key",
    "status": "Available",
    "reads": "Reads customers, vendors, sales orders and invoices. Read-only.",
-   "logo": null
+   "logo": "/integrations/logos/dynamics-365-finance-operations.svg"
   },
   {
    "key": "epicor-prophet-21",
@@ -335,7 +335,7 @@
    "method": "Key",
    "status": "Available",
    "reads": "Reads tickets, conversations, contacts and companies. Read-only.",
-   "logo": null
+   "logo": "/integrations/logos/freshdesk.png"
   },
   {
    "key": "google-bigquery",
@@ -511,7 +511,7 @@
    "method": "Sign in",
    "status": "Coming soon",
    "reads": "Reads receivables invoices, suppliers, purchase orders and payments. Read-only.",
-   "logo": null
+   "logo": "/integrations/logos/oracle-fusion-cloud-erp.svg"
   },
   {
    "key": "pipedrive",
@@ -588,7 +588,7 @@
    "method": "File",
    "status": "Available",
    "reads": "Reads the CSV or spreadsheet files you drop on a schedule. Read-only.",
-   "logo": null
+   "logo": "/integrations/logos/sftp-drop.svg"
   },
   {
    "key": "shopify",
