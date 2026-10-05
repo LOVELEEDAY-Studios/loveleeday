@@ -39,7 +39,9 @@ const CATEGORY_LABEL = {
 };
 
 const src = fs.readFileSync(SRC, "utf8");
-const defs = JSON.parse(src.slice(src.indexOf("= [") + 2, src.lastIndexOf("];") + 1));
+// Employer-owned systems are never listed: QAD belongs to Superior Essex (Daniel's employer), not to the product.
+const EXCLUDE = new Set(["qad-adaptive-erp"]);
+const defs = JSON.parse(src.slice(src.indexOf("= [") + 2, src.lastIndexOf("];") + 1)).filter((d) => !EXCLUDE.has(d.key));
 
 const lower = (t) => t.split(" ").map((w) => (/^[A-Z]{2,}$/.test(w) ? w : w.toLowerCase())).join(" ");
 const humanize = (o) =>

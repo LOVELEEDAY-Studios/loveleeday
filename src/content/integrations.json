@@ -3,7 +3,7 @@
   {
    "id": "accounting",
    "label": "Accounting and ERP",
-   "count": 12
+   "count": 11
   },
   {
    "id": "crm",
@@ -534,17 +534,6 @@
    "status": "Vendor approval",
    "reads": "Reads projects, change orders, budget line items and direct costs. Read-only.",
    "logo": "/integrations/logos/procore.jpg"
-  },
-  {
-   "key": "qad-adaptive-erp",
-   "name": "QAD Adaptive ERP",
-   "vendor": "QAD",
-   "group": "accounting",
-   "category": "ERP",
-   "method": "Key",
-   "status": "Available",
-   "reads": "Reads customers, items, sales orders and purchase orders. Read-only.",
-   "logo": null
   },
   {
    "key": "quickbooks-online",
