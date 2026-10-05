@@ -48,19 +48,19 @@ head = head.replace(/"@type":"WebPage"/, '"@type":"CollectionPage"');
 const order = new Map(data.groups.map((g, n) => [g.id, n]));
 const items = data.items.filter((i) => i.status === "Available").sort((a, b) => order.get(a.group) - order.get(b.group) || a.name.localeCompare(b.name));
 // No silent initials fallback: a listed connector without a logo file stops the build.
-const noLogo = items.filter((i) => !i.logo).map((i) => i.key);
+const noLogo = items.filter((i) => !i.logo || !i.logo.startsWith("/integrations/logos/") || !fs.existsSync(root + "public" + i.logo)).map((i) => i.key);
 if (noLogo.length) throw new Error(`no logo for: ${noLogo.join(", ")}. Add public/integrations/logos/<key>.svg|png, then rerun gen-integrations.mjs`);
 const groups = data.groups.map((g) => ({ ...g, count: items.filter((i) => i.group === g.id).length })).filter((g) => g.count);
 
 // Each logo sits on a square tinted with its own brand colour (scripts/logo-colors.py), so the wall reads as distinct systems.
 const COLORS = JSON.parse(fs.readFileSync(root + "src/content/logo-colors.json", "utf8"));
-const tint = (i) => { const c = (i.logo && COLORS[i.logo.split("/").pop()]) || "#5B6472"; return `background:${c}2E;border-color:${c}73`; };
-const card = (i) => `<article class="ic-card" data-group="${esc(i.group)}" data-q="${esc((i.name + " " + i.vendor + " " + i.category).toLowerCase())}"><div class="ic-top"><span class="ic-logo" style="${tint(i)}">${i.logo ? `<img src="${esc(i.logo)}" alt="" width="24" height="24">` : esc(i.name[0])}</span><div><b>${esc(i.name)}</b><span class="xs">${esc(i.category)}</span></div></div><p>${esc(i.reads)}</p><div class="ic-meta"><span class="pill">${esc(i.method)}</span></div></article>`;
+const tint = (i) => { const c = COLORS[i.logo.split("/").pop()]; if (!/^#[0-9a-f]{6}$/i.test(c || "")) throw new Error(`missing brand colour for ${i.key}`); return `background:${c}2E;border-color:${c}73`; };
+const card = (i) => `<article class="ic-card" data-group="${esc(i.group)}" data-q="${esc((i.name + " " + i.vendor + " " + i.category).toLowerCase())}"><div class="ic-top"><span class="ic-logo" style="${tint(i)}">${i.logo ? `<img src="${esc(i.logo)}" alt="" width="24" height="24">` : esc(i.name[0])}</span><div><b>${esc(i.name)}</b><span class="xs">${esc(i.category)}</span></div></div><p>${esc(i.reads)}</p></article>`;
 
 const body = `
 
 <section class="wrap pagehead" style="padding-top:64px"><span class="eyebrow">Integrations</span><h1 class="title" style="font-size:56px">Reads the systems<br><span>you already run.</span></h1>
-<p class="lead">Connect by signing in, sharing a key, or sending a file. Every connection is read-only: nothing is written back to your systems without your approval.</p></section>
+<p class="lead">Connect in a few minutes. Every connection is read-only: nothing is written back to your systems without your approval.</p></section>
 
 <section class="wrap" style="padding-top:48px"><span class="eyebrow">Directory</span>
 <div class="ic-bar"><div class="tabs" role="group" aria-label="Filter by category"><button class="tab on" type="button" data-f="all">All<small>${items.length}</small></button>${groups.map((g) => `<button class="tab" type="button" data-f="${esc(g.id)}">${esc(g.label)}<small>${g.count}</small></button>`).join("")}</div>

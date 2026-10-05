@@ -112,6 +112,8 @@ const out = {
   groups: GROUPS.map(([id, label]) => ({ id, label, count: items.filter((i) => i.group === id).length })),
   items,
 };
+const missing = items.filter((i) => i.status === "Available" && !i.logo).map((i) => i.key);
+if (missing.length) throw new Error(`Available connectors missing logos: ${missing.join(", ")}`);
 fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + "\n");
 const c = {};
 items.forEach((i) => (c[i.status] = (c[i.status] || 0) + 1));
