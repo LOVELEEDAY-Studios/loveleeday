@@ -99,4 +99,4 @@ window.matchMedia('(min-width:701px)').addEventListener('change',e=>{if(e.matche
 
 // Decorative brains (trust, talk, industries): the same Brain3D.HERO motion as the
 // homepage, started only while on screen. Reduced motion mounts a still frame.
-document.querySelectorAll('canvas.brainbg').forEach(c=>{if(!window.Brain3D)return;const b=Brain3D.mount(c,Brain3D.HERO);const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;if(rm){b.stop();return}if(window.IntersectionObserver)new IntersectionObserver(es=>{es[0].isIntersecting?b.start():b.stop()},{threshold:.05}).observe(c)});
+document.querySelectorAll('canvas.stage-brain').forEach(c=>{if(!window.Brain3D)return;const b=Brain3D.mount(c,Brain3D.HERO);const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;if(rm){b.stop();return}if(window.IntersectionObserver)new IntersectionObserver(es=>{es[0].isIntersecting?b.start():b.stop()},{threshold:.05}).observe(c)});
