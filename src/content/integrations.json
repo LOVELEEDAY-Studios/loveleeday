@@ -1,0 +1,737 @@
+{
+ "groups": [
+  {
+   "id": "accounting",
+   "label": "Accounting and ERP",
+   "count": 12
+  },
+  {
+   "id": "crm",
+   "label": "CRM and sales",
+   "count": 4
+  },
+  {
+   "id": "commerce",
+   "label": "Commerce, POS and payments",
+   "count": 5
+  },
+  {
+   "id": "marketing",
+   "label": "Marketing and email",
+   "count": 3
+  },
+  {
+   "id": "support",
+   "label": "Customer support",
+   "count": 4
+  },
+  {
+   "id": "work",
+   "label": "Projects and work management",
+   "count": 5
+  },
+  {
+   "id": "documents",
+   "label": "Files, documents and e-signature",
+   "count": 7
+  },
+  {
+   "id": "people",
+   "label": "Payroll and HR",
+   "count": 4
+  },
+  {
+   "id": "property",
+   "label": "Property and construction",
+   "count": 5
+  },
+  {
+   "id": "public",
+   "label": "Public sector, nonprofit and legal",
+   "count": 6
+  },
+  {
+   "id": "data",
+   "label": "Data warehouses and uploads",
+   "count": 6
+  },
+  {
+   "id": "other",
+   "label": "Other systems",
+   "count": 0
+  }
+ ],
+ "items": [
+  {
+   "key": "acumatica",
+   "name": "Acumatica",
+   "vendor": "Acumatica",
+   "group": "accounting",
+   "category": "ERP",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads customer, vendor, invoice and bill. Read-only.",
+   "logo": "/integrations/logos/acumatica.svg"
+  },
+  {
+   "key": "adp-workforce-now",
+   "name": "ADP Workforce Now",
+   "vendor": "ADP",
+   "group": "people",
+   "category": "Payroll and HR",
+   "method": "Key",
+   "status": "Vendor approval",
+   "reads": "Reads workers, payroll output, pay statements and time cards. Read-only.",
+   "logo": "/integrations/logos/adpworkforcenow.svg"
+  },
+  {
+   "key": "airtable",
+   "name": "Airtable",
+   "vendor": "Airtable Inc.",
+   "group": "work",
+   "category": "Project management",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads bases, records, record comments and workspaces. Read-only.",
+   "logo": "/integrations/logos/airtable.svg"
+  },
+  {
+   "key": "amazon-s3",
+   "name": "Amazon S3",
+   "vendor": "Amazon Web Services",
+   "group": "documents",
+   "category": "Files",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads CSV, JSON, Parquet and PDF files in the folders you choose. Read-only.",
+   "logo": "/integrations/logos/amazons3.png"
+  },
+  {
+   "key": "appfolio",
+   "name": "AppFolio",
+   "vendor": "AppFolio, Inc.",
+   "group": "property",
+   "category": "Property management",
+   "method": "Key",
+   "status": "Vendor approval",
+   "reads": "Reads properties, units, tenants and leases. Read-only.",
+   "logo": "/integrations/logos/appfolio.png"
+  },
+  {
+   "key": "azure-synapse",
+   "name": "Azure Synapse Analytics",
+   "vendor": "Microsoft",
+   "group": "data",
+   "category": "Data warehouse",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads the tables and views you grant to a read account. Read-only.",
+   "logo": "/integrations/logos/azuresynapse.png"
+  },
+  {
+   "key": "blackbaud-raisers-edge-nxt",
+   "name": "Blackbaud Raiser's Edge NXT",
+   "vendor": "Blackbaud",
+   "group": "public",
+   "category": "Donor management",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads constituents, campaigns, funds, appeals and pledges. Read-only.",
+   "logo": "/integrations/logos/blackbaudraisersedgenxt.png"
+  },
+  {
+   "key": "bloomerang",
+   "name": "Bloomerang",
+   "vendor": "Bloomerang",
+   "group": "public",
+   "category": "Donor management",
+   "method": "Sign in",
+   "status": "Vendor approval",
+   "reads": "Reads constituents, interactions, funds, campaigns, appeals and households. Read-only.",
+   "logo": "/integrations/logos/bloomerang.png"
+  },
+  {
+   "key": "box",
+   "name": "Box",
+   "vendor": "Box",
+   "group": "documents",
+   "category": "Files",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads folders, files metadata, file content and collaborations. Read-only.",
+   "logo": "/integrations/logos/box.svg"
+  },
+  {
+   "key": "brevo",
+   "name": "Brevo",
+   "vendor": "Brevo (formerly Sendinblue)",
+   "group": "marketing",
+   "category": "Email marketing",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads contacts, lists, email campaigns and campaign statistics. Read-only.",
+   "logo": "/integrations/logos/brevo.svg"
+  },
+  {
+   "key": "buildium",
+   "name": "Buildium",
+   "vendor": "RealPage (Buildium)",
+   "group": "property",
+   "category": "Property management",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads rental properties, units, leases and vendors. Read-only.",
+   "logo": "/integrations/logos/buildium.svg"
+  },
+  {
+   "key": "calendly",
+   "name": "Calendly",
+   "vendor": "Calendly LLC",
+   "group": "work",
+   "category": "Project management",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads scheduled events, event invitees, event types and users. Read-only.",
+   "logo": "/integrations/logos/calendly.svg"
+  },
+  {
+   "key": "cityworks",
+   "name": "Cityworks",
+   "vendor": "Trimble (Cityworks)",
+   "group": "public",
+   "category": "Public sector",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads work orders, service requests, inspections and assets. Read-only.",
+   "logo": null
+  },
+  {
+   "key": "clickup",
+   "name": "ClickUp",
+   "vendor": "Mango Technologies, Inc. (ClickUp)",
+   "group": "work",
+   "category": "Project management",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads spaces, folders, lists and tasks. Read-only.",
+   "logo": "/integrations/logos/clickup.svg"
+  },
+  {
+   "key": "clio-manage",
+   "name": "Clio Manage",
+   "vendor": "Clio (Themis Solutions)",
+   "group": "public",
+   "category": "Legal practice",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads matters, contacts, bills and payments. Read-only.",
+   "logo": "/integrations/logos/cliomanage.png"
+  },
+  {
+   "key": "clover",
+   "name": "Clover",
+   "vendor": "Fiserv (Clover)",
+   "group": "commerce",
+   "category": "Point of sale",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads orders, payments, customers and items. Read-only.",
+   "logo": "/integrations/logos/clover.svg"
+  },
+  {
+   "key": "csv-excel-upload",
+   "name": "CSV and Excel upload",
+   "vendor": "n/a (in-product)",
+   "group": "data",
+   "category": "File upload",
+   "method": "File",
+   "status": "Available",
+   "reads": "Reads a spreadsheet or CSV you send us, mapped to your columns.",
+   "logo": null
+  },
+  {
+   "key": "databricks",
+   "name": "Databricks",
+   "vendor": "Databricks",
+   "group": "data",
+   "category": "Data warehouse",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads the catalog tables and views you grant. Read-only.",
+   "logo": "/integrations/logos/databricks.svg"
+  },
+  {
+   "key": "docusign",
+   "name": "DocuSign eSignature",
+   "vendor": "DocuSign, Inc.",
+   "group": "documents",
+   "category": "E-signature",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads envelopes, envelope recipients, envelope documents and templates. Read-only.",
+   "logo": "/integrations/logos/docusign.svg"
+  },
+  {
+   "key": "dropbox-business",
+   "name": "Dropbox Business",
+   "vendor": "Dropbox",
+   "group": "documents",
+   "category": "Files",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads team members, files and folders, file content and shared links. Read-only.",
+   "logo": "/integrations/logos/dropboxbusiness.svg"
+  },
+  {
+   "key": "dynamics-365-business-central",
+   "name": "Microsoft Dynamics 365 Business Central",
+   "vendor": "Microsoft",
+   "group": "accounting",
+   "category": "ERP",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads customers, vendors, sales invoices and purchase invoices. Read-only.",
+   "logo": null
+  },
+  {
+   "key": "dynamics-365-finance-operations",
+   "name": "Microsoft Dynamics 365 (Finance and Operations)",
+   "vendor": "Microsoft",
+   "group": "accounting",
+   "category": "ERP",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads customers, vendors, sales orders and invoices. Read-only.",
+   "logo": null
+  },
+  {
+   "key": "epicor-prophet-21",
+   "name": "Epicor Prophet 21",
+   "vendor": "Epicor",
+   "group": "accounting",
+   "category": "ERP",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads customers, invoices and orders. Read-only.",
+   "logo": "/integrations/logos/epicorprophet21.png"
+  },
+  {
+   "key": "esri-arcgis",
+   "name": "Esri ArcGIS",
+   "vendor": "Esri",
+   "group": "public",
+   "category": "Public sector",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads tables and item metadata. Read-only.",
+   "logo": "/integrations/logos/esriarcgis.svg"
+  },
+  {
+   "key": "freshdesk",
+   "name": "Freshdesk",
+   "vendor": "Freshworks Inc. (Freshdesk)",
+   "group": "support",
+   "category": "Customer support",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads tickets, conversations, contacts and companies. Read-only.",
+   "logo": null
+  },
+  {
+   "key": "google-bigquery",
+   "name": "Google BigQuery",
+   "vendor": "Google",
+   "group": "data",
+   "category": "Data warehouse",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads the datasets you share with a read account. Read-only.",
+   "logo": "/integrations/logos/googlebigquery.svg"
+  },
+  {
+   "key": "google-workspace",
+   "name": "Google Workspace (Drive, Gmail, Calendar, Sheets)",
+   "vendor": "Google",
+   "group": "documents",
+   "category": "Email and documents",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads labeled mail, calendar events, Drive files and sheet values. Read-only.",
+   "logo": "/integrations/logos/googleworkspace.svg"
+  },
+  {
+   "key": "gusto",
+   "name": "Gusto",
+   "vendor": "Gusto",
+   "group": "people",
+   "category": "Payroll and HR",
+   "method": "Sign in",
+   "status": "Vendor approval",
+   "reads": "Reads employees, payrolls, pay schedules and contractors. Read-only.",
+   "logo": "/integrations/logos/gusto.svg"
+  },
+  {
+   "key": "help-scout",
+   "name": "Help Scout",
+   "vendor": "Help Scout PBC",
+   "group": "support",
+   "category": "Customer support",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads conversations, customers, mailboxes and threads. Read-only.",
+   "logo": "/integrations/logos/helpscout.svg"
+  },
+  {
+   "key": "homebase",
+   "name": "Homebase",
+   "vendor": "Homebase (joinhomebase.com)",
+   "group": "people",
+   "category": "Payroll and HR",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads locations, employees, shifts and timecards. Read-only.",
+   "logo": "/integrations/logos/homebase.png"
+  },
+  {
+   "key": "hubspot",
+   "name": "HubSpot",
+   "vendor": "HubSpot, Inc.",
+   "group": "crm",
+   "category": "CRM and sales",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads contacts, companies, deals and tickets. Read-only.",
+   "logo": "/integrations/logos/hubspot.svg"
+  },
+  {
+   "key": "infor-cloudsuite",
+   "name": "Infor CloudSuite",
+   "vendor": "Infor",
+   "group": "accounting",
+   "category": "ERP",
+   "method": "Key",
+   "status": "Vendor approval",
+   "reads": "Reads customers, suppliers, items and sales orders. Read-only.",
+   "logo": "/integrations/logos/inforcloudsuite.png"
+  },
+  {
+   "key": "intercom",
+   "name": "Intercom",
+   "vendor": "Intercom, Inc.",
+   "group": "support",
+   "category": "Customer support",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads contacts, companies, conversations and admins. Read-only.",
+   "logo": "/integrations/logos/intercom.svg"
+  },
+  {
+   "key": "jira",
+   "name": "Jira Cloud",
+   "vendor": "Atlassian Corporation",
+   "group": "work",
+   "category": "Project management",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads issues, projects, boards and sprints. Read-only.",
+   "logo": "/integrations/logos/jira.svg"
+  },
+  {
+   "key": "laserfiche",
+   "name": "Laserfiche",
+   "vendor": "Laserfiche",
+   "group": "documents",
+   "category": "Files",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads the folders, documents and metadata you scope. Read-only.",
+   "logo": "/integrations/logos/laserfiche.svg"
+  },
+  {
+   "key": "mailchimp",
+   "name": "Mailchimp",
+   "vendor": "Intuit Mailchimp",
+   "group": "marketing",
+   "category": "Email marketing",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads campaigns, automations and templates. Read-only.",
+   "logo": "/integrations/logos/mailchimp.svg"
+  },
+  {
+   "key": "microsoft-365",
+   "name": "Microsoft 365 (Graph: Outlook, SharePoint, OneDrive, Teams, Excel)",
+   "vendor": "Microsoft",
+   "group": "documents",
+   "category": "Email and documents",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads Outlook mail, SharePoint libraries, OneDrive files and Teams messages. Read-only.",
+   "logo": "/integrations/logos/microsoft365.svg"
+  },
+  {
+   "key": "monday",
+   "name": "monday.com",
+   "vendor": "monday.com Ltd.",
+   "group": "work",
+   "category": "Project management",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads boards, items, groups and columns. Read-only.",
+   "logo": "/integrations/logos/monday.png"
+  },
+  {
+   "key": "mri-software",
+   "name": "MRI Software",
+   "vendor": "MRI Software LLC",
+   "group": "property",
+   "category": "Property management",
+   "method": "Key",
+   "status": "Vendor approval",
+   "reads": "Reads properties, leases, tenants and AR. Read-only.",
+   "logo": "/integrations/logos/mrisoftware.png"
+  },
+  {
+   "key": "netsuite",
+   "name": "NetSuite",
+   "vendor": "Oracle",
+   "group": "accounting",
+   "category": "ERP",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads customers, vendors, invoices and vendor bills. Read-only.",
+   "logo": "/integrations/logos/netsuite.png"
+  },
+  {
+   "key": "oracle-fusion-cloud-erp",
+   "name": "Oracle Fusion Cloud ERP",
+   "vendor": "Oracle",
+   "group": "accounting",
+   "category": "ERP",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads receivables invoices, suppliers, purchase orders and payments. Read-only.",
+   "logo": null
+  },
+  {
+   "key": "pipedrive",
+   "name": "Pipedrive",
+   "vendor": "Pipedrive OU",
+   "group": "crm",
+   "category": "CRM and sales",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads deals, persons, organizations and activities. Read-only.",
+   "logo": "/integrations/logos/pipedrive.png"
+  },
+  {
+   "key": "procore",
+   "name": "Procore",
+   "vendor": "Procore Technologies",
+   "group": "property",
+   "category": "Construction",
+   "method": "Sign in",
+   "status": "Vendor approval",
+   "reads": "Reads projects, change orders, budget line items and direct costs. Read-only.",
+   "logo": "/integrations/logos/procore.jpg"
+  },
+  {
+   "key": "qad-adaptive-erp",
+   "name": "QAD Adaptive ERP",
+   "vendor": "QAD",
+   "group": "accounting",
+   "category": "ERP",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads customers, items, sales orders and purchase orders. Read-only.",
+   "logo": null
+  },
+  {
+   "key": "quickbooks-online",
+   "name": "QuickBooks Online",
+   "vendor": "Intuit",
+   "group": "accounting",
+   "category": "Accounting",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads customer, vendor, invoice and bill. Read-only.",
+   "logo": "/integrations/logos/quickbooksonline.svg"
+  },
+  {
+   "key": "sage-intacct",
+   "name": "Sage Intacct",
+   "vendor": "Sage",
+   "group": "accounting",
+   "category": "ERP",
+   "method": "Key",
+   "status": "Vendor approval",
+   "reads": "Reads customers, vendors, receivable invoices and payable bills. Read-only.",
+   "logo": "/integrations/logos/sageintacct.svg"
+  },
+  {
+   "key": "salesforce",
+   "name": "Salesforce",
+   "vendor": "Salesforce, Inc.",
+   "group": "crm",
+   "category": "CRM and sales",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads accounts, contacts, leads and opportunities. Read-only.",
+   "logo": "/integrations/logos/salesforce.svg"
+  },
+  {
+   "key": "sap-business-one",
+   "name": "SAP Business One",
+   "vendor": "SAP",
+   "group": "accounting",
+   "category": "ERP",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads business partners, invoices, orders and items. Read-only.",
+   "logo": "/integrations/logos/sapbusinessone.svg"
+  },
+  {
+   "key": "sftp-drop",
+   "name": "SFTP drop",
+   "vendor": "n/a (AWS Transfer Family or self-hosted)",
+   "group": "data",
+   "category": "File upload",
+   "method": "File",
+   "status": "Available",
+   "reads": "Reads the CSV or spreadsheet files you drop on a schedule. Read-only.",
+   "logo": null
+  },
+  {
+   "key": "shopify",
+   "name": "Shopify",
+   "vendor": "Shopify Inc.",
+   "group": "commerce",
+   "category": "Commerce",
+   "method": "Sign in",
+   "status": "Vendor approval",
+   "reads": "Reads orders, customers, inventory and discounts. Read-only.",
+   "logo": "/integrations/logos/shopify.svg"
+  },
+  {
+   "key": "snowflake",
+   "name": "Snowflake",
+   "vendor": "Snowflake",
+   "group": "data",
+   "category": "Data warehouse",
+   "method": "Key",
+   "status": "Available",
+   "reads": "Reads the tables and views you grant to a read role. Read-only.",
+   "logo": "/integrations/logos/snowflake.svg"
+  },
+  {
+   "key": "square",
+   "name": "Square",
+   "vendor": "Block, Inc.",
+   "group": "commerce",
+   "category": "Point of sale",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads orders, payments, customers and inventory counts. Read-only.",
+   "logo": "/integrations/logos/square.svg"
+  },
+  {
+   "key": "stripe",
+   "name": "Stripe",
+   "vendor": "Stripe, Inc.",
+   "group": "commerce",
+   "category": "Payments",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads customers, charges, invoices and subscriptions. Read-only.",
+   "logo": "/integrations/logos/stripe.svg"
+  },
+  {
+   "key": "toast",
+   "name": "Toast",
+   "vendor": "Toast, Inc.",
+   "group": "commerce",
+   "category": "Point of sale",
+   "method": "Key",
+   "status": "Vendor approval",
+   "reads": "Reads checks, employees, cash entries and menu setup. Read-only.",
+   "logo": "/integrations/logos/toast.svg"
+  },
+  {
+   "key": "tyler-munis",
+   "name": "Tyler Munis",
+   "vendor": "Tyler Technologies",
+   "group": "public",
+   "category": "Public sector",
+   "method": "Key",
+   "status": "Vendor approval",
+   "reads": "Reads vendors, payable invoices, purchase orders and budgets. Read-only.",
+   "logo": "/integrations/logos/tylermunis.png"
+  },
+  {
+   "key": "typeform",
+   "name": "Typeform",
+   "vendor": "Typeform S.L.",
+   "group": "marketing",
+   "category": "Email marketing",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads forms, responses, workspaces and themes. Read-only.",
+   "logo": "/integrations/logos/typeform.svg"
+  },
+  {
+   "key": "workday",
+   "name": "Workday",
+   "vendor": "Workday",
+   "group": "people",
+   "category": "Payroll and HR",
+   "method": "Sign in",
+   "status": "Vendor approval",
+   "reads": "Reads workers, organizations and job profiles. Read-only.",
+   "logo": "/integrations/logos/workday.svg"
+  },
+  {
+   "key": "xero",
+   "name": "Xero",
+   "vendor": "Xero",
+   "group": "accounting",
+   "category": "Accounting",
+   "method": "Sign in",
+   "status": "Available",
+   "reads": "Reads contacts, invoices, bills and payments. Read-only.",
+   "logo": "/integrations/logos/xero.svg"
+  },
+  {
+   "key": "yardi-voyager",
+   "name": "Yardi Voyager",
+   "vendor": "Yardi Systems",
+   "group": "property",
+   "category": "Property management",
+   "method": "Key",
+   "status": "Vendor approval",
+   "reads": "Reads properties, units, leases and work orders. Read-only.",
+   "logo": "/integrations/logos/yardivoyager.png"
+  },
+  {
+   "key": "zendesk",
+   "name": "Zendesk",
+   "vendor": "Zendesk, Inc.",
+   "group": "support",
+   "category": "Customer support",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads tickets, users, organizations and ticket comments. Read-only.",
+   "logo": "/integrations/logos/zendesk.svg"
+  },
+  {
+   "key": "zoho-crm",
+   "name": "Zoho CRM",
+   "vendor": "Zoho Corporation",
+   "group": "crm",
+   "category": "CRM and sales",
+   "method": "Sign in",
+   "status": "Coming soon",
+   "reads": "Reads leads, contacts, accounts and deals. Read-only.",
+   "logo": "/integrations/logos/zohocrm.svg"
+  }
+ ]
+}
