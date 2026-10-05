@@ -46,6 +46,7 @@ const nextConfig: NextConfig = {
       { source: "/trust", destination: "/site/trust.html" },
       { source: "/integrations", destination: "/site/integrations.html" },
       { source: "/talk", destination: "/site/talk.html" },
+      { source: "/snapshot", destination: "/site/snapshot.html" },
       { source: "/municipal-review", destination: "/site/municipal-review.html" },
       { source: "/customer-data", destination: "/site/customer-data.html" },
       { source: "/pricing-margins", destination: "/site/pricing-margins.html" },
