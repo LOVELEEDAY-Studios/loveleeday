@@ -555,5 +555,10 @@
     return { start: start, stop: stop, graph: G, show: function (index) { var now = performance.now(); index = isFinite(Number(index)) ? Number(index) : 0; t0 = now - index * 12000; if (pausedAt !== null) pausedAt = now; draw(now); }, next: function () { var now = performance.now(); var current = Math.floor(((pausedAt === null ? now : pausedAt) - t0) / 1000 / 12); t0 = now - (current + 1) * 12000; if (pausedAt !== null) pausedAt = now; draw(now); } };
   }
 
-  global.Brain3D = { mount: mount, styles: Object.keys(STYLES), script: SCRIPT };
+  /* HERO: the one motion config every public page mounts. The landing page,
+     /arthur and the decorative brains on the trust, talk and industry pages all
+     read this, so the rotation, drift, spark cycle and reduced-motion
+     behaviour cannot diverge. */
+  var HERO = { style: 'lobe', labels: false, override: { oscillate: false } };
+  global.Brain3D = { HERO: HERO, mount: mount, styles: Object.keys(STYLES), script: SCRIPT };
 })(window);

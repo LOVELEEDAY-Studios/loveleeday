@@ -28,7 +28,7 @@ const brainSet=(document.body.dataset.brainSet||'').split(',')
   .filter(x=>x!=='').map(Number).filter(i=>brainDemos[i]);
 const activeDemos=brainSet.length?brainSet.map(i=>brainDemos[i]):brainDemos;
 function updateBrain(k,t){const n=activeDemos.length,ki=Number.isFinite(Number(k))?Math.trunc(Number(k)):0,index=((ki%n)+n)%n,stage=reducedMotion?5:t>=6?5:t>=4.5?4:t>=3.4?3:t>=2.3?2:t>=1.2?1:0;const d=activeDemos[index];if(index!==lastBrainBeat){$('brain-question').textContent=d.ask;d.questions.forEach((q,i)=>$('branch-'+i).querySelector('p').textContent=q);$('brain-result').textContent=d.answer;$('brain-evidence').textContent=d.evidence;document.querySelectorAll('[data-brain-example]').forEach(link=>link.setAttribute('aria-current',String(Number(link.dataset.brainExample)===index)));lastBrainBeat=index;lastBrainStage=-1;}if(stage!==lastBrainStage){d.questions.forEach((q,i)=>$('branch-'+i).classList.toggle('visible',stage>i));$('brain-answer').classList.toggle('visible',stage===5);lastBrainStage=stage;}}
-const brain=Brain3D.mount($('brain'),{style:'lobe',labels:false,override:{oscillate:false},onFrame:updateBrain});
+const brain=Brain3D.mount($('brain'),Object.assign({},Brain3D.HERO,{onFrame:updateBrain}));
 function setPaused(){if(paused||!inView)brain.stop();else brain.start();$('motion').textContent=paused?'Play motion ▷':'Pause motion Ⅱ';$('motion').setAttribute('aria-pressed',String(paused))}
 $('motion').addEventListener('click',()=>{paused=!paused;setPaused()});$('brain-next').addEventListener('click',()=>{brain.next();if(paused)updateBrain(lastBrainBeat,7)});setPaused();
 if(reducedMotion)$('motion').hidden=true;
@@ -96,3 +96,7 @@ btn.addEventListener('click',()=>set(!nav.classList.contains('menu-open')));
 nav.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>set(false)));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('menu-open')){set(false);btn.focus()}});
 window.matchMedia('(min-width:701px)').addEventListener('change',e=>{if(e.matches)set(false)})})();
+
+// Decorative brains (trust, talk, industries): the same Brain3D.HERO motion as the
+// homepage, started only while on screen. Reduced motion mounts a still frame.
+document.querySelectorAll('canvas.brainbg').forEach(c=>{if(!window.Brain3D)return;const b=Brain3D.mount(c,Brain3D.HERO);const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;if(rm){b.stop();return}if(window.IntersectionObserver)new IntersectionObserver(es=>{es[0].isIntersecting?b.start():b.stop()},{threshold:.05}).observe(c)});
