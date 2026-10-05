@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     /* The approved marketing site is static HTML under public/site, mounted at
        clean URLs. beforeFiles runs ahead of app routing, so these win over the
-       old (site) routes while /work, /p, /portal and /api keep working. The
+       old (site) routes while /p, /portal and /api keep working. The
        cutover reverses by deleting this block. */
     return {
       beforeFiles: [
@@ -57,14 +57,15 @@ const nextConfig: NextConfig = {
       { source: "/security", destination: "/site/security.html" },
       { source: "/notes", destination: "/site/notes.html" },
       { source: "/notes/:slug", destination: "/site/notes/:slug.html" },
+      { source: "/work", destination: "/site/work.html" },
+      { source: "/work/:slug", destination: "/site/work/:slug.html" },
       ],
     };
   },
 
   async redirects() {
     /* The old marketing routes the new site supersedes. 308 so the move is
-       permanent and the link equity follows; /work stays because those are
-       real portfolio pages the new site does not replace. */
+       permanent and the link equity follows. */
     return [
       { source: "/about", destination: "/studio", permanent: true },
       { source: "/contact", destination: "/studio", permanent: true },
