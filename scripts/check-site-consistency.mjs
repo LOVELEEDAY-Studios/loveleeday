@@ -142,7 +142,7 @@ function staticMode() {
   for (const r of routes) {
     if (/^\/(p|portal|team)(\/|$)/.test(r)) continue;
     if (sources.has(r) || allowed(r)) continue;
-    if (["/about", "/contact"].includes(r)) continue; // permanent redirects in next.config.ts
+    if (["/about", "/contact", "/security"].includes(r)) continue; // permanent redirects in next.config.ts
     problems.push(`route ${r}: served by a React page without a shared static-site rewrite`);
   }
   return { problems, checked: pages.length + routes.length };

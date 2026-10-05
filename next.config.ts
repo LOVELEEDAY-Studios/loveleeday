@@ -55,7 +55,6 @@ const nextConfig: NextConfig = {
       { source: "/studio", destination: "/site/studio.html" },
       { source: "/privacy", destination: "/site/privacy.html" },
       { source: "/terms", destination: "/site/terms.html" },
-      { source: "/security", destination: "/site/security.html" },
       { source: "/notes", destination: "/site/notes.html" },
       { source: "/notes/:slug", destination: "/site/notes/:slug.html" },
       { source: "/work", destination: "/site/work.html" },
@@ -70,6 +69,9 @@ const nextConfig: NextConfig = {
     return [
       { source: "/about", destination: "/studio", permanent: true },
       { source: "/contact", destination: "/studio", permanent: true },
+      // /security was the long internal-detail version of /trust; its detail now lives in the private security packet.
+      { source: "/security", destination: "/trust", permanent: true },
+      { source: "/site/security.html", destination: "/trust", permanent: true },
       // www served a second copy of every page (200, not a redirect). One host for Google.
       {
         source: "/:path*",
