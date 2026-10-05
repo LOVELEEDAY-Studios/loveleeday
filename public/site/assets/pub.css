@@ -197,4 +197,4 @@
 @media(max-width:560px){.pub .stage-brain{height:320px}}
 
 /* Button rows wrap on narrow screens, as the landing page's .page-actions does; desktop unchanged. */
-.pub .row:has(>.btn){flex-wrap:wrap}
+@media(max-width:900px){.pub .row:has(>.btn){flex-wrap:wrap}}
