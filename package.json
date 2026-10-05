@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/site-postprocess.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "capture": "python3 -W ignore scripts/capture-studies.py",
     "capture:check": "python3 -W ignore scripts/capture-studies.py --check",
     "prebuild": "node scripts/check-site-consistency.mjs",
     "check:site": "node scripts/check-site-consistency.mjs",
-    "check:site:live": "node scripts/check-site-consistency.mjs --live"
+    "check:site:live": "node scripts/check-site-consistency.mjs --live",
+    "check:postprocess": "node scripts/site-postprocess.mjs --check"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
