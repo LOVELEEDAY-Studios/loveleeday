@@ -47,6 +47,9 @@ head = head.replace(/"@type":"WebPage"/, '"@type":"CollectionPage"');
 // not listed is covered by the "Not listed?" panel. The portal catalog keeps the full ladder for signed-in clients.
 const order = new Map(data.groups.map((g, n) => [g.id, n]));
 const items = data.items.filter((i) => i.status === "Available").sort((a, b) => order.get(a.group) - order.get(b.group) || a.name.localeCompare(b.name));
+// No silent initials fallback: a listed connector without a logo file stops the build.
+const noLogo = items.filter((i) => !i.logo).map((i) => i.key);
+if (noLogo.length) throw new Error(`no logo for: ${noLogo.join(", ")}. Add public/integrations/logos/<key>.svg|png, then rerun gen-integrations.mjs`);
 const groups = data.groups.map((g) => ({ ...g, count: items.filter((i) => i.group === g.id).length })).filter((g) => g.count);
 
 // Each logo sits on a square tinted with its own brand colour (scripts/logo-colors.py), so the wall reads as distinct systems.

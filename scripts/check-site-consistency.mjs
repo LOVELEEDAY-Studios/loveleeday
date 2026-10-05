@@ -30,6 +30,31 @@ const norm = (s) => s
   .replace(/\s+/g, " ").trim();
 const usesSiteCss = (html) => /<link[^>]+rel="?stylesheet"?[^>]+href="?\/site\/assets\/site\.css/i.test(html);
 
+// Our internal state is not the customer's business. Each of these reached a public page or the client-facing design on
+// 2026-10-05 and Daniel had to catch it: vendor-access stages, our own (Dabney) accounts dressed up as client connections,
+// and working-notes vocabulary. A public page says what a customer can do today, and nothing about where we are stuck.
+const INTERNAL_STATE = [
+  /vendor approval/i, /coming soon/i, /live (at|with) (a )?(customer|client)/i, /approved connectors?/i,
+  /not switched on/i, /\bsandbox\b/i, /partner program/i, /\bUNVERIFIED\b/, /developer (app|account)s?\b/i,
+  /awaiting (vendor|approval)/i, /pending (vendor )?approval/i,
+];
+
+// A logo tile is a span whose class list holds ic-logo, or sq together with logo. Every one must carry a real image (no
+// initials fallback) and the brand-colour tint, so a connector can never ship as a blank or grey square again.
+const logoTiles = (html) => [...html.matchAll(/<span\b([^>]*\bclass="([^"]*)"[^>]*)>([\s\S]*?)<\/span>/g)]
+  .filter((m) => /(^|\s)ic-logo(\s|$)/.test(m[2]) || (/(^|\s)sq(\s|$)/.test(m[2]) && /(^|\s)logo(\s|$)/.test(m[2])))
+  .map((m) => ({ attrs: m[1], inner: m[3], src: (m[3].match(/<img\b[^>]*\bsrc="([^"]+)"/) || [])[1] || null }));
+
+function checkContent(label, html, problems, srcExists) {
+  const text = html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ");
+  for (const re of INTERNAL_STATE) if (re.test(text)) problems.push(`${label}: shows internal status wording ${re} to the public`);
+  for (const t of logoTiles(html)) {
+    if (!t.src) { problems.push(`${label}: a logo tile has no image (initials fallback): ${t.inner.replace(/<[^>]+>/g, "").trim().slice(0, 20) || "(empty)"}`); continue; }
+    if (srcExists && !srcExists(t.src)) problems.push(`${label}: logo ${t.src} does not exist`);
+    if (!/style="[^"]*background\s*:\s*#[0-9a-fA-F]{6,8}/.test(t.attrs)) problems.push(`${label}: logo tile ${t.src} has no brand-colour tint`);
+  }
+}
+
 function compare(label, html, ref, problems) {
   const h = norm(block(html, "header")), f = norm(block(html, "footer"));
   if (!h) problems.push(`${label}: no <header>`); else if (h !== ref.header) problems.push(`${label}: header differs from the homepage`);
@@ -51,7 +76,26 @@ function staticMode() {
       if (fs.statSync(p).isDirectory()) { if (f !== "assets") walk(p); } else if (f.endsWith(".html")) pages.push(p);
     }
   })(siteDir);
-  for (const p of pages) compare(path.relative(root, p), fs.readFileSync(p, "utf8"), ref, problems);
+  const srcExists = (src) => !/^https?:/.test(src) && fs.existsSync(path.join(root, "public", decodeURI(src.split(/[?#]/)[0])));
+  for (const p of pages) {
+    const html = fs.readFileSync(p, "utf8"), label = path.relative(root, p);
+    compare(label, html, ref, problems);
+    checkContent(label, html, problems, srcExists);
+  }
+
+  // One source of truth: every system a public page names as connectable must be Available in the integrations data,
+  // so a hand-typed list can never contradict the directory again.
+  const dataFile = path.join(root, "src/content/integrations.json");
+  if (fs.existsSync(dataFile)) {
+    const available = new Set(JSON.parse(fs.readFileSync(dataFile, "utf8")).items.filter((i) => i.status === "Available").map((i) => i.name));
+    for (const p of pages) {
+      const html = fs.readFileSync(p, "utf8");
+      for (const m of html.matchAll(/<div class="c"><span class="sq logo"[^>]*>[\s\S]*?<b>([^<]+)<\/b>/g)) {
+        const name = m[1].replace(/&amp;/g, "&").trim();
+        if (!available.has(name)) problems.push(`${path.relative(root, p)}: lists "${name}", which is not Available in src/content/integrations.json`);
+      }
+    }
+  }
 
   // A React page under src/app/(site) renders the superseded layout unless a rewrite or redirect shadows its route.
   const config = fs.readFileSync(path.join(root, "next.config.ts"), "utf8");
@@ -81,12 +125,20 @@ async function liveMode(base) {
   const xml = (await get(base + "/sitemap.xml")).html;
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
   if (!locs.length) { console.error("sitemap.xml listed no URLs: nothing was checked"); process.exit(2); }
+  const logoSeen = new Set();
   for (const loc of locs) {
     const u = new URL(loc), route = u.pathname.replace(/\/$/, "") || "/";
     if (allowed(route)) continue;
     const page = await get(base + u.pathname);
     if (page.status !== 200) { problems.push(`${route}: HTTP ${page.status}`); continue; }
     compare(route, page.html, ref, problems);
+    checkContent(route, page.html, problems, null);
+    for (const t of logoTiles(page.html)) {
+      if (!t.src || logoSeen.has(t.src)) continue;
+      logoSeen.add(t.src);
+      const r = await fetch(new URL(t.src, base + "/"), { method: "HEAD" }).catch(() => null);
+      if (!r || r.status !== 200) problems.push(`${route}: logo ${t.src} returns ${r ? r.status : "no response"}`);
+    }
   }
   return { problems, checked: locs.length };
 }
