@@ -20,15 +20,15 @@
 .note-list{padding-block:var(--s6) var(--section-space)}
 .note-list .list-head{letter-spacing:.16em;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#777980;font-weight:600;padding-bottom:var(--s2);border-bottom:1px solid var(--line)}
 .row{display:grid;grid-template-columns:56px minmax(0,1fr) 220px;gap:var(--s4);align-items:center;padding-block:var(--s4);border-bottom:1px solid var(--line)}
-.row .n{font-size:13px;color:#a0a2a8;font-variant-numeric:tabular-nums}
+.row .n{font-size:13px;color:#73757b;font-variant-numeric:tabular-nums}
 .row h3{font-size:24px;font-weight:500;letter-spacing:-.03em;line-height:1.2;margin:0}
 .row p{font-size:15px;line-height:1.6;color:#62656c;margin-top:6px;max-width:560px}
 .row .meta{margin-top:10px}
 .row figure{margin:0;aspect-ratio:16/10;overflow:hidden;background:#eee}
 .row img{width:100%;height:100%;object-fit:cover}
-.row.soon h3{color:#8c8e95}
+.row.soon h3{color:#73757c}
 .row.soon figure{opacity:.55;filter:grayscale(.4)}
-.soon-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a0a2a8;font-weight:600}
+.soon-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#73757b;font-weight:600}
 
 .notes-follow{background:#f5f5f7;padding-block:72px}
 .notes-follow .wrap{display:flex;justify-content:space-between;align-items:center;gap:var(--s4);flex-wrap:wrap}
@@ -45,7 +45,7 @@
 .back{font-size:14px;color:var(--blue)}
 .art-photo{margin:0 auto;width:min(1080px,calc(100% - var(--gutter)*2))}
 .art-photo img{width:100%;aspect-ratio:21/9;object-fit:cover}
-.art-photo figcaption{font-size:12px;color:#9a9ca2;margin-top:10px}
+.art-photo figcaption{font-size:12px;color:#73757b;margin-top:10px}
 .art-body{width:min(680px,calc(100% - var(--gutter)*2));margin:var(--s6) auto var(--section-space)}
 .art-body p{font-size:19px;line-height:1.7;color:#2c2d31;margin-bottom:26px}
 .art-body h2{font-size:30px;letter-spacing:-.03em;margin:48px 0 18px}
@@ -73,3 +73,5 @@
 .feature a:hover h2,.row:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
 .share:hover{border-color:#1d1d1f}
 @media (max-width:760px){.diagram{padding:20px 0 20px 20px;overflow-x:auto;-webkit-overflow-scrolling:touch}.diagram svg{min-width:600px;padding-right:20px}.diagram figcaption{padding-right:20px}.art-body blockquote{font-size:23px}}
+
+@media (pointer:coarse){.share{min-height:44px;display:inline-flex;align-items:center}}
