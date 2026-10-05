@@ -24,7 +24,7 @@ import { operated, studies } from "@/content/work";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Production software from LOVELEEDAY — restaurant operations, multi-entity finance, invoice automation and internal tooling — plus six uncommissioned rebuilds of a venture portfolio.",
+    "Production software from LOVELEEDAY: operations, multi-entity finance, invoice automation and internal tools, plus six uncommissioned portfolio rebuilds.",
   alternates: { canonical: "https://loveleedaystudios.com/work" },
 };
 
