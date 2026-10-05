@@ -1,0 +1,7 @@
+{
+  "routes": [
+    { "route": "/work", "reason": "Portfolio pages kept on the React layout (see next.config.ts redirects note). Still shows the old layout; queued to move onto the site system.", "since": "2026-10-05" },
+    { "route": "/work/*", "reason": "Portfolio detail pages, same as /work.", "since": "2026-10-05" },
+    { "route": "/contact/success", "reason": "Form confirmation reached only after a submit; not linked or in the sitemap.", "since": "2026-10-05" }
+  ]
+}

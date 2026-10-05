@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "capture": "python3 -W ignore scripts/capture-studies.py",
-    "capture:check": "python3 -W ignore scripts/capture-studies.py --check"
+    "capture:check": "python3 -W ignore scripts/capture-studies.py --check",
+    "prebuild": "node scripts/check-site-consistency.mjs",
+    "check:site": "node scripts/check-site-consistency.mjs",
+    "check:site:live": "node scripts/check-site-consistency.mjs --live"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
