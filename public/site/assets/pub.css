@@ -195,3 +195,6 @@
 .pub .stage-brain{width:100%;height:424px;min-width:0;display:block}
 @media(max-width:900px){.pub .stage-split{display:block}.pub .stage-brain{width:min(620px,100%);height:360px;margin:24px auto 0}}
 @media(max-width:560px){.pub .stage-brain{height:320px}}
+
+/* Button rows wrap on narrow screens, as the landing page's .page-actions does; desktop unchanged. */
+.pub .row:has(>.btn){flex-wrap:wrap}
