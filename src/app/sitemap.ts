@@ -35,6 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${base}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${base}/security`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${base}/integrations`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/notes`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     /* Written by scripts/build-notes.py from the same source the pages are built from. */
     ...notes.map((n) => ({ url: `${base}/notes/${n.slug}`, lastModified: new Date(n.date), changeFrequency: "yearly" as const, priority: 0.6 })),
