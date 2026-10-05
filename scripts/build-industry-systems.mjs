@@ -10,13 +10,14 @@ const PAGES = {
 };
 const { items } = JSON.parse(fs.readFileSync("src/content/integrations.json", "utf8"));
 const COLORS = JSON.parse(fs.readFileSync("src/content/logo-colors.json", "utf8"));
-const tint = (i) => { const c = (i.logo && COLORS[i.logo.split("/").pop()]) || "#5B6472"; return `background:${c}2E;border-color:${c}73`; };
+const tint = (i) => { if (!i.logo || !fs.existsSync(`public${i.logo}`)) throw new Error(`missing logo for ${i.key}`); const c = COLORS[i.logo.split("/").pop()]; if (!/^#[0-9a-f]{6}$/i.test(c || "")) throw new Error(`missing brand colour for ${i.key}`); return `background:${c}2E;border-color:${c}73`; };
 const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
 
 for (const [page, keys] of Object.entries(PAGES)) {
   const file = `public/site/industries/${page}.html`;
   const html = fs.readFileSync(file, "utf8");
-  const rows = keys.map((k) => items.find((i) => i.key === k && i.status === "Available")).filter(Boolean)
+  const selected = keys.map((k) => { const item = items.find((i) => i.key === k && i.status === "Available"); if (!item) throw new Error(`${page}: ${k} is not Available`); return item; });
+  const rows = selected
     .map((i) => `<div class="c"><span class="sq logo" style="${tint(i)}">${i.logo ? `<img src="${esc(i.logo)}" alt="${esc(i.name)} logo" loading="lazy">` : esc(i.name[0])}</span><div><b>${esc(i.name)}</b><span class="t">${esc(i.reads)}</span></div></div>`);
   if (rows.length < 3) throw new Error(`${page}: only ${rows.length} available systems matched; check the keys`);
   const start = html.indexOf('<div class="sys">');
