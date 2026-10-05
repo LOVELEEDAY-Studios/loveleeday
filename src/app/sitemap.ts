@@ -16,8 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
      public/sitemap.xml because this route handler wins over a public file, so
      a static one would be shadowed and would silently go stale. /about and
      /contact are gone -- they 308 to /studio -- and a redirect does not belong
-     in a sitemap. /work and its project pages remain: the new site does not
-     replace them. */
+     in a sitemap. /work and its project pages are static too (scripts/build-work-pages.mjs); they are
+     listed here from the same content module. */
   const fixed: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/operating-system`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
