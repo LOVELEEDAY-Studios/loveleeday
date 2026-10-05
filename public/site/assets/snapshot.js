@@ -256,7 +256,9 @@
         tr.appendChild(el('td', { cls: 'num', text: pct(ix.yoy_pct) })); tr.appendChild(el('td', { cls: 'num', text: pct(ix.mom_pct) }));
         tb.appendChild(tr);
       });
-      return el('div', { cls: 'snap-scroll', attrs: { style: 'margin-top:14px' } }, [t]);
+      var heads = [].map.call(hr.children, function (h) { return h.textContent; });
+      [].forEach.call(tb.children, function (r) { [].forEach.call(r.children, function (td, i) { td.setAttribute('data-label', heads[i]); }); });
+      return el('div', { cls: 'snap-scroll snap-mkt-tbl', attrs: { style: 'margin-top:14px' } }, [t]);
     }
     if (m.lines.length) box.appendChild(table(m.lines, true));
     else box.appendChild(el('p', { cls: 'sm muted', text: 'None of your category names matched a tracked index.', attrs: { style: 'margin-top:12px' } }));
