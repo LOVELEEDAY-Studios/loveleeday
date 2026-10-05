@@ -125,6 +125,7 @@
 .pub .stage .eyebrow{color:#b4a697}
 .pub .stage .title span{color:#8e8d99}
 .pub .stage .lead{color:#9c9aa8}
+.pub .stage canvas.brainbg{aspect-ratio:924/638;height:auto}
 .pub .stage .brainbg{position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:620px;opacity:.9;mix-blend-mode:screen;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse at center,#000 38%,transparent 72%);mask-image:radial-gradient(ellipse at center,#000 38%,transparent 72%)}
 .pub .stage > .wrap,.pub .stage > .wrap.wide{position:relative}
 .pub .photo{position:relative;overflow:hidden;border-radius:14px;background:#231a11}
