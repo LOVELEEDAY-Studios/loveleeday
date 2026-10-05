@@ -36,8 +36,9 @@ const usesSiteCss = (html) => /<link[^>]+rel="?stylesheet"?[^>]+href="?\/site\/a
 // Our internal state is not the customer's business. Each of these reached a public page or the client-facing design on
 // 2026-10-05 and Daniel had to catch it: vendor-access stages, our own (Dabney) accounts dressed up as client connections,
 // and working-notes vocabulary. A public page says what a customer can do today, and nothing about where we are stuck.
+// "Coming soon" is allowed: Daniel wants unfinished connectors labelled that way (2026-10-05); the reason why stays private.
 const INTERNAL_STATE = [
-  /vendor approval/i, /coming soon/i, /live (at|with) (a )?(customer|client)/i, /approved connectors?/i,
+  /vendor approval/i, /live (at|with) (a )?(customer|client)/i, /approved connectors?/i,
   /not switched on/i, /\bsandbox\b/i, /partner program/i, /\bUNVERIFIED\b/, /developer (app|account)s?\b/i,
   /awaiting (vendor|approval)/i, /pending (vendor )?approval/i,
   /pending (vendor )?review/i, /\bin review\b/i, /\bwaitlist\b/i, /\bbeta access\b/i,
@@ -66,7 +67,12 @@ function checkContent(label, html, problems, srcExists) {
     const style = attrs(t.attrs).style || "";
     const expected = colors[t.src.split(/[?#]/)[0].split("/").pop()];
     const declarations = Object.fromEntries(style.split(";").map((part) => part.split(":").map((s) => s.trim().toLowerCase())).filter((pair) => pair.length === 2));
-    if (!expected || declarations.background !== `${expected.toLowerCase()}2e` || declarations["border-color"] !== `${expected.toLowerCase()}73`) problems.push(`${label}: logo tile ${t.src} has no matching brand-colour tint`);
+    // The brand colour may sit on the tile itself (tinted square) or fill the whole card that holds it (directory cards).
+    const at = html.indexOf(`src="${t.src}"`);
+    const cardOpen = at > -1 ? html.slice(html.lastIndexOf("<article", at), at) : "";
+    const cardStyle = (cardOpen.match(/^<article\b[^>]*\bstyle="([^"]*)"/) || [])[1] || "";
+    const cardFilled = !!expected && new RegExp(`(^|;)\\s*background\\s*:\\s*${expected}\\s*(;|$)`, "i").test(cardStyle);
+    if (!cardFilled && (!expected || declarations.background !== `${expected.toLowerCase()}2e` || declarations["border-color"] !== `${expected.toLowerCase()}73`)) problems.push(`${label}: logo tile ${t.src} has no matching brand-colour tint`);
   }
 }
 
