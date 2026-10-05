@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
-  agreed, buildOrder, cash, channels, coverage, days, decisions, disputes, facts, fit, getGrowthPlan,
-  growthPlanClients, ladder, ninety, risks, sources, twelve,
+  buildOrder, calls, changed, coverage, decisions, facts, fit, funnel, getGrowthPlan, growthPlanClients,
+  hierarchy, kept, ladder, model, phases, risks, sources,
 } from "@/content/growth-plan";
 
 export const dynamicParams = false;
@@ -13,11 +13,11 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ token: string }> }): Promise<Metadata> {
   const { token } = await params;
-  return { title: getGrowthPlan(token) ? "Growth plan: one plan, with or without PearX" : "A proposal" };
+  return { title: getGrowthPlan(token) ? "Growth plan: we take control" : "A proposal" };
 }
 
 /* Same register as the Hub, County and Elemental pages: white .ll-os ground, 1180px column, the
-   Eyebrow and two-tone headline, hairline lists, a dark section for the one place that argues. */
+   Eyebrow and two-tone headline, hairline lists, a dark section for coverage. */
 
 function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
   return (
@@ -56,6 +56,10 @@ function Head({ eyebrow, a, b, children, dark }: { eyebrow: string; a: string; b
   );
 }
 
+const Label = ({ children }: { children: React.ReactNode }) => (
+  <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8c8e95] lg:hidden">{children}</span>
+);
+
 export default async function GrowthPlanPage({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
   const c = getGrowthPlan(token);
@@ -68,16 +72,19 @@ export default async function GrowthPlanPage({ params }: { params: Promise<{ tok
         <Eyebrow>
           Internal plan · prepared for {c.preparedFor}, {c.role} · October 5, 2026
         </Eyebrow>
-        <Two size="h1" a="Right direction." b="A different order." />
+        <Two size="h1" a="We take control." b="We ship this week." />
         <p className="mt-8 max-w-[44rem] text-[17px] leading-[1.7] text-[#6c7481]">
-          The company read the plan and every seat said change it. Connect many systems, keep one record, give a free first
-          look and expand inside the organization: that is right. Twelve modules and a $1B path for one operator with no
-          connector live at a customer is not. So we sell the wedge first, as a fixed-price review that runs on file uploads
-          through the portal we already have, and we reach the most organizations by putting accountants, bookkeepers and
-          fractional CFOs in front of their own clients. Subscriptions come after that. None of it waits for PearX.
+          The company read the plan and said the direction is right. You set the rest: we do not wait for permission, for
+          PearX or for a marketplace. Tenant safety and the market-data feeds are built now. Delivery is automated, so the
+          Snapshot and the audit reach any organization, small, medium or large, in any industry, the same day, with no
+          person in the loop and no ceiling on volume. The original plan is the foundation. We keep what is sound, change
+          what the memos show will not work, and turn every gap they found into a same-week action.
         </p>
         <div className="mt-10 flex flex-wrap gap-3 text-[14px]">
-          <a href="#thirty" className="rounded-full bg-[#1d1d1f] px-5 py-2.5 font-medium text-white">
+          <a href="#kept" className="rounded-full bg-[#1d1d1f] px-5 py-2.5 font-medium text-white">
+            What we kept and changed
+          </a>
+          <a href="#thirty" className="rounded-full border border-[#dcdfe6] px-5 py-2.5 text-[#1d1d1f] hover:border-[#3778bc]">
             The first 30 days
           </a>
           <a href="#decisions" className="rounded-full border border-[#dcdfe6] px-5 py-2.5 text-[#1d1d1f] hover:border-[#3778bc]">
@@ -92,7 +99,7 @@ export default async function GrowthPlanPage({ params }: { params: Promise<{ tok
           <Eyebrow>Where we start</Eyebrow>
           <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-6">
             {facts.map((s) => (
-              <div key={s.k}>
+              <div key={s.label}>
                 <div className="text-[clamp(1.8rem,3.4vw,2.4rem)] font-medium tracking-[-0.04em] text-[#1d1d1f]">{s.k}</div>
                 <div className="mt-1 text-[14px] leading-[1.55] text-[#4a4d55]">{s.label}</div>
                 <div className="mt-1 text-[12px] text-[#8c8e95]">{s.src}</div>
@@ -100,108 +107,117 @@ export default async function GrowthPlanPage({ params }: { params: Promise<{ tok
             ))}
           </div>
           <p className="mt-8 max-w-[44rem] text-[14px] leading-[1.7] text-[#6c7481]">
-            Every number below is either sourced to a named memo in the review or labelled an assumption. No LOVELEEDAY
-            price is on file, so every price on this page is a recommendation.
+            Every number on this page is sourced to a named memo in the review or labelled an assumption. No LOVELEEDAY
+            price is on file, so every price here is a recommendation.
           </p>
         </div>
       </section>
 
-      {/* Agreed and disputed */}
-      <section id="agreed" className="mx-auto max-w-[1180px] px-6 py-24">
-        <Head eyebrow="The review" a="Where the company agreed," b="and where it did not.">
-          Eight points had every seat that touched them in agreement. Ten did not, and each is settled below with the
-          reasoning.
+      {/* Daniel's calls */}
+      <section id="calls" className="mx-auto max-w-[1180px] px-6 py-24">
+        <Head eyebrow="Your decisions" a="What you set," b="and what it changes.">
+          These override the memos wherever they differ. The risks the company raised stay on the page, as things we manage
+          while we move.
         </Head>
-        <ol className="mt-12 grid gap-x-10 md:grid-cols-2">
-          {agreed.map((t, i) => (
-            <li key={t} className="grid grid-cols-[2rem_1fr] gap-3 border-t border-[#e4e5e9] py-5">
-              <span className="text-[13px] tabular-nums text-[#3778bc]">{i + 1}</span>
-              <span className="text-[15px] leading-[1.65] text-[#1d1d1f]">{t}</span>
-            </li>
-          ))}
-        </ol>
-
-        <div className="mt-20 border-b border-[#e4e5e9] pb-3">
-          <h3 className="text-[20px] font-medium tracking-[-0.02em] text-[#1d1d1f]">
-            The disagreements <span className="text-[#8c8e95]">· {disputes.length}</span>
-          </h3>
-        </div>
-        <ol className="grid gap-x-10 md:grid-cols-2">
-          {disputes.map((d) => (
-            <li key={d.topic} className="border-b border-[#eef0f3] py-7">
-              <span className="inline-block rounded-full bg-[#eaf2fb] px-2.5 py-0.5 text-[11px] font-medium text-[#2d6aa8]">{d.topic}</span>
-              <p className="mt-3 text-[13px] leading-[1.65] text-[#8c8e95]">{d.split}</p>
-              <h4 className="mt-3 text-[16px] font-medium leading-[1.45] tracking-[-0.015em] text-[#1d1d1f]">{d.call}</h4>
-              <p className="mt-2 text-[14px] leading-[1.7] text-[#5b606a]">{d.why}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* Fit */}
-      <section id="fit" className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
-        <div className="mx-auto max-w-[1180px] px-6 py-24">
-          <Head eyebrow="How it fits" a="What we already have," b="and what is missing.">
-            Each piece of the plan against what exists today, the gap, and when it closes.
-          </Head>
-          <div className="mt-12 hidden grid-cols-[1.05fr_1.7fr_1.35fr_1fr] gap-x-6 border-b border-[#dcdfe6] pb-3 lg:grid">
-            {["Plan piece", "What exists", "Gap", "When"].map((h) => (
-              <span key={h} className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980]">{h}</span>
-            ))}
-          </div>
-          <ul>
-            {fit.map((r) => (
-              <li key={r.piece} className="grid gap-x-6 gap-y-3 border-b border-[#e4e5e9] py-6 lg:grid-cols-[1.05fr_1.7fr_1.35fr_1fr]">
-                <span className="text-[15px] font-medium leading-[1.45] text-[#1d1d1f]">{r.piece}</span>
-                <span className="text-[14px] leading-[1.65] text-[#5b606a]">
-                  <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8c8e95] lg:hidden">What exists</span>
-                  {r.exists}
-                </span>
-                <span className="text-[14px] leading-[1.65] text-[#5b606a]">
-                  <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8c8e95] lg:hidden">Gap</span>
-                  {r.gap}
-                </span>
-                <span className="text-[14px] leading-[1.65] text-[#2d6aa8]">
-                  <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8c8e95] lg:hidden">When</span>
-                  {r.when}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* The plan */}
-      <section id="plan" className="mx-auto max-w-[1180px] px-6 py-24">
-        <Head eyebrow="The plan, gaps filled" a="One ladder," b="one first market.">
-          What we sell, to whom, through which doors, and in what order we build it. Prices are recommendations.
-        </Head>
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {ladder.map((l) => (
-            <div key={l.name} className="rounded-2xl border border-[#e4e5e9] p-6">
-              <span className="text-[12px] tabular-nums text-[#3778bc]">{l.n}</span>
-              <h3 className="mt-2 text-[18px] font-medium tracking-[-0.015em] text-[#1d1d1f]">{l.name}</h3>
-              <p className="mt-1 text-[14px] font-medium text-[#1d1d1f]">{l.price}</p>
-              <p className="mt-3 text-[14px] leading-[1.65] text-[#5b606a]">{l.d}</p>
+        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {calls.map((x, i) => (
+            <div key={x.t} className="rounded-2xl border border-[#e4e5e9] p-6">
+              <span className="text-[12px] tabular-nums text-[#3778bc]">{String(i + 1).padStart(2, "0")}</span>
+              <h3 className="mt-2 text-[18px] font-medium tracking-[-0.015em] text-[#1d1d1f]">{x.t}</h3>
+              <p className="mt-2 text-[14px] leading-[1.65] text-[#5b606a]">{x.d}</p>
             </div>
           ))}
         </div>
+      </section>
 
-        <div className="mt-20 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <Eyebrow>First market</Eyebrow>
-            <p className="mt-4 max-w-[28rem] text-[15px] leading-[1.7] text-[#6c7481]">
-              West Michigan owner-operated businesses with a priced catalog and books in QuickBooks, Xero or Excel, sold
-              through their accountants and your network. The engine is built against a distribution-shaped synthetic file.
-              Kalamazoo County has 128-153 independent bars and restaurants worth roughly $0.54-0.64M a year at an assumed
-              $4,200 contract, which is why the first market cannot be bars alone and Dabney stays the proof, not the frame.
-            </p>
+      {/* Kept and changed */}
+      <section id="kept" className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
+        <div className="mx-auto max-w-[1180px] px-6 py-24">
+          <Head eyebrow="The original plan" a="Where we kept it, where we" b="changed it, and why.">
+            The pasted plan is the foundation. We build off it with what the company shows will work.
+          </Head>
+          <div className="mt-14 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <Eyebrow>Kept as written</Eyebrow>
+              <ul className="mt-4">
+                {kept.map((k) => (
+                  <li key={k} className="flex gap-3 border-t border-[#dcdfe6] py-4 text-[14px] leading-[1.65] text-[#4a4d55]">
+                    <span className="mt-[11px] h-px w-3 shrink-0 bg-[#3778bc]" aria-hidden="true" />
+                    <span>{k}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <Eyebrow>Changed, with the reason</Eyebrow>
+              <ol className="mt-4">
+                {changed.map((x, i) => (
+                  <li key={x.what} className="grid grid-cols-[2rem_1fr] gap-3 border-t border-[#dcdfe6] py-5">
+                    <span className="text-[13px] tabular-nums text-[#3778bc]">{i + 1}</span>
+                    <span>
+                      <span className="block text-[15px] leading-[1.55] text-[#1d1d1f]">{x.what}</span>
+                      <span className="mt-1 block text-[14px] leading-[1.65] text-[#7d8088]">Why: {x.why}</span>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
-          <div>
-            <Eyebrow>Channels, in order</Eyebrow>
-            <ol className="mt-4">
-              {channels.map(([t, d], i) => (
-                <li key={t} className="grid grid-cols-[2rem_1fr] gap-3 border-t border-[#e4e5e9] py-4">
+        </div>
+      </section>
+
+      {/* Fit */}
+      <section id="fit" className="mx-auto max-w-[1180px] px-6 py-24">
+        <Head eyebrow="How it fits" a="What we already have," b="and the move for each gap.">
+          Every gap the company found becomes an action this week.
+        </Head>
+        <div className="mt-12 hidden grid-cols-[1fr_1.7fr_1.3fr_1.4fr] gap-x-6 border-b border-[#dcdfe6] pb-3 lg:grid">
+          {["Plan piece", "What exists", "Gap", "Same-week action"].map((h) => (
+            <span key={h} className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980]">{h}</span>
+          ))}
+        </div>
+        <ul>
+          {fit.map((r) => (
+            <li key={r.piece} className="grid gap-x-6 gap-y-3 border-b border-[#e4e5e9] py-6 lg:grid-cols-[1fr_1.7fr_1.3fr_1.4fr]">
+              <span className="text-[15px] font-medium leading-[1.45] text-[#1d1d1f]">{r.piece}</span>
+              <span className="text-[14px] leading-[1.65] text-[#5b606a]"><Label>What exists</Label>{r.exists}</span>
+              <span className="text-[14px] leading-[1.65] text-[#5b606a]"><Label>Gap</Label>{r.gap}</span>
+              <span className="text-[14px] leading-[1.65] text-[#2d6aa8]"><Label>Same-week action</Label>{r.action}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* The plan */}
+      <section id="plan" className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
+        <div className="mx-auto max-w-[1180px] px-6 py-24">
+          <Head eyebrow="The plan" a="One ladder," b="one automated funnel.">
+            Tier prices for the original bands are the pasted plan&apos;s figures. The changes are our judgment. All are
+            assumptions.
+          </Head>
+          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {ladder.map((l) => (
+              <div key={l.name} className="rounded-2xl border border-[#e4e5e9] bg-white p-6">
+                <span className="text-[12px] tabular-nums text-[#3778bc]">{l.n}</span>
+                <h3 className="mt-2 text-[18px] font-medium tracking-[-0.015em] text-[#1d1d1f]">{l.name}</h3>
+                <p className="mt-1 text-[14px] font-medium text-[#1d1d1f]">{l.price}</p>
+                <p className="mt-3 text-[14px] leading-[1.65] text-[#5b606a]">{l.d}</p>
+                <p className="mt-4 border-t border-[#eef0f3] pt-3 text-[12.5px] leading-[1.6] text-[#8c8e95]">{l.note}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-20 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <Eyebrow>The automated funnel</Eyebrow>
+              <p className="mt-4 max-w-[28rem] text-[15px] leading-[1.7] text-[#6c7481]">
+                No person delivers any step. Every figure carries lineage back to its rows, and the engine refuses a figure
+                it cannot source.
+              </p>
+            </div>
+            <ol>
+              {funnel.map(([t, d], i) => (
+                <li key={t} className="grid grid-cols-[2rem_1fr] gap-3 border-t border-[#dcdfe6] py-4">
                   <span className="text-[13px] tabular-nums text-[#3778bc]">{i + 1}</span>
                   <span>
                     <span className="block text-[16px] text-[#1d1d1f]">{t}</span>
@@ -211,129 +227,102 @@ export default async function GrowthPlanPage({ params }: { params: Promise<{ tok
               ))}
             </ol>
           </div>
-        </div>
 
-        <div className="mt-20 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <Eyebrow>Product build order</Eyebrow>
-            <p className="mt-4 max-w-[28rem] text-[15px] leading-[1.7] text-[#6c7481]">
-              Working days, assuming agents write and you review; all assumptions. About 7 days to a concierge snapshot,
-              about 18 to self-serve. No figure ships without the rows behind it, and the snapshot says which columns it
-              found.
-            </p>
+          <div className="mt-20 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <Eyebrow>Integration hierarchy</Eyebrow>
+              <p className="mt-4 max-w-[28rem] text-[15px] leading-[1.7] text-[#6c7481]">
+                The original hierarchy stands. The order of work follows what needs no vendor approval first.
+              </p>
+            </div>
+            <ol>
+              {hierarchy.map(([t, d], i) => (
+                <li key={t} className="grid grid-cols-[2rem_1fr] gap-3 border-t border-[#dcdfe6] py-4">
+                  <span className="text-[13px] tabular-nums text-[#3778bc]">{i + 1}</span>
+                  <span>
+                    <span className="block text-[16px] text-[#1d1d1f]">{t}</span>
+                    <span className="mt-1 block text-[14px] leading-[1.65] text-[#7d8088]">{d}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
           </div>
-          <ol>
-            {buildOrder.map(([t, d], i) => (
-              <li key={t} className="grid grid-cols-[2rem_1fr_auto] gap-3 border-t border-[#e4e5e9] py-4">
-                <span className="text-[13px] tabular-nums text-[#3778bc]">{i + 1}</span>
-                <span className="text-[15px] leading-[1.5] text-[#1d1d1f]">{t}</span>
-                <span className="text-[13px] tabular-nums text-[#8c8e95]">{d}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
 
-        <div className="mt-20 grid gap-x-10 gap-y-10 md:grid-cols-3">
-          <div>
-            <Eyebrow>External signals</Eyebrow>
-            <p className="mt-4 text-[14px] leading-[1.7] text-[#5b606a]">
-              BLS and EIA are free with registration; FRED needs a free key and its redistribution terms are unread. A 3-5
-              day build once a customer asks. The hard part is mapping to their cost data, so it is month 4 at the earliest.
-            </p>
-          </div>
-          <div>
-            <Eyebrow>Security path</Eyebrow>
-            <p className="mt-4 text-[14px] leading-[1.7] text-[#5b606a]">
-              Days 1-14: merge the tenant-scoped branch, run a two-tenant RLS probe, confirm one real scheduler tick. Days
-              15-30: graph off the Mac, a named responder, a SOC 2 quote. Before any anonymous upload: a written review and a
-              deletion guarantee.
-            </p>
-          </div>
-          <div>
-            <Eyebrow>Naming</Eyebrow>
-            <p className="mt-4 text-[14px] leading-[1.7] text-[#5b606a]">
-              LOVELEEDAY is the company, the seller and the public brand. Arthur is the engine. The badge reads Connected
-              with Arthur, and never stands alone as a brand.
-            </p>
+          <div className="mt-20 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <Eyebrow>Product build order</Eyebrow>
+              <p className="mt-4 max-w-[28rem] text-[15px] leading-[1.7] text-[#6c7481]">
+                Working days from the CPO memo, all assumptions, now run in parallel because agents write the code.
+              </p>
+            </div>
+            <ol>
+              {buildOrder.map(([t, d], i) => (
+                <li key={t} className="grid grid-cols-[2rem_1fr_auto] gap-3 border-t border-[#dcdfe6] py-4">
+                  <span className="text-[13px] tabular-nums text-[#3778bc]">{i + 1}</span>
+                  <span className="text-[15px] leading-[1.5] text-[#1d1d1f]">{t}</span>
+                  <span className="text-[13px] tabular-nums text-[#8c8e95]">{d}</span>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
 
-      {/* If PearX says no */}
-      <section id="thirty" className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
-        <div className="mx-auto max-w-[1180px] px-6 py-24">
-          <Head eyebrow="If PearX says no" a="Thirty days," b="day by day.">
-            The PearX answer is due about day 30, so everything here is worth doing either way. All outreach is drafted and
-            you approve each send.
-          </Head>
-          <ol className="mt-12 grid gap-x-10 md:grid-cols-2">
-            {days.map((x) => (
-              <li key={x.d} className="grid grid-cols-[5.5rem_1fr] gap-3 border-t border-[#dcdfe6] py-4">
-                <span className="text-[13px] tabular-nums text-[#3778bc]">{x.d}</span>
-                <span className="text-[14px] leading-[1.65] text-[#4a4d55]">{x.t}</span>
-              </li>
+      {/* Thirty days and beyond */}
+      <section id="thirty" className="mx-auto max-w-[1180px] px-6 py-24">
+        <Head eyebrow="The calendar" a="Thirty days, ninety days," b="twelve months.">
+          Nothing waits on PearX, whose answer is due about day 30.
+        </Head>
+        <ol className="mt-12">
+          {phases.map((x) => (
+            <li key={x.d} className="grid gap-3 border-t border-[#e4e5e9] py-6 lg:grid-cols-[10rem_1fr] lg:gap-x-8">
+              <span className="text-[15px] font-medium text-[#3778bc]">{x.d}</span>
+              <span className="max-w-[60rem] text-[15px] leading-[1.7] text-[#4a4d55]">{x.t}</span>
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-20">
+          <Eyebrow>Revenue by month 3, on funnel arithmetic</Eyebrow>
+          <p className="mt-4 max-w-[48rem] text-[14px] leading-[1.7] text-[#6c7481]">
+            200 sends a day for 90 days is 18,000 messages. The rates below are assumptions, so treat the figures as a
+            shape to test at day 30, not a forecast.
+          </p>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {model.map((k) => (
+              <div key={k.c} className="rounded-2xl border border-[#e4e5e9] p-6">
+                <h3 className="text-[18px] font-medium tracking-[-0.015em] text-[#1d1d1f]">{k.c}</h3>
+                <dl className="mt-4 grid grid-cols-[1fr_auto] gap-y-2 text-[14px]">
+                  <dt className="text-[#7d8088]">Snapshot request rate</dt>
+                  <dd className="tabular-nums text-[#1d1d1f]">{k.req}</dd>
+                  <dt className="text-[#7d8088]">Snapshots run</dt>
+                  <dd className="tabular-nums text-[#1d1d1f]">{k.snaps}</dd>
+                  <dt className="text-[#7d8088]">Become paying</dt>
+                  <dd className="tabular-nums text-[#1d1d1f]">{k.conv}</dd>
+                  <dt className="text-[#7d8088]">Customers</dt>
+                  <dd className="tabular-nums text-[#1d1d1f]">{k.cust}</dd>
+                  <dt className="text-[#7d8088]">Average first plan</dt>
+                  <dd className="tabular-nums text-[#1d1d1f]">{k.plan}</dd>
+                  <dt className="border-t border-[#eef0f3] pt-2 text-[#7d8088]">Month-3 MRR</dt>
+                  <dd className="border-t border-[#eef0f3] pt-2 tabular-nums text-[#1d1d1f]">{k.mrr}</dd>
+                </dl>
+              </div>
             ))}
-          </ol>
-
-          <div className="mt-20 grid gap-x-10 gap-y-12 lg:grid-cols-2">
-            <div>
-              <Eyebrow>Ninety days</Eyebrow>
-              <ol className="mt-4">
-                {ninety.map(([t, d]) => (
-                  <li key={t} className="border-t border-[#dcdfe6] py-5">
-                    <span className="block text-[16px] text-[#1d1d1f]">{t}</span>
-                    <span className="mt-1 block text-[14px] leading-[1.65] text-[#5b606a]">{d}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div>
-              <Eyebrow>Twelve months</Eyebrow>
-              <ol className="mt-4">
-                {twelve.map(([t, d]) => (
-                  <li key={t} className="border-t border-[#dcdfe6] py-5">
-                    <span className="block text-[16px] text-[#1d1d1f]">{t}</span>
-                    <span className="mt-1 block text-[14px] leading-[1.65] text-[#5b606a]">{d}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
           </div>
-
-          <div className="mt-20">
-            <Eyebrow>Cash and MRR, from the CFO memo</Eyebrow>
-            <div className="mt-6 grid gap-5 md:grid-cols-3">
-              {cash.map((k) => (
-                <div key={k.c} className="rounded-2xl border border-[#e4e5e9] bg-white p-6">
-                  <h3 className="text-[18px] font-medium tracking-[-0.015em] text-[#1d1d1f]">{k.c}</h3>
-                  <dl className="mt-4 grid grid-cols-[1fr_auto] gap-y-2 text-[14px]">
-                    <dt className="text-[#7d8088]">MRR, month 3</dt>
-                    <dd className="tabular-nums text-[#1d1d1f]">{k.m3}</dd>
-                    <dt className="text-[#7d8088]">MRR, month 6</dt>
-                    <dd className="tabular-nums text-[#1d1d1f]">{k.m6}</dd>
-                    <dt className="text-[#7d8088]">MRR, month 12</dt>
-                    <dd className="tabular-nums text-[#1d1d1f]">{k.m12}</dd>
-                    <dt className="border-t border-[#eef0f3] pt-2 text-[#7d8088]">Cash, 12 months</dt>
-                    <dd className="border-t border-[#eef0f3] pt-2 tabular-nums text-[#1d1d1f]">{k.cash}</dd>
-                  </dl>
-                </div>
-              ))}
-            </div>
-            <p className="mt-6 max-w-[48rem] text-[13px] leading-[1.7] text-[#6c7481]">
-              Assumptions from the CFO: 15 percent of studies convert to a sprint, half attach a retainer, 3 percent monthly
-              churn, capacity-capped. The aggressive case needs one hire at month 6 and a channel partner. One-time fees are
-              about half of cash in the conservative and base cases. No salary draw is assumed and the day job continues,
-              so capacity, not runway, is the limit.
-            </p>
-          </div>
+          <p className="mt-6 max-w-[48rem] text-[13px] leading-[1.7] text-[#6c7481]">
+            The CFO&apos;s capacity-capped month-3 MRR was $1,000, $3,000 and $6,000, so the base case here agrees with it and
+            the aggressive case is what removing the cap is worth. For month 12 the only sourced anchor is the CFO&apos;s
+            $6,000, $22,000 and $55,000 MRR and about $45,000, $150,000 and $380,000 cumulative cash. We treat that as a
+            floor and recompute from live funnel data at day 30. Enterprise and Portfolio count as $0 until SOC 2.
+          </p>
         </div>
       </section>
 
       {/* Coverage */}
       <section id="coverage" className="bg-[#111217] text-white">
         <div className="mx-auto max-w-[1180px] px-6 py-24">
-          <Head dark eyebrow="Coverage" a="The most organizations," b="without breaking delivery.">
-            Every channel either runs without you in the room or is capped so it cannot swamp delivery.
+          <Head dark eyebrow="Coverage" a="Every organization," b="not one at a time.">
+            Because delivery is automated, none of these breaks anything by working.
           </Head>
           <div className="mt-14 grid gap-x-10 md:grid-cols-2">
             {coverage.map((x, i) => (
@@ -349,8 +338,8 @@ export default async function GrowthPlanPage({ params }: { params: Promise<{ tok
 
       {/* Risks */}
       <section id="risks" className="mx-auto max-w-[1180px] px-6 py-24">
-        <Head eyebrow="Risks" a="Five things" b="that can stop this.">
-          Each one is handled in the thirty days above.
+        <Head eyebrow="Risks to manage" a="What the company raised," b="and the move for each.">
+          Risks, not reasons to wait. Each one has an action this week.
         </Head>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {risks.map((r) => (
@@ -365,8 +354,8 @@ export default async function GrowthPlanPage({ params }: { params: Promise<{ tok
       {/* Decisions */}
       <section id="decisions" className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
         <div className="mx-auto max-w-[1180px] px-6 py-24">
-          <Head eyebrow="Decisions" a="What only you" b="can decide.">
-            Each with the company&apos;s recommendation. Nothing is sent, spent or published until you say so.
+          <Head eyebrow="Decisions" a="Only what is" b="truly yours.">
+            Three things we cannot do for you. Everything else is moving.
           </Head>
           <ol className="mt-12">
             {decisions.map((d, i) => (
