@@ -6,9 +6,13 @@
 .ind .ix-body{padding:12px 24px 20px;flex:1}
 .ind .ix-body p{font-size:14px}
 .ind .ix-body .eq{margin-top:16px}
-.ind .ix-ex{border-left:0;border-top:1px solid var(--il);padding:16px 24px 20px;background:#fafafb}
+.ind .ix-ex{border-left:0;border-top:1px solid var(--il);padding:16px 24px 20px;background:#fafafb;align-self:stretch;margin-top:auto}
 .ind .ix-list li.ix-more{background:var(--iw);border-style:dashed;justify-content:center;padding:28px 24px;gap:12px;align-items:flex-start}
 .ind .ix-more>.ix-name,.ind .ix-more .ix-body{padding:0}
 .ind .ix-more .btn{margin-top:8px}
 @media(max-width:1020px){.ind .ix-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.ind .ix-list{grid-template-columns:1fr}}
+/* The "Not on this list" card closes the grid as a full-width band, so it never sits alone in a row. */
+.ind .ix-list li.ix-more{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px}
+.ind .ix-more .ix-body{flex:1 1 320px}
+@media(max-width:700px){.ind .ix-list li.ix-more{flex-direction:column;align-items:flex-start}}
