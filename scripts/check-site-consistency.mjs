@@ -73,7 +73,9 @@ function checkContent(label, html, problems, srcExists) {
     const cardOpen = at > -1 ? html.slice(html.lastIndexOf("<article", at), at) : "";
     const cardStyle = (cardOpen.match(/^<article\b[^>]*\bstyle="([^"]*)"/) || [])[1] || "";
     const cardFilled = !!expected && new RegExp(`(^|;)\\s*background\\s*:\\s*${expected}\\s*(;|$)`, "i").test(cardStyle);
-    if (!cardFilled && (!expected || declarations.background !== `${expected.toLowerCase()}2e` || declarations["border-color"] !== `${expected.toLowerCase()}73`)) problems.push(`${label}: logo tile ${t.src} has no matching brand-colour tint`);
+    // Calm directory cards (approved 2026-10-06) carry the brand colour as an accent: style="--brand:#hex".
+    const cardAccent = !!expected && new RegExp(`(^|;)\\s*--brand\\s*:\\s*${expected}\\s*(;|$)`, "i").test(cardStyle);
+    if (!cardFilled && !cardAccent && (!expected || declarations.background !== `${expected.toLowerCase()}2e` || declarations["border-color"] !== `${expected.toLowerCase()}73`)) problems.push(`${label}: logo tile ${t.src} has no matching brand-colour tint`);
   }
 }
 
