@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/site-chrome.mjs && node scripts/site-postprocess.mjs && next build",
+    "build": "node scripts/site-postprocess.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "capture": "python3 -W ignore scripts/capture-studies.py",

@@ -1,5 +1,4 @@
-.pub .snap-head{padding-top:64px;text-align:center}
-.pub .snap-head .lead{margin-inline:auto;max-width:640px}
+.pub .snap-head{margin-bottom:40px}
 .pub .snap-app{display:flex;flex-direction:column;gap:20px;padding-bottom:24px}
 .pub .snap-app [hidden]{display:none!important}
 .pub #step-result{display:flex;flex-direction:column;gap:20px}
@@ -86,8 +85,6 @@
 .pub .snap-info-grid{gap:36px}
 }
 @media(max-width:700px){
-.pub .snap-head{padding-top:36px}
-.pub .snap-head .title{font-size:36px!important}
 .pub .snap-drop{padding:28px 16px}
 .pub .snap-drop b{font-size:17px}
 .pub .snap-find>summary{grid-template-columns:minmax(0,1fr);padding:16px}

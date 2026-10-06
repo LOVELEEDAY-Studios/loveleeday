@@ -49,7 +49,9 @@ for (const file of walk(root)) {
 
   html = html.replace(/<img\b(?![^>]*\bloading=)([^>]*\bsrc="[^"]*\/logos\/[^"]*"[^>]*)>/g, '<img loading="lazy" decoding="async"$1>');
 
-  html = html.replace(/(\/site\/assets\/|assets\/)([\w./-]+\.(?:css|js))\?v=[A-Za-z0-9_-]+/g, (m, pre, rel) => {
+  // The stamp is optional in the match: an unstamped reference gets one too. next.config.ts caches these files for a
+  // year as immutable, so an unstamped CSS/JS link would otherwise serve a stale file forever after it changes.
+  html = html.replace(/(\/site\/assets\/|assets\/)([\w./-]+\.(?:css|js))(?:\?v=[A-Za-z0-9_-]+)?(?=["'])/g, (m, pre, rel) => {
     const h = assetHash(rel);
     return h ? `${pre}${rel}?v=${h}` : m;
   });
