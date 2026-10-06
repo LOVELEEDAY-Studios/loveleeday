@@ -43,6 +43,28 @@ Say what changes in someone's week. Mention the mechanism only after the benefit
 
 Organizations have too many decisions to make and not enough time, and more data than they have people to work through it. LOVELEEDAY gives them the answers already worked out, with the source behind every one, so people spend their time deciding and doing, not assembling the picture.
 
+## One example question per page
+
+The same example question never appears on two pages: a reader who meets the same question twice concludes Arthur only solves one thing. Each page's lead example comes from a different part of an organization. `scripts/check-plain-language.mjs` fails the build when an example question (`.eq span`, `.ip-q`, `.ha-card` ask, `.tv3-q`, `.cv3-card`, the `placeholder` of a question field, or a rotation `"q"`) repeats across pages, or repeats a question listed below for a surface outside this repo.
+
+| Page | Lead example | Area |
+|---|---|---|
+| Home | If this part shows up late, which orders and customers does it hold up? | Operations |
+| Talk | If two big customers pay late, will we have enough cash at the end of next month? | Cash |
+| Contact | Which deadlines in the next 60 days does nobody own yet? | Deadlines and compliance |
+| Industries | Which machines stop most often, and what does the downtime cost us? (plus one rotation per industry) | Every industry |
+| Manufacturing | If this batch cannot be used, which orders and customers will wait? | Quality |
+| Property | Where are residents falling behind while repairs are still open? | Property |
+| Use cases | What is going on with this customer? | Customers |
+| How it works | Is Northline Studio at risk of not renewing? | Renewals |
+| Operational intelligence | Which sites have work orders slipping past due? | Sites and maintenance |
+| Municipal review | Which permits expire next quarter, and who owns each one? | Government |
+| Operating system | Which ordinance actually applies today? | Rules |
+
+Outside this repo (checked here so the site never borrows them):
+
+- portal: Which budget lines are on pace to run over before the year ends?
+
 ## A national company
 
 We work with organizations across the United States. Never anchor the company to one city or region in public copy, schema or share images. (Client-specific proposals may name the client's own place.)

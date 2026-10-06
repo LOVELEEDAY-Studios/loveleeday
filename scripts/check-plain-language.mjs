@@ -36,6 +36,30 @@ for (const file of pages) {
     if (m) hits.push(`${rel}: jargon "${w}" "${m[0].trim()}"`);
   }
 }
+// One example question per page (VOICE.md): the same question on two pages, or one the portal already uses, fails.
+const norm = (q) => q.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").replace(/^\s*(for example:|you ask)\s*/i, "").replace(/[^a-z0-9% ]/gi, "").replace(/\s+/g, " ").trim().toLowerCase();
+const ASK = [
+  /<div class="eq">[\s\S]*?<span>([\s\S]*?)<\/span>/g,
+  /<div class="ip-q">(?:<b>[^<]*<\/b>)?([\s\S]*?)<\/div>/g,
+  /<div class="ha-ask">[\s\S]*?<dd>([\s\S]*?)<\/dd>/g,
+  /<div class="tv3-q">[\s\S]*?<p>([\s\S]*?)<\/p>/g,
+  /<div class="cv3-card">[\s\S]*?<p>([\s\S]*?)<\/p>/g,
+  /<textarea[^>]*name="question"[^>]*placeholder="([^"]+)"/g,
+  /"q":\s*"([^"]+)"/g,
+];
+const owner = new Map();
+const voice = fs.readFileSync(path.join(ROOT, "VOICE.md"), "utf8");
+for (const m of voice.matchAll(/^- (\w[\w ]*): (.+\?)$/gm)) owner.set(norm(m[2]), `${m[1]} (VOICE.md)`);
+for (const file of pages) {
+  const rel = path.relative(SITE, file);
+  const raw = fs.readFileSync(file, "utf8");
+  const mine = new Set();
+  for (const re of ASK) for (const m of raw.matchAll(re)) { const q = norm(m[1]); if (q.length > 12) mine.add(q); }
+  for (const q of mine) {
+    if (owner.has(q)) hits.push(`${rel}: example question repeats ${owner.get(q)} "${q}"`);
+    else owner.set(q, rel);
+  }
+}
 if (hits.length) {
   console.error(`plain language: ${hits.length} hit(s) against VOICE.md\n  ` + hits.join("\n  "));
   process.exit(1);
