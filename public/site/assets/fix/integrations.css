@@ -1,0 +1,15 @@
+.pub .ic-grid{gap:16px;margin-top:24px}
+.pub .ic-card{position:relative;background:#fff;color:var(--ink);border:1px solid #d9dce2;border-radius:12px;padding:20px 20px 18px;box-shadow:0 1px 2px #1418220a;gap:10px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.pub .ic-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--brand,#c3c7ce)}
+.pub .ic-card:hover{border-color:#cfd3da;box-shadow:0 10px 30px #1418220f}
+.pub .ic-top{gap:12px;align-items:center}
+.pub .ic-logo{background:#fff!important;width:40px;height:40px;border:1px solid var(--line);box-shadow:none}
+.pub .ic-top b{font-size:14px;font-weight:600;color:var(--ink)}
+.pub .ic-top span.xs{opacity:1;color:#62656c}
+.pub .ic-top>div{min-width:0;flex:1}
+.pub .ic-card p{font-size:12.5px;line-height:1.6;color:#4f525a;opacity:1;margin:0}
+.pub .ic-soon{margin-left:auto;align-self:flex-start;flex:none;display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.02em;padding:0;border:0;background:none;color:#62656c;border-radius:0}
+.pub .ic-soon::before{content:"";width:6px;height:6px;border-radius:50%;background:#c9822f}
+.pub .ic-soon[data-s="available"]{color:#2b6a46}
+.pub .ic-soon[data-s="available"]::before{background:#2f8a62}
+.pub .ic-card.lt .ic-soon{background:none;border:0}

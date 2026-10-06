@@ -1,0 +1,14 @@
+.bd-row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:56px;padding:48px 0;border-top:1px solid var(--line,#e4e5e9);align-items:center;scroll-margin-top:96px}
+.bd-row:last-child{border-bottom:1px solid var(--line,#e4e5e9)}
+.bd-t h3{font-size:30px;line-height:1.12;letter-spacing:-.04em;font-weight:500;margin-top:10px}
+.bd-t p{font-size:15px;line-height:1.7;color:#4f525a;margin-top:14px;max-width:440px}
+.bd-t .text-link{display:inline-block;margin-top:18px;font-size:13px}
+.bd-exs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:16px}
+.bd-ex{display:block;border:1px solid #e4e5e9;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 12px 36px #1418221a;transition:transform .25s,box-shadow .25s}
+.bd-ex:hover{transform:translateY(-3px);box-shadow:0 18px 44px #14182229}
+.bd-ex img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.bd-ex span{display:block;padding:12px 16px 14px;font-size:14px;font-weight:550;letter-spacing:-.01em}
+.bd-ex small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#62656c;font-weight:600;margin-bottom:4px}
+.bd-ex.bd-text{box-shadow:none;background:#fafafb;display:flex;align-items:center;min-height:96px}
+.bd-ex.bd-text span{padding:20px 24px}
+@media(max-width:800px){.bd-row{grid-template-columns:1fr;gap:24px;padding:36px 0}.bd-t h3{font-size:26px}}

@@ -1,0 +1,13 @@
+/* Light, warm variant of the "one change" flow so it does not repeat the dark card sequence. */
+.fx-oi-light{background:#f5f1eb;color:#14151b;padding-bottom:var(--section-space);--cx-panel:#fff;--cx-panel2:#f5f5f7;--cx-line:#e4d8c9;--cx-ink:#14151b;--cx-mute:#62656c;--cx-blue:#0a5fc2;--cx-mint:#0b7f58;--cx-amber:#9a5b00;--cx-rose:#b92f3d}
+.fx-oi-light .eyebrow{color:#85786a}
+.fx-oi-light h2,.fx-oi-light h3,.fx-oi-light b,.fx-oi-light strong{color:#14151b}
+.fx-oi-light h2 span{color:#85786a}
+.fx-oi-light .cx-card{background:#fff;border:1px solid #e4d8c9;box-shadow:0 24px 60px -40px rgba(60,40,10,.35);color:#14151b}
+.fx-oi-light .cx-card p{color:#62656c}
+.fx-oi-light .cx-tbl th,.fx-oi-light .cx-tbl td{border-color:#e4e5e9;color:#2a2b31}
+.fx-oi-light .cx-tbl tr.hl td{color:#14151b;font-weight:600}
+.fx-oi-light .cx-caption,.fx-oi-light .cx-k{color:#62656c}
+.fx-oi-light .arr{color:#85786a}
+.fx-oi-light .cx-cond{border-color:#e4d8c9}
+.fx-oi-light .cx-chip.warn{background:#fff6e6}

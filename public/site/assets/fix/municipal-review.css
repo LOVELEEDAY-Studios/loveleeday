@@ -1,0 +1,48 @@
+:root{--mr-navy:#1b2a41;--mr-brass:#b08d57;--mr-stone:#f2eee6}
+.mr-hero{background:var(--mr-stone);padding:72px 0 88px;border-bottom:3px double #cdbfa6}
+.mr-hero-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:center}
+.mr-hero h1{font-size:var(--h1-flagship);font-weight:500;letter-spacing:-.055em;line-height:1.04;margin-top:16px;color:var(--mr-navy)}
+.mr-hero h1 span{color:#85786a}
+.mr-hero .lead{font-size:18px;line-height:1.65;color:#5d5548;max-width:520px;margin-top:24px}
+.mr-hero .page-actions{margin-top:32px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.mr-hero .eyebrow{color:#7b6a52}
+.mr-hero-v{position:relative;padding-bottom:70px}
+.mr-hero-v img{display:block;width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:4px;border:1px solid #cdbfa6;filter:saturate(.9)}
+.mr-card{position:absolute;left:-36px;right:36px;bottom:0;background:#fff;border:1px solid #d8cdb9;border-top:3px solid var(--mr-brass);border-radius:4px;box-shadow:0 24px 60px #2b251f33;padding:18px 22px}
+.mr-card-h{display:flex;justify-content:space-between;gap:12px;font-size:14px;font-weight:600;color:var(--mr-navy);padding-bottom:12px;border-bottom:1px solid #eee7d9}
+.mr-card-h em{font-style:normal;font-weight:500;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7b6a52;align-self:center}
+.mr-card dl{margin:0}
+.mr-card dl>div{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid #f3eee3;font-size:13px}
+.mr-card dl>div:last-child{border-bottom:0;padding-bottom:0}
+.mr-card dt{color:#7b6a52}.mr-card dd{margin:0;font-weight:550;text-align:right}
+.mr-card .flag dd{color:#a5481f}
+.mr-hist{background:var(--mr-navy);color:#fff;padding:96px 0}
+.mr-hist-h{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 64px;align-items:end;margin-bottom:56px}
+.mr-hist-h .eyebrow{grid-column:1/-1;color:#d2b27a}
+.mr-hist-h h2{font-size:38px;line-height:1.1;letter-spacing:-.045em;font-weight:500;color:#fff;margin:0}
+.mr-hist-h p{font-size:15px;line-height:1.7;color:#b9c3d3;margin:0}
+.mr-line{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative}
+.mr-line::before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:#4a5b78}
+.mr-line li{position:relative;padding:36px 28px 0 0}
+.mr-dot{position:absolute;left:0;top:0;width:19px;height:19px;border-radius:50%;background:var(--mr-navy);border:2px solid #d2b27a}
+.mr-line .flag .mr-dot{border-color:#e0795a;background:#e0795a}
+.mr-line .now .mr-dot{background:#d2b27a}
+.mr-line b{display:block;font-size:19px;font-weight:500;letter-spacing:-.025em}
+.mr-line small{display:block;font-size:13px;line-height:1.6;color:#b9c3d3;margin-top:8px}
+.mr-line .flag small{color:#f0b9a6}
+.mr-hist .muted{color:#8e9bb0}
+.mr-q{background:#fff;padding:96px 0}
+.mr-q-h h2{font-size:38px;line-height:1.1;letter-spacing:-.045em;font-weight:500;margin-top:14px;max-width:560px;color:var(--mr-navy)}
+.mr-q-h .eyebrow{color:#7b6a52}
+.mr-q-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:44px}
+.mr-q-grid article{border:1px solid #d8cdb9;border-left:4px solid var(--mr-brass);border-radius:4px;background:var(--mr-stone);padding:26px 28px}
+.mr-q-grid small{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#7b6a52}
+.mr-q-grid h3{font-size:21px;line-height:1.3;letter-spacing:-.03em;font-weight:500;color:var(--mr-navy);margin:10px 0 0}
+.mr-q-grid p{font-size:12.5px;color:#6a6152;margin:14px 0 0;padding-top:12px;border-top:1px solid #dcd2bf}
+@media(max-width:900px){
+.mr-hero{padding:44px 0 56px}.mr-hero-in{grid-template-columns:1fr;gap:36px}
+.mr-hero-v{padding-bottom:0}.mr-card{position:relative;left:auto;right:auto;margin:-40px 12px 0}
+.mr-hist{padding:64px 0}.mr-hist-h{grid-template-columns:1fr;gap:16px}.mr-hist-h h2,.mr-q-h h2{font-size:30px}
+.mr-line{grid-template-columns:1fr;gap:28px}.mr-line::before{left:9px;right:auto;top:0;bottom:0;width:1px;height:auto}.mr-line li{padding:0 0 0 40px}
+.mr-q{padding:64px 0}.mr-q-grid{grid-template-columns:1fr}
+}

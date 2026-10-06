@@ -1,0 +1,28 @@
+.fx-os-hub{background:#0b0b10;color:#f4f4f7;padding-block:var(--section-space);position:relative;overflow:hidden}
+.fx-os-hub::before{content:"";position:absolute;inset:-20% auto auto -10%;width:60%;height:100%;background:radial-gradient(closest-side,rgba(90,169,255,.14),transparent);pointer-events:none}
+.fx-os-hub>.wrap{position:relative}
+.fx-os-hub .eyebrow{color:#a6a9b4}
+.fx-os-hub h2{font-size:clamp(34px,4.4vw,60px);font-weight:500;letter-spacing:-.05em;line-height:1.06;margin-top:14px;color:#f4f4f7}
+.fx-os-hub h2 span{color:#8b8f9c}
+.fx-os-head{margin-bottom:var(--s5)}
+.fx-os-flow{display:grid;grid-template-columns:minmax(0,.8fr) 64px minmax(0,1.2fr);gap:20px;align-items:center}
+.fx-os-src .fx-row{background:var(--fx-panel);margin-top:8px}
+.fx-os-src .fx-row:first-of-type{margin-top:0}
+.fx-os-arrow{color:#5aa9ff;display:grid;place-items:center}
+.fx-os-arrow svg{width:56px;height:24px}
+.fx-os-core{box-shadow:0 0 0 1px rgba(90,169,255,.25),0 40px 90px -40px rgba(90,169,255,.35)}
+.fx-os-name{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.fx-os-name>div{flex:1;min-width:0}
+.fx-os-name b{display:block;font-size:18px;font-weight:600;letter-spacing:-.02em}
+.fx-os-name small{color:var(--fx-mute);font-size:12px}
+.fx-os-name>span:first-child{width:38px;height:38px;border-radius:10px;background:rgba(90,169,255,.16);color:var(--fx-blue);display:grid;place-items:center;font-weight:600}
+.fx-os-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--fx-line)}
+.fx-os-dark{background:#14151b;color:#f4f4f7}
+.fx-os-dark h2{color:#f4f4f7}.fx-os-dark h2 span{color:#8b8f9c}
+.fx-os-dark .eyebrow{color:#a6a9b4}
+.fx-os-dark .process article{border-color:rgba(255,255,255,.14)}
+.fx-os-dark .process h3{color:#f4f4f7}
+.fx-os-dark .process p{color:#a6a9b4}
+.fx-os-dark .row-number{color:#5aa9ff}
+.fx-os-dark .pill{background:rgba(255,255,255,.06);color:#d6d8df;border-color:rgba(255,255,255,.14)}
+@media(max-width:900px){.fx-os-flow{grid-template-columns:1fr;gap:16px}.fx-os-arrow{transform:rotate(90deg);height:32px}}

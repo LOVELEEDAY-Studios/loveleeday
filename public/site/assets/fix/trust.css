@@ -1,0 +1,49 @@
+.pub .tr-facts{padding-top:56px}
+.pub .tr-facts dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.pub .tr-facts dl>div{padding:28px 26px 26px;border-left:1px solid var(--line)}
+.pub .tr-facts dl>div:first-child{border-left:0}
+.pub .tr-facts dt{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#6d7077}
+.pub .tr-facts dd{margin:14px 0 10px;font-size:34px;line-height:1.05;letter-spacing:-.045em;font-weight:500;color:var(--ink)}
+.pub .tr-facts p{font-size:13px;line-height:1.6;color:var(--muted)}
+.pub .tr-sec{padding-top:96px}
+.pub .tr-head{max-width:620px}
+.pub .tr-head h2.h{font-size:34px;letter-spacing:-.04em;margin-top:12px}
+.pub .tr-head p{margin-top:12px;font-size:16px;color:var(--muted);line-height:1.65}
+.pub .tr-flow{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:40px 0 0;position:relative}
+.pub .tr-flow::before{content:"";position:absolute;left:0;right:0;top:15px;height:1px;background:var(--line)}
+.pub .tr-flow li{position:relative;padding:0 28px 0 0;display:flex;flex-direction:column;gap:10px}
+.pub .tr-n{position:relative;z-index:1;align-self:flex-start;background:#fff;padding-right:12px;font-size:12px;letter-spacing:.1em;font-weight:600;color:var(--blue);font-variant-numeric:tabular-nums;line-height:30px}
+.pub .tr-flow h3.h{font-size:22px;letter-spacing:-.03em;margin-top:8px}
+.pub .tr-flow p{font-size:14px;line-height:1.65;color:var(--muted);margin-bottom:8px}
+.pub .tr-ctl{margin-top:auto;align-self:flex-start;font-size:11px;letter-spacing:.04em;font-weight:550;color:var(--bluetx);background:var(--bluewash);border:1px solid var(--bluebd);border-radius:999px;padding:5px 12px}
+.pub .tr-ev{margin-top:36px;border-top:1px solid var(--ink)}
+.pub .tr-ev-h,.pub .tr-ev-r{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr) 150px;gap:32px;align-items:start}
+.pub .tr-ev-h{padding:12px 0;border-bottom:1px solid var(--line);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#6d7077}
+.pub .tr-ev-r{padding:24px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.65;color:var(--muted)}
+.pub .tr-ev-r b{display:block;font-weight:550;color:var(--ink);font-size:15px;letter-spacing:-.01em}
+.pub .tr-ev-r>a{justify-self:end;color:var(--blue);font-size:13px;white-space:nowrap;padding-top:2px}
+.pub .tr-ev-r>a:hover{text-decoration:underline}
+.pub .tr-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:72px;align-items:start;background:var(--wash);border-radius:20px;padding:48px}
+.pub .tr-edge{list-style:none;display:flex;flex-direction:column;gap:0}
+.pub .tr-edge li{padding:18px 0;border-top:1px solid #dcdee3;font-size:15px;line-height:1.65;color:var(--muted)}
+.pub .tr-edge li:first-child{border-top:0;padding-top:0}
+.pub .tr-edge b{color:var(--ink);font-weight:550}
+.pub .tr-close{margin-top:96px;background:var(--wash);color:var(--ink);padding:72px 0}.pub .tr-close .btn{background:var(--ink)}
+.pub .tr-close .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px}
+.pub .tr-close h2{font-size:34px;letter-spacing:-.04em;font-weight:500;line-height:1.15}
+.pub .tr-close p{margin-top:12px;color:var(--muted);font-size:15px;line-height:1.65;max-width:540px}
+.pub .tr-close p a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){
+.pub .tr-facts dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pub .tr-facts dl>div:nth-child(3){border-left:0}
+.pub .tr-facts dl>div:nth-child(n+3){border-top:1px solid var(--line)}
+.pub .tr-flow{grid-template-columns:minmax(0,1fr);gap:28px}
+.pub .tr-flow::before{display:none}
+.pub .tr-ev-h{display:none}
+.pub .tr-ev-r{grid-template-columns:minmax(0,1fr);gap:8px}
+.pub .tr-ev-r>a{justify-self:start}
+.pub .tr-split{grid-template-columns:minmax(0,1fr);gap:28px;padding:32px 24px}
+.pub .tr-close .wrap{flex-direction:column;align-items:flex-start}
+.pub .tr-sec{padding-top:72px}
+}
+@media(max-width:560px){.pub .tr-facts dl>div{padding:22px 18px}.pub .tr-facts dd{font-size:26px}}

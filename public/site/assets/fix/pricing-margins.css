@@ -1,0 +1,24 @@
+.pm-wf-h,.pm-ex-h{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:end;margin-bottom:48px}
+.pm-wf-h h2,.pm-ex-h h2{margin-top:14px}
+.pm-wf-h p{font-size:16px;line-height:1.7;color:#62656c;max-width:420px}
+.pm-wf-chart{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;padding:28px 28px 0;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 20px 60px #1418220f}
+.pm-col{position:relative;height:300px;padding-bottom:64px}
+.pm-col i{position:absolute;left:12%;right:12%;bottom:0;height:0;border-radius:6px;background:#9fb9dc;transition:bottom .35s,height .35s}
+.pm-col.neg i{background:#e4a79b}
+.pm-col.end i{background:#2f6b4f}
+.pm-col.end.loss i{background:#c4412e}
+.pm-col b{position:absolute;left:0;right:0;bottom:36px;text-align:center;font-size:15px;font-weight:600;letter-spacing:-.02em;color:var(--ink,#1d1d1f)}
+.pm-col span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:11.5px;color:#62656c}
+.pm-ex-h{align-items:start}
+.pm-steps{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.pm-steps li{font-size:16px;font-weight:550;letter-spacing:-.02em;padding-left:44px;position:relative}
+.pm-steps b{position:absolute;left:0;top:2px;font-size:11px;letter-spacing:.14em;color:#8a909b}
+.pm-steps small{display:block;font-size:13.5px;font-weight:400;line-height:1.6;color:#62656c;letter-spacing:0;margin-top:4px;max-width:480px}
+.pm-q{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;box-shadow:0 20px 60px #1418220f}
+.pm-q-h{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line)}
+.pm-q-h h3{font-size:16px;font-weight:600;margin:0}
+.pm-q-r{display:grid;grid-template-columns:1fr .8fr .6fr 2fr 1.1fr;gap:16px;padding:14px 24px;border-top:1px solid #eef0f3;font-size:13.5px;align-items:center}
+.pm-q-r:first-of-type{border-top:0}
+.pm-q-th{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#727278;font-weight:600;background:#fafbfd;border-top:0}
+.pm-q-r .neg{color:#b3361f;font-weight:600}
+@media(max-width:800px){.pm-wf-h,.pm-ex-h{grid-template-columns:1fr;gap:20px}.pm-wf-chart{gap:6px;padding:20px 12px 0}.pm-col b{font-size:12px}.pm-col span{font-size:10px}.pm-q-r{grid-template-columns:1fr 1fr;gap:6px 12px}.pm-q-th{display:none}}

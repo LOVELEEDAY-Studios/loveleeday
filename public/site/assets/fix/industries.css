@@ -1,0 +1,14 @@
+.ind .ix-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;border-top:0;margin-top:40px}
+.ind .ix-list li{display:flex;flex-direction:column;gap:0;padding:0;border:1px solid var(--il);border-radius:14px;overflow:hidden;background:#fff;grid-template-columns:none}
+.ind .ix-ph{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.ind .ix-list li>.ix-name{padding:22px 24px 0}
+.ind .ix-name h3{font-size:22px}
+.ind .ix-body{padding:12px 24px 20px;flex:1}
+.ind .ix-body p{font-size:14px}
+.ind .ix-body .eq{margin-top:16px}
+.ind .ix-ex{border-left:0;border-top:1px solid var(--il);padding:16px 24px 20px;background:#fafafb}
+.ind .ix-list li.ix-more{background:var(--iw);border-style:dashed;justify-content:center;padding:28px 24px;gap:12px;align-items:flex-start}
+.ind .ix-more>.ix-name,.ind .ix-more .ix-body{padding:0}
+.ind .ix-more .btn{margin-top:8px}
+@media(max-width:1020px){.ind .ix-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.ind .ix-list{grid-template-columns:1fr}}
