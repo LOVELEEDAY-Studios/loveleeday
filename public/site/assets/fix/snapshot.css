@@ -1,0 +1,40 @@
+main.pub{background:linear-gradient(180deg,#eef3fb 0,#f7f9fd 420px,#fff 760px)}
+.pub .snap-head{border-bottom:0;padding-top:80px;margin-bottom:36px}
+.pub .snap-head .title{font-size:64px}
+.pub .snap-chips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.pub .snap-chips li{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:550;color:#2f4a6b;background:#fff;border:1px solid #d8e2f1;border-radius:24px;padding:7px 14px 7px 12px;box-shadow:0 1px 2px #1418220a}
+.pub .snap-chips li::before{content:"";width:7px;height:7px;border-radius:50%;background:#2f8a62}
+.pub .snap-app>.snap-step{border:1px solid #d8e2f1;border-radius:20px;box-shadow:0 40px 90px #1d3a6a26,0 2px 6px #1d3a6a14;padding:0;overflow:hidden;background:#fff}
+.pub .snap-step>.snap-steps{margin:0;padding:18px 28px;border-bottom:1px solid var(--line);background:#fafbfd;gap:0;flex-wrap:nowrap;overflow-x:auto}
+.pub .snap-steps span{border:0;background:none;padding:0 28px 0 0;font-size:12px;font-weight:550;color:#8a909b;display:flex;align-items:center;gap:0;white-space:nowrap;border-radius:0}
+.pub .snap-steps span.on{background:none;color:var(--ink)}
+.pub .snap-steps span::after{content:"";width:36px;height:1px;background:#d5d9e0;margin-left:28px}
+.pub .snap-steps span:last-child::after{display:none}
+.pub .snap-steps span.on::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--action);margin-right:8px}
+.pub #step-upload .snap-drop{margin:28px;border:1.5px dashed #b9c6dc;border-radius:16px;background:radial-gradient(120% 140% at 50% 0,#f2f7ff 0,#fafcff 60%);padding:56px 24px 52px}
+.pub #step-upload .snap-drop::before{content:"";width:64px;height:64px;border-radius:50%;background:#e6effc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%230066cc' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 16V4M7 9l5-5 5 5M5 20h14'/%3E%3C/svg%3E") center no-repeat;box-shadow:0 0 0 10px #f0f5fd}
+.pub #step-upload .snap-drop b{font-size:24px}
+.pub #step-upload .snap-note,.pub #step-upload .snap-msg{margin:0 28px 24px;max-width:none}
+.pub #step-map,.pub #step-result .panel{padding:0}
+.pub #step-map>*:not(.snap-steps){margin-left:28px;margin-right:28px}
+.pub #step-map>.row{margin-bottom:28px}
+.pub .snap-info{padding-top:72px}
+.pub .snap-info-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+.pub .snap-info-grid>div:first-child .snap-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:c}
+.pub .snap-info-grid>div:first-child .snap-list li{counter-increment:c;padding:22px 22px 20px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:13px;box-shadow:0 1px 2px #1418220a}
+.pub .snap-info-grid>div:first-child .snap-list li::before{position:static;display:block;width:auto;height:auto;border-radius:0;background:none;content:"0" counter(c);font-size:11px;letter-spacing:.14em;font-weight:600;color:#8a909b;margin-bottom:10px}
+.pub .snap-info-grid>div:first-child .snap-list b{display:block;font-size:16px;letter-spacing:-.02em;margin-bottom:6px}
+.pub .snap-info-grid>div:last-child{background:#0f1218;color:#fff;border-radius:18px;padding:40px 44px}
+.pub .snap-info-grid>div:last-child .eyebrow{color:#b4a697}
+.pub .snap-info-grid>div:last-child h2{color:#fff}
+.pub .snap-info-grid>div:last-child .snap-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px;color:#c9c8d2}
+.pub .snap-info-grid>div:last-child .snap-list b{color:#fff}
+.pub .snap-info-grid>div:last-child .snap-list li::before{background:#d2a879}
+@media(max-width:900px){
+.pub .snap-head .title{font-size:42px}
+.pub .snap-head{padding-top:48px}
+.pub .snap-info-grid>div:first-child .snap-list,.pub .snap-info-grid>div:last-child .snap-list{grid-template-columns:1fr}
+.pub .snap-info-grid>div:last-child{padding:28px 22px}
+.pub #step-upload .snap-drop{margin:16px;padding:36px 16px}
+.pub #step-upload .snap-note,.pub #step-upload .snap-msg{margin:0 16px 20px}
+}

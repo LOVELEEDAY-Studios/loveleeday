@@ -1,0 +1,29 @@
+/* Privacy: layout and type only. Wording lives in the HTML and is unchanged. */
+.pv{counter-reset:pv}
+.pv .page-hero{padding-bottom:56px}
+.pv .section-pad{padding-block:56px;border-top:1px solid var(--line)}
+.pv .section-pad.surface{background:#f7f7f9}
+.pv .page-hero+.section-pad{border-top:0}
+.pv .split{grid-template-columns:220px minmax(0,700px);gap:56px;justify-content:start;align-items:start}
+.pv .split>div:first-child{position:sticky;top:calc(var(--header-height) + 32px);counter-increment:pv}
+.pv .split>div:first-child .eyebrow{display:flex;gap:14px;align-items:baseline;font-size:11px;line-height:1.5;color:#44474e}
+.pv .split>div:first-child .eyebrow::before{content:counter(pv,decimal-leading-zero);color:#0066cc;font-weight:600;font-variant-numeric:tabular-nums}
+.pv .body-copy{max-width:none;font-size:18px;line-height:1.75;color:#33363c}
+.pv .body-copy p+p{margin-top:16px}
+.pv .body-copy+.body-copy{margin-top:20px}
+.pv .body-copy+.body-copy:not(:last-child),.pv .body-copy+.body-copy:last-child{padding-top:4px}
+.pv .body-copy+.body-copy p{padding-block:14px;border-top:1px solid var(--line);margin:0;font-size:17px}
+.pv .body-copy+.body-copy p:last-child{border-bottom:1px solid var(--line)}
+.pv .section-pad.surface .body-copy+.body-copy p{border-color:#dcdee3}
+.pv .section-pad:last-child{border-top:0;padding-block:0 96px}
+.pv .section-pad:last-child .wrap{max-width:none}
+.pv .brief-note{width:min(920px,100%);margin-left:276px;max-width:700px;padding:22px 28px;border-radius:12px;background:#f5f5f7;font-size:14px;line-height:1.7;color:#44474e}
+.pv .brief-note a{color:#0066cc;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){
+.pv .section-pad{padding-block:40px}
+.pv .split{grid-template-columns:minmax(0,1fr);gap:20px}
+.pv .split>div:first-child{position:static}
+.pv .body-copy{font-size:17px}
+.pv .brief-note{margin-left:0}
+.pv .section-pad:last-child{padding-block:0 64px}
+}

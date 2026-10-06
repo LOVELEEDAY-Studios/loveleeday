@@ -1,0 +1,28 @@
+/* Light variant of the shared panel: breaks the run of identical dark windows. */
+.fx-a-light .cx-win,.fx-a-light .cx-stage{--cx-panel:#fff;--cx-panel2:#f5f5f7;--cx-line:#e4e5e9;--cx-ink:#14151b;--cx-mute:#62656c;--cx-blue:#0a5fc2;--cx-mint:#0b7f58;--cx-amber:#9a5b00;--cx-rose:#b92f3d}
+.fx-a-light .cx-win{box-shadow:0 30px 70px -40px rgba(8,10,20,.35),0 0 0 1px rgba(8,10,20,.03)}
+.fx-a-light .cx-win *{--cx-line:#e4e5e9}
+.fx-a-light .cx-seg,.fx-a-light .cx-step,.fx-a-light .cx-claim,.fx-a-light .cx-cond{border-color:#e4e5e9}
+.fx-a-light svg.cx-chart g[stroke]{stroke:rgba(8,10,20,.08)}
+.fx-a-light .cx-chart text{fill:#9a5b00}
+.fx-a-light .cx-stage{background:none!important;border:0!important;box-shadow:none!important;padding:0!important}
+.fx-a-light .cx-stage::before,.fx-a-light .cx-stage::after{display:none!important}
+.fx-a-light .cx-win{border:1px solid #d9dbe1;color:#14151b}
+.fx-a-light .cx-claim q,.fx-a-light .cx-win h4,.fx-a-light .cx-win b,.fx-a-light .cx-big,.fx-a-light .cx-win strong{color:#14151b}
+.fx-a-light .cx-win::before,.fx-a-light .cx-win::after,.fx-a-light .cx-body::before{display:none!important}
+.fx-a-light .pin{background:#eaf2fc!important;color:#0a5fc2!important;border-color:#0a5fc2!important}
+.fx-a-light .cx-stage{border-radius:0!important;overflow:visible!important;outline:0!important}
+.fx-warm{background:#f5f1eb}
+/* Memory: full-bleed dark band with the timeline running the full width. */
+.fx-mem .cx-split{grid-template-columns:1fr;gap:48px}
+.fx-mem .cx-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:64px;align-items:start}
+.fx-mem .cx-copy>.eyebrow,.fx-mem .cx-copy>h2{grid-column:1}
+.fx-mem .cx-copy>h2{grid-row:2/5;font-size:clamp(34px,4.4vw,60px)}
+.fx-mem .cx-copy>p,.fx-mem .cx-copy>.cx-note{grid-column:2;color:#b4b7c2}
+.fx-mem .cx-copy>.eyebrow{grid-row:1}
+.fx-mem .cx-copy>p:nth-of-type(1){grid-row:1/3}
+.fx-mem .cx-note{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12);color:#d6d8df}
+.fx-mem .cx-note p{color:#d6d8df}
+.fx-mem .cx-win{box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.fx-mem .cx-stage{max-width:none}
+@media(max-width:900px){.fx-mem .cx-copy{display:block}}

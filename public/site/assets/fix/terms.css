@@ -1,0 +1,19 @@
+/* Terms: layout and type only. Legal wording lives in the HTML and is unchanged. */
+.tm-shell{grid-template-columns:250px minmax(0,1fr);gap:88px}
+.tm-doc{max-width:760px}
+.tm-sec{padding-block:48px}
+.tm-sec h2{font-size:34px;letter-spacing:-.035em}
+.tm-sec h2::before{font-size:13px;min-width:28px}
+.tm-sec .body-copy{padding-left:44px;margin-top:22px;font-size:20px;line-height:1.7;color:#2c2e33}
+.tm-sec .body-copy p+p{margin-top:20px}
+.tm-end{padding:26px 32px 26px 44px;font-size:15px}
+.tm-toc{font-size:14px}
+.tm-toc a{padding-block:11px}
+.tm-hero .lead{font-size:20px}
+@media(max-width:900px){
+.tm-sec{padding-block:36px}
+.tm-sec h2{font-size:26px}
+.tm-sec .body-copy{padding-left:0;font-size:18px;line-height:1.7}
+.tm-end{padding-left:24px}
+}
+.tm-end .brief-note{font-size:15px;color:#44474e}
