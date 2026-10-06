@@ -63,7 +63,8 @@ The same example question never appears on two pages: a reader who meets the sam
 
 Outside this repo (checked here so the site never borrows them):
 
-- portal: Which budget lines are on pace to run over before the year ends?
+- portal sign-in: Which budget lines are on pace to run over before the year ends?
+- portal invitation: Which shifts next week still need someone?
 
 ## A national company
 
