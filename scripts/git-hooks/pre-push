@@ -1,0 +1,17 @@
+#!/bin/sh
+# Repo pre-push for LOVELEEDAY: a push to main deploys (Vercel), so refuse one that would ship a missing, stale or reused
+# share card, incomplete link-preview meta, or an over-long preview title/description. Read-only: it never rewrites a
+# page. Fix with `npm run cards`, then commit.
+# Install (once per clone):  npm run hooks:install
+# Setting core.hooksPath REPLACES the global ~/.git-hooks, so this hook chains to it at the end; nothing is lost.
+# Bypass: SHARE_CARDS_SKIP=1 git push   (or --no-verify)
+ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
+if [ "$SHARE_CARDS_SKIP" != "1" ] && [ -f "$ROOT/scripts/share-cards.mjs" ] && command -v node >/dev/null 2>&1; then
+  if ! node "$ROOT/scripts/share-cards.mjs" --check; then
+    echo "pre-push: blocked by share-cards check (above). Run: npm run cards   then commit the result." >&2
+    exit 1
+  fi
+fi
+GLOBAL="$HOME/.git-hooks/pre-push"
+[ -x "$GLOBAL" ] && exec "$GLOBAL" "$@"
+exit 0

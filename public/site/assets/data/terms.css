@@ -1,0 +1,52 @@
+/* Terms page layout. Legal text lives in the HTML; this file only changes presentation. */
+.tm-hero{background:#f5f1eb;padding-block:96px 72px;border-bottom:1px solid #e6dfd3}
+.tm-hero h1{font-size:64px;line-height:1.04;letter-spacing:-.05em;font-weight:500;margin-top:16px}
+.tm-hero h1 span{color:#7a6d5c}
+.tm-hero .lead{margin-top:24px;max-width:560px;font-size:19px;line-height:1.6;color:#5d5346}
+.tm-meta{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:32px;font-size:12px;letter-spacing:.04em;color:#5d5346}
+.tm-meta span{display:inline-flex;align-items:center;gap:8px}
+.tm-meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:#0066cc}
+
+.tm-shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:72px;padding-block:72px 96px;align-items:start}
+.tm-toc{position:sticky;top:calc(var(--header-height) + 32px);font-size:13px}
+.tm-toc-title{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#62656c;margin-bottom:16px}
+.tm-toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line);counter-reset:toc}
+.tm-toc li{counter-increment:toc}
+.tm-toc a{position:relative;display:flex;gap:12px;padding:9px 0 9px 16px;margin-left:-1px;border-left:2px solid transparent;color:#62656c;line-height:1.45;transition:color .15s,border-color .15s}
+.tm-toc a::before{content:counter(toc,decimal-leading-zero);font-variant-numeric:tabular-nums;color:#9a9da4;font-size:11px;padding-top:2px}
+.tm-toc a:hover{color:var(--ink)}
+.tm-toc a[aria-current="true"]{color:var(--ink);border-left-color:var(--blue);font-weight:500}
+.tm-toc a[aria-current="true"]::before{color:var(--blue)}
+
+.tm-doc{counter-reset:sec;max-width:680px}
+.tm-sec{position:relative;counter-increment:sec;padding-block:40px;border-top:1px solid var(--line);scroll-margin-top:calc(var(--header-height) + 24px)}
+.tm-sec:first-child{border-top:0;padding-top:0}
+.tm-sec h2{font-size:28px;line-height:1.2;letter-spacing:-.03em;font-weight:500;display:flex;align-items:baseline;gap:16px;margin:0}
+.tm-sec h2::before{content:counter(sec,decimal-leading-zero);font-size:12px;letter-spacing:.08em;font-weight:600;color:var(--blue);font-variant-numeric:tabular-nums;min-width:24px}
+.tm-sec h2 a{color:inherit}
+.tm-sec h2 a::after{content:"#";margin-left:10px;font-size:16px;color:#9a9da4;opacity:0;transition:opacity .15s}
+.tm-sec:hover h2 a::after,.tm-sec h2 a:focus-visible::after{opacity:1}
+.tm-sec .body-copy{max-width:none;margin-top:20px;padding-left:40px;font-size:17px;line-height:1.75;color:#44474e}
+.tm-sec .body-copy a{color:var(--blue);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.tm-sec .body-copy a:hover{text-decoration-thickness:2px}
+.tm-end{margin-top:16px;padding:24px 28px 24px 40px;border-radius:12px;background:#f5f5f7;font-size:14px;line-height:1.7;color:#44474e}
+.tm-end a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+
+@media (max-width:900px){
+  .tm-hero{padding-block:64px 48px}
+  .tm-hero h1{font-size:44px}
+  .tm-hero .lead{font-size:17px}
+  .tm-shell{grid-template-columns:1fr;gap:0;padding-block:0 64px}
+  .tm-toc{position:sticky;top:var(--header-height);z-index:5;margin-inline:calc(var(--gutter) * -1);padding:12px var(--gutter);background:#ffffffee;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .tm-toc-title{display:none}
+  .tm-toc ol{display:flex;gap:8px;overflow-x:auto;border-left:0;scrollbar-width:none;padding-bottom:2px}
+  .tm-toc ol::-webkit-scrollbar{display:none}
+  .tm-toc a{white-space:nowrap;margin:0;padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-size:12px;gap:8px}
+  .tm-toc a[aria-current="true"]{border-color:var(--blue);background:#eef5fd}
+  .tm-doc{padding-top:40px}
+  .tm-sec h2{font-size:24px;gap:12px}
+  .tm-sec .body-copy{padding-left:0;font-size:16px}
+  .tm-end{padding-left:24px}
+}
+.tm-shell>*{min-width:0}
+@media (max-width:900px){.tm-toc{max-width:100vw}}

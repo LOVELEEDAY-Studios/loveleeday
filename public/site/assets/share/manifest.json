@@ -1,0 +1,202 @@
+{
+  "architecture": {
+    "page": "architecture.html",
+    "hash": "a0bb30687bdc1c4f",
+    "file": "2e43185494f8884d",
+    "headline": "Intelligence is designed. | Trust is built in.",
+    "caption": "Architecture",
+    "photo": "architecture.jpg"
+  },
+  "arthur": {
+    "page": "arthur.html",
+    "hash": "4f6e0c6419ff4d8b",
+    "file": "bee7c7c70020fd38",
+    "headline": "A clearer mind. | Behind every answer.",
+    "caption": "Meet Arthur",
+    "photo": "arthur.jpg"
+  },
+  "build": {
+    "page": "build.html",
+    "hash": "c55ae566c8fc2e54",
+    "file": "f78c9876cd118042",
+    "headline": "Software and design, | built around how you work.",
+    "caption": "What we build",
+    "photo": "hero.jpg"
+  },
+  "contact": {
+    "page": "contact.html",
+    "hash": "5ea6ebdba5fa9ece",
+    "file": "d655649c0ee2492c",
+    "headline": "Talk to a person. | We answer in writing.",
+    "caption": "Contact",
+    "photo": "hero.jpg"
+  },
+  "customer-data": {
+    "page": "customer-data.html",
+    "hash": "00eeadbbd8d51ad8",
+    "file": "a05b2b149d82f566",
+    "headline": "Many records. | A fuller customer picture.",
+    "caption": "Customer data",
+    "photo": "industry-retail.jpg"
+  },
+  "faq": {
+    "page": "faq.html",
+    "hash": "ee20ee6edd4f5ccb",
+    "file": "6ee90a7f688e8b20",
+    "headline": "Plain answers | to the usual questions.",
+    "caption": "Questions and answers",
+    "photo": "hero.jpg"
+  },
+  "home": {
+    "page": "index.html",
+    "hash": "8e516bfded670b8e",
+    "file": "8033b13e50aaf9c7",
+    "headline": "Pure intelligence. | For a fuller life.",
+    "caption": "The AI operating system for business",
+    "photo": "hero.jpg"
+  },
+  "how-it-works": {
+    "page": "how-it-works.html",
+    "hash": "3355af46f58b2648",
+    "file": "4df1e66236293956",
+    "headline": "From first question | to a working answer.",
+    "caption": "How it works",
+    "photo": "hero.jpg"
+  },
+  "industries": {
+    "page": "industries.html",
+    "hash": "511a04ba55b4b246",
+    "file": "29270aa81c09ae4f",
+    "headline": "Different worlds. | The same need for clarity.",
+    "caption": "Industries",
+    "photo": "industries.jpg"
+  },
+  "industries-manufacturing": {
+    "page": "industries/manufacturing.html",
+    "hash": "7e7e5bb894673117",
+    "file": "50280e3e73ae82ef",
+    "headline": "Know the margin | before the order ships.",
+    "caption": "Manufacturing and distribution",
+    "photo": "industry-manufacturing.jpg"
+  },
+  "industries-property": {
+    "page": "industries/property.html",
+    "hash": "6bfc3967b07de158",
+    "file": "c874bee67fdcc0a7",
+    "headline": "Every building, | one honest picture.",
+    "caption": "Property management",
+    "photo": "industry-property.jpg"
+  },
+  "integrations": {
+    "page": "integrations.html",
+    "hash": "c6d5b98d896ed111",
+    "file": "8d210d20943c3b04",
+    "headline": "Reads the systems | you already run.",
+    "caption": "Integrations",
+    "photo": "operating-system.jpg"
+  },
+  "municipal-review": {
+    "page": "municipal-review.html",
+    "hash": "cd4d2756e26bf077",
+    "file": "2a51bba6ef6e4479",
+    "headline": "Every ordinance. | One clear record.",
+    "caption": "Municipal review",
+    "photo": "municipal-review.jpg"
+  },
+  "operating-system": {
+    "page": "operating-system.html",
+    "hash": "d28620a490e27916",
+    "file": "8fc99d710f18bacd",
+    "headline": "Your systems. | One understanding.",
+    "caption": "The operating system",
+    "photo": "operating-system.jpg"
+  },
+  "operational-intelligence": {
+    "page": "operational-intelligence.html",
+    "hash": "a96ce633b3a708d6",
+    "file": "0a323eebf20fc4b1",
+    "headline": "See the connections. | Find the next question.",
+    "caption": "Operational intelligence",
+    "photo": "industry-manufacturing.jpg"
+  },
+  "pricing-margins": {
+    "page": "pricing-margins.html",
+    "hash": "7e607f255f39deaa",
+    "file": "d6a27a6476fdcfb8",
+    "headline": "See what sells. | Know what it leaves.",
+    "caption": "Pricing & margins",
+    "photo": "pricing-margins.jpg"
+  },
+  "principles": {
+    "page": "principles.html",
+    "hash": "9c41798e4e2aa817",
+    "file": "7585f844a810cbce",
+    "headline": "Clear thinking. | Visible foundations.",
+    "caption": "Our principles",
+    "photo": "principles.jpg"
+  },
+  "privacy": {
+    "page": "privacy.html",
+    "hash": "7d8ad3bf1d0cc2ce",
+    "file": "f66a67f379906e7d",
+    "headline": "What we collect. | Which is very little.",
+    "caption": "Privacy",
+    "photo": "outdoors.jpg"
+  },
+  "snapshot": {
+    "page": "snapshot.html",
+    "hash": "b3dec7e62c061710",
+    "file": "0151d0ddb48e7db4",
+    "headline": "Upload a price file. | See what is wrong with it.",
+    "caption": "Free price snapshot: upload a file, see what is wrong",
+    "photo": "industry-retail.jpg"
+  },
+  "studio": {
+    "page": "studio.html",
+    "hash": "df2189e2b1acd397",
+    "file": "ca8886cec1f4c4fd",
+    "headline": "Why we | build this.",
+    "caption": "About",
+    "photo": "studio.jpg"
+  },
+  "talk": {
+    "page": "talk.html",
+    "hash": "7acffdb6752573e4",
+    "file": "1c36f503714b99cc",
+    "headline": "Four ways to begin. | One conversation to choose.",
+    "caption": "Working with LOVELEEDAY: four ways to begin",
+    "photo": "industry-manufacturing.jpg"
+  },
+  "terms": {
+    "page": "terms.html",
+    "hash": "ec53b4791889b82e",
+    "file": "81bd728f7d314ee8",
+    "headline": "The plain terms. | Short on purpose.",
+    "caption": "Terms",
+    "photo": "industry-government.jpg"
+  },
+  "trust": {
+    "page": "trust.html",
+    "hash": "f5cffd1b2bbc1c32",
+    "file": "e1d778083f8729d8",
+    "headline": "Your data | stays yours.",
+    "caption": "Trust center",
+    "photo": "industry-nonprofit.jpg"
+  },
+  "use-cases": {
+    "page": "use-cases.html",
+    "hash": "70f40b5e6701cde9",
+    "file": "f4f279f3b6e49ec2",
+    "headline": "Start with the question. | Follow what matters.",
+    "caption": "Use cases",
+    "photo": "use-cases.jpg"
+  },
+  "work": {
+    "page": "work.html",
+    "hash": "5e1f7670d2dae806",
+    "file": "b41361ff6c064258",
+    "headline": "Shipped, not | proposed.",
+    "caption": "Work",
+    "photo": "industry-portfolios.jpg"
+  }
+}
