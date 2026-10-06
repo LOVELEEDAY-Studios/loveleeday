@@ -6,7 +6,10 @@
 //   --root <dir>      project root holding public/site and VOICE.md (default: this repo; tests point it at a temp copy)
 //   --site <dir>      override the site dir (default <root>/public/site)
 //   --portal <dir>    arthur-launch checkout whose login and invite pages hold LOGIN_EXAMPLE / INVITE_EXAMPLE
-//                     (default ~/Projects/arthur-launch; skipped when absent)
+//                     (default: ~/Projects/arthur-launch-auth-approved, else origin/main of ~/Projects/arthur-launch)
+//   --no-portal       explicitly skip the portal link check. Without it, a missing portal source FAILS (never silently skipped).
+//                     Vercel has no sibling arthur-launch checkout, so package.json "prebuild" passes --no-portal; the portal
+//                     link is still enforced locally by "check:site" and "test:voice", which run without it.
 //   --inventory       print every example question with its owner and source, then exit 0 (replaces the scratch qdump.py)
 import fs from "node:fs";
 import path from "node:path";
@@ -20,6 +23,7 @@ const HOME = process.env.HOME ?? "";
 // Default portal source: the clean main worktree, else committed origin/main of the arthur-launch checkout (never its working tree).
 const PORTAL = opt("portal") ? path.resolve(opt("portal")) : fs.existsSync(path.join(HOME, "Projects/arthur-launch-auth-approved/app")) ? path.join(HOME, "Projects/arthur-launch-auth-approved") : null;
 const PORTAL_GIT = path.join(HOME, "Projects/arthur-launch");
+const NO_PORTAL = argv.includes("--no-portal");
 const INVENTORY = argv.includes("--inventory");
 const TECHNICAL = new Set(["architecture.html", "integrations.html", "trust.html", "privacy.html", "terms.html", "security.html"]);
 const PLACE = /\b(kalamazoo|michigan)\b/i;
@@ -77,21 +81,36 @@ const pageRaw = new Map();
 for (const file of pages) pageRaw.set(path.relative(SITE, file), fs.readFileSync(file, "utf8"));
 for (const [rel, raw] of pageRaw) for (const [src, re] of ASK) for (const m of raw.matchAll(re)) add(m[1], rel, src);
 
+// Body of the array whose opening "[" the regex ends on: bracket/brace/paren matched, strings and comments skipped, so multi-line
+// arrays, nested objects and a "]" inside a string all resolve to the real closing bracket. Returns "" when absent or unclosed.
+function bracketBody(src, startRe) {
+  const m = startRe.exec(src); if (!m) return "";
+  const open = m.index + m[0].length; let depth = 1;
+  for (let i = open; i < src.length; i++) {
+    const c = src[i];
+    if (c === "'" || c === '"' || c === "`") { for (i++; i < src.length && src[i] !== c; i++) if (src[i] === "\\") i++; continue; }
+    if (c === "/" && src[i + 1] === "/") { while (i < src.length && src[i] !== "\n") i++; continue; }
+    if (c === "/" && src[i + 1] === "*") { const j = src.indexOf("*/", i + 2); if (j < 0) return ""; i = j + 1; continue; }
+    if (c === "[" || c === "{" || c === "(") depth++;
+    else if (c === "]" || c === "}" || c === ")") { if (--depth === 0) return src.slice(open, i); }
+  }
+  return "";
+}
+
 // assets/site.js: carousel arrays. `questions` belongs to index.html, `questionsOS` to the page with
 // data-question-set="os", and each brain demo (`ask`) to the pages whose data-brain-set lists it (all brain pages if unset).
 const siteJs = path.join(SITE, "assets/site.js");
 const jsLabel = "assets/site.js";
 if (fs.existsSync(siteJs)) {
   const js = fs.readFileSync(siteJs, "utf8");
-  const arrayOf = (name) => { const m = js.match(new RegExp(`const ${name}\\s*=\\s*\\[([\\s\\S]*?)\\n`)); return m ? m[1] : ""; };
+  const arrayOf = (name) => bracketBody(js, new RegExp(`const ${name}\\s*=\\s*\\[`));
   const qs = (body) => [...body.matchAll(/(?:^|[{,\s])["']?q["']?\s*:\s*(?:'((?:\\.|[^'\\])*)'|"((?:\\.|[^"\\])*)")/g)].map((m) => unescapeJs(m[1] ?? m[2]));
   const osPages = [...pageRaw].filter(([, r]) => /data-question-set="os"/.test(r)).map(([rel]) => rel);
   for (const q of qs(arrayOf("questions"))) add(q, "index.html", `${jsLabel} questions`);
   for (const q of qs(arrayOf("questionsOS"))) for (const rel of osPages.length ? osPages : [`${jsLabel} questionsOS`]) add(q, rel, `${jsLabel} questionsOS`);
-  const demoStart = js.indexOf("const brainDemos=[");
-  if (demoStart >= 0) {
-    const demoEnd = js.indexOf("];", demoStart);
-    const demos = [...js.slice(demoStart, demoEnd).matchAll(/["']?ask["']?\s*:\s*(?:'((?:\\.|[^'\\])*)'|"((?:\\.|[^"\\])*)")/g)].map((m) => unescapeJs(m[1] ?? m[2]));
+  const demoBody = arrayOf("brainDemos");
+  if (demoBody) {
+    const demos = [...demoBody.matchAll(/["']?ask["']?\s*:\s*(?:'((?:\\.|[^'\\])*)'|"((?:\\.|[^"\\])*)")/g)].map((m) => unescapeJs(m[1] ?? m[2]));
     const brainPages = [...pageRaw].filter(([, r]) => /id="brain-question"/.test(r));
     demos.forEach((q, i) => {
       for (const [rel, raw] of brainPages) {
@@ -111,9 +130,10 @@ const readPortal = (rel) => {
   return r.status === 0 ? r.stdout : null;
 };
 const STR = "(?:'((?:\\\\.|[^'\\\\])*)'|\"((?:\\\\.|[^\"\\\\])*)\"|`([^`]*)`)";
-for (const [name, rel] of portalFiles) {
+if (NO_PORTAL) portalNotes.push("portal link check skipped (--no-portal)");
+for (const [name, rel] of NO_PORTAL ? [] : portalFiles) {
   const src = readPortal(rel);
-  if (src === null) { portalNotes.push(`portal ${rel}: source not found, link skipped`); continue; }
+  if (src === null) { hits.push(`portal ${rel}: source not found (pass --portal <arthur-launch dir>, or --no-portal to skip the portal link check)`); continue; }
   // The constant is an object: const LOGIN_EXAMPLE = { ask: "...", answer: ..., next: ... }. A plain string also works.
   const m = src.match(new RegExp(`\\b${name}\\b[^=\\n]*=\\s*\\{[^}]*?\\bask\\s*:\\s*${STR}`)) ?? src.match(new RegExp(`\\b${name}\\b[^=\\n]*=\\s*${STR}`));
   if (!m) { hits.push(`portal ${rel}: ${name} (with an ask field) not found, so the registry link cannot be checked`); continue; }
