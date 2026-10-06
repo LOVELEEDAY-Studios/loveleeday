@@ -49,7 +49,7 @@ export async function POST(request: Request) {
       paragraphs: ["A new project brief has arrived.", `Name: ${plain(name, 200)}\nEmail: ${email}\nProject type: ${plain(projectType, 100) || "Not specified"}\nBudget: ${plain(budget, 100) || "Not specified"}`, rawDetails] });
     try {
       await sendEmail({ to: email, template: "brief-confirmation", subject: "We received your project brief — LOVELEEDAY",
-        paragraphs: [`Hi ${plain(name, 120)},`, "Thank you for sending your brief. We have it and are reading it now.", `Your question: ${customerQuestion}`, "We will reply within one working day to talk through next steps. You can reply here if anything else comes to mind.", "Warmly,\nThe LOVELEEDAY team"] });
+        paragraphs: [`Hi ${plain(name, 120)},`, "Thank you for sending your brief. We have it and are reading it now.", `Your question: ${customerQuestion}`, "We aim to reply within one working day to talk through next steps. You can reply here if anything else comes to mind.", "Warmly,\nThe LOVELEEDAY team"] });
     } catch (error) { console.error("Brief confirmation failed after alert", { to: email, error }); }
 
     return NextResponse.json({ ok: true });
