@@ -1,4 +1,6 @@
-import { Resend } from "resend";
+import { sendEmail, alertsTo } from "@/lib/email";
+import { isEmail, limited } from "@/lib/guard";
+import { clientIp } from "@/lib/visits";
 import { NextResponse } from "next/server";
 import { getPortal } from "@/content/portals";
 import { getPortfolio } from "@/content/portfolio";
@@ -11,15 +13,12 @@ import { getNow } from "@/content/hub/nowkalamazoo";
 
 export const dynamic = "force-dynamic";
 
-const esc = (s: string) =>
-  s.replace(/[&<>"']/g, (c) =>
-    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!,
-  );
-
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const token = String(body.token ?? "");
+    const body: unknown = await request.json();
+    if (!body || typeof body !== "object" || Array.isArray(body)) return NextResponse.json({ error: "Invalid note" }, { status: 400 });
+    const input = body as Record<string, unknown>;
+    const token = (typeof input.token === "string" ? input.token : "");
 
     // The token is re-checked here rather than trusted from the client, so this
     // endpoint cannot be used to send mail from an arbitrary payload. The
@@ -89,66 +88,35 @@ export async function POST(request: Request) {
     const portfolioLink = !found;
     const linkBase = st ? "studio/" : hub ? "hub/" : civic ? "civic/" : cs ? "compliance/" : "portfolio/";
 
-    const name = String(body.name ?? "").trim().slice(0, 120);
-    const email = String(body.email ?? "").trim().slice(0, 200);
-    const note = String(body.note ?? "").trim().slice(0, 5000);
-    const slug = String(body.slug ?? "").trim();
-    const intent = body.intent === "start" ? "start" : "feedback";
+    const name = (typeof input.name === "string" ? input.name : "").trim().replace(/[\r\n\t]+/g, " ").slice(0, 120);
+    const email = (typeof input.email === "string" ? input.email : "").trim().slice(0, 200);
+    const note = (typeof input.note === "string" ? input.note : "").trim().slice(0, 5000);
+    const slug = (typeof input.slug === "string" ? input.slug : "").trim();
+    const intent = input.intent === "start" ? "start" : "feedback";
 
     if (!name || !email || !note) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    if (!isEmail(email)) {
       return NextResponse.json({ error: "That email does not look right" }, { status: 400 });
+    }
+
+    if (limited(`portal-ip:${clientIp(request.headers)}`, 5, 60 * 60_000) || limited(`portal-to:${email.toLowerCase()}`, 2, 24 * 60 * 60_000)) {
+      return NextResponse.json({ error: "Too many notes. Please try again later." }, { status: 429 });
     }
 
     const deliverable = portal.deliverables.find((d) => d.slug === slug);
     const about = deliverable ? deliverable.title : "The package overall";
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    const row = (k: string, v: string) =>
-      `<tr style="border-bottom:1px solid #D4D2C9"><td style="padding:.6rem 0;font:600 11px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#5A5A55">${esc(k)}</td><td style="padding:.6rem 0;text-align:right">${v}</td></tr>`;
-
-    await resend.emails.send({
-      from: "LOVELEEDAY Portal <hello@loveleedaystudios.com>",
-      to: "blackmarble.m.g@gmail.com",
-      replyTo: email,
-      subject: `${intent === "start" ? "READY TO START" : "Portal note"} — ${portal.client}: ${name}`,
-      html: `<div style="font-family:Inter,-apple-system,sans-serif;max-width:620px;margin:0 auto;background:#F3F2EE;padding:2rem;color:#111">
-        <h2 style="font-weight:400;letter-spacing:-.02em;margin:0 0 1.25rem">Review note — ${esc(portal.client)}</h2>
-        <table style="width:100%;border-collapse:collapse">
-          ${row("From", `${esc(name)} &lt;<a href="mailto:${esc(email)}" style="color:#111">${esc(email)}</a>&gt;`)}
-          ${row("Intent", intent === "start" ? "Let's get started" : "Feedback on the work")}
-          ${row("About", esc(about))}
-          ${row("Project", esc(portal.project))}
-          ${row("Round", esc(portal.round))}
-        </table>
-        <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid #D4D2C9">
-          <p style="font:600 11px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#5A5A55;margin:0 0 .5rem">Note</p>
-          <p style="line-height:1.6;white-space:pre-wrap;margin:0">${esc(note)}</p>
-        </div>
-        <p style="margin-top:1.5rem;font-size:12px;color:#5A5A55">
-          <a href="https://loveleedaystudios.com/p/${portfolioLink ? linkBase : ""}${esc(portal.token ?? "")}${!portfolioLink && deliverable ? "/" + esc(deliverable.slug) : ""}" style="color:#111">Open the portal page they were looking at</a>
-        </p>
-      </div>`,
-    });
-
-    // The client gets their own words back, so the note is a record and not a
-    // message into a void.
-    await resend.emails.send({
-      from: "LOVELEEDAY <hello@loveleedaystudios.com>",
-      to: email,
-      replyTo: "daniel@loveleedaystudios.com",
-      subject: `Note received — ${portal.client} review`,
-      html: `<div style="font-family:Inter,-apple-system,sans-serif;max-width:620px;margin:0 auto;background:#F3F2EE;padding:2rem;color:#111">
-        <h2 style="font-weight:400;letter-spacing:-.02em;margin:0 0 .5rem">Note received.</h2>
-        <p style="color:#5A5A55;font-size:.9rem;margin:0 0 1.5rem">We will come back to you within one business day.</p>
-        <p style="font:600 11px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#5A5A55;margin:0 0 .5rem">What you wrote, on ${esc(about)}</p>
-        <p style="line-height:1.6;white-space:pre-wrap;margin:0;padding-left:1rem;border-left:2px solid #D4D2C9">${esc(note)}</p>
-        <div style="margin-top:2rem;padding-top:1rem;border-top:1px solid #D4D2C9;font-size:.8rem;color:#5A5A55">LOVELEEDAY Studios LLC</div>
-      </div>`,
-    });
+    const url = `https://loveleedaystudios.com/p/${portfolioLink ? linkBase : ""}${portal.token ?? ""}${!portfolioLink && deliverable ? "/" + deliverable.slug : ""}`;
+    await sendEmail({ internal: true, to: alertsTo(), replyTo: email, template: "portal-note-alert",
+      subject: `${intent === "start" ? "Ready to start" : "Portal note"} — ${portal.client}: ${name.replace(/[\r\n]/g, " ")}`,
+      paragraphs: [`Review note from ${name} <${email}>`, `Client: ${portal.client}\nIntent: ${intent}\nAbout: ${about}\nProject: ${portal.project}\nRound: ${portal.round}`, note],
+      action: { label: "Open review", url } });
+    try {
+      await sendEmail({ to: email, template: "portal-note-confirmation", subject: `We received your note — ${portal.client}`,
+        paragraphs: [`Hi ${name},`, "Thank you for taking the time to share your thoughts. We have your note and will read it carefully.", `Your note: ${note.slice(0, 300).replace(/Arthur/gi, "our team")}${note.length > 300 ? "…" : ""}`, "We will come back to you within one business day. You can reply to this email if there is anything else you would like us to know.", "Warmly,\nThe LOVELEEDAY team"] });
+    } catch (error) { console.error("Portal confirmation failed after alert", { to: email, error }); }
 
     return NextResponse.json({ ok: true });
   } catch (error) {
