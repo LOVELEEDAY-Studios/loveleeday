@@ -9,6 +9,7 @@
 // Exit 2 on any mismatch. Known exceptions live in scripts/site-consistency-allow.json, each with a reason.
 import fs from "node:fs";
 import path from "node:path";
+import { checkCards } from "./lib/share-cards.mjs";
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const allow = JSON.parse(fs.readFileSync(path.join(root, "scripts/site-consistency-allow.json"), "utf8"));
@@ -104,6 +105,9 @@ function staticMode() {
     checkContent(label, html, problems, srcExists);
   }
 
+  // Every public page has its own 1200x630 card and complete link-preview meta (see docs/SHARE-CARDS.md).
+  problems.push(...checkCards(root));
+
   // One source of truth: every system a public page names as connectable must be Available in the integrations data,
   // so a hand-typed list can never contradict the directory again.
   const dataFile = path.join(root, "src/content/integrations.json");
@@ -171,6 +175,13 @@ async function liveMode(base) {
     if (page.status !== 200) { problems.push(`${route}: ${page.error || `HTTP ${page.status}`}`); continue; }
     compare(route, page.html, ref, problems);
     checkContent(route, page.html, problems, null);
+    const og = (page.html.match(/<meta\s+property="og:image"\s+content="([^"]+)"/) || [])[1];
+    if (!og) problems.push(`${route}: no og:image`);
+    else {
+      const r = await fetch(new URL(og, base + "/"), { method: "HEAD", signal: AbortSignal.timeout(15000) }).catch(() => null);
+      if (!r || r.status !== 200) problems.push(`${route}: og:image ${og} returns ${r ? r.status : "no response"}`);
+      else if (!/^image\//.test(r.headers.get("content-type") || "")) problems.push(`${route}: og:image ${og} is ${r.headers.get("content-type")}, not an image`);
+    }
     for (const t of logoTiles(page.html)) {
       if (!t.src || logoSeen.has(t.src)) continue;
       logoSeen.add(t.src);

@@ -1,0 +1,18 @@
+{
+  "_": "Overrides that must not touch a page's HTML. A page can also set <meta name=\"card:headline|caption|photo|image\"> itself, which wins over this file. Everything not listed here is derived from the page. See docs/SHARE-CARDS.md.",
+  "hidden": [],
+  "pathRules": [
+    { "prefix": "work/", "line2": "Selected work.", "caption": "Case study" },
+    { "prefix": "notes/", "ogType": "article" }
+  ],
+  "pages": {
+    "index.html": { "caption": "The AI operating system for business" },
+    "integrations.html": { "photo": "operating-system.jpg" },
+    "privacy.html": { "photo": "outdoors.jpg" },
+    "terms.html": { "photo": "industry-government.jpg" },
+    "snapshot.html": { "photo": "industry-retail.jpg" },
+    "trust.html": { "photo": "industry-nonprofit.jpg" },
+    "work.html": { "photo": "industry-portfolios.jpg" },
+    "industries.html": { "photo": "industries.jpg" }
+  }
+}

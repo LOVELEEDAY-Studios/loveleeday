@@ -4,15 +4,20 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/site-postprocess.mjs && next build",
+    "build": "node scripts/site-chrome.mjs && node scripts/site-postprocess.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "capture": "python3 -W ignore scripts/capture-studies.py",
     "capture:check": "python3 -W ignore scripts/capture-studies.py --check",
-    "prebuild": "node scripts/check-site-consistency.mjs",
+    "prebuild": "node scripts/site-chrome.mjs && node scripts/share-cards.mjs && node scripts/check-site-consistency.mjs",
+    "cards": "node scripts/share-cards.mjs",
+    "cards:check": "node scripts/share-cards.mjs --check",
+    "hooks:install": "git config core.hooksPath scripts/git-hooks",
     "check:site": "node scripts/check-site-consistency.mjs",
     "check:site:live": "node scripts/check-site-consistency.mjs --live",
-    "check:postprocess": "node scripts/site-postprocess.mjs --check"
+    "check:postprocess": "node scripts/site-postprocess.mjs --check",
+    "chrome": "node scripts/site-chrome.mjs",
+    "chrome:check": "node scripts/site-chrome.mjs --check"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
@@ -35,7 +40,10 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "opentype.js": "^2.0.0",
     "playwright": "^1.59.1",
+    "satori": "^0.35.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   },

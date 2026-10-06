@@ -57,6 +57,10 @@ const nextConfig: NextConfig = {
       { source: "/terms", destination: "/site/terms.html" },
       { source: "/notes", destination: "/site/notes.html" },
       { source: "/notes/:slug", destination: "/site/notes/:slug.html" },
+      { source: "/how-it-works", destination: "/site/how-it-works.html" },
+      { source: "/faq", destination: "/site/faq.html" },
+      { source: "/contact", destination: "/site/contact.html" },
+      { source: "/build", destination: "/site/build.html" },
       { source: "/work", destination: "/site/work.html" },
       { source: "/work/:slug", destination: "/site/work/:slug.html" },
       ],
@@ -68,7 +72,6 @@ const nextConfig: NextConfig = {
        permanent and the link equity follows. */
     return [
       { source: "/about", destination: "/studio", permanent: true },
-      { source: "/contact", destination: "/studio", permanent: true },
       // /security was the long internal-detail version of /trust; its detail now lives in the private security packet.
       { source: "/security", destination: "/trust", permanent: true },
       { source: "/work/:slug(olldae|kronos|hospitality-ops|duezy|dabney)", destination: "/work", permanent: false },

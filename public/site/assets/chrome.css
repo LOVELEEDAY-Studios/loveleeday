@@ -1,0 +1,64 @@
+/* Site header and footer. Markup lives once in src/site-chrome/ and is injected into every page by
+   scripts/site-chrome.mjs, so the header can never drift between pages. Classes are gh-* (header)
+   and gf-* (footer) so none of the legacy .nav-links/.nav-cta rules in site.css apply. */
+.gh .gh-bar{height:var(--header-height);display:flex;align-items:center;gap:28px}
+.gh .brand{flex:none}
+.gh-menu{flex:1;display:flex;align-items:center;justify-content:space-between;gap:24px;min-width:0}
+.gh-main{display:flex;align-items:center;gap:4px}
+.gh-item{position:relative}
+.gh-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;border-radius:999px;font-size:14px;font-weight:500;color:#3a3a3f;transition:background .15s,color .15s}
+.gh-item summary::-webkit-details-marker{display:none}
+.gh-item summary:hover,.gh-item[open] summary{color:var(--ink);background:#f2f3f5}
+.gh-item summary i{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);opacity:.55;transition:transform .2s}
+.gh-item[open] summary i{transform:translateY(1px) rotate(-135deg)}
+.gh-item summary:focus-visible,.gh-actions a:focus-visible,.gh-panel a:focus-visible,.gh-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.gh-panel{position:absolute;top:calc(100% + 10px);left:-12px;display:grid;grid-auto-flow:column;gap:8px;padding:14px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 70px -20px #0f172a40,0 2px 6px #0f172a0d;z-index:40;animation:gh-in .18s ease-out}
+@keyframes gh-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.gh-panel-product{grid-template-columns:260px 260px 240px}
+.gh-panel-solutions{grid-template-columns:280px 260px}
+.gh-panel-narrow{grid-template-columns:280px}
+.gh-col{display:flex;flex-direction:column;gap:2px;padding:6px}
+.gh-label{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:6px 10px 8px}
+.gh-panel .gh-col a{display:block;padding:10px;border-radius:10px;color:var(--ink);transition:background .12s}
+.gh-panel .gh-col a:hover{background:#f4f5f7}
+.gh-panel a b{display:block;font-size:14px;font-weight:600;line-height:1.3}
+.gh-panel a small{display:block;margin-top:3px;font-size:12.5px;line-height:1.4;color:var(--muted)}
+.gh-feature{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-height:220px;padding:20px;border-radius:14px;color:#fff;background:linear-gradient(180deg,#0b1220cc 0%,#0b1220f2 70%),url(/site/assets/hero.jpg) center/cover;transition:transform .15s}
+.gh-feature:hover{transform:translateY(-1px)}
+.gh-feature .gh-label{padding:0;color:#c9a979}
+.gh-feature b{font-size:17px;font-weight:600}
+.gh-feature small{font-size:13px;line-height:1.45;color:#ffffffc7}
+.gh-feature em{font-style:normal;font-size:13px;font-weight:600;color:#fff;margin-top:6px}
+.gh-actions{display:flex;align-items:center;gap:6px;flex:none}
+.gh-signin,.gh-talk{font-size:14px;font-weight:500;color:#3a3a3f;padding:10px 12px;border-radius:999px;transition:color .15s,background .15s}
+.gh-signin:hover,.gh-talk:hover{color:var(--ink);background:#f2f3f5}
+.gh-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;margin-left:6px;border-radius:999px;background:var(--ink);color:#fff;font-size:14px;font-weight:600;white-space:nowrap;transition:background .15s}
+.gh-cta:hover{background:#000}
+.gh-toggle{display:none}
+@media(max-width:1180px){.gh-talk{display:none}.gh-item summary{padding:0 10px}}
+@media(max-width:1020px){
+  .gh .gh-bar{justify-content:space-between}
+  .gh-toggle{display:flex;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px;margin-right:-10px;padding:0 10px;border:0;background:none;cursor:pointer}
+  .gh-toggle span{display:block;height:1.5px;background:var(--ink);transition:transform .25s}
+  .gh.menu-open .gh-toggle span:first-child{transform:translateY(3.75px) rotate(45deg)}
+  .gh.menu-open .gh-toggle span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+  .gh-menu{display:none}
+  .gh.menu-open{background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .gh.menu-open .gh-menu{display:flex;flex-direction:column-reverse;justify-content:flex-end;align-items:stretch;gap:0;position:fixed;top:calc(var(--header-height) + 1px);left:0;right:0;bottom:0;padding:16px var(--gutter) 40px;background:#fff;overflow-y:auto}
+  .gh-main{flex-direction:column;align-items:stretch;gap:0}
+  .gh-item{border-bottom:1px solid var(--line)}
+  .gh-item summary{min-height:60px;padding:0;justify-content:space-between;font-size:18px;border-radius:0;background:none!important}
+  .gh-panel{position:static;display:block;padding:0 0 16px;border:0;box-shadow:none;animation:none}
+  .gh-col{padding:0}
+  .gh-label{padding:8px 0}
+  .gh-panel .gh-col a{padding:10px 0}
+  .gh-feature{min-height:0;margin-top:8px}
+  .gh-actions{flex-direction:column;align-items:stretch;gap:10px;padding-bottom:16px}
+  .gh-cta{justify-content:center;min-height:52px;margin:0;font-size:16px;order:-2}
+  .gh-talk{display:flex;justify-content:center;min-height:52px;border:1px solid var(--line);font-size:16px;order:-1}
+  .gh-signin{order:3;text-align:center;font-size:15px}
+}
+.gf-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.gf-ghost{background:transparent}
+.footer-grid.gf-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media(max-width:900px){.footer-grid.gf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
