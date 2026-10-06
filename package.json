@@ -14,6 +14,7 @@
     "cards:check": "node scripts/share-cards.mjs --check",
     "hooks:install": "git config core.hooksPath scripts/git-hooks",
     "check:site": "node scripts/check-plain-language.mjs && node scripts/check-site-consistency.mjs && node scripts/build-integrations-page.mjs --check",
+    "test:voice": "node --test scripts/check-plain-language.test.mjs",
     "check:site:live": "node scripts/check-site-consistency.mjs --live",
     "check:postprocess": "node scripts/site-postprocess.mjs --check",
     "chrome": "node scripts/site-chrome.mjs",
