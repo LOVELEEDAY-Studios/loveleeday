@@ -28,7 +28,7 @@ const post = trust.slice(trust.indexOf("</main>")).replace(/<script src="\/site\
 
 const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const TITLE = "Integrations — LOVELEEDAY";
-const DESC = "The accounting, CRM, commerce, property and other systems LOVELEEDAY connects to, read-only, by sign-in, key or file.";
+const DESC = "Check which systems Arthur can read now, which are planned, and what each could help you answer. Every connection is read-only.";
 const URL_ = "https://loveleedaystudios.com/integrations";
 
 // The head is the Trust page's head. Swap in this page's own title, description and URL; the trust description is read
@@ -94,16 +94,16 @@ const card = (i) => {
 
 const body = `
 
-<section class="wrap pagehead" style="padding-top:64px"><span class="eyebrow">Integrations</span><h1 class="title" style="font-size:56px">Reads the systems<br><span>you already run.</span></h1>
-<p class="lead">Every connection is read-only, and Arthur asks for your approval before writing anything back. Connectors are released system by system, and each card shows its status. If yours is not ready yet, tell us what you run.</p></section>
+<section class="wrap pagehead" style="padding-top:64px"><span class="eyebrow">Integrations</span><h1 class="title" style="font-size:56px">See which of your<br><span>systems we can read.</span></h1>
+<p class="lead">See which of your systems we can read now, which are still planned, and what each could help you answer. Every connection is read-only, and Arthur asks for your approval before writing anything back. Each card shows its status. If yours is not listed or not ready yet, tell us what you run.</p></section>
 
 <section class="wrap" style="padding-top:48px"><span class="eyebrow">Directory</span>
 <div class="ic-bar"><div class="tabs" role="group" aria-label="Filter by category"><button class="tab on" type="button" data-f="all">All<small>${items.length}</small></button>${groups.map((g) => `<button class="tab" type="button" data-f="${esc(g.id)}">${esc(g.label)}<small>${g.count}</small></button>`).join("")}</div>
 <input class="ic-search" id="ic-q" type="search" placeholder="Search systems" aria-label="Search systems" autocomplete="off"></div>
 <div class="ic-grid" id="ic-grid">${items.map(card).join("")}</div>
-<p class="ic-empty" id="ic-empty" hidden>Nothing matches that search. Tell us the system you run and we will show you how it connects.</p></section>
+<p class="ic-empty" id="ic-empty" hidden>No listed system matches. Tell us what you use, and we will check whether we can read it or use an export.</p></section>
 
-<section class="wrap" style="padding-top:56px;padding-bottom:96px"><div class="panel tint row between" style="padding:36px 40px"><div><h2 class="h">Not listed?</h2><p class="muted mt8" style="max-width:520px">If your system has an export, a database or an API, we can usually read it. Tell us what you run and we will show you how it connects.</p></div><div class="row"><a class="btn dark" href="/studio#project-brief">Tell us what you run</a><a class="btn sec" href="/snapshot">Try the free snapshot</a></div></div></section>
+<section class="wrap" style="padding-top:56px;padding-bottom:96px"><div class="panel tint row between" style="padding:36px 40px"><div><h2 class="h">Not listed?</h2><p class="muted mt8" style="max-width:520px">If your system can export data or provide approved access, tell us what it is. We will check what we can read and explain any limits.</p></div><div class="row"><a class="btn dark" href="/studio#project-brief">Tell us what you run</a><a class="btn sec" href="/snapshot">Try the free snapshot</a></div></div></section>
 <script>(function(){var f="all",q="",cards=[].slice.call(document.querySelectorAll(".ic-card")),tabs=[].slice.call(document.querySelectorAll(".tabs .tab")),empty=document.getElementById("ic-empty");function run(){var n=0;cards.forEach(function(c){var ok=(f==="all"||c.dataset.group===f)&&(!q||c.dataset.q.indexOf(q)>-1);c.hidden=!ok;if(ok)n++});empty.hidden=n>0}tabs.forEach(function(t){t.addEventListener("click",function(){f=t.dataset.f;tabs.forEach(function(x){x.classList.toggle("on",x===t)});run()})});document.getElementById("ic-q").addEventListener("input",function(e){q=e.target.value.trim().toLowerCase();run()});if(window.fetch)fetch("${STATUS_URL}",{mode:"cors"}).then(function(r){return r.ok?r.json():null}).then(function(d){if(!d||!d.connectors)return;cards.forEach(function(c){var s=d.connectors[c.dataset.key];if(s){var b=c.querySelector(".ic-soon");if(b){b.textContent=s==="available"?"${LIVE_LABEL}":"Coming soon";b.dataset.s=s==="available"?"available":"soon"}}})}).catch(function(){})})();</script>
 `;
 // The calm card styles live in their own sheet; link it once after the shared site.css.
