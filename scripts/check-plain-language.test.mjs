@@ -19,7 +19,7 @@ function fixture() {
   fs.copyFileSync(path.join(REPO, "VOICE.md"), path.join(root, "VOICE.md"));
   return root;
 }
-const run = (root, ...extra) => spawnSync("node", [CHECK, "--root", root, "--portal", path.join(root, "no-portal"), ...extra], { encoding: "utf8" });
+const run = (root, ...extra) => spawnSync("node", [CHECK, "--root", root, "--no-portal", ...extra], { encoding: "utf8" });
 const edit = (file, fn) => fs.writeFileSync(file, fn(fs.readFileSync(file, "utf8")));
 const fails = (r, ...owners) => {
   assert.equal(r.status, 1, r.stdout + r.stderr);
@@ -75,6 +75,27 @@ test("portal example missing from the registry fails; present in registry but eq
   r = spawnSync("node", [CHECK, "--root", root, "--portal", portal], { encoding: "utf8" });
   assert.equal(r.status, 1, r.stdout);
   assert.ok(r.stderr.includes("portal sign-in (VOICE.md)") && r.stderr.includes("talk.html"), r.stderr);
+});
+
+test("multi-line carousel duplicate (nested objects, ']' inside a string) fails naming both owners", () => {
+  const root = fixture();
+  edit(path.join(root, "public/site/assets/site.js"), (s) => s.replace("const questionsOS=[", `const questionsOS=[\n  {\n    tags: ["a]b", {x: [1, 2]}],\n    q: '${TALK_Q}',\n  },\n`));
+  fails(run(root), "operating-system.html", "talk.html");
+});
+
+test("a duplicate after a multi-line first entry of questions is still seen", () => {
+  const root = fixture();
+  edit(path.join(root, "public/site/assets/site.js"), (s) => s.replace("const questions=[", `const questions=[\n  {\n    note: "has ] bracket",\n    nest: [[1],[2]],\n    q: 'Placeholder first entry that is unique here?',\n  },\n  {\n    q: '${TALK_Q}'\n  },\n`));
+  fails(run(root), "index.html", "talk.html");
+});
+
+test("missing portal source fails unless --no-portal is passed", () => {
+  const root = fixture();
+  const bad = spawnSync("node", [CHECK, "--root", root, "--portal", path.join(root, "nope")], { encoding: "utf8" });
+  assert.equal(bad.status, 1, bad.stdout);
+  assert.match(bad.stderr, /source not found .*--no-portal/);
+  const ok = spawnSync("node", [CHECK, "--root", root, "--portal", path.join(root, "nope"), "--no-portal"], { encoding: "utf8" });
+  assert.equal(ok.status, 0, ok.stderr);
 });
 
 test("a repeat within one page passes", () => {

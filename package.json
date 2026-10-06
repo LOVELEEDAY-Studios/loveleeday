@@ -9,7 +9,7 @@
     "lint": "eslint",
     "capture": "python3 -W ignore scripts/capture-studies.py",
     "capture:check": "python3 -W ignore scripts/capture-studies.py --check",
-    "prebuild": "node scripts/check-plain-language.mjs && node scripts/site-chrome.mjs && node scripts/share-cards.mjs && node scripts/check-site-consistency.mjs && node scripts/build-integrations-page.mjs --check",
+    "prebuild": "node scripts/check-plain-language.mjs --no-portal && node scripts/site-chrome.mjs && node scripts/share-cards.mjs && node scripts/check-site-consistency.mjs && node scripts/build-integrations-page.mjs --check",
     "cards": "node scripts/share-cards.mjs",
     "cards:check": "node scripts/share-cards.mjs --check",
     "hooks:install": "git config core.hooksPath scripts/git-hooks",
