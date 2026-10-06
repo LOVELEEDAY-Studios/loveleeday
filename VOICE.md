@@ -45,7 +45,7 @@ Organizations have too many decisions to make and not enough time, and more data
 
 ## One example question per page
 
-The same example question never appears on two pages: a reader who meets the same question twice concludes Arthur only solves one thing. Each page's lead example comes from a different part of an organization. `scripts/check-plain-language.mjs` fails the build when an example question (`.eq span`, `.ip-q`, `.ha-card` ask, `.tv3-q`, `.cv3-card`, the `placeholder` of a question field, or a rotation `"q"`) repeats across pages, or repeats a question listed below for a surface outside this repo.
+The same example question never appears on two pages: a reader who meets the same question twice concludes Arthur only solves one thing. Each page's lead example comes from a different part of an organization. `scripts/check-plain-language.mjs` fails the build when an example question (`.eq span`, `.ip-q`, `.ha-card` ask, `.tv3-q`, `.cv3-card`, the `placeholder` of a question field, a `data-q` value that reads as a question, a rotation `"q"`, or the carousels in `assets/site.js`: `questions` belongs to index.html, `questionsOS` to the page with `data-question-set="os"`, each brain demo `ask` to the pages whose `data-brain-set` lists it) repeats across pages, or repeats a question listed below for a surface outside this repo. A repeat inside one page passes. The portal lines below must match `LOGIN_EXAMPLE.ask` and `INVITE_EXAMPLE.ask` in arthur-launch main (the checker reads them and fails on a mismatch or a missing constant). `--inventory` prints every question with its owner; `npm run -s test:voice` plants a duplicate in each source and asserts it fails.
 
 | Page | Lead example | Area |
 |---|---|---|

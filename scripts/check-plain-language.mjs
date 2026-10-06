@@ -3,11 +3,24 @@
 // written for owners and managers. Technical pages (architecture, integrations, trust, privacy, terms) may use the
 // technical words; nothing public may anchor the company to one place.
 //   node scripts/check-plain-language.mjs        exits 1 and lists each hit as page: phrase "...context..."
+//   --root <dir>      project root holding public/site and VOICE.md (default: this repo; tests point it at a temp copy)
+//   --site <dir>      override the site dir (default <root>/public/site)
+//   --portal <dir>    arthur-launch checkout whose login and invite pages hold LOGIN_EXAMPLE / INVITE_EXAMPLE
+//                     (default ~/Projects/arthur-launch; skipped when absent)
+//   --inventory       print every example question with its owner and source, then exit 0 (replaces the scratch qdump.py)
 import fs from "node:fs";
 import path from "node:path";
+import { spawnSync } from "node:child_process";
 
-const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname), "..");
-const SITE = path.join(ROOT, "public/site");
+const argv = process.argv.slice(2);
+const opt = (n) => { const i = argv.indexOf(`--${n}`); return i >= 0 ? argv[i + 1] : undefined; };
+const ROOT = path.resolve(opt("root") ?? path.join(path.dirname(new URL(import.meta.url).pathname), ".."));
+const SITE = path.resolve(opt("site") ?? path.join(ROOT, "public/site"));
+const HOME = process.env.HOME ?? "";
+// Default portal source: the clean main worktree, else committed origin/main of the arthur-launch checkout (never its working tree).
+const PORTAL = opt("portal") ? path.resolve(opt("portal")) : fs.existsSync(path.join(HOME, "Projects/arthur-launch-auth-approved/app")) ? path.join(HOME, "Projects/arthur-launch-auth-approved") : null;
+const PORTAL_GIT = path.join(HOME, "Projects/arthur-launch");
+const INVENTORY = argv.includes("--inventory");
 const TECHNICAL = new Set(["architecture.html", "integrations.html", "trust.html", "privacy.html", "terms.html", "security.html"]);
 const PLACE = /\b(kalamazoo|michigan)\b/i;
 const JARGON = [
@@ -21,7 +34,7 @@ walk(SITE);
 
 const visible = (html) => html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").replace(/\s+/g, " ");
 const hits = [];
-for (const file of pages) {
+if (!INVENTORY) for (const file of pages) {
   const rel = path.relative(SITE, file);
   const raw = fs.readFileSync(file, "utf8");
   const text = visible(raw);
@@ -36,32 +49,95 @@ for (const file of pages) {
     if (m) hits.push(`${rel}: jargon "${w}" "${m[0].trim()}"`);
   }
 }
+
 // One example question per page (VOICE.md): the same question on two pages, or one the portal already uses, fails.
+// Every question-bearing source feeds one list of {question, owner, source}; a repeat inside one owner passes.
 const norm = (q) => q.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").replace(/^\s*(for example:|you ask)\s*/i, "").replace(/[^a-z0-9% ]/gi, "").replace(/\s+/g, " ").trim().toLowerCase();
 const ASK = [
-  /<div class="eq">[\s\S]*?<span>([\s\S]*?)<\/span>/g,
-  /<div class="ip-q">(?:<b>[^<]*<\/b>)?([\s\S]*?)<\/div>/g,
-  /<div class="ha-ask">[\s\S]*?<dd>([\s\S]*?)<\/dd>/g,
-  /<div class="tv3-q">[\s\S]*?<p>([\s\S]*?)<\/p>/g,
-  /<div class="cv3-card">[\s\S]*?<p>([\s\S]*?)<\/p>/g,
-  /<textarea[^>]*name="question"[^>]*placeholder="([^"]+)"/g,
-  /"q":\s*"([^"]+)"/g,
+  ["html .eq", /<div class="eq">[\s\S]*?<span>([\s\S]*?)<\/span>/g],
+  ["html .ip-q", /<div class="ip-q">(?:<b>[^<]*<\/b>)?([\s\S]*?)<\/div>/g],
+  ["html .ha-ask", /<div class="ha-ask">[\s\S]*?<dd>([\s\S]*?)<\/dd>/g],
+  ["html .tv3-q", /<div class="tv3-q">[\s\S]*?<p>([\s\S]*?)<\/p>/g],
+  ["html .cv3-card", /<div class="cv3-card">[\s\S]*?<p>([\s\S]*?)<\/p>/g],
+  ["html placeholder", /<textarea[^>]*name="question"[^>]*placeholder="([^"]+)"/g],
+  ["html placeholder", /<(?:input|textarea)[^>]*placeholder="([^"]*\?)"[^>]*name="question"/g],
+  ["html rotation q", /"q":\s*"([^"]+)"/g],
+  // data-q attributes: the integrations grid uses data-q for search keywords, so only values that read as a question count.
+  ["html data-q", /\sdata-q="([^"]*\?[^"]*)"/g],
 ];
-const owner = new Map();
-const voice = fs.readFileSync(path.join(ROOT, "VOICE.md"), "utf8");
-for (const m of voice.matchAll(/^- (\w[\w ]*): (.+\?)$/gm)) owner.set(norm(m[2]), `${m[1]} (VOICE.md)`);
-for (const file of pages) {
-  const rel = path.relative(SITE, file);
-  const raw = fs.readFileSync(file, "utf8");
-  const mine = new Set();
-  for (const re of ASK) for (const m of raw.matchAll(re)) { const q = norm(m[1]); if (q.length > 12) mine.add(q); }
-  for (const q of mine) {
-    if (owner.has(q)) hits.push(`${rel}: example question repeats ${owner.get(q)} "${q}"`);
-    else owner.set(q, rel);
+const entries = []; // {q, owner, source}
+const add = (q, owner, source) => { const n = norm(q); if (n.length > 12) entries.push({ q: n, owner, source }); };
+const unescapeJs = (s) => s.replace(/\\u([0-9a-f]{4})/gi, (_, h) => String.fromCharCode(parseInt(h, 16))).replace(/\\(['"\\])/g, "$1");
+const voicePath = path.join(ROOT, "VOICE.md");
+const voice = fs.existsSync(voicePath) ? fs.readFileSync(voicePath, "utf8") : "";
+const registry = [];
+for (const m of voice.matchAll(/^- (\w[\w -]*): (.+\?)$/gm)) { add(m[2], `${m[1]} (VOICE.md)`, "VOICE.md registry"); registry.push({ name: m[1], q: norm(m[2]) }); }
+
+const pageRaw = new Map();
+for (const file of pages) pageRaw.set(path.relative(SITE, file), fs.readFileSync(file, "utf8"));
+for (const [rel, raw] of pageRaw) for (const [src, re] of ASK) for (const m of raw.matchAll(re)) add(m[1], rel, src);
+
+// assets/site.js: carousel arrays. `questions` belongs to index.html, `questionsOS` to the page with
+// data-question-set="os", and each brain demo (`ask`) to the pages whose data-brain-set lists it (all brain pages if unset).
+const siteJs = path.join(SITE, "assets/site.js");
+const jsLabel = "assets/site.js";
+if (fs.existsSync(siteJs)) {
+  const js = fs.readFileSync(siteJs, "utf8");
+  const arrayOf = (name) => { const m = js.match(new RegExp(`const ${name}\\s*=\\s*\\[([\\s\\S]*?)\\n`)); return m ? m[1] : ""; };
+  const qs = (body) => [...body.matchAll(/(?:^|[{,\s])["']?q["']?\s*:\s*(?:'((?:\\.|[^'\\])*)'|"((?:\\.|[^"\\])*)")/g)].map((m) => unescapeJs(m[1] ?? m[2]));
+  const osPages = [...pageRaw].filter(([, r]) => /data-question-set="os"/.test(r)).map(([rel]) => rel);
+  for (const q of qs(arrayOf("questions"))) add(q, "index.html", `${jsLabel} questions`);
+  for (const q of qs(arrayOf("questionsOS"))) for (const rel of osPages.length ? osPages : [`${jsLabel} questionsOS`]) add(q, rel, `${jsLabel} questionsOS`);
+  const demoStart = js.indexOf("const brainDemos=[");
+  if (demoStart >= 0) {
+    const demoEnd = js.indexOf("];", demoStart);
+    const demos = [...js.slice(demoStart, demoEnd).matchAll(/["']?ask["']?\s*:\s*(?:'((?:\\.|[^'\\])*)'|"((?:\\.|[^"\\])*)")/g)].map((m) => unescapeJs(m[1] ?? m[2]));
+    const brainPages = [...pageRaw].filter(([, r]) => /id="brain-question"/.test(r));
+    demos.forEach((q, i) => {
+      for (const [rel, raw] of brainPages) {
+        const set = (raw.match(/data-brain-set="([^"]*)"/)?.[1] ?? "").split(",").filter((x) => x !== "").map(Number);
+        if (!set.length || set.includes(i)) add(q, rel, `${jsLabel} brainDemos[${i}]`);
+      }
+    });
   }
+}
+
+// Portal link: the sign-in and invitation pages declare LOGIN_EXAMPLE / INVITE_EXAMPLE; each must be in the VOICE.md "- portal ...:" registry.
+const portalFiles = [["LOGIN_EXAMPLE", "app/client/login/page.tsx"], ["INVITE_EXAMPLE", "app/client/invite/[token]/page.tsx"]];
+const portalNotes = [];
+const readPortal = (rel) => {
+  if (PORTAL) { const f = path.join(PORTAL, rel); return fs.existsSync(f) ? fs.readFileSync(f, "utf8") : null; }
+  const r = spawnSync("git", ["-C", PORTAL_GIT, "show", `origin/main:${rel}`], { encoding: "utf8" });
+  return r.status === 0 ? r.stdout : null;
+};
+const STR = "(?:'((?:\\\\.|[^'\\\\])*)'|\"((?:\\\\.|[^\"\\\\])*)\"|`([^`]*)`)";
+for (const [name, rel] of portalFiles) {
+  const src = readPortal(rel);
+  if (src === null) { portalNotes.push(`portal ${rel}: source not found, link skipped`); continue; }
+  // The constant is an object: const LOGIN_EXAMPLE = { ask: "...", answer: ..., next: ... }. A plain string also works.
+  const m = src.match(new RegExp(`\\b${name}\\b[^=\\n]*=\\s*\\{[^}]*?\\bask\\s*:\\s*${STR}`)) ?? src.match(new RegExp(`\\b${name}\\b[^=\\n]*=\\s*${STR}`));
+  if (!m) { hits.push(`portal ${rel}: ${name} (with an ask field) not found, so the registry link cannot be checked`); continue; }
+  const q = unescapeJs(m[1] ?? m[2] ?? m[3]);
+  if (!registry.some((r) => /^portal\b/.test(r.name) && r.q === norm(q))) hits.push(`portal ${rel}: ${name} "${norm(q)}" is missing from the VOICE.md "- portal ...:" registry lines`);
+}
+
+if (INVENTORY) {
+  const w = Math.max(...entries.map((e) => e.owner.length), 5);
+  for (const e of entries.sort((a, b) => a.owner.localeCompare(b.owner))) console.log(`${e.owner.padEnd(w)}  ${e.source.padEnd(34)}  ${e.q}`);
+  console.log(`\n${entries.length} questions, ${new Set(entries.map((e) => e.owner)).size} owners`);
+  for (const n of portalNotes) console.log(n);
+  if (hits.length) console.log(hits.join("\n"));
+  process.exit(0);
+}
+
+const byQ = new Map();
+for (const e of entries) { if (!byQ.has(e.q)) byQ.set(e.q, new Map()); const o = byQ.get(e.q); if (!o.has(e.owner)) o.set(e.owner, e.source); }
+for (const [q, owners] of byQ) {
+  if (owners.size < 2) continue;
+  hits.push(`${[...owners.keys()].join(" and ")}: both ask "${q}" (${[...owners].map(([o, s]) => `${o} [${s}]`).join(" vs ")})`);
 }
 if (hits.length) {
   console.error(`plain language: ${hits.length} hit(s) against VOICE.md\n  ` + hits.join("\n  "));
   process.exit(1);
 }
-console.log(`plain language: ${pages.length} pages checked against VOICE.md, clean`);
+console.log(`plain language: ${pages.length} pages and ${entries.length} questions checked against VOICE.md, clean`);
