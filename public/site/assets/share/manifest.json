@@ -25,19 +25,19 @@
   },
   "contact": {
     "page": "contact.html",
-    "hash": "2c4b632d7114c048",
-    "file": "40920f3b1f0d4de8",
+    "hash": "fc1e9c8bdec80b9f",
+    "file": "9a0b52d7e5f3f1d2",
     "headline": "Start with the decision | you need to make.",
     "caption": "Contact",
-    "photo": "hero.jpg"
+    "photo": "contact-hero.jpg"
   },
   "customer-data": {
     "page": "customer-data.html",
-    "hash": "00eeadbbd8d51ad8",
-    "file": "a05b2b149d82f566",
+    "hash": "301bb71f72b14a5e",
+    "file": "ee793ae973a8596a",
     "headline": "Many records. | A fuller customer picture.",
     "caption": "Customer data",
-    "photo": "industry-retail.jpg"
+    "photo": "industry-retail-3.jpg"
   },
   "faq": {
     "page": "faq.html",
@@ -113,11 +113,11 @@
   },
   "operational-intelligence": {
     "page": "operational-intelligence.html",
-    "hash": "d216a48579bf16e7",
-    "file": "aad3ac4c2e0c5c74",
+    "hash": "b012665992b82265",
+    "file": "d61677ad1479b3c5",
     "headline": "Know what changed | and what to do next.",
     "caption": "Operational intelligence",
-    "photo": "industry-manufacturing.jpg"
+    "photo": "industry-manufacturing-3.jpg"
   },
   "pricing-margins": {
     "page": "pricing-margins.html",
@@ -153,19 +153,19 @@
   },
   "studio": {
     "page": "studio.html",
-    "hash": "df2189e2b1acd397",
-    "file": "ca8886cec1f4c4fd",
-    "headline": "Why we | build this.",
+    "hash": "1ee00903d25b4cf6",
+    "file": "5f172e310a0e07d7",
+    "headline": "Too many decisions. | Not enough time.",
     "caption": "About",
     "photo": "studio.jpg"
   },
   "talk": {
     "page": "talk.html",
-    "hash": "230fdf6ce14ef94f",
-    "file": "96a911e9784dca9a",
+    "hash": "d6b8bebf3fb1c1d5",
+    "file": "8ed88aa8a41475fc",
     "headline": "Start with one question. | Build from what we learn.",
-    "caption": "Working with LOVELEEDAY: four ways to begin",
-    "photo": "hero.jpg"
+    "caption": "How we can work together",
+    "photo": "talk-hero.jpg"
   },
   "terms": {
     "page": "terms.html",

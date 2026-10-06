@@ -1,0 +1,76 @@
+/* contact-v3: mockup. Scoped to .cv3. Form markup and classes are unchanged; this only composes the page around it. */
+.cv3 h1,.cv3 h2{margin:0;font-weight:500}
+.cv3 h2{font-size:clamp(30px,3.4vw,44px);line-height:1.08;letter-spacing:-.045em}
+.cv3 h1 span,.cv3 h2 span{color:#767880}
+
+.cv3-hero{background:#f5f1eb;padding-block:72px 88px;overflow:hidden}
+.cv3-hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:center}
+.cv3-hero h1{font-size:clamp(38px,3.9vw,54px);line-height:1.04;letter-spacing:-.055em;margin-top:16px}
+.cv3-hero h1 span{color:#85786a}
+.cv3-hero .lead{font-size:18px;line-height:1.7;color:#62656c;margin:22px 0 0;max-width:470px}
+.cv3-actions{display:flex;align-items:center;gap:24px;margin-top:32px;flex-wrap:wrap}
+.cv3-reply{font-size:13px;color:#6f6253}
+.cv3-vis{position:relative;padding-bottom:56px}
+.cv3-vis img{width:100%;height:auto;aspect-ratio:4/3.2;object-fit:cover;object-position:35% 50%;border-radius:22px;box-shadow:0 30px 60px -30px #3a2a1a66}
+.cv3-card{position:absolute;left:-40px;bottom:0;max-width:310px;background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 24px 50px -18px #1d1d1f55,0 0 0 1px #0000000d}
+.cv3-tag{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#73757c;margin-bottom:8px}
+.cv3-card p{font-size:17px;line-height:1.4;letter-spacing:-.02em;font-weight:500;color:#1d1d1f;margin:0}
+.cv3-reply-line{display:flex;align-items:center;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid #edeef1;font-size:12.5px;color:#0066cc}
+.cv3-reply-line i{width:8px;height:8px;border-radius:50%;background:#0066cc}
+
+/* the note: one rounded shell, photo-dark story on the left, the form on the right */
+.cv3-message{padding-block:80px 40px}
+.cv3-shell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);border-radius:26px;overflow:hidden;box-shadow:0 0 0 1px #e4e5e9,0 40px 80px -50px #1d1d1f66}
+.cv3-side{position:relative;color:#fff;background:#17130f;display:flex}
+.cv3-side img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cv3-side::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#17130f99 0%,#17130fd9 70%)}
+.cv3-side-in{position:relative;z-index:1;padding:48px 44px}
+.cv3-side .eyebrow{color:#d2a879}
+.cv3-side h2{margin-top:14px;color:#fff;font-size:clamp(30px,3vw,40px)}
+.cv3-side h2 span{color:#bfae98}
+.cv3-side .section-lead{color:#d9d2c8;font-size:16px;line-height:1.7;margin-top:18px}
+.cv3-next-label{display:block;margin-top:36px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#d2a879}
+.cv3-side .st-next{margin-top:14px;border-top:1px solid #ffffff2e}
+.cv3-side .st-next li{border-bottom-color:#ffffff2e;padding:14px 0}
+.cv3-side .st-next li::before{color:#d2a879}
+.cv3-side .st-next b{color:#fff}
+.cv3-side .st-next span{color:#cfc7ba}
+.cv3-shell .brief-form{border:0;border-radius:0;padding:48px 44px;align-content:start;gap:20px;background:#fff}
+.cv3-shell .brief-form textarea{min-height:104px}
+
+.cv3-routes{padding-block:72px 96px}
+.cv3-routes-head{max-width:420px}
+.cv3-routes-head .eyebrow+h2{margin-top:14px}
+.cv3-route-grid{margin-top:40px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #1d1d1f}
+.cv3-route-grid .rt{position:relative;display:flex;flex-direction:column;gap:8px;padding:24px 24px 56px;border-left:1px solid #dcdee3;transition:background .2s}
+.cv3-route-grid .rt:first-child{border-left:0;padding-left:0}
+.cv3-route-grid a.rt:hover{background:#f7f7f9}
+.cv3-route-grid .k{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#6d7077}
+.cv3-route-grid b{font-size:17px;line-height:1.3;letter-spacing:-.025em;font-weight:500;overflow-wrap:anywhere}
+.cv3-route-grid p{margin:0;font-size:14px;line-height:1.6;color:#62656c}
+.cv3-route-grid i{position:absolute;left:24px;bottom:22px;font-style:normal;color:#0066cc;font-size:18px}
+.cv3-route-grid .rt:first-child i{left:0}
+
+@media(max-width:1000px){
+.cv3-hero-grid{grid-template-columns:minmax(0,1fr);gap:44px}
+.cv3-vis{margin-inline:16px}
+.cv3-shell{grid-template-columns:minmax(0,1fr)}
+.cv3-route-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cv3-route-grid .rt:nth-child(3){border-left:0;padding-left:0}.cv3-route-grid .rt:nth-child(3) i{left:0}
+.cv3-route-grid .rt:nth-child(n+3){border-top:1px solid #dcdee3}
+}
+@media(max-width:640px){
+.cv3-hero{padding-block:44px 56px}
+.cv3-hero .lead{font-size:16px}
+.cv3-vis{margin-inline:0;padding-bottom:64px}
+.cv3-card{left:12px;right:12px;max-width:none;padding:14px 16px}
+.cv3-card p{font-size:15px}
+.cv3-message{padding-block:48px 24px}
+.cv3-shell{border-radius:20px}
+.cv3-side-in,.cv3-shell .brief-form{padding:28px 22px}
+.cv3-routes{padding-block:48px 64px}
+.cv3-route-grid{grid-template-columns:minmax(0,1fr)}
+.cv3-route-grid .rt,.cv3-route-grid .rt:first-child,.cv3-route-grid .rt:nth-child(3){border-left:0;padding:20px 0 48px;border-top:1px solid #dcdee3}
+.cv3-route-grid .rt:first-child{border-top:0}
+.cv3-route-grid .rt i,.cv3-route-grid .rt:first-child i,.cv3-route-grid .rt:nth-child(3) i{left:0}
+}
