@@ -105,7 +105,7 @@ export default function OGImage() {
           }}
         >
           <span>loveleedaystudios.com</span>
-          <span>Kalamazoo, Michigan</span>
+          <span>Across the United States</span>
         </div>
       </div>
     ),
