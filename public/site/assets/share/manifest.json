@@ -1,9 +1,9 @@
 {
   "architecture": {
     "page": "architecture.html",
-    "hash": "a0bb30687bdc1c4f",
-    "file": "2e43185494f8884d",
-    "headline": "Intelligence is designed. | Trust is built in.",
+    "hash": "65af3aa44ce898c4",
+    "file": "222e21c909a197e6",
+    "headline": "Check an answer | before you act on it.",
     "caption": "Architecture",
     "photo": "architecture.jpg"
   },
@@ -89,17 +89,17 @@
   },
   "integrations": {
     "page": "integrations.html",
-    "hash": "c6d5b98d896ed111",
-    "file": "8d210d20943c3b04",
-    "headline": "Reads the systems | you already run.",
+    "hash": "1041e8ac5373f10f",
+    "file": "0e64ca16e42b88a5",
+    "headline": "See which of your | systems we can read.",
     "caption": "Integrations",
     "photo": "operating-system.jpg"
   },
   "municipal-review": {
     "page": "municipal-review.html",
-    "hash": "cd4d2756e26bf077",
-    "file": "2a51bba6ef6e4479",
-    "headline": "Every ordinance. | One clear record.",
+    "hash": "9a4804dd5f3dd9ca",
+    "file": "02d8583d293824df",
+    "headline": "See the rules on file. | And the gaps still to close.",
     "caption": "Municipal review",
     "photo": "municipal-review.jpg"
   },
@@ -113,9 +113,9 @@
   },
   "operational-intelligence": {
     "page": "operational-intelligence.html",
-    "hash": "a96ce633b3a708d6",
-    "file": "0a323eebf20fc4b1",
-    "headline": "See the connections. | Find the next question.",
+    "hash": "d216a48579bf16e7",
+    "file": "aad3ac4c2e0c5c74",
+    "headline": "Know what changed | and what to do next.",
     "caption": "Operational intelligence",
     "photo": "industry-manufacturing.jpg"
   },
@@ -145,10 +145,10 @@
   },
   "snapshot": {
     "page": "snapshot.html",
-    "hash": "b3dec7e62c061710",
-    "file": "0151d0ddb48e7db4",
-    "headline": "Upload a price file. | See what is wrong with it.",
-    "caption": "Free price snapshot: upload a file, see what is wrong",
+    "hash": "ad561dd57c7edc41",
+    "file": "e40c22bb516426eb",
+    "headline": "Upload a price file. | See six issues it can reveal.",
+    "caption": "Free price snapshot: upload a file, see six issues it can reveal",
     "photo": "industry-retail.jpg"
   },
   "studio": {
