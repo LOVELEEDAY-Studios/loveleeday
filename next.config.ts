@@ -92,6 +92,12 @@ const nextConfig: NextConfig = {
     // metadata; the static files cannot, so the header covers both.
     return [
       {
+        /* Shared CSS/JS under /site/assets carry a ?v=<content hash> stamp (scripts/site-postprocess.mjs), so a
+           changed file always gets a new URL and the old one can be cached for a year. */
+        source: "/site/assets/:file*.:ext(css|js)",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
+      {
         /* The site shipped with HSTS from Vercel but nothing stopping another
            origin from framing it, so a client review page could be loaded
            invisibly under a decoy and clicked through. frame-ancestors is the

@@ -62,3 +62,26 @@
 .gf-ghost{background:transparent}
 .footer-grid.gf-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
 @media(max-width:900px){.footer-grid.gf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Footer balance (10/6 review): the mark was 48px with a 22px wordmark, twice the header logo and louder than
+   anything else in the footer. ~1.35x the header reads as a signature, not a second hero. */
+.site-footer .footer-mark{font-size:17px}
+.site-footer .footer-mark svg{width:32px;height:32px}
+.site-footer .footer-mark span{letter-spacing:.14em}
+.site-footer .footer-line{font-size:16px;margin-top:16px}
+/* One primary action: the Snapshot button is filled, Talk to us stays outlined. */
+.site-footer .gf-ctas .footer-cta:not(.gf-ghost){background:#fff;color:#14110e;border-color:#fff}
+.site-footer .gf-ctas .footer-cta:not(.gf-ghost):hover{background:#e9e6e1;border-color:#e9e6e1}
+@media(max-width:700px){.site-footer .footer-mark svg{width:28px;height:28px}.site-footer .footer-mark{font-size:15px}}
+/* Header actions (Codex fix 9): Snapshot is the one primary action in the site action blue. */
+.gh-cta{background:var(--blue)}
+.gh-cta:hover{background:#0059b3}
+/* Menu panels share one column width (Codex fix 10); Company splits into two columns of three. */
+.gh-panel-narrow{grid-template-columns:270px}
+.gh-panel-company{grid-template-columns:auto}
+.gh-panel-company .gh-col{display:grid;grid-template-columns:270px 270px;gap:2px 8px}
+.gh-panel-product{grid-template-columns:270px 270px 240px}
+.gh-panel-solutions{grid-template-columns:270px 270px}
+@media(max-width:1020px){.gh-panel-company .gh-col{display:flex}}
+/* Legal row (Codex fix 8): disclosure moves to its own quieter line. */
+.site-footer .footer-legal{font-size:12px}
+.site-footer .gf-note{margin:14px 0 0;font-size:11.5px;color:#7d756b}
