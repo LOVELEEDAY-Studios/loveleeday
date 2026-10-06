@@ -19,7 +19,7 @@ fs.mkdirSync(OUT, { recursive: true });
 
 const photoFor = {
   "integrations.html": "operating-system.jpg", "privacy.html": "outdoors.jpg", "terms.html": "industry-government.jpg",
-  "snapshot.html": "industry-retail.jpg", "trust.html": "industry-nonprofit.jpg", "work.html": "hero.jpg",
+  "snapshot.html": "industry-retail.jpg", "trust.html": "industry-nonprofit.jpg", "work.html": "industry-portfolios.jpg",
   "work/dabney.html": "dinner.jpg", "work/hospitality-ops.html": "industries.jpg", "work/kronos.html": "industry-portfolios.jpg",
   "work/duezy.html": "industry-professional-services.jpg", "work/olldae.html": "industry-hospitality.jpg",
   "industries.html": "industries.jpg",
@@ -27,7 +27,7 @@ const photoFor = {
 const e = (s) => s.replace(/&(?!amp;|#)/g, "&amp;").replace(/</g, "&lt;");
 const text = (s) => s.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").replace(/\s+/g, " ").trim();
 
-const pages = execFileSync("grep", ["-rlE", "assets/share(\\.jpg|/[a-z0-9-]+\\.jpg)", SITE, "--include=*.html"]).toString().trim().split("\n").sort();
+const pages = execFileSync("grep", ["-rlE", "assets/share(\\.jpg|-home\\.jpg|/[a-z0-9-]+\\.jpg)", SITE, "--include=*.html"]).toString().trim().split("\n").sort();
 const cards = [];
 for (const file of pages) {
   const rel = path.relative(SITE, file);
@@ -36,10 +36,10 @@ for (const file of pages) {
   let [l1, l2 = ""] = h1.split(/<br[^>]*>/).map(text);
   const title = text((html.match(/<title>([^<]*)/) || [])[1] || "").replace(/\s+[—-]\s+LOVELEEDAY.*$/, "");
   const desc = text((html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || "");
-  let sub = title;
+  let sub = rel === "index.html" ? "The AI operating system for business" : title;
   if (rel.startsWith("work/")) { l2 = "Selected work."; sub = "Case study"; }
   const photo = photoFor[rel] || (html.match(/assets\/([a-z0-9-]+\.jpg)/g) || []).map((m) => m.slice(7)).find((p) => !p.startsWith("share")) || "hero.jpg";
-  const slug = rel.replace(/\.html$/, "").replace(/\//g, "-");
+  const slug = rel === "index.html" ? "home" : rel.replace(/\.html$/, "").replace(/\//g, "-");
   cards.push({ rel, slug, l1, l2, sub, photo, file });
 }
 
@@ -64,7 +64,7 @@ await p.goto(`file://${tmp}`, { waitUntil: "load" });
 for (const c of cards) {
   await p.locator(`#c-${c.slug}`).screenshot({ path: path.join(OUT, `${c.slug}.jpg`), type: "jpeg", quality: 84 });
   const url = `https://loveleedaystudios.com/site/assets/share/${c.slug}.jpg`;
-  const html = fs.readFileSync(c.file, "utf8").replace(/https:\/\/loveleedaystudios\.com\/site\/assets\/share(\.jpg|\/[a-z0-9-]+\.jpg)/g, url);
+  const html = fs.readFileSync(c.file, "utf8").replace(/https:\/\/loveleedaystudios\.com\/site\/assets\/share(\.jpg|-home\.jpg|\/[a-z0-9-]+\.jpg)/g, url);
   fs.writeFileSync(c.file, html);
   console.log(`${c.rel.padEnd(32)} ${c.photo.padEnd(34)} ${c.l1} / ${c.l2}`);
 }

@@ -82,15 +82,14 @@ const listBody = `
 <div class="grid g3 mt48">${studies.map(fig).join("")}</div>
 <p class="wk-note">The companies are not named here. Each rebuild carries measured criticism of the site it replaces, and that belongs in a private review addressed to the company rather than on a marketing page. Full packages are available on request.</p></div></section>
 
-<section class="wrap" style="padding-top:72px"><span class="eyebrow">Companies we own and operate</span><h2 class="h" style="font-size:32px;margin:12px 0 12px">Built in-house, running in production.</h2>
-<p class="muted" style="max-width:640px;font-size:14px;line-height:1.7">These are LOVELEEDAY-owned businesses. They are listed as evidence that the studio ships, not as client engagements: we were our own customer on every one of them.</p>
-<div class="mt32">${operated.map(row).join("\n")}</div></section>
+${operated.length ? `$1` : ""}
 
 ${cta}`;
 
 const write = (rel, html) => {
   fs.mkdirSync(path.dirname(root + rel), { recursive: true });
-  fs.writeFileSync(root + rel, html);
+  const card = `https://loveleedaystudios.com/site/assets/share/${rel.replace(/^.*?site\//, "").replace(/\.html$/, "").replace(/\//g, "-")}.jpg`;
+  fs.writeFileSync(root + rel, html.replace(/https:\/\/loveleedaystudios\.com\/site\/assets\/share(\.jpg|\/[a-z0-9-]+\.jpg)/g, card));
 };
 
 write(

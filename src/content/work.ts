@@ -38,14 +38,16 @@ export interface Operated {
   link: string | null;
   /** Used as the <meta name="description"> on /work/<slug>. */
   meta: string;
+  /** Kept off the public site until it is a real, shippable product. */
+  hidden?: boolean;
 }
 
 /** Companies LOVELEEDAY owns and runs. Evidence that the studio ships, NOT
     evidence that anyone hired it. Never presented as client work. */
-export const operated: Operated[] = [
+const allOperated: Operated[] = [
   {
     index: "01",
-    slug: "olldae",
+    slug: "olldae", hidden: true,
     meta: "How LOVELEEDAY built a bar and restaurant operating system in 11 days — Next.js, Supabase, Stripe, twelve Edge Functions.",
     title: "olldae",
     category: "SaaS / Restaurant technology",
@@ -61,7 +63,7 @@ export const operated: Operated[] = [
   },
   {
     index: "02",
-    slug: "kronos",
+    slug: "kronos", hidden: true,
     meta: "A 22-route multi-entity financial platform connecting Stripe Financial Connections, Xero and Supabase behind role-scoped auth.",
     title: "Kronos",
     category: "Financial tooling / Multi-entity",
@@ -77,7 +79,7 @@ export const operated: Operated[] = [
   },
   {
     index: "03",
-    slug: "hospitality-ops",
+    slug: "hospitality-ops", hidden: true,
     meta: "A custom operations layer handling 800+ emails a week through automated triage, routing and calendar deduplication on Fly.io.",
     title: "Hospitality Ops Layer",
     category: "Internal systems / Automation",
@@ -93,7 +95,7 @@ export const operated: Operated[] = [
   },
   {
     index: "04",
-    slug: "duezy",
+    slug: "duezy", hidden: true,
     meta: "An invoice automation SaaS with line-item billing, automated reminders and an embedded Stripe checkout link.",
     title: "Duezy",
     category: "SaaS / Invoice automation",
@@ -109,7 +111,7 @@ export const operated: Operated[] = [
   },
   {
     index: "05",
-    slug: "dabney",
+    slug: "dabney", hidden: true,
     meta: "Brand and site rebuild for Dabney & Co., a craft cocktail bar in Kalamazoo, MI — typographic redesign, OpenTable integration, three weeks.",
     title: "Dabney & Co.",
     category: "Brand / Hospitality",
@@ -209,3 +211,6 @@ export const figures: { k: string; label: string; source: string }[] = [
   },
 ];
 
+
+/** Only what is ready to show publicly. */
+export const operated = allOperated.filter((p) => !p.hidden);

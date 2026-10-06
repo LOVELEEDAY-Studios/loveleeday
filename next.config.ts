@@ -71,6 +71,7 @@ const nextConfig: NextConfig = {
       { source: "/contact", destination: "/studio", permanent: true },
       // /security was the long internal-detail version of /trust; its detail now lives in the private security packet.
       { source: "/security", destination: "/trust", permanent: true },
+      { source: "/work/:slug(olldae|kronos|hospitality-ops|duezy|dabney)", destination: "/work", permanent: false },
       { source: "/site/security.html", destination: "/trust", permanent: true },
       // www served a second copy of every page (200, not a redirect). One host for Google.
       {
