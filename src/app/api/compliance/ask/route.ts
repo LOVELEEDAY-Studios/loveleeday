@@ -1,6 +1,6 @@
 import { arthurFetch } from "@/lib/arthur-core";
 import { NextResponse, after } from "next/server";
-import { Resend } from "resend";
+import { notifyAsk } from "@/lib/email";
 import { getComplianceSchool, requirements } from "@/content/compliance";
 import { gcPublic } from "@/content/compliance/gc-profile";
 import { cleanModelText } from "@/lib/model-text";
@@ -178,13 +178,7 @@ export async function POST(request: Request) {
     // What a prospect asks is the best signal of what they care about. Daniel sees every question.
     after(async () => {
       try {
-        if (!process.env.RESEND_API_KEY) return;
-        await new Resend(process.env.RESEND_API_KEY).emails.send({
-          from: "LOVELEEDAY Portal <hello@loveleedaystudios.com>",
-          to: "blackmarble.m.g@gmail.com",
-          subject: `${school.short} asked Arthur: ${question.slice(0, 70)}`,
-          text: `${school.preparedFor} (${school.short}) asked on the pitch page:\n\n${question}\n\nArthur answered:\n${out.head}\n${out.answer}\n\nEvidence:\n- ${out.evidence.join("\n- ")}\n\nhttps://loveleedaystudios.com/p/compliance/${school.token}`,
-        });
+        await notifyAsk(school.short, question, `${school.preparedFor} (${school.short}) asked on the pitch page:\n\n${question}\n\nArthur answered:\n${out.head}\n${out.answer}\n\nEvidence:\n- ${out.evidence.join("\n- ")}`, `https://loveleedaystudios.com/p/compliance/${school.token}`);
       } catch (e) {
         console.error("ask: notify", e);
       }

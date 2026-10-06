@@ -1,6 +1,6 @@
-import { Resend } from "resend";
+import { sendEmail, alertsTo } from "@/lib/email";
 import { NextResponse } from "next/server";
-import { escapeHtml, isEmail, limited } from "@/lib/guard";
+import { isEmail, limited } from "@/lib/guard";
 import { clientIp } from "@/lib/visits";
 
 export const dynamic = "force-dynamic";
@@ -38,67 +38,19 @@ export async function POST(request: Request) {
     // Everything a visitor typed is escaped before it goes into the HTML we send to our own inbox.
     const plain = (s: unknown, n: number) => String(s ?? "").replace(/[\r\n\t]+/g, " ").slice(0, n);
     const subjectLine = `New Project Brief — ${plain(name, 120)} (${plain(projectType, 60) || "Unspecified"})`;
-    name = escapeHtml(String(name).slice(0, 200));
-    projectType = escapeHtml(String(projectType ?? "").slice(0, 100));
-    budget = escapeHtml(String(budget ?? "").slice(0, 100));
-    details = escapeHtml(String(details).slice(0, 10_000));
-    const emailHtml = escapeHtml(email);
+    name = String(name).slice(0, 200);
+    projectType = String(projectType ?? "").slice(0, 100);
+    budget = String(budget ?? "").slice(0, 100);
+    details = String(details).slice(0, 10_000);
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    // Send notification to Daniel
-    await resend.emails.send({
-      from: "LOVELEEDAY <hello@loveleedaystudios.com>",
-      to: "hello@loveleedaystudios.com",
-      replyTo: email,
-      subject: subjectLine,
-      html: `
-        <div style="font-family: Inter, -apple-system, sans-serif; max-width: 600px; margin: 0 auto; background: #F3F2EE; padding: 2rem; color: #111;">
-          <h2 style="font-weight: 400; letter-spacing: -0.02em; margin-bottom: 1.5rem;">New Project Brief</h2>
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr style="border-bottom: 1px solid #D4D2C9;">
-              <td style="padding: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #5A5A55;">Name</td>
-              <td style="padding: 0.75rem 0; text-align: right; font-weight: 500;">${name}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #D4D2C9;">
-              <td style="padding: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #5A5A55;">Email</td>
-              <td style="padding: 0.75rem 0; text-align: right; font-weight: 500;"><a href="mailto:${emailHtml}" style="color: #111;">${emailHtml}</a></td>
-            </tr>
-            <tr style="border-bottom: 1px solid #D4D2C9;">
-              <td style="padding: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #5A5A55;">Project Type</td>
-              <td style="padding: 0.75rem 0; text-align: right; font-weight: 500;">${projectType || "Not specified"}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #D4D2C9;">
-              <td style="padding: 0.75rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #5A5A55;">Budget</td>
-              <td style="padding: 0.75rem 0; text-align: right; font-weight: 500;">${budget || "Not specified"}</td>
-            </tr>
-          </table>
-          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #D4D2C9;">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #5A5A55; margin-bottom: 0.5rem;">Project Details</p>
-            <p style="line-height: 1.5; white-space: pre-wrap;">${details}</p>
-          </div>
-        </div>
-      `,
-    });
-
-    // Send confirmation to the client
-    await resend.emails.send({
-      from: "LOVELEEDAY <hello@loveleedaystudios.com>",
-      replyTo: "hello@loveleedaystudios.com",
-      to: email,
-      subject: "Brief received — LOVELEEDAY",
-      html: `
-        <div style="font-family: Inter, -apple-system, sans-serif; max-width: 600px; margin: 0 auto; background: #F3F2EE; padding: 2rem; color: #111;">
-          <h2 style="font-weight: 400; letter-spacing: -0.02em; margin-bottom: 0.5rem;">Brief received.</h2>
-          <p style="color: #5A5A55; font-size: 0.9rem; margin-bottom: 2rem;">We'll reply within one working day to talk through scope and next steps.</p>
-          <p style="font-size: 0.9rem; line-height: 1.6;">In the meantime, feel free to reply to this email with any additional details or questions.</p>
-          <p style="font-size: 0.85rem; color: #5A5A55; line-height: 1.5; margin-top: 1.5rem;">If you don't see our reply, check your spam folder — we send from <strong>hello@loveleedaystudios.com</strong>.</p>
-          <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #D4D2C9; font-size: 0.8rem; color: #5A5A55;">
-            LOVELEEDAY Studios LLC &middot; Delaware
-          </div>
-        </div>
-      `,
-    });
+    const rawDetails = details;
+    const customerQuestion = (rawDetails.split("THE QUESTION\n")[1]?.split("\n\n")[0] || rawDetails).slice(0, 500).replace(/Arthur/gi, "our team");
+    await sendEmail({ internal: true, to: alertsTo(), replyTo: email, template: "brief-alert", subject: subjectLine,
+      paragraphs: ["A new project brief has arrived.", `Name: ${plain(name, 200)}\nEmail: ${email}\nProject type: ${plain(projectType, 100) || "Not specified"}\nBudget: ${plain(budget, 100) || "Not specified"}`, rawDetails] });
+    try {
+      await sendEmail({ to: email, template: "brief-confirmation", subject: "We received your project brief — LOVELEEDAY",
+        paragraphs: [`Hi ${plain(name, 120)},`, "Thank you for sending your brief. We have it and are reading it now.", `Your question: ${customerQuestion}`, "We will reply within one working day to talk through next steps. You can reply here if anything else comes to mind.", "Warmly,\nThe LOVELEEDAY team"] });
+    } catch (error) { console.error("Brief confirmation failed after alert", { to: email, error }); }
 
     return NextResponse.json({ ok: true });
   } catch (error) {

@@ -1,6 +1,6 @@
 import { arthurFetch } from "@/lib/arthur-core";
 import { NextResponse, after } from "next/server";
-import { Resend } from "resend";
+import { notifyAsk } from "@/lib/email";
 import { findings, getHub, layers, nextQuestions, proof, strengths, themes } from "@/content/hub/startupzoo";
 import { cleanModelText } from "@/lib/model-text";
 import { clientIp, recordAsk } from "@/lib/visits";
@@ -106,13 +106,7 @@ export async function POST(request: Request) {
     after(async () => {
       await recordAsk(request.headers, { surface: "hub", token, client: client.short, question, head: out.head }).catch((e) => console.error("ask log", e));
       try {
-        if (!process.env.RESEND_API_KEY) return;
-        await new Resend(process.env.RESEND_API_KEY).emails.send({
-          from: "LOVELEEDAY Portal <hello@loveleedaystudios.com>",
-          to: "blackmarble.m.g@gmail.com",
-          subject: `${client.short} asked Arthur: ${question.slice(0, 70)}`,
-          text: `${client.preparedFor} (${client.short}) asked on the proposal page:\n\n${question}\n\nArthur answered:\n${out.head}\n${out.answer}\n\nEvidence:\n- ${out.evidence.join("\n- ")}\n\nhttps://loveleedaystudios.com/p/hub/${client.token}`,
-        });
+        await notifyAsk(client.short, question, `${client.preparedFor} (${client.short}) asked on the proposal page:\n\n${question}\n\nArthur answered:\n${out.head}\n${out.answer}\n\nEvidence:\n- ${out.evidence.join("\n- ")}`, `https://loveleedaystudios.com/p/hub/${client.token}`);
       } catch (e) {
         console.error("hub ask: notify", e);
       }

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { sendEmail } from "@/lib/email";
 import { isTeamEmail, PENDING_COOKIE, signPending } from "@/lib/team-auth";
 import { clientIp } from "@/lib/visits";
 import { limited } from "@/lib/guard";
@@ -14,16 +14,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Too many codes. Try again in a few minutes." }, { status: 429 });
   }
   const res = NextResponse.json({ ok: true });
-  if (!isTeamEmail(email)) return res;
+  if (!process.env.RESEND_API_KEY || !isTeamEmail(email)) return res;
 
   const code = String(crypto.getRandomValues(new Uint32Array(1))[0] % 1_000_000).padStart(6, "0");
-  if (!process.env.RESEND_API_KEY) return NextResponse.json({ error: "Email is not configured" }, { status: 503 });
-  await new Resend(process.env.RESEND_API_KEY).emails.send({
-    from: "LOVELEEDAY Team <hello@loveleedaystudios.com>",
-    to: email,
-    subject: `Your LOVELEEDAY team code: ${code}`,
-    text: `Your sign-in code is ${code}. It works once and expires in 10 minutes.\n\nIf you did not ask for it, ignore this email.`,
-  });
+  try {
+    await sendEmail({ to: email, template: "team-code", subject: "Your LOVELEEDAY sign-in code", security: true,
+      paragraphs: [`Your sign-in code is ${code}. It works once and expires in 10 minutes.`, "If you did not ask for it, you can ignore this email."] });
+  } catch { return NextResponse.json({ error: "Could not send code" }, { status: 503 }); }
   res.cookies.set(PENDING_COOKIE, await signPending(email, code), { httpOnly: true, secure: true, sameSite: "lax", path: "/", maxAge: 600 });
   return res;
 }

@@ -1,6 +1,6 @@
 import { arthurFetch } from "@/lib/arthur-core";
 import { NextResponse, after } from "next/server";
-import { Resend } from "resend";
+import { notifyAsk } from "@/lib/email";
 import { getWightman } from "@/content/hub/wightman";
 import intel from "@/content/hub/wightman-intel.json";
 import rows from "@/content/hub/wightman-intel-rows.json";
@@ -129,13 +129,7 @@ export async function POST(request: Request) {
     after(async () => {
       await recordAsk(request.headers, { surface: "wightman", token, client: client.short, question, head: out.head }).catch((e) => console.error("ask log", e));
       try {
-        if (!process.env.RESEND_API_KEY) return;
-        await new Resend(process.env.RESEND_API_KEY).emails.send({
-          from: "LOVELEEDAY Portal <hello@loveleedaystudios.com>",
-          to: "blackmarble.m.g@gmail.com",
-          subject: `${client.short} asked Arthur: ${question.slice(0, 70)}`,
-          text: `${client.preparedFor} (${client.short}) asked on the territory brief:\n\n${question}\n\nArthur answered:\n${out.head}\n${out.answer}\n\nEvidence:\n- ${out.evidence.join("\n- ")}`,
-        });
+        await notifyAsk(client.short, question, `${client.preparedFor} (${client.short}) asked on the territory brief:\n\n${question}\n\nArthur answered:\n${out.head}\n${out.answer}\n\nEvidence:\n- ${out.evidence.join("\n- ")}`, `https://loveleedaystudios.com/p/wightman/${client.token}`);
       } catch (e) { console.error("wightman ask: notify", e); }
     });
     return NextResponse.json(out);
