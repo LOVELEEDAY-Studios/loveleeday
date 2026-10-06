@@ -501,3 +501,5 @@ h2 span{color:#6f727a}
 /* review 2026-10-05 */
 .hero-story p{max-width:520px}
 .footer-legal a+a{margin-left:16px}
+
+@media (pointer:coarse){.site-footer a{display:inline-flex;align-items:center;min-height:32px}.nav .brand{min-height:44px}}
