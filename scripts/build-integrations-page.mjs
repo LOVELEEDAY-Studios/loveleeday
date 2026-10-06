@@ -57,7 +57,7 @@ const noLogo = items.filter((i) => !i.logo || !i.logo.startsWith("/integrations/
 if (noLogo.length) throw new Error(`no logo for: ${noLogo.join(", ")}. Add public/integrations/logos/<key>.svg|png, then rerun gen-integrations.mjs`);
 const groups = data.groups.map((g) => ({ ...g, count: items.filter((i) => i.group === g.id).length })).filter((g) => g.count);
 
-// Each logo sits on a square tinted with its own brand colour (scripts/logo-colors.py), so the wall reads as distinct systems.
+// Calm directory cards (approved 2026-10-06): white card, brand colour as a thin accent (--brand), one status label.
 const COLORS = JSON.parse(fs.readFileSync(root + "src/content/logo-colors.json", "utf8"));
 const brand = (i) => { const c = COLORS[i.logo.split("/").pop()]; if (!/^#[0-9a-f]{6}$/i.test(c || "")) throw new Error(`missing brand colour for ${i.key}`); return c; };
 // Relative luminance decides the text colour, so light brands (yellow, cyan) get dark text and stay readable.
@@ -65,7 +65,7 @@ const isLight = (hex) => { const [r, g, b] = [1, 3, 5].map((n) => parseInt(hex.s
 const tint = () => "background:#FFFFFF";
 const card = (i) => {
   const c = brand(i), soon = i.status !== "Available";
-  return `<article class="ic-card${isLight(c) ? " lt" : ""}" style="background:${c}" data-key="${esc(i.key)}" data-group="${esc(i.group)}" data-q="${esc((i.name + " " + i.vendor + " " + i.category).toLowerCase())}"><div class="ic-top"><span class="ic-logo" style="${tint(i)}"><img src="${esc(i.logo)}" alt="" width="26" height="26"></span><div><b>${esc(i.name)}</b><span class="xs">${esc(i.category)}</span></div></div><p>${esc(i.reads)}</p><span class="ic-soon"${soon ? "" : " hidden"}>Coming soon</span></article>`;
+  return `<article class="ic-card" style="--brand:${c}" data-key="${esc(i.key)}" data-group="${esc(i.group)}" data-q="${esc((i.name + " " + i.vendor + " " + i.category).toLowerCase())}"><div class="ic-top"><span class="ic-logo" style="${tint(i)}"><img src="${esc(i.logo)}" alt="" width="26" height="26"></span><div><b>${esc(i.name)}</b><span class="xs">${esc(i.category)}</span></div><span class="ic-soon" data-s="${soon ? "soon" : "live"}">${soon ? "Coming soon" : "Available"}</span></div><p>${esc(i.reads)}</p></article>`;
 };
 
 const body = `
@@ -82,5 +82,8 @@ const body = `
 <section class="wrap" style="padding-top:56px;padding-bottom:96px"><div class="panel tint row between" style="padding:36px 40px"><div><h2 class="h">Not listed?</h2><p class="muted mt8" style="max-width:520px">If your system has an export, a database or an API, we can usually read it. Tell us what you run and we will show you how it connects.</p></div><div class="row"><a class="btn dark" href="/studio#project-brief">Tell us what you run</a></div></div></section>
 <script>(function(){var f="all",q="",cards=[].slice.call(document.querySelectorAll(".ic-card")),tabs=[].slice.call(document.querySelectorAll(".tabs .tab")),empty=document.getElementById("ic-empty");function run(){var n=0;cards.forEach(function(c){var ok=(f==="all"||c.dataset.group===f)&&(!q||c.dataset.q.indexOf(q)>-1);c.hidden=!ok;if(ok)n++});empty.hidden=n>0}tabs.forEach(function(t){t.addEventListener("click",function(){f=t.dataset.f;tabs.forEach(function(x){x.classList.toggle("on",x===t)});run()})});document.getElementById("ic-q").addEventListener("input",function(e){q=e.target.value.trim().toLowerCase();run()});if(window.fetch)fetch("${STATUS_URL}",{mode:"cors"}).then(function(r){return r.ok?r.json():null}).then(function(d){if(!d||!d.connectors)return;cards.forEach(function(c){var s=d.connectors[c.dataset.key];if(s){var b=c.querySelector(".ic-soon");if(b)b.hidden=s==="available"}})}).catch(function(){})})();</script>
 `;
-fs.writeFileSync(root + "public/site/integrations.html", head + body + post);
+// The calm card styles live in their own sheet; link it once after the shared site.css.
+const FIX = "<link rel=\"stylesheet\" href=\"/site/assets/fix/integrations.css?v=0\">";
+const headOut = head.includes("assets/fix/integrations.css") ? head : head.replace(/(<link[^>]*\/site\/assets\/site\.css[^>]*>)/, `$1${FIX}`);
+fs.writeFileSync(root + "public/site/integrations.html", headOut + body + post);
 console.log("wrote integrations.html", items.length, "items");
