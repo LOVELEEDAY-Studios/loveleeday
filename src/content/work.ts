@@ -94,7 +94,7 @@ export const operated: Operated[] = [
   {
     index: "04",
     slug: "duezy",
-    meta: "An invoice automation SaaS with line-item billing, automated reminders via Resend and an embedded Stripe checkout link.",
+    meta: "An invoice automation SaaS with line-item billing, automated reminders and an embedded Stripe checkout link.",
     title: "Duezy",
     category: "SaaS / Invoice automation",
     tech: ["Next.js", "Supabase", "Stripe", "Resend", "Vercel"],
@@ -102,7 +102,7 @@ export const operated: Operated[] = [
     problem:
       "Small service businesses were spending hours each week manually generating invoices, chasing late payments, and reconciling what had and hadn't been paid. Existing tools were either too bloated or required accounting expertise to configure.",
     built:
-      "An invoice platform with client management, line-item billing, automated payment reminders via Resend, and a Stripe checkout link embedded directly in outbound email. Clients pay without creating an account. Operators see real-time payment status across all outstanding invoices in one view.",
+      "An invoice platform with client management, line-item billing, automated payment reminders, and a Stripe checkout link embedded directly in outbound email. Clients pay without creating an account. Operators see real-time payment status across all outstanding invoices in one view.",
     outcome:
       "Invoice-to-payment moved from multi-day manual follow-up to an automated collect-on-send flow, with outstanding invoice tracking consolidated into a single view.",
     link: null,
