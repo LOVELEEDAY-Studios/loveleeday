@@ -1,3 +1,5 @@
+> SUPERSEDED 2026-10-06. This deck describes an older fixed-price dev-studio offer and its prices. The current voice rule is VOICE.md; do not copy positioning, prices or claims from this file.
+
 # LOVELEEDAY Studios — Copy Deck
 
 ## Voice Rules

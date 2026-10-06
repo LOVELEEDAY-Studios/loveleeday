@@ -87,7 +87,7 @@ export default function AboutPage() {
           <div data-rise>
             <p className="eyebrow text-[var(--on-deep-dim)]">Founder</p>
             <p className="mt-5 text-[1.5rem] font-semibold tracking-[-0.028em]">Daniel J. May, MBA</p>
-            <p className="mt-2 text-[14px] text-[var(--on-deep-mu)]">Kalamazoo, Michigan</p>
+            <p className="mt-2 text-[14px] text-[var(--on-deep-mu)]">Founder, LOVELEEDAY</p>
             <dl className="mt-8 divide-y divide-[var(--deep-line)] border-y border-[var(--deep-line)]">
               {[
                 ["Founded", "2026"],

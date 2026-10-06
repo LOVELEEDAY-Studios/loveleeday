@@ -90,8 +90,6 @@ export default function RootLayout({
     },
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Kalamazoo",
-      addressRegion: "MI",
       addressCountry: "US",
     },
   };
