@@ -22,7 +22,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Security & Compliance",
   description:
-    "How LOVELEEDAY protects client data: multi-factor authentication, US-only hosting, per-client isolation, automated daily backups, and a stated posture on SOC 2, penetration testing and SSO.",
+    "How LOVELEEDAY protects client data: multi-factor authentication, core hosting and database in the United States, per-client isolation, automated daily backups, and a stated posture on SOC 2, penetration testing and SSO.",
   alternates: { canonical: "https://loveleedaystudios.com/security" },
 };
 
@@ -31,8 +31,8 @@ const CONTROLS: [string, string, string][] = [
    "All traffic runs over TLS. Data at rest is encrypted by the underlying infrastructure (Fly.io, Supabase/AWS)."],
   ["02", "Multi-factor authentication",
    "TOTP-based MFA, via an authenticator app, is required for account access. There is no password-only path to a client's data."],
-  ["03", "US-only data residency",
-   "Application compute runs on Fly.io in Chicago. Databases run on Supabase, hosted on AWS in us-east-1. Data does not leave the United States as part of normal operation."],
+  ["03", "Core hosting and database in the United States",
+   "Application compute runs on Fly.io in Chicago. Databases run on Supabase, hosted on AWS in us-east-1. Our core hosting and database are in the United States. Optional services you choose to connect, and any AI model providers, have their own terms and locations."],
   ["04", "Per-client isolation",
    "Each client's data lives in its own tenant, enforced by Row-Level Security in the database — not only in application code. One client cannot read another's rows."],
   ["05", "Automated daily backups",
@@ -41,8 +41,8 @@ const CONTROLS: [string, string, string][] = [
    "Credentials are scoped to what they need and held in a central, access-controlled store — never committed to source control and never shipped to a browser."],
   ["07", "An approval gate on outbound actions",
    "A send, a database write, a deployment — anything that leaves our systems or reaches a third party — passes an approval and logging step rather than running unsupervised."],
-  ["08", "A complete audit trail",
-   "Sends, writes, deployments and access changes are logged and reviewable after the fact, not reconstructed from memory."],
+  ["08", "An activity log of every action",
+   "Sends, writes, deployments and access changes are recorded in an activity log and reviewable after the fact, not reconstructed from memory."],
 ];
 
 const ROADMAP: [string, string, string][] = [
@@ -132,17 +132,19 @@ export default function SecurityPage() {
           </div>
           <div className="max-w-[var(--measure)] self-center" data-rise>
             <p className="text-[15px] leading-[1.68] text-[var(--mid)]">
-              For education clients, our data handling is designed around the FERPA school-official
+              For schools, we sign FERPA-aligned data agreements that set out the school-official
               exception and applicable state student-privacy law, including D.C. Code
-              § 38-831.02 for education clients in the District.
+              § 38-831.02 for education clients in the District. This is a contract commitment,
+              not a certification.
             </p>
             <p className="mt-4 text-[15px] leading-[1.68] text-[var(--mid)]">
               We maintain a reusable Data Processing Agreement, reviewed against each client's own
               contract, available on request before signature.
             </p>
             <p className="mt-4 text-[15px] leading-[1.68] text-[var(--mid)]">
-              On termination of an engagement, or on written request, a client's data is deleted
-              from production within 30 days, with a signed deletion certificate on completion.
+              Our contract commits us to delete a client's data from production within 30 days of
+              termination or written request, and to confirm completion in writing. Copies held in
+              backups expire on the backup schedule.
             </p>
           </div>
         </div>
