@@ -25,9 +25,9 @@
   },
   "contact": {
     "page": "contact.html",
-    "hash": "5ea6ebdba5fa9ece",
-    "file": "d655649c0ee2492c",
-    "headline": "Talk to a person. | We answer in writing.",
+    "hash": "2c4b632d7114c048",
+    "file": "40920f3b1f0d4de8",
+    "headline": "Start with the decision | you need to make.",
     "caption": "Contact",
     "photo": "hero.jpg"
   },
@@ -49,11 +49,11 @@
   },
   "home": {
     "page": "index.html",
-    "hash": "8e516bfded670b8e",
-    "file": "8033b13e50aaf9c7",
-    "headline": "Pure intelligence. | For a fuller life.",
+    "hash": "be679d157cea7d5c",
+    "file": "416fd50e1f7e1f85",
+    "headline": "Know what happened. | Know what to do next.",
     "caption": "The AI operating system for business",
-    "photo": "hero.jpg"
+    "photo": "hero-decision.jpg"
   },
   "how-it-works": {
     "page": "how-it-works.html",
@@ -161,11 +161,11 @@
   },
   "talk": {
     "page": "talk.html",
-    "hash": "7acffdb6752573e4",
-    "file": "1c36f503714b99cc",
-    "headline": "Four ways to begin. | One conversation to choose.",
+    "hash": "230fdf6ce14ef94f",
+    "file": "96a911e9784dca9a",
+    "headline": "Start with one question. | Build from what we learn.",
     "caption": "Working with LOVELEEDAY: four ways to begin",
-    "photo": "industry-manufacturing.jpg"
+    "photo": "hero.jpg"
   },
   "terms": {
     "page": "terms.html",

@@ -33,3 +33,6 @@
 .ct-side a{padding:22px 20px}
 .ct-steps{grid-template-columns:minmax(0,1fr);gap:24px}
 }
+
+/* The note form fills its card on every width. */
+#message .brief-form input,#message .brief-form select,#message .brief-form textarea{width:100%;box-sizing:border-box}
