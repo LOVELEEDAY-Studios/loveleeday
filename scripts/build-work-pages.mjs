@@ -29,7 +29,7 @@ const BASE = "https://loveleedaystudios.com";
 
 const CSS = `.pub .wk-row{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:20px 56px;padding:40px 0;border-top:1px solid var(--line)}
 .pub .wk-row:last-child{border-bottom:1px solid var(--line)}
-.pub .wk-idx{font-size:10px;letter-spacing:.16em;font-weight:600;color:#777980}
+.pub .wk-idx{font-size:10px;letter-spacing:.16em;font-weight:600;color:#73757c}
 .pub .wk-row h3.h{font-size:26px;letter-spacing:-.035em;font-weight:500;margin-top:6px}
 .pub .pill-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .pub .wk-ship{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.6}
@@ -45,7 +45,7 @@ const CSS = `.pub .wk-row{display:grid;grid-template-columns:minmax(0,300px) min
 .pub .wk-fig p{font-size:12.5px;line-height:1.65;color:#9c9aa8;margin-top:12px}
 .pub .wk-note{font-size:11px;line-height:1.6;color:#8e8d99;max-width:760px;margin-top:28px}
 .pub .wk-sec{padding:96px 0}
-.pub .wk-back{color:#777980;font-size:10px;letter-spacing:.16em;font-weight:600;text-transform:uppercase}
+.pub .wk-back{color:#73757c;font-size:10px;letter-spacing:.16em;font-weight:600;text-transform:uppercase}
 .pub .wk-case{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:12px 56px;padding:32px 0;border-top:1px solid var(--line)}
 .pub .wk-case:last-child{border-bottom:1px solid var(--line)}
 .pub .wk-case p{font-size:15px;line-height:1.7;color:var(--muted);max-width:660px}

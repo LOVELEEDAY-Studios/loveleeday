@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // Final pass over every static page in public/site, run before each build so no page generator can undo it.
-// Idempotent. Three jobs:
+// Idempotent. Four jobs:
 //   1. Wrap every mailto link in <!--email_off--> so Cloudflare Email Obfuscation leaves it as a real mailto
 //      (otherwise it becomes /cdn-cgi/l/email-protection#..., a 404 for crawlers and anyone without JavaScript).
 //   2. Mark the link to the current page with aria-current="page" in the header nav and footer.
-//   3. Stamp ?v=<content hash> on every shared asset reference, so a CSS/JS change always busts caches.
+//   3. Lazy-load integration logos (src under /logos/).
+//   4. Stamp ?v=<content hash> on every shared asset reference, so a CSS/JS change always busts caches.
 // Usage: node scripts/site-postprocess.mjs [--check]   (--check exits 2 if any page would change)
 import fs from "node:fs";
 import path from "node:path";
@@ -45,6 +46,8 @@ for (const file of walk(root)) {
         return isHere ? tag.replace(/>$/, ' aria-current="page">') : tag;
       }));
   }
+
+  html = html.replace(/<img\b(?![^>]*\bloading=)([^>]*\bsrc="[^"]*\/logos\/[^"]*"[^>]*)>/g, '<img loading="lazy" decoding="async"$1>');
 
   html = html.replace(/(\/site\/assets\/|assets\/)([\w./-]+\.(?:css|js))\?v=[A-Za-z0-9_-]+/g, (m, pre, rel) => {
     const h = assetHash(rel);
