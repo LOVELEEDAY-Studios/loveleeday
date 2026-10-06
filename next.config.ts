@@ -114,6 +114,25 @@ const nextConfig: NextConfig = {
              origin, so every client preview went blank. Shipped 2026-09-22 in
              b7f15d7 and caught by Daniel opening a portal, not by any check. */
           { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+          /* The full policy, report-only, so violations are observed (logged by the portal's /api/csp-report) before any
+             of it is enforced. Inline script and style stay allowed until the static pages move to nonces or hashes. */
+          {
+            key: "Content-Security-Policy-Report-Only",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: blob: https:",
+              "font-src 'self' data:",
+              "connect-src 'self' https://portal.loveleedaystudios.com https://arthur-online.fly.dev https://vitals.vercel-insights.com",
+              "frame-src 'self'",
+              "frame-ancestors 'self'",
+              "base-uri 'self'",
+              "form-action 'self' https://portal.loveleedaystudios.com",
+              "object-src 'none'",
+              "report-uri https://portal.loveleedaystudios.com/api/csp-report",
+            ].join("; "),
+          },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
