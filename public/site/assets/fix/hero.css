@@ -1,0 +1,26 @@
+/* Home hero: the promise on a solid ink surface, a real photo as the setting, an illustrative Arthur answer overlapping its corner. */
+.hero-answer{background:#14161b;color:#fff;padding-block:clamp(48px,7vw,96px)}
+.ha-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.ha-copy .eyebrow{color:#9fb4cf}
+.ha-copy h1{font-size:clamp(40px,4.4vw,60px);font-weight:500;line-height:1.05;letter-spacing:-.05em;margin-top:14px}
+.ha-copy h1 span{color:#8e95a3}
+.ha-copy p{font-size:18px;line-height:1.6;color:#d6d9df;max-width:520px;margin-top:22px}
+.ha-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.ha-ghost{display:inline-flex;align-items:center;height:var(--btn-h);padding:0 20px;border-radius:999px;border:1px solid #ffffff4d;color:#fff;font-size:14px}
+.ha-ghost:hover{border-color:#fff}
+.ha-note{display:block;margin-top:18px;font-size:13px;color:#9aa0ab}
+.ha-visual{position:relative;padding:0 0 240px 56px}
+.ha-visual img{display:block;width:100%;height:440px;object-fit:cover;object-position:center 12%;border-radius:20px}
+.ha-card{position:absolute;left:0;bottom:0;width:min(400px,88%);background:#fff;color:var(--ink);border-radius:16px;padding:18px 20px;box-shadow:0 18px 50px #00000059;font-size:14px;line-height:1.45}
+.ha-card-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.ha-card-h b{font-size:13px;letter-spacing:.02em}
+.ha-card-h span{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+.ha-card dl{display:grid;gap:9px;margin:0}
+.ha-card dt{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.ha-card dd{margin:2px 0 0}
+.ha-card .ha-ask dd{font-weight:500}
+.ha-card .ha-next dd{color:var(--blue);font-weight:600}
+.ha-src{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.ha-src span{font-size:11px;color:#3c4049;background:#f2f3f6;border-radius:6px;padding:3px 8px}
+@media(max-width:900px){.ha-grid{grid-template-columns:1fr}.ha-visual{padding:0 0 250px 32px}}
+@media(max-width:560px){.ha-copy h1{font-size:38px}.ha-copy p{font-size:16px}.ha-visual{padding:0 0 310px}.ha-visual img{height:300px;border-radius:14px}.ha-card{left:12px;right:12px;width:auto;padding:14px 16px}}
