@@ -201,8 +201,8 @@ const build = [
 ];
 
 const decisions = [
-  { t: "Monthly cap", d: "$25 recommended, with alerts at 50, 90 and 100%. Raise the budget guard from $5 and revisit after the first full month of real bills." },
-  { t: "Quota increase", d: "Approve the request to go from 20 to 100 CPUs in us-central1." },
+  { t: "Monthly cap: approved", d: "Done 2026-10-07. The budget guard is now $25 a month with alerts at 50, 90 and 100%. Revisit after the first full month of real bills." },
+  { t: "Quota increase: approved, filed", d: "Filed with Google 2026-10-07 for 100 CPUs and 200 GB in us-central1. Waiting on Google; still 20 CPUs until granted." },
   { t: "Optional: a free always-on server", d: "An Oracle Always Free server as a $0 always-on base. It needs Daniel's sign-up." },
 ];
 
@@ -557,8 +557,8 @@ export default function ArthurCloudProposal() {
           ))}
         </div>
         <p className="mt-8 max-w-[44rem] text-[16px] font-medium leading-[1.65] text-[#1d1d1f]">
-          Recommendation: raise the budget guard from $5 to $25 a month with alerts at 50, 90 and 100%, and revisit after the first full month
-          of real bills.
+          Approved 2026-10-07: the budget guard is $25 a month with alerts at 50, 90 and 100%. Revisit after the first full month of real
+          bills.
         </p>
       </section>
 
@@ -621,7 +621,7 @@ export default function ArthurCloudProposal() {
         <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
           <div>
             <Eyebrow>Decisions for Daniel</Eyebrow>
-            <Two a="Three calls," b="all of them yours." />
+            <Two a="Two approved," b="one still yours." />
           </div>
         </div>
         <ol className="mt-10 grid gap-5 md:grid-cols-3">
