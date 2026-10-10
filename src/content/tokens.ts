@@ -79,6 +79,8 @@ export const TOKENS = {
   wightman: tokOptional("PORTAL_TOKEN_WIGHTMAN"),
   // NowKalamazoo (Ben Lando), Kalamazoo's nonprofit newsroom, 2026-09-30. Kristie May is on the team.
   nowkalamazoo: tokOptional("PORTAL_TOKEN_NOWKALAMAZOO"),
+  /* Doorlight pilot proposal for YWCA Kalamazoo (via Carl Brown), 2026-10-10. */
+  doorlight: tokOptional("PORTAL_TOKEN_DOORLIGHT"),
   // Internal growth plan for Daniel (2026-10-05). Not a client page; never listed or linked publicly.
   growthPlan: tokOptional("PORTFOLIO_TOKEN_GROWTHPLAN"),
 } as const;
