@@ -10,6 +10,7 @@ import { getStudio } from "@/content/studio/elemental";
 import { getHub } from "@/content/hub/startupzoo";
 import { getWightman } from "@/content/hub/wightman";
 import { getNow } from "@/content/hub/nowkalamazoo";
+import { getDoorlight } from "@/content/hub/doorlight-ywca";
 
 export const dynamic = "force-dynamic";
 
@@ -35,7 +36,8 @@ export async function POST(request: Request) {
     const cs = found || pf || st || civic ? undefined : getComplianceSchool(token);
     const wm = found || pf || st || civic || cs ? undefined : getWightman(token);
     const nk = found || pf || st || civic || cs || wm ? undefined : getNow(token);
-    if (!found && !pf && !cs && !civic && !st && !wm && !nk) {
+    const dl = found || pf || st || civic || cs || wm || nk ? undefined : getDoorlight(token);
+    if (!found && !pf && !cs && !civic && !st && !wm && !nk && !dl) {
       return NextResponse.json({ error: "Unknown review link" }, { status: 404 });
     }
     const portal = found ?? (pf
@@ -46,6 +48,14 @@ export async function POST(request: Request) {
           round: "Round 01",
           deliverables: pf.cases.map((c) => ({ slug: c.slug, title: c.company })),
         }
+      : dl
+        ? {
+            token: dl.token,
+            client: dl.preparedFor,
+            project: "Doorlight pilot proposal",
+            round: "Round 01",
+            deliverables: [{ slug: "analysis", title: "Doorlight pilot proposal" }],
+          }
       : nk
         ? {
             token: nk.token,
