@@ -11,6 +11,8 @@
 .tm-toc a{padding-block:11px}
 .tm-hero .lead{font-size:20px}
 @media(max-width:900px){
+.tm-shell{grid-template-columns:minmax(0,1fr);gap:0}
+.tm-doc{max-width:100%}
 .tm-sec{padding-block:36px}
 .tm-sec h2{font-size:26px}
 .tm-sec .body-copy{padding-left:0;font-size:18px;line-height:1.7}

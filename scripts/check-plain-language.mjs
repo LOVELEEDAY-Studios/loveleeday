@@ -33,7 +33,7 @@ const JARGON = [
 ];
 
 const pages = [];
-const walk = (d) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) { if (!/assets|notes/.test(e.name)) walk(p); } else if (e.name.endsWith(".html")) pages.push(p); } };
+const walk = (d) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) { if (!/assets/.test(e.name)) walk(p); } else if (e.name.endsWith(".html")) pages.push(p); } };
 walk(SITE);
 
 const visible = (html) => html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").replace(/\s+/g, " ");
@@ -61,6 +61,8 @@ const ASK = [
   ["html .eq", /<div class="eq">[\s\S]*?<span>([\s\S]*?)<\/span>/g],
   ["html .ip-q", /<div class="ip-q">(?:<b>[^<]*<\/b>)?([\s\S]*?)<\/div>/g],
   ["html .ha-ask", /<div class="ha-ask">[\s\S]*?<dd>([\s\S]*?)<\/dd>/g],
+  ["html .rec-h", /<div class="rec-h"><b>([^<]*)<\/b>/g],
+  ["html .fx-ask-card", /<article class="fx-ask-card">[\s\S]*?<h3>([^<]*)<\/h3>/g],
   ["html .tv3-q", /<div class="tv3-q">[\s\S]*?<p>([\s\S]*?)<\/p>/g],
   ["html .cv3-card", /<div class="cv3-card">[\s\S]*?<p>([\s\S]*?)<\/p>/g],
   ["html placeholder", /<textarea[^>]*name="question"[^>]*placeholder="([^"]+)"/g],
@@ -95,6 +97,13 @@ function bracketBody(src, startRe) {
     else if (c === "]" || c === "}" || c === ")") { if (--depth === 0) return src.slice(open, i); }
   }
   return "";
+}
+
+// assets/fix/<page>.js: page-scoped scripts that swap a demo question in (fix/arthur.js -> arthur.html). Same page, same owner.
+const fixDir = path.join(SITE, "assets/fix");
+if (fs.existsSync(fixDir)) for (const f of fs.readdirSync(fixDir).filter((n) => n.endsWith(".js"))) {
+  const js = fs.readFileSync(path.join(fixDir, f), "utf8");
+  for (const m of js.matchAll(/\bask\s*:\s*(?:'((?:\\.|[^'\\])*)'|"((?:\\.|[^"\\])*)")/g)) add(unescapeJs(m[1] ?? m[2]), f.replace(/\.js$/, ".html"), `assets/fix/${f}`);
 }
 
 // assets/site.js: carousel arrays. `questions` belongs to index.html, `questionsOS` to the page with

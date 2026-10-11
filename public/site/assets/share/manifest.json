@@ -1,50 +1,50 @@
 {
   "architecture": {
     "page": "architecture.html",
-    "hash": "65af3aa44ce898c4",
-    "file": "222e21c909a197e6",
+    "hash": "ece62ca4b1984e69",
+    "file": "72346b66f17af847",
     "headline": "Check an answer | before you act on it.",
-    "caption": "Architecture",
+    "caption": "Data intelligence architecture",
     "photo": "architecture.jpg"
   },
   "arthur": {
     "page": "arthur.html",
-    "hash": "4f6e0c6419ff4d8b",
-    "file": "bee7c7c70020fd38",
+    "hash": "8f436fec1714b3e4",
+    "file": "2bca0c3a51288d4d",
     "headline": "A clearer mind. | Behind every answer.",
-    "caption": "Meet Arthur",
+    "caption": "Meet Arthur: data intelligence for your organization",
     "photo": "arthur.jpg"
   },
   "build": {
     "page": "build.html",
-    "hash": "c55ae566c8fc2e54",
-    "file": "f78c9876cd118042",
+    "hash": "949040a83a679623",
+    "file": "6f6a95b672ea20ea",
     "headline": "Software and design, | built around how you work.",
-    "caption": "What we build",
+    "caption": "What we build: applications, automation and data work",
     "photo": "hero.jpg"
   },
   "contact": {
     "page": "contact.html",
-    "hash": "fc1e9c8bdec80b9f",
-    "file": "9a0b52d7e5f3f1d2",
+    "hash": "cd0c818fbbb08196",
+    "file": "c1bb1be356167dd4",
     "headline": "Start with the decision | you need to make.",
-    "caption": "Contact",
+    "caption": "Contact us about your data and decisions",
     "photo": "contact-hero.jpg"
   },
   "customer-data": {
     "page": "customer-data.html",
-    "hash": "301bb71f72b14a5e",
-    "file": "ee793ae973a8596a",
+    "hash": "24d8d864a18edb6b",
+    "file": "4b63cf42c1dd8269",
     "headline": "Many records. | A fuller customer picture.",
-    "caption": "Customer data",
+    "caption": "One customer record across all your systems",
     "photo": "industry-retail-3.jpg"
   },
   "faq": {
     "page": "faq.html",
-    "hash": "ee20ee6edd4f5ccb",
-    "file": "6ee90a7f688e8b20",
+    "hash": "d0770fa2f520e308",
+    "file": "d32f9392e8a625b5",
     "headline": "Plain answers | to the usual questions.",
-    "caption": "Questions and answers",
+    "caption": "Questions and answers about data intelligence",
     "photo": "hero.jpg"
   },
   "home": {
@@ -57,18 +57,18 @@
   },
   "how-it-works": {
     "page": "how-it-works.html",
-    "hash": "3355af46f58b2648",
-    "file": "4df1e66236293956",
+    "hash": "b3f6b67ecadc5f03",
+    "file": "154caa0a28647400",
     "headline": "From first question | to a working answer.",
-    "caption": "How it works",
+    "caption": "How data intelligence works, from question to answer",
     "photo": "hero.jpg"
   },
   "industries": {
     "page": "industries.html",
-    "hash": "511a04ba55b4b246",
-    "file": "29270aa81c09ae4f",
+    "hash": "f023b34762ebe5d1",
+    "file": "c791f70f004546fc",
     "headline": "Different worlds. | The same need for clarity.",
-    "caption": "Industries",
+    "caption": "Data intelligence by industry",
     "photo": "industries.jpg"
   },
   "industries-manufacturing": {
@@ -87,60 +87,68 @@
     "caption": "Property management",
     "photo": "industry-property.jpg"
   },
+  "industries-schools": {
+    "page": "industries/schools.html",
+    "hash": "83e7f42c17bb965c",
+    "file": "c14acda5d477c2a4",
+    "headline": "Know what is due, | and what proves it.",
+    "caption": "Schools and charters: what is due and what proves it",
+    "photo": "industry-schools.jpg"
+  },
   "integrations": {
     "page": "integrations.html",
-    "hash": "1041e8ac5373f10f",
-    "file": "0e64ca16e42b88a5",
+    "hash": "df13b95e26f8c8b3",
+    "file": "b35d0950bf443315",
     "headline": "See which of your | systems we can read.",
-    "caption": "Integrations",
+    "caption": "Integrations: the business systems we connect to",
     "photo": "operating-system.jpg"
   },
   "municipal-review": {
     "page": "municipal-review.html",
-    "hash": "9a4804dd5f3dd9ca",
-    "file": "02d8583d293824df",
+    "hash": "a23d8f866e587188",
+    "file": "4f453a7dd9f433c4",
     "headline": "See the rules on file. | And the gaps still to close.",
-    "caption": "Municipal review",
+    "caption": "Faster, traceable municipal code review",
     "photo": "municipal-review.jpg"
   },
   "operating-system": {
     "page": "operating-system.html",
-    "hash": "d28620a490e27916",
-    "file": "8fc99d710f18bacd",
+    "hash": "2325621e3f20a9f4",
+    "file": "cd06ad77432701ee",
     "headline": "Your systems. | One understanding.",
-    "caption": "The operating system",
+    "caption": "An operating system for your organization's data",
     "photo": "operating-system.jpg"
   },
   "operational-intelligence": {
     "page": "operational-intelligence.html",
-    "hash": "b012665992b82265",
-    "file": "d61677ad1479b3c5",
+    "hash": "3552029c07a1eba5",
+    "file": "6b031c860a5e8c3c",
     "headline": "Know what changed | and what to do next.",
-    "caption": "Operational intelligence",
+    "caption": "Operational intelligence: know what needs attention",
     "photo": "industry-manufacturing-3.jpg"
   },
   "pricing-margins": {
     "page": "pricing-margins.html",
-    "hash": "7e607f255f39deaa",
-    "file": "d6a27a6476fdcfb8",
+    "hash": "d9b9825fb74174a6",
+    "file": "6a4900934a36a65b",
     "headline": "See what sells. | Know what it leaves.",
-    "caption": "Pricing & margins",
+    "caption": "Pricing and margin analysis you can trace",
     "photo": "pricing-margins.jpg"
   },
   "principles": {
     "page": "principles.html",
-    "hash": "9c41798e4e2aa817",
-    "file": "7585f844a810cbce",
+    "hash": "68eb5cd0e99c019e",
+    "file": "be136040821e7e5d",
     "headline": "Clear thinking. | Visible foundations.",
-    "caption": "Our principles",
+    "caption": "Our principles: clarity, context and trust",
     "photo": "principles.jpg"
   },
   "privacy": {
     "page": "privacy.html",
-    "hash": "7d8ad3bf1d0cc2ce",
-    "file": "f66a67f379906e7d",
+    "hash": "8d90fd1403fe3f45",
+    "file": "abf9b9aa8b9ff386",
     "headline": "What we collect. | Which is very little.",
-    "caption": "Privacy",
+    "caption": "Privacy policy",
     "photo": "outdoors.jpg"
   },
   "snapshot": {
@@ -153,10 +161,10 @@
   },
   "studio": {
     "page": "studio.html",
-    "hash": "1ee00903d25b4cf6",
-    "file": "5f172e310a0e07d7",
+    "hash": "0aef5d6b76275428",
+    "file": "4fa09708f30536b3",
     "headline": "Too many decisions. | Not enough time.",
-    "caption": "About",
+    "caption": "About the studio behind Arthur",
     "photo": "studio.jpg"
   },
   "talk": {
@@ -169,34 +177,34 @@
   },
   "terms": {
     "page": "terms.html",
-    "hash": "ec53b4791889b82e",
-    "file": "81bd728f7d314ee8",
+    "hash": "6cbf2e64544b7e60",
+    "file": "96a7d8d2e8e501d0",
     "headline": "The plain terms. | Short on purpose.",
-    "caption": "Terms",
+    "caption": "Terms of use",
     "photo": "industry-government.jpg"
   },
   "trust": {
     "page": "trust.html",
-    "hash": "f5cffd1b2bbc1c32",
-    "file": "e1d778083f8729d8",
+    "hash": "aa760eea96843172",
+    "file": "f3d7d51e3936fadd",
     "headline": "Your data | stays yours.",
-    "caption": "Trust center",
+    "caption": "Trust and security: how your data is protected",
     "photo": "industry-nonprofit.jpg"
   },
   "use-cases": {
     "page": "use-cases.html",
-    "hash": "70f40b5e6701cde9",
-    "file": "f4f279f3b6e49ec2",
+    "hash": "7ccdfe6e26224e1a",
+    "file": "4399d42ab6b44a24",
     "headline": "Start with the question. | Follow what matters.",
-    "caption": "Use cases",
+    "caption": "Data intelligence use cases for every team",
     "photo": "use-cases.jpg"
   },
   "work": {
     "page": "work.html",
-    "hash": "5e1f7670d2dae806",
-    "file": "b41361ff6c064258",
+    "hash": "96f9f10d674018ac",
+    "file": "e06751bfd43099b8",
     "headline": "Shipped, not | proposed.",
-    "caption": "Work",
+    "caption": "Selected work and case studies",
     "photo": "industry-portfolios.jpg"
   }
 }
