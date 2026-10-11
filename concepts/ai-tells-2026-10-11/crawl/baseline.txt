@@ -1,0 +1,25 @@
+AI-TELL CHECK  pages=35  mode=computed
+  FAIL twoToneHeadlineShare        0.46  (limit <= 0.1)
+  FAIL h2SizeVariety                 13  (limit <= 6)
+  FAIL singleWeightShare           0.98  (limit <= 0.9)
+  FAIL tinyLabelShare                 1  (limit <= 0.4)
+  FAIL defaultStackShare           1.00  (limit <= 0.15)
+  FAIL defaultHexHits                 3  (limit <= 0)
+  FAIL twoPartHeadlineShare        0.29  (limit <= 0.15)
+  FAIL allCapsLabelsPerPage       16.06  (limit <= 4)
+  ok   uniformCardRatio            0.52  
+  ok   bannedCopyPerPage           0.11  
+  ok   centeredSectionRatio        0.01  
+  ok   gradientsPerPage            0.31  
+  ok   emDashPerPage               0.06  
+  ok   notXButYPerPage             0.51  
+  ok   sameRadiusShare             0.47  
+  ok   strokeIconShare                0  
+  FAIL leftAccentCards                1  (limit <= 0)
+  ok   sameSectionPaddingShare     0.40  
+  top fonts: -apple-system | ui-monospace | Georgia
+  default hexes in use: {"#1d1d1f (Apple ink)":49,"#0066cc (Apple link blue)":39,"#f5f5f7 (Apple gray bg)":26}
+  banned words: {"end-to-end":2,"elevate":1,"journey":1}
+  two-part headlines (first 6): Know what happened. Know what to do next. || All the complexity. One clear thought. || Meet Arthur. The intelligence within. || Ask simply. Understand completely. || Many industries. One intelligence architecture. || A little less noise. A little more life.
+
+EXIT 2: 9 tells over threshold: defaultStackShare, defaultHexHits, twoPartHeadlineShare, allCapsLabelsPerPage, twoToneHeadlineShare, h2SizeVariety, singleWeightShare, tinyLabelShare, leftAccentCards

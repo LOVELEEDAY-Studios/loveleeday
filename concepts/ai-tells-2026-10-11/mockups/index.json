@@ -1,0 +1,100 @@
+[
+ {
+  "id": "01-two-tone-headline",
+  "title": "Two-part, two-tone headline",
+  "tell": "Two short sentences, the second in gray. Same device on 54 of 185 headings.",
+  "count": "54 of 185 h1/h2 two-part; 46 percent two-tone",
+  "source": "S1 generic slogans; S2 accenting one headline part; S11 two fragments glued together"
+ },
+ {
+  "id": "02-eyebrow-labels",
+  "title": "Tracked all-caps label above every heading",
+  "tell": "10px uppercase labels with wide tracking on every section. 562 across 35 pages, 85 percent at 10px.",
+  "count": "562 labels, mean 16 per page, 42 on home",
+  "source": "S5 excessive letter spacing; S2 tracked all-caps eyebrows over every heading"
+ },
+ {
+  "id": "03-apple-palette-stack",
+  "title": "Apple palette and system font stack",
+  "tell": "Ink #1d1d1f, gray #f5f5f7, link #0066cc and the -apple-system stack: another brand's tokens, used on every page.",
+  "count": "34 of 35 pages ink; 28 link blue; 26 gray; 100 percent of text in the system stack",
+  "source": "S8 stock tokens are a palette; S14 SF license and Apple-clone note; typography-mastery SF Pro entries"
+ },
+ {
+  "id": "04-type-scale",
+  "title": "No type scale: 13 heading sizes, one weight",
+  "tell": "h2 sizes: 26, 30, 34, 36, 38, 40, 44, 48, 50, 52, 60, 62 px; 98 percent at weight 500 with -0.045em tracking.",
+  "count": "13 distinct h2 sizes; 98 percent weight 500",
+  "source": "S12 arbitrary sizes, everything equally important; S13 modular scale, two to three weights"
+ },
+ {
+  "id": "05-hero-photo-card",
+  "title": "Product card pasted over the hero photo",
+  "tell": "A floating white card of four tracked labels sits across the photo and hides her hands; the same card repeats on the portal sign-in.",
+  "count": "home hero, portal sign-in, snapshot",
+  "source": "S5 decoration cosplaying as information; S7 uniform sections; our crop rule (no overlap on faces or hands)"
+ },
+ {
+  "id": "06-three-feature-row",
+  "title": "Three equal columns with a glyph on top",
+  "tell": "Rule, tiny icon, title, two lines of gray text, three times across. The icons are 14px characters.",
+  "count": "home \"what you get\"; operating-system; arthur",
+  "source": "S1 three feature cards; S7 three equal feature cards, icon-title-two-lines"
+ },
+ {
+  "id": "07-four-identical-cards",
+  "title": "Four identical dark cards with category tag and chips",
+  "tell": "Same radius, border, padding, label, question, chips and status pill, four times.",
+  "count": "home, architecture, industries (255 rounded surfaces, 52 percent in identical rows)",
+  "source": "S1/S4/S7 identical card grids; S2 card kit; S3 uniform layout"
+ },
+ {
+  "id": "08-status-pills",
+  "title": "Pill chips that carry no state",
+  "tell": "351 pills: tags, status dots, \"Illustrative example\" badges, \"Talk to us\" capsules. A green dot beside \"One customer\" is not a status.",
+  "count": "351 pill-shaped chips across the site",
+  "source": "S5 generic Live/New badges, decoration cosplaying as information"
+ },
+ {
+  "id": "09-particle-brain",
+  "title": "Glowing multicolor network brain",
+  "tell": "A rotating mesh of green, blue, orange and purple nodes on black. This is the stock \"AI brain\" vocabulary.",
+  "count": "home hero-adjacent stage, arthur, operating-system (brain.js canvas)",
+  "source": "S16 stock listings for glowing neural brains; S1/S4 glow with no reason. The brand idea (records connecting) stays; the rendering changes."
+ },
+ {
+  "id": "10-fake-browser-frame",
+  "title": "Fake browser window around a mock UI",
+  "tell": "Three gray traffic-light dots, a breadcrumb and a \"preview\" label wrap a hand-built interface; pills and a sparkle glyph decorate it.",
+  "count": "home interactive preview, operating-system",
+  "source": "S8 template screenshot genre; S5 decoration cosplaying as information (our judgment; no source names browser chrome)"
+ },
+ {
+  "id": "11-copy-frames",
+  "title": "Copy built from stock frames",
+  "tell": "\"The problem isn't X. It's Y.\" and \"It isn't A. It's B.\" open 18 sentences across the notes essays; one-line example disclaimers repeat under nearly every figure.",
+  "count": "18 not-X-it's-Y frames; two-part headline on 29 pages",
+  "source": "S11 not-X-it's-Y, two fragments, always three things; S10 predictable rhythm is the real tell; S2 delete any number you cannot source"
+ },
+ {
+  "id": "12-repeating-section-pattern",
+  "title": "Every section is the same two-column split",
+  "tell": "Label, two-tone headline left, one gray paragraph right, 96px above and below, alternating dark, white, gray and cream bands. 72 sections share one 96/96 padding.",
+  "count": "72 sections at 96/96 padding; split pattern on most pages",
+  "source": "S7 uniform sections, same height padding and heading size; S8 visibly undecided; S3 uniform layout"
+ },
+ {
+  "id": "13-arrow-list",
+  "title": "An arrow on every row, a link with an arrow under it",
+  "tell": "Eight single-line rows each ending in a diagonal arrow, then \"Explore your industry\" and \"Explore the work\" with more arrows.",
+  "count": "27 arrow glyphs in copy plus one per list row",
+  "source": "S7 chevron CTAs on every link; S2 arrow on every link"
+ },
+ {
+  "id": "14-portal-dashboard",
+  "title": "Portal home: checklist, empty card, blue links",
+  "tell": "Eyebrow plus big tight heading, a \"Getting started\" rounded card with struck-through steps in default blue, then a centered empty state in a second identical card.",
+  "count": "portal.loveleedaystudios.com home (screenshot qa_client_1440); cards centered, links #0066cc",
+  "source": "S3 missing unhappy paths and empty states that prompt the next action; S7 missing states; S2 card kit"
+ }
+]

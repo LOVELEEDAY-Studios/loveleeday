@@ -1,0 +1,1537 @@
+{
+ "res": {
+  "pages": 1,
+  "metrics": {
+   "defaultStackShare": 0.9975013150973172,
+   "defaultHexHits": 3,
+   "twoPartHeadlineShare": 0.7272727272727273,
+   "allCapsLabelsPerPage": 42,
+   "uniformCardRatio": 0.5,
+   "bannedCopyPerPage": 0,
+   "centeredSectionRatio": 0.09090909090909091,
+   "gradientsPerPage": 3,
+   "emDashPerPage": 0,
+   "notXButYPerPage": 1,
+   "sameRadiusShare": 0.625,
+   "strokeIconShare": 0,
+   "leftAccentCards": 0,
+   "sectionPaddingVariety": 2
+  },
+  "fails": [
+   {
+    "tell": "defaultStackShare",
+    "value": 0.9975013150973172,
+    "limit": 0.15,
+    "kind": "max"
+   },
+   {
+    "tell": "defaultHexHits",
+    "value": 3,
+    "limit": 0,
+    "kind": "max"
+   },
+   {
+    "tell": "twoPartHeadlineShare",
+    "value": 0.7272727272727273,
+    "limit": 0.3,
+    "kind": "max"
+   },
+   {
+    "tell": "allCapsLabelsPerPage",
+    "value": 42,
+    "limit": 4,
+    "kind": "max"
+   },
+   {
+    "tell": "gradientsPerPage",
+    "value": 3,
+    "limit": 1,
+    "kind": "max"
+   }
+  ],
+  "detail": {
+   "famTotals": {
+    "-apple-system": 7585,
+    "Georgia": 19
+   },
+   "hexUse": {
+    "#1d1d1f (Apple ink)": 1,
+    "#0066cc (Apple link blue)": 1,
+    "#f5f5f7 (Apple gray bg)": 1
+   },
+   "twoPartList": [
+    {
+     "page": "https://loveleedaystudios.com/",
+     "text": "Know what happened. Know what to do next."
+    },
+    {
+     "page": "https://loveleedaystudios.com/",
+     "text": "All the complexity. One clear thought."
+    },
+    {
+     "page": "https://loveleedaystudios.com/",
+     "text": "Meet Arthur. The intelligence within."
+    },
+    {
+     "page": "https://loveleedaystudios.com/",
+     "text": "Ask simply. Understand completely."
+    },
+    {
+     "page": "https://loveleedaystudios.com/",
+     "text": "Many industries. One intelligence architecture."
+    },
+    {
+     "page": "https://loveleedaystudios.com/",
+     "text": "A little less noise. A little more life."
+    },
+    {
+     "page": "https://loveleedaystudios.com/",
+     "text": "Designed to understand. Engineered to be trusted."
+    },
+    {
+     "page": "https://loveleedaystudios.com/",
+     "text": "Intelligence should bring clarity. And show its work."
+    }
+   ],
+   "bannedTotals": {},
+   "radii": {
+    "12": 1,
+    "14": 5,
+    "16": 2
+   },
+   "paddings": [
+    "96/96",
+    "96/0"
+   ]
+  }
+ },
+ "pages": [
+  {
+   "fonts": {
+    "-apple-system": 7585,
+    "Georgia": 19
+   },
+   "hexes": {
+    "text #1d1d1f": 899,
+    "text #3a3a3f": 38,
+    "text #62656c": 2477,
+    "text #c9a979": 11,
+    "text #ffffff": 258,
+    "text #9fb4cf": 51,
+    "text #8e95a3": 21,
+    "text #d6d9df": 167,
+    "text #9aa0ab": 43,
+    "text #0066cc": 125,
+    "text #3c4049": 43,
+    "text #6f727a": 112,
+    "text #2b2c31": 48,
+    "text #a6a9b4": 86,
+    "text #f4f4f7": 201,
+    "text #8b8f9c": 66,
+    "text #b4b7c2": 141,
+    "text #5aa9ff": 53,
+    "text #d6d8df": 155,
+    "text #4cd4a0": 22,
+    "text #e6e8ee": 30,
+    "text #f0b35a": 28,
+    "text #c9ccd6": 148,
+    "text #b4a697": 29,
+    "text #8e8d99": 24,
+    "text #9c9aa8": 177,
+    "text #d2a879": 17,
+    "text #b19fce": 13,
+    "text #e5e1ed": 126,
+    "text #dfaf7f": 12,
+    "text #80b7c7": 13,
+    "text #91be9e": 17,
+    "text #92c8bf": 26,
+    "text #f4eef8": 50,
+    "text #94929f": 54,
+    "text #918e9d": 56,
+    "text #bcb9c8": 28,
+    "text #6f737b": 146,
+    "text #3778bc": 13,
+    "text #6a6e77": 32,
+    "text #3970af": 19,
+    "text #5b6574": 81,
+    "text #618bbc": 1,
+    "text #323b48": 27,
+    "text #6c7481": 115,
+    "text #477bae": 18,
+    "text #6c86a8": 20,
+    "text #91a1b7": 8,
+    "text #6f6253": 173,
+    "text #85786a": 19,
+    "text #736553": 27,
+    "text #2469b4": 11,
+    "text #4f6f98": 18,
+    "text #aebdce": 1,
+    "text #4776ad": 11,
+    "text #808795": 12,
+    "text #71757d": 18,
+    "text #9ebcde": 3,
+    "text #969aa4": 299,
+    "text #2b251f": 20,
+    "text #94816b": 19,
+    "text #5f5040": 44,
+    "text #8e867c": 36,
+    "text #14110e": 11,
+    "text #8b8277": 41,
+    "text #bdb5aa": 343,
+    "text #a39a8f": 78,
+    "text #7d756b": 75
+   },
+   "headings": [
+    {
+     "tag": "H1",
+     "text": "Know what happened. Know what to do next.",
+     "sel": "h1",
+     "rect": {
+      "x": 173,
+      "y": 353,
+      "w": 539,
+      "h": 126
+     },
+     "size": "60px",
+     "weight": "500",
+     "ls": "-3px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H2",
+     "text": "All the complexity. One clear thought.",
+     "sel": "h2",
+     "rect": {
+      "x": 173,
+      "y": 1143,
+      "w": 508,
+      "h": 106
+     },
+     "size": "48px",
+     "weight": "500",
+     "ls": "-2.16px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H2",
+     "text": "One picture across every system.",
+     "sel": "h2#ask-h",
+     "rect": {
+      "x": 173,
+      "y": 1471,
+      "w": 559,
+      "h": 127
+     },
+     "size": "60px",
+     "weight": "500",
+     "ls": "-3px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H3",
+     "text": "Who is this customer, across CRM, billing and support?",
+     "sel": "h3",
+     "rect": {
+      "x": 194,
+      "y": 1692,
+      "w": 216,
+      "h": 70
+     },
+     "size": "18px",
+     "weight": "500",
+     "ls": "-0.36px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H3",
+     "text": "Is this one vendor with three names?",
+     "sel": "h3",
+     "rect": {
+      "x": 468,
+      "y": 1692,
+      "w": 216,
+      "h": 70
+     },
+     "size": "18px",
+     "weight": "500",
+     "ls": "-0.36px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H3",
+     "text": "Which contracts renew next quarter, and who owns them?",
+     "sel": "h3",
+     "rect": {
+      "x": 742,
+      "y": 1692,
+      "w": 216,
+      "h": 70
+     },
+     "size": "18px",
+     "weight": "500",
+     "ls": "-0.36px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H3",
+     "text": "Where are open work orders piling up, by site?",
+     "sel": "h3",
+     "rect": {
+      "x": 1016,
+      "y": 1692,
+      "w": 216,
+      "h": 70
+     },
+     "size": "18px",
+     "weight": "500",
+     "ls": "-0.36px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H2",
+     "text": "Meet Arthur. The intelligence within.",
+     "sel": "h2",
+     "rect": {
+      "x": 173,
+      "y": 2340,
+      "w": 508,
+      "h": 106
+     },
+     "size": "48px",
+     "weight": "500",
+     "ls": "-2.16px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H3",
+     "text": "Who is HES across our systems?",
+     "sel": "h3#brain-question",
+     "rect": {
+      "x": 173,
+      "y": 2515,
+      "w": 1080,
+      "h": 30
+     },
+     "size": "20px",
+     "weight": "400",
+     "ls": "-0.4px",
+     "align": "center",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H2",
+     "text": "Ask simply. Understand completely.",
+     "sel": "h2",
+     "rect": {
+      "x": 173,
+      "y": 3439,
+      "w": 508,
+      "h": 106
+     },
+     "size": "48px",
+     "weight": "500",
+     "ls": "-2.16px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H3",
+     "text": "Who is HES, across our systems?",
+     "sel": "h3#question",
+     "rect": {
+      "x": 390,
+      "y": 3741,
+      "w": 830,
+      "h": 32
+     },
+     "size": "23px",
+     "weight": "500",
+     "ls": "-0.575px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H2",
+     "text": "Many industries. One intelligence architecture.",
+     "sel": "h2",
+     "rect": {
+      "x": 173,
+      "y": 4273,
+      "w": 508,
+      "h": 158
+     },
+     "size": "48px",
+     "weight": "500",
+     "ls": "-2.16px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H2",
+     "text": "A little less noise. A little more life.",
+     "sel": "h2",
+     "rect": {
+      "x": 745,
+      "y": 5160,
+      "w": 508,
+      "h": 106
+     },
+     "size": "48px",
+     "weight": "500",
+     "ls": "-2.16px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H2",
+     "text": "Designed to understand. Engineered to be trusted.",
+     "sel": "h2",
+     "rect": {
+      "x": 173,
+      "y": 5750,
+      "w": 1080,
+      "h": 106
+     },
+     "size": "48px",
+     "weight": "500",
+     "ls": "-2.16px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H3",
+     "text": "Different names. The same understanding.",
+     "sel": "h3#detail-title",
+     "rect": {
+      "x": 745,
+      "y": 6042,
+      "w": 508,
+      "h": 70
+     },
+     "size": "29px",
+     "weight": "500",
+     "ls": "-1.015px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H2",
+     "text": "Intelligence should bring clarity. And show its work.",
+     "sel": "h2",
+     "rect": {
+      "x": 173,
+      "y": 6614,
+      "w": 1080,
+      "h": 158
+     },
+     "size": "48px",
+     "weight": "500",
+     "ls": "-2.16px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H3",
+     "text": "Follow every answer.",
+     "sel": "h3",
+     "rect": {
+      "x": 173,
+      "y": 6902,
+      "w": 339,
+      "h": 27
+     },
+     "size": "19px",
+     "weight": "500",
+     "ls": "-0.38px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H3",
+     "text": "Keep the full picture.",
+     "sel": "h3",
+     "rect": {
+      "x": 543,
+      "y": 6902,
+      "w": 339,
+      "h": 27
+     },
+     "size": "19px",
+     "weight": "500",
+     "ls": "-0.38px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H3",
+     "text": "Notice what changes.",
+     "sel": "h3",
+     "rect": {
+      "x": 914,
+      "y": 6902,
+      "w": 339,
+      "h": 27
+     },
+     "size": "19px",
+     "weight": "500",
+     "ls": "-0.38px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H2",
+     "text": "One question. One system. A written answer.",
+     "sel": "h2",
+     "rect": {
+      "x": 173,
+      "y": 7215,
+      "w": 508,
+      "h": 158
+     },
+     "size": "48px",
+     "weight": "500",
+     "ls": "-2.16px",
+     "align": "start",
+     "family": "-apple-system"
+    },
+    {
+     "tag": "H2",
+     "text": "We give the day back.",
+     "sel": "h2",
+     "rect": {
+      "x": 173,
+      "y": 7779,
+      "w": 1080,
+      "h": 136
+     },
+     "size": "62px",
+     "weight": "400",
+     "ls": "-2.79px",
+     "align": "center",
+     "family": "-apple-system"
+    }
+   ],
+   "labels": [
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 173,
+      "y": 323,
+      "w": 539,
+      "h": 16
+     },
+     "text": "DATA INTELLIGENCE FOR THE DECISIONS IN F",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "dt",
+     "rect": {
+      "x": 804,
+      "y": 571,
+      "w": 360,
+      "h": 15
+     },
+     "text": "WHAT YOU WOULD ASK",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "dt",
+     "rect": {
+      "x": 804,
+      "y": 637,
+      "w": 360,
+      "h": 15
+     },
+     "text": "WHAT ARTHUR TELLS YOU",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "dt",
+     "rect": {
+      "x": 804,
+      "y": 703,
+      "w": 360,
+      "h": 15
+     },
+     "text": "WHY IT MATTERS",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "dt",
+     "rect": {
+      "x": 804,
+      "y": 749,
+      "w": 360,
+      "h": 15
+     },
+     "text": "WHAT TO DO NEXT",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 173,
+      "y": 1111,
+      "w": 508,
+      "h": 16
+     },
+     "text": "A NEW LAYER OF UNDERSTANDING",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 173,
+      "y": 1441,
+      "w": 559,
+      "h": 16
+     },
+     "text": "WHAT IT DOES WITH YOUR DATA",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.fx-ask-fn",
+     "rect": {
+      "x": 194,
+      "y": 1667,
+      "w": 216,
+      "h": 11
+     },
+     "text": "CUSTOMERS",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "b",
+     "rect": {
+      "x": 205,
+      "y": 1785,
+      "w": 194,
+      "h": 14
+     },
+     "text": "CRM",
+     "ls": "1px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "b",
+     "rect": {
+      "x": 205,
+      "y": 1841,
+      "w": 194,
+      "h": 14
+     },
+     "text": "BILLING",
+     "ls": "1px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "b",
+     "rect": {
+      "x": 205,
+      "y": 1897,
+      "w": 194,
+      "h": 14
+     },
+     "text": "SUPPORT",
+     "ls": "1px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.fx-ask-fn",
+     "rect": {
+      "x": 468,
+      "y": 1667,
+      "w": 216,
+      "h": 11
+     },
+     "text": "VENDORS",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "b",
+     "rect": {
+      "x": 479,
+      "y": 1785,
+      "w": 194,
+      "h": 14
+     },
+     "text": "LEDGER",
+     "ls": "1px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "b",
+     "rect": {
+      "x": 479,
+      "y": 1841,
+      "w": 194,
+      "h": 14
+     },
+     "text": "MAILBOX",
+     "ls": "1px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "b",
+     "rect": {
+      "x": 479,
+      "y": 1897,
+      "w": 194,
+      "h": 14
+     },
+     "text": "CONTRACTS",
+     "ls": "1px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.fx-ask-fn",
+     "rect": {
+      "x": 742,
+      "y": 1667,
+      "w": 216,
+      "h": 11
+     },
+     "text": "CONTRACTS",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "b",
+     "rect": {
+      "x": 753,
+      "y": 1785,
+      "w": 194,
+      "h": 14
+     },
+     "text": "AGREEMENT",
+     "ls": "1px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "b",
+     "rect": {
+      "x": 753,
+      "y": 1841,
+      "w": 194,
+      "h": 14
+     },
+     "text": "OWNER",
+     "ls": "1px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "b",
+     "rect": {
+      "x": 753,
+      "y": 1897,
+      "w": 194,
+      "h": 14
+     },
+     "text": "SOURCE",
+     "ls": "1px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.fx-ask-fn",
+     "rect": {
+      "x": 1016,
+      "y": 1667,
+      "w": 216,
+      "h": 11
+     },
+     "text": "OPERATIONS",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 173,
+      "y": 2308,
+      "w": 508,
+      "h": 16
+     },
+     "text": "INTELLIGENCE, BY ARCHITECTURE",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.brain-label",
+     "rect": {
+      "x": 173,
+      "y": 2494,
+      "w": 1080,
+      "h": 14
+     },
+     "text": "A SIMPLE QUESTION",
+     "ls": "1.53px",
+     "size": "9px",
+     "weight": "500"
+    },
+    {
+     "sel": "span",
+     "rect": {
+      "x": 190,
+      "y": 2663,
+      "w": 62,
+      "h": 9
+     },
+     "text": "01 · IDENTITY",
+     "ls": "0.8px",
+     "size": "8px",
+     "weight": "400"
+    },
+    {
+     "sel": "span",
+     "rect": {
+      "x": 190,
+      "y": 2884,
+      "w": 63,
+      "h": 9
+     },
+     "text": "02 · CONTEXT",
+     "ls": "0.8px",
+     "size": "8px",
+     "weight": "400"
+    },
+    {
+     "sel": "span",
+     "rect": {
+      "x": 1062,
+      "y": 2663,
+      "w": 67,
+      "h": 9
+     },
+     "text": "03 · EVIDENCE",
+     "ls": "0.8px",
+     "size": "8px",
+     "weight": "400"
+    },
+    {
+     "sel": "span",
+     "rect": {
+      "x": 1062,
+      "y": 2884,
+      "w": 85,
+      "h": 9
+     },
+     "text": "04 · VERIFICATION",
+     "ls": "0.8px",
+     "size": "8px",
+     "weight": "400"
+    },
+    {
+     "sel": "span.brain-label",
+     "rect": {
+      "x": 353,
+      "y": 3030,
+      "w": 720,
+      "h": 14
+     },
+     "text": "ARTHUR CONNECTS THE ANSWER",
+     "ls": "1.53px",
+     "size": "9px",
+     "weight": "500"
+    },
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 173,
+      "y": 3407,
+      "w": 508,
+      "h": 16
+     },
+     "text": "INTELLIGENCE, IN CONTEXT",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "div.sidebar-title",
+     "rect": {
+      "x": 198,
+      "y": 3673,
+      "w": 135,
+      "h": 14
+     },
+     "text": "WORKSPACE",
+     "ls": "1.08px",
+     "size": "9px",
+     "weight": "400"
+    },
+    {
+     "sel": "div.sidebar-title",
+     "rect": {
+      "x": 198,
+      "y": 3882,
+      "w": 135,
+      "h": 14
+     },
+     "text": "CONNECTED CONTEXT",
+     "ls": "1.08px",
+     "size": "9px",
+     "weight": "400"
+    },
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 173,
+      "y": 4241,
+      "w": 508,
+      "h": 16
+     },
+     "text": "BUILT AROUND YOUR WORLD",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 745,
+      "y": 5128,
+      "w": 508,
+      "h": 16
+     },
+     "text": "MADE FOR LIVING",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 173,
+      "y": 5718,
+      "w": 1080,
+      "h": 16
+     },
+     "text": "INTELLIGENCE IS AN ARCHITECTURE",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span#detail-kicker",
+     "rect": {
+      "x": 745,
+      "y": 6011,
+      "w": 508,
+      "h": 15
+     },
+     "text": "THE ONTOLOGY LAYER",
+     "ls": "1.2px",
+     "size": "10px",
+     "weight": "400"
+    },
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 173,
+      "y": 6582,
+      "w": 1080,
+      "h": 16
+     },
+     "text": "WHAT YOU GET",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 173,
+      "y": 7183,
+      "w": 508,
+      "h": 16
+     },
+     "text": "HOW IT STARTS",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "span.eyebrow",
+     "rect": {
+      "x": 173,
+      "y": 7747,
+      "w": 1080,
+      "h": 16
+     },
+     "text": "LOVELEEDAY",
+     "ls": "1.6px",
+     "size": "10px",
+     "weight": "600"
+    },
+    {
+     "sel": "strong",
+     "rect": {
+      "x": 173,
+      "y": 8388,
+      "w": 190,
+      "h": 11
+     },
+     "text": "PRODUCT",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "500"
+    },
+    {
+     "sel": "strong",
+     "rect": {
+      "x": 395,
+      "y": 8388,
+      "w": 190,
+      "h": 11
+     },
+     "text": "SOLUTIONS",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "500"
+    },
+    {
+     "sel": "strong",
+     "rect": {
+      "x": 617,
+      "y": 8388,
+      "w": 190,
+      "h": 11
+     },
+     "text": "INDUSTRIES",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "500"
+    },
+    {
+     "sel": "strong",
+     "rect": {
+      "x": 840,
+      "y": 8388,
+      "w": 190,
+      "h": 11
+     },
+     "text": "SERVICES",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "500"
+    },
+    {
+     "sel": "strong",
+     "rect": {
+      "x": 1062,
+      "y": 8388,
+      "w": 190,
+      "h": 11
+     },
+     "text": "COMPANY",
+     "ls": "1.4px",
+     "size": "10px",
+     "weight": "500"
+    }
+   ],
+   "cards": [
+    {
+     "sel": "div.ha-card",
+     "rect": {
+      "x": 784,
+      "y": 521,
+      "w": 400,
+      "h": 328
+     },
+     "radius": 16,
+     "shadow": true
+    },
+    {
+     "sel": "article.fx-ask-card",
+     "rect": {
+      "x": 173,
+      "y": 1646,
+      "w": 258,
+      "h": 346
+     },
+     "radius": 14,
+     "shadow": false
+    },
+    {
+     "sel": "article.fx-ask-card",
+     "rect": {
+      "x": 447,
+      "y": 1646,
+      "w": 258,
+      "h": 346
+     },
+     "radius": 14,
+     "shadow": false
+    },
+    {
+     "sel": "article.fx-ask-card",
+     "rect": {
+      "x": 721,
+      "y": 1646,
+      "w": 258,
+      "h": 346
+     },
+     "radius": 14,
+     "shadow": false
+    },
+    {
+     "sel": "article.fx-ask-card",
+     "rect": {
+      "x": 995,
+      "y": 1646,
+      "w": 258,
+      "h": 346
+     },
+     "radius": 14,
+     "shadow": false
+    },
+    {
+     "sel": "div.fx-ask-flag",
+     "rect": {
+      "x": 173,
+      "y": 2012,
+      "w": 1080,
+      "h": 76
+     },
+     "radius": 14,
+     "shadow": false
+    },
+    {
+     "sel": "div.system-shell",
+     "rect": {
+      "x": 173,
+      "y": 3592,
+      "w": 1080,
+      "h": 425
+     },
+     "radius": 16,
+     "shadow": true
+    },
+    {
+     "sel": "div#schema",
+     "rect": {
+      "x": 745,
+      "y": 6225,
+      "w": 508,
+      "h": 165
+     },
+     "radius": 12,
+     "shadow": false
+    }
+   ],
+   "gradients": [
+    {
+     "sel": "a.gh-feature",
+     "rect": {
+      "x": 894,
+      "y": 79,
+      "w": 240,
+      "h": 273
+     },
+     "kind": "bg",
+     "val": "linear-gradient(rgba(11, 18, 32, 0.8) 0%, rgba(11, 18, 32, 0.95) 70%), url(\"http"
+    },
+    {
+     "sel": "div.brain-stage",
+     "rect": {
+      "x": 173,
+      "y": 2494,
+      "w": 1080,
+      "h": 721
+     },
+     "kind": "bg",
+     "val": "radial-gradient(at 50% 45%, rgba(32, 32, 57, 0.333), rgba(0, 0, 0, 0) 58%)"
+    },
+    {
+     "sel": "div.core-icon",
+     "rect": {
+      "x": 390,
+      "y": 3798,
+      "w": 32,
+      "h": 32
+     },
+     "kind": "bg",
+     "val": "linear-gradient(130deg, rgb(241, 245, 250), rgb(225, 233, 247))"
+    }
+   ],
+   "banned": [],
+   "emDash": 0,
+   "notXY": [
+    "A general-purpose AI does not know your business. It does not know your suppliers, your history or what you call"
+   ],
+   "radii": {
+    "12": 1,
+    "14": 5,
+    "16": 2
+   },
+   "sections": [
+    {
+     "sel": "section.hero.hero-answer",
+     "rect": {
+      "x": 0,
+      "y": 73,
+      "w": 1425,
+      "h": 872
+     },
+     "centered": false,
+     "pad": "96/96",
+     "bg": "#14161b"
+    },
+    {
+     "sel": "section.intro",
+     "rect": {
+      "x": 173,
+      "y": 945,
+      "w": 1080,
+      "h": 400
+     },
+     "centered": false,
+     "pad": "96/96",
+     "bg": null
+    },
+    {
+     "sel": "section#questions",
+     "rect": {
+      "x": 0,
+      "y": 1345,
+      "w": 1425,
+      "h": 867
+     },
+     "centered": false,
+     "pad": "96/96",
+     "bg": "#0b0b10"
+    },
+    {
+     "sel": "section#arthur",
+     "rect": {
+      "x": 0,
+      "y": 2212,
+      "w": 1425,
+      "h": 1099
+     },
+     "centered": false,
+     "pad": "96/96",
+     "bg": "#0b0b10"
+    },
+    {
+     "sel": "section#system",
+     "rect": {
+      "x": 0,
+      "y": 3311,
+      "w": 1425,
+      "h": 834
+     },
+     "centered": false,
+     "pad": "96/96",
+     "bg": "#f5f5f7"
+    },
+    {
+     "sel": "section.section-pad",
+     "rect": {
+      "x": 0,
+      "y": 4145,
+      "w": 1425,
+      "h": 777
+     },
+     "centered": false,
+     "pad": "96/96",
+     "bg": null
+    },
+    {
+     "sel": "section#life",
+     "rect": {
+      "x": 0,
+      "y": 4922,
+      "w": 1425,
+      "h": 700
+     },
+     "centered": false,
+     "pad": "96/96",
+     "bg": "#f5f1eb"
+    },
+    {
+     "sel": "section#architecture",
+     "rect": {
+      "x": 173,
+      "y": 5622,
+      "w": 1080,
+      "h": 863
+     },
+     "centered": false,
+     "pad": "96/96",
+     "bg": null
+    },
+    {
+     "sel": "section#principles",
+     "rect": {
+      "x": 0,
+      "y": 6486,
+      "w": 1425,
+      "h": 602
+     },
+     "centered": false,
+     "pad": "96/96",
+     "bg": "#101114"
+    },
+    {
+     "sel": "section#how-it-starts",
+     "rect": {
+      "x": 0,
+      "y": 7087,
+      "w": 1425,
+      "h": 468
+     },
+     "centered": false,
+     "pad": "96/96",
+     "bg": null
+    },
+    {
+     "sel": "section#company",
+     "rect": {
+      "x": 0,
+      "y": 7555,
+      "w": 1425,
+      "h": 566
+     },
+     "centered": true,
+     "pad": "96/0",
+     "bg": "#f5f1eb"
+    }
+   ],
+   "icons": {
+    "total": 3,
+    "stroke": 0
+   },
+   "leftAccent": [],
+   "pills": [
+    {
+     "sel": "a.gh-cta",
+     "rect": {
+      "x": 1152,
+      "y": 16,
+      "w": 100,
+      "h": 40
+     },
+     "text": "Talk to us"
+    },
+    {
+     "sel": "a.ha-ghost",
+     "rect": {
+      "x": 386,
+      "y": 618,
+      "w": 101,
+      "h": 44
+     },
+     "text": "Talk to us"
+    },
+    {
+     "sel": "span",
+     "rect": {
+      "x": 1050,
+      "y": 539,
+      "w": 114,
+      "h": 22
+     },
+     "text": "Illustrative example"
+    },
+    {
+     "sel": "span.fx-chip.ok",
+     "rect": {
+      "x": 194,
+      "y": 1951,
+      "w": 101,
+      "h": 20
+     },
+     "text": "One customer"
+    },
+    {
+     "sel": "span.fx-chip.ok",
+     "rect": {
+      "x": 468,
+      "y": 1951,
+      "w": 89,
+      "h": 20
+     },
+     "text": "One vendor"
+    },
+    {
+     "sel": "span.fx-chip.info",
+     "rect": {
+      "x": 742,
+      "y": 1951,
+      "w": 123,
+      "h": 20
+     },
+     "text": "Listed with owners"
+    },
+    {
+     "sel": "span.fx-chip.warn",
+     "rect": {
+      "x": 1016,
+      "y": 1951,
+      "w": 112,
+      "h": 20
+     },
+     "text": "One site flagged"
+    },
+    {
+     "sel": "span.fx-chip.warn",
+     "rect": {
+      "x": 194,
+      "y": 2040,
+      "w": 103,
+      "h": 20
+     },
+     "text": "What changed"
+    },
+    {
+     "sel": "button#brain-next",
+     "rect": {
+      "x": 1034,
+      "y": 3175,
+      "w": 108,
+      "h": 40
+     },
+     "text": "Next question →"
+    },
+    {
+     "sel": "button#motion",
+     "rect": {
+      "x": 1150,
+      "y": 3175,
+      "w": 103,
+      "h": 40
+     },
+     "text": "Pause motion Ⅱ"
+    },
+    {
+     "sel": "button#q0",
+     "rect": {
+      "x": 390,
+      "y": 3681,
+      "w": 111,
+      "h": 36
+     },
+     "text": "Resolve an identity"
+    },
+    {
+     "sel": "button#q1",
+     "rect": {
+      "x": 508,
+      "y": 3681,
+      "w": 101,
+      "h": 36
+     },
+     "text": "Recall a moment"
+    },
+    {
+     "sel": "button#q2",
+     "rect": {
+      "x": 617,
+      "y": 3681,
+      "w": 85,
+      "h": 36
+     },
+     "text": "Verify a claim"
+    }
+   ],
+   "arrows": 6,
+   "numbered": 0,
+   "textChars": 7604,
+   "paddings": {
+    "96/96": 10,
+    "96/0": 1
+   },
+   "bgHexes": [
+    [
+     "#0b0b10",
+     2802
+    ],
+    [
+     "#f5f1eb",
+     1804
+    ],
+    [
+     "#14161b",
+     1243
+    ],
+    [
+     "#f5f5f7",
+     1188
+    ],
+    [
+     "#14110e",
+     1019
+    ],
+    [
+     "#101114",
+     858
+    ],
+    [
+     "#ffffff",
+     797
+    ],
+    [
+     "#14151b",
+     357
+    ]
+   ],
+   "cardRows": [
+    {
+     "sel": "div.fx-ask-grid",
+     "rect": {
+      "x": 173,
+      "y": 1646,
+      "w": 1080,
+      "h": 346
+     },
+     "count": 4,
+     "radius": 14
+    }
+   ],
+   "uniformCards": 4,
+   "cardCount": 8,
+   "title": "LOVELEEDAY — Data intelligence for your organization",
+   "url": "https://loveleedaystudios.com/",
+   "requestedUrl": "https://loveleedaystudios.com/"
+  }
+ ]
+}
