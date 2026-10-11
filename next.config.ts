@@ -1,5 +1,38 @@
 import type { NextConfig } from "next";
 
+/* Marketing pages: static HTML under public/site mounted at clean URLs. Also drives the enforced CSP below. */
+const siteRoutes: { source: string; destination: string }[] = [
+  { source: "/", destination: "/site/index.html" },
+  { source: "/operating-system", destination: "/site/operating-system.html" },
+  { source: "/arthur", destination: "/site/arthur.html" },
+  { source: "/architecture", destination: "/site/architecture.html" },
+  { source: "/use-cases", destination: "/site/use-cases.html" },
+  { source: "/industries", destination: "/site/industries.html" },
+  { source: "/industries/manufacturing", destination: "/site/industries/manufacturing.html" },
+  { source: "/industries/property", destination: "/site/industries/property.html" },
+  { source: "/industries/schools", destination: "/site/industries/schools.html" },
+  { source: "/trust", destination: "/site/trust.html" },
+  { source: "/integrations", destination: "/site/integrations.html" },
+  { source: "/talk", destination: "/site/talk.html" },
+  { source: "/snapshot", destination: "/site/snapshot.html" },
+  { source: "/municipal-review", destination: "/site/municipal-review.html" },
+  { source: "/customer-data", destination: "/site/customer-data.html" },
+  { source: "/pricing-margins", destination: "/site/pricing-margins.html" },
+  { source: "/operational-intelligence", destination: "/site/operational-intelligence.html" },
+  { source: "/principles", destination: "/site/principles.html" },
+  { source: "/studio", destination: "/site/studio.html" },
+  { source: "/privacy", destination: "/site/privacy.html" },
+  { source: "/terms", destination: "/site/terms.html" },
+  { source: "/notes", destination: "/site/notes.html" },
+  { source: "/notes/:slug", destination: "/site/notes/:slug.html" },
+  { source: "/how-it-works", destination: "/site/how-it-works.html" },
+  { source: "/faq", destination: "/site/faq.html" },
+  { source: "/contact", destination: "/site/contact.html" },
+  { source: "/build", destination: "/site/build.html" },
+  { source: "/work", destination: "/site/work.html" },
+  { source: "/work/:slug", destination: "/site/work/:slug.html" },
+];
+
 const nextConfig: NextConfig = {
   /* src/content/assetVersion.ts reads public/<path> through a runtime path.join, so the
      file tracer cannot see which files it needs and copies ALL of public/ into every
@@ -34,36 +67,7 @@ const nextConfig: NextConfig = {
        old (site) routes while /p, /portal and /api keep working. The
        cutover reverses by deleting this block. */
     return {
-      beforeFiles: [
-      { source: "/", destination: "/site/index.html" },
-      { source: "/operating-system", destination: "/site/operating-system.html" },
-      { source: "/arthur", destination: "/site/arthur.html" },
-      { source: "/architecture", destination: "/site/architecture.html" },
-      { source: "/use-cases", destination: "/site/use-cases.html" },
-      { source: "/industries", destination: "/site/industries.html" },
-      { source: "/industries/manufacturing", destination: "/site/industries/manufacturing.html" },
-      { source: "/industries/property", destination: "/site/industries/property.html" },
-      { source: "/trust", destination: "/site/trust.html" },
-      { source: "/integrations", destination: "/site/integrations.html" },
-      { source: "/talk", destination: "/site/talk.html" },
-      { source: "/snapshot", destination: "/site/snapshot.html" },
-      { source: "/municipal-review", destination: "/site/municipal-review.html" },
-      { source: "/customer-data", destination: "/site/customer-data.html" },
-      { source: "/pricing-margins", destination: "/site/pricing-margins.html" },
-      { source: "/operational-intelligence", destination: "/site/operational-intelligence.html" },
-      { source: "/principles", destination: "/site/principles.html" },
-      { source: "/studio", destination: "/site/studio.html" },
-      { source: "/privacy", destination: "/site/privacy.html" },
-      { source: "/terms", destination: "/site/terms.html" },
-      { source: "/notes", destination: "/site/notes.html" },
-      { source: "/notes/:slug", destination: "/site/notes/:slug.html" },
-      { source: "/how-it-works", destination: "/site/how-it-works.html" },
-      { source: "/faq", destination: "/site/faq.html" },
-      { source: "/contact", destination: "/site/contact.html" },
-      { source: "/build", destination: "/site/build.html" },
-      { source: "/work", destination: "/site/work.html" },
-      { source: "/work/:slug", destination: "/site/work/:slug.html" },
-      ],
+      beforeFiles: siteRoutes,
     };
   },
 
@@ -133,12 +137,43 @@ const nextConfig: NextConfig = {
               "report-uri https://portal.loveleedaystudios.com/api/csp-report",
             ].join("; "),
           },
+          /* includeSubDomains + preload: every host under the zone was enumerated in Cloudflare on 2026-10-11
+             (apex, www, portal, demo, doorlight and the wildcard) and each answers valid HTTPS with an http->https redirect. */
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
         ],
       },
+      /* The marketing pages enforce the full policy (the report-only copy above ran from 10/6 with no breakage on the
+         pages). Listed after the site-wide block so this Content-Security-Policy replaces the frame-ancestors-only one.
+         Scoped to these routes: /p, /portal and /team carry client deliverables and map tiles whose sources are not
+         known here, so they keep the report-only policy. Inline script and style stay allowed because the static pages
+         carry them; every other source is limited to this site, the portal, and https images. */
+      ...[...siteRoutes.map((r) => r.source), "/site/:path*"].map((source) => ({
+        source,
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: blob: https:",
+              "font-src 'self' data:",
+              "connect-src 'self' https://portal.loveleedaystudios.com https://vitals.vercel-insights.com",
+              "frame-src 'self'",
+              "frame-ancestors 'self'",
+              "base-uri 'self'",
+              "form-action 'self' https://portal.loveleedaystudios.com",
+              "object-src 'none'",
+              "worker-src 'self' blob:",
+              "upgrade-insecure-requests",
+            ].join("; "),
+          },
+        ],
+      })),
       {
         /* Listed after the site-wide block so its stricter Referrer-Policy wins.
            Was "/:path(p|portal)/:rest*". Next 16 uses path-to-regexp v8, which

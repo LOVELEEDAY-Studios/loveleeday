@@ -40,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/integrations`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/industries/manufacturing`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/industries/property`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/industries/schools`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/trust`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/talk`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/snapshot`, changeFrequency: "monthly", priority: 0.7 },
