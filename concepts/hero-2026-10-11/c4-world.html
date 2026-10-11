@@ -3,50 +3,74 @@
 <title>Hero concept 4: Whatever you run</title>
 <link rel="stylesheet" href="base.css">
 <style>
-.hero{padding:20px 0 80px}
-.top{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:end;margin-bottom:44px}
-h1{font-size:clamp(46px,5.6vw,82px);line-height:1;letter-spacing:-.03em;font-weight:600}
-.side p{font-size:20px;color:#25384F;margin-bottom:26px;max-width:460px}
-.cta{display:flex;gap:14px;flex-wrap:wrap}
-.acc{display:flex;gap:10px;height:540px}
-.p{position:relative;flex:0 0 104px;min-width:0;border-radius:16px;overflow:hidden;border:0;padding:0;text-align:left;background:var(--navy);transition:flex .45s cubic-bezier(.2,.7,.2,1);color:var(--paper)}
-.p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.p .shade{position:absolute;inset:0;background:rgba(11,31,58,.34);transition:background .3s}
-.p .name{position:absolute;left:20px;bottom:22px;font-size:19px;font-weight:600;letter-spacing:-.01em;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;text-shadow:0 1px 8px rgba(0,0,0,.5)}
-.p .open{display:none}
-.p[aria-expanded=true]{flex:1 1 auto}
-.p[aria-expanded=true] .shade{background:rgba(11,31,58,.12)}
-.p[aria-expanded=true] .name{display:none}
-.p[aria-expanded=true] .open{display:block}
-.card{position:absolute;left:22px;right:22px;bottom:22px;background:var(--paper);color:var(--navy);border-radius:14px;padding:22px 26px 20px;max-width:620px}
-.card .ind{font-size:14px;font-weight:600;color:var(--teal-deep);margin-bottom:6px}
-.card h3{font:500 26px/1.2 var(--serif);letter-spacing:-.01em;margin-bottom:12px}
-.card p{font-size:16px;line-height:1.45}
-.card p b{background:var(--teal-soft);font-weight:600;padding:0 3px;border-radius:3px}
-.card .s{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
-.cap{margin-top:14px;font-size:13px;color:var(--muted)}
-@media(max-width:980px){.top{grid-template-columns:1fr;gap:26px}}
-@media(max-width:700px){.acc{flex-direction:column;height:auto;gap:8px}.p{flex:none;width:100%;height:76px;transition:height .35s}.p .name{writing-mode:horizontal-tb;transform:none;left:18px;top:50%;bottom:auto;margin-top:-12px}.p[aria-expanded=true]{height:500px}.card{left:12px;right:12px;bottom:12px;padding:18px}.card h3{font-size:21px}}
+.hero{padding:88px 0 96px}
+.top{text-align:center;max-width:940px;margin:0 auto}
+h1{font-size:clamp(40px,5.4vw,78px);line-height:1.02;letter-spacing:-.032em;font-weight:600;text-wrap:balance}
+.lead{font-size:19px;line-height:1.5;color:var(--muted);max-width:600px;margin:24px auto 0}
+.cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:32px}
+.show{margin-top:64px;display:grid;grid-template-columns:372px minmax(0,1fr);border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--white);box-shadow:var(--sh2);min-height:620px}
+.list{border-right:1px solid var(--line);display:flex;flex-direction:column;background:var(--white)}
+.list h3{font:500 13px var(--sans);color:var(--muted);padding:20px 24px 12px}
+.row{display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;text-align:left;border:0;border-top:1px solid var(--line2);background:transparent;padding:16px 24px;position:relative;transition:background .15s}
+.row:hover{background:var(--panel)}
+.row .ri{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;color:var(--muted2);background:var(--white)}
+.row b{display:block;font-weight:600;font-size:16px;letter-spacing:-.01em;line-height:1.3}
+.row span.q{display:block;font-size:13.5px;line-height:1.4;color:var(--muted);margin-top:3px;max-height:0;opacity:0;overflow:hidden;transition:max-height .3s,opacity .3s}
+.row[aria-selected=true]{background:var(--wash)}
+.row[aria-selected=true]:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue)}
+.row[aria-selected=true] .ri{background:var(--white);border-color:var(--wash-b);color:var(--blue)}
+.row[aria-selected=true] span.q{max-height:80px;opacity:1}
+.more{margin-top:auto;padding:18px 24px 22px;font-size:13.5px;line-height:1.45;color:var(--muted);border-top:1px solid var(--line2)}
+.photo{position:relative;min-height:620px;background:var(--brown)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,16,0) 40%,rgba(11,11,16,.38) 100%)}
+.card{position:absolute;z-index:2;left:28px;bottom:28px;width:min(560px,calc(100% - 56px));background:var(--white);border-radius:16px;box-shadow:0 1px 2px rgba(11,11,16,.2),0 30px 60px -20px rgba(11,11,16,.5);overflow:hidden}
+.ch{display:flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.ch b{font-weight:600;color:var(--ink)}.ch .sync{margin-left:auto;display:flex;gap:7px;align-items:center}
+.cb{padding:18px 20px 4px}
+.cb h2{font:600 19px/1.28 var(--sans);letter-spacing:-.018em;margin-bottom:10px}
+.cb p{font-size:15.5px;line-height:1.5}
+.cb p b{font-weight:600;background:var(--wash);border-radius:3px;padding:0 3px;margin:0 -3px}
+.tb{margin:14px 0 0;border:1px solid var(--line);border-radius:9px;overflow:hidden;font-size:13px}
+.tb div{display:grid;grid-template-columns:1.1fr 1.2fr 1fr;gap:10px;padding:0 12px;height:34px;align-items:center;border-bottom:1px solid var(--line2)}
+.tb div:last-child{border-bottom:0}
+.tb .th{background:var(--panel);color:var(--muted);font-size:12px;font-weight:500;height:30px}
+.tb div span:first-child{font-weight:500}
+.cf{display:flex;gap:8px;flex-wrap:wrap;padding:12px 20px 16px;font-size:12.5px;color:var(--muted);align-items:center}
+.cf i{font-style:normal;display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--muted2)}
+.cap{margin-top:14px;font-size:12.5px;color:var(--muted);text-align:center}
+@media(max-width:1000px){.show{grid-template-columns:1fr;min-height:0}.list{border-right:0;border-bottom:1px solid var(--line);flex-direction:row;overflow-x:auto;scrollbar-width:none}.list h3,.more{display:none}.list::-webkit-scrollbar{display:none}
+ .row{border-top:0;border-right:1px solid var(--line2);flex:none;padding:14px 18px;grid-template-columns:30px auto;gap:10px;align-items:center}.row span.q{display:none}.row b{font-size:14.5px;white-space:nowrap}.row[aria-selected=true]:before{top:auto;height:3px;width:auto;right:0}
+ .photo{min-height:0;height:auto;display:flex;flex-direction:column}.photo img{position:relative;height:260px}.photo:after{display:none}.card{position:relative;left:0;bottom:0;width:100%;border-radius:0;box-shadow:none}}
+@media(max-width:520px){.hero{padding:56px 0 64px}.show{margin-top:40px;border-radius:16px}.tb div{grid-template-columns:1fr 1fr}.tb div span:nth-child(3){display:none}.top{text-align:left}.cta{justify-content:flex-start}.lead{margin-left:0}}
 </style></head><body>
+<script src="icons.js"></script>
 <header class="nav"><div class="wrap"><a class="brand" href="#"><img src="assets/mark-ink-512.png" alt="">LOVELEEDAY</a>
 <nav class="nav-links"><a href="#">Product</a><a href="#">Solutions</a><a href="#">Industries</a><a href="#">Company</a></nav>
-<div class="nav-r"><a class="signin" href="#">Sign in</a><a class="btn sm navy" href="#">Talk to us</a></div></div></header>
+<div class="nav-r"><a class="signin" href="#">Sign in</a><a class="btn sm" href="#">Talk to us</a></div></div></header>
 <main><section class="hero"><div class="wrap">
 <div class="top"><h1>Whatever you run, ask it a plain question.</h1>
-<div class="side"><p>LOVELEEDAY connects your systems and answers in plain language, with the records behind every number. Pick your kind of organization.</p><div class="cta"><a class="btn navy" href="#">Talk to us</a><a class="btn ghost" href="#">See how it works</a></div></div></div>
-<div class="acc" id="acc"></div>
+<p class="lead">LOVELEEDAY connects your systems and answers in plain language, with the records behind every number. Pick your kind of organization.</p>
+<div class="cta"><a class="btn" href="#">Talk to us</a><a class="btn ghost" href="#">See how it works</a></div></div>
+<div class="show"><div class="list" id="list" role="tablist" aria-label="Kinds of organization"><h3>Choose where you work</h3><p class="more">Not on the list? LOVELEEDAY connects to any organization that keeps records.</p></div>
+<div class="photo" id="photo"></div></div>
 <p class="cap">Examples use sample data. Photography is licensed stock.</p>
 </div></section></main>
 <script>
 const P=[
-["Schools and charters","industry-schools.jpg","Who is at risk of missing the enrollment count this year?","Families who started but never finished re-enrollment: <b>37 of 412</b>. 21 have an unpaid balance.","Enrollment records, billing, parent emails"],
-["Local government","industry-government.jpg","Which permits are stuck, and who is holding them?","<b>9 applications</b> are past 30 days. 6 wait on the fire department, 3 on missing documents.","Permit system, inspector calendar, email"],
-["Manufacturing","industry-manufacturing.jpg","If a supplier is late, which customer orders slip?","<b>14 open orders</b> depend on the delayed batch. 3 ship before Friday.","Open orders, supplier email, inspection log"],
-["Property","industry-property.jpg","Which buildings have repairs waiting the longest?","<b>12 units</b> in 4 buildings. 8 are waiting on a part, oldest at 23 days.","Work orders, vendor quotes, tenant messages"],
-["Nonprofits","industry-nonprofit.jpg","Which donors gave last year and have not heard from us?","<b>64 donors</b> gave a large gift and have had no thank-you or update.","Donor records, gift receipts, email history"],
-["Retail and food","industry-retail.jpg","Why did margin drop last month?","Margin fell <b>41% to 36%</b>: one supplier up 8%, and 22% of sales were discounted.","Sales ledger, supplier invoices, register export"]];
-const acc=document.getElementById('acc');
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-acc.innerHTML=P.map((p,i)=>`<button class="p" aria-expanded="${i==0}" data-i="${i}"><img src="assets/${esc(p[1])}" alt="" ><span class="shade"></span><span class="name">${esc(p[0])}</span><span class="open card"><span class="ind" style="display:block">${esc(p[0])}</span><h3>${esc(p[2])}</h3><p>${p[3]}</p><span class="s" style="display:block">From: ${esc(p[4])}</span></span></button>`).join('');
-acc.querySelectorAll('.p').forEach(b=>{const go=()=>acc.querySelectorAll('.p').forEach(x=>x.setAttribute('aria-expanded',x===b));b.onclick=go;b.onmouseenter=()=>{if(matchMedia('(min-width:701px)').matches)go()}});
+{n:"Schools and charters",ic:"school",img:"industry-schools.jpg",alt:"A bright classroom with rows of desks and chairs",q:"Who is at risk of missing the enrollment count this year?",a:"Families who started but never finished re-enrollment: <b>37 of 412</b>. <b>21</b> of them have a billing hold.",cols:["Family","Stuck at","Contact"],rows:[["Hernandez, 2 students","Signature page","Called Oct 6"],["Whitfield, 1 student","Billing hold","None yet"],["Abara, 3 students","Records request","Emailed Oct 8"]],src:[["db","Enrollment records"],["file","Billing"],["mail","Parent emails"]],sync:"Updated 7:05 am"},
+{n:"Local government",ic:"landmark",img:"industry-government.jpg",alt:"Residents and staff at a city service counter",q:"Which permits are stuck, and who is holding them?",a:"<b>9 applications</b> are past 30 days. <b>6</b> wait on the fire department, <b>3</b> on missing documents.",cols:["Permit","Waiting on","Days"],rows:[["BP-2291, bakery","Fire department","52"],["BP-2304, dental office","Fire department","47"],["BP-2327, residence","Site plan","39"]],src:[["db","Permit system"],["clock","Inspector calendar"],["mail","Email"]],sync:"Updated 7:45 am"},
+{n:"Manufacturing",ic:"factory",img:"industry-manufacturing.jpg",alt:"A technician working beside machinery on a factory floor",q:"If a supplier is late, which customer orders slip?",a:"<b>14 open orders</b> depend on the delayed batch. <b>3</b> ship before Friday.",cols:["Order","Customer","Ships"],rows:[["SO-20418","Harbor Supply","Wed, Oct 14"],["SO-20431","Bellmont Tool","Thu, Oct 15"],["SO-20440","Ridgeway HVAC","Fri, Oct 16"]],src:[["db","Open orders"],["mail","Supplier email"],["check","Inspection log"]],sync:"Updated 4:30 pm"},
+{n:"Property",ic:"home",img:"industry-property.jpg",alt:"A residential building seen from the street",q:"Which buildings have repairs waiting the longest?",a:"<b>12 units</b> in 4 buildings. <b>8</b> are waiting on a part, the oldest at <b>23 days</b>.",cols:["Unit","Waiting on","Days open"],rows:[["4B, Maple Court","Water heater valve","23"],["2A, Cedar Row","Dishwasher pump","19"],["7C, Linden House","Water heater valve","16"]],src:[["db","Work orders"],["file","Vendor quotes"],["mail","Tenant messages"]],sync:"Updated 6:50 am"},
+{n:"Nonprofits",ic:"heart",img:"industry-nonprofit.jpg",alt:"Volunteers working together at a community event",q:"Which donors gave last year and have not heard from us?",a:"<b>64 donors</b> gave a large gift and have had no thank-you or update.",cols:["Donor","Gift date","Last contact"],rows:[["R. Alvarez","Mar 14","No thank-you"],["Hollis Family Trust","Jun 2","No update"],["D. Park","Aug 19","No thank-you"]],src:[["users","Donor records"],["file","Gift receipts"],["mail","Email history"]],sync:"Updated 6:30 am"},
+{n:"Retail and food",ic:"bag",img:"industry-retail.jpg",alt:"A shop interior with customers browsing",q:"Why did margin drop last month?",a:"Margin fell <b>41% to 36%</b>: one supplier is up 8%, and 22% of sales were discounted.",cols:["Cause","Change","Record"],rows:[["Supplier prices","Up 8% on Sep 3","Invoice 4471"],["Discounted sales","22%, was 9%","Register export"],["Waste","3.1%, was 3.0%","Inventory count"]],src:[["sheet","Sales ledger"],["file","Supplier invoices"],["db","Register export"]],sync:"Updated 8:15 am"}];
+const $=i=>document.getElementById(i);const E=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+$('list').insertAdjacentHTML('beforeend',P.map((p,i)=>`<button class="row" role="tab" aria-selected="${i==0}" data-i="${i}"><span class="ri">${ico(p.ic,'sm')}</span><span><b>${E(p.n)}</b><span class="q">${E(p.q)}</span></span></button>`).join(''));
+function show(i){const p=P[i];
+$('photo').innerHTML=`<img src="assets/${p.img}" alt="${E(p.alt)}"><div class="card"><div class="ch">${ico('search','sm')}<b>${E(p.n)}</b><span class="sync"><i class="dot"></i>${E(p.sync)}</span></div>
+<div class="cb"><h2>${E(p.q)}</h2><p>${p.a}</p>
+<div class="tb"><div class="th">${p.cols.map(c=>`<span>${E(c)}</span>`).join('')}</div>${p.rows.map(r=>`<div>${r.map(c=>`<span>${E(c)}</span>`).join('')}</div>`).join('')}</div></div>
+<div class="cf">From ${p.src.map(s=>`<i>${ico(s[0],'sm')}${E(s[1])}</i>`).join('')}</div></div>`;
+document.querySelectorAll('.row').forEach(t=>t.setAttribute('aria-selected',t.dataset.i==i))}
+document.querySelectorAll('.row').forEach(b=>{b.onclick=()=>show(+b.dataset.i);b.onmouseenter=()=>{if(matchMedia('(min-width:1001px)').matches)show(+b.dataset.i)}});show(0);
 </script></body></html>

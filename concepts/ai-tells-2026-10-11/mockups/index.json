@@ -4,97 +4,335 @@
   "title": "Two-part, two-tone headline",
   "tell": "Two short sentences, the second in gray. Same device on 54 of 185 headings.",
   "count": "54 of 185 h1/h2 two-part; 46 percent two-tone",
-  "source": "S1 generic slogans; S2 accenting one headline part; S11 two fragments glued together"
+  "source": "S1 generic slogans; S2 accenting one headline part; S11 two fragments glued together",
+  "bench": [
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-heading-split.jpg",
+    "what": "Single-tone headline, one idea, over product cards"
+   },
+   {
+    "site": "Linear",
+    "file": "refs-bench/linear-heading-split.jpg",
+    "what": "Short headline left, supporting paragraph right"
+   },
+   {
+    "site": "Ramp",
+    "file": "refs-bench/ramp-heading-split.jpg",
+    "what": "One claim, one line of support"
+   }
+  ]
  },
  {
   "id": "02-eyebrow-labels",
   "title": "Tracked all-caps label above every heading",
   "tell": "10px uppercase labels with wide tracking on every section. 562 across 35 pages, 85 percent at 10px.",
   "count": "562 labels, mean 16 per page, 42 on home",
-  "source": "S5 excessive letter spacing; S2 tracked all-caps eyebrows over every heading"
+  "source": "S5 excessive letter spacing; S2 tracked all-caps eyebrows over every heading",
+  "bench": [
+   {
+    "site": "Linear",
+    "file": "refs-bench/linear-heading-split.jpg",
+    "what": "Headline with no label above it"
+   },
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-three-up.jpg",
+    "what": "Plain heading, one sentence of support"
+   },
+   {
+    "site": "Vercel",
+    "file": "refs-bench/vercel-heading.jpg",
+    "what": "Heading alone, generous space"
+   }
+  ]
  },
  {
-  "id": "03-apple-palette-stack",
-  "title": "Apple palette and system font stack",
-  "tell": "Ink #1d1d1f, gray #f5f5f7, link #0066cc and the -apple-system stack: another brand's tokens, used on every page.",
-  "count": "34 of 35 pages ink; 28 link blue; 26 gray; 100 percent of text in the system stack",
-  "source": "S8 stock tokens are a palette; S14 SF license and Apple-clone note; typography-mastery SF Pro entries"
+  "id": "03-font-stack",
+  "title": "System default font stack",
+  "tell": "Every character on the site is set in -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial: the browser default, so the type carries no choice of its own.",
+  "count": "100 percent of 182,485 characters in the system stack",
+  "source": "S8 stock tokens are a palette; S14 SF license and Apple-clone note; typography-mastery SF Pro entries",
+  "bench": [
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-hero.jpg",
+    "what": "Own typeface, tight headline"
+   },
+   {
+    "site": "Linear",
+    "file": "refs-bench/linear-closing.jpg",
+    "what": "Own typeface, large centered close"
+   },
+   {
+    "site": "Notion",
+    "file": "refs-bench/notion-hero.jpg",
+    "what": "Serif and sans pairing"
+   }
+  ]
  },
  {
   "id": "04-type-scale",
   "title": "No type scale: 13 heading sizes, one weight",
   "tell": "h2 sizes: 26, 30, 34, 36, 38, 40, 44, 48, 50, 52, 60, 62 px; 98 percent at weight 500 with -0.045em tracking.",
   "count": "13 distinct h2 sizes; 98 percent weight 500",
-  "source": "S12 arbitrary sizes, everything equally important; S13 modular scale, two to three weights"
+  "source": "S12 arbitrary sizes, everything equally important; S13 modular scale, two to three weights",
+  "bench": [
+   {
+    "site": "Vercel",
+    "file": "refs-bench/vercel-scale.jpg",
+    "what": "One display size, one text size"
+   },
+   {
+    "site": "Linear",
+    "file": "refs-bench/linear-scale.jpg",
+    "what": "Display, text, caption: three steps"
+   },
+   {
+    "site": "Ramp",
+    "file": "refs-bench/ramp-scale.jpg",
+    "what": "Display and subhead in two weights"
+   }
+  ]
  },
  {
   "id": "05-hero-photo-card",
   "title": "Product card pasted over the hero photo",
   "tell": "A floating white card of four tracked labels sits across the photo and hides her hands; the same card repeats on the portal sign-in.",
   "count": "home hero, portal sign-in, snapshot",
-  "source": "S5 decoration cosplaying as information; S7 uniform sections; our crop rule (no overlap on faces or hands)"
+  "source": "S5 decoration cosplaying as information; S7 uniform sections; our crop rule (no overlap on faces or hands)",
+  "bench": [
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-hero.jpg",
+    "what": "Hero with real product beside the headline"
+   },
+   {
+    "site": "Ramp",
+    "file": "refs-bench/ramp-hero.jpg",
+    "what": "Hero with live product UI below"
+   },
+   {
+    "site": "Linear",
+    "file": "refs-bench/linear-hero.jpg",
+    "what": "Hero with the product itself"
+   }
+  ]
  },
  {
   "id": "06-three-feature-row",
   "title": "Three equal columns with a glyph on top",
   "tell": "Rule, tiny icon, title, two lines of gray text, three times across. The icons are 14px characters.",
   "count": "home \"what you get\"; operating-system, product page",
-  "source": "S1 three feature cards; S7 three equal feature cards, icon-title-two-lines"
+  "source": "S1 three feature cards; S7 three equal feature cards, icon-title-two-lines",
+  "bench": [
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-three-up.jpg",
+    "what": "Three columns, each with a different job"
+   },
+   {
+    "site": "Linear",
+    "file": "refs-bench/linear-three-up.jpg",
+    "what": "Three columns with real illustrations"
+   },
+   {
+    "site": "Ramp",
+    "file": "refs-bench/ramp-feature-cards.jpg",
+    "what": "Mixed-size feature cards with product UI"
+   }
+  ]
  },
  {
   "id": "07-four-identical-cards",
   "title": "Four identical dark cards with category tag and chips",
   "tell": "Same radius, border, padding, label, question, chips and status pill, four times.",
   "count": "home, architecture, industries (255 rounded surfaces, 52 percent in identical rows)",
-  "source": "S1/S4/S7 identical card grids; S2 card kit; S3 uniform layout"
+  "source": "S1/S4/S7 identical card grids; S2 card kit; S3 uniform layout",
+  "bench": [
+   {
+    "site": "Ramp",
+    "file": "refs-bench/ramp-feature-cards.jpg",
+    "what": "Mixed-size cards, product UI inside"
+   },
+   {
+    "site": "Notion",
+    "file": "refs-bench/notion-cards.jpg",
+    "what": "Cards led by real documents"
+   },
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-heading-split.jpg",
+    "what": "Cards with live product"
+   }
+  ]
  },
  {
   "id": "08-status-pills",
   "title": "Pill chips that carry no state",
   "tell": "351 pills: tags, status dots, \"Illustrative example\" badges, \"Talk to us\" capsules. A green dot beside \"One customer\" is not a status.",
   "count": "351 pill-shaped chips across the site",
-  "source": "S5 generic Live/New badges, decoration cosplaying as information"
+  "source": "S5 generic Live/New badges, decoration cosplaying as information",
+  "bench": [
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-dashboard.jpg",
+    "what": "Status shown inside a real table"
+   },
+   {
+    "site": "Ramp",
+    "file": "refs-bench/ramp-product-ui.jpg",
+    "what": "State shown on the row it belongs to"
+   },
+   {
+    "site": "Datadog",
+    "file": "refs-bench/datadog-hero.jpg",
+    "what": "Status carried by data, not chips"
+   }
+  ]
  },
  {
   "id": "09-particle-brain",
   "title": "Glowing multicolor network brain",
   "tell": "A rotating mesh of green, blue, orange and purple nodes on black. This is the stock \"AI brain\" vocabulary.",
   "count": "home hero-adjacent stage, product page, operating-system (brain.js canvas)",
-  "source": "S16 stock listings for glowing neural brains; S1/S4 glow with no reason. The brand idea (records connecting) stays; the rendering changes."
+  "source": "S16 stock listings for glowing neural brains; S1/S4 glow with no reason. The brand idea (records connecting) stays; the rendering changes.",
+  "bench": [
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-diagram.jpg",
+    "what": "Flat labeled systems diagram"
+   },
+   {
+    "site": "Ramp",
+    "file": "refs-bench/ramp-systems.jpg",
+    "what": "Systems that never spoke, drawn as documents"
+   },
+   {
+    "site": "Snowflake",
+    "file": "refs-bench/snowflake-diagram.jpg",
+    "what": "Platform shown as product"
+   }
+  ]
  },
  {
   "id": "10-fake-browser-frame",
   "title": "Fake browser window around a mock UI",
   "tell": "Three gray traffic-light dots, a breadcrumb and a \"preview\" label wrap a hand-built interface; pills and a sparkle glyph decorate it.",
   "count": "home interactive preview, operating-system",
-  "source": "S8 template screenshot genre; S5 decoration cosplaying as information (our judgment; no source names browser chrome)"
+  "source": "S8 template screenshot genre; S5 decoration cosplaying as information (our judgment; no source names browser chrome)",
+  "bench": [
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-dashboard.jpg",
+    "what": "Product UI at full fidelity, no window chrome"
+   },
+   {
+    "site": "Linear",
+    "file": "refs-bench/linear-product.jpg",
+    "what": "Product panel, dense real data"
+   },
+   {
+    "site": "Vercel",
+    "file": "refs-bench/vercel-heading.jpg",
+    "what": "Product screenshot as the section"
+   }
+  ]
  },
  {
   "id": "11-copy-frames",
   "title": "Copy built from stock frames",
   "tell": "\"The problem isn't X. It's Y.\" and \"It isn't A. It's B.\" open 18 sentences across the notes essays; one-line example disclaimers repeat under nearly every figure.",
   "count": "18 not-X-it's-Y frames; two-part headline on 29 pages",
-  "source": "S11 not-X-it's-Y, two fragments, always three things; S10 predictable rhythm is the real tell; S2 delete any number you cannot source"
+  "source": "S11 not-X-it's-Y, two fragments, always three things; S10 predictable rhythm is the real tell; S2 delete any number you cannot source",
+  "bench": [
+   {
+    "site": "Linear",
+    "file": "refs-bench/linear-scale.jpg",
+    "what": "Specific claim, one voice"
+   },
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-claim.jpg",
+    "what": "Plain statement of what it does"
+   },
+   {
+    "site": "Vercel",
+    "file": "refs-bench/vercel-heading.jpg",
+    "what": "One sentence, no frame"
+   }
+  ]
  },
  {
   "id": "12-repeating-section-pattern",
   "title": "Every section is the same two-column split",
   "tell": "Label, two-tone headline left, one gray paragraph right, 96px above and below, alternating dark, white, gray and cream bands. 72 sections share one 96/96 padding.",
   "count": "72 sections at 96/96 padding; split pattern on most pages",
-  "source": "S7 uniform sections, same height padding and heading size; S8 visibly undecided; S3 uniform layout"
+  "source": "S7 uniform sections, same height padding and heading size; S8 visibly undecided; S3 uniform layout",
+  "bench": [
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-three-up.jpg",
+    "what": "Sections change layout page to page"
+   },
+   {
+    "site": "Ramp",
+    "file": "refs-bench/ramp-quote.jpg",
+    "what": "A quote beside a photograph"
+   },
+   {
+    "site": "Linear",
+    "file": "refs-bench/linear-testimonials.jpg",
+    "what": "Full-bleed color testimonial band"
+   }
+  ]
  },
  {
   "id": "13-arrow-list",
   "title": "An arrow on every row, a link with an arrow under it",
   "tell": "Eight single-line rows each ending in a diagonal arrow, then \"Explore your industry\" and \"Explore the work\" with more arrows.",
   "count": "27 arrow glyphs in copy plus one per list row",
-  "source": "S7 chevron CTAs on every link; S2 arrow on every link"
+  "source": "S7 chevron CTAs on every link; S2 arrow on every link",
+  "bench": [
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-customers.jpg",
+    "what": "Photo cards with a one-line outcome"
+   },
+   {
+    "site": "Snowflake",
+    "file": "refs-bench/snowflake-industries.jpg",
+    "what": "Customer story with a number and a photo"
+   },
+   {
+    "site": "Notion",
+    "file": "refs-bench/notion-use-cases.jpg",
+    "what": "Use cases as icon tiles, no arrows"
+   }
+  ]
  },
  {
   "id": "14-portal-dashboard",
   "title": "Portal home: checklist, empty card, blue links",
   "tell": "Eyebrow plus big tight heading, a \"Getting started\" rounded card with struck-through steps in default blue, then a centered empty state in a second identical card.",
   "count": "portal.loveleedaystudios.com home (screenshot qa_client_1440); cards centered, links #0066cc",
-  "source": "S3 missing unhappy paths and empty states that prompt the next action; S7 missing states; S2 card kit"
+  "source": "S3 missing unhappy paths and empty states that prompt the next action; S7 missing states; S2 card kit",
+  "bench": [
+   {
+    "site": "Stripe",
+    "file": "refs-bench/stripe-dashboard.jpg",
+    "what": "Dashboard with a dense payments table"
+   },
+   {
+    "site": "Ramp",
+    "file": "refs-bench/ramp-product-ui.jpg",
+    "what": "Cash and treasury overview"
+   },
+   {
+    "site": "Datadog",
+    "file": "refs-bench/datadog-hero.jpg",
+    "what": "Dashboard panels with real series"
+   }
+  ]
  }
 ]

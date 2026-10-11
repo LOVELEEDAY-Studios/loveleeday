@@ -14,23 +14,17 @@ Recommendation: A. It is the only option already in the approved brand book, it 
 
 Gotcha found on 2026-10-11: requesting `sentient@400,500` together with Switzer from the Fontshare CSS endpoint silently returns a different font. Request each family in its own call. `fonts.css` in this folder was built that way.
 
-## Decision 2: color
+## Decision 2: color (decided by the owner, not open)
 
-Tokens, all from the brand book:
+The LOVELEEDAY palette (#1d1d1f ink, #f5f5f7 surface, #f5f1eb cream, #0066cc blue, the dark sections) is the owner's brand, set by Daniel, and is out of scope for this review. See concepts/BRAND-COLORS.md. Color is never counted as a tell.
 
-- Navy `#0B1F3A`: ink, dark grounds, primary buttons on cream.
-- Cream `#F6F1E7`: page ground. Paper `#FFFBF4` for raised surfaces, `#EDE5D4` for a second band.
-- Deep teal `#0A6F68`: links, kicker text, buttons on cream (5.35:1 on cream, 6.0:1 with white text). The brand book's `#0C857C` is 4.0:1 against cream and is kept for fills and large text only.
-- Bright teal `#22D3C5`: buttons and accents on navy only.
-- Muted blue-gray `#3B4D63` for secondary text on cream, `#A9B6C8` on navy. Rule `#DDD3BF`.
-- Retired: `#1d1d1f`, `#f5f5f7`, `#0066cc`, `#0071e3`, and the multicolor (green, blue, orange, purple) brain palette.
-- Amber `#F2B84B` and coral `#E5675B` stay for state only (needs attention, problem), never as decoration.
+Every mockup and concept uses only the live values listed there, in the roles the live site uses them. Earlier drafts of this file proposed a navy, teal and amber set; Daniel rejected that ("I don't really like that you changed all the colors that I felt made the branding") and it is withdrawn.
 
 ## Decision 3: type scale and rules
 
 - Five steps: 64, 40, 28, 20, 17 px. Two weights (400 and 600; 500 for small labels). No other heading size anywhere. Today: 13 distinct h2 sizes and 98 percent at one weight.
 - No two-tone or two-sentence headlines. One sentence that says the thing.
-- No tracked all-caps labels. If a label is needed it is sentence case, 14px, 600, deep teal. Better: delete it and let the heading do the work.
+- No tracked all-caps labels. If a label is needed it is sentence case, 14px, 600, blue #0066cc. Better: delete it and let the heading do the work.
 - No arrows on rows; one text link per section, underlined, no glyph.
 - No pill chips unless they carry real state (a status the system actually holds).
 - Cards only when the content is a record. Rows, tables and photographs replace card grids. Radius 4 to 6 px.

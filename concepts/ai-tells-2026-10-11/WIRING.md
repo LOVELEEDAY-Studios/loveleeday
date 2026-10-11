@@ -12,7 +12,7 @@ File: `concepts/ai-tells-2026-10-11/ai-tell-check.mjs` (a copy also sits at `~/a
 Baselines on 2026-10-11:
 
 - Computed, 35 live pages (crawl/baseline.txt): exit 2, 9 tells over.
-- Static, `public/site` in this checkout (34 pages): exit 2, 5 tells over: defaultHexHits 4 (limit 0), twoPartHeadlineShare 0.28 (0.15), allCapsLabelsPerPage 40 (4), gradientsPerPage 38 (1), singleWeightShare 1.00 (0.90).
+- Static, `public/site` in this checkout (34 pages): exit 2, 4 tells over (the former defaultHexHits finding is withdrawn): twoPartHeadlineShare 0.28 (0.15), allCapsLabelsPerPage 40 (4), gradientsPerPage 38 (1), singleWeightShare 1.00 (0.90).
 
 Because both modes fail today, a blocking gate would stop every deploy. Roll it out in two steps: warn first, block once the live site is under threshold.
 
@@ -60,6 +60,6 @@ An action-guard rule that blocks `git push origin HEAD:main` in this repo while 
 
 - The thresholds are judgment calls grounded in the sources in EXPERTISE.md, not measurements from a study. Daniel should review `DEFAULTS` in the checker.
 - Static mode cannot read computed styles and does not run the card-uniformity or icon metrics. The portal (authenticated) was not crawled; it is covered by screenshots only.
-- The checker flags the default hexes (#1d1d1f, #0066cc, #f5f5f7, #0071e3). After the type and color decision in DESIGN-DIRECTION.md, the same list must be kept as the banned set; the new brand hexes must not appear in it.
+- The checker no longer has a color check (defaultHexHits and the Apple-palette counts were deleted 2026-10-11). The LOVELEEDAY palette (#1d1d1f ink, #f5f5f7 surface, #f5f1eb cream, #0066cc blue, the dark sections) is the owner's brand, set by Daniel, and is out of scope for this review. See concepts/BRAND-COLORS.md. Color is never counted as a tell.
 - Gradients: static mode counts 38 per page on the current CSS (the decorative brain and hero glows). The threshold of 1 may be too strict for a brand that uses a gradient on purpose; decide when the design lands.
 - No ratchet: a failing site can only be gated all-or-nothing. A baseline file with per-tell ceilings that may only go down would let the gate go live before the redesign finishes. Small addition to the checker, not built.

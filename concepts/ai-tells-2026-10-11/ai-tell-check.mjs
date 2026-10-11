@@ -16,7 +16,6 @@ const require = createRequire(import.meta.url);
 export const DEFAULTS = {
   // site-level (aggregate over all pages checked)
   maxDefaultStackShare: 0.15,     // share of visible text set in a system/Inter/Roboto/Geist default stack
-  maxDefaultHexHits: 0,           // distinct Apple/Tailwind default hexes used as brand colors (ink/bg/link)
   maxTwoPartHeadlineShare: 0.15,  // share of h1/h2 that are "Short sentence. Short sentence." / "X, not Y"
   maxAllCapsLabelsPerPage: 4,     // mean uppercase/tracked small labels per page
   maxUniformCardRatio: 0.60,      // share of cards sitting in a row of 3+ identical siblings
@@ -33,19 +32,6 @@ export const DEFAULTS = {
   maxStrokeIconShare: 0.50,      // share of svg icons that are Lucide/Heroicons style (24 viewBox, stroke 1.5-2, round caps)
   maxLeftAccentCards: 0,          // rounded cards with a thick one-sided colored border
   maxSameSectionPaddingShare: 0.60, // share of sections using the single most common vertical padding (no rhythm)
-};
-
-export const DEFAULT_HEXES = {
-  // Apple
-  '#1d1d1f': 'Apple ink', '#f5f5f7': 'Apple gray bg', '#0066cc': 'Apple link blue', '#0071e3': 'Apple button blue',
-  '#86868b': 'Apple secondary gray', '#6e6e73': 'Apple muted gray', '#424245': 'Apple dark gray', '#fbfbfd': 'Apple off-white',
-  // Tailwind
-  '#6366f1': 'tailwind indigo-500', '#4f46e5': 'tailwind indigo-600', '#8b5cf6': 'tailwind violet-500', '#7c3aed': 'tailwind violet-600',
-  '#a855f7': 'tailwind purple-500', '#9333ea': 'tailwind purple-600', '#3b82f6': 'tailwind blue-500', '#2563eb': 'tailwind blue-600',
-  '#10b981': 'tailwind emerald-500', '#0f172a': 'tailwind slate-900', '#f8fafc': 'tailwind slate-50', '#64748b': 'tailwind slate-500',
-  '#111827': 'tailwind gray-900', '#f9fafb': 'tailwind gray-50', '#6b7280': 'tailwind gray-500',
-  // second-wave cream/terracotta
-  '#f4f1ea': 'cream default', '#d97757': 'terracotta default',
 };
 
 export const BANNED_WORDS = ['seamless', 'seamlessly', 'unlock', 'unleash', 'empower', 'elevate', 'supercharge', 'streamline', 'leverage',
@@ -127,13 +113,11 @@ function hexNorm(h) { return h.toLowerCase(); }
 export function evaluatePages(pages, cfg = DEFAULTS) {
   const n = pages.length || 1;
   let chars = 0, defaultChars = 0; const famTotals = {};
-  const hexUse = {}; let h12 = 0, twoPart = 0; const twoPartList = [];
+  let h12 = 0, twoPart = 0; const twoPartList = [];
   let labels = 0, cards = 0, uniform = 0, banned = 0, centered = 0, sections = 0, gradients = 0, em = 0, nxy = 0, leftAcc = 0;
   const radii = {}; let icons = 0, strokeIcons = 0; const paddingSet = new Set(); const bannedTotals = {};
   for (const p of pages) {
     for (const [f, c] of Object.entries(p.fonts)) { famTotals[f] = (famTotals[f] || 0) + c; chars += c; if (DEFAULT_FONT_RE.test(f)) defaultChars += c; }
-    for (const [k, v] of Object.entries(p.hexes)) { const h = k.split(' ')[1]; if (DEFAULT_HEXES[h]) hexUse[h] = (hexUse[h] || 0) + 1; }
-    for (const [h] of (p.bgHexes || [])) if (DEFAULT_HEXES[h]) hexUse[h] = (hexUse[h] || 0) + 1;
     for (const h of p.headings.filter(x => x.tag !== 'H3')) { h12++; if (isTwoPart(h.text)) { twoPart++; twoPartList.push({ page: p.url, text: h.text }); } }
     labels += p.labels.length; cards += p.cardCount; uniform += p.uniformCards; gradients += p.gradients.length; em += p.emDash; nxy += p.notXY.length; leftAcc += p.leftAccent.length;
     for (const [w, c] of p.banned) { banned += c; bannedTotals[w] = (bannedTotals[w] || 0) + c; }
@@ -150,7 +134,6 @@ export function evaluatePages(pages, cfg = DEFAULTS) {
   const m = {
     twoToneHeadlineShare: h12 ? twoTone / h12 : 0, h2SizeVariety: h2sizes.size, singleWeightShare: h2n ? Math.max(0, ...Object.values(h2w)) / h2n : 0, tinyLabelShare: labN ? tiny / labN : 0,
     defaultStackShare: chars ? defaultChars / chars : 0,
-    defaultHexHits: Object.keys(hexUse).length,
     twoPartHeadlineShare: h12 ? twoPart / h12 : 0,
     allCapsLabelsPerPage: labels / n,
     uniformCardRatio: cards ? uniform / cards : 0,
@@ -165,7 +148,7 @@ export function evaluatePages(pages, cfg = DEFAULTS) {
     sameSectionPaddingShare: padTotal ? padTop / padTotal : 0,
   };
   const lim = {
-    defaultStackShare: ['max', cfg.maxDefaultStackShare], defaultHexHits: ['max', cfg.maxDefaultHexHits], twoPartHeadlineShare: ['max', cfg.maxTwoPartHeadlineShare],
+    defaultStackShare: ['max', cfg.maxDefaultStackShare], twoPartHeadlineShare: ['max', cfg.maxTwoPartHeadlineShare],
     allCapsLabelsPerPage: ['max', cfg.maxAllCapsLabelsPerPage], uniformCardRatio: ['max', cfg.maxUniformCardRatio], bannedCopyPerPage: ['max', cfg.maxBannedCopyPerPage],
     centeredSectionRatio: ['max', cfg.maxCenteredSectionRatio], gradientsPerPage: ['max', cfg.maxGradientsPerPage], emDashPerPage: ['max', cfg.maxEmDashPerPage],
     notXButYPerPage: ['max', cfg.maxNotXButYPerPage], sameRadiusShare: ['max', cfg.maxSameRadiusShare], strokeIconShare: ['max', cfg.maxStrokeIconShare],
@@ -174,7 +157,7 @@ export function evaluatePages(pages, cfg = DEFAULTS) {
   };
   const fails = [];
   for (const [k, [kind, v]] of Object.entries(lim)) { const val = m[k]; if (kind === 'max' ? val > v : val < v) fails.push({ tell: k, value: val, limit: v, kind }); }
-  return { pages: n, metrics: m, fails, detail: { famTotals, hexUse: Object.fromEntries(Object.entries(hexUse).map(([h, c]) => [h + ' (' + DEFAULT_HEXES[h] + ')', c])), twoPartList, bannedTotals, radii, paddings: [...paddingSet] } };
+  return { pages: n, metrics: m, fails, detail: { famTotals, twoPartList, bannedTotals, radii, paddings: [...paddingSet] } };
 }
 
 export function isTwoPart(t) {
@@ -249,7 +232,6 @@ async function main() {
     console.log(`AI-TELL CHECK  pages=${res.pages}  mode=${dir ? 'static' : 'computed'}`);
     for (const [k, v] of Object.entries(res.metrics)) { const f = res.fails.find(x => x.tell === k); console.log(`  ${f ? 'FAIL' : 'ok  '} ${k.padEnd(24)} ${String(fmt(v)).padStart(7)}  ${f ? '(limit ' + (f.kind === 'max' ? '<= ' : '>= ') + f.limit + ')' : ''}`); }
     console.log('  top fonts:', Object.entries(res.detail.famTotals).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([f, c]) => f).join(' | '));
-    console.log('  default hexes in use:', JSON.stringify(res.detail.hexUse));
     console.log('  banned words:', JSON.stringify(res.detail.bannedTotals));
     console.log('  two-part headlines (first 6):', res.detail.twoPartList.slice(0, 6).map(x => x.text).join(' || '));
   }

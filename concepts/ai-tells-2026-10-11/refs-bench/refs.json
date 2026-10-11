@@ -1,0 +1,72 @@
+{
+ "01-two-tone-headline": [
+  {"site":"Stripe","src":"stripe","y":900,"file":"stripe-heading-split","what":"Single-tone headline, one idea, over product cards"},
+  {"site":"Linear","src":"linear","y":6300,"file":"linear-heading-split","what":"Short headline left, supporting paragraph right"},
+  {"site":"Ramp","src":"ramp","y":1800,"file":"ramp-heading-split","what":"One claim, one line of support"}
+ ],
+ "02-eyebrow-labels": [
+  {"site":"Linear","src":"linear","y":6300,"file":"linear-heading-split","what":"Headline with no label above it"},
+  {"site":"Stripe","src":"stripe","y":6300,"file":"stripe-three-up","what":"Plain heading, one sentence of support"},
+  {"site":"Vercel","src":"vercel","y":900,"file":"vercel-heading","what":"Heading alone, generous space"}
+ ],
+ "03-font-stack": [
+  {"site":"Stripe","src":"stripe","y":0,"file":"stripe-hero","what":"Own typeface, tight headline"},
+  {"site":"Linear","src":"linear","y":9000,"file":"linear-closing","what":"Own typeface, large centered close"},
+  {"site":"Notion","src":"notion","y":0,"file":"notion-hero","what":"Serif and sans pairing"}
+ ],
+ "04-type-scale": [
+  {"site":"Vercel","src":"vercel","y":1800,"file":"vercel-scale","what":"One display size, one text size"},
+  {"site":"Linear","src":"linear","y":900,"file":"linear-scale","what":"Display, text, caption: three steps"},
+  {"site":"Ramp","src":"ramp","y":9900,"file":"ramp-scale","what":"Display and subhead in two weights"}
+ ],
+ "05-hero-photo-card": [
+  {"site":"Stripe","src":"stripe","y":0,"file":"stripe-hero","what":"Hero with real product beside the headline"},
+  {"site":"Ramp","src":"ramp","y":0,"file":"ramp-hero","what":"Hero with live product UI below"},
+  {"site":"Linear","src":"linear","y":0,"file":"linear-hero","what":"Hero with the product itself"}
+ ],
+ "06-three-feature-row": [
+  {"site":"Stripe","src":"stripe","y":6300,"file":"stripe-three-up","what":"Three columns, each with a different job"},
+  {"site":"Linear","src":"linear","y":1800,"file":"linear-three-up","what":"Three columns with real illustrations"},
+  {"site":"Ramp","src":"ramp","y":1800,"file":"ramp-feature-cards","what":"Mixed-size feature cards with product UI"}
+ ],
+ "07-four-identical-cards": [
+  {"site":"Ramp","src":"ramp","y":1800,"file":"ramp-feature-cards","what":"Mixed-size cards, product UI inside"},
+  {"site":"Notion","src":"notion","y":1800,"file":"notion-cards","what":"Cards led by real documents"},
+  {"site":"Stripe","src":"stripe","y":900,"file":"stripe-heading-split","what":"Cards with live product"}
+ ],
+ "08-status-pills": [
+  {"site":"Stripe","src":"stripe","y":8100,"file":"stripe-dashboard","what":"Status shown inside a real table"},
+  {"site":"Ramp","src":"ramp","y":2700,"file":"ramp-product-ui","what":"State shown on the row it belongs to"},
+  {"site":"Datadog","src":"datadog","y":0,"file":"datadog-hero","what":"Status carried by data, not chips"}
+ ],
+ "09-particle-brain": [
+  {"site":"Stripe","src":"stripe","y":9900,"file":"stripe-diagram","what":"Flat labeled systems diagram"},
+  {"site":"Ramp","src":"ramp","y":4500,"file":"ramp-systems","what":"Systems that never spoke, drawn as documents"},
+  {"site":"Snowflake","src":"snowflake","y":900,"file":"snowflake-diagram","what":"Platform shown as product"}
+ ],
+ "10-fake-browser-frame": [
+  {"site":"Stripe","src":"stripe","y":8100,"file":"stripe-dashboard","what":"Product UI at full fidelity, no window chrome"},
+  {"site":"Linear","src":"linear","y":2700,"file":"linear-product","what":"Product panel, dense real data"},
+  {"site":"Vercel","src":"vercel","y":900,"file":"vercel-heading","what":"Product screenshot as the section"}
+ ],
+ "11-copy-frames": [
+  {"site":"Linear","src":"linear","y":900,"file":"linear-scale","what":"Specific claim, one voice"},
+  {"site":"Stripe","src":"stripe","y":4500,"file":"stripe-claim","what":"Plain statement of what it does"},
+  {"site":"Vercel","src":"vercel","y":900,"file":"vercel-heading","what":"One sentence, no frame"}
+ ],
+ "12-repeating-section-pattern": [
+  {"site":"Stripe","src":"stripe","y":6300,"file":"stripe-three-up","what":"Sections change layout page to page"},
+  {"site":"Ramp","src":"ramp","y":8100,"file":"ramp-quote","what":"A quote beside a photograph"},
+  {"site":"Linear","src":"linear","y":8100,"file":"linear-testimonials","what":"Full-bleed color testimonial band"}
+ ],
+ "13-arrow-list": [
+  {"site":"Stripe","src":"stripe","y":7200,"file":"stripe-customers","what":"Photo cards with a one-line outcome"},
+  {"site":"Snowflake","src":"snowflake","y":4500,"file":"snowflake-industries","what":"Customer story with a number and a photo"},
+  {"site":"Notion","src":"notion","y":2100,"file":"notion-use-cases","what":"Use cases as icon tiles, no arrows"}
+ ],
+ "14-portal-dashboard": [
+  {"site":"Stripe","src":"stripe","y":8100,"file":"stripe-dashboard","what":"Dashboard with a dense payments table"},
+  {"site":"Ramp","src":"ramp","y":2700,"file":"ramp-product-ui","what":"Cash and treasury overview"},
+  {"site":"Datadog","src":"datadog","y":0,"file":"datadog-hero","what":"Dashboard panels with real series"}
+ ]
+}

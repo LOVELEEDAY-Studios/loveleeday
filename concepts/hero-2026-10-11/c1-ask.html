@@ -3,75 +3,130 @@
 <title>Hero concept 1: Ask a plain question</title>
 <link rel="stylesheet" href="base.css">
 <style>
-body{background:var(--cream)}
-.hero{padding:28px 0 96px}
-.grid{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:center}
-h1{font-size:clamp(46px,5.4vw,78px);line-height:1;letter-spacing:-.03em;font-weight:600;margin:0 0 28px}
-.lead{font-size:20px;line-height:1.55;max-width:520px;color:#25384F}
-.cta{display:flex;gap:14px;flex-wrap:wrap;margin:36px 0 22px}
-.works{font-size:15px;color:var(--muted);max-width:480px;border-top:1px solid var(--line);padding-top:18px;margin-top:40px}
-.works b{color:var(--ink);font-weight:600}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.tab{border:1px solid var(--line);background:transparent;border-radius:999px;padding:9px 18px;font-size:15px;font-weight:500}
-.tab[aria-selected=true]{background:var(--navy);border-color:var(--navy);color:var(--paper)}
-.win{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 60px -30px rgba(11,31,58,.35);overflow:hidden}
-.bar{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--cream2);font-size:14px;color:var(--muted)}
-.bar b{color:var(--ink);font-weight:600}
-.bar .dot{width:9px;height:9px;border-radius:50%;background:var(--teal-deep)}
-.bar em{margin-left:auto;font-style:normal}
-.q{padding:26px 28px 6px}
-.q small{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
-.q p{font:500 25px/1.25 var(--sans);letter-spacing:-.02em}
-.ans{padding:20px 28px 8px}
-.ans p{font-family:var(--serif);font-size:23px;line-height:1.35}
-.ans mark{background:var(--teal-soft);color:var(--ink);padding:0 4px;border-radius:3px}
-.next{margin:18px 28px 0;padding:14px 18px;background:var(--navy);color:var(--paper);border-radius:12px;font-size:16px}
-.next b{color:var(--teal);font-weight:600;margin-right:6px}
-.src{margin:22px 28px 26px;border-top:1px solid var(--line);padding-top:16px}
-.src h3{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:10px}
-.src ul{list-style:none;display:grid;gap:8px}
-.src li{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;font-size:15px}
-.src li i{width:26px;height:26px;border-radius:6px;background:var(--teal-soft);color:var(--teal-deep);font-style:normal;font-weight:700;font-size:13px;display:grid;place-items:center}
-.src li span{color:var(--muted);font-size:14px}
-.cap{margin-top:12px;font-size:13px;color:var(--muted)}
-@media(max-width:980px){.grid{grid-template-columns:1fr;gap:44px}.hero{padding-bottom:64px}}
-@media(max-width:520px){.q p{font-size:21px}.ans p{font-size:20px}.q,.ans{padding-left:20px;padding-right:20px}.next,.src{margin-left:20px;margin-right:20px}.src li{grid-template-columns:26px 1fr}.src li span{grid-column:2}.tab{padding:8px 14px;font-size:14px}}
+.hero{padding:88px 0 0}
+.head{display:block}
+h1{font-size:clamp(40px,5.3vw,76px);line-height:1.02;letter-spacing:-.032em;font-weight:600;max-width:1080px;text-wrap:balance}
+.side{display:flex;justify-content:space-between;align-items:center;gap:24px 40px;margin-top:32px;flex-wrap:wrap}
+.lead{font-size:19px;line-height:1.5;color:var(--muted);max-width:560px}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;margin:64px 0 16px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border:1px solid transparent;background:transparent;border-radius:999px;padding:0 16px;height:40px;font-size:15px;font-weight:500;color:var(--muted)}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected=true]{background:var(--ink);color:var(--white)}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:40px 40px 0;overflow:hidden;position:relative}
+.win{background:var(--white);border:1px solid var(--line);border-radius:14px 14px 0 0;border-bottom:0;box-shadow:var(--sh2);display:grid;grid-template-columns:232px minmax(0,1fr) 296px;grid-template-rows:auto 1fr;min-height:560px}
+.wb{grid-column:1/-1;display:flex;align-items:center;gap:10px;height:46px;padding:0 18px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.wb img{width:18px;height:18px}.wb b{font-weight:600;color:var(--ink)}.wb .sl{color:var(--line)}
+.wb .sync{margin-left:auto;display:flex;align-items:center;gap:8px}
+.sb{background:var(--panel);border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:2px;font-size:14px}
+.sb .org{display:flex;align-items:center;gap:10px;padding:6px 8px 16px;font-weight:600;font-size:14px}
+.sb .org i{width:26px;height:26px;border-radius:7px;background:var(--wash);color:var(--wash-t);font:600 12px var(--sans);display:grid;place-items:center;font-style:normal}
+.sb a{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:8px;text-decoration:none;color:var(--muted2)}
+.sb a.on{background:var(--wash);color:var(--ink);font-weight:500}
+.sb h4{font:500 13px var(--sans);color:var(--muted);padding:20px 8px 6px}
+.sb .src{display:flex;align-items:center;gap:10px;padding:6px 8px;color:var(--ink);font-size:13px}
+.sb .src span{margin-left:auto;color:var(--muted);font-size:12px}
+.mn{padding:26px 30px 24px;min-width:0}
+.ask{display:flex;gap:12px;align-items:flex-start}
+.av{width:30px;height:30px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font:600 11px var(--sans);color:var(--muted2);flex:none}
+.ask p{font:500 19px/1.35 var(--sans);letter-spacing:-.015em;padding-top:3px}
+.ask small{display:block;font:400 12px var(--sans);color:var(--muted);margin-top:4px;letter-spacing:0}
+.ans{margin:22px 0 0 42px}
+.ans>p{font-size:17px;line-height:1.55}
+.ans b{font-weight:600}
+.c{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;margin:0 2px;border-radius:5px;background:var(--wash);border:1px solid var(--wash-b);color:var(--wash-t);font:600 11px var(--sans);vertical-align:2px}
+.tb{margin-top:18px;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13.5px}
+.tb .th,.tb .tr{display:grid;grid-template-columns:1.05fr .4fr .65fr 1.15fr 1.05fr;gap:10px;padding:0 14px;align-items:center}
+.tb .th{height:34px;background:var(--panel);border-bottom:1px solid var(--line);color:var(--muted);font-size:12.5px;font-weight:500}
+.tb .tr{height:38px;border-bottom:1px solid var(--line2)}
+.tb .tr:last-child{border-bottom:0}
+.tb .tr span:first-child{font-weight:500}.chip{font-style:normal}
+.tb .more{height:36px;display:flex;align-items:center;padding:0 14px;color:var(--blue);font-size:13px;background:var(--panel)}
+.nx{margin-top:16px;display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--wash-b);background:var(--wash);border-radius:10px;font-size:14.5px}
+.nx .ic{color:var(--blue)}.nx b{font-weight:600}
+.rp{border-left:1px solid var(--line);padding:26px 22px;background:var(--white)}
+.rp h3{font:600 14px var(--sans);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.rp h3 span{font-weight:400;color:var(--muted);font-size:12.5px}
+.sc{border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px;background:var(--white)}
+.sc .t{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500}
+.sc .t em{margin-left:auto;font-style:normal;display:grid;place-items:center;min-width:18px;height:18px;border-radius:5px;background:var(--wash);color:var(--wash-t);font:600 11px var(--sans)}
+.sc p{font-size:12.5px;color:var(--muted);margin:6px 0 0 24px;line-height:1.45}
+.sc .row{margin:10px 0 0;border-radius:6px;background:var(--panel);border:1px solid var(--line2);font-size:12px;padding:6px 8px;color:var(--muted2)}
+.sc .row .l{display:block;margin-bottom:3px}
+.sc .row .hit{display:block;background:var(--wash);color:var(--ink);padding:4px 6px;border-radius:4px;line-height:1.4}
+.built{display:flex;gap:28px;align-items:center;flex-wrap:wrap;margin:36px 0 0;padding:26px 0 40px;font-size:14px;color:var(--muted)}
+.built b{font-weight:500;color:var(--ink);margin-right:4px}
+.built span{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}#b1{display:flex;flex-wrap:wrap;gap:12px 24px;white-space:normal}
+.cap{font-size:12.5px;color:var(--muted);padding:14px 0 0}
+@media(max-width:1180px){.win{grid-template-columns:200px minmax(0,1fr)}.rp{display:none}}
+@media(max-width:980px){.head{grid-template-columns:1fr;gap:28px}.hero{padding-top:56px}.tabs{margin-top:44px}.win{grid-template-columns:1fr}.sb{display:none}.stage{padding:20px 14px 0;border-radius:18px}}
+@media(max-width:520px){.mn{padding:20px 16px 0}.ask p{font-size:17px}.ans{margin-left:0}.tb .th,.tb .tr{grid-template-columns:1.1fr .6fr 1.3fr}.tb .th span:nth-child(2),.tb .tr span:nth-child(2),.tb .th span:nth-child(5),.tb .tr span:nth-child(5){display:none}.wb .sync{display:none}h1{letter-spacing:-.035em}.built{gap:14px 20px}}
 </style></head><body>
+<script src="icons.js"></script>
 <header class="nav"><div class="wrap"><a class="brand" href="#"><img src="assets/mark-ink-512.png" alt="">LOVELEEDAY</a>
 <nav class="nav-links"><a href="#">Product</a><a href="#">Solutions</a><a href="#">Industries</a><a href="#">Company</a></nav>
-<div class="nav-r"><a class="signin" href="#">Sign in</a><a class="btn sm navy" href="#">Talk to us</a></div></div></header>
-<main><section class="hero"><div class="wrap grid">
-<div>
-<h1>Ask a plain question. Get an answer you can check.</h1>
-<p class="lead">LOVELEEDAY connects the systems your team already uses, then answers in plain language and shows the exact records behind every number.</p>
-<div class="cta"><a class="btn navy" href="#">See it answer a real question</a><a class="btn ghost" href="#">Talk to us</a></div>
-<p class="works"><b>Works with what you have.</b> Accounting, email, spreadsheets, student, customer and case records. Nothing to replace, nothing to re-enter.</p>
-</div>
-<div>
-<div class="tabs" role="tablist" aria-label="Example organizations">
-<button class="tab" role="tab" aria-selected="true" data-i="0">Charter school</button>
-<button class="tab" role="tab" aria-selected="false" data-i="1">Manufacturer</button>
-<button class="tab" role="tab" aria-selected="false" data-i="2">City government</button>
-<button class="tab" role="tab" aria-selected="false" data-i="3">Property group</button></div>
-<div class="win" id="win">
-<div class="bar"><span class="dot"></span><b>LOVELEEDAY</b><em>Sample data</em></div>
-<div class="q"><small>The question</small><p id="q"></p></div>
-<div class="ans"><p id="a"></p></div>
-<div class="next"><b>Do next</b><span id="n"></span></div>
-<div class="src"><h3>Where this came from</h3><ul id="s"></ul></div>
-</div>
-<p class="cap">Example with sample data. No real organization is shown.</p>
-</div></div></section></main>
+<div class="nav-r"><a class="signin" href="#">Sign in</a><a class="btn sm" href="#">Talk to us</a></div></div></header>
+<main><section class="hero"><div class="wrap">
+<div class="head"><h1>Ask a plain question. Get an answer you can check.</h1>
+<div class="side"><p class="lead">LOVELEEDAY connects the systems your team already uses and answers in plain language, with the exact records behind every number.</p>
+<div class="cta"><a class="btn" href="#">See it answer a real question</a><a class="btn ghost" href="#">Talk to us</a></div></div></div>
+<div class="tabs" role="tablist" aria-label="Example organizations" id="tabs"></div>
+<div class="stage"><div class="win" id="win" aria-live="polite"></div></div>
+<p class="cap">Example with sample data. No real organization or student is shown.</p>
+<div class="built"><b>Reads what you already have</b><span id="b1"></span></div>
+</div></section></main>
 <script>
-const D=[
-{q:"Which students have missed more than 10 days this term, and has anyone called the family?",a:"<mark>18 students</mark> have missed more than 10 days. <mark>11</mark> have heard from a teacher. <mark>7</mark> have not been contacted at all.",n:"Give the 7 names to the front office today.",s:[["Attendance log","Oct 10 export"],["Parent messages","Sep 2 to Oct 10"],["Student roster","Updated this morning"]]},
-{q:"If the aluminum shipment comes in late, which orders slip?",a:"<mark>14 open orders</mark> depend on it. <mark>3 ship before Friday</mark>, and two of those customers have penalty dates in their contracts.",n:"Call those two customers before noon.",s:[["Open orders","Order system, today"],["Supplier email","Oct 9, 4:12 pm"],["Customer contracts","Terms, clause 6"]]},
-{q:"Which permit applications have waited more than 30 days, and why?",a:"<mark>9 applications</mark> are past 30 days. <mark>6</mark> are waiting on fire department sign-off. <mark>3</mark> are missing documents the applicant never sent.",n:"Send the fire department the list of 6, and email the 3 applicants.",s:[["Permit system","Status as of today"],["Inspector calendar","Next 3 weeks"],["Email with applicants","Last contact dates"]]},
-{q:"Which units have had a maintenance request open for more than a week?",a:"<mark>12 units</mark> across 4 buildings. <mark>8</mark> are waiting on a part. The oldest request is <mark>23 days</mark> old.",n:"Order the three parts that cover the 8 repairs.",s:[["Work orders","Maintenance system"],["Vendor quotes","Oct 6 to Oct 9"],["Tenant messages","Unit threads"]]}];
+const O=[
+{tab:"Charter school",ic:"school",org:"Lakeview Charter",init:"LC",who:"MJ",when:"Oct 10, 7:14 am",
+q:"Which students have missed more than 10 days this term, and has anyone called the family?",
+a:'<b>18 students</b> have missed more than 10 days this term.<span class="c">1</span> <b>11</b> have heard from a teacher or the office. <b>7</b> have not been contacted at all.<span class="c">2</span>',
+cols:["Student","Grade","Days missed","Family contact","Record"],
+rows:[["D. Okafor","6","17",["warn","None yet"],"Row 214"],["M. Reyes","8","15",["ok","Call, Oct 2"],"Row 877"],["T. Lindqvist","3","14",["warn","None yet"],"Row 1,203"],["S. Abara","7","13",["ok","Text, Oct 7"],"Row 640"],["J. Whitfield","5","12",["warn","None yet"],"Row 1,561"],["P. Nguyen","K","12",["ok","Call, Sep 29"],"Row 92"]],more:"12 more students",
+next:"Give the 7 names to the front office today.",
+src:[["sheet","Attendance log","Oct 10 export, 1,982 rows","Row 214","D. Okafor, grade 6, 17 absences","1"],["mail","Parent messages","Sep 2 to Oct 10, 1,114 threads","Thread 408","No message to this family since Aug 28","2"],["users","Student roster","412 students, edited 7:05 am","Row 77","D. Okafor, enrolled Aug 21","3"]],
+conn:[["Attendance log","6:40 am"],["Parent messages","6:42 am"],["Student roster","7:05 am"],["Billing","6:50 am"]]},
+{tab:"Manufacturer",ic:"factory",org:"Alder Metalworks",init:"AM",who:"RT",when:"Oct 9, 4:31 pm",
+q:"If the aluminum shipment comes in late, which orders slip?",
+a:'<b>14 open orders</b> depend on that shipment.<span class="c">1</span> <b>3 ship before Friday</b>, and two of those customers have penalty dates in their contracts.<span class="c">2</span>',
+cols:["Order","Customer","Ship date","Contract","Record"],
+rows:[["SO-20418","Harbor Supply","Wed, Oct 14",["warn","Penalty, clause 6"],"Orders 20418"],["SO-20431","Bellmont Tool","Thu, Oct 15",["warn","Penalty, clause 4"],"Orders 20431"],["SO-20440","Ridgeway HVAC","Fri, Oct 16",["ok","No penalty"],"Orders 20440"],["SO-20452","Tomlin Marine","Mon, Oct 19",["ok","No penalty"],"Orders 20452"],["SO-20466","Kestrel Fabrication","Tue, Oct 20",["ok","No penalty"],"Orders 20466"],["SO-20471","Pioneer Fastener","Wed, Oct 21",["ok","No penalty"],"Orders 20471"]],more:"8 more orders",
+next:"Call Harbor Supply and Bellmont Tool before noon.",
+src:[["db","Open orders","Order system, Oct 9, 4:30 pm","Order 20418","Ships Oct 14, 4,200 lb of 6061 bar"," 1"],["mail","Supplier email","Oct 9, 4:12 pm","From the mill","Delivery moved from Oct 12 to Oct 19","2"],["file","Customer contracts","41 contracts on file","Clause 6","Late delivery: 1.5% per day after the ship date","3"]],
+conn:[["Order system","4:30 pm"],["Supplier email","4:12 pm"],["Contracts","Oct 1"],["Inspection log","3:55 pm"]]},
+{tab:"City government",ic:"landmark",org:"City of Harlow",init:"CH",who:"AP",when:"Oct 10, 8:02 am",
+q:"Which permit applications have waited more than 30 days, and why?",
+a:'<b>9 applications</b> are past 30 days.<span class="c">1</span> <b>6</b> are waiting on fire department sign-off. <b>3</b> are missing documents the applicant never sent.<span class="c">2</span>',
+cols:["Permit","Applicant","Days waiting","Waiting on","Record"],
+rows:[["BP-2291","Delgado Bakery","52",["warn","Fire department"],"Permits 2291"],["BP-2304","Ashby Dental","47",["warn","Fire department"],"Permits 2304"],["BP-2318","North Mill Lofts","44",["warn","Fire department"],"Permits 2318"],["BP-2327","R. Castellano","39",["blue","Site plan"],"Permits 2327"],["BP-2333","Greenway Church","36",["warn","Fire department"],"Permits 2333"],["BP-2340","Okonkwo Salon","33",["blue","Insurance letter"],"Permits 2340"]],more:"3 more applications",
+next:"Send the fire department the list of 6, and email the 3 applicants.",
+src:[["db","Permit system","Status as of Oct 10, 7:45 am","Permit 2291","Filed Aug 19, fire review requested Aug 22"," 1"],["clock","Inspector calendar","Next 3 weeks","Oct 14","Fire inspector first open day"," 2"],["mail","Email with applicants","Last contact dates","Thread 118","Request for site plan sent Sep 4"," 3"]],
+conn:[["Permit system","7:45 am"],["Inspector calendar","7:50 am"],["Email","8:00 am"],["Payments","7:30 am"]]},
+{tab:"Property group",ic:"home",org:"Cedar Row Properties",init:"CR",who:"KL",when:"Oct 10, 6:55 am",
+q:"Which units have had a maintenance request open for more than a week?",
+a:'<b>12 units</b> across 4 buildings.<span class="c">1</span> <b>8</b> are waiting on a part. The oldest request is <b>23 days</b> old.<span class="c">2</span>',
+cols:["Unit","Building","Days open","Waiting on","Record"],
+rows:[["4B","Maple Court","23",["warn","Water heater valve"],"Work order 1187"],["2A","Cedar Row","19",["warn","Dishwasher pump"],"Work order 1204"],["7C","Linden House","16",["warn","Water heater valve"],"Work order 1219"],["1D","Maple Court","14",["blue","Tenant access"],"Work order 1226"],["3A","Linden House","11",["warn","Range igniter"],"Work order 1240"],["5B","Cedar Row","9",["warn","Dishwasher pump"],"Work order 1251"]],more:"6 more units",
+next:"Order the three parts that cover the 8 repairs.",
+src:[["db","Work orders","Maintenance system, live","Order 1187","Opened Sep 17, part on order Sep 22"," 1"],["file","Vendor quotes","Oct 6 to Oct 9","Quote 55","Valve, 3 in stock at supplier"," 2"],["mail","Tenant messages","Unit threads","Unit 4B","Tenant asked for an update Oct 8"," 3"]],
+conn:[["Work orders","6:50 am"],["Vendor quotes","Oct 9"],["Tenant messages","6:55 am"],["Rent roll","6:30 am"]]}];
 const $=i=>document.getElementById(i);
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function show(i){const d=D[i];$('q').textContent=d.q;$('a').innerHTML=d.a;$('n').textContent=d.n;
-$('s').innerHTML=d.s.map((x,k)=>`<li><i>${k+1}</i>${esc(x[0])}<span>${esc(x[1])}</span></li>`).join('');
+const E=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+$('tabs').innerHTML=O.map((o,i)=>`<button class="tab" role="tab" aria-selected="${i==0}" data-i="${i}">${ico(o.ic,'sm')}${E(o.tab)}</button>`).join('');
+$('b1').innerHTML=[["db","Accounting"],["mail","Email"],["sheet","Spreadsheets"],["users","Student and customer records"],["file","Contracts and PDFs"]].map(x=>`<span>${ico(x[0],'sm')}${x[1]}</span>`).join('');
+function show(i){const o=O[i];
+$('win').innerHTML=`<div class="wb"><img src="assets/mark-ink-512.png" alt=""><b>${E(o.org)}</b><span class="sl">/</span><span>Ask</span><span class="sync"><i class="dot"></i>All sources up to date</span></div>
+<aside class="sb"><div class="org"><i>${o.init}</i>${E(o.org)}</div>
+<a class="on" href="#">${ico('search')}Ask</a><a href="#">${ico('bookmark')}Saved questions</a><a href="#">${ico('bell')}Alerts</a><a href="#">${ico('chart')}Reports</a>
+<h4>Connected</h4>${o.conn.map(c=>`<div class="src">${ico('check','sm')}${E(c[0])}<span>${E(c[1])}</span></div>`).join('')}</aside>
+<section class="mn"><div class="ask"><div class="av">${o.who}</div><div><p>${E(o.q)}</p><small>${E(o.when)}</small></div></div>
+<div class="ans"><p>${o.a}</p>
+<div class="tb"><div class="th">${o.cols.map(c=>`<span>${E(c)}</span>`).join('')}</div>
+${o.rows.map(r=>`<div class="tr"><span>${E(r[0])}</span><span>${E(r[1])}</span><span>${E(r[2])}</span><span><i class="chip ${r[3][0]}">${E(r[3][1])}</i></span><span style="color:var(--muted)">${E(r[4])}</span></div>`).join('')}
+<div class="more">${E(o.more)}${ico('chev','sm')}</div></div>
+<div class="nx">${ico('arrow')}<span><b>Do next.</b> ${E(o.next)}</span></div></div></section>
+<aside class="rp"><h3>Where this came from<span>${o.src.length} sources</span></h3>
+${o.src.map(s=>`<div class="sc"><div class="t">${ico(s[0],'sm')}${E(s[1])}<em>${E(s[5]).trim()}</em></div><p>${E(s[2])}</p><div class="row"><span class="l">${E(s[3])}</span><span class="hit">${E(s[4])}</span></div></div>`).join('')}</aside>`;
 document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.i==i))}
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>show(+t.dataset.i));show(0);
 </script></body></html>

@@ -15,12 +15,12 @@ const linkSources = s => esc(s).replace(/\bS(\d+)\b/g, (t, n) => src['S' + n] ? 
 const tiles = idx.map((m, i) => `<article class="pair" id="p${i + 1}"><header><h2><span class="n">${i + 1}</span>${esc(m.title)}</h2>
 <dl><div><dt>Count on the live site</dt><dd>${esc(m.count)}</dd></div><div><dt>What it is</dt><dd>${esc(m.tell)}</dd></div><div><dt>Cited source</dt><dd>${linkSources(m.source)}</dd></div></dl></header>
 <div class="sides"><figure><figcaption>Before: the site today</figcaption><a class="stage" href="mockups/${esc(m.id)}-before.html" target="_blank" rel="noopener" aria-label="Open before at full size"><div class="box"><iframe src="mockups/${esc(m.id)}-before.html" title="Before ${esc(m.title)}" scrolling="no"></iframe></div></a></figure>
-<figure><figcaption>After: proposed</figcaption><a class="stage" href="mockups/${esc(m.id)}-after.html" target="_blank" rel="noopener" aria-label="Open after at full size"><div class="box"><iframe src="mockups/${esc(m.id)}-after.html" title="After ${esc(m.title)}" scrolling="no"></iframe></div></a></figure></div></article>`).join('\n');
+<figure><figcaption>After: proposed</figcaption><a class="stage" href="mockups/${esc(m.id)}-after.html" target="_blank" rel="noopener" aria-label="Open after at full size"><div class="box"><iframe src="mockups/${esc(m.id)}-after.html" title="After ${esc(m.title)}" scrolling="no"></iframe></div></a></figure></div>
+<div class="bench"><h3>Benchmarked against</h3><div class="bgrid">${(m.bench || []).map(b => `<figure><a href="${esc(b.file)}" target="_blank" rel="noopener"><img src="${esc(b.file)}" alt="${esc(b.site)} section" loading="lazy"></a><figcaption><b>${esc(b.site)}</b>. ${esc(b.what)}</figcaption></figure>`).join('')}</div></div></article>`).join('\n');
 const srcList = Object.entries(src).map(([k, v]) => `<li id="src-${k}"><b>${k}</b> <a href="${safeUrl(v.url)}" target="_blank" rel="noopener">${esc(v.title)}</a></li>`).join('\n');
 const top10 = [
   ['Default system font stack', '100 percent of 182,485 characters'],
-  ['Apple colors (ink, gray, link blue)', '#1d1d1f on 34 of 35 pages, #0066cc on 28, #f5f5f7 on 26'],
-  ['Tracked all-caps labels', '562 across 35 pages, 42 on the home page, 85 percent at 10px'],
+    ['Tracked all-caps labels', '562 across 35 pages, 42 on the home page, 85 percent at 10px'],
   ['Two-tone headlines', '46 percent of h1 and h2'],
   ['Two-part headlines ("Short. Short.")', '54 of 185 headings, 8 on the home page'],
   ['No type scale', '13 distinct h2 sizes, 98 percent at one weight'],
@@ -34,7 +34,7 @@ const html = `<!doctype html>
 <title>How the site reads as AI-made</title>
 <link rel="stylesheet" href="fonts.css">
 <style>
-:root{--navy:#0B1F3A;--cream:#F6F1E7;--paper:#FFFBF4;--teal:#0A6F68;--muted:#3B4D63;--line:#DDD3BF}
+:root{--navy:#1d1d1f;--cream:#fff;--paper:#fff;--teal:#0066cc;--muted:#62656c;--line:#e4e5e9}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--navy);font:400 16px/1.55 'Switzer',sans-serif;-webkit-font-smoothing:antialiased}
 a{color:var(--teal)}
 .wrap{width:min(1400px,calc(100% - 48px));margin:0 auto}
@@ -52,7 +52,8 @@ h1{font:400 clamp(34px,4vw,52px)/1.05 'Sentient',Georgia,serif;margin:0 0 10px}
 .pair header{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px;margin-bottom:20px}
 .pair h2{font:600 24px/1.2 'Switzer',sans-serif;margin:0;letter-spacing:-.02em}
 .n{display:inline-block;min-width:34px;color:var(--teal);margin-right:6px}
-dl{margin:0;display:grid;gap:10px}dt{font-size:13px;font-weight:600;color:var(--teal)}dd{margin:0;font-size:15px;color:#25384F}
+.bench{margin-top:20px}.bench h3{font:600 14px/1.3 'Switzer',sans-serif;color:var(--muted);margin:0 0 10px}.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.bgrid figure a{display:block;border:1px solid var(--line);overflow:hidden;border-radius:6px}.bgrid img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top}.bgrid figcaption{margin:6px 0 0;font-weight:400;font-size:13px;color:var(--muted)}.bgrid figcaption b{color:#1d1d1f;font-weight:600}
+dl{margin:0;display:grid;gap:10px}dt{font-size:13px;font-weight:600;color:var(--teal)}dd{margin:0;font-size:15px;color:#1d1d1f}
 .sides{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 figure{margin:0}figcaption{font-size:14px;font-weight:600;margin-bottom:8px;color:var(--muted)}
 .stage{display:block;position:relative;overflow:hidden;border:1px solid var(--line);background:#fff}
@@ -66,7 +67,7 @@ figure{margin:0}figcaption{font-size:14px;font-weight:600;margin-bottom:8px;colo
 </style></head><body>
 <div class="wrap">
 <header class="top"><div><h1>Fourteen ways the site reads as AI-made</h1>
-<p class="sub">Each pair shows the live pattern on the left and a proposed fix on the right, in the new direction: navy, cream and teal, Switzer and Sentient, real photography. Counts come from a crawl of 35 live pages on Oct 11. Click any side for full size.</p></div>
+<p class="sub">Each pair shows the live pattern on the left and a proposed fix on the right, in LOVELEEDAY's own colors (white, ink, blue, cream, dark) with Switzer and Sentient and real photography. Under each pair is the section from a company site it was benchmarked against. Counts come from a crawl of 35 live pages on Oct 11. Click any side for full size.</p></div>
 <div class="tog" role="group" aria-label="Preview width"><button type="button" data-w="1440" aria-pressed="true">1440 wide</button><button type="button" data-w="390" aria-pressed="false">390 wide</button></div></header>
 <section class="top10"><h2>The ten biggest tells, by count</h2><ol>${top10.map(t => `<li>${esc(t[0])}<span>${esc(t[1])}</span></li>`).join('')}</ol></section>
 <main>${tiles}</main>
@@ -77,11 +78,11 @@ let W=1440;
 function layout(){
  document.querySelectorAll('.stage').forEach(s=>{
   const box=s.querySelector('.box'),f=s.querySelector('iframe');const tw=s.clientWidth;
-  const fh=W===390?900:560;const scale=Math.min(tw/W,1);
+  const fh=W===390?900:720;const scale=Math.min(tw/W,1);
   s.style.height=Math.round(fh*scale)+'px';
   box.style.width=W+'px';box.style.height=fh+'px';f.style.width=W+'px';f.style.height=fh+'px';
   box.style.transform='translate('+Math.round((tw-W*scale)/2)+'px,0) scale('+scale+')';
-  s.style.background=W===390?'#E9E1D0':'#fff';box.style.boxShadow=W===390?'0 0 0 1px #DDD3BF':'none';
+  s.style.background=W===390?'#f5f5f7':'#fff';box.style.boxShadow=W===390?'0 0 0 1px #e4e5e9':'none';
  });
 }
 document.querySelectorAll('.tog button').forEach(b=>b.onclick=()=>{W=+b.dataset.w;document.querySelectorAll('.tog button').forEach(x=>x.setAttribute('aria-pressed',x===b));layout()});

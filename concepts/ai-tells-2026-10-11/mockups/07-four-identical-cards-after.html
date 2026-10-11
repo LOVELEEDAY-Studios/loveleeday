@@ -1,21 +1,49 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>mockup</title><style>
 @import url('../fonts.css');
-:root{--ink:#0B1F3A;--ink2:#3B4D63;--paper:#f6f1e7;--paper2:#EDE5D4;--teal:#0A6F68;--teal2:#08524D;--line:#DDD3BF;--night:#0B1F3A;--night2:#A9B6C8;
---head:'Sentient',Georgia,serif;--body:'Switzer',sans-serif}
-*{box-sizing:border-box}body{margin:0;font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+:root{--ink:#1d1d1f;--muted:#62656c;--blue:#0066cc;--blueh:#0059b3;--fig:#0071e3;--surf:#f5f5f7;--panel:#fafbfd;--cream:#f5f1eb;--warm:#6f6253;--warm2:#85786a;--rule:#ded8cd;
+--dark:#0b0b10;--dark2:#101114;--brown:#231a11;--line:#e4e5e9;--line2:#edf0f4;--wash:#eaf1fb;--washb:#cadcf3;--washt:#3d71ac;--ok:#2f6b4f;--warn:#8a4b1d;--tan:#e0b48a;--warnwash:#fbf0e7;
+--head:'Switzer',-apple-system,sans-serif;--ans:'Sentient',Georgia,serif;
+--sh:0 1px 2px rgba(29,29,31,.06),0 8px 24px -10px rgba(29,29,31,.12),0 28px 56px -28px rgba(29,29,31,.16);
+--dsh:0 1px 0 rgba(255,255,255,.06) inset,0 24px 60px -24px rgba(0,0,0,.6)}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--head);font-size:16px;line-height:1.6;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01"}
 .wrap{width:min(1120px,calc(100% - 96px));margin-inline:auto}
-.night{background:var(--night);color:#f6f1e7}
-h1,h2,h3{font-family:var(--body);font-weight:600;letter-spacing:-.028em;line-height:1.08;margin:0}
-h1{font-size:64px}h2{font-size:40px}h3{font-size:28px}
-p{margin:0;max-width:62ch;color:var(--ink2)}.night p{color:#C9D4E3}
-.lead{font-size:20px;line-height:1.55}
-.kicker{font-size:14px;font-weight:600;color:var(--teal);margin:0 0 12px}.night .kicker{color:#22D3C5}
-.btn{background:var(--teal);color:#fff;border-radius:6px;padding:0 22px;height:48px;display:inline-flex;align-items:center;font-size:16px;font-weight:600;text-decoration:none}
-.night .btn{background:#22D3C5;color:var(--ink)}
-.tl{color:var(--teal2);font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}.night .tl{color:#f6f1e7}
-@media(max-width:760px){.wrap{width:calc(100% - 40px)}h1{font-size:40px}h2{font-size:32px}h3{font-size:24px}.lead{font-size:18px}}
-</style></head><body><div id="stage"><section class="night" style="padding:88px 0"><div class="wrap"><div class="c7" style="display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start"><div><p class="kicker">One question, followed through</p><h2 style="margin-bottom:18px">Is this one vendor with three names?</h2><p>Yes. Three systems call it three things. We matched them and kept every original name.</p></div>
-<div style="background:#f6f1e7;color:#0B1F3A;border-radius:4px;padding:8px 28px 12px"><table style="width:100%;border-collapse:collapse;font-size:16px"><tr style="text-align:left;font-size:14px;color:#3B4D63"><th style="padding:14px 0;font-weight:600">System</th><th style="font-weight:600">Calls it</th><th style="font-weight:600">Note</th></tr>
-<tr style="border-top:1px solid #DDD3BF"><td style="padding:14px 0">Ledger</td><td style="font-weight:600">Vendor 44127</td><td style="color:#3B4D63">Payment history</td></tr><tr style="border-top:1px solid #DDD3BF"><td style="padding:14px 0">Mailbox</td><td style="font-weight:600">HES</td><td style="color:#3B4D63">Most recent message</td></tr><tr style="border-top:1px solid #DDD3BF"><td style="padding:14px 0">Contract</td><td style="font-weight:600">Harbor Equipment Services</td><td style="color:#3B4D63">Renews next quarter</td></tr></table>
-<p style="color:#0B1F3A;margin-top:14px;font-family:var(--head);font-size:20px">One company. Three names on file. Example data.</p></div></div></div></section>
-<style>@media(max-width:760px){.c7{grid-template-columns:1fr!important;gap:32px!important}}</style></div></body></html>
+.dark{background:var(--dark);color:#fff}.cream{background:var(--cream)}.surf{background:var(--surf)}
+h1,h2,h3,h4{font-family:var(--head);font-weight:600;margin:0;color:inherit}
+.d1{font-size:60px;line-height:1.03;letter-spacing:-.038em}
+.d2{font-size:40px;line-height:1.08;letter-spacing:-.03em}
+.d3{font-size:28px;line-height:1.2;letter-spacing:-.022em}
+.h4{font-weight:600;font-size:18px;line-height:1.35;letter-spacing:-.01em}
+p{margin:0;color:var(--muted)}
+.dark p{color:rgba(255,255,255,.66)}.cream p{color:var(--warm)}
+.lead{font-size:20px;line-height:1.5;letter-spacing:-.008em}
+.sm{font-size:14px;line-height:1.5}.xs{font-size:13px;line-height:1.45}
+.btn{background:var(--blue);color:#fff;border-radius:999px;padding:0 22px;height:44px;display:inline-flex;align-items:center;font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--blueh)}
+.btn.sec{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--line),0 1px 2px rgba(29,29,31,.06)}
+.dark .btn.sec{background:transparent;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+.tl{color:var(--blue);font-weight:500;text-decoration:none;font-size:15px}.tl:hover{color:var(--blueh)}
+.dark .tl{color:#fff}
+.cols{display:grid;grid-template-columns:var(--c);gap:var(--gap,64px);align-items:var(--al,start)}
+.app{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--sh);overflow:hidden;color:var(--ink)}
+.app p{color:var(--muted)}
+.sc{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;line-height:1.4}
+.tbl th{text-align:left;font-weight:500;color:var(--muted);font-size:13px;padding:10px 20px;border-bottom:1px solid var(--line);background:var(--panel);white-space:nowrap}
+.tbl td{padding:13px 20px;border-bottom:1px solid var(--line2);white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .r{text-align:right}.tbl td.w{white-space:normal}
+.tbl b{font-weight:600}
+.mu{color:var(--muted)}.ok{color:var(--ok)}.wn{color:var(--warn)}
+.st{display:inline-flex;align-items:center;gap:8px;font-weight:500}
+.st:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.av{width:36px;height:36px;border-radius:8px;background:var(--surf);box-shadow:0 0 0 1px var(--line) inset;display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:var(--ink);flex:none}
+.dcard{background:var(--dark2);border:1px solid rgba(255,255,255,.1);border-radius:14px;box-shadow:var(--dsh);overflow:hidden}
+.ico{display:inline-block;vertical-align:-3px;flex:none}
+@media(max-width:900px){.wrap{width:calc(100% - 40px)}.cols{--c:1fr!important;--gap:32px!important}.cols>*{grid-column:auto!important;grid-row:auto!important}.d1{font-size:40px}.d2{font-size:32px}.d3{font-size:24px}.lead{font-size:18px}}
+</style></head><body><div id="stage"><section class="surf" style="padding:96px 0"><div class="wrap"><div class="cols" style="--c:6fr 5fr;--gap:72px;--al:end;margin-bottom:48px"><h2 class="d2" style="max-width:21ch">Ask the question you would ask a colleague</h2><p class="lead" style="max-width:34ch">Each answer comes back in the shape it needs: a record, a list, a timeline or a chart.</p></div>
+<div class="cols" style="--c:repeat(12,1fr);--gap:16px;--al:stretch">
+<div class="app" style="grid-column:span 7;padding:26px 26px 6px"><div class="h4" style="margin-bottom:16px">Who is this customer, across CRM, billing and support?</div><div class="sc"><table class="tbl" style="margin:0 -20px;width:calc(100% + 40px)"><tr><th>System</th><th>Name</th><th class="r">Records</th></tr><tr><td>CRM</td><td><b>Ridgeline Outfitters</b></td><td class="r mu">1 account</td></tr><tr><td>Billing</td><td><b>RIDGELINE OUTFIT LLC</b></td><td class="r mu">38 invoices</td></tr><tr><td>Support</td><td><b>J. Tran, Ridgeline</b></td><td class="r mu">5 tickets</td></tr></table></div></div>
+<div class="app" style="grid-column:span 5;padding:26px"><div class="h4" style="margin-bottom:6px">Is this one vendor with three names?</div><p class="sm" style="margin-bottom:18px">Yes. All three point to one company, and each original name is kept.</p><div style="font-size:15px;line-height:2.1"><div style="display:flex;justify-content:space-between;border-top:1px solid var(--line2)"><b>HES</b><span class="mu">Mailbox</span></div><div style="display:flex;justify-content:space-between;border-top:1px solid var(--line2)"><b>Vendor 44127</b><span class="mu">Ledger</span></div><div style="display:flex;justify-content:space-between;border-top:1px solid var(--line2)"><b>Harbor Equipment Services</b><span class="mu">Contract</span></div></div></div>
+<div class="app" style="grid-column:span 5;padding:26px"><div class="h4" style="margin-bottom:16px">Which contracts renew next quarter, and who owns them?</div><div style="margin-bottom:14px"><div style="display:flex;justify-content:space-between;font-size:14px"><b style="font-weight:600">Harbor Equipment</b><span class="mu">M. Okafor &middot; Jan 9</span></div><div style="height:6px;border-radius:3px;background:var(--wash);margin-top:7px"><div style="height:6px;border-radius:3px;width:76%;background:var(--blue)"></div></div></div><div style="margin-bottom:14px"><div style="display:flex;justify-content:space-between;font-size:14px"><b style="font-weight:600">Lakeshore Linen</b><span class="mu">D. Reyes &middot; Feb 1</span></div><div style="height:6px;border-radius:3px;background:var(--wash);margin-top:7px"><div style="height:6px;border-radius:3px;width:55%;background:var(--blue)"></div></div></div><div style="margin-bottom:14px"><div style="display:flex;justify-content:space-between;font-size:14px"><b style="font-weight:600">Northwind Freight</b><span class="mu">M. Okafor &middot; Mar 15</span></div><div style="height:6px;border-radius:3px;background:var(--wash);margin-top:7px"><div style="height:6px;border-radius:3px;width:22%;background:var(--blue)"></div></div></div><p class="xs">Bar shows how close each renewal is.</p></div>
+<div class="app" style="grid-column:span 7;padding:26px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px"><div class="h4">Where are open work orders piling up, by site?</div></div><div style="display:grid;grid-template-columns:64px 1fr 32px;gap:14px;align-items:center;margin-bottom:12px;font-size:14px"><span class="mu">North</span><div style="height:12px;border-radius:3px;background:var(--line2)"><div style="height:12px;border-radius:3px;width:42.857142857142854%;background:var(--washb)"></div></div><b style="font-variant-numeric:tabular-nums;text-align:right">6</b></div><div style="display:grid;grid-template-columns:64px 1fr 32px;gap:14px;align-items:center;margin-bottom:12px;font-size:14px"><span class="mu">Harbor</span><div style="height:12px;border-radius:3px;background:var(--line2)"><div style="height:12px;border-radius:3px;width:64.28571428571429%;background:var(--washb)"></div></div><b style="font-variant-numeric:tabular-nums;text-align:right">9</b></div><div style="display:grid;grid-template-columns:64px 1fr 32px;gap:14px;align-items:center;margin-bottom:12px;font-size:14px"><span class="mu">East</span><div style="height:12px;border-radius:3px;background:var(--line2)"><div style="height:12px;border-radius:3px;width:100%;background:var(--warn)"></div></div><b style="font-variant-numeric:tabular-nums;text-align:right">14</b></div><div style="display:grid;grid-template-columns:64px 1fr 32px;gap:14px;align-items:center;margin-bottom:12px;font-size:14px"><span class="mu">South</span><div style="height:12px;border-radius:3px;background:var(--line2)"><div style="height:12px;border-radius:3px;width:28.57142857142857%;background:var(--washb)"></div></div><b style="font-variant-numeric:tabular-nums;text-align:right">4</b></div><p class="xs" style="margin-top:18px;padding-top:14px;border-top:1px solid var(--line2)">Each site's limit is 10 open orders. Updated Oct 9, 2:14 PM. Example data.</p></div></div></div></section></div></body></html>

@@ -1,20 +1,53 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>mockup</title><style>
 @import url('../fonts.css');
-:root{--ink:#0B1F3A;--ink2:#3B4D63;--paper:#f6f1e7;--paper2:#EDE5D4;--teal:#0A6F68;--teal2:#08524D;--line:#DDD3BF;--night:#0B1F3A;--night2:#A9B6C8;
---head:'Sentient',Georgia,serif;--body:'Switzer',sans-serif}
-*{box-sizing:border-box}body{margin:0;font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+:root{--ink:#1d1d1f;--muted:#62656c;--blue:#0066cc;--blueh:#0059b3;--fig:#0071e3;--surf:#f5f5f7;--panel:#fafbfd;--cream:#f5f1eb;--warm:#6f6253;--warm2:#85786a;--rule:#ded8cd;
+--dark:#0b0b10;--dark2:#101114;--brown:#231a11;--line:#e4e5e9;--line2:#edf0f4;--wash:#eaf1fb;--washb:#cadcf3;--washt:#3d71ac;--ok:#2f6b4f;--warn:#8a4b1d;--tan:#e0b48a;--warnwash:#fbf0e7;
+--head:'Switzer',-apple-system,sans-serif;--ans:'Sentient',Georgia,serif;
+--sh:0 1px 2px rgba(29,29,31,.06),0 8px 24px -10px rgba(29,29,31,.12),0 28px 56px -28px rgba(29,29,31,.16);
+--dsh:0 1px 0 rgba(255,255,255,.06) inset,0 24px 60px -24px rgba(0,0,0,.6)}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--head);font-size:16px;line-height:1.6;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01"}
 .wrap{width:min(1120px,calc(100% - 96px));margin-inline:auto}
-.night{background:var(--night);color:#f6f1e7}
-h1,h2,h3{font-family:var(--body);font-weight:600;letter-spacing:-.028em;line-height:1.08;margin:0}
-h1{font-size:64px}h2{font-size:40px}h3{font-size:28px}
-p{margin:0;max-width:62ch;color:var(--ink2)}.night p{color:#C9D4E3}
-.lead{font-size:20px;line-height:1.55}
-.kicker{font-size:14px;font-weight:600;color:var(--teal);margin:0 0 12px}.night .kicker{color:#22D3C5}
-.btn{background:var(--teal);color:#fff;border-radius:6px;padding:0 22px;height:48px;display:inline-flex;align-items:center;font-size:16px;font-weight:600;text-decoration:none}
-.night .btn{background:#22D3C5;color:var(--ink)}
-.tl{color:var(--teal2);font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}.night .tl{color:#f6f1e7}
-@media(max-width:760px){.wrap{width:calc(100% - 40px)}h1{font-size:40px}h2{font-size:32px}h3{font-size:24px}.lead{font-size:18px}}
-</style></head><body><div id="stage"><section class="night" style="padding:96px 0"><div class="wrap"><h2 style="max-width:18ch;margin-bottom:56px">Every answer shows where it came from</h2>
-<div class="f6" style="display:grid;grid-template-columns:5fr 4fr;gap:72px"><div><p class="lead" style="color:#f6f1e7;font-family:var(--head);font-size:30px;line-height:1.25;max-width:22ch">Click any figure and see the invoice, contract or message behind it.</p><p style="margin-top:20px">An answer you cannot trace is a guess. Each one links back to the record it was built from, with the date we learned it.</p></div>
-<div style="border-top:1px solid #24406A"><div style="display:grid;grid-template-columns:40px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid #24406A"><span style="font-family:var(--head);font-size:24px;color:#22D3C5">1</span><div><h3 style="font-size:22px;margin-bottom:6px">Keeps history</h3><p style="font-size:16px">What was true in March stays findable after April changes it.</p></div></div><div style="display:grid;grid-template-columns:40px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid #24406A"><span style="font-family:var(--head);font-size:24px;color:#22D3C5">2</span><div><h3 style="font-size:22px;margin-bottom:6px">Flags change</h3><p style="font-size:16px">When a fact an earlier decision rested on shifts, the decision comes back to you.</p></div></div></div></div></div></section>
-<style>@media(max-width:760px){.f6{grid-template-columns:1fr!important;gap:32px!important}}</style></div></body></html>
+.dark{background:var(--dark);color:#fff}.cream{background:var(--cream)}.surf{background:var(--surf)}
+h1,h2,h3,h4{font-family:var(--head);font-weight:600;margin:0;color:inherit}
+.d1{font-size:60px;line-height:1.03;letter-spacing:-.038em}
+.d2{font-size:40px;line-height:1.08;letter-spacing:-.03em}
+.d3{font-size:28px;line-height:1.2;letter-spacing:-.022em}
+.h4{font-weight:600;font-size:18px;line-height:1.35;letter-spacing:-.01em}
+p{margin:0;color:var(--muted)}
+.dark p{color:rgba(255,255,255,.66)}.cream p{color:var(--warm)}
+.lead{font-size:20px;line-height:1.5;letter-spacing:-.008em}
+.sm{font-size:14px;line-height:1.5}.xs{font-size:13px;line-height:1.45}
+.btn{background:var(--blue);color:#fff;border-radius:999px;padding:0 22px;height:44px;display:inline-flex;align-items:center;font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--blueh)}
+.btn.sec{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--line),0 1px 2px rgba(29,29,31,.06)}
+.dark .btn.sec{background:transparent;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+.tl{color:var(--blue);font-weight:500;text-decoration:none;font-size:15px}.tl:hover{color:var(--blueh)}
+.dark .tl{color:#fff}
+.cols{display:grid;grid-template-columns:var(--c);gap:var(--gap,64px);align-items:var(--al,start)}
+.app{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--sh);overflow:hidden;color:var(--ink)}
+.app p{color:var(--muted)}
+.sc{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;line-height:1.4}
+.tbl th{text-align:left;font-weight:500;color:var(--muted);font-size:13px;padding:10px 20px;border-bottom:1px solid var(--line);background:var(--panel);white-space:nowrap}
+.tbl td{padding:13px 20px;border-bottom:1px solid var(--line2);white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .r{text-align:right}.tbl td.w{white-space:normal}
+.tbl b{font-weight:600}
+.mu{color:var(--muted)}.ok{color:var(--ok)}.wn{color:var(--warn)}
+.st{display:inline-flex;align-items:center;gap:8px;font-weight:500}
+.st:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.av{width:36px;height:36px;border-radius:8px;background:var(--surf);box-shadow:0 0 0 1px var(--line) inset;display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:var(--ink);flex:none}
+.dcard{background:var(--dark2);border:1px solid rgba(255,255,255,.1);border-radius:14px;box-shadow:var(--dsh);overflow:hidden}
+.ico{display:inline-block;vertical-align:-3px;flex:none}
+@media(max-width:900px){.wrap{width:calc(100% - 40px)}.cols{--c:1fr!important;--gap:32px!important}.cols>*{grid-column:auto!important;grid-row:auto!important}.d1{font-size:40px}.d2{font-size:32px}.d3{font-size:24px}.lead{font-size:18px}}
+</style></head><body><div id="stage"><section class="dark" style="padding:112px 0"><div class="wrap"><div class="cols" style="--c:6fr 5fr;--gap:72px;--al:end;margin-bottom:56px"><h2 class="d2" style="max-width:22ch">Every answer shows where it came from</h2><p class="lead" style="max-width:34ch">An answer you cannot trace is a guess. Each one links back to the record it was built from, with the date we learned it.</p></div>
+<div class="cols" style="--c:7fr 5fr;--gap:20px">
+<div class="dcard" style="grid-row:span 2;display:flex;flex-direction:column"><div style="padding:28px 28px 0"><div style="font-family:var(--ans);font-size:24px;line-height:1.35;color:#fff">Harbor Equipment Services has an open invoice due Nov 2.<sup style="font:600 12px var(--head);color:var(--fig);margin-left:3px">1</sup> The terms moved to net 45 in April.<sup style="font:600 12px var(--head);color:var(--fig);margin-left:3px">2</sup></div>
+<div style="margin-top:22px;border:1px solid rgba(255,255,255,.12);border-radius:10px;overflow:hidden"><div style="display:flex;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.1)"><span style="color:var(--fig)"><svg class="ico" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 1.8h9v12.4l-2-1.2-2.5 1.2-2.5-1.2-2 1.2z"/><path d="M6 5.5h4M6 8h4"/></svg></span><div><div class="sm" style="color:#fff;font-weight:500">Invoice 20-1138 &middot; Ledger</div><div class="xs" style="color:rgba(255,255,255,.6)">Mar 14, 2026 &middot; due net 45</div></div></div>
+<div style="display:flex;gap:12px;padding:14px 16px"><span style="color:var(--fig)"><svg class="ico" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="m2.5 4.8 5.5 4 5.5-4"/></svg></span><div><div class="sm" style="color:#fff;font-weight:500">Re: updated payment terms &middot; Mailbox</div><div class="xs" style="color:rgba(255,255,255,.6)">Apr 9, 2026 &middot; J. Alvarez</div><div class="xs" style="color:rgba(255,255,255,.78);margin-top:6px">&ldquo;We are moving all accounts to net 45 effective April 1.&rdquo;</div></div></div></div></div>
+<div style="padding:28px;margin-top:auto"><h3 class="h4" style="margin-bottom:6px">Follow every answer</h3><p class="sm">Click any figure and read the invoice, contract or message behind it.</p></div></div>
+<div class="dcard" style="padding:26px 26px 24px"><h3 class="h4" style="margin-bottom:6px">Keep the full picture</h3><p class="sm" style="margin-bottom:20px">What was true in March stays findable after April changes it.</p>
+<div style="position:relative;padding-left:22px;border-left:1px solid rgba(255,255,255,.16);margin-left:4px"><div style="margin-bottom:16px"><div class="xs" style="color:rgba(255,255,255,.55)">Known Mar 14</div><div class="sm" style="color:#fff">Payment terms: net 30</div></div><div><div class="xs" style="color:rgba(255,255,255,.55)">Known Apr 9</div><div class="sm" style="color:#fff">Payment terms: net 45</div></div></div></div>
+<div class="dcard" style="padding:26px 26px 24px"><h3 class="h4" style="margin-bottom:6px">Notice what changes</h3><p class="sm" style="margin-bottom:18px">When a fact a decision rested on shifts, the decision comes back to you.</p>
+<div style="border:1px solid rgba(224,180,138,.4);background:rgba(224,180,138,.08);border-radius:10px;padding:14px 16px;display:flex;gap:12px"><span style="color:var(--tan)"><svg class="ico" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.2 14.3 13H1.7z"/><path d="M8 6.6v3M8 11.4v.1"/></svg></span><div><div class="sm" style="color:#fff;font-weight:500">Decision of Mar 20 assumed net 30</div><div class="xs" style="color:rgba(255,255,255,.66)">Terms changed to net 45 on Apr 9.</div></div></div></div></div></div></section></div></body></html>

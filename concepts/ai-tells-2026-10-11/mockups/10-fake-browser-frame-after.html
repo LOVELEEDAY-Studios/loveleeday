@@ -1,20 +1,50 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>mockup</title><style>
 @import url('../fonts.css');
-:root{--ink:#0B1F3A;--ink2:#3B4D63;--paper:#f6f1e7;--paper2:#EDE5D4;--teal:#0A6F68;--teal2:#08524D;--line:#DDD3BF;--night:#0B1F3A;--night2:#A9B6C8;
---head:'Sentient',Georgia,serif;--body:'Switzer',sans-serif}
-*{box-sizing:border-box}body{margin:0;font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+:root{--ink:#1d1d1f;--muted:#62656c;--blue:#0066cc;--blueh:#0059b3;--fig:#0071e3;--surf:#f5f5f7;--panel:#fafbfd;--cream:#f5f1eb;--warm:#6f6253;--warm2:#85786a;--rule:#ded8cd;
+--dark:#0b0b10;--dark2:#101114;--brown:#231a11;--line:#e4e5e9;--line2:#edf0f4;--wash:#eaf1fb;--washb:#cadcf3;--washt:#3d71ac;--ok:#2f6b4f;--warn:#8a4b1d;--tan:#e0b48a;--warnwash:#fbf0e7;
+--head:'Switzer',-apple-system,sans-serif;--ans:'Sentient',Georgia,serif;
+--sh:0 1px 2px rgba(29,29,31,.06),0 8px 24px -10px rgba(29,29,31,.12),0 28px 56px -28px rgba(29,29,31,.16);
+--dsh:0 1px 0 rgba(255,255,255,.06) inset,0 24px 60px -24px rgba(0,0,0,.6)}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--head);font-size:16px;line-height:1.6;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01"}
 .wrap{width:min(1120px,calc(100% - 96px));margin-inline:auto}
-.night{background:var(--night);color:#f6f1e7}
-h1,h2,h3{font-family:var(--body);font-weight:600;letter-spacing:-.028em;line-height:1.08;margin:0}
-h1{font-size:64px}h2{font-size:40px}h3{font-size:28px}
-p{margin:0;max-width:62ch;color:var(--ink2)}.night p{color:#C9D4E3}
-.lead{font-size:20px;line-height:1.55}
-.kicker{font-size:14px;font-weight:600;color:var(--teal);margin:0 0 12px}.night .kicker{color:#22D3C5}
-.btn{background:var(--teal);color:#fff;border-radius:6px;padding:0 22px;height:48px;display:inline-flex;align-items:center;font-size:16px;font-weight:600;text-decoration:none}
-.night .btn{background:#22D3C5;color:var(--ink)}
-.tl{color:var(--teal2);font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}.night .tl{color:#f6f1e7}
-@media(max-width:760px){.wrap{width:calc(100% - 40px)}h1{font-size:40px}h2{font-size:32px}h3{font-size:24px}.lead{font-size:18px}}
-</style></head><body><div id="stage"><section style="padding:80px 0"><div class="wrap"><div style="display:grid;grid-template-columns:4fr 6fr;gap:56px;align-items:center" class="c10"><div><p class="kicker">Ask in plain words</p><h2 style="margin-bottom:16px;font-size:36px">Who is HES, across our systems?</h2><p>The answer names the company, lists every name it goes by, and points to the record behind each.</p></div>
-<div style="background:#fff;border:1px solid #DDD3BF;padding:28px 30px"><div style="font-size:14px;color:#3B4D63;margin-bottom:8px">Answer</div><div style="font-family:var(--head);font-size:26px;line-height:1.25;margin-bottom:18px">One company: Harbor Equipment Services.</div>
-<table style="width:100%;border-collapse:collapse;font-size:15px"><tr style="border-top:1px solid #DDD3BF"><td style="padding:10px 0;font-weight:600">HES</td><td style="color:#3B4D63">Mailbox</td><td style="color:#3B4D63;text-align:right">May 2</td></tr><tr style="border-top:1px solid #DDD3BF"><td style="padding:10px 0;font-weight:600">Vendor 44127</td><td style="color:#3B4D63">Ledger</td><td style="color:#3B4D63;text-align:right">Mar 14</td></tr><tr style="border-top:1px solid #DDD3BF"><td style="padding:10px 0;font-weight:600">Harbor Equipment Services</td><td style="color:#3B4D63">Contract</td><td style="color:#3B4D63;text-align:right">Jan 9</td></tr></table></div></div></div></section>
-<style>@media(max-width:760px){.c10{grid-template-columns:1fr!important;gap:28px!important}}</style></div></body></html>
+.dark{background:var(--dark);color:#fff}.cream{background:var(--cream)}.surf{background:var(--surf)}
+h1,h2,h3,h4{font-family:var(--head);font-weight:600;margin:0;color:inherit}
+.d1{font-size:60px;line-height:1.03;letter-spacing:-.038em}
+.d2{font-size:40px;line-height:1.08;letter-spacing:-.03em}
+.d3{font-size:28px;line-height:1.2;letter-spacing:-.022em}
+.h4{font-weight:600;font-size:18px;line-height:1.35;letter-spacing:-.01em}
+p{margin:0;color:var(--muted)}
+.dark p{color:rgba(255,255,255,.66)}.cream p{color:var(--warm)}
+.lead{font-size:20px;line-height:1.5;letter-spacing:-.008em}
+.sm{font-size:14px;line-height:1.5}.xs{font-size:13px;line-height:1.45}
+.btn{background:var(--blue);color:#fff;border-radius:999px;padding:0 22px;height:44px;display:inline-flex;align-items:center;font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--blueh)}
+.btn.sec{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--line),0 1px 2px rgba(29,29,31,.06)}
+.dark .btn.sec{background:transparent;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+.tl{color:var(--blue);font-weight:500;text-decoration:none;font-size:15px}.tl:hover{color:var(--blueh)}
+.dark .tl{color:#fff}
+.cols{display:grid;grid-template-columns:var(--c);gap:var(--gap,64px);align-items:var(--al,start)}
+.app{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--sh);overflow:hidden;color:var(--ink)}
+.app p{color:var(--muted)}
+.sc{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;line-height:1.4}
+.tbl th{text-align:left;font-weight:500;color:var(--muted);font-size:13px;padding:10px 20px;border-bottom:1px solid var(--line);background:var(--panel);white-space:nowrap}
+.tbl td{padding:13px 20px;border-bottom:1px solid var(--line2);white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .r{text-align:right}.tbl td.w{white-space:normal}
+.tbl b{font-weight:600}
+.mu{color:var(--muted)}.ok{color:var(--ok)}.wn{color:var(--warn)}
+.st{display:inline-flex;align-items:center;gap:8px;font-weight:500}
+.st:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.av{width:36px;height:36px;border-radius:8px;background:var(--surf);box-shadow:0 0 0 1px var(--line) inset;display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:var(--ink);flex:none}
+.dcard{background:var(--dark2);border:1px solid rgba(255,255,255,.1);border-radius:14px;box-shadow:var(--dsh);overflow:hidden}
+.ico{display:inline-block;vertical-align:-3px;flex:none}
+@media(max-width:900px){.wrap{width:calc(100% - 40px)}.cols{--c:1fr!important;--gap:32px!important}.cols>*{grid-column:auto!important;grid-row:auto!important}.d1{font-size:40px}.d2{font-size:32px}.d3{font-size:24px}.lead{font-size:18px}}
+</style></head><body><div id="stage"><section class="surf" style="padding:96px 0"><div class="wrap cols" style="--c:4fr 8fr;--gap:56px;--al:center"><div><h2 class="d2" style="max-width:19ch;margin-bottom:18px">Ask in plain words</h2><p class="lead" style="max-width:30ch">The answer names the company, lists every name it goes by, and points to the record behind each.</p><p style="margin-top:24px"><a class="tl">Try a question</a></p></div>
+<div class="app" style="display:grid;grid-template-columns:176px 1fr;min-height:430px" ><div style="background:var(--panel);border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:2px" class="n10"><div style="display:flex;gap:10px;align-items:center;padding:4px 8px 14px"><span class="av" style="width:28px;height:28px;border-radius:7px;font-size:12px;background:var(--ink);color:#fff">D</span><b style="font-size:14px">Dabney &amp; Co.</b></div><div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--muted)"><svg class="ico" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7.5 8 2.8l5.5 4.7V13.5h-11z"/><path d="M6.5 13.5v-3.5h3v3.5"/></svg>Home</div><div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;font-size:14px;background:var(--wash);color:var(--blue);font-weight:500"><svg class="ico" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/></svg>Answers</div><div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--muted)"><svg class="ico" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.8h5l3 3v9.4H4z"/><path d="M9 1.8v3h3"/></svg>Records</div><div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--muted)"><svg class="ico" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.8 9.2a2.6 2.6 0 0 0 3.7 0l2-2a2.6 2.6 0 0 0-3.7-3.7l-.7.7"/><path d="M9.2 6.8a2.6 2.6 0 0 0-3.7 0l-2 2a2.6 2.6 0 0 0 3.7 3.7l.7-.7"/></svg>Sources</div><div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--muted)"><svg class="ico" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="5.5" r="2.4"/><path d="M1.8 13c.4-2.3 2.1-3.5 4.2-3.5s3.8 1.2 4.2 3.5"/><path d="M10.5 3.4a2.3 2.3 0 0 1 0 4.2M12 9.7c1.3.5 2.1 1.6 2.4 3.3"/></svg>People</div><div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;font-size:14px;color:var(--muted)"><svg class="ico" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.8v1.6M8 12.6v1.6M1.8 8h1.6M12.6 8h1.6M3.6 3.6l1.1 1.1M11.3 11.3l1.1 1.1M3.6 12.4l1.1-1.1M11.3 4.7l1.1-1.1"/></svg>Settings</div></div>
+<div style="padding:22px 26px;min-width:0"><div class="xs mu" style="margin-bottom:14px">Answers &nbsp;/&nbsp; Who is HES</div><div style="display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:15px;margin-bottom:22px;box-shadow:0 1px 2px rgba(29,29,31,.05)"><svg class="ico" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3.5 3.5"/></svg><span>Who is HES, across our systems?</span></div>
+<div style="font-family:var(--ans);font-size:24px;line-height:1.3;margin-bottom:6px">One company: Harbor Equipment Services.</div><p class="sm" style="margin-bottom:18px">Four systems know it under three names. All point to the same vendor.</p>
+<div><div class="sc" style="border:1px solid var(--line);border-radius:10px"><table class="tbl"><tr><th>Name on file</th><th>Source</th><th class="r">Learned</th></tr><tr><td><b>HES</b></td><td class="mu">Mailbox</td><td class="r mu">May 2</td></tr><tr><td><b>Vendor 44127</b></td><td class="mu">Ledger</td><td class="r mu">Mar 14</td></tr><tr><td><b>Harbor Equip.</b></td><td class="mu">Support</td><td class="r mu">Feb 11</td></tr><tr><td><b>Harbor Equipment Services</b></td><td class="mu">Contracts</td><td class="r mu">Jan 9</td></tr></table></div>
+<div style="border:1px solid var(--washb);background:var(--wash);border-radius:10px;padding:14px 16px;margin-top:16px"><div class="xs" style="color:var(--washt);font-weight:500;margin-bottom:6px">Evidence &middot; Mailbox, May 2</div><div class="sm" style="color:var(--ink)">&ldquo;Hi team, HES invoice 20-1138 is attached for the April service visit.&rdquo;</div><div class="xs" style="margin-top:10px"><a class="tl" style="font-size:13px">Open message</a></div></div></div></div></div></div></section>
+<style>@media(max-width:900px){.app[style*="176px"]{grid-template-columns:1fr!important}.n10{display:none!important}.app .cols{--c:1fr!important}}</style></div></body></html>

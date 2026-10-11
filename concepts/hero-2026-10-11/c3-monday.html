@@ -3,50 +3,85 @@
 <title>Hero concept 3: Monday morning</title>
 <link rel="stylesheet" href="base.css">
 <style>
-body{background:var(--navy);color:var(--paper)}
-.nav{background:var(--navy)}.nav a,.nav .brand{color:var(--paper)}
-.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);min-height:760px}
-.txt{background:var(--navy);padding:56px 120px 80px max(40px,calc((100vw - 1320px)/2));display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
-h1{font-size:clamp(40px,4.3vw,64px);line-height:1;letter-spacing:-.03em;font-weight:600;margin-bottom:26px}
-.lead{font-size:20px;max-width:480px;color:#C9D4E3}
-.cta{display:flex;gap:14px;flex-wrap:wrap;margin:34px 0 0}
-.pic{position:relative;background:#1a2a40}
-.clip{position:absolute;inset:0;overflow:hidden}
-.clip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%}
-.phone{position:absolute;left:-90px;bottom:48px;width:318px;background:#0b0f16;border-radius:46px;padding:11px;box-shadow:0 50px 80px -20px rgba(0,0,0,.6);z-index:3}
-.scr{background:var(--paper);color:var(--navy);border-radius:36px;overflow:hidden;padding:0 0 18px}
-.sb{display:flex;justify-content:space-between;align-items:center;padding:13px 22px 0;font:600 13px var(--sans)}
-.isl{width:92px;height:26px;background:#0b0f16;border-radius:14px;margin:-2px auto 0;position:absolute;left:50%;transform:translateX(-50%);top:21px}
-.ic{display:flex;gap:5px;align-items:center}.ic i{display:block;background:var(--navy);border-radius:1px}
-.hd{display:flex;align-items:center;gap:10px;padding:26px 18px 12px;border-bottom:1px solid var(--line)}
-.hd img{width:26px;height:26px}.hd b{font-size:15px;display:block;line-height:1.1}.hd span{font-size:12px;color:var(--muted)}
-.m{padding:14px 16px 0}
-.m h2{font:600 19px/1.2 var(--sans);letter-spacing:-.02em;margin-bottom:12px}
-.it{background:var(--cream);border-radius:14px;padding:12px 14px;margin-bottom:9px;font-size:14px;line-height:1.35}
-.it b{display:block;font-weight:600;font-size:15px;margin-bottom:2px}
-.it small{display:block;margin-top:6px;color:var(--teal-deep);font-size:12px;font-weight:600}
-.home{width:112px;height:4px;border-radius:2px;background:var(--navy);margin:14px auto 0}
-.cap{position:absolute;right:20px;bottom:14px;z-index:3;font-size:13px;background:rgba(11,31,58,.82);padding:6px 12px;border-radius:999px}
-@media(max-width:1100px){.phone{left:-60px;width:290px}}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.txt{padding:40px 20px 48px}h1{font-size:40px}.pic{min-height:900px}.clip{height:420px;bottom:auto}.phone{left:50%;transform:translateX(-50%);top:300px;bottom:auto}.cap{display:none}}
-</style></head><body class="dark">
-<header class="nav"><div class="wrap"><a class="brand" href="#"><img src="assets/mark-ink-512.png" alt="" style="filter:invert(1) brightness(1.6)">LOVELEEDAY</a>
+body{background:var(--brown);color:var(--white)}
+.nav.dark{background:var(--brown);border-bottom:1px solid rgba(255,255,255,.12)}
+.hero{position:relative;overflow:hidden;min-height:800px}
+.pic{position:absolute;top:0;right:0;bottom:0;width:62%}
+.pic img{width:100%;height:100%;object-fit:cover;object-position:58% 50%;filter:saturate(.92) contrast(1.02)}
+.pic:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--brown) 0,rgba(35,26,17,.72) 16%,rgba(35,26,17,.1) 48%,rgba(35,26,17,0) 100%)}
+.grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;min-height:800px}
+.txt{align-self:center;padding:72px 0 96px}
+h1{font-size:clamp(40px,4.5vw,64px);line-height:1.04;letter-spacing:-.03em;font-weight:600;margin-bottom:26px;text-wrap:balance}
+.lead{font-size:19px;line-height:1.55;max-width:460px;color:var(--onfoot)}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.facts{display:grid;grid-template-columns:repeat(3,auto);gap:0 36px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16);max-width:460px;justify-content:start}
+.facts b{display:block;font:600 28px/1 var(--sans);letter-spacing:-.03em}
+.facts span{font-size:13.5px;color:var(--onfoot);display:block;margin-top:6px;line-height:1.35}
+.scene{position:relative}
+.phone{position:absolute;left:70px;top:76px;width:330px;background:var(--dark);border-radius:50px;padding:10px;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 2px 4px rgba(11,11,16,.5),0 60px 100px -20px rgba(11,11,16,.7)}
+.scr{background:var(--white);color:var(--ink);border-radius:41px;overflow:hidden;height:690px;position:relative}
+.isl{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:96px;height:28px;background:var(--dark);border-radius:16px}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font:600 14px var(--sans);height:50px}
+.sig{display:flex;gap:5px;align-items:flex-end}.sig i{display:block;background:var(--ink);width:3px;border-radius:1px}.sig b{display:block;width:22px;height:11px;border-radius:3px;border:1.5px solid var(--ink);margin-left:5px}
+.hd{display:flex;align-items:center;gap:10px;padding:14px 18px 12px}
+.hd img{width:30px;height:30px}.hd b{display:block;font-size:16px;line-height:1.15}.hd span{font-size:12.5px;color:var(--muted)}
+.hd .bell{margin-left:auto;width:32px;height:32px;border-radius:50%;background:var(--surface);display:grid;place-items:center;color:var(--muted2)}
+.m{padding:4px 14px 0}
+.m h2{font:600 22px/1.15 var(--sans);letter-spacing:-.025em;margin:2px 4px 14px}
+.it{border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-bottom:10px;background:var(--white);box-shadow:var(--sh1)}
+.it .t{display:flex;gap:10px;align-items:flex-start}
+.it .t i{width:30px;height:30px;border-radius:9px;background:var(--wash);color:var(--blue);display:grid;place-items:center;flex:none}
+.it .t i.w{background:var(--warn-w);color:var(--warn)}
+.it b{display:block;font-weight:600;font-size:15px;line-height:1.25}
+.it p{font-size:13px;line-height:1.4;color:var(--muted);margin-top:2px}
+.bar{height:6px;border-radius:3px;background:var(--line);margin:12px 0 4px;overflow:hidden}.bar i{display:block;height:100%;width:85%;background:var(--blue-f);border-radius:3px}
+.bl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.src{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:9px;border-top:1px solid var(--line2);font-size:12px;color:var(--muted)}
+.src span{display:inline-flex;align-items:center;gap:6px}
+.src a{color:var(--blue);text-decoration:none;font-weight:500}
+.note{position:absolute;left:-18px;right:-18px;top:0}
+.toast{position:absolute;right:20px;top:230px;width:318px;background:var(--white);color:var(--ink);border-radius:18px;padding:14px 16px;box-shadow:0 1px 2px rgba(11,11,16,.2),0 30px 60px -20px rgba(11,11,16,.55);display:flex;gap:12px;align-items:flex-start}
+.toast img{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);padding:5px;flex:none}
+.toast b{font-size:14px;font-weight:600;display:flex;justify-content:space-between}.toast b span{font-weight:400;color:var(--muted);font-size:12.5px}
+.toast p{font-size:13.5px;line-height:1.4;color:var(--ink);margin-top:2px}
+.ask{position:absolute;left:14px;right:14px;bottom:18px;display:flex;align-items:center;gap:10px;height:46px;border:1px solid var(--line);border-radius:999px;padding:0 16px;font-size:14px;color:var(--muted);background:var(--panel)}.ask .ic{color:var(--muted2)}
+.cap{position:absolute;right:20px;bottom:20px;z-index:3;font-size:13px;color:var(--white);background:var(--dark);padding:7px 14px;border-radius:999px}
+@media(max-width:1180px){.phone{left:30px;width:312px}.toast{right:8px;width:290px}}
+@media(max-width:960px){.hero{min-height:0}.pic{position:relative;width:100%;height:320px;margin-top:0;order:2}.pic:after{background:linear-gradient(180deg,var(--brown) 0,rgba(35,26,17,.1) 40%,rgba(35,26,17,0) 100%)}
+ .grid{grid-template-columns:1fr;min-height:0;gap:0}.txt{padding:48px 0 36px}
+ .scene{height:500px;margin-top:0;overflow:hidden}.phone{left:50%;transform:translateX(-50%);top:0;width:312px}.toast{display:none}.cap{display:none}.facts{margin-top:36px}
+ .hero{display:flex;flex-direction:column}}
+@media(max-width:520px){.facts{grid-template-columns:repeat(3,auto);gap:0 22px}.facts b{font-size:24px}}
+</style></head><body>
+<script src="icons.js"></script>
+<header class="nav dark"><div class="wrap"><a class="brand" href="#"><img src="assets/mark-ink-512.png" alt="">LOVELEEDAY</a>
 <nav class="nav-links"><a href="#">Product</a><a href="#">Solutions</a><a href="#">Industries</a><a href="#">Company</a></nav>
-<div class="nav-r"><a class="signin" href="#">Sign in</a><a class="btn sm" href="#">Talk to us</a></div></div></header>
+<div class="nav-r"><a class="signin" href="#">Sign in</a><a class="btn sm white" href="#">Talk to us</a></div></div></header>
 <main><section class="hero">
+<div class="pic"><img src="assets/talk-nonprofit.jpg" alt="Volunteers sorting donated clothing and supplies in a bright warehouse"></div>
+<div class="wrap grid">
 <div class="txt">
 <h1>Start Monday already knowing what changed.</h1>
 <p class="lead">Every morning LOVELEEDAY reads across your systems and sends the few things that changed since you last looked, each with the record behind it and what to do about it.</p>
-<div class="cta"><a class="btn" href="#">See a sample morning brief</a><a class="btn ghost" href="#">Talk to us</a></div>
+<div class="cta"><a class="btn white" href="#">See a sample morning brief</a><a class="btn ghost-d" href="#">Talk to us</a></div>
+<div class="facts"><div><b>7:00 am</b><span>Delivered before the day starts</span></div><div><b>3 to 5</b><span>Changes, never a dashboard</span></div><div><b>1 tap</b><span>From a line to its record</span></div></div>
 </div>
-<div class="pic"><div class="clip"><img src="assets/talk-nonprofit.jpg" alt="Volunteers sorting donated clothing and supplies in a bright warehouse"></div>
+<div class="scene">
 <div class="phone"><div class="scr">
-<div class="sb"><span>7:02</span><span class="ic"><i style="width:3px;height:6px"></i><i style="width:3px;height:9px"></i><i style="width:3px;height:12px"></i><i style="width:22px;height:11px;border-radius:3px;margin-left:5px"></i></span></div><div class="isl"></div>
-<div class="hd"><img src="assets/mark-ink-512.png" alt=""><div><b>Morning brief</b><span>Monday, October 12</span></div></div>
+<div class="isl"></div>
+<div class="sb"><span>7:02</span><span class="sig"><i style="height:6px"></i><i style="height:9px"></i><i style="height:12px"></i><b></b></span></div>
+<div class="hd"><img src="assets/mark-ink-512.png" alt=""><div><b>Morning brief</b><span>Monday, October 12</span></div><span class="bell"><svg class="ic sm"><use href="#i-bell"/></svg></span></div>
 <div class="m"><h2>Since Friday, 3 things changed</h2>
-<div class="it"><b>Coat drive is at 85% of goal</b>1,020 of 1,200 coats collected. 2 weeks left.<small>Source: intake log, Oct 11</small></div>
-<div class="it"><b>Van lease renews in 12 days</b>Renewal rate is higher than last year's contract.<small>Source: lease agreement, page 4</small></div>
-<div class="it"><b>3 large gifts came in</b>None have a thank-you sent yet.<small>Source: donor records</small></div>
-</div><div class="home"></div></div></div>
+<div class="it"><div class="t"><i><svg class="ic sm"><use href="#i-heart"/></svg></i><div><b>Coat drive is at 85% of goal</b><p>1,020 of 1,200 coats collected. 2 weeks left.</p></div></div>
+<div class="bar"><i></i></div><div class="bl"><span>1,020 collected</span><span>Goal 1,200</span></div>
+<div class="src"><span><svg class="ic sm"><use href="#i-sheet"/></svg>Intake log, Oct 11</span><a href="#">Open</a></div></div>
+<div class="it"><div class="t"><i class="w"><svg class="ic sm"><use href="#i-clock"/></svg></i><div><b>Van lease renews in 12 days</b><p>The renewal rate is higher than last year's contract.</p></div></div>
+<div class="src"><span><svg class="ic sm"><use href="#i-file"/></svg>Lease agreement, page 4</span><a href="#">Open</a></div></div>
+<div class="it"><div class="t"><i><svg class="ic sm"><use href="#i-users"/></svg></i><div><b>3 large gifts came in</b><p>None have a thank-you sent yet.</p></div></div>
+<div class="src"><span><svg class="ic sm"><use href="#i-db"/></svg>Donor records, Oct 9 to 11</span><a href="#">Open</a></div></div>
+</div><div class="ask"><svg class="ic sm"><use href="#i-search"/></svg>Ask about anything</div></div></div>
+<div class="toast"><img src="assets/mark-ink-512.png" alt=""><div><b>LOVELEEDAY<span>7:02 am</span></b><p>Your Monday brief is ready. 3 things changed since Friday.</p></div></div>
+</div>
+</div>
 <span class="cap">Sample brief with example data</span>
-</div></section></main></body></html>
+</section></main></body></html>

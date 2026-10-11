@@ -33,8 +33,8 @@ Two further findings shape how we fix things:
 
 - Purple or indigo, purple-to-blue gradients, glow behind cards [S1, S4, S8]. The usual origin story is that Tailwind UI's demos used `bg-indigo-500` and the model learned it; the account of Adam Wathan apologising for that is secondhand and unverified here [S4].
 - Stock class tokens as palette: indigo-600, slate-900, rounded-2xl, shadow-lg [S8]. Renaming `indigo` to `primary` changes the label, not the palette [S8].
-- Apple-derived neutrals (`#1d1d1f` ink, `#f5f5f7` section gray, `#0066cc` / `#0071e3` link blue) are the same class of default: a famous brand's tokens used without a reason. This is our reading of the sources; no source tests Apple hexes specifically.
-- Second-wave defaults: cream `#F4F1EA`, a serif display face, terracotta `#D97757` (which is Anthropic's own interaction accent) [S2]. Dark near-black with one acid accent [S2].
+- Palette is out of scope. The LOVELEEDAY palette (#1d1d1f ink, #f5f5f7 surface, #f5f1eb cream, #0066cc blue, the dark sections) is the owner's brand, set by Daniel, and is out of scope for this review. See concepts/BRAND-COLORS.md. Color is never counted as a tell. Only the font stack and structural patterns are reviewed.
+- Second-wave defaults (for new work; LOVELEEDAY's own cream #f5f1eb is the owner's brand and exempt): cream `#F4F1EA`, a serif display face, terracotta `#D97757` (which is Anthropic's own interaction accent) [S2]. Dark near-black with one acid accent [S2].
 - Dark mode by simple inversion [S7]. Glassmorphism and blurred glow with no reason [S2]. Brand colour on nav, buttons, links, borders, badges and focus rings at once [S7].
 
 ### 4. Layout
@@ -78,7 +78,6 @@ Baseline from `ai-tell-check` (full output in `crawl/baseline.txt`): 9 of 18 mea
 | Tell | Measured | Where |
 | --- | --- | --- |
 | Default system stack on every character | 100 percent of 182,485 characters set in `-apple-system` (the cloud browser renders it as Arial/Liberation because it is Linux; on a Mac it is SF Pro) | all pages |
-| Apple palette | `#1d1d1f` ink on 34 of 35 pages, `#0066cc` link blue on 28, `#f5f5f7` section gray on 26 | all pages |
 | Two-part headline | 54 of 185 h1/h2 (29 percent) are "Short sentence. Short sentence." or "X, not Y" | 29 pages; home alone has 8 |
 | Two-tone headline (second line gray) | 46 percent of h1/h2 | home, architecture, arthur, customer-data, how-it-works, operating-system, pricing-margins and more |
 | Tracked uppercase labels | 562 across 35 pages, mean 16 per page, 42 on the home page; 85 percent are 10px | every page including the portal sign-in |
@@ -92,7 +91,7 @@ Baseline from `ai-tell-check` (full output in `crawl/baseline.txt`): 9 of 18 mea
 
 What is NOT a tell here, stated so the fix list stays honest: no purple or indigo anywhere, no gradient text, no centred-everything layout (1 percent of sections), no three-icon card row built from Lucide (the icons are single glyph characters), banned filler verbs are nearly absent (3 hits in 35 pages), and section padding is not uniform (40 percent share, under the 60 percent limit). Section structure, however, is a repeating pattern the counters do not capture: eyebrow label, two-tone headline on the left, one paragraph on the right, repeated section after section, alternating dark, white, gray and cream bands.
 
-The brand itself is partly the tell in two places. The Apple palette and system stack are borrowed identity, not LOVELEEDAY's. The glowing multicolour particle brain on the home page is the stock "neural network" image; the idea (a map of how records connect) is the brand's, the rendering is the default.
+The brand itself is partly the tell in two places (the stack and the rendering of the brain; not the palette). The system stack is a default, not a chosen face. The palette is the owner's brand and is not a finding. The glowing multicolour particle brain on the home page is the stock "neural network" image; the idea (a map of how records connect) is the brand's, the rendering is the default.
 
 ## Sources
 
