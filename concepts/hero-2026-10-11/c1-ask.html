@@ -69,8 +69,9 @@ const D=[
 {q:"Which permit applications have waited more than 30 days, and why?",a:"<mark>9 applications</mark> are past 30 days. <mark>6</mark> are waiting on fire department sign-off. <mark>3</mark> are missing documents the applicant never sent.",n:"Send the fire department the list of 6, and email the 3 applicants.",s:[["Permit system","Status as of today"],["Inspector calendar","Next 3 weeks"],["Email with applicants","Last contact dates"]]},
 {q:"Which units have had a maintenance request open for more than a week?",a:"<mark>12 units</mark> across 4 buildings. <mark>8</mark> are waiting on a part. The oldest request is <mark>23 days</mark> old.",n:"Order the three parts that cover the 8 repairs.",s:[["Work orders","Maintenance system"],["Vendor quotes","Oct 6 to Oct 9"],["Tenant messages","Unit threads"]]}];
 const $=i=>document.getElementById(i);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function show(i){const d=D[i];$('q').textContent=d.q;$('a').innerHTML=d.a;$('n').textContent=d.n;
-$('s').innerHTML=d.s.map((x,k)=>`<li><i>${k+1}</i>${x[0]}<span>${x[1]}</span></li>`).join('');
+$('s').innerHTML=d.s.map((x,k)=>`<li><i>${k+1}</i>${esc(x[0])}<span>${esc(x[1])}</span></li>`).join('');
 document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.i==i))}
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>show(+t.dataset.i));show(0);
 </script></body></html>

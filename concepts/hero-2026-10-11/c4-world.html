@@ -46,6 +46,7 @@ const P=[
 ["Nonprofits","industry-nonprofit.jpg","Which donors gave last year and have not heard from us?","<b>64 donors</b> gave over $500 and have had no thank-you or update.","Donor records, gift receipts, email history"],
 ["Retail and food","industry-retail.jpg","Why did margin drop last month?","Margin fell <b>41% to 36%</b>: one supplier up 8%, and 22% of sales were discounted.","Sales ledger, supplier invoices, register export"]];
 const acc=document.getElementById('acc');
-acc.innerHTML=P.map((p,i)=>`<button class="p" aria-expanded="${i==0}" data-i="${i}"><img src="assets/${p[1]}" alt="" ><span class="shade"></span><span class="name">${p[0]}</span><span class="open card"><span class="ind" style="display:block">${p[0]}</span><h3>${p[2]}</h3><p>${p[3]}</p><span class="s" style="display:block">From: ${p[4]}</span></span></button>`).join('');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+acc.innerHTML=P.map((p,i)=>`<button class="p" aria-expanded="${i==0}" data-i="${i}"><img src="assets/${esc(p[1])}" alt="" ><span class="shade"></span><span class="name">${esc(p[0])}</span><span class="open card"><span class="ind" style="display:block">${esc(p[0])}</span><h3>${esc(p[2])}</h3><p>${esc(p[3])}</p><span class="s" style="display:block">From: ${esc(p[4])}</span></span></button>`).join('');
 acc.querySelectorAll('.p').forEach(b=>{const go=()=>acc.querySelectorAll('.p').forEach(x=>x.setAttribute('aria-expanded',x===b));b.onclick=go;b.onmouseenter=()=>{if(matchMedia('(min-width:701px)').matches)go()}});
 </script></body></html>
