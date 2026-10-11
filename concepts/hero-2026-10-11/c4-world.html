@@ -5,7 +5,7 @@
 <style>
 .hero{padding:20px 0 80px}
 .top{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:end;margin-bottom:44px}
-h1{font-size:clamp(46px,5.6vw,82px);line-height:1;letter-spacing:-.045em;font-weight:600}
+h1{font-size:clamp(46px,5.6vw,82px);line-height:1;letter-spacing:-.03em;font-weight:600}
 .side p{font-size:20px;color:#25384F;margin-bottom:26px;max-width:460px}
 .cta{display:flex;gap:14px;flex-wrap:wrap}
 .acc{display:flex;gap:10px;height:540px}
@@ -43,10 +43,10 @@ const P=[
 ["Local government","industry-government.jpg","Which permits are stuck, and who is holding them?","<b>9 applications</b> are past 30 days. 6 wait on the fire department, 3 on missing documents.","Permit system, inspector calendar, email"],
 ["Manufacturing","industry-manufacturing.jpg","If a supplier is late, which customer orders slip?","<b>14 open orders</b> depend on the delayed batch. 3 ship before Friday.","Open orders, supplier email, inspection log"],
 ["Property","industry-property.jpg","Which buildings have repairs waiting the longest?","<b>12 units</b> in 4 buildings. 8 are waiting on a part, oldest at 23 days.","Work orders, vendor quotes, tenant messages"],
-["Nonprofits","industry-nonprofit.jpg","Which donors gave last year and have not heard from us?","<b>64 donors</b> gave over $500 and have had no thank-you or update.","Donor records, gift receipts, email history"],
+["Nonprofits","industry-nonprofit.jpg","Which donors gave last year and have not heard from us?","<b>64 donors</b> gave a large gift and have had no thank-you or update.","Donor records, gift receipts, email history"],
 ["Retail and food","industry-retail.jpg","Why did margin drop last month?","Margin fell <b>41% to 36%</b>: one supplier up 8%, and 22% of sales were discounted.","Sales ledger, supplier invoices, register export"]];
 const acc=document.getElementById('acc');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-acc.innerHTML=P.map((p,i)=>`<button class="p" aria-expanded="${i==0}" data-i="${i}"><img src="assets/${esc(p[1])}" alt="" ><span class="shade"></span><span class="name">${esc(p[0])}</span><span class="open card"><span class="ind" style="display:block">${esc(p[0])}</span><h3>${esc(p[2])}</h3><p>${esc(p[3])}</p><span class="s" style="display:block">From: ${esc(p[4])}</span></span></button>`).join('');
+acc.innerHTML=P.map((p,i)=>`<button class="p" aria-expanded="${i==0}" data-i="${i}"><img src="assets/${esc(p[1])}" alt="" ><span class="shade"></span><span class="name">${esc(p[0])}</span><span class="open card"><span class="ind" style="display:block">${esc(p[0])}</span><h3>${esc(p[2])}</h3><p>${p[3]}</p><span class="s" style="display:block">From: ${esc(p[4])}</span></span></button>`).join('');
 acc.querySelectorAll('.p').forEach(b=>{const go=()=>acc.querySelectorAll('.p').forEach(x=>x.setAttribute('aria-expanded',x===b));b.onclick=go;b.onmouseenter=()=>{if(matchMedia('(min-width:701px)').matches)go()}});
 </script></body></html>

@@ -41,3 +41,6 @@ A re-render was launched in the background (`~/arthur/scripts/hero-concepts-rend
 4. Annotate references (8-12 lines).
 5. Build board: `python3 ~/arthur/scripts/make-board.py ~/Projects/loveleeday-inkind/moodboard.html hero-board.html "<title>" "<sub>" "path|label|name|story|refs" ...` with tile 0 = live hero ("Today", use a static page or the live screenshot), then the 5 concepts with scores. Serve locally on a free port (verify page title with curl, not just status), screenshot the board. Never publish to claude.ai.
 6. Report: board URL + file path, board screenshot path, one line per concept, pick and why. Tentative pick: c5 or c1 (both show the actual product answering with a source in plain language); c3 is the strongest emotional/photo story but its photo only loosely supports "Monday brief".
+
+## Status 2026-10-11 (final pass)
+All five concepts rendered at 1440 and 390, defects fixed (local fonts in fonts.css, tracking loosened, c3 phone/text collision, c4 escaped markup, dollar figures removed). board.html built (tile 0 = live capture). Scores and reference notes live in board.html. Pick: concept 5.

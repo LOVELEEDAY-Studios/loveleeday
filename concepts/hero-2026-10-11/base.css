@@ -1,5 +1,4 @@
-@import url("https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap");
-@import url("https://api.fontshare.com/v2/css?f[]=sentient&display=swap");
+@import url("fonts.css");
 :root{--navy:#0B1F3A;--navy2:#102A4D;--navy3:#173863;--cream:#F6F1E7;--cream2:#EDE5D4;--paper:#FFFBF4;--teal:#22D3C5;--teal-deep:#0C857C;--teal-soft:#D5F6F2;--amber:#F2B84B;--amber-soft:#FCEFD0;--coral:#E5675B;--coral-ink:#8E2A20;--ink:#0B1F3A;--muted:#5A6B82;--line:#DDD3BF;--on-dark:#A9B6C8;--sans:'Switzer',sans-serif;--serif:'Sentient',Georgia,serif;--gutter:40px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}

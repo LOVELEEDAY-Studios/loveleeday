@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Home hero concepts board</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+:root{--navy:#0B1F3A;--cream:#F6F1E7;--paper:#FFFBF4;--teal:#22D3C5;--teal-deep:#0C857C;--muted:#5A6B82;--line:#DDD3BF;--sans:'Switzer',system-ui,sans-serif;--serif:'Sentient',Georgia,serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--navy);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{width:min(1400px,calc(100% - 48px));margin:0 auto}
+header.top{padding:40px 0 20px;display:flex;gap:32px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap}
+h1{font:400 clamp(34px,4vw,52px)/1.05 var(--serif);margin:0 0 10px;letter-spacing:-.01em}
+.sub{margin:0;max-width:640px;color:var(--muted);font-size:17px}
+.tog{display:inline-flex;border:1px solid var(--navy);border-radius:999px;padding:4px;background:var(--paper)}
+.tog button{border:0;background:transparent;border-radius:999px;padding:9px 20px;font:600 15px var(--sans);color:var(--navy);cursor:pointer}
+.tog button[aria-pressed=true]{background:var(--navy);color:var(--paper)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:16px 0 56px}
+.tile{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.tile.pick{border:2px solid var(--teal-deep)}
+.stage{position:relative;background:#E9E1D0;overflow:hidden;display:block;text-decoration:none}
+.stage .box{position:absolute;top:0;left:0;transform-origin:0 0;background:#fff}
+.stage iframe,.stage img{border:0;display:block;width:100%;height:100%;pointer-events:none;object-fit:cover;object-position:top}
+.tile .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.tile h2{font:500 22px/1.2 var(--sans);margin:0;letter-spacing:-.01em}
+.tile h2 small{font:600 14px var(--sans);color:var(--teal-deep);margin-right:8px}
+.story{margin:0;color:#25384F}
+.scores{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.sc{background:var(--cream);border-radius:10px;padding:8px 10px}
+.sc b{display:block;font-size:22px;line-height:1.1;font-variant-numeric:tabular-nums}
+.sc span{font-size:13px;color:var(--muted)}
+.sc.avg{background:var(--navy);color:var(--paper)}.sc.avg span{color:#A9B6C8}
+.why{margin:0;padding:0;list-style:none;font-size:14px;color:var(--muted);display:grid;gap:4px}
+.why li b{color:var(--navy);font-weight:600}
+.open{margin-top:auto;display:inline-flex;align-self:flex-start;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:var(--navy);color:var(--paper);text-decoration:none;font-weight:600;font-size:15px}
+.open.ghost{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.flag{font-size:13px;color:var(--teal-deep);font-weight:600}
+section.refs{border-top:1px solid var(--line);padding:40px 0 64px}
+section.refs h2{font:400 34px/1.1 var(--serif);margin:0 0 8px}
+.refgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:24px}
+.ref{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.ref img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--line)}
+.ref div{padding:12px 14px 16px;font-size:14px;color:#25384F}
+.ref b{display:block;font-size:15px;color:var(--navy);margin-bottom:4px}
+.ref .bad{color:#8E2A20;font-weight:600}
+footer{padding:0 0 48px;color:var(--muted);font-size:14px}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}.refgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.wrap{width:calc(100% - 32px)}.grid,.refgrid{grid-template-columns:1fr}.scores{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<div class="wrap">
+<header class="top"><div><h1>Five new home heroes, next to today's</h1>
+<p class="sub">Tile 0 is the live loveleedaystudios.com hero. Tiles 1 to 5 are working mockups, not deployed. Each is scored 1 to 10 for marketing, UX and UI. Pick a width, then open any tile at full size.</p></div>
+<div class="tog" role="group" aria-label="Preview width"><button type="button" data-w="1440" aria-pressed="true">1440 wide</button><button type="button" data-w="390" aria-pressed="false">390 wide</button></div></header>
+<main class="grid" id="grid"></main>
+</div>
+<section class="refs"><div class="wrap"><h2>What the twelve references do well</h2>
+<p class="sub">Real homepages captured at 1440 wide on Oct 11. Three captures failed or were blocked and are marked; two stand-ins were added.</p>
+<div class="refgrid" id="refs"></div></div></section>
+<div class="wrap"><footer>Mockups render live from the files in this folder. Scores are the designer's judgment on a 1 to 10 scale, for discussion. The Today tile is a capture of the live page; its copy is shown as it is published.</footer></div>
+<script>
+const T=[
+{n:0,name:"The live home hero",file:'shots/live-1440-full.jpg',img:['shots/live-1440.jpg','shots/live-390.jpg'],story:'"Know what happened. Know what to do next." A stock photo of one person with a card laid over her, two buttons, and a product name the visitor has not met.',sc:null,why:['Shown for comparison. Its problems: the picture and the card disagree, only one industry appears, the grey second line reads as a template, and the colors and type are borrowed from a phone maker.']},
+{n:1,name:'Ask a plain question',file:'c1-ask.html',story:'A visitor picks their kind of organization (charter school, manufacturer, city, property group) and watches a plain question get a plain answer with numbered sources.',sc:[8,9,7],why:['Marketing: says the whole product in one headline and spans industries from the first screen.','UX: the tabs let the visitor test it on their own world; answer, next step and sources are in one read.','UI: tidy and on-brand, but the answer window is the most familiar layout of the five.']},
+{n:2,name:'Every number has its source',file:'c2-footnotes.html',story:'Navy page, serif headline, and a memo that answers why margin dropped with footnotes pointing at invoices and exports.',sc:[8,7,9],why:['Marketing: trust is the claim, and the page proves it by showing a footnoted answer.','UX: one example only, so it explains well but invites no interaction.','UI: the most editorial and least template-like; Sentient on navy is memorable.']},
+{n:3,name:'Start Monday knowing',file:'c3-monday.html',story:'Real volunteers in a warehouse, with a phone showing the three things that changed since Friday, each with its source.',sc:[8,6,8],why:['Marketing: a daily habit is an easy story to buy.','UX: the photo only loosely supports a morning brief, and the phone shows one fixed example.','UI: real photography and a believable phone give it warmth the others lack.']},
+{n:4,name:'Whatever you run',file:'c4-world.html',story:'Six real places (schools, government, manufacturing, property, nonprofits, retail). Open one to see a question that organization would ask, and its answer.',sc:[9,7,8],why:['Marketing: answers "is this for me" for every industry, schools and charters first.','UX: panels open on hover and tap; discoverable, but the first visit shows six things at once.','UI: strong photo-led layout; the sideways labels are the weakest detail.']},
+{n:5,name:'Which number is right?',file:'c5-which.html',story:'Three systems give three enrollment counts. LOVELEEDAY picks one, says why the others differ, and shows where each came from.',sc:[9,9,8],why:['Marketing: names a pain every organization has felt, in six words.','UX: question, conflict, resolution and sources read top to bottom in seconds, on phone too.','UI: clean, with red and teal doing real work; the headline is large and carries the page.']}
+];
+const R=[
+['www.palantir.com_.png','Palantir','Capture failed: only the navigation rendered because the hero loads after scripts. Still useful for what is visible: one white button and nothing else competing in the header.',1],
+['www.snowflake.com_en_.png','Snowflake','Big two-word headline, one short sentence, two clear buttons, and a real product window below that shows what the thing does.'],
+['hex.tech_.png','Hex','A serif italic against a bold sans in one headline gives the page a human voice, and three live product panels each carry a plain label.'],
+['www.databricks.com_.png','Databricks','Headline names the product in plain words and the right half shows a working screen, so the visitor sees it before reading further.'],
+['www.glean.com_.png','Glean','Centered question box with the connected tools listed under it shows the idea (ask across your tools) without a diagram.'],
+['linear.app_.png','Linear','Restraint: one sentence headline, almost no color, and the product itself as the picture.'],
+['www.vanta.com_.png','Vanta','Tinted background and a serif headline set it apart from the white-and-blue norm, and the email field puts the action in the hero.'],
+['www.perplexity.ai_.png','Perplexity','Capture blocked by a security check. Known from the live site: the page is the product, a single question box.',1],
+['www.datadoghq.com_.png','Datadog','Clear category headline and a dense dashboard illustration; shows how much a visitor tolerates when the picture is the product.'],
+['godly.website_.png','Godly','A gallery of award-level sites: shows the range of type, color and image choices beyond the SaaS default.'],
+['land-book.com_.png','Land-book','Capture blocked by a security check, so nothing could be read.',1],
+['dribbble.com_search_data-platform-hero.png','Dribbble','Search results for data-platform heroes: mostly dark gradients and floating cards, which is the look to avoid.'],
+['ramp.com_.png','Ramp (stand-in)','One plain sentence in large type, a single email field with a bright button, and nothing between the visitor and the action.'],
+['notion.com_.png','Notion (stand-in)','Large friendly headline with one highlighted word, a product screenshot that shows real work, and customer names right below.']
+];
+const grid=document.getElementById('grid');
+grid.innerHTML=T.map(t=>{
+ const avg=t.sc?(t.sc.reduce((a,b)=>a+b,0)/3).toFixed(1):null;
+ const sc=t.sc?`<div class="scores"><div class="sc"><b>${t.sc[0]}</b><span>Marketing</span></div><div class="sc"><b>${t.sc[1]}</b><span>UX</span></div><div class="sc"><b>${t.sc[2]}</b><span>UI</span></div><div class="sc avg"><b>${avg}</b><span>Average</span></div></div>`:'';
+ const stage=t.n===0?`<div class="box" data-n="0"><img data-live src="${t.img[0]}" alt="Live hero today"></div>`:`<div class="box" data-n="${t.n}"><iframe src="${t.file}" title="${t.name}" scrolling="no"></iframe></div>`;
+ return `<article class="tile${t.n===5?' pick':''}"><a class="stage" href="${t.file}" target="_blank" rel="noopener" aria-label="Open ${t.name} at full size">${stage}</a><div class="body"><h2><small>${t.n===0?'Today':'Concept '+t.n}</small>${t.name}</h2><p class="story">${t.story}</p>${sc}<ul class="why">${t.why.map(w=>{const i=w.indexOf(': ');return t.sc&&i>0&&i<12?`<li><b>${w.slice(0,i)}:</b> ${w.slice(i+2)}</li>`:`<li>${w}</li>`}).join('')}</ul><div class="row"><a class="open" href="${t.file}" target="_blank" rel="noopener">${t.n===0?'Open full page capture':'Open full size'}</a></div></div></article>`}).join('');
+document.getElementById('refs').innerHTML=R.map(r=>`<figure class="ref" style="margin:0"><a href="refs/top/${r[0]}" target="_blank" rel="noopener"><img src="refs/top/${r[0]}" alt="${r[1]} homepage top" loading="lazy"></a><div><b>${r[1]}${r[3]?' <span class="bad">capture failed</span>':''}</b>${r[2]}</div></figure>`).join('');
+let W=1440;
+function layout(){
+ document.querySelectorAll('.stage').forEach(s=>{
+  const box=s.querySelector('.box');const tw=s.clientWidth;const mobile=W===390;
+  const fw=W,fh=mobile?844:900;
+  const scale=mobile?Math.min(tw*0.5/fw,1):tw/fw;
+  const th=mobile?Math.round(fh*scale)+24:Math.round(fh*scale);
+  s.style.height=th+'px';
+  box.style.width=fw+'px';box.style.height=fh+'px';
+  box.style.transform=`translate(${Math.round((tw-fw*scale)/2)}px,${mobile?12:0}px) scale(${scale})`;
+  box.style.boxShadow=mobile?'0 0 0 '+(2/scale)+'px #0B1F3A':'none';
+  const img=box.querySelector('img[data-live]');if(img)img.src=mobile?'shots/live-390.jpg':'shots/live-1440.jpg';
+  const f=box.querySelector('iframe');if(f){f.style.width=fw+'px';f.style.height=fh+'px'}
+ });
+}
+document.querySelectorAll('.tog button').forEach(b=>b.onclick=()=>{W=+b.dataset.w;document.querySelectorAll('.tog button').forEach(x=>x.setAttribute('aria-pressed',x===b));layout()});
+addEventListener('resize',layout);layout();
+</script></body></html>
