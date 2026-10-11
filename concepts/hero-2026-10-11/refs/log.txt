@@ -1,0 +1,8 @@
+cloud-shot: url, 0 files, 4.0K up
+cloud-shot: bad page path: https://www.palantir.com/ https://www.snowflake.com/en/ https://hex.tech/
+cloud-shot: url, 0 files, 4.0K up
+cloud-shot: bad page path: https://www.databricks.com/ https://www.glean.com/ https://linear.app/
+cloud-shot: url, 0 files, 4.0K up
+cloud-shot: bad page path: https://ramp.com/ https://www.vanta.com/ https://www.perplexity.ai/
+cloud-shot: url, 0 files, 4.0K up
+cloud-shot: bad page path: https://godly.website/ https://land-book.com/ https://dribbble.com/search/data-analytics-landing-page

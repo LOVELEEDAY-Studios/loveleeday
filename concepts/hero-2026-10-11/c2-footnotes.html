@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero concept 2: Every number has a source</title>
+<link rel="stylesheet" href="base.css">
+<style>
+body{background:var(--navy);color:var(--paper)}
+.nav .brand,.nav a{color:var(--paper)}
+.hero{padding:24px 0 100px}
+.grid{display:grid;grid-template-columns:6fr 6fr;gap:80px;align-items:center}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,5.6vw,84px);line-height:1.02;letter-spacing:-.025em;margin-bottom:28px}
+h1 em{font-style:italic;color:var(--teal)}
+.lead{font-size:20px;max-width:500px;color:#C9D4E3}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.memo{background:var(--paper);color:var(--navy);border-radius:6px;padding:40px 44px 34px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);position:relative}
+.memo .from{font-size:14px;color:var(--muted);display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:22px}
+.memo h2{font:500 26px/1.2 var(--sans);letter-spacing:-.02em;margin-bottom:18px}
+.memo .body{font-family:var(--serif);font-size:23px;line-height:1.5}
+.memo .body p+p{margin-top:12px}
+.hl{background:linear-gradient(transparent 62%,var(--teal-soft) 62%);}
+sup{font:700 12px var(--sans);color:var(--teal-deep);margin-left:2px;vertical-align:super}
+.foot{margin-top:26px;border-top:1px solid var(--line);padding-top:18px;display:grid;gap:14px}
+.fn{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:15px;line-height:1.4}
+.fn i{width:24px;height:24px;border-radius:50%;background:var(--navy);color:var(--teal);font:700 12px var(--sans);display:grid;place-items:center;font-style:normal}
+.fn b{font-weight:600;display:block}
+.fn span{color:var(--muted)}
+.cap{margin-top:14px;font-size:13px;color:var(--on-dark)}
+@media(max-width:980px){.grid{grid-template-columns:1fr;gap:48px}.hero{padding-bottom:64px}}
+@media(max-width:520px){.memo{padding:26px 22px}.memo .body{font-size:20px}.memo h2{font-size:22px}}
+</style></head><body class="dark">
+<header class="nav"><div class="wrap"><a class="brand" href="#"><img src="assets/mark-ink-512.png" alt="" style="filter:invert(1) brightness(1.6)">LOVELEEDAY</a>
+<nav class="nav-links"><a href="#">Product</a><a href="#">Solutions</a><a href="#">Industries</a><a href="#">Company</a></nav>
+<div class="nav-r"><a class="signin" href="#">Sign in</a><a class="btn sm" href="#">Talk to us</a></div></div></header>
+<main><section class="hero"><div class="wrap grid">
+<div>
+<h1>Every number comes with <em>its source.</em></h1>
+<p class="lead">Ask LOVELEEDAY about your organization and the answer arrives like a good report: plain sentences, with each figure footnoted to the invoice, record or email it came from.</p>
+<div class="cta"><a class="btn" href="#">See how an answer is built</a><a class="btn ghost" href="#">Talk to us</a></div>
+</div>
+<div>
+<article class="memo" aria-label="Example answer with sources">
+<div class="from"><span>Question asked Oct 10</span><span>Sample data</span></div>
+<h2>Why did our margin drop in September?</h2>
+<div class="body">
+<p>Margin fell from <span class="hl">41% to 36%</span>.<sup>1</sup> Two things explain most of it.</p>
+<p>Your main supplier raised prices <span class="hl">8% on September 3</span>,<sup>2</sup> and <span class="hl">22% of the month's sales were discounted</span>, up from 9% in August.<sup>3</sup></p>
+</div>
+<div class="foot">
+<div class="fn"><i>1</i><div><b>Sales ledger, September 1 to 30</b><span>Report run Oct 2, row totals 3,114 sales</span></div></div>
+<div class="fn"><i>2</i><div><b>Supplier invoice 4471 and price-change email</b><span>Received Sep 3, unit cost $6.10 to $6.59</span></div></div>
+<div class="fn"><i>3</i><div><b>Register export, discount codes</b><span>689 of 3,114 sales used a code</span></div></div>
+</div></article>
+<p class="cap">Example with sample data. Every answer opens to the records behind it.</p>
+</div></div></section></main></body></html>

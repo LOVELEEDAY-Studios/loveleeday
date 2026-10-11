@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero concept 4: Whatever you run</title>
+<link rel="stylesheet" href="base.css">
+<style>
+.hero{padding:20px 0 80px}
+.top{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:end;margin-bottom:44px}
+h1{font-size:clamp(46px,5.6vw,82px);line-height:1;letter-spacing:-.045em;font-weight:600}
+.side p{font-size:20px;color:#25384F;margin-bottom:26px;max-width:460px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.acc{display:flex;gap:10px;height:540px}
+.p{position:relative;flex:0 0 104px;min-width:0;border-radius:16px;overflow:hidden;border:0;padding:0;text-align:left;background:var(--navy);transition:flex .45s cubic-bezier(.2,.7,.2,1);color:var(--paper)}
+.p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.p .shade{position:absolute;inset:0;background:rgba(11,31,58,.34);transition:background .3s}
+.p .name{position:absolute;left:20px;bottom:22px;font-size:19px;font-weight:600;letter-spacing:-.01em;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.p .open{display:none}
+.p[aria-expanded=true]{flex:1 1 auto}
+.p[aria-expanded=true] .shade{background:rgba(11,31,58,.12)}
+.p[aria-expanded=true] .name{display:none}
+.p[aria-expanded=true] .open{display:block}
+.card{position:absolute;left:22px;right:22px;bottom:22px;background:var(--paper);color:var(--navy);border-radius:14px;padding:22px 26px 20px;max-width:620px}
+.card .ind{font-size:14px;font-weight:600;color:var(--teal-deep);margin-bottom:6px}
+.card h3{font:500 26px/1.2 var(--serif);letter-spacing:-.01em;margin-bottom:12px}
+.card p{font-size:16px;line-height:1.45}
+.card p b{background:var(--teal-soft);font-weight:600;padding:0 3px;border-radius:3px}
+.card .s{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.cap{margin-top:14px;font-size:13px;color:var(--muted)}
+@media(max-width:980px){.top{grid-template-columns:1fr;gap:26px}}
+@media(max-width:700px){.acc{flex-direction:column;height:auto;gap:8px}.p{flex:none;width:100%;height:76px;transition:height .35s}.p .name{writing-mode:horizontal-tb;transform:none;left:18px;top:50%;bottom:auto;margin-top:-12px}.p[aria-expanded=true]{height:500px}.card{left:12px;right:12px;bottom:12px;padding:18px}.card h3{font-size:21px}}
+</style></head><body>
+<header class="nav"><div class="wrap"><a class="brand" href="#"><img src="assets/mark-ink-512.png" alt="">LOVELEEDAY</a>
+<nav class="nav-links"><a href="#">Product</a><a href="#">Solutions</a><a href="#">Industries</a><a href="#">Company</a></nav>
+<div class="nav-r"><a class="signin" href="#">Sign in</a><a class="btn sm navy" href="#">Talk to us</a></div></div></header>
+<main><section class="hero"><div class="wrap">
+<div class="top"><h1>Whatever you run, ask it a plain question.</h1>
+<div class="side"><p>LOVELEEDAY connects your systems and answers in plain language, with the records behind every number. Pick your kind of organization.</p><div class="cta"><a class="btn navy" href="#">Talk to us</a><a class="btn ghost" href="#">See how it works</a></div></div></div>
+<div class="acc" id="acc"></div>
+<p class="cap">Examples use sample data. Photography is licensed stock.</p>
+</div></section></main>
+<script>
+const P=[
+["Schools and charters","industry-schools.jpg","Who is at risk of missing the enrollment count this year?","Families who started but never finished re-enrollment: <b>37 of 412</b>. 21 have an unpaid balance.","Enrollment records, billing, parent emails"],
+["Local government","industry-government.jpg","Which permits are stuck, and who is holding them?","<b>9 applications</b> are past 30 days. 6 wait on the fire department, 3 on missing documents.","Permit system, inspector calendar, email"],
+["Manufacturing","industry-manufacturing.jpg","If a supplier is late, which customer orders slip?","<b>14 open orders</b> depend on the delayed batch. 3 ship before Friday.","Open orders, supplier email, inspection log"],
+["Property","industry-property.jpg","Which buildings have repairs waiting the longest?","<b>12 units</b> in 4 buildings. 8 are waiting on a part, oldest at 23 days.","Work orders, vendor quotes, tenant messages"],
+["Nonprofits","industry-nonprofit.jpg","Which donors gave last year and have not heard from us?","<b>64 donors</b> gave over $500 and have had no thank-you or update.","Donor records, gift receipts, email history"],
+["Retail and food","industry-retail.jpg","Why did margin drop last month?","Margin fell <b>41% to 36%</b>: one supplier up 8%, and 22% of sales were discounted.","Sales ledger, supplier invoices, register export"]];
+const acc=document.getElementById('acc');
+acc.innerHTML=P.map((p,i)=>`<button class="p" aria-expanded="${i==0}" data-i="${i}"><img src="assets/${p[1]}" alt="" ><span class="shade"></span><span class="name">${p[0]}</span><span class="open card"><span class="ind" style="display:block">${p[0]}</span><h3>${p[2]}</h3><p>${p[3]}</p><span class="s" style="display:block">From: ${p[4]}</span></span></button>`).join('');
+acc.querySelectorAll('.p').forEach(b=>{const go=()=>acc.querySelectorAll('.p').forEach(x=>x.setAttribute('aria-expanded',x===b));b.onclick=go;b.onmouseenter=()=>{if(matchMedia('(min-width:701px)').matches)go()}});
+</script></body></html>

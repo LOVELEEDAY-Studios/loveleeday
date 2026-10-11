@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero concept 1: Ask a plain question</title>
+<link rel="stylesheet" href="base.css">
+<style>
+body{background:var(--cream)}
+.hero{padding:28px 0 96px}
+.grid{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:center}
+h1{font-size:clamp(46px,5.4vw,78px);line-height:1;letter-spacing:-.045em;font-weight:600;margin:0 0 28px}
+.lead{font-size:20px;line-height:1.55;max-width:520px;color:#25384F}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin:36px 0 22px}
+.works{font-size:15px;color:var(--muted);max-width:480px;border-top:1px solid var(--line);padding-top:18px;margin-top:40px}
+.works b{color:var(--ink);font-weight:600}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tab{border:1px solid var(--line);background:transparent;border-radius:999px;padding:9px 18px;font-size:15px;font-weight:500}
+.tab[aria-selected=true]{background:var(--navy);border-color:var(--navy);color:var(--paper)}
+.win{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 60px -30px rgba(11,31,58,.35);overflow:hidden}
+.bar{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--cream2);font-size:14px;color:var(--muted)}
+.bar b{color:var(--ink);font-weight:600}
+.bar .dot{width:9px;height:9px;border-radius:50%;background:var(--teal-deep)}
+.bar em{margin-left:auto;font-style:normal}
+.q{padding:26px 28px 6px}
+.q small{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
+.q p{font:500 25px/1.25 var(--sans);letter-spacing:-.02em}
+.ans{padding:20px 28px 8px}
+.ans p{font-family:var(--serif);font-size:23px;line-height:1.35}
+.ans mark{background:var(--teal-soft);color:var(--ink);padding:0 4px;border-radius:3px}
+.next{margin:18px 28px 0;padding:14px 18px;background:var(--navy);color:var(--paper);border-radius:12px;font-size:16px}
+.next b{color:var(--teal);font-weight:600;margin-right:6px}
+.src{margin:22px 28px 26px;border-top:1px solid var(--line);padding-top:16px}
+.src h3{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:10px}
+.src ul{list-style:none;display:grid;gap:8px}
+.src li{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;font-size:15px}
+.src li i{width:26px;height:26px;border-radius:6px;background:var(--teal-soft);color:var(--teal-deep);font-style:normal;font-weight:700;font-size:13px;display:grid;place-items:center}
+.src li span{color:var(--muted);font-size:14px}
+.cap{margin-top:12px;font-size:13px;color:var(--muted)}
+@media(max-width:980px){.grid{grid-template-columns:1fr;gap:44px}.hero{padding-bottom:64px}}
+@media(max-width:520px){.q p{font-size:21px}.ans p{font-size:20px}.q,.ans{padding-left:20px;padding-right:20px}.next,.src{margin-left:20px;margin-right:20px}.src li{grid-template-columns:26px 1fr}.src li span{grid-column:2}.tab{padding:8px 14px;font-size:14px}}
+</style></head><body>
+<header class="nav"><div class="wrap"><a class="brand" href="#"><img src="assets/mark-ink-512.png" alt="">LOVELEEDAY</a>
+<nav class="nav-links"><a href="#">Product</a><a href="#">Solutions</a><a href="#">Industries</a><a href="#">Company</a></nav>
+<div class="nav-r"><a class="signin" href="#">Sign in</a><a class="btn sm navy" href="#">Talk to us</a></div></div></header>
+<main><section class="hero"><div class="wrap grid">
+<div>
+<h1>Ask a plain question. Get an answer you can check.</h1>
+<p class="lead">LOVELEEDAY connects the systems your team already uses, then answers in plain language and shows the exact records behind every number.</p>
+<div class="cta"><a class="btn navy" href="#">See it answer a real question</a><a class="btn ghost" href="#">Talk to us</a></div>
+<p class="works"><b>Works with what you have.</b> Accounting, email, spreadsheets, student, customer and case records. Nothing to replace, nothing to re-enter.</p>
+</div>
+<div>
+<div class="tabs" role="tablist" aria-label="Example organizations">
+<button class="tab" role="tab" aria-selected="true" data-i="0">Charter school</button>
+<button class="tab" role="tab" aria-selected="false" data-i="1">Manufacturer</button>
+<button class="tab" role="tab" aria-selected="false" data-i="2">City government</button>
+<button class="tab" role="tab" aria-selected="false" data-i="3">Property group</button></div>
+<div class="win" id="win">
+<div class="bar"><span class="dot"></span><b>LOVELEEDAY</b><em>Sample data</em></div>
+<div class="q"><small>The question</small><p id="q"></p></div>
+<div class="ans"><p id="a"></p></div>
+<div class="next"><b>Do next</b><span id="n"></span></div>
+<div class="src"><h3>Where this came from</h3><ul id="s"></ul></div>
+</div>
+<p class="cap">Example with sample data. No real organization is shown.</p>
+</div></div></section></main>
+<script>
+const D=[
+{q:"Which students have missed more than 10 days this term, and has anyone called the family?",a:"<mark>18 students</mark> have missed more than 10 days. <mark>11</mark> have heard from a teacher. <mark>7</mark> have not been contacted at all.",n:"Give the 7 names to the front office today.",s:[["Attendance log","Oct 10 export"],["Parent messages","Sep 2 to Oct 10"],["Student roster","Updated this morning"]]},
+{q:"If the aluminum shipment comes in late, which orders slip?",a:"<mark>14 open orders</mark> depend on it. <mark>3 ship before Friday</mark>, and two of those customers have penalty dates in their contracts.",n:"Call those two customers before noon.",s:[["Open orders","Order system, today"],["Supplier email","Oct 9, 4:12 pm"],["Customer contracts","Terms, clause 6"]]},
+{q:"Which permit applications have waited more than 30 days, and why?",a:"<mark>9 applications</mark> are past 30 days. <mark>6</mark> are waiting on fire department sign-off. <mark>3</mark> are missing documents the applicant never sent.",n:"Send the fire department the list of 6, and email the 3 applicants.",s:[["Permit system","Status as of today"],["Inspector calendar","Next 3 weeks"],["Email with applicants","Last contact dates"]]},
+{q:"Which units have had a maintenance request open for more than a week?",a:"<mark>12 units</mark> across 4 buildings. <mark>8</mark> are waiting on a part. The oldest request is <mark>23 days</mark> old.",n:"Order the three parts that cover the 8 repairs.",s:[["Work orders","Maintenance system"],["Vendor quotes","Oct 6 to Oct 9"],["Tenant messages","Unit threads"]]}];
+const $=i=>document.getElementById(i);
+function show(i){const d=D[i];$('q').textContent=d.q;$('a').innerHTML=d.a;$('n').textContent=d.n;
+$('s').innerHTML=d.s.map((x,k)=>`<li><i>${k+1}</i>${x[0]}<span>${x[1]}</span></li>`).join('');
+document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.i==i))}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>show(+t.dataset.i));show(0);
+</script></body></html>
