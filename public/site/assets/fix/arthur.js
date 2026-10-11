@@ -1,13 +1,13 @@
-// Page-scoped: swaps the shared pricing demo (index 5) for a contract-renewal example, without touching site.js.
+// Page-scoped: swaps the shared pricing demo (index 5) for an energy-use example, without touching site.js.
 (function () {
   var q = document.getElementById('brain-question');
   if (!q) return;
   var OLD = 'Review our pricing. Where are we losing margin?';
   var d = {
-    ask: 'Which contracts renew next quarter, and who owns them?',
-    qs: ['Which agreements are in scope, under any name?', 'When does each one renew or lapse?', 'Who owns each, and what changed since?', 'Which clause and source support each date?'],
-    ans: 'A renewal list with owners, dates and source clauses, and any contract with no owner flagged.',
-    ev: 'Illustrative contract review · agreements, owners and dates'
+    ask: 'Which of our locations are using more energy than a year ago, and why?',
+    qs: ['Which locations and meters are in scope, under any name?', 'How does each month compare with the same month last year?', 'What changed at the locations that went up?', 'Which bill or reading supports each figure?'],
+    ans: 'A list of the locations that went up, the likely reason for each, and the bill behind every number.',
+    ev: 'Illustrative energy review · meters, bills and locations'
   };
   function apply() {
     if (q.textContent !== OLD) return;

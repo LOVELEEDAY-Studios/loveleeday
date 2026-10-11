@@ -1,0 +1,5 @@
+{
+  "checked_at": "2026-10-11",
+  "source": "arthur-capability loveleeday.client_connections LIVE_VERIFIED; tenant_connections rows with status live and a probe under 8 hours old (brevo, meta, toast). Only keys that appear in integrations.json are listed.",
+  "keys": ["brevo", "toast"]
+}
