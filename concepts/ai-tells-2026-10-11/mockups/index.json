@@ -38,7 +38,7 @@
   "id": "06-three-feature-row",
   "title": "Three equal columns with a glyph on top",
   "tell": "Rule, tiny icon, title, two lines of gray text, three times across. The icons are 14px characters.",
-  "count": "home \"what you get\"; operating-system; arthur",
+  "count": "home \"what you get\"; operating-system, product page",
   "source": "S1 three feature cards; S7 three equal feature cards, icon-title-two-lines"
  },
  {
@@ -59,7 +59,7 @@
   "id": "09-particle-brain",
   "title": "Glowing multicolor network brain",
   "tell": "A rotating mesh of green, blue, orange and purple nodes on black. This is the stock \"AI brain\" vocabulary.",
-  "count": "home hero-adjacent stage, arthur, operating-system (brain.js canvas)",
+  "count": "home hero-adjacent stage, product page, operating-system (brain.js canvas)",
   "source": "S16 stock listings for glowing neural brains; S1/S4 glow with no reason. The brand idea (records connecting) stays; the rendering changes."
  },
  {
