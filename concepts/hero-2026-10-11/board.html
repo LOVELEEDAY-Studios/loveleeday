@@ -80,10 +80,10 @@ const E=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"
 const EB=s=>E(s).replace(/&lt;(\/?)b&gt;/g,"<$1b>");
 const grid=document.getElementById('grid');
 grid.innerHTML=T.map(t=>{
- const b=t.bench?`<div class="bench"><h3>Benchmarked against</h3><div class="bt">${t.bench.map(k=>`<figure><img src="refs/bench/t-${REF[k][1]}.jpg" alt="${REF[k][0]} homepage" ><figcaption><b>${REF[k][0]}</b></figcaption></figure>`).join('')}</div></div>`:`<div class="bench"><h3>Benchmarked against</h3><p style="margin:0;font-size:14px;color:var(--muted)">Not benchmarked. This is the baseline the five concepts replace.</p></div>`;
+ const b=t.bench?`<div class="bench"><h3>Benchmarked against</h3><div class="bt">${t.bench.map(k=>`<figure><img src="refs/bench/t-${E(REF[k][1])}.jpg" alt="${E(REF[k][0])} homepage" ><figcaption><b>${E(REF[k][0])}</b></figcaption></figure>`).join('')}</div></div>`:`<div class="bench"><h3>Benchmarked against</h3><p style="margin:0;font-size:14px;color:var(--muted)">Not benchmarked. This is the baseline the five concepts replace.</p></div>`;
  const stage=t.n===0?`<div class="box"><img data-live src="${t.img[0]}" alt="Live hero today"></div>`:`<div class="box"><img data-shot="${t.file.replace(".html","")}" src="shots/${t.file.replace(".html","")}-1440.jpg" alt="${E(t.name)}"></div>`;
  return `<article class="tile${t.n===5?' pick':''}"><a class="stage" href="${E(t.file)}" target="_blank" rel="noopener" aria-label="Open ${E(t.name)} at full size">${stage}</a><div class="body"><h2><small>${t.n===0?'Today':'Concept '+t.n}</small>${E(t.name)}</h2><p class="story">${E(t.story)}</p>${b}<ul class="why">${t.why.map(w=>`<li>${EB(w)}</li>`).join('')}</ul><div><a class="open" href="${E(t.file)}" target="_blank" rel="noopener">${t.n===0?'Open full page capture':'Open full size'}</a></div></div></article>`}).join('');
-document.getElementById('refs').innerHTML=Object.values(REF).map(r=>`<figure class="ref"><a href="refs/bench/${r[1]}-1440.png" target="_blank" rel="noopener"><img src="refs/bench/t-${r[1]}.jpg" alt="${r[0]} homepage top" ></a><div><b>${r[0]}</b><span>${r[2]}</span></div></figure>`).join('');
+document.getElementById('refs').innerHTML=Object.values(REF).map(r=>`<figure class="ref"><a href="refs/bench/${E(r[1])}-1440.png" target="_blank" rel="noopener"><img src="refs/bench/t-${E(r[1])}.jpg" alt="${E(r[0])} homepage top" ></a><div><b>${E(r[0])}</b><span>${E(r[2])}</span></div></figure>`).join('');
 let W=1440;
 function layout(){
  document.querySelectorAll('.stage').forEach(s=>{
