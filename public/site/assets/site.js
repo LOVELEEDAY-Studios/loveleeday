@@ -49,7 +49,7 @@ function calculateMargin(v){const values=[v.price,v.cost,v.discount,v.fees,v.tar
 const marginForm=$('margin-form');
 if(marginForm){const ids=['sale-price','item-cost','discount','variable-fees','target-margin'];const money=x=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(x);function updateMargin(){const values=ids.map(id=>$(id).value.trim()===''?NaN:Number($(id).value)),v=calculateMargin({price:values[0],cost:values[1],discount:values[2],fees:values[3],target:values[4]});if(!v){['margin-value','realized-value','profit-value','target-price'].forEach(id=>$(id).textContent='—');$('margin-message').textContent='Enter nonnegative amounts, a discount from 0–100%, and a target below 100%.';return}$('margin-value').textContent=v.margin===null?'—':v.margin.toFixed(1)+'%';$('realized-value').textContent=money(v.revenue);$('profit-value').textContent=money(v.profit);$('target-price').textContent=v.targetPrice===null?'Not attainable':money(v.targetPrice);$('margin-message').textContent=v.revenue===0?'Nothing was paid, so a margin percentage cannot be worked out.':v.margin<0?'This item loses money at these costs. Review the discount and costs before changing the price.':v.margin+1e-9<v.target?'At these sample inputs, this item misses the '+v.target+'% target. Review the discount and costs before changing the price.':'At these sample inputs, this item meets the '+v.target+'% target. No change needed.'}marginForm.addEventListener('input',updateMargin);marginForm.addEventListener('submit',e=>e.preventDefault());updateMargin()}
 function createBrief(v){return ['LOVELEEDAY — Project brief','','Organization / project: '+v.organization,'Area of work: '+v.workType,'','THE QUESTION',v.question,'','SOURCES AND CONTEXT',v.sources||'To be defined.','','DESIRED OUTCOME',v.outcome||'To be defined.'].join('\n')}
-const briefForm=$('brief-form');if(briefForm){const params=new URLSearchParams(location.search),use=params.get('use');if(use&&[...$('work-type').options].some(x=>x.value===use))$('work-type').value=use;briefForm.addEventListener('submit',async e=>{
+const briefForm=$('brief-form');if(briefForm){const t0=Date.now();const params=new URLSearchParams(location.search),use=params.get('use');if(use&&[...$('work-type').options].some(x=>x.value===use))$('work-type').value=use;briefForm.addEventListener('submit',async e=>{
 e.preventDefault();
 if(!briefForm.reportValidity())return;
 const values=Object.fromEntries(new FormData(briefForm).entries());
@@ -66,7 +66,7 @@ btn.disabled=true;btn.textContent='Sending…';fb.textContent='';
 const endpoint=briefForm.dataset.endpoint||'/api/contact';
 try{
 const res=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},
- body:JSON.stringify({name:values.name,email:values.email,project_type:values.workType,details:text})});
+ body:JSON.stringify({name:values.name,email:values.email,project_type:values.workType,details:text,website:values.website||'',elapsed:Date.now()-t0})});
 if(!res.ok)throw new Error('HTTP '+res.status);
 if(briefForm.dataset.download!=='off')save();
 briefForm.reset();
