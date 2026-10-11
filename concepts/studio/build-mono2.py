@@ -4,9 +4,9 @@
     python3 concepts/studio/build-mono2.py -> concepts/studio/mono2/index.html
 
 Daniel: "i love the hero section and the brain i hate everything else looks
-like a claude ai site not a site produced for companies like apple or palantir."
+like a generic template site, not a site produced for companies like apple or palantir."
 
-He is right, and the diagnosis is specific. What made the body read as an AI
+He is right, and the diagnosis is specific. What made the body read as a generic template
 product page was not the content, it was six habits, every one of which the
 firms he named refuse:
 
