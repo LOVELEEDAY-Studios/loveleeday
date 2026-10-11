@@ -1,0 +1,32 @@
+name: no-authorship-markers
+# Fails when a PR description, commit message or added line says the work was machine-produced.
+# Backstop for commits made where the local hooks do not run (cloud agents, other machines, bots).
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+  push:
+    branches: ['**']
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Scan
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          PAT='co-authored-by:.*(claude|anthropic|openai|chatgpt|copilot|cursor|codex)|claude\.(com|ai)/(claude-)?code|noreply@anthropic\.com|(generated|written|created) (with|by) \[?(claude|chatgpt|copilot|an ai)'
+          EXEMPT='ai-marker-scan.mjs|ai-marker-push-gate.sh|editorial-policy.json|source-hygiene-guard.js|commit-msg|no-authorship-markers.yml'
+          if [ -z "$BASE" ] || [ "$BASE" = 0000000000000000000000000000000000000000 ] || ! git cat-file -e "$BASE" 2>/dev/null; then RANGE="$HEAD_SHA -1"; else RANGE="$BASE..$HEAD_SHA"; fi
+          hits=$(printf '%s\n' "$PR_BODY" | grep -i -E "$PAT" | sed 's/^/pr-body: /')
+          hits="$hits$(git log --format='%h %B' $RANGE | grep -i -E "$PAT" | sed 's/^/commit: /')"
+          hits="$hits$(git log -p --format='' $RANGE | awk -v ex="$EXEMPT" '/^\+\+\+ /{skip = ($0 ~ ex)} /^\+[^+]/ && !skip' | grep -i -E "$PAT" | sed 's/^/added: /')"
+          if [ -n "$hits" ]; then echo "$hits" | head -20; echo "::error::Machine-authorship markers found. Remove them."; exit 1; fi
+          echo "clean"
