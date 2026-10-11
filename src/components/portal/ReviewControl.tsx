@@ -7,10 +7,10 @@ import { useEffect, useRef, useState } from "react";
 
 type Entry = { approved: boolean; comment: string; label: string; at?: string; status?: string; note?: string; statusAt?: string };
 const STATUS: Record<string, { label: string; cls: string }> = {
-  working: { label: "Arthur is working on it", cls: "bg-[#eaf2fb] text-[#2d6aa8]" },
+  working: { label: "Working on it", cls: "bg-[#eaf2fb] text-[#2d6aa8]" },
   done: { label: "Done", cls: "bg-[#e6f4ea] text-[#1e6b3a]" },
   blocked: { label: "Needs you", cls: "bg-[#fff4e0] text-[#8a5a00]" },
-  replied: { label: "Arthur replied", cls: "bg-[#f1eefb] text-[#5b3fa8]" },
+  replied: { label: "Replied", cls: "bg-[#f1eefb] text-[#5b3fa8]" },
 };
 
 const caches: Record<string, Record<string, Entry>> = {};
@@ -103,7 +103,7 @@ export function ReviewControl({ id, label, dark, endpoint = "/api/dabney-review"
       <textarea
         rows={2}
         value={comment}
-        placeholder={submitOnEnter ? "Instructions for Arthur. Enter sends, Shift+Enter for a new line" : "Instructions for Arthur on this point"}
+        placeholder={submitOnEnter ? "Instructions. Enter sends, Shift+Enter for a new line" : "Instructions on this point"}
         aria-label={`Instructions for Arthur: ${label}`}
         onChange={(e) => { setComment(e.target.value); save({ approved, comment: e.target.value }); }}
         onKeyDown={(e) => {
