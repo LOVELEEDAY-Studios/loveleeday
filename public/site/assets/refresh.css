@@ -1,7 +1,7 @@
 /* Shared component rules that replace the AI-template patterns: no pill chips, no window chrome, no tracked capitals, plain rows. Loaded after type.css on every public page. */
 
 /* Stateless pills become plain captions; chips that carry a real state keep only their colour and dot */
-.fx-chip,.cx-chip,.cd-chip,.pill,.ip-pill,.sample-badge,.soon-tag,.mf-tag,.cv3-tag,.tv3-tag,.ct-tag,.ha-card-h span{border:0!important;border-radius:0!important;background:none!important;padding:0!important;box-shadow:none!important;font-size:14px;font-weight:500}
+.fx-chip,.cx-chip,.cd-chip,.pill,.ip-pill,.sample-badge,.soon-tag,.mf-tag,.cv3-tag,.tv3-tag,.ct-tag,.ha-card-h span,.pub .tr-ctl,.tr-ctl{border:0!important;border-radius:0!important;background:none!important;padding:0!important;box-shadow:none!important;font-size:14px;font-weight:500}
 .pill:not(.info),.sample-badge,.ip-pill,.soon-tag,.mf-tag,.cv3-tag,.tv3-tag,.ct-tag{color:#62656c}
 .pill.info,.cx-chip.info,.cd-chip.cd-info{color:#0066cc}
 .fx-ask .fx-chip.info{color:#5aa9ff}
@@ -91,6 +91,14 @@ main.pub .sys .c{border:0;border-top:1px solid var(--line);border-radius:0;backg
 .stat .n,main.pub .stat .n{font-size:var(--t2);font-weight:600;letter-spacing:-.03em;line-height:1.1}
 .stat .d,main.pub .stat .d{font-size:14px}
 
+/* Third-level headings sit on the same scale: 28 for feature titles, 20 for card and row titles, 17 inside panels */
+main h3{font-size:var(--t4)!important;font-weight:600!important;line-height:1.3;letter-spacing:-.012em}
+main .panel-head h3,main .pm-q-h,main h3.h{font-size:var(--t5)!important}
+main .cd-stage-copy h3,main .fx-step-copy h3,main .bd-t h3,main .wk2-copy h3,main .layer-detail h3,main .wk h3,main .customer-result h3,main .link-row h3{font-size:var(--t3)!important;line-height:1.2;letter-spacing:-.02em}
+main .cx-pr h3{font-size:var(--t2)!important;line-height:1.1;letter-spacing:-.03em}
+@media(max-width:700px){main .cd-stage-copy h3,main .fx-step-copy h3,main .bd-t h3,main .wk2-copy h3,main .layer-detail h3,main .wk h3,main .customer-result h3,main .link-row h3{font-size:24px!important}main .cx-pr h3{font-size:32px!important}}
+main.pub .snap-chips{display:flex;flex-wrap:wrap;gap:6px 28px;list-style:none;padding:0}
+main.pub .snap-chips li{border:0;border-radius:0;background:none;padding:0;box-shadow:none;font-size:var(--t5);color:#4a4d54}
 /* Worked examples replace the rotating particle brain: each question, what is checked, and the answer. */
 .worked .wk{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--column-gap);padding:48px 0;border-top:1px solid rgba(255,255,255,.12)}
 .worked .wk:first-of-type{border-top:0}
