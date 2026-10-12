@@ -9,7 +9,7 @@
 .ind .tile:hover img{transform:scale(1.04)}
 .ind .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0c0906e6 0%,#0c090680 38%,transparent 65%)}
 .ind .tile>span{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;font-size:17px;line-height:1.25;letter-spacing:-.02em;display:flex;justify-content:space-between;gap:10px;align-items:flex-end}
-.ind .tile small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#e8dccb;margin-bottom:6px}
+.ind .tile small{display:block;font-size:10px;letter-spacing:.14em;text-transform:none;color:#e8dccb;margin-bottom:6px}
 .ind .tile b{font-weight:500}
 .ind .tile i{font-style:normal;flex:none;opacity:.8}
 .ind .sec{padding:96px 0;border-top:1px solid var(--il)}
@@ -20,7 +20,7 @@
 .ind .copy h2{font-size:38px;line-height:1.1;margin-top:16px}
 .ind .copy p{margin-top:20px;font-size:16px;line-height:1.7;color:#4f525a;max-width:480px}
 .ind .eq{margin-top:28px;border-left:2px solid var(--ik);padding:2px 0 2px 16px;max-width:480px}
-.ind .eq small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#62656c;margin-bottom:6px;font-weight:600}
+.ind .eq small{display:block;font-size:10px;letter-spacing:.14em;text-transform:none;color:#62656c;margin-bottom:6px;font-weight:600}
 .ind .eq span{font-size:17px;line-height:1.45;letter-spacing:-.015em}
 .ind .copy .text-link{margin-top:28px;font-size:13px}
 .ind .stagepic{position:relative;padding-bottom:120px}
@@ -32,7 +32,7 @@
 .ip-t{font-weight:600;font-size:13px;letter-spacing:-.01em}
 .ip-pill{font-size:10px;letter-spacing:.05em;color:#5b5e66;border:1px solid var(--il);border-radius:20px;padding:2px 9px;white-space:nowrap;background:#fafafb}
 .ip-q{padding:11px 16px;background:#fafbfd;border-bottom:1px solid var(--il);font-size:12.5px;color:#36475c}
-.ip-q b{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#62656c;margin-bottom:3px;font-weight:600}
+.ip-q b{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:none;color:#62656c;margin-bottom:3px;font-weight:600}
 .ip ul{list-style:none;margin:0;padding:0}
 .ip li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr) auto;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid #eef0f3}
 .ip li b{font-weight:600;font-size:12.5px}
@@ -64,7 +64,7 @@
 .ind .stepgrid>div{padding:28px 32px 8px 0;border-right:1px solid var(--il)}
 .ind .stepgrid>div+div{padding-left:32px}
 .ind .stepgrid>div:last-child{border-right:0}
-.ind .stepgrid b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#62656c;font-weight:600}
+.ind .stepgrid b{display:block;font-size:11px;letter-spacing:.14em;text-transform:none;color:#62656c;font-weight:600}
 .ind .stepgrid h3{font-size:21px;font-weight:500;letter-spacing:-.03em;margin-top:12px;line-height:1.25}
 .ind .stepgrid p{margin-top:10px;font-size:14px;line-height:1.65;color:#4f525a}
 .ind .more{padding:88px 0 8px}
@@ -126,7 +126,7 @@
 .ind .ix-body .eq{margin-top:18px}
 .ind .ix-body .eq span{font-size:15px}
 .ind .ix-ex{border-left:1px solid var(--il);padding-left:28px;font-size:13px;line-height:1.5;color:#4f525a}
-.ind .ix-ex small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#62656c;font-weight:600;margin-bottom:8px}
+.ind .ix-ex small{display:block;font-size:10px;letter-spacing:.14em;text-transform:none;color:#62656c;font-weight:600;margin-bottom:8px}
 .ind .ix-ex b{display:block;font-size:15px;font-weight:600;color:var(--ik)}
 .ind .ix-ex span{display:block;margin-top:2px}
 .ind .ix-ex .text-link{margin-top:14px}

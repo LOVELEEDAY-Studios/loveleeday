@@ -3,13 +3,13 @@
 .fq-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .fq-cards a{position:relative;display:flex;flex-direction:column;gap:8px;padding:24px 26px 26px;background:#fff;border:1px solid #e6dfd3;border-radius:16px;transition:border-color .2s,transform .2s}
 .fq-cards a:hover{border-color:#1d1d1f;transform:translateY(-2px)}
-.fq-cards .cap{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#6d6558}
+.fq-cards .cap{font-size:10px;letter-spacing:.14em;text-transform:none;font-weight:600;color:#6d6558}
 .fq-cards b{font-size:21px;line-height:1.25;letter-spacing:-.03em;font-weight:500;color:#1d1d1f;padding-right:28px}
 .fq-cards a>span:last-of-type{font-size:14px;line-height:1.6;color:#62656c}
 .fq-cards i{position:absolute;right:22px;top:22px;font-style:normal;color:#0066cc;font-size:18px}
 .fq-shell{display:grid;grid-template-columns:230px minmax(0,1fr);gap:72px;padding-block:80px 40px;align-items:start}
 .fq-nav{position:sticky;top:calc(var(--header-height) + 32px)}
-.fq-nav-t{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#62656c;margin-bottom:14px}
+.fq-nav-t{display:block;font-size:10px;letter-spacing:.16em;text-transform:none;font-weight:600;color:#62656c;margin-bottom:14px}
 .fq-nav ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
 .fq-nav a{display:flex;gap:12px;align-items:baseline;padding:10px 0 10px 16px;margin-left:-1px;border-left:2px solid transparent;font-size:14px;line-height:1.4;color:#44474e}
 .fq-nav a:hover{border-left-color:#0066cc;color:#1d1d1f}
