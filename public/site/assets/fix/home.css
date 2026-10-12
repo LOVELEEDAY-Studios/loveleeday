@@ -1,26 +1,78 @@
-.fx-ask{background:var(--fx-bg);color:#f4f4f7;padding-block:var(--section-space);position:relative;overflow:hidden}
-.fx-ask::before{content:"";position:absolute;inset:-30% -10% auto auto;width:60%;height:90%;background:radial-gradient(closest-side,rgba(90,169,255,.18),rgba(76,212,160,.06) 60%,transparent);pointer-events:none}
-.fx-ask>.wrap{position:relative}
-.fx-ask .eyebrow{color:#a6a9b4}
-.fx-ask h2{font-size:clamp(34px,4.4vw,60px);font-weight:500;letter-spacing:-.05em;line-height:1.06;margin-top:14px;color:#f4f4f7}
-.fx-ask h2 span{color:#8b8f9c}
-.fx-ask-head{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--column-gap);align-items:end;margin-bottom:var(--s5)}
-.fx-ask-head p{color:#b4b7c2;font-size:17px;line-height:1.6;max-width:460px}
-.fx-ask-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.fx-ask-card{background:var(--fx-panel);border:1px solid var(--fx-line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px}
-.fx-ask-fn{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--fx-blue)}
-.fx-ask-card h3{font-size:18px;line-height:1.3;letter-spacing:-.02em;font-weight:500;color:#f4f4f7;min-height:70px}
-.fx-ask-vis{margin-top:auto;display:grid;gap:7px}
-.fx-ask-src{font-size:12px;color:#d6d8df;border:1px solid var(--fx-line);background:var(--fx-panel2);border-radius:8px;padding:8px 10px;line-height:1.35}
-.fx-ask-src b{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fx-mute);font-weight:600;margin-bottom:1px}
-.fx-ask-out{padding-top:6px;border-top:1px dashed var(--fx-line)}
-.fx-ask-bars>div:not(.fx-ask-out){position:relative;border:1px solid var(--fx-line);background:var(--fx-panel2);border-radius:8px;height:38px;overflow:hidden}
-.fx-ask-bars i{position:absolute;inset:0 auto 0 0;background:rgba(90,169,255,.22);border-right:2px solid var(--fx-blue)}
-.fx-ask-bars>div:first-child i{background:rgba(240,179,90,.25);border-right-color:var(--fx-amber)}
-.fx-ask-bars b{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:500;color:#e6e8ee}
-.fx-ask-flag{margin-top:20px;display:flex;align-items:center;gap:16px;border:1px solid var(--fx-line);border-radius:14px;padding:16px 20px;background:rgba(255,255,255,.03)}
-.fx-ask-flag p{color:#c9ccd6;font-size:14px;line-height:1.5}
-.fx-ask .fx-cap{color:#8b8f9c}
-@media(max-width:1000px){.fx-ask-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fx-ask-head{grid-template-columns:1fr;gap:var(--s3)}}
-@media(max-width:640px){.fx-ask-grid{grid-template-columns:1fr}.fx-ask-card h3{min-height:0}.fx-ask-flag{flex-direction:column;align-items:flex-start}}
-.hero-life .hero-story p{text-shadow:0 1px 18px rgba(0,0,0,.55)}.hero-life .hero-shade{background:linear-gradient(90deg,rgba(8,8,12,.62),rgba(8,8,12,.18) 70%)}
+/* Home sections. Each section has its own shape: a statement, a working table, a diagram, a real screenshot, a ruled list. */
+.intro{grid-template-columns:minmax(0,1fr);gap:var(--s3);align-items:start}
+.intro p{font-size:var(--t4);line-height:1.5;color:#4a4d54;max-width:720px}
+.intro p strong{color:var(--ink)}
+
+/* One picture across every system: ruled rows on the dark ground, not four boxes. */
+.fx-ask{background:var(--fx-bg);color:#f4f4f7;padding-block:var(--section-space)}
+.fx-ask h2{color:#f4f4f7;margin:0}
+.fx-ask-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr);gap:var(--column-gap);align-items:end;margin-bottom:var(--s5)}
+.fx-ask-head p{color:#b4b7c2;font-size:var(--t5);line-height:1.6;max-width:460px}
+.qrows{border-top:1px solid var(--fx-line)}
+.qrow{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,5fr) minmax(0,2fr);gap:var(--s4);align-items:center;padding:24px 0;border-bottom:1px solid var(--fx-line)}
+.qrow h3{color:#f4f4f7;font-size:var(--t4);line-height:1.3;max-width:26ch}
+.qsrc{margin:0;display:grid;gap:6px}
+.qsrc div{display:flex;gap:14px;font-size:15px;line-height:1.4}
+.qsrc dt{flex:0 0 84px;color:#a6a9b4;font-weight:500}
+.qsrc dd{margin:0;color:#e3e5ea}
+.qres{margin:0;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500;color:#a6a9b4}
+.qres.ok{color:#4cd4a0}.qres.warn{color:#f0b35a}.qres.info{color:#5aa9ff}
+.qbars{display:grid;gap:6px}
+.qbars>div{position:relative;height:30px;border-radius:4px;background:#14151b;overflow:hidden}
+.qbars i{position:absolute;inset:0 auto 0 0;background:rgba(90,169,255,.24);border-right:2px solid var(--fx-blue)}
+.qbars>div:first-child i{background:rgba(240,179,90,.26);border-right-color:var(--fx-amber)}
+.qbars b{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:14px;font-weight:500;color:#e6e8ee}
+.fx-ask-flag{margin-top:28px}
+.fx-ask-flag p{color:#c9ccd6;font-size:var(--t5);line-height:1.5;max-width:720px}
+.fx-ask-flag b{color:#fff;font-weight:600}
+.fx-ask .fx-cap{color:#8b8f9c;font-size:14px}
+
+/* The diagram that replaces the particle brain */
+.resolve{margin-top:var(--s5)}
+.resolve-svg{width:100%;height:auto;display:block}
+.resolve-list{display:none}
+.resolve-cap{margin-top:20px;font-size:14px;color:#9a9ca6}
+.arthur{background:#0b0b10}
+@media(max-width:900px){
+  .resolve-svg{display:none}
+  .resolve-list{display:block}
+  .resolve-list ul{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:10px}
+  .resolve-list li{background:#101114;border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:14px 16px;display:grid;gap:2px}
+  .resolve-list li span,.resolve-out span{font-size:13px;color:rgba(255,255,255,.62)}
+  .resolve-list li b{font-size:17px;color:#fff;font-weight:600}
+  .resolve-list li small{font-size:13px;color:rgba(255,255,255,.7)}
+  .resolve-out{background:#fff;border-radius:8px;padding:18px;display:grid;gap:2px}
+  .resolve-out span{color:#62656c}
+  .resolve-out b{font-size:22px;color:var(--ink);font-weight:600}
+  .resolve-out small{font-size:14px;color:#62656c}
+}
+
+/* The real portal, as it is */
+.system-section .section-heading{display:block;max-width:640px;margin-bottom:var(--s5)}
+.system-section .section-heading p{margin-top:16px;color:#4a4d54;font-size:var(--t4);line-height:1.5}
+.portal-shot{margin:0}
+.portal-shot img{width:100%;height:auto;border:1px solid var(--line);border-radius:4px}
+.portal-shot figcaption{margin-top:16px;font-size:14px;color:#62656c;max-width:62ch}
+
+/* Principles as a ruled list beside the statement */
+.principles-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--column-gap);align-items:start}
+.principles-grid h2{max-width:14ch}
+.principle-rows article{padding:26px 0;border-top:1px solid rgba(255,255,255,.12)}
+.principle-rows article:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.principle-rows h3{color:#fff;margin:0 0 8px}
+.principle-rows p{color:#b4b7c2;max-width:52ch}
+
+/* Industries and start blocks: different shapes from the intro */
+.industries-block .split{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.start-block .split{display:block}
+.start-block .split .body-copy{columns:2;column-gap:var(--column-gap);margin-top:var(--s4);max-width:none}
+.start-block .split .body-copy p{break-inside:avoid;margin:0 0 16px}
+.start-block .page-actions{display:grid;gap:0;margin-top:var(--s4);border-top:1px solid var(--line)}
+.start-block .page-actions a{padding:16px 0;border-bottom:1px solid var(--line)}
+
+@media(max-width:1000px){
+  .fx-ask-head,.principles-grid{grid-template-columns:1fr;gap:var(--s3)}
+  .qrow{grid-template-columns:1fr;gap:14px}
+  .industries-block .split{grid-template-columns:1fr}
+  .start-block .split .body-copy{columns:1}
+}

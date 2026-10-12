@@ -1,0 +1,26 @@
+/* Shared component rules that replace the AI-template patterns: no pill chips, no window chrome, no tracked capitals, plain rows. Loaded after type.css on every public page. */
+
+/* Stateless pills become plain captions; chips that carry a real state keep only their colour and dot */
+.fx-chip,.cx-chip,.cd-chip,.pill,.ip-pill,.sample-badge,.soon-tag,.mf-tag,.cv3-tag,.tv3-tag,.ct-tag,.ha-card-h span{border:0!important;border-radius:0!important;background:none!important;padding:0!important;box-shadow:none!important;font-size:14px;font-weight:500}
+.pill:not(.info),.sample-badge,.ip-pill,.soon-tag,.mf-tag,.cv3-tag,.tv3-tag,.ct-tag{color:#62656c}
+.pill.info,.cx-chip.info,.cd-chip.cd-info{color:#0066cc}
+.fx-ask .fx-chip.info{color:#5aa9ff}
+
+/* No fake window chrome around figures */
+.window-dots,.fx-bar i,.shell-top .window-dots{display:none!important}
+
+/* Footer column titles are plain text, not tracked capitals */
+.footer-col strong,.gf-grid strong{text-transform:none!important;letter-spacing:0!important;font-size:15px;font-weight:600}
+
+/* Links carry no arrow glyphs */
+.text-link,.hero-explore,.footer-cta{gap:0}
+
+/* Worked examples replace the rotating particle brain: each question, what is checked, and the answer. */
+.worked .wk{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--column-gap);padding:48px 0;border-top:1px solid rgba(255,255,255,.12)}
+.worked .wk:first-of-type{border-top:0}
+.worked .wk h3{color:#fff;font-size:var(--t3);line-height:1.2;max-width:22ch;margin:0 0 24px}
+.worked .wk-lab{font-size:14px;font-weight:500;color:#a6a9b4;margin:0 0 10px}
+.worked .wk-steps{margin:0;padding-left:20px;display:grid;gap:8px;color:#d6d8df}
+.worked .wk-a .answer{font-size:24px;line-height:1.4;color:#fff}
+.worked .wk-a small{display:block;margin-top:16px;font-size:14px;color:#9a9ca6}
+@media(max-width:900px){.worked .wk{grid-template-columns:1fr;gap:24px;padding:36px 0}.worked .wk-a .answer{font-size:21px}}
