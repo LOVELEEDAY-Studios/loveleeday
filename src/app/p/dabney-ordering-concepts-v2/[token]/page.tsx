@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
    (the platforms review) — see designNotes for sourcing. Round-1 files are untouched by this page. */
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980]">{children}</span>;
+  return <span className="block text-[13px] font-medium text-[#777980]">{children}</span>;
 }
 function Two({ a, b, size = "h2" }: { a: string; b: string; size?: "h1" | "h2" }) {
   const cls =
@@ -135,7 +135,7 @@ export default async function OrderingConceptsV2Page({ params }: { params: Promi
               <div className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#3778bc]">Direction {d.n}</div>
               <div className="mt-1 text-[17px] font-medium text-[#1d1d1f]">{d.name}</div>
               <div className="mt-1 text-[13px] leading-[1.55] text-[#6c7481]">{d.tagline}</div>
-              <div className="mt-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#8c8e95]">{d.covers}</div>
+              <div className="mt-2 text-[13px] font-medium text-[#8c8e95]">{d.covers}</div>
             </a>
           ))}
         </div>
@@ -152,9 +152,9 @@ export default async function OrderingConceptsV2Page({ params }: { params: Promi
               <Two a={d.name} b={d.tagline} />
 
               <div className="mt-6 grid gap-3 rounded-2xl border border-[#e4e5e9] bg-[#fafafa] p-4">
-                <div><span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#3778bc]">Problem</span><p className="mt-1 text-[14px] leading-[1.65] text-[#3f434b]">{d.problem}</p></div>
-                <div><span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#3778bc]">Insight</span><p className="mt-1 text-[14px] leading-[1.65] text-[#3f434b]">{d.insight}</p></div>
-                <div><span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#3778bc]">Bet</span><p className="mt-1 text-[14px] leading-[1.65] text-[#3f434b]">{d.bet}</p></div>
+                <div><span className="text-[13px] font-medium text-[#3778bc]">Problem</span><p className="mt-1 text-[14px] leading-[1.65] text-[#3f434b]">{d.problem}</p></div>
+                <div><span className="text-[13px] font-medium text-[#3778bc]">Insight</span><p className="mt-1 text-[14px] leading-[1.65] text-[#3f434b]">{d.insight}</p></div>
+                <div><span className="text-[13px] font-medium text-[#3778bc]">Bet</span><p className="mt-1 text-[14px] leading-[1.65] text-[#3f434b]">{d.bet}</p></div>
               </div>
 
               <p className="mt-6 text-[15px] font-medium text-[#1d1d1f]">Who it&apos;s for</p>
@@ -246,7 +246,7 @@ export default async function OrderingConceptsV2Page({ params }: { params: Promi
       <section className="border-t border-[#e4e5e9]">
         <div className="mx-auto max-w-[1180px] px-6 py-12">
           <details>
-            <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980] hover:text-[#3778bc]">
+            <summary className="cursor-pointer text-[13px] font-medium text-[#777980] hover:text-[#3778bc]">
               Sources, design notes and gaps
             </summary>
             <ul className="mt-5 grid max-w-[76ch] gap-3 text-[13px] leading-[1.65] text-[#6c7481]">

@@ -42,7 +42,7 @@ export default async function DeliverablePage({
       <div className="mx-auto max-w-[1340px] px-6 pb-8 pt-10">
         <Link
           href={`/p/${portal.token}`}
-          className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)] transition-colors hover:text-[var(--ink)]"
+          className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)] transition-colors hover:text-[var(--ink)]"
         >
           ← {portal.client} · {portal.round}
         </Link>
@@ -52,7 +52,7 @@ export default async function DeliverablePage({
             <h1 className="text-[clamp(1.75rem,4vw,2.5rem)] font-medium leading-[1.05] tracking-[-0.03em]">
               {deliverable.title}
             </h1>
-            <p className="mt-2 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--dim)]">
+            <p className="mt-2 font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
               {String(index + 1).padStart(2, "0")} · {deliverable.kind}
             </p>
           </div>
@@ -69,14 +69,14 @@ export default async function DeliverablePage({
 
       <div className="mx-auto grid max-w-[1340px] gap-x-16 gap-y-12 px-6 py-16 lg:grid-cols-[minmax(0,var(--measure))_minmax(0,1fr)]">
         <div>
-          <h2 className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
+          <h2 className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
             Why it is built this way
           </h2>
           <p className="mt-4 text-[15px] leading-[1.7] text-[var(--mid)]">
             {deliverable.rationale}
           </p>
 
-          <h2 className="mt-10 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
+          <h2 className="mt-10 font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
             What to look at
           </h2>
           <ul className="mt-4 space-y-3">
@@ -96,7 +96,7 @@ export default async function DeliverablePage({
 
           {deliverable.caveats && (
             <>
-              <h2 className="mt-10 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
+              <h2 className="mt-10 font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
                 Read this before you judge the numbers
               </h2>
               <ul className="mt-4 space-y-2.5">
@@ -138,7 +138,7 @@ function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
     <section className="mb-12 border border-[var(--line-bright)] p-8">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <h2 className="text-[22px] font-medium tracking-[-0.01em]">Search visibility</h2>
-        <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--dim)]">
+        <span className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
           Measured {formatDate(seo.measuredOn)}
         </span>
       </div>
@@ -157,7 +157,7 @@ function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
               {n === null ? "—" : n}
             </div>
             <div className="mt-2 text-[13px] text-[var(--mid)]">{label}</div>
-            <div className="mt-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--dim)]">
+            <div className="mt-1 font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
               {n === null ? "Not measured" : "Lighthouse, mobile"}
             </div>
           </div>
@@ -166,7 +166,7 @@ function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
 
       <p className="mt-7 text-[15px] leading-[1.7] text-[var(--mid)]">{seo.verdict}</p>
 
-      <h3 className="mt-9 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
+      <h3 className="mt-9 font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
         Where {domain ?? "the site"} ranks on Google today
       </h3>
       <ul className="mt-4 space-y-4">
@@ -190,7 +190,7 @@ function SeoPanel({ seo, domain }: { seo: Seo; domain?: string }) {
         ))}
       </ul>
 
-      <h3 className="mt-9 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
+      <h3 className="mt-9 font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
         How this was measured
       </h3>
       <ul className="mt-4 space-y-2.5">
