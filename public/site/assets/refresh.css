@@ -18,6 +18,50 @@
 .text-link{font-size:var(--t5)}
 .hero-explore{font-size:var(--t5);margin-right:28px}
 
+/* Three equal feature columns become a ruled list: number, title, explanation on one line each */
+.process{display:block;margin-top:var(--s5);border-top:1px solid var(--line)}
+.process article{display:grid;grid-template-columns:56px minmax(0,5fr) minmax(0,6fr);gap:var(--s3);align-items:baseline;padding:26px 0;border-top:0;border-bottom:1px solid var(--line)}
+.process article h3,.process article p{margin:0}
+.process article p{font-size:var(--t5);line-height:1.6;color:#4a4d54}
+.process .row-number{font-size:14px;color:#62656c}
+@media(max-width:900px){.process article{grid-template-columns:40px minmax(0,1fr);gap:8px 16px;padding:20px 0}.process article p{grid-column:2}}
+
+/* Industry pages: the example card sits in its own band under the photo, not on top of it */
+.ind .hero::before{background:rgba(18,14,11,.64)}
+.ind .hero .wrap{grid-template-columns:minmax(0,1fr);padding:104px 0 96px}
+.ind .hero h1{color:#fff}
+.ind .hero .lead{font-size:var(--t4);line-height:1.5;max-width:560px;color:#f4ece2}
+.ip-band{background:#f5f5f7;border-bottom:1px solid var(--line);padding:48px 0}
+.ip-band .ip,.ind .ip-band .ip{position:static;left:auto;right:auto;margin:0;max-width:920px;box-shadow:none;border-radius:8px}
+.ip-band .ip li{padding:14px 18px;grid-template-columns:minmax(0,3fr) minmax(0,6fr) auto}
+.ip-band .ip li b,.ip-band .ip li span{font-size:15px}
+.ip-band .ip-q{font-size:15px}
+.ip-band .ip-t{font-size:15px}
+.ip li em{background:none!important;padding:0!important;border-radius:0!important;font-size:13px!important;color:#62656c!important}
+.ip-q b,.ip-f{text-transform:none!important;letter-spacing:0!important;font-size:13px!important}
+/* Three columns of steps become rows */
+.ind .stepgrid{display:block;margin-top:var(--s4);border-top:1px solid var(--il,#e4e5e9)}
+.ind .stepgrid>div,.ind .stepgrid>div+div{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,5fr);gap:var(--s3);align-items:baseline;padding:24px 0;border-right:0;border-bottom:1px solid var(--il,#e4e5e9)}
+.ind .stepgrid b{display:block;font-size:14px!important;letter-spacing:0!important;text-transform:none!important;font-weight:500;color:#62656c}
+.ind .stepgrid h3{margin:0}
+.ind .stepgrid p{margin:0;font-size:var(--t5);line-height:1.6;color:#4a4d54}
+@media(max-width:900px){.ind .stepgrid>div,.ind .stepgrid>div+div{grid-template-columns:1fr;gap:6px}}
+/* Four identical system cards become a ruled list */
+.pub .sys{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 var(--column-gap)}
+.pub .sys .c{border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none;padding:20px 0}
+@media(max-width:900px){.pub .sys{grid-template-columns:minmax(0,1fr)!important}}
+/* FAQ contact options: ruled rows */
+.fq-cards{display:block;border-top:1px solid var(--line)}
+.fq-cards a,.fq-cards a:hover{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,5fr);gap:var(--s3);align-items:baseline;padding:22px 0;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;transform:none}
+.fq-cards b{padding-right:0;font-size:var(--t4)}
+.fq-cards .cap{font-size:14px!important;letter-spacing:0!important;text-transform:none!important;font-weight:500;color:#62656c}
+.fq-cards a>span:last-of-type{font-size:var(--t5);color:#4a4d54}
+@media(max-width:900px){.fq-cards a,.fq-cards a:hover{grid-template-columns:1fr;gap:6px}}
+/* Figures in a row are a stat strip, not four boxes */
+.stat{border:0;border-top:2px solid var(--ink);border-radius:0;background:none;padding:14px 0 0}
+.stat .n{font-size:var(--t2);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.stat .d{font-size:14px}
+
 /* Worked examples replace the rotating particle brain: each question, what is checked, and the answer. */
 .worked .wk{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--column-gap);padding:48px 0;border-top:1px solid rgba(255,255,255,.12)}
 .worked .wk:first-of-type{border-top:0}
