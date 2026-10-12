@@ -45,7 +45,7 @@ export default async function PortalPage({
       {/* Header. The client's name is the largest thing on the page; ours is a
           26px mark in the bar above it. That ordering is the whole posture. */}
       <section className="mx-auto max-w-[1340px] px-6 pb-14 pt-16 sm:pt-24">
-        <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">
+        <p className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--accent)]">
           {portal.round}
           <span className="text-[var(--dim)]"> · prepared for {portal.client}</span>
         </p>
@@ -111,7 +111,7 @@ export default async function PortalPage({
                   <h2 className="mt-3 text-[28px] font-medium leading-[1.15] tracking-[-0.02em]">
                     {d.title}
                   </h2>
-                  <p className="mt-2 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--dim)]">
+                  <p className="mt-2 font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
                     {d.kind}
                   </p>
 
@@ -119,7 +119,7 @@ export default async function PortalPage({
                     {d.rationale}
                   </p>
 
-                  <h3 className="mt-9 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
+                  <h3 className="mt-9 font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
                     What to look at
                   </h3>
                   <ul className="mt-4 space-y-3">
@@ -157,7 +157,7 @@ export default async function PortalPage({
 
                   {d.caveats && (
                     <div className="mt-10 border-t border-[var(--line)] pt-6">
-                      <h3 className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
+                      <h3 className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
                         Read this before you judge the numbers
                       </h3>
                       <ul className="mt-4 space-y-2.5">
@@ -184,7 +184,7 @@ export default async function PortalPage({
                 <div className={flip ? "lg:order-1" : ""}>
                   {cmp && (
                     <div className="mb-8">
-                      <p className="mb-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
+                      <p className="mb-3 font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
                         Today, and the direction — drag to compare
                       </p>
                       <BeforeAfter
@@ -216,7 +216,7 @@ export default async function PortalPage({
                       className="block w-full"
                     />
                   </div>
-                  <span className="mt-3 block font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
+                  <span className="mt-3 block font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
                     Top of page
                   </span>
                 </a>

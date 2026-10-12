@@ -33,7 +33,7 @@ const monthName = (ym: string) =>
 
 function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <span className={`block text-[10px] font-semibold uppercase tracking-[0.16em] ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>
+    <span className={`block text-[13px] font-medium ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>
       {children}
     </span>
   );
@@ -47,9 +47,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a}
-      <br />
-      <span className={dark ? "text-[#8e8d99]" : "text-[#8c8e95]"}>{b}</span>
+      {a} {b}
     </Tag>
   );
 }
@@ -208,7 +206,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
             <li key={x.n} className="grid gap-6 border-b border-[#e4e5e9] py-10 lg:grid-cols-[4rem_1.1fr_1.4fr_12rem] lg:gap-10">
               <span className="text-[12px] tabular-nums text-[#6a6e77]">{x.n}</span>
               <div>
-                <span className={`text-[10px] font-semibold uppercase tracking-[0.16em] ${x.who === "You asked" ? "text-[#3778bc]" : "text-[#8b8e96]"}`}>{x.who}</span>
+                <span className={`text-[13px] font-medium ${x.who === "You asked" ? "text-[#3778bc]" : "text-[#8b8e96]"}`}>{x.who}</span>
                 <h3 className="mt-2 text-[22px] font-medium leading-[1.3] tracking-[-0.025em] text-[#1d1d1f]">{x.ask}</h3>
               </div>
               <p className="text-[15px] leading-[1.75] text-[#6c7481]">{x.found}</p>
@@ -257,7 +255,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
             ["Your board", "Assembled the night before", "A compliance and planning report, kept current all year"],
           ].map(([what, before, after]) => (
             <div key={what} className="bg-white p-7">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6a6e77]">{what}</span>
+              <span className="text-[13px] font-medium text-[#6a6e77]">{what}</span>
               <p className="mt-4 text-[14px] leading-[1.6] text-[#6a6e77] line-through decoration-[#d5d8de]">{before}</p>
               <p className="mt-1 text-[16px] leading-[1.55] text-[#1d1d1f]">{after}</p>
             </div>
@@ -328,7 +326,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
       <section className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
         <div className="mx-auto max-w-[1180px] px-6 py-12">
           <details>
-            <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980] hover:text-[#3778bc]">
+            <summary className="cursor-pointer text-[13px] font-medium text-[#777980] hover:text-[#3778bc]">
               Sources and method
             </summary>
             <ul className="mt-5 grid max-w-[72ch] gap-2 text-[13px] leading-[1.6] text-[#6c7481]">

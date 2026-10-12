@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
 
 function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <span className={`block text-[10px] font-semibold uppercase tracking-[0.16em] ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>
+    <span className={`block text-[13px] font-medium ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>
       {children}
     </span>
   );
@@ -35,9 +35,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a}
-      <br />
-      <span className={dark ? "text-[#8e8d99]" : "text-[#8c8e95]"}>{b}</span>
+      {a} {b}
     </Tag>
   );
 }
@@ -57,7 +55,7 @@ function Head({ eyebrow, a, b, children, dark }: { eyebrow: string; a: string; b
 }
 
 const Label = ({ children }: { children: React.ReactNode }) => (
-  <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8c8e95] lg:hidden">{children}</span>
+  <span className="mb-1 block text-[13px] font-medium text-[#8c8e95] lg:hidden">{children}</span>
 );
 
 export default async function GrowthPlanPage({ params }: { params: Promise<{ token: string }> }) {
@@ -173,7 +171,7 @@ export default async function GrowthPlanPage({ params }: { params: Promise<{ tok
         </Head>
         <div className="mt-12 hidden grid-cols-[1fr_1.7fr_1.3fr_1.4fr] gap-x-6 border-b border-[#dcdfe6] pb-3 lg:grid">
           {["Plan piece", "What exists", "Gap", "Same-week action"].map((h) => (
-            <span key={h} className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980]">{h}</span>
+            <span key={h} className="text-[13px] font-medium text-[#777980]">{h}</span>
           ))}
         </div>
         <ul>
@@ -363,7 +361,7 @@ export default async function GrowthPlanPage({ params }: { params: Promise<{ tok
                 <span className="text-[13px] tabular-nums text-[#3778bc]">{i + 1}</span>
                 <span className="text-[16px] leading-[1.55] text-[#1d1d1f]">{d.q}</span>
                 <span className="col-start-2 text-[14px] leading-[1.6] text-[#2d6aa8] lg:col-start-3">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8c8e95]">Recommendation </span>
+                  <span className="text-[13px] font-medium text-[#8c8e95]">Recommendation </span>
                   {d.rec}
                 </span>
               </li>
@@ -376,7 +374,7 @@ export default async function GrowthPlanPage({ params }: { params: Promise<{ tok
       <section className="border-t border-[#e4e5e9]">
         <div className="mx-auto max-w-[1180px] px-6 py-12">
           <details>
-            <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980] hover:text-[#3778bc]">
+            <summary className="cursor-pointer text-[13px] font-medium text-[#777980] hover:text-[#3778bc]">
               Sources and method
             </summary>
             <ul className="mt-5 grid max-w-[72ch] gap-2 text-[13px] leading-[1.6] text-[#6c7481]">

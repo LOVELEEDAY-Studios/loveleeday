@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
 
 function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <span className={`block text-[10px] font-semibold uppercase tracking-[0.16em] ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>
+    <span className={`block text-[13px] font-medium ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>
       {children}
     </span>
   );
@@ -33,9 +33,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a}
-      <br />
-      <span className={dark ? "text-[#8e8d99]" : "text-[#8c8e95]"}>{b}</span>
+      {a} {b}
     </Tag>
   );
 }
@@ -231,7 +229,7 @@ export default async function AdsPage({ params }: { params: Promise<{ token: str
           <div className="mt-10 overflow-x-auto rounded-2xl border border-[#e4e5e9] bg-white">
             <table className="w-full min-w-[760px] text-[14px]">
               <thead>
-                <tr className="border-b border-[#e4e5e9] text-left text-[11px] uppercase tracking-[0.12em] text-[#8c8e95]">
+                <tr className="border-b border-[#e4e5e9] text-left text-[13px] text-[#8c8e95]">
                   {["Campaign type", "Campaigns", "Spend", "Nights", "Avg night", "Baseline", "Lift a night", "Per $1"].map((h, i) => (
                     <th key={h} className={`px-5 py-3 font-medium ${i ? "text-right" : ""}`}>{h}</th>
                   ))}
@@ -254,7 +252,7 @@ export default async function AdsPage({ params }: { params: Promise<{ token: str
           <div className="mt-6 overflow-x-auto rounded-2xl border border-[#e4e5e9] bg-white">
             <table className="w-full min-w-[760px] text-[14px]">
               <thead>
-                <tr className="border-b border-[#e4e5e9] text-left text-[11px] uppercase tracking-[0.12em] text-[#8c8e95]">
+                <tr className="border-b border-[#e4e5e9] text-left text-[13px] text-[#8c8e95]">
                   {["Night", "Promoted", "Ad spend", "With ads", "Plain", "Difference", "Plain-night guests"].map((h, i) => (
                     <th key={h} className={`px-5 py-3 font-medium ${i ? "text-right" : ""}`}>{h}</th>
                   ))}
@@ -321,7 +319,7 @@ export default async function AdsPage({ params }: { params: Promise<{ token: str
       <section className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
         <div className="mx-auto max-w-[1180px] px-6 py-12">
           <details>
-            <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980] hover:text-[#3778bc]">
+            <summary className="cursor-pointer text-[13px] font-medium text-[#777980] hover:text-[#3778bc]">
               Sources and method
             </summary>
             <ul className="mt-5 grid max-w-[72ch] gap-2 text-[13px] leading-[1.6] text-[#6c7481]">

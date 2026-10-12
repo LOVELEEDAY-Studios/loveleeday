@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <span className={`block text-[10px] font-semibold uppercase tracking-[0.16em] ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>
+    <span className={`block text-[13px] font-medium ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>
       {children}
     </span>
   );
@@ -29,9 +29,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a}
-      <br />
-      <span className={dark ? "text-[#8e8d99]" : "text-[#8c8e95]"}>{b}</span>
+      {a} {b}
     </Tag>
   );
 }
@@ -107,7 +105,7 @@ export default async function DoorlightYwcaPage({ params }: { params: Promise<{ 
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {tryIt.doors.map((d) => (
               <a key={d.href} href={d.href} target="_blank" rel="noreferrer" className="group rounded-2xl border border-[#e4e5e9] bg-[#f5f5f7] p-7 transition hover:border-[#3778bc]">
-                <p className="text-[12px] uppercase tracking-[0.14em] text-[#6c7481]">{d.k}</p>
+                <p className="text-[13px] text-[#6c7481]">{d.k}</p>
                 <h3 className="mt-2 text-[20px] font-medium tracking-[-0.02em] text-[#1d1d1f]">{d.title}</h3>
                 <p className="mt-2 text-[14px] leading-[1.7] text-[#6c7481]">{d.body}</p>
                 <p className="mt-4 text-[14px] font-medium text-[#3778bc]">Open it →</p>
@@ -312,7 +310,7 @@ export default async function DoorlightYwcaPage({ params }: { params: Promise<{ 
             <div>
               <Eyebrow>How we would know it worked</Eyebrow>
               <div className="mt-6 rounded-2xl border border-dashed border-[#c9ced8] bg-white p-6">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#777980]">{pricing.label}</div>
+                <div className="text-[13px] font-medium text-[#777980]">{pricing.label}</div>
                 <p className="mt-2 text-[16px] font-medium text-[#1d1d1f]">{pricing.body}</p>
               </div>
             </div>
@@ -389,7 +387,7 @@ export default async function DoorlightYwcaPage({ params }: { params: Promise<{ 
       <section className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
         <div className="mx-auto max-w-[1180px] px-6 py-12">
           <details>
-            <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980] hover:text-[#3778bc]">
+            <summary className="cursor-pointer text-[13px] font-medium text-[#777980] hover:text-[#3778bc]">
               Sources and method
             </summary>
             <ul className="mt-5 grid max-w-[72ch] gap-2 text-[13px] leading-[1.6] text-[#6c7481]">

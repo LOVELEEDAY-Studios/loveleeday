@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ViewBeacon } from "@/components/portal/ViewBeacon";
+import "./p-type.css";
 
 /* Portals are handed out one link at a time. They must never turn up in a
    search result, a sitemap, or a referrer-driven crawl. */
@@ -12,7 +13,7 @@ export default function PortalLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className="flex min-h-full flex-1 flex-col">
+    <div className="p-type flex min-h-full flex-1 flex-col">
       {/* The landing page's bar and lockup (72px bar, 24px heart, 13px wordmark at .12em / 650;
           phone: 64px bar, 18px heart, 9px wordmark), on the PORTAL's column: the proposal pages
           are a 1180px column with 24px gutters, so the logo and footer start where the section
@@ -35,7 +36,7 @@ export default function PortalLayout({
             />
             LOVELEEDAY
           </a>
-          <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--dim)]">
+          <span className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
             Private review
           </span>
         </div>
