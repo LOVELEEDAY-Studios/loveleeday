@@ -34,9 +34,10 @@ export default function NotFound() {
         minHeight: "100vh",
         padding: "clamp(72px,11vw,150px) 24px",
         fontFamily:
-          '-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif',
+          'Switzer,system-ui,"Segoe UI",Roboto,Arial,sans-serif',
       }}
     >
+      <style>{`@font-face{font-family:"Switzer";src:url(/site/assets/fonts/switzer-400.woff2) format("woff2");font-weight:400;font-display:swap}@font-face{font-family:"Switzer";src:url(/site/assets/fonts/switzer-600.woff2) format("woff2");font-weight:600;font-display:swap}`}</style>
       <div style={{ maxWidth: 1080, margin: "0 auto" }}>
         <a
           href="/"
@@ -58,13 +59,11 @@ export default function NotFound() {
         <p
           style={{
             marginTop: 56,
-            fontSize: 10,
-            letterSpacing: ".16em",
-            textTransform: "uppercase",
+            fontSize: 14,
             color: "#8b8277",
           }}
         >
-          404 — not found
+          Error 404
         </p>
         <h1
           style={{
@@ -76,13 +75,11 @@ export default function NotFound() {
             color: "#fff",
           }}
         >
-          That page
-          <br />
-          <span style={{ color: "#8e867c" }}>does not exist.</span>
+          That page does not exist.
         </h1>
         <p style={{ marginTop: 26, maxWidth: "52ch", fontSize: 18, lineHeight: 1.6, color: "#a9a196" }}>
           The link may be out of date, or the page may have moved. If you were sent a private
-          review link, open the original URL — those links are unguessable and cannot be reached
+          review link, open the original URL. Those links are unguessable and cannot be reached
           from here.
         </p>
 

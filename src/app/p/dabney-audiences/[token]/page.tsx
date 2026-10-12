@@ -17,16 +17,14 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
 }
 
 function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
-  return <span className={`block text-[10px] font-semibold uppercase tracking-[0.16em] ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>{children}</span>;
+  return <span className={`block text-[13px] font-medium ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>{children}</span>;
 }
 function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean; size?: "h1" | "h2" }) {
   const cls = size === "h1" ? "text-[clamp(2.6rem,6.4vw,4.6rem)] leading-[1.02] tracking-[-0.05em]" : "text-[clamp(2rem,4.2vw,3rem)] leading-[1.08] tracking-[-0.045em]";
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a}
-      <br />
-      <span className={dark ? "text-[#8e8d99]" : "text-[#8c8e95]"}>{b}</span>
+      {a} {b}
     </Tag>
   );
 }
@@ -90,7 +88,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ token: 
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">{T.intro}</p>
           </div>
           <div className="mt-10 divide-y divide-[#eef0f3] border-y border-[#e4e5e9]">
-            <div className="hidden gap-6 py-3 text-[11px] uppercase tracking-[0.12em] text-[#8c8e95] md:grid" style={{ gridTemplateColumns: `repeat(${T.columns.length}, minmax(0,1fr))` }}>
+            <div className="hidden gap-6 py-3 text-[13px] text-[#8c8e95] md:grid" style={{ gridTemplateColumns: `repeat(${T.columns.length}, minmax(0,1fr))` }}>
               {T.columns.map((h) => <span key={h}>{h}</span>)}
             </div>
             {T.rows.map((r, i) => (
@@ -117,7 +115,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ token: 
           </div>
           <div className="mt-10 divide-y divide-[#eef0f3] rounded-2xl border border-[#e4e5e9] bg-white">
             <div
-              className="hidden gap-4 px-5 py-3 text-[11px] uppercase tracking-[0.12em] text-[#8c8e95] md:grid"
+              className="hidden gap-4 px-5 py-3 text-[13px] text-[#8c8e95] md:grid"
               style={{ gridTemplateColumns: "2.1fr 1.3fr 1fr 1.3fr 0.7fr 0.8fr" }}
             >
               {audienceTable.columns.map((h, i) => (
@@ -244,7 +242,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ token: 
       <section className="border-t border-[#e4e5e9]">
         <div className="mx-auto max-w-[1180px] px-6 py-12">
           <details>
-            <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980] hover:text-[#3778bc]">Sources and method</summary>
+            <summary className="cursor-pointer text-[13px] font-medium text-[#777980] hover:text-[#3778bc]">Sources and method</summary>
             <ul className="mt-5 grid max-w-[72ch] gap-2 text-[13px] leading-[1.6] text-[#6c7481]">
               {method.map((m) => <li key={m}>{m}</li>)}
             </ul>

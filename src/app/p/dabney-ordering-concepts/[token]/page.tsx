@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
    money spent). Companion to /p/dabney-ordering — see designNotes for sourcing. */
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980]">{children}</span>;
+  return <span className="block text-[13px] font-medium text-[#777980]">{children}</span>;
 }
 function Two({ a, b, size = "h2" }: { a: string; b: string; size?: "h1" | "h2" }) {
   const cls =
@@ -182,7 +182,7 @@ export default async function OrderingConceptsPage({ params }: { params: Promise
       <section className="border-t border-[#e4e5e9]">
         <div className="mx-auto max-w-[1180px] px-6 py-12">
           <details>
-            <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980] hover:text-[#3778bc]">
+            <summary className="cursor-pointer text-[13px] font-medium text-[#777980] hover:text-[#3778bc]">
               Sources, design notes and gaps
             </summary>
             <ul className="mt-5 grid max-w-[76ch] gap-3 text-[13px] leading-[1.65] text-[#6c7481]">

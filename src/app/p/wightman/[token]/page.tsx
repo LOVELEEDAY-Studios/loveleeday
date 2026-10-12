@@ -46,16 +46,14 @@ const when = (st?: string | null, en?: string | null) =>
 const lim = (s: string) => s.replace(/\s*\(.*$/, "").split(/[;,]/)[0].trim();
 
 function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
-  return <span className={`block text-[10px] font-semibold uppercase tracking-[0.16em] ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>{children}</span>;
+  return <span className={`block text-[13px] font-medium ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>{children}</span>;
 }
 function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean; size?: "h1" | "h2" }) {
   const cls = size === "h1" ? "text-[clamp(2.6rem,6.4vw,4.6rem)] leading-[1.02] tracking-[-0.05em]" : "text-[clamp(2rem,4.2vw,3rem)] leading-[1.08] tracking-[-0.045em]";
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a}
-      <br />
-      <span className={dark ? "text-[#8e8d99]" : "text-[#8c8e95]"}>{b}</span>
+      {a} {b}
     </Tag>
   );
 }
@@ -252,7 +250,7 @@ export default async function WightmanPage({ params }: { params: Promise<{ token
             ["AI across the firm", "Everyone guessing what's allowed", "One policy, approved tools, and use cases by role, with client data kept inside the rules"],
           ].map(([what, before, after]) => (
             <div key={what} className="bg-white p-7">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#6a6e77]">{what}</span>
+              <span className="text-[13px] font-medium text-[#6a6e77]">{what}</span>
               <p className="mt-4 text-[14px] leading-[1.6] text-[#6a6e77] line-through decoration-[#d5d8de]">{before}</p>
               <p className="mt-1 text-[16px] leading-[1.55] text-[#1d1d1f]">{after}</p>
             </div>
@@ -286,7 +284,7 @@ export default async function WightmanPage({ params }: { params: Promise<{ token
           <div className="mt-14 overflow-x-auto rounded-2xl border border-[#e4e5e9]">
             <table className="w-full min-w-[760px] text-[14px]">
               <thead>
-                <tr className="border-b border-[#e4e5e9] text-left text-[11px] uppercase tracking-[0.12em] text-[#8c8e95]">
+                <tr className="border-b border-[#e4e5e9] text-left text-[13px] text-[#8c8e95]">
                   {["Applicant", "County", "Program", "Status", "Amount", "Engineer of record"].map((h, i) => <th key={h} className={`px-5 py-3 font-medium ${i === 4 ? "text-right" : ""}`}>{h}</th>)}
                 </tr>
               </thead>
@@ -381,7 +379,7 @@ export default async function WightmanPage({ params }: { params: Promise<{ token
             <div className="mt-6 overflow-x-auto rounded-2xl border border-[#e4e5e9] bg-white">
               <table className="w-full min-w-[760px] text-[14px]">
                 <thead>
-                  <tr className="border-b border-[#e4e5e9] text-left text-[11px] uppercase tracking-[0.12em] text-[#8c8e95]">
+                  <tr className="border-b border-[#e4e5e9] text-left text-[13px] text-[#8c8e95]">
                     {["Corridor", "Construction", "Listed open", "Dining and drinking", "Retail", "Services and offices", "Risk while under way"].map((h, i) => <th key={h} className={`px-5 py-3 font-medium ${i >= 2 ? "text-right" : ""}`}>{h}</th>)}
                   </tr>
                 </thead>
@@ -449,7 +447,7 @@ export default async function WightmanPage({ params }: { params: Promise<{ token
             <div className="mt-12 overflow-x-auto rounded-2xl border border-[#e4e5e9] bg-white">
               <table className="w-full min-w-[760px] text-[13.5px]">
                 <thead>
-                  <tr className="border-b border-[#e4e5e9] text-left text-[11px] uppercase tracking-[0.12em] text-[#8c8e95]">
+                  <tr className="border-b border-[#e4e5e9] text-left text-[13px] text-[#8c8e95]">
                     {["Corridor", "Built", "Businesses", "Before", "During", "After"].map((h, i) => <th key={h} className={`px-5 py-3 font-medium ${i >= 2 ? "text-right" : ""}`}>{h}</th>)}
                   </tr>
                 </thead>
@@ -560,7 +558,7 @@ export default async function WightmanPage({ params }: { params: Promise<{ token
               <div className="mt-12 overflow-x-auto rounded-2xl border border-[#e4e5e9] bg-white">
                 <table className="w-full min-w-[640px] text-[13.5px]">
                   <thead>
-                    <tr className="border-b border-[#e4e5e9] text-left text-[11px] uppercase tracking-[0.12em] text-[#8c8e95]">
+                    <tr className="border-b border-[#e4e5e9] text-left text-[13px] text-[#8c8e95]">
                       {["Public body searched", "Years", "Meetings read"].map((h, i) => <th key={h} className={`px-5 py-3 font-medium ${i === 2 ? "text-right" : ""}`}>{h}</th>)}
                     </tr>
                   </thead>
@@ -680,7 +678,7 @@ export default async function WightmanPage({ params }: { params: Promise<{ token
       <section className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
         <div className="mx-auto max-w-[1180px] px-6 py-12">
           <details>
-            <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980] hover:text-[#3778bc]">Sources and method</summary>
+            <summary className="cursor-pointer text-[13px] font-medium text-[#777980] hover:text-[#3778bc]">Sources and method</summary>
             <ul className="mt-5 grid max-w-[72ch] gap-2 text-[13px] leading-[1.6] text-[#6c7481]">
               {water?.sources?.map((s: Any) => <li key={s.url ?? s.name}>{s.name ?? s.url}{s.fiscalYear ? `, ${s.fiscalYear}` : ""}{s.url ? <> · <a className="underline" href={s.url}>source</a></> : null}</li>)}
               <li>Federal: USAspending.gov award search, grant types 02–05, recipient located in the county, awarding agencies DOT, EPA, HUD, DHS/FEMA and Commerce/EDA.</li>

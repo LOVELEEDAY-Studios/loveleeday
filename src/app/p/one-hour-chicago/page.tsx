@@ -5,7 +5,7 @@ import { report } from "@/content/hub/one-hour-chicago";
    the real run's event log every time a run completes or a report is requested mid-run. */
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7d8088]">{children}</span>;
+  return <span className="block text-[13px] font-medium text-[#7d8088]">{children}</span>;
 }
 
 function Two({ a, b }: { a: string; b: string }) {
@@ -43,7 +43,7 @@ function FindingCard({ f }: { f: any }) {
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-2">
         <Badge cls={STATUS_CLS[f.status] || "bg-[#eef0f3] text-[#4a4f58]"}>{f.status}</Badge>
-        <span className="text-[11px] uppercase tracking-wide text-[#9a9da4]">confidence {Math.round((f.confidence || 0) * 100)}%</span>
+        <span className="text-[13px] text-[#9a9da4]">confidence {Math.round((f.confidence || 0) * 100)}%</span>
       </div>
       {f.evidence?.length ? (
         <div className="mt-3 space-y-1 border-t border-[#eef0f3] pt-3">
@@ -70,7 +70,7 @@ function SelfCheckSection({ sc }: { sc: any }) {
       </p>
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <div className="rounded-2xl border-2 border-[#0066cc] bg-[#f0f6ff] p-5">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-[#0066cc]">Frozen-dataset catch</div>
+          <div className="text-[13px] font-medium text-[#0066cc]">Frozen-dataset catch</div>
           {typeof frozen === "string" ? (
             <p className="mt-2 text-[14px] text-[#4a4d54]">{frozen}</p>
           ) : (
@@ -82,7 +82,7 @@ function SelfCheckSection({ sc }: { sc: any }) {
           )}
         </div>
         <div className="rounded-2xl border-2 border-[#0066cc] bg-[#f0f6ff] p-5">
-          <div className="text-[11px] font-semibold uppercase tracking-wide text-[#0066cc]">Live self-review tally</div>
+          <div className="text-[13px] font-medium text-[#0066cc]">Live self-review tally</div>
           {typeof review === "string" ? (
             <p className="mt-2 text-[14px] text-[#4a4d54]">{review}</p>
           ) : (
@@ -121,7 +121,7 @@ export default function OneHourChicagoReport() {
           ].map(([label, val]: any) => (
             <div key={label} className="rounded-xl border border-[#e4e5e9] bg-[#f5f5f7] p-3">
               <div className="text-[20px] font-semibold tabular-nums text-[#1d1d1f]">{(val ?? 0).toLocaleString()}</div>
-              <div className="mt-1 text-[10px] uppercase tracking-wide text-[#7d8088]">{label}</div>
+              <div className="mt-1 text-[13px] text-[#7d8088]">{label}</div>
             </div>
           ))}
         </div>
@@ -141,7 +141,7 @@ export default function OneHourChicagoReport() {
             {r.checklist.map((c: any) => (
               <div key={c.id} className="flex items-center justify-between gap-4 px-5 py-3">
                 <span className="text-[13px] text-[#1d1d1f]">{c.label}</span>
-                <span className={`text-[11px] font-semibold uppercase tracking-wide ${c.done ? "text-[#1e6b3a]" : "text-[#9a9da4]"}`}>
+                <span className={`text-[13px] font-medium ${c.done ? "text-[#1e6b3a]" : "text-[#9a9da4]"}`}>
                   {c.done ? "✓ cleared" : "not yet"}
                 </span>
               </div>
@@ -180,7 +180,7 @@ export default function OneHourChicagoReport() {
         </p>
         <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e4e5e9]">
           <table className="w-full text-left text-[13px]">
-            <thead className="bg-[#f5f5f7] text-[11px] uppercase tracking-wide text-[#7d8088]">
+            <thead className="bg-[#f5f5f7] text-[13px] text-[#7d8088]">
               <tr><th className="px-4 py-2">Area</th><th className="px-4 py-2">New licenses</th><th className="px-4 py-2">Permits</th><th className="px-4 py-2">Hospitality</th></tr>
             </thead>
             <tbody>
@@ -201,13 +201,13 @@ export default function OneHourChicagoReport() {
         <Eyebrow>WHAT WE MISSED</Eyebrow>
         <div className="mt-4 grid gap-6 sm:grid-cols-2">
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-wide text-[#8a5a00]">Datasets not yet pulled</div>
+            <div className="text-[13px] font-medium text-[#8a5a00]">Datasets not yet pulled</div>
             <ul className="mt-2 space-y-1 text-[13px] text-[#4a4d54]">
               {(r.whatWeMissed?.datasetsNotPulled || []).map((d: any, i: number) => <li key={i}>{d.dataset} <span className="text-[#9a9da4]">({d.id})</span></li>)}
             </ul>
           </div>
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-wide text-[#8a5a00]">Low-evidence areas, excluded</div>
+            <div className="text-[13px] font-medium text-[#8a5a00]">Low-evidence areas, excluded</div>
             <ul className="mt-2 space-y-1 text-[13px] text-[#4a4d54]">
               {(r.whatWeMissed?.lowEvidenceAreas || []).slice(0, 10).map((a: any, i: number) => <li key={i}>{a.name}: {a.reason}</li>)}
             </ul>
@@ -222,7 +222,7 @@ export default function OneHourChicagoReport() {
           <Eyebrow>PROGRESS CURVE — WHAT THE HOUR ACTUALLY DID, MINUTE BY MINUTE</Eyebrow>
           <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e4e5e9]">
             <table className="w-full text-left text-[12px]">
-              <thead className="bg-[#f5f5f7] text-[11px] uppercase tracking-wide text-[#7d8088]">
+              <thead className="bg-[#f5f5f7] text-[13px] text-[#7d8088]">
                 <tr><th className="px-4 py-2">Minute</th><th className="px-4 py-2">Sources</th><th className="px-4 py-2">Entities</th><th className="px-4 py-2">Relationships</th><th className="px-4 py-2">Hypotheses</th><th className="px-4 py-2">Findings</th><th className="px-4 py-2">Verified</th></tr>
               </thead>
               <tbody>
@@ -267,15 +267,15 @@ export default function OneHourChicagoReport() {
           <p className="mt-2 text-[13px] text-[#7d8088]">Compared against run {r.changeSinceLastRun.previousRunId} ({new Date(r.changeSinceLastRun.previousAt).toLocaleString()}).</p>
           <div className="mt-4 grid gap-6 sm:grid-cols-3 text-[13px]">
             <div>
-              <div className="font-semibold uppercase text-[11px] tracking-wide text-[#1e6b3a]">New findings ({r.changeSinceLastRun.added?.length || 0})</div>
+              <div className="font-medium text-[13px] text-[#1e6b3a]">New findings ({r.changeSinceLastRun.added?.length || 0})</div>
               <ul className="mt-2 space-y-1 text-[#4a4d54]">{(r.changeSinceLastRun.added || []).map((f: any) => <li key={f.id}>{f.title}</li>)}</ul>
             </div>
             <div>
-              <div className="font-semibold uppercase text-[11px] tracking-wide text-[#a1291f]">No longer findings ({r.changeSinceLastRun.removed?.length || 0})</div>
+              <div className="font-medium text-[13px] text-[#a1291f]">No longer findings ({r.changeSinceLastRun.removed?.length || 0})</div>
               <ul className="mt-2 space-y-1 text-[#4a4d54]">{(r.changeSinceLastRun.removed || []).map((f: any) => <li key={f.id}>{f.title}</li>)}</ul>
             </div>
             <div>
-              <div className="font-semibold uppercase text-[11px] tracking-wide text-[#8a5a00]">Changed ({r.changeSinceLastRun.changed?.length || 0})</div>
+              <div className="font-medium text-[13px] text-[#8a5a00]">Changed ({r.changeSinceLastRun.changed?.length || 0})</div>
               <ul className="mt-2 space-y-1 text-[#4a4d54]">{(r.changeSinceLastRun.changed || []).map((c: any, i: number) => <li key={i}>{c.before} → {c.after}</li>)}</ul>
             </div>
           </div>
@@ -291,7 +291,7 @@ export default function OneHourChicagoReport() {
         <Eyebrow>SOURCE REGISTER</Eyebrow>
         <div className="mt-4 overflow-x-auto rounded-2xl border border-[#e4e5e9]">
           <table className="w-full text-left text-[12px]">
-            <thead className="bg-[#f5f5f7] text-[11px] uppercase tracking-wide text-[#7d8088]">
+            <thead className="bg-[#f5f5f7] text-[13px] text-[#7d8088]">
               <tr><th className="px-4 py-2">Pull</th><th className="px-4 py-2">Rows</th><th className="px-4 py-2">Covered</th><th className="px-4 py-2">Latency</th><th className="px-4 py-2">Query</th></tr>
             </thead>
             <tbody>

@@ -1,0 +1,23 @@
+/* Proposal and review pages (/p/...) use the public site's type system: Switzer for headlines and text,
+   Sentient only for answer text, a 64/40/28/20/17 scale, two weights. Same rules as public/site/assets/type.css. */
+@font-face{font-family:"Switzer";src:url(/site/assets/fonts/switzer-400.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url(/site/assets/fonts/switzer-500.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url(/site/assets/fonts/switzer-600.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Sentient";src:url(/site/assets/fonts/sentient-400.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+
+.p-type,.p-type *:not(svg):not(svg *){font-family:"Switzer",system-ui,"Segoe UI",Roboto,Arial,sans-serif !important}
+.p-type h1,.p-type h2,.p-type h3{font-weight:600 !important}
+.p-type h1{font-size:64px !important;line-height:1.04 !important;letter-spacing:-.035em !important}
+.p-type h2{font-size:40px !important;line-height:1.1 !important;letter-spacing:-.03em !important}
+.p-type h1 span,.p-type h2 span,.p-type h1 > *,.p-type h2 > *{color:inherit !important}
+.p-type h1,.p-type h2,.p-type h3{text-wrap:balance}
+.p-type p{text-wrap:pretty}
+/* labels: sentence case, no tracking, nothing under 13px */
+.p-type .uppercase{text-transform:none !important}
+.p-type [class*="tracking-["]:not(h1):not(h2):not(h3),.p-type [class*="tracking-wide"]{letter-spacing:0 !important}
+.p-type [class*="text-[10px]"],.p-type [class*="text-[10.5px]"],.p-type [class*="text-[11px]"],.p-type [class*="text-[12px]"]{font-size:13px !important}
+.p-type [class*="font-bold"],.p-type [class*="font-extrabold"]{font-weight:600 !important}
+@media(max-width:900px){
+  .p-type h1{font-size:44px !important}
+  .p-type h2{font-size:34px !important}
+}
