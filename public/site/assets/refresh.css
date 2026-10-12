@@ -39,12 +39,35 @@
 .ip-band .ip-t{font-size:15px}
 .ip li em{background:none!important;padding:0!important;border-radius:0!important;font-size:13px!important;color:#62656c!important}
 .ip-q b,.ip-f{text-transform:none!important;letter-spacing:0!important;font-size:13px!important}
+/* Real portal screenshots, shown at their own pixels and scaled down only to fit the column */
+.system-section .section-heading{display:block;max-width:640px;margin-bottom:var(--s5)}
+.system-section .section-heading p{margin-top:16px;color:#4a4d54;font-size:var(--t4);line-height:1.5}
+.portal-shot{margin:0}
+.portal-shot img{width:100%;max-width:1440px;height:auto;border:1px solid var(--line);border-radius:4px}
+.portal-shot figcaption{margin-top:16px;font-size:14px;color:#62656c;max-width:62ch}
 /* No product card is pasted over a photograph: the card sits under the photo */
 .cv3-card{position:static!important;max-width:none!important;margin:16px 0 0!important;box-shadow:none!important;border:1px solid var(--line);border-radius:8px!important}
 .mr-card{position:static!important;left:auto!important;right:auto!important;margin:16px 0 0!important;box-shadow:none!important}
 .mr-hero-v{padding-bottom:0!important}
 .ind .stagepic,.ind .stagepic.big,.ind .stagepic.inset{padding-bottom:0!important}
 .ind .stagepic .ip,.ind .stagepic.big .ip,.ind .stagepic.inset .ip,.ind .sec.flip .stagepic .ip{position:static!important;left:auto!important;right:auto!important;margin:16px 0 0!important;box-shadow:none!important}
+.tv3-q,.tv3-a{position:static!important;max-width:none!important;margin:12px 0 0!important;box-shadow:none!important;border:1px solid var(--line);border-radius:8px!important}
+.tv3-a{border-left:1px solid var(--line)!important}
+/* Four equal columns on the about page become a ruled list */
+.st-pr{display:block!important;border-top:1px solid #ded8cd}
+.st-pr li{display:grid;grid-template-columns:48px minmax(0,4fr) minmax(0,6fr);gap:var(--s3);align-items:baseline;padding:24px 0;border-top:0;border-bottom:1px solid #ded8cd}
+.st-pr li::before{margin:0;letter-spacing:0;font-size:14px}
+.st-pr b{font-size:var(--t4);font-weight:600}
+.st-pr p{margin:0;font-size:var(--t5);color:#4a4d54}
+@media(max-width:900px){.st-pr li{grid-template-columns:36px minmax(0,1fr);gap:6px 12px}.st-pr li p{grid-column:2}}
+.tr-flow{display:block!important;margin-top:var(--s4);border-top:1px solid var(--line)}
+.tr-flow::before{display:none!important}
+.tr-flow li{display:grid!important;grid-template-columns:48px minmax(0,3fr) minmax(0,6fr) minmax(0,3fr);gap:var(--s3);align-items:baseline;padding:24px 0!important;border-bottom:1px solid var(--line)}
+.tr-flow h3.h,.tr-flow p{margin:0!important}
+.tr-flow p{font-size:var(--t5)!important;color:#4a4d54!important}
+.tr-flow h3.h{font-size:var(--t4)!important}
+.tr-flow .tr-n{font-size:14px;color:#62656c}
+@media(max-width:900px){.tr-flow li{grid-template-columns:36px minmax(0,1fr)!important;gap:6px 12px}.tr-flow li p,.tr-flow li .tr-ctl{grid-column:2}}
 /* Three columns of steps become rows */
 .ind .stepgrid{display:block;margin-top:var(--s4);border-top:1px solid var(--il,#e4e5e9)}
 .ind .stepgrid>div,.ind .stepgrid>div+div{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,5fr);gap:var(--s3);align-items:baseline;padding:24px 0;border-right:0;border-bottom:1px solid var(--il,#e4e5e9)}
