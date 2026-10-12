@@ -57,7 +57,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a} {b}
+      {b ? `${a} ${b}` : a}
     </Tag>
   );
 }
@@ -119,7 +119,7 @@ export default async function NowKalamazooPage({ params }: { params: Promise<{ t
         <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
           <div>
             <Eyebrow>What we found</Eyebrow>
-            <Two a={`${findings.length} findings.`} b="Every one with its source." />
+            <Two a={`${findings.length} findings, each with its source.`} b="" />
           </div>
           <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
             {verified} were read directly from the source. {asks} are questions only the newsroom can answer. Each names the
@@ -270,7 +270,7 @@ export default async function NowKalamazooPage({ params }: { params: Promise<{ t
         <div className="mx-auto grid max-w-[1180px] items-start gap-12 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <Eyebrow>Ask Arthur</Eyebrow>
-            <Two a="Ask it anything." b="It answers with the source." />
+            <Two a="Ask it anything and get the source with the answer." b="" />
             <p className="mt-6 max-w-[28rem] text-[15px] leading-[1.7] text-[#6c7481]">
               This preview knows what is on this page. Connected to the newsroom&apos;s tools, the same question gets the inside
               answer, with the same rule a good editor has: no source, no answer.

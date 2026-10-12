@@ -21,7 +21,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a} {b}
+      {b ? `${a} ${b}` : a}
     </Tag>
   );
 }
@@ -301,7 +301,7 @@ export default function ArthurCloudProposal() {
       {/* Bottom line */}
       <section className="mx-auto max-w-[1180px] px-6 pb-20 pt-16 sm:pt-24">
         <Eyebrow>Proposal · Review of 2026-10-07</Eyebrow>
-        <Two size="h1" a="Arthur in the cloud." b="What Google Cloud unlocks." />
+        <Two size="h1" a="Arthur in the cloud, and what Google Cloud adds." b="" />
         <div className="mt-10 grid gap-10 lg:grid-cols-[1.2fr_1fr]">
           <div className="max-w-[40rem] text-[17px] leading-[1.7] text-[#6c7481]">
             <p>
@@ -338,7 +338,7 @@ export default function ArthurCloudProposal() {
         <div className="mx-auto max-w-[1180px] px-6 py-16">
           <Eyebrow>Already proven today · 2026-10-07</Eyebrow>
           <h2 className="mt-4 max-w-[40rem] text-[clamp(1.6rem,3.4vw,2.2rem)] font-medium leading-[1.12] tracking-[-0.04em] text-[#1d1d1f]">
-            Not a plan. Built and measured.
+            Built and measured already.
           </h2>
           <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-x-8 gap-y-8">
             {proven.map((s) => (

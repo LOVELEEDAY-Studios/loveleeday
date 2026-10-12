@@ -38,7 +38,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a} {b}
+      {b ? `${a} ${b}` : a}
     </Tag>
   );
 }
@@ -71,7 +71,7 @@ export default async function HubPage({ params }: { params: Promise<{ token: str
         <Eyebrow>
           {c.short} · prepared for {c.preparedFor}, {c.role}
         </Eyebrow>
-        <Two size="h1" a="From inside the Zoo." b="What Arthur found." />
+        <Two size="h1" a="From inside the Zoo, what Arthur found." b="" />
         <p className="mt-8 max-w-[40rem] text-[17px] leading-[1.7] text-[#6c7481]">
           Dabney & Co is one of your residents, and Dabney runs on Arthur. So we pointed Arthur at the Zoo: every page of
           startupzoo.org, the Summit, the pitch listings and the public record. These are first findings from the outside,
@@ -118,7 +118,7 @@ export default async function HubPage({ params }: { params: Promise<{ token: str
         <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
           <div>
             <Eyebrow>What we found</Eyebrow>
-            <Two a={`${findings.length} findings.`} b="Every one with its source." />
+            <Two a={`${findings.length} findings, each with its source.`} b="" />
           </div>
           <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
             {verified} were read directly from the source. {asks} are questions only the Zoo can answer. Each names the part
@@ -170,7 +170,7 @@ export default async function HubPage({ params }: { params: Promise<{ token: str
             <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
               <div>
                 <Eyebrow>The front door</Eyebrow>
-                <Two a="Your homepage, rebuilt." b="Drag to compare." />
+                <Two a="Your homepage, rebuilt, with a slider to compare." b="" />
               </div>
               <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
                 The same Zoo, told with its proof: the Summit, Pitch Night and the residents up front, the results where a
@@ -268,7 +268,7 @@ export default async function HubPage({ params }: { params: Promise<{ token: str
         <div className="mx-auto grid max-w-[1180px] items-start gap-12 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <Eyebrow>Ask Arthur</Eyebrow>
-            <Two a="Ask it anything." b="It answers with the source." />
+            <Two a="Ask it anything and get the source with the answer." b="" />
             <p className="mt-6 max-w-[28rem] text-[15px] leading-[1.7] text-[#6c7481]">
               This preview knows what is on this page. Connected to the Zoo&apos;s tools, the same question gets the inside
               answer, with the same rule: no source, no answer.
@@ -298,7 +298,7 @@ export default async function HubPage({ params }: { params: Promise<{ token: str
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow dark>Founders&apos; trust</Eyebrow>
-              <Two dark a="Founders trust the Zoo." b="Arthur keeps it that way." />
+              <Two dark a="Founders trust the Zoo, and Arthur keeps it that way." b="" />
             </div>
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#a3a8b2]">
               Decks, numbers and investor conversations are the most sensitive things a founder shares. Here is how they are
@@ -322,7 +322,7 @@ export default async function HubPage({ params }: { params: Promise<{ token: str
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <Eyebrow>How we would begin</Eyebrow>
-            <Two a="Before Pitch Night." b="Then the new space." />
+            <Two a="Before Pitch Night, then the new space." b="" />
             <ol className="mt-10 grid gap-6">
               {[
                 ["Fix the front door this week", "The title, the heavy images, the old dates and the broken summit link. Then the Summit recap, while it is still news."],

@@ -53,7 +53,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a} {b}
+      {b ? `${a} ${b}` : a}
     </Tag>
   );
 }
@@ -583,7 +583,7 @@ export default async function WightmanPage({ params }: { params: Promise<{ token
         <div className="mx-auto grid max-w-[1180px] items-start gap-12 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <Eyebrow>Ask Arthur</Eyebrow>
-            <Two a="Ask it anything." b="It answers with the source." />
+            <Two a="Ask it anything and get the source with the answer." b="" />
             <p className="mt-6 max-w-[28rem] text-[15px] leading-[1.7] text-[#6c7481]">
               This preview knows everything on this page: the pipeline, the federal money, your corridors, the business study and
               your contract record. Connected to Wightman&apos;s own files, the same question gets the inside answer, with the same
