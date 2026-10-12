@@ -7,7 +7,7 @@
 .fx-ask .fx-chip.info{color:#5aa9ff}
 
 /* No fake window chrome around figures */
-.window-dots,.fx-bar i,.shell-top .window-dots{display:none!important}
+.window-dots,.fx-bar i,.cx-bar i,.shell-top .window-dots{display:none!important}
 
 /* Footer column titles are plain text, not tracked capitals */
 .footer-col strong,.gf-grid strong{text-transform:none!important;letter-spacing:0!important;font-size:15px;font-weight:600}
@@ -15,7 +15,7 @@
 /* Links carry no arrow glyphs; rows are plain text */
 .text-link,.hero-explore,.footer-cta{gap:0}
 .industry-grid a span,.industry-grid a span:last-child{color:inherit}
-.text-link{font-size:var(--t5)}
+.text-link{font-size:var(--t5);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
 .hero-explore{font-size:var(--t5);margin-right:28px}
 
 /* Three equal feature columns become a ruled list: number, title, explanation on one line each */
@@ -29,7 +29,7 @@
 /* Industry pages: the example card sits in its own band under the photo, not on top of it */
 .ind .hero::before{background:rgba(18,14,11,.64)}
 .ind .hero .wrap{grid-template-columns:minmax(0,1fr);padding:104px 0 96px}
-.ind .hero h1{color:#fff}
+.ind .hero h1{color:#fff;font-weight:600}
 .ind .hero .lead{font-size:var(--t4);line-height:1.5;max-width:560px;color:#f4ece2}
 .ip-band{background:#f5f5f7;border-bottom:1px solid var(--line);padding:48px 0}
 .ip-band .ip,.ind .ip-band .ip{position:static;left:auto;right:auto;margin:0;max-width:920px;box-shadow:none;border-radius:8px}
@@ -76,9 +76,9 @@
 .ind .stepgrid p{margin:0;font-size:var(--t5);line-height:1.6;color:#4a4d54}
 @media(max-width:900px){.ind .stepgrid>div,.ind .stepgrid>div+div{grid-template-columns:1fr;gap:6px}}
 /* Four identical system cards become a ruled list */
-.pub .sys{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 var(--column-gap)}
-.pub .sys .c{border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none;padding:20px 0}
-@media(max-width:900px){.pub .sys{grid-template-columns:minmax(0,1fr)!important}}
+main.pub .sys{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 var(--column-gap)}
+main.pub .sys .c{border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none;padding:20px 0}
+@media(max-width:900px){main.pub .sys{grid-template-columns:minmax(0,1fr)!important}}
 /* FAQ contact options: ruled rows */
 .fq-cards{display:block;border-top:1px solid var(--line)}
 .fq-cards a,.fq-cards a:hover{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,5fr);gap:var(--s3);align-items:baseline;padding:22px 0;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;transform:none}
@@ -87,9 +87,9 @@
 .fq-cards a>span:last-of-type{font-size:var(--t5);color:#4a4d54}
 @media(max-width:900px){.fq-cards a,.fq-cards a:hover{grid-template-columns:1fr;gap:6px}}
 /* Figures in a row are a stat strip, not four boxes */
-.stat{border:0;border-top:2px solid var(--ink);border-radius:0;background:none;padding:14px 0 0}
-.stat .n{font-size:var(--t2);font-weight:600;letter-spacing:-.03em;line-height:1.1}
-.stat .d{font-size:14px}
+.stat,main.pub .stat{border:0;border-top:2px solid var(--ink);border-radius:0;background:none;padding:14px 0 0}
+.stat .n,main.pub .stat .n{font-size:var(--t2);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.stat .d,main.pub .stat .d{font-size:14px}
 
 /* Worked examples replace the rotating particle brain: each question, what is checked, and the answer. */
 .worked .wk{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--column-gap);padding:48px 0;border-top:1px solid rgba(255,255,255,.12)}
