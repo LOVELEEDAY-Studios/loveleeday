@@ -7,6 +7,19 @@ import "./p-type.css";
 export const metadata: Metadata = {
   robots: { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false } },
   referrer: "no-referrer",
+  /* A proposal link is pasted into texts and emails, so its preview must say what it is. Without
+     this, every proposal inherited the home page's og:url and the root opengraph-image. The card
+     is ./opengraph-image.jpg (rendered by scripts/lib/share-card-render.mjs); og:title falls back
+     to each page's own <title>. */
+  openGraph: {
+    description: "A private proposal from LOVELEEDAY. Every finding carries its source.",
+    siteName: "LOVELEEDAY",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    description: "A private proposal from LOVELEEDAY. Every finding carries its source.",
+  },
 };
 
 export default function PortalLayout({
