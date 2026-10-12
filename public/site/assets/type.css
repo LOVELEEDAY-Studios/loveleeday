@@ -15,10 +15,10 @@ strong,b{font-weight:600}
 
 /* headlines: one size per level, weight 600, no two-tone */
 h1,h2,h3{font-family:var(--sans);font-weight:600}
-h1,.hero-story h1,.page-hero h1,.page-hero.compact h1,.notes-hero h1,.art-hero h1,.pub h1.title,.ha-copy h1{font-size:var(--t1)!important;line-height:1.04;letter-spacing:-.035em;font-weight:600}
-h2,.detail-section h2,.page-cta h2,.feature h2,.notes-follow h2,.next h2,.pub h2.h,.pub h2.title.sm,.pub .snap-h2,.pub .snap-brief h2,.close-story h2{font-size:var(--t2)!important;line-height:1.1;letter-spacing:-.03em;font-weight:600}
+h1,.hero-story h1,.page-hero h1,.page-hero.compact h1,.notes-hero h1,.art-hero h1,.pub h1.title,.ha-copy h1{font-size:var(--t1)!important;line-height:1.04;letter-spacing:-.035em;font-weight:600!important}
+h2,.detail-section h2,.page-cta h2,.feature h2,.notes-follow h2,.next h2,.pub h2.h,.pub h2.title.sm,.pub .snap-h2,.pub .snap-brief h2,.close-story h2{font-size:var(--t2)!important;line-height:1.1;letter-spacing:-.03em;font-weight:600!important}
 h2 span,h1 span{color:inherit}
-.close-story h2,.page-cta h2,.art-body h2{font-weight:400}
+.close-story h2,.page-cta h2,.art-body h2{font-weight:400!important}
 .art-body h2{font-size:var(--t3)!important;line-height:1.2;letter-spacing:-.02em}
 h3,.layer-detail h3,.link-row h3,.process h3,.flow-block h3,.customer-result h3,.principle-long h3,.principle h3,.row h3,.pub h3.h,.brain-ask h3{font-size:var(--t4);line-height:1.3;letter-spacing:-.012em;font-weight:600}
 .layer-detail h3,.principle-long h3,.link-row h3,.customer-result h3,.row h3{font-size:var(--t3);line-height:1.2;letter-spacing:-.02em}
