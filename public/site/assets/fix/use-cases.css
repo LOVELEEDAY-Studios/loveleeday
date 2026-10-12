@@ -3,7 +3,7 @@
 .fx-uc-card{grid-column:span 4;display:flex;flex-direction:column;gap:12px;border:1px solid #e4e5e9;border-radius:16px;padding:26px;background:#fff;color:#14151b;min-width:0;transition:transform .2s,box-shadow .2s}
 a.fx-uc-card:hover{transform:translateY(-3px);box-shadow:0 22px 50px -30px rgba(8,10,20,.45)}
 .fx-uc-card.c4{grid-column:span 4}.fx-uc-card.c5{grid-column:span 5}.fx-uc-card.c6{grid-column:span 6}.fx-uc-card.c7{grid-column:span 7}
-.fx-uc-card .fn{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#0066cc}
+.fx-uc-card .fn{font-size:10px;letter-spacing:.14em;text-transform:none;font-weight:600;color:#0066cc}
 .fx-uc-card h3{font-size:24px;line-height:1.15;letter-spacing:-.03em;font-weight:500;max-width:30ch}
 .fx-uc-card p{font-size:14.5px;line-height:1.55;color:#62656c;max-width:46ch}
 .fx-uc-card .vis{margin-top:auto;padding-top:10px;display:grid;gap:8px}
