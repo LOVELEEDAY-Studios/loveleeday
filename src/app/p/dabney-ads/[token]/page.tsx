@@ -33,7 +33,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a} {b}
+      {b ? `${a} ${b}` : a}
     </Tag>
   );
 }
@@ -171,7 +171,7 @@ export default async function AdsPage({ params }: { params: Promise<{ token: str
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow>What we found</Eyebrow>
-              <Two a={`${findings.length} findings.`} b="Every one with its source." />
+              <Two a={`${findings.length} findings, each with its source.`} b="" />
             </div>
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
               Every number was read from Meta, Toast or OpenTable on September 25, 2026. Where a figure is a correlation rather

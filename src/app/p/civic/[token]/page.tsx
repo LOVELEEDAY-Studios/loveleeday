@@ -35,7 +35,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a} {b}
+      {b ? `${a} ${b}` : a}
     </Tag>
   );
 }
@@ -68,7 +68,7 @@ export default async function CivicPage({ params }: { params: Promise<{ token: s
         <Eyebrow>
           {c.short} · prepared for {c.preparedFor}, {c.role}
         </Eyebrow>
-        <Two size="h1" a="We read the County's public record." b="All of it." />
+        <Two size="h1" a="We read all of the County's public record." b="" />
         <p className="mt-8 max-w-[40rem] text-[17px] leading-[1.7] text-[#6c7481]">
           Every ordinance and policy in the Document Center, the statutes that set the County&apos;s deadlines, the budget,
           the audit, the relief-fund reports, the Board&apos;s votes and each department&apos;s published results. Arthur
@@ -112,7 +112,7 @@ export default async function CivicPage({ params }: { params: Promise<{ token: s
         <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
           <div>
             <Eyebrow>What the record shows</Eyebrow>
-            <Two a={`${findings.length} findings.`} b="Every one with its source." />
+            <Two a={`${findings.length} findings, each with its source.`} b="" />
           </div>
           <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
             {verified} were read directly from the source. {asks} are questions only the County can answer, because the
@@ -163,7 +163,7 @@ export default async function CivicPage({ params }: { params: Promise<{ token: s
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow>This is the outside view</Eyebrow>
-              <Two a="Public records answered these." b="Your own records answer the rest." />
+              <Two a="Public records answered these, and your own records answer the rest." b="" />
             </div>
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
               Every finding above came from what the County publishes. The more useful questions sit across systems that
@@ -204,7 +204,7 @@ export default async function CivicPage({ params }: { params: Promise<{ token: s
         <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
           <div>
             <Eyebrow>Moving forward</Eyebrow>
-            <Two a="Findings are a snapshot." b="Arthur keeps watching." />
+            <Two a="Findings are a snapshot, and Arthur keeps watching." b="" />
           </div>
           <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
             An intelligence layer over the systems the County already runs. It reads what is published and, when the County
@@ -231,7 +231,7 @@ export default async function CivicPage({ params }: { params: Promise<{ token: s
         <div className="mx-auto grid max-w-[1180px] items-start gap-12 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <Eyebrow>Ask Arthur</Eyebrow>
-            <Two a="Ask it anything." b="It answers with the source." />
+            <Two a="Ask it anything and get the source with the answer." b="" />
             <p className="mt-6 max-w-[28rem] text-[15px] leading-[1.7] text-[#6c7481]">
               This preview reads only the public record behind this page. Connected to the County&apos;s own systems, the
               same question gets the internal answer too, with the same rule: no source, no answer.
@@ -247,7 +247,7 @@ export default async function CivicPage({ params }: { params: Promise<{ token: s
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow dark>Security and public trust</Eyebrow>
-              <Two dark a="Built for a government." b="Accountable by design." />
+              <Two dark a="Built for a government, accountable by design." b="" />
             </div>
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#a3a8b2]">
               A county holds residents&apos; records and answers to all of them. Here is how that is protected, in plain
@@ -271,7 +271,7 @@ export default async function CivicPage({ params }: { params: Promise<{ token: s
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <Eyebrow>How we would begin</Eyebrow>
-            <Two a="Start with the public record." b="Grow from there." />
+            <Two a="Start with the public record and grow from there." b="" />
             <ol className="mt-10 grid gap-6">
               {[
                 ["Walk the leadership team through it", "Forty-five minutes on the findings, with the department heads who own them. The questions for the County get answered in the room."],
