@@ -39,6 +39,12 @@
 .ip-band .ip-t{font-size:15px}
 .ip li em{background:none!important;padding:0!important;border-radius:0!important;font-size:13px!important;color:#62656c!important}
 .ip-q b,.ip-f{text-transform:none!important;letter-spacing:0!important;font-size:13px!important}
+/* No product card is pasted over a photograph: the card sits under the photo */
+.cv3-card{position:static!important;max-width:none!important;margin:16px 0 0!important;box-shadow:none!important;border:1px solid var(--line);border-radius:8px!important}
+.mr-card{position:static!important;left:auto!important;right:auto!important;margin:16px 0 0!important;box-shadow:none!important}
+.mr-hero-v{padding-bottom:0!important}
+.ind .stagepic,.ind .stagepic.big,.ind .stagepic.inset{padding-bottom:0!important}
+.ind .stagepic .ip,.ind .stagepic.big .ip,.ind .stagepic.inset .ip,.ind .sec.flip .stagepic .ip{position:static!important;left:auto!important;right:auto!important;margin:16px 0 0!important;box-shadow:none!important}
 /* Three columns of steps become rows */
 .ind .stepgrid{display:block;margin-top:var(--s4);border-top:1px solid var(--il,#e4e5e9)}
 .ind .stepgrid>div,.ind .stepgrid>div+div{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,5fr);gap:var(--s3);align-items:baseline;padding:24px 0;border-right:0;border-bottom:1px solid var(--il,#e4e5e9)}
