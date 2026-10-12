@@ -12,8 +12,11 @@
 /* Footer column titles are plain text, not tracked capitals */
 .footer-col strong,.gf-grid strong{text-transform:none!important;letter-spacing:0!important;font-size:15px;font-weight:600}
 
-/* Links carry no arrow glyphs */
+/* Links carry no arrow glyphs; rows are plain text */
 .text-link,.hero-explore,.footer-cta{gap:0}
+.industry-grid a span,.industry-grid a span:last-child{color:inherit}
+.text-link{font-size:var(--t5)}
+.hero-explore{font-size:var(--t5);margin-right:28px}
 
 /* Worked examples replace the rotating particle brain: each question, what is checked, and the answer. */
 .worked .wk{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--column-gap);padding:48px 0;border-top:1px solid rgba(255,255,255,.12)}
