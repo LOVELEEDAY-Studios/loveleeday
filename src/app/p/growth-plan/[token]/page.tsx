@@ -35,7 +35,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a} {b}
+      {b ? `${a} ${b}` : a}
     </Tag>
   );
 }

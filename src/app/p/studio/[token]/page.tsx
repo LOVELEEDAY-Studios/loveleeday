@@ -38,7 +38,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a} {b}
+      {b ? `${a} ${b}` : a}
     </Tag>
   );
 }
@@ -72,7 +72,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
       <section className="bg-[#0d0e12] text-white">
         <div className="mx-auto max-w-[1180px] px-6 pb-16 pt-16 sm:pt-20">
           <Eyebrow dark>For Elemental Media · a spec spot, a rebuild, and what comes next</Eyebrow>
-          <Two dark size="h1" a="We cut you a spot." b="From your own footage." />
+          <Two dark size="h1" a="We cut you a spot from your own footage." b="" />
           <div className="mt-10">
             <CommercialPlayer />
           </div>
@@ -101,7 +101,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.15fr]">
           <div>
             <Eyebrow>Elemental 2.0</Eyebrow>
-            <Two a="And a new front door." b="Built on the name." />
+            <Two a="And a new front door, built on the name." b="" />
             <p className="mt-6 max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
               Elemental: the essential element. Your logo leads, and every film becomes an element on a periodic table of the
               work.
@@ -136,7 +136,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow>Before and after</Eyebrow>
-              <Two a="Today, and 2.0." b="Drag to compare." />
+              <Two a="Today and 2.0, with a slider to compare." b="" />
             </div>
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
               The first screen of weareelementalmedia.com as it loads today, and the same screen as Elemental 2.0, both at 1440 by
@@ -161,7 +161,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow>For your clients</Eyebrow>
-              <Two a="One shoot." b="Every channel." />
+              <Two a="One shoot for every channel." b="" />
             </div>
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
               What your clients buy is one production. What they need is the brand film and every social cut from the same
@@ -194,7 +194,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
         <section className="bg-[#0d0e12] text-white">
           <div className="mx-auto max-w-[1280px] px-6 py-24">
             <Eyebrow dark>A new reel</Eyebrow>
-            <Two dark a="Your reel, recut." b="From shots it never used." />
+            <Two dark a="Your reel, recut from shots it never used." b="" />
             <p className="mt-6 max-w-[40rem] text-[15px] leading-[1.7] text-[#a3a8b2]">
               Every shot in this reel is one your 2024 reel and our spot left on the table, drawn from all six of your films.
             </p>
@@ -211,7 +211,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow>Voices and scripts</Eyebrow>
-              <Two a="Written, cast and voiced." b="In an afternoon." />
+              <Two a="Written, cast and voiced in an afternoon." b="" />
             </div>
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
               Short spots scripted and voiced by Arthur, each in a different voice. The ones in a client&apos;s name are samples, not
@@ -239,7 +239,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
             <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
               <div>
                 <Eyebrow>Jingles</Eyebrow>
-                <Two a="Written, sung and mixed." b="For three of your clients." />
+                <Two a="Written, sung and mixed for three of your clients." b="" />
               </div>
               <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
                 Original lyrics, music and vocals by Arthur, cut to radio length. Samples to show what we could make with you, not
@@ -267,7 +267,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow>What we measured</Eyebrow>
-              <Two a="Great work." b="A site that hides it." />
+              <Two a="Great work behind a site that hides it." b="" />
             </div>
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#6c7481]">
               Five things we measured on weareelementalmedia.com. None of them is about craft. All of them decide how many
@@ -357,7 +357,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
       <section className="bg-[#111217] text-white">
         <div className="mx-auto max-w-[1180px] px-6 py-24">
           <Eyebrow dark>Footage, rights and trust</Eyebrow>
-          <Two dark a="Your clients' work." b="Handled like it is." />
+          <Two dark a="Your clients' work, handled like it is." b="" />
           <div className="mt-14 grid gap-x-10 md:grid-cols-2">
             {security.map((x, i) => (
               <div key={x.t} className="border-t border-[#2a2c33] py-8">
@@ -375,7 +375,7 @@ export default async function StudioPage({ params }: { params: Promise<{ token: 
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <Eyebrow>How we would begin</Eyebrow>
-            <Two a="Start with the site." b="Then the footage." />
+            <Two a="Start with the site, then the footage." b="" />
             <ol className="mt-10 grid gap-6">
               {[
                 ["An hour in your studio", "Walk the rebuild and the spot together. Tell us what you would cut."],

@@ -24,7 +24,7 @@
 </figure>
 
 <h2>Why copying fields falls short</h2>
-<p>The usual fix is an integration: when a record changes in one system, copy some fields into another. It feels like progress, and for simple cases it works. But a field copy moves values, not meaning. It will happily sync a quantity of "1" from a system that means one case into a system that means one bottle. Now the error sits in two systems at once, and each one looks right on its own.</p>
+<p>The usual fix is an integration: when a record changes in one system, copy some fields into another. It feels like progress, and for simple cases it works. But a field copy moves values and loses meaning. It will happily sync a quantity of "1" from a system that means one case into a system that means one bottle. Now the error sits in two systems at once, and each one looks right on its own.</p>
 <p>Connect five systems that way, pair by pair, and you have ten connections to maintain, each with its own assumptions. Change one system and several of them break in ways nobody notices until the numbers stop adding up.</p>
 
 <blockquote>Integration means agreeing on what the data means, and moving the data is the easy part.</blockquote>

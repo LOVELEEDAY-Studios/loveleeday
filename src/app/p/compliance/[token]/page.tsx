@@ -47,7 +47,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a} {b}
+      {b ? `${a} ${b}` : a}
     </Tag>
   );
 }
@@ -157,7 +157,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
         <Eyebrow>
           Prepared for {s.preparedFor} · {s.short}
         </Eyebrow>
-        <Two size="h1" a="You asked for a calendar." b="Arthur kept going." />
+        <Two size="h1" a="You asked for a calendar, and Arthur kept going." b="" />
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
           <p className="text-[17px] leading-[1.7] text-[#7d8088]">
             This morning you told Daniel that nobody can say what is due when, that the work is spread across ten logins,
@@ -194,7 +194,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
         <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
           <div>
             <Eyebrow>How the analysis unfolded</Eyebrow>
-            <Two a="One question." b="Then the ones behind it." />
+            <Two a="One question, then the ones behind it." b="" />
           </div>
           <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#7d8088]">
             Six questions, in the order Arthur reached them. The first was yours. Every figure comes from your school&apos;s
@@ -226,7 +226,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
           <div className="mx-auto mb-12 grid max-w-[1132px] gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow>The working system</Eyebrow>
-              <Two a="Ask simply." b="Plan completely." />
+              <Two a="Ask simply and plan completely." b="" />
             </div>
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#7d8088]">
               Every answer above lives here, and none of it is a picture. Move the plan, open a deadline, or ask Arthur your
@@ -244,7 +244,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
       {/* What changes */}
       <section className="mx-auto max-w-[1180px] px-6 py-24">
         <Eyebrow>What changes for your team</Eyebrow>
-        <Two a="Less chasing." b="More deciding." />
+        <Two a="Less chasing and more deciding." b="" />
         <div className="mt-14 grid gap-px overflow-hidden rounded-[16px] border border-[#e4e5e9] bg-[#e4e5e9] md:grid-cols-2">
           {[
             ["What is due this month", "Ten logins and a spreadsheet", "One list, sorted by owner, with the guide attached"],
@@ -269,7 +269,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
               <Eyebrow dark>Security and student privacy</Eyebrow>
-              <Two dark a="Built for a school." b="Private by design." />
+              <Two dark a="Built for a school, private by design." b="" />
             </div>
             <p className="max-w-[34rem] text-[15px] leading-[1.7] text-[#a3a8b2]">
               A school holds the most sensitive information there is: children&apos;s. Here is how it is protected, in
@@ -293,7 +293,7 @@ export default async function CompliancePage({ params }: { params: Promise<{ tok
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <Eyebrow>How we would begin</Eyebrow>
-            <Two a="Start with the calendar." b="Grow from there." />
+            <Two a="Start with the calendar and grow from there." b="" />
             <ol className="mt-10 grid gap-6">
               {[
                 ["A thirty-minute walkthrough", "Your ten logins, who owns what today, and what is already filed this year."],
