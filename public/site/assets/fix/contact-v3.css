@@ -13,7 +13,7 @@
 .cv3-vis{position:relative;padding-bottom:56px}
 .cv3-vis img{width:100%;height:auto;aspect-ratio:4/3.2;object-fit:cover;object-position:35% 50%;border-radius:22px;box-shadow:0 30px 60px -30px #3a2a1a66}
 .cv3-card{position:absolute;left:-40px;bottom:0;max-width:310px;background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 24px 50px -18px #1d1d1f55,0 0 0 1px #0000000d}
-.cv3-tag{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#73757c;margin-bottom:8px}
+.cv3-tag{display:block;font-size:10px;letter-spacing:.14em;text-transform:none;font-weight:600;color:#73757c;margin-bottom:8px}
 .cv3-card p{font-size:17px;line-height:1.4;letter-spacing:-.02em;font-weight:500;color:#1d1d1f;margin:0}
 .cv3-reply-line{display:flex;align-items:center;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid #edeef1;font-size:12.5px;color:#0066cc}
 .cv3-reply-line i{width:8px;height:8px;border-radius:50%;background:#0066cc}
@@ -29,7 +29,7 @@
 .cv3-side h2{margin-top:14px;color:#fff;font-size:clamp(30px,3vw,40px)}
 .cv3-side h2 span{color:#bfae98}
 .cv3-side .section-lead{color:#d9d2c8;font-size:16px;line-height:1.7;margin-top:18px}
-.cv3-next-label{display:block;margin-top:36px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#d2a879}
+.cv3-next-label{display:block;margin-top:36px;font-size:10px;letter-spacing:.16em;text-transform:none;font-weight:600;color:#d2a879}
 .cv3-side .st-next{margin-top:14px;border-top:1px solid #ffffff2e}
 .cv3-side .st-next li{border-bottom-color:#ffffff2e;padding:14px 0}
 .cv3-side .st-next li::before{color:#d2a879}
@@ -45,7 +45,7 @@
 .cv3-route-grid .rt{position:relative;display:flex;flex-direction:column;gap:8px;padding:24px 24px 56px;border-left:1px solid #dcdee3;transition:background .2s}
 .cv3-route-grid .rt:first-child{border-left:0;padding-left:0}
 .cv3-route-grid a.rt:hover{background:#f7f7f9}
-.cv3-route-grid .k{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#6d7077}
+.cv3-route-grid .k{font-size:10px;letter-spacing:.16em;text-transform:none;font-weight:600;color:#6d7077}
 .cv3-route-grid b{font-size:17px;line-height:1.3;letter-spacing:-.025em;font-weight:500;overflow-wrap:anywhere}
 .cv3-route-grid p{margin:0;font-size:14px;line-height:1.6;color:#62656c}
 .cv3-route-grid i{position:absolute;left:24px;bottom:22px;font-style:normal;color:#0066cc;font-size:18px}

@@ -8,7 +8,7 @@
 .fx-bar b{font-weight:600;color:var(--fx-ink);margin-left:8px;font-size:12px}
 .fx-bar em{margin-left:auto;font-style:normal;font-size:11px}
 .fx-body{padding:18px 16px}
-.fx-k{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--fx-mute);margin-bottom:8px}
+.fx-k{display:block;font-size:10px;letter-spacing:.14em;text-transform:none;font-weight:600;color:var(--fx-mute);margin-bottom:8px}
 .fx-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--fx-line);border-radius:999px;padding:3px 9px;font-size:11px;color:var(--fx-mute);white-space:nowrap;background:transparent}
 .fx-chip.ok{color:var(--fx-mint);border-color:color-mix(in srgb,var(--fx-mint) 40%,transparent);background:color-mix(in srgb,var(--fx-mint) 9%,transparent)}
 .fx-chip.warn{color:var(--fx-amber);border-color:color-mix(in srgb,var(--fx-amber) 45%,transparent);background:color-mix(in srgb,var(--fx-amber) 9%,transparent)}
@@ -21,7 +21,7 @@
 .fx-row small{display:block;color:var(--fx-mute);font-size:11.5px;margin-top:1px}
 .fx-row.cur{border-color:color-mix(in srgb,var(--fx-blue) 55%,transparent)}
 .fx-tbl{width:100%;border-collapse:collapse;font-size:12.5px}
-.fx-tbl th{text-align:left;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fx-mute);font-weight:600;padding:0 8px 8px 0;border-bottom:1px solid var(--fx-line)}
+.fx-tbl th{text-align:left;font-size:10px;letter-spacing:.12em;text-transform:none;color:var(--fx-mute);font-weight:600;padding:0 8px 8px 0;border-bottom:1px solid var(--fx-line)}
 .fx-tbl td{padding:9px 8px 9px 0;border-bottom:1px solid var(--fx-line);vertical-align:top}
 .fx-tbl tr:last-child td{border-bottom:0}
 .fx-tbl .r{text-align:right}

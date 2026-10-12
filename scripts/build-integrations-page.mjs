@@ -98,11 +98,11 @@ const card = (i) => {
 
 const body = `
 
-<section class="wrap pagehead" style="padding-top:64px"><span class="eyebrow">Integrations</span><h1 class="title" style="font-size:56px">See which of your<br><span>systems we can read.</span></h1>
+<section class="wrap pagehead" style="padding-top:64px"><h1 class="title">See which of your systems we can read.</h1>
 <p class="lead">See which of your systems we can read now, which are still planned, and what each could help you answer. Every connection is read-only, and Arthur asks for your approval before writing anything back. Each card shows its status. If yours is not listed or not ready yet, tell us what you run.</p>
 <p class="xs muted" style="max-width:720px;margin-top:16px"><b>Ready to connect</b> means we have connected this system to a real account and read live information from it. <b>Planned</b> means it is on our list and has not been connected yet.</p></section>
 
-<section class="wrap" style="padding-top:48px"><span class="eyebrow">Directory</span>
+<section class="wrap" style="padding-top:48px">
 <div class="ic-bar"><div class="tabs" role="group" aria-label="Filter by category"><button class="tab on" type="button" data-f="all">All<small>${items.length}</small></button>${groups.map((g) => `<button class="tab" type="button" data-f="${esc(g.id)}">${esc(g.label)}<small>${g.count}</small></button>`).join("")}</div>
 <input class="ic-search" id="ic-q" type="search" placeholder="Search systems" aria-label="Search systems" autocomplete="off"></div>
 <div class="ic-grid" id="ic-grid">${items.map(card).join("")}</div>

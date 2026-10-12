@@ -1,0 +1,182 @@
+/* Shared component rules that replace the AI-template patterns: no pill chips, no window chrome, no tracked capitals, plain rows. Loaded after type.css on every public page. */
+
+/* Stateless pills become plain captions; chips that carry a real state keep only their colour and dot */
+.fx-chip,.cx-chip,.cd-chip,.pill,.ip-pill,.sample-badge,.soon-tag,.mf-tag,.cv3-tag,.tv3-tag,.ct-tag,.ha-card-h span,.pub .tr-ctl,.tr-ctl{border:0!important;border-radius:0!important;background:none!important;padding:0!important;box-shadow:none!important;font-size:14px;font-weight:500}
+.pill:not(.info),.sample-badge,.ip-pill,.soon-tag,.mf-tag,.cv3-tag,.tv3-tag,.ct-tag{color:#62656c}
+.pill.info,.cx-chip.info,.cd-chip.cd-info{color:#0066cc}
+.fx-ask .fx-chip.info{color:#5aa9ff}
+
+/* No fake window chrome around figures */
+.window-dots,.fx-bar i,.cx-bar i,.shell-top .window-dots{display:none!important}
+
+/* Footer column titles are plain text, not tracked capitals */
+.footer-col strong,.gf-grid strong{text-transform:none!important;letter-spacing:0!important;font-size:15px;font-weight:600}
+
+/* Links carry no arrow glyphs; rows are plain text */
+.text-link,.hero-explore,.footer-cta{gap:0}
+.industry-grid a span,.industry-grid a span:last-child{color:inherit}
+.text-link{font-size:var(--t5);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.hero-explore{font-size:var(--t5);margin-right:28px}
+
+/* Three equal feature columns become a ruled list: number, title, explanation on one line each */
+.process{display:block;margin-top:var(--s5);border-top:1px solid var(--line)}
+.process article{display:grid;grid-template-columns:56px minmax(0,5fr) minmax(0,6fr);gap:var(--s3);align-items:baseline;padding:26px 0;border-top:0;border-bottom:1px solid var(--line)}
+.process article h3,.process article p{margin:0}
+.process article p{font-size:var(--t5);line-height:1.6;color:#4a4d54}
+.process .row-number{font-size:14px;color:#62656c}
+@media(max-width:900px){.process article{grid-template-columns:40px minmax(0,1fr);gap:8px 16px;padding:20px 0}.process article p{grid-column:2}}
+
+/* Industry pages: the example card sits in its own band under the photo, not on top of it */
+.ind .hero::before{background:rgba(18,14,11,.64)}
+.ind .hero .wrap{grid-template-columns:minmax(0,1fr);padding:104px 0 96px}
+.ind .hero h1{color:#fff;font-weight:600}
+.ind .hero .lead{font-size:var(--t4);line-height:1.5;max-width:560px;color:#f4ece2}
+.ip-band{background:#f5f5f7;border-bottom:1px solid var(--line);padding:48px 0}
+.ip-band .ip,.ind .ip-band .ip{position:static;left:auto;right:auto;margin:0;max-width:920px;box-shadow:none;border-radius:8px}
+.ip-band .ip li{padding:14px 18px;grid-template-columns:minmax(0,3fr) minmax(0,6fr) auto}
+.ip-band .ip li b,.ip-band .ip li span{font-size:15px}
+.ip-band .ip-q{font-size:15px}
+.ip-band .ip-t{font-size:15px}
+.ip li em{background:none!important;padding:0!important;border-radius:0!important;font-size:13px!important;color:#62656c!important}
+.ip-q b,.ip-f{text-transform:none!important;letter-spacing:0!important;font-size:13px!important}
+/* Real portal screenshots, shown at their own pixels and scaled down only to fit the column */
+.system-section .section-heading{display:block;max-width:640px;margin-bottom:var(--s5)}
+.system-section .section-heading p{margin-top:16px;color:#4a4d54;font-size:var(--t4);line-height:1.5}
+.portal-shot{margin:0}
+.portal-shot img{width:100%;max-width:1440px;height:auto;border:1px solid var(--line);border-radius:4px}
+.portal-shot figcaption{margin-top:16px;font-size:14px;color:#62656c;max-width:62ch}
+/* No product card is pasted over a photograph: the card sits under the photo */
+.cv3-card{position:static!important;max-width:none!important;margin:16px 0 0!important;box-shadow:none!important;border:1px solid var(--line);border-radius:8px!important}
+.mr-card{position:static!important;left:auto!important;right:auto!important;margin:16px 0 0!important;box-shadow:none!important}
+.mr-hero-v{padding-bottom:0!important}
+.ind .stagepic,.ind .stagepic.big,.ind .stagepic.inset{padding-bottom:0!important}
+.ind .stagepic .ip,.ind .stagepic.big .ip,.ind .stagepic.inset .ip,.ind .sec.flip .stagepic .ip{position:static!important;left:auto!important;right:auto!important;margin:16px 0 0!important;box-shadow:none!important}
+.tv3-q,.tv3-a{position:static!important;max-width:none!important;margin:12px 0 0!important;box-shadow:none!important;border:1px solid var(--line);border-radius:8px!important}
+.tv3-a{border-left:1px solid var(--line)!important}
+/* Four equal columns on the about page become a ruled list */
+.st-pr{display:block!important;border-top:1px solid #ded8cd}
+.st-pr li{display:grid;grid-template-columns:48px minmax(0,4fr) minmax(0,6fr);gap:var(--s3);align-items:baseline;padding:24px 0;border-top:0;border-bottom:1px solid #ded8cd}
+.st-pr li::before{margin:0;letter-spacing:0;font-size:14px}
+.st-pr b{font-size:var(--t4);font-weight:600}
+.st-pr p{margin:0;font-size:var(--t5);color:#4a4d54}
+@media(max-width:900px){.st-pr li{grid-template-columns:36px minmax(0,1fr);gap:6px 12px}.st-pr li p{grid-column:2}}
+.tr-flow{display:block!important;margin-top:var(--s4);border-top:1px solid var(--line)}
+.tr-flow::before{display:none!important}
+.tr-flow li{display:grid!important;grid-template-columns:48px minmax(0,3fr) minmax(0,6fr) minmax(0,3fr);gap:var(--s3);align-items:baseline;padding:24px 0!important;border-bottom:1px solid var(--line)}
+.tr-flow h3.h,.tr-flow p{margin:0!important}
+.tr-flow p{font-size:var(--t5)!important;color:#4a4d54!important}
+.tr-flow h3.h{font-size:var(--t4)!important}
+.tr-flow .tr-n{font-size:14px;color:#62656c}
+@media(max-width:900px){.tr-flow li{grid-template-columns:36px minmax(0,1fr)!important;gap:6px 12px}.tr-flow li p,.tr-flow li .tr-ctl{grid-column:2}}
+/* Three columns of steps become rows */
+.ind .stepgrid{display:block;margin-top:var(--s4);border-top:1px solid var(--il,#e4e5e9)}
+.ind .stepgrid>div,.ind .stepgrid>div+div{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,5fr);gap:var(--s3);align-items:baseline;padding:24px 0;border-right:0;border-bottom:1px solid var(--il,#e4e5e9)}
+.ind .stepgrid b{display:block;font-size:14px!important;letter-spacing:0!important;text-transform:none!important;font-weight:500;color:#62656c}
+.ind .stepgrid h3{margin:0}
+.ind .stepgrid p{margin:0;font-size:var(--t5);line-height:1.6;color:#4a4d54}
+@media(max-width:900px){.ind .stepgrid>div,.ind .stepgrid>div+div{grid-template-columns:1fr;gap:6px}}
+/* Four identical system cards become a ruled list */
+main.pub .sys{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 var(--column-gap)}
+main.pub .sys .c{border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none;padding:20px 0}
+@media(max-width:900px){main.pub .sys{grid-template-columns:minmax(0,1fr)!important}}
+/* FAQ contact options: ruled rows */
+.fq-cards{display:block;border-top:1px solid var(--line)}
+.fq-cards a,.fq-cards a:hover{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,5fr);gap:var(--s3);align-items:baseline;padding:22px 0;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;transform:none}
+.fq-cards b{padding-right:0;font-size:var(--t4)}
+.fq-cards .cap{font-size:14px!important;letter-spacing:0!important;text-transform:none!important;font-weight:500;color:#62656c}
+.fq-cards a>span:last-of-type{font-size:var(--t5);color:#4a4d54}
+@media(max-width:900px){.fq-cards a,.fq-cards a:hover{grid-template-columns:1fr;gap:6px}}
+/* Figures in a row are a stat strip, not four boxes */
+.stat,main.pub .stat{border:0;border-top:2px solid var(--ink);border-radius:0;background:none;padding:14px 0 0}
+.stat .n,main.pub .stat .n{font-size:var(--t2);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.stat .d,main.pub .stat .d{font-size:14px}
+
+/* Third-level headings sit on the same scale: 28 for feature titles, 20 for card and row titles, 17 inside panels */
+main h3{font-size:var(--t4)!important;font-weight:600!important;line-height:1.3;letter-spacing:-.012em}
+main .panel-head h3,main .pm-q-h,main h3.h{font-size:var(--t5)!important}
+main .cd-stage-copy h3,main .fx-step-copy h3,main .bd-t h3,main .wk2-copy h3,main .layer-detail h3,main .wk h3,main .customer-result h3,main .link-row h3{font-size:var(--t3)!important;line-height:1.2;letter-spacing:-.02em}
+main .cx-pr h3{font-size:var(--t2)!important;line-height:1.1;letter-spacing:-.03em}
+@media(max-width:700px){main .cd-stage-copy h3,main .fx-step-copy h3,main .bd-t h3,main .wk2-copy h3,main .layer-detail h3,main .wk h3,main .customer-result h3,main .link-row h3{font-size:24px!important}main .cx-pr h3{font-size:32px!important}}
+main.pub .snap-chips{display:flex;flex-wrap:wrap;gap:6px 28px;list-style:none;padding:0}
+main.pub .snap-chips li{border:0;border-radius:0;background:none;padding:0;box-shadow:none;font-size:var(--t5);color:#4a4d54}
+/* Worked examples replace the rotating particle brain: each question, what is checked, and the answer. */
+.worked .wk{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--column-gap);padding:48px 0;border-top:1px solid rgba(255,255,255,.12)}
+.worked .wk:first-of-type{border-top:0}
+.worked .wk h3{color:#fff;font-size:var(--t3);line-height:1.2;max-width:22ch;margin:0 0 24px}
+.worked .wk-lab{font-size:14px;font-weight:500;color:#a6a9b4;margin:0 0 10px}
+.worked .wk-steps{margin:0;padding-left:20px;display:grid;gap:8px;color:#d6d8df}
+.worked .wk-a .answer{font-size:24px;line-height:1.4;color:#fff}
+.worked .wk-a small{display:block;margin-top:16px;font-size:14px;color:#9a9ca6}
+@media(max-width:900px){.worked .wk{grid-template-columns:1fr;gap:24px;padding:36px 0}.worked .wk-a .answer{font-size:21px}}
+
+/* TRACKED-RESET: small labels are plain sentence-case text, no letter-spacing, 13px minimum */
+.gh-label,
+.cx-k,
+.cx-pipe-head div,
+.cx-pr .num,
+.cx-tbl th,
+.cd-step,
+.cd-map em,
+.cd-lineage th,
+.cd-log-title,
+.cd-work .row-number,
+.tm-toc-title,
+.tm-sec h2::before,
+.bd-ex small,
+.cv3-tag,
+.cv3-next-label,
+.cv3-route-grid .k,
+.ct-tag,
+.ct-side .row-number,
+.ct-steps li::before,
+.ct-facts dt,
+.fq-cards .cap,
+.fq-nav-t,
+.fq-num,
+.fx-k,
+.fx-tbl th,
+.ind .mf-names small,
+.ind .mf-tag,
+.ind .mf-tl time,
+.mr-card-h em,
+.mr-q-grid small,
+.art-body h2::before,
+.rec dt,
+.pm-steps b,
+.pm-q-th,
+.pub .snap-info-grid>div:first-child .snap-list li::before,
+.st-caps span,
+.st-pr li::before,
+.tv3-tag,
+.tv3-steps .n,
+.tv3-steps .see b,
+.tv3-table .th span,
+.pub .tr-facts dt,
+.pub .tr-n,
+.pub .tr-ev-h,
+.fx-uc-card .fn,
+.pub .wk2-idx b,
+.pub .wk2-n,
+.ind .tile small,
+.ind .eq small,
+.ip-pill,
+.ip-q b,
+.ind .stepgrid b,
+.ind .ix-ex small,
+.meta b,
+.note-list .list-head,
+.soon-tag,
+.pub .eyebrow,
+.pub .cap,
+.pub th,
+.eyebrow,
+.dropdown-label,
+.brain-label,
+.branch span,
+.sidebar-title,
+.detail-kicker,
+.mini-label,
+.sample-badge,
+.footer-services-label,
+.footer-col strong,
+.layer-fig .fig-axis{letter-spacing:0!important;font-size:max(13px,1em)}

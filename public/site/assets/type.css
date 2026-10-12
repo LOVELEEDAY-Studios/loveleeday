@@ -1,0 +1,46 @@
+/* LOVELEEDAY type system. Loaded last on every public page.
+   Switzer for headlines and text, Sentient only for answer text. Five steps: 64, 40, 28, 20, 17 px. Two weights: 400 and 600 (500 for small labels).
+   Fonts are self-hosted from Fontshare (free license, self-hosting allowed). */
+@font-face{font-family:"Switzer";src:url(/site/assets/fonts/switzer-400.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url(/site/assets/fonts/switzer-500.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url(/site/assets/fonts/switzer-600.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Sentient";src:url(/site/assets/fonts/sentient-400.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Sentient";src:url(/site/assets/fonts/sentient-400i.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Sentient";src:url(/site/assets/fonts/sentient-500.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+
+:root,.pub{--sans:"Switzer",system-ui,"Segoe UI",Roboto,Arial,sans-serif;--serif:"Sentient",Georgia,"Times New Roman",serif;--t1:64px;--t2:40px;--t3:28px;--t4:20px;--t5:17px}
+body{font-family:var(--sans);font-size:var(--t5);line-height:1.6;word-spacing:0;font-feature-settings:"ss01"}
+button,input,select,textarea{font-family:inherit}
+strong,b{font-weight:600}
+
+/* headlines: one size per level, weight 600, no two-tone */
+h1,h2,h3{font-family:var(--sans);font-weight:600}
+h1,.hero-story h1,.page-hero h1,.page-hero.compact h1,.notes-hero h1,.art-hero h1,.pub h1.title,.ha-copy h1{font-size:var(--t1)!important;line-height:1.04;letter-spacing:-.035em;font-weight:600!important}
+h2,.detail-section h2,.page-cta h2,.feature h2,.notes-follow h2,.next h2,.pub h2.h,.pub h2.title.sm,.pub .snap-h2,.pub .snap-brief h2,.close-story h2{font-size:var(--t2)!important;line-height:1.1;letter-spacing:-.03em;font-weight:600!important}
+h2 span,h1 span{color:inherit}
+.close-story h2,.page-cta h2,.art-body h2{font-weight:400!important}
+.art-body h2{font-size:var(--t3)!important;line-height:1.2;letter-spacing:-.02em}
+h3,.layer-detail h3,.link-row h3,.process h3,.flow-block h3,.customer-result h3,.principle-long h3,.principle h3,.row h3,.pub h3.h,.brain-ask h3{font-size:var(--t4);line-height:1.3;letter-spacing:-.012em;font-weight:600}
+.layer-detail h3,.principle-long h3,.link-row h3,.customer-result h3,.row h3{font-size:var(--t3);line-height:1.2;letter-spacing:-.02em}
+.panel-head h3{font-size:var(--t5)}
+h1 span,h2 span,h3 span{font-weight:inherit}
+.lead,.page-hero .lead,.page-hero.compact .lead,.ha-copy p{font-size:var(--t4)!important;line-height:1.5;letter-spacing:-.005em}
+
+/* answer text only is Sentient */
+.answer,.answer-text,.brain-answer,.ha-ans dd,.ans-text,.close-story p{font-family:var(--serif);font-weight:400;font-style:normal;letter-spacing:0}
+.close-story p{font-style:italic}
+
+/* labels: sentence case, no tracking. Real labels stay, eyebrows above headings are removed from the markup. */
+.eyebrow,.brain-label,.branch span,.ct-facts dt,.ct-tag,.cv3-next-label,.cv3-route-grid .k,.cv3-tag,.detail-kicker,.dropdown-label,.fq-cards .cap,.fq-nav-t,.fx-ask-fn,.fx-ask-src b,.fx-k,.fx-tbl th,.fx-uc-card .fn,.gh-label,.ha-card dt,.ind .mf-names small,.ind .mf-tag,.ind .mf-tl time,.meta b,.mini-label,.mr-card-h em,.mr-q-grid small,.note-list .list-head,.pm-q-th,.pub .cap,.pub .eyebrow,.pub .tr-ev-h,.pub .tr-facts dt,.pub th,.rec dt,.sample-badge,.sidebar-title,.soon-tag,.tv3-steps .see b,.tv3-tag,.site-footer h2,.site-footer h3,.site-footer h4,.footer-col-title,.foot-h{text-transform:none!important;letter-spacing:0!important;font-size:14px;font-weight:500}
+.sample-badge,.soon-tag,.ct-tag,.cv3-tag,.tv3-tag,.ind .mf-tag{font-size:13px}
+
+@media(max-width:900px){
+  h1,.hero-story h1,.page-hero h1,.page-hero.compact h1,.notes-hero h1,.art-hero h1,.pub h1.title,.ha-copy h1{font-size:44px!important}
+  h2,.detail-section h2,.page-cta h2,.feature h2,.notes-follow h2,.next h2,.pub h2.h,.pub h2.title.sm,.pub .snap-h2,.pub .snap-brief h2,.close-story h2{font-size:34px!important}
+  .art-body h2{font-size:var(--t3)!important}
+  .layer-detail h3,.principle-long h3,.link-row h3,.customer-result h3,.row h3{font-size:24px}
+}
+@media(max-width:560px){
+  h1,.hero-story h1,.page-hero h1,.page-hero.compact h1,.notes-hero h1,.art-hero h1,.pub h1.title,.ha-copy h1{font-size:38px!important}
+  h2,.detail-section h2,.page-cta h2,.feature h2,.notes-follow h2,.next h2,.pub h2.h,.pub h2.title.sm,.pub .snap-h2,.pub .snap-brief h2,.close-story h2{font-size:30px!important}
+}
