@@ -180,3 +180,32 @@ main.pub .snap-chips li{border:0;border-radius:0;background:none;padding:0;box-s
 .footer-services-label,
 .footer-col strong,
 .layer-fig .fig-axis{letter-spacing:0!important;font-size:max(13px,1em)}
+
+/* Real portal screenshots: shown at their own pixel size, never enlarged. */
+.portal-shot.native img{width:auto;max-width:100%}
+.portal-phone{margin:0}
+.portal-phone img{display:block;width:auto;max-width:100%;height:auto;border:1px solid #e4e5e9;border-radius:4px}
+.portal-phone figcaption{margin-top:12px;font-size:14px;line-height:1.45;color:#62656c;max-width:375px}
+.fx-ah .portal-phone{justify-self:end}
+.page-hero.dark .portal-phone img,.dark .portal-phone img{border-color:rgba(255,255,255,.18)}
+.page-hero.dark .portal-phone figcaption,.dark .portal-phone figcaption{color:#9ea3ad}
+.fx-step .portal-phone{justify-self:start}
+h1,h2,h3{text-wrap:balance}
+p,li{text-wrap:pretty}
+/* the four approval tiers as one ruled list instead of four identical cards */
+.cx-tiers{display:block!important;border-top:1px solid rgba(255,255,255,.14)}
+.cx-tier{display:grid!important;grid-template-columns:96px 160px minmax(0,1fr) 200px;gap:24px;align-items:center;border:0!important;border-bottom:1px solid rgba(255,255,255,.14)!important;border-radius:0!important;background:none!important;padding:20px 0!important;overflow:visible}
+.cx-tier::before{display:none!important}
+.cx-tier .ex{margin-top:0!important;border-top:0!important;padding-top:0!important}
+@media(max-width:800px){.cx-tier{grid-template-columns:1fr!important;gap:8px}}
+.cx-split.solo{grid-template-columns:minmax(0,720px)!important}
+.fx-os-flow.solo,.ab-grid.solo{grid-template-columns:minmax(0,720px)!important}
+.cd-stage.solo{grid-template-columns:minmax(0,680px)!important}
+.duo>.copy:only-child{grid-column:1/-1;max-width:720px}
+.cx-wide{margin-top:48px}
+.cx-stage .portal-phone{max-width:375px}
+.cx-dark .portal-shot img,.cx-dark .portal-phone img,.cx-mem .portal-shot img{border-color:rgba(255,255,255,.18)}
+.cx-dark .portal-shot figcaption,.cx-dark .portal-phone figcaption{color:#9ea3ad}
+.portal-scroll{overflow-x:auto}
+.portal-scroll img{max-width:none}
+@media(min-width:701px){.portal-scroll img{max-width:100%}}

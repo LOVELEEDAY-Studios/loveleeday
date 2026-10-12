@@ -7,7 +7,7 @@ function ResearchSection({ r }: { r: Research }) {
   return (
     <section className="border-b border-[var(--line)]">
       <div className="mx-auto max-w-[1340px] px-6 py-20 lg:py-24">
-        <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">
+        <span className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--accent)]">
           {r.kicker}
         </span>
         <h2 className="mt-4 max-w-[22ch] text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.06] tracking-[-0.025em]">
@@ -29,7 +29,7 @@ function ResearchSection({ r }: { r: Research }) {
         </div>
         {r.steps ? (
           <div className="mt-14">
-            <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">Where we would start</h3>
+            <h3 className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--accent)]">Where we would start</h3>
             <ol className="mt-6 grid gap-px bg-[var(--line)] md:grid-cols-3">
               {r.steps.map((st, i) => (
                 <li key={st.when} className="bg-[var(--raised)] p-7">
@@ -42,7 +42,7 @@ function ResearchSection({ r }: { r: Research }) {
           </div>
         ) : r.verdict && (
           <div className="mt-12 border-l-2 border-[var(--accent)] pl-6">
-            <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
+            <h3 className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
               Where we would start
             </h3>
             <p className="mt-3 max-w-[var(--measure)] text-[16px] leading-[1.7] text-[var(--ink)]">
@@ -51,7 +51,7 @@ function ResearchSection({ r }: { r: Research }) {
           </div>
         )}
         <details className="mt-10">
-          <summary className="cursor-pointer font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)] hover:text-[var(--accent)]">
+          <summary className="cursor-pointer font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)] hover:text-[var(--accent)]">
             Sources ({r.sources.length})
           </summary>
           <ul className="mt-4 space-y-2">
@@ -111,7 +111,7 @@ export default async function PortfolioPage({
       <span hidden data-portal-col="1340" />
       {/* Header */}
       <section className="mx-auto max-w-[1340px] px-6 pb-16 pt-16 sm:pt-24">
-        <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">
+        <p className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--accent)]">
           {p.eyebrow ?? "Portfolio study"}
           <span className="text-[var(--dim)]"> · prepared for {p.preparedFor}</span>
         </p>
@@ -176,7 +176,7 @@ export default async function PortfolioPage({
 
       {/* What the fund cannot see from its own page */}
       <section className="mx-auto max-w-[1340px] px-6 py-20">
-        <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">
+        <span className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--accent)]">
           A few things we noticed
         </span>
         <h2 className="mt-4 max-w-[20ch] text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.06] tracking-[-0.025em]">
@@ -216,7 +216,7 @@ export default async function PortfolioPage({
                   <h2 className="mt-3 text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.04] tracking-[-0.025em]">
                     {c.company}
                   </h2>
-                  <p className="mt-2 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[var(--dim)]">
+                  <p className="mt-2 font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
                     {c.sector}
                   </p>
                 </div>
@@ -238,12 +238,12 @@ export default async function PortfolioPage({
                       that their site needed rebuilding before they have read a
                       word. These pages arrive unsolicited; the register has to
                       be someone admiring the company, not someone auditing it. */}
-                  <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
+                  <h3 className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
                     What drew us to this one
                   </h3>
                   <p className="mt-4 text-[15px] leading-[1.7] text-[var(--mid)]">{c.thesis}</p>
                   <div className="mt-7 border-t border-[var(--line)] pt-5">
-                    <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
+                    <h3 className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
                       How they are found today
                     </h3>
                     <p className="mt-3 text-[14px] leading-[1.65] text-[var(--mid)]">{c.search}</p>
@@ -251,7 +251,7 @@ export default async function PortfolioPage({
                 </div>
                 <div>
                   {/* "What we found" is the language of an inspection report. */}
-                  <h3 className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--dim)]">
+                  <h3 className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--dim)]">
                     What we changed
                   </h3>
                   <ul className="mt-4 space-y-4">
@@ -280,7 +280,7 @@ export default async function PortfolioPage({
         <section id="next" className="border-t border-[var(--line)]">
           <div className="mx-auto grid max-w-[1340px] items-start gap-10 px-6 py-20 lg:grid-cols-[1fr_1.1fr] lg:py-28">
             <div>
-              <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">Next step</span>
+              <span className="font-[family-name:var(--font-mono)] text-[13px] text-[var(--accent)]">Next step</span>
               <h2 className="mt-4 text-[clamp(2rem,4.4vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.03em]">{p.close.title}</h2>
               <p className="mt-6 max-w-[var(--measure)] text-[17px] leading-[1.7] text-[var(--mid)]">{p.close.body}</p>
             </div>

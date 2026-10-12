@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
    /p/dabney-ordering-concepts-v2. Approvals save to ~/.arthur/data/holly-jolly-designs-review/review.json. */
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980]">{children}</span>;
+  return <span className="block text-[13px] font-medium text-[#777980]">{children}</span>;
 }
 function Two({ a, b, size = "h2" }: { a: string; b: string; size?: "h1" | "h2" }) {
   const cls =
@@ -88,7 +88,7 @@ export default async function HollyJollyDesignsPage({ params }: { params: Promis
           <div className="mt-10 overflow-x-auto">
             <table className="w-full min-w-[720px] text-left text-[13px]">
               <thead>
-                <tr className="border-b border-[#dcdfe6] text-[11px] uppercase tracking-[0.08em] text-[#777980]">
+                <tr className="border-b border-[#dcdfe6] text-[13px] text-[#777980]">
                   {weightTable.columns.map((h) => (<th key={h} className="py-2 pr-4 font-semibold">{h}</th>))}
                 </tr>
               </thead>
@@ -120,7 +120,7 @@ export default async function HollyJollyDesignsPage({ params }: { params: Promis
         <div className="mt-10 overflow-x-auto">
           <table className="w-full min-w-[620px] text-left text-[13.5px]">
             <thead>
-              <tr className="border-b border-[#dcdfe6] text-[11px] uppercase tracking-[0.08em] text-[#777980]">
+              <tr className="border-b border-[#dcdfe6] text-[13px] text-[#777980]">
                 <th className="py-2 pr-4 font-semibold">Direction</th>
                 {reviewers.map((r) => (<th key={r.id} className="py-2 pr-4 font-semibold">{r.name}</th>))}
                 <th className="py-2 pr-4 font-semibold">Converged</th>
@@ -173,7 +173,7 @@ export default async function HollyJollyDesignsPage({ params }: { params: Promis
               {d.grades.map((g) => (
                 <div key={g.who} className="rounded-2xl border border-[#e4e5e9] bg-[#fafafa] p-4">
                   <div className="flex items-baseline justify-between">
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#777980]">{g.who}</span>
+                    <span className="text-[13px] font-medium text-[#777980]">{g.who}</span>
                     <span className={`text-[26px] font-semibold ${gradeCls(g.g)}`}>{g.g}</span>
                   </div>
                   <p className="mt-2 text-[12.5px] leading-[1.6] text-[#5b606a]">{g.why}</p>
@@ -238,7 +238,7 @@ export default async function HollyJollyDesignsPage({ params }: { params: Promis
             <div key={f.area + f.t} className="rounded-2xl border border-[#e4e5e9] bg-[#fafafa] p-4">
               <div className="flex flex-wrap items-center gap-2 text-[12.5px] font-medium text-[#1d1d1f]">
                 <span className={`rounded-full px-2 py-0.5 text-[10.5px] font-semibold uppercase ${sevCls[f.sev]}`}>{f.sev}</span>
-                <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#777980]">{f.area}</span>
+                <span className="text-[13px] font-medium text-[#777980]">{f.area}</span>
                 {f.t}
               </div>
               <p className="mt-1.5 text-[13px] leading-[1.6] text-[#6c7481]">{f.d}</p>
@@ -282,7 +282,7 @@ export default async function HollyJollyDesignsPage({ params }: { params: Promis
       <section className="border-t border-[#e4e5e9]">
         <div className="mx-auto max-w-[1180px] px-6 py-12">
           <details>
-            <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-[0.16em] text-[#777980] hover:text-[#3778bc]">
+            <summary className="cursor-pointer text-[13px] font-medium text-[#777980] hover:text-[#3778bc]">
               Method, sources and what could not be seen
             </summary>
             <ul className="mt-5 grid max-w-[76ch] gap-3 text-[13px] leading-[1.65] text-[#6c7481]">

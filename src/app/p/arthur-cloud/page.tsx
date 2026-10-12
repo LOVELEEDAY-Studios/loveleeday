@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Arthur in the cloud: what Google Clo
 
 function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <span className={`block text-[10px] font-semibold uppercase tracking-[0.16em] ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>
+    <span className={`block text-[13px] font-medium ${dark ? "text-[#9ea3ad]" : "text-[#777980]"}`}>
       {children}
     </span>
   );
@@ -21,9 +21,7 @@ function Two({ a, b, dark, size = "h2" }: { a: string; b: string; dark?: boolean
   const Tag = size;
   return (
     <Tag className={`mt-4 font-medium ${cls} ${dark ? "text-white" : "text-[#1d1d1f]"}`}>
-      {a}
-      <br />
-      <span className={dark ? "text-[#8e8d99]" : "text-[#8c8e95]"}>{b}</span>
+      {a} {b}
     </Tag>
   );
 }
@@ -458,7 +456,7 @@ export default function ArthurCloudProposal() {
               <article key={w.n} className={`rounded-2xl p-6 ${w.rec ? "border-2 border-[#3778bc] bg-[#f0f5fc]" : "border border-[#e4e5e9] bg-white"}`}>
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-[13px] tabular-nums text-[#3778bc]">{w.n}</span>
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#777980]">{w.tag}</span>
+                  <span className="text-[13px] font-medium text-[#777980]">{w.tag}</span>
                 </div>
                 <h4 className="mt-3 text-[18px] font-medium leading-[1.35] text-[#1d1d1f]">{w.t}</h4>
                 <p className="mt-2 text-[14px] leading-[1.65] text-[#5b606a]">{w.d}</p>
@@ -550,7 +548,7 @@ export default function ArthurCloudProposal() {
         <div className="mt-5 grid gap-5 md:grid-cols-3">
           {levels.map((l) => (
             <article key={l.name} className={`rounded-2xl p-6 ${l.rec ? "border-2 border-[#3778bc] bg-[#f0f5fc]" : "border border-[#e4e5e9] bg-white"}`}>
-              <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#777980]">{l.name}</div>
+              <div className="text-[13px] font-medium text-[#777980]">{l.name}</div>
               <div className="mt-3 text-[26px] font-medium leading-[1.15] tracking-[-0.03em] text-[#1d1d1f]">{l.price}</div>
               <p className="mt-3 text-[14px] leading-[1.65] text-[#5b606a]">{l.d}</p>
             </article>
@@ -607,7 +605,7 @@ export default function ArthurCloudProposal() {
           <ol className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-[#2a2d36] bg-[#2a2d36] md:grid-cols-5">
             {build.map((b) => (
               <li key={b.w} className="bg-[#111217] p-6">
-                <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#8fb6de]">{b.w}</div>
+                <div className="text-[13px] font-medium text-[#8fb6de]">{b.w}</div>
                 <div className="mt-2 text-[17px] text-white">{b.t}</div>
                 <p className="mt-2 text-[14px] leading-[1.7] text-[#a3a8b2]">{b.d}</p>
               </li>
