@@ -1,7 +1,7 @@
 /* Home hero: a real photograph as the setting on the warm cream ground, headline and one action on the left. The example answer sits below it as a table. */
 .hero-photo{position:relative;background:#f5f1eb;color:var(--ink);overflow:hidden;min-height:620px;display:flex;align-items:center}
 .hp-wrap{position:relative;z-index:1;padding-block:clamp(56px,7vw,104px)}
-.hp-text{max-width:500px}
+.hp-text{max-width:440px}
 .hp-text h1{margin:0;color:var(--ink)}
 .hp-text .lead{margin-top:22px;color:#4a4d54;max-width:460px}
 .ha-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:32px}
