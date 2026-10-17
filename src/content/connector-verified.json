@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-11",
-  "source": "arthur-capability loveleeday.client_connections LIVE_VERIFIED; tenant_connections rows with status live and a probe under 8 hours old (brevo, meta, toast). Only keys that appear in integrations.json are listed.",
-  "keys": ["brevo", "toast"]
+  "checked_at": "2026-10-17",
+  "source": "No reusable LOVELEEDAY customer connector has completed independent multi-tenant production certification. Dabney-specific Brevo and Toast API connections are tenant implementations and do not qualify as generally available connectors.",
+  "keys": []
 }
