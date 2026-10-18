@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOVELEEDAY — The object layer for the business you already run</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F3EC; --paper-2:#FBFAF6; --ink:#161514; --ink-2:#3B3834; --muted:#5F5A52;
+  --rule:#D9D3C4; --rule-strong:#161514; --gold:#B08D3C; --accent:#7A2E2E; --accent-ink:#FBFAF6;
+  --serif:"Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans:"Inter", system-ui, sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;font-variant-numeric:lining-nums tabular-nums;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
+.sc{font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.serif{font-family:var(--serif)}
+
+/* masthead */
+.mast{border-bottom:1px solid var(--rule-strong);background:var(--paper)}
+.mast-top{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--rule)}
+.mast-top .sc{font-size:10.5px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:.09em;font-variation-settings:"opsz" 72}
+.brand svg{width:22px;height:22px;display:block}
+.links{display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:500;color:var(--ink-2)}
+.links a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:14.5px;letter-spacing:.01em;padding:14px 26px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:0;cursor:pointer;transition:background .15s,color .15s}
+.btn:hover{background:var(--ink);border-color:var(--ink)}
+.btn.sm{padding:10px 20px;font-size:14px}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+
+/* hero */
+.hero{padding:76px 0 88px}
+.hero-grid{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+.kicker{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.kicker i{display:block;width:44px;height:1px;background:var(--gold)}
+h1{font-family:var(--serif);font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.018em;font-variation-settings:"opsz" 144;color:var(--ink)}
+h1 em{font-style:italic;font-weight:500;color:var(--accent)}
+.lede{margin-top:28px;font-size:17.5px;line-height:1.65;color:var(--ink-2);max-width:460px}
+.cta-row{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.foot-note{margin-top:30px;padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--muted);max-width:460px}
+
+/* exhibit plate */
+.fig{position:relative}
+.plate{background:var(--paper-2);border:1px solid var(--ink);box-shadow:6px 6px 0 -1px var(--paper), 6px 6px 0 0 var(--gold)}
+.plate-head{display:flex;justify-content:space-between;align-items:center;padding:12px 22px;border-bottom:1px solid var(--ink);background:var(--paper)}
+.plate-head .sc{color:var(--ink)}
+.plate-q{padding:22px 22px 20px;border-bottom:1px solid var(--rule)}
+.plate-q .sc{display:block;margin-bottom:8px}
+.plate-q p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:23px;line-height:1.3;font-variation-settings:"opsz" 48}
+.srcs{padding:6px 22px 0}
+.srcs .sc{display:flex;padding:14px 0 8px}
+.src{display:grid;grid-template-columns:104px 1fr 128px;gap:16px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
+.src .s{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.src .n{font-family:var(--serif);font-size:18px;font-weight:500;font-variation-settings:"opsz" 36}
+.src .r{font-size:12.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.merge{display:flex;align-items:center;gap:14px;margin:6px 22px 0;padding:11px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
+.merge b{font-family:var(--serif);font-weight:600;font-size:15px}
+.merge .arrow{font-family:var(--serif);font-size:20px;line-height:1;color:var(--accent)}
+.merge .sc{margin-left:auto}
+.obj{padding:20px 22px 22px}
+.obj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+.obj h3{font-family:var(--serif);font-weight:600;font-size:32px;line-height:1.1;letter-spacing:-.01em;font-variation-settings:"opsz" 96}
+.stamp{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--accent);color:var(--accent);padding:4px 10px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;margin-top:6px}
+.stamp svg{width:12px;height:12px}
+.props{margin-top:14px}
+.prop{display:grid;grid-template-columns:104px 1fr auto;gap:16px;align-items:baseline;padding:9px 0;border-top:1px solid var(--rule);font-size:15px}
+.prop .k{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.prop .v{font-weight:500}
+.chip{display:inline-block;font-size:11.5px;font-weight:500;color:var(--ink-2);border:1px solid var(--rule);background:var(--paper);padding:2px 8px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.time{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);margin-top:14px}
+.time div{padding:10px 14px;font-size:13px;color:var(--ink-2)}
+.time div+div{border-left:1px solid var(--rule)}
+.time .sc{display:block;font-size:10.5px;margin-bottom:2px}
+.time b{font-weight:600;color:var(--ink)}
+.caption{display:flex;gap:14px;margin-top:18px;padding-top:12px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--ink-2)}
+.caption .sc{color:var(--ink);white-space:nowrap;padding-top:2px}
+
+/* sections */
+section{border-top:1px solid var(--rule-strong)}
+.sec{padding:96px 0}
+.sec-head{display:grid;grid-template-columns:2fr 10fr;gap:32px;margin-bottom:56px}
+.sec-head .sc{padding-top:14px;border-top:3px solid var(--gold);align-self:start;color:var(--ink)}
+h2{font-family:var(--serif);font-weight:600;font-size:46px;line-height:1.08;letter-spacing:-.015em;font-variation-settings:"opsz" 144;max-width:720px}
+.intro{grid-column:2;max-width:640px;font-size:17px;color:var(--ink-2);margin-top:22px}
+.intro::first-letter{font-family:var(--serif);font-weight:600;font-size:64px;line-height:.8;float:left;padding:6px 10px 0 0;color:var(--accent);font-variation-settings:"opsz" 144}
+
+.g{display:grid;grid-template-columns:2fr 4fr 6fr;gap:32px;padding:34px 0;border-top:1px solid var(--rule);align-items:start}
+.g:last-child{border-bottom:1px solid var(--rule)}
+.g .num{font-family:var(--serif);font-weight:500;font-size:92px;line-height:.82;letter-spacing:-.03em;color:var(--ink);font-variation-settings:"opsz" 144;font-variant-numeric:lining-nums tabular-nums}
+.g h3{font-family:var(--serif);font-weight:600;font-size:29px;line-height:1.15;letter-spacing:-.01em;font-variation-settings:"opsz" 72;padding-top:2px}
+.g p{font-size:16.5px;color:var(--ink-2);max-width:560px;padding-top:4px}
+.g .tag{display:block;margin-top:14px}
+
+/* industries */
+.ind{background:var(--paper-2)}
+.ind-list{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);column-gap:40px}
+.ind-list li{display:flex;align-items:baseline;gap:14px;padding:17px 0;border-top:1px solid var(--rule);font-family:var(--serif);font-size:21px;font-weight:500;font-variation-settings:"opsz" 48;line-height:1.25}
+.ind-list li span{font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.1em;color:var(--accent);min-width:22px}
+.ind-list li:nth-last-child(-n+3){border-bottom:1px solid var(--rule)}
+
+/* closing */
+.close{background:var(--ink);color:var(--paper);border-top:0}
+.close .wrap{padding-top:104px;padding-bottom:104px;display:grid;grid-template-columns:2fr 10fr;gap:32px}
+.close .sc{color:#CFC8B8;border-top:3px solid var(--gold);padding-top:14px;align-self:start}
+.close h2{color:var(--paper);font-size:56px;max-width:760px}
+.close .btn{background:var(--paper);color:var(--ink);border-color:var(--paper);margin-top:38px}
+.close .btn:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.close .btn:focus-visible{outline-color:var(--gold)}
+.close .sub{margin-top:18px;color:#CFC8B8;font-size:15px}
+
+/* footer */
+footer{background:var(--paper);border-top:0}
+.foot{display:grid;grid-template-columns:4fr 2fr 2fr 2fr 2fr;gap:32px;padding:64px 0 48px}
+.foot .brand{font-size:19px}
+.foot p.tag{margin-top:16px;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-2);max-width:280px;line-height:1.4}
+.foot h4{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--rule-strong)}
+.foot ul{list-style:none}
+.foot li{padding:5px 0;font-size:14.5px;color:var(--ink-2)}
+.foot a:hover{color:var(--accent)}
+.legal{display:flex;justify-content:space-between;padding:20px 0 28px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted)}
+
+/* mobile */
+@media (max-width:900px){
+  .wrap{padding:0 20px}
+  .links a:not(.btn){display:none}
+  .mast-top span:last-child{display:none}
+  .hero{padding:44px 0 56px}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  h1{font-size:40px}
+  .lede{font-size:16.5px}
+  .sec{padding:60px 0}
+  .sec-head{grid-template-columns:1fr;gap:18px;margin-bottom:36px}
+  .intro{grid-column:1}
+  h2{font-size:34px}
+  .g{grid-template-columns:1fr;gap:10px;padding:26px 0}
+  .g .num{font-size:64px;margin-bottom:6px}
+  .g h3{font-size:25px}
+  .ind-list{grid-template-columns:1fr}
+  .ind-list li:nth-last-child(-n+3){border-bottom:0}
+  .ind-list li:last-child{border-bottom:1px solid var(--rule)}
+  .close .wrap{grid-template-columns:1fr;padding-top:64px;padding-bottom:64px}
+  .close h2{font-size:38px}
+  .foot{grid-template-columns:1fr 1fr;padding-top:44px}
+  .foot>div:first-child{grid-column:1/-1}
+  .legal{flex-direction:column;gap:6px}
+  .plate{box-shadow:none}
+  .src{grid-template-columns:1fr auto;gap:2px 12px}
+  .src .s{grid-column:1/-1}
+  .src .r{text-align:right}
+  .prop{grid-template-columns:1fr;gap:3px}
+  .obj-top{flex-direction:column}
+  .obj h3{font-size:28px}
+  .merge .sc{display:none}
+  .plate-head{flex-direction:column;align-items:flex-start;gap:3px}
+  .time{grid-template-columns:1fr}
+  .time div+div{border-left:0;border-top:1px solid var(--rule)}
+  .caption{flex-direction:column;gap:4px}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="mast-top"><span class="sc">The object layer</span><span class="sc">For organizations across the United States</span></div>
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#" aria-label="LOVELEEDAY home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.2-4.6-9.4-9.2A5.3 5.3 0 0 1 12 6.1a5.3 5.3 0 0 1 9.4 5.7C19.2 16.4 12 21 12 21z" fill="#7A2E2E"/></svg>
+        LOVELEEDAY
+      </a>
+      <div class="links">
+        <a href="#">Product</a><a href="#">Solutions</a><a href="#">Services</a><a href="#">Company</a><a href="#">Sign in</a>
+        <a class="btn sm" href="#close">Talk to us</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker"><i></i><span class="sc">Arthur, by LOVELEEDAY</span></div>
+      <h1>The object layer for the business you <em>already run.</em></h1>
+      <p class="lede">Records scattered across payments, ledgers and documents are resolved into single objects &mdash; each carrying the date it was true, the date we learned it, and a trail back to the system it came from.</p>
+      <div class="cta-row">
+        <a class="btn" href="#close">Talk to us</a>
+        <a class="btn ghost" href="#guarantees">See how Arthur works</a>
+      </div>
+      <p class="foot-note">For organizations across the United States.</p>
+    </div>
+
+    <figure class="fig" aria-label="Exhibit A, an illustrative example of Arthur resolving four records to one object">
+      <div class="plate">
+        <div class="plate-head"><span class="sc">Exhibit A</span><span class="sc">Illustrative &mdash; not a customer</span></div>
+        <div class="plate-q"><span class="sc">Question asked</span><p>&ldquo;Which contracts renew next quarter, and who owns them?&rdquo;</p></div>
+        <div class="srcs">
+          <span class="sc">Four records found</span>
+          <div class="src"><span class="s">CRM</span><span class="n">Northline Studio</span><span class="r">acct&nbsp;0-2291</span></div>
+          <div class="src"><span class="s">Billing</span><span class="n">Northline Studio Ltd</span><span class="r">cus_4F8a21</span></div>
+          <div class="src"><span class="s">Ledger</span><span class="n">Vendor 44127</span><span class="r">AP&nbsp;44127</span></div>
+          <div class="src"><span class="s">Contracts</span><span class="n">Harbor Equipment Services</span><span class="r">MSA-2024-118</span></div>
+        </div>
+        <div class="merge"><span class="arrow" aria-hidden="true">&darr;</span><b>4 records &rarr; 1 object</b><span class="sc">Resolved</span></div>
+        <div class="obj">
+          <div class="obj-top">
+            <h3>Northline Studio</h3>
+            <span class="stamp"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.4l2.6 2.6L10 3.4" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>Verified trail</span>
+          </div>
+          <div class="props">
+            <div class="prop"><span class="k">Renews</span><span class="v">Next quarter &middot; 31 Jan 2027</span><span class="chip">Contracts &middot; MSA-2024-118</span></div>
+            <div class="prop"><span class="k">Owner</span><span class="v">Dana Whitfield, Account Director</span><span class="chip">CRM &middot; acct 0-2291</span></div>
+            <div class="prop"><span class="k">Clause</span><span class="v">&sect; 9.2 &mdash; Term and renewal</span><span class="chip">Contracts &middot; p. 14</span></div>
+          </div>
+          <div class="time">
+            <div><span class="sc">True in the world</span><b>from 1 Feb 2025</b></div>
+            <div><span class="sc">Learned</span><b>3 Feb 2025</b></div>
+          </div>
+        </div>
+      </div>
+      <figcaption class="caption"><span class="sc">Fig. 1</span><span>Same company, four names &mdash; resolved to one object, every value traceable to its source.</span></figcaption>
+    </figure>
+  </div>
+</div>
+
+<section id="guarantees" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sc">Section I &middot; Guarantees</span>
+      <div>
+        <h2>Enforced, not promised.</h2>
+      </div>
+      <p class="intro">Five properties are built into how Arthur reads, writes and acts. They are not policies a person has to remember to follow; the system refuses to proceed without them.</p>
+    </div>
+
+    <div class="g"><div class="num">01</div><div><h3>Identity resolution</h3></div><p>A payments customer, a vendor id in the ledger and a string in an email signature are three records and one company. You ask about the object, never about whichever string a source happened to use.</p></div>
+    <div class="g"><div class="num">02</div><div><h3>Bitemporality</h3></div><p>Every property knows when it was valid in the world and when it was observed. Judging an August decision with September knowledge is look-ahead bias; the two timelines are kept apart so it can&rsquo;t happen quietly.</p></div>
+    <div class="g"><div class="num">03</div><div><h3>Lineage</h3></div><p>Writing a value requires its source system and source reference. The trail prints for any figure. A number with no trail is not reportable.</p></div>
+    <div class="g"><div class="num">04</div><div><h3>Bounded autonomy</h3></div><p>Actions are classified by blast radius. Only the reversible class runs unattended; anything touching money, outbound communication or a legal document waits for a person.</p></div>
+    <div class="g"><div class="num">05</div><div><h3>Observed completion</h3></div><p>Work closes on a value read back out of the system that was supposed to change. An HTTP 200 is not evidence anything happened.</p></div>
+  </div>
+</section>
+
+<section class="sec ind">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:44px">
+      <span class="sc">Section II &middot; Industries</span>
+      <h2>One layer, every kind of organization.</h2>
+    </div>
+    <ul class="ind-list">
+      <li><span>I</span>Hospitality &amp; experiences</li>
+      <li><span>II</span>Manufacturing &amp; distribution</li>
+      <li><span>III</span>Property &amp; facilities</li>
+      <li><span>IV</span>Schools &amp; charters</li>
+      <li><span>V</span>Groups &amp; portfolios</li>
+      <li><span>VI</span>Retail &amp; commerce</li>
+      <li><span>VII</span>Professional services</li>
+      <li><span>VIII</span>Local government</li>
+      <li><span>IX</span>Nonprofits &amp; community organizations</li>
+    </ul>
+  </div>
+</section>
+
+<section id="close" class="close">
+  <div class="wrap">
+    <span class="sc">Section III &middot; Begin</span>
+    <div>
+      <h2>Begin with one question about one system.</h2>
+      <a class="btn" href="mailto:hello@loveleedaystudios.com">Talk to us</a>
+      <p class="sub">A conversation about the question you most need answered.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.2-4.6-9.4-9.2A5.3 5.3 0 0 1 12 6.1a5.3 5.3 0 0 1 9.4 5.7C19.2 16.4 12 21 12 21z" fill="#7A2E2E"/></svg>LOVELEEDAY</a>
+        <p class="tag">The object layer for the business you already run.</p>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="#">Arthur</a></li><li><a href="#guarantees">Guarantees</a></li><li><a href="#">Sign in</a></li></ul></div>
+      <div><h4>Solutions</h4><ul><li><a href="#">Identity</a></li><li><a href="#">Reporting</a></li><li><a href="#">Operations</a></li></ul></div>
+      <div><h4>Industries</h4><ul><li><a href="#">Schools &amp; charters</a></li><li><a href="#">Local government</a></li><li><a href="#">All industries</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Services</a></li><li><a href="#close">Talk to us</a></li></ul></div>
+    </div>
+    <div class="legal"><span>&copy; 2026 LOVELEEDAY Studios LLC</span><span>United States</span></div>
+  </div>
+</footer>
+</body>
+</html>

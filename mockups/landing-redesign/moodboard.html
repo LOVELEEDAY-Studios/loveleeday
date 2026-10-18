@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOVELEEDAY — Landing redesign · before + 4 directions</title>
+<style>
+  :root{ --ink:#0b0d10; --panel:#14171c; --line:#262b32; --text:#e9ecf0; --dim:#8a93a0; --accent:#5b8cff; }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--ink);color:var(--text);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  header{padding:30px 34px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(11,13,16,.92);backdrop-filter:blur(8px);z-index:5}
+  h1{margin:0;font-size:19px;letter-spacing:-.01em;font-weight:650}
+  .sub{margin:7px 0 0;color:var(--dim);font-size:13px;max-width:70ch;line-height:1.5}
+  .hint{margin-top:12px;color:var(--dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.14em}
+  .wrap{padding:26px 34px 80px}
+  .before{margin-bottom:30px}
+  .tilehead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 2px 10px}
+  .name{font-size:14px;font-weight:650;letter-spacing:.01em}
+  .tag{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em}
+  .open{font-size:11.5px;color:var(--accent);text-decoration:none;text-transform:uppercase;letter-spacing:.1em}
+  .open:hover{text-decoration:underline}
+  .frame{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 18px 50px -24px #000}
+  .before img{display:block;width:100%;height:auto}
+  .grid{column-count:2;column-gap:26px}
+  @media(max-width:1100px){.grid{column-count:1}}
+  .tile{break-inside:avoid;margin:0 0 30px;display:inline-block;width:100%}
+  .scaler{position:relative;width:100%;overflow:hidden}
+  .scaler iframe{border:0;transform-origin:0 0;background:#fff}
+  .pill{display:inline-block;font-size:10.5px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;color:var(--dim);margin-left:8px;vertical-align:middle}
+</style>
+</head>
+<body>
+<header>
+  <h1>LOVELEEDAY — landing page redesign</h1>
+  <p class="sub">The current live site (BEFORE) against four fresh directions, each rooted in a real best-in-class design language. Keeps the real copy and the no-prices / plain-language / product-as-proof rules. Click any name to open the full page.</p>
+  <p class="hint">Before + 4 after · desktop render · updated 18 Oct 2026</p>
+</header>
+<div class="wrap">
+
+  <div class="grid" id="grid">
+    <!-- tiles injected -->
+  </div>
+</div>
+
+<script>
+  const DIRS = [
+    ["ATLAS",  "atlas.html",  "ink terminal · Vercel / Linear lineage"],
+    ["LEDGER", "ledger.html", "institutional editorial · Stripe / Ramp lineage"],
+    ["GOTHAM", "gotham.html", "data canvas · Palantir Gotham / Retool lineage"],
+    ["AURORA", "aurora.html", "warm human + proof · Notion / Linear-marketing lineage"],
+  ];
+  const CONTENT_W = 1280;
+  const grid = document.getElementById("grid");
+  // BEFORE as the first poster tile (scaled image, same treatment)
+  const bt = document.createElement("div"); bt.className = "tile";
+  bt.innerHTML =
+    '<div class="tilehead"><span class="name">BEFORE <span class="tag">live site · cream / navy</span></span>'+
+    '<a class="open" href="https://loveleedaystudios.com" target="_blank" rel="noopener">open live ↗</a></div>'+
+    '<div class="frame"><img src="before/before-desktop.png" alt="current live landing page" style="display:block;width:100%;height:auto"></div>';
+  grid.appendChild(bt);
+  for (const [name, file, tag] of DIRS){
+    const tile = document.createElement("div"); tile.className = "tile";
+    tile.innerHTML =
+      '<div class="tilehead"><span class="name">'+name+' <span class="tag">'+tag+'</span></span>'+
+      '<a class="open" href="'+file+'" target="_blank" rel="noopener">open full ↗</a></div>'+
+      '<div class="frame"><div class="scaler"><iframe src="'+file+'" scrolling="no"></iframe></div></div>';
+    grid.appendChild(tile);
+  }
+  function size(){
+    document.querySelectorAll(".scaler").forEach(s=>{
+      const f = s.querySelector("iframe");
+      const scale = s.clientWidth / CONTENT_W;
+      f.style.width = CONTENT_W+"px";
+      let h = 4200;
+      try{ const d=f.contentDocument; if(d&&d.documentElement) h=Math.max(d.documentElement.scrollHeight, d.body?d.body.scrollHeight:0)||h; }catch(e){}
+      f.style.height = h+"px";
+      f.style.transform = "scale("+scale+")";
+      s.style.height = (h*scale)+"px";
+    });
+  }
+  window.addEventListener("resize", size);
+  // pump until frames are measured (load events race with lazy/cached)
+  let n=0; const iv=setInterval(()=>{ size(); if(++n>40) clearInterval(iv); }, 400);
+  window.addEventListener("load", size);
+</script>
+</body>
+</html>

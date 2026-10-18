@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LOVELEEDAY — Aurora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#FBFAF9; --panel:#FFFFFF; --ink:#191A1E; --ink2:#4A4C55; --line:#E8E5E1; --wash:#F3F0FF;
+  --a1:#6D4AFF; --a2:#A83FD9; --grad:linear-gradient(135deg,#6D4AFF 0%,#A83FD9 100%);
+  --ok:#0B7A55; --okbg:#E4F5EC;
+  --display:"Clash Display","Inter",sans-serif; --body:"Inter",system-ui,sans-serif;
+  --w:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p{margin:0}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--a1);outline-offset:3px;border-radius:6px}
+.wrap{width:min(var(--w),calc(100% - 64px));margin-inline:auto}
+.num{font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:5;background:rgba(251,250,249,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;height:72px;gap:40px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.06em}
+.mark{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center}
+.mark svg{width:16px;height:16px}
+.links{display:flex;gap:32px;font-size:15px;font-weight:500;color:var(--ink2);margin-left:8px}
+.links a:hover{color:var(--ink)}
+.nav-r{margin-left:auto;display:flex;align-items:center;gap:24px;font-size:15px;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 24px;border-radius:12px;font-weight:600;font-size:16px;border:1px solid transparent;transition:transform .15s,box-shadow .15s}
+.btn.pri{background:var(--grad);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 8px 20px -8px rgba(109,74,255,.55)}
+.btn.pri:hover{transform:translateY(-1px)}
+.btn.sec{background:var(--panel);border-color:#D6D2CC;color:var(--ink)}
+.btn.sec:hover{border-color:var(--ink)}
+.btn.sm{height:40px;padding:0 18px;font-size:15px}
+
+/* hero */
+.hero{position:relative;padding:88px 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-140px -10% auto 40%;height:640px;background:radial-gradient(closest-side,rgba(168,63,217,.16),rgba(109,74,255,.09) 55%,transparent 75%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:64px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--a1);background:var(--wash);padding:6px 14px 6px 10px;border-radius:99px}
+.kicker i{width:8px;height:8px;border-radius:50%;background:var(--grad)}
+h1{font-family:var(--display);font-weight:600;font-size:72px;line-height:1.02;letter-spacing:-.025em;margin-top:24px}
+h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:19px;line-height:1.6;color:var(--ink2);margin-top:28px;max-width:34em}
+.cta{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.foot{font-size:14px;color:#5B5D66;margin-top:24px}
+
+/* proof card */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:0 40px 80px -32px rgba(60,30,140,.28);overflow:hidden}
+.card-top{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--line);font-size:13px;font-weight:600}
+.card-top .mark{width:22px;height:22px;border-radius:7px}
+.card-top .mark svg{width:11px;height:11px}
+.ill{margin-left:auto;font-weight:500;color:#5B5D66;font-size:12px;letter-spacing:.02em}
+.card-body{padding:22px 22px 24px}
+.q{display:flex;gap:12px;align-items:flex-start;background:var(--ground);border-radius:14px;padding:14px 16px;font-weight:500;font-size:16px;line-height:1.4}
+.q b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;display:grid;place-items:center;margin-top:-1px}
+.lab{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#5B5D66;margin:22px 0 10px}
+.chips{display:grid;gap:8px;position:relative}
+.chip{display:grid;grid-template-columns:86px 1fr auto;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14.5px}
+.chip .s{font-size:12px;font-weight:600;color:var(--a1);background:var(--wash);border-radius:7px;padding:3px 9px;text-align:center}
+.chip .n{font-weight:500}
+.chip .t{font-size:12px;color:#5B5D66}
+.merge{display:flex;align-items:center;gap:10px;margin:10px 0 0 22px;color:#5B5D66;font-size:13px}
+.merge::before{content:"";width:2px;height:22px;background:linear-gradient(#A83FD9,#6D4AFF);border-radius:2px}
+.obj{margin-top:6px;border-radius:16px;padding:18px 18px 16px;background:linear-gradient(180deg,#F7F4FF,#fff);border:1.5px solid #CDBFFF}
+.obj-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.obj-h h3{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:-.01em}
+.ver{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ok);background:var(--okbg);padding:4px 10px 4px 8px;border-radius:99px}
+.ver svg{width:13px;height:13px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin-top:14px;font-size:14px}
+.facts dt{font-size:12px;color:#5B5D66;font-weight:500}
+.facts dd{margin:2px 0 0;font-weight:600}
+.cap{font-size:14px;color:var(--ink2);margin-top:16px;line-height:1.5}
+
+/* sections */
+section{padding:104px 0}
+.eyebrow{font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--a1)}
+h2{font-family:var(--display);font-weight:600;font-size:52px;line-height:1.06;letter-spacing:-.02em;margin-top:14px;max-width:15em}
+.lead{font-size:19px;color:var(--ink2);margin-top:20px;max-width:36em}
+.g-wrap{background:var(--panel);border-block:1px solid var(--line)}
+.rows{margin-top:56px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:72px 64px minmax(0,.8fr) minmax(0,1.3fr);gap:24px;align-items:start;padding:34px 0;border-bottom:1px solid var(--line)}
+.row .no{font-family:var(--display);font-weight:600;font-size:22px;color:#5B5D66;padding-top:12px}
+.ic{width:56px;height:56px;border-radius:16px;background:var(--wash);display:grid;place-items:center;color:var(--a1)}
+.ic svg{width:26px;height:26px}
+.row .ic{background:var(--grad);color:#fff}
+.row h3{font-family:var(--display);font-weight:600;font-size:28px;letter-spacing:-.01em;line-height:1.15;padding-top:10px}
+.row p{color:var(--ink2);font-size:17px;padding-top:8px}
+
+/* industries + photo */
+.ind{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:72px;align-items:center}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+.pill{background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:10px 18px;font-weight:500;font-size:16px}
+.pill:nth-child(3n+1){background:var(--wash);border-color:#DDD3FF}
+.photo{margin:0;border-radius:22px;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
+.photo img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:35% 50%;display:block}
+.photo figcaption{padding:16px 20px;font-size:14.5px;color:var(--ink2);line-height:1.5}
+.photo figcaption b{color:var(--ink);font-weight:600}
+
+/* closing */
+.close{padding:0 0 104px}
+.close-in{background:var(--ink);border-radius:28px;padding:84px 64px;text-align:center;position:relative;overflow:hidden}
+.close-in::before{content:"";position:absolute;left:50%;top:-60%;width:900px;height:700px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(168,63,217,.5),rgba(109,74,255,.25) 60%,transparent);pointer-events:none}
+.close-in>*{position:relative}
+.close-in h2{color:#fff;margin-inline:auto;max-width:13em}
+.close-in .btn{margin-top:36px;background:#fff;color:var(--ink);box-shadow:none}
+
+footer{border-top:1px solid var(--line);padding:64px 0 40px;font-size:15px}
+.f-top{display:grid;grid-template-columns:1.3fr repeat(5,1fr);gap:32px}
+.f-top p{color:var(--ink2);margin-top:14px;max-width:18em;font-size:15px;line-height:1.5}
+.f-top h4{margin:0 0 14px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5B5D66;font-weight:600}
+.f-top li{list-style:none;margin-bottom:9px;color:var(--ink2)}
+.f-top ul{margin:0;padding:0}
+.f-bot{display:flex;justify-content:space-between;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);color:#5B5D66;font-size:14px}
+
+@media(max-width:1000px){
+  h1{font-size:56px} h2{font-size:42px}
+  .hero .wrap,.ind{grid-template-columns:1fr}
+  .row{grid-template-columns:56px minmax(0,1fr);}
+  .row .no{display:none}
+  .row h3,.row p{grid-column:2}
+  .f-top{grid-template-columns:repeat(3,1fr)}
+  .links{display:none}
+}
+@media(max-width:600px){
+  .wrap{width:calc(100% - 40px)}
+  body{font-size:16px}
+  h1{font-size:42px} h2{font-size:34px}
+  .nav-r a:not(.btn){display:none}
+  .nav .wrap{height:64px}
+  .hero{padding:48px 0 64px}
+  section{padding:72px 0}
+  .chip{grid-template-columns:78px 1fr}.chip .t{display:none}
+  .facts{grid-template-columns:1fr}
+  .close-in{padding:56px 24px;border-radius:22px}
+  .f-top{grid-template-columns:1fr 1fr}.f-top>div:first-child{grid-column:1/-1}
+  .f-bot{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="LOVELEEDAY home"><span class="mark"><svg viewBox="0 0 16 16" fill="#fff"><path d="M8 14.2C3.2 10.8 1.6 8.3 1.6 5.9 1.6 4 3 2.7 4.7 2.7c1.3 0 2.5.8 3.3 2 .8-1.2 2-2 3.3-2 1.700 0 3.100 1.300 3.100 3.200 0 2.400-1.600 4.900-6.400 8.300z"/></svg></span>LOVELEEDAY</a>
+    <nav class="links" aria-label="Primary"><a href="#">Product</a><a href="#industries">Solutions</a><a href="#">Services</a><a href="#">Company</a></nav>
+    <div class="nav-r"><a href="#">Sign in</a><a class="btn pri sm" href="#talk">Talk to us</a></div>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="kicker"><i></i>Meet Arthur</span>
+      <h1>The object layer for the business <em>you already run.</em></h1>
+      <p class="sub">Records scattered across payments, ledgers and documents are resolved into single objects — each carrying the date it was true, the date we learned it, and a trail back to the system it came from.</p>
+      <div class="cta"><a class="btn pri" href="#talk">Talk to us</a><a class="btn sec" href="#guarantees">See how Arthur works</a></div>
+      <p class="foot">For organizations across the United States.</p>
+    </div>
+
+    <div class="card" role="img" aria-label="Illustrative example of Arthur resolving four records into one verified object">
+      <div class="card-top"><span class="mark"><svg viewBox="0 0 16 16" fill="#fff"><path d="M8 14.2C3.2 10.8 1.6 8.3 1.6 5.9 1.6 4 3 2.7 4.7 2.7c1.3 0 2.5.8 3.3 2 .8-1.2 2-2 3.3-2 1.700 0 3.100 1.300 3.100 3.200 0 2.400-1.600 4.900-6.400 8.300z"/></svg></span>Arthur<span class="ill">Illustrative — not a customer</span></div>
+      <div class="card-body">
+        <div class="q"><b>You</b><span>Which contracts renew next quarter, and who owns them?</span></div>
+        <div class="lab">Four sources, four names</div>
+        <div class="chips">
+          <div class="chip"><span class="s">CRM</span><span class="n">Northline Studio</span><span class="t">account</span></div>
+          <div class="chip"><span class="s">Billing</span><span class="n">Northline Studio Ltd</span><span class="t">customer</span></div>
+          <div class="chip"><span class="s">Ledger</span><span class="n num">Vendor 44127</span><span class="t">vendor id</span></div>
+          <div class="chip"><span class="s">Contracts</span><span class="n">Harbor Equipment Services</span><span class="t">counterparty</span></div>
+        </div>
+        <div class="merge">resolved to one object</div>
+        <div class="obj">
+          <div class="obj-h"><h3>Northline Studio</h3><span class="ver"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.200 3L13 4.500"/></svg>Verified</span></div>
+          <dl class="facts">
+            <div><dt>Renews</dt><dd>Next quarter</dd></div>
+            <div><dt>Owner</dt><dd>Dana Whitfield</dd></div>
+            <div><dt>Clause</dt><dd>7.2 Auto-renewal</dd></div>
+            <div><dt>True since · learned</dt><dd class="num">Jan 12 · Feb 3</dd></div>
+          </dl>
+        </div>
+        <p class="cap">Same company, four names — resolved to one object, every value traceable to its source.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="g-wrap" id="guarantees">
+  <div class="wrap">
+    <span class="eyebrow">Enforced, not promised</span>
+    <h2>Five guarantees built into every answer.</h2>
+    <div class="rows">
+      <div class="row"><span class="no num">01</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.500"/><circle cx="6" cy="18" r="2.500"/><circle cx="18" cy="12" r="3"/><path d="M8.300 7l7.200 3.800M8.300 17l7.200-3.800"/></svg></span><h3>Identity resolution</h3><p>A payments customer, a vendor id in the ledger and a string in an email signature are three records and one company. You ask about the object, never about whichever string a source happened to use.</p></div>
+      <div class="row"><span class="no num">02</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.500 2"/></svg></span><h3>Bitemporality</h3><p>Every property knows when it was valid in the world and when it was observed. Judging an August decision with September knowledge is look-ahead bias; the two timelines are kept apart so it can't happen quietly.</p></div>
+      <div class="row"><span class="no num">03</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.500 4.500 0 006.400 0l3-3a4.500 4.500 0 00-6.400-6.400l-1 1M14 10a4.500 4.500 0 00-6.400 0l-3 3a4.500 4.500 0 006.400 6.400l1-1"/></svg></span><h3>Lineage</h3><p>Writing a value requires its source system and source reference. The trail prints for any figure. A number with no trail is not reportable.</p></div>
+      <div class="row"><span class="no num">04</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.500-3.300 8-8 9-4.700-1-8-4.500-8-9V6z"/><path d="M9 12l2.200 2.200L15.500 10"/></svg></span><h3>Bounded autonomy</h3><p>Actions are classified by blast radius. Only the reversible class runs unattended; anything touching money, outbound communication or a legal document waits for a person.</p></div>
+      <div class="row"><span class="no num">05</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M7.500 12.500l3 3 6-7"/></svg></span><h3>Observed completion</h3><p>Work closes on a value read back out of the system that was supposed to change. An HTTP 200 is not evidence anything happened.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="wrap ind">
+    <div>
+      <span class="eyebrow">Industries</span>
+      <h2>Every kind of organization has the same problem.</h2>
+      <p class="lead">Wherever the same customer, supplier or site goes by different names in different systems, Arthur resolves it to one object.</p>
+      <div class="pills">
+        <span class="pill">Hospitality &amp; experiences</span><span class="pill">Manufacturing &amp; distribution</span><span class="pill">Property &amp; facilities</span><span class="pill">Schools &amp; charters</span><span class="pill">Groups &amp; portfolios</span><span class="pill">Retail &amp; commerce</span><span class="pill">Professional services</span><span class="pill">Local government</span><span class="pill">Nonprofits &amp; community organizations</span>
+      </div>
+    </div>
+    <figure class="photo">
+      <img src="assets/dinner.jpg" alt="Guests at a candlelit table being served at an outdoor dinner" width="940" height="529">
+      <figcaption><b>The outcome is a person.</b> A guest served, a student enrolled, a tenant answered — on the right record the first time.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="close" id="talk">
+  <div class="wrap">
+    <div class="close-in">
+      <h2>Begin with one question about one system.</h2>
+      <a class="btn" href="#">Talk to us</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div><a class="brand" href="#"><span class="mark"><svg viewBox="0 0 16 16" fill="#fff"><path d="M8 14.2C3.2 10.8 1.6 8.3 1.6 5.9 1.6 4 3 2.7 4.7 2.7c1.3 0 2.5.8 3.3 2 .8-1.2 2-2 3.3-2 1.700 0 3.100 1.300 3.100 3.200 0 2.400-1.600 4.900-6.400 8.300z"/></svg></span>LOVELEEDAY</a><p>The object layer for the business you already run.</p></div>
+      <div><h4>Product</h4><ul><li>Arthur</li><li>How it works</li><li>Integrations</li></ul></div>
+      <div><h4>Solutions</h4><ul><li>Customer data</li><li>Operations</li><li>Municipal review</li></ul></div>
+      <div><h4>Industries</h4><ul><li>Manufacturing</li><li>Property</li><li>Schools</li></ul></div>
+      <div><h4>Services</h4><ul><li>Build</li><li>Snapshot</li><li>Studio</li></ul></div>
+      <div><h4>Company</h4><ul><li>Principles</li><li>Trust</li><li>Contact</li></ul></div>
+    </div>
+    <div class="f-bot"><span>© 2026 LOVELEEDAY Studios LLC</span><span>United States</span></div>
+  </div>
+</footer>
+</body>
+</html>

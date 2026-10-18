@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOVELEEDAY — Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0B; --bg2:#0E0E10; --bg3:#131316;
+  --tx:#EDEDED; --mut:#9A9AA3; --dim:#6B6B74;
+  --line:#1E1E22; --line2:#2A2A30;
+  --acc:#4ADE80; --acc-ink:#04140A;
+  --disp:"Space Grotesk",sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace; --body:"Inter",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--tx);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px;position:relative}
+.rail{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-weight:500}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--mut);display:flex;gap:10px;align-items:center}
+.eyebrow i{font-style:normal;color:var(--acc)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;font:500 14px var(--body);border:1px solid var(--line2);color:var(--tx);border-radius:4px;transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--mut);background:var(--bg3)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:var(--acc-ink);font-weight:600}
+.btn.pri:hover{background:#6CEB9A}
+.btn .ar{font-family:var(--mono)}
+
+/* nav */
+nav{border-bottom:1px solid var(--line);background:rgba(10,10,11,.92)}
+nav .wrap{display:flex;align-items:center;height:64px;gap:40px}
+.logo{display:flex;align-items:center;gap:10px;font:700 17px var(--disp);letter-spacing:.06em}
+.logo svg{width:20px;height:20px}
+nav ul{display:flex;gap:28px;list-style:none;margin-left:12px}
+nav ul a{font-size:14px;color:var(--mut)}
+nav ul a:hover{color:var(--tx)}
+nav .sp{flex:1}
+nav .signin{font-size:14px;color:var(--mut)}
+nav .btn{height:36px;padding:0 16px}
+
+/* hero */
+.hero{border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:0}
+.hero-l{padding:88px 48px 80px 0;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--line)}
+.hero h1{font:600 64px/1.02 var(--disp);letter-spacing:-.035em;margin:28px 0 28px}
+.hero h1 em{font-style:normal;color:var(--mut)}
+.hero p.sub{font-size:17px;color:var(--mut);max-width:460px;line-height:1.6}
+.ctas{display:flex;gap:12px;margin:36px 0 36px;flex-wrap:wrap}
+.foot{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.hero-r{padding:56px 0 56px 40px;position:relative}
+.figlab{display:flex;justify-content:space-between;margin-bottom:14px;color:var(--dim)}
+.figlab b{color:var(--mut);font-weight:500}
+
+/* console */
+.console{background:var(--bg2);border:1px solid var(--line2);border-radius:6px;overflow:hidden}
+.c-bar{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--line);color:var(--dim)}
+.c-bar .dots{display:flex;gap:6px}
+.c-bar .dots span{width:8px;height:8px;border:1px solid var(--line2);border-radius:50%}
+.c-bar .t{flex:1;text-align:center}
+.live{color:var(--acc);display:flex;align-items:center;gap:6px}
+.live:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acc)}
+.c-q{padding:18px 18px 16px;border-bottom:1px solid var(--line)}
+.c-q .lbl{color:var(--dim);margin-bottom:8px}
+.c-q .q{font:500 18px/1.35 var(--disp);letter-spacing:-.01em}
+.c-q .q span{color:var(--acc);font-family:var(--mono);margin-right:8px}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-align:left;padding:10px 18px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:11px 18px;border-bottom:1px solid var(--line);font:400 12.5px var(--mono);color:var(--tx);white-space:nowrap}
+.tbl td.src{color:var(--mut);letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+.tbl td.ref{color:var(--dim)}
+.tbl td.ok{text-align:right;color:var(--acc);width:1%}
+.tbl td.ok b{font-weight:500;font-size:10px;letter-spacing:.08em;margin-left:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);border-radius:3px;padding:2px 7px 2px 6px;font:500 10.5px var(--mono);letter-spacing:.08em;color:var(--mut)}
+.chip:before{content:"";width:5px;height:5px;background:var(--acc);border-radius:50%}
+.resolve{display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--bg);color:var(--dim)}
+.resolve .ln{flex:1;height:1px;background:var(--line2)}
+.resolve b{color:var(--acc);font-weight:500}
+.obj{padding:16px 18px 18px;display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}
+.obj .name{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline}
+.obj h3{font:600 24px var(--disp);letter-spacing:-.02em}
+.obj h3 small{font:500 11px var(--mono);color:var(--dim);letter-spacing:.08em;margin-left:10px;text-transform:uppercase}
+.verified{color:var(--acc)}
+.kv .k{color:var(--dim);margin-bottom:3px}
+.kv .v{font:500 14px var(--body)}
+.kv .v.m{font-family:var(--mono);font-size:13px}
+.kv .s{font:400 11px var(--mono);color:var(--dim);margin-top:2px}
+.kv .s i{font-style:normal;color:var(--acc)}
+.c-foot{display:flex;justify-content:space-between;padding:10px 18px;border-top:1px solid var(--line);color:var(--dim)}
+.note{margin-top:14px;font-size:13px;color:var(--mut);display:flex;gap:10px}
+.note .mono{color:var(--dim);flex-shrink:0;padding-top:2px}
+
+/* sections */
+section.s{border-bottom:1px solid var(--line)}
+.sec-h{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);padding:96px 0 56px}
+.sec-h h2{font:600 44px/1.06 var(--disp);letter-spacing:-.03em;margin-top:20px;max-width:520px}
+.sec-h p{color:var(--mut);font-size:17px;align-self:end;padding-left:40px;max-width:520px}
+.g-row{display:grid;grid-template-columns:96px minmax(0,4fr) minmax(0,7fr) 150px;border-top:1px solid var(--line);padding:30px 0;align-items:start}
+.g-row .n{font:500 13px var(--mono);color:var(--dim)}
+.g-row h3{font:600 24px/1.15 var(--disp);letter-spacing:-.02em}
+.g-row p{color:var(--mut);font-size:15px;max-width:560px}
+.g-row .st{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--acc);text-align:right;padding-top:5px}
+.g-row:hover{background:var(--bg2)}
+.grid-end{border-top:1px solid var(--line);padding-bottom:96px}
+
+/* industries */
+.ind{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.ind div{padding:22px 24px 22px 0;border-bottom:1px solid var(--line);font:500 17px var(--disp);letter-spacing:-.01em;display:flex;gap:14px;align-items:baseline}
+.ind div:not(:nth-child(3n+1)){padding-left:24px;border-left:1px solid var(--line)}
+.ind div span{font:400 11px var(--mono);color:var(--dim)}
+.ind-wrap{padding-bottom:96px}
+
+/* cta */
+.cta{padding:112px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:end}
+.cta h2{font:600 56px/1.02 var(--disp);letter-spacing:-.035em;max-width:760px;margin-top:22px}
+.cta .btn{height:52px;padding:0 28px;font-size:15px}
+
+/* footer */
+footer{padding:64px 0 36px}
+.f-top{display:grid;grid-template-columns:minmax(0,4fr) repeat(5,minmax(0,2fr));gap:24px}
+.f-top p{color:var(--mut);font-size:14px;margin-top:14px;max-width:260px}
+.f-top h4{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+.f-top ul{list-style:none;display:grid;gap:9px;font-size:14px;color:var(--mut)}
+.f-top ul a:hover{color:var(--tx)}
+.f-bot{display:flex;justify-content:space-between;margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim)}
+
+@media (max-width:900px){
+  .wrap{padding:0 20px}
+  nav ul,nav .signin{display:none}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-l{padding:48px 0 40px;border-right:0}
+  .hero h1{font-size:42px}
+  .hero-r{padding:0 0 48px}
+  .tbl th:nth-child(3),.tbl td:nth-child(3){display:none}
+  .tbl td,.tbl th{padding-left:10px;padding-right:10px}
+  .tbl td{white-space:normal;font-size:12px}
+  .tbl td.ok b{display:none}
+  .tbl td.src{white-space:nowrap}
+  .c-bar .t{display:none}
+  .figlab{flex-direction:column;gap:4px}
+  .g-row .st{padding-top:0}
+  .obj{grid-template-columns:1fr}
+  .sec-h{grid-template-columns:1fr;padding:56px 0 32px;gap:20px}
+  .sec-h h2{font-size:32px}
+  .sec-h p{padding-left:0}
+  .g-row{grid-template-columns:44px 1fr;gap:10px}
+  .g-row p{grid-column:2}
+  .g-row .st{grid-column:2;text-align:left}
+  .ind{grid-template-columns:1fr}
+  .ind div,.ind div:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .cta{grid-template-columns:1fr;padding:64px 0}
+  .cta h2{font-size:36px}
+  .f-top{grid-template-columns:1fr 1fr}
+  .f-top>div:first-child{grid-column:1/-1}
+  .f-bot{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="LOVELEEDAY home">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 17.5S2.5 13 2.5 7.6A3.9 3.9 0 0 1 10 6a3.9 3.9 0 0 1 7.5 1.6C17.5 13 10 17.5 10 17.5Z" stroke="#EDEDED" stroke-width="1.5"/><circle cx="10" cy="10" r="1.6" fill="#4ADE80"/></svg>
+      LOVELEEDAY
+    </a>
+    <ul>
+      <li><a href="#">Product</a></li>
+      <li><a href="#">Solutions</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Company</a></li>
+    </ul>
+    <span class="sp"></span>
+    <a class="signin" href="#">Sign in</a>
+    <a class="btn pri" href="#">Talk to us</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap rail">
+    <div class="hero-l">
+      <div>
+        <div class="eyebrow"><i>&#9632;</i> Arthur &nbsp;/&nbsp; The object layer</div>
+        <h1>The object layer for the business you already run.</h1>
+        <p class="sub">Records scattered across payments, ledgers and documents are resolved into single objects — each carrying the date it was true, the date we learned it, and a trail back to the system it came from.</p>
+        <div class="ctas">
+          <a class="btn pri" href="#">Talk to us <span class="ar">&rarr;</span></a>
+          <a class="btn" href="#">See how Arthur works</a>
+        </div>
+      </div>
+      <div class="foot">For organizations across the United States.</div>
+    </div>
+
+    <div class="hero-r">
+      <div class="figlab mono"><b>FIG.01 &mdash; Arthur resolving a question</b><span>Illustrative — not a customer</span></div>
+      <div class="console" role="img" aria-label="Illustrative console: Arthur resolves four source records for Northline Studio into one object, each with a verified source trail.">
+        <div class="c-bar mono"><div class="dots"><span></span><span></span><span></span></div><div class="t">arthur &middot; ask</div><div class="live">Live</div></div>
+        <div class="c-q">
+          <div class="lbl mono">Question</div>
+          <div class="q"><span>&gt;</span>Which contracts renew next quarter, and who owns them?</div>
+        </div>
+        <table class="tbl">
+          <thead><tr><th>Source</th><th>Record as written</th><th>Source ref</th><th style="text-align:right">Trace</th></tr></thead>
+          <tbody>
+            <tr><td class="src"><span class="chip">CRM</span></td><td>Northline Studio</td><td class="ref">acct/0091</td><td class="ok">&#10003;<b>TRACED</b></td></tr>
+            <tr><td class="src"><span class="chip">BILLING</span></td><td>Northline Studio Ltd</td><td class="ref">cus_4F2a</td><td class="ok">&#10003;<b>TRACED</b></td></tr>
+            <tr><td class="src"><span class="chip">LEDGER</span></td><td>Vendor 44127</td><td class="ref">ap/44127</td><td class="ok">&#10003;<b>TRACED</b></td></tr>
+            <tr><td class="src"><span class="chip">CONTRACTS</span></td><td>Harbor Equipment Services</td><td class="ref">msa/2024-18</td><td class="ok">&#10003;<b>TRACED</b></td></tr>
+          </tbody>
+        </table>
+        <div class="resolve mono"><span>4 records</span><span class="ln"></span><b>&#10003; 1 object</b></div>
+        <div class="obj">
+          <div class="name"><h3>Northline Studio<small>obj/00318</small></h3><span class="mono verified">&#10003; Verified</span></div>
+          <div class="kv"><div class="k mono">Renews</div><div class="v m">2027-01-31</div><div class="s"><i>&#10003;</i> msa/2024-18 &sect;14.2 auto-renew</div></div>
+          <div class="kv"><div class="k mono">Owner</div><div class="v">Maya Okafor</div><div class="s"><i>&#10003;</i> acct/0091 owner_id</div></div>
+          <div class="kv"><div class="k mono">Valid in world</div><div class="v m">2024-02-01 &rarr; now</div><div class="s">valid_from / valid_until</div></div>
+          <div class="kv"><div class="k mono">Observed</div><div class="v m">2026-09-12</div><div class="s">observed_at</div></div>
+        </div>
+        <div class="c-foot mono"><span>4 sources &middot; 0 untraced</span><span>Q1 2027</span></div>
+      </div>
+      <div class="note"><span class="mono">&#8627;</span><span>Same company, four names — resolved to one object, every value traceable to its source.</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="s">
+  <div class="wrap rail">
+    <div class="sec-h">
+      <div><div class="eyebrow"><i>&#9632;</i> FIG.02 &nbsp;/&nbsp; Guarantees</div><h2>Enforced, not promised.</h2></div>
+      <p>Five properties the system holds by construction. Each one blocks a specific way a business answer goes quietly wrong.</p>
+    </div>
+    <div>
+      <div class="g-row"><div class="n">01</div><h3>Identity resolution</h3><p>A payments customer, a vendor id in the ledger and a string in an email signature are three records and one company. You ask about the object, never about whichever string a source happened to use.</p><div class="st">&#10003; Enforced</div></div>
+      <div class="g-row"><div class="n">02</div><h3>Bitemporality</h3><p>Every property knows when it was valid in the world and when it was observed. Judging an August decision with September knowledge is look-ahead bias; the two timelines are kept apart so it can't happen quietly.</p><div class="st">&#10003; Enforced</div></div>
+      <div class="g-row"><div class="n">03</div><h3>Lineage</h3><p>Writing a value requires its source system and source reference. The trail prints for any figure. A number with no trail is not reportable.</p><div class="st">&#10003; Enforced</div></div>
+      <div class="g-row"><div class="n">04</div><h3>Bounded autonomy</h3><p>Actions are classified by blast radius. Only the reversible class runs unattended; anything touching money, outbound communication or a legal document waits for a person.</p><div class="st">&#10003; Enforced</div></div>
+      <div class="g-row"><div class="n">05</div><h3>Observed completion</h3><p>Work closes on a value read back out of the system that was supposed to change. An HTTP 200 is not evidence anything happened.</p><div class="st">&#10003; Enforced</div></div>
+      <div class="grid-end"></div>
+    </div>
+  </div>
+</section>
+
+<section class="s">
+  <div class="wrap rail">
+    <div class="sec-h" style="padding-bottom:40px">
+      <div><div class="eyebrow"><i>&#9632;</i> FIG.03 &nbsp;/&nbsp; Industries</div><h2>Every kind of organization that runs on records.</h2></div>
+      <p>The same object layer, whatever the business does.</p>
+    </div>
+    <div class="ind-wrap">
+      <div class="ind">
+        <div><span>01</span>Hospitality &amp; experiences</div>
+        <div><span>02</span>Manufacturing &amp; distribution</div>
+        <div><span>03</span>Property &amp; facilities</div>
+        <div><span>04</span>Schools &amp; charters</div>
+        <div><span>05</span>Groups &amp; portfolios</div>
+        <div><span>06</span>Retail &amp; commerce</div>
+        <div><span>07</span>Professional services</div>
+        <div><span>08</span>Local government</div>
+        <div><span>09</span>Nonprofits &amp; community organizations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s">
+  <div class="wrap rail">
+    <div class="cta">
+      <div><div class="eyebrow"><i>&#9632;</i> Begin</div><h2>Begin with one question about one system.</h2></div>
+      <a class="btn pri" href="#">Talk to us <span class="ar">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <a class="logo" href="#"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 17.5S2.5 13 2.5 7.6A3.9 3.9 0 0 1 10 6a3.9 3.9 0 0 1 7.5 1.6C17.5 13 10 17.5 10 17.5Z" stroke="#EDEDED" stroke-width="1.5"/><circle cx="10" cy="10" r="1.6" fill="#4ADE80"/></svg>LOVELEEDAY</a>
+        <p>The object layer for the business you already run.</p>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="#">Arthur</a></li><li><a href="#">Guarantees</a></li><li><a href="#">Security</a></li></ul></div>
+      <div><h4>Solutions</h4><ul><li><a href="#">Operations</a></li><li><a href="#">Finance</a></li><li><a href="#">Compliance</a></li></ul></div>
+      <div><h4>Industries</h4><ul><li><a href="#">Hospitality</a></li><li><a href="#">Manufacturing</a></li><li><a href="#">Schools</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="#">Implementation</a></li><li><a href="#">Support</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Sign in</a></li></ul></div>
+    </div>
+    <div class="f-bot mono"><span>&copy; 2026 LOVELEEDAY Studios LLC</span><span>United States</span></div>
+  </div>
+</footer>
+
+</body>
+</html>
