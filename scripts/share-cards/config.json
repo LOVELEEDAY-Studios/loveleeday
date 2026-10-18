@@ -7,12 +7,12 @@
   ],
   "pages": {
     "index.html": { "caption": "The AI operating system for business" },
-    "integrations.html": { "photo": "operating-system.jpg" },
+    "integrations.html": { "photo": "/site/assets/notes/note-02.jpg" },
     "privacy.html": { "photo": "outdoors.jpg" },
     "terms.html": { "photo": "industry-government.jpg" },
     "snapshot.html": { "photo": "industry-retail.jpg" },
     "trust.html": { "photo": "industry-nonprofit.jpg" },
-    "work.html": { "photo": "industry-portfolios.jpg" },
-    "industries.html": { "photo": "industries.jpg" }
+    "work.html": { "photo": "/site/assets/notes/note-08.jpg" },
+    "industries.html": { "photo": "industry-hospitality-2.jpg" }
   }
 }

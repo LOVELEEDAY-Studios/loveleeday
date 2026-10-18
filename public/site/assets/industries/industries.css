@@ -70,7 +70,7 @@
 .ind .more{padding:88px 0 8px}
 .ind .more h2{font-size:26px;margin-top:12px}
 .ind .moregrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
-.ind .moregrid .tile{aspect-ratio:3/2}
+.ind .moregrid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.ind .moregrid .tile{aspect-ratio:3/2}
 @media(max-width:900px){
 .ind .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
 .ind .duo,.ind .sec.flip .duo,.ind .note .split{grid-template-columns:1fr;gap:36px}
