@@ -1,0 +1,517 @@
+<!--CSS-->
+/* ===== 05 Typography chapter (new in 2.0). All rules scoped under #type or prefixed .ty- ===== */
+#type{
+  --ty-statement:clamp(44px,4.8vw,66px);
+  --ty-display:clamp(44px,5.8vw,76px);
+  --ty-h1:clamp(38px,4.4vw,56px);
+  --ty-h2:clamp(32px,3.75vw,48px);
+  --ty-h3:clamp(27px,2.3vw,29px);
+  --ty-question:clamp(22px,2.1vw,26px);
+  --ty-lead:clamp(16px,1.4vw,18px);
+  --ty-page:clamp(32px,7vw,42px);
+  --ty-section:clamp(18px,4vw,24px);
+  --ty-kpi:clamp(32px,3.125vw,40px);
+  --ty-bad:#B0412B;
+}
+#type .ty-sub{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s6);align-items:end;margin:var(--s6) 0 var(--s4);padding-top:var(--s4);border-top:1.5px solid var(--ink)}
+#type .ty-sub:first-of-type{margin-top:0}
+#type .ty-sub .ty-k{font-size:13px;font-weight:600;color:var(--teal-d);margin-bottom:var(--s1)}
+#type .ty-sub p{font-size:16px;line-height:1.65;color:var(--mid);max-width:30em}
+#type .ty-new{display:inline-block;font-size:12px;line-height:1;font-weight:600;color:var(--copper);background:var(--copper-wash);padding:4px 8px;border-radius:8px;vertical-align:middle;margin-left:var(--s1)}
+
+/* 5.1 specimens */
+.ty-spec{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:var(--s5);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s5)}
+.ty-spec+.ty-spec{margin-top:16px}
+.ty-spec.dk{background:var(--deep);border-color:var(--deep);color:var(--on-deep)}
+.ty-spec .ty-tag{font-size:13px;font-weight:600;color:var(--teal-d)}
+.ty-spec.dk .ty-tag{color:var(--on-deep-mu)}
+.ty-name{font-size:clamp(72px,10vw,128px);line-height:1;margin:var(--s3) 0;letter-spacing:-.045em;overflow-wrap:anywhere}
+.ty-name.nsw{font-family:var(--sans);font-weight:600}
+.ty-name.nse{font-family:var(--serif);font-weight:400;letter-spacing:-.04em}
+.ty-gl{font-size:22px;line-height:1.5;color:var(--mid);overflow-wrap:anywhere}
+.ty-spec.dk .ty-gl{color:var(--on-deep-mu)}
+.ty-gl.se{font-family:var(--serif)}
+.ty-gl+.ty-gl{margin-top:var(--s1)}
+.ty-facts{display:grid;gap:0;align-content:start}
+.ty-facts div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:var(--s2);padding:var(--s1) 0 var(--s2);border-top:1px solid var(--line-2);font-size:14px;line-height:1.5}
+.ty-spec.dk .ty-facts div{border-color:var(--deep-line)}
+.ty-facts dt{font-weight:600;color:var(--dim)}
+.ty-spec.dk .ty-facts dt{color:var(--on-deep-mu)}
+.ty-facts dd{margin:0;overflow-wrap:anywhere}
+.ty-why{grid-column:1/-1;font-size:16px;line-height:1.7;color:var(--mid);max-width:44em;border-top:1px solid var(--line-2);padding-top:var(--s3)}
+.ty-spec.dk .ty-why{color:var(--on-deep-mu);border-color:var(--deep-line)}
+.ty-wts{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s2)}
+.ty-wts.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ty-wts>div{background:var(--ground);border-radius:12px;padding:var(--s3);display:grid;gap:var(--s1)}
+.ty-spec.dk .ty-wts>div{background:var(--deep-2)}
+.ty-wts b{font-size:56px;line-height:1;letter-spacing:-.03em;font-weight:inherit}
+.ty-wts span{font-size:13px;line-height:1.5;color:var(--dim)}
+.ty-spec.dk .ty-wts span{color:var(--on-deep-mu)}
+
+/* 5.2 pairing */
+.ty-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.ty-pc{border:1px solid var(--line);border-radius:16px;padding:var(--s4);background:var(--paper);display:flex;flex-direction:column;gap:var(--s2);min-width:0}
+.ty-pc.dk{background:var(--deep);border-color:var(--deep);color:var(--on-deep)}
+.ty-pc .ty-by{font-size:13px;font-weight:600;color:var(--dim)}
+.ty-pc.dk .ty-by{color:var(--on-deep-mu)}
+.ty-line-se{font:400 clamp(26px,2.6vw,34px)/1.2 var(--serif);letter-spacing:-.015em}
+.ty-line-sw{font:400 clamp(26px,2.6vw,34px)/1.2 var(--sans);letter-spacing:-.02em}
+.ty-verdict{margin-top:auto;font-size:14px;line-height:1.6;color:var(--mid)}
+.ty-pc.dk .ty-verdict{color:var(--on-deep-mu)}
+.ty-verdict b{font-weight:600}
+.ty-yes{color:var(--teal-d)}
+.ty-no{color:var(--ty-bad)}
+.ty-pc.dk .ty-yes{color:#7FC4C0}
+.ty-pc.dk .ty-no{color:#F0A08E}
+.ty-when{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.ty-when>div{border-top:1.5px solid var(--ink);padding-top:var(--s2)}
+.ty-when h4{margin-bottom:var(--s1)}
+.ty-when p{font-size:15px;line-height:1.65;color:var(--mid)}
+
+/* 5.3 scale */
+.ty-grp{font-size:13px;font-weight:600;color:var(--teal-d);margin:var(--s4) 0 var(--s1)}
+.ty-ladder{background:var(--ground);border-radius:16px;padding:0 var(--s4)}
+.ty-ladder.prod{background:var(--sunk)}
+.ty-row{display:grid;grid-template-columns:168px minmax(0,1fr) 216px;gap:var(--s3);align-items:baseline;padding:var(--s3) 0;border-top:1px solid var(--line-2)}
+.ty-row:first-child{border-top:0}
+.ty-row .ty-tk{font:600 13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);overflow-wrap:anywhere}
+.ty-row .ty-tk small{display:block;font:400 12px/1.5 var(--sans);color:var(--dim)}
+.ty-row .ty-sm{min-width:0;overflow-wrap:anywhere}
+.ty-row .ty-sp{font:400 12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--dim)}
+.t-statement{font:400 var(--ty-statement)/1.07 var(--serif);letter-spacing:-.05em}
+.t-display{font:600 var(--ty-display)/1 var(--sans);letter-spacing:-.045em}
+.t-h1{font:500 var(--ty-h1)/1.06 var(--sans);letter-spacing:-.045em}
+.t-h2{font:500 var(--ty-h2)/1.1 var(--sans);letter-spacing:-.045em}
+.t-h3{font:500 var(--ty-h3)/1.2 var(--sans);letter-spacing:-.035em}
+.t-question{font:400 var(--ty-question)/1.25 var(--serif);letter-spacing:-.015em}
+.t-lead{font:400 var(--ty-lead)/1.65 var(--sans);letter-spacing:-.02em;color:var(--mid)}
+.t-body{font:400 16px/1.75 var(--sans)}
+.t-small{font:400 14px/1.6 var(--sans)}
+.t-caption{font:400 13px/1.6 var(--sans);color:var(--dim)}
+.t-eyebrow{font:600 13px/1 var(--sans);letter-spacing:.02em;color:var(--teal-d)}
+.t-button{display:inline-flex;align-items:center;min-height:44px;padding:0 24px;border-radius:999px;background:var(--teal-d);color:#fff;font:600 15px/1 var(--sans)}
+.t-nav{font:400 14px/1.5 var(--sans);color:var(--mid)}
+.t-nav b{font-weight:500;color:var(--ink)}
+.t-page{font:600 var(--ty-page)/1.1 var(--sans);letter-spacing:-.03em}
+.t-section{font:600 var(--ty-section)/1.3 var(--sans);letter-spacing:-.02em}
+.t-pbody{font:400 14px/1.5 var(--sans)}
+.t-table{font:400 13px/1.4 var(--sans);font-variant-numeric:tabular-nums}
+.t-label{font:600 12px/1.4 var(--sans);letter-spacing:.01em;color:var(--dim)}
+.t-kpi{font:600 var(--ty-kpi)/1 var(--sans);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.ty-tw{margin-top:var(--s4)}
+.ty-tb{width:100%;border-collapse:collapse;font-size:14px}
+.ty-tb th{font-size:13px;font-weight:600;text-align:left;color:var(--dim);padding:0 var(--s1) var(--s1) 0;border-bottom:1px solid var(--ink);white-space:nowrap}
+.ty-tb td{padding:var(--s1) var(--s1) var(--s1) 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.ty-tb td:first-child{font:600 12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+.ty-tb tr.ty-g td{padding-top:var(--s3);font:600 13px/1.5 var(--sans);color:var(--teal-d);border-bottom:1px solid var(--line-2);white-space:normal}
+
+/* 5.4 rules */
+.ty-rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5) var(--s5)}
+.ty-rule.ty-wide{grid-column:1/-1}
+.ty-rule.ty-wide .ty-dd{grid-template-columns:1fr}
+.ty-rule h4{margin-bottom:var(--s1)}
+.ty-rule>p{font-size:15px;line-height:1.6;color:var(--mid);margin-bottom:var(--s2)}
+.ty-dd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.ty-d{border-radius:12px;padding:var(--s2);background:var(--ground);border:1px solid var(--line);min-width:0;overflow:hidden;position:relative;padding-top:var(--s4)}
+.ty-d:before{position:absolute;top:var(--s1);left:var(--s2);font:600 12px/1.4 var(--sans)}
+.ty-d.do:before{content:"Do";color:var(--teal-d)}
+.ty-d.dont:before{content:"Don't";color:var(--ty-bad)}
+.ty-d.do{border-color:#0E787766}
+.ty-d.dont{border-color:#B0412B55}
+.ty-d.dk{background:var(--deep);color:var(--on-deep);border-color:var(--deep)}
+.ty-d.dk.do:before{color:#7FC4C0}.ty-d.dk.dont:before{color:#F0A08E}
+.ty-d p{margin:0}
+.ty-d .cap{margin-top:var(--s1);font-size:12px}
+.ty-meas{font-size:15px;line-height:1.7}
+.ty-ruler{max-width:100%;height:8px;border-left:1px solid var(--teal);border-right:1px solid var(--teal);border-bottom:1px solid var(--teal);margin-top:var(--s1)}
+.ty-rl{font:600 12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--teal-d);margin-top:4px}
+.ty-d.dont .ty-rl{color:var(--ty-bad)}.ty-d.dont .ty-ruler{border-color:var(--ty-bad)}
+.ty-num{width:100%;border-collapse:collapse;font-size:15px}
+.ty-num td{padding:4px 0;border-bottom:1px solid var(--line)}
+.ty-num td:last-child{text-align:right}
+.ty-num.tab td:last-child{font-variant-numeric:tabular-nums}
+.ty-num.prop td:last-child{font-variant-numeric:proportional-nums}
+.ty-fake{font-synthesis:weight style}
+
+/* 5.5 hierarchy */
+.ty-anno{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s5);align-items:start}
+.ty-anno+.ty-anno{margin-top:var(--s5)}
+.ty-hero{background:var(--deep);color:var(--on-deep);border-radius:16px;padding:var(--s5);display:grid;gap:var(--s3)}
+.ty-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:var(--s4);display:grid;gap:var(--s2);box-shadow:0 24px 56px #16243A12}
+.ty-ln{display:grid;grid-template-columns:24px minmax(0,1fr);gap:var(--s2);align-items:start}
+.ty-ln>.ty-pin{margin-top:4px}
+.ty-pin{width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font:600 12px/24px var(--sans);text-align:center;flex:none}
+.ty-hero .ty-pin{background:#7FC4C0;color:var(--deep)}
+.ty-hero .t-eyebrow{color:#7FC4C0}
+.ty-hero .t-statement{color:#fff;max-width:11em}
+.ty-hero .t-lead{color:var(--on-deep-mu);max-width:30em}
+.ty-hero .t-button{background:var(--ground);color:var(--ink)}
+.ty-hero .t-caption{color:var(--on-deep-mu)}
+.ty-card .ty-ln:nth-child(n+3){margin-top:0}
+.ty-mini{width:100%;border-collapse:collapse}
+.ty-mini th{font:600 12px/1.4 var(--sans);color:var(--dim);text-align:left;padding:0 0 8px;border-bottom:1px solid var(--ink)}
+.ty-mini th:last-child,.ty-mini td:last-child{text-align:right}
+.ty-mini td{padding:8px 0;border-bottom:1px solid var(--line);font:400 13px/1.4 var(--sans);font-variant-numeric:tabular-nums}
+.ty-key{display:grid;gap:0}
+.ty-key div{display:grid;grid-template-columns:24px minmax(0,1fr);gap:var(--s2);padding:var(--s2) 0;border-top:1px solid var(--line-2);align-items:start}
+.ty-key div:last-child{border-bottom:1px solid var(--line-2)}
+.ty-key b{display:block;font:600 13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace}
+.ty-key p span{display:block;font-size:13px;line-height:1.5;color:var(--dim)}
+
+/* 5.6 code */
+.ty-code{background:var(--deep);color:var(--on-deep);border-radius:16px;padding:var(--s4);margin:0;overflow:hidden;font:400 13px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}
+.ty-code .c{color:var(--on-deep-mu)}
+.ty-code .k{color:#7FC4C0}
+.ty-codes{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s3)}
+.ty-codes .ty-cl{font-size:13px;font-weight:600;color:var(--dim);margin-bottom:var(--s1)}
+
+/* 5.7 fallbacks + a11y */
+.ty-fb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ty-fbc{border:1px solid var(--line);border-radius:16px;padding:var(--s4);background:var(--paper);display:grid;gap:var(--s2);min-width:0}
+.ty-fbc code{display:block;font-size:12px;line-height:1.7;color:var(--mid);overflow-wrap:anywhere}
+.ty-fbs{font-size:28px;line-height:1.2;letter-spacing:-.02em}
+.ty-con{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+.ty-cc{border-radius:12px;padding:var(--s3);display:grid;gap:var(--s1);border:1px solid var(--line);min-width:0}
+.ty-cc .aa{font:500 36px/1 var(--sans);letter-spacing:-.03em}
+.ty-cc .rt{font:600 14px/1.4 var(--sans)}
+.ty-cc .nm{font:400 12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.9}
+.ty-cc .us{font-size:13px;line-height:1.5}
+.ty-mins{margin-top:var(--s4)}
+
+@media (max-width:900px){
+  #type .ty-sub,.ty-spec,.ty-anno,.ty-codes,.ty-fb,.ty-rules,.ty-pair,.ty-when{grid-template-columns:1fr}
+  #type .ty-sub{gap:var(--s2);margin:var(--s5) 0 var(--s3)}
+  .ty-spec{padding:var(--s3)}
+  .ty-wts,.ty-wts.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ty-wts>div{padding:var(--s2)}
+  .ty-wts b{font-size:40px}
+  .ty-name{font-size:72px}
+  .ty-gl{font-size:15px}
+  .ty-ladder{padding:0 var(--s2)}
+  .ty-row{grid-template-columns:1fr;gap:var(--s1)}
+  .ty-con{grid-template-columns:1fr}
+  .ty-hero{padding:var(--s3)}
+  .ty-card{padding:var(--s3)}
+  .ty-code{padding:var(--s2)}
+  .ty-pc{padding:var(--s3)}
+  .ty-dd{grid-template-columns:1fr}
+  .ty-tb,.ty-tb tbody,.ty-tb tr,.ty-tb td{display:block;width:100%}
+  .ty-tb thead{display:none}
+  .ty-tb tr{padding:var(--s2) 0;border-bottom:1px solid var(--line-2)}
+  .ty-tb td{border:0;padding:4px 0;display:grid;grid-template-columns:96px minmax(0,1fr);gap:var(--s1)}
+  .ty-tb td:before{content:attr(data-l);font-size:12px;font-weight:600;color:var(--dim)}
+  .ty-tb td:first-child{display:block;white-space:normal;overflow-wrap:anywhere}
+  .ty-tb td:first-child:before{content:none}
+  .ty-tb tr.ty-g{padding:0;border:0}
+  .ty-tb tr.ty-g td{display:block;padding-top:var(--s2)}
+  .ty-tb tr.ty-g td:before{content:none}
+}
+<!--/CSS-->
+
+<!--TYPE-->
+<section class="section paper" id="type"><div class="wrap">
+  <div class="sec-head"><div><div class="sec-no">05 Typography</div><h2>Two faces, one clear rule.</h2></div><p class="lead">Sentient speaks for the brand: the question, the statement, the quote. Switzer informs: the interface, the body, the data. Pick by the job the words do, and the choice is never a debate. <span class="ty-new">New in 2.0</span></p></div>
+
+  <!-- 5.1 -->
+  <div class="ty-sub"><div><div class="ty-k">5.1 The typefaces</div><h3>Two families, both from one foundry.</h3></div><p>Both are published by Indian Type Foundry and distributed free through Fontshare. They share a calm, upright build, so they sit on one line without fighting.</p></div>
+
+  <div class="ty-spec">
+    <div>
+      <div class="ty-tag">Switzer · Sans · neo-grotesk</div>
+      <div class="ty-name nsw">Switzer</div>
+      <div class="ty-gl">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+      <div class="ty-gl">abcdefghijklmnopqrstuvwxyz</div>
+      <div class="ty-gl">0123456789 &amp; ? ! % $ @ # ( ) / + = , . : ;</div>
+    </div>
+    <dl class="ty-facts" style="margin:0">
+      <div><dt>Foundry</dt><dd>Indian Type Foundry (ITF), via Fontshare</dd></div>
+      <div><dt>Designer</dt><dd>Jérémie Hornus</dd></div>
+      <div><dt>Class</dt><dd>Neo-grotesk sans serif, version 1.2</dd></div>
+      <div><dt>License</dt><dd>ITF Free Font License: free for personal and commercial use</dd></div>
+      <div><dt>Role</dt><dd>Interface, headings, body, data</dd></div>
+    </dl>
+    <p class="ty-why">Switzer is classic and quiet, with a humane round that keeps long data tables friendly. It carries pricing, dashboards and paragraphs at 13 px as cleanly as it carries a 76 px headline, which is why it does the work.</p>
+    <div class="ty-wts">
+      <div style="font-weight:400"><b>Ag</b><span>400 Regular. Body, lead, captions.</span></div>
+      <div style="font-weight:500"><b>Ag</b><span>500 Medium. Headings h1 to h3, active nav.</span></div>
+      <div style="font-weight:600"><b>Ag</b><span>600 Semibold. Display, buttons, labels, KPI.</span></div>
+      <div style="font-weight:700"><b>Ag</b><span>700 Bold. Embedded, not in the scale. Reserved.</span></div>
+    </div>
+  </div>
+
+  <div class="ty-spec dk">
+    <div>
+      <div class="ty-tag">Sentient · Serif · for immersive reading</div>
+      <div class="ty-name nse">Sentient</div>
+      <div class="ty-gl se">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+      <div class="ty-gl se">abcdefghijklmnopqrstuvwxyz</div>
+      <div class="ty-gl se">0123456789 &amp; ? ! % $ @ # ( ) / + = , . : ;</div>
+    </div>
+    <dl class="ty-facts" style="margin:0">
+      <div><dt>Foundry</dt><dd>Indian Type Foundry (ITF), via Fontshare</dd></div>
+      <div><dt>Designer</dt><dd>Noopur Choksi</dd></div>
+      <div><dt>Class</dt><dd>Serif, sturdy and slightly wide, version 1.001</dd></div>
+      <div><dt>License</dt><dd>ITF Free Font License: free for personal and commercial use</dd></div>
+      <div><dt>Role</dt><dd>Questions, statements, quotes. 26 px and up</dd></div>
+    </dl>
+    <p class="ty-why">Sentient has robust capitals and large counters, so a single line holds its own on a photograph or a dark ground. It sounds like a person asking a question, which is exactly what the product does.</p>
+    <div class="ty-wts three" style="font-family:var(--serif)">
+      <div style="font-weight:400"><b>Ag</b><span style="font-family:var(--sans)">400 Regular. Statements and questions.</span></div>
+      <div style="font-weight:400;font-style:italic"><b>Ag</b><span style="font-family:var(--sans);font-style:normal">400 Italic. Quotes and one-line questions only.</span></div>
+      <div style="font-weight:500"><b>Ag</b><span style="font-family:var(--sans)">500 Medium. Optional, for small statements on dark photography.</span></div>
+    </div>
+  </div>
+  <p class="cap mt4">Sources: Fontshare catalogue record for each family (publisher Indian Type Foundry, license code itf_ffl), at https://www.fontshare.com/fonts/switzer and https://www.fontshare.com/fonts/sentient, read from api.fontshare.com on 2026-10-18. To confirm before launch: the Free Font License restricts redistributing raw font files, so check that self-hosting the woff2 files in public/site/assets/fonts is covered, or serve both families from the Fontshare CDN.</p>
+
+  <!-- 5.2 -->
+  <div class="ty-sub"><div><div class="ty-k">5.2 Pairing logic</div><h3>The job of the words picks the face.</h3></div><p>Set the same line both ways and the difference is clear. A question sounds human in Sentient. A data label is faster to scan in Switzer.</p></div>
+
+  <div class="ty-pair">
+    <div class="ty-pc">
+      <div class="ty-by">Line one: a question a person would ask</div>
+      <div class="ty-line-se">Which customers are buying less this quarter?</div>
+      <div class="ty-verdict"><b class="ty-yes">Correct: Sentient 400.</b> The brand is speaking, so it gets the voice face.</div>
+      <div class="ty-line-sw" style="margin-top:8px">Which customers are buying less this quarter?</div>
+      <div class="ty-verdict"><b class="ty-no">Acceptable, flatter: Switzer 400.</b> Fine inside a small control, but it loses the voice.</div>
+    </div>
+    <div class="ty-pc">
+      <div class="ty-by">Line two: a label on a data view</div>
+      <div class="ty-line-sw">Revenue by customer, last 90 days</div>
+      <div class="ty-verdict"><b class="ty-yes">Correct: Switzer 400.</b> The reader is scanning, so it gets the quiet face.</div>
+      <div class="ty-line-se" style="margin-top:8px">Revenue by customer, last 90 days</div>
+      <div class="ty-verdict"><b class="ty-no">Wrong: Sentient.</b> A serif in a table or label reads as decoration and slows the scan.</div>
+    </div>
+  </div>
+  <div class="ty-when">
+    <div><h4>Sentient is correct when</h4><p>The brand is speaking to a person: the hero statement, an answer card's question, a pull quote, a customer line. One Sentient line per screen is the norm. Never below 22 px.</p></div>
+    <div><h4>Switzer is correct when</h4><p>The page is informing: navigation, body, buttons, labels, tables, numbers, forms, headings of sections. Everything the person has to read, compare or click.</p></div>
+  </div>
+
+  <!-- 5.3 -->
+  <div class="ty-sub"><div><div class="ty-k">5.3 The type scale</div><h3>Nineteen tokens, each shown at true size.</h3></div><p>Marketing sizes are lifted from site.css and the portal sizes from the portal's globals.css. Where 2.0 changes a value, the row says so. Resize the window and the clamp values move with it.</p></div>
+
+  <div class="ty-grp">Marketing site</div>
+  <div class="ty-ladder">
+    <div class="ty-row"><div class="ty-tk">--type-statement<small>Sentient 400</small></div><div class="ty-sm t-statement">Pure intelligence.</div><div class="ty-sp">66 / 44 · lh 1.07<br>-0.05em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-display<small>Switzer 600</small></div><div class="ty-sm t-display">Know what next</div><div class="ty-sp">76 / 44 · lh 1.0<br>-0.045em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-h1<small>Switzer 500</small></div><div class="ty-sm t-h1">Answers, not reports</div><div class="ty-sp">56 / 38 · lh 1.06<br>-0.045em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-h2<small>Switzer 500</small></div><div class="ty-sm t-h2">A section headline</div><div class="ty-sp">48 / 32 · lh 1.1<br>-0.045em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-h3<small>Switzer 500</small></div><div class="ty-sm t-h3">The idea in one clause</div><div class="ty-sp">29 / 27 · lh 1.2<br>-0.035em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-question<small>Sentient 400</small></div><div class="ty-sm t-question">Which customers are buying less?</div><div class="ty-sp">26 / 22 · lh 1.25<br>-0.015em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-lead<small>Switzer 400</small></div><div class="ty-sm t-lead">The paragraph that opens a section, in mid navy.</div><div class="ty-sp">18 / 16 · lh 1.65<br>-0.02em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-body<small>Switzer 400</small></div><div class="ty-sm t-body">Running text sits at sixteen pixels with generous leading.</div><div class="ty-sp">16 / 16 · lh 1.75<br>0</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-small<small>Switzer 400</small></div><div class="ty-sm t-small">Supporting text inside cards and form help.</div><div class="ty-sp">14 / 14 · lh 1.6<br>0</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-caption<small>Switzer 400</small></div><div class="ty-sm t-caption">Captions, sources, footnotes. The smallest size on the site.</div><div class="ty-sp">13 / 13 · lh 1.6<br>0</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-eyebrow<small>Switzer 600</small></div><div class="ty-sm t-eyebrow">Section label in sentence case</div><div class="ty-sp">13 / 13 · lh 1.0<br>+0.02em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-button<small>Switzer 600</small></div><div class="ty-sm"><span class="t-button">See it work</span></div><div class="ty-sp">15 / 15 · lh 1.0<br>0 · 44 px tall</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-nav<small>Switzer 400, 500 active</small></div><div class="ty-sm t-nav"><b>Platform</b> &nbsp; Industries &nbsp; Proof &nbsp; Contact</div><div class="ty-sp">14 / 14 · lh 1.5<br>0</div></div>
+  </div>
+
+  <div class="ty-grp">Product and portal</div>
+  <div class="ty-ladder prod">
+    <div class="ty-row"><div class="ty-tk">--type-page<small>Switzer 600</small></div><div class="ty-sm t-page">Customers</div><div class="ty-sp">42 / 32 · lh 1.1<br>-0.03em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-section<small>Switzer 600</small></div><div class="ty-sm t-section">Buying less this quarter</div><div class="ty-sp">24 / 18 · lh 1.3<br>-0.02em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-pbody<small>Switzer 400</small></div><div class="ty-sm t-pbody">Fourteen customers bought less than last quarter. Open one to see why.</div><div class="ty-sp">14 / 14 · lh 1.5<br>0</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-table<small>Switzer 400, header 600</small></div><div class="ty-sm t-table">Harbor Supply &nbsp; 1,284.00 &nbsp; 912.50</div><div class="ty-sp">13 / 13 · lh 1.4<br>0 · tabular</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-label<small>Switzer 600</small></div><div class="ty-sm t-label">Last 90 days</div><div class="ty-sp">12 / 12 · lh 1.4<br>+0.01em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-kpi<small>Switzer 600</small></div><div class="ty-sm t-kpi">12.4%</div><div class="ty-sp">40 / 32 · lh 1.0<br>-0.04em · tabular</div></div>
+  </div>
+
+  <div class="ty-tw">
+  <table class="ty-tb">
+    <thead><tr><th>Token</th><th>Use</th><th>Font</th><th>Desktop</th><th>Mobile</th><th>Line height</th><th>Tracking</th><th>Weight</th></tr></thead>
+    <tbody>
+    <tr class="ty-g"><td colspan="8">Marketing site</td></tr>
+    <tr><td>--type-statement</td><td data-l="Use">Hero statement, once per page</td><td data-l="Font">Sentient</td><td data-l="Desktop">66 px</td><td data-l="Mobile">44 px</td><td data-l="Line">1.07</td><td data-l="Tracking">-0.05em</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-display</td><td data-l="Use">Page headline (h1 flagship)</td><td data-l="Font">Switzer</td><td data-l="Desktop">76 px</td><td data-l="Mobile">44 px</td><td data-l="Line">1.0</td><td data-l="Tracking">-0.045em</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-h1</td><td data-l="Use">Secondary page headline</td><td data-l="Font">Switzer</td><td data-l="Desktop">56 px</td><td data-l="Mobile">38 px</td><td data-l="Line">1.06</td><td data-l="Tracking">-0.045em</td><td data-l="Weight">500</td></tr>
+    <tr><td>--type-h2</td><td data-l="Use">Section headline</td><td data-l="Font">Switzer</td><td data-l="Desktop">48 px</td><td data-l="Mobile">32 px</td><td data-l="Line">1.1</td><td data-l="Tracking">-0.045em</td><td data-l="Weight">500</td></tr>
+    <tr><td>--type-h3</td><td data-l="Use">Subhead, card title</td><td data-l="Font">Switzer</td><td data-l="Desktop">29 px</td><td data-l="Mobile">27 px</td><td data-l="Line">1.2</td><td data-l="Tracking">-0.035em</td><td data-l="Weight">500</td></tr>
+    <tr><td>--type-question</td><td data-l="Use">Question, quote, answer card</td><td data-l="Font">Sentient</td><td data-l="Desktop">26 px</td><td data-l="Mobile">22 px</td><td data-l="Line">1.25</td><td data-l="Tracking">-0.015em</td><td data-l="Weight">400, italic for quotes</td></tr>
+    <tr><td>--type-lead</td><td data-l="Use">Opening paragraph, 30em max</td><td data-l="Font">Switzer</td><td data-l="Desktop">18 px</td><td data-l="Mobile">16 px</td><td data-l="Line">1.65</td><td data-l="Tracking">-0.02em</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-body</td><td data-l="Use">Running text, 70 characters max</td><td data-l="Font">Switzer</td><td data-l="Desktop">16 px</td><td data-l="Mobile">16 px</td><td data-l="Line">1.75</td><td data-l="Tracking">0</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-small</td><td data-l="Use">Help text, card support</td><td data-l="Font">Switzer</td><td data-l="Desktop">14 px</td><td data-l="Mobile">14 px</td><td data-l="Line">1.6</td><td data-l="Tracking">0</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-caption</td><td data-l="Use">Captions, sources</td><td data-l="Font">Switzer</td><td data-l="Desktop">13 px</td><td data-l="Mobile">13 px</td><td data-l="Line">1.6</td><td data-l="Tracking">0</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-eyebrow</td><td data-l="Use">Section label, sentence case</td><td data-l="Font">Switzer</td><td data-l="Desktop">13 px</td><td data-l="Mobile">13 px</td><td data-l="Line">1.0</td><td data-l="Tracking">+0.02em</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-button</td><td data-l="Use">Button label</td><td data-l="Font">Switzer</td><td data-l="Desktop">15 px</td><td data-l="Mobile">15 px</td><td data-l="Line">1.0</td><td data-l="Tracking">0</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-nav</td><td data-l="Use">Top navigation</td><td data-l="Font">Switzer</td><td data-l="Desktop">14 px</td><td data-l="Mobile">14 px</td><td data-l="Line">1.5</td><td data-l="Tracking">0</td><td data-l="Weight">400, 500 active</td></tr>
+    <tr class="ty-g"><td colspan="8">Product and portal</td></tr>
+    <tr><td>--type-page</td><td data-l="Use">Page title</td><td data-l="Font">Switzer</td><td data-l="Desktop">42 px</td><td data-l="Mobile">32 px</td><td data-l="Line">1.1</td><td data-l="Tracking">-0.03em</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-section</td><td data-l="Use">Section and card title</td><td data-l="Font">Switzer</td><td data-l="Desktop">24 px</td><td data-l="Mobile">18 px</td><td data-l="Line">1.3</td><td data-l="Tracking">-0.02em</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-pbody</td><td data-l="Use">Product body</td><td data-l="Font">Switzer</td><td data-l="Desktop">14 px</td><td data-l="Mobile">14 px</td><td data-l="Line">1.5</td><td data-l="Tracking">0</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-table</td><td data-l="Use">Table cells, tabular figures</td><td data-l="Font">Switzer</td><td data-l="Desktop">13 px</td><td data-l="Mobile">13 px</td><td data-l="Line">1.4</td><td data-l="Tracking">0</td><td data-l="Weight">400, header 600</td></tr>
+    <tr><td>--type-label</td><td data-l="Use">Field label, meta, timestamp</td><td data-l="Font">Switzer</td><td data-l="Desktop">12 px</td><td data-l="Mobile">12 px</td><td data-l="Line">1.4</td><td data-l="Tracking">+0.01em</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-kpi</td><td data-l="Use">Numeric KPI</td><td data-l="Font">Switzer</td><td data-l="Desktop">40 px</td><td data-l="Mobile">32 px</td><td data-l="Line">1.0</td><td data-l="Tracking">-0.04em</td><td data-l="Weight">600</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap mt4">Grounding: marketing sizes from <code>site.css</code> (<code>--h1-flagship</code>, <code>--h1-secondary</code>, h2 48, h3 29, <code>.hero-story h1</code>, <code>.intro&gt;p</code>). Portal page title 42, section title 24, body 14 and meta 12 from the portal <code>globals.css</code> (<code>.title-large</code>, <code>.title-medium</code>, <code>.body-text</code>, <code>.meta-text</code>). New in 2.0: Switzer in the portal (it uses Inter today), sentence case and weight 600 on titles, the 13 px table, the KPI token, the 13 px minimum on the marketing site (site.css still sets 8 to 11 px labels), and the clamp ranges for h2, h3, question and lead.</p>
+
+  <!-- 5.4 -->
+  <div class="ty-sub"><div><div class="ty-k">5.4 Rules</div><h3>Nine rules, each shown both ways.</h3></div><p>Most type problems come from the same few habits. Each rule below pairs the right way with the version to avoid.</p></div>
+
+  <div class="ty-rules">
+    <div class="ty-rule ty-wide"><h4>1. Hold the measure at 60 to 75 characters</h4><p>About 66 is ideal. A wide line makes the eye lose its place.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="ty-meas" style="max-width:66ch">The best answer is the one you can act on today. Keep each line short enough that the eye returns to the next one without effort.</p><div class="ty-ruler" style="width:66ch"></div><div class="ty-rl">66 characters</div></div>
+      <div class="ty-d dont"><p class="ty-meas">The best answer is the one you can act on today. Keep each line short enough that the eye returns to the next one without effort, or the reader will lose their place, reread the line above, and give up on the paragraph before the point arrives.</p><div class="ty-ruler"></div><div class="ty-rl">130+ characters</div></div></div></div>
+
+    <div class="ty-rule"><h4>2. Match line height to size</h4><p>Body 1.75, headings 1.0 to 1.2. Big and tight, small and open.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="t-small" style="line-height:1.75">Body copy with room to breathe reads like a calm voice.</p><p class="t-h3" style="line-height:1.1;margin-top:8px">Headline, tight</p></div>
+      <div class="ty-d dont"><p class="t-small" style="line-height:1.1">Body copy squeezed together reads like a block of noise.</p><p class="t-h3" style="line-height:1.7;margin-top:8px">Headline, floating</p></div></div></div>
+
+    <div class="ty-rule"><h4>3. Tighten display, never body</h4><p>Tracking goes more negative as size grows and stays at zero for reading text.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="t-h2" style="font-size:36px">Know what next</p><p class="t-small" style="margin-top:8px;letter-spacing:0">Body text at zero tracking stays easy to read.</p></div>
+      <div class="ty-d dont"><p class="t-h2" style="font-size:36px;letter-spacing:.04em">Know what next</p><p class="t-small" style="margin-top:8px;letter-spacing:-.045em">Body text with display tracking collides.</p></div></div></div>
+
+    <div class="ty-rule"><h4>4. Use the weights in the scale, never fake one</h4><p>Sentient has 400, italic and 500. Asking for bold makes the browser smear a fake.</p>
+      <div class="ty-dd"><div class="ty-d do dk"><p style="font:400 28px/1.2 var(--serif);letter-spacing:-.015em">Pure intelligence.</p></div>
+      <div class="ty-d dont dk"><p class="ty-fake" style="font:700 28px/1.2 var(--serif);letter-spacing:-.015em">Pure intelligence.</p></div></div></div>
+
+    <div class="ty-rule"><h4>5. Italics only for quotes and questions</h4><p>Real Sentient italic, in a quote. Switzer has no italic loaded, so never ask for one.</p>
+      <div class="ty-dd"><div class="ty-d do"><p style="font:italic 400 22px/1.3 var(--serif);letter-spacing:-.015em">"It told me what to do on Monday."</p></div>
+      <div class="ty-d dont"><p style="font:italic 400 16px/1.7 var(--sans)">Italic body text is a slanted fake and tires the eye.</p></div></div></div>
+
+    <div class="ty-rule"><h4>6. Tabular numerals, right-aligned, same decimals</h4><p>Equal-width digits in a right-aligned column line up on the decimal point.</p>
+      <div class="ty-dd"><div class="ty-d do"><table class="ty-num tab"><tr><td>Harbor</td><td>1,284.00</td></tr><tr><td>Lake</td><td>912.50</td></tr><tr><td>Pine</td><td>17.10</td></tr></table></div>
+      <div class="ty-d dont"><table class="ty-num"><tr><td>Harbor</td><td style="text-align:left;font-variant-numeric:proportional-nums">1,284</td></tr><tr><td>Lake</td><td style="text-align:left;font-variant-numeric:proportional-nums">912.5</td></tr><tr><td>Pine</td><td style="text-align:left;font-variant-numeric:proportional-nums">17.1</td></tr></table></div></div></div>
+
+    <div class="ty-rule"><h4>7. Write in sentence case</h4><p>Labels and buttons read like a person talking. The 10 px wide-tracked capitals on the live site are retired.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="t-eyebrow">Last 90 days</p><p class="t-button" style="margin-top:8px">See it work</p></div>
+      <div class="ty-d dont"><p style="font:600 10px/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)">LAST 90 DAYS</p><p style="font:600 10px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;margin-top:16px">SEE IT WORK</p></div></div></div>
+
+    <div class="ty-rule"><h4>8. Align body copy left</h4><p>Centered paragraphs have a ragged left edge. Center only a short statement or a single line.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="t-small" style="text-align:left">Left aligned text gives the eye one clean edge to return to on every line it reads.</p></div>
+      <div class="ty-d dont"><p class="t-small" style="text-align:center">Centered text gives the eye no clean edge to return to on any line it reads.</p></div></div></div>
+
+    <div class="ty-rule"><h4>9. Use three sizes or fewer per view</h4><p>A title, a body and a caption is a hierarchy. Six sizes is a pile.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="t-section" style="font-size:22px">Buying less</p><p class="t-pbody" style="margin-top:4px">Fourteen customers this quarter.</p><p class="t-caption" style="margin-top:4px">Updated 9:40 AM</p></div>
+      <div class="ty-d dont"><p style="font:600 28px/1.2 var(--sans)">Buying less</p><p style="font:500 19px/1.3 var(--sans);margin-top:4px">Fourteen customers</p><p style="font:400 15px/1.4 var(--sans);margin-top:4px">this quarter, down</p><p style="font:600 12px/1.4 var(--sans);margin-top:4px">From 9:40 AM</p><p style="font:400 17px/1.4 var(--sans);margin-top:4px">Open one</p></div></div></div>
+  </div>
+
+  <!-- 5.5 -->
+  <div class="ty-sub"><div><div class="ty-k">5.5 Hierarchy in practice</div><h3>Every line names its token.</h3></div><p>Two composed examples. Follow the numbers to see which token sets each line, and how little it takes to build a clear page.</p></div>
+
+  <div class="ty-anno">
+    <div class="ty-hero">
+      <div class="ty-ln"><span class="ty-pin">1</span><div class="t-eyebrow">For every kind of business</div></div>
+      <div class="ty-ln"><span class="ty-pin">2</span><div class="t-statement">Pure intelligence.</div></div>
+      <div class="ty-ln"><span class="ty-pin">3</span><div class="t-lead">Ask in plain words. Get an answer you can act on, with the numbers behind it.</div></div>
+      <div class="ty-ln"><span class="ty-pin">4</span><div><span class="t-button">See it work</span></div></div>
+      <div class="ty-ln"><span class="ty-pin">5</span><div class="t-caption">Works with the tools you already use.</div></div>
+    </div>
+    <div class="ty-key">
+      <div><span class="ty-pin">1</span><p><b>--type-eyebrow</b><span>Switzer 600, 13 px, +0.02em. Sentence case with the teal square.</span></p></div>
+      <div><span class="ty-pin">2</span><p><b>--type-statement</b><span>Sentient 400, 66 px, 1.07, -0.05em. The one voice line.</span></p></div>
+      <div><span class="ty-pin">3</span><p><b>--type-lead</b><span>Switzer 400, 18 px, 1.65, 30em max.</span></p></div>
+      <div><span class="ty-pin">4</span><p><b>--type-button</b><span>Switzer 600, 15 px, 44 px tall pill.</span></p></div>
+      <div><span class="ty-pin">5</span><p><b>--type-caption</b><span>Switzer 400, 13 px, never lighter than dim.</span></p></div>
+    </div>
+  </div>
+
+  <div class="ty-anno">
+    <div class="ty-card">
+      <div class="ty-ln"><span class="ty-pin">1</span><div class="t-label">Last 90 days</div></div>
+      <div class="ty-ln"><span class="ty-pin">2</span><div class="t-kpi">12.4%</div></div>
+      <div class="ty-ln"><span class="ty-pin">3</span><div class="t-section">Customers buying less</div></div>
+      <div class="ty-ln"><span class="ty-pin">4</span><div class="t-pbody">Fourteen customers bought less than last quarter. Open one to see why.</div></div>
+      <div class="ty-ln"><span class="ty-pin">5</span><table class="ty-mini"><thead><tr><th>Customer</th><th>Last</th><th>Now</th></tr></thead><tbody><tr><td>Harbor Supply</td><td>1,284.00</td><td>912.50</td></tr><tr><td>Lake Street Grill</td><td>8,640.20</td><td>7,015.75</td></tr><tr><td>Pine and Main</td><td>1,017.10</td><td>990.00</td></tr></tbody></table></div>
+      <div class="ty-ln"><span class="ty-pin">6</span><div class="t-caption" style="font-size:12px">Updated 9:40 AM</div></div>
+    </div>
+    <div class="ty-key">
+      <div><span class="ty-pin">1</span><p><b>--type-label</b><span>Switzer 600, 12 px, +0.01em, dim.</span></p></div>
+      <div><span class="ty-pin">2</span><p><b>--type-kpi</b><span>Switzer 600, 40 px, 1.0, -0.04em, tabular.</span></p></div>
+      <div><span class="ty-pin">3</span><p><b>--type-section</b><span>Switzer 600, 24 px, 1.3, -0.02em.</span></p></div>
+      <div><span class="ty-pin">4</span><p><b>--type-pbody</b><span>Switzer 400, 14 px, 1.5.</span></p></div>
+      <div><span class="ty-pin">5</span><p><b>--type-table</b><span>Switzer 400, 13 px, tabular, header 12 px 600.</span></p></div>
+      <div><span class="ty-pin">6</span><p><b>--type-label</b><span>Same token as line 1, at 12 px.</span></p></div>
+    </div>
+  </div>
+
+  <!-- 5.6 -->
+  <div class="ty-sub"><div><div class="ty-k">5.6 Implementation</div><h3>Load two files early, then use tokens.</h3></div><p>Preload the two faces that paint first. Everything else loads on demand and swaps in without blocking text.</p></div>
+
+  <div class="ty-codes">
+    <div><div class="ty-cl">Font loading, in the head</div><pre class="ty-code"><span class="c">&lt;!-- preload only the two faces above the fold --&gt;</span>
+&lt;link rel="preload" as="font" type="font/woff2" crossorigin
+  href="/site/assets/fonts/switzer-400.woff2"&gt;
+&lt;link rel="preload" as="font" type="font/woff2" crossorigin
+  href="/site/assets/fonts/sentient-400.woff2"&gt;
+
+<span class="c">/* @font-face, one rule per file */</span>
+<span class="k">@font-face</span>{font-family:'Switzer';font-weight:400;
+  font-style:normal;font-display:swap;
+  src:url(/site/assets/fonts/switzer-400.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Switzer';font-weight:500;
+  font-display:swap;src:url(/site/assets/fonts/switzer-500.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Switzer';font-weight:600;
+  font-display:swap;src:url(/site/assets/fonts/switzer-600.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Switzer';font-weight:700;
+  font-display:swap;src:url(/site/assets/fonts/switzer-700.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Sentient';font-weight:400;
+  font-style:normal;font-display:swap;
+  src:url(/site/assets/fonts/sentient-400.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Sentient';font-weight:400;
+  font-style:italic;font-display:swap;
+  src:url(/site/assets/fonts/sentient-400i.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Sentient';font-weight:500;
+  font-style:normal;font-display:swap;
+  src:url(/site/assets/fonts/sentient-500.woff2) format('woff2')}</pre></div>
+    <div><div class="ty-cl">Custom properties for the scale</div><pre class="ty-code"><span class="k">:root</span>{
+  --sans:'Switzer',ui-sans-serif,system-ui,-apple-system,
+    'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --serif:'Sentient',Georgia,'Times New Roman',serif;
+
+  <span class="c">/* marketing */</span>
+  --type-statement:clamp(44px,4.8vw,66px);
+  --type-display:clamp(44px,5.8vw,76px);
+  --type-h1:clamp(38px,4.4vw,56px);
+  --type-h2:clamp(32px,3.75vw,48px);
+  --type-h3:clamp(27px,2.3vw,29px);
+  --type-question:clamp(22px,2.1vw,26px);
+  --type-lead:clamp(16px,1.4vw,18px);
+  --type-body:16px;  --type-small:14px;
+  --type-caption:13px;  --type-eyebrow:13px;
+  --type-button:15px;  --type-nav:14px;
+
+  <span class="c">/* product */</span>
+  --type-page:clamp(32px,7vw,42px);
+  --type-section:clamp(18px,4vw,24px);
+  --type-pbody:14px;  --type-table:13px;
+  --type-label:12px;
+  --type-kpi:clamp(32px,3.125vw,40px);
+}
+body{font:400 var(--type-body)/1.75 var(--sans);
+  font-synthesis:none;
+  font-variant-numeric:tabular-nums}
+h1{font:600 var(--type-display)/1 var(--sans);
+  letter-spacing:-.045em}
+.statement{font:400 var(--type-statement)/1.07 var(--serif);
+  letter-spacing:-.05em}</pre></div>
+  </div>
+  <p class="cap mt4">The <code>font-synthesis:none</code> line is new in 2.0. It stops the browser from inventing a bold or an italic that the family does not ship, which is the failure shown in rule 4 and rule 5.</p>
+
+  <!-- 5.7 -->
+  <div class="ty-sub"><div><div class="ty-k">5.7 Fallbacks and accessibility</div><h3>Readable before the fonts arrive, and after.</h3></div><p>If a font file fails or is slow, the page still reads. Contrast is computed from the real hex values, not eyeballed.</p></div>
+
+  <div class="ty-fb">
+    <div class="ty-fbc"><div class="ty-fbs" style="font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif">Switzer falls back to the system sans.</div><code>'Switzer', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif</code></div>
+    <div class="ty-fbc"><div class="ty-fbs" style="font-family:Georgia,'Times New Roman',serif">Sentient falls back to Georgia.</div><code>'Sentient', Georgia, 'Times New Roman', serif</code></div>
+  </div>
+
+  <div class="ty-con">
+    <div class="ty-cc" style="background:#FBF8F2;color:#16243A"><div class="aa">Aa</div><div class="rt">14.70 : 1 · AAA</div><div class="nm">--ink #16243A on cream</div><div class="us">All primary text and headings.</div></div>
+    <div class="ty-cc" style="background:#FBF8F2;color:#45536A"><div class="aa">Aa</div><div class="rt">7.34 : 1 · AAA</div><div class="nm">--mid #45536A on cream</div><div class="us">Lead paragraphs and secondary text.</div></div>
+    <div class="ty-cc" style="background:#FBF8F2;color:#616D7C"><div class="aa">Aa</div><div class="rt">4.97 : 1 · AA</div><div class="nm">--dim #616D7C on cream</div><div class="us">Captions and meta. The lightest text allowed.</div></div>
+    <div class="ty-cc" style="background:#FBF8F2;color:#0A6261"><div class="aa">Aa</div><div class="rt">6.76 : 1 · AA</div><div class="nm">--teal-d #0A6261 on cream</div><div class="us">Eyebrows, links, small teal text.</div></div>
+    <div class="ty-cc" style="background:#FBF8F2;color:#0E7877"><div class="aa">Aa</div><div class="rt">4.99 : 1 · AA</div><div class="nm">--teal #0E7877 on cream</div><div class="us">Large type, icons and rules. Use teal-d for small text.</div></div>
+    <div class="ty-cc" style="background:#16243A;color:#A9B3C4;border-color:#16243A"><div class="aa">Aa</div><div class="rt">7.37 : 1 · AAA</div><div class="nm">--on-deep-mu #A9B3C4 on navy</div><div class="us">Secondary text on dark grounds.</div></div>
+  </div>
+  <div class="grid2 ty-mins">
+    <div class="stack"><h4>Minimum sizes</h4>
+      <p class="cap">Marketing site: body never below 16 px, and no text below 13 px anywhere. Product: table cells 13 px, field labels and timestamps 12 px, and never for sentences. Buttons and tap targets are at least 44 px tall.</p></div>
+    <div class="stack"><h4>Contrast rules</h4>
+      <p class="cap">Normal text needs 4.5 : 1 and large text (24 px, or 19 px bold) needs 3 : 1, per WCAG 2.1 AA. Ratios above are on cream #FBF8F2. Dim on the sunk ground #F2EDE3 falls to 4.51 : 1, so keep it off that ground below 14 px. Teal on navy is 2.95 : 1: never text.</p></div>
+  </div>
+  <p class="cap mt4">Grounding: hex values from the <code>:root</code> block of this book; ratios computed with the WCAG 2.1 relative luminance formula on 2026-10-18.</p>
+</div></section>
+<!--/TYPE-->

@@ -1,0 +1,574 @@
+<!--CSS-->
+/* v2: parts, program, product, marketing, governance */
+.part{background:var(--deep);color:var(--on-deep);padding-block:120px 96px;border-bottom:1px solid var(--deep-line);position:relative;overflow:hidden}
+.part .pn{font:600 14px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--on-deep-mu)}
+.part h2{font:400 clamp(56px,7vw,96px)/1 var(--serif);letter-spacing:-.03em;color:#fff;margin-top:var(--s3)}
+.part .lead{color:var(--on-deep-mu);margin-top:var(--s4);max-width:34em}
+.part .inside{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:var(--s5);padding-top:var(--s3);border-top:1px solid #ffffff2e;font-size:14px;color:var(--on-deep-mu)}
+.part .inside a:hover{color:#fff}
+.topbar nav a.on{color:var(--ink);font-weight:600}
+
+.phases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;counter-reset:ph}
+.phase{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:var(--s4);display:flex;flex-direction:column;gap:12px;min-height:250px}
+.phase .k{font:600 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--teal-d)}
+.phase h4{font-size:19px;letter-spacing:-.02em}
+.phase p{font-size:14px;line-height:1.6;color:var(--mid)}
+.phase .out{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:13px;line-height:1.55;color:var(--ink)}
+.phase.now{background:var(--deep);border-color:var(--deep);color:var(--on-deep)}
+.phase.now p{color:var(--on-deep-mu)}.phase.now .k{color:#7FC4C0}.phase.now .out{border-color:var(--deep-line);color:#fff}
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1.5px solid var(--ink)}
+.team>div{padding:var(--s3) var(--s3) var(--s3) 0;border-bottom:1px solid var(--line-2)}
+.team h4{margin-bottom:6px}.team p{font-size:14px;line-height:1.6;color:var(--mid)}
+.finding{display:grid;grid-template-columns:200px minmax(0,1fr) 230px;gap:var(--s4);padding:22px 0;border-top:1px solid var(--line-2);align-items:start}
+.finding:last-child{border-bottom:1px solid var(--line-2)}
+.finding .what{font-weight:600}
+.finding .ev{font-size:14px;color:var(--mid);line-height:1.6}
+.finding .fix{font-size:14px;line-height:1.6}
+.finding .fix b{color:var(--teal-d)}
+.swrow{display:flex;gap:6px;margin-top:10px}.swrow i{width:28px;height:28px;border-radius:6px;display:block;border:1px solid #0000001a}
+.src{font-size:13px;line-height:1.6;color:var(--dim);margin-top:var(--s4);max-width:62em}
+.src a{color:var(--teal-d);text-decoration:underline;text-underline-offset:3px}
+
+.principles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.principles>div{border-top:1.5px solid var(--ink);padding-top:var(--s3)}
+.principles .n{font:400 44px/1 var(--serif);color:var(--teal);margin-bottom:var(--s2)}
+.principles p{font-size:15px;color:var(--mid);margin-top:8px}
+.isnot{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:var(--s5)}
+.isnot>div{border-radius:12px;padding:var(--s4)}
+.isnot .is{background:var(--paper);border:1px solid var(--line)}
+.isnot .not{background:var(--sunk)}
+.isnot ul{display:grid;gap:10px;margin-top:var(--s2);font-size:16px}
+.isnot li{display:grid;grid-template-columns:110px 1fr;gap:12px;border-top:1px solid var(--line);padding-top:10px}
+.isnot li span{color:var(--dim);font-size:14px}
+.aud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:var(--s5)}
+.aud figure{border-radius:12px;overflow:hidden;background:var(--paper);border:1px solid var(--line)}
+.aud img{width:100%;height:180px;object-fit:cover}
+.aud figcaption{padding:var(--s3)}
+.aud figcaption p{font-size:14px;color:var(--mid);margin-top:6px;line-height:1.6}
+
+/* tokens */
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;position:relative}
+.tier{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:var(--s4)}
+.tier .k{font:600 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--teal-d)}
+.tier h4{font-size:20px;margin:10px 0 6px}
+.tier p{font-size:14px;color:var(--mid);line-height:1.6}
+.tier ul{margin-top:var(--s3);display:grid;gap:8px;font:500 13px/1.5 ui-monospace,Menlo,monospace}
+.tier li{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:8px}
+.tier li i{width:16px;height:16px;border-radius:4px;flex:none;border:1px solid #0000001a}
+.tier li span{color:var(--dim);margin-left:auto}
+.codebox{background:var(--deep);color:#DCE3EC;border-radius:12px;padding:var(--s4);font:13px/1.75 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:auto;white-space:pre}
+.codebox .c{color:#7E8BA0}.codebox .t{color:#7FC4C0}
+
+/* app shell mockup */
+.app{border-radius:14px;overflow:hidden;border:1px solid var(--line-2);background:var(--ground);box-shadow:0 30px 60px -30px #16243A40;display:grid;grid-template-columns:232px minmax(0,1fr);min-height:640px;font-size:14px;line-height:1.5}
+.rail{background:var(--paper);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:4px}
+.rail .lk{margin:0 8px 22px}
+.rail a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:var(--mid);font-weight:500}
+.rail a.on{background:var(--wash);color:var(--teal-d);font-weight:600}
+.rail a svg{width:16px;height:16px;flex:none}
+.rail .grp{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin:18px 10px 6px}
+.rail .foot{margin-top:auto;display:flex;align-items:center;gap:10px;padding:10px;border-top:1px solid var(--line);font-size:13px;color:var(--mid)}
+.rail .av{width:28px;height:28px;border-radius:50%;background:var(--deep);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:600}
+.main{padding:24px 32px;display:flex;flex-direction:column;gap:20px;min-width:0}
+.topline{display:flex;align-items:center;gap:16px}
+.ask{flex:1;display:flex;align-items:center;gap:10px;height:44px;padding:0 8px 0 16px;background:var(--paper);border:1px solid var(--line-2);border-radius:22px;color:var(--dim)}
+.ask b{margin-left:auto;background:var(--teal-d);color:#fff;font-weight:600;font-size:13px;height:32px;padding:0 16px;border-radius:16px;display:flex;align-items:center}
+.datechip{font-size:13px;color:var(--mid);white-space:nowrap}
+.hello{font:400 30px/1.15 var(--serif);letter-spacing:-.02em}
+.hello small{display:block;font:400 14px/1.5 var(--sans);color:var(--dim);letter-spacing:0;margin-top:6px}
+.cols3{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px}
+.panel .ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.panel .ph h5{font:600 13px/1 var(--sans);letter-spacing:.02em;color:var(--ink);margin:0}
+.panel .ph span{font-size:12px;color:var(--dim)}
+.brief p{font-size:15px;line-height:1.6}
+.brief p+p{margin-top:10px;color:var(--mid)}
+.brief .srcs{display:flex;gap:6px;margin-top:14px}
+.srcchip{font-size:12px;font-weight:600;color:var(--teal-d);background:var(--wash);border-radius:6px;padding:3px 8px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kpi{border-top:1px solid var(--line);padding-top:10px}
+.kpi .v{font:500 26px/1.1 var(--sans);letter-spacing:-.03em}
+.kpi .l{font-size:12px;color:var(--dim);margin-top:4px}
+.kpi .d{font-size:12px;font-weight:600;margin-top:2px}
+.up{color:var(--teal-d)}.dn{color:var(--copper)}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);padding:0 10px 8px 0;border-bottom:1px solid var(--line-2)}
+.tbl td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line)}
+.tbl td.num{text-align:right;font-variant-numeric:tabular-nums}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600}
+.st:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st.q{color:var(--copper)}.st.ok{color:var(--teal-d)}.st.n{color:var(--dim)}
+
+/* product components */
+.ui-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
+.ui{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:var(--s4);display:flex;flex-direction:column;gap:var(--s3)}
+.ui .lbl{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.ui.s4{grid-column:span 4}.ui.s5{grid-column:span 5}.ui.s7{grid-column:span 7}.ui.s6{grid-column:span 6}.ui.s8{grid-column:span 8}.ui.s12{grid-column:span 12}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.b{height:40px;padding:0 18px;border-radius:20px;font:600 14px/1 var(--sans);display:inline-flex;align-items:center;border:1px solid transparent}
+.b.p{background:var(--teal-d);color:#fff}.b.p.h{background:#085251}
+.b.s{border-color:var(--line-2);color:var(--ink);background:var(--paper)}
+.b.g{color:var(--teal-d);padding:0 6px}
+.b.d{background:#F3F1EC;color:#A9A49A}
+.field{display:grid;gap:6px}
+.field label{font-size:13px;font-weight:600}
+.field .in{height:42px;border:1px solid var(--line-2);border-radius:8px;padding:0 12px;display:flex;align-items:center;color:var(--ink);background:var(--paper)}
+.field .in.f{border-color:var(--teal);box-shadow:0 0 0 3px #0E787726}
+.field .in.e{border-color:#B0412B}
+.field small{font-size:12px;color:var(--dim)}.field small.e{color:#B0412B}
+.alert{display:grid;grid-template-columns:4px 1fr;gap:14px;border-radius:10px;background:var(--copper-wash);padding:14px 16px 14px 0;overflow:hidden}
+.alert:before{content:"";background:var(--copper);border-radius:0 2px 2px 0}
+.alert b{display:block;font-size:14px}.alert span{font-size:13px;color:var(--mid)}
+.alert.t{background:var(--wash)}.alert.t:before{background:var(--teal)}
+.pstates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.pstate{border:1px dashed var(--line-2);border-radius:10px;padding:18px;min-height:150px;display:flex;flex-direction:column;gap:8px}
+.pstate b{font-size:14px}.pstate p{font-size:13px;color:var(--mid);line-height:1.55}
+.think{display:flex;gap:5px;align-items:center;height:18px}
+.think i{width:6px;height:6px;border-radius:50%;background:var(--teal);opacity:.35}
+.think i:nth-child(2){opacity:.6}.think i:nth-child(3){opacity:.9}
+.skel{height:10px;border-radius:5px;background:var(--sunk)}
+
+/* data viz */
+.dv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.dvp{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:var(--s4)}
+.dvp h4{margin-bottom:4px}.dvp p.cap{margin-bottom:var(--s3)}
+.ramp{display:flex;border-radius:8px;overflow:hidden;height:44px;margin-top:8px}
+.ramp i{flex:1;display:block}
+.dvrules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4);margin-top:var(--s5)}
+.dvrules>div{border-top:1.5px solid var(--ink);padding-top:var(--s2)}
+.dvrules p{font-size:14px;color:var(--mid);margin-top:6px}
+
+/* marketing */
+.anat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s5);align-items:start}
+.pagecol{border:1px solid var(--line-2);border-radius:12px;overflow:hidden;background:var(--paper)}
+.blk{position:relative;display:flex;align-items:flex-end;padding:14px 16px;font-size:12px;font-weight:600;border-bottom:1px solid var(--line)}
+.blk em{position:absolute;top:12px;right:14px;font-style:normal;font-weight:600;color:var(--teal-d);font-size:11px;background:var(--paper);border-radius:4px;padding:1px 6px}
+.blk.hero{height:190px;background:linear-gradient(90deg,var(--deep) 40%,#16243A55),url(../public/site/assets/hero.jpg) center/cover;color:#fff}
+.blk.hero span{font:400 22px/1.05 var(--serif)}
+.blk.proof{height:120px;background:var(--ground)}
+.blk.proof .mini{position:absolute;inset:22px 50px 34px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:400 12px/1.4 var(--serif)}
+.blk.brain{height:120px;background:var(--deep);color:#fff;overflow:hidden}.blk.brain:after{content:"";position:absolute;inset:0 0 0 45%;background:url(../public/site/assets/brain.png) center/auto 140% no-repeat;filter:grayscale(1) sepia(.5) hue-rotate(125deg) saturate(1.6);mix-blend-mode:screen}
+.blk.ind{height:130px;background:var(--ground);display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:12px 12px 30px;align-items:stretch}
+.blk.ind img{width:100%;height:100%;object-fit:cover;border-radius:4px}
+.blk.ind b{position:absolute;left:16px;bottom:9px}
+.blk.how{height:110px;background:var(--paper)}
+.blk.cta{height:96px;background:var(--deep);color:#fff;border-bottom:0}
+.steps{display:grid;gap:0}
+.steps>div{display:grid;grid-template-columns:44px 1fr;gap:var(--s2);padding:18px 0;border-top:1px solid var(--line-2)}
+.steps>div:last-child{border-bottom:1px solid var(--line-2)}
+.steps .n{font:400 26px/1 var(--serif);color:var(--teal)}
+.steps p{font-size:14px;color:var(--mid);margin-top:4px}
+.templates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:var(--s5)}
+.templates>div{border-top:1.5px solid var(--ink);padding-top:var(--s2)}
+.templates p{font-size:14px;color:var(--mid);margin-top:6px}
+
+.kit{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:12px}
+.kit figure{display:grid;gap:12px}
+.kit figcaption{font-size:13px;color:var(--dim)}
+.social{aspect-ratio:1/1;background:var(--deep);border-radius:12px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;position:relative;overflow:hidden}
+.social .phone{position:absolute;right:-24px;top:34%;width:50%;aspect-ratio:9/17;background:#0F1A2B;border:6px solid #2A3B55;border-radius:30px;padding:28px 12px 12px}
+.social .phone .bub{background:var(--paper);color:var(--ink);border-radius:12px 12px 12px 4px;padding:9px 10px;font:400 11px/1.4 var(--sans);margin-top:8px}
+.social .phone .bub.q{background:var(--teal-d);color:#fff;border-radius:12px 12px 4px 12px;margin-left:24px}
+.social h5{font:400 28px/1.08 var(--serif);letter-spacing:-.02em;max-width:5.2em;margin:0}
+.slide{aspect-ratio:16/9;background:var(--ground);border:1px solid var(--line-2);border-radius:12px;display:grid;grid-template-columns:1.1fr 1fr;overflow:hidden}
+.slide .l{padding:36px;display:flex;flex-direction:column;justify-content:space-between}
+.slide .l h5{font:400 26px/1.08 var(--serif);letter-spacing:-.02em;margin:0}
+.slide .l p{font-size:13px;color:var(--mid);margin-top:10px;max-width:24em}
+.slide>img{width:100%;height:100%;object-fit:cover}
+.slide .foot{display:flex;justify-content:space-between;font-size:11px;color:var(--dim)}
+.mail{grid-column:1/-1;background:var(--sunk);border-radius:12px;padding:28px;display:grid;grid-template-columns:minmax(0,560px) 1fr;gap:var(--s5);align-items:center}
+.mail .m{background:var(--paper);border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.mail .m .hd{padding:16px 22px;border-bottom:1px solid var(--line)}
+.mail .m .bd{padding:22px;font-size:14px;line-height:1.6}
+.mail .m .bd p+p{margin-top:12px}
+.mail .m .bd .q{font:400 19px/1.3 var(--serif);margin-bottom:12px}
+
+/* governance */
+.gates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.gate{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:var(--s3);display:flex;flex-direction:column;gap:10px}
+.gate .k{font:400 32px/1 var(--serif);color:var(--teal)}
+.gate p{font-size:14px;color:var(--mid);line-height:1.6}
+.vrow{display:grid;grid-template-columns:120px 1fr;gap:var(--s3);padding:16px 0;border-top:1px solid var(--line-2);font-size:15px}
+.vrow:last-child{border-bottom:1px solid var(--line-2)}
+.vrow b{font-family:ui-monospace,Menlo,monospace;font-size:14px}
+@media (max-width:900px){.phases,.team,.principles,.tiers,.gates,.templates,.pstates,.dvrules{grid-template-columns:1fr 1fr}.finding,.anat,.kit,.cols3,.dv,.isnot,.aud,.mail{grid-template-columns:1fr}.app{grid-template-columns:1fr}.rail{display:none}.ui[class*=s]{grid-column:span 12}}
+@media (max-width:900px){.codebox{white-space:pre-wrap;word-break:break-all}.tiers,.grid2{grid-template-columns:minmax(0,1fr)!important}.tier li{flex-wrap:wrap}.navdemo{overflow:hidden}.navdemo nav{display:none}.board{grid-template-columns:minmax(0,1fr)!important}#components .row{flex-wrap:wrap}.phases{grid-template-columns:1fr}.part h2{font-size:52px}}
+
+/* anatomy v3: the home page rendered, notes beside each band */
+#anatomy{background:var(--deep);color:var(--on-deep);border-color:var(--deep-line);overflow:hidden}
+#anatomy h2{color:#fff}#anatomy .lead{color:var(--on-deep-mu)}#anatomy .sec-no{color:#7FC4C0}#anatomy .sec-no:before{background:#7FC4C0}
+.tower{display:grid;grid-template-columns:minmax(0,680px) minmax(0,1fr);column-gap:56px;margin-top:var(--s5)}
+.tower>.pg{background:var(--ground);color:var(--ink);overflow:hidden;position:relative}
+.tower>.pg.first{border-radius:14px 14px 0 0}
+.tower>.pg.last{border-radius:0 0 14px 14px}
+.tower>.nt{display:flex;flex-direction:column;justify-content:center;padding:28px 0;border-top:1px solid var(--deep-line);position:relative}
+.tower>.nt:before{content:"";position:absolute;left:-56px;top:50%;width:40px;border-top:1px dashed #7FC4C066}
+.nt .no{font:400 44px/1 var(--serif);color:#7FC4C0}
+.nt h4{color:#fff;font-size:18px;margin-top:14px}
+.nt p{font-size:15px;line-height:1.65;color:var(--on-deep-mu);margin-top:8px;max-width:26em}
+.nt .rule-k{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.nt .rule-k span{font-size:12px;font-weight:600;color:#CFE4E1;border:1px solid #2F4A5E;border-radius:6px;padding:3px 8px}
+.chrome{height:34px;background:#EDE7DC;display:flex;align-items:center;gap:6px;padding:0 14px;border-bottom:1px solid var(--line)}
+.chrome i{width:9px;height:9px;border-radius:50%;background:#D3CABA}
+.chrome span{margin-left:14px;flex:1;max-width:300px;height:20px;border-radius:10px;background:#F7F3EC;font-size:11px;color:var(--dim);display:flex;align-items:center;padding-left:12px}
+/* band 1 hero */
+.h1b{position:relative;height:440px;color:#fff;isolation:isolate}
+.h1b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.h1b:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#16243AF2 0,#16243AC7 46%,#16243A1A 100%)}
+.h1b .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;font-size:12px;color:#DCE3EC}
+.h1b .nav .links{display:flex;gap:18px}
+.h1b .nav b{background:#fff;color:var(--ink);border-radius:14px;padding:6px 12px;font-weight:600}
+.h1b h3{font:400 54px/.98 var(--serif);letter-spacing:-.03em;margin:62px 28px 0;max-width:7.5em;color:#fff}
+.h1b p{margin:18px 28px 0;font-size:14px;line-height:1.6;color:#C9D2DE;max-width:24em}
+.h1b .cta{margin:22px 28px 0;display:inline-flex;height:36px;padding:0 18px;border-radius:18px;background:var(--teal-d);color:#fff;font-size:13px;font-weight:600;align-items:center}
+/* band 2 proof: answer card floating over a photo */
+.p2b{display:grid;grid-template-columns:1fr 1fr;gap:0;height:330px;background:var(--ground)}
+.p2b .t{padding:40px 52px 40px 28px;display:flex;flex-direction:column;justify-content:center}
+.p2b .t .eb{font-size:11px;font-weight:600;color:var(--teal-d);display:flex;gap:8px;align-items:center}
+.p2b .t .eb:before{content:"";width:6px;height:6px;background:var(--teal)}
+.p2b .t h5{font:500 28px/1.08 var(--sans);letter-spacing:-.04em;margin:12px 0 0}
+.p2b .t p{font-size:13px;line-height:1.6;color:var(--mid);margin-top:12px}
+.p2b .ph{position:relative}
+.p2b .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.p2b .card{position:absolute;left:-28px;right:20px;bottom:26px;background:var(--paper);border-radius:12px;padding:16px 18px;box-shadow:0 24px 50px -20px #16243A66}
+.p2b .card .q{font:400 16px/1.3 var(--serif)}
+.p2b .card .a{font-size:12px;line-height:1.55;border-top:1px solid var(--line);margin-top:10px;padding-top:10px}
+.p2b .card .c{display:flex;gap:5px;margin-top:10px}
+/* band 3 brain */
+.b3b{height:300px;background:#0D1626;display:grid;grid-template-columns:1fr 1fr;color:#fff;position:relative;overflow:hidden}
+.b3b .t{padding:40px 28px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+.b3b .t .eb{font-size:11px;font-weight:600;color:#7FC4C0}
+.b3b .t h5{font:400 30px/1.05 var(--serif);letter-spacing:-.02em;margin:10px 0 0;color:#fff}
+.b3b .t p{font-size:13px;line-height:1.6;color:var(--on-deep-mu);margin-top:12px}
+.b3b .br{position:absolute;right:-30px;top:-20px;width:62%;height:120%;background:url(../public/site/assets/brain.png) center/contain no-repeat;filter:grayscale(1) sepia(.5) hue-rotate(125deg) saturate(1.6);mix-blend-mode:screen}
+/* band 4 industries */
+.i4b{background:var(--ground);padding:36px 28px}
+.i4b h5{font:500 24px/1.1 var(--sans);letter-spacing:-.04em;margin:0}
+.i4b .g{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:150px 150px;gap:8px;margin-top:18px}
+.i4b figure{position:relative;border-radius:8px;overflow:hidden}
+.i4b figure:first-child{grid-row:span 2}
+.i4b img{width:100%;height:100%;object-fit:cover}
+.i4b figcaption{position:absolute;inset:auto 0 0 0;padding:28px 10px 9px;background:linear-gradient(0deg,#16243AE6,transparent);color:#fff;font-size:11px;line-height:1.35}
+.i4b figcaption b{display:block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#CFE4E1;margin-bottom:2px}
+/* band 5 how */
+.w5b{background:var(--paper);padding:36px 28px}
+.w5b h5{font:500 24px/1.1 var(--sans);letter-spacing:-.04em;margin:0}
+.w5b .s{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.w5b .s div{border-top:1.5px solid var(--ink);padding-top:10px;font-size:12px;line-height:1.55;color:var(--mid)}
+.w5b .s b{display:block;font:400 22px/1 var(--serif);color:var(--teal);margin-bottom:8px}
+.w5b .s strong{display:block;color:var(--ink);font-size:13px;margin-bottom:3px}
+.w5b .sec{margin-top:18px;display:flex;align-items:center;gap:10px;background:var(--wash);border-radius:8px;padding:10px 12px;font-size:12px;color:var(--teal-d);font-weight:600}
+/* band 6 cta */
+.c6b{position:relative;height:230px;color:#fff;isolation:isolate;display:flex;flex-direction:column;justify-content:center;padding:0 28px}
+.c6b>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.c6b:before{content:"";position:absolute;inset:0;z-index:-1;background:#16243AD9}
+.c6b h5{font:400 32px/1.05 var(--serif);letter-spacing:-.02em;margin:0;color:#fff}
+.c6b .cta{margin-top:16px;align-self:start;height:36px;padding:0 18px;border-radius:18px;background:#fff;color:var(--ink);font-size:13px;font-weight:600;display:flex;align-items:center}
+.c6b .ft{position:absolute;left:28px;right:28px;bottom:14px;display:flex;justify-content:space-between;font-size:10px;color:#A9B3C4}
+/* templates as thumbnails */
+.thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:88px;padding-top:var(--s5);border-top:1px solid var(--deep-line)}
+.thumb .f{border-radius:10px;overflow:hidden;background:var(--ground);aspect-ratio:3/4;display:flex;flex-direction:column;box-shadow:0 20px 40px -24px #000}
+.thumb .f>div{position:relative;flex:none}
+.thumb .f img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .f .hx{height:42%;isolation:isolate}
+.thumb .f .hx img{position:absolute;inset:0;z-index:-2}
+.thumb .f .hx:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#16243AE6 30%,#16243A33)}
+.thumb .f .hx span{position:absolute;left:12px;bottom:12px;font:400 15px/1.05 var(--serif);color:#fff;max-width:8em}
+.thumb .f .pr{height:20%;display:flex;align-items:center;padding:0 12px}
+.thumb .f .pr i{display:block;width:100%;height:60%;background:var(--paper);border-radius:6px;border:1px solid var(--line)}
+.thumb .f .gr{height:22%;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 12px}
+.thumb .f .gr img{border-radius:4px}
+.thumb .f .dk{flex:1;background:#23395A;position:relative}.thumb .f .dk:after{content:"";position:absolute;left:12px;top:50%;width:38px;height:12px;margin-top:-6px;border-radius:6px;background:var(--ground)}.thumb .f{border:1px solid #34506F}
+.thumb .f .bn{height:30%;background:#0D1626;position:relative;overflow:hidden}.thumb .f .bn:after{content:"";position:absolute;inset:0;background:url(../public/site/assets/brain.png) 60% 50%/auto 120% no-repeat;filter:grayscale(1) sepia(.5) hue-rotate(125deg) saturate(1.6);mix-blend-mode:screen}
+.thumb .f .cr{height:42%;background:var(--paper);padding:14px 12px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px}
+.thumb .f .cr span{font:400 15px/1.05 var(--serif)}
+.thumb .f .cr small{font-size:9px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
+.thumb .f .tm{height:16%;padding:0 12px;display:grid;gap:5px;align-content:center}
+.thumb .f .tm i{display:block;height:6px;border-radius:3px;background:var(--line)}
+.thumb h4{color:#fff;margin-top:16px}
+.thumb p{font-size:14px;color:var(--on-deep-mu);margin-top:4px;line-height:1.55}
+.tower>.pg{display:flex;flex-direction:column}.tower>.pg>div:last-child{flex:1 0 auto}.thumb .f .cr span{color:var(--ink)}.thumb .f .pr i{position:relative}.thumb .f .pr i:before,.thumb .f .pr i:after{content:"";position:absolute;left:10px;height:5px;border-radius:3px}.thumb .f .pr i:before{top:9px;width:58%;background:var(--ink);opacity:.75}.thumb .f .pr i:after{top:20px;width:32%;background:var(--teal)}
+@media (max-width:900px){.tower{grid-template-columns:minmax(0,1fr)}.tower>.nt:before{display:none}.thumbs{grid-template-columns:1fr 1fr}.h1b h3{font-size:40px}.p2b,.b3b{grid-template-columns:1fr;height:auto}.p2b .ph{height:260px}.p2b .card{left:16px}.b3b .br{opacity:.35}}
+<!--/CSS-->
+
+<!--PROGRAM-->
+<section class="section" id="program"><div class="wrap">
+  <div class="sec-head"><div><div class="sec-no">00 How this book was made</div><h2>Built the way a launch team builds one.</h2></div><p class="lead">Version 1 was a style guide for one website. A company launching a product ships something larger: one system that the brand, the software, the site and every launch asset are all cut from. This is that system, and this page is the plan behind it.</p></div>
+
+  <div class="phases">
+    <div class="phase"><span class="k">1 · Discover</span><h4>Audit what exists</h4><p>Every surface side by side: the original site, the live site, the client portal, the logo folder, social posts.</p><div class="out">Out: the findings below. Three different action colors, three hearts in one folder.</div></div>
+    <div class="phase"><span class="k">2 · Define</span><h4>Write the platform</h4><p>Who it is for, the promise, the personality, four principles. Every design call is checked against these.</p><div class="out">Out: chapters 01 and 02. One page that settles arguments.</div></div>
+    <div class="phase"><span class="k">3 · Express</span><h4>Lock the identity</h4><p>Logo, color, type, imagery, the brain. Kept from version 1 where Daniel already approved it, unchanged.</p><div class="out">Out: chapters 03 to 08.</div></div>
+    <div class="phase now"><span class="k">4 · Systematize</span><h4>Turn it into tokens</h4><p>Named values in three tiers so the site and the software read from the same file and cannot drift apart again.</p><div class="out">Out: chapter 09. One token file for both codebases.</div></div>
+    <div class="phase now"><span class="k">5 · Apply</span><h4>Product, site, launch</h4><p>The app shell, components, charts and states. The page anatomy for the site. Social, deck and email cut from the same parts.</p><div class="out">Out: chapters 10 to 18.</div></div>
+    <div class="phase"><span class="k">6 · Govern</span><h4>Keep it true</h4><p>Owners, review gates, versioning. The book changes first, then the product. Never the reverse.</p><div class="out">Out: chapter 19.</div></div>
+  </div>
+
+  <div class="mt6">
+    <h3>The team this book stands in for</h3>
+    <p class="lead" style="margin-top:12px">Google, Apple and the studios that build launches for them staff these seats. Each chapter is written from one of them, and each was reviewed against the others before it went in.</p>
+    <div class="team mt4">
+      <div><h4>Brand design</h4><p>Logo, color, type, imagery. Owns chapters 03 to 08.</p></div>
+      <div><h4>Product design</h4><p>The software: shell, components, states, density.</p></div>
+      <div><h4>Design systems engineering</h4><p>Tokens and the shared CSS both codebases import.</p></div>
+      <div><h4>Content design</h4><p>Voice, labels, empty and error copy, plain language.</p></div>
+      <div><h4>Motion</h4><p>Timing, easing, and the one thing allowed to drift: the brain.</p></div>
+      <div><h4>Data visualization</h4><p>Chart colors and rules for numbers people act on.</p></div>
+      <div><h4>Accessibility</h4><p>Measured contrast, focus, target size, reduced motion.</p></div>
+      <div><h4>Research</h4><p>Five owners from different industries react before anything is final.</p></div>
+    </div>
+  </div>
+
+  <div class="mt6">
+    <h3>What the audit found</h3>
+    <p class="lead" style="margin-top:12px">Read straight from the code that serves each surface today. Every one of these is the kind of drift a shared system exists to stop.</p>
+    <div class="mt4">
+      <div class="finding"><div class="what">Three action colors</div><div class="ev">The live site's primary button is <code>--btn-blue:#0066cc</code> in <code>site.css</code>. The client portal uses <code>#0B504F</code>, under a token still named <code>--accent-orange</code>. Version 1 of this book says teal dark <code>#0A6261</code>.<div class="swrow"><i style="background:#0066cc"></i><i style="background:#0B504F"></i><i style="background:#0A6261"></i></div></div><div class="fix"><b>Decision.</b> One action color everywhere: <code>sys.action</code> = teal dark <code>#0A6261</code>. Blue is retired; the portal token is renamed.</div></div>
+      <div class="finding"><div class="what">Three hearts in one folder</div><div class="ev"><code>public/brand/</code> holds a dotted heart, a circuit heart and the furry ink heart. Only the ink heart (<code>mark-ink-512.png</code>) ships in the live header, and it is the one that was nearly replaced.</div><div class="fix"><b>Decision.</b> The ink heart is the only mark. The other files move to <code>_retired/</code> so nobody picks them up again.</div></div>
+      <div class="finding"><div class="what">Two headlines, two moods</div><div class="ev">The original said "Pure intelligence. For a fuller life." over architecture. The live site says "Know what happened. Know what to do next." over a flat ground.</div><div class="fix"><b>Decision.</b> The original line leads as the brand. The plain-language line becomes the product's promise, one scroll down, beside the answer card.</div></div>
+      <div class="finding"><div class="what">The software has no brand</div><div class="ev">The portal's tokens were set separately from the site's, so the product a customer signs into does not look like the company they signed with.</div><div class="fix"><b>Decision.</b> Part Two of this book. The product reads the same tokens as the site.</div></div>
+    </div>
+  </div>
+
+  <p class="src">Method sources. Google says its 2025 Material 3 Expressive work ran 46 studies with more than 18,000 participants before the system shipped, using eye tracking, surveys and usability tests (<a href="https://chromeunboxed.com/google-leaks-the-reason-and-process-behind-their-new-material-3-expressive-design-language">Chrome Unboxed</a>, <a href="https://www.androidauthority.com/google-material-3-expressive-details-3554486/">Android Authority</a>, both reporting Google's own post). Google gave Gemini one signature expression, a gradient that shows the assistant thinking, and then carried it into the company "G" (<a href="https://blog.google/inside-google/company-announcements/gradient-g-logo-design/">Google</a>, <a href="https://9to5google.com/2026/01/17/gemini-gradient-design/">9to5Google</a>); the brain plays that role here. The three-tier token model (reference, system, component) follows Material's naming as described by <a href="https://uxcel.com/lessons/tokens-the-dna-of-a-design-system-041">Uxcel</a> and <a href="https://developer.tomtom.com/tomtom-digital-cockpit/designers/design-system/foundations/design-tokens">TomTom</a>. Audit values read from <code>public/site/assets/site.css</code> and <code>arthur-launch/app/globals.css</code> on 2026-10-18.</p>
+</div></section>
+<!--/PROGRAM-->
+
+<!--PART1-->
+<section class="part" id="part-brand"><div class="wrap">
+  <div class="pn">Part One</div>
+  <h2>The brand.</h2>
+  <p class="lead">Who LOVELEEDAY is and how it looks. Everything Daniel approved in version 1 is here unchanged, starting with the logo.</p>
+  <div class="inside"><a href="#platform">Platform</a><a href="#logo">Logo</a><a href="#color">Color</a><a href="#type">Type</a><a href="#space">Spacing</a><a href="#photo">Photography</a><a href="#brain">The brain</a></div>
+</div></section>
+
+<section class="section paper" id="platform"><div class="wrap">
+  <div class="sec-head"><div><div class="sec-no">01 Platform</div><h2>Who it is for, and how it should feel.</h2></div><p class="lead">The platform is the page a designer reads when two good options disagree. If an option breaks one of these, it loses.</p></div>
+  <div class="aud">
+    <figure><img src="../public/site/assets/industry-manufacturing.jpg" alt="A plant floor with workers at machines"><figcaption><h4>The owner</h4><p>Runs a company of 20 to 500 people. Knows something is slipping and cannot see where. Wants a straight answer, not a dashboard to learn.</p></figcaption></figure>
+    <figure><img src="../public/site/assets/industry-schools.jpg" alt="A classroom with desks"><figcaption><h4>The operator</h4><p>A principal, a controller, a general manager. Lives in five systems that do not talk. Needs the morning brief before the first meeting.</p></figcaption></figure>
+    <figure><img src="../public/site/assets/industry-property.jpg" alt="An apartment building exterior"><figcaption><h4>The portfolio</h4><p>Several sites or entities at once. Needs the same question answered the same way across all of them.</p></figcaption></figure>
+  </div>
+  <div class="principles mt6">
+    <div><div class="n">1</div><h4>The answer is the interface</h4><p>Lead with the sentence that says what happened. Charts and tables support it; they never replace it.</p></div>
+    <div><div class="n">2</div><h4>Show where it came from</h4><p>Every answer names its sources. Trust is earned in the small print, so the small print is designed.</p></div>
+    <div><div class="n">3</div><h4>Calm by default</h4><p>Cream ground, one action color, one moving thing. Urgency is reserved for things that are actually urgent.</p></div>
+    <div><div class="n">4</div><h4>Real over rendered</h4><p>Real people, real rooms, real numbers. Nothing generated to look like a business.</p></div>
+  </div>
+  <div class="isnot">
+    <div class="is"><h4>LOVELEEDAY is</h4><ul><li><span>Warm</span>A well-run studio, not a server room</li><li><span>Certain</span>Says the thing, then stops</li><li><span>Editorial</span>Serif headlines, room to breathe</li><li><span>Plain</span>Words an owner would use out loud</li></ul></div>
+    <div class="not"><h4>LOVELEEDAY is not</h4><ul><li><span>Techy</span>No glowing grids, no neon, no code rain</li><li><span>Hyped</span>No "unlock", "empower", "seamless"</li><li><span>Busy</span>No KPI wall on the first screen</li><li><span>Templated</span>No three icon cards in a row</li></ul></div>
+  </div>
+</div></section>
+<!--/PART1-->
+
+<!--PRODUCT-->
+<section class="part" id="part-product"><div class="wrap">
+  <div class="pn">Part Two</div>
+  <h2>The software.</h2>
+  <p class="lead">What a customer sees after they sign in. Same tokens, same type, same calm as the site, tuned for daily work: denser, faster to scan, every state designed.</p>
+  <div class="inside"><a href="#tokens">Tokens</a><a href="#shell">App shell</a><a href="#ui">Components</a><a href="#dataviz">Charts</a><a href="#states">States</a></div>
+</div></section>
+
+<section class="section" id="tokens"><div class="wrap">
+  <div class="sec-head"><div><div class="sec-no">08 Tokens</div><h2>One file, three tiers, two codebases.</h2></div><p class="lead">Raw values live in one place. Roles point at them. Components point at roles. Change a role once and the site and the portal move together.</p></div>
+  <div class="tiers">
+    <div class="tier"><span class="k">Tier 1 · Reference</span><h4>What the values are</h4><p>The palette as raw values. Nothing in a page uses these directly.</p><ul><li><i style="background:#FBF8F2"></i>ref.cream.50<span>#FBF8F2</span></li><li><i style="background:#16243A"></i>ref.navy.900<span>#16243A</span></li><li><i style="background:#0E7877"></i>ref.teal.600<span>#0E7877</span></li><li><i style="background:#0A6261"></i>ref.teal.700<span>#0A6261</span></li><li><i style="background:#9B5C3E"></i>ref.copper.600<span>#9B5C3E</span></li></ul></div>
+    <div class="tier"><span class="k">Tier 2 · System</span><h4>What the values mean</h4><p>Roles. This is the tier designers and engineers talk in.</p><ul><li><i style="background:#FBF8F2"></i>sys.surface<span>cream.50</span></li><li><i style="background:#16243A"></i>sys.ink<span>navy.900</span></li><li><i style="background:#0A6261"></i>sys.action<span>teal.700</span></li><li><i style="background:#0E7877"></i>sys.focus<span>teal.600</span></li><li><i style="background:#9B5C3E"></i>sys.attention<span>copper.600</span></li></ul></div>
+    <div class="tier"><span class="k">Tier 3 · Component</span><h4>Where the values go</h4><p>Only for parts that need their own knob. Most components stop at tier 2.</p><ul><li><i style="background:#0A6261"></i>button.primary.bg<span>sys.action</span></li><li><i style="background:#FFFFFF"></i>card.bg<span>sys.panel</span></li><li><i style="background:#E8F2F1"></i>chip.source.bg<span>sys.action-wash</span></li><li><i style="background:#0E7877"></i>input.focus.ring<span>sys.focus</span></li><li><i style="background:#9B5C3E"></i>status.quiet<span>sys.attention</span></li></ul></div>
+  </div>
+  <div class="grid2 mt5" style="gap:12px;align-items:stretch">
+    <div class="codebox"><span class="c">/* tokens.css — imported by the site and the portal */</span>
+:root{
+  <span class="c">/* reference */</span>
+  --ref-cream-50:#FBF8F2;  --ref-navy-900:#16243A;
+  --ref-teal-600:#0E7877;  --ref-teal-700:#0A6261;
+  --ref-copper-600:#9B5C3E;
+  <span class="c">/* system */</span>
+  <span class="t">--sys-surface</span>:var(--ref-cream-50);
+  <span class="t">--sys-ink</span>:var(--ref-navy-900);
+  <span class="t">--sys-action</span>:var(--ref-teal-700);
+  <span class="t">--sys-focus</span>:var(--ref-teal-600);
+  <span class="t">--sys-attention</span>:var(--ref-copper-600);
+}</div>
+    <div class="ui" style="justify-content:space-between"><div><span class="lbl">Migration</span><h3 style="margin-top:10px">Three files change, nothing else.</h3></div>
+      <table class="table"><tr><th>Surface</th><th>Today</th><th>Becomes</th></tr>
+      <tr><td>Site <code>site.css</code></td><td><code>--btn-blue</code></td><td><code>--sys-action</code></td></tr>
+      <tr><td>Portal <code>globals.css</code></td><td><code>--accent-orange</code></td><td><code>--sys-action</code></td></tr>
+      <tr><td>Proposals <code>/p/*</code></td><td>local hex values</td><td><code>tokens.css</code></td></tr></table></div>
+  </div>
+</div></section>
+
+<section class="section sunk" id="shell"><div class="wide">
+  <div class="wrap" style="width:100%;max-width:var(--content);margin-inline:auto"><div class="sec-head"><div><div class="sec-no">09 App shell</div><h2>The morning brief comes first.</h2></div><p class="lead">Sign in and the first thing on screen is a sentence about the business, then the numbers that support it, then the list to act on. The ask bar is always one keystroke away.</p></div></div>
+  <div class="app" role="img" aria-label="The LOVELEEDAY portal home screen">
+    <aside class="rail">
+      <span class="lk" style="--h:20px;color:var(--ink)"><img src="../public/site/assets/mark-ink-512.png" alt="">LOVELEEDAY</span>
+      <a class="on"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M3 4h10M3 12h6"/></svg>Brief</a>
+      <a><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>Ask</a>
+      <a><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5.5" r="2.5"/><path d="M3 14c.8-2.6 2.7-4 5-4s4.2 1.4 5 4"/></svg>Customers</a>
+      <a><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 13h12M4 13V8m4 5V4m4 9V6"/></svg>Money</a>
+      <a><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="3" width="11" height="10.5" rx="1.5"/><path d="M2.5 6.5h11M5.5 1.5v3m5-3v3"/></svg>Calendar</a>
+      <div class="grp">Workspace</div>
+      <a><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="8" cy="4" rx="5" ry="2"/><path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4"/></svg>Sources</a>
+      <a><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2"/><path d="M8 1.5v2m0 9v2m6.5-6.5h-2m-9 0h-2"/></svg>Settings</a>
+      <div class="foot"><span class="av">MR</span>Maria R. · Owner</div>
+    </aside>
+    <div class="main">
+      <div class="topline"><div class="ask"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>Ask anything about the business<b>Ask</b></div><span class="datechip">Monday, October 19</span></div>
+      <div class="hello">Good morning, Maria.<small>Read from orders, invoices, support tickets and the calendar, 6:00 AM.</small></div>
+      <div class="cols3">
+        <div class="panel brief"><div class="ph"><h5>What changed</h5><span>3 sources</span></div>
+          <p><b>Four accounts that ordered every month have gone quiet since August.</b> Together they were 11 percent of last quarter's revenue.</p>
+          <p>Two of them have an open support ticket older than three weeks. Nobody has called the other two.</p>
+          <div class="srcs"><span class="srcchip">Orders</span><span class="srcchip">Tickets</span><span class="srcchip">Calendar</span></div></div>
+        <div class="panel"><div class="ph"><h5>This month</h5><span>vs. September</span></div>
+          <div class="kpis"><div class="kpi"><div class="v">$412k</div><div class="l">Invoiced</div><div class="d up">+6%</div></div><div class="kpi"><div class="v">38</div><div class="l">Days to pay</div><div class="d dn">+4 days</div></div><div class="kpi"><div class="v">4</div><div class="l">Gone quiet</div><div class="d dn">new</div></div></div>
+          <svg viewBox="0 0 300 92" width="100%" style="margin-top:16px" aria-hidden="true"><g fill="#E6E0D6"><rect x="0" y="40" width="34" height="52" rx="3"/><rect x="44" y="30" width="34" height="62" rx="3"/><rect x="88" y="34" width="34" height="58" rx="3"/><rect x="132" y="22" width="34" height="70" rx="3"/><rect x="176" y="26" width="34" height="66" rx="3"/></g><rect x="220" y="14" width="34" height="78" rx="3" fill="#0E7877"/><text x="266" y="24" font-size="11" fill="#0A6261" font-family="Switzer" font-weight="600">Oct</text></svg></div>
+      </div>
+      <div class="panel"><div class="ph"><h5>Accounts to call this week</h5><span>Sorted by revenue at risk</span></div>
+        <table class="tbl"><tr><th>Account</th><th>Last order</th><th>Open ticket</th><th>Status</th><th style="text-align:right">Last quarter</th></tr>
+        <tr><td>Harbor Supply Co.</td><td>Aug 12</td><td>24 days</td><td><span class="st q">Gone quiet</span></td><td class="num">$48,200</td></tr>
+        <tr><td>Westline Fabrication</td><td>Aug 3</td><td>None</td><td><span class="st q">Gone quiet</span></td><td class="num">$31,750</td></tr>
+        <tr><td>Northgate Schools</td><td>Oct 14</td><td>None</td><td><span class="st ok">Ordering</span></td><td class="num">$22,400</td></tr>
+        <tr><td>Lakeview Property Group</td><td>Sep 29</td><td>3 days</td><td><span class="st n">Watching</span></td><td class="num">$18,900</td></tr></table></div>
+    </div>
+  </div>
+  <div class="wrap" style="width:100%;max-width:var(--content);margin-inline:auto"><div class="anatomy mt5">
+    <div class="rule"><h4>Rail, 232 px</h4><p class="cap" style="font-size:14px">White panel, one active item in teal wash. Collapses to icons under 1100 px, to a bottom bar on phones.</p></div>
+    <div class="rule"><h4>Ask bar, always on top</h4><p class="cap" style="font-size:14px">44 px pill, the only primary button on the screen. Command-K focuses it from anywhere.</p></div>
+    <div class="rule"><h4>Sentence, then numbers, then list</h4><p class="cap" style="font-size:14px">Every screen reads in this order. Example data is fictional and labeled so in demos.</p></div>
+  </div></div>
+</div></section>
+
+<section class="section" id="ui"><div class="wrap">
+  <div class="sec-head"><div><div class="sec-no">10 Product components</div><h2>Fewer parts, every state drawn.</h2></div><p class="lead">The software uses the same buttons, fields and cards as the site, at product density: 40 px controls, 14 px body, 8 px field radius, pills only for actions.</p></div>
+  <div class="ui-grid">
+    <div class="ui s7"><span class="lbl">Buttons</span><div class="btnrow"><span class="b p">Send to Maria</span><span class="b p h">Hover</span><span class="b s">Save draft</span><span class="b g">Show sources</span><span class="b d">Disabled</span></div><p class="cap">One primary per view. Labels are verbs that say what happens. Hover darkens to <code>#085251</code>; press adds nothing else.</p></div>
+    <div class="ui s5"><span class="lbl">Alerts</span><div class="alert"><div><b>Two invoices are past 60 days.</b><span>Harbor Supply and Westline. Total $14,300.</span></div></div><div class="alert t"><div><b>Sources synced.</b><span>Orders and tickets read at 6:00 AM.</span></div></div></div>
+    <div class="ui s6"><span class="lbl">Fields</span><div class="field"><label>Account name</label><div class="in f">Harbor Supply|</div><small>Focused: 1 px teal border and a 3 px soft ring.</small></div><div class="field"><label>Follow-up date</label><div class="in e">Oct 41</div><small class="e">That date does not exist. Try Oct 21.</small></div></div>
+    <div class="ui s6"><span class="lbl">The answer card, product size</span><div style="border:1px solid var(--line);border-radius:12px;padding:18px"><p style="font:400 19px/1.3 var(--serif)">Who has not paid since summer?</p><div style="border-top:1px solid var(--line);margin-top:12px;padding-top:12px;font-size:14px;line-height:1.6"><b>Three customers, $14,300 in all.</b> Harbor Supply owes the most and has an open complaint about a short shipment.</div><div class="srcs" style="display:flex;gap:6px;margin-top:12px"><span class="srcchip">Invoices</span><span class="srcchip">Tickets</span></div></div><p class="cap">The signature component, unchanged from the site. Question in Sentient, answer in Switzer, sources as wash chips.</p></div>
+  </div>
+</div></section>
+
+<section class="section paper" id="dataviz"><div class="wrap">
+  <div class="sec-head"><div><div class="sec-no">11 Charts</div><h2>One color says "look here".</h2></div><p class="lead">Charts use the brand palette and nothing else. Everything is neutral until it matters, then one bar or one line turns teal or copper.</p></div>
+  <div class="dv">
+    <div class="dvp"><h4>Highlight</h4><p class="cap">The series that answers the question is teal. Everything else is line gray.</p>
+      <svg viewBox="0 0 460 180" width="100%" aria-label="Bar chart with one teal bar"><g font-family="Switzer" font-size="12" fill="#616D7C"><text x="0" y="176">May</text><text x="76" y="176">Jun</text><text x="152" y="176">Jul</text><text x="228" y="176">Aug</text><text x="304" y="176">Sep</text><text x="380" y="176">Oct</text></g><g fill="#E6E0D6"><rect x="0" y="70" width="56" height="88" rx="3"/><rect x="76" y="58" width="56" height="100" rx="3"/><rect x="152" y="64" width="56" height="94" rx="3"/><rect x="228" y="50" width="56" height="108" rx="3"/><rect x="304" y="54" width="56" height="104" rx="3"/></g><rect x="380" y="28" width="56" height="130" rx="3" fill="#0E7877"/><text x="380" y="18" font-family="Switzer" font-size="13" font-weight="600" fill="#0A6261">$412k</text></svg></div>
+    <div class="dvp"><h4>Attention</h4><p class="cap">Copper marks the thing that needs a person. Never red unless money is already lost.</p>
+      <svg viewBox="0 0 460 180" width="100%" aria-label="Line chart with a copper series dropping"><g stroke="#E6E0D6"><line x1="0" y1="40" x2="460" y2="40"/><line x1="0" y1="95" x2="460" y2="95"/><line x1="0" y1="150" x2="460" y2="150"/></g><polyline fill="none" stroke="#C9C2B5" stroke-width="2" points="0,90 76,84 152,80 228,78 304,74 380,70 440,66"/><polyline fill="none" stroke="#9B5C3E" stroke-width="2.5" points="0,60 76,58 152,62 228,104 304,128 380,140 440,146"/><circle cx="440" cy="146" r="4" fill="#9B5C3E"/><text x="300" y="168" font-family="Switzer" font-size="12" font-weight="600" fill="#9B5C3E">4 accounts gone quiet</text><text x="330" y="58" font-family="Switzer" font-size="12" fill="#616D7C">all others</text></svg></div>
+    <div class="dvp"><h4>Sequential</h4><p class="cap">For heat maps and density. Cream to navy through teal, five steps.</p><div class="ramp"><i style="background:#F2EDE3"></i><i style="background:#CFE4E1"></i><i style="background:#7FB8B4"></i><i style="background:#0E7877"></i><i style="background:#16243A"></i></div></div>
+    <div class="dvp"><h4>Categories</h4><p class="cap">At most four. Past four, the chart is the wrong chart.</p><div class="ramp"><i style="background:#16243A"></i><i style="background:#0E7877"></i><i style="background:#9B5C3E"></i><i style="background:#9AA3AF"></i></div></div>
+  </div>
+  <div class="dvrules">
+    <div><h4>Label the data, drop the legend</h4><p>Names sit at the end of the line or on top of the bar. A legend is a last resort.</p></div>
+    <div><h4>Start bars at zero</h4><p>Lines may crop; bars never do. Gridlines are line gray, three at most.</p></div>
+    <div><h4>The sentence goes on top</h4><p>Every chart has a one-line headline that says what it shows. "October was the best month since May."</p></div>
+  </div>
+</div></section>
+
+<section class="section sunk" id="states"><div class="wrap">
+  <div class="sec-head"><div><div class="sec-no">12 States</div><h2>Empty, thinking, partial, wrong.</h2></div><p class="lead">A screen is not designed until all four are. These are where trust is lost, so they get the same care as the happy path.</p></div>
+  <div class="pstates">
+    <div class="pstate" style="background:var(--paper)"><b>Empty</b><p>No accounts have gone quiet this month. Arthur checks again tomorrow at 6:00 AM.</p></div>
+    <div class="pstate" style="background:var(--paper)"><div class="think"><i></i><i></i><i></i></div><b>Thinking</b><p>Reading orders and tickets for the last 90 days.</p><div class="skel" style="width:90%"></div><div class="skel" style="width:70%"></div></div>
+    <div class="pstate" style="background:var(--paper)"><b>Partial</b><p>Answered from orders only. The ticket system did not respond, so complaints are not included.</p><span class="srcchip" style="align-self:start;background:var(--copper-wash);color:var(--copper)">1 source missing</span></div>
+    <div class="pstate" style="background:var(--paper)"><b>Error</b><p>That question needs payroll, which is not connected. Connect it in Sources, or ask about invoices instead.</p></div>
+  </div>
+  <p class="src">The thinking dots are the product-size form of the brain: three teal points, staggered, 1.2 s loop, static under reduced motion. The full brain appears only when an answer takes longer than three seconds.</p>
+</div></section>
+<!--/PRODUCT-->
+
+<!--MARKETING-->
+<section class="part" id="part-marketing"><div class="wrap">
+  <div class="pn">Part Three</div>
+  <h2>The site and the launch.</h2>
+  <p class="lead">How the public pages are put together, and the assets that go out on launch day. All of it cut from the parts above.</p>
+  <div class="inside"><a href="#anatomy">Page anatomy</a><a href="#components">Site components</a><a href="#launch">Launch kit</a><a href="#voice">Motion and voice</a><a href="#tells">Tells we refuse</a></div>
+</div></section>
+
+<section class="section" id="anatomy"><div class="wrap">
+  <div class="sec-head"><div><div class="sec-no">14 Page anatomy</div><h2>The home page, drawn to scale.</h2></div><p class="lead">The original's atmosphere on top, the live site's proof underneath. Each band is shown as it will be built, with the rule that governs it beside it. Every marketing page is made from these six, in this order.</p></div>
+
+  <div class="tower" aria-label="The LOVELEEDAY home page, band by band">
+    <div class="pg first"><div class="chrome"><i></i><i></i><i></i><span>loveleedaystudios.com</span></div>
+      <div class="h1b"><img src="../public/site/assets/hero.jpg" alt="A daylit timber atrium with people on wide steps">
+        <div class="nav"><span class="lk" style="--h:16px;color:#fff"><img src="../public/brand/mark-white-512.png" alt="">LOVELEEDAY</span><span class="links"><span>Arthur</span><span>Industries</span><span>How it works</span><span>Security</span></span><b>Talk to us</b></div>
+        <h3>Pure intelligence. For a fuller life.</h3>
+        <p>Arthur reads what your organization already holds and tells you, in plain words, what happened and what to do next.</p>
+        <span class="cta">See how it works</span></div></div>
+    <div class="nt"><span class="no">1</span><h4>Brand hero</h4><p>The original line, in Sentient, over the architecture photograph. Navy scrim on the left only, so the room still reads. One button, and it explains rather than sells.</p><div class="rule-k"><span>Sentient 54/0.98</span><span>Scrim 95% to 10%</span><span>One CTA</span></div></div>
+
+    <div class="pg"><div class="p2b"><div class="t"><span class="eb">What it does</span><h5>Know what happened. Know what to do next.</h5><p>Ask in your own words. The answer comes back in a sentence, with the records it came from.</p></div>
+      <div class="ph"><img src="../public/site/assets/industry-retail-3.jpg" alt="A shop owner at her counter reading a document"><div class="card"><div class="q">Which customers have gone quiet this year?</div><div class="a"><b>Four accounts that ordered monthly have stopped.</b> Two have an open complaint.</div><div class="c"><span class="srcchip">Orders</span><span class="srcchip">Tickets</span></div></div></div></div></div>
+    <div class="nt"><span class="no">2</span><h4>Promise, with proof floating on it</h4><p>The live site's plain-language line, and a real answer card laid over a real photograph. The photo is the ground, not a banner; the card overlaps its edge so the band has depth.</p><div class="rule-k"><span>Answer card</span><span>Card overlaps photo</span><span>One shadow</span></div></div>
+
+    <div class="pg"><div class="b3b"><div class="br" aria-hidden="true"></div><div class="t"><span class="eb">Arthur</span><h5>Everything you hold, read as one.</h5><p>Orders, invoices, tickets and calendars connect into a single answer. This is the only place the brain moves.</p></div></div></div>
+    <div class="nt"><span class="no">3</span><h4>The brain, once</h4><p>Its single appearance on the page: navy stage, palette points only, drifting slowly beside one short paragraph. Never behind a headline.</p><div class="rule-k"><span>Navy only</span><span>Teal, cream, copper points</span><span>Reduced motion: still</span></div></div>
+
+    <div class="pg"><div class="i4b"><h5>Built for the way you work.</h5><div class="g">
+      <figure><img src="../public/site/assets/industry-manufacturing.jpg" alt="Plant floor"><figcaption><b>Manufacturing</b>Which jobs ran over the quote last month?</figcaption></figure>
+      <figure><img src="../public/site/assets/industry-schools.jpg" alt="Classroom"><figcaption><b>Schools</b>Which families have not heard from us since August?</figcaption></figure>
+      <figure><img src="../public/site/assets/industry-hospitality.jpg" alt="Dining room"><figcaption><b>Hospitality</b>Which nights lose money on staffing?</figcaption></figure>
+      <figure><img src="../public/site/assets/industry-property.jpg" alt="Apartment building"><figcaption><b>Property</b>Which units turn over fastest, and why?</figcaption></figure>
+      <figure><img src="../public/site/assets/industry-nonprofit.jpg" alt="Volunteers at work"><figcaption><b>Nonprofit</b>Which donors gave last year and not this year?</figcaption></figure></div></div></div>
+    <div class="nt"><span class="no">4</span><h4>Industries as photographs</h4><p>A real photograph per industry, each carrying a different question, never the same one twice. One large tile leads so the grid has a focal point instead of a row of equals.</p><div class="rule-k"><span>Bento, 1 large + 4</span><span>One question each</span><span>No icons</span></div></div>
+
+    <div class="pg"><div class="w5b"><h5>Three steps, and your data stays yours.</h5><div class="s">
+      <div><b>1</b><strong>Connect</strong>Point Arthur at the systems you already use.</div>
+      <div><b>2</b><strong>Ask</strong>In your own words, any time.</div>
+      <div><b>3</b><strong>Act</strong>Every answer names its sources and what to do next.</div></div>
+      <div class="sec"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg>Your records are never used to train anyone else's model.</div></div></div>
+    <div class="nt"><span class="no">5</span><h4>How it works and the data promise</h4><p>Three numbered steps on white, then the security promise in one sentence. Everything deeper lives on its own page, so this band stays short.</p><div class="rule-k"><span>Serif numerals</span><span>Hard rule above</span><span>One promise</span></div></div>
+
+    <div class="pg last"><div class="c6b"><img src="../public/site/assets/outdoors.jpg" alt="People outdoors"><h5>Ask your business a question.</h5><span class="cta">Talk to us</span><div class="ft"><span>LOVELEEDAY Studios LLC</span><span>Privacy · Terms · Security</span></div></div></div>
+    <div class="nt"><span class="no">6</span><h4>One conversation</h4><p>"For a fuller life" made literal: a photograph of life outside work under the navy close. One cream button. No prices, ever.</p><div class="rule-k"><span>Navy 85% over photo</span><span>Cream button</span><span>No prices</span></div></div>
+  </div>
+
+  <div class="thumbs">
+    <div class="thumb"><div class="f"><div class="hx"><img src="../public/site/assets/hero.jpg" alt=""><span>Pure intelligence.</span></div><div class="pr"><i></i></div><div class="gr"><img src="../public/site/assets/industry-retail.jpg" alt=""><img src="../public/site/assets/industry-government.jpg" alt=""><img src="../public/site/assets/industry-portfolios.jpg" alt=""></div><div class="dk"></div></div><h4>Home</h4><p>All six bands.</p></div>
+    <div class="thumb"><div class="f"><div class="hx"><img src="../public/site/assets/industry-manufacturing-2.jpg" alt=""><span>Manufacturing, read as one.</span></div><div class="pr"><i></i></div><div class="gr"><img src="../public/site/assets/industry-schools.jpg" alt=""><img src="../public/site/assets/industry-property.jpg" alt=""><img src="../public/site/assets/industry-retail-2.jpg" alt=""></div><div class="dk"></div></div><h4>Industry</h4><p>That industry's photograph as hero, then 2, 4 with the other industries, 6.</p></div>
+    <div class="thumb"><div class="f"><div class="bn" style="height:42%"></div><div class="pr"><i></i></div><div class="tm"><i style="width:80%"></i><i style="width:60%"></i></div><div class="dk"></div></div><h4>Arthur</h4><p>The brain as hero, then 2, 5, 6.</p></div>
+    <div class="thumb"><div class="f"><div class="cr"><small>Prepared for Northgate Schools</small><span>What your records already know.</span></div><div class="pr"><i></i></div><div class="tm"><i style="width:90%"></i><i style="width:70%"></i><i style="width:80%"></i></div><div class="dk"></div></div><h4>Proposal</h4><p>Cream hero with the client's name, their own question on the answer card, terms, 6.</p></div>
+  </div>
+</div></section>
+<!--/MARKETING-->
+
+<!--LAUNCH-->
+<section class="section sunk" id="launch"><div class="wrap">
+  <div class="sec-head"><div><div class="sec-no">15 Launch kit</div><h2>Launch day, from the same parts.</h2></div><p class="lead">Social, the deck and the announcement email reuse the answer card, the palette and the photography. Nothing is designed fresh for the occasion.</p></div>
+  <div class="kit">
+    <figure><div class="social"><span class="lk" style="--h:18px;color:#fff"><img src="../public/brand/mark-white-512.png" alt="">LOVELEEDAY</span><h5>Ask your business a question.</h5><div class="phone"><div class="bub q">Who hasn't paid since summer?</div><div class="bub">Three customers, $14,300. Harbor Supply owes the most.</div></div></div><figcaption>Social, 1080 square. Dark mockup style on every platform: navy ground, a real phone, one line in Sentient.</figcaption></figure>
+    <figure><div class="slide"><div class="l"><span class="lk" style="--h:16px;color:var(--ink)"><img src="../public/site/assets/mark-ink-512.png" alt="">LOVELEEDAY</span><div><h5>Know what happened. Know what to do next.</h5><p>Arthur reads the systems a business already has and answers in a sentence, with sources.</p></div><div class="foot"><span>Launch · 2026</span><span>01</span></div></div><img src="../public/site/assets/industry-retail-3.jpg" alt="A shop owner at her counter reading a document"></div><figcaption>Deck, 16:9. Cream left, a real photograph right. One idea per slide, one grid for the whole deck.</figcaption></figure>
+    <div class="mail"><div class="m"><div class="hd"><span class="lk" style="--h:16px;color:var(--ink)"><img src="../public/site/assets/mark-ink-512.png" alt="">LOVELEEDAY</span></div><div class="bd"><p class="q">"Which customers have gone quiet this year?"</p><p>Most owners can ask that question. Very few can get an answer before lunch.</p><p>Starting today, Arthur can. It reads the orders, invoices and tickets you already have, and answers in a sentence with the sources underneath.</p><p><span class="b p" style="height:36px;font-size:13px">See how it works</span></p></div></div><div><h4>Announcement email</h4><p class="cap" style="font-size:14px;margin-top:8px">600 px column, built as paragraphs, warm by default. Opens on a real customer question in Sentient, one button, the plain-text footer with the legal name.</p></div></div>
+  </div>
+</div></section>
+<!--/LAUNCH-->
+
+<!--GOVERN-->
+<section class="part" id="part-govern"><div class="wrap">
+  <div class="pn">Part Four</div>
+  <h2>Keeping it true.</h2>
+  <p class="lead">A system drifts the day after launch unless someone owns it. These are the rules for changing the book and the product.</p>
+  <div class="inside"><a href="#govern">Gates and versions</a><a href="#source">Token source</a></div>
+</div></section>
+
+<section class="section" id="govern"><div class="wrap">
+  <div class="sec-head"><div><div class="sec-no">18 Governance</div><h2>The book changes first.</h2></div><p class="lead">If a page needs something the book does not have, the book gets it first, with a reason. Then the page. That order is what keeps the site and the software looking like one company.</p></div>
+  <div class="gates">
+    <div class="gate"><span class="k">1</span><h4>Tokens only</h4><p>No raw hex values in page code. A check fails the build on any color outside <code>tokens.css</code>.</p></div>
+    <div class="gate"><span class="k">2</span><h4>Render before review</h4><p>Desktop at 1440 and phone at 390, screenshotted and critiqued before anyone is asked to look.</p></div>
+    <div class="gate"><span class="k">3</span><h4>Team review</h4><p>Brand, product and content each sign off. A change that only one discipline has seen is not ready.</p></div>
+    <div class="gate"><span class="k">4</span><h4>Measured access</h4><p>Contrast computed, focus visible, targets 44 px, reduced motion honored. Measured, never eyeballed.</p></div>
+  </div>
+  <div class="mt6">
+    <h3>Versions</h3>
+    <div class="mt4">
+      <div class="vrow"><b>1.0</b><span>October 2026. Brand style guide for the site: logo, color, type, photography, the brain, site components, voice.</span></div>
+      <div class="vrow"><b>2.0</b><span>This book. Adds the platform, the audit, three-tier tokens, the software, charts, states, page anatomy, the launch kit and these rules. Version 1 content kept unchanged.</span></div>
+      <div class="vrow"><b>2.1</b><span>Next. <code>tokens.css</code> shipped into the site and the portal; blue and <code>--accent-orange</code> removed; retired hearts moved out of <code>public/brand/</code>.</span></div>
+    </div>
+  </div>
+</div></section>
+<!--/GOVERN-->
