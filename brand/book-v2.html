@@ -548,13 +548,548 @@ code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86
 .thumb p{font-size:14px;color:var(--on-deep-mu);margin-top:4px;line-height:1.55}
 .tower>.pg{display:flex;flex-direction:column}.tower>.pg>div:last-child{flex:1 0 auto}.thumb .f .cr span{color:var(--ink)}.thumb .f .pr i{position:relative}.thumb .f .pr i:before,.thumb .f .pr i:after{content:"";position:absolute;left:10px;height:5px;border-radius:3px}.thumb .f .pr i:before{top:9px;width:58%;background:var(--ink);opacity:.75}.thumb .f .pr i:after{top:20px;width:32%;background:var(--teal)}
 @media (max-width:900px){.tower{grid-template-columns:minmax(0,1fr)}.tower>.nt:before{display:none}.thumbs{grid-template-columns:1fr 1fr}.h1b h3{font-size:40px}.p2b,.b3b{grid-template-columns:1fr;height:auto}.p2b .ph{height:260px}.p2b .card{left:16px}.b3b .br{opacity:.35}}
+
+/* ===== 05 Typography chapter (new in 2.0). All rules scoped under #type or prefixed .ty- ===== */
+#type{
+  --ty-statement:clamp(44px,4.8vw,66px);
+  --ty-display:clamp(44px,5.8vw,76px);
+  --ty-h1:clamp(38px,4.4vw,56px);
+  --ty-h2:clamp(32px,3.75vw,48px);
+  --ty-h3:clamp(27px,2.3vw,29px);
+  --ty-question:clamp(22px,2.1vw,26px);
+  --ty-lead:clamp(16px,1.4vw,18px);
+  --ty-page:clamp(32px,7vw,42px);
+  --ty-section:clamp(18px,4vw,24px);
+  --ty-kpi:clamp(32px,3.125vw,40px);
+  --ty-bad:#B0412B;
+}
+#type .ty-sub{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s6);align-items:end;margin:var(--s6) 0 var(--s4);padding-top:var(--s4);border-top:1.5px solid var(--ink)}
+#type .ty-sub:first-of-type{margin-top:0}
+#type .ty-sub .ty-k{font-size:13px;font-weight:600;color:var(--teal-d);margin-bottom:var(--s1)}
+#type .ty-sub p{font-size:16px;line-height:1.65;color:var(--mid);max-width:30em}
+#type .ty-new{display:inline-block;font-size:12px;line-height:1;font-weight:600;color:var(--copper);background:var(--copper-wash);padding:4px 8px;border-radius:8px;vertical-align:middle;margin-left:var(--s1)}
+
+/* 5.1 specimens */
+.ty-spec{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:var(--s5);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s5)}
+.ty-spec+.ty-spec{margin-top:16px}
+.ty-spec.dk{background:var(--deep);border-color:var(--deep);color:var(--on-deep)}
+.ty-spec .ty-tag{font-size:13px;font-weight:600;color:var(--teal-d)}
+.ty-spec.dk .ty-tag{color:var(--on-deep-mu)}
+.ty-name{font-size:clamp(72px,10vw,128px);line-height:1;margin:var(--s3) 0;letter-spacing:-.045em;overflow-wrap:anywhere}
+.ty-name.nsw{font-family:var(--sans);font-weight:600}
+.ty-name.nse{font-family:var(--serif);font-weight:400;letter-spacing:-.04em}
+.ty-gl{font-size:22px;line-height:1.5;color:var(--mid);overflow-wrap:anywhere}
+.ty-spec.dk .ty-gl{color:var(--on-deep-mu)}
+.ty-gl.se{font-family:var(--serif)}
+.ty-gl+.ty-gl{margin-top:var(--s1)}
+.ty-facts{display:grid;gap:0;align-content:start}
+.ty-facts div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:var(--s2);padding:var(--s1) 0 var(--s2);border-top:1px solid var(--line-2);font-size:14px;line-height:1.5}
+.ty-spec.dk .ty-facts div{border-color:var(--deep-line)}
+.ty-facts dt{font-weight:600;color:var(--dim)}
+.ty-spec.dk .ty-facts dt{color:var(--on-deep-mu)}
+.ty-facts dd{margin:0;overflow-wrap:anywhere}
+.ty-why{grid-column:1/-1;font-size:16px;line-height:1.7;color:var(--mid);max-width:44em;border-top:1px solid var(--line-2);padding-top:var(--s3)}
+.ty-spec.dk .ty-why{color:var(--on-deep-mu);border-color:var(--deep-line)}
+.ty-wts{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s2)}
+.ty-wts.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ty-wts>div{background:var(--ground);border-radius:12px;padding:var(--s3);display:grid;gap:var(--s1)}
+.ty-spec.dk .ty-wts>div{background:var(--deep-2)}
+.ty-wts b{font-size:56px;line-height:1;letter-spacing:-.03em;font-weight:inherit}
+.ty-wts span{font-size:13px;line-height:1.5;color:var(--dim)}
+.ty-spec.dk .ty-wts span{color:var(--on-deep-mu)}
+
+/* 5.2 pairing */
+.ty-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.ty-pc{border:1px solid var(--line);border-radius:16px;padding:var(--s4);background:var(--paper);display:flex;flex-direction:column;gap:var(--s2);min-width:0}
+.ty-pc.dk{background:var(--deep);border-color:var(--deep);color:var(--on-deep)}
+.ty-pc .ty-by{font-size:13px;font-weight:600;color:var(--dim)}
+.ty-pc.dk .ty-by{color:var(--on-deep-mu)}
+.ty-line-se{font:400 clamp(26px,2.6vw,34px)/1.2 var(--serif);letter-spacing:-.015em}
+.ty-line-sw{font:400 clamp(26px,2.6vw,34px)/1.2 var(--sans);letter-spacing:-.02em}
+.ty-verdict{margin-top:auto;font-size:14px;line-height:1.6;color:var(--mid)}
+.ty-pc.dk .ty-verdict{color:var(--on-deep-mu)}
+.ty-verdict b{font-weight:600}
+.ty-yes{color:var(--teal-d)}
+.ty-no{color:var(--ty-bad)}
+.ty-pc.dk .ty-yes{color:#7FC4C0}
+.ty-pc.dk .ty-no{color:#F0A08E}
+.ty-when{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.ty-when>div{border-top:1.5px solid var(--ink);padding-top:var(--s2)}
+.ty-when h4{margin-bottom:var(--s1)}
+.ty-when p{font-size:15px;line-height:1.65;color:var(--mid)}
+
+/* 5.3 scale */
+.ty-grp{font-size:13px;font-weight:600;color:var(--teal-d);margin:var(--s4) 0 var(--s1)}
+.ty-ladder{background:var(--ground);border-radius:16px;padding:0 var(--s4)}
+.ty-ladder.prod{background:var(--sunk)}
+.ty-row{display:grid;grid-template-columns:168px minmax(0,1fr) 216px;gap:var(--s3);align-items:baseline;padding:var(--s3) 0;border-top:1px solid var(--line-2)}
+.ty-row:first-child{border-top:0}
+.ty-row .ty-tk{font:600 13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);overflow-wrap:anywhere}
+.ty-row .ty-tk small{display:block;font:400 12px/1.5 var(--sans);color:var(--dim)}
+.ty-row .ty-sm{min-width:0;overflow-wrap:anywhere}
+.ty-row .ty-sp{font:400 12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--dim)}
+.t-statement{font:400 var(--ty-statement)/1.07 var(--serif);letter-spacing:-.05em}
+.t-display{font:600 var(--ty-display)/1 var(--sans);letter-spacing:-.045em}
+.t-h1{font:500 var(--ty-h1)/1.06 var(--sans);letter-spacing:-.045em}
+.t-h2{font:500 var(--ty-h2)/1.1 var(--sans);letter-spacing:-.045em}
+.t-h3{font:500 var(--ty-h3)/1.2 var(--sans);letter-spacing:-.035em}
+.t-question{font:400 var(--ty-question)/1.25 var(--serif);letter-spacing:-.015em}
+.t-lead{font:400 var(--ty-lead)/1.65 var(--sans);letter-spacing:-.02em;color:var(--mid)}
+.t-body{font:400 16px/1.75 var(--sans)}
+.t-small{font:400 14px/1.6 var(--sans)}
+.t-caption{font:400 13px/1.6 var(--sans);color:var(--dim)}
+.t-eyebrow{font:600 13px/1 var(--sans);letter-spacing:.02em;color:var(--teal-d)}
+.t-button{display:inline-flex;align-items:center;min-height:44px;padding:0 24px;border-radius:999px;background:var(--teal-d);color:#fff;font:600 15px/1 var(--sans)}
+.t-nav{font:400 14px/1.5 var(--sans);color:var(--mid)}
+.t-nav b{font-weight:500;color:var(--ink)}
+.t-page{font:600 var(--ty-page)/1.1 var(--sans);letter-spacing:-.03em}
+.t-section{font:600 var(--ty-section)/1.3 var(--sans);letter-spacing:-.02em}
+.t-pbody{font:400 14px/1.5 var(--sans)}
+.t-table{font:400 13px/1.4 var(--sans);font-variant-numeric:tabular-nums}
+.t-label{font:600 12px/1.4 var(--sans);letter-spacing:.01em;color:var(--dim)}
+.t-kpi{font:600 var(--ty-kpi)/1 var(--sans);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.ty-tw{margin-top:var(--s4)}
+.ty-tb{width:100%;border-collapse:collapse;font-size:14px}
+.ty-tb th{font-size:13px;font-weight:600;text-align:left;color:var(--dim);padding:0 var(--s1) var(--s1) 0;border-bottom:1px solid var(--ink);white-space:nowrap}
+.ty-tb td{padding:var(--s1) var(--s1) var(--s1) 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.ty-tb td:first-child{font:600 12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+.ty-tb tr.ty-g td{padding-top:var(--s3);font:600 13px/1.5 var(--sans);color:var(--teal-d);border-bottom:1px solid var(--line-2);white-space:normal}
+
+/* 5.4 rules */
+.ty-rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5) var(--s5)}
+.ty-rule.ty-wide{grid-column:1/-1}
+.ty-rule.ty-wide .ty-dd{grid-template-columns:1fr}
+.ty-rule h4{margin-bottom:var(--s1)}
+.ty-rule>p{font-size:15px;line-height:1.6;color:var(--mid);margin-bottom:var(--s2)}
+.ty-dd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.ty-d{border-radius:12px;padding:var(--s2);background:var(--ground);border:1px solid var(--line);min-width:0;overflow:hidden;position:relative;padding-top:var(--s4)}
+.ty-d:before{position:absolute;top:var(--s1);left:var(--s2);font:600 12px/1.4 var(--sans)}
+.ty-d.do:before{content:"Do";color:var(--teal-d)}
+.ty-d.dont:before{content:"Don't";color:var(--ty-bad)}
+.ty-d.do{border-color:#0E787766}
+.ty-d.dont{border-color:#B0412B55}
+.ty-d.dk{background:var(--deep);color:var(--on-deep);border-color:var(--deep)}
+.ty-d.dk.do:before{color:#7FC4C0}.ty-d.dk.dont:before{color:#F0A08E}
+.ty-d p{margin:0}
+.ty-d .cap{margin-top:var(--s1);font-size:12px}
+.ty-meas{font-size:15px;line-height:1.7}
+.ty-ruler{max-width:100%;height:8px;border-left:1px solid var(--teal);border-right:1px solid var(--teal);border-bottom:1px solid var(--teal);margin-top:var(--s1)}
+.ty-rl{font:600 12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--teal-d);margin-top:4px}
+.ty-d.dont .ty-rl{color:var(--ty-bad)}.ty-d.dont .ty-ruler{border-color:var(--ty-bad)}
+.ty-num{width:100%;border-collapse:collapse;font-size:15px}
+.ty-num td{padding:4px 0;border-bottom:1px solid var(--line)}
+.ty-num td:last-child{text-align:right}
+.ty-num.tab td:last-child{font-variant-numeric:tabular-nums}
+.ty-num.prop td:last-child{font-variant-numeric:proportional-nums}
+.ty-fake{font-synthesis:weight style}
+
+/* 5.5 hierarchy */
+.ty-anno{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s5);align-items:start}
+.ty-anno+.ty-anno{margin-top:var(--s5)}
+.ty-hero{background:var(--deep);color:var(--on-deep);border-radius:16px;padding:var(--s5);display:grid;gap:var(--s3)}
+.ty-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:var(--s4);display:grid;gap:var(--s2);box-shadow:0 24px 56px #16243A12}
+.ty-ln{display:grid;grid-template-columns:24px minmax(0,1fr);gap:var(--s2);align-items:start}
+.ty-ln>.ty-pin{margin-top:4px}
+.ty-pin{width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font:600 12px/24px var(--sans);text-align:center;flex:none}
+.ty-hero .ty-pin{background:#7FC4C0;color:var(--deep)}
+.ty-hero .t-eyebrow{color:#7FC4C0}
+.ty-hero .t-statement{color:#fff;max-width:11em}
+.ty-hero .t-lead{color:var(--on-deep-mu);max-width:30em}
+.ty-hero .t-button{background:var(--ground);color:var(--ink)}
+.ty-hero .t-caption{color:var(--on-deep-mu)}
+.ty-card .ty-ln:nth-child(n+3){margin-top:0}
+.ty-mini{width:100%;border-collapse:collapse}
+.ty-mini th{font:600 12px/1.4 var(--sans);color:var(--dim);text-align:left;padding:0 0 8px;border-bottom:1px solid var(--ink)}
+.ty-mini th:last-child,.ty-mini td:last-child{text-align:right}
+.ty-mini td{padding:8px 0;border-bottom:1px solid var(--line);font:400 13px/1.4 var(--sans);font-variant-numeric:tabular-nums}
+.ty-key{display:grid;gap:0}
+.ty-key div{display:grid;grid-template-columns:24px minmax(0,1fr);gap:var(--s2);padding:var(--s2) 0;border-top:1px solid var(--line-2);align-items:start}
+.ty-key div:last-child{border-bottom:1px solid var(--line-2)}
+.ty-key b{display:block;font:600 13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace}
+.ty-key p span{display:block;font-size:13px;line-height:1.5;color:var(--dim)}
+
+/* 5.6 code */
+.ty-code{background:var(--deep);color:var(--on-deep);border-radius:16px;padding:var(--s4);margin:0;overflow:hidden;font:400 13px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}
+.ty-code .c{color:var(--on-deep-mu)}
+.ty-code .k{color:#7FC4C0}
+.ty-codes{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s3)}
+.ty-codes .ty-cl{font-size:13px;font-weight:600;color:var(--dim);margin-bottom:var(--s1)}
+
+/* 5.7 fallbacks + a11y */
+.ty-fb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ty-fbc{border:1px solid var(--line);border-radius:16px;padding:var(--s4);background:var(--paper);display:grid;gap:var(--s2);min-width:0}
+.ty-fbc code{display:block;font-size:12px;line-height:1.7;color:var(--mid);overflow-wrap:anywhere}
+.ty-fbs{font-size:28px;line-height:1.2;letter-spacing:-.02em}
+.ty-con{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+.ty-cc{border-radius:12px;padding:var(--s3);display:grid;gap:var(--s1);border:1px solid var(--line);min-width:0}
+.ty-cc .aa{font:500 36px/1 var(--sans);letter-spacing:-.03em}
+.ty-cc .rt{font:600 14px/1.4 var(--sans)}
+.ty-cc .nm{font:400 12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.9}
+.ty-cc .us{font-size:13px;line-height:1.5}
+.ty-mins{margin-top:var(--s4)}
+
+@media (max-width:900px){
+  #type .ty-sub,.ty-spec,.ty-anno,.ty-codes,.ty-fb,.ty-rules,.ty-pair,.ty-when{grid-template-columns:1fr}
+  #type .ty-sub{gap:var(--s2);margin:var(--s5) 0 var(--s3)}
+  .ty-spec{padding:var(--s3)}
+  .ty-wts,.ty-wts.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ty-wts>div{padding:var(--s2)}
+  .ty-wts b{font-size:40px}
+  .ty-name{font-size:72px}
+  .ty-gl{font-size:15px}
+  .ty-ladder{padding:0 var(--s2)}
+  .ty-row{grid-template-columns:1fr;gap:var(--s1)}
+  .ty-con{grid-template-columns:1fr}
+  .ty-hero{padding:var(--s3)}
+  .ty-card{padding:var(--s3)}
+  .ty-code{padding:var(--s2)}
+  .ty-pc{padding:var(--s3)}
+  .ty-dd{grid-template-columns:1fr}
+  .ty-tb,.ty-tb tbody,.ty-tb tr,.ty-tb td{display:block;width:100%}
+  .ty-tb thead{display:none}
+  .ty-tb tr{padding:var(--s2) 0;border-bottom:1px solid var(--line-2)}
+  .ty-tb td{border:0;padding:4px 0;display:grid;grid-template-columns:96px minmax(0,1fr);gap:var(--s1)}
+  .ty-tb td:before{content:attr(data-l);font-size:12px;font-weight:600;color:var(--dim)}
+  .ty-tb td:first-child{display:block;white-space:normal;overflow-wrap:anywhere}
+  .ty-tb td:first-child:before{content:none}
+  .ty-tb tr.ty-g{padding:0;border:0}
+  .ty-tb tr.ty-g td{display:block;padding-top:var(--s2)}
+  .ty-tb tr.ty-g td:before{content:none}
+}
+
+#anatomy{overflow:visible;background:var(--deep);color:var(--on-deep);border-color:var(--deep-line);--an-tl:#7FC4C0;--an-cl:#D08A66;--an-deeper:#101C2E;--an-foot:#0F1A2B;--an-mono:ui-monospace,'SF Mono',Menlo,monospace;--k:.8;--u:calc(1px / var(--k))}
+#anatomy .sec-head h2{color:#fff}
+#anatomy .sec-head .lead{color:var(--on-deep-mu)}
+#anatomy .sec-head .sec-no{color:var(--on-deep-mu)}
+#anatomy .sec-head .sec-no:before{background:var(--an-tl)}
+
+.an-legend{display:flex;align-items:center;justify-content:space-between;gap:24px;height:32px;margin:64px 0 24px;font-size:14px;line-height:1.6;color:var(--on-deep-mu)}
+.an-legend b{color:var(--on-deep);font-weight:600}
+.an-legend label{display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:var(--on-deep);font-weight:500}
+.an-legend input{width:16px;height:16px;accent-color:#0E7877;margin:0}
+.an-pct:before{content:"80%"}
+
+.an-spec{width:1280px;margin-inline:calc((100% - 1280px) / 2)}
+.an-row{width:calc(1600px * var(--k));height:calc(var(--h) * 1px * var(--k));position:relative}
+.an-frame{position:absolute;left:0;top:0;width:1600px;transform:scale(var(--k));transform-origin:0 0;font-family:var(--sans)}
+.an-frame *{box-sizing:border-box}
+.an-pg{position:relative;margin-left:64px;width:1440px;outline:1px solid var(--deep-line);outline-offset:0;line-height:1.6;font-weight:400;font-variant-numeric:normal;-webkit-font-smoothing:antialiased}
+.an-w{width:1080px;margin-inline:auto;position:relative}
+
+/* bands */
+.an-b{position:relative}
+.an-lt{background:var(--ground);color:var(--ink)}
+.an-sk{background:var(--sunk);color:var(--ink)}
+.an-dk{background:var(--deep);color:var(--on-deep)}
+.an-dp{background:var(--an-deeper);color:var(--on-deep)}
+.an-hl{border-top:1px solid var(--line)}
+.an-pg h2{font:600 40px/1.1 var(--sans);letter-spacing:-.03em;margin:0;text-wrap:balance;color:inherit}
+.an-pg h3{font:600 20px/1.5 var(--sans);letter-spacing:0;margin:0;color:inherit}
+.an-pg p{margin:0}
+#anatomy .an-pg h2{color:inherit}
+#anatomy .an-dk h2,#anatomy .an-dp h2{color:#fff}
+.an-body{font-size:17px;line-height:1.6;color:var(--mid)}
+.an-dk .an-body,.an-dp .an-body{color:var(--on-deep-mu)}
+.an-split{display:grid;grid-template-columns:5fr 7fr;column-gap:64px;align-items:end}
+.an-btn{display:inline-flex;align-items:center;height:44px;padding:0 24px;border-radius:999px;font:600 15px/1 var(--sans);white-space:nowrap}
+.an-bt{background:var(--teal-d);color:#fff}
+.an-bc{background:var(--ground);color:var(--deep)}
+.an-bg{border:1px solid #ffffff73;color:#fff}
+.an-lk{font-size:17px;line-height:1.6;color:var(--teal-d);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px;white-space:nowrap}
+.an-dk .an-lk,.an-dp .an-lk{color:#fff}
+.an-lk:after{content:"\2192";display:inline-block;margin-left:8px;text-decoration:none}
+
+/* gap spacers with copper brackets */
+.an-g{display:block;position:relative;width:100%}
+.an-g:before{content:"";position:absolute;left:-20px;top:0;bottom:0;width:8px;border-left:1.5px solid var(--an-cl);background:linear-gradient(var(--an-cl),var(--an-cl)) top left/8px 1.5px no-repeat,linear-gradient(var(--an-cl),var(--an-cl)) bottom left/8px 1.5px no-repeat}
+.an-g b{position:absolute;right:calc(100% + 28px);top:50%;transform:translateY(-50%);font:500 calc(11 * var(--u))/1 var(--an-mono);color:var(--an-cl);white-space:nowrap}
+.an-lt .an-g:before,.an-sk .an-g:before{border-left-color:#9B5C3E;background:linear-gradient(#9B5C3E,#9B5C3E) top left/8px 1.5px no-repeat,linear-gradient(#9B5C3E,#9B5C3E) bottom left/8px 1.5px no-repeat}
+.an-lt .an-g b,.an-sk .an-g b{color:#9B5C3E}
+
+/* padding redlines */
+.an-pd{position:absolute;left:0;right:0;pointer-events:none;border-left:4px solid var(--an-tl);background:repeating-linear-gradient(45deg,rgba(127,196,192,.14) 0 1px,transparent 1px 8px);z-index:5}
+.an-lt .an-pd,.an-sk .an-pd{border-left-color:#0E7877;background:repeating-linear-gradient(45deg,rgba(14,120,119,.13) 0 1px,transparent 1px 8px)}
+.an-pd i{position:absolute;left:24px;top:50%;transform:translateY(-50%);font:500 calc(11 * var(--u))/1 var(--an-mono);font-style:normal;color:#CFE4E1;background:var(--deep);padding:calc(3 * var(--u)) calc(6 * var(--u))}
+.an-lt .an-pd i,.an-sk .an-pd i{color:var(--teal-d);background:var(--ground)}
+.an-sk .an-pd i{background:var(--sunk)}
+.an-pt{top:0}.an-pb{bottom:0}
+
+/* type tags (right rail) and callout dots */
+.an-tg{position:absolute;left:calc(1260px - var(--ex,180px));top:50%;transform:translateY(-50%);width:276px;padding-left:188px;font:500 calc(11 * var(--u))/1.25 var(--an-mono);font-style:normal;color:#CFE4E1;pointer-events:none;white-space:nowrap;z-index:6}
+.an-tg:before{content:"";position:absolute;left:0;top:50%;width:180px;border-top:1px dotted currentColor;opacity:.6}
+.an-lt .an-tg,.an-sk .an-tg{color:var(--teal-d)}
+.an-dot{position:absolute;left:calc(20px - var(--ex,180px));top:50%;transform:translateY(-50%);width:calc(22 * var(--u));height:calc(22 * var(--u));border-radius:50%;background:var(--teal-d);color:#fff;font:600 calc(10 * var(--u))/calc(22 * var(--u)) var(--sans);text-align:center;z-index:7;pointer-events:none}
+.an-dk .an-dot,.an-dp .an-dot{background:var(--an-tl);color:var(--deep)}
+.an-dot:after{content:"";position:absolute;left:100%;top:50%;width:calc(var(--ex,180px) - 20px - 22 * var(--u) - 4px);border-top:1px solid currentColor;border-color:var(--teal-d);opacity:.7}
+.an-dk .an-dot:after,.an-dp .an-dot:after{border-color:var(--an-tl)}
+.an-hero .an-dot{background:var(--an-tl);color:var(--deep)}
+.an-hero .an-dot:after{border-color:var(--an-tl)}
+.an-hero .an-tg,.an-close .an-tg{color:#CFE4E1}
+.an-rel{position:relative}
+.an-p{padding:96px 0}
+
+/* band number in left rail */
+.an-no{position:absolute;left:-52px;top:16px;width:40px;height:40px;border-radius:50%;background:var(--teal-d);color:var(--ground);font:600 calc(14 * var(--u))/40px var(--sans);text-align:center;z-index:8}
+.an-no em{position:absolute;left:50%;top:56px;transform:translateX(-50%) rotate(180deg);writing-mode:vertical-rl;font:500 calc(12 * var(--u))/1 var(--sans);font-style:normal;color:var(--on-deep-mu);white-space:nowrap}
+
+/* nav */
+.an-nav{height:73px;background:#fff;border-bottom:1px solid var(--line);position:relative;color:var(--ink)}
+.an-nav .an-w{height:72px;display:flex;align-items:center;gap:28px;width:1080px}
+.an-nav .lk{color:var(--ink)}
+.an-ni{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 12px;border-radius:999px;font:500 14px/1 var(--sans);color:var(--mid);white-space:nowrap}
+.an-ni:after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translate(-1px,-1px)}
+.an-ni.on{background:var(--sunk);color:var(--ink)}
+.an-ni.on:after{transform:rotate(225deg) translate(-1px,-1px)}
+.an-nr{margin-left:auto;display:flex;align-items:center;gap:8px}
+.an-si{font:500 14px/1 var(--sans);color:var(--mid);padding:10px 12px}
+.an-nav .an-btn{height:40px;padding:0 18px;font-size:14px}
+.an-navm{display:flex;align-items:center;gap:28px}
+
+/* hero */
+.an-hero{height:640px;overflow:hidden;color:#fff;background:var(--deep)}
+.an-hero>img{z-index:0;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.an-hero:before{content:"";z-index:1;position:absolute;inset:0;background:linear-gradient(90deg,#16243AF2 0%,#16243AC7 46%,#16243A1A 100%)}
+.an-hero:after{content:"";z-index:1;position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(0deg,#16243A99,#16243A00)}
+.an-hero .an-w{z-index:2}
+.an-hs{position:absolute;left:0;right:0;top:96px;z-index:2}
+.an-hs .an-in{width:640px;position:relative}
+.an-cap{font-size:14px;line-height:1.5;font-weight:500;color:var(--dim)}
+.an-hero .an-cap{color:#C9D2DE}
+.an-h1{font:400 72px/1.02 var(--serif);letter-spacing:-.03em;margin:0;color:#fff;position:relative}
+.an-lead{font-size:20px;line-height:1.5;color:#DCE3EC;max-width:520px}
+.an-brow{display:flex;align-items:center;gap:24px}
+.an-hero .an-lk{color:#fff}
+.an-small{font-size:14px;line-height:1.5;color:#C9D2DE}
+.an-hstrip{position:absolute;left:0;right:0;bottom:80px;z-index:2}
+.an-hstrip .an-w{display:flex;justify-content:space-between;border-top:1px solid #ffffff47;padding-top:16px;font-size:14px;line-height:1.5;color:#C9D2DE}
+.an-hstrip .an-lk{font-size:14px;color:#fff;line-height:1.5}
+.an-hstrip .an-lk:after{margin-left:8px}
+
+/* proof */
+.an-proof{height:552px}
+.an-proof .an-w{height:100%}
+.an-card{position:absolute;left:0;top:-64px;width:640px;background:#fff;border-radius:8px;padding:40px;box-shadow:0 24px 48px -24px rgba(22,36,58,.35);z-index:4}
+.an-q{font:400 28px/1.25 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+.an-hr{border-top:1px solid var(--line)}
+.an-srcs{display:flex;font-size:14px;line-height:1.5;color:var(--dim)}
+.an-srcs span{padding:0 16px;border-left:1px solid var(--line)}
+.an-srcs span:first-child{padding-left:0;border-left:0}
+.an-note{font-size:12px;line-height:1.5;color:var(--dim)}
+.an-photo{z-index:3;position:absolute;left:576px;top:-24px;width:504px;height:480px;border-radius:8px;overflow:hidden}
+.an-photo img{width:100%;height:100%;object-fit:cover;object-position:62% 38%}
+
+/* intro */
+.an-intro{min-height:400px}
+.an-intro .an-w{padding:96px 0}
+
+/* four cards */
+.an-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.an-c{background:var(--deep-2);border:1px solid var(--deep-line);border-radius:14px;padding:24px;min-height:336px;display:flex;flex-direction:column}
+.an-ct{font-size:14px;line-height:1.5;font-weight:500;color:var(--an-tl)}
+.an-cq{font:400 20px/1.5 var(--sans);color:#fff}
+.an-ev>div{padding:8px 0;border-top:1px solid var(--deep-line)}
+.an-ev>div:first-child{border-top:0;padding-top:0}
+.an-ev small{display:block;font-size:12px;line-height:1.4;color:var(--on-deep-mu)}
+.an-ev span{display:block;font-size:14px;line-height:1.5;color:#fff}
+.an-bar{display:grid;grid-template-columns:78px 1fr;align-items:center;gap:8px;padding:8px 0;font-size:12px;color:var(--on-deep-mu)}
+.an-bar i{display:block;height:8px;border-radius:4px;background:var(--deep-line);position:relative;overflow:hidden}
+.an-bar i:before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--an-tl)}
+.an-bar.hot i:before{background:var(--an-cl)}
+.an-st{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:14px;line-height:1.5;font-weight:500;color:#fff}
+.an-st:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--an-tl)}
+.an-st.mu:before{background:var(--on-deep-mu)}
+.an-st.hot:before{background:var(--an-cl)}
+.an-chg{display:grid;grid-template-columns:160px 1fr;border-top:1px solid var(--deep-line);padding:24px 0;align-items:baseline}
+.an-chg b{font-size:14px;font-weight:600;color:var(--an-cl)}
+.an-chg p{font-size:17px;line-height:1.6;color:var(--on-deep)}
+.an-micro{font-size:12px;line-height:1.5;color:var(--on-deep-mu)}
+
+/* brain */
+.an-stage{display:grid;grid-template-columns:1fr 540px 1fr;align-items:center;column-gap:0}
+.an-br{width:540px;height:373px;position:relative;overflow:hidden}
+.an-br img{width:540px;height:373px;object-fit:contain;filter:grayscale(1) sepia(.5) hue-rotate(125deg) saturate(1.6);mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 58%,transparent 100%)}
+.an-bc2{display:flex;flex-direction:column;gap:48px;width:200px}
+.an-stage>.an-bc2:last-child{justify-self:end}
+.an-bc2>div{border-left:1px solid var(--deep-line);padding-left:16px}
+.an-bc2>div.on{border-left:2px solid var(--an-tl);padding-left:15px}
+.an-bc2 small{display:block;font-size:14px;font-weight:600;line-height:1.5;color:var(--an-tl)}
+.an-bc2 b{display:block;font-size:17px;font-weight:600;line-height:1.5;color:#fff}
+.an-bc2 p{font-size:14px;line-height:1.5;color:var(--on-deep-mu)}
+.an-t3{font:500 28px/1.2 var(--sans);letter-spacing:-.02em;color:#fff;text-align:center}
+.an-ans{font:400 28px/1.25 var(--serif);color:var(--on-deep);text-align:center}
+.an-ctl{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--deep-line);padding-top:16px}
+.an-ghost{display:inline-flex;align-items:center;height:40px;padding:0 20px;border:1px solid #ffffff5c;border-radius:999px;font:600 14px/1 var(--sans);color:#fff}
+
+/* ask */
+.an-fig{width:1080px;height:372px;overflow:hidden;border-radius:8px;border:1px solid var(--line);box-shadow:0 24px 48px -24px rgba(22,36,58,.35);background:#fff}
+.an-fig img{width:1080px;height:auto;margin-top:-156px}
+
+/* industries */
+.an-bento{display:grid;grid-template-columns:528px 252px 252px;grid-template-rows:268px 268px;gap:24px}
+.an-tile{position:relative;border-radius:14px;overflow:hidden;background:var(--deep)}
+.an-tile.a{grid-row:1 / 3}
+.an-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.an-tile:before{content:"";position:absolute;left:0;right:0;bottom:0;height:176px;background:linear-gradient(0deg,#16243AE6,#16243A00);z-index:1}
+.an-tile.a:before{height:200px}
+.an-tc{position:absolute;left:0;right:0;bottom:0;padding:16px;z-index:2}
+.an-tc b{display:block;font-size:17px;font-weight:600;line-height:1.4;color:#fff}
+.an-tc span{display:block;font-size:14px;line-height:1.5;color:#DCE3EC;margin-top:8px}
+.an-idx{display:grid;grid-template-columns:repeat(3,1fr);column-gap:24px}
+.an-idx a{display:flex;align-items:center;justify-content:space-between;height:56px;border-top:1px solid var(--line);font-size:17px;color:var(--ink)}
+.an-idx a:after{content:"\2192";color:var(--teal-d)}
+.an-lrow{display:flex;gap:32px}
+
+/* living */
+.an-liv{display:grid;grid-template-columns:508px 508px;column-gap:64px;align-items:center}
+.an-liv img{width:508px;height:508px;object-fit:cover;object-position:40% 50%;border-radius:8px}
+
+/* layers */
+.an-lay{display:grid;grid-template-columns:5fr 7fr;column-gap:64px}
+.an-lr{border-top:1px solid var(--line)}
+.an-ly{height:72px;display:grid;grid-template-columns:48px 1fr 24px;align-items:center;border-bottom:1px solid var(--line);padding-left:16px;position:relative}
+.an-ly.on{border-left:2px solid var(--teal);padding-left:14px}
+.an-ly i{font:600 14px/1 var(--sans);font-style:normal;color:var(--copper)}
+.an-ly span{font:500 20px/1.5 var(--sans);color:var(--mid)}
+.an-ly.on span{color:var(--ink)}
+.an-ly u{text-decoration:none;font-size:16px;color:var(--dim)}
+.an-kick{font-size:14px;font-weight:500;line-height:1.5;color:var(--teal-d)}
+.an-t3s{font:500 28px/1.2 var(--sans);letter-spacing:-.02em;color:var(--ink)}
+.an-sch{display:flex;align-items:center;gap:0}
+.an-sch>div:first-child{display:flex;flex-direction:column;gap:8px;width:200px}
+.an-sch>div:first-child span{font-size:14px;line-height:1.5;color:var(--mid);border-left:1px solid var(--line-2);padding-left:12px}
+.an-sch>u{text-decoration:none;flex:1;border-top:1px solid var(--line-2);height:0}
+.an-sch>b{display:flex;align-items:center;justify-content:center;width:200px;height:56px;border-radius:8px;background:var(--deep);color:#fff;font-size:14px;font-weight:600}
+
+/* principles */
+.an-prin{display:grid;grid-template-columns:5fr 7fr;column-gap:64px;align-items:start}
+.an-pr{border-top:1px solid var(--deep-line);padding:32px 0;display:grid;grid-template-columns:56px 1fr}
+.an-pr svg{width:24px;height:24px;stroke:var(--an-tl);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.an-pr h3{color:#fff}
+
+/* how */
+.an-step{border-top:1px solid var(--line);padding:24px 0;display:grid;grid-template-columns:56px 1fr}
+.an-step i{font:600 14px/1.6 var(--sans);font-style:normal;color:var(--copper)}
+.an-step b{display:block;font:600 20px/1.5 var(--sans);color:var(--ink)}
+.an-step p{font-size:17px;line-height:1.6;color:var(--mid)}
+
+/* close */
+.an-close{height:520px;overflow:hidden;color:#fff;background:var(--deep);text-align:center}
+.an-close>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.an-close:before{content:"";position:absolute;inset:0;background:#16243ACC;z-index:1}
+.an-cs{position:absolute;left:0;right:0;top:0;bottom:0;justify-content:center;z-index:2;display:flex;flex-direction:column;align-items:center}
+.an-cs .an-h1{font-weight:400}
+.an-it{font:italic 400 23px/1.5 var(--serif);color:#D9C9AE}
+
+/* footer */
+.an-foot{background:var(--an-foot);color:var(--on-deep);padding:80px 0 40px}
+.an-ft{display:flex;justify-content:space-between;align-items:flex-start}
+.an-ftm .lk{color:#fff}
+.an-tag2{font-size:16px;line-height:1.5;color:var(--on-deep-mu)}
+.an-fb{display:flex;gap:10px}
+.an-fb .an-btn{height:46px}
+.an-frule{border-top:1px solid var(--deep-line)}
+.an-fg{display:grid;grid-template-columns:repeat(5,1fr);column-gap:32px;position:relative}
+.an-fc b{display:block;font-size:13px;font-weight:600;line-height:1.5;color:var(--on-deep);margin-bottom:16px}
+.an-fc a{display:block;font-size:14px;line-height:1.55;color:#C9D2DE;margin-bottom:10px}
+.an-fl{display:flex;justify-content:space-between;font-size:12px;line-height:1.5;color:#8F9BB0}
+.an-fl span:last-child{display:inline-flex;align-items:center;gap:6px}
+.an-fl svg{width:13px;height:13px;fill:currentColor}
+.an-fn{font-size:11.5px;line-height:1.5;color:#8F9BB0}
+.an-fd{position:absolute;left:0;right:0;top:-34px;height:0}
+.an-fd i{position:absolute;top:0;height:calc(14 * var(--u));border-left:1px solid var(--an-cl);border-right:1px solid var(--an-cl);background:linear-gradient(var(--an-cl),var(--an-cl)) center/100% 1px no-repeat;font:500 calc(11 * var(--u))/calc(14 * var(--u)) var(--an-mono);font-style:normal;color:var(--an-cl);text-align:center}
+.an-fd i b{background:var(--an-foot);padding:0 calc(6 * var(--u));font-weight:500}
+.an-pnote{position:absolute;left:calc(900px * var(--k) + 24px);top:calc(28px * var(--k));width:calc(1152px - 900px * var(--k) - 24px)}
+
+/* grid overlay + rulers */
+.an-grid{display:none;position:absolute;left:180px;top:0;width:1080px;height:100%;grid-template-columns:repeat(12,70px);column-gap:24px;pointer-events:none;z-index:9}
+.an-grid i{background:rgba(127,196,192,.14)}
+#anatomy:has(#an-gridchk:checked) .an-grid{display:grid}
+.an-ruler{margin-left:calc(64px * var(--k));width:calc(1440px * var(--k));height:28px;display:flex;font:500 11px/28px var(--an-mono);color:var(--an-tl)}
+.an-ruler span{text-align:center;border-left:1px solid var(--an-tl);border-right:1px solid var(--an-tl);position:relative}
+.an-ruler span:before{content:"";position:absolute;left:0;right:0;top:50%;border-top:1px solid var(--an-tl);opacity:.5}
+.an-ruler span b{position:relative;background:var(--deep);padding:0 8px;font-weight:500}
+.an-capt{margin-left:calc(64px * var(--k));font:500 12px/24px var(--sans);color:var(--on-deep-mu)}
+
+/* per-band spec strip */
+.an-strip{width:calc(1440px * var(--k));margin-left:calc(64px * var(--k));display:grid;grid-template-columns:220px repeat(4,minmax(0,1fr));column-gap:24px;padding:32px 0 64px;border-top:1px solid var(--deep-line)}
+.an-sh .n{font:400 28px/1 var(--serif);color:var(--an-tl)}
+.an-sh h4{font:500 20px/1.5 var(--sans);letter-spacing:0;color:#fff;margin:8px 0 0}
+.an-sh .s{font-size:12px;font-weight:600;line-height:1.6;color:var(--an-cl);margin-top:4px}
+.an-sh p{font-size:14px;line-height:1.6;color:var(--on-deep-mu);margin-top:16px}
+.an-sc h5{margin:0 0 8px;font:600 12px/1.6 var(--sans);color:var(--an-tl)}
+.an-sc div{font-size:14px;line-height:1.6;color:var(--on-deep-mu);padding:2px 0}
+.an-sc div b{font-weight:500;color:var(--on-deep);margin-right:8px}
+.an-sc div em{font-style:normal;font-family:var(--an-mono);font-size:12.5px;color:var(--on-deep)}
+
+/* nav inset */
+.an-inset{margin:0 0 64px calc(64px * var(--k));width:calc(900px * var(--k));height:calc(var(--h) * 1px * var(--k));position:relative}
+.an-inset>.an-frame{width:900px}
+.an-pn{width:900px;padding-top:calc(28 * var(--u))}
+.an-pnr{display:flex;font:500 calc(11 * var(--u))/calc(28 * var(--u)) var(--an-mono);color:var(--an-tl);margin:0 14px;height:calc(28 * var(--u))}
+.an-pnr span{text-align:center;border-left:1px solid var(--an-tl);border-right:1px solid var(--an-tl)}
+.an-panel{display:grid;grid-template-columns:270px 270px 240px;column-gap:8px;width:820px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;color:var(--ink);box-shadow:0 24px 48px -24px rgba(0,0,0,.5)}
+.an-pc small{display:block;font-size:12px;font-weight:600;line-height:1.5;color:var(--dim);padding:0 10px 6px}
+.an-pi{padding:10px;border-radius:12px}
+.an-pi b{display:block;font-size:14px;font-weight:600;line-height:1.4;color:var(--ink)}
+.an-pi span{display:block;font-size:12.5px;line-height:1.4;color:var(--dim)}
+.an-pf{position:relative;border-radius:14px;overflow:hidden;min-height:220px;color:#fff;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;background:var(--deep)}
+.an-pf img{z-index:0;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.an-pf:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#16243ACC,#16243AF2);z-index:1}
+.an-pf>*{position:relative;z-index:2}
+.an-pf small{font-size:12px;color:var(--an-tl);font-weight:600}
+.an-pf b{font-size:17px;line-height:1.3;font-weight:600;margin:4px 0}
+.an-pf span{font-size:12.5px;line-height:1.4;color:#DCE3EC}
+.an-pf u{text-decoration:none;font-size:13px;font-weight:600;margin-top:8px}
+
+/* tables */
+.an-tb{width:calc(1440px * var(--k));margin-left:calc(64px * var(--k));border-collapse:collapse;font-size:14px;line-height:1.6}
+.an-tb th{text-align:left;font-size:12px;font-weight:600;color:var(--an-tl);padding:0 16px 12px 0;border-bottom:1px solid var(--deep-line)}
+.an-tb td{padding:12px 16px 12px 0;border-bottom:1px solid var(--deep-line);color:var(--on-deep-mu);vertical-align:top}
+.an-tb td:first-child{color:var(--on-deep);font-weight:500;white-space:nowrap}
+.an-tb td:last-child{color:var(--on-deep)}
+.an-h3{font:500 20px/1.5 var(--sans);color:#fff;margin:96px 0 24px calc(64px * var(--k))}
+.an-h3:first-of-type{margin-top:0}
+
+@media (max-width:1279px){
+  #anatomy{--k:.56}
+  .an-pct:before{content:"56%"}
+  .an-spec{width:auto;margin-inline:0}
+  .an-strip{grid-template-columns:200px repeat(2,minmax(0,1fr))}
+  .an-sh{grid-row:span 2}
+}
+@media (max-width:900px){
+  #anatomy{--k:.248}
+  .an-pct:before{content:"25%"}
+  .an-legend{flex-direction:column;align-items:flex-start;height:auto;gap:8px;margin:48px 0 24px}
+  .an-spec{width:100%}
+  .an-row{width:calc(1440px * var(--k));margin-left:0}
+  .an-frame{width:1440px}
+  .an-pg{margin-left:0}
+  .an-no,.an-pd,.an-tg,.an-dot,.an-g:before,.an-g b,.an-ruler,.an-capt,.an-fd{display:none}
+  .an-strip{width:auto;margin-left:0;grid-template-columns:1fr;row-gap:16px;padding:24px 0 48px}
+  .an-sh{grid-row:auto}
+  .an-sh p{margin-top:8px}
+  .an-tb{width:100%;margin-left:0;display:block;overflow-x:auto}
+  .an-h3{margin-left:0;margin-top:64px}
+  .an-inset{width:calc(900px * var(--k));margin-left:0}
+  .an-inset{height:auto!important;width:auto;margin:0 0 32px}
+  .an-inset>.an-frame{display:none}
+  .an-pnote{position:static;width:auto}
+  .an-tb,.an-tb tbody,.an-tb tr,.an-tb td{display:block;width:auto}
+  .an-tb thead{display:none}
+  .an-tb tr{padding:16px 0;border-bottom:1px solid var(--deep-line)}
+  .an-tb td{border:0;padding:4px 0}
+  .an-tb td:before{content:attr(data-l);display:block;font:600 12px/1.6 var(--sans);color:var(--an-tl)}
+  .an-tb td:first-child:before{display:none}
+}
+
 </style>
 </head>
 <body>
 
 <header class="topbar"><div class="wide">
   <a href="#top" aria-label="LOVELEEDAY"><span class="lk" style="--h:24px;color:var(--ink)"><img src="../public/site/assets/mark-ink-512.png" alt="">LOVELEEDAY</span></a>
-  <nav aria-label="Parts"><a href="#program">How it was made</a><a href="#part-brand">Brand</a><a href="#part-product">Software</a><a href="#part-marketing">Site and launch</a><a href="#part-govern">Governance</a></nav>
+  <nav aria-label="Parts"><a href="#program">How it was made</a><a href="#part-brand">Brand</a><a href="#type">Typography</a><a href="#part-product">Software</a><a href="#part-marketing">Site and launch</a><a href="#part-govern">Governance</a></nav>
   <span class="ver">Brand and product system 2.0</span>
 </div></header>
 
@@ -706,31 +1241,309 @@ code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86
 
 <!-- 04 TYPE -->
 <section class="section paper" id="type"><div class="wrap">
-  <div class="sec-head"><div><div class="sec-no">05 Typography</div><h2>Two faces, chosen on purpose.</h2></div><p class="lead">Switzer does the work: interface, headings, body. Sentient speaks: the statement, the question, the pull-line. Neither is a system default, and that is deliberate.</p></div>
-  <div class="specimen">
-    <div class="spec"><div><div class="tag">Switzer · 400 500 600 700</div><p class="cap" style="margin-top:6px">Headings, interface, body. A grotesque with a humane round.</p></div><div class="big" style="font-weight:500">Aa</div><p class="glyphs">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 &amp;?!%$</p></div>
-    <div class="spec dk"><div><div class="tag" style="color:var(--on-deep-mu)">Sentient · 400 · 400 italic · 500</div><p class="cap" style="margin-top:6px">The statement face. Used at 26 px and up.</p></div><div class="big" style="font-family:var(--serif);font-weight:400">Aa</div><p class="glyphs" style="font-family:var(--serif)">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 &amp;?!%$</p></div>
+  <div class="sec-head"><div><div class="sec-no">05 Typography</div><h2>Two faces, one clear rule.</h2></div><p class="lead">Sentient speaks for the brand: the question, the statement, the quote. Switzer informs: the interface, the body, the data. Pick by the job the words do, and the choice is never a debate. <span class="ty-new">New in 2.0</span></p></div>
+
+  <!-- 5.1 -->
+  <div class="ty-sub"><div><div class="ty-k">5.1 The typefaces</div><h3>Two families, both from one foundry.</h3></div><p>Both are published by Indian Type Foundry and distributed free through Fontshare. They share a calm, upright build, so they sit on one line without fighting.</p></div>
+
+  <div class="ty-spec">
+    <div>
+      <div class="ty-tag">Switzer · Sans · neo-grotesk</div>
+      <div class="ty-name nsw">Switzer</div>
+      <div class="ty-gl">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+      <div class="ty-gl">abcdefghijklmnopqrstuvwxyz</div>
+      <div class="ty-gl">0123456789 &amp; ? ! % $ @ # ( ) / + = , . : ;</div>
+    </div>
+    <dl class="ty-facts" style="margin:0">
+      <div><dt>Foundry</dt><dd>Indian Type Foundry (ITF), via Fontshare</dd></div>
+      <div><dt>Designer</dt><dd>Jérémie Hornus</dd></div>
+      <div><dt>Class</dt><dd>Neo-grotesk sans serif, version 1.2</dd></div>
+      <div><dt>License</dt><dd>ITF Free Font License: free for personal and commercial use</dd></div>
+      <div><dt>Role</dt><dd>Interface, headings, body, data</dd></div>
+    </dl>
+    <p class="ty-why">Switzer is classic and quiet, with a humane round that keeps long data tables friendly. It carries pricing, dashboards and paragraphs at 13 px as cleanly as it carries a 76 px headline, which is why it does the work.</p>
+    <div class="ty-wts">
+      <div style="font-weight:400"><b>Ag</b><span>400 Regular. Body, lead, captions.</span></div>
+      <div style="font-weight:500"><b>Ag</b><span>500 Medium. Headings h1 to h3, active nav.</span></div>
+      <div style="font-weight:600"><b>Ag</b><span>600 Semibold. Display, buttons, labels, KPI.</span></div>
+      <div style="font-weight:700"><b>Ag</b><span>700 Bold. Embedded, not in the scale. Reserved.</span></div>
+    </div>
   </div>
-  <div class="scale">
-    <div class="srow"><div class="n">Statement<small>Sentient 400</small></div><div class="s" style="font:400 66px/1.07 var(--serif);letter-spacing:-.05em">Pure intelligence.</div><div class="v">66 / 1.07 · -0.05em<br>hero line, once per page</div></div>
-    <div class="srow"><div class="n">Display<small>Switzer 600</small></div><div class="s" style="font:600 76px/1 var(--sans);letter-spacing:-.045em">Know what next</div><div class="v">clamp(44, 5.8vw, 76) / 1.0<br>-0.045em · page headline</div></div>
-    <div class="srow"><div class="n">Headline<small>Switzer 500</small></div><div class="s" style="font:500 48px/1.1 var(--sans);letter-spacing:-.045em">A section headline</div><div class="v">48 / 1.1 · -0.045em<br>site.css h2</div></div>
-    <div class="srow"><div class="n">Subhead<small>Switzer 500</small></div><div class="s" style="font:500 29px/1.2 var(--sans);letter-spacing:-.035em">The idea in one clause</div><div class="v">29 / 1.2 · -0.035em<br>site.css h3</div></div>
-    <div class="srow"><div class="n">Question<small>Sentient 400</small></div><div class="s" style="font:400 26px/1.25 var(--serif);letter-spacing:-.015em">Which customers are buying less?</div><div class="v">26 / 1.25 · -0.015em<br>answer card</div></div>
-    <div class="srow"><div class="n">Lead<small>Switzer 400</small></div><div class="s" style="font:400 18px/1.65 var(--sans);letter-spacing:-.02em;color:var(--mid)">The paragraph that opens a section, in mid navy.</div><div class="v">18 / 1.65 · -0.02em<br>max 30em</div></div>
-    <div class="srow"><div class="n">Body<small>Switzer 400</small></div><div class="s" style="font:400 16px/1.75 var(--sans)">Running text sits at sixteen pixels with generous leading.</div><div class="v">16 / 1.75 · 0<br>70 characters max</div></div>
-    <div class="srow"><div class="n">Caption<small>Switzer 400</small></div><div class="s" style="font:400 13px/1.6 var(--sans);color:var(--dim)">Captions, sources, footnotes. The smallest size anywhere.</div><div class="v">13 / 1.6 · 0<br>dim, never lighter</div></div>
-    <div class="srow"><div class="n">Label<small>Switzer 600</small></div><div class="s" style="font:600 13px/1 var(--sans);letter-spacing:.02em;color:var(--teal-d)">Section label, button, tab</div><div class="v">13 / 1 · +0.02em<br>sentence case</div></div>
+
+  <div class="ty-spec dk">
+    <div>
+      <div class="ty-tag">Sentient · Serif · for immersive reading</div>
+      <div class="ty-name nse">Sentient</div>
+      <div class="ty-gl se">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+      <div class="ty-gl se">abcdefghijklmnopqrstuvwxyz</div>
+      <div class="ty-gl se">0123456789 &amp; ? ! % $ @ # ( ) / + = , . : ;</div>
+    </div>
+    <dl class="ty-facts" style="margin:0">
+      <div><dt>Foundry</dt><dd>Indian Type Foundry (ITF), via Fontshare</dd></div>
+      <div><dt>Designer</dt><dd>Noopur Choksi</dd></div>
+      <div><dt>Class</dt><dd>Serif, sturdy and slightly wide, version 1.001</dd></div>
+      <div><dt>License</dt><dd>ITF Free Font License: free for personal and commercial use</dd></div>
+      <div><dt>Role</dt><dd>Questions, statements, quotes. 26 px and up</dd></div>
+    </dl>
+    <p class="ty-why">Sentient has robust capitals and large counters, so a single line holds its own on a photograph or a dark ground. It sounds like a person asking a question, which is exactly what the product does.</p>
+    <div class="ty-wts three" style="font-family:var(--serif)">
+      <div style="font-weight:400"><b>Ag</b><span style="font-family:var(--sans)">400 Regular. Statements and questions.</span></div>
+      <div style="font-weight:400;font-style:italic"><b>Ag</b><span style="font-family:var(--sans);font-style:normal">400 Italic. Quotes and one-line questions only.</span></div>
+      <div style="font-weight:500"><b>Ag</b><span style="font-family:var(--sans)">500 Medium. Optional, for small statements on dark photography.</span></div>
+    </div>
   </div>
-  <div class="grid2 mt6">
-    <div class="stack"><h3>Pairing rules</h3>
-      <p>One statement face per screen. Sentient never sets body copy, labels or buttons. Switzer never sets the hero statement.</p>
-      <p>Headings tighten as they grow: tracking goes more negative with size, and line-height shrinks toward 1.0. Body stays at zero tracking.</p>
-      <p>Figures use tabular numerals so columns align.</p></div>
-    <div class="stack"><h3>Where this corrects the live site</h3>
-      <p>The scale above is lifted from <code>public/site/assets/site.css</code>: 76, 56, 48, 29, 18, 16. Two things change. The site sets every character in the system stack, which reads as an Apple clone. And its 10 px, wide-tracked uppercase labels (42 on the home page alone) become 13 px sentence-case labels.</p></div>
+  <p class="cap mt4">Sources: Fontshare catalogue record for each family (publisher Indian Type Foundry, license code itf_ffl), at https://www.fontshare.com/fonts/switzer and https://www.fontshare.com/fonts/sentient, read from api.fontshare.com on 2026-10-18. To confirm before launch: the Free Font License restricts redistributing raw font files, so check that self-hosting the woff2 files in public/site/assets/fonts is covered, or serve both families from the Fontshare CDN.</p>
+
+  <!-- 5.2 -->
+  <div class="ty-sub"><div><div class="ty-k">5.2 Pairing logic</div><h3>The job of the words picks the face.</h3></div><p>Set the same line both ways and the difference is clear. A question sounds human in Sentient. A data label is faster to scan in Switzer.</p></div>
+
+  <div class="ty-pair">
+    <div class="ty-pc">
+      <div class="ty-by">Line one: a question a person would ask</div>
+      <div class="ty-line-se">Which customers are buying less this quarter?</div>
+      <div class="ty-verdict"><b class="ty-yes">Correct: Sentient 400.</b> The brand is speaking, so it gets the voice face.</div>
+      <div class="ty-line-sw" style="margin-top:8px">Which customers are buying less this quarter?</div>
+      <div class="ty-verdict"><b class="ty-no">Acceptable, flatter: Switzer 400.</b> Fine inside a small control, but it loses the voice.</div>
+    </div>
+    <div class="ty-pc">
+      <div class="ty-by">Line two: a label on a data view</div>
+      <div class="ty-line-sw">Revenue by customer, last 90 days</div>
+      <div class="ty-verdict"><b class="ty-yes">Correct: Switzer 400.</b> The reader is scanning, so it gets the quiet face.</div>
+      <div class="ty-line-se" style="margin-top:8px">Revenue by customer, last 90 days</div>
+      <div class="ty-verdict"><b class="ty-no">Wrong: Sentient.</b> A serif in a table or label reads as decoration and slows the scan.</div>
+    </div>
   </div>
-  <p class="cap mt4">Grounding: sizes, weights, tracking and line-heights from <code>site.css</code> (<code>--h1-flagship</code>, h2, h3, <code>.hero-story h1</code>, <code>.intro&gt;p</code>); faces from the 2026-10-11 concept fonts (Switzer, Sentient). Font files are embedded in this page.</p>
+  <div class="ty-when">
+    <div><h4>Sentient is correct when</h4><p>The brand is speaking to a person: the hero statement, an answer card's question, a pull quote, a customer line. One Sentient line per screen is the norm. Never below 22 px.</p></div>
+    <div><h4>Switzer is correct when</h4><p>The page is informing: navigation, body, buttons, labels, tables, numbers, forms, headings of sections. Everything the person has to read, compare or click.</p></div>
+  </div>
+
+  <!-- 5.3 -->
+  <div class="ty-sub"><div><div class="ty-k">5.3 The type scale</div><h3>Nineteen tokens, each shown at true size.</h3></div><p>Marketing sizes are lifted from site.css and the portal sizes from the portal's globals.css. Where 2.0 changes a value, the row says so. Resize the window and the clamp values move with it.</p></div>
+
+  <div class="ty-grp">Marketing site</div>
+  <div class="ty-ladder">
+    <div class="ty-row"><div class="ty-tk">--type-statement<small>Sentient 400</small></div><div class="ty-sm t-statement">Pure intelligence.</div><div class="ty-sp">66 / 44 · lh 1.07<br>-0.05em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-display<small>Switzer 600</small></div><div class="ty-sm t-display">Know what next</div><div class="ty-sp">76 / 44 · lh 1.0<br>-0.045em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-h1<small>Switzer 500</small></div><div class="ty-sm t-h1">Answers, not reports</div><div class="ty-sp">56 / 38 · lh 1.06<br>-0.045em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-h2<small>Switzer 500</small></div><div class="ty-sm t-h2">A section headline</div><div class="ty-sp">48 / 32 · lh 1.1<br>-0.045em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-h3<small>Switzer 500</small></div><div class="ty-sm t-h3">The idea in one clause</div><div class="ty-sp">29 / 27 · lh 1.2<br>-0.035em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-question<small>Sentient 400</small></div><div class="ty-sm t-question">Which customers are buying less?</div><div class="ty-sp">26 / 22 · lh 1.25<br>-0.015em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-lead<small>Switzer 400</small></div><div class="ty-sm t-lead">The paragraph that opens a section, in mid navy.</div><div class="ty-sp">18 / 16 · lh 1.65<br>-0.02em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-body<small>Switzer 400</small></div><div class="ty-sm t-body">Running text sits at sixteen pixels with generous leading.</div><div class="ty-sp">16 / 16 · lh 1.75<br>0</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-small<small>Switzer 400</small></div><div class="ty-sm t-small">Supporting text inside cards and form help.</div><div class="ty-sp">14 / 14 · lh 1.6<br>0</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-caption<small>Switzer 400</small></div><div class="ty-sm t-caption">Captions, sources, footnotes. The smallest size on the site.</div><div class="ty-sp">13 / 13 · lh 1.6<br>0</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-eyebrow<small>Switzer 600</small></div><div class="ty-sm t-eyebrow">Section label in sentence case</div><div class="ty-sp">13 / 13 · lh 1.0<br>+0.02em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-button<small>Switzer 600</small></div><div class="ty-sm"><span class="t-button">See it work</span></div><div class="ty-sp">15 / 15 · lh 1.0<br>0 · 44 px tall</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-nav<small>Switzer 400, 500 active</small></div><div class="ty-sm t-nav"><b>Platform</b> &nbsp; Industries &nbsp; Proof &nbsp; Contact</div><div class="ty-sp">14 / 14 · lh 1.5<br>0</div></div>
+  </div>
+
+  <div class="ty-grp">Product and portal</div>
+  <div class="ty-ladder prod">
+    <div class="ty-row"><div class="ty-tk">--type-page<small>Switzer 600</small></div><div class="ty-sm t-page">Customers</div><div class="ty-sp">42 / 32 · lh 1.1<br>-0.03em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-section<small>Switzer 600</small></div><div class="ty-sm t-section">Buying less this quarter</div><div class="ty-sp">24 / 18 · lh 1.3<br>-0.02em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-pbody<small>Switzer 400</small></div><div class="ty-sm t-pbody">Fourteen customers bought less than last quarter. Open one to see why.</div><div class="ty-sp">14 / 14 · lh 1.5<br>0</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-table<small>Switzer 400, header 600</small></div><div class="ty-sm t-table">Harbor Supply &nbsp; 1,284.00 &nbsp; 912.50</div><div class="ty-sp">13 / 13 · lh 1.4<br>0 · tabular</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-label<small>Switzer 600</small></div><div class="ty-sm t-label">Last 90 days</div><div class="ty-sp">12 / 12 · lh 1.4<br>+0.01em</div></div>
+    <div class="ty-row"><div class="ty-tk">--type-kpi<small>Switzer 600</small></div><div class="ty-sm t-kpi">12.4%</div><div class="ty-sp">40 / 32 · lh 1.0<br>-0.04em · tabular</div></div>
+  </div>
+
+  <div class="ty-tw">
+  <table class="ty-tb">
+    <thead><tr><th>Token</th><th>Use</th><th>Font</th><th>Desktop</th><th>Mobile</th><th>Line height</th><th>Tracking</th><th>Weight</th></tr></thead>
+    <tbody>
+    <tr class="ty-g"><td colspan="8">Marketing site</td></tr>
+    <tr><td>--type-statement</td><td data-l="Use">Hero statement, once per page</td><td data-l="Font">Sentient</td><td data-l="Desktop">66 px</td><td data-l="Mobile">44 px</td><td data-l="Line">1.07</td><td data-l="Tracking">-0.05em</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-display</td><td data-l="Use">Page headline (h1 flagship)</td><td data-l="Font">Switzer</td><td data-l="Desktop">76 px</td><td data-l="Mobile">44 px</td><td data-l="Line">1.0</td><td data-l="Tracking">-0.045em</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-h1</td><td data-l="Use">Secondary page headline</td><td data-l="Font">Switzer</td><td data-l="Desktop">56 px</td><td data-l="Mobile">38 px</td><td data-l="Line">1.06</td><td data-l="Tracking">-0.045em</td><td data-l="Weight">500</td></tr>
+    <tr><td>--type-h2</td><td data-l="Use">Section headline</td><td data-l="Font">Switzer</td><td data-l="Desktop">48 px</td><td data-l="Mobile">32 px</td><td data-l="Line">1.1</td><td data-l="Tracking">-0.045em</td><td data-l="Weight">500</td></tr>
+    <tr><td>--type-h3</td><td data-l="Use">Subhead, card title</td><td data-l="Font">Switzer</td><td data-l="Desktop">29 px</td><td data-l="Mobile">27 px</td><td data-l="Line">1.2</td><td data-l="Tracking">-0.035em</td><td data-l="Weight">500</td></tr>
+    <tr><td>--type-question</td><td data-l="Use">Question, quote, answer card</td><td data-l="Font">Sentient</td><td data-l="Desktop">26 px</td><td data-l="Mobile">22 px</td><td data-l="Line">1.25</td><td data-l="Tracking">-0.015em</td><td data-l="Weight">400, italic for quotes</td></tr>
+    <tr><td>--type-lead</td><td data-l="Use">Opening paragraph, 30em max</td><td data-l="Font">Switzer</td><td data-l="Desktop">18 px</td><td data-l="Mobile">16 px</td><td data-l="Line">1.65</td><td data-l="Tracking">-0.02em</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-body</td><td data-l="Use">Running text, 70 characters max</td><td data-l="Font">Switzer</td><td data-l="Desktop">16 px</td><td data-l="Mobile">16 px</td><td data-l="Line">1.75</td><td data-l="Tracking">0</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-small</td><td data-l="Use">Help text, card support</td><td data-l="Font">Switzer</td><td data-l="Desktop">14 px</td><td data-l="Mobile">14 px</td><td data-l="Line">1.6</td><td data-l="Tracking">0</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-caption</td><td data-l="Use">Captions, sources</td><td data-l="Font">Switzer</td><td data-l="Desktop">13 px</td><td data-l="Mobile">13 px</td><td data-l="Line">1.6</td><td data-l="Tracking">0</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-eyebrow</td><td data-l="Use">Section label, sentence case</td><td data-l="Font">Switzer</td><td data-l="Desktop">13 px</td><td data-l="Mobile">13 px</td><td data-l="Line">1.0</td><td data-l="Tracking">+0.02em</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-button</td><td data-l="Use">Button label</td><td data-l="Font">Switzer</td><td data-l="Desktop">15 px</td><td data-l="Mobile">15 px</td><td data-l="Line">1.0</td><td data-l="Tracking">0</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-nav</td><td data-l="Use">Top navigation</td><td data-l="Font">Switzer</td><td data-l="Desktop">14 px</td><td data-l="Mobile">14 px</td><td data-l="Line">1.5</td><td data-l="Tracking">0</td><td data-l="Weight">400, 500 active</td></tr>
+    <tr class="ty-g"><td colspan="8">Product and portal</td></tr>
+    <tr><td>--type-page</td><td data-l="Use">Page title</td><td data-l="Font">Switzer</td><td data-l="Desktop">42 px</td><td data-l="Mobile">32 px</td><td data-l="Line">1.1</td><td data-l="Tracking">-0.03em</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-section</td><td data-l="Use">Section and card title</td><td data-l="Font">Switzer</td><td data-l="Desktop">24 px</td><td data-l="Mobile">18 px</td><td data-l="Line">1.3</td><td data-l="Tracking">-0.02em</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-pbody</td><td data-l="Use">Product body</td><td data-l="Font">Switzer</td><td data-l="Desktop">14 px</td><td data-l="Mobile">14 px</td><td data-l="Line">1.5</td><td data-l="Tracking">0</td><td data-l="Weight">400</td></tr>
+    <tr><td>--type-table</td><td data-l="Use">Table cells, tabular figures</td><td data-l="Font">Switzer</td><td data-l="Desktop">13 px</td><td data-l="Mobile">13 px</td><td data-l="Line">1.4</td><td data-l="Tracking">0</td><td data-l="Weight">400, header 600</td></tr>
+    <tr><td>--type-label</td><td data-l="Use">Field label, meta, timestamp</td><td data-l="Font">Switzer</td><td data-l="Desktop">12 px</td><td data-l="Mobile">12 px</td><td data-l="Line">1.4</td><td data-l="Tracking">+0.01em</td><td data-l="Weight">600</td></tr>
+    <tr><td>--type-kpi</td><td data-l="Use">Numeric KPI</td><td data-l="Font">Switzer</td><td data-l="Desktop">40 px</td><td data-l="Mobile">32 px</td><td data-l="Line">1.0</td><td data-l="Tracking">-0.04em</td><td data-l="Weight">600</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cap mt4">Grounding: marketing sizes from <code>site.css</code> (<code>--h1-flagship</code>, <code>--h1-secondary</code>, h2 48, h3 29, <code>.hero-story h1</code>, <code>.intro&gt;p</code>). Portal page title 42, section title 24, body 14 and meta 12 from the portal <code>globals.css</code> (<code>.title-large</code>, <code>.title-medium</code>, <code>.body-text</code>, <code>.meta-text</code>). New in 2.0: Switzer in the portal (it uses Inter today), sentence case and weight 600 on titles, the 13 px table, the KPI token, the 13 px minimum on the marketing site (site.css still sets 8 to 11 px labels), and the clamp ranges for h2, h3, question and lead.</p>
+
+  <!-- 5.4 -->
+  <div class="ty-sub"><div><div class="ty-k">5.4 Rules</div><h3>Nine rules, each shown both ways.</h3></div><p>Most type problems come from the same few habits. Each rule below pairs the right way with the version to avoid.</p></div>
+
+  <div class="ty-rules">
+    <div class="ty-rule ty-wide"><h4>1. Hold the measure at 60 to 75 characters</h4><p>About 66 is ideal. A wide line makes the eye lose its place.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="ty-meas" style="max-width:66ch">The best answer is the one you can act on today. Keep each line short enough that the eye returns to the next one without effort.</p><div class="ty-ruler" style="width:66ch"></div><div class="ty-rl">66 characters</div></div>
+      <div class="ty-d dont"><p class="ty-meas">The best answer is the one you can act on today. Keep each line short enough that the eye returns to the next one without effort, or the reader will lose their place, reread the line above, and give up on the paragraph before the point arrives.</p><div class="ty-ruler"></div><div class="ty-rl">130+ characters</div></div></div></div>
+
+    <div class="ty-rule"><h4>2. Match line height to size</h4><p>Body 1.75, headings 1.0 to 1.2. Big and tight, small and open.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="t-small" style="line-height:1.75">Body copy with room to breathe reads like a calm voice.</p><p class="t-h3" style="line-height:1.1;margin-top:8px">Headline, tight</p></div>
+      <div class="ty-d dont"><p class="t-small" style="line-height:1.1">Body copy squeezed together reads like a block of noise.</p><p class="t-h3" style="line-height:1.7;margin-top:8px">Headline, floating</p></div></div></div>
+
+    <div class="ty-rule"><h4>3. Tighten display, never body</h4><p>Tracking goes more negative as size grows and stays at zero for reading text.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="t-h2" style="font-size:36px">Know what next</p><p class="t-small" style="margin-top:8px;letter-spacing:0">Body text at zero tracking stays easy to read.</p></div>
+      <div class="ty-d dont"><p class="t-h2" style="font-size:36px;letter-spacing:.04em">Know what next</p><p class="t-small" style="margin-top:8px;letter-spacing:-.045em">Body text with display tracking collides.</p></div></div></div>
+
+    <div class="ty-rule"><h4>4. Use the weights in the scale, never fake one</h4><p>Sentient has 400, italic and 500. Asking for bold makes the browser smear a fake.</p>
+      <div class="ty-dd"><div class="ty-d do dk"><p style="font:400 28px/1.2 var(--serif);letter-spacing:-.015em">Pure intelligence.</p></div>
+      <div class="ty-d dont dk"><p class="ty-fake" style="font:700 28px/1.2 var(--serif);letter-spacing:-.015em">Pure intelligence.</p></div></div></div>
+
+    <div class="ty-rule"><h4>5. Italics only for quotes and questions</h4><p>Real Sentient italic, in a quote. Switzer has no italic loaded, so never ask for one.</p>
+      <div class="ty-dd"><div class="ty-d do"><p style="font:italic 400 22px/1.3 var(--serif);letter-spacing:-.015em">"It told me what to do on Monday."</p></div>
+      <div class="ty-d dont"><p style="font:italic 400 16px/1.7 var(--sans)">Italic body text is a slanted fake and tires the eye.</p></div></div></div>
+
+    <div class="ty-rule"><h4>6. Tabular numerals, right-aligned, same decimals</h4><p>Equal-width digits in a right-aligned column line up on the decimal point.</p>
+      <div class="ty-dd"><div class="ty-d do"><table class="ty-num tab"><tr><td>Harbor</td><td>1,284.00</td></tr><tr><td>Lake</td><td>912.50</td></tr><tr><td>Pine</td><td>17.10</td></tr></table></div>
+      <div class="ty-d dont"><table class="ty-num"><tr><td>Harbor</td><td style="text-align:left;font-variant-numeric:proportional-nums">1,284</td></tr><tr><td>Lake</td><td style="text-align:left;font-variant-numeric:proportional-nums">912.5</td></tr><tr><td>Pine</td><td style="text-align:left;font-variant-numeric:proportional-nums">17.1</td></tr></table></div></div></div>
+
+    <div class="ty-rule"><h4>7. Write in sentence case</h4><p>Labels and buttons read like a person talking. The 10 px wide-tracked capitals on the live site are retired.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="t-eyebrow">Last 90 days</p><p class="t-button" style="margin-top:8px">See it work</p></div>
+      <div class="ty-d dont"><p style="font:600 10px/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)">LAST 90 DAYS</p><p style="font:600 10px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;margin-top:16px">SEE IT WORK</p></div></div></div>
+
+    <div class="ty-rule"><h4>8. Align body copy left</h4><p>Centered paragraphs have a ragged left edge. Center only a short statement or a single line.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="t-small" style="text-align:left">Left aligned text gives the eye one clean edge to return to on every line it reads.</p></div>
+      <div class="ty-d dont"><p class="t-small" style="text-align:center">Centered text gives the eye no clean edge to return to on any line it reads.</p></div></div></div>
+
+    <div class="ty-rule"><h4>9. Use three sizes or fewer per view</h4><p>A title, a body and a caption is a hierarchy. Six sizes is a pile.</p>
+      <div class="ty-dd"><div class="ty-d do"><p class="t-section" style="font-size:22px">Buying less</p><p class="t-pbody" style="margin-top:4px">Fourteen customers this quarter.</p><p class="t-caption" style="margin-top:4px">Updated 9:40 AM</p></div>
+      <div class="ty-d dont"><p style="font:600 28px/1.2 var(--sans)">Buying less</p><p style="font:500 19px/1.3 var(--sans);margin-top:4px">Fourteen customers</p><p style="font:400 15px/1.4 var(--sans);margin-top:4px">this quarter, down</p><p style="font:600 12px/1.4 var(--sans);margin-top:4px">From 9:40 AM</p><p style="font:400 17px/1.4 var(--sans);margin-top:4px">Open one</p></div></div></div>
+  </div>
+
+  <!-- 5.5 -->
+  <div class="ty-sub"><div><div class="ty-k">5.5 Hierarchy in practice</div><h3>Every line names its token.</h3></div><p>Two composed examples. Follow the numbers to see which token sets each line, and how little it takes to build a clear page.</p></div>
+
+  <div class="ty-anno">
+    <div class="ty-hero">
+      <div class="ty-ln"><span class="ty-pin">1</span><div class="t-eyebrow">For every kind of business</div></div>
+      <div class="ty-ln"><span class="ty-pin">2</span><div class="t-statement">Pure intelligence.</div></div>
+      <div class="ty-ln"><span class="ty-pin">3</span><div class="t-lead">Ask in plain words. Get an answer you can act on, with the numbers behind it.</div></div>
+      <div class="ty-ln"><span class="ty-pin">4</span><div><span class="t-button">See it work</span></div></div>
+      <div class="ty-ln"><span class="ty-pin">5</span><div class="t-caption">Works with the tools you already use.</div></div>
+    </div>
+    <div class="ty-key">
+      <div><span class="ty-pin">1</span><p><b>--type-eyebrow</b><span>Switzer 600, 13 px, +0.02em. Sentence case with the teal square.</span></p></div>
+      <div><span class="ty-pin">2</span><p><b>--type-statement</b><span>Sentient 400, 66 px, 1.07, -0.05em. The one voice line.</span></p></div>
+      <div><span class="ty-pin">3</span><p><b>--type-lead</b><span>Switzer 400, 18 px, 1.65, 30em max.</span></p></div>
+      <div><span class="ty-pin">4</span><p><b>--type-button</b><span>Switzer 600, 15 px, 44 px tall pill.</span></p></div>
+      <div><span class="ty-pin">5</span><p><b>--type-caption</b><span>Switzer 400, 13 px, never lighter than dim.</span></p></div>
+    </div>
+  </div>
+
+  <div class="ty-anno">
+    <div class="ty-card">
+      <div class="ty-ln"><span class="ty-pin">1</span><div class="t-label">Last 90 days</div></div>
+      <div class="ty-ln"><span class="ty-pin">2</span><div class="t-kpi">12.4%</div></div>
+      <div class="ty-ln"><span class="ty-pin">3</span><div class="t-section">Customers buying less</div></div>
+      <div class="ty-ln"><span class="ty-pin">4</span><div class="t-pbody">Fourteen customers bought less than last quarter. Open one to see why.</div></div>
+      <div class="ty-ln"><span class="ty-pin">5</span><table class="ty-mini"><thead><tr><th>Customer</th><th>Last</th><th>Now</th></tr></thead><tbody><tr><td>Harbor Supply</td><td>1,284.00</td><td>912.50</td></tr><tr><td>Lake Street Grill</td><td>8,640.20</td><td>7,015.75</td></tr><tr><td>Pine and Main</td><td>1,017.10</td><td>990.00</td></tr></tbody></table></div>
+      <div class="ty-ln"><span class="ty-pin">6</span><div class="t-caption" style="font-size:12px">Updated 9:40 AM</div></div>
+    </div>
+    <div class="ty-key">
+      <div><span class="ty-pin">1</span><p><b>--type-label</b><span>Switzer 600, 12 px, +0.01em, dim.</span></p></div>
+      <div><span class="ty-pin">2</span><p><b>--type-kpi</b><span>Switzer 600, 40 px, 1.0, -0.04em, tabular.</span></p></div>
+      <div><span class="ty-pin">3</span><p><b>--type-section</b><span>Switzer 600, 24 px, 1.3, -0.02em.</span></p></div>
+      <div><span class="ty-pin">4</span><p><b>--type-pbody</b><span>Switzer 400, 14 px, 1.5.</span></p></div>
+      <div><span class="ty-pin">5</span><p><b>--type-table</b><span>Switzer 400, 13 px, tabular, header 12 px 600.</span></p></div>
+      <div><span class="ty-pin">6</span><p><b>--type-label</b><span>Same token as line 1, at 12 px.</span></p></div>
+    </div>
+  </div>
+
+  <!-- 5.6 -->
+  <div class="ty-sub"><div><div class="ty-k">5.6 Implementation</div><h3>Load two files early, then use tokens.</h3></div><p>Preload the two faces that paint first. Everything else loads on demand and swaps in without blocking text.</p></div>
+
+  <div class="ty-codes">
+    <div><div class="ty-cl">Font loading, in the head</div><pre class="ty-code"><span class="c">&lt;!-- preload only the two faces above the fold --&gt;</span>
+&lt;link rel="preload" as="font" type="font/woff2" crossorigin
+  href="/site/assets/fonts/switzer-400.woff2"&gt;
+&lt;link rel="preload" as="font" type="font/woff2" crossorigin
+  href="/site/assets/fonts/sentient-400.woff2"&gt;
+
+<span class="c">/* @font-face, one rule per file */</span>
+<span class="k">@font-face</span>{font-family:'Switzer';font-weight:400;
+  font-style:normal;font-display:swap;
+  src:url(/site/assets/fonts/switzer-400.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Switzer';font-weight:500;
+  font-display:swap;src:url(/site/assets/fonts/switzer-500.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Switzer';font-weight:600;
+  font-display:swap;src:url(/site/assets/fonts/switzer-600.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Switzer';font-weight:700;
+  font-display:swap;src:url(/site/assets/fonts/switzer-700.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Sentient';font-weight:400;
+  font-style:normal;font-display:swap;
+  src:url(/site/assets/fonts/sentient-400.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Sentient';font-weight:400;
+  font-style:italic;font-display:swap;
+  src:url(/site/assets/fonts/sentient-400i.woff2) format('woff2')}
+<span class="k">@font-face</span>{font-family:'Sentient';font-weight:500;
+  font-style:normal;font-display:swap;
+  src:url(/site/assets/fonts/sentient-500.woff2) format('woff2')}</pre></div>
+    <div><div class="ty-cl">Custom properties for the scale</div><pre class="ty-code"><span class="k">:root</span>{
+  --sans:'Switzer',ui-sans-serif,system-ui,-apple-system,
+    'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --serif:'Sentient',Georgia,'Times New Roman',serif;
+
+  <span class="c">/* marketing */</span>
+  --type-statement:clamp(44px,4.8vw,66px);
+  --type-display:clamp(44px,5.8vw,76px);
+  --type-h1:clamp(38px,4.4vw,56px);
+  --type-h2:clamp(32px,3.75vw,48px);
+  --type-h3:clamp(27px,2.3vw,29px);
+  --type-question:clamp(22px,2.1vw,26px);
+  --type-lead:clamp(16px,1.4vw,18px);
+  --type-body:16px;  --type-small:14px;
+  --type-caption:13px;  --type-eyebrow:13px;
+  --type-button:15px;  --type-nav:14px;
+
+  <span class="c">/* product */</span>
+  --type-page:clamp(32px,7vw,42px);
+  --type-section:clamp(18px,4vw,24px);
+  --type-pbody:14px;  --type-table:13px;
+  --type-label:12px;
+  --type-kpi:clamp(32px,3.125vw,40px);
+}
+body{font:400 var(--type-body)/1.75 var(--sans);
+  font-synthesis:none;
+  font-variant-numeric:tabular-nums}
+h1{font:600 var(--type-display)/1 var(--sans);
+  letter-spacing:-.045em}
+.statement{font:400 var(--type-statement)/1.07 var(--serif);
+  letter-spacing:-.05em}</pre></div>
+  </div>
+  <p class="cap mt4">The <code>font-synthesis:none</code> line is new in 2.0. It stops the browser from inventing a bold or an italic that the family does not ship, which is the failure shown in rule 4 and rule 5.</p>
+
+  <!-- 5.7 -->
+  <div class="ty-sub"><div><div class="ty-k">5.7 Fallbacks and accessibility</div><h3>Readable before the fonts arrive, and after.</h3></div><p>If a font file fails or is slow, the page still reads. Contrast is computed from the real hex values, not eyeballed.</p></div>
+
+  <div class="ty-fb">
+    <div class="ty-fbc"><div class="ty-fbs" style="font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif">Switzer falls back to the system sans.</div><code>'Switzer', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif</code></div>
+    <div class="ty-fbc"><div class="ty-fbs" style="font-family:Georgia,'Times New Roman',serif">Sentient falls back to Georgia.</div><code>'Sentient', Georgia, 'Times New Roman', serif</code></div>
+  </div>
+
+  <div class="ty-con">
+    <div class="ty-cc" style="background:#FBF8F2;color:#16243A"><div class="aa">Aa</div><div class="rt">14.70 : 1 · AAA</div><div class="nm">--ink #16243A on cream</div><div class="us">All primary text and headings.</div></div>
+    <div class="ty-cc" style="background:#FBF8F2;color:#45536A"><div class="aa">Aa</div><div class="rt">7.34 : 1 · AAA</div><div class="nm">--mid #45536A on cream</div><div class="us">Lead paragraphs and secondary text.</div></div>
+    <div class="ty-cc" style="background:#FBF8F2;color:#616D7C"><div class="aa">Aa</div><div class="rt">4.97 : 1 · AA</div><div class="nm">--dim #616D7C on cream</div><div class="us">Captions and meta. The lightest text allowed.</div></div>
+    <div class="ty-cc" style="background:#FBF8F2;color:#0A6261"><div class="aa">Aa</div><div class="rt">6.76 : 1 · AA</div><div class="nm">--teal-d #0A6261 on cream</div><div class="us">Eyebrows, links, small teal text.</div></div>
+    <div class="ty-cc" style="background:#FBF8F2;color:#0E7877"><div class="aa">Aa</div><div class="rt">4.99 : 1 · AA</div><div class="nm">--teal #0E7877 on cream</div><div class="us">Large type, icons and rules. Use teal-d for small text.</div></div>
+    <div class="ty-cc" style="background:#16243A;color:#A9B3C4;border-color:#16243A"><div class="aa">Aa</div><div class="rt">7.37 : 1 · AAA</div><div class="nm">--on-deep-mu #A9B3C4 on navy</div><div class="us">Secondary text on dark grounds.</div></div>
+  </div>
+  <div class="grid2 ty-mins">
+    <div class="stack"><h4>Minimum sizes</h4>
+      <p class="cap">Marketing site: body never below 16 px, and no text below 13 px anywhere. Product: table cells 13 px, field labels and timestamps 12 px, and never for sentences. Buttons and tap targets are at least 44 px tall.</p></div>
+    <div class="stack"><h4>Contrast rules</h4>
+      <p class="cap">Normal text needs 4.5 : 1 and large text (24 px, or 19 px bold) needs 3 : 1, per WCAG 2.1 AA. Ratios above are on cream #FBF8F2. Dim on the sunk ground #F2EDE3 falls to 4.51 : 1, so keep it off that ground below 14 px. Teal on navy is 2.95 : 1: never text.</p></div>
+  </div>
+  <p class="cap mt4">Grounding: hex values from the <code>:root</code> block of this book; ratios computed with the WCAG 2.1 relative luminance formula on 2026-10-18.</p>
 </div></section>
 
 <!-- 05 SPACE -->
@@ -930,51 +1743,102 @@ code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86
   <div class="inside"><a href="#anatomy">Page anatomy</a><a href="#components">Site components</a><a href="#launch">Launch kit</a><a href="#voice">Motion and voice</a><a href="#tells">Tells we refuse</a></div>
 </div></section>
 
-<section class="section" id="anatomy"><div class="wrap">
-  <div class="sec-head"><div><div class="sec-no">14 Page anatomy</div><h2>The home page, drawn to scale.</h2></div><p class="lead">The original's atmosphere on top, the live site's proof underneath. Each band is shown as it will be built, with the rule that governs it beside it. Every marketing page is made from these six, in this order.</p></div>
-
-  <div class="tower" aria-label="The LOVELEEDAY home page, band by band">
-    <div class="pg first"><div class="chrome"><i></i><i></i><i></i><span>loveleedaystudios.com</span></div>
-      <div class="h1b"><img src="../public/site/assets/hero.jpg" alt="A daylit timber atrium with people on wide steps">
-        <div class="nav"><span class="lk" style="--h:16px;color:#fff"><img src="../public/brand/mark-white-512.png" alt="">LOVELEEDAY</span><span class="links"><span>Arthur</span><span>Industries</span><span>How it works</span><span>Security</span></span><b>Talk to us</b></div>
-        <h3>Pure intelligence. For a fuller life.</h3>
-        <p>Arthur reads what your organization already holds and tells you, in plain words, what happened and what to do next.</p>
-        <span class="cta">See how it works</span></div></div>
-    <div class="nt"><span class="no">1</span><h4>Brand hero</h4><p>The original line, in Sentient, over the architecture photograph. Navy scrim on the left only, so the room still reads. One button, and it explains rather than sells.</p><div class="rule-k"><span>Sentient 54/0.98</span><span>Scrim 95% to 10%</span><span>One CTA</span></div></div>
-
-    <div class="pg"><div class="p2b"><div class="t"><span class="eb">What it does</span><h5>Know what happened. Know what to do next.</h5><p>Ask in your own words. The answer comes back in a sentence, with the records it came from.</p></div>
-      <div class="ph"><img src="assets/hero-decision.jpg" alt="People talking around a table"><div class="card"><div class="q">Which customers have gone quiet this year?</div><div class="a"><b>Four accounts that ordered monthly have stopped.</b> Two have an open complaint.</div><div class="c"><span class="srcchip">Orders</span><span class="srcchip">Tickets</span></div></div></div></div></div>
-    <div class="nt"><span class="no">2</span><h4>Promise, with proof floating on it</h4><p>The live site's plain-language line, and a real answer card laid over a real photograph. The photo is the ground, not a banner; the card overlaps its edge so the band has depth.</p><div class="rule-k"><span>Answer card</span><span>Card overlaps photo</span><span>One shadow</span></div></div>
-
-    <div class="pg"><div class="b3b"><div class="br" aria-hidden="true"></div><div class="t"><span class="eb">Arthur</span><h5>Everything you hold, read as one.</h5><p>Orders, invoices, tickets and calendars connect into a single answer. This is the only place the brain moves.</p></div></div></div>
-    <div class="nt"><span class="no">3</span><h4>The brain, once</h4><p>Its single appearance on the page: navy stage, palette points only, drifting slowly beside one short paragraph. Never behind a headline.</p><div class="rule-k"><span>Navy only</span><span>Teal, cream, copper points</span><span>Reduced motion: still</span></div></div>
-
-    <div class="pg"><div class="i4b"><h5>Built for the way you work.</h5><div class="g">
-      <figure><img src="../public/site/assets/industry-manufacturing.jpg" alt="Plant floor"><figcaption><b>Manufacturing</b>Which jobs ran over the quote last month?</figcaption></figure>
-      <figure><img src="../public/site/assets/industry-schools.jpg" alt="Classroom"><figcaption><b>Schools</b>Which families have not heard from us since August?</figcaption></figure>
-      <figure><img src="../public/site/assets/industry-hospitality.jpg" alt="Dining room"><figcaption><b>Hospitality</b>Which nights lose money on staffing?</figcaption></figure>
-      <figure><img src="../public/site/assets/industry-property.jpg" alt="Apartment building"><figcaption><b>Property</b>Which units turn over fastest, and why?</figcaption></figure>
-      <figure><img src="../public/site/assets/industry-nonprofit.jpg" alt="Volunteers at work"><figcaption><b>Nonprofit</b>Which donors gave last year and not this year?</figcaption></figure></div></div></div>
-    <div class="nt"><span class="no">4</span><h4>Industries as photographs</h4><p>A real photograph per industry, each carrying a different question, never the same one twice. One large tile leads so the grid has a focal point instead of a row of equals.</p><div class="rule-k"><span>Bento, 1 large + 4</span><span>One question each</span><span>No icons</span></div></div>
-
-    <div class="pg"><div class="w5b"><h5>Three steps, and your data stays yours.</h5><div class="s">
-      <div><b>1</b><strong>Connect</strong>Point Arthur at the systems you already use.</div>
-      <div><b>2</b><strong>Ask</strong>In your own words, any time.</div>
-      <div><b>3</b><strong>Act</strong>Every answer names its sources and what to do next.</div></div>
-      <div class="sec"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg>Your records are never used to train anyone else's model.</div></div></div>
-    <div class="nt"><span class="no">5</span><h4>How it works and the data promise</h4><p>Three numbered steps on white, then the security promise in one sentence. Everything deeper lives on its own page, so this band stays short.</p><div class="rule-k"><span>Serif numerals</span><span>Hard rule above</span><span>One promise</span></div></div>
-
-    <div class="pg last"><div class="c6b"><img src="../public/site/assets/outdoors.jpg" alt="People outdoors"><h5>Ask your business a question.</h5><span class="cta">Talk to us</span><div class="ft"><span>LOVELEEDAY Studios LLC</span><span>Privacy · Terms · Security</span></div></div></div>
-    <div class="nt"><span class="no">6</span><h4>One conversation</h4><p>"For a fuller life" made literal: a photograph of life outside work under the navy close. One cream button. No prices, ever.</p><div class="rule-k"><span>Navy 85% over photo</span><span>Cream button</span><span>No prices</span></div></div>
-  </div>
-
-  <div class="thumbs">
-    <div class="thumb"><div class="f"><div class="hx"><img src="../public/site/assets/hero.jpg" alt=""><span>Pure intelligence.</span></div><div class="pr"><i></i></div><div class="gr"><img src="../public/site/assets/industry-retail.jpg" alt=""><img src="../public/site/assets/industry-government.jpg" alt=""><img src="../public/site/assets/industry-portfolios.jpg" alt=""></div><div class="dk"></div></div><h4>Home</h4><p>All six bands.</p></div>
-    <div class="thumb"><div class="f"><div class="hx"><img src="../public/site/assets/industry-manufacturing-2.jpg" alt=""><span>Manufacturing, read as one.</span></div><div class="pr"><i></i></div><div class="gr"><img src="../public/site/assets/industry-schools.jpg" alt=""><img src="../public/site/assets/industry-property.jpg" alt=""><img src="../public/site/assets/industry-retail-2.jpg" alt=""></div><div class="dk"></div></div><h4>Industry</h4><p>That industry's photograph as hero, then 2, 4 with the other industries, 6.</p></div>
-    <div class="thumb"><div class="f"><div class="bn" style="height:42%"></div><div class="pr"><i></i></div><div class="tm"><i style="width:80%"></i><i style="width:60%"></i></div><div class="dk"></div></div><h4>Arthur</h4><p>The brain as hero, then 2, 5, 6.</p></div>
-    <div class="thumb"><div class="f"><div class="cr"><small>Prepared for Northgate Schools</small><span>What your records already know.</span></div><div class="pr"><i></i></div><div class="tm"><i style="width:90%"></i><i style="width:70%"></i><i style="width:80%"></i></div><div class="dk"></div></div><h4>Proposal</h4><p>Cream hero with the client's name, their own question on the answer card, terms, 6.</p></div>
-  </div>
-</div></section>
+<section class="section" id="anatomy"><div class="wrap"><div class="sec-head"><div><div class="sec-no">14 Page anatomy</div><h2>One home page, built from the two we loved.</h2></div><p class="lead">The original site gave us the feeling. The live site gave us the proof. This chapter joins them: a photograph and a promise first, then one answer with its sources, then Arthur, then your industry.</p></div></div><div class="wide"><div class="an-legend"><span><b>Drawn at 1440 &middot; shown at <span class="an-pct"></span></b> &middot; every number below is in design px</span><label><input type="checkbox" id="an-gridchk"> Show grid</label></div><div class="an-spec"><div class="an-capt">Home &middot; 1440 &times; 9,617</div><div class="an-ruler"><span style="flex:0 0 calc(180px * var(--k))"><b>180</b></span><span style="flex:0 0 calc(1080px * var(--k))"><b>1080</b></span><span style="flex:0 0 calc(180px * var(--k))"><b>180</b></span></div><div class="an-row" style="--h:73"><div class="an-frame"><div class="an-pg"><div class="an-b an-nav"><b class="an-no">0<em>Navigation</em></b><div class="an-w"><span class="lk" style="--h:24px;color:#16243A"><img src="../public/site/assets/mark-ink-512.png" alt="">LOVELEEDAY</span>
+<div class="an-navm"><span class="an-ni on">Product</span><span class="an-ni">Solutions</span><span class="an-ni">Services</span><span class="an-ni">Company</span></div>
+<div class="an-nr"><span class="an-si">Sign in</span><span class="an-btn an-bt">Talk to us</span></div></div>
+<div class="an-rel" style="position:absolute;left:180px;top:36px"><b class="an-dot" style="--ex:180px">0.1</b></div>
+<div class="an-rel" style="position:absolute;left:1260px;top:36px"><i class="an-tg" style="--ex:1260px">72 + 1</i></div></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">0</div><h4>Navigation</h4><div class="s">Kept from live</div><p>Same bar as the live site, in book colours. The live nav is a superset of the original, so nothing is dropped.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Bar</b><em>72 + 1 line</em></div><div><b>Inner</b><em>wrap 1080, gap 28</em></div><div><b>Menus</b><em>4 dropdowns</em></div><div><b>Right</b><em>Sign in, Talk to us</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Item</b><em>h 44, pad 0 12</em></div><div><b>Button</b><em>h 40, pad 0 18</em></div><div><b>Panel top</b><em>bar + 10</em></div><div><b>Panel pad</b><em>14, item 10</em></div></div><div class="an-sc"><h5>Type</h5><div><b>Brand</b><em>13 / .12em / 650</em></div><div><b>Items</b><em>14 / 500</em></div><div><b>Panel title</b><em>14 / 600</em></div><div><b>Panel sub</b><em>12.5 / 1.4</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Mark</b><em>mark-ink-512.png, 24</em></div><div><b>Sticky</b><em>top 0, z 20</em></div><div><b>Mobile</b><em>under 1020: hamburger</em></div><div><b>Action</b><em>teal dark #0A6261</em></div></div></div><div class="an-inset" style="--h:348"><div class="an-frame"><div class="an-pn"><div class="an-pnr"><span style="width:14px;border:0"></span><span style="width:270px">270</span><span style="width:270px">270</span><span style="width:240px">240</span></div>
+<div class="an-panel">
+<div class="an-pc"><small>The platform</small><div class="an-pi"><b>Arthur</b><span>Data intelligence that connects your systems into one picture</span></div><div class="an-pi"><b>Operating system</b><span>One connected understanding of your business</span></div><div class="an-pi"><b>How it works</b><span>From your first question to a figure you can defend</span></div></div>
+<div class="an-pc"><small>Under the hood</small><div class="an-pi"><b>Architecture</b><span>Identity, lineage, memory, verification, awareness</span></div><div class="an-pi"><b>Integrations</b><span>The systems Arthur reads, released one by one</span></div><div class="an-pi"><b>Trust and security</b><span>How your data is kept, used and deleted</span></div></div>
+<div class="an-pf"><img src="../public/site/assets/hero.jpg" alt=""><small>See it work</small><b>One question, every system</b><span>Watch Arthur connect your data, resolve it into one picture and answer with the source.</span><u>How it works &rarr;</u></div>
+</div></div></div><div class="an-pnote an-sc"><h5>Open Product panel</h5><div><b>Top</b><em>bar bottom + 10</em></div><div><b>Columns</b><em>270 / 270 / 240</em></div><div><b>Radius</b><em>18, padding 14</em></div><div><b>Item</b><em>padding 10, title 14/600</em></div><div><b>Feature card</b><em>min 220, navy over hero.jpg</em></div><div><b>Close</b><em>Esc or click outside</em></div></div></div><div class="an-row" style="--h:1192"><div class="an-frame"><div class="an-pg"><div class="an-b an-hero"><b class="an-no">1<em>Hero</em></b><img src="../public/site/assets/hero.jpg" alt="A sunlit timber and glass atrium with people seated on wide tiered steps">
+<div class="an-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="an-hs"><div class="an-w"><div class="an-in">
+<div class="an-cap an-rel">Data intelligence for your organization</div><i class="an-g" style="height:16px"><b>16</b></i>
+<h1 class="an-h1">Pure intelligence.<br>For a fuller life.<i class="an-tg" style="--ex:180px">statement<br>Sentient 72/1.02</i><b class="an-dot" style="--ex:180px">1.1</b></h1><i class="an-g" style="height:24px"><b>24</b></i>
+<p class="an-lead an-rel">Arthur reads the systems you already use and answers in plain language: what happened, why it matters and what to do next, with the source behind every figure.<i class="an-tg" style="--ex:180px">t4<br>20/1.5</i></p><i class="an-g" style="height:32px"><b>32</b></i>
+<div class="an-brow an-rel"><span class="an-btn an-bc">See how it works</span><span class="an-lk">Meet Arthur</span><b class="an-dot" style="--ex:180px">1.2</b></div><i class="an-g" style="height:16px"><b>16</b></i>
+<p class="an-small">For organizations across the United States.</p>
+</div></div></div>
+<div class="an-hstrip"><div class="an-w"><span>Built around your world.</span><span class="an-lk">Start a project</span></div></div></div><div class="an-b an-lt an-proof"><b class="an-no">2<em>Proof</em></b><div class="an-w">
+<div class="an-card"><div class="an-cap">A question we answered for a distributor</div><i class="an-g" style="height:24px"><b>24</b></i>
+<div class="an-q an-rel">Which deliveries did we promise this week, and which are at risk?</div><i class="an-g" style="height:24px"><b>24</b></i>
+<div class="an-hr"></div><i class="an-g" style="height:16px"><b>16</b></i>
+<p class="an-body">Nine are on track. Two are at risk: one waits on a late supplier shipment, one is missing a signed order. Call those two customers today.</p><i class="an-g" style="height:16px"><b>16</b></i>
+<div class="an-srcs"><span>Open orders</span><span>Supplier updates</span><span>Signed orders</span></div><i class="an-g" style="height:16px"><b>16</b></i>
+<p class="an-note">Example data.</p></div>
+<div class="an-photo"><img src="../public/site/assets/hero-team-desktop.jpg" alt="Two colleagues reviewing a printed report together"></div>
+</div><i class="an-pd an-pb" style="height:96px"><i>96</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">1</div><h4>Hero</h4><div class="s">Restored from original</div><p>The headline is fixed and the photograph carries the feeling. One promise, one main button. Nothing else competes in the first screen, because the first job is to make someone breathe out.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Height</b><em>640</em></div><div><b>Text column</b><em>x 180, max 640</em></div><div><b>Scrim</b><em>90deg, F2 / C7 / 1A</em></div><div><b>Base strip</b><em>bottom 80, clear of the card</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top</b><em>96</em></div><div><b>Caption to H1</b><em>16</em></div><div><b>H1 to lead</b><em>24</em></div><div><b>Lead to buttons</b><em>32</em></div></div><div class="an-sc"><h5>Type</h5><div><b>H1</b><em>t1 64/1.04 -.035em 600</em></div><div><b>Lead</b><em>t4 20/1.5</em></div><div><b>Strip</b><em>14 / 1.5</em></div><div><b>Lines</b><em>H1 two lines</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Photo</b><em>hero.jpg 940 px wide</em></div><div><b>Position</b><em>50% 40%</em></div><div><b>Load</b><em>fetchpriority high</em></div><div><b>Flag</b><em>re-export at 1880</em></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">2</div><h4>Proof</h4><div class="s">New</div><p>A claim is only believed once it has a worked example. One answer card, its sources named, replaces a row of feature cards that say the same thing without proof.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Card</b><em>cols 1-7, 640 wide</em></div><div><b>Photo</b><em>504 x 480, right edge on wrap</em></div><div><b>Overlap</b><em>card over photo 64</em></div><div><b>Rise</b><em>card 64 into hero</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Card pad</b><em>40</em></div><div><b>Gaps</b><em>24 / 24 / 16 / 16</em></div><div><b>Stagger</b><em>photo 40 below card top</em></div><div><b>Bottom</b><em>96</em></div></div><div class="an-sc"><h5>Type</h5><div><b>Question</b><em>Sentient 28/1.25</em></div><div><b>Answer</b><em>t5 17/1.6</em></div><div><b>Sources</b><em>14, plain labels</em></div><div><b>Note</b><em>12 / 1.5</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Photo</b><em>hero-team-desktop.jpg</em></div><div><b>Position</b><em>62% 38%</em></div><div><b>Shadow</b><em>the one shadow</em></div><div><b>Rule</b><em>no chips, no pills</em></div></div></div><div class="an-row" style="--h:400"><div class="an-frame"><div class="an-pg"><div class="an-b an-lt an-hl an-intro"><b class="an-no">3<em>Intro</em></b><div class="an-w an-p"><div class="an-split">
+<div class="an-rel"><h2>Know what happened. Know what to do next.</h2><i class="an-tg" style="--ex:180px">t2<br>40/1.1</i><b class="an-dot" style="--ex:180px">3.1</b></div>
+<p class="an-body" style="max-width:56ch">Ask in your own words. Arthur reads your orders, tickets, contracts and calendar, and answers with what it found, why it matters and the next step. <strong style="font-weight:600;color:var(--ink)">Every figure shows where it came from.</strong></p>
+</div></div><i class="an-pd an-pt" style="height:96px"><i>96</i></i><i class="an-pd an-pb" style="height:96px"><i>96</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">3</div><h4>Intro</h4><div class="s">Restored from original</div><p>The claim, stated once, at the width of the page. It fills the right half the live page leaves empty.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Grid</b><em>5fr / 7fr, gap 64</em></div><div><b>Align</b><em>end</em></div><div><b>Rule</b><em>1px top, #E6E0D6</em></div><div><b>Eyebrow</b><em>none</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top</b><em>96</em></div><div><b>Bottom</b><em>96</em></div><div><b>Column gap</b><em>64</em></div><div><b>Min height</b><em>400</em></div></div><div class="an-sc"><h5>Type</h5><div><b>H2</b><em>t2 40/1.1 -.03em 600</em></div><div><b>Body</b><em>t5 17/1.6, max 56ch</em></div><div><b>Emphasis</b><em>one phrase in ink</em></div><div><b>Colour</b><em>single, no two-tone</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Asset</b><em>none</em></div><div><b>Motion</b><em>none</em></div><div><b>Tag</b><em>H2 is the page claim</em></div><div><b>Copy</b><em>under 420 chars</em></div></div></div><div class="an-row" style="--h:899"><div class="an-frame"><div class="an-pg"><div class="an-b an-dk"><b class="an-no">4<em>Questions</em></b><div class="an-w an-p">
+<div class="an-split"><h2>One picture across every system.</h2><p class="an-body" style="max-width:600px">Each of your systems holds a part of the story. Arthur resolves them into one trusted view, so a plain question gets an answer you can trace.</p></div><i class="an-g" style="height:48px"><b>48</b></i>
+<div class="an-cards">
+<article class="an-c"><div class="an-ct">Customers</div><div style="height:8px"></div><h3 class="an-cq">Who is this customer, across CRM, billing and support?</h3><div style="height:24px"></div><div class="an-ev"><div><small>CRM</small><span>Northline Studio</span></div><div><small>Billing</small><span>Northline Studio Ltd.</span></div><div><small>Support</small><span>Northline</span></div></div><div style="height:24px"></div><div class="an-st">One customer</div></article>
+<article class="an-c"><div class="an-ct">Vendors</div><div style="height:8px"></div><h3 class="an-cq">Is this one vendor with three names?</h3><div style="height:24px"></div><div class="an-ev"><div><small>Ledger</small><span>Vendor 44127</span></div><div><small>Mailbox</small><span>HES</span></div><div><small>Contracts</small><span>Harbor Equipment Services</span></div></div><div style="height:24px"></div><div class="an-st">One vendor</div></article>
+<article class="an-c"><div class="an-ct">Contracts</div><div style="height:8px"></div><h3 class="an-cq">Which contracts renew next quarter, and who owns them?</h3><div style="height:24px"></div><div class="an-ev"><div><small>Agreement</small><span>Renews in the next quarter</span></div><div><small>Owner</small><span>Named on the record</span></div><div><small>Source</small><span>Clause and date attached</span></div></div><div style="height:24px"></div><div class="an-st mu">Listed with owners</div></article>
+<article class="an-c"><div class="an-ct">Operations</div><div style="height:8px"></div><h3 class="an-cq">Where are open work orders piling up, by site?</h3><div style="height:24px"></div><div><div class="an-bar hot"><span>North site</span><i style="--w:86%"></i></div><div class="an-bar"><span>Harbor site</span><i style="--w:52%"></i></div><div class="an-bar"><span>East site</span><i style="--w:28%"></i></div></div><div style="height:24px"></div><div class="an-st hot">One site flagged</div></article>
+</div><i class="an-g" style="height:32px"><b>32</b></i>
+<div class="an-chg"><b>What changed</b><p>An invoice moved to overdue on an account that also has an open support ticket. Arthur brings both records to one person, with the sources attached.</p></div><i class="an-g" style="height:24px"><b>24</b></i>
+<p class="an-micro">Illustrative examples with demonstration data.</p></div><i class="an-pd an-pt" style="height:96px"><i>96</i></i><i class="an-pd an-pb" style="height:96px"><i>96</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">4</div><h4>Questions</h4><div class="s">Restored from original</div><p>Four equal cards. Each shows the question, the evidence from three places, and what Arthur concluded. Row four has evidence too.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Cards</b><em>repeat(4, 1fr), 252 each</em></div><div><b>Card pad</b><em>24, radius 14</em></div><div><b>Header</b><em>5fr / 7fr, gap 64</em></div><div><b>Strip</b><em>160 / 1fr</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top and bottom</b><em>96 / 96</em></div><div><b>Header to cards</b><em>48</em></div><div><b>Cards to strip</b><em>32</em></div><div><b>Strip pad</b><em>24 0</em></div></div><div class="an-sc"><h5>Type</h5><div><b>Question</b><em>t4 20/1.5</em></div><div><b>Evidence label</b><em>12 / 1.4</em></div><div><b>Evidence value</b><em>14 / 1.5</em></div><div><b>Status</b><em>14 / 500</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Dots</b><em>teal, mute, copper</em></div><div><b>Copper</b><em>only for what changed</em></div><div><b>Bars</b><em>8 high, radius 4</em></div><div><b>Caption</b><em>demonstration data</em></div></div></div><div class="an-row" style="--h:1071"><div class="an-frame"><div class="an-pg"><div class="an-b an-dp"><b class="an-no">5<em>Arthur</em></b><div class="an-w an-p">
+<div class="an-split"><div class="an-rel"><h2>The intelligence within.</h2><b class="an-dot" style="--ex:180px">5.1</b></div><div><p class="an-body" style="max-width:600px">Arthur is the system LOVELEEDAY installs for your organization. It recognizes that three names are one company, keeps the history behind every record, and grounds each answer in evidence, so you see the whole picture.</p><i class="an-g" style="height:24px"><b>24</b></i><span class="an-lk">Meet Arthur</span></div></div><i class="an-g" style="height:64px"><b>64</b></i>
+<div style="text-align:center"><div class="an-cap" style="color:var(--on-deep-mu)">A simple question</div><i class="an-g" style="height:8px"><b>8</b></i><div class="an-t3">Who is HES across our systems?</div></div><i class="an-g" style="height:32px"><b>32</b></i>
+<div class="an-stage">
+<div class="an-bc2"><div class="on"><small>01</small><b>Identity</b><p>Which names are the same company?</p></div><div><small>02</small><b>Context</b><p>Which records belong to it?</p></div></div>
+<div class="an-br an-rel"><img src="assets/brain.png" alt=""><b class="an-dot" style="--ex:450px">5.2</b></div>
+<div class="an-bc2"><div><small>03</small><b>Evidence</b><p>Where did each fact come from?</p></div><div><small>04</small><b>Verification</b><p>Can we trace the answer?</p></div></div>
+</div><i class="an-g" style="height:32px"><b>32</b></i>
+<div style="text-align:center"><div class="an-cap" style="color:var(--on-deep-mu)">Arthur connects the answer</div><i class="an-g" style="height:8px"><b>8</b></i><div class="an-ans an-rel">One company, connected across its different names.<i class="an-tg" style="--ex:270px">Sentient<br>28/1.25</i></div><i class="an-g" style="height:8px"><b>8</b></i><div class="an-small" style="color:var(--on-deep-mu)">Example: two names matched to one company record</div></div><i class="an-g" style="height:32px"><b>32</b></i>
+<div class="an-ctl"><span class="an-micro">Illustrative sequence</span><span style="display:flex;gap:16px"><span class="an-ghost">Next question &rarr;</span><span class="an-ghost">Pause motion</span></span></div>
+</div><i class="an-pd an-pt" style="height:96px"><i>96</i></i><i class="an-pd an-pb" style="height:96px"><i>96</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">5</div><h4>Arthur</h4><div class="s">Restored from original</div><p>The brain is the one thing allowed to move, because it is the product thinking. It sits next to a plain question so the motion always has a reason.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Stage</b><em>1fr / 540 / 1fr</em></div><div><b>Brain</b><em>540 x 373</em></div><div><b>Branches</b><em>2 + 2, 200 wide</em></div><div><b>Header</b><em>5fr / 7fr, gap 64</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top and bottom</b><em>96 / 96</em></div><div><b>Header to stage</b><em>64</em></div><div><b>Branch gap</b><em>48</em></div><div><b>Answer to controls</b><em>32</em></div></div><div class="an-sc"><h5>Type</h5><div><b>Question</b><em>t3 28/1.2</em></div><div><b>Answer</b><em>Sentient 28/1.25</em></div><div><b>Branch title</b><em>17 / 600</em></div><div><b>Branch text</b><em>14 / 1.5</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Image</b><em>brand/assets/brain.png</em></div><div><b>Tint</b><em>teal, screen blend</em></div><div><b>Motion</b><em>drift 6px, 12s, still if reduced</em></div><div><b>Flag</b><em>copy to public/site/assets</em></div></div></div><div class="an-row" style="--h:758"><div class="an-frame"><div class="an-pg"><div class="an-b an-sk"><b class="an-no">6<em>Ask</em></b><div class="an-w an-p">
+<div class="an-split"><h2>Ask simply. Understand completely.</h2><p class="an-body" style="max-width:600px">Start with a question. Follow the answer back to its source.</p></div><i class="an-g" style="height:48px"><b>48</b></i>
+<div class="an-fig an-rel"><img src="../public/site/assets/portal/portal-ask2-1440.png" alt="The Ask page in the client portal answering a question with its source"><b class="an-dot" style="--ex:180px">6.1</b></div><i class="an-g" style="height:16px"><b>16</b></i>
+<p class="an-cap" style="max-width:64ch">This is the Ask page in the client portal, shown with a charter network's demonstration data.</p>
+</div><i class="an-pd an-pt" style="height:96px"><i>96</i></i><i class="an-pd an-pb" style="height:96px"><i>96</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">6</div><h4>Ask</h4><div class="s">Kept from live</div><p>The real portal screenshot is the best proof, so it stays, framed. Its own heading is cropped away so the band has one headline.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Figure</b><em>1080 x 372</em></div><div><b>Source</b><em>1165 x 570</em></div><div><b>Crop</b><em>top 156 removed</em></div><div><b>Radius</b><em>8, 1px line</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top and bottom</b><em>96 / 96</em></div><div><b>Header to figure</b><em>48</em></div><div><b>Figure to caption</b><em>16</em></div><div><b>Caption</b><em>max 64ch</em></div></div><div class="an-sc"><h5>Type</h5><div><b>H2</b><em>t2 40/1.1</em></div><div><b>Intro</b><em>t5 17/1.6</em></div><div><b>Caption</b><em>14 / 1.5</em></div><div><b>Shadow</b><em>the one shadow</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Image</b><em>portal-ask2-1440.png</em></div><div><b>Tabs</b><em>omitted: one screenshot only</em></div><div><b>Button</b><em>blue in the capture, flagged</em></div><div><b>Surface</b><em>sunk #F2EDE3</em></div></div></div><div class="an-row" style="--h:1164"><div class="an-frame"><div class="an-pg"><div class="an-b an-lt an-hl"><b class="an-no">7<em>Industries</em></b><div class="an-w an-p">
+<div class="an-split"><h2>Your world, in your words.</h2><p class="an-body" style="max-width:600px">A municipality, a school network, a growing retailer, a portfolio of companies. Each has its own information and its own worries. These are starting points, not the limit.</p></div><i class="an-g" style="height:48px"><b>48</b></i>
+<div class="an-bento">
+<a class="an-tile a"><img src="../public/site/assets/industry-manufacturing.jpg" alt="A manufacturing floor"><div class="an-tc"><b>Manufacturing and distribution</b><span>Which jobs took longer than we quoted, and why?</span></div></a>
+<a class="an-tile "><img src="../public/site/assets/industry-schools.jpg" alt="A classroom"><div class="an-tc"><b>Schools and charters</b><span>Which teaching jobs are still open for next year, and for how long?</span></div></a>
+<a class="an-tile "><img src="../public/site/assets/industry-hospitality.jpg" alt="A hospitality setting"><div class="an-tc"><b>Hospitality and experiences</b><span>Which first-time guests came back a second time, and what brought them?</span></div></a>
+<a class="an-tile "><img src="../public/site/assets/industry-property.jpg" alt="A commercial property"><div class="an-tc"><b>Property and facilities</b><span>Which leases end in the next six months, and who has not renewed yet?</span></div></a>
+<a class="an-tile "><img src="../public/site/assets/industry-nonprofit.jpg" alt="Volunteers working together"><div class="an-tc"><b>Nonprofits and community organizations</b><span>Which volunteers came last spring but not this fall?</span></div></a>
+</div><i class="an-g" style="height:48px"><b>48</b></i>
+<div class="an-idx"><a>Hospitality and experiences</a><a>Manufacturing and distribution</a><a>Property and facilities</a><a>Schools and charters</a><a>Retail and commerce</a><a>Professional services</a><a>Local government</a><a>Nonprofits and community organizations</a><a>Groups and portfolios</a></div><i class="an-g" style="height:32px"><b>32</b></i>
+<div class="an-lrow"><span class="an-lk">Explore your industry</span><span class="an-lk">Explore the work</span></div>
+</div><i class="an-pd an-pt" style="height:96px"><i>96</i></i><i class="an-pd an-pb" style="height:96px"><i>96</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">7</div><h4>Industries</h4><div class="s">Restored from original</div><p>Nine worries, nine different questions. A visitor should find their own world in under five seconds, and never think this is only for one kind of business.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Bento</b><em>528 / 252 / 252</em></div><div><b>Rows</b><em>268 + 268, gap 24</em></div><div><b>Index</b><em>3 columns, rows 56</em></div><div><b>Tiles</b><em>5 photographs</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top and bottom</b><em>96 / 96</em></div><div><b>Header to bento</b><em>48</em></div><div><b>Bento to index</b><em>48</em></div><div><b>Index to links</b><em>32</em></div></div><div class="an-sc"><h5>Type</h5><div><b>Tile name</b><em>17 / 600</em></div><div><b>Tile question</b><em>14 / 1.5</em></div><div><b>Index</b><em>17, arrow right</em></div><div><b>Links</b><em>trailing arrow, gap 8</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Photos</b><em>industry-*.jpg, 1880 wide</em></div><div><b>Scrim</b><em>navy E6 to 0, 176</em></div><div><b>Hover</b><em>scale 1.03, 300ms</em></div><div><b>Tile</b><em>whole tile is a link</em></div></div></div><div class="an-row" style="--h:700"><div class="an-frame"><div class="an-pg"><div class="an-b an-sk"><b class="an-no">8<em>Living</em></b><div class="an-w an-p"><div class="an-liv">
+<img src="../public/site/assets/outdoors.jpg" alt="A parent and child in dune grass">
+<div class="an-rel"><h2>A little less noise. A little more life.</h2><i class="an-g" style="height:24px"><b>24</b></i><p class="an-body">The purpose of a clearer picture is knowing where to put your attention. And having more of it left for the people, places and moments that matter.</p><i class="an-g" style="height:32px"><b>32</b></i><span class="an-lk">The intelligence behind it</span><b class="an-dot" style="--ex:690px">8.1</b></div>
+</div></div><i class="an-pd an-pt" style="height:96px"><i>96</i></i><i class="an-pd an-pb" style="height:96px"><i>96</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">8</div><h4>Made for living</h4><div class="s">Restored from original</div><p>The one band that is allowed to be gentle. It says why the clearer picture matters.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Grid</b><em>508 / 508, gap 64</em></div><div><b>Image</b><em>508 x 508 crop</em></div><div><b>Align</b><em>centre</em></div><div><b>Surface</b><em>sunk</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top and bottom</b><em>96 / 96</em></div><div><b>H2 to body</b><em>24</em></div><div><b>Body to link</b><em>32</em></div><div><b>Column gap</b><em>64</em></div></div><div class="an-sc"><h5>Type</h5><div><b>H2</b><em>t2 40/1.1</em></div><div><b>Body</b><em>t5 17/1.6</em></div><div><b>Link</b><em>17, underline, arrow</em></div><div><b>Copy</b><em>under 260 chars</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Photo</b><em>outdoors.jpg</em></div><div><b>Position</b><em>40% 50%</em></div><div><b>Radius</b><em>8</em></div><div><b>Motion</b><em>none</em></div></div></div><div class="an-row" style="--h:696"><div class="an-frame"><div class="an-pg"><div class="an-b an-lt"><b class="an-no">9<em>Layers</em></b><div class="an-w an-p">
+<h2>Five layers that make an answer trustworthy</h2><i class="an-g" style="height:24px"><b>24</b></i><p class="an-body">Five connected layers turn scattered information into one view of your world.</p><i class="an-g" style="height:48px"><b>48</b></i>
+<div class="an-lay"><div class="an-lr"><div class="an-ly on"><i>01</i><span>Identity</span><u>&minus;</u></div><div class="an-ly"><i>02</i><span>Lineage</span><u>+</u></div><div class="an-ly"><i>03</i><span>Memory</span><u>+</u></div><div class="an-ly"><i>04</i><span>Verification</span><u>+</u></div><div class="an-ly"><i>05</i><span>Awareness</span><u>+</u></div></div>
+<div><div class="an-kick">The ontology layer</div><i class="an-g" style="height:16px"><b>16</b></i><div class="an-t3s">Different names, the same understanding</div><i class="an-g" style="height:24px"><b>24</b></i><p class="an-body">A company can have a name in your inbox, an ID in your ledger, and an alias in conversation. The object layer connects them to one identity, so context follows the company.</p><i class="an-g" style="height:32px"><b>32</b></i>
+<div class="an-sch"><div><span>HES</span><span>Vendor ID</span><span>Payment customer</span></div><u></u><b>One company</b></div></div></div>
+</div><i class="an-pd an-pt" style="height:96px"><i>96</i></i><i class="an-pd an-pb" style="height:96px"><i>96</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">9</div><h4>Five layers</h4><div class="s">Kept from live</div><p>The architecture, as tabs. Each layer is a row; the active one carries a teal rule.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Grid</b><em>5fr / 7fr, gap 64</em></div><div><b>Rows</b><em>5 x 72</em></div><div><b>Panel</b><em>no card, no border</em></div><div><b>Schema</b><em>three names, one block</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top and bottom</b><em>96 / 96</em></div><div><b>Heading to intro</b><em>24</em></div><div><b>Intro to grid</b><em>48</em></div><div><b>Panel gaps</b><em>16 / 24 / 32</em></div></div><div class="an-sc"><h5>Type</h5><div><b>Layer name</b><em>20 / 500</em></div><div><b>Numeral</b><em>14 / 600 copper</em></div><div><b>Panel title</b><em>t3 28/1.2</em></div><div><b>Kicker</b><em>14 / 500 teal</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Roles</b><em>tablist, arrow keys</em></div><div><b>Active</b><em>2px teal rule</em></div><div><b>Block</b><em>navy, h 56, radius 8</em></div><div><b>Glyph</b><em>plus / minus</em></div></div></div><div class="an-row" style="--h:664"><div class="an-frame"><div class="an-pg"><div class="an-b an-dk"><b class="an-no">10<em>Principles</em></b><div class="an-w an-p"><div class="an-prin">
+<h2>Intelligence should bring clarity and show its work</h2>
+<div><div class="an-pr"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg><div><h3>Follow every answer</h3><div style="height:8px"></div><p class="an-body">Trace a claim to the system and record behind it. Evidence stays connected to the answer.</p></div></div><div class="an-pr"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><h3>Keep the full picture</h3><div style="height:8px"></div><p class="an-body">Preserve what was true and when it became known. New information adds context without erasing history.</p></div></div><div class="an-pr"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg><div><h3>Notice what changes</h3><div style="height:8px"></div><p class="an-body">Arthur watches for the changes that matter and brings a decision back into focus when its assumptions shift.</p></div></div></div>
+</div></div><i class="an-pd an-pt" style="height:96px"><i>96</i></i><i class="an-pd an-pb" style="height:96px"><i>96</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">10</div><h4>Principles</h4><div class="s">Restored from original</div><p>Three promises about trust, set as ruled rows with a symbol each, not three equal cards.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Grid</b><em>5fr / 7fr, gap 64</em></div><div><b>Row</b><em>56 glyph / 1fr</em></div><div><b>Rules</b><em>1px #2A3B55</em></div><div><b>Surface</b><em>navy</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top and bottom</b><em>96 / 96</em></div><div><b>Row pad</b><em>32 0</em></div><div><b>Title to text</b><em>8</em></div><div><b>Glyph</b><em>24, stroke 1.5</em></div></div><div class="an-sc"><h5>Type</h5><div><b>H2</b><em>t2 40/1.1 white</em></div><div><b>Row title</b><em>t4 20/1.5</em></div><div><b>Row text</b><em>t5 17/1.6</em></div><div><b>Colour</b><em>text on navy #A9B3C4</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Glyphs</b><em>arrow, clock, pulse</em></div><div><b>Colour</b><em>teal light #7FC4C0</em></div><div><b>Motion</b><em>none</em></div><div><b>Copy</b><em>under 150 chars a row</em></div></div></div><div class="an-row" style="--h:766"><div class="an-frame"><div class="an-pg"><div class="an-b an-lt"><b class="an-no">11<em>How</em></b><div class="an-w an-p"><div class="an-split" style="align-items:start">
+<h2>From one question to a figure you can defend.</h2>
+<div style="border-bottom:1px solid var(--line)"><div class="an-step"><i>01</i><div><b>Send a short brief.</b><p>Tell us the decision you need to make and what records you have. We reply in writing, aiming for one working day.</p></div></div><div class="an-step"><i>02</i><div><b>We answer one question.</b><p>We connect one system, read-only, and answer it with the source behind every figure. You get a written map of what else could be read.</p></div></div><div class="an-step"><i>03</i><div><b>Your team asks for itself.</b><p>Your team asks across its core systems and checks the records behind each answer. We set up access, train the people who will use it, and stay alongside as things change.</p></div></div></div>
+</div><i class="an-g" style="height:48px"><b>48</b></i>
+<div class="an-split" style="align-items:start"><span></span><div><p class="an-body">Your systems stay yours. We connect them read-only, one at a time, keep your data separate and in the United States, and delete it when you ask.</p><i class="an-g" style="height:16px"><b>16</b></i><span class="an-lk">Read how we keep your data safe</span></div></div>
+</div><i class="an-pd an-pt" style="height:96px"><i>96</i></i><i class="an-pd an-pb" style="height:96px"><i>96</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">11</div><h4>How it works</h4><div class="s">Kept from live</div><p>Three steps, one line each, then the safety promise at the point where doubt appears. Fear of handing over data is answered here, not hidden in a footer.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Grid</b><em>5fr / 7fr, gap 64</em></div><div><b>Steps</b><em>3 ruled rows</em></div><div><b>Promise</b><em>below, right column</em></div><div><b>Surface</b><em>cream</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top and bottom</b><em>96 / 96</em></div><div><b>Step pad</b><em>24 0</em></div><div><b>Steps to promise</b><em>48</em></div><div><b>Promise to link</b><em>16</em></div></div><div class="an-sc"><h5>Type</h5><div><b>H2</b><em>t2 40/1.1</em></div><div><b>Step title</b><em>20 / 600</em></div><div><b>Step text</b><em>t5 17/1.6</em></div><div><b>Numeral</b><em>14 / 600 copper</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Asset</b><em>none</em></div><div><b>Link</b><em>to /trust</em></div><div><b>Claims</b><em>only from how-it-works and trust</em></div><div><b>Motion</b><em>none</em></div></div></div><div class="an-row" style="--h:520"><div class="an-frame"><div class="an-pg"><div class="an-b an-close"><b class="an-no">12<em>Close</em></b><img src="../public/site/assets/dinner.jpg" alt="Friends eating together at a long table beside an open fire">
+<div class="an-cs"><h2 class="an-h1 an-rel">We give<br>the day back.</h2><div style="height:16px"></div><p class="an-it">So you can be here.</p><div style="height:32px"></div>
+<div style="display:flex;gap:16px"><span class="an-btn an-bc">Start a project</span><span class="an-btn an-bg">Try the free price snapshot</span></div></div></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">12</div><h4>Close</h4><div class="s">Restored from original</div><p>Same warm tone as the opening, one clear next step. The page ends where it began, with a life, not a pitch.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Height</b><em>520</em></div><div><b>Stack</b><em>centred</em></div><div><b>Scrim</b><em>navy CC, 80%</em></div><div><b>Buttons</b><em>cream + outline, gap 16</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top</b><em>96</em></div><div><b>H2 to line</b><em>16</em></div><div><b>Line to buttons</b><em>32</em></div><div><b>Button</b><em>h 44</em></div></div><div class="an-sc"><h5>Type</h5><div><b>H2</b><em>t1 64/1.04, weight 400</em></div><div><b>Line</b><em>Sentient italic 23/1.5</em></div><div><b>Line colour</b><em>#D9C9AE</em></div><div><b>Lines</b><em>H2 on two lines</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Photo</b><em>dinner.jpg 940 wide</em></div><div><b>Role</b><em>texture, not content</em></div><div><b>Flag</b><em>re-export at 1880</em></div><div><b>Link</b><em>to /snapshot</em></div></div></div><div class="an-row" style="--h:714"><div class="an-frame"><div class="an-pg"><div class="an-b an-foot"><b class="an-no">13<em>Footer</em></b><div class="an-w">
+<div class="an-ft"><div class="an-ftm"><span class="lk" style="--h:32px;color:#fff"><img src="../public/brand/mark-white-512.png" alt="">LOVELEEDAY</span><i class="an-g" style="height:16px"><b>16</b></i><p class="an-tag2">Pure intelligence.<br>For a fuller life.</p></div>
+<div class="an-fb"><span class="an-btn an-bc">Talk to us &rarr;</span><span class="an-btn an-bg">How it works</span></div></div>
+<div style="height:48px"></div><div class="an-frule"></div><div style="height:48px"></div>
+<div class="an-fg"><div class="an-fd" aria-hidden="true"><i style="left:0.0px;width:190.4px"><b>190</b></i><i style="left:222.4px;width:190.4px"><b>190</b></i><i style="left:444.8px;width:190.4px"><b>190</b></i><i style="left:667.2px;width:190.4px"><b>190</b></i><i style="left:889.6px;width:190.4px"><b>190</b></i></div>
+<div class="an-fc"><b>Product</b><a>Arthur</a><a>Operating system</a><a>How it works</a><a>Architecture</a><a>Integrations</a></div>
+<div class="an-fc"><b>Solutions</b><a>Customer data</a><a>Operational intelligence</a><a>Pricing and margins</a><a>Free pricing Snapshot</a><a>Municipal review</a><a>All use cases</a></div>
+<div class="an-fc"><b>Industries</b><a>Manufacturing and distribution</a><a>Property management</a><a>Schools and charters</a><a>All industries</a></div>
+<div class="an-fc"><b>Services</b><a>What we build</a><a>Ways to work together</a><a>Start a project</a></div>
+<div class="an-fc"><b>Company</b><a>About</a><a>Principles</a><a>Work</a><a>Systems Notes</a><a>Trust and security</a><a>FAQ</a><a>Contact</a><a>Sign in</a></div>
+</div>
+<div style="height:30px"></div><div class="an-frule"></div><div style="height:24px"></div>
+<div class="an-fl"><span>&copy; 2026 LOVELEEDAY Studios LLC &middot; hello@loveleedaystudios.com</span><span>Privacy &middot; Terms</span><span><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.75 9.75h3.8v1.6h.06c.53-1 1.82-2.06 3.75-2.06 4 0 4.74 2.64 4.74 6.07V21h-4v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.58V21h-4z"/></svg>LinkedIn</span></div>
+<div style="height:14px"></div><p class="an-fn">Interactive examples use demonstration data. Photography is licensed stock.</p></div>
+<i class="an-pd an-pt" style="height:80px"><i>80</i></i><i class="an-pd an-pb" style="height:40px"><i>40</i></i></div></div></div></div><div class="an-strip"><div class="an-sh"><div class="n">13</div><h4>Footer</h4><div class="s">Kept from live</div><p>The full five-column footer returns. Titles go back to a quiet 13 pixels so they do not outweigh the links.</p></div><div class="an-sc"><h5>Layout</h5><div><b>Columns</b><em>5 x 190, gap 32</em></div><div><b>Top row</b><em>mark and tagline / buttons</em></div><div><b>Legal row</b><em>three parts, 12</em></div><div><b>Surface</b><em>#0F1A2B</em></div></div><div class="an-sc"><h5>Spacing</h5><div><b>Top and bottom</b><em>80 / 40</em></div><div><b>Rules</b><em>48 above and below</em></div><div><b>Link rows</b><em>gap 10</em></div><div><b>Title to links</b><em>16</em></div></div><div class="an-sc"><h5>Type</h5><div><b>Column title</b><em>13 / 600</em></div><div><b>Links</b><em>14 / 1.55</em></div><div><b>Legal</b><em>12</em></div><div><b>Small print</b><em>11.5</em></div></div><div class="an-sc"><h5>Asset and behaviour</h5><div><b>Mark</b><em>mark-white-512.png, 32</em></div><div><b>Buttons</b><em>cream + outline, h 46</em></div><div><b>Mobile</b><em>2 columns under 900</em></div><div><b>Content</b><em>as live, 5 columns</em></div></div></div><h3 class="an-h3">What changed against the two sites</h3><table class="an-tb"><thead><tr><th>Band</th><th>Original site</th><th>Live site</th><th>This page</th></tr></thead><tbody><tr><td data-l="Band">Hero</td><td data-l="Original site">Full-bleed atrium, locked line</td><td data-l="Live site">Cream split, new headline</td><td data-l="This page">Atrium back, locked line, one button</td></tr><tr><td data-l="Band">Hero base line</td><td data-l="Original site">Built around your world.</td><td data-l="Live site">None</td><td data-l="This page">Restored</td></tr><tr><td data-l="Band">Proof</td><td data-l="Original site">None</td><td data-l="Live site">Text-only answer band</td><td data-l="This page">Answer card over a photograph, three named sources</td></tr><tr><td data-l="Band">Intro</td><td data-l="Original site">Two columns, large headline</td><td data-l="Live site">One column, half empty</td><td data-l="This page">5 / 7 split that fills the width</td></tr><tr><td data-l="Band">Questions</td><td data-l="Original site">Four visual cards</td><td data-l="Live site">Text rows, row four had no evidence</td><td data-l="This page">Four cards, evidence on all four</td></tr><tr><td data-l="Band">What changed</td><td data-l="Original site">Chip and sentence strip</td><td data-l="Live site">A bare paragraph</td><td data-l="This page">Designed strip, copper marker</td></tr><tr><td data-l="Band">Arthur</td><td data-l="Original site">Brain stage, four branches, controls</td><td data-l="Live site">Heading only, 280 high</td><td data-l="This page">Brain once, four branches, answer, controls</td></tr><tr><td data-l="Band">Ask</td><td data-l="Original site">Interactive shell with tabs</td><td data-l="Live site">Screenshot with its own heading</td><td data-l="This page">Screenshot framed, heading cropped</td></tr><tr><td data-l="Band">Industries</td><td data-l="Original site">Ruled list with arrows</td><td data-l="Live site">Plain nine-row list</td><td data-l="This page">Photograph bento plus full index with arrows</td></tr><tr><td data-l="Band">Principles</td><td data-l="Original site">Three columns with symbols</td><td data-l="Live site">Text rows, no symbols</td><td data-l="This page">Ruled rows with symbols</td></tr><tr><td data-l="Band">Footer titles</td><td data-l="Original site">Small tracked caps</td><td data-l="Live site">15 / 600, louder than links</td><td data-l="This page">13 / 600, quiet</td></tr><tr><td data-l="Band">Action colour</td><td data-l="Original site">Blue #0066cc</td><td data-l="Live site">Blue #0066cc</td><td data-l="This page">Teal dark #0A6261 (book re-skin)</td></tr></tbody></table><h3 class="an-h3">Which pages use which bands</h3><table class="an-tb"><thead><tr><th>Route</th><th>Bands</th><th>What changes</th></tr></thead><tbody><tr><td data-l="Route">Home</td><td data-l="Bands">Nav, 1 to 13</td><td data-l="What changes">The page drawn above.</td></tr><tr><td data-l="Route">Industry page</td><td data-l="Bands">Nav, 1, 2, 7, 12, footer</td><td data-l="What changes">Hero swaps to that industry photograph and one question; band 7 shows four tiles from that industry.</td></tr><tr><td data-l="Route">Arthur page</td><td data-l="Bands">Nav, 1, 5, 9, 10, 12, footer</td><td data-l="What changes">Band 5 expands to the full brain sequence; layers and principles carry the detail.</td></tr><tr><td data-l="Route">Proposal</td><td data-l="Bands">Own template, no nav</td><td data-l="What changes">Built from the live /p/ template. Uses bands 2, 4 and 12 as sections.</td></tr></tbody></table></div></div></section>
 
 <section class="section" id="components"><div class="wrap">
   <div class="sec-head"><div><div class="sec-no">15 Site components</div><h2>The original's atmosphere, with the current site's proof.</h2></div><p class="lead">Every part below is built to the tokens above. They merge the editorial calm of "Pure intelligence" with the plain-language answer card and real photography the later site got right.</p></div>
