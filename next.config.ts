@@ -23,6 +23,7 @@ const siteRoutes: { source: string; destination: string }[] = [
   { source: "/studio", destination: "/site/studio.html" },
   { source: "/privacy", destination: "/site/privacy.html" },
   { source: "/terms", destination: "/site/terms.html" },
+  { source: "/photo-credits", destination: "/site/photo-credits.html" },
   { source: "/notes", destination: "/site/notes.html" },
   { source: "/notes/:slug", destination: "/site/notes/:slug.html" },
   { source: "/how-it-works", destination: "/site/how-it-works.html" },

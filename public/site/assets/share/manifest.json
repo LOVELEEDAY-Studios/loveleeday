@@ -49,11 +49,11 @@
   },
   "home": {
     "page": "index.html",
-    "hash": "646f588beaee3671",
-    "file": "f079bcf11a966a81",
+    "hash": "da9d4f384f3b4445",
+    "file": "fda4a7f729e72f44",
     "headline": "Know what happened and what to do next",
     "caption": "The AI operating system for business",
-    "photo": "outdoors.jpg"
+    "photo": "principles.jpg"
   },
   "how-it-works": {
     "page": "how-it-works.html",
@@ -89,11 +89,11 @@
   },
   "industries-schools": {
     "page": "industries/schools.html",
-    "hash": "5139b50f28094e11",
-    "file": "f517a84a655a04d9",
+    "hash": "5c31d023a6bf06ab",
+    "file": "25d268f7d7c2164e",
     "headline": "Know what is due, and what proves it.",
     "caption": "Schools and charters: what is due and what proves it",
-    "photo": "industry-schools.jpg"
+    "photo": "hero.jpg"
   },
   "integrations": {
     "page": "integrations.html",
@@ -126,6 +126,14 @@
     "headline": "Know what changed and what to do next.",
     "caption": "Operational intelligence: know what needs attention",
     "photo": "industry-manufacturing-3.jpg"
+  },
+  "photo-credits": {
+    "page": "photo-credits.html",
+    "hash": "c8114c203d76ae48",
+    "file": "b2af7e1173765c49",
+    "headline": "Photo credits",
+    "caption": "Photo credits",
+    "photo": "hero.jpg"
   },
   "pricing-margins": {
     "page": "pricing-margins.html",
