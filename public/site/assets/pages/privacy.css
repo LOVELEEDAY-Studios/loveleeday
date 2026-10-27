@@ -1,0 +1,35 @@
+/* Privacy. Layout, hierarchy and readability only; the wording lives in the HTML. */
+.pg-privacy .doc-date{font-size:15px;color:#5b5e66;margin-top:20px}
+.pg-privacy .pv-toc-title{font-size:15px;letter-spacing:0;text-transform:none;font-weight:600;color:var(--b-ink)}
+
+@media (min-width:1021px){
+  body.pg-privacy main>section.page-hero:first-of-type{background:radial-gradient(ellipse 70% 130% at 85% 0%,#1b1d3a 0%,var(--b-night) 62%);color:#fff;border:0;padding:96px 0 80px}
+  .pg-privacy .page-hero .wrap,.pg-privacy .pv-wrap{width:min(1080px,calc(100% - 80px));max-width:none}
+  .pg-privacy .page-hero h1{font-size:72px!important;line-height:1.02;letter-spacing:-.035em;font-weight:600!important;color:#fff;max-width:12ch;margin-top:0}
+  .pg-privacy .page-hero .lead{font-size:24px!important;line-height:1.5;color:#c4c6d0;max-width:38em;margin-top:24px}
+
+  .pg-privacy main>.wrap{width:min(1080px,calc(100% - 80px));max-width:none}
+  .pg-privacy .pv-doc{max-width:none;display:grid;grid-template-columns:240px minmax(0,700px);column-gap:72px;align-items:start;padding-block:96px 128px;margin:0}
+  .pg-privacy .pv-toc{grid-column:1;grid-row:1 / span 8;position:sticky;top:calc(var(--header-height) + 40px);border:0;padding:0;margin:0}
+  .pg-privacy .pv-toc ul{border-left:1px solid var(--b-line);gap:0}
+  .pg-privacy .pv-toc a{font-size:17px;line-height:1.4;padding:10px 0 10px 18px;margin-left:-1px;border-left:2px solid transparent;color:#3a3b40;text-decoration:none}
+  .pg-privacy .pv-toc a:hover{color:var(--b-blue);border-left-color:var(--b-blue)}
+  .pg-privacy .pv-sec{grid-column:2;padding-block:48px;border-top:1px solid var(--b-line);border-bottom:0}
+  .pg-privacy .pv-sec:first-of-type{border-top:0;padding-top:0}
+  .pg-privacy .pv-sec h2{font-size:36px;line-height:1.12;letter-spacing:-.025em;font-weight:600;color:var(--b-ink);margin:0 0 20px}
+  .pg-privacy .pv .body-copy,.pg-privacy .body-copy{font-size:20px;line-height:1.7;color:#2c2e33}
+  .pg-privacy .body-copy p+p{margin-top:18px}
+
+  /* the short factual lists read as rows, not as a wall of lines */
+  .pg-privacy #cookies-and-analytics .body-copy p+p,.pg-privacy #who-handles-it .body-copy p+p{margin-top:0;padding:16px 0 16px 20px;border-top:1px solid var(--b-line);border-left:3px solid var(--b-blue)}
+  .pg-privacy #cookies-and-analytics .body-copy p+p{border-left-color:var(--b-line);border-left-width:3px}
+  .pg-privacy #cookies-and-analytics .body-copy p:first-child+p,.pg-privacy #who-handles-it .body-copy p:first-child+p{margin-top:20px}
+  .pg-privacy .doc-date{font-size:17px;color:#9a9ca6;margin-top:32px}
+  .pg-privacy #keeping-and-deleting{background:var(--b-cream);border-radius:16px;padding:40px 44px;border-top:0;margin-block:16px}
+  .pg-privacy #questions{border-top:0;padding-block:32px 0}
+  .pg-privacy #questions h2{font-size:28px}
+  .pg-privacy #questions .body-copy{font-size:17px}
+}
+@media (max-width:1020px){
+  .pg-privacy main>.page-hero{background:var(--b-cream)}
+}
