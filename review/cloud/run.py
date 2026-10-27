@@ -147,8 +147,19 @@ def p4(n=7):
         jobs.append(lambda g=g, pr=pr: claude('p4-' + g, pr, hours=1.25))
     pool(jobs, n); commit('p4 beta fixes')
 
+def par():
+    """Shared fixes (brand.css only) and all fix teams (their own page files only) at the same time; the file sets never overlap."""
+    shared = lambda: claude('p2-shared', fill('brief-coherence.md', ALLPAGES=' '.join(ALL), REPORT=f'{RPT}/p2-shared.md',
+        EXTRA='SPEED RUN, SHARED ONLY: edit ONLY site/assets/brand.css (fix teams are editing the page files right now). Apply every Shared change needed in the page-team reports (phone hamburger, footer, phone screen frames first) and fix cross-page inconsistency with brand.css rules. Skip step 5 scoring; the final scoring runs after you.'),
+        model='opus', hours=1)
+    jobs = [shared]
+    for g, pages in GROUPS.items():
+        pr = fill('brief-fix.md', PAGES=', '.join(pages), PAGES_SPACE=' '.join(pages), FILES=files(pages), REPORT=f'{RPT}/p4-{g}.md')
+        jobs.append(lambda g=g, pr=pr: claude('p4-' + g, pr, hours=0.75))
+    pool(jobs, 8); commit('p2 shared + p4 fixes')
+
 def final():
-    o = subprocess.run([f'{H}/bin/score.sh'] + ALL, capture_output=True, text=True).stdout
+    o = subprocess.run([f'{H}/bin/score.sh'] + ALL, capture_output=True, text=True, env={**os.environ, 'SCORE_PAR': '8'}).stdout
     open(f'{RPT}/FINAL-scores.txt', 'w').write(o); log('final scores written')
 
 def patch():
@@ -156,7 +167,7 @@ def patch():
     d = subprocess.run(['git', 'diff', '--binary', base, 'HEAD', '--', 'site', 'portal', 'integrations'], cwd=R, capture_output=True).stdout
     open(f'{H}/out/site.patch', 'wb').write(d); log(f'patch {len(d)} bytes')
 
-STEPS = {'p1': p1, 'p2': lambda: p2('p2', 'Do the SHARED fixes first: every Shared change needed in the page-team reports (phone hamburger, footer, phone screen frames), then cross-page consistency. Fix teams run after you, so skip page-only polish.'), 'join': join, 'crawl': crawl, 'p3': p3, 'p4': p4, 'fast': fast,
+STEPS = {'p1': p1, 'p2': lambda: p2('p2', 'Do the SHARED fixes first: every Shared change needed in the page-team reports (phone hamburger, footer, phone screen frames), then cross-page consistency. Fix teams run after you, so skip page-only polish.'), 'join': join, 'par': par, 'crawl': crawl, 'p3': p3, 'p4': p4, 'fast': fast,
          'p5': lambda: p2('p5', 'This is the ONE coherence pass, after the page teams and the beta fixes: apply the shared changes the reports ask for (the phone hamburger first), make all pages consistent, then score every page with score.sh. Be fast: one rule in brand.css beats the same fix in many sheets.'),
          'final': final, 'patch': patch}
 for s in ([a for a in sys.argv[1:] if a] or list(STEPS)):
