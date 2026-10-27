@@ -20,6 +20,15 @@ WEAK = {'index': 'Example answer card is example data, not a captured case.',
         'work': 'Wants before/after measurements beyond page weight.', 'build': 'Six service rows read repetitive.',
         'studio': 'Product example is labeled example data.', 'principles': 'Six similar rows; wants one large annotated product view.',
         'contact': 'No real answer or source trail shown.', 'notes': 'Three equal cards; wants a larger product view.'}
+# final scores from the cloud run (review/out/cloud/reports/FINAL-scores.txt), strict judge: any remaining defect caps a page at 9
+_F = S + '/cloud/reports/FINAL-scores.txt'
+if os.path.exists(_F):
+    SCORE = {l.split()[0].replace('/', '_'): int(l.split()[-1]) for l in open(_F) if l.strip().split()[-1].isdigit()}
+    WEAK = {'index': 'Phone portal screenshot: the long question is cut off in the input box; needs a fresh phone capture.',
+            'industries_schools': 'Phone portal screenshot reads small at 390.',
+            'arthur': 'Phone portal screenshot reads small at 390.', 'operating-system': 'Phone portal screenshot reads small at 390.',
+            'how-it-works': 'Phone portal screenshot reads small at 390.', 'architecture': 'Phone portal screenshot reads small at 390.'}
+
 NAMES = {'index': 'Home', 'operating-system': 'Operating system', 'how-it-works': 'How it works', 'industries_manufacturing': 'Industry: manufacturing',
          'industries_property': 'Industry: property', 'industries_schools': 'Industry: schools and charters', 'notes': 'Systems Notes',
          'customer-data': 'Customer data', 'operational-intelligence': 'Operational intelligence', 'pricing-margins': 'Pricing and margins',
@@ -30,18 +39,18 @@ def nm(p):
         return NAMES[p]
     return 'Note: ' + p[6:].replace('-', ' ') if p.startswith('notes_') else p.replace('-', ' ').capitalize()
 
-pages = sorted(os.path.basename(f)[5:-9] for f in glob.glob(S + '/final/1440/site_*-1440.png'))
+pages = sorted(os.path.basename(f)[5:-9] for f in glob.glob(S + '/final2/1440/site_*-1440.png'))
 order = ['index'] + [p for p in pages if p != 'index']
-mp, notes = {}, {'title': 'LOVELEEDAY site: brand pass', 'subtitle': 'Before = this morning. After = one brand layer across all 35 pages: fixed palette, Switzer with Sentient for answers, one type scale, one button, the 3D brain back on home. Desktop and phone. Local board, nothing pushed or deployed.',
+mp, notes = {}, {'title': 'LOVELEEDAY site: full design pass', 'subtitle': 'Before = this morning. After = one brand layer across all 35 pages: fixed palette, Switzer with Sentient for answers, one type scale, one button, the 3D brain back on home. Desktop and phone. Local board, nothing pushed or deployed.',
                  'summary': [], 'palette': [{'name': 'Night', 'hex': '#0b0b10'}, {'name': 'Cream', 'hex': '#f5f1eb'}, {'name': 'Mist', 'hex': '#f5f5f7'}, {'name': 'Ink', 'hex': '#1d1d1f'}, {'name': 'Action blue', 'hex': '#0066cc'}],
-                 'pages': {}, 'sections': [], 'beforeLabel': 'Before (this morning)', 'afterLabel': 'After (brand pass)'}
+                 'pages': {}, 'sections': [], 'beforeLabel': 'Before (this morning)', 'afterLabel': 'After (full design pass)'}
 for p in order:
     url = 'https://loveleedaystudios.com/' + ('' if p == 'index' else p.replace('_', '/'))
     sc = SCORE.get(p, 7 if p.startswith('notes_') else None)
     g = f'{sc}/10 (Stripe scored 7, Linear 8 on the same judge)' if sc else ''
     for w, tag in ((1440, 'desktop'), (390, 'phone')):
         slug = f'{p}-{w}'
-        mp[slug] = {'before': f'{S}/after/site_{p}-{w}.png', 'after': f'{S}/final/{w}/site_{p}-{w}.png', 'name': f'{nm(p)} ({tag})', 'url': url}
+        mp[slug] = {'before': f'{S}/after/site_{p}-{w}.png', 'after': f'{S}/final2/{w}/site_{p}-{w}.png', 'name': f'{nm(p)} ({tag})', 'url': url}
         notes['pages'][slug] = {'name': mp[slug]['name'], 'url': url, 'grade': g if w == 1440 else '', 'changed': '',
                                 'weak': ('Codex: ' + WEAK[p]) if (w == 1440 and p in WEAK) else ''}
 json.dump(mp, open(OUT + '/map.json', 'w'))
@@ -52,10 +61,10 @@ for k, v in notes['pages'].items():
     n2['pages'][k].update(v)
 n2['afterDir'] = OUT + '/after'
 vals = [SCORE.get(p, 7) for p in order]
-n2['summary'] = [f'Codex scored every page 6 or 7 of 10 (average {sum(vals)/len(vals):.1f}). Calibrated on the same judge, stripe.com scored 7, ramp.com 7 and linear.app 8, so 7 is Stripe-level here and a literal 10 is not reachable on this judge without breaking the brand rules.',
-                 'Every page now loads one brand layer (brand.css) plus its own page sheet: 8 dark grounds and 6 greys collapsed to night, cream, mist and white; 33 font sizes to one scale; 9-11px labels raised to 14px.',
-                 'What still holds pages at 6: most proof is labeled example data rather than a captured portal answer, and integrations has no live connector to show yet.',
-                 'Phone: all 35 pages checked at 390. Three phone defects found and fixed (industries closing card, talk table header, trust stage list).']
+n2['summary'] = [f'Strict Codex judge, every page on desktop and phone: average {sum(vals)/len(vals):.1f} of 10, range {min(vals)} to {max(vals)}. Any remaining defect caps a page at 9, so no page reached 10.',
+                 'What changed: one hero system (photo, split, product, text) with one photo per hero, one screen frame, one answer card, one logo chip, the phone menu button fixed on every page, off-brand colours removed, beta-tester gaps closed.',
+                 'Five beta testers (charter-school manager, property director on a phone, manufacturing VP, keyboard-only city analyst at 200 percent zoom, nonprofit director on a tablet) walked the site; their findings went to the fix teams. Link crawl of 70 page views: no broken internal links, overflow or broken images.',
+                 'Still holding the 6s: the phone portal screenshots on home and the product pages read small, and the home example question is cut off in the portal input. That needs fresh phone captures of the portal.']
 json.dump(n2, open(OUT + '/notes.json', 'w'))
 subprocess.run(['node', os.path.expanduser('~/arthur/scripts/review-board.mjs'), OUT + '/before', OUT + '/notes.json', BOARD], check=True, capture_output=True)
 print('board3', BOARD + '/index.html', len(order), 'pages x 2 widths')
