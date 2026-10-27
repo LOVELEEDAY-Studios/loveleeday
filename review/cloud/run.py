@@ -125,6 +125,6 @@ def patch():
 STEPS = {'p1': p1, 'p2': p2, 'crawl': crawl, 'p3': p3, 'p4': p4,
          'p5': lambda: p2('p5', 'This is the FINAL pass after the beta fixes: re-check every page against the others, then score every page with score.sh.'),
          'final': final, 'patch': patch}
-for s in (sys.argv[1:] or list(STEPS)):
+for s in ([a for a in sys.argv[1:] if a] or list(STEPS)):
     log('phase ' + s); STEPS[s]()
 log('ALL DONE')
