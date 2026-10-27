@@ -75,3 +75,7 @@
 @media (max-width:760px){.diagram{padding:20px 0 20px 20px;overflow-x:auto;-webkit-overflow-scrolling:touch}.diagram svg{min-width:600px;padding-right:20px}.diagram figcaption{padding-right:20px}.art-body blockquote{font-size:23px}}
 
 @media (pointer:coarse){.share{min-height:44px;display:inline-flex;align-items:center}}
+
+.note-list .list-head,.note-list h2.list-head{color:var(--ink)!important}
+.note-list .row h3{max-width:none!important}
+@media(max-width:900px){.note-list .row{align-items:start!important}.note-list .row .n{align-self:start;padding-top:4px}}

@@ -6,13 +6,16 @@
     { "prefix": "notes/", "ogType": "article" }
   ],
   "pages": {
-    "index.html": { "caption": "The AI operating system for business" },
-    "integrations.html": { "photo": "operating-system.jpg" },
-    "privacy.html": { "photo": "outdoors.jpg" },
-    "terms.html": { "photo": "industry-government.jpg" },
-    "snapshot.html": { "photo": "industry-retail.jpg" },
-    "trust.html": { "photo": "industry-nonprofit.jpg" },
-    "work.html": { "photo": "industry-portfolios.jpg" },
+    "index.html": { "caption": "Pure intelligence. For a fuller life." },
+    "integrations.html": { "photo": "card-integrations.jpg" },
+    "privacy.html": { "photo": "card-privacy.jpg" },
+    "terms.html": { "photo": "card-terms.jpg" },
+    "snapshot.html": { "photo": "card-snapshot.jpg" },
+    "trust.html": { "photo": "card-trust.jpg" },
+    "work.html": { "photo": "card-work.jpg" },
+    "build.html": { "photo": "card-build.jpg" },
+    "faq.html": { "photo": "card-faq.jpg" },
+    "how-it-works.html": { "photo": "card-how-it-works.jpg" },
     "industries.html": { "photo": "industries.jpg" }
   }
 }

@@ -17,19 +17,19 @@
   },
   "build": {
     "page": "build.html",
-    "hash": "2d9af6fba02f9572",
-    "file": "dd5fc8b09c55b357",
+    "hash": "d3d8a77b8963bd14",
+    "file": "af77aaa485b0dcda",
     "headline": "Software and design, built around how you work.",
     "caption": "What we build: applications, automation and data work",
-    "photo": "hero.jpg"
+    "photo": "card-build.jpg"
   },
   "contact": {
     "page": "contact.html",
-    "hash": "ab1a41a03adca89c",
-    "file": "797f4f74640ea3d2",
+    "hash": "0e496aa47feb8a6b",
+    "file": "8b4e16fe0acf4044",
     "headline": "Start with the decision you need to make.",
     "caption": "Contact us about your data and decisions",
-    "photo": "contact-hero.jpg"
+    "photo": "ph-contact.jpg"
   },
   "customer-data": {
     "page": "customer-data.html",
@@ -41,27 +41,27 @@
   },
   "faq": {
     "page": "faq.html",
-    "hash": "225f1ab1f22cae68",
-    "file": "a9e0ecb022a87d30",
+    "hash": "567e59dd64143b01",
+    "file": "3deb6cc04bbb8352",
     "headline": "Plain answers to the usual questions.",
     "caption": "Questions and answers about data intelligence",
-    "photo": "hero.jpg"
+    "photo": "card-faq.jpg"
   },
   "home": {
     "page": "index.html",
-    "hash": "3bbe9a0dac735659",
-    "file": "2d0a9f55a05d3a79",
+    "hash": "515f52742d8f14c1",
+    "file": "d2c64b069cf31b19",
     "headline": "Know what happened and what to do next",
-    "caption": "The AI operating system for business",
+    "caption": "Pure intelligence. For a fuller life.",
     "photo": "outdoors.jpg"
   },
   "how-it-works": {
     "page": "how-it-works.html",
-    "hash": "e2871318899a20c4",
-    "file": "cf9dd5bdbc41fd29",
+    "hash": "2ab516165b6f9132",
+    "file": "a089969c8f749e7a",
     "headline": "From first question to a working answer.",
     "caption": "How data intelligence works, from question to answer",
-    "photo": "hero.jpg"
+    "photo": "card-how-it-works.jpg"
   },
   "industries": {
     "page": "industries.html",
@@ -97,11 +97,11 @@
   },
   "integrations": {
     "page": "integrations.html",
-    "hash": "e4b5d861857b8797",
-    "file": "5bdfcb45cc014efd",
-    "headline": "See which of your systems we can read.",
+    "hash": "3f5c7dd64ac6786d",
+    "file": "3bac5dd0bb167350",
+    "headline": "The systems we are connecting, one at a time.",
     "caption": "Integrations: the business systems we connect to",
-    "photo": "operating-system.jpg"
+    "photo": "card-integrations.jpg"
   },
   "municipal-review": {
     "page": "municipal-review.html",
@@ -145,19 +145,19 @@
   },
   "privacy": {
     "page": "privacy.html",
-    "hash": "e9da9b92d0366a9f",
-    "file": "13627df1755a397e",
+    "hash": "c2248e3a55169de4",
+    "file": "0005de49379eea66",
     "headline": "We collect very little",
     "caption": "Privacy policy",
-    "photo": "outdoors.jpg"
+    "photo": "card-privacy.jpg"
   },
   "snapshot": {
     "page": "snapshot.html",
-    "hash": "3c12bd57ba8f49fb",
-    "file": "4c2457bbea602f3b",
+    "hash": "64a5210571a8d02d",
+    "file": "061382e61ce2425d",
     "headline": "Upload a price file and see what it shows",
     "caption": "Free price snapshot: upload a file, see six issues it can reveal",
-    "photo": "industry-retail.jpg"
+    "photo": "card-snapshot.jpg"
   },
   "studio": {
     "page": "studio.html",
@@ -177,19 +177,19 @@
   },
   "terms": {
     "page": "terms.html",
-    "hash": "f8d1f43dd6944b53",
-    "file": "269c460fd49c3db5",
+    "hash": "778e012a68f889df",
+    "file": "006f6483001f0523",
     "headline": "Plain terms, kept short",
     "caption": "Terms of use",
-    "photo": "industry-government.jpg"
+    "photo": "card-terms.jpg"
   },
   "trust": {
     "page": "trust.html",
-    "hash": "8d38ddba877c5bbb",
-    "file": "21a79851212d11ce",
+    "hash": "28035efe6fc58711",
+    "file": "9f84a27830b6d253",
     "headline": "Your data stays yours.",
     "caption": "Trust and security: how your data is protected",
-    "photo": "industry-nonprofit.jpg"
+    "photo": "card-trust.jpg"
   },
   "use-cases": {
     "page": "use-cases.html",
@@ -201,10 +201,10 @@
   },
   "work": {
     "page": "work.html",
-    "hash": "0ad9cfa3d90f6c60",
-    "file": "ba3a5b2cb6f10523",
+    "hash": "9e24456b42f91a9f",
+    "file": "5e41e9a3a68fd6f3",
     "headline": "Work we have shipped",
     "caption": "Selected work and case studies",
-    "photo": "industry-portfolios.jpg"
+    "photo": "card-work.jpg"
   }
 }

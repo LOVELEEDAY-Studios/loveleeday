@@ -98,8 +98,8 @@ const card = (i) => {
 
 const body = `
 
-<section class="wrap pagehead" style="padding-top:64px"><h1 class="title">See which of your systems we can read.</h1>
-<p class="lead">See which of your systems we can read now, which are still planned, and what each could help you answer. Every connection is read-only, and Arthur asks for your approval before writing anything back. Each card shows its status. If yours is not listed or not ready yet, tell us what you run.</p>
+<section class="wrap pagehead" style="padding-top:64px"><h1 class="title">The systems we are connecting, one at a time.</h1>
+<p class="lead">Find the systems you run and see what each could help you answer. Each card shows its status honestly: none is connected for a customer today, and we release them one at a time. Every connection is read-only, and Arthur asks for your approval before writing anything back. If yours is not listed, tell us what you run.</p>
 <p class="xs muted" style="max-width:720px;margin-top:16px"><b>Ready to connect</b> means we have connected this system to a real account and read live information from it. <b>Planned</b> means it is on our list and has not been connected yet.</p></section>
 
 <section class="wrap" style="padding-top:48px">

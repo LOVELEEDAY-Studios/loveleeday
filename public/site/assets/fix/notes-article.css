@@ -1,6 +1,7 @@
 /* Systems Notes article pacing: lead paragraph, numbered sections, breakout pull quotes, annotated record figures. */
 .art-body{counter-reset:ah;width:min(680px,calc(100% - var(--gutter)*2))}
 .art-body>p:first-of-type{font-size:24px;line-height:1.5;letter-spacing:-.015em;color:#1d1d1f;margin-bottom:34px}
+.art-body>p:not(:first-of-type){font-size:18px;line-height:1.6;letter-spacing:0}
 .art-body h2{counter-increment:ah;margin-top:64px}
 .art-body h2::before{content:counter(ah,decimal-leading-zero);display:block;font-size:12px;font-weight:600;letter-spacing:.12em;color:#0066cc;margin-bottom:12px;font-variant-numeric:tabular-nums}
 .art-body blockquote{margin:72px -72px;padding:36px 0 0;border-left:0;border-top:2px solid #1d1d1f;font-size:42px;line-height:1.14;letter-spacing:-.025em;font-weight:500;color:#1d1d1f;max-width:none}
@@ -25,6 +26,7 @@
 .art-body blockquote{margin:48px 0;font-size:28px}
 .art-body .diagram{margin-inline:0;padding:20px 0 20px 20px}
 .art-body>p:first-of-type{font-size:20px}
+.art-body>p:not(:first-of-type){font-size:17px}
 .rec{grid-template-columns:minmax(0,1fr);margin:44px 0;gap:24px}
 .rec dl>div{grid-template-columns:104px minmax(0,1fr);padding:12px 16px}
 .rec-h{padding:16px}

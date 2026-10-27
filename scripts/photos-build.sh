@@ -18,9 +18,20 @@ $G $C/shot-06-gov-counter/3770194-andrea-piacquadio.jpg $A/ph-government-2.jpg -
 $G $C/shot-05-schools-corridor/8419223-rdne-stock-project.jpg $A/ph-schools.jpg --w=1880 --warm=0.0
 $G $C/shot-09-property-unit/7937324-pavel-danilyuk.jpg $A/ph-talk-property.jpg --w=1200 --crop=0.083,0,0.917,1 --warm=0.2
 $G $C/shot-07-gov-field/5953073-andrew-labonne.jpg $A/ph-talk-government.jpg --w=1500 --warm=0.1
+$G $C/shot-01-home-hero/8123820-rdne-stock-project.jpg $A/ph-contact.jpg --w=1880 --warm=0.2
+# one distinct share-card photograph per page that has no photograph of its own
+$G $C/shot-19-professional-services/7979404-kindel-media.jpg $A/card-build.jpg --w=1600 --warm=0.1
+$G $C/shot-19-professional-services/7821711-rdne-stock-project.jpg $A/card-faq.jpg --w=1600 --warm=0.2
+$G $C/shot-19-professional-services/7821683-rdne-stock-project.jpg $A/card-how-it-works.jpg --w=1600 --warm=0.2
+$G $C/shot-15-retail-packing/7857551-kampus-production.jpg $A/card-integrations.jpg --w=1600 --warm=0.1
+$G $C/shot-19-professional-services/7477723-kampus-production.jpg $A/card-privacy.jpg --w=1600 --warm=0.2
+$G $C/shot-19-professional-services/8441780-kampus-production.jpg $A/card-terms.jpg --w=1600 --warm=0.1
+$G $C/shot-25-portrait-property/8124203-rdne-stock-project.jpg $A/card-trust.jpg --w=1600 --warm=0.1
+$G $C/shot-22-portrait-retail/34674788-demetra-ioannidou.jpg $A/card-snapshot.jpg --w=1600 --warm=0.0
+$G $C/shot-23-portrait-manufacturing/3823190-andrea-piacquadio.jpg $A/card-work.jpg --w=1600 --warm=0.1
 # files we hold only at their published size are regraded from the committed original, never enlarged
 T=$(mktemp -d)
-regrade() { git -C /Users/danielmay/wt/ll-review-1026 show HEAD:public/site/assets/$1 > $T/src.jpg && $G $T/src.jpg $A/$1 --w=99999 "${@:2}"; }
+regrade() { git -C /Users/danielmay/wt/ll-review-1026 show f10b7db:public/site/assets/$1 > $T/src.jpg && $G $T/src.jpg $A/$1 --w=99999 "${@:2}"; }
 regrade studio.jpg --warm=-0.5 --sat=0.80
 regrade principles.jpg --warm=0.7 --sat=0.86
 regrade arthur.jpg --warm=0.2 --sat=0.92
