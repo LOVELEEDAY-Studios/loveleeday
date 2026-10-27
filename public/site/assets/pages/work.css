@@ -1,0 +1,82 @@
+/* work: statement, a gallery with one large rebuild then pairs, what we measured on night, closing scene */
+body.pg-work .wk3-w{width:min(1080px,calc(100% - 40px));margin-inline:auto}
+body.pg-work .wk3-state{padding:64px 0;background:#fff}
+body.pg-work .wk3-state .wk3-w{display:grid;gap:28px}
+body.pg-work .wk3-state h2{font-size:38px!important;line-height:1.04;letter-spacing:-.035em;font-weight:600;max-width:none}
+body.pg-work .wk3-lede{font-family:var(--serif);font-size:22px;line-height:1.45;color:#3a3b40}
+body.pg-work .wk3-lede strong{font-weight:400;color:var(--b-ink);background:linear-gradient(transparent 62%,#cfe2f8 62%)}
+body.pg-work .wk3-nums{display:grid;grid-template-columns:1fr 1fr;gap:20px;border-top:1px solid var(--b-line);padding-top:24px}
+body.pg-work .wk3-nums b{display:block;font-size:56px;line-height:1;letter-spacing:-.04em;font-weight:600}
+body.pg-work .wk3-nums span{display:block;font-size:16px;color:var(--b-mute);margin-top:8px}
+
+body.pg-work .wk3-gal{padding:56px 0;background:var(--b-cream)}
+body.pg-work .wk3-gal article{margin-bottom:40px}
+body.pg-work .wk3-pair{display:grid;gap:40px}
+body.pg-work .wk3-pair article{margin-bottom:0}
+body.pg-work .wk3-gal .wk3-pair{margin-bottom:40px}
+body.pg-work .wk3-shot{margin:0;padding:10px;background:linear-gradient(160deg,#e8f1fc,#fff);border-radius:16px}
+body.pg-work .wk3-shot img{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 0 0 1px rgba(11,11,16,.08)}
+body.pg-work .wk3-cap h3{font-size:26px!important;line-height:1.15;font-weight:600;letter-spacing:-.025em;margin-top:18px}
+body.pg-work .wk3-cap p{font-size:16px;color:#45474d;margin-top:8px;max-width:36em}
+body.pg-work .wk3-cap .text-link{display:inline-block;margin-top:12px;font-size:16px;color:var(--b-blue)}
+
+body.pg-work .wk3-meas{padding:64px 0;background:radial-gradient(ellipse 70% 60% at 70% 40%,#1b1d3a 0%,var(--b-night) 72%);color:#fff}
+body.pg-work .wk3-meas .wk3-w{display:grid;gap:32px}
+body.pg-work .wk3-meas h2{color:#fff;font-size:34px!important;line-height:1.08;letter-spacing:-.03em;font-weight:600}
+body.pg-work .wk3-note{font-size:15px;color:#9a9dab;margin-top:16px}
+body.pg-work .wk3-meas ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+body.pg-work .wk3-meas li{padding:20px 0;border-top:1px solid rgba(255,255,255,.2);font-size:17px;color:#c4c6d0}
+body.pg-work .wk3-meas li b{display:block;font-size:22px;font-weight:600;color:#fff;margin-bottom:4px}
+
+body.pg-work .wk3-close{position:relative;min-height:440px;display:grid;align-items:end;color:#fff;background:var(--b-night);overflow:hidden}
+body.pg-work .wk3-close>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55)}
+body.pg-work .wk3-close::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,16,0) 15%,rgba(11,11,16,.72))}
+body.pg-work .wk3-close .wk3-w{position:relative;z-index:1;padding:72px 0 64px}
+body.pg-work .wk3-close h2{color:#fff;font-size:38px!important;line-height:1.04;letter-spacing:-.035em;font-weight:600;max-width:16ch}
+body.pg-work .wk3-close p{font-family:var(--serif);font-size:20px;color:#f3e6d4;margin-top:12px}
+body.pg-work .wk3-act{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:28px}
+body.pg-work .wk3-act a:not(.primary){color:#fff;border-bottom:1px solid #ffffff99;font-size:16px}
+
+@media (min-width:1021px){
+  body.pg-work .wk3-w{width:min(1080px,calc(100% - 80px))}
+  body.pg-work main>section.pagehead:first-of-type{min-height:640px;justify-content:flex-end;padding-bottom:112px!important}
+  body.pg-work main>section.pagehead:first-of-type::before{background:linear-gradient(90deg,rgba(11,11,16,.86) 0%,rgba(11,11,16,.55) 55%,rgba(11,11,16,.15) 100%)}
+  body.pg-work main>section.pagehead:first-of-type>*{max-width:620px}
+  body.pg-work .wk3-state{padding:136px 0 112px}
+  body.pg-work .wk3-state .wk3-w{grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+  body.pg-work .wk3-state h2{font-size:56px!important;max-width:10ch}
+  body.pg-work .wk3-lede{font-size:28px;line-height:1.42}
+  body.pg-work .wk3-nums{grid-column:1/-1;margin-top:40px;padding-top:40px;gap:80px}
+  body.pg-work .wk3-nums b{font-size:96px}
+  body.pg-work .wk3-nums span{font-size:20px}
+  body.pg-work .wk3-gal{padding:112px 0 40px}
+  body.pg-work .wk3-gal article.wk3-feat{display:block;margin-bottom:112px}
+  body.pg-work .wk3-feat .wk3-shot{padding:16px}
+  body.pg-work .wk3-feat .wk3-cap{display:grid;grid-template-columns:5fr 7fr;gap:80px;margin-top:32px}
+  body.pg-work .wk3-feat .wk3-cap h3{font-size:44px!important;margin-top:0}
+  body.pg-work .wk3-feat .wk3-cap p{font-size:20px;margin-top:0}
+  body.pg-work .wk3-feat .wk3-cap .text-link{grid-column:2}
+  body.pg-work .wk3-gal article:not(.wk3-feat){display:grid;grid-template-columns:7fr 5fr;gap:72px;align-items:center;margin-bottom:112px}
+  body.pg-work .wk3-gal article:nth-child(even){grid-template-columns:5fr 7fr}
+  body.pg-work .wk3-gal article:nth-child(even) .wk3-shot{order:2}
+  body.pg-work .wk3-big .wk3-cap{display:block;margin-top:0}
+  body.pg-work .wk3-big .wk3-cap h3{font-size:38px!important;line-height:1.05;margin-top:0}
+  body.pg-work .wk3-big .wk3-cap p{font-size:19px;margin-top:14px}
+  body.pg-work .wk3-pair{grid-template-columns:1fr 1fr;gap:24px;margin-bottom:80px!important}
+  body.pg-work .wk3-shot{padding:24px;border-radius:24px}
+  body.pg-work .wk3-shot img{border-radius:12px;box-shadow:0 40px 90px -40px rgba(11,11,16,.45),0 0 0 1px rgba(11,11,16,.08)}
+  body.pg-work .wk3-pair .wk3-shot{padding:16px;border-radius:20px}
+  body.pg-work .wk3-half .wk3-cap h3{font-size:30px!important}
+  body.pg-work .wk3-half .wk3-cap p{font-size:18px}
+  body.pg-work .wk3-meas{padding:136px 0 128px}
+  body.pg-work .wk3-meas .wk3-w{grid-template-columns:5fr 7fr;gap:88px;align-items:start}
+  body.pg-work .wk3-meas h2{font-size:var(--t2)!important}
+  body.pg-work .wk3-note{font-size:16px}
+  body.pg-work .wk3-meas ul{grid-template-columns:1fr 1fr;column-gap:48px}
+  body.pg-work .wk3-meas li{padding:28px 0;font-size:18px}
+  body.pg-work .wk3-meas li b{font-size:26px}
+  body.pg-work .wk3-close{min-height:640px}
+  body.pg-work .wk3-close .wk3-w{padding:0 0 96px}
+  body.pg-work .wk3-close h2{font-size:60px!important;max-width:16ch}
+  body.pg-work .wk3-close p{font-size:28px}
+}
