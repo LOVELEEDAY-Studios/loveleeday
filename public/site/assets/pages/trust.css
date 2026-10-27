@@ -107,3 +107,4 @@
 .pg-trust .tr-close-copy{width:min(1080px,calc(100% - 40px))}
 .pg-trust .tr-flow li{display:block;position:static}.pg-trust .tr-flow li::before{display:none}
 @media (min-width:1021px){body.pg-trust .tr-flow li{display:grid}}
+@media (max-width:1020px){.pg-trust .tr-flow li{display:block!important}.pg-trust .tr-flow li>*{display:block;margin:0 0 8px!important}}
