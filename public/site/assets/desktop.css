@@ -103,3 +103,188 @@
   /* section headings get a short ruled lead so every page opens its sections the same way */
   main section:not(:first-of-type) h2{margin-top:0}
 }
+
+/* ======================================================================
+   BODY COMPOSITION (desktop only). Section kinds, each used on a different page set:
+     statement  large headline beside a text column, ruled top
+     band       full-bleed ink band carrying a numbered proof grid
+     feature    photograph bleeding off one edge beside the copy
+     ledger     numbered rows, large numerals left
+     closing    page-cta as a full-bleed band (ink, blue or cream)
+   ====================================================================== */
+@media (min-width:1021px){
+  :root{--dk-blue:#0066cc}
+
+  /* ---------- closing band (page-cta) ---------- */
+  .page-cta{padding-block:112px;border-top:0}
+  .page-cta .wrap{max-width:1080px;align-items:flex-end;gap:64px}
+  .page-cta h2{font-size:56px;line-height:1.04;letter-spacing:-.03em;max-width:15ch}
+  .page-cta p{font-size:18px;max-width:46ch}
+  .page-cta .primary{min-height:52px;padding:0 32px;font-size:15px}
+  :is(.pg-arthur,.pg-studio,.pg-build,.pg-how-it-works,.pg-principles,.pg-operating-system,.pg-industries) .page-cta{background:var(--dk-ink);color:#fff}
+  :is(.pg-arthur,.pg-studio,.pg-build,.pg-how-it-works,.pg-principles,.pg-operating-system,.pg-industries) .page-cta :is(h2,p){color:#fff}
+  :is(.pg-arthur,.pg-studio,.pg-build,.pg-how-it-works,.pg-principles,.pg-operating-system,.pg-industries) .page-cta p{color:#c9c5be}
+  :is(.pg-faq,.pg-use-cases,.pg-pricing-margins,.pg-municipal-review,.pg-operational-intelligence,.pg-customer-data) .page-cta{background:var(--dk-blue);color:#fff}
+  :is(.pg-faq,.pg-use-cases,.pg-pricing-margins,.pg-municipal-review,.pg-operational-intelligence,.pg-customer-data) .page-cta :is(h2,p,a:not(.primary)){color:#fff}
+  :is(.pg-faq,.pg-use-cases,.pg-pricing-margins,.pg-municipal-review,.pg-operational-intelligence,.pg-customer-data) .page-cta p{color:#dbe9f7}
+  :is(.pg-faq,.pg-use-cases,.pg-pricing-margins,.pg-municipal-review,.pg-operational-intelligence,.pg-customer-data) .page-cta .primary{background:#fff;color:var(--dk-ink)}
+  .pg-architecture .page-cta{background:var(--dk-cream)}
+
+  /* ---------- statement: heading left (sticky), text column right ---------- */
+  :is(.pg-arthur section.section-pad:nth-of-type(3),.pg-how-it-works section.section-pad.surface,.pg-studio section:nth-of-type(6),
+      .pg-customer-data .cd-lead-section,.pg-municipal-review section.section-pad:nth-of-type(2),.pg-operating-system section.section-pad:nth-of-type(2),
+      .pg-pricing-margins section.section-pad:nth-of-type(2),.pg-operational-intelligence section.section-pad:nth-of-type(2),
+      .pg-use-cases section.section-pad.surface){padding-block:112px;border-top:1px solid var(--line)}
+  :is(.pg-arthur section.section-pad:nth-of-type(3),.pg-customer-data .cd-lead-section,.pg-municipal-review section.section-pad:nth-of-type(2),
+      .pg-operating-system section.section-pad:nth-of-type(2),.pg-pricing-margins section.section-pad:nth-of-type(2),
+      .pg-operational-intelligence section.section-pad:nth-of-type(2),.pg-use-cases section.section-pad.surface)>.wrap{
+    display:grid;grid-template-columns:5fr 7fr;column-gap:96px;align-items:start;max-width:1080px}
+  :is(.pg-arthur section.section-pad:nth-of-type(3),.pg-customer-data .cd-lead-section,.pg-municipal-review section.section-pad:nth-of-type(2),
+      .pg-operating-system section.section-pad:nth-of-type(2),.pg-pricing-margins section.section-pad:nth-of-type(2),
+      .pg-operational-intelligence section.section-pad:nth-of-type(2),.pg-use-cases section.section-pad.surface)>.wrap>h2{
+    grid-column:1;font-size:48px;line-height:1.06;letter-spacing:-.03em;position:sticky;top:112px}
+  :is(.pg-arthur section.section-pad:nth-of-type(3),.pg-customer-data .cd-lead-section,.pg-municipal-review section.section-pad:nth-of-type(2),
+      .pg-operating-system section.section-pad:nth-of-type(2),.pg-pricing-margins section.section-pad:nth-of-type(2),
+      .pg-operational-intelligence section.section-pad:nth-of-type(2),.pg-use-cases section.section-pad.surface)>.wrap>.body-copy{
+    grid-column:2;margin-top:6px;max-width:none;font-size:19px;line-height:1.7;columns:1}
+  .pg-use-cases section.section-pad.surface{background:var(--dk-ink)}
+  .pg-use-cases section.section-pad.surface :is(h2,.body-copy,p,strong){color:#f4f1ec}
+  .pg-how-it-works section.section-pad.surface{background:var(--dk-ink);color:#fff}
+  .pg-how-it-works section.section-pad.surface :is(h2,.body-copy,.body-copy strong,p){color:#f4f1ec}
+  .pg-how-it-works section.section-pad.surface .body-copy{font-size:19px}
+  .pg-how-it-works section.section-pad.surface h2{font-size:48px;line-height:1.06;letter-spacing:-.03em}
+  .pg-how-it-works section.section-pad:not(.surface):not(:first-of-type){background:var(--dk-cream)}
+  .pg-how-it-works section.section-pad:not(.surface):not(:first-of-type)>.wrap{display:grid;grid-template-columns:5fr 7fr;column-gap:96px;max-width:1080px;align-items:start}
+  .pg-how-it-works section.section-pad:not(.surface):not(:first-of-type) h2{font-size:48px;line-height:1.06;letter-spacing:-.03em;max-width:12ch}
+  .pg-how-it-works section.section-pad:not(.surface):not(:first-of-type) .body-copy{font-size:19px;line-height:1.7;max-width:none;margin-top:6px}
+  .pg-customer-data .cd-work .process article{background:none;border-radius:0;border:0;border-bottom:1px solid #3a3d44;box-shadow:none}
+  .pg-customer-data .cd-work .process{border-top-color:#f4f1ec}
+  .pg-customer-data .cd-work .process h3{color:#fff}
+  .pg-customer-data .cd-work .process p{color:#c9c5be}
+  .page-cta h2{max-width:18ch}
+  .life-section .life-inner{min-height:560px}
+  .life-section .life-picture img{min-height:560px}
+  .pg-index .close-image img{display:block;width:100%;height:520px;object-fit:cover;object-position:50% 60%}
+  .pg-customer-data .fx-cd-flow2 .cd-stage-copy{text-align:left;margin-inline:0;justify-self:start}
+
+  /* ---------- feature: photograph bleeds off the edge beside the copy ---------- */
+  .life-section{padding:0;background:var(--dk-cream);overflow:hidden}
+  .life-section .life-inner{max-width:none;width:100%;margin:0;padding:0;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:640px}
+  .life-section .life-picture{height:100%}
+  .life-section .life-picture img{height:100%;aspect-ratio:auto;min-height:640px}
+  .life-section .life-copy{align-self:center;padding:96px max(40px,calc((100vw - 1080px)/2)) 96px 96px;max-width:none}
+  .life-section .life-copy h2{font-size:48px;line-height:1.06;letter-spacing:-.03em;max-width:13ch}
+  .life-section .life-copy p{font-size:18px;max-width:440px}
+  :is(.pg-use-cases,.pg-pricing-margins,.pg-operating-system) .life-section .life-inner{direction:rtl}
+  :is(.pg-use-cases,.pg-pricing-margins,.pg-operating-system) .life-section .life-inner>*{direction:ltr}
+  :is(.pg-use-cases,.pg-pricing-margins,.pg-operating-system) .life-section .life-copy{padding:96px 96px 96px max(40px,calc((100vw - 1080px)/2))}
+
+  /* ---------- ledger: .process becomes numbered rows with big numerals ---------- */
+  :is(.pg-arthur,.pg-customer-data,.pg-municipal-review) .process{grid-template-columns:1fr;gap:0;margin-top:56px;border-top:1px solid var(--dk-ink)}
+  :is(.pg-arthur,.pg-customer-data,.pg-municipal-review) .process article{display:grid;grid-template-columns:120px 5fr 7fr;gap:32px;align-items:baseline;padding:36px 0;border-top:0;border-bottom:1px solid var(--line)}
+  :is(.pg-arthur,.pg-customer-data,.pg-municipal-review) .process .row-number{font-size:44px;line-height:1;letter-spacing:-.03em;color:var(--dk-blue);font-weight:400}
+  :is(.pg-arthur,.pg-customer-data,.pg-municipal-review) .process h3{margin:0;font-size:28px}
+  :is(.pg-arthur,.pg-customer-data,.pg-municipal-review) .process p{margin:0;font-size:17px;color:#62656c}
+  .pg-arthur section.section-pad.surface{background:var(--dk-cream)}
+
+  /* ---------- studio: cinematic photograph, ledger of problems, quote, dark proof band ---------- */
+  .pg-studio section:nth-of-type(2){padding-block:0}
+  .pg-studio section:nth-of-type(2)>.wrap{max-width:none;padding:0;position:relative}
+  .pg-studio .studio-photo{display:block;width:100%;height:560px;object-fit:cover;object-position:50% 55%}
+  .pg-studio section:nth-of-type(2) .caption{position:absolute;left:max(24px,calc((100% - 1080px)/2));bottom:28px;color:#fff;font-size:14px;margin:0;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+  .pg-studio .st-prin:nth-of-type(3){background:var(--dk-cream);padding-block:112px}
+  .pg-studio .st-prin .st-pr{display:grid!important;grid-template-columns:repeat(4,1fr);gap:0;list-style:none;margin:0;padding:0;counter-reset:s;border-top:1px solid var(--dk-ink)}
+  .pg-studio .st-prin .st-pr li{padding:32px 28px 8px 0;margin-right:28px;border-right:1px solid #d8cfc2;border-bottom:0;counter-increment:s;display:block}
+  .pg-studio .st-prin .st-pr li:last-child{border-right:0;margin-right:0}
+  .pg-studio .st-prin .st-pr li::before{content:"0" counter(s);display:block;font-size:40px;line-height:1;color:var(--dk-blue);letter-spacing:-.03em;margin-bottom:40px}
+  .pg-studio .st-prin .st-pr b{display:block;font-size:22px;line-height:1.25;letter-spacing:-.02em;font-weight:500;margin-bottom:12px}
+  .pg-studio .st-prin .st-pr p{font-size:15px;line-height:1.65;color:#62656c;margin:0}
+  .pg-studio section:nth-of-type(4)>.wrap{display:grid;grid-template-columns:5fr 7fr;column-gap:96px;max-width:1080px}
+  .pg-studio section:nth-of-type(4) h2{font-size:48px;line-height:1.06;letter-spacing:-.03em}
+  .pg-studio section:nth-of-type(4) .body-copy{font-size:19px;line-height:1.7;max-width:none}
+  .pg-studio section:nth-of-type(5){background:var(--dk-cream);padding-block:128px}
+  .pg-studio section:nth-of-type(5)>.wrap{max-width:1080px;display:grid;grid-template-columns:7fr 5fr;column-gap:96px;align-items:end}
+  .pg-studio section:nth-of-type(5) .quote-line{font-size:64px;line-height:1.08;max-width:15ch}
+  .pg-studio section:nth-of-type(5) .section-lead{margin:0!important;font-size:18px}
+  .pg-studio section:nth-of-type(6)>.wrap{display:grid;grid-template-columns:5fr 7fr;column-gap:96px;max-width:1080px}
+  .pg-studio section:nth-of-type(6) h2{font-size:48px;line-height:1.06;letter-spacing:-.03em}
+  .pg-studio section:nth-of-type(6) .body-copy{font-size:19px;line-height:1.7;max-width:none}
+  .pg-studio .st-build{background:var(--dk-ink);color:#fff;padding-block:104px}
+  .pg-studio .st-build .st-caps{border-top:0;margin:0;grid-template-columns:repeat(3,1fr);gap:1px;background:#33363c}
+  .pg-studio .st-build .st-caps li{display:block;padding:44px 32px 48px;border:0!important;background:var(--dk-ink)}
+  .pg-studio .st-build .st-caps span{display:block;font-size:14px;color:#6fb0f0;margin-bottom:56px}
+  .pg-studio .st-build .st-caps b{font-size:26px;line-height:1.2;color:#fff;font-weight:400}
+}
+
+/* ---------- body composition, second set: build, faq, home, trust, talk, work, contact, legal ---------- */
+@media (min-width:1021px){
+  /* build: six rows, copy and example alternate sides; text-only examples shrink to a ruled note */
+  .pg-build section.section-pad:nth-of-type(2){padding-block:96px 112px}
+  .pg-build .bd-row{display:grid;grid-template-columns:5fr 7fr;gap:96px;align-items:center;padding-block:56px;border-top:1px solid var(--line)}
+  .pg-build .bd-row:nth-child(even){grid-template-columns:7fr 5fr}
+  .pg-build .bd-row:nth-child(even) .bd-t{order:2}
+  .pg-build .bd-t h3{font-size:36px;line-height:1.08;letter-spacing:-.03em;font-weight:500}
+  .pg-build .bd-t p{font-size:18px;line-height:1.6;max-width:36ch}
+  .pg-build .bd-ex.bd-text{min-height:0!important;height:auto;aspect-ratio:auto;padding:32px 0 0;border:0;border-top:2px solid var(--dk-ink);border-radius:0;background:none;box-shadow:none}
+  .pg-build .bd-ex.bd-text span{font-size:22px;line-height:1.25;letter-spacing:-.02em}
+  .pg-build section.surface{background:var(--dk-cream);padding-block:112px}
+
+  /* faq: route band on ink, group heads with large numerals */
+  .pg-faq .fq-route{background:var(--dk-ink);color:#fff;padding-block:72px}
+  .pg-faq .fq-route .wrap{max-width:1080px}
+  .pg-faq .fq-route-lead{color:#c9c5be;font-size:15px;margin-bottom:32px}
+  .pg-faq .fq-cards{border-top:1px solid #4a4d54}
+  .pg-faq .fq-cards a,.pg-faq .fq-cards a:hover{border-bottom:1px solid #4a4d54;padding:28px 0}
+  .pg-faq .page-cta .wrap{max-width:1080px}
+  .pg-faq .fq-cards b{color:#fff;font-size:26px;font-weight:400}
+  .pg-faq .fq-cards .cap{color:#8fb8e8!important}
+  .pg-faq .fq-cards a>span:last-of-type{color:#c9c5be}
+  .pg-faq .fq-group header{align-items:flex-end;padding-bottom:28px;border-bottom:1px solid var(--dk-ink)}
+  .pg-faq .fq-num{font-size:56px;line-height:.9;color:var(--dk-blue);letter-spacing:-.03em}
+  .pg-faq .fq-group h2{font-size:40px;letter-spacing:-.03em;max-width:none}
+  .pg-faq .fq-count{margin-left:auto}
+  .pg-faq .fq-group:nth-of-type(even) .fq-list{background:none}
+  .pg-faq .fq-group{margin-bottom:96px}
+
+  /* home */
+  .pg-index .intro{padding-block:128px 112px}
+  .pg-index .intro h2{font-size:64px;line-height:1.04;letter-spacing:-.035em;max-width:14ch}
+  .pg-index .intro>*{max-width:1080px;margin-inline:auto}
+  .pg-index .answer-band{padding-block:88px}
+  .pg-index .answer-band .ab-q{font-size:40px;line-height:1.14;letter-spacing:-.03em}
+  .pg-index .industries-block{background:var(--dk-cream)}
+  .pg-index .start-block{background:var(--dk-ink);color:#fff;border-top:0}
+  .pg-index .start-block :is(h2,p,.body-copy,.body-copy p){color:#f4f1ec}
+  .pg-index .start-block .text-link{color:#8fc1f2;border-color:#8fc1f2}
+  .pg-index .start-block h2{font-size:56px;line-height:1.04;letter-spacing:-.03em}
+  .pg-index .principles{padding-block:112px}
+
+  /* trust: facts as an ink strip of large figures */
+  .pg-trust .tr-sec{padding-block:96px}
+
+  /* talk: stages on a ruled row, comparison table framed */
+  .pg-talk .tv3-stages{padding-block:112px 96px}
+  .pg-talk .tv3-compare{padding-block:112px;background:var(--dk-cream)}
+  .pg-talk .tv3-where{padding-block:112px}
+  .pg-talk .tv3-next{padding-block:112px;background:var(--dk-cream)}
+  .pg-talk .tv3-head h2{font-size:48px;line-height:1.06;letter-spacing:-.03em}
+
+  /* work: studies list gets a calmer lead and more air between rows */
+  .pg-work #studies{padding-block:112px!important;margin-top:0!important}
+  .pg-work .wk2-list{row-gap:40px}
+
+  /* contact: form shell sits on cream, routes on ink */
+  .pg-contact .cv3-message{padding-block:112px;background:var(--dk-cream)}
+  .pg-contact .cv3-routes{background:var(--dk-ink);color:#fff;padding-block:104px}
+  .pg-contact .cv3-routes :is(h2,.rt,.k,a,p,b,span){color:#f4f1ec}
+  .pg-contact .cv3-routes .k{color:#8fb8e8}
+
+  /* legal pages: ruled contents column beside the text */
+  .pg-privacy .pv-doc,.pg-terms .tm-doc{max-width:760px}
+  .pg-privacy .pv-sec,.pg-terms .tm-sec{padding-block:48px;border-top:1px solid var(--line)}
+  .pg-privacy .pv-sec h2,.pg-terms .tm-sec h2{font-size:32px;letter-spacing:-.025em}
+
+  /* principles and operational intelligence: photo bands run edge to edge */
+  :is(.pg-principles,.pg-operational-intelligence,.pg-architecture) .cx-photo{padding-block:128px}
+  :is(.pg-principles,.pg-operational-intelligence,.pg-architecture) .cx-photo h2{font-size:56px;line-height:1.04;letter-spacing:-.03em;max-width:16ch}
+}

@@ -5,7 +5,7 @@ import os, re, json, glob, shutil, subprocess
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 
-S = '/private/tmp/claude-501/-Users-danielmay/3f305371-d21a-47b6-93a7-1e8a1f9d4d45/scratchpad'
+S = '/Users/danielmay/wt/ll-review-1026/review/out'
 WT = '/Users/danielmay/wt/ll-review-1026'
 OUT = S + '/board2-work'
 BOARD = '/Users/danielmay/Desktop/loveleeday-site-review-board'
@@ -29,9 +29,17 @@ def top_defect(d, p):
     m = re.findall(r'BLOCKERS?:?\**\s*(.{0,200})', t)
     return m[-1].strip(' *') if m else ''
 
-prev = scores(S + '/codex-after')          # last scores before the desktop rebuild (desktop and phone strips)
-now = scores(S + '/cdx-dk1')               # desktop-only pass on the first system render
-pages = sorted(set(os.path.basename(f)[5:-9] for f in glob.glob(S + '/after2/site_*-1440.png')))
+# last Codex scores before the desktop rebuild (round 2, desktop and phone strips), as reported in the round-2 run
+prev = {'architecture': 5, 'arthur': 7, 'build': 6, 'contact': 6, 'customer-data': 6, 'faq': 7, 'how-it-works': 6, 'index': 7, 'industries': 7,
+        'industries_manufacturing': 7, 'industries_property': 6, 'industries_schools': 7, 'integrations': 6, 'municipal-review': 7, 'notes': 7,
+        'notes_alerts-are-noise-conditions-are-signal': 7, 'notes_an-answer-you-cant-trace': 7, 'notes_intelligence-is-an-architecture': 7,
+        'notes_migration-is-where-data-goes-to-die': 7, 'notes_one-company-five-names': 7, 'notes_the-spreadsheet-is-the-real-system': 7,
+        'notes_what-you-knew-and-when': 7, 'notes_your-systems-dont-talk': 7, 'operating-system': 6, 'operational-intelligence': 7,
+        'pricing-margins': 7, 'principles': 7, 'privacy': 6, 'snapshot': 6, 'studio': 6, 'talk': 7, 'terms': 6, 'trust': 7, 'use-cases': 6, 'work': 6}
+FIN = 'cdx-2' if glob.glob(S + '/cdx-2/*.txt') else 'cdx-1'
+first = scores(S + '/cdx-1')
+now = scores(S + '/' + FIN)
+pages = sorted(set(os.path.basename(f)[5:-9] for f in glob.glob(S + '/before/site_*-1440.png')))
 names = {'index': 'Home', 'arthur': 'Arthur', 'operating-system': 'Operating system', 'how-it-works': 'How it works', 'industries': 'Industries',
          'industries_manufacturing': 'Industry: manufacturing (anchor)', 'industries_property': 'Industry: property', 'industries_schools': 'Industry: schools and charters',
          'notes': 'Systems Notes'}
@@ -54,7 +62,7 @@ def L(s):
     return 'A' if s >= 9 else 'B' if s >= 8 else 'C' if s >= 7 else 'D'
 for p in pages:
     slug = p + '-d'
-    mp[slug] = {'before': f'{S}/after2/site_{p}-1440.png', 'after': f'{S}/dk2/site_{p}-1440.png', 'name': nm(p) + ' (desktop)',
+    mp[slug] = {'before': f'{S}/before/site_{p}-1440.png', 'after': f'{S}/after/site_{p}-1440.png', 'name': nm(p) + ' (desktop)',
                 'url': 'https://loveleedaystudios.com/' + ('' if p == 'index' else p.replace('_', '/'))}
     h = hero.get(p)
     if p.startswith('industries_'):
@@ -71,7 +79,7 @@ for p in pages:
     elif p in prev:
         g = f'{L(prev[p])} {prev[p]:g} prior, desktop pass not scored'
     notes['pages'][slug] = {'name': mp[slug]['name'], 'url': mp[slug]['url'], 'grade': g, 'changed': ch,
-                            'weak': ('Codex: ' + top_defect(S + '/cdx-dk1', p)[:200]) if p in now and now[p] < 9 else ''}
+                            'weak': ('Codex: ' + top_defect(S + '/' + FIN, p)[:200]) if p in now and now[p] < 9 else ''}
 json.dump(mp, open(OUT + '/map.json', 'w'))
 json.dump(notes, open(OUT + '/notes.json', 'w'))
 subprocess.run(['node', os.path.expanduser('~/arthur/scripts/board-inputs.mjs'), OUT + '/map.json', OUT], check=True, capture_output=True)
@@ -80,9 +88,11 @@ for k, v in notes['pages'].items():
     n2['pages'][k].update(v)
 n2['afterDir'] = OUT + '/after'
 avg = sum(now.values()) / max(1, len(now))
-n2['summary'] = [f'Codex desktop pass: {len(now)} of {len(pages)} pages scored, average {avg:.1f} of 10; none reached 9. Scores are from the first system render; a second fix pass was applied after them and not re-scored.',
-                 'The manufacturing hero is the anchor: four hero types (photo, split, dark, plain) now carry every page, in one grid, spacing and type scale.',
-                 'Section-level recomposition beyond the heroes was not completed: most body sections keep their earlier layouts on the new scale.']
+avg1 = sum(first.values()) / max(1, len(first))
+mx = max(now.values()) if now else 0
+n2['summary'] = [f'Codex desktop pass ({FIN}): {len(now)} of {len(pages)} pages scored, average {avg:.1f} of 10 (first pass on the body rework: {avg1:.1f}); best page {mx:g}. Scores are independent Codex reads of the 1440 renders, not inflated.',
+                 'The manufacturing hero is the anchor: four hero types (photo, split, dark, plain) carry every page, in one grid, spacing and type scale. Below the heroes each page now mixes statement, feature, ledger, band and closing sections.',
+                 'Not every page was recomposed: industries, notes, work, integrations, snapshot and the legal pages keep their earlier body layouts on the shared scale.']
 json.dump(n2, open(OUT + '/notes.json', 'w'))
 subprocess.run(['node', os.path.expanduser('~/arthur/scripts/review-board.mjs'), OUT + '/before', OUT + '/notes.json', BOARD], check=True, capture_output=True)
 
@@ -96,9 +106,9 @@ for f in sorted(glob.glob(S + '/refs/*-1440.png')):
     b = os.path.basename(f).replace('www.', '').split('_')[0].replace('.com', '').replace('.app', '')
     im.save(rf + '/' + b + '.jpg', quality=85)
     refs.append(b)
-anchor = Image.open(S + '/dk2/site_industries_manufacturing-1440.png').convert('RGB').crop((0, 0, 1440, 900)).resize((720, 450), Image.LANCZOS)
+anchor = Image.open(S + '/after/site_industries_manufacturing-1440.png').convert('RGB').crop((0, 0, 1440, 900)).resize((720, 450), Image.LANCZOS)
 anchor.save(rf + '/anchor.jpg', quality=85)
-lock = subprocess.run(['python3', '-W', 'ignore', WT + '/review/mobile-lock.py', S + '/after2', S + '/dk2'], capture_output=True, text=True)
+lock = subprocess.run(['python3', '-W', 'ignore', WT + '/review/mobile-lock.py', S + '/before', S + '/after'], capture_output=True, text=True)
 lock_txt = lock.stdout.strip().splitlines()
 lock_sum = lock_txt[-1] if lock_txt else 'not run'
 lock_rows = ''.join('<tr><td>%s</td><td>%s</td></tr>' % tuple(l.split(None, 1)) for l in lock_txt[:-1] if len(l.split(None, 1)) == 2)
