@@ -123,3 +123,32 @@ body.pg-talk .h-card small{display:block;font-size:14px;line-height:1.5;color:va
   .pg-talk .t-close .wrap{padding-block:96px;width:min(1080px,calc(100% - 80px))}
   .pg-talk .t-close p{font-size:20px}
 }
+
+/* hx hero */
+body.pg-talk .acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 32px;margin-top:32px}
+body.pg-talk .hx{position:relative;background:var(--b-night);color:#fff}
+body.pg-talk .hx-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+body.pg-talk .hx .k{padding-block:40px 72px}
+body.pg-talk .hx h1{color:#fff}
+body.pg-talk .hx .lead{color:#e6e7ec;margin-top:20px}
+body.pg-talk .hx .ac{margin-top:40px}
+body.pg-talk .ac{background:#fff;color:var(--b-ink);border-radius:16px;padding:32px}
+body.pg-talk main .ac p{color:var(--b-ink)!important}
+body.pg-talk main .ac .ac-s{color:var(--b-mute)!important}
+body.pg-talk main .ac .ac-l{color:var(--b-blue)!important}
+body.pg-talk .ac-l{display:block;font-size:14px;font-weight:500;color:var(--b-blue);margin-bottom:12px}
+body.pg-talk main .ac .ac-n{font-family:var(--sans);font-size:17px;line-height:1.5;color:var(--b-ink)}
+body.pg-talk main .ac .ac-q{max-width:none;font-size:16px;line-height:1.4;background:var(--b-mist);border:1px solid var(--b-line);border-radius:12px;padding:12px 16px;margin-bottom:16px}
+body.pg-talk main .ac-a{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-.005em;color:var(--b-ink)}
+body.pg-talk main .ac-s{font-size:14px;line-height:1.55;color:var(--b-mute);margin-top:16px;padding-top:14px;border-top:1px solid var(--b-line)}
+body.pg-talk .hx .hx-note{display:block;margin-top:16px;font-size:15px;color:#e6e7ec}
+@media (min-width:1021px){
+body.pg-talk main .ac .ac-q{font-size:17px}
+body.pg-talk .hx{min-height:640px!important;display:flex;align-items:center;overflow:hidden}
+body.pg-talk .hx-img{position:absolute;inset:0;height:100%;aspect-ratio:auto}
+body.pg-talk .hx::after{content:"";position:absolute;inset:0;background:rgba(11,11,16,.5)}
+body.pg-talk .hx .k{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:40px;align-items:center;padding-block:96px}
+body.pg-talk .hx h1{max-width:12ch}
+body.pg-talk .hx .ac{margin-top:0;box-shadow:0 30px 80px -20px rgba(11,11,16,.5)}
+}
+body.pg-talk main .hx .text-link{color:#fff;border-color:#ffffff99}

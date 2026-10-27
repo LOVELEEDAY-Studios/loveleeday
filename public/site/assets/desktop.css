@@ -35,7 +35,7 @@
   :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work) main>section:first-of-type :is(h1,h2,.lead,p,.breadcrumb,.breadcrumb a,small,.text-link){color:#fff}
   :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work) main>section:first-of-type .lead{color:#f4ece2;font-size:var(--t4);line-height:1.5}
   :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work) main>section:first-of-type .text-link{border-color:#ffffff99}
-  .pg-index{--hero:url(/site/assets/hero-home.jpg);--hero-pos:70% 30%}
+  .pg-index{--hero:url(/site/assets/card-work.jpg);--hero-pos:50% 40%}
   .pg-how-it-works{--hero:url(/site/assets/hero-how.jpg);--hero-pos:60% 40%}
   .pg-municipal-review{--hero:url(/site/assets/hero-municipal.jpg);--hero-pos:60% 50%}
   .pg-pricing-margins{--hero:url(/site/assets/hero-pricing.jpg);--hero-pos:50% 50%}
@@ -45,17 +45,12 @@
   .pg-index main>section:first-of-type{min-height:680px}
 
   /* ---------- dk-split : cream ground, photograph bleeds off the right edge ---------- */
-  :is(.pg-build,.pg-faq,.pg-talk,.pg-contact,.pg-use-cases,.pg-principles,.pg-operational-intelligence,.pg-snapshot) main>section:first-of-type{
+  :is(.pg-use-cases,.pg-operational-intelligence,.pg-snapshot) main>section:first-of-type{
     background:var(--dk-cream);color:var(--ink);min-height:560px}
-  :is(.pg-build,.pg-faq,.pg-talk,.pg-contact,.pg-use-cases,.pg-principles,.pg-operational-intelligence,.pg-snapshot) main>section:first-of-type::after{
+  :is(.pg-use-cases,.pg-operational-intelligence,.pg-snapshot) main>section:first-of-type::after{
     content:"";position:absolute;z-index:1;top:0;right:0;bottom:0;left:56%;background:var(--hero) var(--hero-pos,center)/cover no-repeat}
-  :is(.pg-build,.pg-faq,.pg-talk,.pg-contact,.pg-use-cases,.pg-principles,.pg-operational-intelligence,.pg-snapshot) main>section:first-of-type>.wrap>*{max-width:520px}
-  .pg-build{--hero:url(/site/assets/card-build.jpg)}
-  .pg-faq{--hero:url(/site/assets/card-faq.jpg)}
-  .pg-talk{--hero:url(/site/assets/talk-hero.jpg)}
-  .pg-contact{--hero:url(/site/assets/ph-contact.jpg)}
+  :is(.pg-use-cases,.pg-operational-intelligence,.pg-snapshot) main>section:first-of-type>.wrap>*{max-width:520px}
   .pg-use-cases{--hero:url(/site/assets/hero-usecases.jpg)}
-  .pg-principles{--hero:url(/site/assets/hero-principles.jpg)}
   .pg-operational-intelligence{--hero:url(/site/assets/industry-manufacturing-3.jpg);--hero-pos:40% 50%}
   .pg-snapshot{--hero:url(/site/assets/card-snapshot.jpg)}
   /* hero chips on the snapshot sit under the lead */

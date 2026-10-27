@@ -63,3 +63,32 @@ body.pg-contact .cv3-message{background:var(--b-mist);padding-block:72px}
   .pg-contact .c-close .wrap{width:min(1080px,calc(100% - 80px))}
   .pg-contact .c-close p{font-size:20px}
 }
+
+/* hx hero */
+body.pg-contact .acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 32px;margin-top:32px}
+body.pg-contact .hx{position:relative;background:var(--b-night);color:#fff}
+body.pg-contact .hx-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+body.pg-contact .hx .k{padding-block:40px 72px}
+body.pg-contact .hx h1{color:#fff}
+body.pg-contact .hx .lead{color:#e6e7ec;margin-top:20px}
+body.pg-contact .hx .ac{margin-top:40px}
+body.pg-contact .ac{background:#fff;color:var(--b-ink);border-radius:16px;padding:32px}
+body.pg-contact main .ac p{color:var(--b-ink)!important}
+body.pg-contact main .ac .ac-s{color:var(--b-mute)!important}
+body.pg-contact main .ac .ac-l{color:var(--b-blue)!important}
+body.pg-contact .ac-l{display:block;font-size:14px;font-weight:500;color:var(--b-blue);margin-bottom:12px}
+body.pg-contact main .ac .ac-n{font-family:var(--sans);font-size:17px;line-height:1.5;color:var(--b-ink)}
+body.pg-contact main .ac .ac-q{max-width:none;font-size:16px;line-height:1.4;background:var(--b-mist);border:1px solid var(--b-line);border-radius:12px;padding:12px 16px;margin-bottom:16px}
+body.pg-contact main .ac-a{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-.005em;color:var(--b-ink)}
+body.pg-contact main .ac-s{font-size:14px;line-height:1.55;color:var(--b-mute);margin-top:16px;padding-top:14px;border-top:1px solid var(--b-line)}
+body.pg-contact .hx .hx-note{display:block;margin-top:16px;font-size:15px;color:#e6e7ec}
+@media (min-width:1021px){
+body.pg-contact main .ac .ac-q{font-size:17px}
+body.pg-contact .hx{min-height:640px!important;display:flex;align-items:center;overflow:hidden}
+body.pg-contact .hx-img{position:absolute;inset:0;height:100%;aspect-ratio:auto}
+body.pg-contact .hx::after{content:"";position:absolute;inset:0;background:rgba(11,11,16,.5)}
+body.pg-contact .hx .k{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:40px;align-items:center;padding-block:96px}
+body.pg-contact .hx h1{max-width:12ch}
+body.pg-contact .hx .ac{margin-top:0;box-shadow:0 30px 80px -20px rgba(11,11,16,.5)}
+}
+body.pg-contact main .hx .text-link{color:#fff;border-color:#ffffff99}

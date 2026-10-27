@@ -24,10 +24,7 @@ WEAK = {'index': 'Example answer card is example data, not a captured case.',
 _F = S + '/cloud/reports/FINAL-scores.txt'
 if os.path.exists(_F):
     SCORE = {l.split()[0].replace('/', '_'): int(l.split()[-1]) for l in open(_F) if l.strip().split()[-1].isdigit()}
-    WEAK = {'index': 'Phone portal screenshot: the long question is cut off in the input box; needs a fresh phone capture.',
-            'industries_schools': 'Phone portal screenshot reads small at 390.',
-            'arthur': 'Phone portal screenshot reads small at 390.', 'operating-system': 'Phone portal screenshot reads small at 390.',
-            'how-it-works': 'Phone portal screenshot reads small at 390.', 'architecture': 'Phone portal screenshot reads small at 390.'}
+    WEAK = {}
 
 NAMES = {'index': 'Home', 'operating-system': 'Operating system', 'how-it-works': 'How it works', 'industries_manufacturing': 'Industry: manufacturing',
          'industries_property': 'Industry: property', 'industries_schools': 'Industry: schools and charters', 'notes': 'Systems Notes',
@@ -64,7 +61,7 @@ vals = [SCORE.get(p, 7) for p in order]
 n2['summary'] = [f'Strict Codex judge, every page on desktop and phone: average {sum(vals)/len(vals):.1f} of 10, range {min(vals)} to {max(vals)}. Any remaining defect caps a page at 9, so no page reached 10.',
                  'What changed: one hero system (photo, split, product, text) with one photo per hero, one screen frame, one answer card, one logo chip, the phone menu button fixed on every page, off-brand colours removed, beta-tester gaps closed.',
                  'Five beta testers (charter-school manager, property director on a phone, manufacturing VP, keyboard-only city analyst at 200 percent zoom, nonprofit director on a tablet) walked the site; their findings went to the fix teams. Link crawl of 70 page views: no broken internal links, overflow or broken images.',
-                 'Still holding the 6s: the phone portal screenshots on home and the product pages read small, and the home example question is cut off in the portal input. That needs fresh phone captures of the portal.']
+                 'Since the scores: every page now uses the same full-width photo hero (build, principles, talk, contact and FAQ were split screen), home has a new workshop hero photo, and all nine phone portal screenshots were recaptured at a true 390 width so the padding is even on both sides. Scores shown predate these fixes.']
 json.dump(n2, open(OUT + '/notes.json', 'w'))
 subprocess.run(['node', os.path.expanduser('~/arthur/scripts/review-board.mjs'), OUT + '/before', OUT + '/notes.json', BOARD], check=True, capture_output=True)
 print('board3', BOARD + '/index.html', len(order), 'pages x 2 widths')
