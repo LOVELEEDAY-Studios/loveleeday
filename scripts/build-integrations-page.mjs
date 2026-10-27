@@ -65,6 +65,7 @@ const CSS = `.pub .ic-state{border:1px solid var(--line);border-radius:14px;padd
 @media(max-width:700px){.pub .ic-grid{grid-template-columns:minmax(0,1fr)}.pub .ic-search{flex-basis:100%}.pub .tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;max-width:100%}}`;
 head = head.replace(/<style>[\s\S]*?<\/style>/, () => `<style>${CSS}</style>`);
 head = head.replace(/"@type":"WebPage"/, '"@type":"CollectionPage"');
+head = head.replace(/<body class="[^"]*"/, '<body class="pg-integrations"');
 
 // Every connector is listed. Anything a customer cannot connect today carries one label, "Coming soon" — never why
 // (vendor approval, sign-in not configured are our business). The label is baked in at build time and then refreshed in

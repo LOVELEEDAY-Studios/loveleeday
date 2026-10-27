@@ -1,0 +1,105 @@
+/* LOVELEEDAY desktop layout system. Everything here sits inside min-width:1021px (the site's own header breakpoint),
+   so the approved phone layouts are untouched. Anchor: the manufacturing hero (full-bleed photograph, warm scrim,
+   white headline on the left). Palette and type unchanged: Switzer + Sentient, 64/40/28/20/17.
+   Grid: 1080 wrap, 12 columns, 24 gutter. Spacing scale: 8 16 24 40 64 96 128.
+   Hero types (set per page by body class pg-*):
+     dk-photo  full-bleed photograph under a left-weighted scrim (manufacturing pattern)
+     dk-split  cream ground, copy left, photograph bleeding off the right edge
+     dk-dark   ink ground, copy left, photograph fading in from the right
+     dk-plain  no photograph, large headline on a ruled cream ground (legal pages)
+*/
+@media (min-width:1021px){
+  :root{--dk-ink:#14161a;--dk-cream:#f5f1eb;--dk-scrim:18,14,11}
+
+  /* ---------- shared hero scaffolding ---------- */
+  :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work,
+      .pg-build,.pg-faq,.pg-talk,.pg-contact,.pg-use-cases,.pg-principles,.pg-operational-intelligence,.pg-snapshot,
+      .pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type{
+    position:relative;isolation:isolate;display:flex;align-items:center;min-height:620px;padding:0;margin:0;border:0;overflow:hidden}
+  :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work,
+      .pg-build,.pg-faq,.pg-talk,.pg-contact,.pg-use-cases,.pg-principles,.pg-operational-intelligence,.pg-snapshot,
+      .pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type>.wrap{
+    position:relative;z-index:2;width:100%;max-width:1080px;margin-inline:auto;padding:104px 0 96px}
+  :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work,
+      .pg-build,.pg-faq,.pg-talk,.pg-contact,.pg-use-cases,.pg-principles,.pg-operational-intelligence,.pg-snapshot,
+      .pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type>.wrap>*{max-width:600px}
+  /* decorative hero pictures from the old layouts give way to the background photograph */
+  .pg-index .hp-photo,.pg-customer-data .cd-photo,.pg-municipal-review .mr-hero-v,.pg-talk .tv3-vis,.pg-contact .cv3-vis{display:none}
+  .pg-customer-data .cd-hero-grid,.pg-municipal-review .mr-hero-in,.pg-talk .tv3-hero-grid,.pg-contact .cv3-hero-grid{display:block}
+  .pg-customer-data .cd-hero-grid>div,.pg-municipal-review .mr-hero-c,.pg-talk .tv3-hero-copy,.pg-contact .cv3-hero-copy{max-width:600px}
+  .pg-index .hp-text{max-width:600px}
+
+  /* ---------- dk-photo : the manufacturing pattern ---------- */
+  :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work) main>section:first-of-type{
+    color:#fff;background:linear-gradient(90deg,rgba(var(--dk-scrim),.80) 0%,rgba(var(--dk-scrim),.58) 46%,rgba(var(--dk-scrim),.14) 100%),var(--hero) var(--hero-pos,center)/cover no-repeat}
+  :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work) main>section:first-of-type :is(h1,h2,.lead,p,.breadcrumb,.breadcrumb a,small,.text-link){color:#fff}
+  :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work) main>section:first-of-type .lead{color:#f4ece2;font-size:var(--t4);line-height:1.5}
+  :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work) main>section:first-of-type .text-link{border-color:#ffffff99}
+  .pg-index{--hero:url(/site/assets/hero-home.jpg);--hero-pos:70% 30%}
+  .pg-how-it-works{--hero:url(/site/assets/hero-how.jpg);--hero-pos:60% 40%}
+  .pg-municipal-review{--hero:url(/site/assets/hero-municipal.jpg);--hero-pos:60% 50%}
+  .pg-pricing-margins{--hero:url(/site/assets/hero-pricing.jpg);--hero-pos:50% 50%}
+  .pg-customer-data{--hero:url(/site/assets/hero-customer.jpg);--hero-pos:65% 35%}
+  .pg-studio{--hero:url(/site/assets/hero-studio.jpg);--hero-pos:50% 45%}
+  .pg-work{--hero:url(/site/assets/hero-work.jpg);--hero-pos:50% 40%}
+  .pg-index main>section:first-of-type{min-height:680px}
+
+  /* ---------- dk-split : cream ground, photograph bleeds off the right edge ---------- */
+  :is(.pg-build,.pg-faq,.pg-talk,.pg-contact,.pg-use-cases,.pg-principles,.pg-operational-intelligence,.pg-snapshot) main>section:first-of-type{
+    background:var(--dk-cream);color:var(--ink);min-height:560px}
+  :is(.pg-build,.pg-faq,.pg-talk,.pg-contact,.pg-use-cases,.pg-principles,.pg-operational-intelligence,.pg-snapshot) main>section:first-of-type::after{
+    content:"";position:absolute;z-index:1;top:0;right:0;bottom:0;left:56%;background:var(--hero) var(--hero-pos,center)/cover no-repeat}
+  :is(.pg-build,.pg-faq,.pg-talk,.pg-contact,.pg-use-cases,.pg-principles,.pg-operational-intelligence,.pg-snapshot) main>section:first-of-type>.wrap>*{max-width:520px}
+  .pg-build{--hero:url(/site/assets/card-build.jpg)}
+  .pg-faq{--hero:url(/site/assets/card-faq.jpg)}
+  .pg-talk{--hero:url(/site/assets/talk-hero.jpg)}
+  .pg-contact{--hero:url(/site/assets/ph-contact.jpg)}
+  .pg-use-cases{--hero:url(/site/assets/hero-usecases.jpg)}
+  .pg-principles{--hero:url(/site/assets/hero-principles.jpg)}
+  .pg-operational-intelligence{--hero:url(/site/assets/industry-manufacturing-3.jpg);--hero-pos:40% 50%}
+  .pg-snapshot{--hero:url(/site/assets/card-snapshot.jpg)}
+  /* hero chips on the snapshot sit under the lead */
+  .pg-snapshot .snap-chips{max-width:520px}
+  .pg-snapshot main>section:first-of-type.wrap,.pg-snapshot main>section:first-of-type.pagehead{max-width:none}
+
+  /* ---------- dk-dark : ink ground, photograph fades in from the right ---------- */
+  :is(.pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type{
+    background:var(--dk-ink);color:#fff;min-height:580px}
+  :is(.pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type::after{
+    content:"";position:absolute;z-index:1;top:0;right:0;bottom:0;left:44%;
+    background:linear-gradient(90deg,var(--dk-ink) 0%,rgba(20,22,26,.55) 38%,rgba(20,22,26,.12) 100%),var(--hero) var(--hero-pos,center)/cover no-repeat}
+  :is(.pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type :is(h1,.lead,p,.breadcrumb,a.text-link,.xs,.muted,b){color:#f4f1ec}
+  :is(.pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type .lead{color:#d9d6d0;font-size:var(--t4);line-height:1.5}
+  .pg-operating-system{--hero:url(/site/assets/ph-os.jpg);--hero-pos:50% 40%}
+  .pg-architecture{--hero:url(/site/assets/architecture.jpg)}
+  .pg-integrations{--hero:url(/site/assets/card-integrations.jpg)}
+  .pg-trust{--hero:url(/site/assets/card-trust.jpg);--hero-pos:50% 25%}
+  .pg-trust main>section:first-of-type .wrap>.stage-split{display:block}
+
+  /* pages whose hero section is itself the .wrap (work, snapshot, integrations) */
+  :is(.pg-work,.pg-snapshot,.pg-integrations) main>section.pagehead:first-of-type{
+    width:100%;max-width:none;margin:0;padding:104px max(24px,calc((100% - 1080px)/2)) 96px;flex-direction:column;align-items:flex-start;justify-content:center}
+  :is(.pg-work,.pg-snapshot,.pg-integrations) main>section.pagehead:first-of-type>*{position:relative;z-index:2;max-width:560px}
+  :is(.pg-work,.pg-snapshot,.pg-integrations) main>section.pagehead:first-of-type>*+*{margin-top:20px}
+  .pg-snapshot main>section.pagehead:first-of-type .snap-chips{max-width:520px}
+  .pg-integrations main>section.pagehead:first-of-type h1{font-size:var(--t1)!important;max-width:560px}
+
+  /* ---------- dk-plain : legal pages ---------- */
+  :is(.pg-privacy,.pg-terms) main>section:first-of-type{background:var(--dk-cream);border-bottom:1px solid var(--line);padding:120px 0 80px}
+  :is(.pg-privacy,.pg-terms) main>section:first-of-type h1{font-size:72px;line-height:1.02;max-width:900px}
+  :is(.pg-privacy,.pg-terms) main>section:first-of-type .lead{max-width:640px;font-size:var(--t4)}
+
+  /* ---------- the arthur hero keeps its portal screen; photographs stay out of it ---------- */
+  .pg-arthur main>section:first-of-type{min-height:620px;display:flex;align-items:center}
+
+  /* ---------- body rhythm: one spacing scale and a calmer section cadence ---------- */
+  :is(body.pg-index,body.pg-how-it-works,body.pg-municipal-review,body.pg-pricing-margins,body.pg-customer-data,body.pg-studio,body.pg-work,
+      body.pg-build,body.pg-faq,body.pg-talk,body.pg-contact,body.pg-use-cases,body.pg-principles,body.pg-operational-intelligence,
+      body.pg-snapshot,body.pg-operating-system,body.pg-architecture,body.pg-integrations,body.pg-trust,body.pg-arthur) main>section:not(:first-of-type){
+    padding-block:var(--dk-sec,96px)}
+  .pg-faq main>section:not(:first-of-type) .wrap,.pg-privacy main .wrap{max-width:820px}
+  :is(.pg-index,.pg-how-it-works,.pg-studio,.pg-work,.pg-build) main h2{max-width:20ch}
+
+  /* section headings get a short ruled lead so every page opens its sections the same way */
+  main section:not(:first-of-type) h2{margin-top:0}
+}

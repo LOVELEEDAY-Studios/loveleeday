@@ -29,6 +29,16 @@ $G $C/shot-19-professional-services/8441780-kampus-production.jpg $A/card-terms.
 $G $C/shot-25-portrait-property/8124203-rdne-stock-project.jpg $A/card-trust.jpg --w=1600 --warm=0.1
 $G $C/shot-22-portrait-retail/34674788-demetra-ioannidou.jpg $A/card-snapshot.jpg --w=1600 --warm=0.0
 $G $C/shot-23-portrait-manufacturing/3823190-andrea-piacquadio.jpg $A/card-work.jpg --w=1600 --warm=0.1
+# desktop hero photographs (full-bleed and split heroes), graded from the Pexels originals
+$G $C/shot-01-home-hero/3861077-andrea-piacquadio.jpg $A/hero-home.jpg --w=2400 --warm=0.3
+$G $C/shot-19-professional-services/7821683-rdne-stock-project.jpg $A/hero-how.jpg --w=2200 --warm=0.2
+$G $C/shot-06-gov-counter/7821676-rdne-stock-project.jpg $A/hero-municipal.jpg --w=2200 --warm=0.1
+$G $C/shot-13-ops-close-of-day/5900228-https-kaboompics-com.jpg $A/hero-pricing.jpg --w=2200
+$G $C/shot-11-portfolios-window/8927465-nataliya-vaitkevich.jpg $A/hero-customer.jpg --w=2200 --warm=0.1
+$G $C/shot-20-life-long-table/8841608-julia-m-cameron.jpg $A/hero-studio.jpg --w=2200 --warm=0.1
+$G $C/shot-23-portrait-manufacturing/3823190-andrea-piacquadio.jpg $A/hero-work.jpg --w=2200 --warm=0.1
+$G $C/shot-13-ops-close-of-day/7680736-https-kaboompics-com.jpg $A/hero-usecases.jpg --w=1800 --warm=0.1
+$G $C/shot-25-portrait-property/7888683-rdne-stock-project.jpg $A/hero-principles.jpg --w=1800 --warm=0.1
 # files we hold only at their published size are regraded from the committed original, never enlarged
 T=$(mktemp -d)
 regrade() { git -C /Users/danielmay/wt/ll-review-1026 show f10b7db:public/site/assets/$1 > $T/src.jpg && $G $T/src.jpg $A/$1 --w=99999 "${@:2}"; }
