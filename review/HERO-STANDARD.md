@@ -11,7 +11,7 @@ Every page opens with one of four hero types. A hero has one ground and at most 
 
 Shared rules for every type
 - h1 uses the brand display size, max 12ch; lead 17-22px, max 34em; one primary button plus one text link.
-- Left text column starts on the 1080px wrap line; the hero is at least 620px tall on desktop.
+- Left text column starts on the 1080px wrap line; Photo, Split and Product heroes are at least 620px tall on desktop; a Text hero is sized to its content (about 360-440px) and the same height on every Text page.
 - On phones (700px and under) every photo hero stacks: photo, then text, then card, all full width; no text over a busy part of the photo.
 - Photos are real, single shots at native pixels; never hero-decision.jpg, hero-team-desktop.jpg, hero-team-phone.jpg.
 - Industry pages may replace the right card with the product panel across the bottom edge; they use it on all three industry pages or none.
