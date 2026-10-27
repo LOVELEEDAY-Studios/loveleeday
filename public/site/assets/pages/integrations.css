@@ -1,0 +1,78 @@
+/* integrations: photo hero, statement, readable directory on mist, photographic close. */
+.pg-integrations h2{font-weight:500;letter-spacing:-.03em;line-height:1.08;font-size:32px}
+.pg-integrations .ha-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:24px}
+.pg-integrations .ig-hero{position:relative;background:var(--b-night);color:#fff;overflow:hidden}
+.pg-integrations .ig-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;}
+.pg-integrations .ig-hero-in{position:relative;padding-block:56px 64px}
+.pg-integrations .ig-hero h1{font-size:44px;line-height:1.04;letter-spacing:-.03em;font-weight:500;color:#fff}
+.pg-integrations .ig-hero .lead{font-size:17px;line-height:1.6;color:#e4e5ea;margin-top:20px;max-width:34em}
+.pg-integrations .ig-hero .text-link,.pg-integrations .ig-close .text-link{color:#fff;border-color:#fff}
+.pg-integrations .ig-statement{background:#fff;padding:64px 0}
+.pg-integrations .ig-st-grid>p{font-family:var(--serif);font-size:19px;line-height:1.5;color:#3a3b40;margin-top:20px}
+.pg-integrations .ig-st-grid strong{font-weight:400;color:var(--b-ink);background:linear-gradient(transparent 62%,#cfe2f8 62%)}
+.pg-integrations .ig-dir{background:var(--b-mist);padding:64px 0 72px}
+.pg-integrations .ig-sub{font-size:16px;line-height:1.6;color:#45474d;margin-top:12px;max-width:46em}
+.pg-integrations .ig-sub b{color:var(--b-ink)}
+.pg-integrations .ic-bar{margin:28px 0 8px;gap:16px}
+.pg-integrations .tabs{gap:8px}
+.pg-integrations .tab{font-size:15px;padding:8px 16px;border-radius:999px;border:1px solid #d9d9de;background:#fff;color:#45474d;font-family:inherit}
+.pg-integrations .tab small{font-size:14px;color:#6b6d74;margin-left:6px}
+.pg-integrations .tab.on{background:#fff;color:var(--b-blue);border-color:var(--b-blue)}
+.pg-integrations .ic-search{font-size:16px;padding:12px 16px;border:1px solid #d9d9de;background:#fff;border-radius:999px;color:var(--b-ink);flex:0 1 320px}
+.pg-integrations .ic-grid{gap:16px;margin-top:24px}
+.pg-integrations .ic-card{background:#fff;border:0;border-radius:16px;padding:22px;box-shadow:0 1px 0 rgba(0,0,0,.04),0 12px 40px -24px rgba(11,11,16,.25);gap:10px}
+.pg-integrations .ic-card::before{display:none}
+.pg-integrations .ic-logo{border:1px solid var(--b-line);border-radius:10px;width:44px;height:44px}
+.pg-integrations .ic-top b{font-size:17px;font-weight:600;color:var(--b-ink)}
+.pg-integrations .ic-top span.xs{font-size:14px;color:#6b6d74}
+.pg-integrations .ic-card p{font-size:15px;line-height:1.55;color:#45474d}
+.pg-integrations .ic-soon{font-size:14px;font-weight:500;color:#6b6d74}
+.pg-integrations .ic-soon::before{background:var(--b-blue)}
+.pg-integrations .ic-empty{font-size:16px}
+.pg-integrations .ig-close{position:relative;background:var(--b-night);color:#fff}
+.pg-integrations .ig-close>img{display:block;width:100%;height:440px;object-fit:cover;}
+.pg-integrations .ig-close-copy{position:absolute;left:0;right:0;bottom:40px;margin-inline:auto}
+.pg-integrations .ig-close h2{color:#fff}
+.pg-integrations .ig-close p{font-size:16px;line-height:1.55;color:#f3e6d4;margin-top:10px;max-width:34em}
+
+@media (min-width:1021px){
+  .pg-integrations .ig-hero{min-height:680px;display:flex;align-items:center}
+  .pg-integrations .ig-hero-in{padding-block:120px}
+  .pg-integrations .ig-hero h1{font-size:var(--t1);line-height:.98;letter-spacing:-.04em;max-width:11ch}
+  .pg-integrations .ig-hero .lead{font-size:22px;max-width:30em;margin-top:28px}
+  .pg-integrations h2{font-size:var(--t2)}
+  .pg-integrations .ig-statement{padding-block:144px}
+  .pg-integrations .ig-st-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+  .pg-integrations .ig-st-grid>h2{font-size:64px;line-height:1.02;max-width:9ch}
+  .pg-integrations .ig-st-grid>p{font-size:28px;line-height:1.42;margin:0}
+  .pg-integrations .ig-dir{padding-block:128px}
+
+  .pg-integrations .ig-sub{font-size:19px}
+  .pg-integrations .ic-bar{margin-top:48px}
+  .pg-integrations .ic-grid{gap:20px;margin-top:32px}
+  .pg-integrations .ic-card{padding:28px;gap:12px}
+  .pg-integrations .ic-top b{font-size:18px}
+  .pg-integrations .ic-card p{font-size:16px}
+  .pg-integrations .ig-close>img{height:640px;object-position:50% 40%}
+  .pg-integrations .ig-close-copy{bottom:96px;text-align:center}
+  .pg-integrations .ig-close h2{font-size:72px;letter-spacing:-.035em;line-height:1}
+  .pg-integrations .ig-close p{font-size:28px;max-width:28em;margin:16px auto 0}
+  .pg-integrations .ig-close .ha-actions{justify-content:center;gap:32px;margin-top:32px}
+  .pg-integrations .ig-hero-in{display:grid;grid-template-columns:7fr 5fr;gap:80px;align-items:center}
+  .pg-integrations .ig-hero-in .ig-card{margin:0;padding:36px 36px 32px;box-shadow:0 30px 80px -20px rgba(0,0,0,.55)}
+  .pg-integrations .ig-hero-in .ig-card .answer{font-size:25px}
+}
+.pg-integrations .ig-card{background:#fff;color:var(--b-ink);border-radius:16px;padding:28px;margin-top:32px;position:relative}
+.pg-integrations .ig-cap{font-size:14px;font-weight:500;color:var(--b-blue);margin-bottom:12px;line-height:1.4}
+.pg-integrations .ig-card .answer{font-family:var(--serif);font-size:22px;line-height:1.35;color:var(--b-ink)}
+.pg-integrations .ig-do{font-size:15px;line-height:1.55;color:var(--b-mute);margin-top:16px;padding-top:16px;border-top:1px solid var(--b-line)}
+@media (min-width:1021px){body.pg-integrations .pub .ic-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}body.pg-integrations .pub .ic-card{padding:22px}}
+.pg-integrations .pub .ig-card .answer,.pg-integrations .pub .ig-card .answer *{color:var(--b-ink)!important}.pg-integrations .pub .ig-cap{color:var(--b-blue)!important}.pg-integrations .pub .ig-do{color:var(--b-mute)!important}
+/* OVERLAY-ig */
+.pg-integrations .ig-hero::before{content:"";position:absolute;inset:0;background:rgba(11,11,16,.5);z-index:1}
+.pg-integrations .ig-hero>.wrap{position:relative;z-index:2}
+.pg-integrations .ig-close::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,16,.3),rgba(11,11,16,.72));pointer-events:none}
+.pg-integrations .ig-close-copy{z-index:1}
+/* FIX2-ig */
+.pg-integrations .ig-close{padding:0!important}
+.pg-integrations .ig-close-copy{width:min(1080px,calc(100% - 40px))}
