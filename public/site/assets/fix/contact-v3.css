@@ -1,11 +1,11 @@
 /* contact-v3: mockup. Scoped to .cv3. Form markup and classes are unchanged; this only composes the page around it. */
 .cv3 h1,.cv3 h2{margin:0;font-weight:500}
-.cv3 h2{font-size:clamp(30px,3.4vw,44px);line-height:1.08;letter-spacing:-.045em}
+.cv3 h2{font-size:clamp(30px,3.4vw,44px);line-height:1.08;letter-spacing:-.025em}
 .cv3 h1 span,.cv3 h2 span{color:#767880}
 
 .cv3-hero{background:#f5f1eb;padding-block:72px 88px;overflow:hidden}
 .cv3-hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:center}
-.cv3-hero h1{font-size:clamp(38px,3.9vw,54px);line-height:1.04;letter-spacing:-.055em;margin-top:16px}
+.cv3-hero h1{font-size:clamp(38px,3.9vw,54px);line-height:1.04;letter-spacing:-.025em;margin-top:16px}
 .cv3-hero h1 span{color:#85786a}
 .cv3-hero .lead{font-size:18px;line-height:1.7;color:#62656c;margin:22px 0 0;max-width:470px}
 .cv3-actions{display:flex;align-items:center;gap:24px;margin-top:32px;flex-wrap:wrap}

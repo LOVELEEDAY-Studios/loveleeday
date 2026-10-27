@@ -2,7 +2,7 @@
 .fx-os-hub::before{content:"";position:absolute;inset:-20% auto auto -10%;width:60%;height:100%;background:radial-gradient(closest-side,rgba(90,169,255,.14),transparent);pointer-events:none}
 .fx-os-hub>.wrap{position:relative}
 .fx-os-hub .eyebrow{color:#a6a9b4}
-.fx-os-hub h2{font-size:clamp(34px,4.4vw,60px);font-weight:500;letter-spacing:-.05em;line-height:1.06;margin-top:14px;color:#f4f4f7}
+.fx-os-hub h2{font-size:clamp(34px,4.4vw,60px);font-weight:500;letter-spacing:-.025em;line-height:1.06;margin-top:14px;color:#f4f4f7}
 .fx-os-hub h2 span{color:#8b8f9c}
 .fx-os-head{margin-bottom:var(--s5)}
 .fx-os-flow{display:grid;grid-template-columns:minmax(0,.8fr) 64px minmax(0,1.2fr);gap:20px;align-items:center}

@@ -4,7 +4,7 @@
 .fq-cards a{position:relative;display:flex;flex-direction:column;gap:8px;padding:24px 26px 26px;background:#fff;border:1px solid #e6dfd3;border-radius:16px;transition:border-color .2s,transform .2s}
 .fq-cards a:hover{border-color:#1d1d1f;transform:translateY(-2px)}
 .fq-cards .cap{font-size:10px;letter-spacing:.14em;text-transform:none;font-weight:600;color:#6d6558}
-.fq-cards b{font-size:21px;line-height:1.25;letter-spacing:-.03em;font-weight:500;color:#1d1d1f;padding-right:28px}
+.fq-cards b{font-size:21px;line-height:1.25;letter-spacing:-.022em;font-weight:500;color:#1d1d1f;padding-right:28px}
 .fq-cards a>span:last-of-type{font-size:14px;line-height:1.6;color:#62656c}
 .fq-cards i{position:absolute;right:22px;top:22px;font-style:normal;color:#0066cc;font-size:18px}
 .fq-shell{display:grid;grid-template-columns:230px minmax(0,1fr);gap:72px;padding-block:80px 40px;align-items:start}
@@ -19,7 +19,7 @@
 .fq-group{scroll-margin-top:calc(var(--header-height) + 24px);margin-bottom:64px}
 .fq-group header{display:flex;align-items:baseline;gap:16px;padding-bottom:18px}
 .fq-num{font-size:12px;letter-spacing:.08em;font-weight:600;color:#0066cc;font-variant-numeric:tabular-nums}
-.fq-group h2{font-size:30px;line-height:1.15;letter-spacing:-.04em;font-weight:500;margin:0}
+.fq-group h2{font-size:30px;line-height:1.15;letter-spacing:-.025em;font-weight:500;margin:0}
 .fq-count{margin-left:auto;font-size:12px;color:#73757c}
 .fq-list{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
 .fq-group:nth-of-type(even) .fq-list{background:#f7f7f9}

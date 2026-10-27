@@ -9,7 +9,7 @@
 .pub .wk2-img{display:block;border:1px solid #2a2a33;border-radius:14px;overflow:hidden;background:#13131a;box-shadow:0 30px 80px #00000066}
 .pub .wk2-img img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
 .pub .wk2-n{font-size:10px;letter-spacing:.16em;font-weight:600;color:#b4a697}
-.pub .wk2-copy h3{font-size:30px;line-height:1.12;letter-spacing:-.04em;font-weight:500;margin-top:10px;color:#fff}
+.pub .wk2-copy h3{font-size:30px;line-height:1.12;letter-spacing:-.025em;font-weight:500;margin-top:10px;color:#fff}
 .pub .wk2-copy p{font-size:14px;line-height:1.7;color:#b0aebb;margin-top:14px}
 .pub .wk2-copy .text-link{display:inline-block;margin-top:18px;font-size:13px;color:#9cc7f5}
 .pub .wk2:target .wk2-img{border-color:#9cc7f5}

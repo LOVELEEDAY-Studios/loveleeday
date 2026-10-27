@@ -42,7 +42,8 @@ const advance = (font, text, size) => {
   g.forEach((x, i) => { w += x.advanceWidth + (i ? font.getKerningValue(g[i - 1], x) : 0); });
   return (w * size) / font.unitsPerEm;
 };
-const widthOf = (font, text, size) => advance(font, text, size) - 0.045 * size * text.length;
+const TRACK = -0.028;
+const widthOf = (font, text, size) => advance(font, text, size) + TRACK * size * text.length;
 
 function wrap(font, text, size) {
   const out = [];
@@ -66,15 +67,32 @@ function ellipsize(font, text, size, maxW, tracking) {
 // Headline fit: keep each of the two lines on one line and shrink 66 -> 52px; failing that, wrap to at most three
 // lines between 60 and 44px; last resort, truncate. A long headline can therefore never overflow or collide.
 export function layoutHeadline(font, l1, l2) {
-  const logical = [[l1, false], [l2, true]].filter(([t]) => t);
-  for (let size = 66; size >= 52; size -= 2) {
-    if (logical.every(([t]) => widthOf(font, t, size) <= MAX_W)) return { size, lines: logical.map(([t, tan]) => ({ t, tan })) };
+  // One sentence, one colour. Wrap the whole headline at the largest size (66 down to 44px) that fits three lines,
+  // then balance: the narrowest column that keeps the same line count, so no word is left alone on the last line.
+  const text = [l1, l2].filter(Boolean).join(" ").replace(/\s+/g, " ").trim();
+  for (let size = 66; size >= 44; size -= 2) {
+    const n = wrapAt(font, text, size, MAX_W).length;
+    if (n > 3) continue;
+    let lo = 200, hi = MAX_W;
+    while (hi - lo > 4) {
+      const mid = (lo + hi) / 2;
+      if (wrapAt(font, text, size, mid).length <= n) hi = mid; else lo = mid;
+    }
+    const lines = wrapAt(font, text, size, hi + 2);
+    if (lines.every((t) => widthOf(font, t, size) <= MAX_W)) return { size, lines: lines.map((t) => ({ t, tan: false })) };
   }
-  for (let size = 60; size >= 44; size -= 2) {
-    const lines = logical.flatMap(([t, tan]) => wrap(font, t, size).map((x) => ({ t: x, tan })));
-    if (lines.length <= 3 && lines.every((l) => widthOf(font, l.t, size) <= MAX_W)) return { size, lines };
+  return { size: 44, lines: [{ t: ellipsize(font, text, 44, MAX_W, TRACK), tan: false }] };
+}
+
+function wrapAt(font, text, size, maxW) {
+  const out = [];
+  let line = "";
+  for (const word of text.split(" ")) {
+    const next = line ? `${line} ${word}` : word;
+    if (line && widthOf(font, next, size) > maxW) { out.push(line); line = word; } else line = next;
   }
-  return { size: 44, lines: logical.map(([t, tan]) => ({ t: ellipsize(font, t, 44, MAX_W, -0.045), tan })) };
+  if (line) out.push(line);
+  return out;
 }
 
 const el = (type, style, children, extra = {}) => ({ type, props: { style, ...(children !== undefined ? { children } : {}), ...extra } });
@@ -89,13 +107,13 @@ export async function renderCard({ l1, l2, caption, photoFile, markFile }) {
 
   const tree = el("div", { display: "flex", position: "relative", width: W, height: H, color: "#fff", fontFamily: "Inter", backgroundColor: "#000" }, [
     el("img", { position: "absolute", left: 0, top: 0, width: W, height: H, objectFit: "cover" }, undefined, { src: photoUri, width: W, height: H }),
-    el("div", { position: "absolute", left: 0, top: 0, width: W, height: H, backgroundImage: "linear-gradient(0deg, rgba(12,11,10,0.86) 0%, rgba(12,11,10,0.55) 50%, rgba(12,11,10,0.5) 100%)" }, ""),
+    el("div", { position: "absolute", left: 0, top: 0, width: W, height: H, backgroundImage: "linear-gradient(0deg, rgba(12,11,10,0.80) 0%, rgba(12,11,10,0.42) 52%, rgba(12,11,10,0.18) 100%)" }, ""),
     el("div", { position: "absolute", left: 80, top: 60, display: "flex", alignItems: "center", fontSize: 17, letterSpacing: 3.4, fontWeight: 600 }, [
       el("img", { width: 24, height: 24, marginRight: 12 }, undefined, { src: markUri, width: 24, height: 24 }),
       el("div", { display: "flex" }, "LOVELEEDAY"),
     ]),
     el("div", { position: "absolute", left: 80, right: 80, bottom: 64, display: "flex", flexDirection: "column" }, [
-      ...lines.map((l) => el("div", { display: "flex", fontSize: size, lineHeight: 1.04, letterSpacing: -0.045 * size, fontWeight: 700, color: l.tan ? TAN : "#fff" }, l.t)),
+      ...lines.map((l) => el("div", { display: "flex", fontSize: size, lineHeight: 1.04, letterSpacing: TRACK * size, fontWeight: 700, color: l.tan ? TAN : "#fff" }, l.t)),
       el("div", { display: "flex", marginTop: 24, fontSize: 21, fontWeight: 400, color: "rgba(255,255,255,0.78)" }, cap),
     ]),
   ]);

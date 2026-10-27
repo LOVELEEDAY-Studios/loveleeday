@@ -3,7 +3,7 @@
 .art-body>p:first-of-type{font-size:24px;line-height:1.5;letter-spacing:-.015em;color:#1d1d1f;margin-bottom:34px}
 .art-body h2{counter-increment:ah;margin-top:64px}
 .art-body h2::before{content:counter(ah,decimal-leading-zero);display:block;font-size:12px;font-weight:600;letter-spacing:.12em;color:#0066cc;margin-bottom:12px;font-variant-numeric:tabular-nums}
-.art-body blockquote{margin:72px -72px;padding:36px 0 0;border-left:0;border-top:2px solid #1d1d1f;font-size:42px;line-height:1.14;letter-spacing:-.045em;font-weight:500;color:#1d1d1f;max-width:none}
+.art-body blockquote{margin:72px -72px;padding:36px 0 0;border-left:0;border-top:2px solid #1d1d1f;font-size:42px;line-height:1.14;letter-spacing:-.025em;font-weight:500;color:#1d1d1f;max-width:none}
 .art-body .diagram{margin-inline:-72px;padding:40px}
 .rec{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:0 32px;margin:60px -72px;align-items:start}
 .rec-card{background:#fff;border:1px solid #cfd1d6;border-radius:6px;box-shadow:0 1px 0 #00000008,0 14px 34px -22px #00000040;overflow:hidden}

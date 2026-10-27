@@ -1,6 +1,6 @@
 .bd-row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:56px;padding:48px 0;border-top:1px solid var(--line,#e4e5e9);align-items:center;scroll-margin-top:96px}
 .bd-row:last-child{border-bottom:1px solid var(--line,#e4e5e9)}
-.bd-t h3{font-size:30px;line-height:1.12;letter-spacing:-.04em;font-weight:500;margin-top:10px}
+.bd-t h3{font-size:30px;line-height:1.12;letter-spacing:-.025em;font-weight:500;margin-top:10px}
 .bd-t p{font-size:15px;line-height:1.7;color:#4f525a;margin-top:14px;max-width:440px}
 .bd-t .text-link{display:inline-block;margin-top:18px;font-size:13px}
 .bd-exs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:16px}

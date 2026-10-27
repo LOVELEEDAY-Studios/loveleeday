@@ -39,7 +39,7 @@
 @media(max-width:1020px){
   .gh .gh-bar{justify-content:space-between}
   .gh-toggle{display:flex;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px;margin-right:-10px;padding:0 10px;border:0;background:none;cursor:pointer}
-  .gh-toggle span{display:block;height:1.5px;background:var(--ink);transition:transform .25s}
+  .gh-toggle span{display:block;height:2px;background:var(--ink);transition:transform .25s}
   .gh.menu-open .gh-toggle span:first-child{transform:translateY(3.75px) rotate(45deg)}
   .gh.menu-open .gh-toggle span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
   .gh-menu{display:none}

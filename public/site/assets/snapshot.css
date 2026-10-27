@@ -31,7 +31,7 @@
 .pub .snap-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .pub .snap-stats .stat .n{font-size:34px}
 .pub .snap-stats .stat .d{font-size:12px;line-height:1.5}
-.pub .snap-brief h2{font-size:24px;line-height:1.25;letter-spacing:-.03em;font-weight:500;margin-top:8px}
+.pub .snap-brief h2{font-size:24px;line-height:1.25;letter-spacing:-.022em;font-weight:500;margin-top:8px}
 .pub .snap-brief p{margin-top:12px;font-size:14px;line-height:1.7;color:var(--text);max-width:760px}
 .pub .snap-brief .xs{margin-top:16px}
 .pub .snap-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
@@ -48,7 +48,7 @@
 .pub .snap-find>summary b{font-size:16px;letter-spacing:-.02em;font-weight:550;display:block}
 .pub .snap-find>summary small{display:block;font-size:12px;color:var(--muted);margin-top:3px}
 .pub .snap-find>summary .tail{display:flex;align-items:center;gap:10px;justify-self:end;flex-wrap:wrap;justify-content:flex-end}
-.pub .snap-find>summary .tail .fig{font-size:20px;letter-spacing:-.03em;font-weight:500;font-variant-numeric:tabular-nums}
+.pub .snap-find>summary .tail .fig{font-size:20px;letter-spacing:-.022em;font-weight:500;font-variant-numeric:tabular-nums}
 .pub .snap-find[open]>summary{border-bottom:1px solid var(--line2)}
 .pub .snap-find .body{padding:18px 22px 22px}
 .pub .snap-find .why{font-size:12.5px;line-height:1.65;color:var(--text);max-width:820px}
