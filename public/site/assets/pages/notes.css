@@ -1,0 +1,61 @@
+/* Notes index. Grounds: night hero / white feature / cream list / photo close */
+.pg-notes .notes-hero{background:radial-gradient(ellipse 60% 90% at 85% 40%,#1b1d3a 0%,var(--b-night) 70%)!important;color:#fff}
+.pg-notes .notes-hero h1{color:#fff}
+.pg-notes .notes-hero .lead{color:#c4c6d0}
+.pg-notes .notes-topics button{background:transparent;color:#e8e9ee;border:1px solid #ffffff40;font-size:14px;min-height:40px;padding:0 16px}
+.pg-notes .notes-topics button.on{background:#fff;color:var(--b-ink);border-color:#fff}
+.pg-notes .feature{background:#fff;padding-block:48px}
+.pg-notes .feature h2{font-size:34px}
+.pg-notes .feature p{font-size:17px;color:#45474d}
+.pg-notes .feature .meta,.pg-notes .row .meta{font-size:14px}
+.pg-notes .feature .read{font-size:16px;color:var(--b-blue)}
+.pg-notes .note-list{background:var(--b-cream);padding-block:48px}
+.pg-notes .note-list .row .n{display:none}
+.pg-notes .nt-idx{border-top:1px solid #d8d2c7}
+.pg-notes .nt-idx .row{grid-template-columns:minmax(0,1fr)!important;gap:0}
+.pg-notes .nt-idx .row:hover{background:#ebe6dd}
+.pg-notes .nt-idx .row p{font-size:16px;color:#45474d}
+.pg-notes .nt-cards .row p{font-size:16px;color:#45474d}
+.pg-notes .list-head{font-size:30px}
+.pg-notes .notes-follow{position:relative;background:var(--b-night);color:#fff;padding:0;overflow:hidden}
+.pg-notes .notes-follow img{display:block;width:100%;height:340px;object-fit:cover;object-position:50% 40%;filter:brightness(.4)}
+.pg-notes .notes-follow .wrap{display:block;padding-block:56px}
+.pg-notes .notes-follow h2{color:#fff;font-size:30px}
+.pg-notes .notes-follow p{color:#f3e6d4;font-size:17px;margin:8px 0 18px}
+.pg-notes .notes-follow .btn-dark{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:var(--b-blue);color:#fff;font-size:16px;font-weight:500}
+
+.pg-notes .h-card{display:none}
+
+@media (min-width:1021px){
+  .pg-notes .notes-hero .wrap{position:relative}
+  .pg-notes .notes-hero h1{max-width:680px;font-size:64px}
+  .pg-notes .notes-hero .lead,.pg-notes .notes-topics{max-width:640px}
+  .pg-notes .h-card{display:block;position:absolute;right:0;top:8px;width:340px;background:#fff;border-radius:16px;padding:28px 30px 24px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+  .pg-notes .h-card span{display:block;font-size:14px;font-weight:500;color:var(--b-blue);margin-bottom:10px}
+  .pg-notes .h-card .q{font-size:16px;line-height:1.45;color:var(--b-mute);margin:0 0 12px}
+  .pg-notes .h-card .a{font-family:var(--serif);font-size:23px;line-height:1.38;color:var(--b-ink);margin:0}
+  .pg-notes .h-card small{display:block;font-size:14px;line-height:1.5;color:var(--b-mute);margin-top:16px;padding-top:14px;border-top:1px solid var(--b-line)}
+  .pg-notes .notes-hero{padding-block:128px 96px}
+  .pg-notes .notes-hero .lead{font-size:22px;max-width:640px}
+  .pg-notes .notes-topics button{font-size:15px;min-height:44px;padding:0 20px}
+  .pg-notes .feature{padding-block:128px}
+  .pg-notes .feature a{grid-template-columns:7fr 5fr;gap:80px}
+  .pg-notes .feature figure{aspect-ratio:3/2;border-radius:24px}
+  .pg-notes .feature h2{font-size:52px;line-height:1.04}
+  .pg-notes .feature p{font-size:20px;max-width:30em}
+  .pg-notes .feature .meta{font-size:15px}
+  .pg-notes .note-list{padding-block:128px}
+  .pg-notes .list-head{font-size:44px;border-bottom:0;margin-bottom:8px}
+  .pg-notes .nt-cards{gap:32px}
+  .pg-notes .nt-cards .row figure{border-radius:16px;overflow:hidden}
+  .pg-notes .nt-cards .row h3{font-size:28px}
+  .pg-notes .nt-cards .row p{font-size:17px}
+  .pg-notes .nt-sub{margin-top:96px}
+  .pg-notes .nt-idx .row{padding-block:32px}
+  .pg-notes .nt-idx .row h3{font-size:26px}
+  .pg-notes .nt-idx .row p{font-size:18px;max-width:46em}
+  .pg-notes .notes-follow{padding-block:112px;background:radial-gradient(ellipse 60% 120% at 50% 100%,#1b1d3a 0%,var(--b-night) 70%)}
+  .pg-notes .notes-follow .wrap{position:static;text-align:center}
+  .pg-notes .notes-follow h2{font-size:64px;letter-spacing:-.035em}
+  .pg-notes .notes-follow p{font-size:24px;margin:12px 0 32px}
+}

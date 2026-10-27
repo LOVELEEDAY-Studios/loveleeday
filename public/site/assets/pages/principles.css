@@ -1,0 +1,63 @@
+/* Principles. Grounds: cream hero / white / cream / white / mist / night / cream / photo */
+.pg-principles .p-sec{padding-block:56px}
+.pg-principles .p-grid{display:grid;gap:28px}
+.pg-principles .p-text h2{font-size:32px;line-height:1.1;margin:0 0 14px;letter-spacing:-.025em}
+.pg-principles .p-text p{font-size:17px;line-height:1.6;color:#45474d;margin:0}
+.pg-principles .p-white{background:#fff}
+.pg-principles .p-cream{background:var(--b-cream)}
+.pg-principles .p-mist{background:var(--b-mist)}
+.pg-principles .p-night{background:var(--b-night)}
+.pg-principles .p-night .p-text h2{color:#fff}
+.pg-principles .p-night .p-text p{color:#c4c6d0}
+.pg-principles .cx-mini{border:1px solid rgba(255,255,255,.12);border-radius:16px}
+.pg-principles .cx-big{font-size:34px;margin:6px 0 14px}
+.pg-principles .p-chips{display:flex;gap:8px;flex-wrap:wrap}
+.pg-principles .p-act{display:block;font-weight:500;font-size:18px;margin-bottom:12px}
+.pg-principles .p-close{position:relative;background:var(--b-night);color:#fff;overflow:hidden}
+.pg-principles .p-close img{display:block;width:100%;height:480px;object-fit:cover;filter:brightness(.42)}
+.pg-principles .p-close .wrap{position:absolute;left:0;right:0;bottom:40px}
+.pg-principles .p-close h2{color:#fff;font-size:30px;margin:0 0 10px;max-width:16em}
+.pg-principles .p-close p{color:#f3e6d4;font-size:17px;margin:0 0 20px;max-width:34em}
+.pg-principles .h-card{display:none}
+
+@media (min-width:1021px){
+  body.pg-principles main>section:first-of-type{position:relative;z-index:2;overflow:visible}
+  .pg-principles .h-card{display:block;position:absolute;z-index:3;right:max(40px,calc((100% - 1080px)/2));bottom:-56px;width:460px;background:#fff;border-radius:16px;padding:30px 32px 26px;box-shadow:0 30px 80px -20px rgba(11,11,16,.45),0 0 0 1px rgba(11,11,16,.06)}
+  .pg-principles .h-card span{display:block;font-size:14px;font-weight:500;color:var(--b-blue);margin-bottom:10px}
+  .pg-principles .h-card .q{font-size:17px;color:var(--b-mute);margin:0 0 10px}
+  .pg-principles .h-card .a{font-family:var(--serif);font-size:26px;line-height:1.35;color:var(--b-ink);margin:0}
+  .pg-principles .h-card small{display:block;font-size:14px;line-height:1.5;color:var(--b-mute);margin-top:16px;padding-top:14px;border-top:1px solid var(--b-line)}
+  .pg-principles main>section:first-of-type .fx-credo{font-family:var(--serif);font-size:22px;line-height:1.45;border-left:3px solid var(--b-blue);font-weight:400}
+  .pg-principles .p-sec{padding-block:128px}
+  .pg-principles #pr-1{padding-top:176px}
+  .pg-principles .p-grid{grid-template-columns:5fr 7fr;gap:96px;align-items:center}
+  .pg-principles .p-sec:nth-of-type(even) .p-text{order:2}
+  .pg-principles .p-sec:nth-of-type(even) .p-grid{grid-template-columns:7fr 5fr}
+  .pg-principles #pr-2 .p-grid,.pg-principles #pr-5 .p-grid{grid-template-columns:1fr;gap:56px}
+  .pg-principles #pr-2 .p-text,.pg-principles #pr-5 .p-text{order:0;display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+  .pg-principles #pr-2 .p-text h2,.pg-principles #pr-5 .p-text h2{margin:0}
+  .pg-principles #pr-2 .cx-mini,.pg-principles #pr-5 .cx-mini{padding:48px 56px}
+  .pg-principles #pr-2 .cx-big{font-size:72px}
+  .pg-principles #pr-5 .p-act{font-size:40px}
+  .pg-principles .p-text h2{font-size:52px;line-height:1.04;margin-bottom:24px}
+  .pg-principles .p-text p{font-size:20px;line-height:1.6}
+  .pg-principles .cx-mini{padding:40px;border-radius:24px;box-shadow:0 40px 90px -40px rgba(11,11,16,.5)}
+  .pg-principles .cx-k{font-size:14px;letter-spacing:0;margin-bottom:16px}
+  .pg-principles .cx-stack{gap:12px}
+  .pg-principles .cx-ver{padding:16px 18px;border-radius:12px;gap:16px}
+  .pg-principles .cx-ver b{font-size:19px}
+  .pg-principles .cx-ver .cx-mono,.pg-principles .cx-mono{font-size:14px}
+  .pg-principles .cx-chip{font-size:14px;padding:5px 12px}
+  .pg-principles .cx-big{font-size:46px}
+  .pg-principles .cx-warnbar{padding:16px 18px;margin-bottom:14px}
+  .pg-principles .cx-warnbar b{font-size:19px}
+  .pg-principles .cx-warnbar small{font-size:15px}
+  .pg-principles .cx-warnbar svg{flex-basis:24px;width:24px;height:24px}
+  .pg-principles .cx-btns{margin-top:24px;gap:12px}
+  .pg-principles .cx-btn{font-size:16px;padding:12px 22px;border-radius:999px}
+  .pg-principles .p-act{font-size:26px;line-height:1.25;margin-bottom:20px}
+  .pg-principles .p-close img{height:640px}
+  .pg-principles .p-close .wrap{bottom:88px}
+  .pg-principles .p-close h2{font-size:64px;line-height:1.02;letter-spacing:-.035em;max-width:14em;margin-bottom:16px}
+  .pg-principles .p-close p{font-size:22px;margin-bottom:32px}
+}
