@@ -1,35 +1,36 @@
-/* Privacy. Layout, hierarchy and readability only; the wording lives in the HTML. */
-.pg-privacy .doc-date{font-size:15px;color:#5b5e66;margin-top:20px}
+body.pg-privacy main>section.pv-hero:first-of-type{background:var(--b-cream);color:var(--b-ink);border:0;padding:72px 0 64px;min-height:0}
+body.pg-privacy .pv-hero .wrap{width:min(1080px,calc(100% - 80px));max-width:none}
+body.pg-privacy .pv-hero h1{font-size:var(--t1,44px)!important;line-height:1.02!important;letter-spacing:-.035em;font-weight:600!important;color:var(--b-ink)!important;max-width:12ch!important;margin:0}
+body.pg-privacy .pv-hero .lead{font-size:20px!important;line-height:1.5;color:var(--b-mute)!important;max-width:34em;margin:24px 0 0}
+body.pg-privacy .doc-date{font-size:15px;color:var(--b-mute);margin:24px 0 0}
 .pg-privacy .pv-toc-title{font-size:15px;letter-spacing:0;text-transform:none;font-weight:600;color:var(--b-ink)}
-
+.pg-privacy .pv-toc a{display:flex;align-items:center;min-height:44px;font-size:16px;line-height:1.4;color:var(--b-ink);text-decoration:none}
+.pg-privacy .pv-toc a:hover{color:var(--b-blue)}
+.pg-privacy .pv-sec{border-top:1px solid var(--b-line);border-bottom:0;padding-block:60px 0;margin-top:60px}
+.pg-privacy .pv-sec:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.pg-privacy .pv-sec h2{font-size:var(--t3,28px)!important;line-height:1.15!important;letter-spacing:-.02em!important;font-weight:600;color:var(--b-ink);margin:0 0 20px}
+.pg-privacy .pv-sec .body-copy{font-size:18px;line-height:1.65;color:var(--b-ink);padding-left:0}
+.pg-privacy .pv-sec .body-copy p+p{margin-top:18px}
+.pg-privacy .pv-sec .body-copy ul{list-style:none;margin:20px 0 0;padding:0}
+.pg-privacy .pv-sec .body-copy li{padding:16px 0;border-top:1px solid var(--b-line)}
+.pg-privacy .pv-sec .body-copy li:last-child{border-bottom:0}
+.pg-privacy .pv-sec .body-copy a{color:var(--b-blue)}
 @media (min-width:1021px){
-  body.pg-privacy main>section.page-hero:first-of-type{background:radial-gradient(ellipse 70% 130% at 85% 0%,#1b1d3a 0%,var(--b-night) 62%);color:#fff;border:0;padding:96px 0 80px}
-  .pg-privacy .page-hero .wrap,.pg-privacy .pv-wrap{width:min(1080px,calc(100% - 80px));max-width:none}
-  .pg-privacy .page-hero h1{font-size:72px!important;line-height:1.02;letter-spacing:-.035em;font-weight:600!important;color:#fff;max-width:12ch;margin-top:0}
-  .pg-privacy .page-hero .lead{font-size:24px!important;line-height:1.5;color:#c4c6d0;max-width:38em;margin-top:24px}
-
   .pg-privacy main>.wrap{width:min(1080px,calc(100% - 80px));max-width:none}
-  .pg-privacy .pv-doc{max-width:none;display:grid;grid-template-columns:240px minmax(0,700px);column-gap:72px;align-items:start;padding-block:96px 128px;margin:0}
+  .pg-privacy .pv-doc{max-width:none;display:grid;grid-template-columns:240px minmax(0,1fr);column-gap:96px;align-items:start;padding-block:120px;margin:0}
   .pg-privacy .pv-toc{grid-column:1;grid-row:1 / span 8;position:sticky;top:calc(var(--header-height) + 40px);border:0;padding:0;margin:0}
   .pg-privacy .pv-toc ul{border-left:1px solid var(--b-line);gap:0}
-  .pg-privacy .pv-toc a{font-size:17px;line-height:1.4;padding:10px 0 10px 18px;margin-left:-1px;border-left:2px solid transparent;color:#3a3b40;text-decoration:none}
-  .pg-privacy .pv-toc a:hover{color:var(--b-blue);border-left-color:var(--b-blue)}
-  .pg-privacy .pv-sec{grid-column:2;padding-block:48px;border-top:1px solid var(--b-line);border-bottom:0}
-  .pg-privacy .pv-sec:first-of-type{border-top:0;padding-top:0}
-  .pg-privacy .pv-sec h2{font-size:36px;line-height:1.12;letter-spacing:-.025em;font-weight:600;color:var(--b-ink);margin:0 0 20px}
-  .pg-privacy .pv .body-copy,.pg-privacy .body-copy{font-size:20px;line-height:1.7;color:#2c2e33}
-  .pg-privacy .body-copy p+p{margin-top:18px}
-
-  /* the short factual lists read as rows, not as a wall of lines */
-  .pg-privacy #cookies-and-analytics .body-copy p+p,.pg-privacy #who-handles-it .body-copy p+p{margin-top:0;padding:16px 0 16px 20px;border-top:1px solid var(--b-line);border-left:3px solid var(--b-blue)}
-  .pg-privacy #cookies-and-analytics .body-copy p+p{border-left-color:var(--b-line);border-left-width:3px}
-  .pg-privacy #cookies-and-analytics .body-copy p:first-child+p,.pg-privacy #who-handles-it .body-copy p:first-child+p{margin-top:20px}
-  .pg-privacy .doc-date{font-size:17px;color:#9a9ca6;margin-top:32px}
-  .pg-privacy #keeping-and-deleting{background:var(--b-cream);border-radius:16px;padding:40px 44px;border-top:0;margin-block:16px}
-  .pg-privacy #questions{border-top:0;padding-block:32px 0}
-  .pg-privacy #questions h2{font-size:28px}
-  .pg-privacy #questions .body-copy{font-size:17px}
+  .pg-privacy .pv-toc a{font-size:17px;padding-left:18px;margin-left:-1px;border-left:2px solid transparent}
+  .pg-privacy .pv-toc a:hover{border-left-color:var(--b-blue)}
+  .pg-privacy .pv-sec{grid-column:2}
 }
 @media (max-width:1020px){
-  .pg-privacy main>.page-hero{background:var(--b-cream)}
+body.pg-privacy main>section.pv-hero:first-of-type{padding:48px 0 40px}
+body.pg-privacy .pv-hero .wrap{width:calc(100% - 48px)}
+.pg-privacy .pv-sec{padding-block:36px 0;margin-top:36px}
+.pg-privacy .pv-sec .body-copy{font-size:17px}
 }
+@media (max-width:1020px){.pg-privacy .pv-doc{width:100%;max-width:none;margin:0;padding-block:40px 72px}.pg-privacy .pv-toc{margin-bottom:48px}.pg-privacy .pv-toc ul{list-style:none;padding:0;margin:8px 0 0;border:0}.pg-privacy .pv-toc{padding:0;border:0}}
+.pv-toc a{padding-block:0}
+.body-copy li:last-child{padding-bottom:0}
+@media (max-width:700px){.pv-toc{margin-bottom:32px}}
