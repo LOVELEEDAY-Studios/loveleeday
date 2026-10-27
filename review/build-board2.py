@@ -36,7 +36,7 @@ prev = {'architecture': 5, 'arthur': 7, 'build': 6, 'contact': 6, 'customer-data
         'notes_migration-is-where-data-goes-to-die': 7, 'notes_one-company-five-names': 7, 'notes_the-spreadsheet-is-the-real-system': 7,
         'notes_what-you-knew-and-when': 7, 'notes_your-systems-dont-talk': 7, 'operating-system': 6, 'operational-intelligence': 7,
         'pricing-margins': 7, 'principles': 7, 'privacy': 6, 'snapshot': 6, 'studio': 6, 'talk': 7, 'terms': 6, 'trust': 7, 'use-cases': 6, 'work': 6}
-FIN = 'cdx-2' if glob.glob(S + '/cdx-2/*.txt') else 'cdx-1'
+FIN = 'cdx-3' if glob.glob(S + '/cdx-3/*.txt') else 'cdx-1'
 first = scores(S + '/cdx-1')
 now = scores(S + '/' + FIN)
 pages = sorted(set(os.path.basename(f)[5:-9] for f in glob.glob(S + '/before/site_*-1440.png')))
