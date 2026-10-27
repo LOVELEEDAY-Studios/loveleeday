@@ -191,3 +191,25 @@
   .ind-mosaic .im-big span{font-family:var(--serif);font-size:20px}
   .ind-mosaic .im-big span b{font-family:var(--sans)}
 }
+
+/* One screenshot frame on every page: same ground, padding, radius and caption */
+body:not(.x-none) :is(.portal-shot,.ar-shot,.wk3-shot,.portal-phone,.pi-shot){padding:24px!important;background:linear-gradient(160deg,#e8f1fc,#f5f1eb)!important;border:0!important;border-radius:24px!important;box-shadow:none!important}
+body:not(.x-none) :is(.portal-shot,.ar-shot,.wk3-shot,.portal-phone,.pi-shot) picture{display:block;padding:0!important;margin:0!important;background:none!important;box-shadow:none!important;border-radius:0!important}
+body:not(.x-none) :is(.portal-shot,.ar-shot,.wk3-shot,.portal-phone,.pi-shot) img{display:block;width:100%;height:auto!important;margin:0!important;border:0!important;border-radius:12px!important;box-shadow:0 0 0 1px rgba(11,11,16,.08)!important}
+body:not(.x-none) :is(.portal-shot,.ar-shot,.wk3-shot,.portal-phone,.pi-shot) figcaption{margin:16px auto 0!important;padding:0!important;font-size:14px!important;line-height:1.45!important;color:#6b6d74!important;text-align:center!important;max-width:60ch!important}
+body:not(.x-none) .portal-phone{width:fit-content!important;max-width:100%!important;margin-inline:auto!important}
+body:not(.x-none) .portal-phone img{width:340px!important;max-width:100%!important}
+body:not(.x-none) .portal-phone figcaption{max-width:340px!important}
+body:not(.x-none) .portal-phone:has(picture) img{width:665px!important}
+body:not(.x-none) .portal-phone:has(picture) figcaption{max-width:665px!important}
+body.pg-index:not(.x-none) .portal-shot img{max-width:none!important}
+
+/* One logo chip on every page: same white slot, same mark size, no brand-tinted circles */
+body:not(.x-none) .pi-logos li{display:inline-flex!important;align-items:center!important;gap:12px!important;padding:6px 16px 6px 6px!important;background:#fff!important;border:1px solid var(--b-line)!important;border-radius:999px!important;font-size:15px!important;line-height:1.2!important}
+body:not(.x-none) .pi-logos .sq{width:32px!important;height:32px!important;flex:none!important;display:flex!important;align-items:center!important;justify-content:center!important;background:#fff!important;border:1px solid var(--b-line)!important;border-radius:50%!important}
+body:not(.x-none) .pi-logos .sq img{width:18px!important;height:18px!important;object-fit:contain!important;border-radius:3px!important}
+@media (max-width:700px){
+  body:not(.x-none) :is(.portal-shot,.ar-shot,.wk3-shot,.portal-phone,.pi-shot){padding:12px!important;border-radius:16px!important}
+  body:not(.x-none) :is(.portal-shot,.ar-shot,.wk3-shot,.portal-phone,.pi-shot) img{border-radius:8px!important}
+  body:not(.x-none) :is(.portal-shot,.ar-shot,.wk3-shot,.portal-phone,.pi-shot) figcaption{margin-top:12px!important;font-size:14px!important}
+}

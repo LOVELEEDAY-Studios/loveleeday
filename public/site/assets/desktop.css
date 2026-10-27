@@ -65,9 +65,6 @@
   /* ---------- dk-dark : ink ground, photograph fades in from the right ---------- */
   :is(.pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type{
     background:var(--dk-ink);color:#fff;min-height:580px}
-  :is(.pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type::after{
-    content:"";position:absolute;z-index:1;top:0;right:0;bottom:0;left:44%;
-    background:linear-gradient(90deg,var(--dk-ink) 0%,rgba(20,22,26,.55) 38%,rgba(20,22,26,.12) 100%),var(--hero) var(--hero-pos,center)/cover no-repeat}
   :is(.pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type :is(h1,.lead,p,.breadcrumb,a.text-link,.xs,.muted,b){color:#f4f1ec}
   :is(.pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type .lead{color:#d9d6d0;font-size:var(--t4);line-height:1.5}
   .pg-operating-system{--hero:url(/site/assets/ph-os.jpg);--hero-pos:50% 40%}
