@@ -95,3 +95,6 @@ body.pg-industries .ih-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14
   body.pg-industries .pi-close h2{font-size:60px!important;max-width:16ch}
   body.pg-industries .pi-close p{font-size:28px}
 }
+@media (max-width:1020px){body.pg-industries .ind .ix-list li.ix-more{display:flex!important;flex-direction:column;align-items:flex-start;gap:20px;min-height:0!important;height:auto!important}body.pg-industries .ind .ix-list li.ix-more>*{grid-row:auto;margin:0}}
+@media (max-width:1020px){body.pg-industries .ind .ix-more .ix-body{flex:0 0 auto}}
+@media (max-width:1020px){body.pg-industries .ind .ix-list li.ix-more>.ix-name,body.pg-industries .ind .ix-list li.ix-more>.ix-name h3{padding:0!important;margin:0!important}body.pg-industries .ind .ix-list li.ix-more{padding:28px 24px!important}}
