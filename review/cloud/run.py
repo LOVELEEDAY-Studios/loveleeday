@@ -41,13 +41,13 @@ def env():
         e.pop(k, None)  # an API key outranks the subscription token and bills (or fails on) API credit
     return e
 
-def claude(name, prompt, model='sonnet', hours=2):
+def claude(name, prompt, model='sonnet', hours=2, extra_env=None):
     open(f'{H}/out/{name}.prompt.md', 'w').write(prompt)
     log(f'start {name} ({model})')
     t = time.time()
     with open(f'{H}/out/{name}.log', 'w') as lf:
         rc = subprocess.run(['timeout', str(int(hours * 3600)), 'claude', '-p', '--model', model, '--dangerously-skip-permissions', '--output-format', 'text'],
-                            input=prompt, text=True, cwd=R, env=env(), stdout=lf, stderr=subprocess.STDOUT).returncode
+                            input=prompt, text=True, cwd=R, env={**env(), **(extra_env or {})}, stdout=lf, stderr=subprocess.STDOUT).returncode
     log(f'end {name} rc={rc} {int(time.time() - t)}s')
     return rc
 
@@ -74,7 +74,7 @@ def pool(jobs, n):
 def p1():
     jobs = []
     for g, pages in GROUPS.items():
-        pr = fill('brief-page.md', PAGES=', '.join(pages), PAGES_SPACE=' '.join(pages), FILES=files(pages), REPORT=f'{RPT}/p1-{g}.md',
+        pr = fill('brief-page.md', PAGES=', '.join(pages), PAGES_SPACE=' '.join(pages), FILES=files(pages), REPORT=f'{RPT}/p1-{g}.md', ROUNDS='5',
                   EXTRA='Notes articles share one template (site/assets/notes.css): fix the template once so every article benefits.' if g == 'g7-notes' else '')
         jobs.append(lambda g=g, pr=pr: claude('p1-' + g, pr))
     pool(jobs, 3); commit('p1 page teams')
@@ -83,11 +83,12 @@ def p2(tag='p2', extra=''):
     claude(tag + '-coherence', fill('brief-coherence.md', ALLPAGES=' '.join(ALL), REPORT=f'{RPT}/{tag}-coherence.md', EXTRA=extra), model='opus', hours=3)
     commit(tag + ' coherence')
 
-def crawl():
+def crawl(port=8850):
     lines = []
     for w in (1440, 390):
         for p in ALL:
-            o = subprocess.run(['node', f'{H}/bin/browse.cjs', str(w), f'site/{p}.html', f'--out={H}/beta/crawl'], capture_output=True, text=True, timeout=180).stdout
+            o = subprocess.run(['node', f'{H}/bin/browse.cjs', str(w), f'site/{p}.html', f'--out={H}/beta/crawl'], capture_output=True, text=True, timeout=180,
+                               env={**os.environ, 'BROWSE_PORT': str(port)}).stdout
             bad = [l for l in o.splitlines() if l.startswith('BROKEN')]
             ov = next((l for l in o.splitlines() if l.startswith('OVERFLOW_X')), '')
             sec = o.split('--- BROKEN IMAGES ---')[-1].split('--- SMALL')[0].strip() if '--- BROKEN IMAGES ---' in o else ''
@@ -106,12 +107,39 @@ def p3():
     subprocess.run(['git', 'checkout', '--', 'site', 'portal', 'integrations'], cwd=R)  # testers only report
     log('beta done')
 
-def p4():
+def alive(pid):
+    try: os.kill(pid, 0); return True
+    except OSError: return False
+
+def fast():
+    """Compressed p1+crawl+p3: page teams not yet started run now (3 rounds), and the crawl and all beta testers run at the same
+    time against a frozen snapshot on :8851 so edits in progress never move under them. Waits for page teams started by an
+    earlier orchestrator (pids in ~/llr/orphans) before committing p1."""
+    orphans = [int(x) for x in open(f'{H}/orphans').read().split()] if os.path.exists(f'{H}/orphans') else []
+    subprocess.run(['rsync', '-a', '--delete', '--exclude', '.git', R + '/', H + '/snap/'])
+    if subprocess.run(['pgrep', '-f', '^node .*serve.cjs .*8851']).returncode:
+        subprocess.Popen(['setsid', 'node', f'{H}/bin/serve.cjs', H + '/snap', '8851'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    time.sleep(2)
+    jobs = []
+    for g, pages in GROUPS.items():
+        if os.path.exists(f'{H}/out/p1-{g}.prompt.md'): continue
+        pr = fill('brief-page.md', PAGES=', '.join(pages), PAGES_SPACE=' '.join(pages), FILES=files(pages), REPORT=f'{RPT}/p1-{g}.md', ROUNDS='3',
+                  EXTRA='Notes articles share one template (site/assets/notes.css): fix the template once so every article benefits.' if g == 'g7-notes' else '')
+        jobs.append(lambda g=g, pr=pr: claude('p1-' + g, pr))
+    jobs.append(lambda: crawl(8851))
+    for name, w, who in PERSONAS:
+        pr = fill('brief-beta.md', PERSONA=who, WIDTH=str(w), PORT='8851', OUTDIR=f'{H}/beta/{name}', REPORT=f'{RPT}/beta-{name}.md')
+        jobs.append(lambda name=name, pr=pr: claude('p3-beta-' + name, pr, hours=1, extra_env={'BROWSE_PORT': '8851'}))
+    pool(jobs, 12)
+    while any(alive(p) for p in orphans): time.sleep(30)
+    commit('p1 page teams')
+
+def p4(n=7):
     jobs = []
     for g, pages in GROUPS.items():
         pr = fill('brief-fix.md', PAGES=', '.join(pages), PAGES_SPACE=' '.join(pages), FILES=files(pages), REPORT=f'{RPT}/p4-{g}.md')
-        jobs.append(lambda g=g, pr=pr: claude('p4-' + g, pr))
-    pool(jobs, 3); commit('p4 beta fixes')
+        jobs.append(lambda g=g, pr=pr: claude('p4-' + g, pr, hours=1.25))
+    pool(jobs, n); commit('p4 beta fixes')
 
 def final():
     o = subprocess.run([f'{H}/bin/score.sh'] + ALL, capture_output=True, text=True).stdout
@@ -122,8 +150,8 @@ def patch():
     d = subprocess.run(['git', 'diff', '--binary', base, 'HEAD', '--', 'site', 'portal', 'integrations'], cwd=R, capture_output=True).stdout
     open(f'{H}/out/site.patch', 'wb').write(d); log(f'patch {len(d)} bytes')
 
-STEPS = {'p1': p1, 'p2': p2, 'crawl': crawl, 'p3': p3, 'p4': p4,
-         'p5': lambda: p2('p5', 'This is the FINAL pass after the beta fixes: re-check every page against the others, then score every page with score.sh.'),
+STEPS = {'p1': p1, 'p2': p2, 'crawl': crawl, 'p3': p3, 'p4': p4, 'fast': fast,
+         'p5': lambda: p2('p5', 'This is the ONE coherence pass, after the page teams and the beta fixes: apply the shared changes the reports ask for (the phone hamburger first), make all pages consistent, then score every page with score.sh. Be fast: one rule in brand.css beats the same fix in many sheets.'),
          'final': final, 'patch': patch}
 for s in ([a for a in sys.argv[1:] if a] or list(STEPS)):
     log('phase ' + s); STEPS[s]()

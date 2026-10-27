@@ -12,11 +12,11 @@ const out = (opt('out')[0] || process.env.HOME + '/llr/beta/tmp'); require('fs')
 (async () => {
   const b = await chromium.launch();
   const ctx = await b.newContext({ viewport: { width: W, height: W < 600 ? 844 : 900 }, deviceScaleFactor: +(opt('zoom')[0] || 1), isMobile: W < 600, hasTouch: W < 600 });
-  await ctx.route(u => !/^http:\/\/localhost:8850\//.test(u.toString()) && !/fonts\.(googleapis|gstatic)|fontshare|cdnjs|jsdelivr|unpkg/.test(u.toString()), r => r.abort());
+  await ctx.route(u => !/^http:\/\/localhost:\d+\//.test(u.toString()) && !/fonts\.(googleapis|gstatic)|fontshare|cdnjs|jsdelivr|unpkg/.test(u.toString()), r => r.abort());
   const p = await ctx.newPage(); const errs = [];
   p.on('console', m => m.type() === 'error' && errs.push(m.text().slice(0, 200)));
   p.on('pageerror', e => errs.push('pageerror ' + e.message.slice(0, 200)));
-  await p.goto('http://localhost:8850/' + P.replace(/^\//, ''), { waitUntil: 'networkidle', timeout: 45000 }).catch(e => errs.push('goto ' + e.message.split('\n')[0]));
+  await p.goto('http://localhost:' + (process.env.BROWSE_PORT || 8850) + '/' + P.replace(/^\//, ''), { waitUntil: 'networkidle', timeout: 45000 }).catch(e => errs.push('goto ' + e.message.split('\n')[0]));
   for (const f of opt('fill')) { const [k, ...v] = f.split('='); const el = p.getByLabel(k).or(p.getByPlaceholder(k)).first(); await el.fill(v.join('=')).catch(e => errs.push('fill ' + k + ': ' + e.message.split('\n')[0])); }
   for (let i = 0; i < +(opt('tab')[0] || 0); i++) await p.keyboard.press('Tab');
   for (const t of opt('click')) { await p.getByText(t, { exact: false }).first().click({ timeout: 5000 }).catch(e => errs.push('click ' + t + ': ' + e.message.split('\n')[0])); await p.waitForTimeout(1200); }
@@ -45,7 +45,7 @@ const out = (opt('out')[0] || process.env.HOME + '/llr/beta/tmp'); require('fs')
     let u = l.h.replace(/^https?:\/\/(www\.)?loveleedaystudios\.com/, '').split('#')[0];
     if (!u.startsWith('/')) u = new URL(u, r.url).pathname;
     const cand = u === '/' ? ['/site/index.html'] : [u, '/site' + u + '.html', '/site' + u.replace(/\/$/, '') + '.html', '/site' + u + 'index.html', u + '.html'];
-    let ok = 0; for (const c of cand) { const s = await p.request.head('http://localhost:8850' + c).then(x => x.status()).catch(() => 0); if (s === 200) { ok = 200; break; } }
+    let ok = 0; for (const c of cand) { const s = await p.request.head('http://localhost:' + (process.env.BROWSE_PORT || 8850) + c).then(x => x.status()).catch(() => 0); if (s === 200) { ok = 200; break; } }
     status.push(`${ok === 200 ? 'ok ' : 'BROKEN'} ${l.h}  "${l.t}"`);
   }
   const tag = P.replace(/[^A-Za-z0-9]+/g, '_') + '-' + W + '-' + Date.now() % 100000;

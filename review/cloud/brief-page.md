@@ -8,10 +8,10 @@ Do not edit any other file. If a fix needs brand.css or another page, write it u
 
 {{EXTRA}}
 
-Loop for each page, at most 5 rounds:
+Loop for each page, at most {{ROUNDS}} rounds:
 1. Run `~/llr/bin/score.sh {{PAGES_SPACE}}` (renders desktop and phone, then Codex scores). Read ~/llr/scores/<page>.txt and LOOK at the renders in ~/llr/shots/1440 and ~/llr/shots/390 yourself (Read the png; for tall pages read the tiles in ~/llr/strips/<page>/o/).
 2. Fix every real defect: layout, spacing, alignment, type scale, component mismatches with the standard, cropped or low-quality images, phone layout, copy that sounds AI-written or generic. Keep the brand fixed. Keep the facts and claims the page already makes; rewrite wording, never invent customers, numbers or results.
-3. Re-render and look again before re-scoring. Stop when every page scores 10, or after round 5.
+3. Re-render and look again before re-scoring. Stop when every page scores 10, or after round {{ROUNDS}}.
 
 Rules: plain HTML and CSS only, minified style is fine, match the surrounding code. Never add comments that mention AI or tools. Never use hero-decision.jpg, hero-team-desktop.jpg, hero-team-phone.jpg. Do not commit, push or deploy.
 
