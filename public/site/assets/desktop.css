@@ -35,13 +35,13 @@
   :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work) main>section:first-of-type :is(h1,h2,.lead,p,.breadcrumb,.breadcrumb a,small,.text-link){color:#fff}
   :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work) main>section:first-of-type .lead{color:#f4ece2;font-size:var(--t4);line-height:1.5}
   :is(.pg-index,.pg-how-it-works,.pg-municipal-review,.pg-pricing-margins,.pg-customer-data,.pg-studio,.pg-work) main>section:first-of-type .text-link{border-color:#ffffff99}
-  .pg-index{--hero:url(/site/assets/card-work.jpg);--hero-pos:50% 40%}
-  .pg-how-it-works{--hero:url(/site/assets/hero-how.jpg);--hero-pos:60% 40%}
+  .pg-index{--hero:url(/site/assets/ph-government-2.jpg);--hero-pos:50% 40%}
+  .pg-how-it-works{--hero:url(/site/assets/hero-how-m.jpg);--hero-pos:60% 40%}
   .pg-municipal-review{--hero:url(/site/assets/hero-municipal.jpg);--hero-pos:60% 50%}
   .pg-pricing-margins{--hero:url(/site/assets/hero-pricing.jpg);--hero-pos:50% 50%}
   .pg-customer-data{--hero:url(/site/assets/hero-customer.jpg);--hero-pos:65% 35%}
-  .pg-studio{--hero:url(/site/assets/hero-studio.jpg);--hero-pos:50% 45%}
-  .pg-work{--hero:url(/site/assets/hero-work.jpg);--hero-pos:50% 40%}
+  .pg-studio{--hero:url(/site/assets/industry-portfolios-2.jpg);--hero-pos:50% 45%}
+  .pg-work{--hero:url(/site/assets/hero-work-m.jpg);--hero-pos:50% 40%}
   .pg-index main>section:first-of-type{min-height:680px}
 
   /* ---------- dk-split : cream ground, photograph bleeds off the right edge ---------- */
@@ -62,9 +62,9 @@
     background:var(--dk-ink);color:#fff;min-height:580px}
   :is(.pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type :is(h1,.lead,p,.breadcrumb,a.text-link,.xs,.muted,b){color:#f4f1ec}
   :is(.pg-operating-system,.pg-architecture,.pg-integrations,.pg-trust) main>section:first-of-type .lead{color:#d9d6d0;font-size:var(--t4);line-height:1.5}
-  .pg-operating-system{--hero:url(/site/assets/ph-os.jpg);--hero-pos:50% 40%}
+  .pg-operating-system{--hero:url(/site/assets/ph-pricing.jpg);--hero-pos:50% 40%}
   .pg-architecture{--hero:url(/site/assets/architecture.jpg)}
-  .pg-integrations{--hero:url(/site/assets/card-integrations.jpg)}
+  .pg-integrations{--hero:url(/site/assets/card-integrations-m.jpg)}
   .pg-trust{--hero:url(/site/assets/card-trust.jpg);--hero-pos:50% 25%}
   .pg-trust main>section:first-of-type .wrap>.stage-split{display:block}
 

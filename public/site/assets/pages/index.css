@@ -6,7 +6,7 @@ body.pg-home{--c-line:#e4e1da}
 .pg-home h2{font-size:var(--t2);line-height:1.08;max-width:none}
 .pg-home .text-link{display:inline-flex;align-items:center;min-height:44px}
 .pg-home .ix-hero{position:relative;background:var(--b-night);color:#fff;overflow:hidden}
-.pg-home .ix-hero>img{display:block;width:100%;height:260px;object-fit:cover;object-position:60% 30%}
+.pg-home .ix-hero>img{display:block;width:100%;height:260px;object-fit:cover;object-position:50% 5%}
 .pg-home .ix-hero::before{display:none}
 .pg-home .ix-hero-in{padding-block:40px 72px;display:grid;gap:32px}
 .pg-home .ix-hero h1{font-size:var(--t1);line-height:1.02;letter-spacing:-.035em;color:#fff;max-width:12ch}
@@ -28,7 +28,7 @@ body.pg-home main .ix-hero .ix-card .ix-do{font-size:14px;line-height:1.55;color
 @media(min-width:1021px){
 .pg-home .ha-actions{flex-direction:row;align-items:center;gap:24px}
 .pg-home .ix-hero{min-height:680px;display:flex;align-items:center}
-.pg-home .ix-hero>img{position:absolute;inset:0;height:100%;object-position:50% 30%}
+.pg-home .ix-hero>img{position:absolute;inset:0;height:100%;object-position:50% 0%}
 .pg-home .ix-hero::before{display:block;content:"";position:absolute;inset:0;background:rgba(11,11,16,.5);z-index:1}
 .pg-home .ix-hero-in{position:relative;z-index:2;width:min(1080px,calc(100% - 80px));grid-template-columns:minmax(0,1fr) 440px;gap:96px;align-items:center;padding-block:96px}
 .pg-home .ix-hero .lead{font-size:var(--t4);margin-top:28px;max-width:30em}
