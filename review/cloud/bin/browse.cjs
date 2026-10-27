@@ -41,7 +41,7 @@ const out = (opt('out')[0] || process.env.HOME + '/llr/beta/tmp'); require('fs')
   const seen = new Set(), status = [];
   for (const l of r.links) {
     if (!l.h || /^(mailto|tel|#|javascript)/.test(l.h) || seen.has(l.h)) continue; seen.add(l.h);
-    if (/^https?:\/\//.test(l.h) && !/loveleedaystudios\.com/.test(l.h)) { status.push(`external ${l.h}`); continue; }
+    if (/^https?:\/\//.test(l.h) && !/^https?:\/\/(www\.)?loveleedaystudios\.com/.test(l.h)) { status.push(`external ${l.h}`); continue; }
     let u = l.h.replace(/^https?:\/\/(www\.)?loveleedaystudios\.com/, '').split('#')[0];
     if (!u.startsWith('/')) u = new URL(u, r.url).pathname;
     const cand = u === '/' ? ['/site/index.html'] : [u, '/site' + u + '.html', '/site' + u.replace(/\/$/, '') + '.html', '/site' + u + 'index.html', u + '.html'];

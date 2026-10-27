@@ -10,7 +10,7 @@ Steps:
 2. Check across pages: the hero type each page uses matches HERO-STANDARD.md; one screen frame; one answer card; one button; one logo chip; the same section spacing, wrap width and heading sizes; nav and footer identical; the same voice in the copy; no example question repeated on two pages; no AI-sounding phrase anywhere (grep the HTML for the banned list in STANDARD.md, and read the copy); phone layouts consistent.
 3. Fix what you find. You may edit site/assets/brand.css and any page or page sheet. Apply every "Shared change needed" from the reports that fits the standard; reject ones that do not and say why. Prefer one rule in brand.css over the same fix in many page sheets.
 4. Re-render and confirm each fix by looking.
-5. Run `~/llr/bin/score.sh <page>` on every page you changed (4 at a time is fine; it parallelises Codex). Any page under 10: fix and re-score, up to 3 rounds.
+5. Run `~/llr/bin/score.sh <page>` on every page you changed (4 at a time is fine; it parallelises Codex). Any page under 10: fix and re-score, up to 2 rounds.
 
 Rules: keep the fixed brand; never invent facts, customers or numbers; no comments mentioning AI or tools; do not commit, push or deploy; nothing outside ~/llr/repo.
 

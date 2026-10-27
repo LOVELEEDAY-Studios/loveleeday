@@ -134,6 +134,12 @@ def fast():
     while any(alive(p) for p in orphans): time.sleep(30)
     commit('p1 page teams')
 
+def join():
+    """Wait for page teams started by earlier orchestrators (pids in ~/llr/orphans), then commit p1."""
+    orphans = [int(x) for x in open(f'{H}/orphans').read().split()] if os.path.exists(f'{H}/orphans') else []
+    while any(alive(p) for p in orphans): time.sleep(20)
+    commit('p1 page teams')
+
 def p4(n=7):
     jobs = []
     for g, pages in GROUPS.items():
@@ -150,7 +156,7 @@ def patch():
     d = subprocess.run(['git', 'diff', '--binary', base, 'HEAD', '--', 'site', 'portal', 'integrations'], cwd=R, capture_output=True).stdout
     open(f'{H}/out/site.patch', 'wb').write(d); log(f'patch {len(d)} bytes')
 
-STEPS = {'p1': p1, 'p2': p2, 'crawl': crawl, 'p3': p3, 'p4': p4, 'fast': fast,
+STEPS = {'p1': p1, 'p2': lambda: p2('p2', 'Do the SHARED fixes first: every Shared change needed in the page-team reports (phone hamburger, footer, phone screen frames), then cross-page consistency. Fix teams run after you, so skip page-only polish.'), 'join': join, 'crawl': crawl, 'p3': p3, 'p4': p4, 'fast': fast,
          'p5': lambda: p2('p5', 'This is the ONE coherence pass, after the page teams and the beta fixes: apply the shared changes the reports ask for (the phone hamburger first), make all pages consistent, then score every page with score.sh. Be fast: one rule in brand.css beats the same fix in many sheets.'),
          'final': final, 'patch': patch}
 for s in ([a for a in sys.argv[1:] if a] or list(STEPS)):
