@@ -6,13 +6,14 @@ import sys, os, glob
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 src, out = sys.argv[1], sys.argv[2]
+TW = next((int(a.split('=')[1]) for a in sys.argv[3:] if a.startswith('--tw=')), 640)
 os.makedirs(out, exist_ok=True)
 for f in sorted(glob.glob(os.path.join(src, '*.png'))):
     base = os.path.basename(f)[:-4]
     im = Image.open(f).convert('RGB')
     w, h = im.size
     if base.endswith('-1440'):
-        sh, tw = 1500, 640
+        sh, tw = 1500, TW
     else:
         sh, tw = 1700, 390
     tiles = []
@@ -23,7 +24,7 @@ for f in sorted(glob.glob(os.path.join(src, '*.png'))):
         tiles.append(t)
     gap = 8
     th = max(t.height for t in tiles)
-    per = 3 if base.endswith('-1440') else 4
+    per = next((int(a.split('=')[1]) for a in sys.argv[3:] if a.startswith('--per=')), 3 if base.endswith('-1440') else 4)
     for p in range(0, len(tiles), per):
         grp = tiles[p:p + per]
         sheet = Image.new('RGB', (len(grp) * (tw + gap), max(t.height for t in grp)), (60, 60, 60))
