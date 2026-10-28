@@ -7,7 +7,7 @@ const money = (n: number) => "$" + Math.round(n).toLocaleString("en-US");
 const short = (n: number) => (Math.abs(n) >= 1e6 ? "$" + (Math.round(n / 1e5) / 10).toLocaleString("en-US") + "M" : "$" + Math.round(n / 1000).toLocaleString("en-US") + "K");
 const pct = (n: number) => `${n}%`;
 const days = (n: number) => `${n} days`;
-const c = data.context, o = data.operations, v = data.savings, p = data.pattern, a = data.projection;
+const c = data.context, o = data.operations, v = data.savings, p = data.pattern, a = data.projection, b = data.backtest;
 export type Sev = "fix" | "watch" | "good";
 
 export const sysClients = [
@@ -80,6 +80,8 @@ export const savings = {
 };
 
 export const pattern = [
+  { text: `We tested Arthur's warnings on every DC charter's public reports, ${b.lea_years} school-years, using only what each year's report showed. A yearly academic score under 40 flagged ${b.academic_caught} of the ${b.closed} closed schools a median of ${b.academic_lead} years before closing, and only ${b.academic_open_flagged} of the ${b.open} that stayed open.`, source: "DC charter authorizer financial and academic reports, back-tested" },
+  { text: `Adding cash under ${days(c.minimum_days)} caught all ${b.either_caught} closed schools, a median of ${b.either_lead} years early, but also flagged ${b.either_open_flagged} of ${b.open} that stayed open. A warning is a reason to look, not a verdict.`, source: "DC charter authorizer financial and academic reports, back-tested" },
   { text: `Of ${p.closed_leas} closed DC charter organizations, ${p.finance_enrollment_cases} named finance or enrollment and ${p.academic_cases} named academics as the primary reason.`, source: "DC charter authorizer, history of openings and closures" },
   { text: `DC charters spent ${short(p.facilities_gap_million * 1000000)} more on occupancy than the facilities allotment across the studied years, about ${money(p.facilities_gap_per_student)} per student on average.`, source: "Bellwether, Resource Realities" },
   { text: `Booker T. Washington had ${days(p.booker_cash_days)} of cash and repeated deficits before non-renewal.`, source: "DC charter authorizer renewal report" },

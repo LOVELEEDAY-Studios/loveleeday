@@ -945,6 +945,13 @@
     "combined_low": 430000, "combined_high": 860000, "shortfall_cash": 349000,
     "unemployment_ceiling": 43956, "unemployment_budget": 82779.6, "headcount": 66
   },
+  "backtest": {
+    "source": "DC PCSB Financial Analysis Reports FY2015-FY2025 and PMF data FY2013-FY2019, 787 LEA-years; scripts/school-panel-backtest.py --pmf=40, closing within 3 years",
+    "lea_years": 787, "closed": 12, "open": 65, "base_rate": 5.6,
+    "academic_caught": 10, "academic_open_flagged": 13, "academic_lift": 6.4, "academic_lead": 4,
+    "cash_caught": 8, "cash_open_flagged": 26, "cash_lift": 3.9,
+    "either_caught": 12, "either_open_flagged": 31, "either_lead": 4
+  },
   "pattern": {
     "source": "DC PCSB closure history and renewal reports; Bellwether, Resource Realities (2024)",
     "closed_leas": 50, "finance_enrollment_cases": 19, "academic_cases": 20,
