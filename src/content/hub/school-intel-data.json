@@ -1,0 +1,984 @@
+{
+  "cash_path": [
+    {
+      "ym": "2017-07",
+      "cash": {
+        "value": 4068085.28,
+        "source_cells": [
+          "E308"
+        ]
+      },
+      "days": {
+        "value": 154.0,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2017-08",
+      "cash": {
+        "value": 3477289.58,
+        "source_cells": [
+          "F308"
+        ]
+      },
+      "days": {
+        "value": 131.6,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2017-09",
+      "cash": {
+        "value": 2361158.08,
+        "source_cells": [
+          "G308"
+        ]
+      },
+      "days": {
+        "value": 89.4,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2017-10",
+      "cash": {
+        "value": 4370946.72,
+        "source_cells": [
+          "H308"
+        ]
+      },
+      "days": {
+        "value": 165.5,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2017-11",
+      "cash": {
+        "value": 3631248.44,
+        "source_cells": [
+          "I308"
+        ]
+      },
+      "days": {
+        "value": 137.5,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2017-12",
+      "cash": {
+        "value": 2910611.92,
+        "source_cells": [
+          "J308"
+        ]
+      },
+      "days": {
+        "value": 110.2,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2018-01",
+      "cash": {
+        "value": 3575432.95,
+        "source_cells": [
+          "K308"
+        ]
+      },
+      "days": {
+        "value": 135.3,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2018-02",
+      "cash": {
+        "value": 2876129.57,
+        "source_cells": [
+          "L308"
+        ]
+      },
+      "days": {
+        "value": 108.9,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2018-03",
+      "cash": {
+        "value": 2014007.58,
+        "source_cells": [
+          "M308"
+        ]
+      },
+      "days": {
+        "value": 76.2,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2018-04",
+      "cash": {
+        "value": 2678828.61,
+        "source_cells": [
+          "N308"
+        ]
+      },
+      "days": {
+        "value": 101.4,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2018-05",
+      "cash": {
+        "value": 1975011.37,
+        "source_cells": [
+          "O308"
+        ]
+      },
+      "days": {
+        "value": 74.8,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    },
+    {
+      "ym": "2018-06",
+      "cash": {
+        "value": 1627175.05,
+        "source_cells": [
+          "P308"
+        ]
+      },
+      "days": {
+        "value": 61.6,
+        "source_cells": [
+          "E204",
+          "F204",
+          "G204",
+          "H204",
+          "I204",
+          "J204",
+          "K204",
+          "L204",
+          "M204",
+          "N204",
+          "O204",
+          "P204"
+        ]
+      }
+    }
+  ],
+  "days_at_june": {
+    "value": 61.6,
+    "source_cells": [
+      "E204",
+      "F204",
+      "G204",
+      "H204",
+      "I204",
+      "J204",
+      "K204",
+      "L204",
+      "M204",
+      "N204",
+      "O204",
+      "P204"
+    ]
+  },
+  "students_to_breach": {
+    "value": 26,
+    "source_cells": [
+      "E9",
+      "F9",
+      "G9",
+      "H9",
+      "I9",
+      "J9",
+      "K9",
+      "L9",
+      "M9",
+      "N9",
+      "O9",
+      "P9",
+      "E10",
+      "F10",
+      "G10",
+      "H10",
+      "I10",
+      "J10",
+      "K10",
+      "L10",
+      "M10",
+      "N10",
+      "O10",
+      "P10",
+      "E11",
+      "F11",
+      "G11",
+      "H11",
+      "I11",
+      "J11",
+      "K11",
+      "L11",
+      "M11",
+      "N11",
+      "O11",
+      "P11",
+      "E12",
+      "F12",
+      "G12",
+      "H12",
+      "I12",
+      "J12",
+      "K12",
+      "L12",
+      "M12",
+      "N12",
+      "O12",
+      "P12",
+      "E13",
+      "F13",
+      "G13",
+      "H13",
+      "I13",
+      "J13",
+      "K13",
+      "L13",
+      "M13",
+      "N13",
+      "O13",
+      "P13",
+      "E14",
+      "F14",
+      "G14",
+      "H14",
+      "I14",
+      "J14",
+      "K14",
+      "L14",
+      "M14",
+      "N14",
+      "O14",
+      "P14",
+      "E15",
+      "F15",
+      "G15",
+      "H15",
+      "I15",
+      "J15",
+      "K15",
+      "L15",
+      "M15",
+      "N15",
+      "O15",
+      "P15",
+      "E16",
+      "F16",
+      "G16",
+      "H16",
+      "I16",
+      "J16",
+      "K16",
+      "L16",
+      "M16",
+      "N16",
+      "O16",
+      "P16",
+      "E17",
+      "F17",
+      "G17",
+      "H17",
+      "I17",
+      "J17",
+      "K17",
+      "L17",
+      "M17",
+      "N17",
+      "O17",
+      "P17",
+      "E18",
+      "F18",
+      "G18",
+      "H18",
+      "I18",
+      "J18",
+      "K18",
+      "L18",
+      "M18",
+      "N18",
+      "O18",
+      "P18",
+      "E19",
+      "F19",
+      "G19",
+      "H19",
+      "I19",
+      "J19",
+      "K19",
+      "L19",
+      "M19",
+      "N19",
+      "O19",
+      "P19",
+      "E204",
+      "F204",
+      "G204",
+      "H204",
+      "I204",
+      "J204",
+      "K204",
+      "L204",
+      "M204",
+      "N204",
+      "O204",
+      "P204"
+    ]
+  },
+  "operations": {
+    "building": {
+      "running_costs": 399160.52,
+      "net_rent": 1603915.24,
+      "facility_alloc": 1609134.96,
+      "rent_minus_alloc": -5219.72,
+      "groups": {
+        "building": {
+          "total": 399160.52,
+          "lines": [
+            {
+              "code": "8100",
+              "line": "Utilities & garbage removal",
+              "total": 122807.88,
+              "source_cells": [
+                "E141",
+                "F141",
+                "G141",
+                "H141",
+                "I141",
+                "J141",
+                "K141",
+                "L141",
+                "M141",
+                "N141",
+                "O141",
+                "P141"
+              ]
+            },
+            {
+              "code": "8110",
+              "line": "Contracted building services",
+              "total": 53898.84,
+              "source_cells": [
+                "E142",
+                "F142",
+                "G142",
+                "H142",
+                "I142",
+                "J142",
+                "K142",
+                "L142",
+                "M142",
+                "N142",
+                "O142",
+                "P142"
+              ]
+            },
+            {
+              "code": "8120",
+              "line": "Maintenance and repairs",
+              "total": 66430.68,
+              "source_cells": [
+                "E143",
+                "F143",
+                "G143",
+                "H143",
+                "I143",
+                "J143",
+                "K143",
+                "L143",
+                "M143",
+                "N143",
+                "O143",
+                "P143"
+              ]
+            },
+            {
+              "code": "8130",
+              "line": "Janitorial supplies",
+              "total": 32484.12,
+              "source_cells": [
+                "E144",
+                "F144",
+                "G144",
+                "H144",
+                "I144",
+                "J144",
+                "K144",
+                "L144",
+                "M144",
+                "N144",
+                "O144",
+                "P144"
+              ]
+            },
+            {
+              "code": "7140",
+              "line": "Maintenance/custodial salaries",
+              "total": 123539.0,
+              "source_cells": [
+                "E89",
+                "F89",
+                "G89",
+                "H89",
+                "I89",
+                "J89",
+                "K89",
+                "L89",
+                "M89",
+                "N89",
+                "O89",
+                "P89"
+              ]
+            }
+          ]
+        },
+        "rent": {
+          "total": 1603915.24,
+          "lines": [
+            {
+              "code": "8000",
+              "line": "Rent",
+              "total": 1739443.68,
+              "source_cells": [
+                "E135",
+                "F135",
+                "G135",
+                "H135",
+                "I135",
+                "J135",
+                "K135",
+                "L135",
+                "M135",
+                "N135",
+                "O135",
+                "P135"
+              ]
+            },
+            {
+              "code": "8010",
+              "line": "Supplemental rent",
+              "total": 646.44,
+              "source_cells": [
+                "E137",
+                "F137",
+                "G137",
+                "H137",
+                "I137",
+                "J137",
+                "K137",
+                "L137",
+                "M137",
+                "N137",
+                "O137",
+                "P137"
+              ]
+            },
+            {
+              "code": "8020",
+              "line": "Real estate taxes",
+              "total": -136174.88,
+              "source_cells": [
+                "E138",
+                "F138",
+                "G138",
+                "H138",
+                "I138",
+                "J138",
+                "K138",
+                "L138",
+                "M138",
+                "N138",
+                "O138",
+                "P138"
+              ]
+            }
+          ]
+        },
+        "facility_alloc": {
+          "total": 1609134.96,
+          "lines": [
+            {
+              "code": "4100",
+              "line": "Per-pupil facility alloc",
+              "total": 1609134.96,
+              "source_cells": [
+                "E17",
+                "F17",
+                "G17",
+                "H17",
+                "I17",
+                "J17",
+                "K17",
+                "L17",
+                "M17",
+                "N17",
+                "O17",
+                "P17"
+              ]
+            }
+          ]
+        }
+      },
+      "running_costs_per_student": 791.99,
+      "net_rent_per_student": 3182.37,
+      "facility_alloc_per_student": 3192.73,
+      "rent_minus_alloc_per_student": -10.36
+    },
+    "lunch": {
+      "gap": 60098.44,
+      "groups": {
+        "lunch_cost": {
+          "total": 364422.06,
+          "lines": [
+            {
+              "code": "9060",
+              "line": "Food service fees",
+              "total": 364422.06,
+              "source_cells": [
+                "E155",
+                "F155",
+                "G155",
+                "H155",
+                "I155",
+                "J155",
+                "K155",
+                "L155",
+                "M155",
+                "N155",
+                "O155",
+                "P155"
+              ]
+            }
+          ]
+        },
+        "lunch_revenue": {
+          "total": 304323.62,
+          "lines": [
+            {
+              "code": "5100",
+              "line": "National school lunch prog",
+              "total": 284323.59,
+              "source_cells": [
+                "E29",
+                "F29",
+                "G29",
+                "H29",
+                "I29",
+                "J29",
+                "K29",
+                "L29",
+                "M29",
+                "N29",
+                "O29",
+                "P29"
+              ]
+            },
+            {
+              "code": "5104",
+              "line": "Fresh fruit & vegetables prog",
+              "total": 20000.03,
+              "source_cells": [
+                "E31",
+                "F31",
+                "G31",
+                "H31",
+                "I31",
+                "J31",
+                "K31",
+                "L31",
+                "M31",
+                "N31",
+                "O31",
+                "P31"
+              ]
+            }
+          ]
+        }
+      },
+      "gap_per_student": 119.24
+    },
+    "substitutes": {
+      "total": 203705.64,
+      "groups": {
+        "substitutes": {
+          "total": 203705.64,
+          "lines": [
+            {
+              "code": "7700",
+              "line": "Substitute contract staff",
+              "total": 173871.18,
+              "source_cells": [
+                "E121",
+                "F121",
+                "G121",
+                "H121",
+                "I121",
+                "J121",
+                "K121",
+                "L121",
+                "M121",
+                "N121",
+                "O121",
+                "P121"
+              ]
+            },
+            {
+              "code": "7014",
+              "line": "Substitute salaries",
+              "total": 29834.46,
+              "source_cells": [
+                "E79",
+                "F79",
+                "G79",
+                "H79",
+                "I79",
+                "J79",
+                "K79",
+                "L79",
+                "M79",
+                "N79",
+                "O79",
+                "P79"
+              ]
+            }
+          ]
+        }
+      },
+      "total_per_student": 404.18
+    },
+    "outside_services": {
+      "total": 475765.44,
+      "groups": {
+        "outside_services": {
+          "total": 475765.44,
+          "lines": [
+            {
+              "code": "9280",
+              "line": "Other professional fees",
+              "total": 188729.04,
+              "source_cells": [
+                "E179",
+                "F179",
+                "G179",
+                "H179",
+                "I179",
+                "J179",
+                "K179",
+                "L179",
+                "M179",
+                "N179",
+                "O179",
+                "P179"
+              ]
+            },
+            {
+              "code": "9230",
+              "line": "Accounting, auditing, payroll",
+              "total": 137616.0,
+              "source_cells": [
+                "E174",
+                "F174",
+                "G174",
+                "H174",
+                "I174",
+                "J174",
+                "K174",
+                "L174",
+                "M174",
+                "N174",
+                "O174",
+                "P174"
+              ]
+            },
+            {
+              "code": "9240",
+              "line": "Legal fees",
+              "total": 106191.96,
+              "source_cells": [
+                "E175",
+                "F175",
+                "G175",
+                "H175",
+                "I175",
+                "J175",
+                "K175",
+                "L175",
+                "M175",
+                "N175",
+                "O175",
+                "P175"
+              ]
+            },
+            {
+              "code": "9260",
+              "line": "Computer support fees",
+              "total": 43228.44,
+              "source_cells": [
+                "E177",
+                "F177",
+                "G177",
+                "H177",
+                "I177",
+                "J177",
+                "K177",
+                "L177",
+                "M177",
+                "N177",
+                "O177",
+                "P177"
+              ]
+            }
+          ]
+        }
+      },
+      "total_per_student": 943.98
+    },
+    "payroll_tax": {
+      "budgeted": 82779.6,
+      "ceiling": 43956.0,
+      "flagged": true,
+      "basis": {
+        "wage_base": 9000,
+        "max_rate": 0.074,
+        "source_url": "https://does.dc.gov/service/tax-rate-questions",
+        "note": "Rate year unverified"
+      },
+      "groups": {
+        "payroll_tax": {
+          "total": 82779.6,
+          "lines": [
+            {
+              "code": "7510",
+              "line": "State unemployment tax",
+              "total": 82779.6,
+              "source_cells": [
+                "E115",
+                "F115",
+                "G115",
+                "H115",
+                "I115",
+                "J115",
+                "K115",
+                "L115",
+                "M115",
+                "N115",
+                "O115",
+                "P115"
+              ]
+            }
+          ]
+        }
+      },
+      "budgeted_per_student": 164.25,
+      "ceiling_per_student": 87.21
+    }
+  },
+  "context": {
+    "source": "DC PCSB renewal report and FY2018 Financial Analysis Report; the school May forecast and board deck",
+    "actual_cash_days_min": 75.8, "actual_cash_days_max": 94, "forecast_days": 31.6, "minimum_days": 45,
+    "enrollment_prior": 522, "enrollment_later": 499, "enrollment_change_pct": -4.4,
+    "score_average": 46.4, "score_target": 50, "vote_for": 5, "vote_against": 2,
+    "class_overrun": 155000, "salary_overrun": 88000, "office_overrun": 56000, "building_overrun": 50000, "contract_overrun": 49000,
+    "board_claim_days": 143, "board_claim_margin_pct": 13, "board_actual_margin_pct": -2,
+    "teacher_schedule_input_pct": 19
+  },
+  "savings": {
+    "source": "FY2018 budget lines, estimates; target ranges are not peer benchmarks",
+    "retention_low": 185000, "retention_high": 370000,
+    "building_low": 40000, "building_high": 80000, "lunch_low": 30000, "lunch_high": 60000,
+    "substitutes_low": 30000, "substitutes_high": 51000, "outside_low": 48000, "outside_high": 95000,
+    "recurring_low": 148000, "recurring_high": 286000, "one_time_low": 100000, "one_time_high": 200000,
+    "combined_low": 430000, "combined_high": 860000, "shortfall_cash": 349000,
+    "unemployment_ceiling": 43956, "unemployment_budget": 82779.6, "headcount": 66
+  },
+  "pattern": {
+    "source": "DC PCSB closure history and renewal reports; Bellwether, Resource Realities (2024)",
+    "closed_leas": 50, "finance_enrollment_cases": 19, "academic_cases": 20,
+    "facilities_gap_million": 197, "facilities_gap_per_student": 630,
+    "booker_cash_days": 2, "democracy_cash_days": 3, "eagle_cash_days": 6, "potomac_cash_days": 11, "excel_cash_days": 107
+  },
+  "projection": {
+    "source": "school-pmf-projection.py using scores in DC PCSB renewal report",
+    "first_flag_year": 2014, "final_average": 46.42, "target": 50,
+    "rows": [
+      {"year": 2014, "score": 47.6, "needed_average": 50.6},
+      {"year": 2015, "score": null, "needed_average": 50.8},
+      {"year": 2016, "score": 49.4, "needed_average": 51.5},
+      {"year": 2017, "score": 42.4, "needed_average": 60.6},
+      {"year": 2018, "score": 46.3, "needed_average": null}
+    ]
+  },
+  "far": {
+    "days_cash": {
+      "value": 61.6,
+      "source_cells": [
+        "E204",
+        "F204",
+        "G204",
+        "H204",
+        "I204",
+        "J204",
+        "K204",
+        "L204",
+        "M204",
+        "N204",
+        "O204",
+        "P204"
+      ]
+    }
+  }
+}
