@@ -28,7 +28,7 @@ export const copy = {
     "Arthur reads the files a school already keeps, such as the budget, bank balances, enrollment, the lunch program, facility costs, staffing and academic results. It tells leaders what needs attention early, what can be cut and what to bring to the board.",
   nextHead: ["What is built,", "and what comes next."] as [string, string],
   nextLead:
-    "The cash warning and the rating rebuild already run on the training school's files. The next step is the academic record, because that is what closed this school.",
+    "The cash warning and the rating rebuild already run on the training school's files. The academic projection and the relief-money check run on public records too. The next step is the training school's attendance, test results and monthly bank balances.",
 };
 
 export const hero = {
@@ -77,6 +77,19 @@ export const savings = {
   total: `${short(v.combined_low)} to ${short(v.combined_high)}`,
   note: `Even the low end exceeds the roughly ${short(v.shortfall_cash)} needed to keep the May forecast's June cash at the ${days(c.minimum_days)} minimum. These are estimates, not realized savings. They would not have saved the charter; closure was academic.`,
   tax: `Budget check: unemployment tax was budgeted at ${money(v.unemployment_budget)} against an estimated ceiling of ${money(v.unemployment_ceiling)} for ${v.headcount} staff. The tax rate year and turnover need checking. This is not counted as a saving.`,
+};
+
+const e = data.eagle;
+export const eagle = {
+  intro: `A second DC school, Eagle Academy, closed in August 2024, days before school started. Its academics were fine. From ${e.students_2019} students to ${e.students_2023}, enrollment fell ${pct(e.enrollment_drop_pct)}, but revenue fell only ${pct(e.revenue_drop_pct)} and spending only ${pct(e.spend_drop_pct)}. Spending per student went from ${money(e.spend_per_student_2019)} to ${money(e.spend_per_student_2023)}. Pandemic relief money filled the gap, so cash looked strong: ${days(e.cash_2022)} in 2022.`,
+  rows: e.rows.map(r => ({ fy: `FY${r.fy}`, students: `${r.students} students`, line: `${r.temporary > 500000 ? `One-time money ${short(r.temporary)}` : "Little one-time money"} · ${r.gap > 0 ? `gap underneath ${short(r.gap)}` : "no gap underneath"} · ${money(r.per_student)} spent per student` })),
+  flags: [
+    { when: "Fall 2021", t: `About a third of this year's money is one-time. When it ends, spending runs about ${short(e.rows[1].gap)} a year over what the school takes in. Cut toward the school you have now, or plan a merger while cash is strong.` },
+    { when: "Spring 2022", t: `The trend points to about ${e.trend_2023} students next year. The budget plans for ${e.budget_2023}. The fall count came in at ${e.actual_2023}.` },
+    { when: "Winter 2022", t: `Cash is at ${days(e.cash_dec_2022)}, with a loan payoff and delayed grant payments already scheduled. The monthly forecast shows the drop to ${days(e.cash_mar_2023)} by March before it happens.` },
+    { when: "Every pay period", t: `Headcount and payroll against the plan. Promised cuts that never happen show up within weeks, not in an audit a year later that corrects the books by ${short(e.audit_adjustment)}.` },
+  ],
+  end: `The finding holds under any reasonable funding growth: the gap stays between ${short(e.gap_low)} and ${short(e.gap_high)} a year. In the DC test, falling enrollment on its own is a weak warning, because many schools shrink and survive. Spending that does not follow students, hidden by one-time money, is what set Eagle apart.`,
 };
 
 export const pattern = [

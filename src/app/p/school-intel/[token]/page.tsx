@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ReviewControl, ReviewSubmit } from "@/components/portal/ReviewControl";
-import { copy, findings, fixes, getSysClient, glance, grades, hero, method, model, savings, pattern, projection, sysClients, type Sev } from "@/content/hub/school-intel";
+import { copy, eagle, findings, fixes, getSysClient, glance, grades, hero, method, model, savings, pattern, projection, sysClients, type Sev } from "@/content/hub/school-intel";
 
 export const dynamicParams = false;
 
@@ -188,6 +188,32 @@ export default async function SchoolIntelPage({ params }: { params: Promise<{ to
           </div>)}
         </div>
         <p className="mt-6 max-w-[70ch] text-[14px] leading-[1.7] text-[#5b606a]">{projection.end}</p>
+      </section>
+
+      <section className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
+        <div className="mx-auto max-w-[1180px] px-6 py-24">
+          <Eyebrow>A second case</Eyebrow>
+          <Two a="The school that ran out of money," b="and when Arthur would have said so." />
+          <p className="mt-6 max-w-[70ch] text-[15px] leading-[1.7] text-[#5b606a]">{eagle.intro}</p>
+          <div className="mt-10 divide-y divide-[#eef0f3] border-y border-[#e4e5e9]">
+            {eagle.rows.map((r) => (
+              <div key={r.fy} className="grid gap-1 py-4 md:grid-cols-[8rem_10rem_1fr] md:gap-4">
+                <span className="text-[14px] font-medium text-[#1d1d1f]">{r.fy}</span>
+                <span className="text-[14px] text-[#1d1d1f]">{r.students}</span>
+                <span className="text-[14px] text-[#5b606a]">{r.line}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {eagle.flags.map((f) => (
+              <article key={f.when} className="rounded-2xl border border-[#e4e5e9] bg-white p-6">
+                <span className="text-[11px] uppercase tracking-[0.12em] text-[#8c8e95]">{f.when}</span>
+                <p className="mt-2 text-[15px] leading-[1.65] text-[#1d1d1f]">{f.t}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-8 max-w-[70ch] text-[14px] leading-[1.7] text-[#5b606a]">{eagle.end}</p>
+        </div>
       </section>
 
       {/* Model */}

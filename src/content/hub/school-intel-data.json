@@ -945,6 +945,19 @@
     "combined_low": 430000, "combined_high": 860000, "shortfall_cash": 349000,
     "unemployment_ceiling": 43956, "unemployment_budget": 82779.6, "headcount": 66
   },
+  "eagle": {
+    "source": "DC PCSB responses to Council Chairman Mendelson (Sept 9, 2024); IRS Form 990 data FY2019-FY2023 via ProPublica; PCSB 20-year review (Jan 2024); scripts/school-relief-cliff.py, FY2019 baseline, 3% formula growth",
+    "students_2019": 838, "students_2023": 412, "enrollment_drop_pct": 51, "revenue_drop_pct": 17, "spend_drop_pct": 9,
+    "spend_per_student_2019": 26862, "spend_per_student_2023": 49907,
+    "rows": [
+      { "fy": 2021, "students": 705, "temporary": 100000, "gap": -400000, "per_student": 28502 },
+      { "fy": 2022, "students": 526, "temporary": 8100000, "gap": 7000000, "per_student": 43326 },
+      { "fy": 2023, "students": 412, "temporary": 6500000, "gap": 7800000, "per_student": 49907 }
+    ],
+    "cash_2022": 92, "cash_dec_2022": 42, "cash_mar_2023": 12, "cash_jun_2024": 6,
+    "trend_2023": 392, "budget_2023": 525, "actual_2023": 412,
+    "gap_low": 5200000, "gap_high": 9200000, "audit_adjustment": 1400000
+  },
   "backtest": {
     "source": "DC PCSB Financial Analysis Reports FY2015-FY2025 and PMF data FY2013-FY2019, 787 LEA-years; scripts/school-panel-backtest.py --pmf=40, closing within 3 years",
     "lea_years": 787, "closed": 12, "open": 65, "base_rate": 5.6,
