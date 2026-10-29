@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ReviewControl, ReviewSubmit } from "@/components/portal/ReviewControl";
-import { copy, eagle, findings, fixes, getSysClient, glance, grades, hero, method, model, savings, pattern, projection, sysClients, type Sev } from "@/content/hub/school-intel";
+import { copy, eagle, lessons, national, offers, findings, fixes, getSysClient, glance, grades, hero, method, model, savings, pattern, projection, sysClients, type Sev } from "@/content/hub/school-intel";
 
 export const dynamicParams = false;
 
@@ -213,6 +213,83 @@ export default async function SchoolIntelPage({ params }: { params: Promise<{ to
             ))}
           </div>
           <p className="mt-8 max-w-[70ch] text-[14px] leading-[1.7] text-[#5b606a]">{eagle.end}</p>
+        </div>
+      </section>
+
+      <section id="national" className="border-t border-[#e4e5e9]">
+        <div className="mx-auto max-w-[1180px] px-6 py-24">
+          <Eyebrow>Every charter in the country</Eyebrow>
+          <Two a="The same warnings," b="tested on every closure since 1998." />
+          <p className="mt-6 max-w-[70ch] text-[15px] leading-[1.7] text-[#5b606a]">{national.intro}</p>
+          <div className="mt-12 grid gap-12 lg:grid-cols-2">
+            <div>
+              <h3 className="text-[15px] font-medium text-[#1d1d1f]">{national.sizeHead}</h3>
+              <div className="mt-6 grid gap-5">
+                {national.size.map((s) => (
+                  <div key={s.label}>
+                    <div className="flex items-baseline justify-between text-[14px]">
+                      <span className="text-[#1d1d1f]">{s.label}</span>
+                      <span className="tabular-nums font-medium text-[#1d1d1f]">{s.rate}</span>
+                    </div>
+                    <div className="mt-2 h-2 rounded-full bg-[#eef0f3]">
+                      <div className="h-2 rounded-full bg-[#3778bc]" style={{ width: `${s.width}%` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-8 text-[14px] leading-[1.7] text-[#5b606a]">{national.contrast}</p>
+            </div>
+            <div>
+              <h3 className="text-[15px] font-medium text-[#1d1d1f]">{national.rulesHead}</h3>
+              <div className="mt-6 hidden grid-cols-[1fr_4.5rem_5.5rem_4.5rem] gap-3 border-b border-[#e4e5e9] pb-2 text-[11px] uppercase tracking-[0.1em] text-[#8c8e95] md:grid">
+                <span>Warning</span><span className="text-right">Caught</span><span className="text-right">Open flagged</span><span className="text-right">Ahead</span>
+              </div>
+              <div className="divide-y divide-[#eef0f3]">
+                {national.rules.map((r) => (
+                  <div key={r.label} className="grid gap-1 py-3 md:grid-cols-[1fr_4.5rem_5.5rem_4.5rem] md:gap-3">
+                    <span className="text-[14px] text-[#1d1d1f]">{r.label}</span>
+                    <span className="text-[13px] tabular-nums text-[#1d1d1f] md:text-right"><span className="md:hidden text-[#8c8e95]">Caught </span>{r.caught}</span>
+                    <span className="text-[13px] tabular-nums text-[#5b606a] md:text-right"><span className="md:hidden text-[#8c8e95]">Open schools flagged </span>{r.open}</span>
+                    <span className="text-[13px] tabular-nums text-[#5b606a] md:text-right"><span className="md:hidden text-[#8c8e95]">Ahead </span>{r.lead}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <p className="mt-10 max-w-[70ch] text-[14px] leading-[1.7] text-[#5b606a]">{national.end}</p>
+        </div>
+      </section>
+
+      <section id="learned" className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
+        <div className="mx-auto max-w-[1180px] px-6 py-24">
+          <Eyebrow>What the data taught Arthur</Eyebrow>
+          <Two a="Four lessons that now run" b="in every school Arthur watches." />
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {lessons.map((l) => (
+              <article key={l.t} className="rounded-2xl border border-[#e4e5e9] bg-white p-6">
+                <h3 className="text-[16px] font-medium text-[#1d1d1f]">{l.t}</h3>
+                <p className="mt-2 text-[14px] leading-[1.7] text-[#5b606a]">{l.d}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="offer" className="border-t border-[#e4e5e9]">
+        <div className="mx-auto max-w-[1180px] px-6 py-24">
+          <Eyebrow>What we offer schools</Eyebrow>
+          <Two a="From a first look at public records" b="to a partner inside the books." />
+          <div className="mt-12 divide-y divide-[#eef0f3] border-y border-[#e4e5e9]">
+            {offers.map((f) => (
+              <div key={f.t} className="grid gap-2 py-6 md:grid-cols-[16rem_1fr] md:gap-8">
+                <div>
+                  <span className="block text-[16px] font-medium text-[#1d1d1f]">{f.t}</span>
+                  <span className="mt-1 block text-[12px] uppercase tracking-[0.1em] text-[#8c8e95]">{f.who}</span>
+                </div>
+                <p className="text-[14px] leading-[1.7] text-[#5b606a]">{f.d}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

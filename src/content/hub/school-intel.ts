@@ -92,6 +92,34 @@ export const eagle = {
   end: `The finding holds under any reasonable funding growth: the gap stays between ${short(e.gap_low)} and ${short(e.gap_high)} a year. In the DC test, falling enrollment on its own is a weak warning, because many schools shrink and survive. Spending that does not follow students, hidden by one-time money, is what set Eagle apart.`,
 };
 
+const n = data.national;
+const top = Math.max(...n.size.map(s => s.rate));
+export const national = {
+  intro: `We then ran the same test on every charter school in the country, ${n.first_year} to ${n.last_year}: ${n.schools.toLocaleString("en-US")} schools and ${n.closures.toLocaleString("en-US")} closures, from federal school records, using only what each year showed. Schools that only changed their federal ID are left out.`,
+  sizeHead: `Chance an established charter closes within ${n.horizon_years} years, by size`,
+  size: n.size.map(s => ({ label: s.label, rate: pct(s.rate), width: Math.round((s.rate / top) * 100) })),
+  contrast: `A small school that lost ${pct(n.drop_threshold)} or more of its students in two years closed ${pct(n.small_shrinking)} of the time. A large school holding steady closed ${pct(n.large_steady)} of the time. New schools show the same pattern, ${pct(n.new_small)} against ${pct(n.new_large)}, so this is not just young schools failing.`,
+  rulesHead: "How each warning did, every closure in the country",
+  rules: n.rules.map(r => ({ label: r.label, caught: pct(r.caught), open: pct(r.open_flagged), lead: `${r.lead} years` })),
+  end: `No single warning is enough. The strongest catches about half the closures and also flags many schools that survive, so Arthur reads them together, every month, and explains the lines behind each one. Federal finance and test records stop at ${n.finance_last_year}, so the relief-money years are checked from each school's tax filings instead.`,
+};
+
+const r0 = n.rules;
+export const lessons: { t: string; d: string }[] = [
+  { t: "Small schools carry the risk", d: `Established charters under 300 students close at ${pct(n.size[0].rate)} within ${n.horizon_years} years, against ${pct(n.size[2].rate)} for schools of 600 or more. That is the market: schools too small for a finance or operations team.` },
+  { t: "Shrinking is the loudest early signal", d: `Losing ${pct(n.drop_threshold)} of students in two years caught ${pct(r0[0].caught)} of closures about ${r0[0].lead} years ahead. Adding weak test results raised that to ${pct(r0[1].caught)}, about ${r0[1].lead} years ahead.` },
+  { t: "Money signals come first", d: `Spending that does not follow students, and a rising federal share while enrollment falls, are rarer but show up ${r0[3].lead} to ${r0[4].lead} years ahead, earlier than anything else. That is the Eagle pattern, and it is not only in DC.` },
+  { t: "One bad year means little", d: `A year of spending more than it took in showed up in ${pct(r0[5].open_flagged)} of schools that stayed open. Arthur does not raise alarms on a single number; it looks for the combination.` },
+];
+
+export const offers: { t: string; d: string; who: string }[] = [
+  { t: "Risk read from public records", who: "Before a first meeting", d: "Any US charter scored from its federal records and tax filings: enrollment trend, test standing, spending per student and the money mix, against every school like it. A school sees its own picture on day one, before sharing a single file." },
+  { t: "Monthly early warning", who: "School leaders and boards", d: "Cash, enrollment against budget, the authorizer's financial rating and the academic score projected forward each month, with the lines driving any change and what to do about it." },
+  { t: "Cost and operations review", who: "Business managers", d: "The building, lunch, substitutes, transportation, outside services and payroll taxes, each against plan and against similar schools, with every saving sized in dollars." },
+  { t: "Board and authorizer packet", who: "Boards and authorizers", d: "The monthly board packet drafted with every number traced to its source, and renewal projected from year one so the charter decision is never a surprise." },
+  { t: "Portfolio watch", who: "Networks, authorizers and funders", d: "Every school in a portfolio ranked by the same tested warnings, so attention goes to the few that need it, years before a closure vote." },
+];
+
 export const pattern = [
   { text: `We tested Arthur's warnings on every DC charter's public reports, ${b.lea_years} school-years, using only what each year's report showed. A yearly academic score under 40 flagged ${b.academic_caught} of the ${b.closed} closed schools a median of ${b.academic_lead} years before closing, and only ${b.academic_open_flagged} of the ${b.open} that stayed open.`, source: "DC charter authorizer financial and academic reports, back-tested" },
   { text: `Adding cash under ${days(c.minimum_days)} caught all ${b.either_caught} closed schools, a median of ${b.either_lead} years early, but also flagged ${b.either_open_flagged} of ${b.open} that stayed open. A warning is a reason to look, not a verdict.`, source: "DC charter authorizer financial and academic reports, back-tested" },
@@ -125,7 +153,8 @@ export const fixes: { t: string; d: string; tag: "done" | "free" | "needs" | "mo
   { t: "Operations checks", d: "Building running costs against the facilities money, the lunch program against meal revenue, substitutes, outside services, and payroll taxes against their legal ceiling.", tag: "done" },
   { t: "Board packet and claim checks", d: "Every figure in a board summary or on this page is recomputed from the budget, and any sentence that disagrees with its own tables is flagged.", tag: "done" },
   { t: "Attendance, test results and monthly bank balances", d: "From Lanette if she has them. Attendance and test results show the academic slide inside a year, and bank balances score the cash forecast against what happened.", tag: "needs" },
-  { t: "Every DC charter as training data", d: "The closed schools are collected. Next are the financial and academic reports for the schools that stayed open, so the model is tested against both.", tag: "free" },
+  { t: "Every US charter as training data", d: `Every charter in the federal records since ${n.first_year}, closed and open, scored on the same warnings with no hindsight. DC adds the authorizer's own financial and academic reports.`, tag: "done" },
+  { t: "Relief-money years for every school", d: `Federal finance stops at ${n.finance_last_year}. Tax filings for each school cover the years after, so the Eagle pattern can be tested nationally.`, tag: "free" },
 ];
 
 export const method = [

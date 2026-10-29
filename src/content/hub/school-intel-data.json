@@ -929,57 +929,154 @@
   },
   "context": {
     "source": "DC PCSB renewal report and FY2018 Financial Analysis Report; the school May forecast and board deck",
-    "actual_cash_days_min": 75.8, "actual_cash_days_max": 94, "forecast_days": 31.6, "minimum_days": 45,
-    "enrollment_prior": 522, "enrollment_later": 499, "enrollment_change_pct": -4.4,
-    "score_average": 46.4, "score_target": 50, "vote_for": 5, "vote_against": 2,
-    "class_overrun": 155000, "salary_overrun": 88000, "office_overrun": 56000, "building_overrun": 50000, "contract_overrun": 49000,
-    "board_claim_days": 143, "board_claim_margin_pct": 13, "board_actual_margin_pct": -2,
+    "actual_cash_days_min": 75.8,
+    "actual_cash_days_max": 94,
+    "forecast_days": 31.6,
+    "minimum_days": 45,
+    "enrollment_prior": 522,
+    "enrollment_later": 499,
+    "enrollment_change_pct": -4.4,
+    "score_average": 46.4,
+    "score_target": 50,
+    "vote_for": 5,
+    "vote_against": 2,
+    "class_overrun": 155000,
+    "salary_overrun": 88000,
+    "office_overrun": 56000,
+    "building_overrun": 50000,
+    "contract_overrun": 49000,
+    "board_claim_days": 143,
+    "board_claim_margin_pct": 13,
+    "board_actual_margin_pct": -2,
     "teacher_schedule_input_pct": 19
   },
   "savings": {
     "source": "FY2018 budget lines, estimates; target ranges are not peer benchmarks",
-    "retention_low": 185000, "retention_high": 370000,
-    "building_low": 40000, "building_high": 80000, "lunch_low": 30000, "lunch_high": 60000,
-    "substitutes_low": 30000, "substitutes_high": 51000, "outside_low": 48000, "outside_high": 95000,
-    "recurring_low": 148000, "recurring_high": 286000, "one_time_low": 100000, "one_time_high": 200000,
-    "combined_low": 430000, "combined_high": 860000, "shortfall_cash": 349000,
-    "unemployment_ceiling": 43956, "unemployment_budget": 82779.6, "headcount": 66
+    "retention_low": 185000,
+    "retention_high": 370000,
+    "building_low": 40000,
+    "building_high": 80000,
+    "lunch_low": 30000,
+    "lunch_high": 60000,
+    "substitutes_low": 30000,
+    "substitutes_high": 51000,
+    "outside_low": 48000,
+    "outside_high": 95000,
+    "recurring_low": 148000,
+    "recurring_high": 286000,
+    "one_time_low": 100000,
+    "one_time_high": 200000,
+    "combined_low": 430000,
+    "combined_high": 860000,
+    "shortfall_cash": 349000,
+    "unemployment_ceiling": 43956,
+    "unemployment_budget": 82779.6,
+    "headcount": 66
   },
   "eagle": {
     "source": "DC PCSB responses to Council Chairman Mendelson (Sept 9, 2024); IRS Form 990 data FY2019-FY2023 via ProPublica; PCSB 20-year review (Jan 2024); scripts/school-relief-cliff.py, FY2019 baseline, 3% formula growth",
-    "students_2019": 838, "students_2023": 412, "enrollment_drop_pct": 51, "revenue_drop_pct": 17, "spend_drop_pct": 9,
-    "spend_per_student_2019": 26862, "spend_per_student_2023": 49907,
+    "students_2019": 838,
+    "students_2023": 412,
+    "enrollment_drop_pct": 51,
+    "revenue_drop_pct": 17,
+    "spend_drop_pct": 9,
+    "spend_per_student_2019": 26862,
+    "spend_per_student_2023": 49907,
     "rows": [
-      { "fy": 2021, "students": 705, "temporary": 100000, "gap": -400000, "per_student": 28502 },
-      { "fy": 2022, "students": 526, "temporary": 8100000, "gap": 7000000, "per_student": 43326 },
-      { "fy": 2023, "students": 412, "temporary": 6500000, "gap": 7800000, "per_student": 49907 }
+      {
+        "fy": 2021,
+        "students": 705,
+        "temporary": 100000,
+        "gap": -400000,
+        "per_student": 28502
+      },
+      {
+        "fy": 2022,
+        "students": 526,
+        "temporary": 8100000,
+        "gap": 7000000,
+        "per_student": 43326
+      },
+      {
+        "fy": 2023,
+        "students": 412,
+        "temporary": 6500000,
+        "gap": 7800000,
+        "per_student": 49907
+      }
     ],
-    "cash_2022": 92, "cash_dec_2022": 42, "cash_mar_2023": 12, "cash_jun_2024": 6,
-    "trend_2023": 392, "budget_2023": 525, "actual_2023": 412,
-    "gap_low": 5200000, "gap_high": 9200000, "audit_adjustment": 1400000
+    "cash_2022": 92,
+    "cash_dec_2022": 42,
+    "cash_mar_2023": 12,
+    "cash_jun_2024": 6,
+    "trend_2023": 392,
+    "budget_2023": 525,
+    "actual_2023": 412,
+    "gap_low": 5200000,
+    "gap_high": 9200000,
+    "audit_adjustment": 1400000
   },
   "backtest": {
     "source": "DC PCSB Financial Analysis Reports FY2015-FY2025 and PMF data FY2013-FY2019, 787 LEA-years; scripts/school-panel-backtest.py --pmf=40, closing within 3 years",
-    "lea_years": 787, "closed": 12, "open": 65, "base_rate": 5.6,
-    "academic_caught": 10, "academic_open_flagged": 13, "academic_lift": 6.4, "academic_lead": 4,
-    "cash_caught": 8, "cash_open_flagged": 26, "cash_lift": 3.9,
-    "either_caught": 12, "either_open_flagged": 31, "either_lead": 4
+    "lea_years": 787,
+    "closed": 12,
+    "open": 65,
+    "base_rate": 5.6,
+    "academic_caught": 10,
+    "academic_open_flagged": 13,
+    "academic_lift": 6.4,
+    "academic_lead": 4,
+    "cash_caught": 8,
+    "cash_open_flagged": 26,
+    "cash_lift": 3.9,
+    "either_caught": 12,
+    "either_open_flagged": 31,
+    "either_lead": 4
   },
   "pattern": {
     "source": "DC PCSB closure history and renewal reports; Bellwether, Resource Realities (2024)",
-    "closed_leas": 50, "finance_enrollment_cases": 19, "academic_cases": 20,
-    "facilities_gap_million": 197, "facilities_gap_per_student": 630,
-    "booker_cash_days": 2, "democracy_cash_days": 3, "eagle_cash_days": 6, "potomac_cash_days": 11, "excel_cash_days": 107
+    "closed_leas": 50,
+    "finance_enrollment_cases": 19,
+    "academic_cases": 20,
+    "facilities_gap_million": 197,
+    "facilities_gap_per_student": 630,
+    "booker_cash_days": 2,
+    "democracy_cash_days": 3,
+    "eagle_cash_days": 6,
+    "potomac_cash_days": 11,
+    "excel_cash_days": 107
   },
   "projection": {
     "source": "school-pmf-projection.py using scores in DC PCSB renewal report",
-    "first_flag_year": 2014, "final_average": 46.42, "target": 50,
+    "first_flag_year": 2014,
+    "final_average": 46.42,
+    "target": 50,
     "rows": [
-      {"year": 2014, "score": 47.6, "needed_average": 50.6},
-      {"year": 2015, "score": null, "needed_average": 50.8},
-      {"year": 2016, "score": 49.4, "needed_average": 51.5},
-      {"year": 2017, "score": 42.4, "needed_average": 60.6},
-      {"year": 2018, "score": 46.3, "needed_average": null}
+      {
+        "year": 2014,
+        "score": 47.6,
+        "needed_average": 50.6
+      },
+      {
+        "year": 2015,
+        "score": null,
+        "needed_average": 50.8
+      },
+      {
+        "year": 2016,
+        "score": 49.4,
+        "needed_average": 51.5
+      },
+      {
+        "year": 2017,
+        "score": 42.4,
+        "needed_average": 60.6
+      },
+      {
+        "year": 2018,
+        "score": 46.3,
+        "needed_average": null
+      }
     ]
   },
   "far": {
@@ -1000,5 +1097,85 @@
         "P204"
       ]
     }
+  },
+  "national": {
+    "source": "Urban Institute Education Data Portal (federal Common Core of Data, F-33 finance, EDFacts assessments); scripts school-national-pull.py, school-national-panel.py, school-national-closures.py",
+    "schools": 15391,
+    "first_year": 1998,
+    "last_year": 2024,
+    "closures": 5722,
+    "excluded_id_change": 2678,
+    "school_years": 130544,
+    "size": [
+      {
+        "label": "Under 300 students",
+        "rate": 10.9
+      },
+      {
+        "label": "300 to 599 students",
+        "rate": 4.1
+      },
+      {
+        "label": "600 or more students",
+        "rate": 2.3
+      }
+    ],
+    "small_shrinking": 21.4,
+    "large_steady": 2.1,
+    "new_small": 9.5,
+    "new_large": 2.3,
+    "rules": [
+      {
+        "label": "Enrollment down 15% or more over two years",
+        "caught": 56,
+        "open_flagged": 38,
+        "lift": 2.3,
+        "lead": 3,
+        "closures": 3634
+      },
+      {
+        "label": "Bottom fifth of the state on tests, or that enrollment drop",
+        "caught": 67,
+        "open_flagged": 51,
+        "lift": 2.0,
+        "lead": 4,
+        "closures": 4083
+      },
+      {
+        "label": "Bottom fifth of the state on tests",
+        "caught": 54,
+        "open_flagged": 35,
+        "lift": 1.9,
+        "lead": 4.0,
+        "closures": 2903
+      },
+      {
+        "label": "Spending per student up a quarter while enrollment falls two years",
+        "caught": 18,
+        "open_flagged": 11,
+        "lift": 1.9,
+        "lead": 6.0,
+        "closures": 645
+      },
+      {
+        "label": "Federal share of revenue up 10 points while enrollment falls",
+        "caught": 13,
+        "open_flagged": 6,
+        "lift": 1.8,
+        "lead": 7.0,
+        "closures": 951
+      },
+      {
+        "label": "A year spending more than it took in",
+        "caught": 62,
+        "open_flagged": 65,
+        "lift": 1.1,
+        "lead": 8.0,
+        "closures": 1222
+      }
+    ],
+    "finance_last_year": 2020,
+    "drop_threshold": 15,
+    "horizon_years": 3
   }
 }
