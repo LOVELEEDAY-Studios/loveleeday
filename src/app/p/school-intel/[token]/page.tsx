@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ReviewControl, ReviewSubmit } from "@/components/portal/ReviewControl";
-import { copy, eagle, lessons, national, offers, findings, fixes, getSysClient, glance, grades, hero, method, model, savings, pattern, projection, sysClients, type Sev } from "@/content/hub/school-intel";
+import { copy, eagle, lessons, national, offers, operations, findings, fixes, getSysClient, glance, grades, hero, method, model, savings, pattern, projection, sysClients, type Sev } from "@/content/hub/school-intel";
 
 export const dynamicParams = false;
 
@@ -260,7 +260,41 @@ export default async function SchoolIntelPage({ params }: { params: Promise<{ to
         </div>
       </section>
 
-      <section id="learned" className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
+      <section id="money" className="border-t border-[#e4e5e9]">
+        <div className="mx-auto max-w-[1180px] px-6 py-24">
+          <Eyebrow>Where the money goes</Eyebrow>
+          <Two a="Small schools pay more to run," b="and the same few providers serve most of them." />
+          <p className="mt-6 max-w-[70ch] text-[15px] leading-[1.7] text-[#5b606a]">{operations.intro}</p>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {operations.parts.map((p) => (
+              <article key={p.label} className="rounded-2xl border border-[#e4e5e9] bg-white p-6">
+                <span className="block text-[28px] font-medium tabular-nums tracking-[-0.02em] text-[#1d1d1f]">{p.value}</span>
+                <span className="mt-1 block text-[13px] text-[#5b606a]">more per student · {p.label.toLowerCase()}</span>
+              </article>
+            ))}
+          </div>
+          <p className="mt-8 max-w-[70ch] text-[14px] leading-[1.7] text-[#5b606a]">{operations.total}</p>
+          <p className="mt-12 max-w-[70ch] text-[15px] leading-[1.7] text-[#1d1d1f]">{operations.providersLead}</p>
+          <div className="mt-8 grid gap-10 md:grid-cols-2">
+            {([["Largest vendors", operations.vendors], ["Largest filing consultants", operations.consultants]] as const).map(([h, list]) => (
+              <div key={h}>
+                <h3 className="text-[12px] uppercase tracking-[0.1em] text-[#8c8e95]">{h}</h3>
+                <div className="mt-3 divide-y divide-[#e4e5e9] border-y border-[#e4e5e9]">
+                  {list.map((v) => (
+                    <div key={v.name} className="flex items-baseline justify-between gap-4 py-3 text-[14px]">
+                      <span className="text-[#1d1d1f]">{v.name}</span>
+                      <span className="shrink-0 tabular-nums text-[#5b606a]">{v.schools}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-10 max-w-[70ch] text-[14px] leading-[1.7] text-[#5b606a]">{operations.end}</p>
+        </div>
+      </section>
+
+      <section id="learned"className="border-t border-[#e4e5e9] bg-[#f5f5f7]">
         <div className="mx-auto max-w-[1180px] px-6 py-24">
           <Eyebrow>What the data taught Arthur</Eyebrow>
           <Two a="Four lessons that now run" b="in every school Arthur watches." />

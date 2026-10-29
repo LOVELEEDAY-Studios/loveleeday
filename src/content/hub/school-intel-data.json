@@ -1177,5 +1177,63 @@
     "finance_last_year": 2020,
     "drop_threshold": 15,
     "horizon_years": 3
+  },
+  "national_operations": {
+    "overhead_gap": 787,
+    "state_years": 255,
+    "admin_gap": 92,
+    "school_admin_gap": 384,
+    "building_gap": 163,
+    "savings_2020": 285684799,
+    "schools_2020": 1034,
+    "admin_flag_caught": 58,
+    "admin_flag_open": 54,
+    "admin_flag_lift": 1.2,
+    "filers": 2882,
+    "top_vendors": [
+      {
+        "name": "CDW Government LLC",
+        "schools": 504
+      },
+      {
+        "name": "Comcast Business Communications",
+        "schools": 502
+      },
+      {
+        "name": "Charter Communications Operating, LLC",
+        "schools": 488
+      },
+      {
+        "name": "AT&T Corp.",
+        "schools": 464
+      },
+      {
+        "name": "Verizon Wireless (Cellco Partnership)",
+        "schools": 352
+      }
+    ],
+    "top_consultants": [
+      {
+        "name": "CSM Consulting Inc.",
+        "schools": 285
+      },
+      {
+        "name": "E-Rate Advantage",
+        "schools": 210
+      },
+      {
+        "name": "Funds for Learning",
+        "schools": 191
+      },
+      {
+        "name": "GETFUNDED",
+        "schools": 92
+      },
+      {
+        "name": "E-Stream Technology Solutions",
+        "schools": 75
+      }
+    ],
+    "top5_vendor_share": 56
   }
 }

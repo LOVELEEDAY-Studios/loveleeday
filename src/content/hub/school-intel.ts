@@ -104,6 +104,21 @@ export const national = {
   end: `No single warning is enough. The strongest catches about half the closures and also flags many schools that survive, so Arthur reads them together, every month, and explains the lines behind each one. Federal finance and test records stop at ${n.finance_last_year}, so the relief-money years are checked from each school's tax filings instead.`,
 };
 
+const op = data.national_operations;
+export const operations = {
+  intro: `Small charters spend ${money(op.overhead_gap)} more per student on overhead than large charters in the same state and year. Overhead here is the school's leadership and front office, central administration and running the building, compared across ${op.state_years} state-years of federal finance records.`,
+  parts: [
+    { label: "School leadership and front office", value: money(op.school_admin_gap) },
+    { label: "Running the building", value: money(op.building_gap) },
+    { label: "Central administration", value: money(op.admin_gap) },
+  ],
+  total: `In ${n.finance_last_year}, ${op.schools_2020.toLocaleString("en-US")} small charters spent above their peers' median on overhead. Bringing each one to the median is worth ${short(op.savings_2020)} in that year alone. A gap is where to look, not a promised saving: lease terms, staffing and service quality decide what is real.`,
+  providersLead: `A few providers serve most schools. Of ${op.filers.toLocaleString("en-US")} charters matched to the federal internet and technology discount program, the five largest vendors serve ${pct(op.top5_vendor_share)}. Arthur compares what one school pays with what the same vendor charges schools like it.`,
+  vendors: op.top_vendors.map(v => ({ name: v.name, schools: `${v.schools.toLocaleString("en-US")} schools` })),
+  consultants: op.top_consultants.map(v => ({ name: v.name, schools: `${v.schools.toLocaleString("en-US")} schools` })),
+  end: `Cost alone is a weak closure warning. Administration in the top fifth of peers caught ${pct(op.admin_flag_caught)} of closures but also flagged ${pct(op.admin_flag_open)} of schools that stayed open. Cost data is for savings; the closure warnings come from enrollment, academics and the money mix.`,
+};
+
 const r0 = n.rules;
 export const lessons: { t: string; d: string }[] = [
   { t: "Small schools carry the risk", d: `Established charters under 300 students close at ${pct(n.size[0].rate)} within ${n.horizon_years} years, against ${pct(n.size[2].rate)} for schools of 600 or more. That is the market: schools too small for a finance or operations team.` },
@@ -116,6 +131,8 @@ export const offers: { t: string; d: string; who: string }[] = [
   { t: "Risk read from public records", who: "Before a first meeting", d: "Any US charter scored from its federal records and tax filings: enrollment trend, test standing, spending per student and the money mix, against every school like it. A school sees its own picture on day one, before sharing a single file." },
   { t: "Monthly early warning", who: "School leaders and boards", d: "Cash, enrollment against budget, the authorizer's financial rating and the academic score projected forward each month, with the lines driving any change and what to do about it." },
   { t: "Cost and operations review", who: "Business managers", d: "The building, lunch, substitutes, transportation, outside services and payroll taxes, each against plan and against similar schools, with every saving sized in dollars." },
+  { t: "Contract and provider comparison", who: "Business managers", d: "Internet, technology, food, back-office and building contracts compared with what the same providers charge similar schools, with the questions to ask before renewal." },
+  { t: "Unclaimed money check", who: "Before every filing window", d: "The federal internet and technology discount, the free-meals option for high-need schools and grant deadlines, checked against the school's own records so nothing it qualifies for is left behind." },
   { t: "Board and authorizer packet", who: "Boards and authorizers", d: "The monthly board packet drafted with every number traced to its source, and renewal projected from year one so the charter decision is never a surprise." },
   { t: "Portfolio watch", who: "Networks, authorizers and funders", d: "Every school in a portfolio ranked by the same tested warnings, so attention goes to the few that need it, years before a closure vote." },
 ];
