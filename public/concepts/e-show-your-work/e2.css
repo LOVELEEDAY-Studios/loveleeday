@@ -81,7 +81,7 @@
 .s-dec{display:block}
 
 /* ---------- tablet and phone ---------- */
-@media(min-width:1021px) and (max-width:1400px){.hero-prod{width:calc(100vw - var(--hl) - 420px - 24px)}}
+@media(min-width:1021px) and (max-width:1400px){.hero-prod{width:calc(100vw - var(--hl) - 444px)}.pn-ask{width:calc(100vw - var(--hl) - 444px)}}
 
 @media(max-width:1020px){
   .ak-a{font-size:19px;line-height:28px}
