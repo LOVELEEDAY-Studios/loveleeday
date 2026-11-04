@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LOVELEEDAY — Meet Arthur</title>
+<meta name="description" content="Arthur reads the systems your organization already uses and answers plain questions, with the source behind every figure.">
+<meta name="theme-color" content="#14161a">
+<link rel="icon" href="../../site/assets/icon.svg" type="image/svg+xml">
+<link rel="preload" href="../../site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="brain.png" as="image">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="r2.css">
+<noscript><style>.seq{height:auto!important}.seq .stage{position:relative!important;height:100svh}.seq-static{display:block!important}.fan,.checks{height:auto!important}.fan .fan-stage,.checks .checks-stage{position:relative!important}.rail{height:auto!important}.rail-stage{position:relative!important;height:auto!important}.rail-track{overflow-x:auto}.fan .card,.checks .plate{opacity:1!important}</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav-bar">
+    <a class="brand" href="../../site/index.html" aria-label="LOVELEEDAY home"><img src="../../site/assets/icon.svg" width="24" height="24" alt=""><span>LOVELEEDAY</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu"><span></span><span></span></button>
+    <div class="nav-menu" id="nav-menu">
+      <nav class="nav-main" aria-label="Main navigation">
+        <details class="nav-item"><summary>Product</summary><div class="nav-panel">
+          <a href="../../site/arthur.html"><b>Arthur</b><small>Data intelligence that connects your systems into one picture</small></a>
+          <a href="../../site/operating-system.html"><b>Operating system</b><small>One connected understanding of your business</small></a>
+          <a href="../../site/how-it-works.html"><b>How it works</b><small>From your first question to a figure you can defend</small></a>
+          <a href="../../site/architecture.html"><b>Architecture</b><small>Identity, lineage, memory, verification, awareness</small></a>
+          <a href="../../site/integrations.html"><b>Integrations</b><small>The systems Arthur reads, released one by one</small></a>
+          <a href="../../site/trust.html"><b>Trust and security</b><small>How your data is kept, used and deleted</small></a>
+        </div></details>
+        <details class="nav-item"><summary>Solutions</summary><div class="nav-panel">
+          <a href="../../site/customer-data.html"><b>Customer data</b><small>Many records, one customer you can trust</small></a>
+          <a href="../../site/operational-intelligence.html"><b>Operational intelligence</b><small>Know what changed and what needs attention</small></a>
+          <a href="../../site/pricing-margins.html"><b>Pricing and margins</b><small>Includes the free pricing Snapshot</small></a>
+          <a href="../../site/municipal-review.html"><b>Municipal review</b><small>Faster, traceable public-sector reviews</small></a>
+          <a href="../../site/use-cases.html"><b>All use cases</b><small>Every way teams put Arthur to work</small></a>
+          <a href="../../site/industries.html"><b>All industries</b><small>Retail, services, government, nonprofits and more</small></a>
+        </div></details>
+        <details class="nav-item"><summary>Services</summary><div class="nav-panel nav-narrow">
+          <a href="../../site/build.html"><b>What we build</b><small>Applications, automation, data work and more</small></a>
+          <a href="../../site/talk.html"><b>Ways to work together</b><small>Start with one question</small></a>
+          <a href="../../site/contact.html#message"><b>Start a project</b><small>Send a short brief and we reply with next steps</small></a>
+        </div></details>
+        <details class="nav-item"><summary>Company</summary><div class="nav-panel nav-narrow">
+          <a href="../../site/studio.html"><b>About</b><small>Who we are and why we build</small></a>
+          <a href="../../site/principles.html"><b>Principles</b><small>Clarity, context and trust</small></a>
+          <a href="../../site/work.html"><b>Work</b><small>What we have made</small></a>
+          <a href="../../site/notes.html"><b>Systems Notes</b><small>How organizations actually work</small></a>
+          <a href="../../site/faq.html"><b>FAQ</b></a>
+          <a href="../../site/contact.html"><b>Contact</b></a>
+        </div></details>
+      </nav>
+      <div class="nav-actions"><a class="nav-signin" href="https://portal.loveleedaystudios.com/client/login">Sign in</a><a class="nav-cta" href="../../site/contact.html">Talk to us</a></div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 1. THE KEYNOTE: hero + pinned sequence -->
+<section class="seq" id="seq" aria-label="Meet Arthur">
+  <div class="stage" id="stage">
+    <div class="bloom" id="bloom" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+    <img class="still" id="still" src="brain.png" alt="" width="924" height="638">
+    <canvas id="brain" role="img" aria-label="Arthur: a turning three-dimensional brain with signals moving between connected points as it works through a question"></canvas>
+    <svg class="links" id="links" aria-hidden="true"></svg>
+
+    <div class="hero-copy" id="heroCopy">
+      <h1>Meet Arthur.</h1>
+      <p>Ask in plain words. Every figure comes with its source.</p>
+      <a class="hero-act" href="#proof">See an answer</a>
+    </div>
+
+    <p class="q" id="q" aria-hidden="true">If this part shows up late, which orders and customers does it hold up?</p>
+    <p class="qline" id="qline" aria-hidden="true">If this part shows up late, which orders and customers does it hold up?</p>
+
+    <div class="chip" data-i="0" aria-hidden="true">Which open orders need the part?</div>
+    <div class="chip" data-i="1" aria-hidden="true">Which customers placed them?</div>
+    <div class="chip" data-i="2" aria-hidden="true">Did the latest batch pass inspection?</div>
+    <div class="chip" data-i="3" aria-hidden="true">What did the supplier say last?</div>
+
+    <div class="src" data-i="0" aria-hidden="true"><i></i><span>Open orders</span></div>
+    <div class="src" data-i="1" aria-hidden="true"><i></i><span>Inspection records</span></div>
+    <div class="src" data-i="2" aria-hidden="true"><i></i><span>Supplier email</span></div>
+
+    <p class="cap" id="cap" aria-hidden="true"></p>
+
+    <div class="ans" id="ans" aria-hidden="true">
+      <p class="ans-label">Arthur answers</p>
+      <p class="ans-text">Fourteen orders wait on it, and the latest batch failed inspection.</p>
+      <p class="ans-src"><span>Open orders</span><span>Inspection records</span><span>Supplier email</span></p>
+      <p class="ans-next"><b>Next step</b>Call those customers first.</p>
+      <p class="ans-eg">Example data.</p>
+    </div>
+
+    <a class="scroll-hint" id="hint" href="#fan" aria-label="Scroll"><span></span></a>
+  </div>
+</section>
+
+<!-- Finished state of the sequence: static mode, reduced motion, no JS -->
+<section class="seq-static" id="seq-static" aria-label="A question, answered">
+  <div class="ss-in">
+    <p class="ss-q">If this part shows up late, which orders and customers does it hold up?</p>
+    <ul class="ss-chips"><li>Which open orders need the part?</li><li>Which customers placed them?</li><li>Did the latest batch pass inspection?</li><li>What did the supplier say last?</li></ul>
+    <div class="ss-ans">
+      <p class="ans-label">Arthur answers</p>
+      <p class="ans-text">Fourteen orders wait on it, and the latest batch failed inspection.</p>
+      <p class="ans-src"><span>Open orders</span><span>Inspection records</span><span>Supplier email</span></p>
+      <p class="ans-next"><b>Next step</b>Call those customers first.</p>
+      <p class="ans-eg">Example data.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. THE FAN -->
+<section class="fan" id="fan" aria-label="The product">
+  <div class="fan-stage">
+    <h2 class="fan-h">See the record<br>behind every answer.</h2>
+    <p class="fan-p">Ask a question in the workspace. The answer comes only from your records, and each figure is shown with the file and line it came from.</p>
+    <div class="fan-deck" id="deck">
+      <figure class="card" data-i="0"><img src="../../site/assets/portal/portal-workstreams-2x.png" alt="The workspace overview: an overall grade, counts of tasks done and in progress, and a decision waiting for a person." loading="lazy"><figcaption>What needs you today</figcaption></figure>
+      <figure class="card" data-i="1"><img src="../../site/assets/portal/portal-signals-1440.png" alt="A table of outside price changes, each with its source and as-of date." loading="lazy"><figcaption>What changed outside</figcaption></figure>
+      <figure class="card" data-i="2"><img src="../../site/assets/portal/portal-ask4-2x.png" alt="A question typed into the workspace and an answer quoted from a document, with the file and line named." loading="lazy"><figcaption>Ask, and check the source</figcaption></figure>
+      <figure class="card" data-i="3"><img src="../../site/assets/portal/portal-ask3-2x.png" alt="A second question answered in plain words with its source line." loading="lazy"><figcaption>Plain words, quoted exactly</figcaption></figure>
+      <figure class="card" data-i="4"><img src="../../site/assets/portal/portal-workstreams-grade-2x.png" alt="An overall grade for open work with the next step beneath." loading="lazy"><figcaption>Where you stand</figcaption></figure>
+    </div>
+    <p class="fan-eg">Demonstration data.</p>
+  </div>
+</section>
+
+<!-- 3. BENTO -->
+<section class="bento-sec" id="bento" aria-label="What it does">
+  <h2 class="bento-h">One place to ask.<br><span>Everything it knows, checked.</span></h2>
+  <div class="bento">
+    <article class="t t-a">
+      <img src="../../site/assets/industry-manufacturing-3.jpg" alt="Two colleagues in a warehouse aisle review a clipboard together" loading="lazy">
+      <div class="t-card"><b>Fourteen orders wait on the part.</b><span>The latest batch failed inspection. Call those customers first.</span></div>
+    </article>
+    <article class="t t-b">
+      <img src="../../site/assets/portal/portal-ask4-2x.png" alt="A question typed into the workspace and the answer quoted from a document, with the source file and line named" loading="lazy">
+    </article>
+    <article class="t t-c">
+      <p class="t-lab">One customer, filed three ways</p>
+      <ul><li><s>Northline Studio</s><small>CRM</small></li><li><s>Northline Studio Ltd.</s><small>Billing</small></li><li><s>Northline</s><small>Support</small></li></ul>
+      <p class="t-one">One customer.<br>One record you can trust.</p>
+    </article>
+    <article class="t t-d">
+      <img src="../../site/assets/hero-customer.jpg" alt="A woman reading through paperwork at a cafe table" loading="lazy">
+      <div class="t-q">What is going on with this customer?</div>
+    </article>
+    <article class="t t-f">
+      <img src="../../site/assets/portal/portal-workstreams-grade-2x.png" alt="An overall grade, B, at twenty percent done, with the next grade when the open work is finished" loading="lazy">
+    </article>
+    <article class="t t-e">
+      <img src="../../site/assets/portal/portal-signals-1440.png" alt="A table of outside price changes, each with its source and as-of date" loading="lazy">
+    </article>
+    <article class="t t-g">
+      <p>Pure intelligence.<br><em>For a fuller life.</em></p>
+    </article>
+  </div>
+</section>
+
+<!-- 4. FIVE CHECKS -->
+<section class="checks" id="checks" aria-label="Five checks under every answer" data-theme="dark">
+  <div class="checks-stage">
+    <div class="ck-copy">
+      <h2>Five checks <br>run under <br>every answer.</h2>
+      <p class="ck-sub">Before you act on an answer, you can verify who it concerns, where each figure came from, when it was true, what supports it and what changed.</p>
+      <p class="ck-line" id="ckLine"></p>
+      <ol class="ck-list" id="ckList">
+        <li data-i="1"><b>Who it concerns</b><span>HES and vendor 44127 are one company.</span></li>
+        <li data-i="2"><b>Where it came from</b><span>The ledger, bills one to three.</span></li>
+        <li data-i="3"><b>When it was true</b><span>As of the last ledger update.</span></li>
+        <li data-i="4"><b>What supports it</b><span>Each invoice matches a recorded value.</span></li>
+        <li data-i="5"><b>What changed</b><span>One invoice was corrected on Tuesday.</span></li>
+      </ol>
+      <p class="ck-eg">Example data.</p>
+    </div>
+    <div class="ck-scene" aria-hidden="true">
+      <div class="ck-stack" id="ckStack">
+        <div class="plate p5"><span>5</span><b>What changed</b></div>
+        <div class="plate p4"><span>4</span><b>What supports it</b></div>
+        <div class="plate p3"><span>3</span><b>When it was true</b></div>
+        <div class="plate p2"><span>2</span><b>Where it came from</b></div>
+        <div class="plate p1"><span>1</span><b>Who it concerns</b></div>
+        <div class="plate p0"><em>Harbor Equipment Services has three open invoices.</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4b. ONE ANSWER, FULL WIDTH, WITH ITS SOURCE -->
+<section class="proof" id="proof" aria-label="One answer and the record behind it">
+  <div class="pf-in">
+    <p class="pf-q">If this part shows up late, which orders and customers does it hold up?</p>
+    <p class="pf-a">Fourteen orders wait on it, and the latest batch failed inspection.</p>
+    <ol class="pf-src">
+      <li><b>Fourteen orders</b><span>Open orders, rows 4,112 to 4,125. The part is listed and the status is waiting.</span></li>
+      <li><b>Failed inspection</b><span>Inspection records, batch report, line 9. Result: failed. Entered Tuesday.</span></li>
+      <li><b>The supplier's last word</b><span>Supplier email, Tuesday morning. The replacement lot ships Friday.</span></li>
+    </ol>
+    <p class="pf-next"><b>Next step</b>Call those customers first.</p>
+    <p class="pf-eg">Example data. In your workspace every figure is shown with its line, exactly like this.</p>
+  </div>
+</section>
+
+<!-- 5. INDUSTRIES RAIL -->
+<section class="rail" id="rail" aria-label="Industries">
+  <div class="rail-stage">
+    <div class="rail-track" id="track">
+      <div class="rail-head"><h2>Every kind of organization<br>asks the same thing.</h2><p>What is going on, and what should I do about it?</p></div>
+      <figure class="r r-tall"><div class="ph"><img src="../../site/assets/industry-manufacturing-3.jpg" alt="Two colleagues in a warehouse aisle review a clipboard" loading="lazy"></div><figcaption><b>Manufacturing</b><span>Which batches did we ship before the test result came back?</span></figcaption></figure>
+      <figure class="r r-short"><div class="ph"><img src="../../site/assets/ph-schools.jpg" alt="A school leader talks with a student in a bright corridor" loading="lazy"></div><figcaption><b>Schools</b><span>Which families still owe a form before the trip?</span></figcaption></figure>
+      <figure class="r r-tall"><div class="ph"><img src="../../site/assets/industry-property.jpg" alt="Apartment buildings at dusk" loading="lazy"></div><figcaption><b>Property</b><span>Which buildings cost the most to keep up this year?</span></figcaption></figure>
+      <figure class="r r-short"><div class="ph"><img src="../../site/assets/industry-retail-3.jpg" alt="A shop owner writing at a glass counter of watches" loading="lazy"></div><figcaption><b>Retail</b><span>Is this the same customer, or three different ones?</span></figcaption></figure>
+      <figure class="r r-tall"><div class="ph"><img src="../../site/assets/ph-government-2.jpg" alt="A clerk at her desk receiving a slip of paper from a colleague" loading="lazy"></div><figcaption><b>Government</b><span>Which permits run out before the council meets again?</span></figcaption></figure>
+      <figure class="r r-short"><div class="ph"><img src="../../site/assets/industry-nonprofit-2.jpg" alt="Two volunteers sorting donated goods into bins" loading="lazy"></div><figcaption><b>Nonprofits</b><span>Which grants report next month, and who owns each one?</span></figcaption></figure>
+      <figure class="r r-tall"><div class="ph"><img src="../../site/assets/industry-professional-services-3.jpg" alt="Two colleagues reviewing binders at a table above a city" loading="lazy"></div><figcaption><b>Professional services</b><span>Which clients have work we have not billed in two months?</span></figcaption></figure>
+    </div>
+    <p class="rail-eg">Example questions. Photography is licensed stock.</p>
+  </div>
+</section>
+
+<!-- 6. CLOSE -->
+<section class="close" id="close" data-theme="dark">
+  <div class="close-in">
+    <h2>We give the<br>day back.</h2>
+    <figure class="close-ph"><img src="../../site/assets/dinner.jpg" width="940" height="529" alt="Friends talking around a table beside a fire while a server brings food" loading="lazy"></figure>
+    <p class="close-l">So you can be here.</p>
+    <a class="cta" href="../../site/contact.html">Talk to us</a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer" data-theme="dark">
+  <div class="ft-wrap">
+    <div class="footer-top"><div class="footer-sign"><a class="footer-mark" href="../../site/index.html"><img src="../../site/assets/icon.svg" width="24" height="24" alt=""><span>LOVELEEDAY</span></a><p class="footer-line">Pure intelligence.<br>For a fuller life.</p></div><div class="gf-ctas"><a class="footer-cta" href="../../site/contact.html">Talk to us</a><a class="footer-cta gf-ghost" href="../../site/how-it-works.html">How it works</a></div></div>
+    <div class="footer-grid">
+      <div class="footer-col"><strong>Product</strong><a href="../../site/arthur.html">Arthur</a><a href="../../site/operating-system.html">Operating system</a><a href="../../site/how-it-works.html">How it works</a><a href="../../site/architecture.html">Architecture</a><a href="../../site/integrations.html">Integrations</a></div>
+      <div class="footer-col"><strong>Solutions</strong><a href="../../site/customer-data.html">Customer data</a><a href="../../site/operational-intelligence.html">Operational intelligence</a><a href="../../site/pricing-margins.html">Pricing and margins</a><a href="../../site/snapshot.html">Free pricing Snapshot</a><a href="../../site/municipal-review.html">Municipal review</a><a href="../../site/use-cases.html">All use cases</a></div>
+      <div class="footer-col"><strong>Industries</strong><a href="../../site/industries/manufacturing.html">Manufacturing and distribution</a><a href="../../site/industries/property.html">Property management</a><a href="../../site/industries/schools.html">Schools and charters</a><a href="../../site/industries.html">All industries</a></div>
+      <div class="footer-col"><strong>Services</strong><a href="../../site/build.html">What we build</a><a href="../../site/talk.html">Ways to work together</a><a href="../../site/contact.html#message">Start a project</a></div>
+      <div class="footer-col"><strong>Company</strong><a href="../../site/studio.html">About</a><a href="../../site/principles.html">Principles</a><a href="../../site/work.html">Work</a><a href="../../site/notes.html">Systems Notes</a><a href="../../site/trust.html">Trust and security</a><a href="../../site/faq.html">FAQ</a><a href="../../site/contact.html">Contact</a><a href="https://portal.loveleedaystudios.com/client/login">Sign in</a></div>
+    </div>
+    <div class="footer-legal"><span>&copy; 2026 LOVELEEDAY Studios LLC · <a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a></span><span><a href="../../site/privacy.html">Privacy</a><a href="../../site/terms.html">Terms</a></span><span><a href="https://www.linkedin.com/company/loveleeday-studios/" target="_blank" rel="me noopener">LinkedIn</a></span></div>
+    <p class="gf-note">Interactive examples use demonstration data. Photography is licensed stock.</p>
+  </div>
+</footer>
+
+<script src="brain.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

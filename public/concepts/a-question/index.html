@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LOVELEEDAY: Ask a question</title>
+<meta name="description" content="Ask a plain question about your orders, accounts or records. Arthur answers from the systems you connect and shows the source behind every figure.">
+<link rel="icon" href="../../site/assets/icon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add('js');if(/[?&]static=1/.test(location.search)||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('static')</script>
+<link rel="preload" href="../../site/assets/fonts/switzer-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="q.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="/site/" aria-label="LOVELEEDAY home"><img src="../../site/assets/icon.svg" alt="" width="22" height="22"><span>LOVELEEDAY</span></a>
+    <nav class="nav-main" aria-label="Main navigation" id="navMain">
+      <div class="ni"><button type="button" class="nb" aria-haspopup="true">Product</button><div class="np"><a href="/site/arthur">Arthur</a><a href="/site/operating-system">Operating system</a><a href="/site/how-it-works">How it works</a><a href="/site/architecture">Architecture</a><a href="/site/integrations">Integrations</a><a href="/site/trust">Trust and security</a></div></div>
+      <div class="ni"><button type="button" class="nb" aria-haspopup="true">Solutions</button><div class="np"><a href="/site/customer-data">Customer data</a><a href="/site/operational-intelligence">Operational intelligence</a><a href="/site/pricing-margins">Pricing and margins</a><a href="/site/municipal-review">Municipal review</a><a href="/site/industries/manufacturing">Manufacturing and distribution</a><a href="/site/industries/property">Property management</a><a href="/site/industries/schools">Schools and charters</a><a href="/site/use-cases">All use cases</a></div></div>
+      <div class="ni"><button type="button" class="nb" aria-haspopup="true">Services</button><div class="np"><a href="/site/build">What we build</a><a href="/site/talk">Ways to work together</a><a href="/site/contact#message">Start a project</a></div></div>
+      <div class="ni"><button type="button" class="nb" aria-haspopup="true">Company</button><div class="np"><a href="/site/studio">About</a><a href="/site/principles">Principles</a><a href="/site/work">Work</a><a href="/site/notes">Systems Notes</a><a href="/site/faq">FAQ</a><a href="/site/contact">Contact</a></div></div>
+      <a class="nav-m" href="https://portal.loveleedaystudios.com/client/login">Sign in</a>
+    </nav>
+    <div class="nav-r"><a class="signin" href="https://portal.loveleedaystudios.com/client/login">Sign in</a><a class="pill" href="/site/contact">Talk to us</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="navMain" aria-label="Open menu"><i></i><i></i></button></div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 1. THE QUESTION -->
+<section class="hero" id="hero" aria-label="A question, answered">
+  <p class="who" id="who">A plant manager asks</p>
+  <div class="qz"><h1 class="q" id="q">If this part ships late, which customers wait?</h1></div>
+  <div class="ans" id="ans" aria-live="polite">
+    <div class="beat on"><h3>What we found</h3><p>Fourteen orders wait on it, and the latest batch failed inspection.</p></div>
+    <div class="beat on"><h3>Why it matters</h3><p>Every one of those orders is waiting on the same failed lot.</p></div>
+    <div class="beat on"><h3>What to do next</h3><p>Call those customers first, then ask the supplier for a new date.</p></div>
+  </div>
+  <p class="srcl on" id="srcl">Read from: Open orders, Inspection record, Supplier email. Example data.</p>
+  <p class="what"><b>Arthur</b> reads the systems you connect, answers in plain words, and shows the records behind every figure.</p>
+  <div class="ctl">
+    <ul class="chips" id="chips" aria-label="Who is asking"></ul>
+    <form class="ask" id="ask" autocomplete="off">
+      <label class="sr" for="askIn">Type your own question</label>
+      <input id="askIn" type="text" maxlength="110" placeholder="Or type your own question" enterkeyhint="send">
+      <button type="submit" aria-label="Ask">Ask</button>
+    </form>
+  </div>
+</section>
+
+<!-- 2. THE WORDS TRAVEL -->
+<section class="bk" id="break" aria-label="Where the answer comes from">
+  <div class="bk-stage" id="bkStage">
+    <h2 class="bk-flow" id="bkFlow"><span class="w" data-i="0">If</span> <span class="w" data-i="1">this</span> <span class="w" data-i="2">part</span> <span class="w" data-i="3">ships</span> <span class="w" data-i="4">late,</span> <span class="w" data-i="5">which</span> <span class="w" data-i="6">customers</span> <span class="w" data-i="7">wait?</span></h2>
+    <p class="bk-answer" id="bkAnswer">Fourteen orders wait on it, and the latest batch failed inspection. Call those customers first.</p>
+    <div class="bk-sys" id="bkSys">
+      <div class="sc">
+        <h3>Orders</h3>
+        <p class="row d1">Order 20401 &middot; Ellis Fabrication &middot; 220 units</p>
+        <p class="row hit" data-k="0"><span class="sl" data-s="6">customers</span><span class="val"> Hartwell Supply, Dunmore Tool, Ellis Fabrication and 11 more</span></p>
+        <p class="row d2">Order 20407 &middot; Dunmore Tool &middot; promised Nov 14</p>
+        <p class="row d3">Order 20412 &middot; Hartwell Supply &middot; 90 units</p>
+      </div>
+      <div class="sc">
+        <h3>Inspection records</h3>
+        <p class="row d1">Part 3380-A &middot; lot 7702 &middot; passed Oct 24</p>
+        <p class="row hit" data-k="1"><span class="sl" data-s="1">this</span> <span class="sl" data-s="2">part</span><span class="val"> 4410-B, lot 7731, failed inspection Oct 29</span></p>
+        <p class="row d2">Part 4410-B &middot; lot 7688 &middot; passed Oct 11</p>
+        <p class="row d3">Part 5120-C &middot; lot 7715 &middot; passed Oct 27</p>
+      </div>
+      <div class="sc">
+        <h3>Supplier email</h3>
+        <p class="row d1">Calder Resin &middot; invoice attached</p>
+        <p class="row hit" data-k="2"><span class="sl" data-s="3">ships</span> <span class="sl" data-s="4">late,</span><span class="val"> Calder Resin, Oct 30: lot 7731 slips to Nov 20</span></p>
+        <p class="row d2">Re: freight window for the 14th</p>
+        <p class="row d3">Calder Resin &middot; price list update</p>
+      </div>
+    </div>
+    <div class="bk-src" id="bkSrc"><p class="bk-sl" id="bkSl">Every figure shows where it came from.</p><p class="sp"></p><p class="sp"></p><p class="sp"></p></div>
+  </div>
+</section>
+
+<!-- 3. THE STATEMENT -->
+<section class="st" id="statement">
+  <p class="st-t" id="stT">Your answers are already written down. They sit in your orders, your records and your inbox, in systems that never speak to each other. Arthur reads them all, and tells you where it found each one.</p>
+</section>
+
+<!-- 4. THE WALL -->
+<section class="wall" id="wall" aria-label="Questions people ask">
+  <div class="wall-h">
+    <h2 class="mk" id="wallH">Every day, someone asks one of these.</h2>
+    <div class="wall-f"><ul class="filters" id="filters" aria-label="Filter by who is asking"></ul><p class="wcount" id="wcount" aria-live="polite"></p></div>
+  </div>
+  <div class="wall-v"><div class="wall-cols" id="wallCols"></div></div>
+  <p class="wall-n">Hover or tap a question to open its answer. Example data.</p>
+</section>
+
+<!-- 5. THE PHOTOGRAPH -->
+<section class="ph" id="photo">
+  <div class="ph-frame" id="phFrame"><div class="ph-pos"><img id="phImg" src="../../site/assets/industry-manufacturing-3.jpg" alt="Two colleagues in a warehouse aisle, one holding a clipboard while the other points to a line on it" width="1880" height="1251"></div></div>
+  <p class="ph-c">On the clipboard: whether to call the fourteen waiting customers today, or wait for the supplier&rsquo;s new date.</p>
+</section>
+
+<!-- 6. TRUST -->
+<section class="tr" id="trust">
+  <h2 class="tr-h mk" id="trH">Every figure carries a footnote.</h2>
+  <p class="tr-ex"><span>Fourteen orders wait on it,<sup>1</sup></span> <span>and the latest batch failed inspection.<sup>2</sup></span> <span>Call those customers first.</span></p>
+  <ol class="tr-fn">
+    <li><i>1</i><span>Open orders. Fourteen rows. Follow it to the line.</span></li>
+    <li><i>2</i><span>Inspection record. Lot 7731, failed Oct 29.</span></li>
+  </ol>
+  <figure class="tr-n" id="trN">
+    <figcaption>One customer, three names</figcaption>
+    <p><small>CRM</small><b>Northline Studio</b></p>
+    <p><small>Billing</small><b>Northline Studio Ltd.</b></p>
+    <p><small>Support</small><b>Northline</b></p>
+    <span class="tr-rule"></span>
+    <p class="tr-one"><em>One customer.</em> <small>Shown with the three names it joined.</small></p>
+  </figure>
+  <div class="tr-c">
+    <div><h3>Read from your records</h3><p>Arthur answers from the systems you connect. If the answer is not in them, it says so instead of guessing.</p></div>
+    <div><h3>Followed to the line</h3><p>Every figure leads back to the record it came from, in the system that holds it. You can check it yourself in a click.</p></div>
+    <div><h3>Names matched, then shown</h3><p>When one customer or supplier appears under several names, Arthur treats it as one and shows you the names it joined.</p></div>
+  </div>
+</section>
+
+<!-- 7. HOW IT STARTS -->
+<section class="sx" id="start">
+  <h2 class="sx-h mk" id="sxH">Bring the question that costs you the most time.</h2>
+  <p class="sx-p">You bring one question. We connect one system, read-only. You get a written answer.</p>
+  <div class="sx-a"><a class="pill pill-blue" href="/site/contact#message">Talk to us</a><a class="tl" href="/site/how-it-works">See how it works</a></div>
+</section>
+
+<!-- 8. THE CLOSE -->
+<section class="cl" id="company">
+  <figure class="cl-ph" id="clPh"><img src="../../site/assets/dinner.jpg" alt="Friends at a table in the evening, a server taking an order beside an open fire" width="940" height="529" loading="lazy"></figure>
+  <div class="cl-t"><h2>We give the day back.</h2><p>So you can be here.</p></div>
+</section>
+
+</main>
+
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div class="ft-sign"><a class="ft-mark" href="/site/"><img src="../../site/assets/icon.svg" alt="" width="22" height="22"><span>LOVELEEDAY</span></a><p>Pure intelligence.<br>For a fuller life.</p></div>
+      <div class="ft-cta"><a class="fb" href="/site/contact">Talk to us</a><a class="fb fg" href="/site/how-it-works">How it works</a></div>
+    </div>
+    <div class="ft-grid">
+      <div><strong>Product</strong><a href="/site/arthur">Arthur</a><a href="/site/operating-system">Operating system</a><a href="/site/how-it-works">How it works</a><a href="/site/architecture">Architecture</a><a href="/site/integrations">Integrations</a></div>
+      <div><strong>Solutions</strong><a href="/site/customer-data">Customer data</a><a href="/site/operational-intelligence">Operational intelligence</a><a href="/site/pricing-margins">Pricing and margins</a><a href="/site/snapshot">Free pricing Snapshot</a><a href="/site/municipal-review">Municipal review</a><a href="/site/use-cases">All use cases</a></div>
+      <div><strong>Industries</strong><a href="/site/industries/manufacturing">Manufacturing and distribution</a><a href="/site/industries/property">Property management</a><a href="/site/industries/schools">Schools and charters</a><a href="/site/industries">All industries</a></div>
+      <div><strong>Services</strong><a href="/site/build">What we build</a><a href="/site/talk">Ways to work together</a><a href="/site/contact#message">Start a project</a></div>
+      <div><strong>Company</strong><a href="/site/studio">About</a><a href="/site/principles">Principles</a><a href="/site/work">Work</a><a href="/site/notes">Systems Notes</a><a href="/site/trust">Trust and security</a><a href="/site/faq">FAQ</a><a href="/site/contact">Contact</a><a href="https://portal.loveleedaystudios.com/client/login">Sign in</a></div>
+    </div>
+    <div class="ft-legal"><span>&copy; 2026 LOVELEEDAY Studios LLC &middot; <a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a></span><span><a href="/site/privacy">Privacy</a><a href="/site/terms">Terms</a></span><span><a href="https://www.linkedin.com/company/loveleeday-studios/" target="_blank" rel="me noopener">LinkedIn</a></span></div>
+    <p class="ft-note">Interactive examples use demonstration data. Photography is licensed stock.</p>
+  </div>
+</footer>
+
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../vendor/lenis.min.js"></script>
+<script src="data.js"></script>
+<script src="q.js"></script>
+</body>
+</html>

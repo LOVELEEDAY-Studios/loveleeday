@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LOVELEEDAY — Your records, in order</title>
+<meta name="description" content="Ask Arthur a question about your organization. It connects the records across your systems and shows the source behind every answer.">
+<link rel="preload" href="../../site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-bar">
+    <a class="brand" href="/site/index.html" aria-label="LOVELEEDAY home"><img src="../../site/assets/icon.svg" width="24" height="24" alt="">LOVELEEDAY</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu"><span></span><span></span></button>
+    <div class="nav-menu" id="nav-menu">
+      <nav class="nav-main" aria-label="Main navigation">
+        <details class="nav-item"><summary>Product</summary>
+          <div class="nav-panel">
+            <a href="/site/arthur.html"><b>Arthur</b><small>Data intelligence that connects your systems into one picture</small></a>
+            <a href="/site/operating-system.html"><b>Operating system</b><small>One connected understanding of your business</small></a>
+            <a href="/site/how-it-works.html"><b>How it works</b><small>From your first question to a figure you can defend</small></a>
+            <a href="/site/architecture.html"><b>Architecture</b><small>Identity, lineage, memory, verification, awareness</small></a>
+            <a href="/site/integrations.html"><b>Integrations</b><small>The systems Arthur reads, released one by one</small></a>
+            <a href="/site/trust.html"><b>Trust and security</b><small>How your data is kept, used and deleted</small></a>
+          </div></details>
+        <details class="nav-item"><summary>Solutions</summary>
+          <div class="nav-panel">
+            <a href="/site/customer-data.html"><b>Customer data</b><small>Many records, one customer you can trust</small></a>
+            <a href="/site/operational-intelligence.html"><b>Operational intelligence</b><small>Know what changed and what needs attention</small></a>
+            <a href="/site/pricing-margins.html"><b>Pricing and margins</b><small>Includes the free pricing Snapshot</small></a>
+            <a href="/site/municipal-review.html"><b>Municipal review</b><small>Faster, traceable public-sector reviews</small></a>
+            <a href="/site/use-cases.html"><b>All use cases</b><small>Every way teams put Arthur to work</small></a>
+            <a href="/site/industries.html"><b>All industries</b><small>Retail, services, government, nonprofits and more</small></a>
+          </div></details>
+        <details class="nav-item"><summary>Services</summary>
+          <div class="nav-panel">
+            <a href="/site/build.html"><b>What we build</b><small>Applications, automation, data work and more</small></a>
+            <a href="/site/talk.html"><b>Ways to work together</b><small>Start with one question</small></a>
+            <a href="/site/contact.html#message"><b>Start a project</b><small>Send a short brief and we reply with next steps</small></a>
+          </div></details>
+        <details class="nav-item"><summary>Company</summary>
+          <div class="nav-panel">
+            <a href="/site/studio.html"><b>About</b><small>Who we are and why we build</small></a>
+            <a href="/site/principles.html"><b>Principles</b><small>Clarity, context and trust</small></a>
+            <a href="/site/work.html"><b>Work</b><small>What we have made</small></a>
+            <a href="/site/notes.html"><b>Systems Notes</b><small>How organizations actually work</small></a>
+            <a href="/site/faq.html"><b>FAQ</b></a>
+            <a href="/site/contact.html"><b>Contact</b></a>
+          </div></details>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-signin" href="https://portal.loveleedaystudios.com/client/login">Sign in</a>
+        <a class="nav-cta" href="/site/contact.html">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<canvas id="field" aria-hidden="true"></canvas>
+
+<main id="main">
+
+<!-- 1. HERO: the field, with the headline inside it -->
+<section class="hero" data-scene="0" aria-label="LOVELEEDAY">
+  <div class="hero-in fg">
+    <h1 id="h1"><span class="ln">Your records,</span><span class="ln">in order.</span></h1>
+    <p class="lead" data-mask>Ask Arthur a question about your organization. It connects the records across your systems and shows the source behind every answer.</p>
+    <div class="hero-actions" data-mask>
+      <a class="btn" href="/site/how-it-works.html">See how Arthur works</a>
+      <a class="tlink" href="/site/contact.html#message">Talk to us <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+  <aside class="hero-rec fg" data-mask aria-label="Example: one vendor found under three names">
+    <p class="hr-k">One vendor, three names</p>
+    <p class="hr-n">Harbor Equipment Services</p>
+    <dl><div><dt>Ledger</dt><dd>Vendor 44127</dd></div><div><dt>Mailbox</dt><dd>HES</dd></div><div><dt>Contracts</dt><dd>Harbor Equipment Services</dd></div></dl>
+    <p class="hr-v">Recognized as one company, with 47 records behind it. <em>Example data.</em></p>
+  </aside>
+  <p class="hero-cue fg" id="cue" data-mask>Every mark is a record. Move across the field.</p>
+</section>
+
+<!-- 2. SIGNATURE: three names lock into one record -->
+<section class="sig" id="sig" data-scene="2" aria-label="One vendor, three names">
+  <div class="sig-stage fg">
+    <p class="sig-cap c0" data-mask><span>Look at one vendor.</span></p>
+    <p class="sig-cap c1" data-mask><span>Arthur recognizes it, and everything around it follows.</span></p>
+
+    <div class="tile t0" aria-hidden="true"><small>Ledger</small><b>Vendor 44127</b><i>14 invoices</i></div>
+    <div class="tile t1" aria-hidden="true"><small>Mailbox</small><b>HES</b><i>31 messages</i></div>
+    <div class="tile t2" aria-hidden="true"><small>Contracts</small><b>Harbor Equipment Services</b><i>2 agreements</i></div>
+    <div class="tile tm" data-mask aria-hidden="true"><small>One record</small><b>Harbor Equipment Services</b><ul><li><span>Ledger</span>Vendor 44127<i>14 invoices</i></li><li><span>Mailbox</span>HES<i>31 messages</i></li><li><span>Contracts</span>Harbor Equipment Services<i>2 agreements</i></li></ul></div>
+
+    <div class="sig-answer">
+      <p class="sa-q" data-mask><span>What you would ask</span>Are we paying the same supplier under different names?</p>
+      <div class="sa-a" data-mask>
+        <span class="lbl">What Arthur tells you</span>
+        <h2><span class="al">Listed three different ways,</span> <span class="al">but it is one company.</span> <span class="al">Now you can see what you really spend with them.</span></h2>
+      </div>
+      <div class="rule" data-anchor="rule"></div>
+      <ul class="srcs">
+        <li><small>Ledger</small>Vendor 44127</li>
+        <li><small>Mailbox</small>HES</li>
+        <li><small>Contracts</small>Harbor Equipment Services</li>
+        <li class="ex">Example data.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- bridge: type only -->
+<section class="bridge fg">
+  <p data-mask>Every organization keeps its records in a shape of its own. <span>Arthur learns yours.</span></p>
+</section>
+
+<!-- 3. INDUSTRIES: the field re-forms, then dissolves into a photograph -->
+<section class="ind" id="industries" aria-label="Kinds of organization">
+  <div class="ind-bg">
+    <article class="ii" data-k="0" data-scene="3"><img class="ii-photo" data-anchor="photo0" data-dir="r" src="../../site/assets/industry-manufacturing-3.jpg" width="1880" height="1251" alt="A supervisor and a colleague reviewing a checklist in a warehouse aisle" decoding="async"></article>
+    <article class="ii" data-k="1" data-scene="4"><img class="ii-photo" data-anchor="photo1" data-dir="l" src="../../site/assets/ph-schools.jpg" width="1880" height="1253" alt="A teacher talking with a student in a school hallway" loading="lazy" decoding="async"></article>
+    <article class="ii" data-k="2" data-scene="5"><img class="ii-photo" data-anchor="photo2" data-dir="t" src="../../site/assets/ph-government-2.jpg" width="1880" height="1273" alt="A clerk at her desk taking a form from a resident, shelves of binders behind her" loading="lazy" decoding="async"></article>
+    <article class="ii" data-k="3" data-scene="6"><img class="ii-photo" data-anchor="photo3" data-dir="r" src="../../site/assets/industry-nonprofit-2.jpg" width="1880" height="1253" alt="Two volunteers sorting donated goods into bins beside a bright window" loading="lazy" decoding="async"></article>
+  </div>
+  <div class="ind-fg fg">
+    <div class="ind-box">
+      <div class="ind-struct" data-k="0" data-anchor="struct0" data-live-only></div>
+      <div class="ind-struct" data-k="1" data-anchor="struct1" data-live-only></div>
+      <div class="ind-struct" data-k="2" data-anchor="struct2" data-live-only></div>
+      <div class="ind-struct" data-k="3" data-anchor="struct3" data-live-only></div>
+    </div>
+    <div class="ind-head" data-mask><h2>The same field, shaped by whatever you run.</h2></div>
+    <div class="ind-texts">
+      <article class="it" data-k="0" data-scene="3">
+        <div class="it-struct" data-sa="struct0"></div>
+        <div class="it-copy" data-mask>
+          <h3>Manufacturing and distribution</h3>
+          <p class="q"><span>What you would ask</span>Which suppliers run late most often, and which orders do they hold up?</p>
+          <p class="a"><span>What Arthur tells you</span>Three suppliers cause most of the delays. Two of them are filed under more than one name, so the problem looked smaller than it is.</p>
+          <p class="v">Made from open orders, inspection records and supplier email.</p>
+        </div>
+      </article>
+      <article class="it" data-k="1" data-scene="4">
+        <div class="it-struct" data-sa="struct1"></div>
+        <div class="it-copy" data-mask>
+          <h3>Schools and charters</h3>
+          <p class="q"><span>What you would ask</span>Which families still owe a form before the field trip?</p>
+          <p class="a"><span>What Arthur tells you</span>Eleven families still owe a form. Four of them were already reminded twice.</p>
+          <p class="v">Made from the roster, the forms system and parent email.</p>
+        </div>
+      </article>
+      <article class="it" data-k="2" data-scene="5">
+        <div class="it-struct" data-sa="struct2"></div>
+        <div class="it-copy" data-mask>
+          <h3>Local government</h3>
+          <p class="q"><span>What you would ask</span>Which permits expire next quarter, and who owns each one?</p>
+          <p class="a"><span>What Arthur tells you</span>Nineteen permits expire next quarter. Four have no owner named yet. Assign those first.</p>
+          <p class="v">Made from permit files, inspection notes and the clerk&rsquo;s calendar.</p>
+        </div>
+      </article>
+      <article class="it" data-k="3" data-scene="6">
+        <div class="it-struct" data-sa="struct3"></div>
+        <div class="it-copy" data-mask>
+          <h3>Nonprofits</h3>
+          <p class="q"><span>What you would ask</span>Which grants report next month, and who owns each one?</p>
+          <p class="a"><span>What Arthur tells you</span>Three reports are due next month. One has no owner named yet.</p>
+          <p class="v">Made from grant agreements, the donor list and the shared drive.</p>
+        </div>
+      </article>
+    </div>
+    <ol class="ind-rail" aria-hidden="true"><li></li><li></li><li></li><li></li></ol>
+  </div>
+</section>
+
+<!-- 4. TABLE BAND: names resolving row by row -->
+<section class="band" id="records" aria-label="Example records">
+  <div class="band-in">
+    <div class="band-head">
+      <h2>Names resolving, one row at a time.</h2>
+      <p>Each row is a real-looking record from a different system. Arthur recognizes what belongs together and shows what it was built from.</p>
+      <p class="band-count"><b id="rc">0</b> of <span id="rt">10</span> rows recognized <em>Example data.</em></p>
+    </div>
+    <div class="tbl" role="table" aria-label="Example records resolving to one name each">
+      <div class="tr th" role="row">
+        <span role="columnheader">No.</span><span role="columnheader">Accounting</span><span role="columnheader">Email</span><span role="columnheader">Agreements or files</span><span role="columnheader">Recognized as</span><span role="columnheader">Updated</span>
+      </div>
+      <div class="tr" role="row" data-r><span>01</span><span class="al">Vendor 44127</span><span class="al">HES</span><span class="al">Harbor Equipment Services</span><span class="rs"><i>Harbor Equipment Services</i></span><span>Oct 28</span></div>
+      <div class="tr" role="row" data-r><span>02</span><span class="al">Northline Studio Ltd.</span><span class="al">Northline</span><span class="al">Northline Studio</span><span class="rs"><i>Northline Studio</i></span><span>Nov 2</span></div>
+      <div class="tr" role="row" data-r><span>03</span><span class="al">4B &middot; Alder Ct</span><span class="al">Unit 4-B</span><span class="al">Lease 2291, Alder Court #4B</span><span class="rs"><i>Alder Court, unit 4B</i></span><span>Oct 30</span></div>
+      <div class="tr" role="row" data-r><span>04</span><span class="al">PN 88-1204</span><span class="al">the 12 ga bracket</span><span class="al">88-1204-C</span><span class="rs"><i>Bracket, 12 gauge, rev C</i></span><span>Oct 21</span></div>
+            <div class="tr" role="row" data-r><span>05</span><span class="al">Donor 7310</span><span class="al">M. Alvarado</span><span class="al">Alvarado family gift</span><span class="rs"><i>Mateo Alvarado</i></span><span>Oct 14</span></div>
+      <div class="tr" role="row" data-r><span>06</span><span class="al">Permit 22-0418</span><span class="al">Re: Kestrel signage</span><span class="al">Sign permit, Kestrel Logistics</span><span class="rs"><i>Kestrel Logistics, sign permit</i></span><span>Oct 26</span></div>
+            <div class="tr" role="row" data-r><span>07</span><span class="al">WO-5531</span><span class="al">boiler, north wing</span><span class="al">Service plan B</span><span class="rs"><i>Boiler, north wing</i></span><span>Nov 3</span></div>
+      <div class="tr" role="row" data-r><span>08</span><span class="al">Birchfield Acad.</span><span class="al">Office @ Birchfield</span><span class="al">Birchfield Academy Inc.</span><span class="rs"><i>Birchfield Academy</i></span><span>Nov 2</span></div>
+                  <div class="tr" role="row" data-r><span>09</span><span class="al">Cust 20871</span><span class="al">R. Okafor</span><span class="al">Okafor, loyalty acct</span><span class="rs"><i>Rina Okafor</i></span><span>Nov 1</span></div>
+                  <div class="tr" role="row" data-r><span>10</span><span class="al">Ironwood Frt</span><span class="al">Ironwood dispatch</span><span class="al">Ironwood Freight Lines</span><span class="rs"><i>Ironwood Freight</i></span><span>Nov 3</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. TRUST: every check is a behavior of the field -->
+<section class="trust" id="trust" aria-label="Checks">
+  <div class="tr-fg fg">
+    <div class="tr-field" data-anchor="trfield" data-live-only></div>
+    <div class="tr-left">
+      <h2 data-mask>Open any answer and see where it came from.</h2>
+      <p class="tr-sub" data-mask>Five checks run underneath every one. Watch what each does to the field.</p>
+      <ol class="tr-list">
+        <li class="tc" data-k="0" data-scene="7">
+          <div class="tc-field" data-sa="trfield"></div>
+          <div class="tc-copy" data-mask><span class="tc-n">01</span><h3>Names</h3><p class="tc-t">Different names, one customer</p><p class="tc-b">A customer can be a name in your inbox, a number in your ledger and a nickname in conversation. Arthur learns they are one, so everything about them stays together.</p></div>
+        </li>
+        <li class="tc" data-k="1" data-scene="8">
+          <div class="tc-field" data-sa="trfield"></div>
+          <div class="tc-copy" data-mask><span class="tc-n">02</span><h3>Sources</h3><p class="tc-t">Every answer has a way back</p><p class="tc-b">Each fact Arthur uses keeps a note of the system and record it came from. If it cannot say where something came from, it does not use it.</p></div>
+        </li>
+        <li class="tc" data-k="2" data-scene="9">
+          <div class="tc-field" data-sa="trfield"></div>
+          <div class="tc-copy" data-mask><span class="tc-n">03</span><h3>History</h3><p class="tc-t">What you knew, and when</p><p class="tc-b">Arthur remembers when something was true and when you found out. You can look back at a decision with what you knew at the time, without losing anything learned since.</p></div>
+        </li>
+        <li class="tc" data-k="3" data-scene="10">
+          <div class="tc-field" data-sa="trfield"></div>
+          <div class="tc-copy" data-mask><span class="tc-n">04</span><h3>Checks</h3><p class="tc-t">Checked before it is said</p><p class="tc-b">Before an answer goes out, every number in it is checked against your records. Anything it cannot support is held back.</p></div>
+        </li>
+        <li class="tc" data-k="4" data-scene="11">
+          <div class="tc-field" data-sa="trfield"></div>
+          <div class="tc-copy" data-mask><span class="tc-n">05</span><h3>Changes</h3><p class="tc-t">Told when something changes</p><p class="tc-b">Arthur keeps an eye on the facts behind your decisions. When one of them changes, it brings the decision back to you.</p></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 6. HOW IT STARTS -->
+<section class="how" id="how" data-scene="12" aria-label="How it starts">
+  <div class="how-in fg">
+    <h2 class="how-h" data-mask>Start with one question.</h2>
+    <div class="how-steps">
+      <div class="hline"><i></i></div>
+      <p class="hs" data-mask>Bring the question that costs you the most time.</p>
+      <p class="hs" data-mask>We connect one system, read-only, and answer it with the source behind every figure.</p>
+      <p class="hs" data-mask>You keep a written map of what else Arthur could read, whether or not you go further.</p>
+      <div class="how-actions" data-mask>
+        <a class="btn" href="/site/contact.html#message">Talk to us</a>
+        <a class="tlink" href="/site/how-it-works.html">See how it works <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. CLOSE -->
+<section class="close" id="company" aria-label="Close">
+  <figure class="close-photo"><img src="../../site/assets/dinner.jpg" width="940" height="529" alt="Guests at a table in warm evening light, a server taking an order" loading="lazy" decoding="async"></figure>
+  <div class="close-copy fg">
+    <h2>We give the day back.</h2>
+    <p>So you can be here.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-wrap">
+    <div class="footer-top">
+      <div class="footer-sign">
+        <a class="footer-mark" href="/site/index.html"><img src="../../site/assets/icon.svg" width="28" height="28" alt=""><span>LOVELEEDAY</span></a>
+        <p class="footer-line">Pure intelligence.<br>For a fuller life.</p>
+      </div>
+      <div class="gf-ctas"><a class="footer-cta" href="/site/contact.html">Talk to us</a><a class="footer-cta gf-ghost" href="/site/how-it-works.html">How it works</a></div>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col"><strong>Product</strong><a href="/site/arthur.html">Arthur</a><a href="/site/operating-system.html">Operating system</a><a href="/site/how-it-works.html">How it works</a><a href="/site/architecture.html">Architecture</a><a href="/site/integrations.html">Integrations</a></div>
+      <div class="footer-col"><strong>Solutions</strong><a href="/site/customer-data.html">Customer data</a><a href="/site/operational-intelligence.html">Operational intelligence</a><a href="/site/pricing-margins.html">Pricing and margins</a><a href="/site/snapshot.html">Free pricing Snapshot</a><a href="/site/municipal-review.html">Municipal review</a><a href="/site/use-cases.html">All use cases</a></div>
+      <div class="footer-col"><strong>Industries</strong><a href="/site/industries/manufacturing.html">Manufacturing and distribution</a><a href="/site/industries/property.html">Property management</a><a href="/site/industries/schools.html">Schools and charters</a><a href="/site/industries.html">All industries</a></div>
+      <div class="footer-col"><strong>Services</strong><a href="/site/build.html">What we build</a><a href="/site/talk.html">Ways to work together</a><a href="/site/contact.html#message">Start a project</a></div>
+      <div class="footer-col"><strong>Company</strong><a href="/site/studio.html">About</a><a href="/site/principles.html">Principles</a><a href="/site/work.html">Work</a><a href="/site/notes.html">Systems Notes</a><a href="/site/trust.html">Trust and security</a><a href="/site/faq.html">FAQ</a><a href="/site/contact.html">Contact</a><a href="https://portal.loveleedaystudios.com/client/login">Sign in</a></div>
+    </div>
+    <div class="footer-legal"><span>&copy; 2026 LOVELEEDAY Studios LLC &middot; <a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a></span><span><a href="/site/privacy.html">Privacy</a><a href="/site/terms.html">Terms</a></span><span><a href="https://www.linkedin.com/company/loveleeday-studios/" target="_blank" rel="me noopener">LinkedIn</a></span></div>
+    <p class="gf-note">Interactive examples use demonstration data. Photography is licensed stock.</p>
+  </div>
+</footer>
+
+<script src="field.js"></script>
+</body>
+</html>
