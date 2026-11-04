@@ -261,7 +261,7 @@
         tl.to([0, 5, 7].map(function (i) { return fws[i]; }), { opacity: 0, duration: 0.3 }, tF + 0.6);
         hits.forEach(function (h, i) {
           var a = h.getBoundingClientRect(), b = sps[i].getBoundingClientRect();
-          tl.to(h, { x: b.left - a.left, y: b.top - a.top, scale: small ? 1 : 1.25, transformOrigin: "0 0", duration: 1.3, ease: "power3.inOut" }, tF + 0.7);
+          tl.to(h, { x: b.left - a.left, y: b.top - a.top, scale: small ? 1 : 1.08, transformOrigin: "0 0", duration: 1.3, ease: "power3.inOut" }, tF + 0.7);
         });
         tl.to($('#bkSl'), { opacity: 1, duration: 0.5 }, tF + 1.4);
         tl.to(ansWords, { opacity: 1, duration: 0.15, stagger: 0.07 }, tF + 0.9);
