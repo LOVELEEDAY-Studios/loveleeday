@@ -1,0 +1,34 @@
+/* arthur page only: the interactive brain on a dark field, restyled to the one-brand system. Element ids and classes are the ones site.js and brain.js drive. */
+.arthur{padding-block:clamp(48px,6vw,96px)}
+.scenario-picks{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,44px)}
+.scenario-picks a{min-height:44px;display:inline-flex;align-items:center;padding:0 20px;border-radius:22px;border:1px solid #ffffff44;font-size:15px;font-weight:500;color:var(--cream)}
+.scenario-picks a:hover,.scenario-picks a:focus-visible{border-color:#fff}
+.brain-label{display:block;font-size:13px;font-weight:600;color:#9cc4f2}
+.brain-ask{text-align:center;min-height:96px}
+.brain-ask h3{font-size:clamp(24px,2.6vw,42px);font-weight:600;letter-spacing:-.035em;line-height:1.1;margin:10px auto 0;max-width:20em;text-wrap:balance}
+.brain-scene{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);grid-template-rows:1fr 1fr;column-gap:clamp(20px,3vw,48px);min-height:460px;align-items:center}
+.brain-scene canvas{width:100%;height:460px;grid-column:2;grid-row:1/3;min-width:0}
+.branch-grid{display:contents}
+.branch{padding-top:14px;border-top:1px solid #ffffff55;opacity:0;transform:translateY(8px);transition:opacity .55s,transform .55s}
+.branch.visible{opacity:1;transform:none}
+.branch:nth-child(1){grid-area:1/1}.branch:nth-child(2){grid-area:2/1}.branch:nth-child(3){grid-area:1/3}.branch:nth-child(4){grid-area:2/3}
+.branch span{font-size:13px;font-weight:600;color:#9cc4f2}
+.branch p{font-family:var(--serif);font-size:clamp(18px,1.5vw,24px);line-height:1.25;margin-top:8px;color:var(--cream)}
+.brain-answer{min-height:150px;max-width:760px;text-align:center;margin:0 auto;padding-top:clamp(20px,2.5vw,36px);opacity:0;transform:translateY(8px);transition:opacity .65s,transform .65s}
+.brain-answer.visible{opacity:1;transform:none}
+.brain-answer p{font-family:var(--serif);font-size:clamp(24px,2.4vw,38px);line-height:1.14;letter-spacing:-.012em;margin-top:10px}
+.brain-answer small{display:block;margin-top:12px;font-size:14px;color:#b9b2a7;line-height:1.5}
+.brain-controls{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid var(--dark-line);margin-top:clamp(24px,3vw,44px);padding-top:20px;font-size:14px;color:#b9b2a7}
+.brain-controls>div{display:flex;gap:10px;flex-shrink:0}
+.brain-controls button{min-height:44px;border:1px solid #ffffff55;border-radius:22px;color:var(--cream);background:none;padding:0 20px;font-size:15px;font-weight:500;cursor:pointer}
+.brain-controls button:hover{border-color:#fff}
+@media (max-width:900px){
+.brain-scene{display:block;min-height:0}
+.brain-scene canvas{width:min(620px,100%);height:360px;margin-inline:auto}
+.branch-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+.branch:nth-child(n){grid-area:auto}
+.brain-controls{flex-direction:column;align-items:flex-start}
+.brain-controls>div{flex-wrap:wrap}
+}
+@media (max-width:520px){.brain-scene canvas{height:300px}.branch-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.branch,.brain-answer{transition:none}}

@@ -28,6 +28,7 @@ const norm = (h) => h.replace(/ aria-current="page"/g, "").replace(/\?v=[0-9a-f]
 const changed = [], skipped = [];
 for (const file of pages(site)) {
   const before = fs.readFileSync(file, "utf8");
+  if (/<!--ob:top-->/.test(before)) { skipped.push(path.relative(site, file) + " (one-brand chrome)"); continue; }
   if (!/<header\b[^>]*class="nav[^"]*"[^>]*>[\s\S]*?<\/header>/.test(before)) { skipped.push(path.relative(site, file)); continue; }
   let html = before
     .replace(/<header\b[^>]*class="nav[^"]*"[^>]*>[\s\S]*?<\/header>/, header)

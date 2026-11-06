@@ -25,6 +25,7 @@ const block = (html, tag) => (html.match(new RegExp(`<${tag}[\\s>][\\s\\S]*?</${
 // Only per-page or per-request noise is normalized away: which nav item is current, cache-busting query strings, and
 // Cloudflare's email obfuscation (it re-encodes every address with a fresh key on each response).
 const norm = (s) => s
+  .replace(/href="\/#join"/g, 'href="#join"')
   .replace(/\s+aria-current="[^"]*"/g, "")
   .replace(/\?v=[A-Za-z0-9_-]+/g, "")
   .replace(/\/cdn-cgi\/l\/email-protection#[0-9a-f]+/g, "/cdn-cgi/l/email-protection")
@@ -32,7 +33,7 @@ const norm = (s) => s
   .replace(/<span class="__cf_email__"[^>]*>\[email&#160;protected\]<\/span>/g, "EMAIL")
   .replace(/<a [^>]*href="mailto:[^"]*"[^>]*>[^<]*<\/a>/g, (m) => m.replace(/>[^<]*</, ">EMAIL<"))
   .replace(/\s+/g, " ").trim();
-const usesSiteCss = (html) => /<link[^>]+rel="?stylesheet"?[^>]+href="?\/site\/assets\/site\.css/i.test(html);
+const usesSiteCss = (html) => /<link[^>]+rel="?stylesheet"?[^>]+href="?\/site\/assets\/ob\/ob\.css/i.test(html) || /<link[^>]+rel="?stylesheet"?[^>]+href="?\/site\/assets\/site\.css/i.test(html);
 
 // Our internal state is not the customer's business. Each of these reached a public page or the client-facing design on
 // 2026-10-05 and Daniel had to catch it: vendor-access stages, our own (Dabney) accounts dressed up as client connections,
