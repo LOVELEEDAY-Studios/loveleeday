@@ -2,17 +2,53 @@
   "_": "Overrides that must not touch a page's HTML. A page can also set <meta name=\"card:headline|caption|photo|image\"> itself, which wins over this file. Everything not listed here is derived from the page. See docs/SHARE-CARDS.md.",
   "hidden": [],
   "pathRules": [
-    { "prefix": "work/", "line2": "Selected work.", "caption": "Case study" },
-    { "prefix": "notes/", "ogType": "article" }
+    {
+      "prefix": "work/",
+      "line2": "Selected work.",
+      "caption": "Case study"
+    },
+    {
+      "prefix": "notes/",
+      "ogType": "article"
+    }
   ],
   "pages": {
-    "index.html": { "caption": "The AI operating system for business" },
-    "integrations.html": { "photo": "operating-system.jpg" },
-    "privacy.html": { "photo": "outdoors.jpg" },
-    "terms.html": { "photo": "industry-government.jpg" },
-    "snapshot.html": { "photo": "industry-retail.jpg" },
-    "trust.html": { "photo": "industry-nonprofit.jpg" },
-    "work.html": { "photo": "industry-portfolios.jpg" },
-    "industries.html": { "photo": "industries.jpg" }
-  }
+    "index.html": {
+      "caption": "Data intelligence for your organization",
+      "photo": "evening-table.jpg"
+    },
+    "integrations.html": {
+      "photo": "operating-system.jpg"
+    },
+    "snapshot.html": {
+      "photo": "industry-retail.jpg"
+    },
+    "trust.html": {
+      "photo": "industry-nonprofit.jpg"
+    },
+    "work.html": {
+      "photo": "industry-portfolios.jpg"
+    },
+    "industries.html": {
+      "photo": "industries.jpg"
+    }
+  },
+  "_rule": "Every public page gets its own card with its own photo, automatically. The only exceptions are the pages listed in shared.pages: legal and plain contact pages with nothing of their own to say, which all use the one brand card. Add a page to shared.pages only if it fits that description. See docs/SHARE-CARDS.md.",
+  "shared": {
+    "slug": "brand",
+    "headline": "Pure intelligence.|For a fuller life.",
+    "caption": "Data intelligence for your organization",
+    "photo": "dinner.jpg",
+    "pages": [
+      "privacy.html",
+      "terms.html",
+      "contact.html",
+      "faq.html"
+    ]
+  },
+  "rejectedPhotos": [
+    "hero-decision.jpg",
+    "hero-team-desktop.jpg",
+    "hero-team-phone.jpg"
+  ]
 }

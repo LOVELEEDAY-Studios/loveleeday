@@ -109,6 +109,8 @@ export function specFor(page, root) {
   const p = paths(root);
   const over = { ...(cfg.pathRules || []).filter((r) => page.rel.startsWith(r.prefix)).reduce((a, r) => ({ ...a, ...r }), {}), ...(cfg.pages?.[page.rel] || {}) };
   const problems = [];
+  const shared = cfg.shared?.pages?.includes(page.rel) ? cfg.shared : null;
+  if (shared) Object.assign(over, { headline: shared.headline, caption: shared.caption, photo: shared.photo });
 
   const titleRaw = (page.html.match(/<title>([^<]*)<\/title>/i) || [])[1];
   const [h1a, h1b] = deriveHeadline(page.html);
@@ -146,7 +148,8 @@ export function specFor(page, root) {
     spec: { l1, l2, caption }, photo: photoFile && fs.existsSync(photoFile) ? sha(fs.readFileSync(photoFile)) : photo,
     mark: fs.existsSync(markFile) ? sha(fs.readFileSync(markFile)) : null, renderer: rendererHash(), fonts: fontsHash(),
   }), 16);
-  return { ...page, ogType: over.ogType || "website", title, description, ...spec, photoFile, markFile, hash, problems, cardRel: `assets/share/${page.slug}.jpg` };
+  const slug = shared ? shared.slug : page.slug;
+  return { ...page, slug, shared: !!shared, ogType: over.ogType || "website", title, description, ...spec, photoFile, markFile, hash, problems, cardRel: `assets/share/${slug}.jpg` };
 }
 
 // ---- the meta block --------------------------------------------------------------------------------------------------
@@ -234,7 +237,7 @@ export function plan(root) {
   const all = discover(root).map((pg) => specFor(pg, root));
   const pages = all.filter((s) => !s.hidden);
   const bySlug = new Map();
-  for (const s of pages) bySlug.set(s.slug, [...(bySlug.get(s.slug) || []), s.rel]);
+  for (const s of pages.filter((x) => !x.shared)) bySlug.set(s.slug, [...(bySlug.get(s.slug) || []), s.rel]);
   return { manifest, all, pages, hidden: all.filter((s) => s.hidden), collisions: [...bySlug].filter(([, v]) => v.length > 1) };
 }
 
@@ -243,8 +246,9 @@ export function checkCards(root) {
   const p = paths(root);
   const { manifest, pages, collisions } = plan(root);
   const out = [];
-  const seenImg = new Map(), seenBytes = new Map();
-  const owners = new Map(pages.map((s) => [imageUrl(s, root).slice(ORIGIN.length).replace(/\?.*$/, ""), s.rel]));
+  const seenImg = new Map(), seenBytes = new Map(), seenPhoto = new Map();
+  const banned = new Set(loadConfig().rejectedPhotos || []);
+  const owners = new Map(pages.filter((s) => !s.shared).map((s) => [imageUrl(s, root).slice(ORIGIN.length).replace(/\?.*$/, ""), s.rel]));
   for (const [slug, rels] of collisions) out.push(`share card slug "${slug}" is claimed by ${rels.join(" and ")}: rename one page`);
 
   for (const s of pages) {
@@ -254,6 +258,11 @@ export function checkCards(root) {
     if (s.description.length > LIMITS.description) at(`description is ${s.description.length} chars, over the ${LIMITS.description} that link previews show`);
     if (s.description.length && s.description.length < 40) at(`description is only ${s.description.length} chars`);
     if (!s.l1) at("no headline for the card (no h1, no card:headline)");
+    if (s.photo && banned.has(s.photo)) at(`card photo ${s.photo} was rejected; choose another with card:photo or config.pages`);
+    if (s.photo && !s.shared && !s.external) {
+      if (seenPhoto.has(s.photo)) at(`card photo ${s.photo} is already used by ${seenPhoto.get(s.photo)}; a unique card needs its own photo`);
+      seenPhoto.set(s.photo, s.rel);
+    }
 
     const img = imageUrl(s, root);
     const actual = (metaVal(s.tags, "og:image") || "").replace(ORIGIN, "").replace(/\?.*$/, "");
@@ -273,7 +282,8 @@ export function checkCards(root) {
       else if (sz.w !== W || sz.h !== H) at(`og:image ${imgPath} is ${sz.w}x${sz.h}, must be ${W}x${H}`);
       if (buf.length > LIMITS.imageBytes) at(`og:image ${imgPath} is ${(buf.length / 1048576).toFixed(1)} MB, over the 5 MB X/Twitter limit`);
       const sameFile = seenImg.get(imgPath), sameBytes = seenBytes.get(sha(buf, 20));
-      if (sameFile) at(`reuses the card of ${sameFile} (${imgPath}); every page needs its own`);
+      if (s.shared) { /* every shared page uses the one brand card on purpose */ }
+      else if (sameFile) at(`reuses the card of ${sameFile} (${imgPath}); every page needs its own`);
       else if (sameBytes) at(`card ${imgPath} is byte-identical to ${sameBytes}'s; every page needs its own`);
       seenImg.set(imgPath, s.rel); seenBytes.set(sha(buf, 20), s.rel);
       const rec = manifest[s.slug];

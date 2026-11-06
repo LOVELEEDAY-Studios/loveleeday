@@ -1,3 +1,4 @@
+globalThis.__dirname ??= import.meta.dirname; // the satori build reads this on newer Node
 // Pure-Node renderer for the LOVELEEDAY 1200x630 share card: satori (layout to SVG, text becomes paths, so no system
 // font is needed) + sharp (photo crop and JPEG encode). No headless browser, so it runs the same on a laptop and in
 // Vercel's build container. The template is the notes-card template: full-bleed photo under a dark wash, white heart

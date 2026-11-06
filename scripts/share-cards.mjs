@@ -24,7 +24,7 @@ async function main() {
   fs.mkdirSync(p.share, { recursive: true });
   const { manifest, pages } = plan(root);
   const next = {};
-  const todo = pages.filter((s) => !s.external && s.photoFile && fs.existsSync(s.photoFile) && s.l1);
+  const todo = [...new Map(pages.filter((s) => !s.external && s.photoFile && fs.existsSync(s.photoFile) && s.l1).map((s) => [s.slug, s])).values()];
   let rendered = 0, skipped = 0;
   let render;
   for (const s of todo) {

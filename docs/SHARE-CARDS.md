@@ -2,6 +2,14 @@
 
 Every public page under `public/site/` gets its own 1200x630 link-preview card and a complete set of share meta, with no per-page work. Add `public/site/anything.html` with a `<title>`, a meta description and an `<h1>`; the next build does the rest, and a missing, stale or reused card fails the build.
 
+## Which pages get their own card
+
+One rule, so no page needs reviewing by hand.
+
+- A public page gets its own card and its own photo. This is the default and needs no setup: product, solutions, industries, services, company, work and notes pages all land here, including any page added later.
+- A legal or plain contact page, with nothing of its own to say, uses the one brand card. These are listed in `shared.pages` in `scripts/share-cards/config.json`: privacy, terms, contact and FAQ.
+- The check fails if two unique cards use the same photo, or a card uses a photo in `rejectedPhotos`.
+
 ## How it works
 
 - Source of truth is the page itself. Headline: the `<h1>`, split into the white line and the tan line at a `<br>` or a trailing `<span>`. Caption: the title without ` — LOVELEEDAY`. Photo: the first photo the page uses, else `hero.jpg`. Description: the page's meta description.
