@@ -503,3 +503,6 @@ h2 span{color:#6f727a}
 .footer-legal a+a{margin-left:16px}
 .hero-shade{background:linear-gradient(90deg,#17130fe6,#17130fb0 42%,transparent 82%),linear-gradient(0deg,#100b07dc,transparent 48%)}
 @media(max-width:720px){.hero-shade{background:linear-gradient(180deg,#17130fc4,#17130fa8 58%,#100b07e6)}}
+.hero-photo{object-position:center 50%}
+.hero-shade{background:linear-gradient(90deg,#17130fd8,#17130f80 40%,transparent 70%),linear-gradient(0deg,#100b07a8,transparent 32%)}
+@media(max-width:720px){.hero-photo{object-position:52% center}.hero-shade{background:linear-gradient(180deg,#17130fb0,#17130f8c 56%,#100b07c8)}}
