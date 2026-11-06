@@ -2,10 +2,11 @@
 .ha-day{min-height:48px;display:inline-flex;align-items:center;padding:0 22px;border-radius:26px;background:#14161ae6;border:1px solid #f5f1ebaa;color:#fff;font-weight:600;font-size:16px;text-decoration:none}
 .hero-act{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;opacity:1!important;transform:none!important}
 .s0 .hint{text-shadow:0 1px 8px #14110e}
+@media (min-width:701px){.s0 .ph img{transform:none!important}}
 .s0 .h1{font-size:clamp(36px,3.7vw,60px);letter-spacing:-.045em;line-height:1.02;text-wrap:balance}
 .s0 .promise{font-size:clamp(16px,1.3vw,20px);line-height:1.42;color:#e9e3da;max-width:27em;margin-top:14px}
 .s0 .hint{font-size:15px;color:#e9e3dacc;margin-top:16px}
 @media (max-width:700px){.s0 .h1{font-size:33px;line-height:1.04}.s0 .promise{font-size:16px}.hero-act{margin-top:16px}.ha-get,.ha-day{flex:1;justify-content:center;padding:0 10px;min-height:46px;font-size:15px;white-space:nowrap}.s0{--phh:max(220px,calc(100svh - 416px))}.s0 .hint{font-size:14px;margin-top:12px}}
-@media (min-width:701px){.s0{background:#14110e}.s0 .ph{left:16%}.s0 .ph img{object-position:42% 100%}
+@media (min-width:701px){.s0{background:#14110e}.s0 .ph{left:16%}.s0 .ph img{object-position:42% 65%}
 .s0 .ph::before{content:"";position:absolute;left:0;top:0;bottom:0;width:46%;z-index:2;background:linear-gradient(90deg,#14110e 10%,#14110ec0 50%,#14110e00)}
 .s0 .opening{left:4vw;right:auto;top:calc(var(--u)*4);bottom:auto;width:min(480px,33vw)}}
