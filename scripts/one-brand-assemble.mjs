@@ -21,6 +21,6 @@ if (!/name="card:photo"/.test(head) && !/<!--ob:top-->/.test(src)) {
   if (first) head = head.replace(/(<meta name="robots")/, `<meta name="card:photo" content="${first}">$1`);
 }
 const kit = fs.readFileSync('public/site/assets/ob/ob-page-head.txt', 'utf8');
-const extra = css.map(c => `<link rel="stylesheet" href="/site/assets/ob/${c}.css?v=HASH">\n`).join('');
+const extra = css.map(c => `<link rel="stylesheet" href="/site/assets/${c.startsWith('@') ? c.slice(1) : 'ob/' + c}.css?v=HASH">\n`).join('');
 fs.writeFileSync(page, head + '\n' + kit + extra + '</head>\n' + fs.readFileSync(bodyFile, 'utf8'));
 execFileSync('node', ['scripts/one-brand-chrome.mjs', page], { stdio: 'inherit' });

@@ -26,3 +26,57 @@
 .input-preview{display:flex;justify-content:space-between;gap:16px;margin-top:clamp(24px,3vw,40px);padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
 .demo-caption{margin-top:14px;font-size:14px;color:var(--muted)}
 @media (max-width:760px){.demo-body{grid-template-columns:1fr}.sidebar{display:none}.shell-top{padding:14px 18px}}
+
+/* shared panel for the example widgets */
+.customer-panel,.calculator,.register-panel{background:#fff;border-radius:22px;padding:clamp(22px,3vw,48px);box-shadow:0 1px 0 #00000010,0 34px 80px -34px #1d1d1f66}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:clamp(20px,2.6vw,36px)}
+.panel-head h3{font-size:clamp(20px,1.7vw,28px);font-weight:600;letter-spacing:-.03em}
+.sample-badge{font-size:14px;color:var(--muted)}
+.mini-label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px}
+.caption,.calc-footnote,.record-count{margin-top:14px;font-size:14px;color:var(--muted);line-height:1.5;max-width:44em}
+
+/* customer reconciliation */
+.customer-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px)}
+.source-record{padding:16px 0;border-top:1px solid var(--line)}
+.source-record:first-child{border-top:0;padding-top:0}
+.source-record strong{display:block;font-size:clamp(20px,1.7vw,26px);font-weight:600;letter-spacing:-.03em}
+.source-record p{margin-top:6px;font-size:16px;line-height:1.55;color:var(--ink2)}
+.customer-result h3{font-size:clamp(30px,3.4vw,54px);font-weight:700;letter-spacing:-.045em;line-height:1;margin-bottom:18px}
+.field-list>div{display:grid;grid-template-columns:minmax(0,7em) minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid var(--line);font-size:17px;line-height:1.45}
+.field-list dt{color:var(--muted);font-size:15px}
+.field-list button,.record-row summary{display:block;margin-top:6px;min-height:44px;padding:0;border:0;background:none;color:var(--blue);font-weight:600;font-size:15px;cursor:pointer;text-align:left;text-decoration:underline;text-underline-offset:.2em}
+.field-evidence{margin-top:12px;padding:12px 16px;background:#e9f2fc;box-shadow:inset 3px 0 0 var(--blue);border-radius:0 8px 8px 0;font-size:15px;line-height:1.55}
+
+/* margin calculator */
+.calculator-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px)}
+.calculator-fields{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;align-content:start}
+.calculator-fields .field{display:flex;flex-direction:column}
+.calculator-fields .field.full{grid-column:1/-1}
+.calculator-fields label{font-size:14px;font-weight:600;margin:14px 0 8px}
+.calculator-fields input{font:inherit;font-size:17px;color:var(--ink);background:var(--cream);border:1px solid transparent;border-radius:12px;padding:12px 16px;min-height:52px;width:100%}
+.calculator-fields input:focus{outline:none;border-color:var(--blue);background:#fff}
+.calc-result .metric{font-size:clamp(72px,9vw,150px);font-weight:700;letter-spacing:-.07em;line-height:.9;color:var(--blue);font-variant-numeric:tabular-nums}
+.metric-label{display:block;margin-top:10px;font-size:17px;font-weight:500}
+.calc-result dl{margin-top:22px}
+.calc-result dl>div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line);font-size:16px}
+.calc-result dd{font-weight:600;font-variant-numeric:tabular-nums}
+.calc-message{margin-top:14px;font-family:var(--serif);font-size:clamp(19px,1.6vw,24px);line-height:1.3}
+
+/* document register */
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:clamp(16px,2vw,28px)}
+.filter-bar button{min-height:44px;padding:0 18px;border-radius:22px;border:1px solid #1d1d1f33;background:none;font-size:15px;font-weight:500;cursor:pointer}
+.filter-bar button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.record-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1.4fr);gap:clamp(12px,3vw,40px);align-items:start;padding:18px 0;border-top:1px solid var(--line)}
+.record-row[hidden]{display:none}
+.record-row h4{font-size:clamp(18px,1.6vw,24px);font-weight:600;letter-spacing:-.025em}
+.record-row small{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.record-status{font-weight:600;font-size:15px}
+.record-status.review{color:#9c1c15}
+.record-status.old{color:var(--muted)}
+.record-row details p{font-size:15px;line-height:1.5;color:var(--ink2);padding-bottom:8px}
+.record-row summary{list-style:none;margin-top:0}
+.record-row summary::-webkit-details-marker{display:none}
+@media (max-width:900px){.customer-layout,.calculator-grid{grid-template-columns:1fr}.record-row{grid-template-columns:1fr;gap:8px}}
+@media (max-width:520px){.calculator-fields{grid-template-columns:1fr}.field-list>div{grid-template-columns:1fr;gap:4px}}
+.record-row h4{margin:0}
+.ob-rules b a{text-decoration:none}.ob-rules b a:hover{color:var(--blue)}

@@ -1,0 +1,46 @@
+/* snapshot page only. pub.css and snapshot.css (both scoped to .pub) still style the upload tool and its results, whose markup snapshot.js builds;
+   this sheet brings that tool onto the one-brand look and loads after them. */
+main.pub{background:transparent}
+.pub .wrap{width:auto;max-width:1760px;margin-inline:auto;padding-inline:var(--pad)}
+.pub .snap-app{padding-top:clamp(32px,4vw,64px);padding-bottom:clamp(32px,4vw,64px)}
+.pub .panel,.pub .snap-app>.snap-step{border:0;border-radius:22px;background:#fff;box-shadow:0 1px 0 #00000010,0 30px 70px -34px #1d1d1f55}
+.pub .snap-steps span{font-size:14px;font-weight:500;padding:6px 14px;border:1px solid #1d1d1f26;color:var(--muted);background:none}
+.pub .snap-steps span.on{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.pub .snap-drop{border:1.5px dashed #1d1d1f40;border-radius:16px;background:var(--cream);padding:clamp(36px,5vw,72px) 24px}
+.pub .snap-drop.over{border-color:var(--blue);background:#e9f2fc}
+.pub .snap-drop b{font-size:clamp(22px,2.2vw,32px);font-weight:600;letter-spacing:-.035em}
+.pub .xs{font-size:13.5px;line-height:1.55}
+.pub .sm{font-size:15px}
+.pub .btn{min-height:48px;padding:0 24px;border-radius:26px;font-size:15px;font-weight:600}
+.pub .btn.dark{background:var(--blue);color:#fff}
+.pub .btn.dark:hover{background:#0058b0}
+.pub .btn.sec{background:none;border:1px solid #1d1d1f40;color:var(--ink)}
+.pub .btn.xs,.pub .btn.sm{min-height:44px;padding:0 18px;font-size:14px}
+.pub h2.h{font-size:clamp(22px,2vw,32px);font-weight:600;letter-spacing:-.035em}
+.pub .snap-find{border:0;border-top:1px solid #1d1d1f30;border-radius:0;background:none}
+.pub .snap-find>summary{padding:20px 4px;min-height:56px}
+.pub .snap-find>summary b{font-size:clamp(18px,1.6vw,24px);font-weight:600;letter-spacing:-.03em}
+.pub .snap-find .why{font-size:15px;line-height:1.6}
+.pub .snap-find td,.pub .snap-find th{font-size:13.5px}
+.pub .snap-stats .stat{border:0;border-top:1px solid #1d1d1f30;border-radius:0;padding:16px 0}
+.pub .snap-stats .stat .n{font-size:clamp(36px,4vw,64px);font-weight:700;letter-spacing:-.06em;color:var(--blue)}
+.pub .snap-stats .stat .d{font-size:14px}
+.pub .snap-brief h2{font-size:clamp(24px,2.4vw,38px);font-weight:600}
+.pub .snap-brief p{font-size:17px;line-height:1.6;max-width:44em}
+.pub .snap-skip{border-radius:16px;border-color:#1d1d1f40;background:var(--cream)}
+.pub .snap-cta{background:var(--foot);color:var(--cream);border-radius:22px;padding:clamp(40px,5vw,72px) 0}
+.pub .snap-cta .title{color:var(--cream);font-size:clamp(28px,3.4vw,52px);font-weight:600;letter-spacing:-.04em;line-height:1.05}
+.pub .snap-cta .lead{color:#e9e3da;font-size:18px;max-width:34em}
+.pub .snap-cta .btn{background:var(--blue);color:#fff;border-color:transparent}
+.pub .snap-cta .btn.sec{background:none!important;border-color:#ffffff66!important;color:var(--cream)!important}
+.pub .snap-cta .wrap{width:auto;max-width:960px;margin-inline:0;padding-inline:clamp(24px,4vw,64px)}
+.pub .snap-foot a{color:var(--blue);text-decoration:underline}
+.pub .snap-maptable{border-radius:12px;border-color:#1d1d1f26}
+.pub .snap-maptable select{font-size:15px;min-height:44px;max-width:360px}
+.pub th{background:var(--cream);font-size:12px;letter-spacing:0}
+.pub .pill{font-size:12px}
+.pub .snap-msg{font-size:15px}
+.snap-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(20px,2.4vw,36px);list-style:none}
+@media (max-width:700px){.pub .snap-step>.snap-steps{padding:14px 18px}}
+.pub .ob-prose>*+*{margin-top:1.1em}
+.pub .snap-chips{margin-top:clamp(20px,2.4vw,36px)}
