@@ -67,6 +67,10 @@ def add_links(page, notes_href):
 
 nav_t, foot_t = add_links(nav_t + foot_t, "/notes").split("<footer", 1)
 foot_t = "<footer" + foot_t
+TOP = "<!--ob:top--><!--/ob:top-->"
+BOTTOM = "<!--ob:bottom--><!--/ob:bottom-->"
+head_t = re.sub(r'<meta name="card:[^>]*>', "", head_t)
+OBJS = '<script src="/site/assets/ob/ob.js?v=HASH" defer></script>'
 
 def head(title, desc, path, image, ld, og_type="article"):
     h = head_t
@@ -85,7 +89,7 @@ def head(title, desc, path, image, ld, og_type="article"):
                      (r'<meta name="twitter:image" content="[^"]*"', f'<meta name="twitter:image" content="{BASE}{image}"')]:
         h = re.sub(pat, val, h, flags=re.S)
     return (h + f'<script type="application/ld+json">{json.dumps(ld)}</script>'
-            '<link rel="stylesheet" href="/site/assets/notes.css?v=2"></head>')
+            '<link rel="stylesheet" href="/site/assets/ob/notes.css?v=HASH"></head>')
 
 def meta_line(n, with_n=True):
     bits = [f"<b>{e(n['topic'])}</b>"] + ([f"<span>Note {n['n']}</span>", "<span>·</span>"] if with_n else [])
@@ -105,23 +109,22 @@ for n in notes:
 by_date = sorted(notes, key=lambda n: n["date"], reverse=True)
 first, rest = by_date[0], by_date[1:]
 index = (
-    '<section class="notes-hero"><div class="wrap"><span class="eyebrow">Systems Notes</span>'
-    "<h1>How organizations actually work.<br><span>And why their systems don't.</span></h1>"
-    '<p class="lead">Short notes on identity, evidence, memory and the quiet ways information gets lost between systems. A new note every Wednesday.</p>'
+    '<section class="ob-lead notes-hero"><div class="ob-wrap">'
+    "<h1 class=\"ob-h1\">How organizations actually work.<br>And why their systems don't.</h1>"
+    '<p class="ob-lede">Short notes on identity, evidence, memory and the quiet ways information gets lost between systems. A new note every Wednesday.</p>'
     '<nav class="notes-topics" aria-label="Filter notes by topic"><button type="button" class="on" data-topic="">All notes</button>'
     + "".join(f'<button type="button" data-topic="{e(tp)}">{e(tp)}</button>' for tp in topics) + "</nav></div></section>"
-    f'<section class="feature" data-topic="{e(first["topic"])}"><div class="wrap"><a href="/notes/{first["slug"]}">'
-    f'<figure><img src="{img(first)}" alt="{e(first["alt"])}"></figure><div>{meta_line(first)}'
-    f'<h2>{e(first["title"])}</h2><p>{e(first["summary"])}</p><span class="read">Read the note ↗</span></div></a></div></section>'
-    '<section class="note-list"><div class="wrap"><h2 class="list-head">All notes</h2>'
+    f'<section class="feature ob-sec" data-topic="{e(first["topic"])}"><div class="ob-wrap"><a class="ob-scene-in" href="/notes/{first["slug"]}">'
+    f'<figure class="ob-scene-ph" style="--ar:3/2"><img src="{img(first)}" alt="{e(first["alt"])}"></figure><div class="ob-scene-tx">{meta_line(first)}'
+    f'<h2 class="ob-h2 ob-h2--m">{e(first["title"])}</h2><p class="ob-lede">{e(first["summary"])}</p><span class="ob-btn ob-btn--ink read" style="margin-top:24px">Read the note ↗</span></div></a></div></section>'
+    '<section class="note-list ob-sec ob-sec--white"><div class="ob-wrap"><h2 class="list-head ob-h3">All notes</h2>'
     + "".join(
         f'<a class="row" href="/notes/{n["slug"]}" data-topic="{e(n["topic"])}"><span class="n">{n["n"]}</span><div><h3>{e(n["title"])}</h3>'
         f'<p>{e(n["summary"])}</p>{meta_line(n, False)}</div><figure><img src="{img(n)}" alt="{e(n["alt"])}" loading="lazy"></figure></a>'
         for n in rest)
     + '<p class="none" hidden>No notes on this topic yet.</p></div></section>'
-    '<section class="notes-follow"><div class="wrap"><div><h2>A new note every Wednesday.</h2>'
-    "<p>Follow LOVELEEDAY on LinkedIn to get each one as it's published.</p></div>"
-    '<a class="btn-dark" href="https://www.linkedin.com/company/loveleeday-studios/" target="_blank" rel="noopener">Follow on LinkedIn ↗</a></div></section>'
+    '<section class="notes-follow ob-close"><div class="ob-wrap"><p class="ob-close-l">A new note every Wednesday.<em>Follow LOVELEEDAY on LinkedIn to get each one as it\'s published.</em></p>'
+    '<p class="ob-btns"><a class="ob-btn ob-btn--blue" href="https://www.linkedin.com/company/loveleeday-studios/" target="_blank" rel="noopener">Follow on LinkedIn ↗</a></p></div></section>'
 )
 filter_js = ("<script>(()=>{const bs=[...document.querySelectorAll('.notes-topics button')],items=[...document.querySelectorAll('[data-topic]')].filter(x=>x.tagName!=='BUTTON'),none=document.querySelector('.note-list .none');"
              "bs.forEach(b=>b.addEventListener('click',()=>{bs.forEach(x=>x.classList.toggle('on',x===b));const t=b.dataset.topic;let shown=0;"
@@ -131,7 +134,7 @@ ld_index = {"@context": "https://schema.org", "@graph": [
      "isPartOf": {"@type": "WebSite", "name": "LOVELEEDAY", "url": BASE + "/"}}, crumbs([])]}
 index_page = (head("Systems Notes — LOVELEEDAY", "Notes on how organizations actually work, and why their systems don't. Identity, evidence, memory and integration, in plain language.",
                    "/notes", "/site/assets/notes/share-index.jpg", ld_index, "website")
-              + "<body class=\"\">" + nav_t[nav_t.find("<a class=\"skip\""):] + '<main id="main">' + index + "</main>" + foot_t.replace("</body>", filter_js + "</body>"))
+              + '<body class="ob">' + TOP + '<main id="main">' + index + "</main>" + BOTTOM + filter_js + OBJS + "</body></html>")
 (SITE / "notes.html").write_text(index_page)
 
 # ---------- articles ----------
@@ -141,13 +144,13 @@ for i, n in enumerate(notes):
     url = f"{BASE}/notes/{n['slug']}"
     share_href = "https://www.linkedin.com/sharing/share-offsite/?url=" + url
     body = (
-        f'<section class="art-hero"><div class="wrap"><a class="back" href="/notes">← Systems Notes</a>{meta_line(n)}'
-        f'<h1>{e(n["title"])}</h1><p class="dek">{e(n["dek"])}</p></div></section>'
-        f'<figure class="art-photo"><img src="{img(n)}" alt="{e(n["alt"])}"><figcaption>{e(n["caption"])}</figcaption></figure>'
-        f'<article class="art-body">{n["body"]}<div class="art-foot"><span class="meta"><b>{e(n["topic"])}</b><span>Systems Notes · LOVELEEDAY</span></span>'
-        f'<a class="share" href="{share_href}" target="_blank" rel="noopener">Share on LinkedIn ↗</a></div></article>'
-        f'<section class="next"><div class="wrap"><a href="/notes/{nxt["slug"]}"><div><span class="eyebrow">Next note</span><h2>{e(nxt["title"])}</h2></div>'
-        f'<img src="{img(nxt)}" alt="{e(nxt["alt"])}" loading="lazy"></a></div></section>'
+        f'<section class="ob-lead art-hero"><div class="ob-wrap"><a class="back ob-link" href="/notes">← Systems Notes</a>{meta_line(n)}'
+        f'<h1 class="ob-h1 art-h1">{e(n["title"])}</h1><p class="ob-lede dek">{e(n["dek"])}</p></div></section>'
+        f'<figure class="art-photo"><div class="ob-wrap"><img src="{img(n)}" alt="{e(n["alt"])}" width="1600"><figcaption>{e(n["caption"])}</figcaption></div></figure>'
+        f'<article class="art-body ob-sec"><div class="ob-wrap"><div class="ob-prose ob-prose--serif">{n["body"]}<div class="art-foot"><span class="meta"><b>{e(n["topic"])}</b><span>Systems Notes · LOVELEEDAY</span></span>'
+        f'<a class="share ob-btn ob-btn--ink" href="{share_href}" target="_blank" rel="noopener">Share on LinkedIn ↗</a></div></div></div></article>'
+        f'<section class="next ob-sec ob-sec--white"><div class="ob-wrap"><a class="ob-scene-in" href="/notes/{nxt["slug"]}"><div class="ob-scene-tx"><p class="ob-meta" style="margin-bottom:14px">Next note</p><h2 class="ob-h2 ob-h2--m">{e(nxt["title"])}</h2></div>'
+        f'<figure class="ob-scene-ph" style="--ar:16/10"><img src="{img(nxt)}" alt="{e(nxt["alt"])}" loading="lazy"></figure></a></div></section>'
     )
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Article", "headline": n["title"].rstrip("."), "description": n["dek"], "image": BASE + share(n),
@@ -156,11 +159,10 @@ for i, n in enumerate(notes):
          "publisher": {"@type": "Organization", "name": "LOVELEEDAY", "url": BASE + "/"}},
         crumbs([{"@type": "ListItem", "position": 3, "name": n["title"].rstrip("."), "item": url}])]}
     page = (head(f"{n['title'].rstrip('.')} — Systems Notes — LOVELEEDAY", n["dek"], f"/notes/{n['slug']}", share(n), ld)
-            + '<body class="">' + nav_t[nav_t.find('<a class="skip"'):] + '<main id="main">' + body + "</main>" + foot_t)
+            + '<body class="ob">' + TOP + '<main id="main">' + body + "</main>" + BOTTOM + OBJS + "</body></html>")
     (SITE / "notes" / f"{n['slug']}.html").write_text(page)
 
 # ---------- css, sitemap data, share cards ----------
-(SITE / "assets/notes.css").write_text((NOTES / "notes.css").read_text())
 (ROOT / "src/content/notes.json").write_text(json.dumps([{"slug": n["slug"], "date": n["date"]} for n in notes], indent=2) + "\n")
 # Same pattern as the site's own cards (share.jpg, share-home.jpg): full-bleed photo under a dark
 # wash, the white heart and wordmark top left, a white first line and a warm tan second line.
@@ -194,3 +196,6 @@ for d, href in [(SITE, "/notes"), (SRC, "notes.html")]:
 print(f"  {len(notes)} notes built · index + {len(notes)} articles · nav/footer link added to {changed} pages")
 for n in notes:
     print(f"   {n['n']} /notes/{n['slug']}  {n['read']} min")
+
+import subprocess
+subprocess.run(["node", "scripts/one-brand-chrome.mjs", str(SITE / "notes.html")] + [str(p) for p in sorted((SITE / "notes").glob("*.html"))], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
