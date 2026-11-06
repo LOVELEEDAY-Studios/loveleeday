@@ -134,6 +134,7 @@ html:not(.js) .nav-item:hover .pnl,html:not(.js) .nav-item:focus-within .pnl{opa
 .sh-ex{font-size:13px;color:var(--muted);margin-top:12px}
 .sh-x{margin-top:16px;width:100%;min-height:48px;border-radius:24px;border:1px solid #1d1d1f30;background:none;font-weight:600;cursor:pointer}
 html.lock{overflow:hidden}
+html.lock .nav{z-index:110}
 
 /* ---------- mobile menu ---------- */
 .mm{position:fixed;inset:0;z-index:100;background:var(--cream);display:flex;flex-direction:column;padding-top:56px}
