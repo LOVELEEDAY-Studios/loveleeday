@@ -297,3 +297,4 @@ html.lock .nav{z-index:110}
 .ob-panel{background:#fff;border-radius:22px;padding:clamp(24px,2.6vw,44px);box-shadow:0 1px 0 #00000010,0 30px 70px -34px #1d1d1f55}
 .ob-note{font-size:14px;color:var(--muted);line-height:1.5;margin-top:14px;max-width:40em}
 .ob-feedback{margin-top:14px;font-size:15px;color:var(--ink2)}
+.ob-h2--m{font-size:clamp(28px,3.2vw,52px)}
