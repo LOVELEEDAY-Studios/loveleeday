@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bogan Developments | Bogan 2.0 | Brand book</title>
+<link rel="icon" href="data:,">
+<style>
+@font-face{font-family:"Besley";src:url(assets/Besley-400-900.woff2) format("woff2");font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Literata";src:url(assets/Literata-300-800.woff2) format("woff2");font-weight:300 800;font-style:normal;font-display:swap}
+:root{
+  --soft:#6E5A52;
+  --salmon:#F3D3C2;
+  --linen:#FBEEE6;
+  --clay:#E8BFAD;
+  --teal-deep:#0F4A4D;
+  --teal:#217C76;
+  --text:#241210;
+  --paper:#FFFFFF;
+  --ground:#F7E6DA;
+  --dark:#241210;
+  --dark2:#6F1A0E;
+  --on-dark:#FBEEE6;
+  --on-dark-muted:#E8BFAD;
+  --accent:#6F1A0E;
+  --accent-on-dark:#E8BFAD;
+  --metal:#6F1A0E;
+  --muted:#6E5A52;
+  --line:rgba(36,18,16,.16);
+  --warn:#241210;
+  --btn-bg:#0F4A4D;
+  --btn-fg:#FBEEE6;
+  --radius:0;
+  --display:Besley,Georgia,serif;
+  --display-w:400;
+  --display-ls:-.022em;
+  --body:Literata,Georgia,serif;
+  --label:Literata,Georgia,serif;
+  --label-w:600;
+  --green:#0F4A4D;
+  --seafoam:#7FBFB5;
+  --mist:#CDE8E2;
+  --brick:#B5432F;
+  --ochre:#D9964A;
+  --dark-a65:#241210A6;
+  --dark-a15:#24121026;
+  --dark-a90:#241210E6;
+  --content:1200px;--gutter:40px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;overflow-x:clip}
+h1,h2,h3,h4,p,figure,blockquote,dl,dd,ol,ul{margin:0}ol,ul{padding:0;list-style:none}img{display:block;max-width:100%;height:auto}a{color:inherit}button,input{font:inherit}
+:focus-visible{outline:3px solid var(--metal);outline-offset:3px}
+.wrap{width:min(var(--content),calc(100% - 2*var(--gutter)));margin:auto}
+.section{padding:112px 0;border-bottom:1px solid var(--line)}
+.dark{background:var(--dark);color:var(--on-dark);border-color:#ffffff1f}
+.ground{background:var(--ground)}
+.kicker,.label{font-family:var(--label);font-weight:var(--label-w);text-transform:uppercase;letter-spacing:.16em}
+.kicker{font-size:13px;color:var(--accent)}
+.dark .kicker{color:var(--accent-on-dark)}
+.section-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:52px}
+.section h2,.disp{font-family:var(--display);font-weight:var(--display-w);letter-spacing:var(--display-ls)}
+.section h2{font-size:clamp(40px,5vw,72px);line-height:1.04;margin-top:15px;text-wrap:balance}
+.section-head p{max-width:510px;font-size:18px}
+h3{font-family:var(--display);font-weight:var(--display-w);letter-spacing:var(--display-ls)}
+.caption{font-size:15px;color:var(--muted);line-height:1.5}
+.dark .caption{color:var(--on-dark-muted)}
+.rule{border-top:1px solid var(--line);padding-top:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.label{font-size:13px}
+.tag{display:inline-block;font-style:normal;font-family:var(--label);font-weight:var(--label-w);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;margin-right:10px;vertical-align:1px}
+.tag.approved{background:var(--text);color:var(--paper);border:1px solid var(--text)}
+.tag.proposed{border:1px dashed var(--text);color:var(--text);background:transparent}
+.dark .tag.approved{background:var(--on-dark);color:var(--dark);border-color:var(--on-dark)}
+
+.cover{min-height:780px;background:var(--dark);color:var(--on-dark);position:relative;display:flex;flex-direction:column;overflow:hidden}
+.cover-photo{position:absolute;inset:0 0 0 43%;height:100%;width:57%;object-fit:cover;object-position:50% 50%}
+.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--dark) 0%,var(--dark) 40%,var(--dark-a65) 68%,var(--dark-a15) 100%)}
+.cover>*:not(.cover-photo){position:relative;z-index:1}
+.cover-top,.cover-main,.cover-foot{width:min(1360px,calc(100% - 80px));margin:0 auto}
+.cover-top{padding:26px 0;border-bottom:1px solid #ffffff44;display:flex;justify-content:space-between;align-items:center;font-size:14px;gap:20px}
+.cover-top img{width:200px}
+.cover-main{flex:1;display:flex;flex-direction:column;justify-content:center}
+.cover h1{font-family:var(--display);font-weight:var(--display-w);letter-spacing:var(--display-ls);font-size:clamp(76px,12vw,190px);line-height:.92}
+.cover-sub{font-size:clamp(19px,1.8vw,24px);max-width:520px;line-height:1.45;margin-top:64px;color:var(--on-dark-muted)}
+.cover-foot{padding:24px 0;border-top:1px solid #ffffff44;display:flex;justify-content:space-between;font-size:14px;gap:20px}
+.cover .photo-note{position:absolute;right:40px;bottom:72px;z-index:2;font-size:13px;color:var(--on-dark);background:var(--dark-a65);padding:4px 10px}
+.index{display:flex;gap:6px 14px;flex-wrap:wrap;padding:22px 0;border-bottom:1px solid var(--line);font-family:var(--label);font-weight:var(--label-w);font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+.index a{text-decoration:none;padding:8px 0}.index a:hover{color:var(--accent)}
+
+em{font-style:normal;color:var(--accent)}
+.story-lead{font-family:var(--display);font-weight:400;font-size:clamp(28px,3.2vw,44px);line-height:1.2;max-width:1000px;margin:0 0 58px;text-wrap:balance}
+.heritage{display:grid;grid-template-columns:340px 1fr;gap:48px;align-items:center;margin-bottom:64px}
+.heritage figure img{aspect-ratio:3/2;object-fit:cover;width:100%}
+.heritage figcaption{font-size:14px;color:var(--muted);margin-top:10px}
+.heritage dl{display:grid;grid-template-columns:110px 1fr;gap:14px 24px}
+.heritage dt{font-family:var(--label);font-weight:var(--label-w);text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-size:13px;padding-top:4px}
+.heritage dd{font-size:17px}
+.audience{border-top:2px solid var(--text);padding-top:20px}
+.audience h3{font-size:25px;margin-bottom:10px;line-height:1.15}
+.audience p{font-size:16px}
+.promise{margin-top:64px;padding:42px 48px;background:var(--dark);color:var(--on-dark);display:grid;grid-template-columns:1fr 2fr;gap:30px;align-items:center}
+.promise .kicker{color:var(--accent-on-dark)}
+.promise p{font-family:var(--display);font-size:clamp(24px,2.6vw,36px);line-height:1.2}
+.traits{margin-top:64px}
+.trait{border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 2fr;gap:30px;padding:23px 0}
+.trait h3{font-size:28px}.trait p{font-size:16px}.trait b{display:block;margin-bottom:5px;font-family:var(--label);font-weight:var(--label-w);text-transform:uppercase;letter-spacing:.12em;font-size:13px}
+.do{color:var(--accent)}.dont{color:var(--warn)}
+.std{background:var(--accent);color:var(--on-dark);padding:64px 0 24px;margin-top:64px}
+.std .wrap>p{font-family:var(--display);font-size:clamp(26px,3vw,42px);line-height:1.15;max-width:22ch;margin-bottom:36px}
+.std .kicker{color:var(--accent-on-dark);display:block;margin-bottom:16px}
+.std li{display:grid;grid-template-columns:110px 220px 1fr;gap:24px;align-items:center;padding:20px 0;border-top:1px solid #fbeee64d}
+.std li b{font:400 clamp(52px,6vw,84px)/.9 var(--display)}
+.std li span{font:400 clamp(24px,2.5vw,34px)/1.1 var(--display)}
+.std li p{max-width:52ch;font-size:16px}
+.test{margin-top:64px;display:grid;grid-template-columns:1fr 2fr;gap:30px;border-top:2px solid var(--text);padding-top:20px}
+.test h3{font-size:28px;line-height:1.1}.test p{font-size:16px;margin-bottom:12px}
+
+.changes{width:100%;border-collapse:collapse;font-size:16px}
+.changes th,.changes td{text-align:left;vertical-align:top;padding:16px 18px 16px 0;border-bottom:1px solid var(--line)}
+.changes th{font-family:var(--label);font-weight:var(--label-w);font-size:12px;text-transform:uppercase;letter-spacing:.12em;border-bottom:1px solid var(--text)}
+.changes td:first-child{font-family:var(--display);font-size:20px;width:18%}
+.changes td:nth-child(3){color:var(--text)}.changes td:nth-child(2){color:var(--muted)}
+.stays{margin-top:56px}.stays h3{font-size:30px;margin-bottom:18px}
+.stays .audience h3{font-size:22px}
+
+.logo-stage{min-height:300px;display:grid;place-items:center;padding:40px}
+.logo-stage img{height:auto}
+.working{font-size:14px;line-height:1.4;margin:14px 0 30px}
+.measure{background:var(--paper);padding:48px 20px 56px;display:flex;align-items:center;justify-content:center}
+.measure .space{--lw:300px;padding:calc(var(--lw)*.1242);border:1px dashed var(--accent);position:relative}
+.measure .space img{width:var(--lw)}
+.measure .xq{position:absolute;width:calc(var(--lw)*.1242);height:calc(var(--lw)*.1242);background:#6f1a0e24;border:1px solid var(--accent);display:grid;place-items:center;font:600 11px var(--label);font-style:normal;color:var(--accent)}
+.xq.t{top:0;left:50%;transform:translateX(-50%)}.xq.b{bottom:0;left:50%;transform:translateX(-50%)}.xq.l{left:0;top:50%;transform:translateY(-50%)}.xq.r{right:0;top:50%;transform:translateY(-50%)}
+.minsize{display:flex;gap:16px;align-items:end;flex-wrap:wrap}
+.minsize>div{padding:26px 22px;background:var(--paper);flex:1 1 150px;text-align:center}
+.minsize img{margin:auto auto 14px}
+.misuse{margin-top:55px}.misuse h3{margin-bottom:18px;font-size:26px}
+.misuse article{background:var(--paper);display:flex;flex-direction:column;border:1px solid var(--line)}
+.misuse .demo{min-height:150px;display:grid;place-items:center;overflow:hidden;padding:18px;border-bottom:1px solid var(--line);position:relative}
+.misuse .demo img{width:130px;height:auto}
+.misuse .txt{padding:16px 18px 20px}
+.misuse .x{font-size:20px;color:var(--warn);font-weight:700;line-height:1;margin-right:8px}
+.misuse b{font-size:16px}.misuse p{font-size:14.5px;color:var(--muted);margin-top:6px}
+.misuse .demo .strike{position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 1px),#6f1a0e 50%,transparent calc(50% + 1px));opacity:.55;pointer-events:none}
+
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.swatch{min-height:250px;display:flex;flex-direction:column;justify-content:space-between;padding:20px}
+.swatch .name{font-family:var(--display);font-weight:var(--display-w);font-size:24px}
+.swatch .data{font-size:13px;line-height:1.5}
+.swatch small{font-size:13px;line-height:1.3}
+.palette-group{margin-top:45px}.palette-group h3{font-size:26px;margin-bottom:17px}
+.ratio{display:flex;height:70px;margin-top:20px;font-family:var(--label);font-weight:var(--label-w);font-size:13px;text-transform:uppercase;letter-spacing:.1em;outline:1px solid var(--line)}
+.ratio span{display:grid;place-items:center;text-align:center}
+.contrast{width:100%;border-collapse:collapse;margin-top:28px;font-size:15px}
+.contrast th,.contrast td{text-align:left;padding:15px 10px;border-bottom:1px solid var(--line)}
+.contrast th{font-family:var(--label);font-weight:var(--label-w);font-size:12px;text-transform:uppercase;letter-spacing:.12em}
+.chip-c{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:8px;border:1px solid #2412102e}
+.pass{font-weight:700;color:var(--accent)}.fail{font-weight:700;color:var(--warn)}
+
+.type-card{padding:35px;border:1px solid var(--line);min-height:330px;background:var(--paper)}
+.type-card .label{color:var(--muted)}
+.type-card .sample{font-size:clamp(55px,6.2vw,92px);line-height:1;margin:40px 0 20px}
+.type-card p{font-size:15.5px}
+.scale{margin-top:48px}.scale h3{font-size:26px}.scale .caption{margin:6px 0 18px}
+.scale-row{display:grid;grid-template-columns:60px 100px 1fr;gap:20px;align-items:baseline;padding:15px 0;border-top:1px solid var(--line);overflow:hidden}
+.scale-row .size{font-size:14px;color:var(--muted)}
+.scale-row .sample{white-space:nowrap;line-height:1.12}
+.type-notes{margin-top:45px}.type-notes h3{font-size:22px;margin-bottom:8px}
+.figures{display:flex;gap:28px;flex-wrap:wrap;font-family:var(--display);font-size:46px;line-height:1.1;margin:6px 0 10px}
+
+.icon-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.icon-cell{min-height:132px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;background:var(--ground);font-size:14px;font-weight:600;text-align:center;padding:10px}
+.icon-cell svg,.gridfig{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.icon-cell svg{width:40px;height:40px}
+.dark .icon-cell{background:var(--dark2);color:var(--on-dark)}
+.icon-rule{margin:0 0 28px;font-size:16px}
+.construct{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:48px;align-items:center;margin-bottom:48px}
+.gridfig{width:100%;height:auto;background:var(--paper);outline:1px solid var(--line);color:var(--text)}
+.gridfig .g{stroke:#2412101f;stroke-width:.04;fill:none}.gridfig .live{stroke:#6f1a0e;stroke-width:.06;stroke-dasharray:.3 .3;fill:none}
+.construct dl{display:grid;grid-template-columns:120px 1fr;gap:10px 20px}
+.construct dt{font-family:var(--label);font-weight:var(--label-w);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding-top:4px}
+
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.photo-grid figure{position:relative}
+.photo-grid img{height:265px;width:100%;object-fit:cover}
+.photo-grid .tag{position:absolute;left:10px;top:10px;margin:0;background:var(--paper);color:var(--text);border:1px solid var(--text)}
+.photo-grid figcaption{padding:10px 0 18px;font-size:14px;line-height:1.45}
+.photo-grid figcaption b{font-weight:600}
+.sub-h{font-size:26px;margin:52px 0 18px}
+.rules4{display:grid;grid-template-columns:repeat(2,1fr);gap:0 30px}
+.rules4 div{padding:18px 0;border-top:1px solid var(--line);font-size:16px}
+.avoid{margin-top:42px}.avoid h3{font-size:26px;margin-bottom:6px}
+.avoid div{padding:16px 0;border-top:1px solid var(--line);font-size:16px}
+
+.component-board{background:var(--ground);padding:35px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.component{background:var(--paper);padding:25px;min-height:130px}
+.component.wide{grid-column:1/-1}.component.tall{grid-row:span 2}
+.component .label{display:block;margin-bottom:22px;color:var(--muted)}
+.btn{border:1px solid var(--btn-bg);background:var(--btn-bg);color:var(--btn-fg);padding:13px 26px;min-height:48px;font-family:var(--label);font-weight:var(--label-w);text-transform:uppercase;letter-spacing:.14em;font-size:13px;display:inline-flex;align-items:center;cursor:pointer;border-radius:var(--radius)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--text)}
+.status{display:inline-block;font-family:var(--label);font-weight:var(--label-w);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;margin:0 8px 8px 0;border-radius:var(--radius)}
+.st-done{background:var(--text);color:var(--paper);border:1px solid var(--text)}
+.st-build{background:var(--accent);color:var(--on-dark);border:1px solid var(--accent);position:relative;padding-left:26px}
+.st-build:before{content:"";position:absolute;left:10px;top:50%;width:7px;height:7px;margin-top:-3.5px;background:var(--on-dark)}
+.st-plan{background:transparent;color:var(--text);border:1px solid var(--text)}
+.st-dev{background:transparent;color:var(--text);border:1px dashed var(--text)}
+.ledger{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--text)}
+.ledger div{padding:14px 12px 0 0}
+.ledger b{display:block;font:400 clamp(44px,5vw,72px)/1 var(--display);letter-spacing:-.03em}
+.ledger span{font-size:15px;color:var(--muted)}
+.pcard .th{position:relative;margin-bottom:14px}
+.pcard .th img{height:190px;width:100%;object-fit:cover}
+.pcard .th .tag{position:absolute;left:10px;top:10px;margin:0;background:var(--paper);color:var(--text);border:1px solid var(--text)}
+.pcard h4{font-family:var(--display);font-weight:var(--display-w);font-size:30px;line-height:1.1;margin:8px 0 4px}
+.pcard .where{font-size:15px;color:var(--muted);margin-bottom:10px}
+.pcard .n{font:400 54px/1 var(--display);letter-spacing:-.03em;margin-top:12px}.pcard .n small{font:400 18px var(--body);letter-spacing:0;margin-left:8px}
+.mile{border-top:1px solid var(--text);font-size:15.5px}
+.mile li{display:grid;grid-template-columns:110px 1fr auto;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.mile li span:last-child{color:var(--muted)}
+.fig{border-top:2px solid var(--text);padding-top:12px;max-width:360px}
+.fig b{display:block;font:400 54px/1 var(--display);letter-spacing:-.03em}
+.fig span{display:block;font-size:15px;margin-top:6px}
+.fig small{display:block;font-size:13.5px;color:var(--muted);margin-top:8px}
+.input{border:1px solid var(--text);background:var(--paper);padding:13px 15px;min-height:48px;width:min(100%,320px);font-size:16px;border-radius:var(--radius)}
+.chip{display:inline-flex;border:1px solid var(--line);padding:7px 16px;font-size:16px;border-radius:999px;margin:0 6px 6px 0}
+.chip[aria-pressed=true]{background:var(--btn-bg);border-color:var(--btn-bg);color:var(--on-dark)}
+.quote{font:400 clamp(26px,2.6vw,34px)/1.15 var(--display);max-width:22ch}
+.quote cite{display:block;font:400 14px/1.4 var(--body);margin-top:16px;color:var(--muted)}
+
+.voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.voice-grid>div{padding:20px 0;border-top:1px solid var(--line);font-size:16px}
+.voice-grid b{display:block;font-family:var(--label);font-weight:var(--label-w);font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.voice-grid .good b{color:var(--accent)}.voice-grid .bad b{color:var(--warn)}
+.cvd{width:100%;border-collapse:collapse;margin-top:20px;font-size:15px}
+.cvd th,.cvd td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line)}
+.cvd th{font-family:var(--label);font-weight:var(--label-w);font-size:12px;text-transform:uppercase;letter-spacing:.12em}
+.sw2{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:4px;border:1px solid #2412102e}
+pre{background:var(--dark2);color:var(--on-dark);padding:32px;overflow:auto;font:13px/1.6 ui-monospace,SFMono-Regular,monospace;tab-size:2}
+.footer{padding:55px 0;background:var(--dark);color:var(--on-dark)}
+.footer .wrap{display:flex;justify-content:space-between;font-size:14px;gap:20px;flex-wrap:wrap}
+
+@media(max-width:1000px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.std li{grid-template-columns:80px 1fr}.std li p{grid-column:2}.icon-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:800px){
+  :root{--gutter:20px}.section{padding:75px 0}
+  .section-head,.grid2,.grid3,.trait,.promise,.heritage,.test,.construct{grid-template-columns:1fr}
+  .cover{min-height:640px}.cover-photo{inset:0;width:100%;opacity:.4}.cover:after{background:linear-gradient(90deg,var(--dark-a90),var(--dark-a65))}
+  .cover-top,.cover-main,.cover-foot{width:calc(100% - 40px)}.cover .photo-note{right:20px}
+  .swatches{grid-template-columns:repeat(2,1fr)}.icon-grid{grid-template-columns:repeat(3,1fr)}.photo-grid{grid-template-columns:repeat(2,1fr)}
+  .component-board{grid-template-columns:minmax(0,1fr);padding:16px}.component{min-width:0;padding:20px}.ledger span{font-size:13px}.section-head{gap:18px}.voice-grid,.rules4{gap:0 15px}
+  .measure .space{--lw:220px}.promise{padding:30px 24px}
+  .changes thead{display:none}.changes,.changes tbody,.changes tr,.changes td{display:block;width:100%}.changes td:first-child{width:100%;padding-bottom:4px;border:0}.changes td{border:0;padding:4px 0}.changes tr{padding:14px 0;border-bottom:1px solid var(--line)}
+}
+@media(max-width:520px){
+  .swatches,.photo-grid,.voice-grid,.rules4,.grid4{grid-template-columns:1fr}.swatch{min-height:190px}
+  .cover h1{font-size:72px}.cover-foot{flex-direction:column;gap:6px}.cover .photo-note{bottom:110px}.cover-top img{width:150px}.cover-top span{font-size:12px;text-align:right}
+  .icon-grid{grid-template-columns:repeat(2,1fr)}
+  .ratio{font-size:11px}.scale-row{grid-template-columns:1fr;gap:2px}.scale-row>span:first-child{display:none}.scale-row .sample{white-space:normal;overflow:visible}
+  .section h2{font-size:40px}.contrast,.cvd{font-size:13px}.contrast th:nth-child(4),.contrast td:nth-child(4){display:none}
+  .heritage dl,.construct dl{grid-template-columns:1fr;gap:2px}.heritage dd,.construct dd{margin-bottom:12px}
+  .minsize{flex-direction:column;align-items:stretch}
+  .std li{grid-template-columns:60px 1fr}.mile li{grid-template-columns:1fr}.mile li span:last-child{display:none}
+  .ledger b{font-size:40px}.figures{font-size:34px}.cvd th:nth-child(3),.cvd td:nth-child(3){display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.msg-core{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:14px 32px;margin:0 0 48px}.msg-core dt{font-weight:600}.msg-core dd{margin:0;font:400 clamp(20px,2vw,28px)/1.25 Besley,serif}
+.msg-wrap{overflow-x:auto}.msg{width:100%;min-width:760px;border-collapse:collapse;font-size:16px;line-height:1.45}.msg th,.msg td{text-align:left;vertical-align:top;padding:16px 20px 16px 0;border-top:1px solid rgba(36,18,16,.16)}.msg thead th{font-size:14px;font-weight:600;border-top:0}.msg .say{font:400 19px/1.3 Besley,serif;color:#0F4A4D}
+.msg-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;margin-top:48px}.msg-two h3{margin:0 0 14px}.msg-lines,.mood-feel,.mood-cols{list-style:none;margin:0;padding:0}.msg-lines li{font:400 22px/1.3 Besley,serif;padding:8px 0;border-top:1px solid rgba(36,18,16,.16)}
+.mood-words{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}.mood-word h3{font:400 clamp(34px,4vw,56px)/1.04 Besley,serif;margin:0 0 12px;color:#0F4A4D}.mood-not{color:#6E5A52;font-size:15px}
+.mood-pics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:48px}.mood-pics figure{margin:0}.mood-pics img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}.mood-pics figcaption{font-size:14px;margin-top:8px}
+.mood-feel li{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-top:1px solid rgba(36,18,16,.16)}.mood-cols li{display:flex;gap:14px;padding:10px 0;align-items:center;border-top:1px solid rgba(36,18,16,.16)}.mood-cols i{flex:none;width:36px;height:36px;border:1px solid rgba(36,18,16,.16)}.mood-cols b{display:block}
+@media(max-width:760px){.msg-core,.msg-two,.mood-words,.mood-pics{grid-template-columns:1fr}.msg-two{gap:32px}}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><defs><symbol id="studio" viewBox="0 0 24 24"><path d='M3 4h18v16H3z'/><path d='M6 9h7v9H6z M6 12h7'/></symbol><symbol id="onebed" viewBox="0 0 24 24"><path d='M3 4h18v16H3z M12 4v7 M12 15v5'/><path d='M15 9h4v8h-4z M15 11.5h4 M5 15h5v3H5z'/></symbol><symbol id="twobed" viewBox="0 0 24 24"><path d='M3 4h18v16H3z M12 4v8 M3 12h6 M12 12h9'/><path d='M5 6h5v4H5z M14 6h5v4h-5z M7 15h9v3H7z'/></symbol><symbol id="five" viewBox="0 0 24 24"><path d='M6 22V2h12v20 M3 22h18 M6 6h12 M6 10h12 M6 14h12 M6 18h12 M10 22v-4 M14 22v-4'/></symbol><symbol id="plan" viewBox="0 0 24 24"><path d='M3 3h18v14H3z M3 10h8 M15 3v7 M15 10h6 M11 10v7 M3 21h18 M3 19.5v3 M21 19.5v3'/></symbol><symbol id="key" viewBox="0 0 24 24"><path d='M3 15l4-3 4 3v5H3z'/><path d='M11 17h10 M17 17v3 M21 17v2'/></symbol><symbol id="shovel" viewBox="0 0 24 24"><path d='M9 3h6 M12 3v9 M8 12h8v3c0 3-2 5-4 6-2-1-4-3-4-6z M3 21h18'/></symbol><symbol id="parcel" viewBox="0 0 24 24"><path d='M3 9l8-6 10 4-2 12H6z'/><path d='M10 11h5v5h-5z'/></symbol><symbol id="blocks" viewBox="0 0 24 24"><path d='M3 21h8v-8H3z M13 21h8v-8h-8z M8 13h8V5H8z'/></symbol><symbol id="table" viewBox="0 0 24 24"><path d='M7 11h10 M12 11v8 M9 19h6'/><path d='M3 8v11 M3 15h3 M21 8v11 M21 15h-3'/></symbol><symbol id="bike" viewBox="0 0 24 24"><circle cx='6' cy='16' r='4'/><circle cx='18' cy='16' r='4'/><path d='M6 16h6 M6 16l3.5-8 M12 16l-2.5-8 M9.5 8H16 M16 8l2 8 M12 16l4-8'/></symbol><symbol id="band" viewBox="0 0 24 24"><path d='M12 3v8 M8.5 8l3.5 3.5L15.5 8 M4 14v6 M20 14v6 M4 17h16'/></symbol></defs></svg>
+
+<header class="cover" id="top">
+  <img class="cover-photo" src="assets/z2-street-dusk.jpg" alt="Rendering of Zone 32 Phase II at dusk on N. Pitcher Street">
+  <div class="cover-top"><img src="assets/lockup-white.png" alt="Bogan Developments" width="1449" height="425"><span>Brand book / Version 2.0</span></div>
+  <div class="cover-main"><h1>Bogan 2.0</h1><p class="cover-sub">The next version of the Bogan Developments brand: one mark, one palette, two typefaces, and a voice that answers for every home.</p></div>
+  <span class="photo-note">Rendering. Zone 32 Phase II at dusk.</span>
+  <div class="cover-foot"><span>Prepared for Jamauri Bogan, Founder and CEO</span><span>November 2026</span></div>
+</header>
+<nav class="wrap index" aria-label="Sections"><a href="#story">01 Story</a><a href="#changes">02 1.0 to 2.0</a><a href="#logo">03 Logo</a><a href="#colour">04 Colour</a><a href="#type">05 Typography</a><a href="#photo">06 Photography</a><a href="#components">07 Components</a><a href="#voice">08 Voice</a><a href="#messaging">09 Messaging</a><a href="#mood">10 Mood</a><a href="#tokens">11 Tokens</a></nav>
+<main>
+<section class="section" id="story"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">01 / Story and position</div><h2>Belonging,<br>to a standard.</h2></div><p>Bogan Developments is a minority-led real estate development firm in Michigan, founded in 2020. This book is the second version of its identity: the same teal mark, held in a system that can be checked.</p></div>
+  <p class="story-lead">Bogan Developments measures every home it builds against five words, <em>Effort, Leadership, Impact, Teamwork and Execution</em>, and publishes the record that answers each.</p>
+  <div class="heritage"><figure><img src="assets/jb-815.jpg" alt="Jamauri Bogan, Founder and CEO, outside 815 N. Pitcher Street"><figcaption>Jamauri Bogan, Founder and CEO, at 815 N. Pitcher Street.</figcaption></figure><dl><dt>Name</dt><dd>Bogan Developments LLC. In running text, Bogan Developments first, then Bogan.</dd><dt>Lines</dt><dd>Tagline: We build belonging. Headline for 2.0: Belonging, to a standard.</dd><dt>Place</dt><dd>Michigan. Say where each project is, and give the firm the state. Office: 801 N Pitcher Street, Kalamazoo.</dd><dt>Never</dt><dd>A dollar total for the whole pipeline. Each project carries its own cost and its own source.</dd></dl></div>
+  <div class="grid3"><div class="audience"><h3>For people who live here</h3><p>Four communities and sample layouts in one place, with the status of each stated plainly.</p></div><div class="audience"><h3>For employers and cities</h3><p>Employer-assisted housing puts homes within reach of the people an institution most needs to keep. The B on Burdick, planned with Bronson Healthcare, is the working model.</p></div><div class="audience"><h3>For lenders, funders and agencies</h3><p>Every project is shown with its status, its cost and the public and private partners named in public.</p></div></div>
+</div>
+<div class="std"><div class="wrap"><span class="kicker">The Standard</span><p>Five words, and the record that answers each.</p><ol><li><b>E</b><span>Effort</span><p>Zone 32 Phase I went up with no investors, on debt its founder personally signed for.</p></li><li><b>L</b><span>Leadership</span><p>Developer of Zone 32 and The B on Burdick, and development partner at Lighthouse Ridge: 187 homes across four communities, delivered, under construction or planned.</p></li><li><b>I</b><span>Impact</span><p>A 1.4-acre brownfield on N. Pitcher Street became twelve homes and an early learning center. Phase II reclaims 0.6 acre more.</p></li><li><b>T</b><span>Teamwork</span><p>A health system, a state agency, a tribal investment arm and an architect, each named on the work: Bronson Healthcare, MSHDA, the Pokagon Band&rsquo;s Mno-Bmadsen and TowerPinkster.</p></li><li><b>E</b><span>Execution</span><p>Phase I is delivered. Phase II broke ground on September 10, 2026, and targets fall 2027.</p></li></ol></div></div>
+<div class="wrap">
+  <div class="test"><h3>A position a competitor could not say.</h3><div><p>Peers lead with volume. Hollander Development says it has built over 4,000 homes since 1979 (hollanderdevelopment.com). Brinshore says 12,000+ units (brinshore.com). Both are claims about size, and either is open to anyone of that size.</p><p>ELITE is Bogan&rsquo;s own language, so only Bogan can hold itself to it. And only Bogan can point at Zone 32: twelve homes delivered on a former brownfield on N. Pitcher Street, with thirty-eight more under construction across the street.</p><p>The position is therefore not a size claim. It is a commitment: every home measured against the five words, with its status, cost and sources in public.</p></div></div>
+  <div class="promise"><span class="kicker">The promise</span><p>Every home is answered for: what it is, what it cost, who funded it and where it stands.</p></div>
+  <div class="traits"><div class="trait"><h3>Accountable</h3><div class="grid2"><p><b class="do">Do</b>State status, cost and the named funders on every project.</p><p><b class="dont">Don't</b>Use a figure that has no source.</p></div></div><div class="trait"><h3>Plain</h3><div class="grid2"><p><b class="do">Do</b>Say thirty-eight homes, ten studios, eighteen one-bedrooms.</p><p><b class="dont">Don't</b>Reach for an adjective where a count is available.</p></div></div><div class="trait"><h3>Rooted</h3><div class="grid2"><p><b class="do">Do</b>Name the street, the neighborhood and the partner.</p><p><b class="dont">Don't</b>Describe the firm with a claim the record does not show.</p></div></div></div>
+</div></section>
+<section class="section ground" id="changes"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">02 / From 1.0 to 2.0</div><h2>What changes,<br>and what does not.</h2></div><p>Version 1.0 is the identity and website live on November 5, 2026. Each 1.0 entry below is something the public site shows or lacks.</p></div>
+  <table class="changes"><thead><tr><th>Element</th><th>1.0, the live site</th><th>2.0</th></tr></thead><tbody><tr><td>Headline</td><td>The hero reads &ldquo;Not just buildings&rdquo;.</td><td>Belonging, to a standard.</td></tr><tr><td>Scale</td><td>The homepage shows no unit counts, dollars or pipeline.</td><td>A ledger below the hero: 12 homes delivered, 38 under construction, 137 planned or in development.</td></tr><tr><td>Status</td><td>No status system across projects.</td><td>Four statuses on every project: Delivered, Under construction, Planned, In development.</td></tr><tr><td>Project pages</td><td>The B on Burdick page runs 229 words, with no unit count, cost or timeline.</td><td>Every project page carries status, numbers, unit mix, milestones and named partners.</td></tr><tr><td>Colour</td><td>Repeated teal blocks, and a colourful row-house pattern used as a divider.</td><td>Bogan Green leads on Paper and Salmon, with Oxblood kept for the Standard band and Ink for type. No pattern; rules and numerals divide the page.</td></tr><tr><td>Header</td><td>A cart icon sits in the header.</td><td>No cart. Navigation names four routes: Projects, The Standard, Find a home, Work with us.</td></tr><tr><td>Action</td><td>One generic contact form.</td><td>Two routes by audience: Find a home, and Work with us for lenders, funders, employers and public agencies.</td></tr><tr><td>Photography</td><td>Generic stock photographs of hands and hard hats.</td><td>Bogan&rsquo;s own photographs and the architects&rsquo; renderings, each captioned, every rendering labelled.</td></tr><tr><td>Logo</td><td>The teal B and wordmark, as one artwork.</td><td>The same artwork, unchanged, with a proposed reduced B for small sizes, a proposed stacked lockup and proposed single-colour versions.</td></tr></tbody></table>
+  <p class="caption" style="margin-top:16px">1.0: the live bogandevelopments.com as audited on November 5, 2026. 2.0: The Standard direction as built in the redesign prototype.</p>
+  <div class="stays"><h3>What stays</h3><div class="grid3"><div class="audience"><h3>The approved logo</h3><p>The teal B and wordmark stay as drawn. Nothing in this book redraws them.</p></div><div class="audience"><h3>The name</h3><p>Bogan Developments, at 801 N Pitcher Street, Kalamazoo.</p></div><div class="audience"><h3>ELITE</h3><p>Effort, Leadership, Impact, Teamwork, Execution remain the firm&rsquo;s own language, and become the organising idea.</p></div><div class="audience"><h3>We build belonging</h3><p>The tagline stays. The 2.0 headline, Belonging, to a standard, extends it.</p></div><div class="audience"><h3>The founder&rsquo;s story</h3><p>Jamauri Bogan, Founder and CEO, built Phase I with no investors, on debt he personally signed for.</p></div><div class="audience"><h3>Named partners</h3><p>Bronson Healthcare, MSHDA, Kalamazoo County, the City of Kalamazoo, TowerPinkster, AVB and the rest are named in public.</p></div></div></div>
+</div></section>
+<section class="section" id="logo"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">03 / Logo</div><h2>One mark,<br>kept and made ready.</h2></div><p>The teal B with its wordmark is Jamauri Bogan&rsquo;s approved logo and is not redrawn here. Bogan 2.0 specifies how it is used and proposes additions cut from the same artwork: a reduced B for small sizes, a stacked lockup and single-colour versions. Every addition is tagged Proposed.</p></div>
+  <h3 style="font-size:26px;margin-bottom:18px">Full colour</h3>
+  <div class="grid3"><div><div class="logo-stage" style="background:#FFFFFF;outline:1px solid var(--line)"><img src="assets/lockup-color.png" alt="Bogan Developments logo in teal" style="width:min(300px,100%)"></div><p class="working"><i class="tag approved">Approved</i>Logo, full colour. The approved artwork, unchanged.</p></div><div><div class="logo-stage" style="background:#FFFFFF;outline:1px solid var(--line)"><img src="assets/mark-b-color.png" alt="The Bogan B mark in teal" style="width:112px"></div><p class="working"><i class="tag proposed">Proposed</i>Reduced mark, for sizes where the wordmark cannot be read. The B alone, cut from the approved artwork.</p></div><div><div class="logo-stage" style="background:#FFFFFF;outline:1px solid var(--line)"><img src="assets/stacked-color.png" alt="Stacked lockup in teal" style="width:190px"></div><p class="working"><i class="tag proposed">Proposed</i>Stacked lockup, for square and narrow spaces. The same two parts, stacked.</p></div></div>
+  <h3 style="font-size:26px;margin:20px 0 18px">Green on light, white on everything else</h3>
+  <div class="grid3"><div><div class="logo-stage" style="background:#241210"><img src="assets/lockup-white.png" alt="Bogan Developments logo in White on Ink" style="width:min(300px,100%)"></div><p class="working"><i class="tag proposed">Proposed</i>Logo in White on Ink.</p></div><div><div class="logo-stage" style="background:#0F4A4D"><img src="assets/mark-b-white.png" alt="The B mark in White on Bogan Green" style="width:112px"></div><p class="working"><i class="tag proposed">Proposed</i>Reduced mark, White on Bogan Green.</p></div><div><div class="logo-stage" style="background:#F3D3C2"><img src="assets/stacked-green.png" alt="Stacked lockup in Bogan Green on Salmon" style="width:190px"></div><p class="working"><i class="tag proposed">Proposed</i>Stacked lockup, Bogan Green on Salmon.</p></div><div><div class="logo-stage" style="background:#F7E6DA"><img src="assets/lockup-green.png" alt="Bogan Developments logo in Bogan Green on Blush" style="width:min(300px,100%)"></div><p class="working"><i class="tag proposed">Proposed</i>Logo in Bogan Green on Blush.</p></div><div><div class="logo-stage" style="background:#6F1A0E"><img src="assets/mark-b-white.png" alt="The B mark in White on Oxblood" style="width:112px"></div><p class="working"><i class="tag proposed">Proposed</i>Reduced mark, White on Oxblood.</p></div><div><div class="logo-stage" style="background:#217C76"><img src="assets/stacked-white.png" alt="Stacked lockup in White on Teal" style="width:190px"></div><p class="working"><i class="tag proposed">Proposed</i>Stacked lockup, White on Teal.</p></div><div><div class="logo-stage" style="background:linear-gradient(rgba(36,18,16,.42),rgba(36,18,16,.42)),url(assets/z1-exterior-sky.jpg) center/cover"><img src="assets/lockup-white.png" alt="Bogan Developments logo in White on a photograph" style="width:min(300px,100%)"></div><p class="working"><i class="tag proposed">Proposed</i>Logo in White on a photograph.</p></div><div><div class="logo-stage" style="background:linear-gradient(rgba(36,18,16,.42),rgba(36,18,16,.42)),url(assets/z1-learning-center.jpg) center/cover"><img src="assets/stacked-white.png" alt="Stacked lockup in White on a photograph" style="width:190px"></div><p class="working"><i class="tag proposed">Proposed</i>Stacked lockup, White on a photograph.</p></div><div><div class="logo-stage" style="background:#241210"><img src="assets/mark-b-white.png" alt="The B mark in White on Ink" style="width:112px"></div><p class="working"><i class="tag proposed">Proposed</i>Reduced mark, White for one-colour production.</p></div></div>
+  <div class="grid2" style="margin-top:40px">
+    <div><h3 style="font-size:26px">Clear space</h3><p class="caption">Keep clear space equal to x on every side, where x is the cap height of BOGAN in the wordmark. Nothing enters the space: no type, no edge, no detail of a photograph.</p><div class="measure"><div class="space"><img src="assets/lockup-color.png" alt="Logo inside the clear-space guide"><i class="xq t">x</i><i class="xq b">x</i><i class="xq l">x</i><i class="xq r">x</i></div></div></div>
+    <div><h3 style="font-size:26px">Minimum size</h3><p class="caption">Logo 180 px wide on screen, 45 mm in print. Stacked lockup 120 px, 30 mm. Reduced mark 24 px, 6 mm. Below 180 px wide, switch to the reduced mark rather than shrink the wordmark until DEVELOPMENTS stops reading.</p><div class="minsize"><div><img src="assets/lockup-color.png" alt="" style="width:180px"><span class="caption">Logo<br>180 px / 45 mm</span></div><div><img src="assets/stacked-color.png" alt="" style="width:120px"><span class="caption">Stacked<br>120 px / 30 mm</span></div><div><img src="assets/mark-b-color.png" alt="" style="width:24px"><span class="caption">Reduced<br>24 px / 6 mm</span></div></div></div>
+  </div>
+  <div class="misuse"><h3>Keep the mark intact</h3><div class="grid4"><article><div class="demo" style=""><img src="assets/lockup-color.png" alt="" style="transform:scale(1.5,.62)"></div><div class="txt"><b><span class="x">&times;</span>Do not stretch or squash</b><p>Scale from a corner only.</p></div></article><article><div class="demo" style=""><img src="assets/lockup-color.png" alt="" style="transform:rotate(-10deg)"></div><div class="txt"><b><span class="x">&times;</span>Do not rotate</b><p>The baseline stays level.</p></div></article><article><div class="demo" style=""><img src="assets/lockup-color.png" alt="" style="filter:hue-rotate(150deg) saturate(2)"></div><div class="txt"><b><span class="x">&times;</span>Do not recolour</b><p>Full colour on Paper, Bogan Green on Salmon and Blush, White on Ink, Bogan Green, Teal, Oxblood and photographs, and in one-colour production such as embroidery, vinyl and stamps.</p></div></article><article><div class="demo" style=""><img src="assets/lockup-color.png" alt="" style="filter:drop-shadow(5px 6px 3px rgba(0,0,0,.6))"></div><div class="txt"><b><span class="x">&times;</span>Do not add effects</b><p>No shadows, glows, bevels or outlines.</p></div></article><article><div class="demo" style=""><div style="line-height:1"><img src="assets/lockup-color.png" alt="" style="width:120px"><span style="display:block;font:400 21px Besley;margin-top:1px">Find a home</span></div></div><div class="txt"><b><span class="x">&times;</span>Do not crowd</b><p>Keep x clear on every side.</p></div></article><article><div class="demo" style=""><div style="display:flex;align-items:center;gap:8px"><img src="assets/mark-b-color.png" alt="" style="width:38px"><span style="font:700 15px/1.05 Literata;letter-spacing:.04em">BOGAN<br>DEVELOPMENTS</span></div></div><div class="txt"><b><span class="x">&times;</span>Do not re-set the name</b><p>Use the supplied artwork, never a retyped wordmark beside the B.</p></div></article><article><div class="demo" style="background:#6F1A0E"><img src="assets/lockup-color.png" alt=""></div><div class="txt"><b><span class="x">&times;</span>Do not put full colour on colour</b><p>Full colour sits on Paper only. On Oxblood or Salmon use a single-colour version.</p></div></article><article><div class="demo" style=""><span style="font:400 76px/1 Besley;color:#217C76">B</span></div><div class="txt"><b><span class="x">&times;</span>Do not use a typed B</b><p>A B set in a typeface is not the mark. Use the supplied reduced mark.</p></div></article></div></div>
+</div></section>
+
+<section class="section" id="colour"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">04 / Colour</div><h2>Green first.<br>Warmth opposite.</h2></div><p>Bogan Green and Teal come straight from the logo and lead the brand, with Seafoam and Mist as lighter steps of the same hue. The complementary colours sit across the wheel from the green: Teal is at 176 degrees, so its exact opposite is 356, and Oxblood at 7, Brick at 9, Salmon at 21 and Ochre at 32 are the warm side of that pairing. Ink is for type.</p></div>
+  <div class="palette-group"><h3>Foundation</h3><div class="swatches"><div class="swatch" style="background:#FFFFFF;color:#111111;outline:1px solid var(--line)"><div class="name">Paper</div><div class="data">#FFFFFF<br>RGB 255, 255, 255<br>OKLCH 1.000 0.000 89.9</div><small>Primary ground and reading surface</small></div><div class="swatch" style="background:#F3D3C2;color:#111111"><div class="name">Salmon</div><div class="data">#F3D3C2<br>RGB 243, 211, 194<br>OKLCH 0.889 0.043 49.7</div><small>Alternating panels and large grounds</small></div><div class="swatch" style="background:#F7E6DA;color:#111111"><div class="name">Blush</div><div class="data">#F7E6DA<br>RGB 247, 230, 218<br>OKLCH 0.935 0.025 57.7</div><small>Plan and card thumbnails, long-read grounds</small></div><div class="swatch" style="background:#241210;color:#FFFFFF"><div class="name">Ink</div><div class="data">#241210<br>RGB 36, 18, 16<br>OKLCH 0.207 0.031 26.8</div><small>Text, footers, the dark field</small></div><div class="swatch" style="background:#6E5A52;color:#FFFFFF"><div class="name">Soft</div><div class="data">#6E5A52<br>RGB 110, 90, 82<br>OKLCH 0.485 0.029 43.0</div><small>Captions and secondary text</small></div></div></div>
+  <div class="palette-group"><h3>Bogan green</h3><div class="swatches"><div class="swatch" style="background:#0F4A4D;color:#FFFFFF"><div class="name">Bogan Green</div><div class="data">#0F4A4D<br>RGB 15, 74, 77<br>OKLCH 0.375 0.058 200.1</div><small>The logo, actions, links and full panels. The lead brand colour.</small></div><div class="swatch" style="background:#217C76;color:#FFFFFF"><div class="name">Teal</div><div class="data">#217C76<br>RGB 33, 124, 118<br>OKLCH 0.533 0.083 188.5</div><small>The second colour in the logo. On Paper only, for small marks and highlights.</small></div><div class="swatch" style="background:#7FBFB5;color:#111111"><div class="name">Seafoam</div><div class="data">#7FBFB5<br>RGB 127, 191, 181<br>OKLCH 0.759 0.067 183.6</div><small>A lighter green for charts, tags and quiet grounds.</small></div><div class="swatch" style="background:#CDE8E2;color:#111111"><div class="name">Mist</div><div class="data">#CDE8E2<br>RGB 205, 232, 226<br>OKLCH 0.910 0.030 180.8</div><small>The lightest green. Soft grounds, tags and charts.</small></div></div></div>
+  <div class="palette-group"><h3>Complementary</h3><div class="swatches"><div class="swatch" style="background:#6F1A0E;color:#FFFFFF"><div class="name">Oxblood</div><div class="data">#6F1A0E<br>RGB 111, 26, 14<br>OKLCH 0.360 0.121 31.2</div><small>The Standard band only. The one warm accent.</small></div><div class="swatch" style="background:#B5432F;color:#FFFFFF"><div class="name">Brick</div><div class="data">#B5432F<br>RGB 181, 67, 47<br>OKLCH 0.537 0.152 32.2</div><small>Opposite the green on the wheel. Status marks and small highlights.</small></div><div class="swatch" style="background:#D9964A;color:#111111"><div class="name">Ochre</div><div class="data">#D9964A<br>RGB 217, 150, 74<br>OKLCH 0.725 0.122 67.1</div><small>A warm split complement. Charts and small highlights.</small></div><div class="swatch" style="background:#FBEEE6;color:#111111;outline:1px solid var(--line)"><div class="name">Linen</div><div class="data">#FBEEE6<br>RGB 251, 238, 230<br>OKLCH 0.957 0.018 54.0</div><small>Text on Oxblood and Ink</small></div><div class="swatch" style="background:#E8BFAD;color:#111111"><div class="name">Clay</div><div class="data">#E8BFAD<br>RGB 232, 191, 173<br>OKLCH 0.836 0.053 45.0</div><small>Notes and kickers on Oxblood and Ink</small></div></div></div>
+  <div class="palette-group"><h3>Use 60 / 25 / 10 / 5</h3><p class="caption">A guide for page area: 60% Paper, 25% Salmon, 10% Bogan Green, 5% Oxblood. Ink is the type colour and sits outside the split.</p><div class="ratio"><span style="width:60%;background:#FFFFFF;color:#111111">60% Paper</span><span style="width:25%;background:#F3D3C2;color:#111111">25% Salmon</span><span style="width:10%;background:#0F4A4D;color:#FFFFFF">10%</span><span style="width:5%;background:#6F1A0E;color:#FFFFFF">5%</span></div></div>
+  <div class="palette-group"><h3>Text contrast</h3><p class="caption">Ratios are computed from the hex values above, not typed. Normal text needs 4.5:1.</p><table class="contrast"><thead><tr><th>Foreground</th><th>Background</th><th>Ratio</th><th>WCAG AA normal text</th></tr></thead><tbody>
+    <tr><td><i class="chip-c" style="background:#241210"></i>Ink</td><td>Paper</td><td>17.96:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#241210"></i>Ink</td><td>Salmon</td><td>12.75:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#241210"></i>Ink</td><td>Blush</td><td>14.79:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#6E5A52"></i>Soft</td><td>Paper</td><td>6.47:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#6E5A52"></i>Soft</td><td>Blush</td><td>5.32:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#6E5A52"></i>Soft</td><td>Salmon</td><td>4.59:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#6F1A0E"></i>Oxblood</td><td>Paper</td><td>11.48:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#6F1A0E"></i>Oxblood</td><td>Salmon</td><td>8.15:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#6F1A0E"></i>Oxblood</td><td>Blush</td><td>9.45:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#FBEEE6"></i>Linen</td><td>Oxblood</td><td>10.10:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#E8BFAD"></i>Clay</td><td>Oxblood</td><td>6.82:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#FBEEE6"></i>Linen</td><td>Ink</td><td>15.80:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#E8BFAD"></i>Clay</td><td>Ink</td><td>10.68:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#0F4A4D"></i>Bogan Green</td><td>Paper</td><td>9.97:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#217C76"></i>Teal</td><td>Paper</td><td>4.99:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#217C76"></i>Teal</td><td>Salmon</td><td>3.54:1</td><td class="fail">Never for text</td></tr>
+    <tr><td><i class="chip-c" style="background:#0F4A4D"></i>Bogan Green</td><td>Salmon</td><td>7.08:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#0F4A4D"></i>Bogan Green</td><td>Blush</td><td>8.20:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#FBEEE6"></i>Linen</td><td>Bogan Green</td><td>8.77:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#E8BFAD"></i>Clay</td><td>Bogan Green</td><td>5.93:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#CDE8E2"></i>Mist</td><td>Ink</td><td>13.89:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#CDE8E2"></i>Mist</td><td>Bogan Green</td><td>7.71:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#CDE8E2"></i>Mist</td><td>Oxblood</td><td>8.87:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#241210"></i>Ink</td><td>Seafoam</td><td>8.57:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#241210"></i>Ink</td><td>Mist</td><td>13.89:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#241210"></i>Ink</td><td>Ochre</td><td>7.20:1</td><td class="pass">Pass</td></tr>
+    <tr><td><i class="chip-c" style="background:#FBEEE6"></i>Linen</td><td>Brick</td><td>4.85:1</td><td class="pass">Pass</td></tr>
+  </tbody></table></div>
+<div class="palette-group"><h3>Colour-blind check</h3><p class="caption">Checked by script, not by eye. The check simulates protanopia, deuteranopia and tritanopia (Machado 2009, severity 1.0) and measures the OKLab distance between the closest pair. The minimum is deltaE 12.</p><table class="cvd"><thead><tr><th>Set</th><th>Vision</th><th>Closest pair, deltaE</th><th>Result</th></tr></thead><tbody><tr><td>Oxblood and Ink</td><td>normal</td><td><i class="sw2" style="background:#6F1A0E"></i><i class="sw2" style="background:#241210"></i>17.8</td><td class="pass">Distinct (min 12.0)</td></tr><tr><td>Oxblood and Ink</td><td>protan</td><td><i class="sw2" style="background:#6F1A0E"></i><i class="sw2" style="background:#241210"></i>11.2</td><td class="fail">Too close (min 12.0)</td></tr><tr><td>Oxblood and Ink</td><td>deutan</td><td><i class="sw2" style="background:#6F1A0E"></i><i class="sw2" style="background:#241210"></i>17.0</td><td class="pass">Distinct (min 12.0)</td></tr><tr><td>Oxblood and Ink</td><td>tritan</td><td><i class="sw2" style="background:#6F1A0E"></i><i class="sw2" style="background:#241210"></i>19.3</td><td class="pass">Distinct (min 12.0)</td></tr><tr><td>Oxblood, Teal and Salmon</td><td>normal</td><td><i class="sw2" style="background:#6F1A0E"></i><i class="sw2" style="background:#217C76"></i>26.4</td><td class="pass">Distinct (min 12.0)</td></tr><tr><td>Oxblood, Teal and Salmon</td><td>protan</td><td><i class="sw2" style="background:#6F1A0E"></i><i class="sw2" style="background:#217C76"></i>27.0</td><td class="pass">Distinct (min 12.0)</td></tr><tr><td>Oxblood, Teal and Salmon</td><td>deutan</td><td><i class="sw2" style="background:#6F1A0E"></i><i class="sw2" style="background:#217C76"></i>18.3</td><td class="pass">Distinct (min 12.0)</td></tr><tr><td>Oxblood, Teal and Salmon</td><td>tritan</td><td><i class="sw2" style="background:#6F1A0E"></i><i class="sw2" style="background:#217C76"></i>29.5</td><td class="pass">Distinct (min 12.0)</td></tr></tbody></table><p style="margin-top:20px">Oxblood and Ink come too close under protanopia, so the system never separates two things by those two colours alone. The four project statuses differ by fill, marker and outline, and always carry their words.</p></div>
+</div></section>
+
+<section class="section ground" id="type"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">05 / Typography</div><h2>A serif that<br>carries weight.</h2></div><p>Read from The Standard's own stylesheet: Besley for headlines and figures, Literata for text. Both are variable fonts, self-hosted as WOFF2 files, and neither supplies an italic. On the web, body text runs at 18px and display type scales with the screen, up to 178px in the home hero. The scale below is the fixed tier for documents and print.</p></div>
+  <div class="grid3">
+    <div class="type-card"><div class="label">Besley / 400</div><div class="sample" style="font-family:Besley;font-weight:400;letter-spacing:-.022em">Aa 12</div><p>Headlines, project names and figures. Weight 400, tracking -2.2%, line-height 1.04. The file runs 400 to 900; the site also uses 500 for the header name.</p></div>
+    <div class="type-card"><div class="label">Literata / 400</div><div class="sample" style="font-family:Literata;font-weight:400">Aa 18</div><p>Body copy, captions, tables and forms. 18 px on the site with line-height 1.62. The file runs 300 to 800.</p></div>
+    <div class="type-card"><div class="label">Literata / 600 caps</div><div class="sample" style="font-family:Literata;font-weight:600;letter-spacing:.14em">AMI</div><p>Kickers, status labels and buttons. Uppercase, tracked +14%, 12 to 13 px. The prototype sets kickers in browser-made italic; 2.0 moves them here.</p></div>
+  </div>
+  <div class="scale"><h3>Modular scale / 1.25</h3><p class="caption">Base 16 px. Body copy starts at 16 px; nothing falls below 13 px. Body line-height 1.5 or more.</p>
+    <div class="scale-row"><span>7</span><span class="size">76.29 px</span><span class="sample" style="font-size:min(76.29px,15vw);font-family:Besley;font-weight:400;letter-spacing:-.022em">Belonging</span></div>
+    <div class="scale-row"><span>6</span><span class="size">61.04 px</span><span class="sample" style="font-size:min(61.04px,15vw);font-family:Besley;font-weight:400;letter-spacing:-.022em">Belonging</span></div>
+    <div class="scale-row"><span>5</span><span class="size">48.83 px</span><span class="sample" style="font-size:min(48.83px,15vw);font-family:Besley;font-weight:400;letter-spacing:-.022em">Belonging</span></div>
+    <div class="scale-row"><span>4</span><span class="size">39.06 px</span><span class="sample" style="font-size:min(39.06px,15vw);font-family:Besley;font-weight:400;letter-spacing:-.022em">Belonging</span></div>
+    <div class="scale-row"><span>3</span><span class="size">31.25 px</span><span class="sample" style="font-size:min(31.25px,15vw);font-family:Besley;font-weight:400;letter-spacing:-.022em">Belonging</span></div>
+    <div class="scale-row"><span>2</span><span class="size">25 px</span><span class="sample" style="font-size:min(25px,15vw);font-family:Literata">Twelve homes, delivered on N. Pitcher Street.</span></div>
+    <div class="scale-row"><span>1</span><span class="size">20 px</span><span class="sample" style="font-size:min(20px,15vw);font-family:Literata">Twelve homes, delivered on N. Pitcher Street.</span></div>
+    <div class="scale-row"><span>0</span><span class="size">16 px</span><span class="sample" style="font-size:min(16px,15vw);font-family:Literata">Twelve homes, delivered on N. Pitcher Street.</span></div>
+  </div>
+  <div class="grid2 type-notes">
+    <div class="rule"><h3>Pairing rules</h3><p>A Besley headline over Literata text. Figures are Besley. Kickers and status labels are Literata 600 capitals. Besley never sets a paragraph and Literata never sets a headline.</p></div>
+    <div class="rule"><h3>Numerals</h3><div class="figures"><span>12</span><span>38</span><span>137</span><span>$10.6M</span></div><p>Figures are the loudest thing on a Bogan page. Set them in Besley at display size, in tabular numerals, with the unit in Literata beside them.</p></div>
+    <div class="rule"><h3>Do</h3><p>Generous leading, short lines and one clear jump in size between headline and body.</p></div>
+    <div class="rule"><h3>Don't</h3><p>No italic, which neither file supplies. No outlined type, no script fonts, no all-caps paragraphs, no more than two families on a page.</p></div>
+  </div>
+</div></section>
+
+
+<section class="section ground" id="photo"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">06 / Photography</div><h2>The real street,<br>in daylight.</h2></div><p>Photograph what has been built, as it was built, in daylight and straight on. People appear as themselves and are named in the caption. Renderings stand in for what is not yet built and are always labelled.</p></div>
+  <div class="photo-grid"><figure><img src="assets/z1-exterior-sky.jpg" alt="The 815 N. Pitcher Street building, Zone 32 Phase I, in daylight" loading="lazy"><figcaption><b>Delivered.</b> Zone 32 Phase I, 815 N. Pitcher Street. Daylight, straight on, the building as built.</figcaption></figure><figure><img src="assets/z1-aerial-after.jpg" alt="Zone 32 Phase I from above" loading="lazy"><figcaption><b>From above.</b> Zone 32 Phase I, shot to show the block and not only the building.</figcaption></figure><figure><img src="assets/z1-learning-center.jpg" alt="The early learning center at Zone 32 Phase I" loading="lazy"><figcaption><b>The whole program.</b> The early learning center at Zone 32 Phase I, with the YMCA sign legible.</figcaption></figure><figure><img src="assets/z2-groundbreaking-wide.jpg" alt="The Zone 32 Phase II groundbreaking" loading="lazy"><figcaption><b>The day.</b> The Zone 32 Phase II groundbreaking. Nothing is laid over a face; the caption names the event.</figcaption></figure><figure><img src="assets/z2-hardhat.jpg" alt="A white hard hat carrying the Bogan Developments logo, in front of an excavator" loading="lazy"><figcaption><b>The mark in use.</b> The full-colour logo on a groundbreaking hard hat, at native size.</figcaption></figure><figure><img src="assets/z2-site-lawn.jpg" alt="The Phase II site with Phase I at left" loading="lazy"><figcaption><b>The site.</b> The Phase II site, with Phase I at left.</figcaption></figure></div>
+  <h3 class="sub-h">Renderings</h3>
+  <p class="caption" style="margin-bottom:18px">What is not yet built is shown as a rendering, and the word is printed on the image as well as in the caption. Lighthouse Ridge appears only as an illustrative rendering.</p>
+  <div class="photo-grid"><figure><img src="assets/z2-street-dusk.jpg" alt="Rendering of Zone 32 Phase II at dusk" loading="lazy"><i class="tag">Rendering</i><figcaption><b>Under construction.</b> Zone 32 Phase II at dusk on N. Pitcher Street. Opening targeted for fall 2027.</figcaption></figure><figure><img src="assets/bb-street-dusk.jpg" alt="Rendering of The B on Burdick at dusk" loading="lazy"><i class="tag">Rendering</i><figcaption><b>Planned.</b> The B on Burdick at dusk, planned with Bronson Healthcare. Occupancy target Q1 2028.</figcaption></figure><figure><img src="assets/lr-trees.jpg" alt="Illustrative rendering of Lighthouse Ridge among trees" loading="lazy"><i class="tag">Illustrative rendering</i><figcaption><b>In development.</b> Lighthouse Ridge, South Haven Township. Final design may differ. Wallick is lead developer; Bogan is a development partner.</figcaption></figure></div>
+  <h3 class="sub-h">How a photograph is chosen</h3>
+  <div class="rules4"><div>Show the real site: Phase I from the street, from above and inside the program it houses.</div><div>Use the largest original available. A soft photograph may be enlarged only without sharpening or added grain, and any face is checked against the original. Photographs are never retouched.</div><div>Faces stay clear. No text, tag or box over a face; captions sit below the image.</div><div>Every image carries a caption that names the project and states its status.</div></div>
+  <div class="avoid"><h3>Avoid</h3><div>Stock photographs of hands, hard hats and handshakes standing in for Bogan&rsquo;s own sites.</div><div>A rendering without the word Rendering printed on it.</div><div>Lighthouse Ridge shown as a Bogan-led project. Wallick is lead developer.</div><div>Sharpened or retouched photographs, and text or boxes over faces.</div><div>The B on Burdick described as under construction. It is planned.</div><div>Interior images drawn from renderings presented as photographs of finished homes.</div></div>
+</div></section>
+<section class="section" id="components"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">07 / Components</div><h2>Built for<br>a record.</h2></div><p>Live HTML examples of the parts a Bogan page reuses. Bogan Green is the action, Ink is structure, and status is always written out.</p></div>
+  <div class="component-board"><div class="component"><span class="label">Primary button</span><button class='btn' type='button'>Find a home</button></div><div class="component"><span class="label">Secondary button</span><button class='btn ghost' type='button'>Work with us</button></div><div class="component wide"><span class="label">Status labels</span><span class='status st-done'>Delivered</span><span class='status st-build'>Under construction</span><span class='status st-plan'>Planned</span><span class='status st-dev'>In development</span><p class='caption' style='margin-top:6px'>Status is carried by fill, marker, outline and the word itself, never by colour alone.</p></div><div class="component wide"><span class="label">Ledger</span><div class='ledger'><div><b>12</b><span>homes delivered</span></div><div><b>38</b><span>under construction</span></div><div><b>137</b><span>planned or in development</span></div></div></div><div class="component tall"><span class="label">Project card</span><div class='pcard'><div class='th'><img src='assets/z2-street-dusk.jpg' alt='Rendering of Zone 32 Phase II at dusk' loading='lazy'><i class='tag'>Rendering</i></div><span class='status st-build'>Under construction</span><h4>Zone 32 Phase II</h4><p class='where'>N. Pitcher Street, Northside Kalamazoo</p><p>Ten studios, eighteen one-bedrooms and ten two-bedrooms, with a community room and outdoor recreation. $10.6 million.</p><div class='n'>38<small>homes</small></div></div></div><div class="component"><span class="label">Milestones</span><ul class='mile'><li><b>Sep 10, 2026</b><span>Groundbreaking</span><span>Held</span></li><li><b>2027</b><span>County Housing Millage, $2 million</span><span>Payable</span></li><li><b>Fall 2027</b><span>Opening</span><span>Target</span></li></ul></div><div class="component"><span class="label">Sourced figure</span><div class='fig'><b>$10.6M</b><span>Total cost, Zone 32 Phase II</span><small>Source: Second Wave Media, September 11, 2026.</small></div></div><div class="component"><span class="label">Quotation</span><blockquote class='quote'>&ldquo;A complete neighborhood is walkable, has access to groceries, a place to get your haircut, housing, and neighborhood amenities—paired with improved infrastructure where people can live, work, and play.&rdquo;<cite>Jamauri Bogan, CEO. Source: bogandevelopments.com</cite></blockquote></div><div class="component"><span class="label">Filter chips</span><span class='chip' aria-pressed='true'>All</span><span class='chip'>Delivered</span><span class='chip'>Under construction</span><span class='chip'>Planned</span></div><div class="component"><span class="label">Input</span><input class='input' aria-label='Household size' placeholder='Household size, for example 3'></div></div>
+</div></section>
+<section class="section ground" id="voice"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">08 / Voice</div><h2>Plain words.<br>Counted, not praised.</h2></div><p>Write the way a careful developer talks to a lender, a resident and a city council: a number, a name, a date. Facts before adjectives. No emojis. Jamauri Bogan is he and him in every document.</p></div>
+  <div class="grid3" style="margin-bottom:45px"><div class="audience"><h3>Specific</h3><p>Say thirty-eight homes, not a new chapter.</p></div><div class="audience"><h3>Sourced</h3><p>State where a figure comes from the first time it appears.</p></div><div class="audience"><h3>Calm</h3><p>The record is the confidence. Skip the exclamation point.</p></div></div>
+  <div class="voice-grid"><div class="good"><b>Use</b>A Michigan housing developer.</div><div class="bad"><b>Avoid</b>A Kalamazoo housing firm.</div><div class="good"><b>Use</b>Workforce apartments in Northside Kalamazoo, with a community room and outdoor recreation, opening fall 2027.</div><div class="bad"><b>Avoid</b>Transforming the skyline with a vibrant new landmark community.</div><div class="good"><b>Use</b>Phase II broke ground on September 10, 2026. Opening is targeted for fall 2027.</div><div class="bad"><b>Avoid</b>Coming soon! A bold new chapter begins.</div><div class="good"><b>Use</b>The B on Burdick is planned. The occupancy target is the first quarter of 2028.</div><div class="bad"><b>Avoid</b>The B on Burdick is going up now.</div><div class="good"><b>Use</b>Lighthouse Ridge is led by Wallick. Bogan is a development partner.</div><div class="bad"><b>Avoid</b>Bogan&rsquo;s Lighthouse Ridge.</div><div class="good"><b>Use</b>Bronson Healthcare will lease 20 homes for its employees.</div><div class="bad"><b>Avoid</b>Revolutionizing workforce housing.</div><div class="good"><b>Use</b>Zone 32 Phase I went up with no investors, on debt Jamauri Bogan personally signed for.</div><div class="bad"><b>Avoid</b>A pioneering, first-of-its-kind founder story.</div><div class="good"><b>Use</b>Effort, Leadership, Impact, Teamwork, Execution.</div><div class="bad"><b>Avoid</b>World-class excellence in everything we do.</div><div class="good"><b>Use</b>Rendering. Zone 32 Phase II, under construction, opening fall 2027.</div><div class="bad"><b>Avoid</b>Zone 32 Phase II, coming to life.</div></div>
+</div></section>
+<section class="section" id="messaging"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">09 / Messaging</div><h2>One line.<br>Four rooms.</h2></div><p>The message stays the same and the proof changes with the reader. Every line below comes from the record in this book.</p></div>
+  <dl class="msg-core"><dt>Headline</dt><dd>Belonging, to a standard.</dd><dt>Tagline</dt><dd>We build belonging.</dd><dt>The promise</dt><dd>Every home is answered for: what it is, what it cost, who funded it and where it stands.</dd><dt>In one sentence</dt><dd>Bogan Developments builds affordable and workforce housing in Michigan, and keeps the record where anyone can read it.</dd></dl>
+  <div class="msg-wrap"><table class="msg"><thead><tr><th scope="col">Reader</th><th scope="col">What they are asking</th><th scope="col">What we say</th><th scope="col">The proof</th></tr></thead><tbody><tr><th scope="row">People looking for a home</th><td>Is there a place for me, and can I afford it?</td><td class="say">Pick a layout, walk it in 3D and check your income.</td><td>Four communities and their sample layouts in one place.</td></tr><tr><th scope="row">Employers</th><td>Can my people live near their work?</td><td class="say">Housing is how you keep the people you need.</td><td>Bronson Healthcare will lease 20 homes for its employees at The B on Burdick.</td></tr><tr><th scope="row">Lenders and funders</th><td>Will this get finished, and can I see the record?</td><td class="say">Every project shows its status, its cost and its partners.</td><td>Phase I is delivered. Phase II broke ground on September 10, 2026, and targets fall 2027.</td></tr><tr><th scope="row">Cities and agencies</th><td>What does this do for the neighborhood?</td><td class="say">Land that sat empty, back in use.</td><td>A 1.4-acre brownfield on N. Pitcher Street became twelve homes and an early learning center.</td></tr></tbody></table></div>
+  <div class="msg-two"><div><h3>Ready headlines</h3><ul class="msg-lines"><li>Find your home.</li><li>Work with us.</li><li>For the people who finance, employ and govern a neighborhood.</li><li>Counted, not praised.</li></ul></div><div><h3>Boilerplate</h3><p>Bogan Developments is a minority-led real estate development firm in Michigan, founded in 2020. It builds affordable and workforce housing, measures every home against five words, Effort, Leadership, Impact, Teamwork and Execution, and keeps the record public.</p></div></div>
+</div></section>
+<section class="section ground" id="mood"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">10 / Mood and emotion</div><h2>Steady,<br>warm, rooted.</h2></div><p>How the brand should feel before anyone reads a word. Every colour, photograph and sentence is checked against these.</p></div>
+  <div class="mood-words"><div class="mood-word"><h3>Steady</h3><p>The confidence of someone who has the record in hand.</p><p class="mood-not">Never loud or boastful.</p></div><div class="mood-word"><h3>Warm</h3><p>A place you are glad to come home to, and people who know the street.</p><p class="mood-not">Never charitable or pitying.</p></div><div class="mood-word"><h3>Rooted</h3><p>Real streets, real partners, a neighborhood you can name.</p><p class="mood-not">Never corporate or placeless.</p></div></div>
+  <div class="mood-pics"><figure><img src="assets/z1-exterior-sky.jpg" alt="Daylight on finished homes." loading="lazy"><figcaption>Daylight on finished homes.</figcaption></figure><figure><img src="assets/z2-hardhat.jpg" alt="People at work on the real site." loading="lazy"><figcaption>People at work on the real site.</figcaption></figure><figure><img src="assets/z1-learning-center.jpg" alt="The neighborhood the work serves." loading="lazy"><figcaption>The neighborhood the work serves.</figcaption></figure></div>
+  <div class="msg-two"><div><h3>What each reader should feel</h3><ul class="mood-feel"><li><span>People looking for a home</span><b>Welcome, and respected</b></li><li><span>Employers</span><b>Relieved to have a partner</b></li><li><span>Lenders and funders</span><b>Reassured by the record</b></li><li><span>Cities and agencies</span><b>Proud of the neighborhood</b></li></ul></div><div><h3>What each colour carries</h3><ul class="mood-cols"><li><i style="background:#0F4A4D"></i><span><b>Bogan Green</b>Steady and rooted. Trust you can return to.</span></li><li><i style="background:#F3D3C2"></i><span><b>Salmon</b>Warmth, like brick in late sun.</span></li><li><i style="background:#6F1A0E"></i><span><b>Oxblood</b>Weight and commitment. Used once, so it counts.</span></li><li><i style="background:#FFFFFF"></i><span><b>Paper</b>Openness. A clean record with nothing to hide.</span></li></ul></div></div>
+</div></section>
+
+<section class="section dark" id="tokens"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">11 / Tokens</div><h2>One source<br>of colour.</h2></div><p>The CSS custom properties used by this page. Every Bogan surface reads from this list; nothing is picked by eye.</p></div>
+<pre><code>:root{
+  --soft:#6E5A52;
+  --salmon:#F3D3C2;
+  --linen:#FBEEE6;
+  --clay:#E8BFAD;
+  --teal-deep:#0F4A4D;
+  --teal:#217C76;
+  --text:#241210;
+  --paper:#FFFFFF;
+  --ground:#F7E6DA;
+  --dark:#241210;
+  --dark2:#6F1A0E;
+  --on-dark:#FBEEE6;
+  --on-dark-muted:#E8BFAD;
+  --accent:#6F1A0E;
+  --accent-on-dark:#E8BFAD;
+  --metal:#6F1A0E;
+  --muted:#6E5A52;
+  --line:rgba(36,18,16,.16);
+  --warn:#241210;
+  --btn-bg:#0F4A4D;
+  --btn-fg:#FBEEE6;
+  --radius:0;
+  --display:Besley,Georgia,serif;
+  --display-w:400;
+  --display-ls:-.022em;
+  --body:Literata,Georgia,serif;
+  --label:Literata,Georgia,serif;
+  --label-w:600;
+  --green:#0F4A4D;
+  --seafoam:#7FBFB5;
+  --mist:#CDE8E2;
+  --brick:#B5432F;
+  --ochre:#D9964A;
+}</code></pre>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap"><b>Bogan Developments</b><span>Bogan 2.0 / Brand book / November 2026</span></div></footer>
+</body></html>

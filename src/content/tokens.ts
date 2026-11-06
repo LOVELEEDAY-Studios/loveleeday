@@ -83,4 +83,6 @@ export const TOKENS = {
   doorlight: tokOptional("PORTAL_TOKEN_DOORLIGHT"),
   // Internal growth plan for Daniel (2026-10-05). Not a client page; never listed or linked publicly.
   growthPlan: tokOptional("PORTFOLIO_TOKEN_GROWTHPLAN"),
+  /* Bogan Developments proposal */
+  bogan: tokOptional("PORTAL_TOKEN_BOGAN"),
 } as const;

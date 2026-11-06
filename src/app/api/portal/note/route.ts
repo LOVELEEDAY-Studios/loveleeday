@@ -11,6 +11,7 @@ import { getHub } from "@/content/hub/startupzoo";
 import { getWightman } from "@/content/hub/wightman";
 import { getNow } from "@/content/hub/nowkalamazoo";
 import { getDoorlight } from "@/content/hub/doorlight-ywca";
+import { getBogan } from "@/content/hub/bogan";
 
 export const dynamic = "force-dynamic";
 
@@ -37,10 +38,19 @@ export async function POST(request: Request) {
     const wm = found || pf || st || civic || cs ? undefined : getWightman(token);
     const nk = found || pf || st || civic || cs || wm ? undefined : getNow(token);
     const dl = found || pf || st || civic || cs || wm || nk ? undefined : getDoorlight(token);
-    if (!found && !pf && !cs && !civic && !st && !wm && !nk && !dl) {
+    const bog = found || pf || cs || civic || st || wm || nk || dl ? undefined : getBogan(token);
+    if (!found && !pf && !cs && !civic && !st && !wm && !nk && !dl && !bog) {
       return NextResponse.json({ error: "Unknown review link" }, { status: 404 });
     }
-    const portal = found ?? (pf
+    const portal = found ?? (bog
+      ? {
+          token: bog.token,
+          client: bog.preparedFor,
+          project: "Bogan Developments proposal",
+          round: "Round 01",
+          deliverables: [{ slug: "analysis", title: "Bogan Developments proposal" }],
+        }
+      : pf
       ? {
           token: pf.token,
           client: pf.fund,
