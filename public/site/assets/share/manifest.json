@@ -1,9 +1,9 @@
 {
   "architecture": {
     "page": "architecture.html",
-    "hash": "890996646e5e4a45",
-    "file": "30e73575de58074c",
-    "headline": "Intelligence is designed. | Trust is built in.",
+    "hash": "3d8912dbabc6a04d",
+    "file": "88966e7308bc113f",
+    "headline": "Five layers make every answer traceable.",
     "caption": "Architecture",
     "photo": "architecture-plan.jpg"
   },
@@ -25,9 +25,9 @@
   },
   "customer-data": {
     "page": "customer-data.html",
-    "hash": "e02b92697c9d6a9d",
-    "file": "e572b765ce7a62e2",
-    "headline": "Many records. | A fuller customer picture.",
+    "hash": "1dc06464564daeb7",
+    "file": "6ec9b5bc4ef2d72a",
+    "headline": "See each customer as one complete record.",
     "caption": "Customer data",
     "photo": "customer-data.jpg"
   },
@@ -49,9 +49,9 @@
   },
   "municipal-review": {
     "page": "municipal-review.html",
-    "hash": "41103e71acd6673f",
-    "file": "ff0d9fd30e527913",
-    "headline": "The whole codebook. | A clearer picture.",
+    "hash": "d8aff70c3ea41e5d",
+    "file": "3d5f593ce4d04e20",
+    "headline": "Review every ordinance on a municipality’s books.",
     "caption": "Municipal review",
     "photo": "municipal-review.jpg"
   },
@@ -65,35 +65,27 @@
   },
   "operational-intelligence": {
     "page": "operational-intelligence.html",
-    "hash": "e91fd557ea66e6bf",
-    "file": "db8a84456d565493",
-    "headline": "See the connections. | Find the next question.",
+    "hash": "1cb5d4761e21d5c7",
+    "file": "70bf3fb837891559",
+    "headline": "See how one change affects the rest of your operation.",
     "caption": "Operational intelligence",
     "photo": "operational-intelligence.jpg"
   },
   "pricing-margins": {
     "page": "pricing-margins.html",
-    "hash": "c5b90b98ec9ad693",
-    "file": "d6a27a6476fdcfb8",
-    "headline": "See what sells. | Know what it leaves.",
+    "hash": "d27688aed21c12b9",
+    "file": "42959611de8ad6bc",
+    "headline": "See how much each sale actually earns.",
     "caption": "Pricing & margins",
     "photo": "pricing-margins.jpg"
   },
   "principles": {
     "page": "principles.html",
-    "hash": "09d4aa8119c5d8c5",
-    "file": "7585f844a810cbce",
-    "headline": "Clear thinking. | Visible foundations.",
+    "hash": "ac8897a3f8532b10",
+    "file": "59795a8708d5adc7",
+    "headline": "The standards behind every answer we give.",
     "caption": "Our principles",
     "photo": "principles.jpg"
-  },
-  "snapshot": {
-    "page": "snapshot.html",
-    "hash": "a72095eae06022d1",
-    "file": "47d3b9d3340725ca",
-    "headline": "Upload a price file and see what it shows",
-    "caption": "Free price snapshot: upload a file, see six issues it can reveal",
-    "photo": "industry-retail.jpg"
   },
   "studio": {
     "page": "studio.html",
@@ -105,16 +97,16 @@
   },
   "trust": {
     "page": "trust.html",
-    "hash": "40e00f53f7b71959",
-    "file": "190bfbb6ecacff34",
-    "headline": "Your data stays yours. | And you can check that.",
+    "hash": "5e14b605d6abba3e",
+    "file": "f855a1f6e2a39c24",
+    "headline": "Your data stays yours, and you can verify that.",
     "caption": "Trust and security: how your data is protected",
     "photo": "industry-nonprofit.jpg"
   },
   "use-cases": {
     "page": "use-cases.html",
-    "hash": "3721774cbd14a69b",
-    "file": "6c31a233d9b0f95c",
+    "hash": "641152de648fe97b",
+    "file": "f8c10a5dcf7e4680",
     "headline": "Where organizations start | with LOVELEEDAY.",
     "caption": "Use cases",
     "photo": "talk-manufacturing.jpg"
