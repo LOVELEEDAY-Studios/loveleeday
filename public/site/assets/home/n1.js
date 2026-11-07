@@ -371,12 +371,14 @@
       hudPx = u * 5.6; heroPx = u * 12.5;
     }
     function rise(el, p, px) { el.style.opacity = p.toFixed(3); el.style.transform = 'translateY(' + (-(1 - p) * (px || 14)).toFixed(1) + 'px)'; }
-    var cur = 0, started = false, lastTone = '', askArmed = false;
+    var cur = 0, started = false, lastTone = '', askArmed = false, lastMove = performance.now();
     function frame(now) {
       var target = Math.max(0, scrollY - main.offsetTop);
       if (!started) { cur = target; started = true; }
-      cur += (target - cur) * .16;
+      cur += (target - cur) * .3;
       if (Math.abs(target - cur) < .4) cur = target;
+      if (cur !== target) lastMove = now;
+      else if (now - lastMove > 5000) { requestAnimationFrame(frame); return; } // nothing moves once the page has settled, so stop repainting it
       var y = cur;
       var o = [], e = [], k = 0, k5 = 0, i;
       for (i = 0; i < n; i++) {

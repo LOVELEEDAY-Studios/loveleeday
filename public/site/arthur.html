@@ -3,9 +3,9 @@
 <script>(function(){var d=document.documentElement;d.classList.add('js');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))d.classList.add('ob-rv')})()</script>
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site/assets/ob/ob.css?v=3e9e4bc882">
-<link rel="stylesheet" href="/site/assets/ob/scene.css?v=55a1905a82">
-<link rel="stylesheet" href="/site/assets/ob/arthur.css?v=71425e3c34">
+<link rel="stylesheet" href="/site/assets/ob/ob.css?v=8a85e7dac1">
+<link rel="stylesheet" href="/site/assets/ob/scene.css?v=ea83234c06">
+<link rel="stylesheet" href="/site/assets/ob/arthur.css?v=a756536f1c">
 </head>
 <body class="sc ob arthur-page" data-brain-set="3,4,5">
 <!--ob:top-->
@@ -91,46 +91,44 @@
 <!--/ob:top-->
 
 <main id="main">
-<section class="sc-hero " style="--pos:60% 40%">
+<section class="sc-hero" style="--pos:60% 40%">
 <img class="sc-ph" src="/site/assets/hero-work.jpg" alt="A man reading at a workbench beside tall factory windows" width="2200" height="1467" fetchpriority="high">
-<p class="sc-stamp" aria-hidden="true">10:42<i>AM</i></p><div class="sc-copy"><h1>It reads everything<br>before it answers.</h1><p>Arthur is the mind behind LOVELEEDAY. It reads your records, remembers what happened, and shows you where every answer came from.</p><div class="sc-act"><a class="sc-b" href="#arthur">Watch a question answered</a><a class="sc-g" href="/architecture">See how it is built</a></div></div>
+<div class="sc-copy"><h1>The intelligence system behind every LOVELEEDAY answer.</h1><p class="sc-lede">Arthur connects the records across your organization, answers questions in plain language, and shows the source behind every figure.</p><div class="sc-act"><a class="sc-b" href="#arthur">See an answer</a><a class="sc-g" href="/architecture">View architecture</a></div></div>
 </section>
 <section class="sc-q" aria-labelledby="q-h">
   <h2 id="q-h">Is the customer who called today the one who signed in March?</h2>
-  <div class="sc-ans"><span class="sc-who">Arthur</span><p class="f">Yes. All three records are the same customer.</p><p class="y">The billing account, the support inbox and the signed agreement spell the name three different ways.</p><p class="n">Link them once, and every answer after this starts from one customer.</p></div>
+  <div class="sc-ans"><span class="sc-who">Arthur</span><p class="f">Yes. All three records belong to the same customer.</p><p class="y">The billing account, the support inbox and the signed agreement each spell the name differently.</p><p class="n">Link the records once, and every future answer will treat them as one customer.</p></div>
   <div class="sc-rec"><div><span>Billing system</span><b>Harbor Ridge Supply LLC</b></div><div><span>Support inbox</span><b>Harbor Ridge</b></div><div><span>Contract folder</span><b>H.R. Supply, signed in March</b></div></div>
-  <p class="sc-src">Source: the billing system, the support inbox and the contract folder. Example data.</p>
+  <p class="sc-note">Source: the billing system, the support inbox and the contract folder. Example data.</p>
 </section>
 <section class="arthur ob-sec ob-sec--dark" id="arthur">
   <div class="ob-wrap">
     <h2 class="sr">Arthur, working through a question</h2>
     <div class="scenario-picks" aria-label="Choose an example"><a href="#arthur" data-brain-example="0">Municipal review</a><a href="#arthur" data-brain-example="1">Customer data</a><a href="#arthur" data-brain-example="2">Pricing &amp; margins</a></div>
     <div class="brain-stage">
-      <div class="brain-ask"><span class="brain-label">A simple question</span><h3 id="brain-question">Review every ordinance and law on the municipality’s books.</h3></div>
+      <div class="brain-ask"><span class="brain-label">Example request</span><h3 id="brain-question">Review every ordinance and law on the municipality’s books.</h3></div>
       <div class="brain-scene">
         <canvas id="brain" role="img" aria-label="Arthur: a full-turn, multicolored three-dimensional brain with signals moving between connected points"></canvas>
         <div class="branch-grid" aria-label="The questions behind the answer">
-          <div class="branch" id="branch-0"><span>Identity</span><p>Which ordinances and laws are on the books?</p></div>
-          <div class="branch" id="branch-1"><span>Context</span><p>What was amended, repealed, or superseded?</p></div>
-          <div class="branch" id="branch-2"><span>Evidence</span><p>Where do provisions conflict or leave gaps?</p></div>
-          <div class="branch" id="branch-3"><span>Verification</span><p>Which source and effective date support each finding?</p></div>
+          <div class="branch" id="branch-0"><span>Step 1</span><p>Which ordinances and laws are on the books?</p></div>
+          <div class="branch" id="branch-1"><span>Step 2</span><p>What was amended, repealed, or superseded?</p></div>
+          <div class="branch" id="branch-2"><span>Step 3</span><p>Where do provisions conflict or leave gaps?</p></div>
+          <div class="branch" id="branch-3"><span>Step 4</span><p>Which source and effective date support each finding?</p></div>
         </div>
       </div>
-      <div class="brain-answer" id="brain-answer"><span class="brain-label">Arthur connects the answer</span><p id="brain-result">A cited inventory of current laws, amendments, and issues to review.</p><small id="brain-evidence">Illustrative municipal review · source citations and effective dates</small></div>
-      <div class="brain-controls"><span>Illustrative sequence · questions, evidence, and answers</span><div><button id="brain-next" type="button">Next question <span aria-hidden="true">→</span></button><button id="motion" aria-pressed="false">Pause motion Ⅱ</button></div></div>
+      <div class="brain-answer" id="brain-answer"><span class="brain-label">Arthur’s answer</span><p id="brain-result">A cited inventory of current laws, amendments, and issues to review.</p><small id="brain-evidence">Illustrative municipal review · source citations and effective dates</small></div>
+      <div class="brain-controls"><span>Illustrative example</span><div><button id="brain-next" type="button">Next question <span aria-hidden="true">→</span></button><button id="motion" aria-pressed="false">Pause motion Ⅱ</button></div></div>
     </div>
   </div>
 </section>
 <section class="sc-3" aria-labelledby="c-h">
-  <div class="top"><h2 id="c-h">It asks what you would ask.</h2><p>Who exactly are we talking about? What was true at the time? What changed? What can the records actually prove? Arthur works through all of that before it writes a word.</p></div>
-  <div class="sc-row"><i>1</i><h3>It works out who is who.</h3><p>One company can go by three names across your systems. Arthur sees them as one.</p></div>
-  <div class="sc-row"><i>2</i><h3>It follows the trail.</h3><p>It connects what happened, when it happened and which record says so.</p></div>
-  <div class="sc-row"><i>3</i><h3>It says what it does not know.</h3><p>A fact stays a fact. A guess is marked as a guess. An open question stays open.</p></div>
+  <div class="top"><h2 id="c-h">Arthur establishes the facts before it answers.</h2><p class="sc-lede">First it determines which customer, supplier or document the question refers to, what was true at the time, and what the records can support.</p></div>
+  <div class="sc-rows"><div class="sc-row"><h3>Identifies the subject</h3><p>Arthur recognizes when different names and account numbers refer to the same customer, company or item.</p></div><div class="sc-row"><h3>Follows the record</h3><p>It connects related events in the order they happened and keeps the source of each one.</p></div><div class="sc-row"><h3>Flags uncertainty</h3><p>Confirmed facts, estimates and open questions are labeled separately, so you know what you can rely on.</p></div></div>
 </section>
-<section class="sc-split" aria-labelledby="p-h"><img src="/site/assets/arthur.jpg" alt="A person pausing at a patterned window, thinking" width="940" height="627" loading="lazy"><div><h2 id="p-h">Sometimes the right answer starts with another question.</h2><p>Arthur breaks what you asked into the smaller questions it has to settle first, then answers each one with the record attached.</p></div></section>
+<section class="sc-split" aria-labelledby="p-h"><img src="/site/assets/arthur.jpg" alt="A person pausing at a patterned window, thinking" width="940" height="627" loading="lazy"><div><h2 id="p-h">Complex questions are answered step by step.</h2><p>Arthur breaks a complex question into the smaller questions it depends on, then answers each one with the supporting record attached.</p></div></section>
 <section class="ob-close">
   <div class="ob-wrap">
-    <p class="ob-close-l">See how it is built.<em>Five layers, each one there so you can trust the answer.</em></p>
+    <p class="ob-close-l">See how Arthur is built.<em>Five layers work together to make every answer traceable.</em></p>
     <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="/architecture">Explore the layers</a><a class="ob-btn ob-btn--ghost" href="/contact">Talk to us</a></p>
   </div>
 </section>
@@ -160,6 +158,6 @@
 
 <script src="/site/assets/brain.js?v=d4478b0501" defer></script>
 <script src="/site/assets/site.js?v=f1692be57e" defer></script>
-<script src="/site/assets/ob/ob.js?v=4773f923f3" defer></script>
+<script src="/site/assets/ob/ob.js?v=f3d0af1d71" defer></script>
 </body>
 </html>

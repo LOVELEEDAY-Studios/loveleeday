@@ -212,7 +212,7 @@ html.lock .nav{z-index:110}
 .cta-bar{display:none}
 @media (max-width:700px){
 :root{--nav:48px}
-html{scroll-snap-type:y mandatory;scroll-padding-top:0}
+html{scroll-snap-type:y proximity;scroll-padding-top:0}
 .join{scroll-snap-align:start}
 .nav{padding:0 4px 0 18px}
 .nav-main,.nav-actions{display:none}

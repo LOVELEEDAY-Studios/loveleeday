@@ -80,8 +80,16 @@
   $$('a', mm).forEach(function (a) { a.addEventListener('click', function () { menu(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !mm.hidden) { menu(false); burger.focus(); } });
 
-  /* the phone call-to-action bar hides while the page is at the top, as on home */
-  function topState() { root.classList.toggle('top', (window.pageYOffset || 0) < 40); }
+  /* the phone call-to-action bar stays off the reading: hidden on the first screen and while scrolling down, back on scroll up */
+  var lastY = window.pageYOffset || 0, barOff = true;
+  function topState() {
+    var y = window.pageYOffset || 0;
+    if (y < innerHeight) barOff = true;
+    else if (y > lastY + 6) barOff = true;
+    else if (y < lastY - 6) barOff = false;
+    if (Math.abs(y - lastY) > 6) lastY = y;
+    root.classList.toggle('top', barOff);
+  }
   addEventListener('scroll', topState, { passive: true }); topState();
 
   /* reveal: elements marked data-ob-reveal rise in once, only when motion is allowed (ob-rv is set in the head) */
