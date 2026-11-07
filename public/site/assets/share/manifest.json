@@ -1,19 +1,19 @@
 {
   "architecture": {
     "page": "architecture.html",
-    "hash": "2324e307b71273c0",
-    "file": "2e43185494f8884d",
+    "hash": "890996646e5e4a45",
+    "file": "30e73575de58074c",
     "headline": "Intelligence is designed. | Trust is built in.",
     "caption": "Architecture",
-    "photo": "architecture.jpg"
+    "photo": "architecture-plan.jpg"
   },
   "arthur": {
     "page": "arthur.html",
-    "hash": "035d5411e28f3bf0",
-    "file": "bee7c7c70020fd38",
-    "headline": "A clearer mind. | Behind every answer.",
+    "hash": "857a6458c5a26b1f",
+    "file": "d429ce476a07a64c",
+    "headline": "The intelligence system | behind every answer.",
     "caption": "Meet Arthur",
-    "photo": "arthur.jpg"
+    "photo": "arthur-reading.jpg"
   },
   "brand": {
     "page": "terms.html",
@@ -41,11 +41,11 @@
   },
   "industries": {
     "page": "industries.html",
-    "hash": "68c0f987338649f5",
-    "file": "29270aa81c09ae4f",
-    "headline": "Different worlds. | The same need for clarity.",
+    "hash": "04925868c0415240",
+    "file": "632e70089c6b45d9",
+    "headline": "Built for the way | your industry works.",
     "caption": "Industries",
-    "photo": "industries.jpg"
+    "photo": "industry-manufacturing-3.jpg"
   },
   "municipal-review": {
     "page": "municipal-review.html",
@@ -57,11 +57,11 @@
   },
   "operating-system": {
     "page": "operating-system.html",
-    "hash": "b4764360bda69142",
-    "file": "8fc99d710f18bacd",
-    "headline": "Your systems. | One understanding.",
+    "hash": "4fde7f06f1b42b53",
+    "file": "fba593d715733e1e",
+    "headline": "One view of the systems | that run your organization.",
     "caption": "The operating system",
-    "photo": "operating-system.jpg"
+    "photo": "industry-professional-services-2.jpg"
   },
   "operational-intelligence": {
     "page": "operational-intelligence.html",
@@ -97,11 +97,11 @@
   },
   "studio": {
     "page": "studio.html",
-    "hash": "7333ec0d909247b5",
-    "file": "d7e34a5c7cf6a504",
-    "headline": "Why we | build this.",
+    "hash": "64a56d2a756f3941",
+    "file": "5514e53b2e7f5573",
+    "headline": "Why we built | LOVELEEDAY.",
     "caption": "The studio",
-    "photo": "studio.jpg"
+    "photo": "studio-leadership.jpg"
   },
   "trust": {
     "page": "trust.html",
@@ -113,10 +113,10 @@
   },
   "use-cases": {
     "page": "use-cases.html",
-    "hash": "c83df106b3b8b140",
-    "file": "f4f279f3b6e49ec2",
-    "headline": "Start with the question. | Follow what matters.",
+    "hash": "3721774cbd14a69b",
+    "file": "6c31a233d9b0f95c",
+    "headline": "Where organizations start | with LOVELEEDAY.",
     "caption": "Use cases",
-    "photo": "use-cases.jpg"
+    "photo": "talk-manufacturing.jpg"
   }
 }
