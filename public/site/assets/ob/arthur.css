@@ -35,3 +35,4 @@
 }
 @media (max-width:520px){.brain-scene canvas{height:300px}.branch-grid{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.branch,.brain-answer{transition:none}}
+.arthur{scroll-margin-top:72px}
