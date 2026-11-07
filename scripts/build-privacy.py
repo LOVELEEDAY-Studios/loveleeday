@@ -84,9 +84,9 @@ def section(i, title, lead, points):
 
 hero = ('<section class="page-hero warm"><div class="wrap">'
         '<span class="eyebrow">Privacy</span>'
-        '<h1>What we collect.<br><span>Which is very little.</span></h1>'
+        '<h1>What this site collects, and who handles it.</h1>'
         '<p class="lead">Every statement on this page was checked against the code that runs the '
-        'site. Where the answer is nothing, it says nothing.</p></div></section>')
+        'site.</p></div></section>')
 
 updated = ('<section class="section-pad"><div class="wrap"><p class="brief-note">'
            'Last reviewed 22 September 2026 · Questions to '

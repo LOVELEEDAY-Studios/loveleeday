@@ -1,9 +1,9 @@
 {
   "n": "07",
   "slug": "migration-is-where-data-goes-to-die",
-  "title": "Migration is where data goes to die.",
+  "title": "What gets lost when data moves to a new system.",
   "dek": "Every migration ends with a slide that says all records moved. Six months later, people keep finding what didn't make the trip.",
-  "summary": "What gets lost when you move systems, and how to carry the meaning across, not just the rows.",
+  "summary": "What gets lost when you move systems, and how to carry the meaning across with the records.",
   "topic": "Migration",
   "read": 4,
   "photo": "note-07.jpg",
@@ -17,7 +17,7 @@
   ],
   "date": "2026-09-16",
   "card": [
-    "Migration is where",
-    "data goes to die."
+    "What gets lost when data",
+    "moves to a new system."
   ]
 }

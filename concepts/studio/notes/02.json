@@ -1,8 +1,8 @@
 {
   "n": "02",
   "slug": "an-answer-you-cant-trace",
-  "title": "An answer you can't trace is an opinion.",
-  "dek": "When a number arrives without its history, the meeting argues about whose figure is right instead of what to do. Lineage turns that argument into a one-minute check.",
+  "title": "An answer needs a source you can check.",
+  "dek": "When a number arrives without its history, the meeting argues about whose figure is right instead of what to do. When each number shows its source, that argument becomes a quick check.",
   "summary": "Why every number in a report should point back to the record it came from, and what changes in the room when it does.",
   "topic": "Evidence",
   "read": 4,
@@ -17,7 +17,7 @@
   ],
   "date": "2026-08-12",
   "card": [
-    "An answer you can't trace",
-    "is an opinion."
+    "An answer needs a",
+    "source you can check."
   ]
 }

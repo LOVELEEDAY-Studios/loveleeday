@@ -3,10 +3,11 @@
 <script>(function(){var d=document.documentElement;d.classList.add('js');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))d.classList.add('ob-rv')})()</script>
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site/assets/ob/ob.css?v=3e9e4bc882">
-<link rel="stylesheet" href="/site/assets/ob/widgets.css?v=4746470d86">
+<link rel="stylesheet" href="/site/assets/ob/ob.css?v=8a85e7dac1">
+<link rel="stylesheet" href="/site/assets/ob/scene.css?v=c881ea2ad2">
+<link rel="stylesheet" href="/site/assets/ob/widgets.css?v=459e0441ed">
 </head>
-<body class="ob">
+<body class="sc ob">
 <!--ob:top-->
 <a class="sr" href="#main">Skip to content</a>
 
@@ -33,7 +34,7 @@
         <div class="pl"><div class="pg"><h3>Solutions</h3>
           <a href="/customer-data"><b>Customer data</b><small>Many records, one customer you can trust</small></a>
           <a href="/operational-intelligence"><b>Operational intelligence</b><small>Know what changed and what needs attention</small></a>
-          <a href="/pricing-margins"><b>Pricing and margins</b><small>Includes the pricing Snapshot</small></a>
+          <a href="/pricing-margins"><b>Pricing and margins</b><small>See what each sale earns</small></a>
           <a href="/municipal-review"><b>Municipal review</b><small>Faster, traceable public-sector reviews</small></a>
           <a href="/use-cases"><b>All use cases</b><small>Every way teams put Arthur to work</small></a>
         </div><div class="pg"><h3>Industries</h3>
@@ -90,27 +91,15 @@
 <!--/ob:top-->
 
 <main id="main">
-<section class="ob-hero ob-hero--left" style="--pos:50% 25%;--w:min(620px,46vw)">
-  <div class="ob-hero-ph"><img src="/site/assets/industry-retail-3.jpg" alt="A shop owner reviewing paperwork at a display counter" width="1880" height="1255" fetchpriority="high"></div>
-  <div class="ob-hero-in">
-    <p class="ob-hero-meta"><a class="ob-link" href="/use-cases">Use cases</a> / Pricing &amp; margins</p>
-    <h1>See what sells.<br>Know what it leaves.</h1>
-    <p class="ob-hero-lede">Review actual prices alongside item costs, discounts, and variable fees. Find where the economics need a closer look.</p>
-    <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="#margin-calculator">Explore the numbers</a></p>
-  </div>
+<section class="sc-hero" style="--pos:50% 35%">
+<img class="sc-ph" src="/site/assets/industry-retail.jpg" alt="Two shop owners in aprons checking stock together" width="1880" height="1255" fetchpriority="high">
+<div class="sc-copy"><h1>See how much each sale actually earns.</h1><p class="sc-lede">We compare the prices customers actually pay with item costs, discounts and variable fees, and show you where the numbers need a closer look.</p><div class="sc-act"><a class="sc-b" href="#margin-calculator">Try the calculator</a><a class="sc-g" href="/contact">Talk to us</a></div></div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap ob-qa">
-    <div data-ob-reveal><h2 class="ob-h2">Follow the money. Item by item.</h2></div>
-    <div data-ob-reveal><p class="ob-lede">A listed price can look healthy while discounts and delivery costs tell a different story. Connect the price a customer actually pays with the costs attached to that sale.</p><p class="ob-p" style="margin-top:24px">A margin review makes those assumptions explicit. It identifies prices to investigate and keeps proposed changes tied to their inputs.</p></div>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white" id="margin-calculator">
+<section class="sc-state two"><h2>A healthy list price can hide a thin margin.</h2><div><p class="sc-lede">Discounts and delivery costs can change the result of a sale that looks fine at list price. We connect the price a customer paid with the costs attached to that sale.</p><p class="sc-lede">A margin review states each assumption openly, identifies the prices to investigate and ties every proposed change to its inputs.</p></div></section>
+<section class="ob-sec ob-sec--white sc-wide" id="margin-calculator">
   <div class="ob-wrap">
-    <h2 class="ob-h2">See the margin move.</h2>
-    <p class="ob-lede" style="margin-top:20px">Change the inputs to explore a single item’s contribution margin. Amounts use dollars for this example.</p>
+    <h2 class="ob-h2">Change the inputs and watch the margin move.</h2>
+    <p class="ob-lede" style="margin-top:20px">Adjust these figures to explore the contribution margin on a single item. The example uses dollars.</p>
     <div style="margin-top:clamp(28px,3.4vw,52px)">
       <div class="calculator">
         <div class="panel-head"><h3>Item economics</h3><span class="sample-badge">Interactive example</span></div>
@@ -139,28 +128,11 @@
     </div>
   </div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap">
-    <h2 class="ob-h2">From one item. To a reviewable plan.</h2>
-    <ul class="ob-rules" style="margin-top:clamp(28px,3.4vw,52px)" data-ob-reveal>
-      <li><b>Reconcile the inputs</b><span>Match catalogue items to cost records, selling prices, discounts, and relevant variable costs.</span></li>
-      <li><b>Flag the exceptions</b><span>Identify losses, margins below the chosen target, and missing or outdated cost observations.</span></li>
-      <li><b>Propose the changes</b><span>Prepare item-level changes with assumptions, the records behind them, and an opportunity to review before anything is written back.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white">
-  <div class="ob-wrap ob-qa">
-    <h2 class="ob-h2" data-ob-reveal>Margin is not a spreadsheet. It is what the day earns.</h2>
-    <p class="ob-lede" data-ob-reveal>Per-unit contribution, computed line by line, against what the item actually costs you.</p>
-  </div>
-</section>
-
+<section class="sc-3 c"><div class="top"><h2>We turn one item’s numbers into a plan you can review.</h2></div><div class="sc-rows"><div class="sc-row"><h3>We reconcile the inputs</h3><p>We match catalog items to cost records, selling prices, discounts and other variable costs.</p></div><div class="sc-row"><h3>We flag the exceptions</h3><p>We identify losses, margins below your target, and costs that are missing or out of date.</p></div><div class="sc-row"><h3>We propose the changes</h3><p>We prepare item-level changes with their assumptions and the records behind them. Nothing is written back until you have reviewed it.</p></div></div></section>
+<section class="sc-split"><img src="/site/assets/industry-retail-2.jpg" alt="A shop owner arranging clothing on a rail in a bright store" width="1880" height="1255" loading="lazy"><div><h2>Margin is calculated line by line, against what each item really costs.</h2><p>You see the contribution of each sale, which tells you more than an average across the catalog.</p></div></section>
 <section class="ob-close">
   <div class="ob-wrap">
-    <p class="ob-close-l">Bring the catalogue.<em>Start with the costs, prices, and margin question you want to resolve.</em></p>
+    <p class="ob-close-l">Start with your costs, your prices and one margin question.<em>We will tell you what the records can support.</em></p>
     <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="/studio?use=Pricing%20and%20margins#project-brief">Create a pricing brief</a><a class="ob-btn ob-btn--ghost" href="/contact">Talk to us</a></p>
   </div>
 </section>
@@ -176,7 +148,7 @@
   </div>
   <div class="foot-grid">
     <div class="foot-col"><strong>Product</strong><a href="/arthur">Arthur</a><a href="/operating-system">Operating system</a><a href="/how-it-works">How it works</a><a href="/architecture">Architecture</a><a href="/integrations">Integrations</a></div>
-    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/snapshot">Pricing Snapshot</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
+    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
     <div class="foot-col"><strong>Industries</strong><a href="/industries/manufacturing">Manufacturing and distribution</a><a href="/industries/property">Property management</a><a href="/industries/schools">Schools and charters</a><a href="/industries">All industries</a></div>
     <div class="foot-col"><strong>Services</strong><a href="/build">What we build</a><a href="/talk">Ways to work together</a><a href="/contact">Start a project</a></div>
     <div class="foot-col"><strong>Company</strong><a href="/studio">About</a><a href="/principles">Principles</a><a href="/work">Work</a><a href="/notes">Systems Notes</a><a href="/trust">Trust and security</a><a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="https://portal.loveleedaystudios.com/client/login">Sign in</a></div>
@@ -189,6 +161,6 @@
 <!--/ob:bottom-->
 
 <script src="/site/assets/site.js?v=f1692be57e" defer></script>
-<script src="/site/assets/ob/ob.js?v=4773f923f3" defer></script>
+<script src="/site/assets/ob/ob.js?v=f3d0af1d71" defer></script>
 </body>
 </html>

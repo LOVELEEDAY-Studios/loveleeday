@@ -14,7 +14,6 @@ const siteRoutes: { source: string; destination: string }[] = [
   { source: "/trust", destination: "/site/trust.html" },
   { source: "/integrations", destination: "/site/integrations.html" },
   { source: "/talk", destination: "/site/talk.html" },
-  { source: "/snapshot", destination: "/site/snapshot.html" },
   { source: "/municipal-review", destination: "/site/municipal-review.html" },
   { source: "/customer-data", destination: "/site/customer-data.html" },
   { source: "/pricing-margins", destination: "/site/pricing-margins.html" },
@@ -76,6 +75,7 @@ const nextConfig: NextConfig = {
        permanent and the link equity follows. */
     return [
       { source: "/how-it-works", destination: "/operating-system", permanent: false },
+      { source: "/snapshot", destination: "/pricing-margins", permanent: false },
       { source: "/faq", destination: "/studio", permanent: false },
       { source: "/build", destination: "/studio", permanent: false },
       { source: "/talk", destination: "/studio", permanent: false },

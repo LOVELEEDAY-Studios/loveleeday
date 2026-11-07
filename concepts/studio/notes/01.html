@@ -1,5 +1,5 @@
 <p>Ask a simple question inside almost any organization: how much did we do with Harbor Supply last year? Finance pulls a number from the ledger. Sales pulls a different one from the CRM. Someone in operations remembers a third figure from an email thread. All three people are right, and all three numbers are wrong.</p>
-  <p>The problem isn't the math. It's that "Harbor Supply" isn't one thing in your systems. It's five.</p>
+  <p>The math is fine. The trouble is that your systems hold "Harbor Supply" as five separate records.</p>
 
   <h2>How one company becomes five</h2>
   <p>In the ledger it's vendor 10423, set up years ago by someone who has since left. In the CRM it's "Harbor Supply Co." with a period, because that's how a salesperson typed it. In the inbox it's "HSC," because that's what their team signs their emails with. The payment processor knows it by a customer ID. And the spreadsheet your controller actually trusts calls it "Harbor (old account)" because of a merger nobody fully cleaned up.</p>
@@ -17,14 +17,14 @@
         <text x="440" y="106" fill="#fff" font-weight="600">Harbor Supply</text><text x="440" y="126" fill="#a1a1a6" font-size="12">One company · five sources</text>
       </g>
     </svg>
-    <figcaption>Identity resolution: each source keeps its own name, and all of them point to one object.</figcaption>
+    <figcaption>Each source keeps its own name, and all of them point to one company.</figcaption>
   </figure>
 
-  <blockquote>The fix isn't renaming everything. It's giving every name somewhere to point.</blockquote>
+  <blockquote>You do not need to rename everything. You need to connect every name to the same company.</blockquote>
 
   <h2>What it costs</h2>
   <p>The cost rarely shows up as a line item. It shows up as the Monday meeting that spends twenty minutes reconciling two reports. It shows up as a price increase sent to a customer who was already on a special agreement under a different account. It shows up when the one person who knows that "HSC" and vendor 10423 are the same company goes on vacation.</p>
 
-  <h2>Giving every name somewhere to point</h2>
-  <p>The answer isn't a massive cleanup project where everyone agrees on one true name. Those projects stall, because every system still needs its own. The answer is a layer above the systems that knows these five records are one company, keeps each source's name as an alias, and remembers where each fact came from.</p>
+  <h2>Connecting every name to one company</h2>
+  <p>A large cleanup project that settles on one true name usually stalls, because every system still needs its own. A better approach is a layer above the systems that knows these five records are one company, keeps each source's name as an alias, and remembers where each fact came from.</p>
   <p>Once that exists, the question "how much did we do with Harbor Supply?" has one answer, and you can see exactly which records it was built from.</p>

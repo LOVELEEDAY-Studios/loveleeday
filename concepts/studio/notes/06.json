@@ -1,9 +1,9 @@
 {
   "n": "06",
   "slug": "alerts-are-noise-conditions-are-signal",
-  "title": "Alerts are noise. Conditions are signal.",
+  "title": "Watch the assumptions behind a decision.",
   "dek": "Alerts watch events, and most events don't matter. What matters is when something a decision depended on stops being true.",
-  "summary": "Stop watching every event. Watch for the moment a decision's assumptions change, and bring that decision back into focus with the reason attached.",
+  "summary": "Most events do not matter. The moment worth watching for is when the assumptions behind a decision change.",
   "topic": "Awareness",
   "read": 4,
   "photo": "note-06.jpg",
@@ -17,7 +17,7 @@
   ],
   "date": "2026-09-09",
   "card": [
-    "Alerts are noise.",
-    "Conditions are signal."
+    "Watch the assumptions",
+    "behind a decision."
   ]
 }

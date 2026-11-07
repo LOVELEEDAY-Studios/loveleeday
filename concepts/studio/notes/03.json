@@ -1,7 +1,7 @@
 {
   "n": "03",
   "slug": "what-you-knew-and-when",
-  "title": "What you knew, and when you knew it.",
+  "title": "Judge a decision by what was known at the time.",
   "dek": "Most systems overwrite yesterday's value with today's. That keeps the present tidy and makes every past decision impossible to judge fairly.",
   "summary": "Overwriting a record erases the reason behind a decision. Keeping history, with when it was true and when you learned it, makes the past fair to judge.",
   "topic": "Memory",
@@ -17,7 +17,7 @@
   ],
   "date": "2026-08-19",
   "card": [
-    "What you knew,",
-    "and when you knew it."
+    "Judge a decision by what",
+    "was known at the time."
   ]
 }

@@ -3,10 +3,11 @@
 <script>(function(){var d=document.documentElement;d.classList.add('js');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))d.classList.add('ob-rv')})()</script>
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site/assets/ob/ob.css?v=3e9e4bc882">
-<link rel="stylesheet" href="/site/assets/ob/widgets.css?v=4746470d86">
+<link rel="stylesheet" href="/site/assets/ob/ob.css?v=8a85e7dac1">
+<link rel="stylesheet" href="/site/assets/ob/scene.css?v=c881ea2ad2">
+<link rel="stylesheet" href="/site/assets/ob/widgets.css?v=459e0441ed">
 </head>
-<body class="ob">
+<body class="sc ob">
 <!--ob:top-->
 <a class="sr" href="#main">Skip to content</a>
 
@@ -33,7 +34,7 @@
         <div class="pl"><div class="pg"><h3>Solutions</h3>
           <a href="/customer-data"><b>Customer data</b><small>Many records, one customer you can trust</small></a>
           <a href="/operational-intelligence"><b>Operational intelligence</b><small>Know what changed and what needs attention</small></a>
-          <a href="/pricing-margins"><b>Pricing and margins</b><small>Includes the pricing Snapshot</small></a>
+          <a href="/pricing-margins"><b>Pricing and margins</b><small>See what each sale earns</small></a>
           <a href="/municipal-review"><b>Municipal review</b><small>Faster, traceable public-sector reviews</small></a>
           <a href="/use-cases"><b>All use cases</b><small>Every way teams put Arthur to work</small></a>
         </div><div class="pg"><h3>Industries</h3>
@@ -90,26 +91,15 @@
 <!--/ob:top-->
 
 <main id="main">
-<section class="ob-hero ob-hero--left" style="--pos:50% 35%;--w:min(620px,46vw)">
-  <div class="ob-hero-ph"><img src="/site/assets/industry-retail-2.jpg" alt="A shopper looking through a rail of clothes in a bright store" width="1880" height="1255" fetchpriority="high"></div>
-  <div class="ob-hero-in">
-    <p class="ob-hero-meta"><a class="ob-link" href="/use-cases">Use cases</a> / Customer data</p>
-    <h1>Many records.<br>A fuller customer picture.</h1>
-    <p class="ob-hero-lede">Connect names, identifiers, purchases, and interactions. Keep uncertainty visible while you build a more reliable view.</p>
-    <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="#customer-example">Explore the records</a></p>
-  </div>
+<section class="sc-hero" style="--pos:45% 40%">
+<img class="sc-ph" src="/site/assets/hero-customer.jpg" alt="A woman reading printed customer records at her desk" width="2200" height="1467" fetchpriority="high">
+<div class="sc-copy"><h1>See each customer as one complete record.</h1><p class="sc-lede">We connect the names, account numbers, purchases and conversations held across your systems, and mark anything that still needs a person to confirm.</p><div class="sc-act"><a class="sc-b" href="#customer-example">See an example</a><a class="sc-g" href="/contact">Talk to us</a></div></div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap ob-qa">
-    <div data-ob-reveal><h2 class="ob-h2">Recognize the customer. Remember the context.</h2></div>
-    <div data-ob-reveal><p class="ob-lede">A customer can arrive through different channels with different spellings, account IDs, and contact information. Those records should contribute to the same understanding when the evidence supports a match.</p><p class="ob-p" style="margin-top:24px">Conflicting fields remain a review task. The goal is a useful customer picture with its sources intact.</p></div>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white" id="customer-example">
+<section class="sc-state two"><h2>The same customer often appears under several names.</h2><div><p class="sc-lede">A customer can reach you through different channels, with different spellings, account numbers and contact details. When the records support a match, they should add to one picture of that customer.</p><p class="sc-lede">Where two records conflict, we keep both and ask someone on your team to decide, so the customer view stays accurate and each detail can be traced to its source.</p></div></section>
+<section class="ob-sec ob-sec--white sc-wide" id="customer-example">
   <div class="ob-wrap">
-    <h2 class="ob-h2">One view. The history behind it.</h2>
+    <h2 class="ob-h2">See how three records become one customer.</h2>
+<p class="sc-lede sc-sub">These records are fictional. Open each link to see the evidence behind the match.</p>
     <div style="margin-top:clamp(28px,3.4vw,52px)">
       <div class="customer-panel">
         <div class="panel-head"><h3>Customer reconciliation</h3><span class="sample-badge">Demonstration data</span></div>
@@ -137,28 +127,11 @@
     </div>
   </div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap">
-    <h2 class="ob-h2">Connect what belongs. Flag what needs care.</h2>
-    <ul class="ob-rules" style="margin-top:clamp(28px,3.4vw,52px)" data-ob-reveal>
-      <li><b>Normalize the records</b><span>Bring source fields into a consistent structure while preserving original values and identifiers.</span></li>
-      <li><b>Resolve the identity</b><span>Link records using supporting evidence. Separate confirmed matches from candidates that need review.</span></li>
-      <li><b>Review data quality</b><span>Surface missing, stale, or conflicting information and retain a trail back to the original record.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white">
-  <div class="ob-wrap ob-qa">
-    <h2 class="ob-h2" data-ob-reveal>A customer is a person before they are a record.</h2>
-    <p class="ob-lede" data-ob-reveal>Four names for one company become one object, and the person on the other end stays recognisable.</p>
-  </div>
-</section>
-
+<section class="sc-3 c"><div class="top"><h2>We connect the records in three steps.</h2></div><div class="sc-rows"><div class="sc-row"><h3>We standardize the records</h3><p>Fields from each system are brought into one consistent format, and the original values and identifiers are kept.</p></div><div class="sc-row"><h3>We confirm each match</h3><p>Records are linked only where the evidence supports it. Possible matches are set aside for your team to review.</p></div><div class="sc-row"><h3>We flag unreliable details</h3><p>Missing, outdated or conflicting details are marked, and each one points back to the original record.</p></div></div></section>
+<section class="sc-split"><img src="/site/assets/talk-hero.jpg" alt="Two colleagues talking across a table in a bright office" width="1500" height="999" loading="lazy"><div><h2>Your team can see the person behind the account.</h2><p>When the records agree, the people who serve a customer can read the full history before they make the call.</p></div></section>
 <section class="ob-close">
   <div class="ob-wrap">
-    <p class="ob-close-l">Start with your customer question.<em>Define the sources, quality issues, and customer view you need.</em></p>
+    <p class="ob-close-l">Tell us which customer question you need answered.<em>We will define the sources, the data quality issues and the customer view you need.</em></p>
     <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="/studio?use=Customer%20data#project-brief">Create a data brief</a><a class="ob-btn ob-btn--ghost" href="/contact">Talk to us</a></p>
   </div>
 </section>
@@ -174,7 +147,7 @@
   </div>
   <div class="foot-grid">
     <div class="foot-col"><strong>Product</strong><a href="/arthur">Arthur</a><a href="/operating-system">Operating system</a><a href="/how-it-works">How it works</a><a href="/architecture">Architecture</a><a href="/integrations">Integrations</a></div>
-    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/snapshot">Pricing Snapshot</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
+    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
     <div class="foot-col"><strong>Industries</strong><a href="/industries/manufacturing">Manufacturing and distribution</a><a href="/industries/property">Property management</a><a href="/industries/schools">Schools and charters</a><a href="/industries">All industries</a></div>
     <div class="foot-col"><strong>Services</strong><a href="/build">What we build</a><a href="/talk">Ways to work together</a><a href="/contact">Start a project</a></div>
     <div class="foot-col"><strong>Company</strong><a href="/studio">About</a><a href="/principles">Principles</a><a href="/work">Work</a><a href="/notes">Systems Notes</a><a href="/trust">Trust and security</a><a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="https://portal.loveleedaystudios.com/client/login">Sign in</a></div>
@@ -187,6 +160,6 @@
 <!--/ob:bottom-->
 
 <script src="/site/assets/site.js?v=f1692be57e" defer></script>
-<script src="/site/assets/ob/ob.js?v=4773f923f3" defer></script>
+<script src="/site/assets/ob/ob.js?v=f3d0af1d71" defer></script>
 </body>
 </html>

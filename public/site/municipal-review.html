@@ -3,10 +3,11 @@
 <script>(function(){var d=document.documentElement;d.classList.add('js');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))d.classList.add('ob-rv')})()</script>
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site/assets/ob/ob.css?v=3e9e4bc882">
-<link rel="stylesheet" href="/site/assets/ob/widgets.css?v=4746470d86">
+<link rel="stylesheet" href="/site/assets/ob/ob.css?v=8a85e7dac1">
+<link rel="stylesheet" href="/site/assets/ob/scene.css?v=c881ea2ad2">
+<link rel="stylesheet" href="/site/assets/ob/widgets.css?v=459e0441ed">
 </head>
-<body class="ob">
+<body class="sc ob">
 <!--ob:top-->
 <a class="sr" href="#main">Skip to content</a>
 
@@ -33,7 +34,7 @@
         <div class="pl"><div class="pg"><h3>Solutions</h3>
           <a href="/customer-data"><b>Customer data</b><small>Many records, one customer you can trust</small></a>
           <a href="/operational-intelligence"><b>Operational intelligence</b><small>Know what changed and what needs attention</small></a>
-          <a href="/pricing-margins"><b>Pricing and margins</b><small>Includes the pricing Snapshot</small></a>
+          <a href="/pricing-margins"><b>Pricing and margins</b><small>See what each sale earns</small></a>
           <a href="/municipal-review"><b>Municipal review</b><small>Faster, traceable public-sector reviews</small></a>
           <a href="/use-cases"><b>All use cases</b><small>Every way teams put Arthur to work</small></a>
         </div><div class="pg"><h3>Industries</h3>
@@ -90,27 +91,15 @@
 <!--/ob:top-->
 
 <main id="main">
-<section class="ob-hero ob-hero--left" style="--pos:50% 55%;--w:min(620px,46vw)">
-  <div class="ob-hero-ph"><img src="/site/assets/industry-government-2.jpg" alt="A town hall on a clear day" width="1880" height="1253" fetchpriority="high"></div>
-  <div class="ob-hero-in">
-    <p class="ob-hero-meta"><a class="ob-link" href="/use-cases">Use cases</a> / Municipal review</p>
-    <h1>The whole codebook.<br>A clearer picture.</h1>
-    <p class="ob-hero-lede">Review the ordinances and laws on a municipality’s books. Organize the record, trace amendments, and flag questions for review.</p>
-    <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="#document-register">Explore the register</a><a class="ob-btn ob-btn--ghost" href="/studio?use=Municipal%20review#project-brief">Shape a review</a></p>
-  </div>
+<section class="sc-hero" style="--pos:50% 45%">
+<img class="sc-ph" src="/site/assets/industry-government.jpg" alt="A city council chamber with a domed glass ceiling" width="1880" height="1253" fetchpriority="high">
+<div class="sc-copy"><h1>Review every ordinance on a municipality’s books.</h1><p class="sc-lede">We organize the full code of ordinances, trace each amendment to its source, and flag the questions that need a reviewer.</p><div class="sc-act"><a class="sc-b" href="#document-register">See the register</a><a class="sc-g" href="/studio?use=Municipal%20review#project-brief">Shape a review</a></div></div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap ob-qa">
-    <div data-ob-reveal><h2 class="ob-h2">What applies? What changed?</h2></div>
-    <div data-ob-reveal><p class="ob-lede">A review needs a defined jurisdiction, a collection of source documents, and a record of what is missing. Start with the code, then connect amendments, repeals, and relevant supporting materials.</p><p class="ob-p" style="margin-top:24px">The useful output is a cited inventory: a way to see the history of a provision and the questions that require interpretation.</p></div>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white" id="document-register">
+<section class="sc-state two"><h2>A useful review shows what applies and what changed.</h2><div><p class="sc-lede">Every review starts with a defined jurisdiction, a collection of source documents and a record of what is missing. We begin with the code, then connect the amendments, repeals and supporting materials.</p><p class="sc-lede">The result is a cited inventory that shows the history of each provision and the questions that call for legal interpretation.</p></div></section>
+<section class="ob-sec ob-sec--white sc-wide" id="document-register">
   <div class="ob-wrap">
-    <h2 class="ob-h2">A register you can follow.</h2>
-    <p class="ob-lede" style="margin-top:20px">Filter the demonstration records, then open the review notes.</p>
+    <h2 class="ob-h2">Follow a provision through the register.</h2>
+    <p class="ob-lede" style="margin-top:20px">Filter these fictional records, then open the review notes to see how an issue is raised.</p>
     <div style="margin-top:clamp(28px,3.4vw,52px)">
       <div class="register-panel">
         <div class="panel-head"><h3>Municipal document register</h3><span class="sample-badge">Fictional sample</span></div>
@@ -146,28 +135,11 @@
     </div>
   </div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap">
-    <h2 class="ob-h2">Collect. Reconcile. Prepare the next decision.</h2>
-    <ul class="ob-rules" style="margin-top:clamp(28px,3.4vw,52px)" data-ob-reveal>
-      <li><b>Establish coverage</b><span>List the document sources, versions, jurisdiction, and known gaps in the collection.</span></li>
-      <li><b>Follow the changes</b><span>Connect amendments, repeals, superseded provisions, and cross-references to their supporting documents.</span></li>
-      <li><b>Prepare the review</b><span>Produce a cited register of issues, with source passages and questions for the responsible reviewer.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white">
-  <div class="ob-wrap ob-qa">
-    <h2 class="ob-h2" data-ob-reveal>Public work deserves a record that holds up.</h2>
-    <p class="ob-lede" data-ob-reveal>Every document, every decision, and the trail back to the source that supports it.</p>
-  </div>
-</section>
-
+<section class="sc-3 c"><div class="top"><h2>A review moves through three stages.</h2></div><div class="sc-rows"><div class="sc-row"><h3>We establish coverage</h3><p>We list the document sources, versions, jurisdiction and known gaps in the collection.</p></div><div class="sc-row"><h3>We follow the changes</h3><p>We connect amendments, repeals, superseded provisions and cross-references to the documents that support them.</p></div><div class="sc-row"><h3>We prepare the review</h3><p>We produce a cited register of issues, with the source passages and the questions for the responsible reviewer.</p></div></div></section>
+<section class="sc-split"><img src="/site/assets/talk-government.jpg" alt="An empty council meeting room with rows of desks" width="1500" height="999" loading="lazy"><div><h2>Public decisions need a record that can withstand scrutiny.</h2><p>Each document and decision in the register links back to the source that supports it.</p></div></section>
 <section class="ob-close">
   <div class="ob-wrap">
-    <p class="ob-close-l">Bring the codebook.<em>Start with the jurisdiction, source collection, and scope of review.</em></p>
+    <p class="ob-close-l">Start with your jurisdiction and your documents.<em>We will agree on the source collection and the scope of the review with you.</em></p>
     <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="/studio?use=Municipal%20review#project-brief">Create a review brief</a><a class="ob-btn ob-btn--ghost" href="/contact">Talk to us</a></p>
   </div>
 </section>
@@ -183,7 +155,7 @@
   </div>
   <div class="foot-grid">
     <div class="foot-col"><strong>Product</strong><a href="/arthur">Arthur</a><a href="/operating-system">Operating system</a><a href="/how-it-works">How it works</a><a href="/architecture">Architecture</a><a href="/integrations">Integrations</a></div>
-    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/snapshot">Pricing Snapshot</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
+    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
     <div class="foot-col"><strong>Industries</strong><a href="/industries/manufacturing">Manufacturing and distribution</a><a href="/industries/property">Property management</a><a href="/industries/schools">Schools and charters</a><a href="/industries">All industries</a></div>
     <div class="foot-col"><strong>Services</strong><a href="/build">What we build</a><a href="/talk">Ways to work together</a><a href="/contact">Start a project</a></div>
     <div class="foot-col"><strong>Company</strong><a href="/studio">About</a><a href="/principles">Principles</a><a href="/work">Work</a><a href="/notes">Systems Notes</a><a href="/trust">Trust and security</a><a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="https://portal.loveleedaystudios.com/client/login">Sign in</a></div>
@@ -196,6 +168,6 @@
 <!--/ob:bottom-->
 
 <script src="/site/assets/site.js?v=f1692be57e" defer></script>
-<script src="/site/assets/ob/ob.js?v=4773f923f3" defer></script>
+<script src="/site/assets/ob/ob.js?v=f3d0af1d71" defer></script>
 </body>
 </html>

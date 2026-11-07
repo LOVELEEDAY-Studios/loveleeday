@@ -1,5 +1,5 @@
 <p>A system migration always ends with a slide that says "100% of records migrated." The count matches. The project closes. Then, over the next six months, people keep discovering things that didn't make the trip: the note that explained why an account has special terms, the history of every price change, the old customer number that half the team still uses in email.</p>
-<p>The rows moved. The meaning didn't. That's why migration is where so much data quietly goes to die.</p>
+<p>The records moved, but much of their meaning stayed behind.</p>
 
 <h2>What gets left behind</h2>
 <p>Migrations are planned around fields. Old field A maps to new field B, and a tool copies the values across. What doesn't map neatly gets dropped, flattened or forced into a field that almost fits. History is the first casualty: most migrations bring over the current value and leave the record of how it got there. Free-text notes go next, because the new system has no place for them. Codes get remapped, and the old identifiers disappear.</p>
@@ -26,9 +26,9 @@
 <p>Matching record counts proves that rows arrived. It says nothing about whether the new system can answer the questions the old one could. A better test is to write down twenty real questions the business asks, like "what did we charge this customer last spring, and why," and run them against both systems before and after. Where the answers differ, something was lost.</p>
 <p>The same goes for totals. Reconcile the numbers that matter, by customer and by month, not just the grand total. A grand total can match while every line underneath it is wrong.</p>
 
-<blockquote>A migration isn't done when the rows arrive. It's done when the old questions still have answers.</blockquote>
+<blockquote>A migration is finished when the old questions still have answers.</blockquote>
 
 <h2>Carry the meaning across</h2>
-<p>A few habits change the outcome. Keep every old identifier as an alias on the new record, so the account number people still use in email still finds the right customer. Bring history across as history, with its dates, instead of only the latest value. Attach the notes, even if the new system has no obvious field for them. And keep a trail from every new record back to the old one it came from, so any question about the past can be followed home.</p>
+<p>A few habits change the outcome. Keep every old identifier as an alias on the new record, so the account number people still use in email still finds the right customer. Bring history across as history, with its dates, instead of only the latest value. Attach the notes, even if the new system has no obvious field for them. And keep a trail from every new record back to the old one it came from, so any question about the past can be traced to its origin.</p>
 <p>None of this is glamorous, and it takes longer than a field map. But it's the difference between a new system that starts from zero and one that starts with everything the organization already learned.</p>
 <p>This is often the first project LOVELEEDAY takes on: moving and cleaning data so the meaning comes with it. Arthur keeps the old names, the history and the trail, so nothing the organization knew is lost in the move.</p>

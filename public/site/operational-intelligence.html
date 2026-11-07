@@ -3,10 +3,11 @@
 <script>(function(){var d=document.documentElement;d.classList.add('js');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))d.classList.add('ob-rv')})()</script>
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site/assets/ob/ob.css?v=3e9e4bc882">
-<link rel="stylesheet" href="/site/assets/ob/widgets.css?v=4746470d86">
+<link rel="stylesheet" href="/site/assets/ob/ob.css?v=8a85e7dac1">
+<link rel="stylesheet" href="/site/assets/ob/scene.css?v=c881ea2ad2">
+<link rel="stylesheet" href="/site/assets/ob/widgets.css?v=459e0441ed">
 </head>
-<body class="ob">
+<body class="sc ob">
 <!--ob:top-->
 <a class="sr" href="#main">Skip to content</a>
 
@@ -33,7 +34,7 @@
         <div class="pl"><div class="pg"><h3>Solutions</h3>
           <a href="/customer-data"><b>Customer data</b><small>Many records, one customer you can trust</small></a>
           <a href="/operational-intelligence"><b>Operational intelligence</b><small>Know what changed and what needs attention</small></a>
-          <a href="/pricing-margins"><b>Pricing and margins</b><small>Includes the pricing Snapshot</small></a>
+          <a href="/pricing-margins"><b>Pricing and margins</b><small>See what each sale earns</small></a>
           <a href="/municipal-review"><b>Municipal review</b><small>Faster, traceable public-sector reviews</small></a>
           <a href="/use-cases"><b>All use cases</b><small>Every way teams put Arthur to work</small></a>
         </div><div class="pg"><h3>Industries</h3>
@@ -90,58 +91,22 @@
 <!--/ob:top-->
 
 <main id="main">
-<section class="ob-hero ob-hero--left" style="--pos:50% 33%;--w:min(620px,46vw)">
-  <div class="ob-hero-ph"><img src="/site/assets/industry-manufacturing-3.jpg" alt="Two colleagues checking a clipboard between warehouse shelves" width="1880" height="1251" fetchpriority="high"></div>
-  <div class="ob-hero-in">
-    <p class="ob-hero-meta"><a class="ob-link" href="/use-cases">Use cases</a> / Operational intelligence</p>
-    <h1>See the connections.<br>Find the next question.</h1>
-    <p class="ob-hero-lede">Bring people, companies, items, documents, and places into a shared context. Follow a change to the decisions it could affect.</p>
-    <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="/studio?use=Connected%20intelligence#project-brief">Create an intelligence brief</a></p>
-  </div>
+<section class="sc-hero" style="--pos:60% 45%">
+<img class="sc-ph" src="/site/assets/industry-manufacturing.jpg" alt="A warehouse worker checking stock on a tablet between shelves" width="1880" height="1253" fetchpriority="high">
+<div class="sc-copy"><h1>See how one change affects the rest of your operation.</h1><p class="sc-lede">We connect the people, companies, items, documents and places across your systems, so you can follow a change to the decisions it touches.</p><div class="sc-act"><a class="sc-b" href="#example">See an example</a><a class="sc-g" href="/studio?use=Connected%20intelligence#project-brief">Create a brief</a></div></div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap ob-qa">
-    <div data-ob-reveal><h2 class="ob-h2">The answer crosses more than one team.</h2></div>
-    <div data-ob-reveal><p class="ob-lede">A supplier change can affect a catalogue, a location, and a forecast. A recurring service issue can connect a property, a contractor, and a spending pattern.</p><p class="ob-p" style="margin-top:24px">Operational intelligence begins by defining those relationships. It gives a cross-system question an evidence trail and a scope someone can review.</p></div>
-  </div>
+<section class="sc-state two w"><h2>Many operational questions cross more than one team.</h2><div><p class="sc-lede">A supplier change can affect a catalog, a location and a forecast. A recurring service issue can connect a property, a contractor and a spending pattern.</p><p class="sc-lede">We start by defining those relationships, so a question that spans several systems has a clear scope and records your team can review.</p></div></section>
+<section class="sc-q" id="example" aria-labelledby="q-h">
+  <h2 id="q-h">Why does the same repair keep coming back at one property?</h2>
+  <div class="sc-ans"><span class="sc-who">Arthur</span><p class="f">One contractor handled each of the last four repairs at this building.</p><p class="y">The maintenance log, the vendor invoices and the property file each name the building differently, so the pattern never appeared in a single report.</p><p class="n">Review that contractor’s work before you approve the next repair.</p></div>
+  <div class="sc-rec"><div><span>Maintenance log</span><b>Building C, repeat call</b></div><div><span>Vendor invoices</span><b>Four repairs, one contractor</b></div><div><span>Property file</span><b>Oakfield, Building C</b></div></div>
+  <p class="sc-note">Source: the maintenance log, the vendor invoices and the property file. Example data.</p>
 </section>
-
-<section class="ob-sec ob-sec--white" id="change-example">
-  <div class="ob-wrap">
-    <h2 class="ob-h2">One change. A wider field of view.</h2>
-    <div style="margin-top:clamp(28px,3.4vw,52px)">
-      <ul class="ob-rules" data-ob-reveal>
-        <li><b>What changed: a supplier cost changes.</b><span>A new cost record arrives, with its source and effective date.</span></li>
-        <li><b>Context: related items come into view.</b><span>The supplier connects to item records and relevant selling prices.</span></li>
-        <li><b>Attention: a margin question surfaces.</b><span>A defined condition highlights the items that now need review.</span></li>
-      </ul>
-      <p class="ob-note">Illustrative relationship flow. Actual coverage depends on the connected records.</p>
-    </div>
-  </div>
-</section>
-
-<section class="ob-sec">
-  <div class="ob-wrap">
-    <h2 class="ob-h2">Start focused. Connect what is relevant.</h2>
-    <ul class="ob-rules" style="margin-top:clamp(28px,3.4vw,52px)" data-ob-reveal>
-      <li><b>Name the question</b><span>Define the decision, the owner, and what information would make the answer useful.</span></li>
-      <li><b>Map the subjects</b><span>Connect the companies, locations, items, and records involved. Preserve source and organizational context.</span></li>
-      <li><b>Watch the assumptions</b><span>Describe changes that should bring the decision back into focus, with evidence for the person reviewing it.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white">
-  <div class="ob-wrap ob-qa">
-    <h2 class="ob-h2" data-ob-reveal>Operations do not wait for the monthly report.</h2>
-    <p class="ob-lede" data-ob-reveal>Standing conditions watch the work while it is happening and speak up when an assumption shifts.</p>
-  </div>
-</section>
-
+<section class="sc-3"><div class="top"><h2>We start with one question and connect only what it needs.</h2></div><div class="sc-rows"><div class="sc-row"><h3>We name the question</h3><p>We define the decision, who owns it and what information would make the answer useful.</p></div><div class="sc-row"><h3>We map the subjects</h3><p>We connect the companies, locations, items and records involved, and keep the source of each.</p></div><div class="sc-row"><h3>We watch the assumptions</h3><p>We define the changes that should bring a decision back to the person who owns it, with the records behind it attached.</p></div></div></section>
+<section class="sc-split"><img src="/site/assets/hero-work.jpg" alt="A man reviewing a tablet at a workbench in a large workshop" width="2200" height="1467" loading="lazy"><div><h2>Your team hears about a change while there is still time to act.</h2><p>Automatic checks watch the records as work happens and alert the right person when an assumption no longer holds.</p></div></section>
 <section class="ob-close">
   <div class="ob-wrap">
-    <p class="ob-close-l">What do you keep piecing together?<em>That question is a useful place to start.</em></p>
+    <p class="ob-close-l">What do you keep piecing together by hand?<em>That question is a useful place to start.</em></p>
     <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="/studio?use=Connected%20intelligence#project-brief">Create an intelligence brief</a><a class="ob-btn ob-btn--ghost" href="/contact">Talk to us</a></p>
   </div>
 </section>
@@ -157,7 +122,7 @@
   </div>
   <div class="foot-grid">
     <div class="foot-col"><strong>Product</strong><a href="/arthur">Arthur</a><a href="/operating-system">Operating system</a><a href="/how-it-works">How it works</a><a href="/architecture">Architecture</a><a href="/integrations">Integrations</a></div>
-    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/snapshot">Pricing Snapshot</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
+    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
     <div class="foot-col"><strong>Industries</strong><a href="/industries/manufacturing">Manufacturing and distribution</a><a href="/industries/property">Property management</a><a href="/industries/schools">Schools and charters</a><a href="/industries">All industries</a></div>
     <div class="foot-col"><strong>Services</strong><a href="/build">What we build</a><a href="/talk">Ways to work together</a><a href="/contact">Start a project</a></div>
     <div class="foot-col"><strong>Company</strong><a href="/studio">About</a><a href="/principles">Principles</a><a href="/work">Work</a><a href="/notes">Systems Notes</a><a href="/trust">Trust and security</a><a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="https://portal.loveleedaystudios.com/client/login">Sign in</a></div>
@@ -170,6 +135,6 @@
 <!--/ob:bottom-->
 
 <script src="/site/assets/site.js?v=f1692be57e" defer></script>
-<script src="/site/assets/ob/ob.js?v=4773f923f3" defer></script>
+<script src="/site/assets/ob/ob.js?v=f3d0af1d71" defer></script>
 </body>
 </html>

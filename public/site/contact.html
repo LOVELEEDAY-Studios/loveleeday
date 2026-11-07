@@ -9,9 +9,10 @@
 <script>(function(){var d=document.documentElement;d.classList.add('js');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))d.classList.add('ob-rv')})()</script>
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site/assets/ob/ob.css?v=3e9e4bc882">
+<link rel="stylesheet" href="/site/assets/ob/ob.css?v=8a85e7dac1">
+<link rel="stylesheet" href="/site/assets/ob/scene.css?v=c881ea2ad2">
 </head>
-<body class="ob">
+<body class="sc ob">
 <!--ob:top-->
 <a class="sr" href="#main">Skip to content</a>
 
@@ -38,7 +39,7 @@
         <div class="pl"><div class="pg"><h3>Solutions</h3>
           <a href="/customer-data"><b>Customer data</b><small>Many records, one customer you can trust</small></a>
           <a href="/operational-intelligence"><b>Operational intelligence</b><small>Know what changed and what needs attention</small></a>
-          <a href="/pricing-margins"><b>Pricing and margins</b><small>Includes the pricing Snapshot</small></a>
+          <a href="/pricing-margins"><b>Pricing and margins</b><small>See what each sale earns</small></a>
           <a href="/municipal-review"><b>Municipal review</b><small>Faster, traceable public-sector reviews</small></a>
           <a href="/use-cases"><b>All use cases</b><small>Every way teams put Arthur to work</small></a>
         </div><div class="pg"><h3>Industries</h3>
@@ -95,39 +96,17 @@
 <!--/ob:top-->
 
 <main id="main">
-<section class="ob-lead ob-lead--photo">
-  <div class="ob-wrap">
-    <div>
-      <h1 class="ob-h1">Start with the decision you need to make.</h1>
-      <p class="ob-lede">Tell us what is hard to see across your systems. A person reads every note and replies in writing with a practical first step.</p>
-      <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="#message">Write to us</a></p>
-      <p class="ob-meta" style="margin-top:16px">Replies within one working day</p>
-    </div>
-    <figure><img src="/site/assets/contact-hero.jpg" alt="Two colleagues talking across a sunlit table by a garden window" width="1500" height="845" style="--ar:1500/845" fetchpriority="high"></figure>
-  </div>
-</section>
-
-<section class="ob-sec ob-scene">
-  <div class="ob-wrap ob-scene-in">
-    <figure class="ob-scene-ph" style="--ar:3/2"><img src="/site/assets/contact-desk.jpg" alt="A desk with a cup of tea, a tablet, a pen and a phone" width="1500" height="999" loading="lazy"></figure>
-    <div class="ob-scene-tx" data-ob-reveal>
-      <p class="ob-meta" style="margin-bottom:14px">Your note</p>
-      <h2 class="ob-h2 ob-h2--m">Which deadlines in the next 60 days does nobody own yet?</h2>
-      <p class="ob-lede">A person reads it and writes back.</p>
-    </div>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white" id="message">
+<section class="sc-split sc-lead"><img src="/site/assets/contact-hero.jpg" alt="Two colleagues talking across a table by a large window" width="1500" height="845" fetchpriority="high"><div><h1>Tell us the decision you need to make.</h1><p>Describe what is hard to see across your systems. A person will read your note and reply in writing with a practical first step.</p><div class="sc-act"><a class="sc-b" href="#message">Write to us</a></div><p class="sc-note">We reply within one working day.</p></div></section>
+<section class="ob-sec sc-brief" id="message">
   <div class="ob-wrap ob-qa">
     <div>
       <h2 class="ob-h2 ob-h2--m">What are you trying to work out?</h2>
       <p class="ob-lede" style="margin-top:24px">You do not need to know which service you want. Describe the question, and we will suggest where to start.</p>
       <h3 class="ob-h3" style="margin:clamp(28px,3vw,48px) 0 8px">What happens next</h3>
       <ul class="ob-rules ob-rules--stack">
-        <li><b>A person reads it</b><span>Not a bot, and not a sales sequence.</span></li>
-        <li><b>We reply in writing</b><span>Within one working day, with a question or a first step.</span></li>
-        <li><b>Scope comes after</b><span>If a project makes sense, we agree on it before any proposal.</span></li>
+        <li><b>A person reads it</b><span>Your note goes to a person and is never added to a sales sequence.</span></li>
+        <li><b>We reply in writing</b><span>You will hear back within one working day, with a question or a first step.</span></li>
+        <li><b>Scope comes after</b><span>If a project makes sense, we agree on the scope before any proposal.</span></li>
       </ul>
     </div>
     <div class="ob-panel">
@@ -153,21 +132,10 @@
     </div>
   </div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap">
-    <h2 class="ob-h2">Other ways to reach us.</h2>
-    <ul class="ob-rules" style="margin-top:clamp(28px,3.4vw,52px)" data-ob-reveal>
-      <li><b><a href="/trust">Security or procurement</a></b><span>Read how we handle your data. Or ask for our security packet in the note above.</span></li>
-      <li><b><a href="https://portal.loveleedaystudios.com/client/login">Already a client?</a></b><span>Sign in to your workspace. Review work and send notes from the client portal.</span></li>
-      <li><b><a href="mailto:hello@loveleedaystudios.com">Prefer email?</a></b><span>hello@loveleedaystudios.com. General questions, partnerships and press.</span></li>
-    </ul>
-  </div>
-</section>
-
+<section class="sc-3"><div class="top"><h2>Other ways to reach us.</h2></div><div class="sc-rows"><div class="sc-row"><h3><a href="/trust">Security or procurement</a></h3><p>Read how we handle your data, or ask for our security packet in your note.</p></div><div class="sc-row"><h3><a href="https://portal.loveleedaystudios.com/client/login">Client sign-in</a></h3><p>Sign in to your workspace to review work and send notes from the client portal.</p></div><div class="sc-row"><h3><a href="mailto:hello@loveleedaystudios.com">Email</a></h3><p>Write to hello@loveleedaystudios.com with general questions, partnership ideas and press requests.</p></div></div></section>
 <section class="ob-close">
   <div class="ob-wrap">
-    <p class="ob-close-l">Where we work.<em>Across the United States, with organizations wherever your team is.</em></p>
+    <p class="ob-close-l">We work across the United States.<em>Your team can be anywhere.</em></p>
   </div>
 </section>
 </main>
@@ -182,7 +150,7 @@
   </div>
   <div class="foot-grid">
     <div class="foot-col"><strong>Product</strong><a href="/arthur">Arthur</a><a href="/operating-system">Operating system</a><a href="/how-it-works">How it works</a><a href="/architecture">Architecture</a><a href="/integrations">Integrations</a></div>
-    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/snapshot">Pricing Snapshot</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
+    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
     <div class="foot-col"><strong>Industries</strong><a href="/industries/manufacturing">Manufacturing and distribution</a><a href="/industries/property">Property management</a><a href="/industries/schools">Schools and charters</a><a href="/industries">All industries</a></div>
     <div class="foot-col"><strong>Services</strong><a href="/build">What we build</a><a href="/talk">Ways to work together</a><a href="/contact">Start a project</a></div>
     <div class="foot-col"><strong>Company</strong><a href="/studio">About</a><a href="/principles">Principles</a><a href="/work">Work</a><a href="/notes">Systems Notes</a><a href="/trust">Trust and security</a><a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="https://portal.loveleedaystudios.com/client/login">Sign in</a></div>
@@ -195,6 +163,6 @@
 <!--/ob:bottom-->
 
 <script src="/site/assets/site.js?v=f1692be57e" defer></script>
-<script src="/site/assets/ob/ob.js?v=4773f923f3" defer></script>
+<script src="/site/assets/ob/ob.js?v=f3d0af1d71" defer></script>
 </body>
 </html>

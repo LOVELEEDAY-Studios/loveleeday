@@ -3,9 +3,10 @@
 <script>(function(){var d=document.documentElement;d.classList.add('js');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))d.classList.add('ob-rv')})()</script>
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site/assets/ob/ob.css?v=3e9e4bc882">
+<link rel="stylesheet" href="/site/assets/ob/ob.css?v=8a85e7dac1">
+<link rel="stylesheet" href="/site/assets/ob/scene.css?v=c881ea2ad2">
 </head>
-<body class="ob">
+<body class="sc ob">
 <!--ob:top-->
 <a class="sr" href="#main">Skip to content</a>
 
@@ -32,7 +33,7 @@
         <div class="pl"><div class="pg"><h3>Solutions</h3>
           <a href="/customer-data"><b>Customer data</b><small>Many records, one customer you can trust</small></a>
           <a href="/operational-intelligence"><b>Operational intelligence</b><small>Know what changed and what needs attention</small></a>
-          <a href="/pricing-margins"><b>Pricing and margins</b><small>Includes the pricing Snapshot</small></a>
+          <a href="/pricing-margins"><b>Pricing and margins</b><small>See what each sale earns</small></a>
           <a href="/municipal-review"><b>Municipal review</b><small>Faster, traceable public-sector reviews</small></a>
           <a href="/use-cases"><b>All use cases</b><small>Every way teams put Arthur to work</small></a>
         </div><div class="pg"><h3>Industries</h3>
@@ -89,37 +90,15 @@
 <!--/ob:top-->
 
 <main id="main">
-<section class="ob-hero ob-hero--left" style="--pos:50% 40%;--w:min(620px,46vw)">
-  <div class="ob-hero-ph"><img src="/site/assets/hero-how.jpg" alt="Two people going through printed records at a desk" width="2200" height="1467" fetchpriority="high"></div>
-  <div class="ob-hero-in">
-    <h1>Clear thinking.<br>Visible foundations.</h1>
-    <p class="ob-hero-lede">The standards we want the system to carry into every answer, every record, and every decision.</p>
-  </div>
+<section class="sc-hero" style="--pos:45% 35%">
+<img class="sc-ph" src="/site/assets/industry-professional-services.jpg" alt="Two colleagues checking the figures on a printed report" width="1880" height="1251" fetchpriority="high">
+<div class="sc-copy"><h1>The standards behind every answer we give.</h1><p class="sc-lede">These six principles guide how we handle records, present evidence and leave decisions with your people.</p><div class="sc-act"><a class="sc-b" href="#standards">Read the principles</a><a class="sc-g" href="/architecture">See how it is built</a></div></div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap">
-    <ul class="ob-rules" data-ob-reveal>
-      <li><b>Evidence before confidence.</b><span>A clear answer should make its support easier to inspect. Preserve the source record and distinguish an observed fact from an inference.</span></li>
-      <li><b>Context before conclusions.</b><span>A value belongs to a subject, a time, and a situation. Keep those relationships attached so the number can be understood.</span></li>
-      <li><b>History stays intact.</b><span>New information should add to the record. Preserve what was true and what was known when a decision was made.</span></li>
-      <li><b>Uncertainty stays visible.</b><span>Missing records, disputed values, and incomplete coverage should be part of the answer. Give the reviewer a useful next question.</span></li>
-      <li><b>People keep the decision.</b><span>A proposed action needs a clear scope and a responsible owner. Make the consequences and supporting evidence available before a consequential change.</span></li>
-      <li><b>The work should return time.</b><span>The purpose of connecting information is a clearer decision and fewer repeated reconciliations. More room for attention is the outcome we care about.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white">
-  <div class="ob-wrap ob-qa">
-    <h2 class="ob-h2" data-ob-reveal>Slow enough to be right. Fast enough to matter.</h2>
-    <p class="ob-lede" data-ob-reveal>Claims tied to sources, completion tied to the task, authority kept explicit, and economics worth measuring.</p>
-  </div>
-</section>
-
+<section class="sc-3" id="standards"><div class="top"><h2>We hold our work to six principles.</h2><p class="sc-lede">Each one describes a behavior you should be able to see in the product.</p></div><div class="sc-rows"><div class="sc-row"><h3>We show the evidence first.</h3><p>A clear answer should make its support easy to inspect, so we keep the source record and separate an observed fact from an inference.</p></div><div class="sc-row"><h3>We keep context with every figure.</h3><p>A value belongs to a subject, a time and a situation. We keep those connections in place so that the number can be understood.</p></div><div class="sc-row"><h3>We preserve the history.</h3><p>New information adds to the record. We keep what was true and what was known when a decision was made.</p></div><div class="sc-row"><h3>We keep uncertainty visible.</h3><p>Missing records, disputed values and incomplete coverage are part of the answer, along with a useful next question.</p></div><div class="sc-row"><h3>People keep the decision.</h3><p>Every proposed action has a clear scope and a responsible owner, and the consequences and evidence are available before anything significant changes.</p></div><div class="sc-row"><h3>The work should give people time back.</h3><p>We connect information so that decisions become clearer and the same reconciliation is not repeated. More time for people to think is the result we care about.</p></div></div></section>
+<section class="sc-split"><img src="/site/assets/hero-how.jpg" alt="A man in a suit reviewing a document across a desk" width="2200" height="1467" loading="lazy"><div><h2>We take the time to be right and stay fast enough to be useful.</h2><p>Every claim is tied to a source, every task has a clear finish, authority stays explicit and the economics are measured.</p></div></section>
 <section class="ob-close">
   <div class="ob-wrap">
-    <p class="ob-close-l">See the principles in the system.<em>Explore how identity, memory, and evidence become part of the architecture.</em></p>
+    <p class="ob-close-l">See these principles in the system.<em>The architecture page shows how they are built into every answer.</em></p>
     <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="/architecture">Inside the architecture</a><a class="ob-btn ob-btn--ghost" href="/contact">Talk to us</a></p>
   </div>
 </section>
@@ -135,7 +114,7 @@
   </div>
   <div class="foot-grid">
     <div class="foot-col"><strong>Product</strong><a href="/arthur">Arthur</a><a href="/operating-system">Operating system</a><a href="/how-it-works">How it works</a><a href="/architecture">Architecture</a><a href="/integrations">Integrations</a></div>
-    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/snapshot">Pricing Snapshot</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
+    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
     <div class="foot-col"><strong>Industries</strong><a href="/industries/manufacturing">Manufacturing and distribution</a><a href="/industries/property">Property management</a><a href="/industries/schools">Schools and charters</a><a href="/industries">All industries</a></div>
     <div class="foot-col"><strong>Services</strong><a href="/build">What we build</a><a href="/talk">Ways to work together</a><a href="/contact">Start a project</a></div>
     <div class="foot-col"><strong>Company</strong><a href="/studio">About</a><a href="/principles">Principles</a><a href="/work">Work</a><a href="/notes">Systems Notes</a><a href="/trust">Trust and security</a><a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="https://portal.loveleedaystudios.com/client/login">Sign in</a></div>
@@ -147,6 +126,6 @@
 <div class="cta-bar" id="ctabar"><a class="cb-t" href="/contact">Talk to us</a><a class="cb-g" href="/#join">Get started</a></div>
 <!--/ob:bottom-->
 
-<script src="/site/assets/ob/ob.js?v=4773f923f3" defer></script>
+<script src="/site/assets/ob/ob.js?v=f3d0af1d71" defer></script>
 </body>
 </html>

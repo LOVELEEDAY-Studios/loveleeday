@@ -1,9 +1,9 @@
 {
   "n": "04",
   "slug": "your-systems-dont-talk",
-  "title": "Your systems don't talk. They were never meant to.",
-  "dek": "An ERP, a point of sale, a CRM and an inbox each describe the world in their own words. Copying fields between them moves values, not meaning.",
-  "summary": "An ERP, a point of sale, a CRM and an inbox each describe the world in their own language. Translation, not more syncing, is the real work.",
+  "title": "Why your systems do not speak the same language.",
+  "dek": "An ERP, a point of sale, a CRM and an inbox each describe the world in their own words. Copying fields between them moves the values and leaves the meaning behind.",
+  "summary": "An ERP, a point of sale, a CRM and an inbox each describe the world in their own language. The real work is agreeing what those words mean.",
   "topic": "Integration",
   "read": 4,
   "photo": "note-04.jpg",
@@ -17,7 +17,7 @@
   ],
   "date": "2026-08-26",
   "card": [
-    "Your systems don't talk.",
-    "They were never meant to."
+    "Why your systems do not",
+    "speak the same language."
   ]
 }
