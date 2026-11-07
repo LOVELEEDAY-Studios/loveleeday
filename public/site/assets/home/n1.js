@@ -287,6 +287,7 @@
   }
   function go(i) { scrollTo({ top: targetY(i), behavior: rm ? 'auto' : 'smooth' }); }
   dbtn.forEach(function (b) { b.addEventListener('click', function () { go(+b.dataset.i); }); });
+  var hd = $('.ha-day'); if (hd) hd.addEventListener('click', function (e) { e.preventDefault(); go(1); });
   function nowIdx() {
     var y = scrollY, k = 0;
     for (var i = 0; i <= n; i++) if (targetY(i) <= y + 6) k = i;
