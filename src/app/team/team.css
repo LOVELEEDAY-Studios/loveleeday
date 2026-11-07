@@ -1,0 +1,5 @@
+/* Team portal: the site's typeface, scoped to .ll-os under /team. */
+@font-face { font-family: "Switzer"; src: url(/site/assets/fonts/switzer-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Switzer"; src: url(/site/assets/fonts/switzer-500.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Switzer"; src: url(/site/assets/fonts/switzer-600.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+.ll-os { font-family: "Switzer", system-ui, "Segoe UI", Roboto, Arial, sans-serif; -webkit-font-smoothing: antialiased; }

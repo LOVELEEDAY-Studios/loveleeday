@@ -10,7 +10,7 @@ export default async function TeamLogin() {
   return (
     <main className="flex min-h-screen items-center justify-center px-4 py-16">
       <div className="w-full max-w-[420px]">
-        <div className="flex items-center gap-2 text-[13px] font-[650] tracking-[0.12em]">
+        <div className="flex items-center gap-2 text-[15px] font-[650] tracking-[0.12em]">
           <span
             aria-hidden="true"
             className="inline-block h-5 w-5 bg-current"
@@ -19,14 +19,12 @@ export default async function TeamLogin() {
           LOVELEEDAY
           <span className="ml-1 rounded-full bg-[#1d1d1f] px-2 py-0.5 text-[10px] font-semibold tracking-[0.1em] text-white">TEAM</span>
         </div>
-        <h1 className="mt-10 text-[34px] font-medium leading-[1.1] tracking-[-0.04em]">
+        <h1 className="mt-10 text-[34px] font-semibold leading-[1.1] tracking-[-0.03em]">
           Sign in to the team portal.
-          <br />
-          <span className="text-[#8c8e95]">Bids, client portals, activity.</span>
         </h1>
         <LoginForm />
-        <p className="mt-8 text-[12px] leading-[1.6] text-[#8c8e95]">
-          For the LOVELEEDAY team only. We email a one-time code to your work address; there is no password to lose.
+        <p className="mt-8 text-[15px] leading-[1.6] text-[#62656c]">
+          For the LOVELEEDAY team only. We email a one-time code to your work address, so there is no password to remember.
         </p>
       </div>
     </main>

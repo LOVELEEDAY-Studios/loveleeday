@@ -54,28 +54,28 @@ export default async function Portals() {
       <TeamNav email={email} />
       <main className="mx-auto max-w-[1240px] px-6 pb-24 pt-10 max-[640px]:px-4">
         <Eyebrow>Client portals</Eyebrow>
-        <h1 className="mt-3 text-[clamp(2rem,4vw,2.8rem)] font-medium leading-[1.08] tracking-[-0.045em]">
+        <h1 className="mt-3 text-[clamp(2rem,4vw,2.8rem)] font-semibold leading-[1.08] tracking-[-0.03em]">
           Every client link in one place.
           <br />
-          <span className="text-[#8c8e95]">Opened from here, it counts as us, not them.</span>
+          <span className="text-[#62656c]">Opened from here, it counts as us, not them.</span>
         </h1>
 
         {groups.map((g) => (
           <section key={g.title} className="mt-12">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h2 className="text-[18px] font-medium">
-                {g.title} <span className="text-[#8c8e95]">· {g.rows.length}</span>
+                {g.title} <span className="text-[#62656c]">· {g.rows.length}</span>
               </h2>
-              <span className="text-[13px] text-[#8c8e95]">{g.line}</span>
+              <span className="text-[15px] text-[#62656c]">{g.line}</span>
             </div>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {g.rows.map((r) => (
                 <Card key={r.href} className="flex min-w-0 items-center justify-between gap-3 p-5">
                   <span className="min-w-0">
                     <span className="block truncate text-[15px] font-medium">{r.client}</span>
-                    <span className="block truncate text-[12.5px] text-[#8c8e95]">{r.what}</span>
+                    <span className="block truncate text-[15px] text-[#62656c]">{r.what}</span>
                   </span>
-                  <a href={r.href} target="_blank" rel="noreferrer" className="shrink-0 rounded-full border border-[#dcdfe6] px-3 py-1.5 text-[12.5px] hover:border-[#1d1d1f]">
+                  <a href={r.href} target="_blank" rel="noreferrer" className="shrink-0 rounded-full border border-[#dcdfe6] px-3 py-1.5 text-[15px] hover:border-[#1d1d1f]">
                     Open ↗
                   </a>
                 </Card>

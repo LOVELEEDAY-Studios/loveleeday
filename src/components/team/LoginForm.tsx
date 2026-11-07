@@ -29,26 +29,26 @@ export function LoginForm() {
     location.href = "/team";
   }
 
-  const field = "mt-2 w-full rounded-xl border border-[#dcdfe6] bg-white px-4 py-3 text-[16px] outline-none focus:border-[#3778bc]";
+  const field = "mt-2 w-full rounded-lg border border-[#dcdfe6] bg-white px-4 py-3 text-[16px] outline-none focus:border-[#3778bc]";
   const button = "mt-4 w-full rounded-full bg-[#1d1d1f] px-5 py-3 text-[15px] font-medium text-white disabled:opacity-50";
 
   return step === "email" ? (
     <form onSubmit={send} className="mt-10">
-      <label htmlFor="team-email" className="text-[13px] text-[#5b606a]">Work email</label>
+      <label htmlFor="team-email" className="text-[15px] text-[#3b3d42]">Work email</label>
       <input id="team-email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className={field} placeholder="you@loveleedaystudios.com" />
       <button disabled={busy} className={button}>{busy ? "Sending…" : "Email me a code"}</button>
-      {err && <p className="mt-3 text-[13px] text-[#b3261e]" role="alert">{err}</p>}
+      {err && <p className="mt-3 text-[15px] text-[#b3261e]" role="alert">{err}</p>}
     </form>
   ) : (
     <form onSubmit={verify} className="mt-10">
-      <p className="text-[14px] leading-[1.6] text-[#5b606a]">
+      <p className="text-[15px] leading-[1.6] text-[#3b3d42]">
         If <b className="font-medium text-[#1d1d1f]">{email}</b> is on the team, a six-digit code is on its way. It expires in 10 minutes.
       </p>
-      <label htmlFor="team-code" className="mt-5 block text-[13px] text-[#5b606a]">Code</label>
+      <label htmlFor="team-code" className="mt-5 block text-[15px] text-[#3b3d42]">Code</label>
       <input id="team-code" inputMode="numeric" autoComplete="one-time-code" pattern="\d{6}" maxLength={6} required value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))} className={`${field} tracking-[0.4em]`} placeholder="000000" />
       <button disabled={busy} className={button}>{busy ? "Checking…" : "Sign in"}</button>
-      {err && <p className="mt-3 text-[13px] text-[#b3261e]" role="alert">{err}</p>}
-      <button type="button" onClick={() => { setStep("email"); setCode(""); setErr(""); }} className="mt-4 text-[13px] text-[#3778bc]">
+      {err && <p className="mt-3 text-[15px] text-[#b3261e]" role="alert">{err}</p>}
+      <button type="button" onClick={() => { setStep("email"); setCode(""); setErr(""); }} className="mt-4 text-[15px] text-[#0066cc]">
         Use a different address
       </button>
     </form>

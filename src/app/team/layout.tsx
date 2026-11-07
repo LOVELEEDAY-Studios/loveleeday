@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./team.css";
 
 /* The LOVELEEDAY team portal. Private: never indexed, never linked from the public site. */
 export const metadata: Metadata = {
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function TeamLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <div className="ll-os min-h-full bg-[#f5f5f7] text-[#1d1d1f]">{children}</div>;
+  return <div className="ll-os min-h-full bg-[#f5f1eb] text-[#14110e]">{children}</div>;
 }

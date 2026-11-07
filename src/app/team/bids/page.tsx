@@ -16,15 +16,15 @@ export default async function Bids() {
       <TeamNav email={email} />
       <main className="mx-auto max-w-[1240px] px-6 pb-24 pt-10 max-[640px]:px-4">
         <Eyebrow>Bids</Eyebrow>
-        <h1 className="mt-3 text-[clamp(2rem,4vw,2.8rem)] font-medium leading-[1.08] tracking-[-0.045em]">
+        <h1 className="mt-3 text-[clamp(2rem,4vw,2.8rem)] font-semibold leading-[1.08] tracking-[-0.03em]">
           Every proposal we have built.
           <br />
-          <span className="text-[#8c8e95]">{totals.sent} sent, {totals.drafts} waiting.</span>
+          <span className="text-[#62656c]">{totals.sent} sent, {totals.drafts} waiting.</span>
         </h1>
 
         <Card className="mt-10 overflow-hidden">
-          <table className="w-full text-left text-[14px] max-[760px]:hidden">
-            <thead className="border-b border-[#eef0f3] text-[12px] text-[#8c8e95]">
+          <table className="w-full text-left text-[15px] max-[760px]:hidden">
+            <thead className="border-b border-[#eef0f3] text-[15px] text-[#62656c]">
               <tr>
                 <th className="px-6 py-3 font-medium">Client</th>
                 <th className="px-3 py-3 font-medium">Stage</th>
@@ -37,17 +37,17 @@ export default async function Bids() {
             </thead>
             <tbody>
               {rows.map((s) => (
-                <tr key={s.bid.slug} className="border-b border-[#f1f2f4] last:border-0 hover:bg-[#fafafb]">
+                <tr key={s.bid.slug} className="border-b border-[#f1f2f4] last:border-0 hover:bg-[#f5f1eb]">
                   <td className="px-6 py-4">
-                    <a href={`/team/bids/${s.bid.slug}`} className="font-medium hover:text-[#3778bc]">{s.bid.client}</a>
-                    <span className="block text-[12.5px] text-[#8c8e95]">{s.bid.contact} · {s.bid.kind}</span>
+                    <a href={`/team/bids/${s.bid.slug}`} className="font-medium hover:text-[#0066cc]">{s.bid.client}</a>
+                    <span className="block text-[15px] text-[#62656c]">{s.bid.contact} · {s.bid.kind}</span>
                   </td>
                   <td className="px-3 py-4"><StageChip stage={s.stage} /></td>
-                  <td className="px-3 py-4 text-[#5b606a]">{s.firstSent ? when(s.firstSent) : "—"}</td>
+                  <td className="px-3 py-4 text-[#3b3d42]">{s.firstSent ? when(s.firstSent) : "—"}</td>
                   <td className="px-3 py-4 text-right tabular-nums">{s.isSent ? s.humanOpens : "—"}</td>
                   <td className="px-3 py-4 text-right tabular-nums">{s.isSent ? s.visits : "—"}</td>
                   <td className="px-3 py-4 text-right tabular-nums">{s.asks.length || "—"}</td>
-                  <td className="px-6 py-4 text-[12.5px] text-[#5b606a]">{s.last ? `${s.last.text}, ${ago(s.last.at)}` : "—"}</td>
+                  <td className="px-6 py-4 text-[15px] text-[#3b3d42]">{s.last ? `${s.last.text}, ${ago(s.last.at)}` : "—"}</td>
                 </tr>
               ))}
             </tbody>
@@ -62,9 +62,9 @@ export default async function Bids() {
                     <span className="text-[15px] font-medium">{s.bid.client}</span>
                     <StageChip stage={s.stage} />
                   </span>
-                  <span className="mt-1 block text-[12.5px] text-[#8c8e95]">{s.bid.contact} · {s.firstSent ? `sent ${when(s.firstSent)}` : "not sent"}</span>
+                  <span className="mt-1 block text-[15px] text-[#62656c]">{s.bid.contact} · {s.firstSent ? `sent ${when(s.firstSent)}` : "not sent"}</span>
                   {s.isSent && (
-                    <span className="mt-2 block text-[12.5px] text-[#5b606a]">{s.humanOpens} open{s.humanOpens === 1 ? "" : "s"} · {s.visits} visit{s.visits === 1 ? "" : "s"} · {s.asks.length} question{s.asks.length === 1 ? "" : "s"}</span>
+                    <span className="mt-2 block text-[15px] text-[#3b3d42]">{s.humanOpens} open{s.humanOpens === 1 ? "" : "s"} · {s.visits} visit{s.visits === 1 ? "" : "s"} · {s.asks.length} question{s.asks.length === 1 ? "" : "s"}</span>
                   )}
                 </a>
               </li>

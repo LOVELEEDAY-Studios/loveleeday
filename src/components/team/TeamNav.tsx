@@ -22,9 +22,9 @@ export function TeamNav({ email }: { email: string }) {
   }
 
   return (
-    <header className="sticky top-0 z-20 border-b border-[#e4e5e9] bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-[#e4e5e9] bg-[#f5f1eb]">
       <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between px-6 max-[640px]:px-4">
-        <a href="/team" className="flex items-center gap-2 text-[13px] font-[650] tracking-[0.12em]" aria-label="LOVELEEDAY team, overview">
+        <a href="/team" className="flex items-center gap-2 text-[15px] font-[650] tracking-[0.12em]" aria-label="LOVELEEDAY team, overview">
           <span
             aria-hidden="true"
             className="inline-block h-5 w-5 bg-current"
@@ -34,13 +34,13 @@ export function TeamNav({ email }: { email: string }) {
           <span className="ml-1 rounded-full bg-[#1d1d1f] px-2 py-0.5 text-[10px] font-semibold tracking-[0.1em] text-white">TEAM</span>
         </a>
         <nav aria-label="Team" className="max-[760px]:hidden">
-          <ul className="flex items-center gap-1 text-[14px]">
+          <ul className="flex items-center gap-1 text-[15px]">
             {LINKS.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
                   aria-current={active(l.href) ? "page" : undefined}
-                  className={`rounded-full px-3.5 py-2 ${active(l.href) ? "bg-[#f0f1f4] font-medium text-[#1d1d1f]" : "text-[#5b606a] hover:text-[#1d1d1f]"}`}
+                  className={`rounded-full px-3.5 py-2 ${active(l.href) ? "bg-[#f0f1f4] font-medium text-[#1d1d1f]" : "text-[#3b3d42] hover:text-[#1d1d1f]"}`}
                 >
                   {l.label}
                 </a>
@@ -49,8 +49,8 @@ export function TeamNav({ email }: { email: string }) {
           </ul>
         </nav>
         <div className="flex items-center gap-3 max-[760px]:hidden">
-          <span className="text-[12px] text-[#8c8e95]">{email}</span>
-          <button onClick={signOut} className="rounded-full border border-[#dcdfe6] px-3 py-1.5 text-[12px] hover:border-[#1d1d1f]">
+          <span className="text-[15px] text-[#62656c]">{email}</span>
+          <button onClick={signOut} className="rounded-full border border-[#dcdfe6] px-3 py-1.5 text-[15px] hover:border-[#1d1d1f]">
             Sign out
           </button>
         </div>
@@ -77,7 +77,7 @@ export function TeamNav({ email }: { email: string }) {
               </li>
             ))}
           </ul>
-          <div className="mt-4 flex items-center justify-between text-[13px] text-[#8c8e95]">
+          <div className="mt-4 flex items-center justify-between text-[15px] text-[#62656c]">
             <span>{email}</span>
             <button onClick={signOut} className="rounded-full border border-[#dcdfe6] px-3 py-1.5 text-[#1d1d1f]">
               Sign out

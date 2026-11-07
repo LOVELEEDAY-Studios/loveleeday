@@ -1,20 +1,19 @@
-// Builds public/site/integrations.html from src/content/integrations.json, reusing the live
-// header, footer and head of public/site/trust.html so the page never drifts from the site.
+// Builds public/site/integrations.html from src/content/integrations.json, reusing the head of public/site/trust.html
+// and the one-brand chrome, so the page never drifts from the site. Styles live in public/site/assets/ob/integrations.css.
 // Usage: node scripts/build-integrations-page.mjs   (run after gen-integrations.mjs)
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 
-// Default: write public/site/integrations.html, then run the same normalising passes the prebuild runs (site-chrome,
-// share-cards, site-postprocess) so the file on disk equals what ships. --check does the same in a throwaway copy of the
-// repo and exits 1 if the result differs from the committed file (drift guard, run by prebuild).
+// Default: write the page, then stamp the chrome and share card so the file on disk equals what ships. --check does the
+// same in a throwaway copy of the repo and exits 1 if the result differs from the committed file.
 const CHECK = process.argv.includes("--check");
 const REAL = new URL("../", import.meta.url).pathname;
 let root = REAL;
 if (CHECK) {
   root = fs.mkdtempSync(path.join(os.tmpdir(), "integrations-check-")) + "/";
-  for (const d of ["scripts", "src/site-chrome", "public/site", "public/integrations"]) fs.cpSync(REAL + d, root + d, { recursive: true });
+  for (const d of ["scripts", "public/site", "public/integrations"]) fs.cpSync(REAL + d, root + d, { recursive: true });
   fs.mkdirSync(root + "src/content", { recursive: true });
   for (const f of ["integrations.json", "logo-colors.json", "connector-verified.json"]) fs.copyFileSync(REAL + "src/content/" + f, root + "src/content/" + f);
   for (const f of ["package.json", "tsconfig.json", "next.config.ts"]) if (fs.existsSync(REAL + f)) fs.copyFileSync(REAL + f, root + f);
@@ -22,102 +21,72 @@ if (CHECK) {
 }
 const data = JSON.parse(fs.readFileSync(root + "src/content/integrations.json", "utf8"));
 const trust = fs.readFileSync(root + "public/site/trust.html", "utf8");
-const MAIN_OPEN = '<main id="main" class="pub">';
+const MAIN_OPEN = '<main id="main">';
+if (!trust.includes(MAIN_OPEN)) throw new Error("trust.html has no main element to split on");
 const pre = trust.slice(0, trust.indexOf(MAIN_OPEN) + MAIN_OPEN.length);
-const post = trust.slice(trust.indexOf("</main>")).replace(/<script src="\/site\/assets\/brain\.js[^>]*><\/script>/, "");
+const post = trust.slice(trust.indexOf("</main>"));
 
 const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const TITLE = "Integrations: the business systems we connect to — LOVELEEDAY";
-const DESC = "Check which systems Arthur can read now, which are planned, and what each could help you answer. Every connection is read-only.";
+const TITLE = "Integrations: the business systems we plan to support — LOVELEEDAY";
+const DESC = "See the business systems we plan to support and what each one could help you answer. Connections read your data and change nothing in your systems.";
 const URL_ = "https://loveleedaystudios.com/integrations";
 
-// The head is the Trust page's head. Swap in this page's own title, description and URL; the trust description is read
-// from the trust page's own tag, so a reworded trust description can never leak into this page.
+// The head is the Trust page's head with this page's own title, description and URL; the trust description is read from
+// the trust page's own tag, so a reworded trust description can never leak into this page.
 const trustDesc = (trust.match(/<meta name="description" content="([^"]*)"/) || [])[1];
-if (!trustDesc) throw new Error("trust.html has no meta description to replace");
-let head = pre
-  .replace(/Trust and security: how your data is protected — LOVELEEDAY/g, TITLE)
+const trustTitle = (trust.match(/<title>([^<]*)<\/title>/) || [])[1];
+if (!trustDesc || !trustTitle) throw new Error("trust.html has no title or description to replace");
+const head = pre
+  .split(trustTitle).join(TITLE)
   .split(trustDesc).join(esc(DESC))
   .replace(/https:\/\/loveleedaystudios\.com\/trust/g, URL_)
-  .replace(/<link[^>]*\/site\/assets\/fix\/trust\.css[^>]*>/g, "");
+  .replace(/(<link[^>]*\/site\/assets\/ob\/scene\.css[^>]*>)/, '$1\n<link rel="stylesheet" href="/site/assets/ob/integrations.css?v=1">');
 
-const CSS = `.pub .ic-state{border:1px solid var(--line);border-radius:14px;padding:22px}
-.pub .ic-state p{font-size:12.5px;color:var(--muted);line-height:1.65;margin-top:8px}
-.pub .ic-bar{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:24px 0 8px}
-.pub .ic-search{flex:0 1 300px;width:100%;border:1px solid #dce3ed;background:var(--wash2);border-radius:8px;padding:10px 12px;font-size:13px;color:#36475c;line-height:1.4}
-.pub .ic-search:focus-visible{outline:2px solid #82b6ed;outline-offset:2px}
-.pub button.tab{cursor:pointer;font-family:inherit}
-.pub .ic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:20px}
-.pub .ic-card{border:1px solid transparent;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;color:#fff}
-.pub .ic-card.lt{color:#111}
-.pub .ic-card[hidden]{display:none}
-.pub .ic-top{display:flex;align-items:center;gap:12px}
-.pub .ic-logo{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.18)}
-.pub .ic-logo img{width:26px;height:26px;object-fit:contain}
-.pub .ic-top b{display:block;font-size:14.5px;font-weight:600;line-height:1.3}
-.pub .ic-top span.xs{opacity:.78}
-.pub .ic-card p{font-size:12.5px;line-height:1.65;flex:1;opacity:.86}
-.pub .ic-soon{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.02em;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.45)}
-.pub .ic-card.lt .ic-soon{background:rgba(0,0,0,.08);border-color:rgba(0,0,0,.22)}
-.pub .ic-soon[hidden]{display:none}
-.pub .ic-empty{margin-top:28px;color:var(--muted);font-size:13px}
-@media(max-width:1020px){.pub .ic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){.pub .ic-grid{grid-template-columns:minmax(0,1fr)}.pub .ic-search{flex-basis:100%}.pub .tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;max-width:100%}}`;
-head = head.replace(/<style>[\s\S]*?<\/style>/, () => `<style>${CSS}</style>`);
-head = head.replace(/"@type":"WebPage"/, '"@type":"CollectionPage"');
-
-// Every connector is listed. Anything a customer cannot connect today carries one label, "Coming soon" — never why
-// (vendor approval, sign-in not configured are our business). The label is baked in at build time and then refreshed in
-// the browser from the portal's public status endpoint, so a connector flips to live on its own once its credentials
-// are set and the portal is deployed (Daniel 2026-10-05).
 const order = new Map(data.groups.map((g, n) => [g.id, n]));
 const items = [...data.items].sort((a, b) => order.get(a.group) - order.get(b.group) || a.name.localeCompare(b.name));
-// "Available" came from connector status that reflects configuration, not a passing live sync, so a label must never read
-// as a verified connection. This one states only what is true: the connector exists and can be connected.
-// Reality ladder (Daniel 2026-10-09/11): only a connector with a passing live probe reads "Ready to connect"; every other
-// system is "Planned". Verified keys live in src/content/connector-verified.json, written from the capability board
-// (arthur-capability, loveleeday.client_connections) and the tenant_connections probe rows. No count is shown on the page.
+// Reality ladder (Daniel 2026-10-09/11): only a connector with a passing live probe says "Ready to connect". Its keys live
+// in src/content/connector-verified.json, written from the capability board. Everything else is covered by the page's
+// plain statement that this is the list we plan to support, so no row carries a status of its own.
 const VERIFIED = new Set(JSON.parse(fs.readFileSync(root + "src/content/connector-verified.json", "utf8")).keys);
-const LIVE_LABEL = "Ready to connect";
-const PLANNED_LABEL = "Planned";
 // No silent initials fallback: a listed connector without a logo file stops the build.
 const noLogo = items.filter((i) => !i.logo || !i.logo.startsWith("/integrations/logos/") || !fs.existsSync(root + "public" + i.logo)).map((i) => i.key);
 if (noLogo.length) throw new Error(`no logo for: ${noLogo.join(", ")}. Add public/integrations/logos/<key>.svg|png, then rerun gen-integrations.mjs`);
-const groups = data.groups.map((g) => ({ ...g, count: items.filter((i) => i.group === g.id).length })).filter((g) => g.count);
+const groups = data.groups.map((g) => ({ ...g, items: items.filter((i) => i.group === g.id) })).filter((g) => g.items.length);
 
-// Calm directory cards (approved 2026-10-06): white card, brand colour as a thin accent (--brand), one status label.
-const COLORS = JSON.parse(fs.readFileSync(root + "src/content/logo-colors.json", "utf8"));
-const brand = (i) => { const c = COLORS[i.logo.split("/").pop()]; if (!/^#[0-9a-f]{6}$/i.test(c || "")) throw new Error(`missing brand colour for ${i.key}`); return c; };
-// Relative luminance decides the text colour, so light brands (yellow, cyan) get dark text and stay readable.
-const isLight = (hex) => { const [r, g, b] = [1, 3, 5].map((n) => parseInt(hex.slice(n, n + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)); return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.42; };
-const tint = () => "background:#FFFFFF";
-const card = (i) => {
-  const c = brand(i), soon = !VERIFIED.has(i.key);
-  return `<article class="ic-card" style="--brand:${c}" data-key="${esc(i.key)}" data-group="${esc(i.group)}" data-q="${esc((i.name + " " + i.vendor + " " + i.category).toLowerCase())}"><div class="ic-top"><span class="ic-logo" style="${tint(i)}"><img src="${esc(i.logo)}" alt="" width="26" height="26"></span><div><b>${esc(i.name)}</b><span class="xs">${esc(i.category)}</span></div><span class="ic-soon" data-s="${soon ? "soon" : "available"}">${soon ? PLANNED_LABEL : LIVE_LABEL}</span></div><p>${esc(i.reads)}</p></article>`;
+// The list states once that a connection reads and changes nothing, so each entry names only the records.
+const PLAIN = [["customer, vendor, invoice and bill", "customers, vendors, invoices and bills"], ["tenants and AR", "tenants and receivables"], ["files metadata", "file details"]];
+const reads = (i) => {
+  const t = PLAIN.reduce((s, [a, b]) => s.split(a).join(b), i.reads.replace(/\s*Read-only\.$/, "").replace(/^Reads /, ""));
+  return t[0].toUpperCase() + t.slice(1);
 };
+const row = (i) => `<article class="ic-r" data-q="${esc((i.name + " " + i.vendor + " " + i.category).toLowerCase())}"><span class="ic-l"><img src="${esc(i.logo)}" alt="" width="28" height="28" loading="lazy"></span><div><h4>${esc(i.name)}${VERIFIED.has(i.key) ? ' <span class="ic-ok">Ready to connect</span>' : ""}</h4><p>${esc(reads(i))}</p></div></article>`;
+// The opening wall takes the first system of each category, then the second, so it spans the directory and fills its rows.
+const picks = [...groups.map((g) => g.items[0]), ...groups.map((g) => g.items[1]).filter(Boolean)].slice(0, 12);
+const wall = picks.map((i) => `<span class="ic-w"><img src="${esc(i.logo)}" alt="${esc(i.name)}" width="44" height="44"></span>`).join("");
 
 const body = `
-
-<section class="wrap pagehead" style="padding-top:64px"><h1 class="title">See which of your systems we can read.</h1>
-<p class="lead">See which of your systems we can read now, which are still planned, and what each could help you answer. Every connection is read-only, and Arthur asks for your approval before writing anything back. Each card shows its status. If yours is not listed or not ready yet, tell us what you run.</p>
-<p class="xs muted" style="max-width:720px;margin-top:16px"><b>Ready to connect</b> means we have connected this system to a real account and read live information from it. <b>Planned</b> means it is on our list and has not been connected yet.</p></section>
-
-<section class="wrap" style="padding-top:48px">
-<div class="ic-bar"><div class="tabs" role="group" aria-label="Filter by category"><button class="tab on" type="button" data-f="all">All<small>${items.length}</small></button>${groups.map((g) => `<button class="tab" type="button" data-f="${esc(g.id)}">${esc(g.label)}<small>${g.count}</small></button>`).join("")}</div>
-<input class="ic-search" id="ic-q" type="search" placeholder="Search systems" aria-label="Search systems" autocomplete="off"></div>
-<div class="ic-grid" id="ic-grid">${items.map(card).join("")}</div>
-<p class="ic-empty" id="ic-empty" hidden>No listed system matches. Tell us what you use, and we will check whether we can read it or use an export.</p></section>
-
-<section class="wrap" style="padding-top:56px;padding-bottom:96px"><div class="panel tint row between" style="padding:36px 40px"><div><h2 class="h">Not listed?</h2><p class="muted mt8" style="max-width:520px">If your system can export data or provide approved access, tell us what it is. We will check what we can read and explain any limits.</p></div><div class="row"><a class="btn dark" href="/studio#project-brief">Tell us what you run</a></div></div></section>
-<script>(function(){var f="all",q="",cards=[].slice.call(document.querySelectorAll(".ic-card")),tabs=[].slice.call(document.querySelectorAll(".tabs .tab")),empty=document.getElementById("ic-empty");function run(){var n=0;cards.forEach(function(c){var ok=(f==="all"||c.dataset.group===f)&&(!q||c.dataset.q.indexOf(q)>-1);c.hidden=!ok;if(ok)n++});empty.hidden=n>0}tabs.forEach(function(t){t.addEventListener("click",function(){f=t.dataset.f;tabs.forEach(function(x){x.classList.toggle("on",x===t)});run()})});document.getElementById("ic-q").addEventListener("input",function(e){q=e.target.value.trim().toLowerCase();run()});})();</script>
+<section class="ic-lead"><div class="ic-lead-t"><h1>Find the systems your organization already runs.</h1><p class="sc-lede">This list shows the business systems we plan to support and what each one could help you answer. A connection reads your data and changes nothing in the system, which stays where it is.</p><div class="sc-act"><a class="sc-b" href="#systems">Search the list</a><a class="sc-g" href="/contact">Tell us what you run</a></div></div><div class="ic-wall" >${wall}</div></section>
+<section class="ic-dir" id="systems"><h2>Each entry lists what a connection would read.</h2><div class="ic-bar"><div class="ic-tabs" role="group" aria-label="Filter by category"><button class="on" type="button" data-f="all">All systems</button>${groups.map((g) => `<button type="button" data-f="${esc(g.id)}">${esc(g.label)}</button>`).join("")}</div><input id="ic-q" type="search" placeholder="Search systems" aria-label="Search systems" autocomplete="off"></div>
+${groups.map((g) => `<div class="ic-g" data-g="${esc(g.id)}"><h3>${esc(g.label)}</h3><div class="ic-rows">${g.items.map(row).join("")}</div></div>`).join("\n")}
+<p class="ic-none" id="ic-none" hidden>No listed system matches your search. Tell us what you use, and we will check whether we can read it or work from an export.</p></section>
+<section class="sc-state"><h2>What to expect from a connection.</h2><div class="sc-four t3">
+<div><h3>It reads and changes nothing</h3><p>A connection reads what the system holds. If you ever want Arthur to write something back, it asks for your approval first.</p></div>
+<div><h3>It is set up for your account</h3><p>We set up each connection for your organization and check the records it returns before you rely on them.</p></div>
+<div><h3>An export can stand in for it</h3><p>If your system can export its data, we can often start there. We will tell you what we can read and explain any limits.</p></div>
+</div></section>
+<section class="ob-close">
+  <div class="ob-wrap">
+    <p class="ob-close-l">Tell us which systems you run.<em>A person reads every note and replies in writing.</em></p>
+    <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="/contact">Talk to us</a><a class="ob-btn ob-btn--ghost" href="/trust">See how we protect your data</a></p>
+  </div>
+</section>
+<script>(function(){var f="all",q="",tabs=[].slice.call(document.querySelectorAll(".ic-tabs button")),gs=[].slice.call(document.querySelectorAll(".ic-g")),none=document.getElementById("ic-none");function run(){var n=0;gs.forEach(function(g){var c=0;[].forEach.call(g.querySelectorAll(".ic-r"),function(r){var ok=(f==="all"||g.dataset.g===f)&&(!q||r.dataset.q.indexOf(q)>-1);r.hidden=!ok;if(ok)c++});g.hidden=!c;n+=c});none.hidden=n>0}tabs.forEach(function(t){t.addEventListener("click",function(){f=t.dataset.f;tabs.forEach(function(x){x.classList.toggle("on",x===t)});run()})});document.getElementById("ic-q").addEventListener("input",function(e){q=e.target.value.trim().toLowerCase();run()})})();</script>
 `;
-// The calm card styles live in their own sheet; link it once after the shared site.css.
-const FIX = "<link rel=\"stylesheet\" href=\"/site/assets/fix/integrations.css?v=0\">";
-const headOut = head.includes("assets/fix/integrations.css") ? head : head.replace(/(<link[^>]*\/site\/assets\/pub\.css[^>]*>)/, `$1${FIX}`);
 const target = root + "public/site/integrations.html";
 const committed = fs.readFileSync(REAL + "public/site/integrations.html", "utf8");
-fs.writeFileSync(target, headOut + body + post);
-for (const s of ["site-chrome.mjs", "share-cards.mjs", "site-postprocess.mjs"]) execFileSync("node", [root + "scripts/" + s], { cwd: root, stdio: "pipe" });
+fs.writeFileSync(target, head + body + post);
+execFileSync("node", [root + "scripts/one-brand-chrome.mjs", target], { cwd: root, stdio: "pipe" });
+execFileSync("node", [root + "scripts/share-cards.mjs"], { cwd: root, stdio: "pipe" });
 const out = fs.readFileSync(target, "utf8");
 if (CHECK) {
   fs.rmSync(root, { recursive: true, force: true });

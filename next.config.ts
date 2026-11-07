@@ -81,7 +81,6 @@ const nextConfig: NextConfig = {
       { source: "/talk", destination: "/studio", permanent: false },
       { source: "/work", destination: "/studio", permanent: false },
       { source: "/work/:slug", destination: "/studio", permanent: false },
-      { source: "/integrations", destination: "/architecture", permanent: false },
       { source: "/industries/manufacturing", destination: "/industries", permanent: false },
       { source: "/industries/property", destination: "/industries", permanent: false },
       { source: "/industries/schools", destination: "/industries#schools", permanent: false },
