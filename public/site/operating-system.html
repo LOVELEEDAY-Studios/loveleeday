@@ -10,9 +10,10 @@
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site/assets/ob/ob.css?v=3e9e4bc882">
+<link rel="stylesheet" href="/site/assets/ob/scene.css?v=3375dbfa64">
 <link rel="stylesheet" href="/site/assets/ob/widgets.css?v=4746470d86">
 </head>
-<body class="ob" data-question-set="os">
+<body class="sc ob" data-question-set="os">
 <!--ob:top-->
 <a class="sr" href="#main">Skip to content</a>
 
@@ -96,30 +97,9 @@
 <!--/ob:top-->
 
 <main id="main">
-<section class="ob-hero ob-hero--left" style="--pos:50% 45%;--w:min(620px,46vw)">
-  <div class="ob-hero-ph"><img src="/site/assets/hero-work.jpg" alt="A man reading a tablet at a workbench in a tall-windowed workshop" width="2200" height="1467" fetchpriority="high"></div>
-  <div class="ob-hero-in">
-    <h1>Your systems.<br>One understanding.</h1>
-    <p class="ob-hero-lede">Bring the information around your business into a shared picture. Ask a clear question. See the evidence behind the answer.</p>
-    <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="#system">Explore the interface</a><a class="ob-btn ob-btn--ghost" href="/architecture">Inside the architecture</a></p>
-  </div>
-</section>
-
-<section class="ob-sec">
-  <div class="ob-wrap ob-qa">
-    <h2 class="ob-h2" data-ob-reveal>Keep the context. Lose the friction.</h2>
-    <div data-ob-reveal>
-      <p class="ob-lede">A customer appears in several systems. A cost changes in one place. A decision depends on information that has already moved.</p>
-      <p class="ob-p" style="margin-top:24px">The operating system connects these fragments through identity, history, and evidence. You can follow the subject across its records instead of piecing the story together each time.</p>
-    </div>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white" id="system">
-  <div class="ob-wrap">
-    <h2 class="ob-h2">Ask once. Follow it all the way down.</h2>
-    <p class="ob-lede" style="margin:20px 0 clamp(28px,3.4vw,52px)">Every answer keeps the route back to the record it came from.</p>
-    <div class="system-shell">
+<section class="os-open" id="system" aria-labelledby="o-h">
+  <div class="hd"><h1 id="o-h">Your systems.<br>One understanding.</h1><div><p>Bring the information around your business into a shared picture. Ask a clear question. See the evidence behind the answer.</p><div class="sc-act"><a class="sc-b" href="#context">Why it holds together</a><a class="sc-g" href="/architecture">Inside the architecture</a></div></div></div>
+  <div class="system-shell">
       <div class="shell-top"><div class="shell-title"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>LOVELEEDAY / Intelligence</div><div class="status">Interactive system preview</div></div>
       <div class="demo-body">
         <aside class="sidebar" aria-label="System context">
@@ -154,21 +134,14 @@
       </div>
     </div>
     <p class="demo-caption">Illustrative interaction. No live systems connected.</p>
-  </div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap">
-    <h2 class="ob-h2">From a record. To a reason to act.</h2>
-    <ul class="ob-rules" style="margin-top:clamp(28px,3.4vw,52px)" data-ob-reveal>
-      <li><b>Connect the context</b><span>Start with a defined set of sources and the people, organizations, or items they describe.</span></li>
-      <li><b>Build the evidence</b><span>Resolve identities, preserve changes over time, and keep each fact attached to its origin.</span></li>
-      <li><b>Focus the decision</b><span>Present the answer, the records behind it, and the questions that still need attention.</span></li>
-    </ul>
-    <p class="ob-btns" style="margin-top:28px"><span class="chip">Business records</span><span class="chip">Communications</span><span class="chip">Operational data</span><span class="chip">Documents</span></p>
-  </div>
+<section class="sc-state" id="context" aria-labelledby="k-h"><h2 id="k-h">Keep the context. Lose the friction.</h2><p class="lede">A customer appears in several systems. A cost changes in one place. A decision depends on information that has already moved.</p><p class="lede">The operating system connects these fragments through identity, history, and evidence. You can follow the subject across its records instead of piecing the story together each time.</p></section>
+<section class="sc-3" aria-labelledby="r-h">
+  <div class="top"><h2 id="r-h">From a record.<br>To a reason to act.</h2><p>Every answer keeps the route back to the record it came from.</p></div>
+  <div class="sc-row"><i>1</i><h3>Connect the context</h3><p>Start with a defined set of sources and the people, organizations, or items they describe.</p></div>
+  <div class="sc-row"><i>2</i><h3>Build the evidence</h3><p>Resolve identities, preserve changes over time, and keep each fact attached to its origin.</p></div>
+  <div class="sc-row"><i>3</i><h3>Focus the decision</h3><p>Present the answer, the records behind it, and the questions that still need attention.</p></div>
 </section>
-
 <section class="ob-sec ob-sec--white">
   <div class="ob-wrap">
     <h2 class="ob-h2" style="margin-bottom:clamp(28px,3.4vw,52px)">A useful starting point.</h2>
@@ -180,14 +153,12 @@
     </div>
   </div>
 </section>
-
 <section class="ob-sec">
   <div class="ob-wrap ob-qa">
     <h2 class="ob-h2" data-ob-reveal>Everything in one place, so the work has somewhere to live.</h2>
     <p class="ob-lede" data-ob-reveal>One system holding the whole picture, instead of six that each know a part of it.</p>
   </div>
 </section>
-
 <section class="ob-close">
   <div class="ob-wrap">
     <p class="ob-close-l">Bring your systems.<em>Tell us what each of them knows, and what nobody can see across them.</em></p>

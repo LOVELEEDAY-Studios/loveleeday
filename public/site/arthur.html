@@ -4,9 +4,10 @@
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site/assets/ob/ob.css?v=3e9e4bc882">
+<link rel="stylesheet" href="/site/assets/ob/scene.css?v=3375dbfa64">
 <link rel="stylesheet" href="/site/assets/ob/arthur.css?v=71425e3c34">
 </head>
-<body class="ob arthur-page" data-brain-set="3,4,5">
+<body class="sc ob arthur-page" data-brain-set="3,4,5">
 <!--ob:top-->
 <a class="sr" href="#main">Skip to content</a>
 
@@ -90,15 +91,16 @@
 <!--/ob:top-->
 
 <main id="main">
-<section class="ob-hero ob-hero--left" style="--pos:50% 30%;--w:min(540px,38vw)">
-  <div class="ob-hero-ph"><img src="/site/assets/industry-professional-services-2.jpg" alt="Two colleagues standing at a window, reading a binder of records together" width="1880" height="1253" fetchpriority="high"></div>
-  <div class="ob-hero-in">
-    <h1>A clearer mind. Behind every answer.</h1>
-    <p class="ob-hero-lede">Arthur is the intelligence system behind LOVELEEDAY. It connects records, carries context forward, and keeps the evidence close.</p>
-    <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="#arthur">Watch a question answered</a><a class="ob-btn ob-btn--ghost" href="/architecture">See the layers</a></p>
-  </div>
+<section class="sc-hero " style="--pos:60% 40%">
+<img class="sc-ph" src="/site/assets/hero-work.jpg" alt="A man reading at a workbench beside tall factory windows" width="2200" height="1467" fetchpriority="high">
+<p class="sc-stamp" aria-hidden="true">10:42<i>AM</i></p><div class="sc-copy"><h1>A clearer mind.<br>Behind every answer.</h1><p>Arthur is the intelligence system behind LOVELEEDAY. It connects records, carries context forward, and keeps the evidence close.</p><div class="sc-act"><a class="sc-b" href="#arthur">Watch a question answered</a><a class="sc-g" href="/architecture">See the layers</a></div></div>
 </section>
-
+<section class="sc-q" aria-labelledby="q-h">
+  <h2 id="q-h">Is the customer who called today the one who signed in March?</h2>
+  <div class="sc-ans"><span class="sc-who">Arthur</span><p class="f">Yes. Three records point to one customer.</p><p class="y">The billing account, the support contact and the signed agreement use different spellings of the same name.</p><p class="n">Link them once, and every later answer starts from one customer.</p></div>
+  <div class="sc-rec"><div><span>Billing system</span><b>Harbor Ridge Supply LLC</b></div><div><span>Support inbox</span><b>Harbor Ridge</b></div><div><span>Contract folder</span><b>H.R. Supply, signed in March</b></div></div>
+  <p class="sc-src">Source: the billing system, the support inbox and the contract folder. Example data.</p>
+</section>
 <section class="arthur ob-sec ob-sec--dark" id="arthur">
   <div class="ob-wrap">
     <h2 class="sr">Arthur, working through a question</h2>
@@ -119,49 +121,14 @@
     </div>
   </div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap ob-qa">
-    <h2 class="ob-q" data-ob-reveal>Is the customer who called today the one who signed in March?</h2>
-    <div class="ob-a" data-ob-reveal>
-      <span class="ob-who">Arthur</span>
-      <p class="f">Yes. Three records point to one customer.</p>
-      <p class="y">The billing account, the support contact and the signed agreement use different spellings of the same name.</p>
-      <p class="n">Link them once, and every later answer starts from one customer.</p>
-      <p class="src">Source: the billing system, the support inbox and the contract folder.<span>Example data.</span></p>
-    </div>
-  </div>
+<section class="sc-3" aria-labelledby="c-h">
+  <div class="top"><h2 id="c-h">More context.<br>Better questions.</h2><p>A useful answer starts before the sentence is written. Which entity are we talking about? What was true at the time? What changed? What can the records support?</p></div>
+  <p class="sc-src" style="margin:0 0 28px;font-size:17px">Arthur brings those questions into the architecture. Identity, memory, and verification give the answer a structure you can inspect.</p>
+  <div class="sc-row"><i>1</i><h3>Understand the subject</h3><p>Resolve the names and identifiers that point to the same customer, company, document, or item.</p></div>
+  <div class="sc-row"><i>2</i><h3>Follow the relationships</h3><p>Connect relevant observations, their timing, and the source records that support them.</p></div>
+  <div class="sc-row"><i>3</i><h3>Keep uncertainty visible</h3><p>Distinguish a supported fact from a proposed interpretation or an unanswered question.</p></div>
 </section>
-
-<section class="ob-sec ob-sec--white">
-  <div class="ob-wrap">
-    <div class="ob-split" style="border-top:0;padding-top:0">
-      <div data-ob-reveal><h2 class="ob-h2">More context. Better questions.</h2></div>
-      <div data-ob-reveal>
-        <p class="ob-lede">A useful answer starts before the sentence is written.</p>
-        <p class="ob-p" style="margin-top:24px">Which entity are we talking about? What was true at the time? What changed? What can the records support?</p>
-        <p class="ob-p">Arthur brings those questions into the architecture. Identity, memory, and verification give the answer a structure you can inspect.</p>
-      </div>
-    </div>
-    <h2 class="ob-h3" style="margin-top:clamp(40px,5vw,80px);margin-bottom:24px">How an answer takes shape</h2>
-    <ul class="ob-rules" data-ob-reveal>
-      <li><b>Understand the subject</b><span>Resolve the names and identifiers that point to the same customer, company, document, or item.</span></li>
-      <li><b>Follow the relationships</b><span>Connect relevant observations, their timing, and the source records that support them.</span></li>
-      <li><b>Keep uncertainty visible</b><span>Distinguish a supported fact from a proposed interpretation or an unanswered question.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="ob-sec ob-scene">
-  <div class="ob-wrap ob-scene-in">
-    <figure class="ob-scene-ph" style="--ar:3/2;--pos:50% 40%"><img src="/site/assets/arthur.jpg" alt="A woman standing at an arched window, thinking" width="940" height="627" loading="lazy"></figure>
-    <div class="ob-scene-tx" data-ob-reveal>
-      <h2 class="ob-h2">The question you did not ask starts as a pause.</h2>
-      <p class="ob-lede">Arthur decomposes a question into the questions it has to answer first, then resolves them with the evidence attached.</p>
-    </div>
-  </div>
-</section>
-
+<section class="sc-split" aria-labelledby="p-h"><img src="/site/assets/arthur.jpg" alt="A person pausing at a patterned window, thinking" width="940" height="627" loading="lazy"><div><h2 id="p-h">The question you did not ask starts as a pause.</h2><p>Arthur decomposes a question into the questions it has to answer first, then resolves them with the evidence attached.</p></div></section>
 <section class="ob-close">
   <div class="ob-wrap">
     <p class="ob-close-l">Meet the architecture.<em>See the five layers behind the intelligence.</em></p>

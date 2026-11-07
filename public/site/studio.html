@@ -4,8 +4,9 @@
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site/assets/ob/ob.css?v=3e9e4bc882">
+<link rel="stylesheet" href="/site/assets/ob/scene.css?v=3375dbfa64">
 </head>
-<body class="ob">
+<body class="sc ob">
 <!--ob:top-->
 <a class="sr" href="#main">Skip to content</a>
 
@@ -89,33 +90,13 @@
 <!--/ob:top-->
 
 <main id="main">
-<section class="ob-hero ob-hero--left" style="--pos:50% 30%;--w:min(620px,46vw)">
-  <div class="ob-hero-ph"><img src="/site/assets/industry-nonprofit-2.jpg" alt="Two people sorting donated goods at a long table by the window" width="1880" height="1253" fetchpriority="high"></div>
-  <div class="ob-hero-in">
-    <h1>Why we<br>build this.</h1>
-    <p class="ob-hero-lede">Intelligence should make more room for the life around your work. That is the reason we build.</p>
-    <p class="ob-btns"><a class="ob-btn ob-btn--blue" href="#project-brief">Shape a project</a></p>
-  </div>
+<section class="sc-hero sc-hero--wide" style="--pos:50% 30%;--fade:70%">
+<img class="sc-ph" src="/site/assets/industry-nonprofit-2.jpg" alt="Two people sorting donated goods at a long table by the window" width="1880" height="1253" fetchpriority="high">
+<div class="sc-copy"><h1>Why we<br>build this.</h1><p>Intelligence should make more room for the life around your work. That is the reason we build.</p><div class="sc-act"><a class="sc-b" href="#project-brief">Shape a project</a></div></div>
 </section>
-
-<section class="ob-sec">
-  <div class="ob-wrap ob-qa">
-    <h2 class="ob-h2" data-ob-reveal>More room for the moments that matter.</h2>
-    <p class="ob-lede" data-ob-reveal>Less time assembling the picture. More time being part of it.</p>
-  </div>
-</section>
-
-<section class="ob-sec ob-sec--white">
-  <div class="ob-wrap ob-qa">
-    <h2 class="ob-h2" data-ob-reveal>Clarity, beneath the surface.</h2>
-    <div data-ob-reveal>
-      <p class="ob-lede">LOVELEEDAY brings an architectural approach to information: connect the subject, preserve the record, and keep the evidence in view.</p>
-      <p class="ob-p" style="margin-top:24px">Arthur is the intelligence system within that approach. The work begins with a question that matters, then follows the information needed to answer it.</p>
-    </div>
-  </div>
-</section>
-
-<section class="ob-sec" id="project-brief">
+<section class="sc-state" aria-labelledby="m-h"><h2 id="m-h">More room for the moments that matter.</h2><p class="lede">Less time assembling the picture. More time being part of it.</p></section>
+<section class="sc-split" aria-labelledby="c-h"><img src="/site/assets/hero-customer.jpg" alt="A woman reading through papers at a small table beside a laptop" width="2200" height="1467" loading="lazy"><div><h2 id="c-h">Clarity, beneath the surface.</h2><p>LOVELEEDAY brings an architectural approach to information: connect the subject, preserve the record, and keep the evidence in view.</p><p>Arthur is the intelligence system within that approach. The work begins with a question that matters, then follows the information needed to answer it.</p></div></section>
+<section class="ob-sec sc-brief" id="project-brief">
   <div class="ob-wrap ob-qa">
     <div>
       <h2 class="ob-h2">Make the next step something concrete.</h2>
@@ -145,7 +126,6 @@
     </div>
   </div>
 </section>
-
 <section class="ob-close">
   <div class="ob-wrap">
     <p class="ob-close-l">Discover the intelligence within.<em>Meet Arthur and explore the questions behind the answer.</em></p>
