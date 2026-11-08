@@ -39,6 +39,10 @@
     "pages": [
       "privacy.html",
       "terms.html",
+      "dpa.html",
+      "data-retention.html",
+      "ai-and-model-improvement.html",
+      "subprocessors.html",
       "accessibility.html",
       "contact.html",
       "faq.html"

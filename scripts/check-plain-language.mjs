@@ -25,7 +25,7 @@ const PORTAL = opt("portal") ? path.resolve(opt("portal")) : fs.existsSync(path.
 const PORTAL_GIT = path.join(HOME, "Projects/arthur-launch");
 const NO_PORTAL = argv.includes("--no-portal");
 const INVENTORY = argv.includes("--inventory");
-const TECHNICAL = new Set(["architecture.html", "integrations.html", "trust.html", "privacy.html", "terms.html", "accessibility.html", "security.html"]);
+const TECHNICAL = new Set(["architecture.html", "integrations.html", "trust.html", "privacy.html", "terms.html", "dpa.html", "data-retention.html", "ai-and-model-improvement.html", "subprocessors.html", "accessibility.html", "security.html"]);
 const PLACE = /\b(kalamazoo|michigan)\b/i;
 const JARGON = [
   "item master", "source coverage", "realized prices", "ingest", "entity resolution", "canonical record", "data pipeline",
