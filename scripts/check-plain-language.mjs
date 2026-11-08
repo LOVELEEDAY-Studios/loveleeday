@@ -25,7 +25,7 @@ const PORTAL = opt("portal") ? path.resolve(opt("portal")) : fs.existsSync(path.
 const PORTAL_GIT = path.join(HOME, "Projects/arthur-launch");
 const NO_PORTAL = argv.includes("--no-portal");
 const INVENTORY = argv.includes("--inventory");
-const TECHNICAL = new Set(["architecture.html", "integrations.html", "trust.html", "privacy.html", "terms.html", "security.html"]);
+const TECHNICAL = new Set(["architecture.html", "integrations.html", "trust.html", "privacy.html", "terms.html", "accessibility.html", "security.html"]);
 const PLACE = /\b(kalamazoo|michigan)\b/i;
 const JARGON = [
   "item master", "source coverage", "realized prices", "ingest", "entity resolution", "canonical record", "data pipeline",
@@ -43,7 +43,10 @@ if (!INVENTORY) for (const file of pages) {
   const raw = fs.readFileSync(file, "utf8");
   const text = visible(raw);
   // Place anchoring counts in structured data and meta too, not only visible text.
+  // The terms page names the State of Michigan once, as its governing law; a legal term, not marketing copy.
+  const governingLaw = rel === "terms.html";
   for (const src of [text, raw.match(/<head[\s\S]*?<\/head>/i)?.[0] ?? ""]) {
+    if (governingLaw && src === text) continue;
     const m = src.match(new RegExp(`.{0,40}${PLACE.source}.{0,40}`, "i"));
     if (m) { hits.push(`${rel}: place "${m[0].trim()}"`); break; }
   }

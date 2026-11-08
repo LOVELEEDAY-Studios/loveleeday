@@ -84,4 +84,4 @@
 @media(max-width:1020px){.gh-panel-company .gh-col{display:flex}}
 /* Legal row (Codex fix 8): disclosure moves to its own quieter line. */
 .site-footer .footer-legal{font-size:12px}
-.site-footer .gf-note{margin:14px 0 0;font-size:11.5px;color:#7d756b}
+.site-footer .gf-note{margin:14px 0 0;font-size:11.5px;color:#7d756b}.site-footer .gf-note a{color:inherit;text-decoration:underline}

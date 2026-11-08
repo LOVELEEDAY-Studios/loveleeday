@@ -27,8 +27,8 @@ const pre = trust.slice(0, trust.indexOf(MAIN_OPEN) + MAIN_OPEN.length);
 const post = trust.slice(trust.indexOf("</main>")).replace(/<script src="\/site\/assets\/brain\.js[^>]*><\/script>/, "");
 
 const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const TITLE = "Integrations: the business systems we connect to — LOVELEEDAY";
-const DESC = "Check which systems Arthur can read now, which are planned, and what each could help you answer. Every connection is read-only.";
+const TITLE = "Integrations — LOVELEEDAY";
+const DESC = "The business systems we connect to, and what each could help you answer. Every connection is read-only.";
 const URL_ = "https://loveleedaystudios.com/integrations";
 
 // The head is the Trust page's head. Swap in this page's own title, description and URL; the trust description is read
@@ -36,7 +36,7 @@ const URL_ = "https://loveleedaystudios.com/integrations";
 const trustDesc = (trust.match(/<meta name="description" content="([^"]*)"/) || [])[1];
 if (!trustDesc) throw new Error("trust.html has no meta description to replace");
 let head = pre
-  .replace(/Trust and security: how your data is protected — LOVELEEDAY/g, TITLE)
+  .replace(/Trust and security — LOVELEEDAY/g, TITLE)
   .split(trustDesc).join(esc(DESC))
   .replace(/https:\/\/loveleedaystudios\.com\/trust/g, URL_)
   .replace(/<link[^>]*\/site\/assets\/fix\/trust\.css[^>]*>/g, "");
@@ -93,14 +93,13 @@ const isLight = (hex) => { const [r, g, b] = [1, 3, 5].map((n) => parseInt(hex.s
 const tint = () => "background:#FFFFFF";
 const card = (i) => {
   const c = brand(i), soon = !VERIFIED.has(i.key);
-  return `<article class="ic-card" style="--brand:${c}" data-key="${esc(i.key)}" data-group="${esc(i.group)}" data-q="${esc((i.name + " " + i.vendor + " " + i.category).toLowerCase())}"><div class="ic-top"><span class="ic-logo" style="${tint(i)}"><img src="${esc(i.logo)}" alt="" width="26" height="26"></span><div><b>${esc(i.name)}</b><span class="xs">${esc(i.category)}</span></div><span class="ic-soon" data-s="${soon ? "soon" : "available"}">${soon ? PLANNED_LABEL : LIVE_LABEL}</span></div><p>${esc(i.reads)}</p></article>`;
+  return `<article class="ic-card" style="--brand:${c}" data-key="${esc(i.key)}" data-group="${esc(i.group)}" data-q="${esc((i.name + " " + i.vendor + " " + i.category).toLowerCase())}"><div class="ic-top"><span class="ic-logo" style="${tint(i)}"><img src="${esc(i.logo)}" alt="" width="26" height="26"></span><div><b>${esc(i.name)}</b><span class="xs">${esc(i.category)}</span></div>${soon ? "" : `<span class="ic-soon" data-s="available">${LIVE_LABEL}</span>`}</div><p>${esc(i.reads)}</p></article>`;
 };
 
 const body = `
 
-<section class="wrap pagehead" style="padding-top:64px"><h1 class="title">See which of your systems we can read.</h1>
-<p class="lead">See which of your systems we can read now, which are still planned, and what each could help you answer. Every connection is read-only, and Arthur asks for your approval before writing anything back. Each card shows its status. If yours is not listed or not ready yet, tell us what you run.</p>
-<p class="xs muted" style="max-width:720px;margin-top:16px"><b>Ready to connect</b> means we have connected this system to a real account and read live information from it. <b>Planned</b> means it is on our list and has not been connected yet.</p></section>
+<section class="wrap pagehead" style="padding-top:64px"><h1 class="title">The systems we connect to.</h1>
+<p class="lead">We connect one system at a time, on request, and every connection is read-only. Arthur asks for your approval before writing anything back. These are the systems we work with; if yours is not listed, tell us what you run.</p></section>
 
 <section class="wrap" style="padding-top:48px">
 <div class="ic-bar"><div class="tabs" role="group" aria-label="Filter by category"><button class="tab on" type="button" data-f="all">All<small>${items.length}</small></button>${groups.map((g) => `<button class="tab" type="button" data-f="${esc(g.id)}">${esc(g.label)}<small>${g.count}</small></button>`).join("")}</div>

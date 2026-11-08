@@ -21,7 +21,8 @@ const header = grab(/<header class="nav" id="nav">[\s\S]*?<\/header>/, 'header')
 const menu = grab(/<div class="mm" id="mm"[\s\S]*?<\/div>\n<\/div>/, 'phone menu');
 const footer = grab(/<footer class="foot" id="footer">[\s\S]*?<\/footer>/, 'footer');
 const bar = grab(/<div class="cta-bar" id="ctabar">[\s\S]*?<\/div>/, 'phone bar');
-const fix = s => s.replaceAll('href="#join"', 'href="/#join"');
+const fix = s => s.replaceAll('href="#join"', 'href="/#join"').replace(/ aria-current="page"/g, '');
+const noCurrent = s => s.replace(/ aria-current="page"/g, ''); // site-postprocess owns aria-current, per page
 const top = `<!--ob:top-->\n<a class="sr" href="#main">Skip to content</a>\n\n${fix(header)}\n\n${fix(menu)}\n<!--/ob:top-->`;
 const bottom = `<!--ob:bottom-->\n${fix(footer)}\n\n${fix(bar)}\n<!--/ob:bottom-->`;
 
@@ -37,6 +38,7 @@ for (const p of pages) {
     const fp = path.resolve('public' + u);
     return fs.existsSync(fp) ? u + '?v=' + crypto.createHash('sha1').update(fs.readFileSync(fp)).digest('hex').slice(0, 10) : m;
   });
+  if (noCurrent(out) === noCurrent(src)) out = src;
   if (out !== src) { stale++; if (!check) fs.writeFileSync(p, out); console.log((check ? 'stale ' : 'stamped ') + p); }
   else console.log('current ' + p);
 }
