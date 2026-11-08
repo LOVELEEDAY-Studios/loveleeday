@@ -23,6 +23,14 @@
     "caption": "Data intelligence for your organization",
     "photo": "dinner.jpg"
   },
+  "build": {
+    "page": "build.html",
+    "hash": "59d0cdf61d009c1a",
+    "file": "a42d4635ffb5c5ec",
+    "headline": "Software and design, built around how you work.",
+    "caption": "What we build",
+    "photo": "hero.jpg"
+  },
   "customer-data": {
     "page": "customer-data.html",
     "hash": "1dc06464564daeb7",
@@ -39,6 +47,14 @@
     "caption": "Data intelligence for your organization",
     "photo": "evening-table.jpg"
   },
+  "how-it-works": {
+    "page": "how-it-works.html",
+    "hash": "63f36f34856a046f",
+    "file": "8fa514d9f240c286",
+    "headline": "From first question to a working answer.",
+    "caption": "How it works",
+    "photo": "hero.jpg"
+  },
   "industries": {
     "page": "industries.html",
     "hash": "04925868c0415240",
@@ -46,6 +62,38 @@
     "headline": "Built for the way | your industry works.",
     "caption": "Industries",
     "photo": "industry-manufacturing-3.jpg"
+  },
+  "industries-manufacturing": {
+    "page": "industries/manufacturing.html",
+    "hash": "99b2ca6f06cc957a",
+    "file": "87efc321af746e93",
+    "headline": "Every system a part touches, in one place",
+    "caption": "Manufacturing and distribution",
+    "photo": "industry-manufacturing.jpg"
+  },
+  "industries-property": {
+    "page": "industries/property.html",
+    "hash": "d658254178dad978",
+    "file": "7e3e777f662190f7",
+    "headline": "Every building, one honest picture.",
+    "caption": "Property management",
+    "photo": "industry-property.jpg"
+  },
+  "industries-schools": {
+    "page": "industries/schools.html",
+    "hash": "a348f38022a1459a",
+    "file": "ce0a8ec0d48e713d",
+    "headline": "Know what is due, and what proves it.",
+    "caption": "Schools and charters",
+    "photo": "industry-schools.jpg"
+  },
+  "integrations": {
+    "page": "integrations.html",
+    "hash": "20802456d588ff5b",
+    "file": "a677ba774b5e7c74",
+    "headline": "The systems we connect to.",
+    "caption": "Integrations",
+    "photo": "operating-system.jpg"
   },
   "municipal-review": {
     "page": "municipal-review.html",
@@ -73,34 +121,42 @@
   },
   "pricing-margins": {
     "page": "pricing-margins.html",
-    "hash": "d27688aed21c12b9",
-    "file": "42959611de8ad6bc",
+    "hash": "05d21d723c1cf2b5",
+    "file": "157a850c4954c6d6",
     "headline": "See how much each sale actually earns.",
-    "caption": "Pricing & margins",
+    "caption": "Pricing and margins",
     "photo": "pricing-margins.jpg"
   },
   "principles": {
     "page": "principles.html",
-    "hash": "ac8897a3f8532b10",
-    "file": "59795a8708d5adc7",
+    "hash": "bad5d0fa59ab5f01",
+    "file": "6d67aae63c2c9226",
     "headline": "The standards behind every answer we give.",
-    "caption": "Our principles",
+    "caption": "Principles",
     "photo": "principles.jpg"
   },
   "studio": {
     "page": "studio.html",
-    "hash": "64a56d2a756f3941",
-    "file": "5514e53b2e7f5573",
+    "hash": "60297c7e0e7457ef",
+    "file": "e2a11452031e20bc",
     "headline": "Why we built | LOVELEEDAY.",
-    "caption": "The studio",
+    "caption": "About",
     "photo": "studio-leadership.jpg"
+  },
+  "talk": {
+    "page": "talk.html",
+    "hash": "5f643eb692c91d59",
+    "file": "9d4e28a137e1d98a",
+    "headline": "Start with one question and build from the answer",
+    "caption": "How we can work together",
+    "photo": "talk-hero.jpg"
   },
   "trust": {
     "page": "trust.html",
-    "hash": "5e14b605d6abba3e",
-    "file": "f855a1f6e2a39c24",
+    "hash": "9fd8134a4271cfdc",
+    "file": "0a718927c6d277ee",
     "headline": "Your data stays yours, and you can verify that.",
-    "caption": "Trust and security: how your data is protected",
+    "caption": "Trust and security",
     "photo": "industry-nonprofit.jpg"
   },
   "use-cases": {
@@ -110,5 +166,13 @@
     "headline": "Where organizations start | with LOVELEEDAY.",
     "caption": "Use cases",
     "photo": "talk-manufacturing.jpg"
+  },
+  "work": {
+    "page": "work.html",
+    "hash": "4b6d3b089b8832da",
+    "file": "d0e83024f27d4610",
+    "headline": "Studies",
+    "caption": "Work",
+    "photo": "industry-portfolios.jpg"
   }
 }

@@ -171,7 +171,7 @@
       answer: 'No. The amount is inferred, not observed.',
       evidence: 'no source reference \u00b7 the write would be refused' },
 
-    { ask: 'Rebuild the forecast for Q4.',
+    { ask: 'Rebuild the Q4 outlook.',
       out: ['Which values were valid then?',
             'Exclude anything learned after the date',
             'Print the trail for each input',

@@ -7,7 +7,7 @@
     ask: 'Which of our locations are using more energy than a year ago, and why?',
     qs: ['Which locations and meters are in scope, under any name?', 'How does each month compare with the same month last year?', 'What changed at the locations that went up?', 'Which bill or reading supports each figure?'],
     ans: 'A list of the locations that went up, the likely reason for each, and the bill behind every number.',
-    ev: 'Illustrative energy review · meters, bills and locations'
+    ev: 'Energy review · meters, bills and locations'
   };
   function apply() {
     if (q.textContent !== OLD) return;

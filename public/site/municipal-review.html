@@ -3,7 +3,7 @@
 <script>(function(){var d=document.documentElement;d.classList.add('js');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))d.classList.add('ob-rv')})()</script>
 <link rel="preload" href="/site/assets/fonts/switzer-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/site/assets/fonts/sentient-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site/assets/ob/ob.css?v=8a85e7dac1">
+<link rel="stylesheet" href="/site/assets/ob/ob.css?v=da718bdc00">
 <link rel="stylesheet" href="/site/assets/ob/scene.css?v=c881ea2ad2">
 <link rel="stylesheet" href="/site/assets/ob/widgets.css?v=459e0441ed">
 </head>
@@ -22,7 +22,7 @@
           <a href="/operating-system"><b>Operating system</b><small>One connected understanding of your business</small></a>
           <a href="/how-it-works"><b>How it works</b><small>From your first question to a figure you can defend</small></a>
           <a href="/architecture"><b>Architecture</b><small>Identity, lineage, memory, verification, awareness</small></a>
-          <a href="/integrations"><b>Integrations</b><small>The systems Arthur reads, released one by one</small></a>
+          <a href="/integrations"><b>Integrations</b><small>The systems Arthur reads</small></a>
           <a href="/trust"><b>Trust and security</b><small>How your data is kept, used and deleted</small></a>
         </div></div>
         <a class="pf" href="/how-it-works"><img src="/site/assets/hero-how.jpg" alt="" width="520" height="347" loading="lazy"><div><b>How it works</b><small>From your first question to a figure you can defend.</small><em>See the walk-through</em></div></a>
@@ -35,7 +35,7 @@
           <a href="/customer-data"><b>Customer data</b><small>Many records, one customer you can trust</small></a>
           <a href="/operational-intelligence"><b>Operational intelligence</b><small>Know what changed and what needs attention</small></a>
           <a href="/pricing-margins"><b>Pricing and margins</b><small>See what each sale earns</small></a>
-          <a href="/municipal-review"><b>Municipal review</b><small>Faster, traceable public-sector reviews</small></a>
+          <a href="/municipal-review" aria-current="page"><b>Municipal review</b><small>Faster, traceable public-sector reviews</small></a>
           <a href="/use-cases"><b>All use cases</b><small>Every way teams put Arthur to work</small></a>
         </div><div class="pg"><h3>Industries</h3>
           <a href="/industries/manufacturing"><b>Manufacturing and distribution</b><small>Suppliers, orders and receiving in one picture</small></a>
@@ -43,7 +43,7 @@
           <a href="/industries/schools"><b>Schools and charters</b><small>Attendance, enrollment and compliance</small></a>
           <a href="/industries"><b>All industries</b><small>Retail, services, government, nonprofits and more</small></a>
         </div></div>
-        <a class="pf" href="/municipal-review"><img src="/site/assets/hero-municipal.jpg" alt="" width="520" height="347" loading="lazy"><div><b>Municipal review</b><small>Faster, traceable public-sector reviews.</small><em>See how it works</em></div></a>
+        <a class="pf" href="/municipal-review" aria-current="page"><img src="/site/assets/hero-municipal.jpg" alt="" width="520" height="347" loading="lazy"><div><b>Municipal review</b><small>Faster, traceable public-sector reviews.</small><em>See how it works</em></div></a>
       </div>
     </div>
     <div class="nav-item">
@@ -75,7 +75,7 @@
   <div class="nav-actions">
     <a class="nav-signin" href="https://portal.loveleedaystudios.com/client/login">Sign in</a>
     <a class="nav-talk" href="/contact">Talk to us</a>
-    <a class="nav-get" href="/#join">Get started</a>
+    <a class="nav-get" href="/#join">Start a project</a>
   </div>
   <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mm" aria-label="Open menu"><span></span><span></span></button>
 </header>
@@ -85,7 +85,7 @@
   <div class="mm-act">
     <a class="mm-s" href="https://portal.loveleedaystudios.com/client/login">Sign in</a>
     <a class="mm-t" href="/contact">Talk to us</a>
-    <a class="mm-g" href="/#join">Get started</a>
+    <a class="mm-g" href="/#join">Start a project</a>
   </div>
 </div>
 <!--/ob:top-->
@@ -99,39 +99,38 @@
 <section class="ob-sec ob-sec--white sc-wide" id="document-register">
   <div class="ob-wrap">
     <h2 class="ob-h2">Follow a provision through the register.</h2>
-    <p class="ob-lede" style="margin-top:20px">Filter these fictional records, then open the review notes to see how an issue is raised.</p>
+    <p class="ob-lede" style="margin-top:20px">Filter the records, then open the review notes to see how an issue is raised.</p>
     <div style="margin-top:clamp(28px,3.4vw,52px)">
       <div class="register-panel">
-        <div class="panel-head"><h3>Municipal document register</h3><span class="sample-badge">Fictional sample</span></div>
+        <div class="panel-head"><h3>Municipal document register</h3><span class="sample-badge">Example</span></div>
         <div class="filter-bar" role="group" aria-label="Filter review records">
           <button data-record-filter="all" aria-pressed="true">All records</button>
           <button data-record-filter="review" aria-pressed="false">Needs review</button>
-          <button data-record-filter="current" aria-pressed="false">Current in sample</button>
-          <button data-record-filter="superseded" aria-pressed="false">Superseded in sample</button>
+          <button data-record-filter="current" aria-pressed="false">Current</button>
+          <button data-record-filter="superseded" aria-pressed="false">Superseded</button>
         </div>
         <article class="record-row" data-record-status="current">
-          <div><h4>Noise standards</h4><small>DEMO-ORD-001</small></div>
-          <div><div class="record-status ">Current in sample</div><small>Base record</small></div>
-          <details><summary>Review notes</summary><p>This fictional record represents a provision with a source reference. A real review would also require the actual text, effective date, jurisdiction, and amendment history.</p></details>
+          <div><h4>Noise standards</h4><small>ORD-2019-014</small></div>
+          <div><div class="record-status ">Current</div><small>Base record</small></div>
+          <details><summary>Review notes</summary><p>This record represents a provision with a source reference. A real review would also require the actual text, effective date, jurisdiction, and amendment history.</p></details>
         </article>
         <article class="record-row" data-record-status="review">
-          <div><h4>Public-space permits</h4><small>DEMO-ORD-002</small></div>
+          <div><h4>Public-space permits</h4><small>ORD-2021-037</small></div>
           <div><div class="record-status review">Cross-reference to review</div><small>Linked amendment</small></div>
-          <details><summary>Review notes</summary><p>The sample illustrates a cross-reference that needs checking against an amendment. It is a review prompt, not a legal conclusion.</p></details>
+          <details><summary>Review notes</summary><p>This record shows a cross-reference that needs checking against an amendment. It is a review prompt, not a legal conclusion.</p></details>
         </article>
         <article class="record-row" data-record-status="superseded">
-          <div><h4>Permit fee schedule</h4><small>DEMO-ORD-003</small></div>
-          <div><div class="record-status old">Superseded in sample</div><small>Retained history</small></div>
+          <div><h4>Permit fee schedule</h4><small>ORD-2022-008</small></div>
+          <div><div class="record-status old">Superseded</div><small>Retained history</small></div>
           <details><summary>Review notes</summary><p>The prior version stays in the register, connected to the record that replaced it. Its past validity should not be confused with present applicability.</p></details>
         </article>
         <article class="record-row" data-record-status="review">
-          <div><h4>Records retention</h4><small>DEMO-ORD-004</small></div>
+          <div><h4>Records retention</h4><small>ORD-2020-052</small></div>
           <div><div class="record-status review">Source gap to review</div><small>Missing attachment</small></div>
-          <details><summary>Review notes</summary><p>The sample represents a referenced attachment that was not included in the document set. Record the gap before claiming complete coverage.</p></details>
+          <details><summary>Review notes</summary><p>This record represents a referenced attachment that was not included in the document set. Record the gap before claiming complete coverage.</p></details>
         </article>
-        <p class="record-count" id="record-count" aria-live="polite">4 demonstration records shown</p>
+        <p class="record-count" id="record-count" aria-live="polite">4 records shown</p>
       </div>
-      <p class="caption">Fictional records for interaction only. No municipality or actual ordinance is represented.</p>
     </div>
   </div>
 </section>
@@ -155,19 +154,19 @@
   </div>
   <div class="foot-grid">
     <div class="foot-col"><strong>Product</strong><a href="/arthur">Arthur</a><a href="/operating-system">Operating system</a><a href="/how-it-works">How it works</a><a href="/architecture">Architecture</a><a href="/integrations">Integrations</a></div>
-    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/municipal-review">Municipal review</a><a href="/use-cases">All use cases</a></div>
+    <div class="foot-col"><strong>Solutions</strong><a href="/customer-data">Customer data</a><a href="/operational-intelligence">Operational intelligence</a><a href="/pricing-margins">Pricing and margins</a><a href="/municipal-review" aria-current="page">Municipal review</a><a href="/use-cases">All use cases</a></div>
     <div class="foot-col"><strong>Industries</strong><a href="/industries/manufacturing">Manufacturing and distribution</a><a href="/industries/property">Property management</a><a href="/industries/schools">Schools and charters</a><a href="/industries">All industries</a></div>
     <div class="foot-col"><strong>Services</strong><a href="/build">What we build</a><a href="/talk">Ways to work together</a><a href="/contact">Start a project</a></div>
     <div class="foot-col"><strong>Company</strong><a href="/studio">About</a><a href="/principles">Principles</a><a href="/work">Work</a><a href="/notes">Systems Notes</a><a href="/trust">Trust and security</a><a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="https://portal.loveleedaystudios.com/client/login">Sign in</a></div>
   </div>
-  <div class="foot-legal"><span>&copy; 2026 LOVELEEDAY Studios LLC &middot; <a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a></span><span><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="https://www.linkedin.com/company/loveleeday-studios/" rel="me noopener" target="_blank">LinkedIn</a></span></div>
-  <p class="foot-note">Interactive examples use demonstration data. Photography is licensed stock.</p>
+  <div class="foot-legal"><span>&copy; 2026 LOVELEEDAY Studios LLC. All rights reserved.</span><span><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/trust">Trust and security</a><a href="/accessibility">Accessibility</a><a href="https://www.linkedin.com/company/loveleeday-studios/" rel="me noopener" target="_blank">LinkedIn</a></span></div>
+  <p class="foot-note">LOVELEEDAY and Arthur are trademarks of LOVELEEDAY Studios LLC. Other company and product names and logos are the property of their respective owners and are used only to identify the systems we connect to. <!--email_off--><a href="mailto:hello@loveleedaystudios.com">hello@loveleedaystudios.com</a><!--/email_off--></p>
 </footer>
 
-<div class="cta-bar" id="ctabar"><a class="cb-t" href="/contact">Talk to us</a><a class="cb-g" href="/#join">Get started</a></div>
+<div class="cta-bar" id="ctabar"><a class="cb-t" href="/contact">Talk to us</a><a class="cb-g" href="/#join">Start a project</a></div>
 <!--/ob:bottom-->
 
-<script src="/site/assets/site.js?v=f1692be57e" defer></script>
+<script src="/site/assets/site.js?v=57fbfbad3a" defer></script>
 <script src="/site/assets/ob/ob.js?v=f3d0af1d71" defer></script>
 </body>
 </html>
