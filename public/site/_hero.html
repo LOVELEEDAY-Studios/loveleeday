@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><title>h</title>
+<style>body{font:12px/1.35 Menlo,monospace;margin:10px;background:#fff;color:#000}td{padding:2px 6px;border-bottom:1px solid #ddd;vertical-align:top}</style>
+<table id="t"><tr><td>page</td><td>picture layers painted inside the hero (element:pseudo file left-right%)</td></tr></table>
+<script>
+const W=innerWidth;
+const pages=['index','arthur','operating-system','how-it-works','architecture','integrations','trust','customer-data','operational-intelligence','pricing-margins','municipal-review','use-cases','snapshot','industries','industries/manufacturing','industries/property','industries/schools','work','build','studio','principles','talk','contact','faq','notes','privacy','terms'];
+const t=document.getElementById('t');
+(async()=>{await Promise.all(pages.map(p=>new Promise(res=>{const f=document.createElement('iframe');f.style.cssText=`width:${W}px;height:900px;position:absolute;left:-9999px`;f.src='/site/'+p+'.html';f.onload=()=>setTimeout(()=>{const d=f.contentDocument,v=f.contentWindow;
+const hero=d.querySelector('main>section,main>header');if(!hero){res();return}const H=hero.getBoundingClientRect();const out=[];
+[hero,...hero.querySelectorAll('*')].forEach(el=>{const r=el.getBoundingClientRect();
+if(el.tagName==='IMG'&&r.width>H.width*.3&&v.getComputedStyle(el).display!=='none'&&v.getComputedStyle(el).visibility!=='hidden')out.push('img '+(el.currentSrc||el.src).split('/').pop()+' '+Math.round((r.left-H.left)/H.width*100)+'-'+Math.round((r.right-H.left)/H.width*100));
+for(const ps of ['','::before','::after']){const cs=v.getComputedStyle(el,ps||null);if(ps&&cs.content==='none')continue;const m=[...cs.backgroundImage.matchAll(/url\("?([^")]+)/g)];if(!m.length)continue;
+let L=0,R=100;if(ps){const l=parseFloat(cs.left),w=r.width;if(cs.left.endsWith('%'))L=parseFloat(cs.left);else if(!isNaN(l))L=Math.round(l/w*100)}
+out.push((el===hero?'hero':el.className.toString().split(' ')[0]||el.tagName)+ps+' bg '+m.map(x=>x[1].split('/').pop()).join('+')+' '+L+'-'+R)}});
+const row=t.insertRow();row.insertCell().textContent=p+(out.filter(x=>/\.(jpe?g|png|webp)/.test(x)).length>1?'  <<< 2+':'');row.insertCell().textContent=out.join(' | ');res()},1500);document.body.appendChild(f)})));document.title='done'})();
+</script>
