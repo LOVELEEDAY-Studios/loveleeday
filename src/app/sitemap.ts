@@ -13,15 +13,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* The marketing pages are the static site mounted from public/site by the
      rewrites in next.config.ts. They are listed here rather than in a
      public/sitemap.xml because this route handler wins over a public file, so
-     a static one would be shadowed and would silently go stale. /about and
-     /contact are gone -- they 308 to /studio -- and a redirect does not belong
-     in a sitemap. /work and its project pages are static too (scripts/build-work-pages.mjs); they are
+     a static one would be shadowed and would silently go stale. /about is
+     gone (it redirects) and a redirect does not belong in a sitemap. /work and its project pages are static too (scripts/build-work-pages.mjs); they are
      listed here from the same content module. */
   const fixed: MetadataRoute.Sitemap = [
     { url: `${base}/`, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/operating-system`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/arthur`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/studio`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/how-it-works`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/build`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/work`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/integrations`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/talk`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/faq`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/contact`, changeFrequency: "yearly", priority: 0.6 },
     { url: `${base}/architecture`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/use-cases`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/industries`, changeFrequency: "monthly", priority: 0.8 },

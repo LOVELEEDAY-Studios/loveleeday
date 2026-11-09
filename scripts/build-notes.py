@@ -72,6 +72,12 @@ BOTTOM = "<!--ob:bottom--><!--/ob:bottom-->"
 head_t = re.sub(r'<meta name="card:[^>]*>', "", head_t)
 OBJS = '<script src="/site/assets/ob/ob.js?v=HASH" defer></script>'
 
+def ntitle(n):
+    # "Page | LOVELEEDAY"; a headline too long for the search result keeps the headline and drops the brand
+    t = n["title"].rstrip(".")
+    return t if len(t) + 13 > 60 else f"{t} | LOVELEEDAY"
+
+
 def head(title, desc, path, image, ld, og_type="article"):
     h = head_t
     url = BASE + path
@@ -129,9 +135,9 @@ filter_js = ("<script>(()=>{const bs=[...document.querySelectorAll('.notes-topic
              "bs.forEach(b=>b.addEventListener('click',()=>{bs.forEach(x=>x.classList.toggle('on',x===b));const t=b.dataset.topic;m.classList.toggle('f',!!t);"
              "items.forEach(i=>{i.hidden=!!t&&i.dataset.topic!==t})}))})()</script>")
 ld_index = {"@context": "https://schema.org", "@graph": [
-    {"@type": "CollectionPage", "url": BASE + "/notes", "name": "Systems Notes — LOVELEEDAY",
+    {"@type": "CollectionPage", "url": BASE + "/notes", "name": "Systems Notes | LOVELEEDAY",
      "isPartOf": {"@type": "WebSite", "name": "LOVELEEDAY", "url": BASE + "/"}}, crumbs([])]}
-index_page = (head("Systems Notes — LOVELEEDAY", "Plain-language notes on identity, evidence, memory and the ways information gets lost between systems.",
+index_page = (head("Systems Notes | LOVELEEDAY", "Plain-language notes on identity, evidence, memory and the ways information gets lost between systems.",
                    "/notes", "/site/assets/notes/share-index.jpg", ld_index, "website")
               + '<body class="sc ob">' + TOP + '<main id="main">' + index + "</main>" + BOTTOM + filter_js + OBJS + "</body></html>")
 (SITE / "notes.html").write_text(index_page)
@@ -155,7 +161,7 @@ for i, n in enumerate(notes):
          "author": {"@type": "Organization", "name": "LOVELEEDAY", "url": BASE + "/"},
          "publisher": {"@type": "Organization", "name": "LOVELEEDAY", "url": BASE + "/"}},
         crumbs([{"@type": "ListItem", "position": 3, "name": n["title"].rstrip("."), "item": url}])]}
-    page = (head(f"{n['title'].rstrip('.')} — LOVELEEDAY", n["dek"], f"/notes/{n['slug']}", share(n), ld)
+    page = (head(ntitle(n), n["dek"], f"/notes/{n['slug']}", share(n), ld)
             + '<body class="sc ob">' + TOP + '<main id="main">' + body + "</main>" + BOTTOM + OBJS + "</body></html>")
     (SITE / "notes" / f"{n['slug']}.html").write_text(page)
 
