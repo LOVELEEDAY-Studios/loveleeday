@@ -102,7 +102,13 @@ def meta_line(n, with_n=True):
     return '<div class="meta">' + "".join(bits) + f"<span>{pretty(n['date'])}</span><span>·</span><span>{n['read']} min read</span></div>"
 
 img = lambda n: f"/site/assets/notes/{n['photo']}"
-share = lambda n: f"/site/assets/notes/share-{n['n']}.jpg"
+def _stamp(rel):
+    # ?v=<sha1 first 10> like share-cards.mjs, so link-preview caches refresh when a card is re-rendered
+    p = SITE / rel.removeprefix("/site/")
+    return rel + ("?v=" + __import__("hashlib").sha1(p.read_bytes()).hexdigest()[:10] if p.exists() else "")
+
+
+share = lambda n: _stamp(f"/site/assets/notes/share-{n['n']}.jpg")
 crumbs = lambda extra: {"@type": "BreadcrumbList", "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"},
     {"@type": "ListItem", "position": 2, "name": "Systems Notes", "item": BASE + "/notes"}] + extra}
@@ -138,7 +144,7 @@ ld_index = {"@context": "https://schema.org", "@graph": [
     {"@type": "CollectionPage", "url": BASE + "/notes", "name": "Systems Notes | LOVELEEDAY",
      "isPartOf": {"@type": "WebSite", "name": "LOVELEEDAY", "url": BASE + "/"}}, crumbs([])]}
 index_page = (head("Systems Notes | LOVELEEDAY", "Plain-language notes on identity, evidence, memory and the ways information gets lost between systems.",
-                   "/notes", "/site/assets/notes/share-index.jpg", ld_index, "website")
+                   "/notes", _stamp("/site/assets/notes/share-index.jpg"), ld_index, "website")
               + '<body class="sc ob">' + TOP + '<main id="main">' + index + "</main>" + BOTTOM + filter_js + OBJS + "</body></html>")
 (SITE / "notes.html").write_text(index_page)
 
