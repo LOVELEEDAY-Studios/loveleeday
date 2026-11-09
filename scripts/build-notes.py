@@ -162,12 +162,12 @@ for i, n in enumerate(notes):
         f'<a class="nx" href="/notes/{nxt["slug"]}"><img src="{img(nxt)}" alt="{e(nxt["alt"])}" loading="lazy"><div><small>Next note</small><h2>{e(nxt["title"])}</h2></div></a>'
     )
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "Article", "headline": n["title"].rstrip("."), "description": n["dek"], "image": BASE + share(n),
+        {"@type": "Article", "headline": n["title"].rstrip("."), "description": n.get("desc", n["dek"]), "image": BASE + share(n),
          "datePublished": n["date"], "dateModified": BUILT, "url": url, "mainEntityOfPage": url,
          "author": {"@type": "Organization", "name": "LOVELEEDAY", "url": BASE + "/"},
          "publisher": {"@type": "Organization", "name": "LOVELEEDAY", "url": BASE + "/"}},
         crumbs([{"@type": "ListItem", "position": 3, "name": n["title"].rstrip("."), "item": url}])]}
-    page = (head(ntitle(n), n["dek"], f"/notes/{n['slug']}", share(n), ld)
+    page = (head(ntitle(n), n.get("desc", n["dek"]), f"/notes/{n['slug']}", share(n), ld)
             + '<body class="sc ob">' + TOP + '<main id="main">' + body + "</main>" + BOTTOM + OBJS + "</body></html>")
     (SITE / "notes" / f"{n['slug']}.html").write_text(page)
 
