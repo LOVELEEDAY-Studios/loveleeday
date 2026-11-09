@@ -14,9 +14,9 @@
 /* the clock: an odometer that runs down */
 .hud{position:fixed;left:3vw;bottom:calc(var(--u)*2.2);z-index:40;font-weight:600;font-size:calc(var(--u)*5.6);line-height:1;letter-spacing:-.045em;font-variant-numeric:tabular-nums;color:var(--ink);display:none;align-items:flex-start;white-space:nowrap;transition:color .45s}
 .pin .hud{display:flex;height:1em}
-.hud .w{display:block;height:1em;overflow:hidden;position:relative}
+.hud .w{display:block;height:1em;overflow:hidden;position:relative;margin-right:-.045em}
 .hud .col{display:block;will-change:transform;transform:translate3d(0,calc(var(--p,0)*-1em),0)}
-.hud .col span{display:block;height:1em;line-height:1em;white-space:nowrap}
+.hud .col span{display:block;height:1em;line-height:1em;white-space:nowrap;letter-spacing:0}
 .hud .w.h{text-align:right}
 .hud .c{display:block;line-height:.96em;animation:blink 2s steps(1) infinite;margin:0 .01em}
 .hud.stopped .c{animation:none}
