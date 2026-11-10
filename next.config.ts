@@ -74,8 +74,16 @@ const nextConfig: NextConfig = {
     /* The old marketing routes the new site supersedes. 308 so the move is
        permanent and the link equity follows. */
     return [
+      { source: "/how-it-works", destination: "/operating-system", permanent: false },
       { source: "/snapshot", destination: "/pricing-margins", permanent: false },
-      { source: "/work/:slug", destination: "/work", permanent: false },
+      { source: "/faq", destination: "/studio", permanent: false },
+      { source: "/build", destination: "/studio", permanent: false },
+      { source: "/talk", destination: "/studio", permanent: false },
+      { source: "/work", destination: "/studio", permanent: false },
+      { source: "/work/:slug", destination: "/studio", permanent: false },
+      { source: "/industries/manufacturing", destination: "/industries", permanent: false },
+      { source: "/industries/property", destination: "/industries", permanent: false },
+      { source: "/industries/schools", destination: "/industries#schools", permanent: false },
       { source: "/about", destination: "/studio", permanent: true },
       // /security was the long internal-detail version of /trust; its detail now lives in the private security packet.
       { source: "/security", destination: "/trust", permanent: true },

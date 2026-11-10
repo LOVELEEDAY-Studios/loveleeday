@@ -1,0 +1,100 @@
+/* pages.css : the few parts the rebuilt How it works, What we build, FAQ, Work, Talk and industry pages need beyond ob.css and scene.css.
+   Built by ~/arthur/scripts/ll-oldpages-build.py. Every size comes from the --t-* scale in ob.css; no colours beyond the palette. */
+.pg-k{display:block;font:600 var(--t-small)/1.2 var(--sans);letter-spacing:0;color:var(--blue);margin:0 0 10px}
+.pg-w.sc-state,.sc-3.pg-w{background:#fff}
+.sc-state .ob-link{font-weight:600}
+
+/* how it works: four steps, each beside the portal screen it uses */
+.pg-sts{margin-top:clamp(36px,4.4vw,64px)}
+.pg-st{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,6vw,96px);padding:clamp(28px,3.4vw,52px) 0;border-top:1px solid #14110e2e;align-items:start}
+.pg-st:first-child{border-top-color:#14110e}
+.pg-st-t small{display:block;font:600 var(--t-small)/1 var(--sans);color:var(--blue);margin-bottom:12px}
+.pg-st-t h3{margin:0}
+.pg-st-t p{font-size:var(--t-lede);line-height:1.42;margin:14px 0 0;max-width:30em;color:var(--ink2)}
+.pg-st figure{margin:0;display:flex;flex-direction:column;gap:12px}
+.pg-st img{display:block;width:auto;max-width:min(100%,300px);height:auto;max-height:560px;border:1px solid #14110e2e;border-radius:18px}
+.pg-st figcaption{max-width:26em}
+
+/* rows that carry links under the sentence */
+.pg-rel{display:flex;flex-wrap:wrap;gap:6px 22px;margin:14px 0 0;font-size:var(--t-body)}
+.pg-see{margin:10px 0 0;font-size:var(--t-body);color:var(--ink2)}
+.pg-see b{color:var(--foot);font-weight:600;margin-right:6px}
+.sc-row h3 .pg-k{margin-bottom:8px}
+
+/* faq */
+.pg-faq .ob-split{border-top:1px solid #14110e}
+.pg-faq .ob-prose h3:first-child{margin-top:0}
+.pg-faq .ob-prose p{max-width:36em}
+.pg-faq .ob-split>h2 .pg-k{margin-bottom:12px}
+.pg-route .sc-four.t3{margin-top:clamp(28px,3.4vw,48px)}
+.pg-route .sc-four h3 a{text-decoration:none;color:var(--foot)}
+.pg-route .sc-four h3 a:hover{color:var(--blue);text-decoration:underline}
+.pg-route .sc-four .pg-k{margin:18px 0 0}
+.pg-route .sc-four .pg-k+h3{margin-top:6px}
+.pg-jump{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:baseline;margin:clamp(28px,3.4vw,48px) 0 0;font-size:var(--t-body)}
+
+/* work: six rebuilds as large tiles */
+.pg-cases .sc-case small{font-weight:600}
+.pg-cases .sc-case .ob-link{color:#fff;font-weight:600}
+.pg-cases .sc-case .pg-lab{margin-top:14px}
+.pg-cases .sc-case p{max-width:34em}
+.pg-wide{max-width:44em;margin:0}
+
+/* sample questions: the three records under an answer */
+.pg-ask .sc-rec p{font-size:var(--t-body);line-height:1.45;margin:8px 0 0;color:var(--ink2);font-family:var(--sans)}
+.pg-ask .sc-rec .hot b{color:var(--blue)}
+.pg-ask+.pg-ask{background:#fff}
+.pg-ask .sc-ans .y{font-family:var(--serif)}
+
+/* systems each industry reads */
+.pg-sys .ob-rules{margin-top:clamp(28px,3.4vw,48px)}
+.pg-sys .ob-rules--stack li{grid-template-columns:44px minmax(0,5fr) minmax(0,7fr);gap:clamp(14px,2.4vw,40px);align-items:center}
+.pg-sys .ob-rules b{font-size:var(--t-lede);line-height:1.2}
+.pg-sys .ob-rules span:not(.pg-logo){font-size:var(--t-body)}
+.pg-logo{display:grid;place-items:center;width:44px;height:44px;border:1px solid #14110e26;border-radius:10px;background:#fff}
+.pg-logo img{width:26px;height:26px;object-fit:contain;display:block}
+.pg-sys .sc-note{margin-top:20px;max-width:46em}
+.pg-more .pg-links{display:flex;flex-wrap:wrap;gap:10px 32px;margin:20px 0 0;font-size:var(--t-lede)}
+
+/* talk: what each stage gives you, and who it is for */
+.pg-tbl{margin-top:clamp(28px,3.4vw,48px);border-top:1px solid #14110e}
+.pg-tbl .tr{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:clamp(12px,2vw,28px);align-items:baseline;padding:16px 0;border-bottom:1px solid #14110e2e}
+.pg-tbl .th{font-size:var(--t-small);font-weight:600;color:var(--foot)}
+.pg-tbl .th span{color:var(--blue);margin-right:4px}
+.pg-tbl .lb{font-size:var(--t-body);line-height:1.4}
+.pg-tbl [role=cell]:not(.lb){font-size:var(--t-small);line-height:1.3}
+.pg-tbl .m-y{color:var(--blue);font-weight:600}
+.pg-tbl .m-p{color:var(--foot);font-weight:600}
+.pg-tbl .m-n{color:var(--muted)}
+.pg-legend{margin:18px 0 0;padding:0 var(--pad) var(--sec);background:var(--cream);max-width:none}
+.pg-cmp+.pg-legend{margin:0;padding-top:0}
+
+/* work: screenshot above, words below, so no text sits on a screenshot */
+.pg-cases.sc-cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,5vw,72px) clamp(20px,3vw,44px);background:var(--cream);padding:var(--sec) var(--pad)}
+.pg-cases .sc-case,.pg-cases .sc-case.a,.pg-cases .sc-case.b{position:static;isolation:auto;overflow:visible;min-height:0;display:block;padding:0;color:var(--foot);grid-column:auto}
+.pg-cases .sc-case::after{display:none}
+.pg-cases .sc-case img{position:static;display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;border:1px solid #14110e2e;border-radius:10px;z-index:auto;transition:none}
+.pg-cases .sc-case:hover img{transform:none}
+.pg-cases .sc-case small{display:block;margin-top:20px;color:var(--blue)}
+.pg-cases .sc-case h2{margin:6px 0 0;font-size:var(--t-h3)}
+.pg-cases .sc-case p{color:var(--ink2)}
+.pg-cases .sc-case .ob-link{color:var(--blue)}
+.sc-state .ob-rules{margin-top:clamp(28px,3.4vw,48px)}
+
+@media (max-width:700px){.pg-cases.sc-cases{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1100px){
+.pg-st{grid-template-columns:minmax(0,1fr);gap:20px}
+.pg-st img{max-width:min(100%,280px)}
+}
+@media (max-width:700px){
+.pg-sys .ob-rules--stack li{grid-template-columns:44px minmax(0,1fr);row-gap:8px}
+.pg-sys .ob-rules--stack li>span:last-child{grid-column:1/-1}
+.pg-tbl .th{display:none}
+.pg-tbl .tr{grid-template-columns:minmax(0,1fr);gap:4px;padding:14px 0}
+.pg-tbl [role=cell]:not(.lb){display:flex;gap:8px}
+.pg-tbl [role=cell]:nth-child(2)::before{content:"01 Understand:";color:var(--muted);font-weight:400}
+.pg-tbl [role=cell]:nth-child(3)::before{content:"02 Repeat:";color:var(--muted);font-weight:400}
+.pg-tbl [role=cell]:nth-child(4)::before{content:"03 Improve:";color:var(--muted);font-weight:400}
+.pg-faq .ob-split{gap:18px}
+}
+.sc-state.pg-note{padding-block:0 clamp(40px,5vw,72px);background:var(--cream)}

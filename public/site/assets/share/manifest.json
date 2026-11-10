@@ -47,6 +47,14 @@
     "caption": "Industries",
     "photo": "industry-manufacturing-3.jpg"
   },
+  "integrations": {
+    "page": "integrations.html",
+    "hash": "a578f9650173d8c0",
+    "file": "4b2423124a6580f9",
+    "headline": "Find the systems your organization already runs.",
+    "caption": "Integrations: the business systems we plan to support",
+    "photo": "operating-system.jpg"
+  },
   "municipal-review": {
     "page": "municipal-review.html",
     "hash": "d8aff70c3ea41e5d",
