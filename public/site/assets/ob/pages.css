@@ -87,7 +87,7 @@
 .pg-st{grid-template-columns:minmax(0,1fr);gap:20px}
 .pg-st img{max-width:100%}
 .pg-st picture{display:block}
-@media (max-width:700px){.pg-st img{width:auto;max-width:min(100%,300px);border-radius:18px}}
+@media (max-width:700px){.pg-st img{width:100%;max-width:375px;border-radius:10px}}
 }
 @media (max-width:700px){
 .pg-sys .ob-rules--stack li{grid-template-columns:44px minmax(0,1fr);row-gap:8px}
