@@ -1,6 +1,7 @@
 import { sendEmail, alertsTo } from "@/lib/email";
 import { isEmail, limited } from "@/lib/guard";
 import { clientIp } from "@/lib/visits";
+import { portalReviewUrl } from "@/lib/portal-review-url";
 import { NextResponse } from "next/server";
 import { getPortal } from "@/content/portals";
 import { getPortfolio } from "@/content/portfolio";
@@ -105,8 +106,6 @@ export async function POST(request: Request) {
             round: "Round 01",
             deliverables: [{ slug: "compliance", title: "Compliance calendar" }],
           });
-    const portfolioLink = !found;
-    const linkBase = st ? "studio/" : hub ? "hub/" : civic ? "civic/" : cs ? "compliance/" : "portfolio/";
 
     const name = (typeof input.name === "string" ? input.name : "").trim().replace(/[\r\n\t]+/g, " ").slice(0, 120);
     const email = (typeof input.email === "string" ? input.email : "").trim().slice(0, 200);
@@ -128,7 +127,10 @@ export async function POST(request: Request) {
     const deliverable = portal.deliverables.find((d) => d.slug === slug);
     const about = deliverable ? deliverable.title : "The package overall";
 
-    const url = `https://loveleedaystudios.com/p/${portfolioLink ? linkBase : ""}${portal.token ?? ""}${!portfolioLink && deliverable ? "/" + deliverable.slug : ""}`;
+    const url = portalReviewUrl(portal.token ?? "", {
+      standard: !!found, portfolio: !!pf, studio: !!st, civic: !!civic, hub: !!hub,
+      compliance: !!cs, wightman: !!wm, nowkalamazoo: !!nk, doorlight: !!dl, bogan: !!bog,
+    }, deliverable?.slug);
     await sendEmail({ internal: true, to: alertsTo(), replyTo: email, template: "portal-note-alert",
       subject: `${intent === "start" ? "Ready to start" : "Portal note"} — ${portal.client}: ${name.replace(/[\r\n]/g, " ")}`,
       paragraphs: [`Review note from ${name} <${email}>`, `Client: ${portal.client}\nIntent: ${intent}\nAbout: ${about}\nProject: ${portal.project}\nRound: ${portal.round}`, note],

@@ -1,0 +1,21 @@
+name: portal-previews
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  preview-unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test preview request budgets and feedback URLs
+        run: node --test scripts/portal-review-url.test.mjs scripts/preview-rate-limit.test.mjs
