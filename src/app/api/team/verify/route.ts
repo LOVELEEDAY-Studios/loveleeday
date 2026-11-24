@@ -13,7 +13,8 @@ const tries = new Map<string, number>();
 export async function POST(req: NextRequest) {
   const code = String((await req.json().catch(() => ({}))).code ?? "").replace(/\D/g, "");
   const pending = req.cookies.get(PENDING_COOKIE)?.value;
-  if (!pending || Number(pending.split(".")[1]) <= Date.now()) {
+  const expiresAt = Number(pending?.split(".")[1]);
+  if (!pending || !Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
     const res = NextResponse.json({ error: "Your sign-in code expired. Ask for a new code." }, { status: 401 });
     res.cookies.delete(PENDING_COOKIE);
     return res;
