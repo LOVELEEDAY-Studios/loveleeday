@@ -1,3 +1,4 @@
+import { createPreviewRateLimiter } from "@/lib/preview-rate-limit";
 import { arthurFetch } from "@/lib/arthur-core";
 import { NextResponse, after } from "next/server";
 import { notifyAsk } from "@/lib/email";
@@ -18,14 +19,7 @@ type Any = any; // eslint-disable-line @typescript-eslint/no-explicit-any
 const I = intel as Any;
 const $m = (n: number) => (n >= 1e9 ? `$${(n / 1e9).toFixed(2)}B` : n >= 1e6 ? `$${(n / 1e6).toFixed(1)}M` : `$${Math.round(n).toLocaleString()}`);
 
-const hits = new Map<string, number[]>();
-function limited(key: string, max: number, windowMs: number) {
-  const now = Date.now();
-  const recent = (hits.get(key) ?? []).filter((t) => now - t < windowMs);
-  recent.push(now);
-  hits.set(key, recent);
-  return recent.length > max;
-}
+const limited = createPreviewRateLimiter();
 
 function context(today: Date, question: string) {
   const L: string[] = [];
