@@ -13,7 +13,12 @@ const tries = new Map<string, number>();
 export async function POST(req: NextRequest) {
   const code = String((await req.json().catch(() => ({}))).code ?? "").replace(/\D/g, "");
   const pending = req.cookies.get(PENDING_COOKIE)?.value;
-  if (!pending || (tries.get(pending) ?? 0) >= 5 || limited(`verify:${clientIp(req.headers)}`, 20, 15 * 60_000)) {
+  if (!pending || Number(pending.split(".")[1]) <= Date.now()) {
+    const res = NextResponse.json({ error: "Your sign-in code expired. Ask for a new code." }, { status: 401 });
+    res.cookies.delete(PENDING_COOKIE);
+    return res;
+  }
+  if ((tries.get(pending) ?? 0) >= 5 || limited(`verify:${clientIp(req.headers)}`, 20, 15 * 60_000)) {
     const res = NextResponse.json({ error: "Too many tries. Ask for a new code." }, { status: 429 });
     res.cookies.delete(PENDING_COOKIE);
     return res;
